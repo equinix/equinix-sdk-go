@@ -1,0 +1,4 @@
+properties:
+  level:
+    type: string
+type: object

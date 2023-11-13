@@ -1,0 +1,37 @@
+diff --git a/spec/oas3.patched/components/schemas/Device.yaml b/spec/oas3.patched/components/schemas/Device.yaml
+index 4e0cc1c..f6981ef 100644
+--- a/spec/oas3.patched/components/schemas/Device.yaml
++++ b/spec/oas3.patched/components/schemas/Device.yaml
+@@ -21,7 +21,7 @@ properties:
+   facility:
+     $ref: './Facility.yaml'
+   hardware_reservation:
+-    $ref: './Href.yaml'
++    $ref: './HardwareReservation.yaml'
+   hostname:
+     type: string
+   href:
+@@ -70,9 +70,7 @@ properties:
+   plan:
+     $ref: './Plan.yaml'
+   project:
+-    allOf:
+-    - $ref: './Href.yaml'
+-    - description: Full version of project object when included
++    $ref: './Project.yaml'
+   project_lite:
+     allOf:
+     - $ref: './Href.yaml'
+diff --git a/spec/oas3.patched/components/schemas/Project.yaml b/spec/oas3.patched/components/schemas/Project.yaml
+index d61b8f6..b962756 100644
+--- a/spec/oas3.patched/components/schemas/Project.yaml
++++ b/spec/oas3.patched/components/schemas/Project.yaml
+@@ -10,6 +10,8 @@ properties:
+     items:
+       $ref: './Href.yaml'
+     type: array
++  href:
++    type: string
+   id:
+     format: uuid
+     type: string
