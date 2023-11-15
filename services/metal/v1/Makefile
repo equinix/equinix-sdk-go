@@ -11,7 +11,7 @@ SPEC_PATCHED_DIR=spec/oas3.patched
 
 SPEC_FETCHED_FILE:=spec.fetched.json
 SPEC_PATCHED_FILE:=spec.patched.json
-OPENAPI_IMAGE_TAG=v7.0.0
+OPENAPI_IMAGE_TAG=v7.1.0
 OPENAPI_IMAGE=openapitools/openapi-generator-cli:${OPENAPI_IMAGE_TAG}
 GIT_ORG=equinix-labs
 GIT_REPO=metal-go
@@ -53,13 +53,13 @@ clean:
 
 codegen:
 	${OPENAPI_GENERATOR} generate -g go \
-		--package-name ${PACKAGE_MAJOR} \
+		--package-name ${PACKAGE_PREFIX}${PACKAGE_MAJOR} \
 		--http-user-agent "${GIT_REPO}/${PACKAGE_VERSION}" \
 		-p packageVersion=${PACKAGE_VERSION} \
 		--git-user-id ${GIT_ORG} \
-		--git-repo-id ${GIT_REPO}/${PACKAGE_PREFIX} \
+		--git-repo-id ${GIT_REPO}/services/${PACKAGE_PREFIX}/${PACKAGE_MAJOR} \
 		-c /local/config/openapi-generator.json \
-		-o /local/${PACKAGE_PREFIX}/${PACKAGE_MAJOR} \
+		-o /local/ \
 		-i /local/${SPEC_PATCHED_DIR}/${SPEC_ROOT_FILE}
 
 validate:
@@ -68,8 +68,6 @@ validate:
 		-i /local/${SPEC_PATCHED_DIR}
 
 mod:
-	rm -f go.mod go.sum ${PACKAGE_PREFIX}/${PACKAGE_MAJOR}/go.mod ${PACKAGE_PREFIX}/${PACKAGE_MAJOR}/go.sum
-	go mod init github.com/${GIT_ORG}/${GIT_REPO}
 	go mod tidy
 
 test:
@@ -79,22 +77,18 @@ clean-docs:
 	rm -rf docs API.md
 
 move-docs:
-	mv ${PACKAGE_PREFIX}/${PACKAGE_MAJOR}/README.md API.md
-	mv ${PACKAGE_PREFIX}/${PACKAGE_MAJOR}/docs .
+	mv README.md API.md
 
 docs: clean-docs move-docs
 
 move-other:
 	rm -rf api .travis.yml git_push.sh
-	rm -f ${PACKAGE_PREFIX}/${PACKAGE_MAJOR}/.travis.yml
-	mv ${PACKAGE_PREFIX}/${PACKAGE_MAJOR}/api .
-	rm ${PACKAGE_PREFIX}/${PACKAGE_MAJOR}/git_push.sh
 
 lint:
 	@$(GOLANGCI_LINT) run -v --no-config --fast=false --fix --disable-all --enable goimports $(PACKAGE_PREFIX)
 
 fmt:
-	go run mvdan.cc/gofumpt@v0.3.1 -l -w $(PACKAGE_PREFIX)
+	go run mvdan.cc/gofumpt@v0.3.1 -l -w .
 
 stage:
 	test -d .git && git add --intent-to-add API.md docs ${PACKAGE_PREFIX} go.mod go.sum

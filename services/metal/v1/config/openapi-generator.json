@@ -1,6 +1,5 @@
 {
     "apiNameSuffix": "Api",
-    "isGoSubmodule": true,
     "disallowAdditionalPropertiesIfNotPresent": false,
     "templateDir": "/local/templates",
     "inlineSchemaOptions": {
