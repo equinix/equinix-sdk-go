@@ -1,4 +1,4 @@
-# Go API client for v1
+# Go API client for metalv1
 
 # Introduction
 Equinix Metal provides a RESTful HTTP API which can be reached at <https://api.equinix.com/metal/v1>. This document describes the API and how to use it.
@@ -102,7 +102,7 @@ go get golang.org/x/net/context
 Put the package under your project folder and add the following in import:
 
 ```golang
-import v1 "github.com/equinix-labs/metal-go/metal/v1"
+import metalv1 "github.com/equinix-labs/metal-go/services/metal/v1"
 ```
 
 To use a proxy, set the environment variable `HTTP_PROXY`:
@@ -117,18 +117,18 @@ Default configuration comes with `Servers` field that contains server objects as
 
 ### Select Server Configuration
 
-For using other server than the one defined on index 0 set context value `sw.ContextServerIndex` of type `int`.
+For using other server than the one defined on index 0 set context value `metalv1.ContextServerIndex` of type `int`.
 
 ```golang
-ctx := context.WithValue(context.Background(), v1.ContextServerIndex, 1)
+ctx := context.WithValue(context.Background(), metalv1.ContextServerIndex, 1)
 ```
 
 ### Templated Server URL
 
-Templated server URL is formatted using default variables from configuration or from context value `sw.ContextServerVariables` of type `map[string]string`.
+Templated server URL is formatted using default variables from configuration or from context value `metalv1.ContextServerVariables` of type `map[string]string`.
 
 ```golang
-ctx := context.WithValue(context.Background(), v1.ContextServerVariables, map[string]string{
+ctx := context.WithValue(context.Background(), metalv1.ContextServerVariables, map[string]string{
 	"basePath": "v2",
 })
 ```
@@ -139,13 +139,13 @@ Note, enum values are always validated and all unused variables are silently ign
 
 Each operation can use different server URL defined using `OperationServers` map in the `Configuration`.
 An operation is uniquely identified by `"{classname}Service.{nickname}"` string.
-Similar rules for overriding default operation server index and variables applies by using `sw.ContextOperationServerIndices` and `sw.ContextOperationServerVariables` context maps.
+Similar rules for overriding default operation server index and variables applies by using `metalv1.ContextOperationServerIndices` and `metalv1.ContextOperationServerVariables` context maps.
 
 ```golang
-ctx := context.WithValue(context.Background(), v1.ContextOperationServerIndices, map[string]int{
+ctx := context.WithValue(context.Background(), metalv1.ContextOperationServerIndices, map[string]int{
 	"{classname}Service.{nickname}": 2,
 })
-ctx = context.WithValue(context.Background(), v1.ContextOperationServerVariables, map[string]map[string]string{
+ctx = context.WithValue(context.Background(), metalv1.ContextOperationServerVariables, map[string]map[string]string{
 	"{classname}Service.{nickname}": {
 		"port": "8443",
 	},
@@ -700,8 +700,8 @@ Example
 ```golang
 auth := context.WithValue(
 		context.Background(),
-		sw.ContextAPIKeys,
-		map[string]sw.APIKey{
+		metalv1.ContextAPIKeys,
+		map[string]metalv1.APIKey{
 			"X-Auth-Token": {Key: "API_KEY_STRING"},
 		},
 	)

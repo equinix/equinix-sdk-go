@@ -1,6 +1,6 @@
-module github.com/equinix-labs/metal-go
+module github.com/equinix-labs/metal-go/services/metal/v1
 
-go 1.20
+go 1.18
 
 require github.com/stretchr/testify v1.8.4
 
