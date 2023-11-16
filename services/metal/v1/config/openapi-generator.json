@@ -1,9 +1,0 @@
-{
-    "apiNameSuffix": "Api",
-    "disallowAdditionalPropertiesIfNotPresent": false,
-    "templateDir": "/local/templates",
-    "inlineSchemaOptions": {
-        "RESOLVE_INLINE_ENUMS": true
-    },
-    "enumClassPrefix": true
-}

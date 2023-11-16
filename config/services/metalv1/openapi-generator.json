@@ -1,0 +1,9 @@
+{
+    "apiNameSuffix": "Api",
+    "disallowAdditionalPropertiesIfNotPresent": false,
+    "templateDir": "/local/templates/services/metalv1",
+    "inlineSchemaOptions": {
+        "RESOLVE_INLINE_ENUMS": true
+    },
+    "enumClassPrefix": true
+}
