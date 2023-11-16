@@ -1,0 +1,9 @@
+{
+    "apiNameSuffix": "Api",
+    "isGoSubmodule": true,
+    "disallowAdditionalPropertiesIfNotPresent": false,
+    "inlineSchemaOptions": {
+        "RESOLVE_INLINE_ENUMS": true
+    },
+    "enumClassPrefix": true
+}
