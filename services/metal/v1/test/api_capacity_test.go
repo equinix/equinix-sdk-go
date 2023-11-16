@@ -13,7 +13,7 @@ import (
 	"context"
 	"testing"
 
-	openapiclient "github.com/equinix-labs/metal-go/services/metal/v1"
+	openapiclient "github.com/equinix/equinix-sdk-go/services/metal/v1"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
