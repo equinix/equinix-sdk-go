@@ -102,7 +102,7 @@ go get golang.org/x/net/context
 Put the package under your project folder and add the following in import:
 
 ```golang
-import metalv1 "github.com/equinix-labs/metal-go/services/metal/v1"
+import metalv1 "github.com/equinix/equinix-sdk-go/services/metal/v1"
 ```
 
 To use a proxy, set the environment variable `HTTP_PROXY`:
