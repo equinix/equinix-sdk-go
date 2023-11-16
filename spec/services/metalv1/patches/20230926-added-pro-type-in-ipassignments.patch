@@ -1,7 +1,7 @@
-diff --git a/spec/oas3.patched/components/schemas/IPAssignment.yaml b/spec/oas3.patched/components/schemas/IPAssignment.yaml
+diff --git a/spec/services/metalv1/oas3.patched/components/schemas/IPAssignment.yaml b/spec/services/metalv1/oas3.patched/components/schemas/IPAssignment.yaml
 index efce269..46f9abc 100644
---- a/spec/oas3.patched/components/schemas/IPAssignment.yaml
-+++ b/spec/oas3.patched/components/schemas/IPAssignment.yaml
+--- a/spec/services/metalv1/oas3.patched/components/schemas/IPAssignment.yaml
++++ b/spec/services/metalv1/oas3.patched/components/schemas/IPAssignment.yaml
 @@ -54,4 +54,8 @@ properties:
        Only set when this is a Metal Gateway Elastic IP Assignment.
  

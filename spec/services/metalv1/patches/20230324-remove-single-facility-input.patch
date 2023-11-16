@@ -1,7 +1,7 @@
-diff --git a/spec/oas3.patched/components/schemas/FacilityInput.yaml b/spec/oas3.patched/components/schemas/FacilityInput.yaml
+diff --git a/spec/services/metalv1/oas3.patched/components/schemas/FacilityInput.yaml b/spec/services/metalv1/oas3.patched/components/schemas/FacilityInput.yaml
 index 3e60212..9c53880 100644
---- a/spec/oas3.patched/components/schemas/FacilityInput.yaml
-+++ b/spec/oas3.patched/components/schemas/FacilityInput.yaml
+--- a/spec/services/metalv1/oas3.patched/components/schemas/FacilityInput.yaml
++++ b/spec/services/metalv1/oas3.patched/components/schemas/FacilityInput.yaml
 @@ -10,10 +10,7 @@ properties:
        The API will accept either a single facility `{ "facility": "f1" }`, or it can be instructed to create the device in the best available datacenter `{ "facility": "any" }`.
  

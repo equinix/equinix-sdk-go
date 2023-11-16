@@ -1,7 +1,7 @@
-diff --git a/spec/oas3.patched/components/schemas/VirtualNetwork.yaml b/spec/oas3.patched/components/schemas/VirtualNetwork.yaml
+diff --git a/spec/services/metalv1/oas3.patched/components/schemas/VirtualNetwork.yaml b/spec/services/metalv1/oas3.patched/components/schemas/VirtualNetwork.yaml
 index cb0c698..bae14ae 100644
---- a/spec/oas3.patched/components/schemas/VirtualNetwork.yaml
-+++ b/spec/oas3.patched/components/schemas/VirtualNetwork.yaml
+--- a/spec/services/metalv1/oas3.patched/components/schemas/VirtualNetwork.yaml
++++ b/spec/services/metalv1/oas3.patched/components/schemas/VirtualNetwork.yaml
 @@ -11,6 +11,9 @@ properties:
      $ref: './Href.yaml'
    href:
