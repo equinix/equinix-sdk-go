@@ -1,5 +1,13 @@
-on: [push, pull_request]
-name: Test
+name: Test __PACKAGE_NAME__ codegen
+
+on:
+  push:
+    paths:
+    - "**/__PACKAGE_NAME__/**"
+  pull_request:
+    paths:
+    - "**/__PACKAGE_NAME__/**"
+
 jobs:
   test:
     strategy:
@@ -15,9 +23,9 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
     - name: Verify Patches
-      run: make patch
+      run: make -f Makefile.__PACKAGE_NAME__ patch
     - name: Generate
       run: |
-        make generate
+        make -f Makefile.__PACKAGE_NAME__ generate
         # Expect all changes to be accounted for
         ! git status --porcelain | grep .
