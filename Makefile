@@ -21,6 +21,11 @@ CODE_BASE_DIR=services
 onboard-service:
 	script/onboard_service.sh
 
+generate-all:
+	for makefile in $(shell set -x; find . -name 'Makefile.*' -depth 1 | sort -n); do \
+		make -f $$makefile generate;\
+	done
+
 mod:
 	find services -regex ".*\/go\.mod" -exec rm {} \;
 	find services -regex ".*\/go\.sum" -exec rm {} \;

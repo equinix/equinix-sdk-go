@@ -27,7 +27,7 @@
       [
         "@semantic-release/exec",
         {
-          "prepareCmd": "echo -n '${nextRelease.version}' > version && make generate"
+          "prepareCmd": "echo -n '${nextRelease.version}' > version && make generate-all"
         }
       ],
       [
