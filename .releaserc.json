@@ -27,13 +27,13 @@
       [
         "@semantic-release/exec",
         {
-          "prepareCmd": "echo -n '${nextRelease.version}' > version && make generate"
+          "prepareCmd": "echo -n '${nextRelease.version}' > version && make generate-all"
         }
       ],
       [
         "@semantic-release/git",
         {
-          "message": "ci: regenerate code for version ${nextRelease.version}",
+          "message": "ci: regenerate code for version ${nextRelease.version} triggered by ${process.env.RELEASE_REQUESTER}",
           "assets": ["."]
         }
       ]

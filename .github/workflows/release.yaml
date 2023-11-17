@@ -1,4 +1,4 @@
-name: generate-release
+name: Generate Next Release
 # This workflow will generate changelog and release notes.
 # Source: https://github.com/terraform-aws-modules/terraform-aws-vpc/blob/master/.github/workflows/release.yml
 
@@ -35,3 +35,4 @@ jobs:
           GIT_AUTHOR_EMAIL: bot@equinix.noreply.github.com
           GIT_COMMITTER_NAME: equinix-labs@auto-commit-workflow
           GIT_COMMITTER_EMAIL: bot@equinix.noreply.github.com
+          RELEASE_REQUESTER: "@${{ github.event.sender.login }}"
