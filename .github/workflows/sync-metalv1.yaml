@@ -1,4 +1,4 @@
-name: Sync __PACKAGE_NAME__ spec
+name: Sync metalv1 spec
 
 on:
   workflow_dispatch:
@@ -28,22 +28,22 @@ jobs:
     - name: Fetch latest spec
       id: fetch
       run: |
-        make -f Makefile.__PACKAGE_NAME__ fetch
-        git add spec/services/__PACKAGE_NAME__
+        make -f Makefile.metalv1 fetch
+        git add spec/services/metalv1
         echo `git commit -m 'sync: fetch ${{ steps.date.outputs.date }} spec and apply patches'`
     - name: Apply spec patches
       id: patch
       if: ${{ always() && steps.fetch.conclusion == 'success' }}
       run: |
-        make -f Makefile.__PACKAGE_NAME__ patch
-        git add spec/services/__PACKAGE_NAME__
+        make -f Makefile.metalv1 patch
+        git add spec/services/metalv1
         echo `git commit -m 'sync: patch spec with ${{ steps.date.outputs.date }} spec'`
     - name: Generate code
       id: generate
       if: ${{ always() && steps.patch.conclusion == 'success' }}
       run: |
-        make -f Makefile.__PACKAGE_NAME__ generate
-        git add services/__PACKAGE_NAME__
+        make -f Makefile.metalv1 generate
+        git add services/metalv1
         echo `git commit -m 'sync: generate client with ${{ steps.date.outputs.date }} spec'`
     - name: Create Pull Request
       id: cpr
