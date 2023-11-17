@@ -1952,6 +1952,7 @@ type ApiFindOrganizationDevicesRequest struct {
 	tag                *string
 	type_              *string
 	hasTerminationTime *bool
+	macAddress         *string
 	include            *[]string
 	exclude            *[]string
 	page               *int32
@@ -2003,6 +2004,12 @@ func (r ApiFindOrganizationDevicesRequest) Type_(type_ string) ApiFindOrganizati
 // Filter only instances marked for termination. When set to true, only include instances that have a termination time. When set to false, only include instances that do not have a termination time.
 func (r ApiFindOrganizationDevicesRequest) HasTerminationTime(hasTerminationTime bool) ApiFindOrganizationDevicesRequest {
 	r.hasTerminationTime = &hasTerminationTime
+	return r
+}
+
+// Filter by MAC address
+func (r ApiFindOrganizationDevicesRequest) MacAddress(macAddress string) ApiFindOrganizationDevicesRequest {
+	r.macAddress = &macAddress
 	return r
 }
 
@@ -2097,6 +2104,9 @@ func (a *DevicesApiService) FindOrganizationDevicesExecute(r ApiFindOrganization
 	}
 	if r.hasTerminationTime != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "has_termination_time", r.hasTerminationTime, "")
+	}
+	if r.macAddress != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "mac_address", r.macAddress, "")
 	}
 	if r.include != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "csv")
@@ -2248,6 +2258,7 @@ type ApiFindProjectDevicesRequest struct {
 	tag                *string
 	type_              *string
 	hasTerminationTime *bool
+	macAddress         *string
 	include            *[]string
 	exclude            *[]string
 	page               *int32
@@ -2305,6 +2316,12 @@ func (r ApiFindProjectDevicesRequest) Type_(type_ string) ApiFindProjectDevicesR
 // Filter only instances marked for termination. When set to true, only include instances that have a termination time. When set to false, only include instances that do not have a termination time.
 func (r ApiFindProjectDevicesRequest) HasTerminationTime(hasTerminationTime bool) ApiFindProjectDevicesRequest {
 	r.hasTerminationTime = &hasTerminationTime
+	return r
+}
+
+// Filter by MAC address
+func (r ApiFindProjectDevicesRequest) MacAddress(macAddress string) ApiFindProjectDevicesRequest {
+	r.macAddress = &macAddress
 	return r
 }
 
@@ -2402,6 +2419,9 @@ func (a *DevicesApiService) FindProjectDevicesExecute(r ApiFindProjectDevicesReq
 	}
 	if r.hasTerminationTime != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "has_termination_time", r.hasTerminationTime, "")
+	}
+	if r.macAddress != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "mac_address", r.macAddress, "")
 	}
 	if r.include != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "csv")
