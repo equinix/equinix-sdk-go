@@ -1,10 +1,10 @@
-name: Sync
+name: Sync __PACKAGE_NAME__ spec
 
 on:
   workflow_dispatch:
 
 jobs:
-  sync:
+  sync__PACKAGE_NAME__:
     strategy:
       matrix:
         go-version: [1.19.x]
@@ -28,22 +28,22 @@ jobs:
     - name: Fetch latest spec
       id: fetch
       run: |
-        make fetch
-        git add spec/oas3.fetched
+        make -f Makefile.__PACKAGE_NAME__ fetch
+        git add spec/services/__PACKAGE_NAME__
         echo `git commit -m 'sync: fetch ${{ steps.date.outputs.date }} spec and apply patches'`
     - name: Apply spec patches
       id: patch
       if: ${{ always() && steps.fetch.conclusion == 'success' }}
       run: |
-        make patch
-        git add spec/oas3.patched
+        make -f Makefile.__PACKAGE_NAME__ patch
+        git add spec/services/__PACKAGE_NAME__
         echo `git commit -m 'sync: patch spec with ${{ steps.date.outputs.date }} spec'`
     - name: Generate code
       id: generate
       if: ${{ always() && steps.patch.conclusion == 'success' }}
       run: |
-        make generate
-        git add api docs metal API.md go.mod go.sum
+        make -f Makefile.__PACKAGE_NAME__ generate
+        git add services/__PACKAGE_NAME__
         echo `git commit -m 'sync: generate client with ${{ steps.date.outputs.date }} spec'`
     - name: Create Pull Request
       id: cpr
@@ -54,9 +54,9 @@ jobs:
         branch-suffix: timestamp
         author: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
         commit-message: "sync: uncommitted changes detected when opening PR"
-        title: "feat: API Sync by GitHub Action (${{ steps.date.outputs.date }})"
+        title: "feat: API Sync by GitHub Action for @${{ github.event.sender }}"
         body: |
-          This API Sync PR was automated through [GitHub Actions workflow_displatch](https://github.com/equinix-labs/metal-go/actions?query=event%3Aworkflow_dispatch)
+          This API Sync PR was triggered by @${{ github.event.sender }} through [GitHub Actions workflow_displatch](https://github.com/equinix/equinix-sdk-go/actions?query=event%3Aworkflow_dispatch)
           on ${{ steps.date.outputs.date }}.
 
           * latest Swagger is fetched
