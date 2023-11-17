@@ -54,9 +54,9 @@ jobs:
         branch-suffix: timestamp
         author: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
         commit-message: "sync: uncommitted changes detected when opening PR"
-        title: "feat: API Sync by GitHub Action for @${{ github.event.sender }}"
+        title: "feat: API Sync by GitHub Action for @${{ github.event.sender.login }}"
         body: |
-          This API Sync PR was triggered by @${{ github.event.sender }} through [GitHub Actions workflow_displatch](https://github.com/equinix/equinix-sdk-go/actions?query=event%3Aworkflow_dispatch)
+          This API Sync PR was triggered by @${{ github.event.sender.login }} through [GitHub Actions workflow_displatch](https://github.com/equinix/equinix-sdk-go/actions?query=event%3Aworkflow_dispatch)
           on ${{ steps.date.outputs.date }}.
 
           * latest Swagger is fetched
