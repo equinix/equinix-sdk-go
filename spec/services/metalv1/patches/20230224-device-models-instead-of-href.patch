@@ -1,7 +1,7 @@
-diff --git a/spec/oas3.patched/components/schemas/Device.yaml b/spec/oas3.patched/components/schemas/Device.yaml
+diff --git a/spec/services/metalv1/oas3.patched/components/schemas/Device.yaml b/spec/services/metalv1/oas3.patched/components/schemas/Device.yaml
 index 4e0cc1c..f6981ef 100644
 --- a/spec/oas3.patched/components/schemas/Device.yaml
-+++ b/spec/oas3.patched/components/schemas/Device.yaml
++++ b/spec/services/metalv1/oas3.patched/components/schemas/Device.yaml
 @@ -21,7 +21,7 @@ properties:
    facility:
      $ref: './Facility.yaml'
@@ -22,10 +22,10 @@ index 4e0cc1c..f6981ef 100644
    project_lite:
      allOf:
      - $ref: './Href.yaml'
-diff --git a/spec/oas3.patched/components/schemas/Project.yaml b/spec/oas3.patched/components/schemas/Project.yaml
+diff --git a/spec/services/metalv1/oas3.patched/components/schemas/Project.yaml b/spec/services/metalv1/oas3.patched/components/schemas/Project.yaml
 index d61b8f6..b962756 100644
---- a/spec/oas3.patched/components/schemas/Project.yaml
-+++ b/spec/oas3.patched/components/schemas/Project.yaml
+--- a/spec/services/metalv1/oas3.patched/components/schemas/Project.yaml
++++ b/spec/services/metalv1/oas3.patched/components/schemas/Project.yaml
 @@ -10,6 +10,8 @@ properties:
      items:
        $ref: './Href.yaml'
