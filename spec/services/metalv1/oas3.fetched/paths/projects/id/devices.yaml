@@ -1,8 +1,8 @@
 get:
-  description: Provides a collection of devices for a given organization.
-  operationId: findOrganizationDevices
+  description: Provides a collection of devices for a given project.
+  operationId: findProjectDevices
   parameters:
-  - description: Organization UUID
+  - description: Project UUID
     in: path
     name: id
     required: true
@@ -27,6 +27,11 @@ get:
   - description: Filter by device facility
     in: query
     name: facility
+    schema:
+      type: string
+  - description: Filter by device metro
+    in: query
+    name: metro
     schema:
       type: string
   - description: Filter by partial hostname
@@ -54,6 +59,11 @@ get:
     name: has_termination_time
     schema:
       type: boolean
+  - description: Filter by MAC address
+    in: query
+    name: mac_address
+    schema:
+      type: string
   - $ref: '../../../components/parameters/Include.yaml'
   - $ref: '../../../components/parameters/Exclude.yaml'
   - $ref: '../../../components/parameters/Page.yaml'
@@ -83,6 +93,65 @@ get:
           schema:
             $ref: '../../../components/schemas/Error.yaml'
       description: not found
-  summary: Retrieve all devices of an organization
+  summary: Retrieve all devices of a project
+  tags:
+  - Devices
+post:
+  description: |-
+    Creates a new device and provisions it in the specified location.
+
+    Device type-specific options are accepted.  For example, `baremetal` devices accept `operating_system`, `hostname`, and `plan`. These parameters may not be accepted for other device types. The default device type is `baremetal`.
+  operationId: createDevice
+  parameters:
+  - description: Project UUID
+    in: path
+    name: id
+    required: true
+    schema:
+      format: uuid
+      type: string
+  - $ref: '../../../components/parameters/Include.yaml'
+  - $ref: '../../../components/parameters/Exclude.yaml'
+  requestBody:
+    content:
+      application/json:
+        schema:
+          oneOf:
+          - $ref: '../../../components/schemas/DeviceCreateInMetroInput.yaml'
+          - $ref: '../../../components/schemas/DeviceCreateInFacilityInput.yaml'
+    description: Device to create
+    required: true
+  responses:
+    "201":
+      content:
+        application/json:
+          schema:
+            $ref: '../../../components/schemas/Device.yaml'
+      description: created
+    "401":
+      content:
+        application/json:
+          schema:
+            $ref: '../../../components/schemas/Error.yaml'
+      description: unauthorized
+    "403":
+      content:
+        application/json:
+          schema:
+            $ref: '../../../components/schemas/Error.yaml'
+      description: forbidden
+    "404":
+      content:
+        application/json:
+          schema:
+            $ref: '../../../components/schemas/Error.yaml'
+      description: not found
+    "422":
+      content:
+        application/json:
+          schema:
+            $ref: '../../../components/schemas/Error.yaml'
+      description: unprocessable entity
+  summary: Create a device
   tags:
   - Devices
