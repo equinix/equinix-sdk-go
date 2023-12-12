@@ -1,0 +1,15 @@
+diff --git a/spec/services/metalv1/oas3.patched/components/schemas/BgpSession.yaml b/spec/oas3.patched/components/schemas/BgpSession.yaml
+index db8baf8..50bcc22 100644
+--- a/spec/services/metalv1/oas3.patched/components/schemas/BgpSession.yaml
++++ b/spec/services/metalv1/oas3.patched/components/schemas/BgpSession.yaml
+@@ -28,10 +28,6 @@ properties:
+       status will start with "unknown" and progress to "up" or "down" depending on
+       the connected device. Subsequent "unknown" values indicate a problem acquiring
+       status from the switch. '
+-    enum:
+-    - unknown
+-    - up
+-    - down
+     type: string
+   updated_at:
+     format: date-time
