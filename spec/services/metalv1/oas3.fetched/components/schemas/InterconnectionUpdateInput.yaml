@@ -15,10 +15,6 @@ properties:
     type: string
   name:
     type: string
-  redundancy:
-    description: Updating from 'redundant' to 'primary' will remove a secondary port,
-      while updating from 'primary' to 'redundant' will add one.
-    type: string
   tags:
     items:
       type: string

@@ -12,18 +12,24 @@ get:
               am:
                 "c2.medium.x86":
                   level: "string"
+                  available_servers: 25
                 "m2.xlarge.x86":
                   level: "string"
+                  available_servers: 15
               da:
                 "c2.medium.x86":
                   level: "string"
+                  available_servers: 26
                 "m2.xlarge.x86":
                   level: "string"
+                  available_servers: 11
               dc:
                 "c2.medium.x86":
                   level: "string"
+                  available_servers: 14
                 "m2.xlarge.x86":
                   level: "string"
+                  available_servers: 10
       description: ok
     "401":
       content:
