@@ -8,7 +8,6 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** |  | [optional] 
 **Mode** | Pointer to [**InterconnectionMode**](InterconnectionMode.md) |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
-**Redundancy** | Pointer to **string** | Updating from &#39;redundant&#39; to &#39;primary&#39; will remove a secondary port, while updating from &#39;primary&#39; to &#39;redundant&#39; will add one. | [optional] 
 **Tags** | Pointer to **[]string** |  | [optional] 
 
 ## Methods
@@ -129,31 +128,6 @@ SetName sets Name field to given value.
 `func (o *InterconnectionUpdateInput) HasName() bool`
 
 HasName returns a boolean if a field has been set.
-
-### GetRedundancy
-
-`func (o *InterconnectionUpdateInput) GetRedundancy() string`
-
-GetRedundancy returns the Redundancy field if non-nil, zero value otherwise.
-
-### GetRedundancyOk
-
-`func (o *InterconnectionUpdateInput) GetRedundancyOk() (*string, bool)`
-
-GetRedundancyOk returns a tuple with the Redundancy field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRedundancy
-
-`func (o *InterconnectionUpdateInput) SetRedundancy(v string)`
-
-SetRedundancy sets Redundancy field to given value.
-
-### HasRedundancy
-
-`func (o *InterconnectionUpdateInput) HasRedundancy() bool`
-
-HasRedundancy returns a boolean if a field has been set.
 
 ### GetTags
 

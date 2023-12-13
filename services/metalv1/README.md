@@ -655,6 +655,7 @@ Class | Method | HTTP request | Description
  - [VlanFabricVcCreateInputServiceTokenType](docs/VlanFabricVcCreateInputServiceTokenType.md)
  - [VlanFabricVcCreateInputType](docs/VlanFabricVcCreateInputType.md)
  - [VlanVirtualCircuit](docs/VlanVirtualCircuit.md)
+ - [VlanVirtualCircuitBillType](docs/VlanVirtualCircuitBillType.md)
  - [VlanVirtualCircuitCreateInput](docs/VlanVirtualCircuitCreateInput.md)
  - [VlanVirtualCircuitStatus](docs/VlanVirtualCircuitStatus.md)
  - [VlanVirtualCircuitType](docs/VlanVirtualCircuitType.md)
