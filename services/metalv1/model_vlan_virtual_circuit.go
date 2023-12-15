@@ -22,13 +22,14 @@ var _ MappedNullable = &VlanVirtualCircuit{}
 // VlanVirtualCircuit struct for VlanVirtualCircuit
 type VlanVirtualCircuit struct {
 	// True if the Virtual Circuit is being billed. Currently, only Virtual Circuits of Fabric VCs (Metal Billed) will be billed. Usage will start the first time the Virtual Circuit becomes active, and will not stop until it is deleted from Metal.
-	Bill        *bool   `json:"bill,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Id          *string `json:"id,omitempty"`
-	Name        *string `json:"name,omitempty"`
-	NniVlan     *int32  `json:"nni_vlan,omitempty"`
-	Port        *Href   `json:"port,omitempty"`
-	Project     *Href   `json:"project,omitempty"`
+	Bill        *bool                              `json:"bill,omitempty"`
+	BillType    NullableVlanVirtualCircuitBillType `json:"bill_type,omitempty"`
+	Description *string                            `json:"description,omitempty"`
+	Id          *string                            `json:"id,omitempty"`
+	Name        *string                            `json:"name,omitempty"`
+	NniVlan     *int32                             `json:"nni_vlan,omitempty"`
+	Port        *Href                              `json:"port,omitempty"`
+	Project     *Href                              `json:"project,omitempty"`
 	// For Virtual Circuits on shared and dedicated connections, this speed should match the one set on their Interconnection Ports. For Virtual Circuits on Fabric VCs (both Metal and Fabric Billed) that have found their corresponding Fabric connection, this is the actual speed of the interconnection that was configured when setting up the interconnection on the Fabric Portal. Details on Fabric VCs are included in the specification as a developer preview and is generally unavailable. Please contact our Support team for more details.
 	Speed                *int32                    `json:"speed,omitempty"`
 	Status               *VlanVirtualCircuitStatus `json:"status,omitempty"`
@@ -94,6 +95,49 @@ func (o *VlanVirtualCircuit) HasBill() bool {
 // SetBill gets a reference to the given bool and assigns it to the Bill field.
 func (o *VlanVirtualCircuit) SetBill(v bool) {
 	o.Bill = &v
+}
+
+// GetBillType returns the BillType field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *VlanVirtualCircuit) GetBillType() VlanVirtualCircuitBillType {
+	if o == nil || IsNil(o.BillType.Get()) {
+		var ret VlanVirtualCircuitBillType
+		return ret
+	}
+	return *o.BillType.Get()
+}
+
+// GetBillTypeOk returns a tuple with the BillType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *VlanVirtualCircuit) GetBillTypeOk() (*VlanVirtualCircuitBillType, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.BillType.Get(), o.BillType.IsSet()
+}
+
+// HasBillType returns a boolean if a field has been set.
+func (o *VlanVirtualCircuit) HasBillType() bool {
+	if o != nil && o.BillType.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetBillType gets a reference to the given NullableVlanVirtualCircuitBillType and assigns it to the BillType field.
+func (o *VlanVirtualCircuit) SetBillType(v VlanVirtualCircuitBillType) {
+	o.BillType.Set(&v)
+}
+
+// SetBillTypeNil sets the value for BillType to be an explicit nil
+func (o *VlanVirtualCircuit) SetBillTypeNil() {
+	o.BillType.Set(nil)
+}
+
+// UnsetBillType ensures that no value is present for BillType, not even an explicit nil
+func (o *VlanVirtualCircuit) UnsetBillType() {
+	o.BillType.Unset()
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -557,6 +601,9 @@ func (o VlanVirtualCircuit) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Bill) {
 		toSerialize["bill"] = o.Bill
 	}
+	if o.BillType.IsSet() {
+		toSerialize["bill_type"] = o.BillType.Get()
+	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
@@ -622,6 +669,7 @@ func (o *VlanVirtualCircuit) UnmarshalJSON(bytes []byte) (err error) {
 
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
 		delete(additionalProperties, "bill")
+		delete(additionalProperties, "bill_type")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")

@@ -20,13 +20,11 @@ var _ MappedNullable = &InterconnectionUpdateInput{}
 
 // InterconnectionUpdateInput struct for InterconnectionUpdateInput
 type InterconnectionUpdateInput struct {
-	ContactEmail *string              `json:"contact_email,omitempty"`
-	Description  *string              `json:"description,omitempty"`
-	Mode         *InterconnectionMode `json:"mode,omitempty"`
-	Name         *string              `json:"name,omitempty"`
-	// Updating from 'redundant' to 'primary' will remove a secondary port, while updating from 'primary' to 'redundant' will add one.
-	Redundancy           *string  `json:"redundancy,omitempty"`
-	Tags                 []string `json:"tags,omitempty"`
+	ContactEmail         *string              `json:"contact_email,omitempty"`
+	Description          *string              `json:"description,omitempty"`
+	Mode                 *InterconnectionMode `json:"mode,omitempty"`
+	Name                 *string              `json:"name,omitempty"`
+	Tags                 []string             `json:"tags,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -177,38 +175,6 @@ func (o *InterconnectionUpdateInput) SetName(v string) {
 	o.Name = &v
 }
 
-// GetRedundancy returns the Redundancy field value if set, zero value otherwise.
-func (o *InterconnectionUpdateInput) GetRedundancy() string {
-	if o == nil || IsNil(o.Redundancy) {
-		var ret string
-		return ret
-	}
-	return *o.Redundancy
-}
-
-// GetRedundancyOk returns a tuple with the Redundancy field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *InterconnectionUpdateInput) GetRedundancyOk() (*string, bool) {
-	if o == nil || IsNil(o.Redundancy) {
-		return nil, false
-	}
-	return o.Redundancy, true
-}
-
-// HasRedundancy returns a boolean if a field has been set.
-func (o *InterconnectionUpdateInput) HasRedundancy() bool {
-	if o != nil && !IsNil(o.Redundancy) {
-		return true
-	}
-
-	return false
-}
-
-// SetRedundancy gets a reference to the given string and assigns it to the Redundancy field.
-func (o *InterconnectionUpdateInput) SetRedundancy(v string) {
-	o.Redundancy = &v
-}
-
 // GetTags returns the Tags field value if set, zero value otherwise.
 func (o *InterconnectionUpdateInput) GetTags() []string {
 	if o == nil || IsNil(o.Tags) {
@@ -263,9 +229,6 @@ func (o InterconnectionUpdateInput) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.Redundancy) {
-		toSerialize["redundancy"] = o.Redundancy
-	}
 	if !IsNil(o.Tags) {
 		toSerialize["tags"] = o.Tags
 	}
@@ -295,7 +258,6 @@ func (o *InterconnectionUpdateInput) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "mode")
 		delete(additionalProperties, "name")
-		delete(additionalProperties, "redundancy")
 		delete(additionalProperties, "tags")
 		o.AdditionalProperties = additionalProperties
 	}

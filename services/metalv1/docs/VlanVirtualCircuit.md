@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Bill** | Pointer to **bool** | True if the Virtual Circuit is being billed. Currently, only Virtual Circuits of Fabric VCs (Metal Billed) will be billed. Usage will start the first time the Virtual Circuit becomes active, and will not stop until it is deleted from Metal. | [optional] [default to false]
+**BillType** | Pointer to [**NullableVlanVirtualCircuitBillType**](VlanVirtualCircuitBillType.md) |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
 **Id** | Pointer to **string** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
@@ -64,6 +65,41 @@ SetBill sets Bill field to given value.
 
 HasBill returns a boolean if a field has been set.
 
+### GetBillType
+
+`func (o *VlanVirtualCircuit) GetBillType() VlanVirtualCircuitBillType`
+
+GetBillType returns the BillType field if non-nil, zero value otherwise.
+
+### GetBillTypeOk
+
+`func (o *VlanVirtualCircuit) GetBillTypeOk() (*VlanVirtualCircuitBillType, bool)`
+
+GetBillTypeOk returns a tuple with the BillType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBillType
+
+`func (o *VlanVirtualCircuit) SetBillType(v VlanVirtualCircuitBillType)`
+
+SetBillType sets BillType field to given value.
+
+### HasBillType
+
+`func (o *VlanVirtualCircuit) HasBillType() bool`
+
+HasBillType returns a boolean if a field has been set.
+
+### SetBillTypeNil
+
+`func (o *VlanVirtualCircuit) SetBillTypeNil(b bool)`
+
+ SetBillTypeNil sets the value for BillType to be an explicit nil
+
+### UnsetBillType
+`func (o *VlanVirtualCircuit) UnsetBillType()`
+
+UnsetBillType ensures that no value is present for BillType, not even an explicit nil
 ### GetDescription
 
 `func (o *VlanVirtualCircuit) GetDescription() string`
