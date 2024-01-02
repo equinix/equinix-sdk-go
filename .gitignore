@@ -5,3 +5,4 @@ equinix-metal.swagger.json.orig
 .travis.yml
 git_push.sh
 services/*/api/
+pkg
