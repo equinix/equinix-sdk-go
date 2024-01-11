@@ -28,11 +28,8 @@ properties:
       status will start with "unknown" and progress to "up" or "down" depending on
       the connected device. Subsequent "unknown" values indicate a problem acquiring
       status from the switch. '
-    enum:
-    - unknown
-    - up
-    - down
     type: string
+    example: up,down
   updated_at:
     format: date-time
     type: string
