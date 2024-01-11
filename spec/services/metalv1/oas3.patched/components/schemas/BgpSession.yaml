@@ -29,6 +29,7 @@ properties:
       the connected device. Subsequent "unknown" values indicate a problem acquiring
       status from the switch. '
     type: string
+    example: up,down
   updated_at:
     format: date-time
     type: string
