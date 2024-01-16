@@ -25,7 +25,7 @@ properties:
     format: uuid
     type: string
   hardware_reservation:
-    $ref: './Href.yaml'
+    $ref: './HardwareReservation.yaml'
   hostname:
     type: string
   href:
@@ -78,9 +78,7 @@ properties:
   plan:
     $ref: './Plan.yaml'
   project:
-    allOf:
-    - $ref: './Href.yaml'
-    - description: Full version of project object when included
+    $ref: './Project.yaml'
   project_lite:
     allOf:
     - $ref: './Href.yaml'
