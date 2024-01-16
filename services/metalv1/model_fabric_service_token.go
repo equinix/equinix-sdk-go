@@ -26,7 +26,7 @@ type FabricServiceToken struct {
 	// The UUID that can be used on the Fabric Portal to redeem either an A-Side or Z-Side Service Token. For Fabric VCs (Metal Billed), this UUID will represent an A-Side Service Token, which will allow interconnections to be made from Equinix Metal to other Service Providers on Fabric. For Fabric VCs (Fabric Billed), this UUID will represent a Z-Side Service Token, which will allow interconnections to be made to connect an owned Fabric Port or  Virtual Device to Equinix Metal.
 	Id *string `json:"id,omitempty"`
 	// The maximum speed that can be selected on the Fabric Portal when configuring a interconnection with either  an A-Side or Z-Side Service Token. For Fabric VCs (Metal Billed), this is what the billing is based off of, and can be one of the following options, '50mbps', '200mbps', '500mbps', '1gbps', '2gbps', '5gbps' or '10gbps'. For Fabric VCs (Fabric Billed), this will default to 10Gbps.
-	MaxAllowedSpeed      *int32                              `json:"max_allowed_speed,omitempty"`
+	MaxAllowedSpeed      *int64                              `json:"max_allowed_speed,omitempty"`
 	Role                 *FabricServiceTokenRole             `json:"role,omitempty"`
 	ServiceTokenType     *FabricServiceTokenServiceTokenType `json:"service_token_type,omitempty"`
 	State                *FabricServiceTokenState            `json:"state,omitempty"`
@@ -117,9 +117,9 @@ func (o *FabricServiceToken) SetId(v string) {
 }
 
 // GetMaxAllowedSpeed returns the MaxAllowedSpeed field value if set, zero value otherwise.
-func (o *FabricServiceToken) GetMaxAllowedSpeed() int32 {
+func (o *FabricServiceToken) GetMaxAllowedSpeed() int64 {
 	if o == nil || IsNil(o.MaxAllowedSpeed) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.MaxAllowedSpeed
@@ -127,7 +127,7 @@ func (o *FabricServiceToken) GetMaxAllowedSpeed() int32 {
 
 // GetMaxAllowedSpeedOk returns a tuple with the MaxAllowedSpeed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FabricServiceToken) GetMaxAllowedSpeedOk() (*int32, bool) {
+func (o *FabricServiceToken) GetMaxAllowedSpeedOk() (*int64, bool) {
 	if o == nil || IsNil(o.MaxAllowedSpeed) {
 		return nil, false
 	}
@@ -143,8 +143,8 @@ func (o *FabricServiceToken) HasMaxAllowedSpeed() bool {
 	return false
 }
 
-// SetMaxAllowedSpeed gets a reference to the given int32 and assigns it to the MaxAllowedSpeed field.
-func (o *FabricServiceToken) SetMaxAllowedSpeed(v int32) {
+// SetMaxAllowedSpeed gets a reference to the given int64 and assigns it to the MaxAllowedSpeed field.
+func (o *FabricServiceToken) SetMaxAllowedSpeed(v int64) {
 	o.MaxAllowedSpeed = &v
 }
 

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** |  | [optional] 
 **NniVlan** | Pointer to **int32** |  | [optional] 
 **ProjectId** | **string** |  | 
-**Speed** | Pointer to **int32** | speed can be passed as integer number representing bps speed or string (e.g. &#39;52m&#39; or &#39;100g&#39; or &#39;4 gbps&#39;) | [optional] 
+**Speed** | Pointer to **int64** | speed can be passed as integer number representing bps speed or string (e.g. &#39;52m&#39; or &#39;100g&#39; or &#39;4 gbps&#39;) | [optional] 
 **Tags** | Pointer to **[]string** |  | [optional] 
 **Vnid** | Pointer to **string** | A Virtual Network record UUID or the VNID of a Metro Virtual Network in your project (sent as integer). | [optional] 
 
@@ -128,20 +128,20 @@ SetProjectId sets ProjectId field to given value.
 
 ### GetSpeed
 
-`func (o *VlanVirtualCircuitCreateInput) GetSpeed() int32`
+`func (o *VlanVirtualCircuitCreateInput) GetSpeed() int64`
 
 GetSpeed returns the Speed field if non-nil, zero value otherwise.
 
 ### GetSpeedOk
 
-`func (o *VlanVirtualCircuitCreateInput) GetSpeedOk() (*int32, bool)`
+`func (o *VlanVirtualCircuitCreateInput) GetSpeedOk() (*int64, bool)`
 
 GetSpeedOk returns a tuple with the Speed field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSpeed
 
-`func (o *VlanVirtualCircuitCreateInput) SetSpeed(v int32)`
+`func (o *VlanVirtualCircuitCreateInput) SetSpeed(v int64)`
 
 SetSpeed sets Speed field to given value.
 

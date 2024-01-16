@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **NniVlan** | Pointer to **int32** |  | [optional] 
 **Port** | Pointer to [**Href**](Href.md) |  | [optional] 
 **Project** | Pointer to [**Href**](Href.md) |  | [optional] 
-**Speed** | Pointer to **int32** | integer representing bps speed | [optional] 
+**Speed** | Pointer to **int64** | integer representing bps speed | [optional] 
 **Status** | Pointer to [**VrfVirtualCircuitStatus**](VrfVirtualCircuitStatus.md) |  | [optional] 
 **Tags** | Pointer to **[]string** |  | [optional] 
 **Type** | Pointer to [**VrfIpReservationType**](VrfIpReservationType.md) |  | [optional] 
@@ -258,20 +258,20 @@ HasProject returns a boolean if a field has been set.
 
 ### GetSpeed
 
-`func (o *VirtualCircuit) GetSpeed() int32`
+`func (o *VirtualCircuit) GetSpeed() int64`
 
 GetSpeed returns the Speed field if non-nil, zero value otherwise.
 
 ### GetSpeedOk
 
-`func (o *VirtualCircuit) GetSpeedOk() (*int32, bool)`
+`func (o *VirtualCircuit) GetSpeedOk() (*int64, bool)`
 
 GetSpeedOk returns a tuple with the Speed field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSpeed
 
-`func (o *VirtualCircuit) SetSpeed(v int32)`
+`func (o *VirtualCircuit) SetSpeed(v int64)`
 
 SetSpeed sets Speed field to given value.
 

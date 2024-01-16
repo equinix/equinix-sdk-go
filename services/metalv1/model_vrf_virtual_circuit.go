@@ -37,7 +37,7 @@ type VrfVirtualCircuit struct {
 	PeerAsn *int32 `json:"peer_asn,omitempty"`
 	Project *Href  `json:"project,omitempty"`
 	// integer representing bps speed
-	Speed  *int32                   `json:"speed,omitempty"`
+	Speed  *int64                   `json:"speed,omitempty"`
 	Status *VrfVirtualCircuitStatus `json:"status,omitempty"`
 	// The /30 or /31 subnet of one of the VRF IP Blocks that will be used with the VRF for the Virtual Circuit. This subnet does not have to be an existing VRF IP reservation, as we will create the VRF IP reservation on creation if it does not exist. The Metal IP and Customer IP must be IPs from this subnet. For /30 subnets, the network and broadcast IPs cannot be used as the Metal or Customer IP.
 	Subnet               *string               `json:"subnet,omitempty"`
@@ -390,9 +390,9 @@ func (o *VrfVirtualCircuit) SetProject(v Href) {
 }
 
 // GetSpeed returns the Speed field value if set, zero value otherwise.
-func (o *VrfVirtualCircuit) GetSpeed() int32 {
+func (o *VrfVirtualCircuit) GetSpeed() int64 {
 	if o == nil || IsNil(o.Speed) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Speed
@@ -400,7 +400,7 @@ func (o *VrfVirtualCircuit) GetSpeed() int32 {
 
 // GetSpeedOk returns a tuple with the Speed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VrfVirtualCircuit) GetSpeedOk() (*int32, bool) {
+func (o *VrfVirtualCircuit) GetSpeedOk() (*int64, bool) {
 	if o == nil || IsNil(o.Speed) {
 		return nil, false
 	}
@@ -416,8 +416,8 @@ func (o *VrfVirtualCircuit) HasSpeed() bool {
 	return false
 }
 
-// SetSpeed gets a reference to the given int32 and assigns it to the Speed field.
-func (o *VrfVirtualCircuit) SetSpeed(v int32) {
+// SetSpeed gets a reference to the given int64 and assigns it to the Speed field.
+func (o *VrfVirtualCircuit) SetSpeed(v int64) {
 	o.Speed = &v
 }
 
