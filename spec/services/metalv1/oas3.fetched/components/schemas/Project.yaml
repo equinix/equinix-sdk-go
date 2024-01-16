@@ -10,6 +10,8 @@ properties:
     items:
       $ref: './Href.yaml'
     type: array
+  href:
+    type: string
   id:
     format: uuid
     type: string
