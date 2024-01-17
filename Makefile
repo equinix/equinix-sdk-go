@@ -35,7 +35,7 @@ mod:
 	${GO_CMD} go mod init github.com/${GIT_ORG}/${GIT_REPO}
 	${GO_CMD} go mod tidy
 
-test:
+test: mod
 	${GO_CMD} go test -v ./...
 
 lint:

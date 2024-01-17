@@ -14,7 +14,7 @@ SPEC_PATCHED_DIR=${SPEC_BASE_DIR}/${PACKAGE_NAME}/oas3.patched
 
 all: pull fetch patch generate stage
 
-generate: clean codegen remove-unused mod patch-post fmt test
+generate: clean codegen remove-unused patch-post fmt test
 
 pull:
 	${CRI} pull ${OPENAPI_IMAGE}
