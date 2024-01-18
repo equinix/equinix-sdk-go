@@ -28,7 +28,7 @@ type InterconnectionPort struct {
 	SwitchId             *string          `json:"switch_id,omitempty"`
 	VirtualCircuits      []VirtualCircuit `json:"virtual_circuits,omitempty"`
 	Name                 *string          `json:"name,omitempty"`
-	Speed                *int32           `json:"speed,omitempty"`
+	Speed                *int64           `json:"speed,omitempty"`
 	LinkStatus           *string          `json:"link_status,omitempty"`
 	Href                 *string          `json:"href,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -278,9 +278,9 @@ func (o *InterconnectionPort) SetName(v string) {
 }
 
 // GetSpeed returns the Speed field value if set, zero value otherwise.
-func (o *InterconnectionPort) GetSpeed() int32 {
+func (o *InterconnectionPort) GetSpeed() int64 {
 	if o == nil || IsNil(o.Speed) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Speed
@@ -288,7 +288,7 @@ func (o *InterconnectionPort) GetSpeed() int32 {
 
 // GetSpeedOk returns a tuple with the Speed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InterconnectionPort) GetSpeedOk() (*int32, bool) {
+func (o *InterconnectionPort) GetSpeedOk() (*int64, bool) {
 	if o == nil || IsNil(o.Speed) {
 		return nil, false
 	}
@@ -304,8 +304,8 @@ func (o *InterconnectionPort) HasSpeed() bool {
 	return false
 }
 
-// SetSpeed gets a reference to the given int32 and assigns it to the Speed field.
-func (o *InterconnectionPort) SetSpeed(v int32) {
+// SetSpeed gets a reference to the given int64 and assigns it to the Speed field.
+func (o *InterconnectionPort) SetSpeed(v int64) {
 	o.Speed = &v
 }
 

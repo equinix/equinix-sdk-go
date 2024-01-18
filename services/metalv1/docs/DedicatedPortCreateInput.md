@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **Name** | **string** |  | 
 **Project** | Pointer to **string** |  | [optional] 
 **Redundancy** | **string** | Either &#39;primary&#39; or &#39;redundant&#39;. | 
-**Speed** | Pointer to **int32** | A interconnection speed, in bps, mbps, or gbps. For Dedicated Ports, this can be 10Gbps or 100Gbps. | [optional] 
+**Speed** | Pointer to **int64** | A interconnection speed, in bps, mbps, or gbps. For Dedicated Ports, this can be 10Gbps or 100Gbps. | [optional] 
 **Tags** | Pointer to **[]string** |  | [optional] 
 **Type** | [**DedicatedPortCreateInputType**](DedicatedPortCreateInputType.md) |  | 
 **UseCase** | Pointer to **string** | The intended use case of the dedicated port. | [optional] 
@@ -223,20 +223,20 @@ SetRedundancy sets Redundancy field to given value.
 
 ### GetSpeed
 
-`func (o *DedicatedPortCreateInput) GetSpeed() int32`
+`func (o *DedicatedPortCreateInput) GetSpeed() int64`
 
 GetSpeed returns the Speed field if non-nil, zero value otherwise.
 
 ### GetSpeedOk
 
-`func (o *DedicatedPortCreateInput) GetSpeedOk() (*int32, bool)`
+`func (o *DedicatedPortCreateInput) GetSpeedOk() (*int64, bool)`
 
 GetSpeedOk returns a tuple with the Speed field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSpeed
 
-`func (o *DedicatedPortCreateInput) SetSpeed(v int32)`
+`func (o *DedicatedPortCreateInput) SetSpeed(v int64)`
 
 SetSpeed sets Speed field to given value.
 

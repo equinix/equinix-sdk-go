@@ -1,0 +1,96 @@
+diff --git a/spec/services/metalv1/oas3.patched/components/schemas/DedicatedPortCreateInput.yaml b/spec/services/metalv1/oas3.patched/components/schemas/DedicatedPortCreateInput.yaml
+index bfd4f81..7b71723 100644
+--- a/spec/services/metalv1/oas3.patched/components/schemas/DedicatedPortCreateInput.yaml
++++ b/spec/services/metalv1/oas3.patched/components/schemas/DedicatedPortCreateInput.yaml
+@@ -32,6 +32,7 @@ properties:
+     description: |-
+       A interconnection speed, in bps, mbps, or gbps. For Dedicated Ports, this can be 10Gbps or 100Gbps.
+     type: integer
++    format: int64
+     example: 10000000000
+   tags:
+     items:
+diff --git a/spec/services/metalv1/oas3.patched/components/schemas/Interconnection.yaml b/spec/services/metalv1/oas3.patched/components/schemas/Interconnection.yaml
+index 191a441..a663290 100644
+--- a/spec/services/metalv1/oas3.patched/components/schemas/Interconnection.yaml
++++ b/spec/services/metalv1/oas3.patched/components/schemas/Interconnection.yaml
+@@ -50,6 +50,7 @@ properties:
+   speed:
+     description: For interconnections on Dedicated Ports and shared connections, this represents the interconnection's speed in bps. For Fabric VCs, this field refers to the maximum speed of the interconnection in bps. This value will default to 10Gbps for Fabric VCs (Fabric Billed).
+     type: integer
++    format: int64
+     example: 10000000000
+   status:
+     type: string
+diff --git a/spec/services/metalv1/oas3.patched/components/schemas/InterconnectionPort.yaml b/spec/services/metalv1/oas3.patched/components/schemas/InterconnectionPort.yaml
+index be1d7f5..0932e76 100644
+--- a/spec/services/metalv1/oas3.patched/components/schemas/InterconnectionPort.yaml
++++ b/spec/services/metalv1/oas3.patched/components/schemas/InterconnectionPort.yaml
+@@ -32,6 +32,7 @@ properties:
+     type: string
+   speed:
+     type: integer
++    format: int64
+   link_status:
+     type: string
+   href:
+diff --git a/spec/services/metalv1/oas3.patched/components/schemas/VlanVirtualCircuitCreateInput.yaml b/spec/services/metalv1/oas3.patched/components/schemas/VlanVirtualCircuitCreateInput.yaml
+index d5f9c47..5ac0d13 100644
+--- a/spec/services/metalv1/oas3.patched/components/schemas/VlanVirtualCircuitCreateInput.yaml
++++ b/spec/services/metalv1/oas3.patched/components/schemas/VlanVirtualCircuitCreateInput.yaml
+@@ -14,6 +14,7 @@ properties:
+     description: speed can be passed as integer number representing bps speed or string
+       (e.g. '52m' or '100g' or '4 gbps')
+     type: integer
++    format: int64
+   tags:
+     items:
+       type: string
+diff --git a/spec/services/metalv1/oas3.patched/components/schemas/VrfFabricVcCreateInput.yaml b/spec/services/metalv1/oas3.patched/components/schemas/VrfFabricVcCreateInput.yaml
+index cd026b1..757e24d 100644
+--- a/spec/services/metalv1/oas3.patched/components/schemas/VrfFabricVcCreateInput.yaml
++++ b/spec/services/metalv1/oas3.patched/components/schemas/VrfFabricVcCreateInput.yaml
+@@ -32,6 +32,7 @@ properties:
+       ''50mbps'', ''200mbps'', ''500mbps'', ''1gbps'', ''2gbps'', ''5gbps'' or ''10gbps'', and is required for creation. For Fabric VCs (Fabric Billed), this field will always default to ''10gbps'' even if it is not provided.
+       For example, ''500000000'', ''50m'', or' ''500mbps'' will all work as valid inputs.
+     type: integer
++    format: int64
+     example: 10000000000
+   tags:
+     items:
+diff --git a/spec/services/metalv1/oas3.patched/components/schemas/VlanVirtualCircuit.yaml b/spec/services/metalv1/oas3.patched/components/schemas/VlanVirtualCircuit.yaml
+index fb31bbc..ba39f6d 100644
+--- a/spec/services/metalv1/oas3.patched/components/schemas/VlanVirtualCircuit.yaml
++++ b/spec/services/metalv1/oas3.patched/components/schemas/VlanVirtualCircuit.yaml
+@@ -28,6 +28,7 @@ properties:
+       Fabric VCs (both Metal and Fabric Billed) that have found their corresponding Fabric connection, this is the actual speed of the interconnection that was configured when setting up the interconnection on the Fabric Portal. 
+       Details on Fabric VCs are included in the specification as a developer preview and is generally unavailable. Please contact our Support team for more details.
+     type: integer
++    format: int64
+   status:
+     type: string
+     description: The status of a Virtual Circuit is always 'pending' on creation. The status can turn to 'Waiting on Customer VLAN' if a Metro VLAN was not set yet on the Virtual Circuit and is the last step needed for full activation. For Dedicated interconnections, as long as the Dedicated Port has been associated 
+diff --git a/spec/services/metalv1/oas3.patched/components/schemas/VrfVirtualCircuit.yaml b/spec/services/metalv1/oas3.patched/components/schemas/VrfVirtualCircuit.yaml
+index 2bb47b5..5064650 100644
+--- a/spec/services/metalv1/oas3.patched/components/schemas/VrfVirtualCircuit.yaml
++++ b/spec/services/metalv1/oas3.patched/components/schemas/VrfVirtualCircuit.yaml
+@@ -38,6 +38,7 @@ properties:
+   speed:
+     description: integer representing bps speed
+     type: integer
++    format: int64
+   status:
+     type: string
+     description: >-
+diff --git a/spec/services/metalv1/oas3.patched/components/schemas/FabricServiceToken.yaml b/spec/services/metalv1/oas3.patched/components/schemas/FabricServiceToken.yaml
+index e1559ea..54d2d97 100644
+--- a/spec/services/metalv1/oas3.patched/components/schemas/FabricServiceToken.yaml
++++ b/spec/services/metalv1/oas3.patched/components/schemas/FabricServiceToken.yaml
+@@ -20,6 +20,7 @@ properties:
+       of the following options, '50mbps', '200mbps', '500mbps', '1gbps', '2gbps', '5gbps' or '10gbps'. For Fabric VCs
+       (Fabric Billed), this will default to 10Gbps.
+     type: integer
++    format: int64
+     example: 10000000000
+   role:
+     description: Either primary or secondary, depending on which interconnection the service token is associated to.

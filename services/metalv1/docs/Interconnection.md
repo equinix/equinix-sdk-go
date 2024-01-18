@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **Ports** | Pointer to [**[]InterconnectionPort**](InterconnectionPort.md) | For Fabric VCs, these represent Virtual Port(s) created for the interconnection. For dedicated interconnections, these represent the Dedicated Port(s). | [optional] 
 **Redundancy** | Pointer to [**InterconnectionRedundancy**](InterconnectionRedundancy.md) |  | [optional] 
 **ServiceTokens** | Pointer to [**[]FabricServiceToken**](FabricServiceToken.md) | For Fabric VCs (Metal Billed), this will show details of the A-Side service tokens issued for the interconnection. For Fabric VCs (Fabric Billed), this will show the details of the Z-Side service tokens issued for the interconnection. Dedicated interconnections will not have any service tokens issued. There will be one per interconnection, so for redundant interconnections, there should be two service tokens issued. | [optional] 
-**Speed** | Pointer to **int32** | For interconnections on Dedicated Ports and shared connections, this represents the interconnection&#39;s speed in bps. For Fabric VCs, this field refers to the maximum speed of the interconnection in bps. This value will default to 10Gbps for Fabric VCs (Fabric Billed). | [optional] 
+**Speed** | Pointer to **int64** | For interconnections on Dedicated Ports and shared connections, this represents the interconnection&#39;s speed in bps. For Fabric VCs, this field refers to the maximum speed of the interconnection in bps. This value will default to 10Gbps for Fabric VCs (Fabric Billed). | [optional] 
 **Status** | Pointer to **string** |  | [optional] 
 **Tags** | Pointer to **[]string** |  | [optional] 
 **Token** | Pointer to **string** | This token is used for shared interconnections to be used as the Fabric Token. This field is entirely deprecated. | [optional] 
@@ -320,20 +320,20 @@ HasServiceTokens returns a boolean if a field has been set.
 
 ### GetSpeed
 
-`func (o *Interconnection) GetSpeed() int32`
+`func (o *Interconnection) GetSpeed() int64`
 
 GetSpeed returns the Speed field if non-nil, zero value otherwise.
 
 ### GetSpeedOk
 
-`func (o *Interconnection) GetSpeedOk() (*int32, bool)`
+`func (o *Interconnection) GetSpeedOk() (*int64, bool)`
 
 GetSpeedOk returns a tuple with the Speed field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSpeed
 
-`func (o *Interconnection) SetSpeed(v int32)`
+`func (o *Interconnection) SetSpeed(v int64)`
 
 SetSpeed sets Speed field to given value.
 

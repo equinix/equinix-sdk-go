@@ -34,7 +34,7 @@ type DedicatedPortCreateInput struct {
 	// Either 'primary' or 'redundant'.
 	Redundancy string `json:"redundancy"`
 	// A interconnection speed, in bps, mbps, or gbps. For Dedicated Ports, this can be 10Gbps or 100Gbps.
-	Speed *int32                       `json:"speed,omitempty"`
+	Speed *int64                       `json:"speed,omitempty"`
 	Tags  []string                     `json:"tags,omitempty"`
 	Type  DedicatedPortCreateInputType `json:"type"`
 	// The intended use case of the dedicated port.
@@ -298,9 +298,9 @@ func (o *DedicatedPortCreateInput) SetRedundancy(v string) {
 }
 
 // GetSpeed returns the Speed field value if set, zero value otherwise.
-func (o *DedicatedPortCreateInput) GetSpeed() int32 {
+func (o *DedicatedPortCreateInput) GetSpeed() int64 {
 	if o == nil || IsNil(o.Speed) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Speed
@@ -308,7 +308,7 @@ func (o *DedicatedPortCreateInput) GetSpeed() int32 {
 
 // GetSpeedOk returns a tuple with the Speed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DedicatedPortCreateInput) GetSpeedOk() (*int32, bool) {
+func (o *DedicatedPortCreateInput) GetSpeedOk() (*int64, bool) {
 	if o == nil || IsNil(o.Speed) {
 		return nil, false
 	}
@@ -324,8 +324,8 @@ func (o *DedicatedPortCreateInput) HasSpeed() bool {
 	return false
 }
 
-// SetSpeed gets a reference to the given int32 and assigns it to the Speed field.
-func (o *DedicatedPortCreateInput) SetSpeed(v int32) {
+// SetSpeed gets a reference to the given int64 and assigns it to the Speed field.
+func (o *DedicatedPortCreateInput) SetSpeed(v int64) {
 	o.Speed = &v
 }
 

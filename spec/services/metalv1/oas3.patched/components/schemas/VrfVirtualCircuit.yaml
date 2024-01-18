@@ -38,6 +38,7 @@ properties:
   speed:
     description: integer representing bps speed
     type: integer
+    format: int64
   status:
     type: string
     description: >-

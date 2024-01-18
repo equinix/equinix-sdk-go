@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **SwitchId** | Pointer to **string** | A switch &#39;short ID&#39; | [optional] 
 **VirtualCircuits** | Pointer to [**[]VirtualCircuit**](VirtualCircuit.md) |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
-**Speed** | Pointer to **int32** |  | [optional] 
+**Speed** | Pointer to **int64** |  | [optional] 
 **LinkStatus** | Pointer to **string** |  | [optional] 
 **Href** | Pointer to **string** |  | [optional] 
 
@@ -211,20 +211,20 @@ HasName returns a boolean if a field has been set.
 
 ### GetSpeed
 
-`func (o *InterconnectionPort) GetSpeed() int32`
+`func (o *InterconnectionPort) GetSpeed() int64`
 
 GetSpeed returns the Speed field if non-nil, zero value otherwise.
 
 ### GetSpeedOk
 
-`func (o *InterconnectionPort) GetSpeedOk() (*int32, bool)`
+`func (o *InterconnectionPort) GetSpeedOk() (*int64, bool)`
 
 GetSpeedOk returns a tuple with the Speed field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSpeed
 
-`func (o *InterconnectionPort) SetSpeed(v int32)`
+`func (o *InterconnectionPort) SetSpeed(v int64)`
 
 SetSpeed sets Speed field to given value.
 

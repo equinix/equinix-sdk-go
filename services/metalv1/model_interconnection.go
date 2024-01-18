@@ -35,7 +35,7 @@ type Interconnection struct {
 	// For Fabric VCs (Metal Billed), this will show details of the A-Side service tokens issued for the interconnection. For Fabric VCs (Fabric Billed), this will show the details of the Z-Side service tokens issued for the interconnection. Dedicated interconnections will not have any service tokens issued. There will be one per interconnection, so for redundant interconnections, there should be two service tokens issued.
 	ServiceTokens []FabricServiceToken `json:"service_tokens,omitempty"`
 	// For interconnections on Dedicated Ports and shared connections, this represents the interconnection's speed in bps. For Fabric VCs, this field refers to the maximum speed of the interconnection in bps. This value will default to 10Gbps for Fabric VCs (Fabric Billed).
-	Speed  *int32   `json:"speed,omitempty"`
+	Speed  *int64   `json:"speed,omitempty"`
 	Status *string  `json:"status,omitempty"`
 	Tags   []string `json:"tags,omitempty"`
 	// This token is used for shared interconnections to be used as the Fabric Token. This field is entirely deprecated.
@@ -419,9 +419,9 @@ func (o *Interconnection) SetServiceTokens(v []FabricServiceToken) {
 }
 
 // GetSpeed returns the Speed field value if set, zero value otherwise.
-func (o *Interconnection) GetSpeed() int32 {
+func (o *Interconnection) GetSpeed() int64 {
 	if o == nil || IsNil(o.Speed) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Speed
@@ -429,7 +429,7 @@ func (o *Interconnection) GetSpeed() int32 {
 
 // GetSpeedOk returns a tuple with the Speed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Interconnection) GetSpeedOk() (*int32, bool) {
+func (o *Interconnection) GetSpeedOk() (*int64, bool) {
 	if o == nil || IsNil(o.Speed) {
 		return nil, false
 	}
@@ -445,8 +445,8 @@ func (o *Interconnection) HasSpeed() bool {
 	return false
 }
 
-// SetSpeed gets a reference to the given int32 and assigns it to the Speed field.
-func (o *Interconnection) SetSpeed(v int32) {
+// SetSpeed gets a reference to the given int64 and assigns it to the Speed field.
+func (o *Interconnection) SetSpeed(v int64) {
 	o.Speed = &v
 }
 

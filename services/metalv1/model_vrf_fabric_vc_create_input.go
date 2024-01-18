@@ -32,7 +32,7 @@ type VrfFabricVcCreateInput struct {
 	Redundancy       string                                  `json:"redundancy"`
 	ServiceTokenType VlanFabricVcCreateInputServiceTokenType `json:"service_token_type"`
 	// A interconnection speed, in bps, mbps, or gbps. For Fabric VCs, this represents the maximum speed of the interconnection. For Fabric VCs (Metal Billed), this can only be one of the following:  ''50mbps'', ''200mbps'', ''500mbps'', ''1gbps'', ''2gbps'', ''5gbps'' or ''10gbps'', and is required for creation. For Fabric VCs (Fabric Billed), this field will always default to ''10gbps'' even if it is not provided. For example, ''500000000'', ''50m'', or' ''500mbps'' will all work as valid inputs.
-	Speed *int32                      `json:"speed,omitempty"`
+	Speed *int64                      `json:"speed,omitempty"`
 	Tags  []string                    `json:"tags,omitempty"`
 	Type  VlanFabricVcCreateInputType `json:"type"`
 	// This field holds a list of VRF UUIDs that will be set automatically on the virtual circuits of Fabric VCs on creation, and can hold up to two UUIDs. Two UUIDs are required when requesting redundant Fabric VCs. The first UUID will be set on the primary virtual circuit, while the second UUID will be set on the secondary. The two UUIDs can be the same if both the primary and secondary virtual circuits will be in the same VRF. This parameter is included in the specification as a developer preview and is generally unavailable. Please contact our Support team for more details.
@@ -258,9 +258,9 @@ func (o *VrfFabricVcCreateInput) SetServiceTokenType(v VlanFabricVcCreateInputSe
 }
 
 // GetSpeed returns the Speed field value if set, zero value otherwise.
-func (o *VrfFabricVcCreateInput) GetSpeed() int32 {
+func (o *VrfFabricVcCreateInput) GetSpeed() int64 {
 	if o == nil || IsNil(o.Speed) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Speed
@@ -268,7 +268,7 @@ func (o *VrfFabricVcCreateInput) GetSpeed() int32 {
 
 // GetSpeedOk returns a tuple with the Speed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VrfFabricVcCreateInput) GetSpeedOk() (*int32, bool) {
+func (o *VrfFabricVcCreateInput) GetSpeedOk() (*int64, bool) {
 	if o == nil || IsNil(o.Speed) {
 		return nil, false
 	}
@@ -284,8 +284,8 @@ func (o *VrfFabricVcCreateInput) HasSpeed() bool {
 	return false
 }
 
-// SetSpeed gets a reference to the given int32 and assigns it to the Speed field.
-func (o *VrfFabricVcCreateInput) SetSpeed(v int32) {
+// SetSpeed gets a reference to the given int64 and assigns it to the Speed field.
+func (o *VrfFabricVcCreateInput) SetSpeed(v int64) {
 	o.Speed = &v
 }
 

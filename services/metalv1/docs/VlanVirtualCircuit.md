@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **NniVlan** | Pointer to **int32** |  | [optional] 
 **Port** | Pointer to [**Href**](Href.md) |  | [optional] 
 **Project** | Pointer to [**Href**](Href.md) |  | [optional] 
-**Speed** | Pointer to **int32** | For Virtual Circuits on shared and dedicated connections, this speed should match the one set on their Interconnection Ports. For Virtual Circuits on Fabric VCs (both Metal and Fabric Billed) that have found their corresponding Fabric connection, this is the actual speed of the interconnection that was configured when setting up the interconnection on the Fabric Portal. Details on Fabric VCs are included in the specification as a developer preview and is generally unavailable. Please contact our Support team for more details. | [optional] 
+**Speed** | Pointer to **int64** | For Virtual Circuits on shared and dedicated connections, this speed should match the one set on their Interconnection Ports. For Virtual Circuits on Fabric VCs (both Metal and Fabric Billed) that have found their corresponding Fabric connection, this is the actual speed of the interconnection that was configured when setting up the interconnection on the Fabric Portal. Details on Fabric VCs are included in the specification as a developer preview and is generally unavailable. Please contact our Support team for more details. | [optional] 
 **Status** | Pointer to [**VlanVirtualCircuitStatus**](VlanVirtualCircuitStatus.md) |  | [optional] 
 **Tags** | Pointer to **[]string** |  | [optional] 
 **Type** | Pointer to [**VlanVirtualCircuitType**](VlanVirtualCircuitType.md) |  | [optional] 
@@ -252,20 +252,20 @@ HasProject returns a boolean if a field has been set.
 
 ### GetSpeed
 
-`func (o *VlanVirtualCircuit) GetSpeed() int32`
+`func (o *VlanVirtualCircuit) GetSpeed() int64`
 
 GetSpeed returns the Speed field if non-nil, zero value otherwise.
 
 ### GetSpeedOk
 
-`func (o *VlanVirtualCircuit) GetSpeedOk() (*int32, bool)`
+`func (o *VlanVirtualCircuit) GetSpeedOk() (*int64, bool)`
 
 GetSpeedOk returns a tuple with the Speed field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSpeed
 
-`func (o *VlanVirtualCircuit) SetSpeed(v int32)`
+`func (o *VlanVirtualCircuit) SetSpeed(v int64)`
 
 SetSpeed sets Speed field to given value.
 

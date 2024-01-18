@@ -31,7 +31,7 @@ type VlanVirtualCircuit struct {
 	Port        *Href                              `json:"port,omitempty"`
 	Project     *Href                              `json:"project,omitempty"`
 	// For Virtual Circuits on shared and dedicated connections, this speed should match the one set on their Interconnection Ports. For Virtual Circuits on Fabric VCs (both Metal and Fabric Billed) that have found their corresponding Fabric connection, this is the actual speed of the interconnection that was configured when setting up the interconnection on the Fabric Portal. Details on Fabric VCs are included in the specification as a developer preview and is generally unavailable. Please contact our Support team for more details.
-	Speed                *int32                    `json:"speed,omitempty"`
+	Speed                *int64                    `json:"speed,omitempty"`
 	Status               *VlanVirtualCircuitStatus `json:"status,omitempty"`
 	Tags                 []string                  `json:"tags,omitempty"`
 	Type                 *VlanVirtualCircuitType   `json:"type,omitempty"`
@@ -333,9 +333,9 @@ func (o *VlanVirtualCircuit) SetProject(v Href) {
 }
 
 // GetSpeed returns the Speed field value if set, zero value otherwise.
-func (o *VlanVirtualCircuit) GetSpeed() int32 {
+func (o *VlanVirtualCircuit) GetSpeed() int64 {
 	if o == nil || IsNil(o.Speed) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Speed
@@ -343,7 +343,7 @@ func (o *VlanVirtualCircuit) GetSpeed() int32 {
 
 // GetSpeedOk returns a tuple with the Speed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VlanVirtualCircuit) GetSpeedOk() (*int32, bool) {
+func (o *VlanVirtualCircuit) GetSpeedOk() (*int64, bool) {
 	if o == nil || IsNil(o.Speed) {
 		return nil, false
 	}
@@ -359,8 +359,8 @@ func (o *VlanVirtualCircuit) HasSpeed() bool {
 	return false
 }
 
-// SetSpeed gets a reference to the given int32 and assigns it to the Speed field.
-func (o *VlanVirtualCircuit) SetSpeed(v int32) {
+// SetSpeed gets a reference to the given int64 and assigns it to the Speed field.
+func (o *VlanVirtualCircuit) SetSpeed(v int64) {
 	o.Speed = &v
 }
 
