@@ -31,7 +31,9 @@ generate-all:
 	done
 
 mod:
-	rm -f go.mod go.sum ${PACKAGE_PREFIX}/${PACKAGE_MAJOR}/go.mod ${PACKAGE_PREFIX}/${PACKAGE_MAJOR}/go.sum
+	for goModOrSum in $(shell set -x; find . -not \( -path ./examples -prune \) -name go.mod -o -name go.sum | sort -n); do \
+		rm -f $$goModOrSum;\
+	done
 	${GO_CMD} go mod init github.com/${GIT_ORG}/${GIT_REPO}
 	${GO_CMD} go mod tidy
 
