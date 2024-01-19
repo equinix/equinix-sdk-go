@@ -37,12 +37,12 @@ if "get" in operation:
         getopparams = getop['parameters']
         for p in getopparams:
             if refkey in p:
-                if "/components/parameters/Page.yaml" in p[refkey]:
+                if ("/components/parameters/Page.yaml" in p[refkey]) :
                     schemaPathRelative = getop['responses']['200']['content']['application/json']['schema']['$ref']
                     schemaPath = schemaPathRelative.split("../")[-1]
                     twoTopDirs = ymlfile.split("/")[:2]
                     specDir = os.path.dirname(ymlfile)
-                    schemaFile = os.path.join(twoTopDirs[0], twoTopDirs[1], schemaPath)
+                    schemaFile = os.path.join(specDir, schemaPathRelative)
                     responseSchema = getYaml(schemaFile)
                     responseProps = set(responseSchema['properties'].keys())
                     oid = getop['operationId']

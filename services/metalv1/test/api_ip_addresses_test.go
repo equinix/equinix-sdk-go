@@ -78,6 +78,10 @@ func Test_metalv1_IPAddressesApiService(t *testing.T) {
 		require.Nil(t, err)
 		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
+
+		resp, err = apiClient.IPAddressesApi.FindIPReservations(context.Background(), id).ExecuteWithPagination()
+		require.Nil(t, err)
+		require.NotNil(t, resp)
 	})
 
 	t.Run("Test IPAddressesApiService RequestIPReservation", func(t *testing.T) {
