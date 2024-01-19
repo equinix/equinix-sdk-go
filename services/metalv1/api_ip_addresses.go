@@ -645,6 +645,7 @@ type ApiFindIPReservationsRequest struct {
 	types      *[]FindIPReservationsTypesParameterInner
 	include    *[]string
 	exclude    *[]string
+	page       *int32
 	perPage    *int32
 }
 
@@ -663,6 +664,12 @@ func (r ApiFindIPReservationsRequest) Include(include []string) ApiFindIPReserva
 // Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
 func (r ApiFindIPReservationsRequest) Exclude(exclude []string) ApiFindIPReservationsRequest {
 	r.exclude = &exclude
+	return r
+}
+
+// Page to return
+func (r ApiFindIPReservationsRequest) Page(page int32) ApiFindIPReservationsRequest {
+	r.page = &page
 	return r
 }
 
@@ -724,6 +731,9 @@ func (a *IPAddressesApiService) FindIPReservationsExecute(r ApiFindIPReservation
 	}
 	if r.exclude != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "csv")
+	}
+	if r.page != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.perPage != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "per_page", r.perPage, "")
@@ -826,6 +836,31 @@ func (a *IPAddressesApiService) FindIPReservationsExecute(r ApiFindIPReservation
 	}
 
 	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+// ExecuteWithPagination executes the request to fetch and return all pages of results as a single slice
+//
+//	@return IPReservationList
+func (r ApiFindIPReservationsRequest) ExecuteWithPagination() (*IPReservationList, error) {
+
+	var items IPReservationList
+
+	pageNumber := int32(1)
+
+	for {
+		page, _, err := r.Page(pageNumber).Execute()
+		if err != nil {
+			return nil, err
+		}
+
+		items.IpAddresses = append(items.IpAddresses, page.IpAddresses...)
+		if page.Meta.GetLastPage() <= page.Meta.GetCurrentPage() {
+			break
+		}
+		pageNumber = page.Meta.GetCurrentPage() + 1
+	}
+
+	return &items, nil
 }
 
 type ApiRequestIPReservationRequest struct {

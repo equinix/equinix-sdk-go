@@ -298,11 +298,12 @@ Name | Type | Description  | Notes
 
 ## FindIPReservations
 
-> IPReservationList FindIPReservations(ctx, id).Types(types).Include(include).Exclude(exclude).PerPage(perPage).Execute()
+> IPReservationList FindIPReservations(ctx, id).Types(types).Include(include).Exclude(exclude).Page(page).PerPage(perPage).Execute()
 
 Retrieve all ip reservations
 
 
+FindIPReservations is a paginated API operation. You can specify page number and per page parameters with `Execute`, or to fetch and return all pages of results as a single slice you can call `ExecuteWithPagination()`. `ExecuteWithPagination()`, while convenient, can significantly increase the overhead of API calls in terms of time, network utilization, and memory. Excludes can make the call more efficient by removing any unneeded nested fields that are included by default. If any of the requests fail, the list of results will be nil and the error returned will represent the failed request.
 
 ### Example
 
@@ -321,11 +322,12 @@ func main() {
     types := []openapiclient.FindIPReservationsTypesParameterInner{openapiclient.findIPReservations_types_parameter_inner("global_ipv4")} // []FindIPReservationsTypesParameterInner | Filter project IP reservations by reservation type (optional)
     include := []string{"Inner_example"} // []string | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
     exclude := []string{"Inner_example"} // []string | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
+    page := int32(56) // int32 | Page to return (optional) (default to 1)
     perPage := int32(56) // int32 | Items returned per page (optional) (default to 250)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IPAddressesApi.FindIPReservations(context.Background(), id).Types(types).Include(include).Exclude(exclude).PerPage(perPage).Execute()
+    resp, r, err := apiClient.IPAddressesApi.FindIPReservations(context.Background(), id).Types(types).Include(include).Exclude(exclude).Page(page).PerPage(perPage).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `IPAddressesApi.FindIPReservations``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -354,6 +356,7 @@ Name | Type | Description  | Notes
  **types** | [**[]FindIPReservationsTypesParameterInner**](FindIPReservationsTypesParameterInner.md) | Filter project IP reservations by reservation type | 
  **include** | **[]string** | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | 
  **exclude** | **[]string** | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | 
+ **page** | **int32** | Page to return | [default to 1]
  **perPage** | **int32** | Items returned per page | [default to 250]
 
 ### Return type
