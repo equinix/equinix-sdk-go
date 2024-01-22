@@ -25,6 +25,12 @@ type TwoFactorAuthApiService service
 type ApiDisableTfaAppRequest struct {
 	ctx        context.Context
 	ApiService *TwoFactorAuthApiService
+	xOtpToken  *string
+}
+
+func (r ApiDisableTfaAppRequest) XOtpToken(xOtpToken string) ApiDisableTfaAppRequest {
+	r.xOtpToken = &xOtpToken
+	return r
 }
 
 func (r ApiDisableTfaAppRequest) Execute() (*http.Response, error) {
@@ -64,6 +70,9 @@ func (a *TwoFactorAuthApiService) DisableTfaAppExecute(r ApiDisableTfaAppRequest
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.xOtpToken == nil {
+		return nil, reportError("xOtpToken is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -82,6 +91,7 @@ func (a *TwoFactorAuthApiService) DisableTfaAppExecute(r ApiDisableTfaAppRequest
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "x-otp-token", r.xOtpToken, "")
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -148,6 +158,12 @@ func (a *TwoFactorAuthApiService) DisableTfaAppExecute(r ApiDisableTfaAppRequest
 type ApiDisableTfaSmsRequest struct {
 	ctx        context.Context
 	ApiService *TwoFactorAuthApiService
+	xOtpToken  *string
+}
+
+func (r ApiDisableTfaSmsRequest) XOtpToken(xOtpToken string) ApiDisableTfaSmsRequest {
+	r.xOtpToken = &xOtpToken
+	return r
 }
 
 func (r ApiDisableTfaSmsRequest) Execute() (*http.Response, error) {
@@ -187,6 +203,9 @@ func (a *TwoFactorAuthApiService) DisableTfaSmsExecute(r ApiDisableTfaSmsRequest
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.xOtpToken == nil {
+		return nil, reportError("xOtpToken is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -205,6 +224,7 @@ func (a *TwoFactorAuthApiService) DisableTfaSmsExecute(r ApiDisableTfaSmsRequest
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "x-otp-token", r.xOtpToken, "")
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -271,6 +291,12 @@ func (a *TwoFactorAuthApiService) DisableTfaSmsExecute(r ApiDisableTfaSmsRequest
 type ApiEnableTfaAppRequest struct {
 	ctx        context.Context
 	ApiService *TwoFactorAuthApiService
+	xOtpToken  *string
+}
+
+func (r ApiEnableTfaAppRequest) XOtpToken(xOtpToken string) ApiEnableTfaAppRequest {
+	r.xOtpToken = &xOtpToken
+	return r
 }
 
 func (r ApiEnableTfaAppRequest) Execute() (*http.Response, error) {
@@ -310,6 +336,9 @@ func (a *TwoFactorAuthApiService) EnableTfaAppExecute(r ApiEnableTfaAppRequest) 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.xOtpToken == nil {
+		return nil, reportError("xOtpToken is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -328,6 +357,7 @@ func (a *TwoFactorAuthApiService) EnableTfaAppExecute(r ApiEnableTfaAppRequest) 
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "x-otp-token", r.xOtpToken, "")
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -383,6 +413,12 @@ func (a *TwoFactorAuthApiService) EnableTfaAppExecute(r ApiEnableTfaAppRequest) 
 type ApiEnableTfaSmsRequest struct {
 	ctx        context.Context
 	ApiService *TwoFactorAuthApiService
+	xOtpToken  *string
+}
+
+func (r ApiEnableTfaSmsRequest) XOtpToken(xOtpToken string) ApiEnableTfaSmsRequest {
+	r.xOtpToken = &xOtpToken
+	return r
 }
 
 func (r ApiEnableTfaSmsRequest) Execute() (*http.Response, error) {
@@ -422,6 +458,9 @@ func (a *TwoFactorAuthApiService) EnableTfaSmsExecute(r ApiEnableTfaSmsRequest) 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.xOtpToken == nil {
+		return nil, reportError("xOtpToken is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -440,6 +479,7 @@ func (a *TwoFactorAuthApiService) EnableTfaSmsExecute(r ApiEnableTfaSmsRequest) 
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "x-otp-token", r.xOtpToken, "")
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

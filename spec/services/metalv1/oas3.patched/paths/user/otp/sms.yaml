@@ -1,6 +1,8 @@
 delete:
   description: Disables two factor authentication.
   operationId: disableTfaSms
+  parameters:
+  - $ref: '../../../components/parameters/XOtpToken.yaml'
   responses:
     "204":
       description: no content
@@ -22,6 +24,8 @@ delete:
 post:
   description: Enables two factor authentication with sms.
   operationId: enableTfaSms
+  parameters:
+  - $ref: '../../../components/parameters/XOtpToken.yaml'
   responses:
     "200":
       description: ok
