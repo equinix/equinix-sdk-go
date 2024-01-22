@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**FindRecoveryCodes**](OTPsApi.md#FindRecoveryCodes) | **Get** /user/otp/recovery-codes | Retrieve my recovery codes
 [**ReceiveCodes**](OTPsApi.md#ReceiveCodes) | **Post** /user/otp/sms/receive | Receive an OTP per sms
 [**RegenerateCodes**](OTPsApi.md#RegenerateCodes) | **Post** /user/otp/recovery-codes | Generate new recovery codes
+[**SeedApp**](OTPsApi.md#SeedApp) | **Post** /user/otp/app/receive | Issue OTP seeds
 
 
 
@@ -245,6 +246,67 @@ Other parameters are passed through a pointer to a apiRegenerateCodesRequest str
 ### Return type
 
 [**RecoveryCodeList**](RecoveryCodeList.md)
+
+### Authorization
+
+[x_auth_token](../README.md#x_auth_token)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SeedApp
+
+> OtpSeed SeedApp(ctx).Execute()
+
+Issue OTP seeds
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/equinix/equinix-sdk-go/services/metalv1"
+)
+
+func main() {
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OTPsApi.SeedApp(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OTPsApi.SeedApp``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SeedApp`: OtpSeed
+    fmt.Fprintf(os.Stdout, "Response from `OTPsApi.SeedApp`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSeedAppRequest struct via the builder pattern
+
+
+### Return type
+
+[**OtpSeed**](OtpSeed.md)
 
 ### Authorization
 

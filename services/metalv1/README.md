@@ -272,6 +272,7 @@ Class | Method | HTTP request | Description
 *OTPsApi* | [**FindRecoveryCodes**](docs/OTPsApi.md#findrecoverycodes) | **Get** /user/otp/recovery-codes | Retrieve my recovery codes
 *OTPsApi* | [**ReceiveCodes**](docs/OTPsApi.md#receivecodes) | **Post** /user/otp/sms/receive | Receive an OTP per sms
 *OTPsApi* | [**RegenerateCodes**](docs/OTPsApi.md#regeneratecodes) | **Post** /user/otp/recovery-codes | Generate new recovery codes
+*OTPsApi* | [**SeedApp**](docs/OTPsApi.md#seedapp) | **Post** /user/otp/app/receive | Issue OTP seeds
 *OperatingSystemsApi* | [**FindOperatingSystemVersion**](docs/OperatingSystemsApi.md#findoperatingsystemversion) | **Get** /operating-system-versions | Retrieve all operating system versions
 *OperatingSystemsApi* | [**FindOperatingSystems**](docs/OperatingSystemsApi.md#findoperatingsystems) | **Get** /operating-systems | Retrieve all operating systems
 *OrganizationsApi* | [**CreateOrganization**](docs/OrganizationsApi.md#createorganization) | **Post** /organizations | Create an organization
@@ -554,6 +555,7 @@ Class | Method | HTTP request | Description
  - [Organization](docs/Organization.md)
  - [OrganizationInput](docs/OrganizationInput.md)
  - [OrganizationList](docs/OrganizationList.md)
+ - [OtpSeed](docs/OtpSeed.md)
  - [ParentBlock](docs/ParentBlock.md)
  - [Partition](docs/Partition.md)
  - [PaymentMethod](docs/PaymentMethod.md)

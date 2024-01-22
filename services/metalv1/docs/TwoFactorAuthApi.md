@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## DisableTfaApp
 
-> DisableTfaApp(ctx).Execute()
+> DisableTfaApp(ctx).XOtpToken(xOtpToken).Execute()
 
 Disable two factor authentication
 
@@ -32,10 +32,11 @@ import (
 )
 
 func main() {
+    xOtpToken := "xOtpToken_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.TwoFactorAuthApi.DisableTfaApp(context.Background()).Execute()
+    r, err := apiClient.TwoFactorAuthApi.DisableTfaApp(context.Background()).XOtpToken(xOtpToken).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `TwoFactorAuthApi.DisableTfaApp``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -45,12 +46,16 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiDisableTfaAppRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **xOtpToken** | **string** |  | 
 
 ### Return type
 
@@ -72,7 +77,7 @@ Other parameters are passed through a pointer to a apiDisableTfaAppRequest struc
 
 ## DisableTfaSms
 
-> DisableTfaSms(ctx).Execute()
+> DisableTfaSms(ctx).XOtpToken(xOtpToken).Execute()
 
 Disable two factor authentication
 
@@ -91,10 +96,11 @@ import (
 )
 
 func main() {
+    xOtpToken := "xOtpToken_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.TwoFactorAuthApi.DisableTfaSms(context.Background()).Execute()
+    r, err := apiClient.TwoFactorAuthApi.DisableTfaSms(context.Background()).XOtpToken(xOtpToken).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `TwoFactorAuthApi.DisableTfaSms``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -104,12 +110,16 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiDisableTfaSmsRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **xOtpToken** | **string** |  | 
 
 ### Return type
 
@@ -131,7 +141,7 @@ Other parameters are passed through a pointer to a apiDisableTfaSmsRequest struc
 
 ## EnableTfaApp
 
-> EnableTfaApp(ctx).Execute()
+> EnableTfaApp(ctx).XOtpToken(xOtpToken).Execute()
 
 Enable two factor auth using app
 
@@ -150,10 +160,11 @@ import (
 )
 
 func main() {
+    xOtpToken := "xOtpToken_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.TwoFactorAuthApi.EnableTfaApp(context.Background()).Execute()
+    r, err := apiClient.TwoFactorAuthApi.EnableTfaApp(context.Background()).XOtpToken(xOtpToken).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `TwoFactorAuthApi.EnableTfaApp``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -163,12 +174,16 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiEnableTfaAppRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **xOtpToken** | **string** |  | 
 
 ### Return type
 
@@ -190,7 +205,7 @@ Other parameters are passed through a pointer to a apiEnableTfaAppRequest struct
 
 ## EnableTfaSms
 
-> EnableTfaSms(ctx).Execute()
+> EnableTfaSms(ctx).XOtpToken(xOtpToken).Execute()
 
 Enable two factor auth using sms
 
@@ -209,10 +224,11 @@ import (
 )
 
 func main() {
+    xOtpToken := "xOtpToken_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.TwoFactorAuthApi.EnableTfaSms(context.Background()).Execute()
+    r, err := apiClient.TwoFactorAuthApi.EnableTfaSms(context.Background()).XOtpToken(xOtpToken).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `TwoFactorAuthApi.EnableTfaSms``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -222,12 +238,16 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiEnableTfaSmsRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **xOtpToken** | **string** |  | 
 
 ### Return type
 
