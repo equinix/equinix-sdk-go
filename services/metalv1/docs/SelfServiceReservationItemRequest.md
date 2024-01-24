@@ -4,11 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Amount** | Pointer to **float32** |  | [optional] 
-**MetroId** | Pointer to **string** |  | [optional] 
-**PlanId** | Pointer to **string** |  | [optional] 
-**Quantity** | Pointer to **int32** |  | [optional] 
-**Term** | Pointer to **string** |  | [optional] 
+**MetroId** | Pointer to **string** | Metro code or ID of where the Self Service Reservation Item should be provisioned in. | [optional] 
+**PlanId** | Pointer to **string** | The plan slug of the Self Service Reservation Item. | [optional] 
+**Quantity** | Pointer to **int32** | The number of Self Service Reservation Items. | [optional] 
+**Term** | Pointer to **string** | The duration of Self Service Reservation Item. | [optional] 
 
 ## Methods
 
@@ -28,31 +27,6 @@ will change when the set of required properties is changed
 NewSelfServiceReservationItemRequestWithDefaults instantiates a new SelfServiceReservationItemRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetAmount
-
-`func (o *SelfServiceReservationItemRequest) GetAmount() float32`
-
-GetAmount returns the Amount field if non-nil, zero value otherwise.
-
-### GetAmountOk
-
-`func (o *SelfServiceReservationItemRequest) GetAmountOk() (*float32, bool)`
-
-GetAmountOk returns a tuple with the Amount field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAmount
-
-`func (o *SelfServiceReservationItemRequest) SetAmount(v float32)`
-
-SetAmount sets Amount field to given value.
-
-### HasAmount
-
-`func (o *SelfServiceReservationItemRequest) HasAmount() bool`
-
-HasAmount returns a boolean if a field has been set.
 
 ### GetMetroId
 
