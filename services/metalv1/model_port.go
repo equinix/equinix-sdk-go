@@ -30,7 +30,7 @@ type Port struct {
 	Type                      *PortType        `json:"type,omitempty"`
 	NetworkType               *PortNetworkType `json:"network_type,omitempty"`
 	NativeVirtualNetwork      *VirtualNetwork  `json:"native_virtual_network,omitempty"`
-	VirtualNetworks           []Href           `json:"virtual_networks,omitempty"`
+	VirtualNetworks           []VirtualNetwork `json:"virtual_networks,omitempty"`
 	AdditionalProperties      map[string]interface{}
 }
 
@@ -342,9 +342,9 @@ func (o *Port) SetNativeVirtualNetwork(v VirtualNetwork) {
 }
 
 // GetVirtualNetworks returns the VirtualNetworks field value if set, zero value otherwise.
-func (o *Port) GetVirtualNetworks() []Href {
+func (o *Port) GetVirtualNetworks() []VirtualNetwork {
 	if o == nil || IsNil(o.VirtualNetworks) {
-		var ret []Href
+		var ret []VirtualNetwork
 		return ret
 	}
 	return o.VirtualNetworks
@@ -352,7 +352,7 @@ func (o *Port) GetVirtualNetworks() []Href {
 
 // GetVirtualNetworksOk returns a tuple with the VirtualNetworks field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Port) GetVirtualNetworksOk() ([]Href, bool) {
+func (o *Port) GetVirtualNetworksOk() ([]VirtualNetwork, bool) {
 	if o == nil || IsNil(o.VirtualNetworks) {
 		return nil, false
 	}
@@ -368,8 +368,8 @@ func (o *Port) HasVirtualNetworks() bool {
 	return false
 }
 
-// SetVirtualNetworks gets a reference to the given []Href and assigns it to the VirtualNetworks field.
-func (o *Port) SetVirtualNetworks(v []Href) {
+// SetVirtualNetworks gets a reference to the given []VirtualNetwork and assigns it to the VirtualNetworks field.
+func (o *Port) SetVirtualNetworks(v []VirtualNetwork) {
 	o.VirtualNetworks = v
 }
 

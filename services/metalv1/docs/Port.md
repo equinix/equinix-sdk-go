@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **Type** | Pointer to [**PortType**](PortType.md) |  | [optional] 
 **NetworkType** | Pointer to [**PortNetworkType**](PortNetworkType.md) |  | [optional] 
 **NativeVirtualNetwork** | Pointer to [**VirtualNetwork**](VirtualNetwork.md) |  | [optional] 
-**VirtualNetworks** | Pointer to [**[]Href**](Href.md) |  | [optional] 
+**VirtualNetworks** | Pointer to [**[]VirtualNetwork**](VirtualNetwork.md) |  | [optional] 
 
 ## Methods
 
@@ -261,20 +261,20 @@ HasNativeVirtualNetwork returns a boolean if a field has been set.
 
 ### GetVirtualNetworks
 
-`func (o *Port) GetVirtualNetworks() []Href`
+`func (o *Port) GetVirtualNetworks() []VirtualNetwork`
 
 GetVirtualNetworks returns the VirtualNetworks field if non-nil, zero value otherwise.
 
 ### GetVirtualNetworksOk
 
-`func (o *Port) GetVirtualNetworksOk() (*[]Href, bool)`
+`func (o *Port) GetVirtualNetworksOk() (*[]VirtualNetwork, bool)`
 
 GetVirtualNetworksOk returns a tuple with the VirtualNetworks field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetVirtualNetworks
 
-`func (o *Port) SetVirtualNetworks(v []Href)`
+`func (o *Port) SetVirtualNetworks(v []VirtualNetwork)`
 
 SetVirtualNetworks sets VirtualNetworks field to given value.
 
