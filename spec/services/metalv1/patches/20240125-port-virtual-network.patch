@@ -1,0 +1,12 @@
+diff --git a/spec/services/metalv1/oas3.patched/components/schemas/Port.yaml b/spec/services/metalv1/oas3.patched/components/schemas/Port.yaml
+index bceaf31..e232c6d 100644
+--- a/spec/services/metalv1/oas3.patched/components/schemas/Port.yaml
++++ b/spec/services/metalv1/oas3.patched/components/schemas/Port.yaml
+@@ -35,6 +35,6 @@ properties:
+     $ref: './VirtualNetwork.yaml'
+   virtual_networks:
+     items:
+-      $ref: './Href.yaml'
++      $ref: './VirtualNetwork.yaml'
+     type: array
+ type: object
