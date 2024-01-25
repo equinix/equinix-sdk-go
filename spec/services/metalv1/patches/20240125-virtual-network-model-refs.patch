@@ -1,0 +1,30 @@
+diff --git a/spec/services/metalv1/oas3.patched/components/schemas/VirtualNetwork.yaml b/spec/services/metalv1/oas3.patched/components/schemas/VirtualNetwork.yaml
+index bae14ae..311670d 100644
+--- a/spec/services/metalv1/oas3.patched/components/schemas/VirtualNetwork.yaml
++++ b/spec/services/metalv1/oas3.patched/components/schemas/VirtualNetwork.yaml
+@@ -1,6 +1,6 @@
+ properties:
+   assigned_to:
+-    $ref: './Href.yaml'
++    $ref: './Project.yaml'
+   assigned_to_virtual_circuit:
+     description: True if the virtual network is attached to a virtual circuit. False
+       if not.
+@@ -21,7 +21,7 @@ properties:
+     description: A list of instances with ports currently associated to this Virtual
+       Network.
+     items:
+-      $ref: './Href.yaml'
++      $ref: './Device.yaml'
+     type: array
+   metal_gateways:
+     description: A list of metal gateways currently associated to this Virtual Network.
+@@ -29,7 +29,7 @@ properties:
+       $ref: './MetalGatewayLite.yaml'
+     type: array
+   metro:
+-    $ref: './Href.yaml'
++    $ref: './Metro.yaml'
+   metro_code:
+     description: The Metro code of the metro in which this Virtual Network is defined.
+     type: string
