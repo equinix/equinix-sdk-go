@@ -1,0 +1,13 @@
+diff --git a/spec/services/metalv1/oas3.patched/components/schemas/Organization.yaml b/spec/services/metalv1/oas3.patched/components/schemas/Organization.yaml
+index 534c0b5..6a5e89a 100644
+--- a/spec/services/metalv1/oas3.patched/components/schemas/Organization.yaml
++++ b/spec/services/metalv1/oas3.patched/components/schemas/Organization.yaml
+@@ -18,6 +18,8 @@ properties:
+       after that date, unless the value is null
+     format: date-time
+     type: string
++  href:
++    type: string
+   id:
+     format: uuid
+     type: string

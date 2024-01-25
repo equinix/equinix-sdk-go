@@ -18,6 +18,8 @@ properties:
       after that date, unless the value is null
     format: date-time
     type: string
+  href:
+    type: string
   id:
     format: uuid
     type: string
