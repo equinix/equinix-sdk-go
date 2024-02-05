@@ -1,16 +1,15 @@
 properties:
+  amount:
+    format: float
+    type: number
   metro_id:
     format: uuid
     type: string
-    description: Metro code or ID of where the Self Service Reservation Item should be provisioned in.
   plan_id:
     format: uuid
     type: string
-    description: The plan slug of the Self Service Reservation Item.
   quantity:
     type: integer
-    description: The number of Self Service Reservation Items.
   term:
     type: string
-    description: The duration of Self Service Reservation Item.
 type: object

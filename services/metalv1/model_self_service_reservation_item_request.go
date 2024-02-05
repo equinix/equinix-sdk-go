@@ -20,14 +20,11 @@ var _ MappedNullable = &SelfServiceReservationItemRequest{}
 
 // SelfServiceReservationItemRequest struct for SelfServiceReservationItemRequest
 type SelfServiceReservationItemRequest struct {
-	// Metro code or ID of where the Self Service Reservation Item should be provisioned in.
-	MetroId *string `json:"metro_id,omitempty"`
-	// The plan slug of the Self Service Reservation Item.
-	PlanId *string `json:"plan_id,omitempty"`
-	// The number of Self Service Reservation Items.
-	Quantity *int32 `json:"quantity,omitempty"`
-	// The duration of Self Service Reservation Item.
-	Term                 *string `json:"term,omitempty"`
+	Amount               *float32 `json:"amount,omitempty"`
+	MetroId              *string  `json:"metro_id,omitempty"`
+	PlanId               *string  `json:"plan_id,omitempty"`
+	Quantity             *int32   `json:"quantity,omitempty"`
+	Term                 *string  `json:"term,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -48,6 +45,38 @@ func NewSelfServiceReservationItemRequest() *SelfServiceReservationItemRequest {
 func NewSelfServiceReservationItemRequestWithDefaults() *SelfServiceReservationItemRequest {
 	this := SelfServiceReservationItemRequest{}
 	return &this
+}
+
+// GetAmount returns the Amount field value if set, zero value otherwise.
+func (o *SelfServiceReservationItemRequest) GetAmount() float32 {
+	if o == nil || IsNil(o.Amount) {
+		var ret float32
+		return ret
+	}
+	return *o.Amount
+}
+
+// GetAmountOk returns a tuple with the Amount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SelfServiceReservationItemRequest) GetAmountOk() (*float32, bool) {
+	if o == nil || IsNil(o.Amount) {
+		return nil, false
+	}
+	return o.Amount, true
+}
+
+// HasAmount returns a boolean if a field has been set.
+func (o *SelfServiceReservationItemRequest) HasAmount() bool {
+	if o != nil && !IsNil(o.Amount) {
+		return true
+	}
+
+	return false
+}
+
+// SetAmount gets a reference to the given float32 and assigns it to the Amount field.
+func (o *SelfServiceReservationItemRequest) SetAmount(v float32) {
+	o.Amount = &v
 }
 
 // GetMetroId returns the MetroId field value if set, zero value otherwise.
@@ -188,6 +217,9 @@ func (o SelfServiceReservationItemRequest) MarshalJSON() ([]byte, error) {
 
 func (o SelfServiceReservationItemRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Amount) {
+		toSerialize["amount"] = o.Amount
+	}
 	if !IsNil(o.MetroId) {
 		toSerialize["metro_id"] = o.MetroId
 	}
@@ -222,6 +254,7 @@ func (o *SelfServiceReservationItemRequest) UnmarshalJSON(bytes []byte) (err err
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+		delete(additionalProperties, "amount")
 		delete(additionalProperties, "metro_id")
 		delete(additionalProperties, "plan_id")
 		delete(additionalProperties, "quantity")
