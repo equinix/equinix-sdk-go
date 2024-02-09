@@ -685,10 +685,10 @@ func (o Vrf) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *Vrf) UnmarshalJSON(bytes []byte) (err error) {
+func (o *Vrf) UnmarshalJSON(data []byte) (err error) {
 	varVrf := _Vrf{}
 
-	err = json.Unmarshal(bytes, &varVrf)
+	err = json.Unmarshal(data, &varVrf)
 
 	if err != nil {
 		return err
@@ -698,7 +698,7 @@ func (o *Vrf) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")

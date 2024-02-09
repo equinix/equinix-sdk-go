@@ -247,10 +247,10 @@ func (o VirtualNetworkCreateInput) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *VirtualNetworkCreateInput) UnmarshalJSON(bytes []byte) (err error) {
+func (o *VirtualNetworkCreateInput) UnmarshalJSON(data []byte) (err error) {
 	varVirtualNetworkCreateInput := _VirtualNetworkCreateInput{}
 
-	err = json.Unmarshal(bytes, &varVirtualNetworkCreateInput)
+	err = json.Unmarshal(data, &varVirtualNetworkCreateInput)
 
 	if err != nil {
 		return err
@@ -260,7 +260,7 @@ func (o *VirtualNetworkCreateInput) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "facility")
 		delete(additionalProperties, "metro")

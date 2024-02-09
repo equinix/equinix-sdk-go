@@ -211,10 +211,10 @@ func (o ServerInfo) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ServerInfo) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ServerInfo) UnmarshalJSON(data []byte) (err error) {
 	varServerInfo := _ServerInfo{}
 
-	err = json.Unmarshal(bytes, &varServerInfo)
+	err = json.Unmarshal(data, &varServerInfo)
 
 	if err != nil {
 		return err
@@ -224,7 +224,7 @@ func (o *ServerInfo) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "facility")
 		delete(additionalProperties, "metro")
 		delete(additionalProperties, "plan")

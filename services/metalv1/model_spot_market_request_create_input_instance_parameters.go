@@ -711,10 +711,10 @@ func (o SpotMarketRequestCreateInputInstanceParameters) ToMap() (map[string]inte
 	return toSerialize, nil
 }
 
-func (o *SpotMarketRequestCreateInputInstanceParameters) UnmarshalJSON(bytes []byte) (err error) {
+func (o *SpotMarketRequestCreateInputInstanceParameters) UnmarshalJSON(data []byte) (err error) {
 	varSpotMarketRequestCreateInputInstanceParameters := _SpotMarketRequestCreateInputInstanceParameters{}
 
-	err = json.Unmarshal(bytes, &varSpotMarketRequestCreateInputInstanceParameters)
+	err = json.Unmarshal(data, &varSpotMarketRequestCreateInputInstanceParameters)
 
 	if err != nil {
 		return err
@@ -724,7 +724,7 @@ func (o *SpotMarketRequestCreateInputInstanceParameters) UnmarshalJSON(bytes []b
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "always_pxe")
 		delete(additionalProperties, "billing_cycle")
 		delete(additionalProperties, "customdata")

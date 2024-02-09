@@ -96,10 +96,10 @@ func (o IPAvailabilitiesList) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *IPAvailabilitiesList) UnmarshalJSON(bytes []byte) (err error) {
+func (o *IPAvailabilitiesList) UnmarshalJSON(data []byte) (err error) {
 	varIPAvailabilitiesList := _IPAvailabilitiesList{}
 
-	err = json.Unmarshal(bytes, &varIPAvailabilitiesList)
+	err = json.Unmarshal(data, &varIPAvailabilitiesList)
 
 	if err != nil {
 		return err
@@ -109,7 +109,7 @@ func (o *IPAvailabilitiesList) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "available")
 		o.AdditionalProperties = additionalProperties
 	}

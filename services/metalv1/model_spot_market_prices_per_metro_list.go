@@ -96,10 +96,10 @@ func (o SpotMarketPricesPerMetroList) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *SpotMarketPricesPerMetroList) UnmarshalJSON(bytes []byte) (err error) {
+func (o *SpotMarketPricesPerMetroList) UnmarshalJSON(data []byte) (err error) {
 	varSpotMarketPricesPerMetroList := _SpotMarketPricesPerMetroList{}
 
-	err = json.Unmarshal(bytes, &varSpotMarketPricesPerMetroList)
+	err = json.Unmarshal(data, &varSpotMarketPricesPerMetroList)
 
 	if err != nil {
 		return err
@@ -109,7 +109,7 @@ func (o *SpotMarketPricesPerMetroList) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "spot_market_prices")
 		o.AdditionalProperties = additionalProperties
 	}

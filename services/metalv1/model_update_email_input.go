@@ -96,10 +96,10 @@ func (o UpdateEmailInput) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *UpdateEmailInput) UnmarshalJSON(bytes []byte) (err error) {
+func (o *UpdateEmailInput) UnmarshalJSON(data []byte) (err error) {
 	varUpdateEmailInput := _UpdateEmailInput{}
 
-	err = json.Unmarshal(bytes, &varUpdateEmailInput)
+	err = json.Unmarshal(data, &varUpdateEmailInput)
 
 	if err != nil {
 		return err
@@ -109,7 +109,7 @@ func (o *UpdateEmailInput) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "default")
 		o.AdditionalProperties = additionalProperties
 	}

@@ -132,10 +132,10 @@ func (o DeviceActionsInner) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *DeviceActionsInner) UnmarshalJSON(bytes []byte) (err error) {
+func (o *DeviceActionsInner) UnmarshalJSON(data []byte) (err error) {
 	varDeviceActionsInner := _DeviceActionsInner{}
 
-	err = json.Unmarshal(bytes, &varDeviceActionsInner)
+	err = json.Unmarshal(data, &varDeviceActionsInner)
 
 	if err != nil {
 		return err
@@ -145,7 +145,7 @@ func (o *DeviceActionsInner) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "name")
 		o.AdditionalProperties = additionalProperties

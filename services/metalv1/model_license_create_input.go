@@ -168,10 +168,10 @@ func (o LicenseCreateInput) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *LicenseCreateInput) UnmarshalJSON(bytes []byte) (err error) {
+func (o *LicenseCreateInput) UnmarshalJSON(data []byte) (err error) {
 	varLicenseCreateInput := _LicenseCreateInput{}
 
-	err = json.Unmarshal(bytes, &varLicenseCreateInput)
+	err = json.Unmarshal(data, &varLicenseCreateInput)
 
 	if err != nil {
 		return err
@@ -181,7 +181,7 @@ func (o *LicenseCreateInput) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "licensee_product_id")
 		delete(additionalProperties, "size")

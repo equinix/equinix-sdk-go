@@ -749,10 +749,10 @@ func (o Interconnection) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *Interconnection) UnmarshalJSON(bytes []byte) (err error) {
+func (o *Interconnection) UnmarshalJSON(data []byte) (err error) {
 	varInterconnection := _Interconnection{}
 
-	err = json.Unmarshal(bytes, &varInterconnection)
+	err = json.Unmarshal(data, &varInterconnection)
 
 	if err != nil {
 		return err
@@ -762,7 +762,7 @@ func (o *Interconnection) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "contact_email")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "facility")

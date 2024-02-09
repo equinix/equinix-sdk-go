@@ -208,10 +208,10 @@ func (o CapacityCheckPerMetroInfo) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *CapacityCheckPerMetroInfo) UnmarshalJSON(bytes []byte) (err error) {
+func (o *CapacityCheckPerMetroInfo) UnmarshalJSON(data []byte) (err error) {
 	varCapacityCheckPerMetroInfo := _CapacityCheckPerMetroInfo{}
 
-	err = json.Unmarshal(bytes, &varCapacityCheckPerMetroInfo)
+	err = json.Unmarshal(data, &varCapacityCheckPerMetroInfo)
 
 	if err != nil {
 		return err
@@ -221,7 +221,7 @@ func (o *CapacityCheckPerMetroInfo) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "available")
 		delete(additionalProperties, "metro")
 		delete(additionalProperties, "plan")

@@ -746,10 +746,10 @@ func (o AuthTokenProject) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *AuthTokenProject) UnmarshalJSON(bytes []byte) (err error) {
+func (o *AuthTokenProject) UnmarshalJSON(data []byte) (err error) {
 	varAuthTokenProject := _AuthTokenProject{}
 
-	err = json.Unmarshal(bytes, &varAuthTokenProject)
+	err = json.Unmarshal(data, &varAuthTokenProject)
 
 	if err != nil {
 		return err
@@ -759,7 +759,7 @@ func (o *AuthTokenProject) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "bgp_config")
 		delete(additionalProperties, "created_at")
 		delete(additionalProperties, "customdata")

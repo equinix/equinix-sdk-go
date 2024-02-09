@@ -132,10 +132,10 @@ func (o CreateSelfServiceReservationRequestPeriod) ToMap() (map[string]interface
 	return toSerialize, nil
 }
 
-func (o *CreateSelfServiceReservationRequestPeriod) UnmarshalJSON(bytes []byte) (err error) {
+func (o *CreateSelfServiceReservationRequestPeriod) UnmarshalJSON(data []byte) (err error) {
 	varCreateSelfServiceReservationRequestPeriod := _CreateSelfServiceReservationRequestPeriod{}
 
-	err = json.Unmarshal(bytes, &varCreateSelfServiceReservationRequestPeriod)
+	err = json.Unmarshal(data, &varCreateSelfServiceReservationRequestPeriod)
 
 	if err != nil {
 		return err
@@ -145,7 +145,7 @@ func (o *CreateSelfServiceReservationRequestPeriod) UnmarshalJSON(bytes []byte) 
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "count")
 		delete(additionalProperties, "unit")
 		o.AdditionalProperties = additionalProperties

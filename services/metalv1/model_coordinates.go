@@ -132,10 +132,10 @@ func (o Coordinates) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *Coordinates) UnmarshalJSON(bytes []byte) (err error) {
+func (o *Coordinates) UnmarshalJSON(data []byte) (err error) {
 	varCoordinates := _Coordinates{}
 
-	err = json.Unmarshal(bytes, &varCoordinates)
+	err = json.Unmarshal(data, &varCoordinates)
 
 	if err != nil {
 		return err
@@ -145,7 +145,7 @@ func (o *Coordinates) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "latitude")
 		delete(additionalProperties, "longitude")
 		o.AdditionalProperties = additionalProperties

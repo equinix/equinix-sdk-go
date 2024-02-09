@@ -282,10 +282,10 @@ func (o FirmwareSetListResponse) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *FirmwareSetListResponse) UnmarshalJSON(bytes []byte) (err error) {
+func (o *FirmwareSetListResponse) UnmarshalJSON(data []byte) (err error) {
 	varFirmwareSetListResponse := _FirmwareSetListResponse{}
 
-	err = json.Unmarshal(bytes, &varFirmwareSetListResponse)
+	err = json.Unmarshal(data, &varFirmwareSetListResponse)
 
 	if err != nil {
 		return err
@@ -295,7 +295,7 @@ func (o *FirmwareSetListResponse) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "page_size")
 		delete(additionalProperties, "page")
 		delete(additionalProperties, "page_count")

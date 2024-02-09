@@ -348,10 +348,10 @@ func (o Meta) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *Meta) UnmarshalJSON(bytes []byte) (err error) {
+func (o *Meta) UnmarshalJSON(data []byte) (err error) {
 	varMeta := _Meta{}
 
-	err = json.Unmarshal(bytes, &varMeta)
+	err = json.Unmarshal(data, &varMeta)
 
 	if err != nil {
 		return err
@@ -361,7 +361,7 @@ func (o *Meta) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "first")
 		delete(additionalProperties, "last")
 		delete(additionalProperties, "next")

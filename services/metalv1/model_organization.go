@@ -674,10 +674,10 @@ func (o Organization) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *Organization) UnmarshalJSON(bytes []byte) (err error) {
+func (o *Organization) UnmarshalJSON(data []byte) (err error) {
 	varOrganization := _Organization{}
 
-	err = json.Unmarshal(bytes, &varOrganization)
+	err = json.Unmarshal(data, &varOrganization)
 
 	if err != nil {
 		return err
@@ -687,7 +687,7 @@ func (o *Organization) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "address")
 		delete(additionalProperties, "billing_address")
 		delete(additionalProperties, "created_at")

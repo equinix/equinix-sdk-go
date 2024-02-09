@@ -96,10 +96,10 @@ func (o BatchesList) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *BatchesList) UnmarshalJSON(bytes []byte) (err error) {
+func (o *BatchesList) UnmarshalJSON(data []byte) (err error) {
 	varBatchesList := _BatchesList{}
 
-	err = json.Unmarshal(bytes, &varBatchesList)
+	err = json.Unmarshal(data, &varBatchesList)
 
 	if err != nil {
 		return err
@@ -109,7 +109,7 @@ func (o *BatchesList) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "batches")
 		o.AdditionalProperties = additionalProperties
 	}

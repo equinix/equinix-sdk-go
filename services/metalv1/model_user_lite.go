@@ -414,7 +414,7 @@ func (o UserLite) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *UserLite) UnmarshalJSON(bytes []byte) (err error) {
+func (o *UserLite) UnmarshalJSON(data []byte) (err error) {
 	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
@@ -425,7 +425,7 @@ func (o *UserLite) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err
@@ -439,7 +439,7 @@ func (o *UserLite) UnmarshalJSON(bytes []byte) (err error) {
 
 	varUserLite := _UserLite{}
 
-	err = json.Unmarshal(bytes, &varUserLite)
+	err = json.Unmarshal(data, &varUserLite)
 
 	if err != nil {
 		return err
@@ -449,7 +449,7 @@ func (o *UserLite) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "avatar_thumb_url")
 		delete(additionalProperties, "created_at")
 		delete(additionalProperties, "email")

@@ -313,10 +313,10 @@ func (o Membership) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *Membership) UnmarshalJSON(bytes []byte) (err error) {
+func (o *Membership) UnmarshalJSON(data []byte) (err error) {
 	varMembership := _Membership{}
 
-	err = json.Unmarshal(bytes, &varMembership)
+	err = json.Unmarshal(data, &varMembership)
 
 	if err != nil {
 		return err
@@ -326,7 +326,7 @@ func (o *Membership) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "created_at")
 		delete(additionalProperties, "href")
 		delete(additionalProperties, "id")

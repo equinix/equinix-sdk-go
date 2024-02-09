@@ -132,10 +132,10 @@ func (o EventList) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *EventList) UnmarshalJSON(bytes []byte) (err error) {
+func (o *EventList) UnmarshalJSON(data []byte) (err error) {
 	varEventList := _EventList{}
 
-	err = json.Unmarshal(bytes, &varEventList)
+	err = json.Unmarshal(data, &varEventList)
 
 	if err != nil {
 		return err
@@ -145,7 +145,7 @@ func (o *EventList) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "events")
 		delete(additionalProperties, "meta")
 		o.AdditionalProperties = additionalProperties

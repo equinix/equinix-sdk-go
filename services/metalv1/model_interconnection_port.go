@@ -421,10 +421,10 @@ func (o InterconnectionPort) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *InterconnectionPort) UnmarshalJSON(bytes []byte) (err error) {
+func (o *InterconnectionPort) UnmarshalJSON(data []byte) (err error) {
 	varInterconnectionPort := _InterconnectionPort{}
 
-	err = json.Unmarshal(bytes, &varInterconnectionPort)
+	err = json.Unmarshal(data, &varInterconnectionPort)
 
 	if err != nil {
 		return err
@@ -434,7 +434,7 @@ func (o *InterconnectionPort) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "organization")
 		delete(additionalProperties, "role")

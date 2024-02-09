@@ -168,10 +168,10 @@ func (o MetadataNetwork) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *MetadataNetwork) UnmarshalJSON(bytes []byte) (err error) {
+func (o *MetadataNetwork) UnmarshalJSON(data []byte) (err error) {
 	varMetadataNetwork := _MetadataNetwork{}
 
-	err = json.Unmarshal(bytes, &varMetadataNetwork)
+	err = json.Unmarshal(data, &varMetadataNetwork)
 
 	if err != nil {
 		return err
@@ -181,7 +181,7 @@ func (o *MetadataNetwork) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "addresses")
 		delete(additionalProperties, "interfaces")
 		delete(additionalProperties, "network")

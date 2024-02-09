@@ -550,10 +550,10 @@ func (o BgpConfig) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *BgpConfig) UnmarshalJSON(bytes []byte) (err error) {
+func (o *BgpConfig) UnmarshalJSON(data []byte) (err error) {
 	varBgpConfig := _BgpConfig{}
 
-	err = json.Unmarshal(bytes, &varBgpConfig)
+	err = json.Unmarshal(data, &varBgpConfig)
 
 	if err != nil {
 		return err
@@ -563,7 +563,7 @@ func (o *BgpConfig) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "asn")
 		delete(additionalProperties, "created_at")
 		delete(additionalProperties, "deployment_type")

@@ -96,10 +96,10 @@ func (o LicenseList) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *LicenseList) UnmarshalJSON(bytes []byte) (err error) {
+func (o *LicenseList) UnmarshalJSON(data []byte) (err error) {
 	varLicenseList := _LicenseList{}
 
-	err = json.Unmarshal(bytes, &varLicenseList)
+	err = json.Unmarshal(data, &varLicenseList)
 
 	if err != nil {
 		return err
@@ -109,7 +109,7 @@ func (o *LicenseList) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "licenses")
 		o.AdditionalProperties = additionalProperties
 	}

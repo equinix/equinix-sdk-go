@@ -384,10 +384,10 @@ func (o ProjectUsage) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ProjectUsage) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ProjectUsage) UnmarshalJSON(data []byte) (err error) {
 	varProjectUsage := _ProjectUsage{}
 
-	err = json.Unmarshal(bytes, &varProjectUsage)
+	err = json.Unmarshal(data, &varProjectUsage)
 
 	if err != nil {
 		return err
@@ -397,7 +397,7 @@ func (o *ProjectUsage) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "facility")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "plan")

@@ -168,10 +168,10 @@ func (o MetadataNetworkNetworkBonding) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *MetadataNetworkNetworkBonding) UnmarshalJSON(bytes []byte) (err error) {
+func (o *MetadataNetworkNetworkBonding) UnmarshalJSON(data []byte) (err error) {
 	varMetadataNetworkNetworkBonding := _MetadataNetworkNetworkBonding{}
 
-	err = json.Unmarshal(bytes, &varMetadataNetworkNetworkBonding)
+	err = json.Unmarshal(data, &varMetadataNetworkNetworkBonding)
 
 	if err != nil {
 		return err
@@ -181,7 +181,7 @@ func (o *MetadataNetworkNetworkBonding) UnmarshalJSON(bytes []byte) (err error) 
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "link_aggregation")
 		delete(additionalProperties, "mac")
 		delete(additionalProperties, "mode")

@@ -168,10 +168,10 @@ func (o Disk) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *Disk) UnmarshalJSON(bytes []byte) (err error) {
+func (o *Disk) UnmarshalJSON(data []byte) (err error) {
 	varDisk := _Disk{}
 
-	err = json.Unmarshal(bytes, &varDisk)
+	err = json.Unmarshal(data, &varDisk)
 
 	if err != nil {
 		return err
@@ -181,7 +181,7 @@ func (o *Disk) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "device")
 		delete(additionalProperties, "wipeTable")
 		delete(additionalProperties, "partitions")

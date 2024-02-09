@@ -1018,7 +1018,7 @@ func (o DeviceCreateInMetroInput) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *DeviceCreateInMetroInput) UnmarshalJSON(bytes []byte) (err error) {
+func (o *DeviceCreateInMetroInput) UnmarshalJSON(data []byte) (err error) {
 	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
@@ -1030,7 +1030,7 @@ func (o *DeviceCreateInMetroInput) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err
@@ -1044,7 +1044,7 @@ func (o *DeviceCreateInMetroInput) UnmarshalJSON(bytes []byte) (err error) {
 
 	varDeviceCreateInMetroInput := _DeviceCreateInMetroInput{}
 
-	err = json.Unmarshal(bytes, &varDeviceCreateInMetroInput)
+	err = json.Unmarshal(data, &varDeviceCreateInMetroInput)
 
 	if err != nil {
 		return err
@@ -1054,7 +1054,7 @@ func (o *DeviceCreateInMetroInput) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "metro")
 		delete(additionalProperties, "always_pxe")
 		delete(additionalProperties, "billing_cycle")

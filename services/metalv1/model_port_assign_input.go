@@ -97,10 +97,10 @@ func (o PortAssignInput) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *PortAssignInput) UnmarshalJSON(bytes []byte) (err error) {
+func (o *PortAssignInput) UnmarshalJSON(data []byte) (err error) {
 	varPortAssignInput := _PortAssignInput{}
 
-	err = json.Unmarshal(bytes, &varPortAssignInput)
+	err = json.Unmarshal(data, &varPortAssignInput)
 
 	if err != nil {
 		return err
@@ -110,7 +110,7 @@ func (o *PortAssignInput) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "vnid")
 		o.AdditionalProperties = additionalProperties
 	}

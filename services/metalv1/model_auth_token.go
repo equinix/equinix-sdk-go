@@ -350,10 +350,10 @@ func (o AuthToken) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *AuthToken) UnmarshalJSON(bytes []byte) (err error) {
+func (o *AuthToken) UnmarshalJSON(data []byte) (err error) {
 	varAuthToken := _AuthToken{}
 
-	err = json.Unmarshal(bytes, &varAuthToken)
+	err = json.Unmarshal(data, &varAuthToken)
 
 	if err != nil {
 		return err
@@ -363,7 +363,7 @@ func (o *AuthToken) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "created_at")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "id")

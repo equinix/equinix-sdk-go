@@ -241,10 +241,10 @@ func (o ProjectUpdateInput) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ProjectUpdateInput) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ProjectUpdateInput) UnmarshalJSON(data []byte) (err error) {
 	varProjectUpdateInput := _ProjectUpdateInput{}
 
-	err = json.Unmarshal(bytes, &varProjectUpdateInput)
+	err = json.Unmarshal(data, &varProjectUpdateInput)
 
 	if err != nil {
 		return err
@@ -254,7 +254,7 @@ func (o *ProjectUpdateInput) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "backend_transfer_enabled")
 		delete(additionalProperties, "customdata")
 		delete(additionalProperties, "name")

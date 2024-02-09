@@ -424,10 +424,10 @@ func (o BgpDynamicNeighbor) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *BgpDynamicNeighbor) UnmarshalJSON(bytes []byte) (err error) {
+func (o *BgpDynamicNeighbor) UnmarshalJSON(data []byte) (err error) {
 	varBgpDynamicNeighbor := _BgpDynamicNeighbor{}
 
-	err = json.Unmarshal(bytes, &varBgpDynamicNeighbor)
+	err = json.Unmarshal(data, &varBgpDynamicNeighbor)
 
 	if err != nil {
 		return err
@@ -437,7 +437,7 @@ func (o *BgpDynamicNeighbor) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "bgp_neighbor_asn")
 		delete(additionalProperties, "bgp_neighbor_range")

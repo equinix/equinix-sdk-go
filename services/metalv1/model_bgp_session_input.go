@@ -137,10 +137,10 @@ func (o BGPSessionInput) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *BGPSessionInput) UnmarshalJSON(bytes []byte) (err error) {
+func (o *BGPSessionInput) UnmarshalJSON(data []byte) (err error) {
 	varBGPSessionInput := _BGPSessionInput{}
 
-	err = json.Unmarshal(bytes, &varBGPSessionInput)
+	err = json.Unmarshal(data, &varBGPSessionInput)
 
 	if err != nil {
 		return err
@@ -150,7 +150,7 @@ func (o *BGPSessionInput) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "address_family")
 		delete(additionalProperties, "default_route")
 		o.AdditionalProperties = additionalProperties

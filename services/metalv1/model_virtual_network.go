@@ -533,10 +533,10 @@ func (o VirtualNetwork) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *VirtualNetwork) UnmarshalJSON(bytes []byte) (err error) {
+func (o *VirtualNetwork) UnmarshalJSON(data []byte) (err error) {
 	varVirtualNetwork := _VirtualNetwork{}
 
-	err = json.Unmarshal(bytes, &varVirtualNetwork)
+	err = json.Unmarshal(data, &varVirtualNetwork)
 
 	if err != nil {
 		return err
@@ -546,7 +546,7 @@ func (o *VirtualNetwork) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "assigned_to")
 		delete(additionalProperties, "assigned_to_virtual_circuit")
 		delete(additionalProperties, "description")

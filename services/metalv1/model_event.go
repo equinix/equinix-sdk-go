@@ -421,10 +421,10 @@ func (o Event) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *Event) UnmarshalJSON(bytes []byte) (err error) {
+func (o *Event) UnmarshalJSON(data []byte) (err error) {
 	varEvent := _Event{}
 
-	err = json.Unmarshal(bytes, &varEvent)
+	err = json.Unmarshal(data, &varEvent)
 
 	if err != nil {
 		return err
@@ -434,7 +434,7 @@ func (o *Event) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "body")
 		delete(additionalProperties, "created_at")
 		delete(additionalProperties, "href")

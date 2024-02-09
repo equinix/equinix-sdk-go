@@ -96,10 +96,10 @@ func (o CapacityLevelPerBaremetal) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *CapacityLevelPerBaremetal) UnmarshalJSON(bytes []byte) (err error) {
+func (o *CapacityLevelPerBaremetal) UnmarshalJSON(data []byte) (err error) {
 	varCapacityLevelPerBaremetal := _CapacityLevelPerBaremetal{}
 
-	err = json.Unmarshal(bytes, &varCapacityLevelPerBaremetal)
+	err = json.Unmarshal(data, &varCapacityLevelPerBaremetal)
 
 	if err != nil {
 		return err
@@ -109,7 +109,7 @@ func (o *CapacityLevelPerBaremetal) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "level")
 		o.AdditionalProperties = additionalProperties
 	}

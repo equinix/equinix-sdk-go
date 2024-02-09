@@ -746,10 +746,10 @@ func (o Project) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *Project) UnmarshalJSON(bytes []byte) (err error) {
+func (o *Project) UnmarshalJSON(data []byte) (err error) {
 	varProject := _Project{}
 
-	err = json.Unmarshal(bytes, &varProject)
+	err = json.Unmarshal(data, &varProject)
 
 	if err != nil {
 		return err
@@ -759,7 +759,7 @@ func (o *Project) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "bgp_config")
 		delete(additionalProperties, "created_at")
 		delete(additionalProperties, "customdata")

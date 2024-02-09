@@ -495,10 +495,10 @@ func (o DeviceUpdateInput) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *DeviceUpdateInput) UnmarshalJSON(bytes []byte) (err error) {
+func (o *DeviceUpdateInput) UnmarshalJSON(data []byte) (err error) {
 	varDeviceUpdateInput := _DeviceUpdateInput{}
 
-	err = json.Unmarshal(bytes, &varDeviceUpdateInput)
+	err = json.Unmarshal(data, &varDeviceUpdateInput)
 
 	if err != nil {
 		return err
@@ -508,7 +508,7 @@ func (o *DeviceUpdateInput) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "always_pxe")
 		delete(additionalProperties, "billing_cycle")
 		delete(additionalProperties, "customdata")

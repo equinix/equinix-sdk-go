@@ -132,10 +132,10 @@ func (o PortConvertLayer3InputRequestIpsInner) ToMap() (map[string]interface{}, 
 	return toSerialize, nil
 }
 
-func (o *PortConvertLayer3InputRequestIpsInner) UnmarshalJSON(bytes []byte) (err error) {
+func (o *PortConvertLayer3InputRequestIpsInner) UnmarshalJSON(data []byte) (err error) {
 	varPortConvertLayer3InputRequestIpsInner := _PortConvertLayer3InputRequestIpsInner{}
 
-	err = json.Unmarshal(bytes, &varPortConvertLayer3InputRequestIpsInner)
+	err = json.Unmarshal(data, &varPortConvertLayer3InputRequestIpsInner)
 
 	if err != nil {
 		return err
@@ -145,7 +145,7 @@ func (o *PortConvertLayer3InputRequestIpsInner) UnmarshalJSON(bytes []byte) (err
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "address_family")
 		delete(additionalProperties, "public")
 		o.AdditionalProperties = additionalProperties

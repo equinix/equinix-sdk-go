@@ -96,10 +96,10 @@ func (o MoveHardwareReservationRequest) ToMap() (map[string]interface{}, error) 
 	return toSerialize, nil
 }
 
-func (o *MoveHardwareReservationRequest) UnmarshalJSON(bytes []byte) (err error) {
+func (o *MoveHardwareReservationRequest) UnmarshalJSON(data []byte) (err error) {
 	varMoveHardwareReservationRequest := _MoveHardwareReservationRequest{}
 
-	err = json.Unmarshal(bytes, &varMoveHardwareReservationRequest)
+	err = json.Unmarshal(data, &varMoveHardwareReservationRequest)
 
 	if err != nil {
 		return err
@@ -109,7 +109,7 @@ func (o *MoveHardwareReservationRequest) UnmarshalJSON(bytes []byte) (err error)
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "project_id")
 		o.AdditionalProperties = additionalProperties
 	}

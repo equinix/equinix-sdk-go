@@ -132,10 +132,10 @@ func (o ProjectIdName) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ProjectIdName) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ProjectIdName) UnmarshalJSON(data []byte) (err error) {
 	varProjectIdName := _ProjectIdName{}
 
-	err = json.Unmarshal(bytes, &varProjectIdName)
+	err = json.Unmarshal(data, &varProjectIdName)
 
 	if err != nil {
 		return err
@@ -145,7 +145,7 @@ func (o *ProjectIdName) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		o.AdditionalProperties = additionalProperties

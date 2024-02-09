@@ -468,10 +468,10 @@ func (o Component) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *Component) UnmarshalJSON(bytes []byte) (err error) {
+func (o *Component) UnmarshalJSON(data []byte) (err error) {
 	varComponent := _Component{}
 
-	err = json.Unmarshal(bytes, &varComponent)
+	err = json.Unmarshal(data, &varComponent)
 
 	if err != nil {
 		return err
@@ -481,7 +481,7 @@ func (o *Component) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "uuid")
 		delete(additionalProperties, "vendor")
 		delete(additionalProperties, "model")

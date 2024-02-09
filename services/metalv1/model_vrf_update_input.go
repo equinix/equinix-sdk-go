@@ -353,10 +353,10 @@ func (o VrfUpdateInput) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *VrfUpdateInput) UnmarshalJSON(bytes []byte) (err error) {
+func (o *VrfUpdateInput) UnmarshalJSON(data []byte) (err error) {
 	varVrfUpdateInput := _VrfUpdateInput{}
 
-	err = json.Unmarshal(bytes, &varVrfUpdateInput)
+	err = json.Unmarshal(data, &varVrfUpdateInput)
 
 	if err != nil {
 		return err
@@ -366,7 +366,7 @@ func (o *VrfUpdateInput) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "bgp_dynamic_neighbors_enabled")
 		delete(additionalProperties, "bgp_dynamic_neighbors_export_route_map")
 		delete(additionalProperties, "bgp_dynamic_neighbors_bfd_enabled")
