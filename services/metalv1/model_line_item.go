@@ -312,10 +312,10 @@ func (o LineItem) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *LineItem) UnmarshalJSON(bytes []byte) (err error) {
+func (o *LineItem) UnmarshalJSON(data []byte) (err error) {
 	varLineItem := _LineItem{}
 
-	err = json.Unmarshal(bytes, &varLineItem)
+	err = json.Unmarshal(data, &varLineItem)
 
 	if err != nil {
 		return err
@@ -325,7 +325,7 @@ func (o *LineItem) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "amount")
 		delete(additionalProperties, "currency")
 		delete(additionalProperties, "description")

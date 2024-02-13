@@ -134,10 +134,10 @@ func (o DeviceHealthRollup) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *DeviceHealthRollup) UnmarshalJSON(bytes []byte) (err error) {
+func (o *DeviceHealthRollup) UnmarshalJSON(data []byte) (err error) {
 	varDeviceHealthRollup := _DeviceHealthRollup{}
 
-	err = json.Unmarshal(bytes, &varDeviceHealthRollup)
+	err = json.Unmarshal(data, &varDeviceHealthRollup)
 
 	if err != nil {
 		return err
@@ -147,7 +147,7 @@ func (o *DeviceHealthRollup) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "health_rollup")
 		delete(additionalProperties, "updated_at")
 		o.AdditionalProperties = additionalProperties

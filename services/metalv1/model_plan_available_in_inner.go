@@ -133,10 +133,10 @@ func (o PlanAvailableInInner) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *PlanAvailableInInner) UnmarshalJSON(bytes []byte) (err error) {
+func (o *PlanAvailableInInner) UnmarshalJSON(data []byte) (err error) {
 	varPlanAvailableInInner := _PlanAvailableInInner{}
 
-	err = json.Unmarshal(bytes, &varPlanAvailableInInner)
+	err = json.Unmarshal(data, &varPlanAvailableInInner)
 
 	if err != nil {
 		return err
@@ -146,7 +146,7 @@ func (o *PlanAvailableInInner) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "href")
 		delete(additionalProperties, "price")
 		o.AdditionalProperties = additionalProperties

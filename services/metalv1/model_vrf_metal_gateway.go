@@ -421,10 +421,10 @@ func (o VrfMetalGateway) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *VrfMetalGateway) UnmarshalJSON(bytes []byte) (err error) {
+func (o *VrfMetalGateway) UnmarshalJSON(data []byte) (err error) {
 	varVrfMetalGateway := _VrfMetalGateway{}
 
-	err = json.Unmarshal(bytes, &varVrfMetalGateway)
+	err = json.Unmarshal(data, &varVrfMetalGateway)
 
 	if err != nil {
 		return err
@@ -434,7 +434,7 @@ func (o *VrfMetalGateway) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "created_at")
 		delete(additionalProperties, "created_by")
 		delete(additionalProperties, "href")

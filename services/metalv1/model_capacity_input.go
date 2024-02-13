@@ -96,10 +96,10 @@ func (o CapacityInput) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *CapacityInput) UnmarshalJSON(bytes []byte) (err error) {
+func (o *CapacityInput) UnmarshalJSON(data []byte) (err error) {
 	varCapacityInput := _CapacityInput{}
 
-	err = json.Unmarshal(bytes, &varCapacityInput)
+	err = json.Unmarshal(data, &varCapacityInput)
 
 	if err != nil {
 		return err
@@ -109,7 +109,7 @@ func (o *CapacityInput) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "servers")
 		o.AdditionalProperties = additionalProperties
 	}

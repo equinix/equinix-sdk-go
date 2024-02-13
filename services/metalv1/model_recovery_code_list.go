@@ -96,10 +96,10 @@ func (o RecoveryCodeList) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *RecoveryCodeList) UnmarshalJSON(bytes []byte) (err error) {
+func (o *RecoveryCodeList) UnmarshalJSON(data []byte) (err error) {
 	varRecoveryCodeList := _RecoveryCodeList{}
 
-	err = json.Unmarshal(bytes, &varRecoveryCodeList)
+	err = json.Unmarshal(data, &varRecoveryCodeList)
 
 	if err != nil {
 		return err
@@ -109,7 +109,7 @@ func (o *RecoveryCodeList) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "recovery_codes")
 		o.AdditionalProperties = additionalProperties
 	}

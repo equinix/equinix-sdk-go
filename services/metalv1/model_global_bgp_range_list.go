@@ -96,10 +96,10 @@ func (o GlobalBgpRangeList) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *GlobalBgpRangeList) UnmarshalJSON(bytes []byte) (err error) {
+func (o *GlobalBgpRangeList) UnmarshalJSON(data []byte) (err error) {
 	varGlobalBgpRangeList := _GlobalBgpRangeList{}
 
-	err = json.Unmarshal(bytes, &varGlobalBgpRangeList)
+	err = json.Unmarshal(data, &varGlobalBgpRangeList)
 
 	if err != nil {
 		return err
@@ -109,7 +109,7 @@ func (o *GlobalBgpRangeList) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "global_bgp_ranges")
 		o.AdditionalProperties = additionalProperties
 	}

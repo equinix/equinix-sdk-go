@@ -204,10 +204,10 @@ func (o Mount) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *Mount) UnmarshalJSON(bytes []byte) (err error) {
+func (o *Mount) UnmarshalJSON(data []byte) (err error) {
 	varMount := _Mount{}
 
-	err = json.Unmarshal(bytes, &varMount)
+	err = json.Unmarshal(data, &varMount)
 
 	if err != nil {
 		return err
@@ -217,7 +217,7 @@ func (o *Mount) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "device")
 		delete(additionalProperties, "format")
 		delete(additionalProperties, "point")

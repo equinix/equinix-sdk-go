@@ -96,10 +96,10 @@ func (o FirmwareSetResponse) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *FirmwareSetResponse) UnmarshalJSON(bytes []byte) (err error) {
+func (o *FirmwareSetResponse) UnmarshalJSON(data []byte) (err error) {
 	varFirmwareSetResponse := _FirmwareSetResponse{}
 
-	err = json.Unmarshal(bytes, &varFirmwareSetResponse)
+	err = json.Unmarshal(data, &varFirmwareSetResponse)
 
 	if err != nil {
 		return err
@@ -109,7 +109,7 @@ func (o *FirmwareSetResponse) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "record")
 		o.AdditionalProperties = additionalProperties
 	}

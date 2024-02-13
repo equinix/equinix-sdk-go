@@ -205,10 +205,10 @@ func (o SSHKeyCreateInput) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *SSHKeyCreateInput) UnmarshalJSON(bytes []byte) (err error) {
+func (o *SSHKeyCreateInput) UnmarshalJSON(data []byte) (err error) {
 	varSSHKeyCreateInput := _SSHKeyCreateInput{}
 
-	err = json.Unmarshal(bytes, &varSSHKeyCreateInput)
+	err = json.Unmarshal(data, &varSSHKeyCreateInput)
 
 	if err != nil {
 		return err
@@ -218,7 +218,7 @@ func (o *SSHKeyCreateInput) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "instances_ids")
 		delete(additionalProperties, "key")
 		delete(additionalProperties, "label")

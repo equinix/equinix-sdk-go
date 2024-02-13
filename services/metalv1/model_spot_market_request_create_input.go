@@ -318,10 +318,10 @@ func (o SpotMarketRequestCreateInput) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *SpotMarketRequestCreateInput) UnmarshalJSON(bytes []byte) (err error) {
+func (o *SpotMarketRequestCreateInput) UnmarshalJSON(data []byte) (err error) {
 	varSpotMarketRequestCreateInput := _SpotMarketRequestCreateInput{}
 
-	err = json.Unmarshal(bytes, &varSpotMarketRequestCreateInput)
+	err = json.Unmarshal(data, &varSpotMarketRequestCreateInput)
 
 	if err != nil {
 		return err
@@ -331,7 +331,7 @@ func (o *SpotMarketRequestCreateInput) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "devices_max")
 		delete(additionalProperties, "devices_min")
 		delete(additionalProperties, "end_at")

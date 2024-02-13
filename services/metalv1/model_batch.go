@@ -349,10 +349,10 @@ func (o Batch) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *Batch) UnmarshalJSON(bytes []byte) (err error) {
+func (o *Batch) UnmarshalJSON(data []byte) (err error) {
 	varBatch := _Batch{}
 
-	err = json.Unmarshal(bytes, &varBatch)
+	err = json.Unmarshal(data, &varBatch)
 
 	if err != nil {
 		return err
@@ -362,7 +362,7 @@ func (o *Batch) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "created_at")
 		delete(additionalProperties, "devices")
 		delete(additionalProperties, "error_messages")

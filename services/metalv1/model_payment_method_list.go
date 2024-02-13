@@ -96,10 +96,10 @@ func (o PaymentMethodList) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *PaymentMethodList) UnmarshalJSON(bytes []byte) (err error) {
+func (o *PaymentMethodList) UnmarshalJSON(data []byte) (err error) {
 	varPaymentMethodList := _PaymentMethodList{}
 
-	err = json.Unmarshal(bytes, &varPaymentMethodList)
+	err = json.Unmarshal(data, &varPaymentMethodList)
 
 	if err != nil {
 		return err
@@ -109,7 +109,7 @@ func (o *PaymentMethodList) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "payment_methods")
 		o.AdditionalProperties = additionalProperties
 	}

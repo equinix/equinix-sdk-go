@@ -280,10 +280,10 @@ func (o FabricServiceToken) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *FabricServiceToken) UnmarshalJSON(bytes []byte) (err error) {
+func (o *FabricServiceToken) UnmarshalJSON(data []byte) (err error) {
 	varFabricServiceToken := _FabricServiceToken{}
 
-	err = json.Unmarshal(bytes, &varFabricServiceToken)
+	err = json.Unmarshal(data, &varFabricServiceToken)
 
 	if err != nil {
 		return err
@@ -293,7 +293,7 @@ func (o *FabricServiceToken) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "expires_at")
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "max_allowed_speed")

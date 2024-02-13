@@ -132,10 +132,10 @@ func (o HardwareReservationList) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *HardwareReservationList) UnmarshalJSON(bytes []byte) (err error) {
+func (o *HardwareReservationList) UnmarshalJSON(data []byte) (err error) {
 	varHardwareReservationList := _HardwareReservationList{}
 
-	err = json.Unmarshal(bytes, &varHardwareReservationList)
+	err = json.Unmarshal(data, &varHardwareReservationList)
 
 	if err != nil {
 		return err
@@ -145,7 +145,7 @@ func (o *HardwareReservationList) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "hardware_reservations")
 		delete(additionalProperties, "meta")
 		o.AdditionalProperties = additionalProperties

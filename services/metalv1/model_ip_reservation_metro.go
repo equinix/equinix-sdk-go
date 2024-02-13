@@ -204,10 +204,10 @@ func (o IPReservationMetro) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *IPReservationMetro) UnmarshalJSON(bytes []byte) (err error) {
+func (o *IPReservationMetro) UnmarshalJSON(data []byte) (err error) {
 	varIPReservationMetro := _IPReservationMetro{}
 
-	err = json.Unmarshal(bytes, &varIPReservationMetro)
+	err = json.Unmarshal(data, &varIPReservationMetro)
 
 	if err != nil {
 		return err
@@ -217,7 +217,7 @@ func (o *IPReservationMetro) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "code")
 		delete(additionalProperties, "country")
 		delete(additionalProperties, "id")

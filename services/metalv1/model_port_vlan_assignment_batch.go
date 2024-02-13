@@ -385,10 +385,10 @@ func (o PortVlanAssignmentBatch) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *PortVlanAssignmentBatch) UnmarshalJSON(bytes []byte) (err error) {
+func (o *PortVlanAssignmentBatch) UnmarshalJSON(data []byte) (err error) {
 	varPortVlanAssignmentBatch := _PortVlanAssignmentBatch{}
 
-	err = json.Unmarshal(bytes, &varPortVlanAssignmentBatch)
+	err = json.Unmarshal(data, &varPortVlanAssignmentBatch)
 
 	if err != nil {
 		return err
@@ -398,7 +398,7 @@ func (o *PortVlanAssignmentBatch) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "created_at")
 		delete(additionalProperties, "error_messages")
 		delete(additionalProperties, "id")

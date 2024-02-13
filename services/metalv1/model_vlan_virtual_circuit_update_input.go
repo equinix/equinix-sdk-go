@@ -242,10 +242,10 @@ func (o VlanVirtualCircuitUpdateInput) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *VlanVirtualCircuitUpdateInput) UnmarshalJSON(bytes []byte) (err error) {
+func (o *VlanVirtualCircuitUpdateInput) UnmarshalJSON(data []byte) (err error) {
 	varVlanVirtualCircuitUpdateInput := _VlanVirtualCircuitUpdateInput{}
 
-	err = json.Unmarshal(bytes, &varVlanVirtualCircuitUpdateInput)
+	err = json.Unmarshal(data, &varVlanVirtualCircuitUpdateInput)
 
 	if err != nil {
 		return err
@@ -255,7 +255,7 @@ func (o *VlanVirtualCircuitUpdateInput) UnmarshalJSON(bytes []byte) (err error) 
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "speed")

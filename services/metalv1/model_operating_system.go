@@ -460,10 +460,10 @@ func (o OperatingSystem) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *OperatingSystem) UnmarshalJSON(bytes []byte) (err error) {
+func (o *OperatingSystem) UnmarshalJSON(data []byte) (err error) {
 	varOperatingSystem := _OperatingSystem{}
 
-	err = json.Unmarshal(bytes, &varOperatingSystem)
+	err = json.Unmarshal(data, &varOperatingSystem)
 
 	if err != nil {
 		return err
@@ -473,7 +473,7 @@ func (o *OperatingSystem) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "distro")
 		delete(additionalProperties, "distro_label")
 		delete(additionalProperties, "id")

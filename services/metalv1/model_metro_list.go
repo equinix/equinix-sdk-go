@@ -96,10 +96,10 @@ func (o MetroList) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *MetroList) UnmarshalJSON(bytes []byte) (err error) {
+func (o *MetroList) UnmarshalJSON(data []byte) (err error) {
 	varMetroList := _MetroList{}
 
-	err = json.Unmarshal(bytes, &varMetroList)
+	err = json.Unmarshal(data, &varMetroList)
 
 	if err != nil {
 		return err
@@ -109,7 +109,7 @@ func (o *MetroList) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "metros")
 		o.AdditionalProperties = additionalProperties
 	}

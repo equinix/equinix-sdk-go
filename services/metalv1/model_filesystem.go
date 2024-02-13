@@ -96,10 +96,10 @@ func (o Filesystem) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *Filesystem) UnmarshalJSON(bytes []byte) (err error) {
+func (o *Filesystem) UnmarshalJSON(data []byte) (err error) {
 	varFilesystem := _Filesystem{}
 
-	err = json.Unmarshal(bytes, &varFilesystem)
+	err = json.Unmarshal(data, &varFilesystem)
 
 	if err != nil {
 		return err
@@ -109,7 +109,7 @@ func (o *Filesystem) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "mount")
 		o.AdditionalProperties = additionalProperties
 	}

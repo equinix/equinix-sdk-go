@@ -387,10 +387,10 @@ func (o OrganizationInput) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *OrganizationInput) UnmarshalJSON(bytes []byte) (err error) {
+func (o *OrganizationInput) UnmarshalJSON(data []byte) (err error) {
 	varOrganizationInput := _OrganizationInput{}
 
-	err = json.Unmarshal(bytes, &varOrganizationInput)
+	err = json.Unmarshal(data, &varOrganizationInput)
 
 	if err != nil {
 		return err
@@ -400,7 +400,7 @@ func (o *OrganizationInput) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "address")
 		delete(additionalProperties, "billing_address")
 		delete(additionalProperties, "customdata")

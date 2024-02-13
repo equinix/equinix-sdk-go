@@ -240,10 +240,10 @@ func (o InterconnectionUpdateInput) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *InterconnectionUpdateInput) UnmarshalJSON(bytes []byte) (err error) {
+func (o *InterconnectionUpdateInput) UnmarshalJSON(data []byte) (err error) {
 	varInterconnectionUpdateInput := _InterconnectionUpdateInput{}
 
-	err = json.Unmarshal(bytes, &varInterconnectionUpdateInput)
+	err = json.Unmarshal(data, &varInterconnectionUpdateInput)
 
 	if err != nil {
 		return err
@@ -253,7 +253,7 @@ func (o *InterconnectionUpdateInput) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "contact_email")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "mode")

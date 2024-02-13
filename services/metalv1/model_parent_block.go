@@ -204,10 +204,10 @@ func (o ParentBlock) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ParentBlock) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ParentBlock) UnmarshalJSON(data []byte) (err error) {
 	varParentBlock := _ParentBlock{}
 
-	err = json.Unmarshal(bytes, &varParentBlock)
+	err = json.Unmarshal(data, &varParentBlock)
 
 	if err != nil {
 		return err
@@ -217,7 +217,7 @@ func (o *ParentBlock) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "cidr")
 		delete(additionalProperties, "href")
 		delete(additionalProperties, "netmask")

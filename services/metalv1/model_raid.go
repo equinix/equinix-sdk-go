@@ -168,10 +168,10 @@ func (o Raid) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *Raid) UnmarshalJSON(bytes []byte) (err error) {
+func (o *Raid) UnmarshalJSON(data []byte) (err error) {
 	varRaid := _Raid{}
 
-	err = json.Unmarshal(bytes, &varRaid)
+	err = json.Unmarshal(data, &varRaid)
 
 	if err != nil {
 		return err
@@ -181,7 +181,7 @@ func (o *Raid) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "devices")
 		delete(additionalProperties, "level")
 		delete(additionalProperties, "name")

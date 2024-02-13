@@ -96,10 +96,10 @@ func (o PortConvertLayer3Input) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *PortConvertLayer3Input) UnmarshalJSON(bytes []byte) (err error) {
+func (o *PortConvertLayer3Input) UnmarshalJSON(data []byte) (err error) {
 	varPortConvertLayer3Input := _PortConvertLayer3Input{}
 
-	err = json.Unmarshal(bytes, &varPortConvertLayer3Input)
+	err = json.Unmarshal(data, &varPortConvertLayer3Input)
 
 	if err != nil {
 		return err
@@ -109,7 +109,7 @@ func (o *PortConvertLayer3Input) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "request_ips")
 		o.AdditionalProperties = additionalProperties
 	}

@@ -96,10 +96,10 @@ func (o PlanList) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *PlanList) UnmarshalJSON(bytes []byte) (err error) {
+func (o *PlanList) UnmarshalJSON(data []byte) (err error) {
 	varPlanList := _PlanList{}
 
-	err = json.Unmarshal(bytes, &varPlanList)
+	err = json.Unmarshal(data, &varPlanList)
 
 	if err != nil {
 		return err
@@ -109,7 +109,7 @@ func (o *PlanList) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "plans")
 		o.AdditionalProperties = additionalProperties
 	}

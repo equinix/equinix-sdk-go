@@ -240,10 +240,10 @@ func (o Email) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *Email) UnmarshalJSON(bytes []byte) (err error) {
+func (o *Email) UnmarshalJSON(data []byte) (err error) {
 	varEmail := _Email{}
 
-	err = json.Unmarshal(bytes, &varEmail)
+	err = json.Unmarshal(data, &varEmail)
 
 	if err != nil {
 		return err
@@ -253,7 +253,7 @@ func (o *Email) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "address")
 		delete(additionalProperties, "default")
 		delete(additionalProperties, "href")

@@ -97,10 +97,10 @@ func (o OtpSeed) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *OtpSeed) UnmarshalJSON(bytes []byte) (err error) {
+func (o *OtpSeed) UnmarshalJSON(data []byte) (err error) {
 	varOtpSeed := _OtpSeed{}
 
-	err = json.Unmarshal(bytes, &varOtpSeed)
+	err = json.Unmarshal(data, &varOtpSeed)
 
 	if err != nil {
 		return err
@@ -110,7 +110,7 @@ func (o *OtpSeed) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "otp_uri")
 		o.AdditionalProperties = additionalProperties
 	}

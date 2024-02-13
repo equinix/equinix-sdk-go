@@ -456,10 +456,10 @@ func (o SelfServiceReservationItemResponse) ToMap() (map[string]interface{}, err
 	return toSerialize, nil
 }
 
-func (o *SelfServiceReservationItemResponse) UnmarshalJSON(bytes []byte) (err error) {
+func (o *SelfServiceReservationItemResponse) UnmarshalJSON(data []byte) (err error) {
 	varSelfServiceReservationItemResponse := _SelfServiceReservationItemResponse{}
 
-	err = json.Unmarshal(bytes, &varSelfServiceReservationItemResponse)
+	err = json.Unmarshal(data, &varSelfServiceReservationItemResponse)
 
 	if err != nil {
 		return err
@@ -469,7 +469,7 @@ func (o *SelfServiceReservationItemResponse) UnmarshalJSON(bytes []byte) (err er
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "amount")
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "metro_code")

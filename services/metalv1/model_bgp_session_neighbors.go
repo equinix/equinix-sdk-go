@@ -97,10 +97,10 @@ func (o BgpSessionNeighbors) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *BgpSessionNeighbors) UnmarshalJSON(bytes []byte) (err error) {
+func (o *BgpSessionNeighbors) UnmarshalJSON(data []byte) (err error) {
 	varBgpSessionNeighbors := _BgpSessionNeighbors{}
 
-	err = json.Unmarshal(bytes, &varBgpSessionNeighbors)
+	err = json.Unmarshal(data, &varBgpSessionNeighbors)
 
 	if err != nil {
 		return err
@@ -110,7 +110,7 @@ func (o *BgpSessionNeighbors) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "bgp_neighbors")
 		o.AdditionalProperties = additionalProperties
 	}

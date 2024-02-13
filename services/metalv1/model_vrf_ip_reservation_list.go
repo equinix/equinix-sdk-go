@@ -96,10 +96,10 @@ func (o VrfIpReservationList) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *VrfIpReservationList) UnmarshalJSON(bytes []byte) (err error) {
+func (o *VrfIpReservationList) UnmarshalJSON(data []byte) (err error) {
 	varVrfIpReservationList := _VrfIpReservationList{}
 
-	err = json.Unmarshal(bytes, &varVrfIpReservationList)
+	err = json.Unmarshal(data, &varVrfIpReservationList)
 
 	if err != nil {
 		return err
@@ -109,7 +109,7 @@ func (o *VrfIpReservationList) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "ip_addresses")
 		o.AdditionalProperties = additionalProperties
 	}

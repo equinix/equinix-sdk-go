@@ -96,10 +96,10 @@ func (o MetadataNetworkNetwork) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *MetadataNetworkNetwork) UnmarshalJSON(bytes []byte) (err error) {
+func (o *MetadataNetworkNetwork) UnmarshalJSON(data []byte) (err error) {
 	varMetadataNetworkNetwork := _MetadataNetworkNetwork{}
 
-	err = json.Unmarshal(bytes, &varMetadataNetworkNetwork)
+	err = json.Unmarshal(data, &varMetadataNetworkNetwork)
 
 	if err != nil {
 		return err
@@ -109,7 +109,7 @@ func (o *MetadataNetworkNetwork) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "bonding")
 		o.AdditionalProperties = additionalProperties
 	}

@@ -204,10 +204,10 @@ func (o IPAssignmentMetro) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *IPAssignmentMetro) UnmarshalJSON(bytes []byte) (err error) {
+func (o *IPAssignmentMetro) UnmarshalJSON(data []byte) (err error) {
 	varIPAssignmentMetro := _IPAssignmentMetro{}
 
-	err = json.Unmarshal(bytes, &varIPAssignmentMetro)
+	err = json.Unmarshal(data, &varIPAssignmentMetro)
 
 	if err != nil {
 		return err
@@ -217,7 +217,7 @@ func (o *IPAssignmentMetro) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "code")
 		delete(additionalProperties, "country")
 		delete(additionalProperties, "id")

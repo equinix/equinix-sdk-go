@@ -96,10 +96,10 @@ func (o TransferRequestInput) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *TransferRequestInput) UnmarshalJSON(bytes []byte) (err error) {
+func (o *TransferRequestInput) UnmarshalJSON(data []byte) (err error) {
 	varTransferRequestInput := _TransferRequestInput{}
 
-	err = json.Unmarshal(bytes, &varTransferRequestInput)
+	err = json.Unmarshal(data, &varTransferRequestInput)
 
 	if err != nil {
 		return err
@@ -109,7 +109,7 @@ func (o *TransferRequestInput) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "target_organization_id")
 		o.AdditionalProperties = additionalProperties
 	}

@@ -96,10 +96,10 @@ func (o InstancesBatchCreateInput) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *InstancesBatchCreateInput) UnmarshalJSON(bytes []byte) (err error) {
+func (o *InstancesBatchCreateInput) UnmarshalJSON(data []byte) (err error) {
 	varInstancesBatchCreateInput := _InstancesBatchCreateInput{}
 
-	err = json.Unmarshal(bytes, &varInstancesBatchCreateInput)
+	err = json.Unmarshal(data, &varInstancesBatchCreateInput)
 
 	if err != nil {
 		return err
@@ -109,7 +109,7 @@ func (o *InstancesBatchCreateInput) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "batches")
 		o.AdditionalProperties = additionalProperties
 	}

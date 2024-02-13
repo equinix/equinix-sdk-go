@@ -168,10 +168,10 @@ func (o PaymentMethodBillingAddress) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *PaymentMethodBillingAddress) UnmarshalJSON(bytes []byte) (err error) {
+func (o *PaymentMethodBillingAddress) UnmarshalJSON(data []byte) (err error) {
 	varPaymentMethodBillingAddress := _PaymentMethodBillingAddress{}
 
-	err = json.Unmarshal(bytes, &varPaymentMethodBillingAddress)
+	err = json.Unmarshal(data, &varPaymentMethodBillingAddress)
 
 	if err != nil {
 		return err
@@ -181,7 +181,7 @@ func (o *PaymentMethodBillingAddress) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "country_code_alpha2")
 		delete(additionalProperties, "postal_code")
 		delete(additionalProperties, "street_address")

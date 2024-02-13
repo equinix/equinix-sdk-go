@@ -96,10 +96,10 @@ func (o VirtualCircuitList) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *VirtualCircuitList) UnmarshalJSON(bytes []byte) (err error) {
+func (o *VirtualCircuitList) UnmarshalJSON(data []byte) (err error) {
 	varVirtualCircuitList := _VirtualCircuitList{}
 
-	err = json.Unmarshal(bytes, &varVirtualCircuitList)
+	err = json.Unmarshal(data, &varVirtualCircuitList)
 
 	if err != nil {
 		return err
@@ -109,7 +109,7 @@ func (o *VirtualCircuitList) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "virtual_circuits")
 		o.AdditionalProperties = additionalProperties
 	}

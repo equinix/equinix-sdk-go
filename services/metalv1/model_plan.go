@@ -568,10 +568,10 @@ func (o Plan) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *Plan) UnmarshalJSON(bytes []byte) (err error) {
+func (o *Plan) UnmarshalJSON(data []byte) (err error) {
 	varPlan := _Plan{}
 
-	err = json.Unmarshal(bytes, &varPlan)
+	err = json.Unmarshal(data, &varPlan)
 
 	if err != nil {
 		return err
@@ -581,7 +581,7 @@ func (o *Plan) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "available_in")
 		delete(additionalProperties, "available_in_metros")
 		delete(additionalProperties, "categories")

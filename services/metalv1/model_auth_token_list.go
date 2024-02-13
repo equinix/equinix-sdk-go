@@ -96,10 +96,10 @@ func (o AuthTokenList) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *AuthTokenList) UnmarshalJSON(bytes []byte) (err error) {
+func (o *AuthTokenList) UnmarshalJSON(data []byte) (err error) {
 	varAuthTokenList := _AuthTokenList{}
 
-	err = json.Unmarshal(bytes, &varAuthTokenList)
+	err = json.Unmarshal(data, &varAuthTokenList)
 
 	if err != nil {
 		return err
@@ -109,7 +109,7 @@ func (o *AuthTokenList) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "api_keys")
 		o.AdditionalProperties = additionalProperties
 	}

@@ -168,10 +168,10 @@ func (o Storage) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *Storage) UnmarshalJSON(bytes []byte) (err error) {
+func (o *Storage) UnmarshalJSON(data []byte) (err error) {
 	varStorage := _Storage{}
 
-	err = json.Unmarshal(bytes, &varStorage)
+	err = json.Unmarshal(data, &varStorage)
 
 	if err != nil {
 		return err
@@ -181,7 +181,7 @@ func (o *Storage) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "disks")
 		delete(additionalProperties, "raid")
 		delete(additionalProperties, "filesystems")

@@ -204,10 +204,10 @@ func (o Metro) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *Metro) UnmarshalJSON(bytes []byte) (err error) {
+func (o *Metro) UnmarshalJSON(data []byte) (err error) {
 	varMetro := _Metro{}
 
-	err = json.Unmarshal(bytes, &varMetro)
+	err = json.Unmarshal(data, &varMetro)
 
 	if err != nil {
 		return err
@@ -217,7 +217,7 @@ func (o *Metro) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "code")
 		delete(additionalProperties, "country")
 		delete(additionalProperties, "id")

@@ -240,10 +240,10 @@ func (o GlobalBgpRange) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *GlobalBgpRange) UnmarshalJSON(bytes []byte) (err error) {
+func (o *GlobalBgpRange) UnmarshalJSON(data []byte) (err error) {
 	varGlobalBgpRange := _GlobalBgpRange{}
 
-	err = json.Unmarshal(bytes, &varGlobalBgpRange)
+	err = json.Unmarshal(data, &varGlobalBgpRange)
 
 	if err != nil {
 		return err
@@ -253,7 +253,7 @@ func (o *GlobalBgpRange) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "address_family")
 		delete(additionalProperties, "href")
 		delete(additionalProperties, "id")

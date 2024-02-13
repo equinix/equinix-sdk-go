@@ -385,10 +385,10 @@ func (o MetalGateway) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *MetalGateway) UnmarshalJSON(bytes []byte) (err error) {
+func (o *MetalGateway) UnmarshalJSON(data []byte) (err error) {
 	varMetalGateway := _MetalGateway{}
 
-	err = json.Unmarshal(bytes, &varMetalGateway)
+	err = json.Unmarshal(data, &varMetalGateway)
 
 	if err != nil {
 		return err
@@ -398,7 +398,7 @@ func (o *MetalGateway) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "created_at")
 		delete(additionalProperties, "created_by")
 		delete(additionalProperties, "href")

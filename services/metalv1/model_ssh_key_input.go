@@ -168,10 +168,10 @@ func (o SSHKeyInput) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *SSHKeyInput) UnmarshalJSON(bytes []byte) (err error) {
+func (o *SSHKeyInput) UnmarshalJSON(data []byte) (err error) {
 	varSSHKeyInput := _SSHKeyInput{}
 
-	err = json.Unmarshal(bytes, &varSSHKeyInput)
+	err = json.Unmarshal(data, &varSSHKeyInput)
 
 	if err != nil {
 		return err
@@ -181,7 +181,7 @@ func (o *SSHKeyInput) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "key")
 		delete(additionalProperties, "label")
 		delete(additionalProperties, "tags")

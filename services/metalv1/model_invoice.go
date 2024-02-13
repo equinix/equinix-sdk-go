@@ -564,10 +564,10 @@ func (o Invoice) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *Invoice) UnmarshalJSON(bytes []byte) (err error) {
+func (o *Invoice) UnmarshalJSON(data []byte) (err error) {
 	varInvoice := _Invoice{}
 
-	err = json.Unmarshal(bytes, &varInvoice)
+	err = json.Unmarshal(data, &varInvoice)
 
 	if err != nil {
 		return err
@@ -577,7 +577,7 @@ func (o *Invoice) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "amount")
 		delete(additionalProperties, "balance")
 		delete(additionalProperties, "created_on")

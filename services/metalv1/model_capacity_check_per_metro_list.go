@@ -96,10 +96,10 @@ func (o CapacityCheckPerMetroList) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *CapacityCheckPerMetroList) UnmarshalJSON(bytes []byte) (err error) {
+func (o *CapacityCheckPerMetroList) UnmarshalJSON(data []byte) (err error) {
 	varCapacityCheckPerMetroList := _CapacityCheckPerMetroList{}
 
-	err = json.Unmarshal(bytes, &varCapacityCheckPerMetroList)
+	err = json.Unmarshal(data, &varCapacityCheckPerMetroList)
 
 	if err != nil {
 		return err
@@ -109,7 +109,7 @@ func (o *CapacityCheckPerMetroList) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "servers")
 		o.AdditionalProperties = additionalProperties
 	}

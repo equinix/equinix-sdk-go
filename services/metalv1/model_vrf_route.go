@@ -496,10 +496,10 @@ func (o VrfRoute) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *VrfRoute) UnmarshalJSON(bytes []byte) (err error) {
+func (o *VrfRoute) UnmarshalJSON(data []byte) (err error) {
 	varVrfRoute := _VrfRoute{}
 
-	err = json.Unmarshal(bytes, &varVrfRoute)
+	err = json.Unmarshal(data, &varVrfRoute)
 
 	if err != nil {
 		return err
@@ -509,7 +509,7 @@ func (o *VrfRoute) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "status")
 		delete(additionalProperties, "prefix")
