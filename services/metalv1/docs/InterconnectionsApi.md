@@ -10,7 +10,9 @@ Method | HTTP request | Description
 [**DeleteInterconnection**](InterconnectionsApi.md#DeleteInterconnection) | **Delete** /connections/{connection_id} | Delete interconnection
 [**DeleteVirtualCircuit**](InterconnectionsApi.md#DeleteVirtualCircuit) | **Delete** /virtual-circuits/{id} | Delete a virtual circuit
 [**GetInterconnection**](InterconnectionsApi.md#GetInterconnection) | **Get** /connections/{connection_id} | Get interconnection
+[**GetInterconnectionMetros**](InterconnectionsApi.md#GetInterconnectionMetros) | **Get** /connections/metros | Get connectivity to network provider by metro
 [**GetInterconnectionPort**](InterconnectionsApi.md#GetInterconnectionPort) | **Get** /connections/{connection_id}/ports/{id} | Get a interconnection port
+[**GetInterconnectionPricing**](InterconnectionsApi.md#GetInterconnectionPricing) | **Get** /connections/prices | Get Interconnection Pricing
 [**GetVirtualCircuit**](InterconnectionsApi.md#GetVirtualCircuit) | **Get** /virtual-circuits/{id} | Get a virtual circuit
 [**ListInterconnectionPortVirtualCircuits**](InterconnectionsApi.md#ListInterconnectionPortVirtualCircuits) | **Get** /connections/{connection_id}/ports/{port_id}/virtual-circuits | List a interconnection port&#39;s virtual circuits
 [**ListInterconnectionPorts**](InterconnectionsApi.md#ListInterconnectionPorts) | **Get** /connections/{connection_id}/ports | List a interconnection&#39;s ports
@@ -471,6 +473,67 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## GetInterconnectionMetros
+
+> InterconnectionMetroList GetInterconnectionMetros(ctx).Execute()
+
+Get connectivity to network provider by metro
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/equinix/equinix-sdk-go/services/metalv1"
+)
+
+func main() {
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.InterconnectionsApi.GetInterconnectionMetros(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `InterconnectionsApi.GetInterconnectionMetros``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetInterconnectionMetros`: InterconnectionMetroList
+    fmt.Fprintf(os.Stdout, "Response from `InterconnectionsApi.GetInterconnectionMetros`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetInterconnectionMetrosRequest struct via the builder pattern
+
+
+### Return type
+
+[**InterconnectionMetroList**](InterconnectionMetroList.md)
+
+### Authorization
+
+[x_auth_token](../README.md#x_auth_token)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GetInterconnectionPort
 
 > InterconnectionPort GetInterconnectionPort(ctx, connectionId, id).Include(include).Exclude(exclude).Execute()
@@ -533,6 +596,67 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**InterconnectionPort**](InterconnectionPort.md)
+
+### Authorization
+
+[x_auth_token](../README.md#x_auth_token)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetInterconnectionPricing
+
+> InterconnectionPricingList GetInterconnectionPricing(ctx).Execute()
+
+Get Interconnection Pricing
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/equinix/equinix-sdk-go/services/metalv1"
+)
+
+func main() {
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.InterconnectionsApi.GetInterconnectionPricing(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `InterconnectionsApi.GetInterconnectionPricing``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetInterconnectionPricing`: InterconnectionPricingList
+    fmt.Fprintf(os.Stdout, "Response from `InterconnectionsApi.GetInterconnectionPricing`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetInterconnectionPricingRequest struct via the builder pattern
+
+
+### Return type
+
+[**InterconnectionPricingList**](InterconnectionPricingList.md)
 
 ### Authorization
 
