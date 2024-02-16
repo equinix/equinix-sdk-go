@@ -1,0 +1,12 @@
+properties:
+  type:
+    type: string
+    enum:
+      - "CSP_AWS"
+  account_id:
+    type: string
+    description: "AWS Account ID"
+    example: "129312"
+required:
+- type
+- account_id

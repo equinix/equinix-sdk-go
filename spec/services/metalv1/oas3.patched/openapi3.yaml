@@ -391,6 +391,8 @@ components:
       $ref: './components/schemas/SelfServiceReservationResponse.yaml'
     ServerInfo:
       $ref: './components/schemas/ServerInfo.yaml'
+    SharedPortVCVlanCreateInput:
+      $ref: './components/schemas/SharedPortVCVlanCreateInput.yaml'
     SpotMarketPricesList:
       $ref: './components/schemas/SpotMarketPricesList.yaml'
     SpotMarketPricesPerMetroList:
@@ -457,6 +459,8 @@ components:
       $ref: './components/schemas/VirtualNetworkCreateInput.yaml'
     VirtualNetworkList:
       $ref: './components/schemas/VirtualNetworkList.yaml'
+    VlanCSPConnectionCreateInput:
+      $ref: './components/schemas/VlanCSPConnectionCreateInput.yaml'
     VlanFabricVcCreateInput:
       $ref: './components/schemas/VlanFabricVcCreateInput.yaml'
     VlanVirtualCircuit:
@@ -526,6 +530,10 @@ paths:
     $ref: ./paths/capacity.yaml
   /capacity/metros:
     $ref: ./paths/capacity/metros.yaml
+  /connections/metros:
+    $ref: ./paths/connections/metros.yaml
+  /connections/prices:
+    $ref: ./paths/connections/prices.yaml
   /connections/{connection_id}:
     $ref: ./paths/connections/connection_id.yaml
   /connections/{connection_id}/events:
