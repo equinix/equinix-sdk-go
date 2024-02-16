@@ -18,15 +18,31 @@ import (
 
 // CreateOrganizationInterconnectionRequest - struct for CreateOrganizationInterconnectionRequest
 type CreateOrganizationInterconnectionRequest struct {
-	DedicatedPortCreateInput *DedicatedPortCreateInput
-	VlanFabricVcCreateInput  *VlanFabricVcCreateInput
-	VrfFabricVcCreateInput   *VrfFabricVcCreateInput
+	DedicatedPortCreateInput     *DedicatedPortCreateInput
+	SharedPortVCVlanCreateInput  *SharedPortVCVlanCreateInput
+	VlanCSPConnectionCreateInput *VlanCSPConnectionCreateInput
+	VlanFabricVcCreateInput      *VlanFabricVcCreateInput
+	VrfFabricVcCreateInput       *VrfFabricVcCreateInput
 }
 
 // DedicatedPortCreateInputAsCreateOrganizationInterconnectionRequest is a convenience function that returns DedicatedPortCreateInput wrapped in CreateOrganizationInterconnectionRequest
 func DedicatedPortCreateInputAsCreateOrganizationInterconnectionRequest(v *DedicatedPortCreateInput) CreateOrganizationInterconnectionRequest {
 	return CreateOrganizationInterconnectionRequest{
 		DedicatedPortCreateInput: v,
+	}
+}
+
+// SharedPortVCVlanCreateInputAsCreateOrganizationInterconnectionRequest is a convenience function that returns SharedPortVCVlanCreateInput wrapped in CreateOrganizationInterconnectionRequest
+func SharedPortVCVlanCreateInputAsCreateOrganizationInterconnectionRequest(v *SharedPortVCVlanCreateInput) CreateOrganizationInterconnectionRequest {
+	return CreateOrganizationInterconnectionRequest{
+		SharedPortVCVlanCreateInput: v,
+	}
+}
+
+// VlanCSPConnectionCreateInputAsCreateOrganizationInterconnectionRequest is a convenience function that returns VlanCSPConnectionCreateInput wrapped in CreateOrganizationInterconnectionRequest
+func VlanCSPConnectionCreateInputAsCreateOrganizationInterconnectionRequest(v *VlanCSPConnectionCreateInput) CreateOrganizationInterconnectionRequest {
+	return CreateOrganizationInterconnectionRequest{
+		VlanCSPConnectionCreateInput: v,
 	}
 }
 
@@ -61,6 +77,32 @@ func (dst *CreateOrganizationInterconnectionRequest) UnmarshalJSON(data []byte) 
 		dst.DedicatedPortCreateInput = nil
 	}
 
+	// try to unmarshal data into SharedPortVCVlanCreateInput
+	err = newStrictDecoder(data).Decode(&dst.SharedPortVCVlanCreateInput)
+	if err == nil {
+		jsonSharedPortVCVlanCreateInput, _ := json.Marshal(dst.SharedPortVCVlanCreateInput)
+		if string(jsonSharedPortVCVlanCreateInput) == "{}" { // empty struct
+			dst.SharedPortVCVlanCreateInput = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.SharedPortVCVlanCreateInput = nil
+	}
+
+	// try to unmarshal data into VlanCSPConnectionCreateInput
+	err = newStrictDecoder(data).Decode(&dst.VlanCSPConnectionCreateInput)
+	if err == nil {
+		jsonVlanCSPConnectionCreateInput, _ := json.Marshal(dst.VlanCSPConnectionCreateInput)
+		if string(jsonVlanCSPConnectionCreateInput) == "{}" { // empty struct
+			dst.VlanCSPConnectionCreateInput = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.VlanCSPConnectionCreateInput = nil
+	}
+
 	// try to unmarshal data into VlanFabricVcCreateInput
 	err = newStrictDecoder(data).Decode(&dst.VlanFabricVcCreateInput)
 	if err == nil {
@@ -90,6 +132,8 @@ func (dst *CreateOrganizationInterconnectionRequest) UnmarshalJSON(data []byte) 
 	if match > 1 { // more than 1 match
 		// reset to nil
 		dst.DedicatedPortCreateInput = nil
+		dst.SharedPortVCVlanCreateInput = nil
+		dst.VlanCSPConnectionCreateInput = nil
 		dst.VlanFabricVcCreateInput = nil
 		dst.VrfFabricVcCreateInput = nil
 
@@ -105,6 +149,14 @@ func (dst *CreateOrganizationInterconnectionRequest) UnmarshalJSON(data []byte) 
 func (src CreateOrganizationInterconnectionRequest) MarshalJSON() ([]byte, error) {
 	if src.DedicatedPortCreateInput != nil {
 		return json.Marshal(&src.DedicatedPortCreateInput)
+	}
+
+	if src.SharedPortVCVlanCreateInput != nil {
+		return json.Marshal(&src.SharedPortVCVlanCreateInput)
+	}
+
+	if src.VlanCSPConnectionCreateInput != nil {
+		return json.Marshal(&src.VlanCSPConnectionCreateInput)
 	}
 
 	if src.VlanFabricVcCreateInput != nil {
@@ -125,6 +177,14 @@ func (obj *CreateOrganizationInterconnectionRequest) GetActualInstance() interfa
 	}
 	if obj.DedicatedPortCreateInput != nil {
 		return obj.DedicatedPortCreateInput
+	}
+
+	if obj.SharedPortVCVlanCreateInput != nil {
+		return obj.SharedPortVCVlanCreateInput
+	}
+
+	if obj.VlanCSPConnectionCreateInput != nil {
+		return obj.VlanCSPConnectionCreateInput
 	}
 
 	if obj.VlanFabricVcCreateInput != nil {
