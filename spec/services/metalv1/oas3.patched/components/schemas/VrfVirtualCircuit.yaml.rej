@@ -1,0 +1,10 @@
+--- spec/services/metalv1/oas3.patched/components/schemas/VrfVirtualCircuit.yaml
++++ spec/services/metalv1/oas3.patched/components/schemas/VrfVirtualCircuit.yaml
+@@ -38,6 +38,7 @@ properties:
+   speed:
+     description: integer representing bps speed
+     type: integer
++    format: int64
+   status:
+     type: string
+     description: >-

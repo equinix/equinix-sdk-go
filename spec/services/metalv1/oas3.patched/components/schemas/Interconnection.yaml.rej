@@ -1,0 +1,10 @@
+--- spec/services/metalv1/oas3.patched/components/schemas/Interconnection.yaml
++++ spec/services/metalv1/oas3.patched/components/schemas/Interconnection.yaml
+@@ -50,6 +50,7 @@ properties:
+   speed:
+     description: For interconnections on Dedicated Ports and shared connections, this represents the interconnection's speed in bps. For Fabric VCs, this field refers to the maximum speed of the interconnection in bps. This value will default to 10Gbps for Fabric VCs (Fabric Billed).
+     type: integer
++    format: int64
+     example: 10000000000
+   status:
+     type: string

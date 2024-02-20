@@ -1,0 +1,10 @@
+--- spec/services/metalv1/oas3.patched/components/schemas/FabricServiceToken.yaml
++++ spec/services/metalv1/oas3.patched/components/schemas/FabricServiceToken.yaml
+@@ -20,6 +20,7 @@ properties:
+       of the following options, '50mbps', '200mbps', '500mbps', '1gbps', '2gbps', '5gbps' or '10gbps'. For Fabric VCs
+       (Fabric Billed), this will default to 10Gbps.
+     type: integer
++    format: int64
+     example: 10000000000
+   role:
+     description: Either primary or secondary, depending on which interconnection the service token is associated to.

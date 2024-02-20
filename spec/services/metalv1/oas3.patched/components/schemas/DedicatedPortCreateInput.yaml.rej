@@ -1,0 +1,10 @@
+--- spec/services/metalv1/oas3.patched/components/schemas/DedicatedPortCreateInput.yaml
++++ spec/services/metalv1/oas3.patched/components/schemas/DedicatedPortCreateInput.yaml
+@@ -32,6 +32,7 @@ properties:
+     description: |-
+       A interconnection speed, in bps, mbps, or gbps. For Dedicated Ports, this can be 10Gbps or 100Gbps.
+     type: integer
++    format: int64
+     example: 10000000000
+   tags:
+     items:

@@ -5,5 +5,7 @@ content:
       - $ref: '../schemas/DedicatedPortCreateInput.yaml'
       - $ref: '../schemas/VlanFabricVcCreateInput.yaml'
       - $ref: '../schemas/VrfFabricVcCreateInput.yaml'
-description: Dedicated port or shared interconnection (also known as Fabric VC) creation request
+      - $ref: '../schemas/SharedPortVCVlanCreateInput.yaml'
+      - $ref: '../schemas/VlanCSPConnectionCreateInput.yaml'
+description: "Dedicated port or shared interconnection (also known as Fabric VC) creation request"
 required: true

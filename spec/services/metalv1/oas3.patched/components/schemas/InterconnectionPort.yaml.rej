@@ -1,0 +1,10 @@
+--- spec/services/metalv1/oas3.patched/components/schemas/InterconnectionPort.yaml
++++ spec/services/metalv1/oas3.patched/components/schemas/InterconnectionPort.yaml
+@@ -32,6 +32,7 @@ properties:
+     type: string
+   speed:
+     type: integer
++    format: int64
+   link_status:
+     type: string
+   href:
