@@ -56,7 +56,7 @@ func (r ApiCreateProjectRequest) Execute() (*Project, *http.Response, error) {
 /*
 CreateProject Create a project
 
-Creates a new project for the user default organization. If the user don't have an organization, a new one will be created.
+Creates a new project for the user's default organization. If the user does not have a default organization, the API will look for a personal organization belonging to the user with the name "{User's Full Name} Projects" to associate the project with. If that organization does not exist a new organization named "{User's Full Name} Projects" will be created and the new project will be tied to that organization.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiCreateProjectRequest

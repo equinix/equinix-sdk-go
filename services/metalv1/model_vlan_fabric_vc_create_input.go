@@ -32,7 +32,7 @@ type VlanFabricVcCreateInput struct {
 	Redundancy       string                                  `json:"redundancy"`
 	ServiceTokenType VlanFabricVcCreateInputServiceTokenType `json:"service_token_type"`
 	// A interconnection speed, in bps, mbps, or gbps. For Fabric VCs, this represents the maximum speed of the interconnection. For Fabric VCs (Metal Billed), this can only be one of the following:  ''50mbps'', ''200mbps'', ''500mbps'', ''1gbps'', ''2gbps'', ''5gbps'' or ''10gbps'', and is required for creation. For Fabric VCs (Fabric Billed), this field will always default to ''10gbps'' even if it is not provided. For example, ''500000000'', ''50m'', or' ''500mbps'' will all work as valid inputs.
-	Speed *int32                      `json:"speed,omitempty"`
+	Speed *string                     `json:"speed,omitempty"`
 	Tags  []string                    `json:"tags,omitempty"`
 	Type  VlanFabricVcCreateInputType `json:"type"`
 	// A list of one or two metro-based VLANs that will be set on the virtual circuits of primary and/or secondary (if redundant) interconnections respectively when creating Fabric VCs. VLANs can also be set after the interconnection is created, but are required to fully activate the virtual circuits.
@@ -257,9 +257,9 @@ func (o *VlanFabricVcCreateInput) SetServiceTokenType(v VlanFabricVcCreateInputS
 }
 
 // GetSpeed returns the Speed field value if set, zero value otherwise.
-func (o *VlanFabricVcCreateInput) GetSpeed() int32 {
+func (o *VlanFabricVcCreateInput) GetSpeed() string {
 	if o == nil || IsNil(o.Speed) {
-		var ret int32
+		var ret string
 		return ret
 	}
 	return *o.Speed
@@ -267,7 +267,7 @@ func (o *VlanFabricVcCreateInput) GetSpeed() int32 {
 
 // GetSpeedOk returns a tuple with the Speed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VlanFabricVcCreateInput) GetSpeedOk() (*int32, bool) {
+func (o *VlanFabricVcCreateInput) GetSpeedOk() (*string, bool) {
 	if o == nil || IsNil(o.Speed) {
 		return nil, false
 	}
@@ -283,8 +283,8 @@ func (o *VlanFabricVcCreateInput) HasSpeed() bool {
 	return false
 }
 
-// SetSpeed gets a reference to the given int32 and assigns it to the Speed field.
-func (o *VlanFabricVcCreateInput) SetSpeed(v int32) {
+// SetSpeed gets a reference to the given string and assigns it to the Speed field.
+func (o *VlanFabricVcCreateInput) SetSpeed(v string) {
 	o.Speed = &v
 }
 

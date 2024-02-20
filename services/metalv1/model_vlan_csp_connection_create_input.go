@@ -16,57 +16,54 @@ import (
 	"fmt"
 )
 
-// checks if the VrfFabricVcCreateInput type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &VrfFabricVcCreateInput{}
+// checks if the VlanCSPConnectionCreateInput type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &VlanCSPConnectionCreateInput{}
 
-// VrfFabricVcCreateInput struct for VrfFabricVcCreateInput
-type VrfFabricVcCreateInput struct {
+// VlanCSPConnectionCreateInput struct for VlanCSPConnectionCreateInput
+type VlanCSPConnectionCreateInput struct {
 	// The preferred email used for communication and notifications about the Equinix Fabric interconnection. Required when using a Project API key. Optional and defaults to the primary user email address when using a User API key.
 	ContactEmail *string `json:"contact_email,omitempty"`
 	Description  *string `json:"description,omitempty"`
+	Name         string  `json:"name"`
+	Project      *string `json:"project,omitempty"`
 	// A Metro ID or code. When creating Fabric VCs (Metal Billed), this is where interconnection will be originating from, as we pre-authorize the use of one of our shared ports as the origin of the interconnection using A-Side service tokens. We only allow local connections for Fabric VCs (Metal Billed), so the destination location must be the same as the origin. For Fabric VCs (Fabric Billed), or shared connections, this will be the destination of the interconnection. We allow remote connections for Fabric VCs (Fabric Billed), so the origin of the interconnection can be a different metro set here.
-	Metro   string  `json:"metro"`
-	Name    string  `json:"name"`
-	Project *string `json:"project,omitempty"`
-	// Either 'primary' or 'redundant'.
-	Redundancy       string                                  `json:"redundancy"`
-	ServiceTokenType VlanFabricVcCreateInputServiceTokenType `json:"service_token_type"`
-	// A interconnection speed, in bps, mbps, or gbps. For Fabric VCs, this represents the maximum speed of the interconnection. For Fabric VCs (Metal Billed), this can only be one of the following:  ''50mbps'', ''200mbps'', ''500mbps'', ''1gbps'', ''2gbps'', ''5gbps'' or ''10gbps'', and is required for creation. For Fabric VCs (Fabric Billed), this field will always default to ''10gbps'' even if it is not provided. For example, ''500000000'', ''50m'', or' ''500mbps'' will all work as valid inputs.
-	Speed *string                     `json:"speed,omitempty"`
-	Tags  []string                    `json:"tags,omitempty"`
-	Type  VlanFabricVcCreateInputType `json:"type"`
-	// This field holds a list of VRF UUIDs that will be set automatically on the virtual circuits of Fabric VCs on creation, and can hold up to two UUIDs. Two UUIDs are required when requesting redundant Fabric VCs. The first UUID will be set on the primary virtual circuit, while the second UUID will be set on the secondary. The two UUIDs can be the same if both the primary and secondary virtual circuits will be in the same VRF. This parameter is included in the specification as a developer preview and is generally unavailable. Please contact our Support team for more details.
-	Vrfs                 []string `json:"vrfs"`
+	Metro string `json:"metro"`
+	// A interconnection speed, in bps, mbps, or gbps. For Fabric VCs, this represents the maximum speed of the interconnection. For Fabric VCs (Metal Billed), this can only be one of the following: ''50mbps'', ''200mbps'', ''500mbps'', ''1gbps'', ''2gbps'', ''5gbps'' or ''10gbps'', and is required for creation. For Fabric VCs (Fabric Billed), this field will always default to ''10gbps'' even if it is not provided. For example, ''500000000'', ''50m'', or' ''500mbps'' will all work as valid inputs.
+	Speed *string                          `json:"speed,omitempty"`
+	Tags  []string                         `json:"tags,omitempty"`
+	Type  VlanCSPConnectionCreateInputType `json:"type"`
+	// A list of one or two metro-based VLANs that will be set on the virtual circuits of primary and/or secondary interconnections respectively when creating Fabric VCs. VLANs can also be set after the interconnection is created, but are required to fully activate the virtual circuits.
+	Vlans                []int32                                    `json:"vlans"`
+	FabricProvider       VlanCSPConnectionCreateInputFabricProvider `json:"fabric_provider"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _VrfFabricVcCreateInput VrfFabricVcCreateInput
+type _VlanCSPConnectionCreateInput VlanCSPConnectionCreateInput
 
-// NewVrfFabricVcCreateInput instantiates a new VrfFabricVcCreateInput object
+// NewVlanCSPConnectionCreateInput instantiates a new VlanCSPConnectionCreateInput object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVrfFabricVcCreateInput(metro string, name string, redundancy string, serviceTokenType VlanFabricVcCreateInputServiceTokenType, type_ VlanFabricVcCreateInputType, vrfs []string) *VrfFabricVcCreateInput {
-	this := VrfFabricVcCreateInput{}
-	this.Metro = metro
+func NewVlanCSPConnectionCreateInput(name string, metro string, type_ VlanCSPConnectionCreateInputType, vlans []int32, fabricProvider VlanCSPConnectionCreateInputFabricProvider) *VlanCSPConnectionCreateInput {
+	this := VlanCSPConnectionCreateInput{}
 	this.Name = name
-	this.Redundancy = redundancy
-	this.ServiceTokenType = serviceTokenType
+	this.Metro = metro
 	this.Type = type_
-	this.Vrfs = vrfs
+	this.Vlans = vlans
+	this.FabricProvider = fabricProvider
 	return &this
 }
 
-// NewVrfFabricVcCreateInputWithDefaults instantiates a new VrfFabricVcCreateInput object
+// NewVlanCSPConnectionCreateInputWithDefaults instantiates a new VlanCSPConnectionCreateInput object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewVrfFabricVcCreateInputWithDefaults() *VrfFabricVcCreateInput {
-	this := VrfFabricVcCreateInput{}
+func NewVlanCSPConnectionCreateInputWithDefaults() *VlanCSPConnectionCreateInput {
+	this := VlanCSPConnectionCreateInput{}
 	return &this
 }
 
 // GetContactEmail returns the ContactEmail field value if set, zero value otherwise.
-func (o *VrfFabricVcCreateInput) GetContactEmail() string {
+func (o *VlanCSPConnectionCreateInput) GetContactEmail() string {
 	if o == nil || IsNil(o.ContactEmail) {
 		var ret string
 		return ret
@@ -76,7 +73,7 @@ func (o *VrfFabricVcCreateInput) GetContactEmail() string {
 
 // GetContactEmailOk returns a tuple with the ContactEmail field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VrfFabricVcCreateInput) GetContactEmailOk() (*string, bool) {
+func (o *VlanCSPConnectionCreateInput) GetContactEmailOk() (*string, bool) {
 	if o == nil || IsNil(o.ContactEmail) {
 		return nil, false
 	}
@@ -84,7 +81,7 @@ func (o *VrfFabricVcCreateInput) GetContactEmailOk() (*string, bool) {
 }
 
 // HasContactEmail returns a boolean if a field has been set.
-func (o *VrfFabricVcCreateInput) HasContactEmail() bool {
+func (o *VlanCSPConnectionCreateInput) HasContactEmail() bool {
 	if o != nil && !IsNil(o.ContactEmail) {
 		return true
 	}
@@ -93,12 +90,12 @@ func (o *VrfFabricVcCreateInput) HasContactEmail() bool {
 }
 
 // SetContactEmail gets a reference to the given string and assigns it to the ContactEmail field.
-func (o *VrfFabricVcCreateInput) SetContactEmail(v string) {
+func (o *VlanCSPConnectionCreateInput) SetContactEmail(v string) {
 	o.ContactEmail = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
-func (o *VrfFabricVcCreateInput) GetDescription() string {
+func (o *VlanCSPConnectionCreateInput) GetDescription() string {
 	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
@@ -108,7 +105,7 @@ func (o *VrfFabricVcCreateInput) GetDescription() string {
 
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VrfFabricVcCreateInput) GetDescriptionOk() (*string, bool) {
+func (o *VlanCSPConnectionCreateInput) GetDescriptionOk() (*string, bool) {
 	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
@@ -116,7 +113,7 @@ func (o *VrfFabricVcCreateInput) GetDescriptionOk() (*string, bool) {
 }
 
 // HasDescription returns a boolean if a field has been set.
-func (o *VrfFabricVcCreateInput) HasDescription() bool {
+func (o *VlanCSPConnectionCreateInput) HasDescription() bool {
 	if o != nil && !IsNil(o.Description) {
 		return true
 	}
@@ -125,36 +122,12 @@ func (o *VrfFabricVcCreateInput) HasDescription() bool {
 }
 
 // SetDescription gets a reference to the given string and assigns it to the Description field.
-func (o *VrfFabricVcCreateInput) SetDescription(v string) {
+func (o *VlanCSPConnectionCreateInput) SetDescription(v string) {
 	o.Description = &v
 }
 
-// GetMetro returns the Metro field value
-func (o *VrfFabricVcCreateInput) GetMetro() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Metro
-}
-
-// GetMetroOk returns a tuple with the Metro field value
-// and a boolean to check if the value has been set.
-func (o *VrfFabricVcCreateInput) GetMetroOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Metro, true
-}
-
-// SetMetro sets field value
-func (o *VrfFabricVcCreateInput) SetMetro(v string) {
-	o.Metro = v
-}
-
 // GetName returns the Name field value
-func (o *VrfFabricVcCreateInput) GetName() string {
+func (o *VlanCSPConnectionCreateInput) GetName() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -165,7 +138,7 @@ func (o *VrfFabricVcCreateInput) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-func (o *VrfFabricVcCreateInput) GetNameOk() (*string, bool) {
+func (o *VlanCSPConnectionCreateInput) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -173,12 +146,12 @@ func (o *VrfFabricVcCreateInput) GetNameOk() (*string, bool) {
 }
 
 // SetName sets field value
-func (o *VrfFabricVcCreateInput) SetName(v string) {
+func (o *VlanCSPConnectionCreateInput) SetName(v string) {
 	o.Name = v
 }
 
 // GetProject returns the Project field value if set, zero value otherwise.
-func (o *VrfFabricVcCreateInput) GetProject() string {
+func (o *VlanCSPConnectionCreateInput) GetProject() string {
 	if o == nil || IsNil(o.Project) {
 		var ret string
 		return ret
@@ -188,7 +161,7 @@ func (o *VrfFabricVcCreateInput) GetProject() string {
 
 // GetProjectOk returns a tuple with the Project field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VrfFabricVcCreateInput) GetProjectOk() (*string, bool) {
+func (o *VlanCSPConnectionCreateInput) GetProjectOk() (*string, bool) {
 	if o == nil || IsNil(o.Project) {
 		return nil, false
 	}
@@ -196,7 +169,7 @@ func (o *VrfFabricVcCreateInput) GetProjectOk() (*string, bool) {
 }
 
 // HasProject returns a boolean if a field has been set.
-func (o *VrfFabricVcCreateInput) HasProject() bool {
+func (o *VlanCSPConnectionCreateInput) HasProject() bool {
 	if o != nil && !IsNil(o.Project) {
 		return true
 	}
@@ -205,60 +178,36 @@ func (o *VrfFabricVcCreateInput) HasProject() bool {
 }
 
 // SetProject gets a reference to the given string and assigns it to the Project field.
-func (o *VrfFabricVcCreateInput) SetProject(v string) {
+func (o *VlanCSPConnectionCreateInput) SetProject(v string) {
 	o.Project = &v
 }
 
-// GetRedundancy returns the Redundancy field value
-func (o *VrfFabricVcCreateInput) GetRedundancy() string {
+// GetMetro returns the Metro field value
+func (o *VlanCSPConnectionCreateInput) GetMetro() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.Redundancy
+	return o.Metro
 }
 
-// GetRedundancyOk returns a tuple with the Redundancy field value
+// GetMetroOk returns a tuple with the Metro field value
 // and a boolean to check if the value has been set.
-func (o *VrfFabricVcCreateInput) GetRedundancyOk() (*string, bool) {
+func (o *VlanCSPConnectionCreateInput) GetMetroOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Redundancy, true
+	return &o.Metro, true
 }
 
-// SetRedundancy sets field value
-func (o *VrfFabricVcCreateInput) SetRedundancy(v string) {
-	o.Redundancy = v
-}
-
-// GetServiceTokenType returns the ServiceTokenType field value
-func (o *VrfFabricVcCreateInput) GetServiceTokenType() VlanFabricVcCreateInputServiceTokenType {
-	if o == nil {
-		var ret VlanFabricVcCreateInputServiceTokenType
-		return ret
-	}
-
-	return o.ServiceTokenType
-}
-
-// GetServiceTokenTypeOk returns a tuple with the ServiceTokenType field value
-// and a boolean to check if the value has been set.
-func (o *VrfFabricVcCreateInput) GetServiceTokenTypeOk() (*VlanFabricVcCreateInputServiceTokenType, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.ServiceTokenType, true
-}
-
-// SetServiceTokenType sets field value
-func (o *VrfFabricVcCreateInput) SetServiceTokenType(v VlanFabricVcCreateInputServiceTokenType) {
-	o.ServiceTokenType = v
+// SetMetro sets field value
+func (o *VlanCSPConnectionCreateInput) SetMetro(v string) {
+	o.Metro = v
 }
 
 // GetSpeed returns the Speed field value if set, zero value otherwise.
-func (o *VrfFabricVcCreateInput) GetSpeed() string {
+func (o *VlanCSPConnectionCreateInput) GetSpeed() string {
 	if o == nil || IsNil(o.Speed) {
 		var ret string
 		return ret
@@ -268,7 +217,7 @@ func (o *VrfFabricVcCreateInput) GetSpeed() string {
 
 // GetSpeedOk returns a tuple with the Speed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VrfFabricVcCreateInput) GetSpeedOk() (*string, bool) {
+func (o *VlanCSPConnectionCreateInput) GetSpeedOk() (*string, bool) {
 	if o == nil || IsNil(o.Speed) {
 		return nil, false
 	}
@@ -276,7 +225,7 @@ func (o *VrfFabricVcCreateInput) GetSpeedOk() (*string, bool) {
 }
 
 // HasSpeed returns a boolean if a field has been set.
-func (o *VrfFabricVcCreateInput) HasSpeed() bool {
+func (o *VlanCSPConnectionCreateInput) HasSpeed() bool {
 	if o != nil && !IsNil(o.Speed) {
 		return true
 	}
@@ -285,12 +234,12 @@ func (o *VrfFabricVcCreateInput) HasSpeed() bool {
 }
 
 // SetSpeed gets a reference to the given string and assigns it to the Speed field.
-func (o *VrfFabricVcCreateInput) SetSpeed(v string) {
+func (o *VlanCSPConnectionCreateInput) SetSpeed(v string) {
 	o.Speed = &v
 }
 
 // GetTags returns the Tags field value if set, zero value otherwise.
-func (o *VrfFabricVcCreateInput) GetTags() []string {
+func (o *VlanCSPConnectionCreateInput) GetTags() []string {
 	if o == nil || IsNil(o.Tags) {
 		var ret []string
 		return ret
@@ -300,7 +249,7 @@ func (o *VrfFabricVcCreateInput) GetTags() []string {
 
 // GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VrfFabricVcCreateInput) GetTagsOk() ([]string, bool) {
+func (o *VlanCSPConnectionCreateInput) GetTagsOk() ([]string, bool) {
 	if o == nil || IsNil(o.Tags) {
 		return nil, false
 	}
@@ -308,7 +257,7 @@ func (o *VrfFabricVcCreateInput) GetTagsOk() ([]string, bool) {
 }
 
 // HasTags returns a boolean if a field has been set.
-func (o *VrfFabricVcCreateInput) HasTags() bool {
+func (o *VlanCSPConnectionCreateInput) HasTags() bool {
 	if o != nil && !IsNil(o.Tags) {
 		return true
 	}
@@ -317,14 +266,14 @@ func (o *VrfFabricVcCreateInput) HasTags() bool {
 }
 
 // SetTags gets a reference to the given []string and assigns it to the Tags field.
-func (o *VrfFabricVcCreateInput) SetTags(v []string) {
+func (o *VlanCSPConnectionCreateInput) SetTags(v []string) {
 	o.Tags = v
 }
 
 // GetType returns the Type field value
-func (o *VrfFabricVcCreateInput) GetType() VlanFabricVcCreateInputType {
+func (o *VlanCSPConnectionCreateInput) GetType() VlanCSPConnectionCreateInputType {
 	if o == nil {
-		var ret VlanFabricVcCreateInputType
+		var ret VlanCSPConnectionCreateInputType
 		return ret
 	}
 
@@ -333,7 +282,7 @@ func (o *VrfFabricVcCreateInput) GetType() VlanFabricVcCreateInputType {
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *VrfFabricVcCreateInput) GetTypeOk() (*VlanFabricVcCreateInputType, bool) {
+func (o *VlanCSPConnectionCreateInput) GetTypeOk() (*VlanCSPConnectionCreateInputType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -341,35 +290,59 @@ func (o *VrfFabricVcCreateInput) GetTypeOk() (*VlanFabricVcCreateInputType, bool
 }
 
 // SetType sets field value
-func (o *VrfFabricVcCreateInput) SetType(v VlanFabricVcCreateInputType) {
+func (o *VlanCSPConnectionCreateInput) SetType(v VlanCSPConnectionCreateInputType) {
 	o.Type = v
 }
 
-// GetVrfs returns the Vrfs field value
-func (o *VrfFabricVcCreateInput) GetVrfs() []string {
+// GetVlans returns the Vlans field value
+func (o *VlanCSPConnectionCreateInput) GetVlans() []int32 {
 	if o == nil {
-		var ret []string
+		var ret []int32
 		return ret
 	}
 
-	return o.Vrfs
+	return o.Vlans
 }
 
-// GetVrfsOk returns a tuple with the Vrfs field value
+// GetVlansOk returns a tuple with the Vlans field value
 // and a boolean to check if the value has been set.
-func (o *VrfFabricVcCreateInput) GetVrfsOk() ([]string, bool) {
+func (o *VlanCSPConnectionCreateInput) GetVlansOk() ([]int32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Vrfs, true
+	return o.Vlans, true
 }
 
-// SetVrfs sets field value
-func (o *VrfFabricVcCreateInput) SetVrfs(v []string) {
-	o.Vrfs = v
+// SetVlans sets field value
+func (o *VlanCSPConnectionCreateInput) SetVlans(v []int32) {
+	o.Vlans = v
 }
 
-func (o VrfFabricVcCreateInput) MarshalJSON() ([]byte, error) {
+// GetFabricProvider returns the FabricProvider field value
+func (o *VlanCSPConnectionCreateInput) GetFabricProvider() VlanCSPConnectionCreateInputFabricProvider {
+	if o == nil {
+		var ret VlanCSPConnectionCreateInputFabricProvider
+		return ret
+	}
+
+	return o.FabricProvider
+}
+
+// GetFabricProviderOk returns a tuple with the FabricProvider field value
+// and a boolean to check if the value has been set.
+func (o *VlanCSPConnectionCreateInput) GetFabricProviderOk() (*VlanCSPConnectionCreateInputFabricProvider, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.FabricProvider, true
+}
+
+// SetFabricProvider sets field value
+func (o *VlanCSPConnectionCreateInput) SetFabricProvider(v VlanCSPConnectionCreateInputFabricProvider) {
+	o.FabricProvider = v
+}
+
+func (o VlanCSPConnectionCreateInput) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -377,7 +350,7 @@ func (o VrfFabricVcCreateInput) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o VrfFabricVcCreateInput) ToMap() (map[string]interface{}, error) {
+func (o VlanCSPConnectionCreateInput) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.ContactEmail) {
 		toSerialize["contact_email"] = o.ContactEmail
@@ -385,13 +358,11 @@ func (o VrfFabricVcCreateInput) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	toSerialize["metro"] = o.Metro
 	toSerialize["name"] = o.Name
 	if !IsNil(o.Project) {
 		toSerialize["project"] = o.Project
 	}
-	toSerialize["redundancy"] = o.Redundancy
-	toSerialize["service_token_type"] = o.ServiceTokenType
+	toSerialize["metro"] = o.Metro
 	if !IsNil(o.Speed) {
 		toSerialize["speed"] = o.Speed
 	}
@@ -399,7 +370,8 @@ func (o VrfFabricVcCreateInput) ToMap() (map[string]interface{}, error) {
 		toSerialize["tags"] = o.Tags
 	}
 	toSerialize["type"] = o.Type
-	toSerialize["vrfs"] = o.Vrfs
+	toSerialize["vlans"] = o.Vlans
+	toSerialize["fabric_provider"] = o.FabricProvider
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -408,17 +380,16 @@ func (o VrfFabricVcCreateInput) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *VrfFabricVcCreateInput) UnmarshalJSON(data []byte) (err error) {
+func (o *VlanCSPConnectionCreateInput) UnmarshalJSON(data []byte) (err error) {
 	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"metro",
 		"name",
-		"redundancy",
-		"service_token_type",
+		"metro",
 		"type",
-		"vrfs",
+		"vlans",
+		"fabric_provider",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -435,68 +406,67 @@ func (o *VrfFabricVcCreateInput) UnmarshalJSON(data []byte) (err error) {
 		}
 	}
 
-	varVrfFabricVcCreateInput := _VrfFabricVcCreateInput{}
+	varVlanCSPConnectionCreateInput := _VlanCSPConnectionCreateInput{}
 
-	err = json.Unmarshal(data, &varVrfFabricVcCreateInput)
+	err = json.Unmarshal(data, &varVlanCSPConnectionCreateInput)
 
 	if err != nil {
 		return err
 	}
 
-	*o = VrfFabricVcCreateInput(varVrfFabricVcCreateInput)
+	*o = VlanCSPConnectionCreateInput(varVlanCSPConnectionCreateInput)
 
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "contact_email")
 		delete(additionalProperties, "description")
-		delete(additionalProperties, "metro")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "project")
-		delete(additionalProperties, "redundancy")
-		delete(additionalProperties, "service_token_type")
+		delete(additionalProperties, "metro")
 		delete(additionalProperties, "speed")
 		delete(additionalProperties, "tags")
 		delete(additionalProperties, "type")
-		delete(additionalProperties, "vrfs")
+		delete(additionalProperties, "vlans")
+		delete(additionalProperties, "fabric_provider")
 		o.AdditionalProperties = additionalProperties
 	}
 
 	return err
 }
 
-type NullableVrfFabricVcCreateInput struct {
-	value *VrfFabricVcCreateInput
+type NullableVlanCSPConnectionCreateInput struct {
+	value *VlanCSPConnectionCreateInput
 	isSet bool
 }
 
-func (v NullableVrfFabricVcCreateInput) Get() *VrfFabricVcCreateInput {
+func (v NullableVlanCSPConnectionCreateInput) Get() *VlanCSPConnectionCreateInput {
 	return v.value
 }
 
-func (v *NullableVrfFabricVcCreateInput) Set(val *VrfFabricVcCreateInput) {
+func (v *NullableVlanCSPConnectionCreateInput) Set(val *VlanCSPConnectionCreateInput) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableVrfFabricVcCreateInput) IsSet() bool {
+func (v NullableVlanCSPConnectionCreateInput) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableVrfFabricVcCreateInput) Unset() {
+func (v *NullableVlanCSPConnectionCreateInput) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableVrfFabricVcCreateInput(val *VrfFabricVcCreateInput) *NullableVrfFabricVcCreateInput {
-	return &NullableVrfFabricVcCreateInput{value: val, isSet: true}
+func NewNullableVlanCSPConnectionCreateInput(val *VlanCSPConnectionCreateInput) *NullableVlanCSPConnectionCreateInput {
+	return &NullableVlanCSPConnectionCreateInput{value: val, isSet: true}
 }
 
-func (v NullableVrfFabricVcCreateInput) MarshalJSON() ([]byte, error) {
+func (v NullableVlanCSPConnectionCreateInput) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableVrfFabricVcCreateInput) UnmarshalJSON(src []byte) error {
+func (v *NullableVlanCSPConnectionCreateInput) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

@@ -95,6 +95,16 @@ func Test_metalv1_InterconnectionsApiService(t *testing.T) {
 		assert.Equal(t, 200, httpRes.StatusCode)
 	})
 
+	t.Run("Test InterconnectionsApiService GetInterconnectionMetros", func(t *testing.T) {
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.InterconnectionsApi.GetInterconnectionMetros(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+	})
+
 	t.Run("Test InterconnectionsApiService GetInterconnectionPort", func(t *testing.T) {
 		t.Skip("skip test") // remove to run test
 
@@ -102,6 +112,16 @@ func Test_metalv1_InterconnectionsApiService(t *testing.T) {
 		var id string
 
 		resp, httpRes, err := apiClient.InterconnectionsApi.GetInterconnectionPort(context.Background(), connectionId, id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+	})
+
+	t.Run("Test InterconnectionsApiService GetInterconnectionPricing", func(t *testing.T) {
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.InterconnectionsApi.GetInterconnectionPricing(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
