@@ -32,6 +32,7 @@ properties:
     type: string
   speed:
     type: integer
+    format: int64
   link_status:
     type: string
   href:
