@@ -10,6 +10,38 @@
 - `examples/` hand crafted examples to demonstrate usage
 - `services/<service>` generated Go client for a single service
 
+## Optional: customize how Makefile runs Docker containers
+
+If need to change how the `make` tasks run the containers used in this repo, you can use the `DOCKER_EXTRA_ARGS` environment variable that the Make tasks will pass to the `docker` CLI.
+
+For example, if you have custom CA certificates on your host machine that you want to use inside the containers, you can run the following commands before executing any `make` tasks:
+
+### macOS
+
+```bash
+# Make a certificate directory that is not inside any git repo
+export CUSTOM_CERT_DIR="${HOME}/.certs"
+export CA_FILE_NAME="ca-certificates.crt"
+mkdir -p ${CUSTOM_CERT_DIR}
+
+# Export CA certificates from system keychain into certificate directory
+security export -t certs -f pemseq -k /System/Library/Keychains/SystemRootCertificates.keychain -o ${CUSTOM_CERT_DIR}/${CA_FILE_NAME}
+# Append CA certificates from user keychain into CA file created above
+security export -t certs -f pemseq -k /Library/Keychains/System.keychain >> $CUSTOM_CERT_DIR/${CA_FILE_NAME}
+
+export DOCKER_EXTRA_ARGS="-v $(realpath ${CUSTOM_CERT_DIR}):/etc/ssl/certs"
+
+# Run `make` tasks as documented below
+```
+
+### Windows
+
+TBD
+
+### Linux
+
+TBD
+
 ## Build
 
 To build the full SDK, run `make generate-all`.

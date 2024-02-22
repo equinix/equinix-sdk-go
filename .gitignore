@@ -6,3 +6,4 @@ equinix-metal.swagger.json.orig
 git_push.sh
 services/*/api/
 pkg
+.certs

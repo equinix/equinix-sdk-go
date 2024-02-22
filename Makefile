@@ -11,10 +11,10 @@ USER_AGENT=${GIT_REPO}/${PACKAGE_VERSION}
 OPENAPI_IMAGE_TAG=v7.3.0
 OPENAPI_IMAGE=openapitools/openapi-generator-cli:${OPENAPI_IMAGE_TAG}
 CRI=docker # nerdctl
-OPENAPI_GENERATOR=${CRI} run --rm -u ${CURRENT_UID}:${CURRENT_GID} -v $(CURDIR):/local ${OPENAPI_IMAGE}
-SPEC_FETCHER=${CRI} run --rm -u ${CURRENT_UID}:${CURRENT_GID} -v $(CURDIR):/workdir --entrypoint sh mikefarah/yq:4.30.8 script/download_spec.sh
+OPENAPI_GENERATOR=${CRI} run --rm -u ${CURRENT_UID}:${CURRENT_GID} $(DOCKER_EXTRA_ARGS) -v $(CURDIR):/local ${OPENAPI_IMAGE}
+SPEC_FETCHER=${CRI} run --rm -u ${CURRENT_UID}:${CURRENT_GID} $(DOCKER_EXTRA_ARGS) -v $(CURDIR):/workdir --entrypoint sh mikefarah/yq:4.30.8 script/download_spec.sh
 MIN_GO_VERSION=1.19
-GO_CMD=${CRI} run --rm -u ${CURRENT_UID}:${CURRENT_GID} -v $(CURDIR):/workdir -w /workdir -e GOCACHE=/tmp/.cache golang:${MIN_GO_VERSION}
+GO_CMD=${CRI} run --rm -u ${CURRENT_UID}:${CURRENT_GID} $(DOCKER_EXTRA_ARGS) -v $(CURDIR):/workdir -w /workdir -e GOCACHE=/tmp/.cache golang:${MIN_GO_VERSION}
 GOLANGCI_LINT=golangci-lint
 
 SPEC_BASE_DIR=spec/services
