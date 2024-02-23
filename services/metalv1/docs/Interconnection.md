@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **Ports** | Pointer to [**[]InterconnectionPort**](InterconnectionPort.md) | For Fabric VCs, these represent Virtual Port(s) created for the interconnection. For dedicated interconnections, these represent the Dedicated Port(s). | [optional] 
 **Redundancy** | Pointer to [**InterconnectionRedundancy**](InterconnectionRedundancy.md) |  | [optional] 
 **ServiceTokens** | Pointer to [**[]FabricServiceToken**](FabricServiceToken.md) | For Fabric VCs (Metal Billed), this will show details of the A-Side service tokens issued for the interconnection. For Fabric VCs (Fabric Billed), this will show the details of the Z-Side service tokens issued for the interconnection. Dedicated interconnections will not have any service tokens issued. There will be one per interconnection, so for redundant interconnections, there should be two service tokens issued. | [optional] 
+**AuthorizationCode** | Pointer to **string** | For Fabric VCs (Metal Billed), this allows Fabric to connect the Metal network to any connection Fabric facilitates. Fabric uses this token to be able to give more detailed information about the Metal end of the network, when viewing resources from within Fabric. | [optional] 
 **Speed** | Pointer to **int64** | For interconnections on Dedicated Ports and shared connections, this represents the interconnection&#39;s speed in bps. For Fabric VCs, this field refers to the maximum speed of the interconnection in bps. This value will default to 10Gbps for Fabric VCs (Fabric Billed). | [optional] 
 **Status** | Pointer to **string** |  | [optional] 
 **Tags** | Pointer to **[]string** |  | [optional] 
@@ -317,6 +318,31 @@ SetServiceTokens sets ServiceTokens field to given value.
 `func (o *Interconnection) HasServiceTokens() bool`
 
 HasServiceTokens returns a boolean if a field has been set.
+
+### GetAuthorizationCode
+
+`func (o *Interconnection) GetAuthorizationCode() string`
+
+GetAuthorizationCode returns the AuthorizationCode field if non-nil, zero value otherwise.
+
+### GetAuthorizationCodeOk
+
+`func (o *Interconnection) GetAuthorizationCodeOk() (*string, bool)`
+
+GetAuthorizationCodeOk returns a tuple with the AuthorizationCode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAuthorizationCode
+
+`func (o *Interconnection) SetAuthorizationCode(v string)`
+
+SetAuthorizationCode sets AuthorizationCode field to given value.
+
+### HasAuthorizationCode
+
+`func (o *Interconnection) HasAuthorizationCode() bool`
+
+HasAuthorizationCode returns a boolean if a field has been set.
 
 ### GetSpeed
 

@@ -38,7 +38,7 @@ properties:
   speed:
     description: speed can be passed as integer number representing bps speed or string
       (e.g. '52m' or '100g' or '4 gbps')
-    type: integer
+    type: string
   subnet:
     description: The /30 or /31 subnet of one of the VRF IP Blocks that will be used with the VRF for
       the Virtual Circuit. This subnet does not have to be an existing VRF IP reservation, as we

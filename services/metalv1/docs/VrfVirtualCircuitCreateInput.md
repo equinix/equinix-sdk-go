@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **NniVlan** | **int32** |  | 
 **PeerAsn** | **int32** | The peer ASN that will be used with the VRF on the Virtual Circuit. | 
 **ProjectId** | **string** |  | 
-**Speed** | Pointer to **int32** | speed can be passed as integer number representing bps speed or string (e.g. &#39;52m&#39; or &#39;100g&#39; or &#39;4 gbps&#39;) | [optional] 
+**Speed** | Pointer to **string** | speed can be passed as integer number representing bps speed or string (e.g. &#39;52m&#39; or &#39;100g&#39; or &#39;4 gbps&#39;) | [optional] 
 **Subnet** | **string** | The /30 or /31 subnet of one of the VRF IP Blocks that will be used with the VRF for the Virtual Circuit. This subnet does not have to be an existing VRF IP reservation, as we will create the VRF IP reservation on creation if it does not exist. The Metal IP and Customer IP must be IPs from this subnet. For /30 subnets, the network and broadcast IPs cannot be used as the Metal or Customer IP. The subnet specified must be contained within an already-defined IP Range for the VRF. | 
 **Tags** | Pointer to **[]string** |  | [optional] 
 **Vrf** | **string** | The UUID of the VRF that will be associated with the Virtual Circuit. | 
@@ -233,20 +233,20 @@ SetProjectId sets ProjectId field to given value.
 
 ### GetSpeed
 
-`func (o *VrfVirtualCircuitCreateInput) GetSpeed() int32`
+`func (o *VrfVirtualCircuitCreateInput) GetSpeed() string`
 
 GetSpeed returns the Speed field if non-nil, zero value otherwise.
 
 ### GetSpeedOk
 
-`func (o *VrfVirtualCircuitCreateInput) GetSpeedOk() (*int32, bool)`
+`func (o *VrfVirtualCircuitCreateInput) GetSpeedOk() (*string, bool)`
 
 GetSpeedOk returns a tuple with the Speed field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSpeed
 
-`func (o *VrfVirtualCircuitCreateInput) SetSpeed(v int32)`
+`func (o *VrfVirtualCircuitCreateInput) SetSpeed(v string)`
 
 SetSpeed sets Speed field to given value.
 

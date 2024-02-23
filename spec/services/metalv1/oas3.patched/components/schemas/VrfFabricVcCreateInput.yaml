@@ -31,8 +31,7 @@ properties:
       A interconnection speed, in bps, mbps, or gbps. For Fabric VCs, this represents the maximum speed of the interconnection. For Fabric VCs (Metal Billed), this can only be one of the following: 
       ''50mbps'', ''200mbps'', ''500mbps'', ''1gbps'', ''2gbps'', ''5gbps'' or ''10gbps'', and is required for creation. For Fabric VCs (Fabric Billed), this field will always default to ''10gbps'' even if it is not provided.
       For example, ''500000000'', ''50m'', or' ''500mbps'' will all work as valid inputs.
-    type: integer
-    format: int64
+    type: string
     example: 10000000000
   tags:
     items:

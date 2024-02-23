@@ -34,7 +34,7 @@ type VrfVirtualCircuitCreateInput struct {
 	PeerAsn   int32  `json:"peer_asn"`
 	ProjectId string `json:"project_id"`
 	// speed can be passed as integer number representing bps speed or string (e.g. '52m' or '100g' or '4 gbps')
-	Speed *int32 `json:"speed,omitempty"`
+	Speed *string `json:"speed,omitempty"`
 	// The /30 or /31 subnet of one of the VRF IP Blocks that will be used with the VRF for the Virtual Circuit. This subnet does not have to be an existing VRF IP reservation, as we will create the VRF IP reservation on creation if it does not exist. The Metal IP and Customer IP must be IPs from this subnet. For /30 subnets, the network and broadcast IPs cannot be used as the Metal or Customer IP. The subnet specified must be contained within an already-defined IP Range for the VRF.
 	Subnet string   `json:"subnet"`
 	Tags   []string `json:"tags,omitempty"`
@@ -311,9 +311,9 @@ func (o *VrfVirtualCircuitCreateInput) SetProjectId(v string) {
 }
 
 // GetSpeed returns the Speed field value if set, zero value otherwise.
-func (o *VrfVirtualCircuitCreateInput) GetSpeed() int32 {
+func (o *VrfVirtualCircuitCreateInput) GetSpeed() string {
 	if o == nil || IsNil(o.Speed) {
-		var ret int32
+		var ret string
 		return ret
 	}
 	return *o.Speed
@@ -321,7 +321,7 @@ func (o *VrfVirtualCircuitCreateInput) GetSpeed() int32 {
 
 // GetSpeedOk returns a tuple with the Speed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VrfVirtualCircuitCreateInput) GetSpeedOk() (*int32, bool) {
+func (o *VrfVirtualCircuitCreateInput) GetSpeedOk() (*string, bool) {
 	if o == nil || IsNil(o.Speed) {
 		return nil, false
 	}
@@ -337,8 +337,8 @@ func (o *VrfVirtualCircuitCreateInput) HasSpeed() bool {
 	return false
 }
 
-// SetSpeed gets a reference to the given int32 and assigns it to the Speed field.
-func (o *VrfVirtualCircuitCreateInput) SetSpeed(v int32) {
+// SetSpeed gets a reference to the given string and assigns it to the Speed field.
+func (o *VrfVirtualCircuitCreateInput) SetSpeed(v string) {
 	o.Speed = &v
 }
 

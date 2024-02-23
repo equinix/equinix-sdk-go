@@ -34,6 +34,8 @@ type Interconnection struct {
 	Redundancy *InterconnectionRedundancy `json:"redundancy,omitempty"`
 	// For Fabric VCs (Metal Billed), this will show details of the A-Side service tokens issued for the interconnection. For Fabric VCs (Fabric Billed), this will show the details of the Z-Side service tokens issued for the interconnection. Dedicated interconnections will not have any service tokens issued. There will be one per interconnection, so for redundant interconnections, there should be two service tokens issued.
 	ServiceTokens []FabricServiceToken `json:"service_tokens,omitempty"`
+	// For Fabric VCs (Metal Billed), this allows Fabric to connect the Metal network to any connection Fabric facilitates. Fabric uses this token to be able to give more detailed information about the Metal end of the network, when viewing resources from within Fabric.
+	AuthorizationCode *string `json:"authorization_code,omitempty"`
 	// For interconnections on Dedicated Ports and shared connections, this represents the interconnection's speed in bps. For Fabric VCs, this field refers to the maximum speed of the interconnection in bps. This value will default to 10Gbps for Fabric VCs (Fabric Billed).
 	Speed  *int64   `json:"speed,omitempty"`
 	Status *string  `json:"status,omitempty"`
@@ -418,6 +420,38 @@ func (o *Interconnection) SetServiceTokens(v []FabricServiceToken) {
 	o.ServiceTokens = v
 }
 
+// GetAuthorizationCode returns the AuthorizationCode field value if set, zero value otherwise.
+func (o *Interconnection) GetAuthorizationCode() string {
+	if o == nil || IsNil(o.AuthorizationCode) {
+		var ret string
+		return ret
+	}
+	return *o.AuthorizationCode
+}
+
+// GetAuthorizationCodeOk returns a tuple with the AuthorizationCode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Interconnection) GetAuthorizationCodeOk() (*string, bool) {
+	if o == nil || IsNil(o.AuthorizationCode) {
+		return nil, false
+	}
+	return o.AuthorizationCode, true
+}
+
+// HasAuthorizationCode returns a boolean if a field has been set.
+func (o *Interconnection) HasAuthorizationCode() bool {
+	if o != nil && !IsNil(o.AuthorizationCode) {
+		return true
+	}
+
+	return false
+}
+
+// SetAuthorizationCode gets a reference to the given string and assigns it to the AuthorizationCode field.
+func (o *Interconnection) SetAuthorizationCode(v string) {
+	o.AuthorizationCode = &v
+}
+
 // GetSpeed returns the Speed field value if set, zero value otherwise.
 func (o *Interconnection) GetSpeed() int64 {
 	if o == nil || IsNil(o.Speed) {
@@ -717,6 +751,9 @@ func (o Interconnection) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ServiceTokens) {
 		toSerialize["service_tokens"] = o.ServiceTokens
 	}
+	if !IsNil(o.AuthorizationCode) {
+		toSerialize["authorization_code"] = o.AuthorizationCode
+	}
 	if !IsNil(o.Speed) {
 		toSerialize["speed"] = o.Speed
 	}
@@ -774,6 +811,7 @@ func (o *Interconnection) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "ports")
 		delete(additionalProperties, "redundancy")
 		delete(additionalProperties, "service_tokens")
+		delete(additionalProperties, "authorization_code")
 		delete(additionalProperties, "speed")
 		delete(additionalProperties, "status")
 		delete(additionalProperties, "tags")

@@ -12,19 +12,20 @@ Name | Type | Description | Notes
 **Name** | **string** |  | 
 **Project** | Pointer to **string** |  | [optional] 
 **Redundancy** | **string** | Either &#39;primary&#39; or &#39;redundant&#39;. | 
-**Speed** | Pointer to **int64** | A interconnection speed, in bps, mbps, or gbps. For Fabric VCs, this represents the maximum speed of the interconnection. For Fabric VCs (Metal Billed), this can only be one of the following:  &#39;&#39;50mbps&#39;&#39;, &#39;&#39;200mbps&#39;&#39;, &#39;&#39;500mbps&#39;&#39;, &#39;&#39;1gbps&#39;&#39;, &#39;&#39;2gbps&#39;&#39;, &#39;&#39;5gbps&#39;&#39; or &#39;&#39;10gbps&#39;&#39;, and is required for creation. For Fabric VCs (Fabric Billed), this field will always default to &#39;&#39;10gbps&#39;&#39; even if it is not provided. For example, &#39;&#39;500000000&#39;&#39;, &#39;&#39;50m&#39;&#39;, or&#39; &#39;&#39;500mbps&#39;&#39; will all work as valid inputs. | [optional] 
+**Speed** | Pointer to **string** | A interconnection speed, in bps, mbps, or gbps. For Fabric VCs, this represents the maximum speed of the interconnection. For Fabric VCs (Metal Billed), this can only be one of the following: &#39;&#39;50mbps&#39;&#39;, &#39;&#39;200mbps&#39;&#39;, &#39;&#39;500mbps&#39;&#39;, &#39;&#39;1gbps&#39;&#39;, &#39;&#39;2gbps&#39;&#39;, &#39;&#39;5gbps&#39;&#39; or &#39;&#39;10gbps&#39;&#39;, and is required for creation. For Fabric VCs (Fabric Billed), this field will always default to &#39;&#39;10gbps&#39;&#39; even if it is not provided. For example, &#39;&#39;500000000&#39;&#39;, &#39;&#39;50m&#39;&#39;, or&#39; &#39;&#39;500mbps&#39;&#39; will all work as valid inputs. | [optional] 
 **Tags** | Pointer to **[]string** |  | [optional] 
-**Type** | [**VlanFabricVcCreateInputType**](VlanFabricVcCreateInputType.md) |  | 
+**Type** | [**VlanCSPConnectionCreateInputType**](VlanCSPConnectionCreateInputType.md) |  | 
 **UseCase** | Pointer to **string** | The intended use case of the dedicated port. | [optional] 
 **ServiceTokenType** | [**VlanFabricVcCreateInputServiceTokenType**](VlanFabricVcCreateInputServiceTokenType.md) |  | 
-**Vlans** | Pointer to **[]int32** | A list of one or two metro-based VLANs that will be set on the virtual circuits of primary and/or secondary (if redundant) interconnections respectively when creating Fabric VCs. VLANs can also be set after the interconnection is created, but are required to fully activate the virtual circuits. | [optional] 
+**Vlans** | **[]int32** | A list of one or two metro-based VLANs that will be set on the virtual circuits of primary and/or secondary interconnections respectively when creating Fabric VCs. VLANs can also be set after the interconnection is created, but are required to fully activate the virtual circuits. | 
 **Vrfs** | **[]string** | This field holds a list of VRF UUIDs that will be set automatically on the virtual circuits of Fabric VCs on creation, and can hold up to two UUIDs. Two UUIDs are required when requesting redundant Fabric VCs. The first UUID will be set on the primary virtual circuit, while the second UUID will be set on the secondary. The two UUIDs can be the same if both the primary and secondary virtual circuits will be in the same VRF. This parameter is included in the specification as a developer preview and is generally unavailable. Please contact our Support team for more details. | 
+**FabricProvider** | [**VlanCSPConnectionCreateInputFabricProvider**](VlanCSPConnectionCreateInputFabricProvider.md) |  | 
 
 ## Methods
 
 ### NewCreateOrganizationInterconnectionRequest
 
-`func NewCreateOrganizationInterconnectionRequest(metro string, name string, redundancy string, type_ VlanFabricVcCreateInputType, serviceTokenType VlanFabricVcCreateInputServiceTokenType, vrfs []string, ) *CreateOrganizationInterconnectionRequest`
+`func NewCreateOrganizationInterconnectionRequest(metro string, name string, redundancy string, type_ VlanCSPConnectionCreateInputType, serviceTokenType VlanFabricVcCreateInputServiceTokenType, vlans []int32, vrfs []string, fabricProvider VlanCSPConnectionCreateInputFabricProvider, ) *CreateOrganizationInterconnectionRequest`
 
 NewCreateOrganizationInterconnectionRequest instantiates a new CreateOrganizationInterconnectionRequest object
 This constructor will assign default values to properties that have it defined,
@@ -226,20 +227,20 @@ SetRedundancy sets Redundancy field to given value.
 
 ### GetSpeed
 
-`func (o *CreateOrganizationInterconnectionRequest) GetSpeed() int64`
+`func (o *CreateOrganizationInterconnectionRequest) GetSpeed() string`
 
 GetSpeed returns the Speed field if non-nil, zero value otherwise.
 
 ### GetSpeedOk
 
-`func (o *CreateOrganizationInterconnectionRequest) GetSpeedOk() (*int64, bool)`
+`func (o *CreateOrganizationInterconnectionRequest) GetSpeedOk() (*string, bool)`
 
 GetSpeedOk returns a tuple with the Speed field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSpeed
 
-`func (o *CreateOrganizationInterconnectionRequest) SetSpeed(v int64)`
+`func (o *CreateOrganizationInterconnectionRequest) SetSpeed(v string)`
 
 SetSpeed sets Speed field to given value.
 
@@ -276,20 +277,20 @@ HasTags returns a boolean if a field has been set.
 
 ### GetType
 
-`func (o *CreateOrganizationInterconnectionRequest) GetType() VlanFabricVcCreateInputType`
+`func (o *CreateOrganizationInterconnectionRequest) GetType() VlanCSPConnectionCreateInputType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *CreateOrganizationInterconnectionRequest) GetTypeOk() (*VlanFabricVcCreateInputType, bool)`
+`func (o *CreateOrganizationInterconnectionRequest) GetTypeOk() (*VlanCSPConnectionCreateInputType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *CreateOrganizationInterconnectionRequest) SetType(v VlanFabricVcCreateInputType)`
+`func (o *CreateOrganizationInterconnectionRequest) SetType(v VlanCSPConnectionCreateInputType)`
 
 SetType sets Type field to given value.
 
@@ -358,11 +359,6 @@ and a boolean to check if the value has been set.
 
 SetVlans sets Vlans field to given value.
 
-### HasVlans
-
-`func (o *CreateOrganizationInterconnectionRequest) HasVlans() bool`
-
-HasVlans returns a boolean if a field has been set.
 
 ### GetVrfs
 
@@ -382,6 +378,26 @@ and a boolean to check if the value has been set.
 `func (o *CreateOrganizationInterconnectionRequest) SetVrfs(v []string)`
 
 SetVrfs sets Vrfs field to given value.
+
+
+### GetFabricProvider
+
+`func (o *CreateOrganizationInterconnectionRequest) GetFabricProvider() VlanCSPConnectionCreateInputFabricProvider`
+
+GetFabricProvider returns the FabricProvider field if non-nil, zero value otherwise.
+
+### GetFabricProviderOk
+
+`func (o *CreateOrganizationInterconnectionRequest) GetFabricProviderOk() (*VlanCSPConnectionCreateInputFabricProvider, bool)`
+
+GetFabricProviderOk returns a tuple with the FabricProvider field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFabricProvider
+
+`func (o *CreateOrganizationInterconnectionRequest) SetFabricProvider(v VlanCSPConnectionCreateInputFabricProvider)`
+
+SetFabricProvider sets FabricProvider field to given value.
 
 
 

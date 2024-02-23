@@ -13,8 +13,7 @@ properties:
   speed:
     description: speed can be passed as integer number representing bps speed or string
       (e.g. '52m' or '100g' or '4 gbps')
-    type: integer
-    format: int64
+    type: string
   tags:
     items:
       type: string

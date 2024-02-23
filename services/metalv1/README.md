@@ -238,7 +238,9 @@ Class | Method | HTTP request | Description
 *InterconnectionsApi* | [**DeleteInterconnection**](docs/InterconnectionsApi.md#deleteinterconnection) | **Delete** /connections/{connection_id} | Delete interconnection
 *InterconnectionsApi* | [**DeleteVirtualCircuit**](docs/InterconnectionsApi.md#deletevirtualcircuit) | **Delete** /virtual-circuits/{id} | Delete a virtual circuit
 *InterconnectionsApi* | [**GetInterconnection**](docs/InterconnectionsApi.md#getinterconnection) | **Get** /connections/{connection_id} | Get interconnection
+*InterconnectionsApi* | [**GetInterconnectionMetros**](docs/InterconnectionsApi.md#getinterconnectionmetros) | **Get** /connections/metros | Get connectivity to network provider by metro
 *InterconnectionsApi* | [**GetInterconnectionPort**](docs/InterconnectionsApi.md#getinterconnectionport) | **Get** /connections/{connection_id}/ports/{id} | Get a interconnection port
+*InterconnectionsApi* | [**GetInterconnectionPricing**](docs/InterconnectionsApi.md#getinterconnectionpricing) | **Get** /connections/prices | Get Interconnection Pricing
 *InterconnectionsApi* | [**GetVirtualCircuit**](docs/InterconnectionsApi.md#getvirtualcircuit) | **Get** /virtual-circuits/{id} | Get a virtual circuit
 *InterconnectionsApi* | [**ListInterconnectionPortVirtualCircuits**](docs/InterconnectionsApi.md#listinterconnectionportvirtualcircuits) | **Get** /connections/{connection_id}/ports/{port_id}/virtual-circuits | List a interconnection port&#39;s virtual circuits
 *InterconnectionsApi* | [**ListInterconnectionPorts**](docs/InterconnectionsApi.md#listinterconnectionports) | **Get** /connections/{connection_id}/ports | List a interconnection&#39;s ports
@@ -384,6 +386,8 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [AWSFabricProvider](docs/AWSFabricProvider.md)
+ - [AWSFabricProviderType](docs/AWSFabricProviderType.md)
  - [ActivateHardwareReservationRequest](docs/ActivateHardwareReservationRequest.md)
  - [Address](docs/Address.md)
  - [Attribute](docs/Attribute.md)
@@ -510,11 +514,17 @@ Class | Method | HTTP request | Description
  - [InstancesBatchCreateInputBatchesInner](docs/InstancesBatchCreateInputBatchesInner.md)
  - [Interconnection](docs/Interconnection.md)
  - [InterconnectionList](docs/InterconnectionList.md)
+ - [InterconnectionMetroList](docs/InterconnectionMetroList.md)
+ - [InterconnectionMetroListMetrosInner](docs/InterconnectionMetroListMetrosInner.md)
+ - [InterconnectionMetroListMetrosInnerAllOfProvidersInner](docs/InterconnectionMetroListMetrosInnerAllOfProvidersInner.md)
  - [InterconnectionMode](docs/InterconnectionMode.md)
  - [InterconnectionPort](docs/InterconnectionPort.md)
  - [InterconnectionPortList](docs/InterconnectionPortList.md)
  - [InterconnectionPortRole](docs/InterconnectionPortRole.md)
  - [InterconnectionPortStatus](docs/InterconnectionPortStatus.md)
+ - [InterconnectionPricingList](docs/InterconnectionPricingList.md)
+ - [InterconnectionPricingListProviderPricingInner](docs/InterconnectionPricingListProviderPricingInner.md)
+ - [InterconnectionPricingListProviderPricingInnerTiersInner](docs/InterconnectionPricingListProviderPricingInnerTiersInner.md)
  - [InterconnectionRedundancy](docs/InterconnectionRedundancy.md)
  - [InterconnectionType](docs/InterconnectionType.md)
  - [InterconnectionUpdateInput](docs/InterconnectionUpdateInput.md)
@@ -617,6 +627,8 @@ Class | Method | HTTP request | Description
  - [SelfServiceReservationList](docs/SelfServiceReservationList.md)
  - [SelfServiceReservationResponse](docs/SelfServiceReservationResponse.md)
  - [ServerInfo](docs/ServerInfo.md)
+ - [SharedPortVCVlanCreateInput](docs/SharedPortVCVlanCreateInput.md)
+ - [SharedPortVCVlanCreateInputType](docs/SharedPortVCVlanCreateInputType.md)
  - [SpotMarketPricesList](docs/SpotMarketPricesList.md)
  - [SpotMarketPricesPerMetroList](docs/SpotMarketPricesPerMetroList.md)
  - [SpotMarketPricesPerMetroReport](docs/SpotMarketPricesPerMetroReport.md)
@@ -653,6 +665,9 @@ Class | Method | HTTP request | Description
  - [VirtualNetwork](docs/VirtualNetwork.md)
  - [VirtualNetworkCreateInput](docs/VirtualNetworkCreateInput.md)
  - [VirtualNetworkList](docs/VirtualNetworkList.md)
+ - [VlanCSPConnectionCreateInput](docs/VlanCSPConnectionCreateInput.md)
+ - [VlanCSPConnectionCreateInputFabricProvider](docs/VlanCSPConnectionCreateInputFabricProvider.md)
+ - [VlanCSPConnectionCreateInputType](docs/VlanCSPConnectionCreateInputType.md)
  - [VlanFabricVcCreateInput](docs/VlanFabricVcCreateInput.md)
  - [VlanFabricVcCreateInputServiceTokenType](docs/VlanFabricVcCreateInputServiceTokenType.md)
  - [VlanFabricVcCreateInputType](docs/VlanFabricVcCreateInputType.md)

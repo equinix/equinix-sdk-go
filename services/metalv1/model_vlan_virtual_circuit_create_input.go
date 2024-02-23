@@ -26,7 +26,7 @@ type VlanVirtualCircuitCreateInput struct {
 	NniVlan     *int32  `json:"nni_vlan,omitempty"`
 	ProjectId   string  `json:"project_id"`
 	// speed can be passed as integer number representing bps speed or string (e.g. '52m' or '100g' or '4 gbps')
-	Speed *int64   `json:"speed,omitempty"`
+	Speed *string  `json:"speed,omitempty"`
 	Tags  []string `json:"tags,omitempty"`
 	// A Virtual Network record UUID or the VNID of a Metro Virtual Network in your project (sent as integer).
 	Vnid                 *string `json:"vnid,omitempty"`
@@ -174,9 +174,9 @@ func (o *VlanVirtualCircuitCreateInput) SetProjectId(v string) {
 }
 
 // GetSpeed returns the Speed field value if set, zero value otherwise.
-func (o *VlanVirtualCircuitCreateInput) GetSpeed() int64 {
+func (o *VlanVirtualCircuitCreateInput) GetSpeed() string {
 	if o == nil || IsNil(o.Speed) {
-		var ret int64
+		var ret string
 		return ret
 	}
 	return *o.Speed
@@ -184,7 +184,7 @@ func (o *VlanVirtualCircuitCreateInput) GetSpeed() int64 {
 
 // GetSpeedOk returns a tuple with the Speed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VlanVirtualCircuitCreateInput) GetSpeedOk() (*int64, bool) {
+func (o *VlanVirtualCircuitCreateInput) GetSpeedOk() (*string, bool) {
 	if o == nil || IsNil(o.Speed) {
 		return nil, false
 	}
@@ -200,8 +200,8 @@ func (o *VlanVirtualCircuitCreateInput) HasSpeed() bool {
 	return false
 }
 
-// SetSpeed gets a reference to the given int64 and assigns it to the Speed field.
-func (o *VlanVirtualCircuitCreateInput) SetSpeed(v int64) {
+// SetSpeed gets a reference to the given string and assigns it to the Speed field.
+func (o *VlanVirtualCircuitCreateInput) SetSpeed(v string) {
 	o.Speed = &v
 }
 
