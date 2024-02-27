@@ -1,0 +1,31 @@
+name: Test fabricv4 codegen
+
+on:
+  push:
+    paths:
+    - "**/fabricv4/**"
+  pull_request:
+    paths:
+    - "**/fabricv4/**"
+
+jobs:
+  test:
+    strategy:
+      matrix:
+        go-version: [1.19.x]
+        os: [ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+    - name: Install Go
+      uses: actions/setup-go@v5
+      with:
+        go-version: ${{ matrix.go-version }}
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Verify Patches
+      run: make -f Makefile.fabricv4 patch
+    - name: Generate
+      run: |
+        make -f Makefile.fabricv4 generate
+        # Expect all changes to be accounted for
+        ! git status --porcelain | grep .

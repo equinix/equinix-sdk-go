@@ -32,7 +32,7 @@ patch:
 
 patch-post:
 	# patch is idempotent, always starting with the generated files
-	for diff in $(shell find patches/post -name \*.patch | sort -n); do \
+	for diff in $(shell find patches/services/${PACKAGE_NAME} -name \*.patch | sort -n); do \
 		patch --no-backup-if-mismatch -N -t -p1 -i $$diff; \
 	done
 
