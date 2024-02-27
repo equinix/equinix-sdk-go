@@ -1,0 +1,64 @@
+.PHONY: all pull fetch patch generate clean codegen mod docs move-other patch-post fmt test stage
+
+include Makefile
+
+PACKAGE_NAME=fabricv4
+SPEC_BASE_URL:=https://api.swaggerhub.com/apis/equinix-api/fabric/4.12
+SPEC_ROOT_FILE:=swagger.yaml
+
+CODE_DIR=${CODE_BASE_DIR}/${PACKAGE_NAME}
+TEMPLATE_DIR=${TEMPLATE_BASE_DIR}/${PACKAGE_NAME}
+SPEC_FETCHED_DIR=${SPEC_BASE_DIR}/${PACKAGE_NAME}/oas3.fetched
+SPEC_PATCH_DIR=${SPEC_BASE_DIR}/${PACKAGE_NAME}/patches
+SPEC_PATCHED_DIR=${SPEC_BASE_DIR}/${PACKAGE_NAME}/oas3.patched
+SPEC_FETCHER=curl
+
+all: pull fetch patch generate stage
+
+generate: clean codegen remove-unused patch-post mod fmt test
+
+pull:
+	${CRI} pull ${OPENAPI_IMAGE}
+
+fetch:
+	${SPEC_FETCHER} -o ${SPEC_FETCHED_DIR}/${SPEC_ROOT_FILE} ${SPEC_BASE_URL}/${SPEC_ROOT_FILE}
+
+patch:
+	rm -rf ${SPEC_PATCHED_DIR}
+	cp -r ${SPEC_FETCHED_DIR} ${SPEC_PATCHED_DIR}
+
+	for diff in $(shell set -x; find ${SPEC_PATCH_DIR} -name '*.patch' | sort -n); do \
+		patch --no-backup-if-mismatch -N -t -p1 -i $$diff; \
+	done
+
+patch-post:
+	# patch is idempotent, always starting with the generated files
+	for diff in $(shell find patches/services/${PACKAGE_NAME} -name \*.patch | sort -n); do \
+		patch --no-backup-if-mismatch -N -t -p1 -i $$diff; \
+	done
+
+clean:
+	rm -rf $(CODE_DIR)
+
+codegen:
+	${OPENAPI_GENERATOR} generate -g go \
+		--package-name ${PACKAGE_NAME} \
+		--http-user-agent "${USER_AGENT}" \
+		-p packageVersion=${PACKAGE_VERSION} \
+		--git-user-id ${GIT_ORG} \
+		--git-repo-id ${GIT_REPO}/services \
+		-c /local/config/openapi-generator.json \
+		-t /local/${TEMPLATE_DIR} \
+		-o /local/${CODE_DIR} \
+		-i /local/${SPEC_PATCHED_DIR}/${SPEC_ROOT_FILE}
+
+validate:
+	${OPENAPI_GENERATOR} validate \
+		--recommend \
+		-i /local/${SPEC_PATCHED_DIR}
+
+remove-unused:
+	rm -rf ${CODE_DIR}/api \
+		${CODE_DIR}/.travis.yml \
+		${CODE_DIR}/git_push.sh \
+		${CODE_DIR}/.openapi-generator

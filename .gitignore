@@ -7,3 +7,4 @@ git_push.sh
 services/*/api/
 pkg
 .certs
+.idea/
