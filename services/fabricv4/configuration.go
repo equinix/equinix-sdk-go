@@ -90,7 +90,7 @@ type Configuration struct {
 func NewConfiguration() *Configuration {
 	cfg := &Configuration{
 		DefaultHeader: make(map[string]string),
-		UserAgent:     "equinix-sdk-go/0.33.0",
+		UserAgent:     "equinix-sdk-go/0.34.0",
 		Debug:         false,
 		Servers: ServerConfigurations{
 			{
