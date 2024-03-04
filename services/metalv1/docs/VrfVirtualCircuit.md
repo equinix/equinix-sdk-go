@@ -10,10 +10,10 @@ Name | Type | Description | Notes
 **Md5** | Pointer to **string** | The MD5 password for the BGP peering in plaintext (not a checksum). | [optional] 
 **MetalIp** | Pointer to **string** | An IP address from the subnet that will be used on the Metal side. This parameter is optional, but if supplied, we will use the other usable IP address in the subnet as the Customer IP. By default, the first usable IP address in the subnet will be used. | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
-**Port** | Pointer to [**Href**](Href.md) |  | [optional] 
+**Port** | Pointer to [**InterconnectionPort**](InterconnectionPort.md) |  | [optional] 
 **NniVlan** | Pointer to **int32** |  | [optional] 
 **PeerAsn** | Pointer to **int32** | The peer ASN that will be used with the VRF on the Virtual Circuit. | [optional] 
-**Project** | Pointer to [**Href**](Href.md) |  | [optional] 
+**Project** | Pointer to [**Project**](Project.md) |  | [optional] 
 **Speed** | Pointer to **int64** | integer representing bps speed | [optional] 
 **Status** | Pointer to [**VrfVirtualCircuitStatus**](VrfVirtualCircuitStatus.md) |  | [optional] 
 **Subnet** | Pointer to **string** | The /30 or /31 subnet of one of the VRF IP Blocks that will be used with the VRF for the Virtual Circuit. This subnet does not have to be an existing VRF IP reservation, as we will create the VRF IP reservation on creation if it does not exist. The Metal IP and Customer IP must be IPs from this subnet. For /30 subnets, the network and broadcast IPs cannot be used as the Metal or Customer IP. | [optional] 
@@ -194,20 +194,20 @@ HasName returns a boolean if a field has been set.
 
 ### GetPort
 
-`func (o *VrfVirtualCircuit) GetPort() Href`
+`func (o *VrfVirtualCircuit) GetPort() InterconnectionPort`
 
 GetPort returns the Port field if non-nil, zero value otherwise.
 
 ### GetPortOk
 
-`func (o *VrfVirtualCircuit) GetPortOk() (*Href, bool)`
+`func (o *VrfVirtualCircuit) GetPortOk() (*InterconnectionPort, bool)`
 
 GetPortOk returns a tuple with the Port field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPort
 
-`func (o *VrfVirtualCircuit) SetPort(v Href)`
+`func (o *VrfVirtualCircuit) SetPort(v InterconnectionPort)`
 
 SetPort sets Port field to given value.
 
@@ -269,20 +269,20 @@ HasPeerAsn returns a boolean if a field has been set.
 
 ### GetProject
 
-`func (o *VrfVirtualCircuit) GetProject() Href`
+`func (o *VrfVirtualCircuit) GetProject() Project`
 
 GetProject returns the Project field if non-nil, zero value otherwise.
 
 ### GetProjectOk
 
-`func (o *VrfVirtualCircuit) GetProjectOk() (*Href, bool)`
+`func (o *VrfVirtualCircuit) GetProjectOk() (*Project, bool)`
 
 GetProjectOk returns a tuple with the Project field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetProject
 
-`func (o *VrfVirtualCircuit) SetProject(v Href)`
+`func (o *VrfVirtualCircuit) SetProject(v Project)`
 
 SetProject sets Project field to given value.
 

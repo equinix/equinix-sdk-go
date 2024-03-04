@@ -187,7 +187,7 @@ type ApiCreateOrganizationInterconnectionRequest struct {
 	exclude                                  *[]string
 }
 
-// Dedicated port or shared interconnection (also known as Fabric VC) creation request
+// Dedicated port or shared interconnection (also known as Fabric VC) creation request.  Shared interconnections can be created with the following request types: * &#x60;VlanCSPConnectionCreateInput&#x60; creates a layer 2 interconnection directly to your Cloud Service Provider. * &#x60;SharedPortVCVlanCreateInput&#x60; creates a layer 2 interconnection that you can finish configuration in Fabric. For new connections, this type is preferred to &#x60;VlanFabricVCCreateInput&#x60;. * &#x60;VlanFabricVCCreateInput&#x60; creates a layer 2 interconnection that you can connect through Fabric with a service token. * &#x60;VrfFabricVCCreateInput&#x60; creates a layer 3 interconnection that you can connect through Fabric with a service token.
 func (r ApiCreateOrganizationInterconnectionRequest) CreateOrganizationInterconnectionRequest(createOrganizationInterconnectionRequest CreateOrganizationInterconnectionRequest) ApiCreateOrganizationInterconnectionRequest {
 	r.createOrganizationInterconnectionRequest = &createOrganizationInterconnectionRequest
 	return r
@@ -369,7 +369,7 @@ type ApiCreateProjectInterconnectionRequest struct {
 	exclude                                  *[]string
 }
 
-// Dedicated port or shared interconnection (also known as Fabric VC) creation request
+// Dedicated port or shared interconnection (also known as Fabric VC) creation request.  Shared interconnections can be created with the following request types: * &#x60;VlanCSPConnectionCreateInput&#x60; creates a layer 2 interconnection directly to your Cloud Service Provider. * &#x60;SharedPortVCVlanCreateInput&#x60; creates a layer 2 interconnection that you can finish configuration in Fabric. For new connections, this type is preferred to &#x60;VlanFabricVCCreateInput&#x60;. * &#x60;VlanFabricVCCreateInput&#x60; creates a layer 2 interconnection that you can connect through Fabric with a service token. * &#x60;VrfFabricVCCreateInput&#x60; creates a layer 3 interconnection that you can connect through Fabric with a service token.
 func (r ApiCreateProjectInterconnectionRequest) CreateOrganizationInterconnectionRequest(createOrganizationInterconnectionRequest CreateOrganizationInterconnectionRequest) ApiCreateProjectInterconnectionRequest {
 	r.createOrganizationInterconnectionRequest = &createOrganizationInterconnectionRequest
 	return r

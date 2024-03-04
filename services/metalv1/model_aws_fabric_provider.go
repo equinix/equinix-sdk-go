@@ -23,7 +23,8 @@ var _ MappedNullable = &AWSFabricProvider{}
 type AWSFabricProvider struct {
 	Type AWSFabricProviderType `json:"type"`
 	// AWS Account ID
-	AccountId            string `json:"account_id"`
+	AccountId            string  `json:"account_id"`
+	Location             *string `json:"location,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -96,6 +97,38 @@ func (o *AWSFabricProvider) SetAccountId(v string) {
 	o.AccountId = v
 }
 
+// GetLocation returns the Location field value if set, zero value otherwise.
+func (o *AWSFabricProvider) GetLocation() string {
+	if o == nil || IsNil(o.Location) {
+		var ret string
+		return ret
+	}
+	return *o.Location
+}
+
+// GetLocationOk returns a tuple with the Location field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AWSFabricProvider) GetLocationOk() (*string, bool) {
+	if o == nil || IsNil(o.Location) {
+		return nil, false
+	}
+	return o.Location, true
+}
+
+// HasLocation returns a boolean if a field has been set.
+func (o *AWSFabricProvider) HasLocation() bool {
+	if o != nil && !IsNil(o.Location) {
+		return true
+	}
+
+	return false
+}
+
+// SetLocation gets a reference to the given string and assigns it to the Location field.
+func (o *AWSFabricProvider) SetLocation(v string) {
+	o.Location = &v
+}
+
 func (o AWSFabricProvider) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -108,6 +141,9 @@ func (o AWSFabricProvider) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["type"] = o.Type
 	toSerialize["account_id"] = o.AccountId
+	if !IsNil(o.Location) {
+		toSerialize["location"] = o.Location
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -154,6 +190,7 @@ func (o *AWSFabricProvider) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "account_id")
+		delete(additionalProperties, "location")
 		o.AdditionalProperties = additionalProperties
 	}
 

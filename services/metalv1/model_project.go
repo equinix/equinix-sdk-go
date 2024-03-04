@@ -38,6 +38,7 @@ type Project struct {
 	PaymentMethod        *Href                  `json:"payment_method,omitempty"`
 	SshKeys              []Href                 `json:"ssh_keys,omitempty"`
 	UpdatedAt            *time.Time             `json:"updated_at,omitempty"`
+	Url                  *string                `json:"url,omitempty"`
 	Volumes              []Href                 `json:"volumes,omitempty"`
 	Type                 *ProjectType           `json:"type,omitempty"`
 	Tags                 []string               `json:"tags,omitempty"`
@@ -575,6 +576,38 @@ func (o *Project) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt = &v
 }
 
+// GetUrl returns the Url field value if set, zero value otherwise.
+func (o *Project) GetUrl() string {
+	if o == nil || IsNil(o.Url) {
+		var ret string
+		return ret
+	}
+	return *o.Url
+}
+
+// GetUrlOk returns a tuple with the Url field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Project) GetUrlOk() (*string, bool) {
+	if o == nil || IsNil(o.Url) {
+		return nil, false
+	}
+	return o.Url, true
+}
+
+// HasUrl returns a boolean if a field has been set.
+func (o *Project) HasUrl() bool {
+	if o != nil && !IsNil(o.Url) {
+		return true
+	}
+
+	return false
+}
+
+// SetUrl gets a reference to the given string and assigns it to the Url field.
+func (o *Project) SetUrl(v string) {
+	o.Url = &v
+}
+
 // GetVolumes returns the Volumes field value if set, zero value otherwise.
 func (o *Project) GetVolumes() []Href {
 	if o == nil || IsNil(o.Volumes) {
@@ -729,6 +762,9 @@ func (o Project) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.UpdatedAt) {
 		toSerialize["updated_at"] = o.UpdatedAt
 	}
+	if !IsNil(o.Url) {
+		toSerialize["url"] = o.Url
+	}
 	if !IsNil(o.Volumes) {
 		toSerialize["volumes"] = o.Volumes
 	}
@@ -776,6 +812,7 @@ func (o *Project) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "payment_method")
 		delete(additionalProperties, "ssh_keys")
 		delete(additionalProperties, "updated_at")
+		delete(additionalProperties, "url")
 		delete(additionalProperties, "volumes")
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "tags")

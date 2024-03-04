@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **ContactEmail** | Pointer to **string** | The preferred email used for communication and notifications about the Equinix Fabric interconnection. Required when using a Project API key. Optional and defaults to the primary user email address when using a User API key. | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
 **Name** | **string** |  | 
-**Project** | Pointer to **string** |  | [optional] 
+**Project** | **string** |  | 
 **Metro** | **string** | A Metro ID or code. When creating Fabric VCs (Metal Billed), this is where interconnection will be originating from, as we pre-authorize the use of one of our shared ports as the origin of the interconnection using A-Side service tokens. We only allow local connections for Fabric VCs (Metal Billed), so the destination location must be the same as the origin. For Fabric VCs (Fabric Billed), or shared connections, this will be the destination of the interconnection. We allow remote connections for Fabric VCs (Fabric Billed), so the origin of the interconnection can be a different metro set here. | 
 **Speed** | Pointer to **string** | A interconnection speed, in bps, mbps, or gbps. For Fabric VCs, this represents the maximum speed of the interconnection. For Fabric VCs (Metal Billed), this can only be one of the following: &#39;&#39;50mbps&#39;&#39;, &#39;&#39;200mbps&#39;&#39;, &#39;&#39;500mbps&#39;&#39;, &#39;&#39;1gbps&#39;&#39;, &#39;&#39;2gbps&#39;&#39;, &#39;&#39;5gbps&#39;&#39; or &#39;&#39;10gbps&#39;&#39;, and is required for creation. For Fabric VCs (Fabric Billed), this field will always default to &#39;&#39;10gbps&#39;&#39; even if it is not provided. For example, &#39;&#39;500000000&#39;&#39;, &#39;&#39;50m&#39;&#39;, or&#39; &#39;&#39;500mbps&#39;&#39; will all work as valid inputs. | [optional] 
 **Tags** | Pointer to **[]string** |  | [optional] 
@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 
 ### NewVlanCSPConnectionCreateInput
 
-`func NewVlanCSPConnectionCreateInput(name string, metro string, type_ VlanCSPConnectionCreateInputType, vlans []int32, fabricProvider VlanCSPConnectionCreateInputFabricProvider, ) *VlanCSPConnectionCreateInput`
+`func NewVlanCSPConnectionCreateInput(name string, project string, metro string, type_ VlanCSPConnectionCreateInputType, vlans []int32, fabricProvider VlanCSPConnectionCreateInputFabricProvider, ) *VlanCSPConnectionCreateInput`
 
 NewVlanCSPConnectionCreateInput instantiates a new VlanCSPConnectionCreateInput object
 This constructor will assign default values to properties that have it defined,
@@ -123,11 +123,6 @@ and a boolean to check if the value has been set.
 
 SetProject sets Project field to given value.
 
-### HasProject
-
-`func (o *VlanCSPConnectionCreateInput) HasProject() bool`
-
-HasProject returns a boolean if a field has been set.
 
 ### GetMetro
 

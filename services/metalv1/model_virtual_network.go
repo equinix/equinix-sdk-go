@@ -21,7 +21,7 @@ var _ MappedNullable = &VirtualNetwork{}
 
 // VirtualNetwork struct for VirtualNetwork
 type VirtualNetwork struct {
-	AssignedTo *Href `json:"assigned_to,omitempty"`
+	AssignedTo *Project `json:"assigned_to,omitempty"`
 	// True if the virtual network is attached to a virtual circuit. False if not.
 	AssignedToVirtualCircuit *bool      `json:"assigned_to_virtual_circuit,omitempty"`
 	Description              *string    `json:"description,omitempty"`
@@ -30,10 +30,10 @@ type VirtualNetwork struct {
 	CreatedAt                *time.Time `json:"created_at,omitempty"`
 	Id                       *string    `json:"id,omitempty"`
 	// A list of instances with ports currently associated to this Virtual Network.
-	Instances []Href `json:"instances,omitempty"`
+	Instances []Device `json:"instances,omitempty"`
 	// A list of metal gateways currently associated to this Virtual Network.
 	MetalGateways []MetalGatewayLite `json:"metal_gateways,omitempty"`
-	Metro         *Href              `json:"metro,omitempty"`
+	Metro         *Metro             `json:"metro,omitempty"`
 	// The Metro code of the metro in which this Virtual Network is defined.
 	MetroCode            *string  `json:"metro_code,omitempty"`
 	Vxlan                *int32   `json:"vxlan,omitempty"`
@@ -61,9 +61,9 @@ func NewVirtualNetworkWithDefaults() *VirtualNetwork {
 }
 
 // GetAssignedTo returns the AssignedTo field value if set, zero value otherwise.
-func (o *VirtualNetwork) GetAssignedTo() Href {
+func (o *VirtualNetwork) GetAssignedTo() Project {
 	if o == nil || IsNil(o.AssignedTo) {
-		var ret Href
+		var ret Project
 		return ret
 	}
 	return *o.AssignedTo
@@ -71,7 +71,7 @@ func (o *VirtualNetwork) GetAssignedTo() Href {
 
 // GetAssignedToOk returns a tuple with the AssignedTo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VirtualNetwork) GetAssignedToOk() (*Href, bool) {
+func (o *VirtualNetwork) GetAssignedToOk() (*Project, bool) {
 	if o == nil || IsNil(o.AssignedTo) {
 		return nil, false
 	}
@@ -87,8 +87,8 @@ func (o *VirtualNetwork) HasAssignedTo() bool {
 	return false
 }
 
-// SetAssignedTo gets a reference to the given Href and assigns it to the AssignedTo field.
-func (o *VirtualNetwork) SetAssignedTo(v Href) {
+// SetAssignedTo gets a reference to the given Project and assigns it to the AssignedTo field.
+func (o *VirtualNetwork) SetAssignedTo(v Project) {
 	o.AssignedTo = &v
 }
 
@@ -285,9 +285,9 @@ func (o *VirtualNetwork) SetId(v string) {
 }
 
 // GetInstances returns the Instances field value if set, zero value otherwise.
-func (o *VirtualNetwork) GetInstances() []Href {
+func (o *VirtualNetwork) GetInstances() []Device {
 	if o == nil || IsNil(o.Instances) {
-		var ret []Href
+		var ret []Device
 		return ret
 	}
 	return o.Instances
@@ -295,7 +295,7 @@ func (o *VirtualNetwork) GetInstances() []Href {
 
 // GetInstancesOk returns a tuple with the Instances field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VirtualNetwork) GetInstancesOk() ([]Href, bool) {
+func (o *VirtualNetwork) GetInstancesOk() ([]Device, bool) {
 	if o == nil || IsNil(o.Instances) {
 		return nil, false
 	}
@@ -311,8 +311,8 @@ func (o *VirtualNetwork) HasInstances() bool {
 	return false
 }
 
-// SetInstances gets a reference to the given []Href and assigns it to the Instances field.
-func (o *VirtualNetwork) SetInstances(v []Href) {
+// SetInstances gets a reference to the given []Device and assigns it to the Instances field.
+func (o *VirtualNetwork) SetInstances(v []Device) {
 	o.Instances = v
 }
 
@@ -349,9 +349,9 @@ func (o *VirtualNetwork) SetMetalGateways(v []MetalGatewayLite) {
 }
 
 // GetMetro returns the Metro field value if set, zero value otherwise.
-func (o *VirtualNetwork) GetMetro() Href {
+func (o *VirtualNetwork) GetMetro() Metro {
 	if o == nil || IsNil(o.Metro) {
-		var ret Href
+		var ret Metro
 		return ret
 	}
 	return *o.Metro
@@ -359,7 +359,7 @@ func (o *VirtualNetwork) GetMetro() Href {
 
 // GetMetroOk returns a tuple with the Metro field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VirtualNetwork) GetMetroOk() (*Href, bool) {
+func (o *VirtualNetwork) GetMetroOk() (*Metro, bool) {
 	if o == nil || IsNil(o.Metro) {
 		return nil, false
 	}
@@ -375,8 +375,8 @@ func (o *VirtualNetwork) HasMetro() bool {
 	return false
 }
 
-// SetMetro gets a reference to the given Href and assigns it to the Metro field.
-func (o *VirtualNetwork) SetMetro(v Href) {
+// SetMetro gets a reference to the given Metro and assigns it to the Metro field.
+func (o *VirtualNetwork) SetMetro(v Metro) {
 	o.Metro = &v
 }
 

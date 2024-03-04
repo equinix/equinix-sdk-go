@@ -25,7 +25,7 @@ type SharedPortVCVlanCreateInput struct {
 	ContactEmail *string `json:"contact_email,omitempty"`
 	Description  *string `json:"description,omitempty"`
 	Name         string  `json:"name"`
-	Project      *string `json:"project,omitempty"`
+	Project      string  `json:"project"`
 	// A Metro ID or code. When creating Fabric VCs (Metal Billed), this is where interconnection will be originating from, as we pre-authorize the use of one of our shared ports as the origin of the interconnection using A-Side service tokens. We only allow local connections for Fabric VCs (Metal Billed), so the destination location must be the same as the origin. For Fabric VCs (Fabric Billed), or shared connections, this will be the destination of the interconnection. We allow remote connections for Fabric VCs (Fabric Billed), so the origin of the interconnection can be a different metro set here.
 	Metro string `json:"metro"`
 	// A interconnection speed, in bps, mbps, or gbps. For Fabric VCs, this represents the maximum speed of the interconnection. For Fabric VCs (Metal Billed), this can only be one of the following: ''50mbps'', ''200mbps'', ''500mbps'', ''1gbps'', ''2gbps'', ''5gbps'' or ''10gbps'', and is required for creation. For Fabric VCs (Fabric Billed), this field will always default to ''10gbps'' even if it is not provided. For example, ''500000000'', ''50m'', or' ''500mbps'' will all work as valid inputs.
@@ -43,9 +43,10 @@ type _SharedPortVCVlanCreateInput SharedPortVCVlanCreateInput
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSharedPortVCVlanCreateInput(name string, metro string, type_ SharedPortVCVlanCreateInputType, vlans []int32) *SharedPortVCVlanCreateInput {
+func NewSharedPortVCVlanCreateInput(name string, project string, metro string, type_ SharedPortVCVlanCreateInputType, vlans []int32) *SharedPortVCVlanCreateInput {
 	this := SharedPortVCVlanCreateInput{}
 	this.Name = name
+	this.Project = project
 	this.Metro = metro
 	this.Type = type_
 	this.Vlans = vlans
@@ -148,36 +149,28 @@ func (o *SharedPortVCVlanCreateInput) SetName(v string) {
 	o.Name = v
 }
 
-// GetProject returns the Project field value if set, zero value otherwise.
+// GetProject returns the Project field value
 func (o *SharedPortVCVlanCreateInput) GetProject() string {
-	if o == nil || IsNil(o.Project) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Project
+
+	return o.Project
 }
 
-// GetProjectOk returns a tuple with the Project field value if set, nil otherwise
+// GetProjectOk returns a tuple with the Project field value
 // and a boolean to check if the value has been set.
 func (o *SharedPortVCVlanCreateInput) GetProjectOk() (*string, bool) {
-	if o == nil || IsNil(o.Project) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Project, true
+	return &o.Project, true
 }
 
-// HasProject returns a boolean if a field has been set.
-func (o *SharedPortVCVlanCreateInput) HasProject() bool {
-	if o != nil && !IsNil(o.Project) {
-		return true
-	}
-
-	return false
-}
-
-// SetProject gets a reference to the given string and assigns it to the Project field.
+// SetProject sets field value
 func (o *SharedPortVCVlanCreateInput) SetProject(v string) {
-	o.Project = &v
+	o.Project = v
 }
 
 // GetMetro returns the Metro field value
@@ -333,9 +326,7 @@ func (o SharedPortVCVlanCreateInput) ToMap() (map[string]interface{}, error) {
 		toSerialize["description"] = o.Description
 	}
 	toSerialize["name"] = o.Name
-	if !IsNil(o.Project) {
-		toSerialize["project"] = o.Project
-	}
+	toSerialize["project"] = o.Project
 	toSerialize["metro"] = o.Metro
 	if !IsNil(o.Speed) {
 		toSerialize["speed"] = o.Speed
@@ -359,6 +350,7 @@ func (o *SharedPortVCVlanCreateInput) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"name",
+		"project",
 		"metro",
 		"type",
 		"vlans",

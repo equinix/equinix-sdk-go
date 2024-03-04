@@ -25,6 +25,7 @@ type SelfServiceReservationItemResponse struct {
 	MetroCode            *string  `json:"metro_code,omitempty"`
 	MetroId              *string  `json:"metro_id,omitempty"`
 	MetroName            *string  `json:"metro_name,omitempty"`
+	Plan                 *Plan    `json:"plan,omitempty"`
 	PlanId               *string  `json:"plan_id,omitempty"`
 	PlanName             *string  `json:"plan_name,omitempty"`
 	PlanSlug             *string  `json:"plan_slug,omitempty"`
@@ -211,6 +212,38 @@ func (o *SelfServiceReservationItemResponse) HasMetroName() bool {
 // SetMetroName gets a reference to the given string and assigns it to the MetroName field.
 func (o *SelfServiceReservationItemResponse) SetMetroName(v string) {
 	o.MetroName = &v
+}
+
+// GetPlan returns the Plan field value if set, zero value otherwise.
+func (o *SelfServiceReservationItemResponse) GetPlan() Plan {
+	if o == nil || IsNil(o.Plan) {
+		var ret Plan
+		return ret
+	}
+	return *o.Plan
+}
+
+// GetPlanOk returns a tuple with the Plan field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SelfServiceReservationItemResponse) GetPlanOk() (*Plan, bool) {
+	if o == nil || IsNil(o.Plan) {
+		return nil, false
+	}
+	return o.Plan, true
+}
+
+// HasPlan returns a boolean if a field has been set.
+func (o *SelfServiceReservationItemResponse) HasPlan() bool {
+	if o != nil && !IsNil(o.Plan) {
+		return true
+	}
+
+	return false
+}
+
+// SetPlan gets a reference to the given Plan and assigns it to the Plan field.
+func (o *SelfServiceReservationItemResponse) SetPlan(v Plan) {
+	o.Plan = &v
 }
 
 // GetPlanId returns the PlanId field value if set, zero value otherwise.
@@ -430,6 +463,9 @@ func (o SelfServiceReservationItemResponse) ToMap() (map[string]interface{}, err
 	if !IsNil(o.MetroName) {
 		toSerialize["metro_name"] = o.MetroName
 	}
+	if !IsNil(o.Plan) {
+		toSerialize["plan"] = o.Plan
+	}
 	if !IsNil(o.PlanId) {
 		toSerialize["plan_id"] = o.PlanId
 	}
@@ -475,6 +511,7 @@ func (o *SelfServiceReservationItemResponse) UnmarshalJSON(data []byte) (err err
 		delete(additionalProperties, "metro_code")
 		delete(additionalProperties, "metro_id")
 		delete(additionalProperties, "metro_name")
+		delete(additionalProperties, "plan")
 		delete(additionalProperties, "plan_id")
 		delete(additionalProperties, "plan_name")
 		delete(additionalProperties, "plan_slug")

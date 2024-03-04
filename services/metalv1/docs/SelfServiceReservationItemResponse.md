@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **MetroCode** | Pointer to **string** |  | [optional] 
 **MetroId** | Pointer to **string** |  | [optional] 
 **MetroName** | Pointer to **string** |  | [optional] 
+**Plan** | Pointer to [**Plan**](Plan.md) |  | [optional] 
 **PlanId** | Pointer to **string** |  | [optional] 
 **PlanName** | Pointer to **string** |  | [optional] 
 **PlanSlug** | Pointer to **string** |  | [optional] 
@@ -159,6 +160,31 @@ SetMetroName sets MetroName field to given value.
 `func (o *SelfServiceReservationItemResponse) HasMetroName() bool`
 
 HasMetroName returns a boolean if a field has been set.
+
+### GetPlan
+
+`func (o *SelfServiceReservationItemResponse) GetPlan() Plan`
+
+GetPlan returns the Plan field if non-nil, zero value otherwise.
+
+### GetPlanOk
+
+`func (o *SelfServiceReservationItemResponse) GetPlanOk() (*Plan, bool)`
+
+GetPlanOk returns a tuple with the Plan field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPlan
+
+`func (o *SelfServiceReservationItemResponse) SetPlan(v Plan)`
+
+SetPlan sets Plan field to given value.
+
+### HasPlan
+
+`func (o *SelfServiceReservationItemResponse) HasPlan() bool`
+
+HasPlan returns a boolean if a field has been set.
 
 ### GetPlanId
 

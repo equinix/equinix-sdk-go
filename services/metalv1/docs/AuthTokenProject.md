@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **PaymentMethod** | Pointer to [**Href**](Href.md) |  | [optional] 
 **SshKeys** | Pointer to [**[]Href**](Href.md) |  | [optional] 
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] 
+**Url** | Pointer to **string** |  | [optional] 
 **Volumes** | Pointer to [**[]Href**](Href.md) |  | [optional] 
 **Type** | Pointer to [**ProjectType**](ProjectType.md) |  | [optional] 
 **Tags** | Pointer to **[]string** |  | [optional] 
@@ -442,6 +443,31 @@ SetUpdatedAt sets UpdatedAt field to given value.
 `func (o *AuthTokenProject) HasUpdatedAt() bool`
 
 HasUpdatedAt returns a boolean if a field has been set.
+
+### GetUrl
+
+`func (o *AuthTokenProject) GetUrl() string`
+
+GetUrl returns the Url field if non-nil, zero value otherwise.
+
+### GetUrlOk
+
+`func (o *AuthTokenProject) GetUrlOk() (*string, bool)`
+
+GetUrlOk returns a tuple with the Url field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUrl
+
+`func (o *AuthTokenProject) SetUrl(v string)`
+
+SetUrl sets Url field to given value.
+
+### HasUrl
+
+`func (o *AuthTokenProject) HasUrl() bool`
+
+HasUrl returns a boolean if a field has been set.
 
 ### GetVolumes
 

@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ContactEmail** | Pointer to **string** | The preferred email used for communication and notifications about the Equinix Fabric interconnection. Required when using a Project API key. Optional and defaults to the primary user email address when using a User API key. | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
+**FacilityId** | Pointer to **string** |  | [optional] 
 **Metro** | **string** | A Metro ID or code. When creating Fabric VCs (Metal Billed), this is where interconnection will be originating from, as we pre-authorize the use of one of our shared ports as the origin of the interconnection using A-Side service tokens. We only allow local connections for Fabric VCs (Metal Billed), so the destination location must be the same as the origin. For Fabric VCs (Fabric Billed), or shared connections, this will be the destination of the interconnection. We allow remote connections for Fabric VCs (Fabric Billed), so the origin of the interconnection can be a different metro set here. | 
 **Name** | **string** |  | 
 **Project** | Pointer to **string** |  | [optional] 
@@ -84,6 +85,31 @@ SetDescription sets Description field to given value.
 `func (o *VlanFabricVcCreateInput) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
+
+### GetFacilityId
+
+`func (o *VlanFabricVcCreateInput) GetFacilityId() string`
+
+GetFacilityId returns the FacilityId field if non-nil, zero value otherwise.
+
+### GetFacilityIdOk
+
+`func (o *VlanFabricVcCreateInput) GetFacilityIdOk() (*string, bool)`
+
+GetFacilityIdOk returns a tuple with the FacilityId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFacilityId
+
+`func (o *VlanFabricVcCreateInput) SetFacilityId(v string)`
+
+SetFacilityId sets FacilityId field to given value.
+
+### HasFacilityId
+
+`func (o *VlanFabricVcCreateInput) HasFacilityId() bool`
+
+HasFacilityId returns a boolean if a field has been set.
 
 ### GetMetro
 
