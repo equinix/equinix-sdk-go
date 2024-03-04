@@ -4,7 +4,8 @@ properties:
   description:
     type: string
   facility:
-    $ref: './Href.yaml'
+    $ref: './Facility.yaml'
+    x-deprecated: true
   id:
     format: uuid
     type: string
@@ -29,12 +30,14 @@ properties:
   name:
     type: string
   organization:
-    $ref: './Href.yaml'
+    $ref: './Organization.yaml'
   ports:
     items:
       $ref: './InterconnectionPort.yaml'
     type: array
     description: For Fabric VCs, these represent Virtual Port(s) created for the interconnection. For dedicated interconnections, these represent the Dedicated Port(s).
+  project:
+    $ref: './Project.yaml'
   redundancy:
     type: string
     enum:
@@ -70,7 +73,12 @@ properties:
     enum:
     - shared
     - dedicated
-    description: The 'shared' type of interconnection refers to shared connections, or later also known as Fabric Virtual Connections (or Fabric VCs). The 'dedicated' type of interconnection refers to interconnections created with Dedicated Ports.
+    - shared_port_vlan
+    - shared_port_vlan_to_csp
+    description: The 'shared' type of interconnection refers to shared connections, or later also known as Fabric Virtual Connections (or Fabric VCs). 
+      The 'dedicated' type of interconnection refers to interconnections created with Dedicated Ports.
+      The 'shared_port_vlan' type of interconnection refers to shared connections created without service tokens.
+      The 'shared_port_vlan_to_csp' type of interconnection refers to connections created directly to a supported cloud service provider.
   created_at:
     format: date-time
     type: string

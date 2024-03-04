@@ -44,4 +44,5 @@ required:
 - type
 - metro
 - vlans
+- project
 type: object
