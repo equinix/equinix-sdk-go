@@ -20,9 +20,9 @@ properties:
   nni_vlan:
     type: integer
   port:
-    $ref: './Href.yaml'
+    $ref: './InterconnectionPort.yaml'
   project:
-    $ref: './Href.yaml'
+    $ref: './Project.yaml'
   speed:
     description: For Virtual Circuits on shared and dedicated connections, this speed should match the one set on their Interconnection Ports. For Virtual Circuits on
       Fabric VCs (both Metal and Fabric Billed) that have found their corresponding Fabric connection, this is the actual speed of the interconnection that was configured when setting up the interconnection on the Fabric Portal. 

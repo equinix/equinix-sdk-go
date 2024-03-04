@@ -48,4 +48,5 @@ required:
 - metro
 - vlans
 - type
+- project
 - fabric_provider

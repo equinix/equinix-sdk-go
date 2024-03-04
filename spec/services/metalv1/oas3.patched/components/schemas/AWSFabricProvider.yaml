@@ -7,6 +7,9 @@ properties:
     type: string
     description: "AWS Account ID"
     example: "129312"
+  location:
+    type: string
+    example: "us-west-1"
 required:
 - type
 - account_id

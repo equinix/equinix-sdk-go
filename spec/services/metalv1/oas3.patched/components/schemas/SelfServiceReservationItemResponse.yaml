@@ -11,17 +11,23 @@ properties:
     type: string
   metro_name:
     type: string
+  plan:
+    $ref: './Plan.yaml'
   plan_id:
     format: uuid
     type: string
+    x-deprecated: true
   plan_name:
     type: string
+    x-deprecated: true
   plan_slug:
     type: string
+    x-deprecated: true
   plan_categories:
     type: array
     items:
       type: string
+    x-deprecated: true
   quantity:
     type: integer
   term:

@@ -35,6 +35,6 @@ properties:
     $ref: './VirtualNetwork.yaml'
   virtual_networks:
     items:
-      $ref: './Href.yaml'
+      $ref: './VirtualNetwork.yaml'
     type: array
 type: object
