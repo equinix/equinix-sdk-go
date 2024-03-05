@@ -382,7 +382,7 @@ import (
 
 func main() {
 	connectionId := "connectionId_example" // string | Connection Id
-	connectionChangeOperation := []openapiclient.ConnectionChangeOperation{*openapiclient.NewConnectionChangeOperation("add", "/ipv6", map[string]interface{}(123))} // []ConnectionChangeOperation | 
+	connectionChangeOperation := []openapiclient.ConnectionChangeOperation{*openapiclient.NewConnectionChangeOperation("add", "/ipv6", interface{}(123))} // []ConnectionChangeOperation | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
