@@ -6,13 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Op** | [**PrecisionTimeChangeOperationOp**](PrecisionTimeChangeOperationOp.md) |  | 
 **Path** | **string** | path inside document leading to updated parameter | 
-**Value** | **map[string]interface{}** | new value for updated parameter | 
+**Value** | **interface{}** | new value for updated parameter | 
 
 ## Methods
 
 ### NewServiceTokenChangeOperation
 
-`func NewServiceTokenChangeOperation(op PrecisionTimeChangeOperationOp, path string, value map[string]interface{}, ) *ServiceTokenChangeOperation`
+`func NewServiceTokenChangeOperation(op PrecisionTimeChangeOperationOp, path string, value interface{}, ) *ServiceTokenChangeOperation`
 
 NewServiceTokenChangeOperation instantiates a new ServiceTokenChangeOperation object
 This constructor will assign default values to properties that have it defined,
@@ -69,24 +69,34 @@ SetPath sets Path field to given value.
 
 ### GetValue
 
-`func (o *ServiceTokenChangeOperation) GetValue() map[string]interface{}`
+`func (o *ServiceTokenChangeOperation) GetValue() interface{}`
 
 GetValue returns the Value field if non-nil, zero value otherwise.
 
 ### GetValueOk
 
-`func (o *ServiceTokenChangeOperation) GetValueOk() (*map[string]interface{}, bool)`
+`func (o *ServiceTokenChangeOperation) GetValueOk() (*interface{}, bool)`
 
 GetValueOk returns a tuple with the Value field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetValue
 
-`func (o *ServiceTokenChangeOperation) SetValue(v map[string]interface{})`
+`func (o *ServiceTokenChangeOperation) SetValue(v interface{})`
 
 SetValue sets Value field to given value.
 
 
+### SetValueNil
+
+`func (o *ServiceTokenChangeOperation) SetValueNil(b bool)`
+
+ SetValueNil sets the value for Value to be an explicit nil
+
+### UnsetValue
+`func (o *ServiceTokenChangeOperation) UnsetValue()`
+
+UnsetValue ensures that no value is present for Value, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

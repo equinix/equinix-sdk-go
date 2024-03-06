@@ -25,7 +25,7 @@ type ServiceTokenChangeOperation struct {
 	// path inside document leading to updated parameter
 	Path string `json:"path"`
 	// new value for updated parameter
-	Value                map[string]interface{} `json:"value"`
+	Value                interface{} `json:"value"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -35,7 +35,7 @@ type _ServiceTokenChangeOperation ServiceTokenChangeOperation
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewServiceTokenChangeOperation(op PrecisionTimeChangeOperationOp, path string, value map[string]interface{}) *ServiceTokenChangeOperation {
+func NewServiceTokenChangeOperation(op PrecisionTimeChangeOperationOp, path string, value interface{}) *ServiceTokenChangeOperation {
 	this := ServiceTokenChangeOperation{}
 	this.Op = op
 	this.Path = path
@@ -100,9 +100,10 @@ func (o *ServiceTokenChangeOperation) SetPath(v string) {
 }
 
 // GetValue returns the Value field value
-func (o *ServiceTokenChangeOperation) GetValue() map[string]interface{} {
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *ServiceTokenChangeOperation) GetValue() interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 
@@ -111,15 +112,16 @@ func (o *ServiceTokenChangeOperation) GetValue() map[string]interface{} {
 
 // GetValueOk returns a tuple with the Value field value
 // and a boolean to check if the value has been set.
-func (o *ServiceTokenChangeOperation) GetValueOk() (map[string]interface{}, bool) {
-	if o == nil {
-		return map[string]interface{}{}, false
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ServiceTokenChangeOperation) GetValueOk() (*interface{}, bool) {
+	if o == nil || IsNil(o.Value) {
+		return nil, false
 	}
-	return o.Value, true
+	return &o.Value, true
 }
 
 // SetValue sets field value
-func (o *ServiceTokenChangeOperation) SetValue(v map[string]interface{}) {
+func (o *ServiceTokenChangeOperation) SetValue(v interface{}) {
 	o.Value = v
 }
 
@@ -135,7 +137,9 @@ func (o ServiceTokenChangeOperation) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["op"] = o.Op
 	toSerialize["path"] = o.Path
-	toSerialize["value"] = o.Value
+	if o.Value != nil {
+		toSerialize["value"] = o.Value
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value

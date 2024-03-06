@@ -6,13 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Op** | [**PrecisionTimeChangeOperationOp**](PrecisionTimeChangeOperationOp.md) |  | 
 **Path** | **string** | path inside document leading to updated parameter | 
-**Value** | **map[string]interface{}** | new value for updated parameter | 
+**Value** | **interface{}** | new value for updated parameter | 
 
 ## Methods
 
 ### NewCloudRouterChangeOperation
 
-`func NewCloudRouterChangeOperation(op PrecisionTimeChangeOperationOp, path string, value map[string]interface{}, ) *CloudRouterChangeOperation`
+`func NewCloudRouterChangeOperation(op PrecisionTimeChangeOperationOp, path string, value interface{}, ) *CloudRouterChangeOperation`
 
 NewCloudRouterChangeOperation instantiates a new CloudRouterChangeOperation object
 This constructor will assign default values to properties that have it defined,
@@ -69,24 +69,34 @@ SetPath sets Path field to given value.
 
 ### GetValue
 
-`func (o *CloudRouterChangeOperation) GetValue() map[string]interface{}`
+`func (o *CloudRouterChangeOperation) GetValue() interface{}`
 
 GetValue returns the Value field if non-nil, zero value otherwise.
 
 ### GetValueOk
 
-`func (o *CloudRouterChangeOperation) GetValueOk() (*map[string]interface{}, bool)`
+`func (o *CloudRouterChangeOperation) GetValueOk() (*interface{}, bool)`
 
 GetValueOk returns a tuple with the Value field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetValue
 
-`func (o *CloudRouterChangeOperation) SetValue(v map[string]interface{})`
+`func (o *CloudRouterChangeOperation) SetValue(v interface{})`
 
 SetValue sets Value field to given value.
 
 
+### SetValueNil
+
+`func (o *CloudRouterChangeOperation) SetValueNil(b bool)`
+
+ SetValueNil sets the value for Value to be an explicit nil
+
+### UnsetValue
+`func (o *CloudRouterChangeOperation) UnsetValue()`
+
+UnsetValue ensures that no value is present for Value, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

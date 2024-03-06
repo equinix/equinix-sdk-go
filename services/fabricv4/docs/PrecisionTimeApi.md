@@ -239,7 +239,7 @@ import (
 
 func main() {
 	serviceId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Service UUID
-	precisionTimeChangeOperation := []openapiclient.PrecisionTimeChangeOperation{*openapiclient.NewPrecisionTimeChangeOperation(openapiclient.precisionTimeChangeOperation_op("replace"), openapiclient.precisionTimeChangeOperation_path("/ipv4"), map[string]interface{}(123))} // []PrecisionTimeChangeOperation | 
+	precisionTimeChangeOperation := []openapiclient.PrecisionTimeChangeOperation{*openapiclient.NewPrecisionTimeChangeOperation(openapiclient.precisionTimeChangeOperation_op("replace"), openapiclient.precisionTimeChangeOperation_path("/ipv4"), interface{}(123))} // []PrecisionTimeChangeOperation | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

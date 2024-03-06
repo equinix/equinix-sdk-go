@@ -713,7 +713,7 @@ import (
 func main() {
 	routingProtocolId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Routing Protocol Id
 	connectionId := "connectionId_example" // string | Connection Id
-	connectionChangeOperation := []openapiclient.ConnectionChangeOperation{*openapiclient.NewConnectionChangeOperation("add", "/ipv6", map[string]interface{}(123))} // []ConnectionChangeOperation | 
+	connectionChangeOperation := []openapiclient.ConnectionChangeOperation{*openapiclient.NewConnectionChangeOperation("add", "/ipv6", interface{}(123))} // []ConnectionChangeOperation | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

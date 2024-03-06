@@ -522,7 +522,7 @@ import (
 
 func main() {
 	networkId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Network UUID
-	networkChangeOperation := []openapiclient.NetworkChangeOperation{*openapiclient.NewNetworkChangeOperation(openapiclient.precisionTimeChangeOperation_op("replace"), "/name", map[string]interface{}(123))} // []NetworkChangeOperation | 
+	networkChangeOperation := []openapiclient.NetworkChangeOperation{*openapiclient.NewNetworkChangeOperation(openapiclient.precisionTimeChangeOperation_op("replace"), "/name", interface{}(123))} // []NetworkChangeOperation | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
