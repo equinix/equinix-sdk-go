@@ -16,19 +16,23 @@ import (
 	"fmt"
 )
 
-// InterconnectionType The 'shared' type of interconnection refers to shared connections, or later also known as Fabric Virtual Connections (or Fabric VCs). The 'dedicated' type of interconnection refers to interconnections created with Dedicated Ports.
+// InterconnectionType The 'shared' type of interconnection refers to shared connections, or later also known as Fabric Virtual Connections (or Fabric VCs). The 'dedicated' type of interconnection refers to interconnections created with Dedicated Ports. The 'shared_port_vlan' type of interconnection refers to shared connections created without service tokens. The 'shared_port_vlan_to_csp' type of interconnection refers to connections created directly to a supported cloud service provider.
 type InterconnectionType string
 
 // List of Interconnection_type
 const (
-	INTERCONNECTIONTYPE_SHARED    InterconnectionType = "shared"
-	INTERCONNECTIONTYPE_DEDICATED InterconnectionType = "dedicated"
+	INTERCONNECTIONTYPE_SHARED                  InterconnectionType = "shared"
+	INTERCONNECTIONTYPE_DEDICATED               InterconnectionType = "dedicated"
+	INTERCONNECTIONTYPE_SHARED_PORT_VLAN        InterconnectionType = "shared_port_vlan"
+	INTERCONNECTIONTYPE_SHARED_PORT_VLAN_TO_CSP InterconnectionType = "shared_port_vlan_to_csp"
 )
 
 // All allowed values of InterconnectionType enum
 var AllowedInterconnectionTypeEnumValues = []InterconnectionType{
 	"shared",
 	"dedicated",
+	"shared_port_vlan",
+	"shared_port_vlan_to_csp",
 }
 
 func (v *InterconnectionType) UnmarshalJSON(src []byte) error {

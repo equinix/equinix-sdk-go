@@ -6,13 +6,14 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ContactEmail** | Pointer to **string** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
-**Facility** | Pointer to [**Href**](Href.md) |  | [optional] 
+**Facility** | Pointer to [**Facility**](Facility.md) |  | [optional] 
 **Id** | Pointer to **string** |  | [optional] 
 **Metro** | Pointer to [**Metro**](Metro.md) |  | [optional] 
 **Mode** | Pointer to [**InterconnectionMode**](InterconnectionMode.md) |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
-**Organization** | Pointer to [**Href**](Href.md) |  | [optional] 
+**Organization** | Pointer to [**Organization**](Organization.md) |  | [optional] 
 **Ports** | Pointer to [**[]InterconnectionPort**](InterconnectionPort.md) | For Fabric VCs, these represent Virtual Port(s) created for the interconnection. For dedicated interconnections, these represent the Dedicated Port(s). | [optional] 
+**Project** | Pointer to [**Project**](Project.md) |  | [optional] 
 **Redundancy** | Pointer to [**InterconnectionRedundancy**](InterconnectionRedundancy.md) |  | [optional] 
 **ServiceTokens** | Pointer to [**[]FabricServiceToken**](FabricServiceToken.md) | For Fabric VCs (Metal Billed), this will show details of the A-Side service tokens issued for the interconnection. For Fabric VCs (Fabric Billed), this will show the details of the Z-Side service tokens issued for the interconnection. Dedicated interconnections will not have any service tokens issued. There will be one per interconnection, so for redundant interconnections, there should be two service tokens issued. | [optional] 
 **AuthorizationCode** | Pointer to **string** | For Fabric VCs (Metal Billed), this allows Fabric to connect the Metal network to any connection Fabric facilitates. Fabric uses this token to be able to give more detailed information about the Metal end of the network, when viewing resources from within Fabric. | [optional] 
@@ -96,20 +97,20 @@ HasDescription returns a boolean if a field has been set.
 
 ### GetFacility
 
-`func (o *Interconnection) GetFacility() Href`
+`func (o *Interconnection) GetFacility() Facility`
 
 GetFacility returns the Facility field if non-nil, zero value otherwise.
 
 ### GetFacilityOk
 
-`func (o *Interconnection) GetFacilityOk() (*Href, bool)`
+`func (o *Interconnection) GetFacilityOk() (*Facility, bool)`
 
 GetFacilityOk returns a tuple with the Facility field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFacility
 
-`func (o *Interconnection) SetFacility(v Href)`
+`func (o *Interconnection) SetFacility(v Facility)`
 
 SetFacility sets Facility field to given value.
 
@@ -221,20 +222,20 @@ HasName returns a boolean if a field has been set.
 
 ### GetOrganization
 
-`func (o *Interconnection) GetOrganization() Href`
+`func (o *Interconnection) GetOrganization() Organization`
 
 GetOrganization returns the Organization field if non-nil, zero value otherwise.
 
 ### GetOrganizationOk
 
-`func (o *Interconnection) GetOrganizationOk() (*Href, bool)`
+`func (o *Interconnection) GetOrganizationOk() (*Organization, bool)`
 
 GetOrganizationOk returns a tuple with the Organization field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOrganization
 
-`func (o *Interconnection) SetOrganization(v Href)`
+`func (o *Interconnection) SetOrganization(v Organization)`
 
 SetOrganization sets Organization field to given value.
 
@@ -268,6 +269,31 @@ SetPorts sets Ports field to given value.
 `func (o *Interconnection) HasPorts() bool`
 
 HasPorts returns a boolean if a field has been set.
+
+### GetProject
+
+`func (o *Interconnection) GetProject() Project`
+
+GetProject returns the Project field if non-nil, zero value otherwise.
+
+### GetProjectOk
+
+`func (o *Interconnection) GetProjectOk() (*Project, bool)`
+
+GetProjectOk returns a tuple with the Project field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProject
+
+`func (o *Interconnection) SetProject(v Project)`
+
+SetProject sets Project field to given value.
+
+### HasProject
+
+`func (o *Interconnection) HasProject() bool`
+
+HasProject returns a boolean if a field has been set.
 
 ### GetRedundancy
 

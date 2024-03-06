@@ -29,13 +29,13 @@ type VrfVirtualCircuit struct {
 	// The MD5 password for the BGP peering in plaintext (not a checksum).
 	Md5 *string `json:"md5,omitempty"`
 	// An IP address from the subnet that will be used on the Metal side. This parameter is optional, but if supplied, we will use the other usable IP address in the subnet as the Customer IP. By default, the first usable IP address in the subnet will be used.
-	MetalIp *string `json:"metal_ip,omitempty"`
-	Name    *string `json:"name,omitempty"`
-	Port    *Href   `json:"port,omitempty"`
-	NniVlan *int32  `json:"nni_vlan,omitempty"`
+	MetalIp *string              `json:"metal_ip,omitempty"`
+	Name    *string              `json:"name,omitempty"`
+	Port    *InterconnectionPort `json:"port,omitempty"`
+	NniVlan *int32               `json:"nni_vlan,omitempty"`
 	// The peer ASN that will be used with the VRF on the Virtual Circuit.
-	PeerAsn *int32 `json:"peer_asn,omitempty"`
-	Project *Href  `json:"project,omitempty"`
+	PeerAsn *int32   `json:"peer_asn,omitempty"`
+	Project *Project `json:"project,omitempty"`
 	// integer representing bps speed
 	Speed  *int64                   `json:"speed,omitempty"`
 	Status *VrfVirtualCircuitStatus `json:"status,omitempty"`
@@ -262,9 +262,9 @@ func (o *VrfVirtualCircuit) SetName(v string) {
 }
 
 // GetPort returns the Port field value if set, zero value otherwise.
-func (o *VrfVirtualCircuit) GetPort() Href {
+func (o *VrfVirtualCircuit) GetPort() InterconnectionPort {
 	if o == nil || IsNil(o.Port) {
-		var ret Href
+		var ret InterconnectionPort
 		return ret
 	}
 	return *o.Port
@@ -272,7 +272,7 @@ func (o *VrfVirtualCircuit) GetPort() Href {
 
 // GetPortOk returns a tuple with the Port field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VrfVirtualCircuit) GetPortOk() (*Href, bool) {
+func (o *VrfVirtualCircuit) GetPortOk() (*InterconnectionPort, bool) {
 	if o == nil || IsNil(o.Port) {
 		return nil, false
 	}
@@ -288,8 +288,8 @@ func (o *VrfVirtualCircuit) HasPort() bool {
 	return false
 }
 
-// SetPort gets a reference to the given Href and assigns it to the Port field.
-func (o *VrfVirtualCircuit) SetPort(v Href) {
+// SetPort gets a reference to the given InterconnectionPort and assigns it to the Port field.
+func (o *VrfVirtualCircuit) SetPort(v InterconnectionPort) {
 	o.Port = &v
 }
 
@@ -358,9 +358,9 @@ func (o *VrfVirtualCircuit) SetPeerAsn(v int32) {
 }
 
 // GetProject returns the Project field value if set, zero value otherwise.
-func (o *VrfVirtualCircuit) GetProject() Href {
+func (o *VrfVirtualCircuit) GetProject() Project {
 	if o == nil || IsNil(o.Project) {
-		var ret Href
+		var ret Project
 		return ret
 	}
 	return *o.Project
@@ -368,7 +368,7 @@ func (o *VrfVirtualCircuit) GetProject() Href {
 
 // GetProjectOk returns a tuple with the Project field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VrfVirtualCircuit) GetProjectOk() (*Href, bool) {
+func (o *VrfVirtualCircuit) GetProjectOk() (*Project, bool) {
 	if o == nil || IsNil(o.Project) {
 		return nil, false
 	}
@@ -384,8 +384,8 @@ func (o *VrfVirtualCircuit) HasProject() bool {
 	return false
 }
 
-// SetProject gets a reference to the given Href and assigns it to the Project field.
-func (o *VrfVirtualCircuit) SetProject(v Href) {
+// SetProject gets a reference to the given Project and assigns it to the Project field.
+func (o *VrfVirtualCircuit) SetProject(v Project) {
 	o.Project = &v
 }
 

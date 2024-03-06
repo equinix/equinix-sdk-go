@@ -47,6 +47,8 @@ properties:
   updated_at:
     format: date-time
     type: string
+  url:
+    type: string
   volumes:
     items:
       $ref: './Href.yaml'

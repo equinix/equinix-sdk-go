@@ -28,8 +28,8 @@ type VlanVirtualCircuit struct {
 	Id          *string                            `json:"id,omitempty"`
 	Name        *string                            `json:"name,omitempty"`
 	NniVlan     *int32                             `json:"nni_vlan,omitempty"`
-	Port        *Href                              `json:"port,omitempty"`
-	Project     *Href                              `json:"project,omitempty"`
+	Port        *InterconnectionPort               `json:"port,omitempty"`
+	Project     *Project                           `json:"project,omitempty"`
 	// For Virtual Circuits on shared and dedicated connections, this speed should match the one set on their Interconnection Ports. For Virtual Circuits on Fabric VCs (both Metal and Fabric Billed) that have found their corresponding Fabric connection, this is the actual speed of the interconnection that was configured when setting up the interconnection on the Fabric Portal. Details on Fabric VCs are included in the specification as a developer preview and is generally unavailable. Please contact our Support team for more details.
 	Speed                *int64                    `json:"speed,omitempty"`
 	Status               *VlanVirtualCircuitStatus `json:"status,omitempty"`
@@ -269,9 +269,9 @@ func (o *VlanVirtualCircuit) SetNniVlan(v int32) {
 }
 
 // GetPort returns the Port field value if set, zero value otherwise.
-func (o *VlanVirtualCircuit) GetPort() Href {
+func (o *VlanVirtualCircuit) GetPort() InterconnectionPort {
 	if o == nil || IsNil(o.Port) {
-		var ret Href
+		var ret InterconnectionPort
 		return ret
 	}
 	return *o.Port
@@ -279,7 +279,7 @@ func (o *VlanVirtualCircuit) GetPort() Href {
 
 // GetPortOk returns a tuple with the Port field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VlanVirtualCircuit) GetPortOk() (*Href, bool) {
+func (o *VlanVirtualCircuit) GetPortOk() (*InterconnectionPort, bool) {
 	if o == nil || IsNil(o.Port) {
 		return nil, false
 	}
@@ -295,15 +295,15 @@ func (o *VlanVirtualCircuit) HasPort() bool {
 	return false
 }
 
-// SetPort gets a reference to the given Href and assigns it to the Port field.
-func (o *VlanVirtualCircuit) SetPort(v Href) {
+// SetPort gets a reference to the given InterconnectionPort and assigns it to the Port field.
+func (o *VlanVirtualCircuit) SetPort(v InterconnectionPort) {
 	o.Port = &v
 }
 
 // GetProject returns the Project field value if set, zero value otherwise.
-func (o *VlanVirtualCircuit) GetProject() Href {
+func (o *VlanVirtualCircuit) GetProject() Project {
 	if o == nil || IsNil(o.Project) {
-		var ret Href
+		var ret Project
 		return ret
 	}
 	return *o.Project
@@ -311,7 +311,7 @@ func (o *VlanVirtualCircuit) GetProject() Href {
 
 // GetProjectOk returns a tuple with the Project field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VlanVirtualCircuit) GetProjectOk() (*Href, bool) {
+func (o *VlanVirtualCircuit) GetProjectOk() (*Project, bool) {
 	if o == nil || IsNil(o.Project) {
 		return nil, false
 	}
@@ -327,8 +327,8 @@ func (o *VlanVirtualCircuit) HasProject() bool {
 	return false
 }
 
-// SetProject gets a reference to the given Href and assigns it to the Project field.
-func (o *VlanVirtualCircuit) SetProject(v Href) {
+// SetProject gets a reference to the given Project and assigns it to the Project field.
+func (o *VlanVirtualCircuit) SetProject(v Project) {
 	o.Project = &v
 }
 

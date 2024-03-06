@@ -10,8 +10,8 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **NniVlan** | Pointer to **int32** |  | [optional] 
-**Port** | Pointer to [**Href**](Href.md) |  | [optional] 
-**Project** | Pointer to [**Href**](Href.md) |  | [optional] 
+**Port** | Pointer to [**InterconnectionPort**](InterconnectionPort.md) |  | [optional] 
+**Project** | Pointer to [**Project**](Project.md) |  | [optional] 
 **Speed** | Pointer to **int64** | For Virtual Circuits on shared and dedicated connections, this speed should match the one set on their Interconnection Ports. For Virtual Circuits on Fabric VCs (both Metal and Fabric Billed) that have found their corresponding Fabric connection, this is the actual speed of the interconnection that was configured when setting up the interconnection on the Fabric Portal. Details on Fabric VCs are included in the specification as a developer preview and is generally unavailable. Please contact our Support team for more details. | [optional] 
 **Status** | Pointer to [**VlanVirtualCircuitStatus**](VlanVirtualCircuitStatus.md) |  | [optional] 
 **Tags** | Pointer to **[]string** |  | [optional] 
@@ -202,20 +202,20 @@ HasNniVlan returns a boolean if a field has been set.
 
 ### GetPort
 
-`func (o *VlanVirtualCircuit) GetPort() Href`
+`func (o *VlanVirtualCircuit) GetPort() InterconnectionPort`
 
 GetPort returns the Port field if non-nil, zero value otherwise.
 
 ### GetPortOk
 
-`func (o *VlanVirtualCircuit) GetPortOk() (*Href, bool)`
+`func (o *VlanVirtualCircuit) GetPortOk() (*InterconnectionPort, bool)`
 
 GetPortOk returns a tuple with the Port field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPort
 
-`func (o *VlanVirtualCircuit) SetPort(v Href)`
+`func (o *VlanVirtualCircuit) SetPort(v InterconnectionPort)`
 
 SetPort sets Port field to given value.
 
@@ -227,20 +227,20 @@ HasPort returns a boolean if a field has been set.
 
 ### GetProject
 
-`func (o *VlanVirtualCircuit) GetProject() Href`
+`func (o *VlanVirtualCircuit) GetProject() Project`
 
 GetProject returns the Project field if non-nil, zero value otherwise.
 
 ### GetProjectOk
 
-`func (o *VlanVirtualCircuit) GetProjectOk() (*Href, bool)`
+`func (o *VlanVirtualCircuit) GetProjectOk() (*Project, bool)`
 
 GetProjectOk returns a tuple with the Project field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetProject
 
-`func (o *VlanVirtualCircuit) SetProject(v Href)`
+`func (o *VlanVirtualCircuit) SetProject(v Project)`
 
 SetProject sets Project field to given value.
 

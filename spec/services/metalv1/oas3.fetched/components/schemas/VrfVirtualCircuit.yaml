@@ -27,14 +27,14 @@ properties:
   name:
     type: string
   port:
-    $ref: './Href.yaml'
+    $ref: './InterconnectionPort.yaml'
   nni_vlan:
     type: integer
   peer_asn:
     description: The peer ASN that will be used with the VRF on the Virtual Circuit.
     type: integer
   project:
-    $ref: './Href.yaml'
+    $ref: './Project.yaml'
   speed:
     description: integer representing bps speed
     type: integer

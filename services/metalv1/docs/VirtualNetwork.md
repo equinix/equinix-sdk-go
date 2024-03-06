@@ -4,16 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AssignedTo** | Pointer to [**Href**](Href.md) |  | [optional] 
+**AssignedTo** | Pointer to [**Project**](Project.md) |  | [optional] 
 **AssignedToVirtualCircuit** | Pointer to **bool** | True if the virtual network is attached to a virtual circuit. False if not. | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
 **Facility** | Pointer to [**Href**](Href.md) |  | [optional] 
 **Href** | Pointer to **string** |  | [optional] 
 **CreatedAt** | Pointer to **time.Time** |  | [optional] 
 **Id** | Pointer to **string** |  | [optional] 
-**Instances** | Pointer to [**[]Href**](Href.md) | A list of instances with ports currently associated to this Virtual Network. | [optional] 
+**Instances** | Pointer to [**[]Device**](Device.md) | A list of instances with ports currently associated to this Virtual Network. | [optional] 
 **MetalGateways** | Pointer to [**[]MetalGatewayLite**](MetalGatewayLite.md) | A list of metal gateways currently associated to this Virtual Network. | [optional] 
-**Metro** | Pointer to [**Href**](Href.md) |  | [optional] 
+**Metro** | Pointer to [**Metro**](Metro.md) |  | [optional] 
 **MetroCode** | Pointer to **string** | The Metro code of the metro in which this Virtual Network is defined. | [optional] 
 **Vxlan** | Pointer to **int32** |  | [optional] 
 **Tags** | Pointer to **[]string** |  | [optional] 
@@ -39,20 +39,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetAssignedTo
 
-`func (o *VirtualNetwork) GetAssignedTo() Href`
+`func (o *VirtualNetwork) GetAssignedTo() Project`
 
 GetAssignedTo returns the AssignedTo field if non-nil, zero value otherwise.
 
 ### GetAssignedToOk
 
-`func (o *VirtualNetwork) GetAssignedToOk() (*Href, bool)`
+`func (o *VirtualNetwork) GetAssignedToOk() (*Project, bool)`
 
 GetAssignedToOk returns a tuple with the AssignedTo field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAssignedTo
 
-`func (o *VirtualNetwork) SetAssignedTo(v Href)`
+`func (o *VirtualNetwork) SetAssignedTo(v Project)`
 
 SetAssignedTo sets AssignedTo field to given value.
 
@@ -214,20 +214,20 @@ HasId returns a boolean if a field has been set.
 
 ### GetInstances
 
-`func (o *VirtualNetwork) GetInstances() []Href`
+`func (o *VirtualNetwork) GetInstances() []Device`
 
 GetInstances returns the Instances field if non-nil, zero value otherwise.
 
 ### GetInstancesOk
 
-`func (o *VirtualNetwork) GetInstancesOk() (*[]Href, bool)`
+`func (o *VirtualNetwork) GetInstancesOk() (*[]Device, bool)`
 
 GetInstancesOk returns a tuple with the Instances field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetInstances
 
-`func (o *VirtualNetwork) SetInstances(v []Href)`
+`func (o *VirtualNetwork) SetInstances(v []Device)`
 
 SetInstances sets Instances field to given value.
 
@@ -264,20 +264,20 @@ HasMetalGateways returns a boolean if a field has been set.
 
 ### GetMetro
 
-`func (o *VirtualNetwork) GetMetro() Href`
+`func (o *VirtualNetwork) GetMetro() Metro`
 
 GetMetro returns the Metro field if non-nil, zero value otherwise.
 
 ### GetMetroOk
 
-`func (o *VirtualNetwork) GetMetroOk() (*Href, bool)`
+`func (o *VirtualNetwork) GetMetroOk() (*Metro, bool)`
 
 GetMetroOk returns a tuple with the Metro field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMetro
 
-`func (o *VirtualNetwork) SetMetro(v Href)`
+`func (o *VirtualNetwork) SetMetro(v Metro)`
 
 SetMetro sets Metro field to given value.
 

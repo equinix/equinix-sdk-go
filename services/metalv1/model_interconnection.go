@@ -23,14 +23,15 @@ var _ MappedNullable = &Interconnection{}
 type Interconnection struct {
 	ContactEmail *string              `json:"contact_email,omitempty"`
 	Description  *string              `json:"description,omitempty"`
-	Facility     *Href                `json:"facility,omitempty"`
+	Facility     *Facility            `json:"facility,omitempty"`
 	Id           *string              `json:"id,omitempty"`
 	Metro        *Metro               `json:"metro,omitempty"`
 	Mode         *InterconnectionMode `json:"mode,omitempty"`
 	Name         *string              `json:"name,omitempty"`
-	Organization *Href                `json:"organization,omitempty"`
+	Organization *Organization        `json:"organization,omitempty"`
 	// For Fabric VCs, these represent Virtual Port(s) created for the interconnection. For dedicated interconnections, these represent the Dedicated Port(s).
 	Ports      []InterconnectionPort      `json:"ports,omitempty"`
+	Project    *Project                   `json:"project,omitempty"`
 	Redundancy *InterconnectionRedundancy `json:"redundancy,omitempty"`
 	// For Fabric VCs (Metal Billed), this will show details of the A-Side service tokens issued for the interconnection. For Fabric VCs (Fabric Billed), this will show the details of the Z-Side service tokens issued for the interconnection. Dedicated interconnections will not have any service tokens issued. There will be one per interconnection, so for redundant interconnections, there should be two service tokens issued.
 	ServiceTokens []FabricServiceToken `json:"service_tokens,omitempty"`
@@ -133,9 +134,9 @@ func (o *Interconnection) SetDescription(v string) {
 }
 
 // GetFacility returns the Facility field value if set, zero value otherwise.
-func (o *Interconnection) GetFacility() Href {
+func (o *Interconnection) GetFacility() Facility {
 	if o == nil || IsNil(o.Facility) {
-		var ret Href
+		var ret Facility
 		return ret
 	}
 	return *o.Facility
@@ -143,7 +144,7 @@ func (o *Interconnection) GetFacility() Href {
 
 // GetFacilityOk returns a tuple with the Facility field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Interconnection) GetFacilityOk() (*Href, bool) {
+func (o *Interconnection) GetFacilityOk() (*Facility, bool) {
 	if o == nil || IsNil(o.Facility) {
 		return nil, false
 	}
@@ -159,8 +160,8 @@ func (o *Interconnection) HasFacility() bool {
 	return false
 }
 
-// SetFacility gets a reference to the given Href and assigns it to the Facility field.
-func (o *Interconnection) SetFacility(v Href) {
+// SetFacility gets a reference to the given Facility and assigns it to the Facility field.
+func (o *Interconnection) SetFacility(v Facility) {
 	o.Facility = &v
 }
 
@@ -293,9 +294,9 @@ func (o *Interconnection) SetName(v string) {
 }
 
 // GetOrganization returns the Organization field value if set, zero value otherwise.
-func (o *Interconnection) GetOrganization() Href {
+func (o *Interconnection) GetOrganization() Organization {
 	if o == nil || IsNil(o.Organization) {
-		var ret Href
+		var ret Organization
 		return ret
 	}
 	return *o.Organization
@@ -303,7 +304,7 @@ func (o *Interconnection) GetOrganization() Href {
 
 // GetOrganizationOk returns a tuple with the Organization field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Interconnection) GetOrganizationOk() (*Href, bool) {
+func (o *Interconnection) GetOrganizationOk() (*Organization, bool) {
 	if o == nil || IsNil(o.Organization) {
 		return nil, false
 	}
@@ -319,8 +320,8 @@ func (o *Interconnection) HasOrganization() bool {
 	return false
 }
 
-// SetOrganization gets a reference to the given Href and assigns it to the Organization field.
-func (o *Interconnection) SetOrganization(v Href) {
+// SetOrganization gets a reference to the given Organization and assigns it to the Organization field.
+func (o *Interconnection) SetOrganization(v Organization) {
 	o.Organization = &v
 }
 
@@ -354,6 +355,38 @@ func (o *Interconnection) HasPorts() bool {
 // SetPorts gets a reference to the given []InterconnectionPort and assigns it to the Ports field.
 func (o *Interconnection) SetPorts(v []InterconnectionPort) {
 	o.Ports = v
+}
+
+// GetProject returns the Project field value if set, zero value otherwise.
+func (o *Interconnection) GetProject() Project {
+	if o == nil || IsNil(o.Project) {
+		var ret Project
+		return ret
+	}
+	return *o.Project
+}
+
+// GetProjectOk returns a tuple with the Project field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Interconnection) GetProjectOk() (*Project, bool) {
+	if o == nil || IsNil(o.Project) {
+		return nil, false
+	}
+	return o.Project, true
+}
+
+// HasProject returns a boolean if a field has been set.
+func (o *Interconnection) HasProject() bool {
+	if o != nil && !IsNil(o.Project) {
+		return true
+	}
+
+	return false
+}
+
+// SetProject gets a reference to the given Project and assigns it to the Project field.
+func (o *Interconnection) SetProject(v Project) {
+	o.Project = &v
 }
 
 // GetRedundancy returns the Redundancy field value if set, zero value otherwise.
@@ -745,6 +778,9 @@ func (o Interconnection) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ports) {
 		toSerialize["ports"] = o.Ports
 	}
+	if !IsNil(o.Project) {
+		toSerialize["project"] = o.Project
+	}
 	if !IsNil(o.Redundancy) {
 		toSerialize["redundancy"] = o.Redundancy
 	}
@@ -809,6 +845,7 @@ func (o *Interconnection) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "organization")
 		delete(additionalProperties, "ports")
+		delete(additionalProperties, "project")
 		delete(additionalProperties, "redundancy")
 		delete(additionalProperties, "service_tokens")
 		delete(additionalProperties, "authorization_code")
