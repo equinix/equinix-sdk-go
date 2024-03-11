@@ -8,7 +8,7 @@ GIT_REPO=equinix-sdk-go
 PACKAGE_VERSION=$(shell cat version)
 USER_AGENT=${GIT_REPO}/${PACKAGE_VERSION}
 
-OPENAPI_IMAGE_TAG=v7.3.0
+OPENAPI_IMAGE_TAG=v7.4.0
 OPENAPI_IMAGE=openapitools/openapi-generator-cli:${OPENAPI_IMAGE_TAG}
 CRI=docker # nerdctl
 OPENAPI_GENERATOR=${CRI} run --rm -u ${CURRENT_UID}:${CURRENT_GID} $(DOCKER_EXTRA_ARGS) -v $(CURDIR):/local ${OPENAPI_IMAGE}
