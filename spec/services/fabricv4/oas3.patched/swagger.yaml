@@ -9475,7 +9475,7 @@ components:
         location:
           $ref: "#/components/schemas/SimplifiedLocationWithoutIBX"
         package:
-          $ref: "#/components/schemas/CloudRouterPackageType"
+          $ref: "#/components/schemas/CloudRouterPostRequestPackage"
         order:
           $ref: "#/components/schemas/Order"
         project:
@@ -11699,7 +11699,7 @@ components:
         metroCode:
           type: string
           example: AM
-    CloudRouterPackageType:
+    CloudRouterPostRequestPackage:
       required:
         - code
       type: object

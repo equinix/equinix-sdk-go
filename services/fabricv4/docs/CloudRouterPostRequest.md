@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Type** | Pointer to [**CloudRouterPostRequestType**](CloudRouterPostRequestType.md) |  | [optional] 
 **Name** | Pointer to **string** | Customer-provided Cloud Router name | [optional] 
 **Location** | Pointer to [**SimplifiedLocationWithoutIBX**](SimplifiedLocationWithoutIBX.md) |  | [optional] 
-**Package** | Pointer to [**CloudRouterPackageType**](CloudRouterPackageType.md) |  | [optional] 
+**Package** | Pointer to [**CloudRouterPostRequestPackage**](CloudRouterPostRequestPackage.md) |  | [optional] 
 **Order** | Pointer to [**Order**](Order.md) |  | [optional] 
 **Project** | Pointer to [**Project**](Project.md) |  | [optional] 
 **Account** | Pointer to [**SimplifiedAccount**](SimplifiedAccount.md) |  | [optional] 
@@ -109,20 +109,20 @@ HasLocation returns a boolean if a field has been set.
 
 ### GetPackage
 
-`func (o *CloudRouterPostRequest) GetPackage() CloudRouterPackageType`
+`func (o *CloudRouterPostRequest) GetPackage() CloudRouterPostRequestPackage`
 
 GetPackage returns the Package field if non-nil, zero value otherwise.
 
 ### GetPackageOk
 
-`func (o *CloudRouterPostRequest) GetPackageOk() (*CloudRouterPackageType, bool)`
+`func (o *CloudRouterPostRequest) GetPackageOk() (*CloudRouterPostRequestPackage, bool)`
 
 GetPackageOk returns a tuple with the Package field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPackage
 
-`func (o *CloudRouterPostRequest) SetPackage(v CloudRouterPackageType)`
+`func (o *CloudRouterPostRequest) SetPackage(v CloudRouterPostRequestPackage)`
 
 SetPackage sets Package field to given value.
 

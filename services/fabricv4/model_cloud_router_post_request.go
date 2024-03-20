@@ -22,12 +22,12 @@ var _ MappedNullable = &CloudRouterPostRequest{}
 type CloudRouterPostRequest struct {
 	Type *CloudRouterPostRequestType `json:"type,omitempty"`
 	// Customer-provided Cloud Router name
-	Name     *string                       `json:"name,omitempty"`
-	Location *SimplifiedLocationWithoutIBX `json:"location,omitempty"`
-	Package  *CloudRouterPackageType       `json:"package,omitempty"`
-	Order    *Order                        `json:"order,omitempty"`
-	Project  *Project                      `json:"project,omitempty"`
-	Account  *SimplifiedAccount            `json:"account,omitempty"`
+	Name     *string                        `json:"name,omitempty"`
+	Location *SimplifiedLocationWithoutIBX  `json:"location,omitempty"`
+	Package  *CloudRouterPostRequestPackage `json:"package,omitempty"`
+	Order    *Order                         `json:"order,omitempty"`
+	Project  *Project                       `json:"project,omitempty"`
+	Account  *SimplifiedAccount             `json:"account,omitempty"`
 	// Preferences for notifications on connection configuration or status changes
 	Notifications        []SimplifiedNotification `json:"notifications,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -149,9 +149,9 @@ func (o *CloudRouterPostRequest) SetLocation(v SimplifiedLocationWithoutIBX) {
 }
 
 // GetPackage returns the Package field value if set, zero value otherwise.
-func (o *CloudRouterPostRequest) GetPackage() CloudRouterPackageType {
+func (o *CloudRouterPostRequest) GetPackage() CloudRouterPostRequestPackage {
 	if o == nil || IsNil(o.Package) {
-		var ret CloudRouterPackageType
+		var ret CloudRouterPostRequestPackage
 		return ret
 	}
 	return *o.Package
@@ -159,7 +159,7 @@ func (o *CloudRouterPostRequest) GetPackage() CloudRouterPackageType {
 
 // GetPackageOk returns a tuple with the Package field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CloudRouterPostRequest) GetPackageOk() (*CloudRouterPackageType, bool) {
+func (o *CloudRouterPostRequest) GetPackageOk() (*CloudRouterPostRequestPackage, bool) {
 	if o == nil || IsNil(o.Package) {
 		return nil, false
 	}
@@ -175,8 +175,8 @@ func (o *CloudRouterPostRequest) HasPackage() bool {
 	return false
 }
 
-// SetPackage gets a reference to the given CloudRouterPackageType and assigns it to the Package field.
-func (o *CloudRouterPostRequest) SetPackage(v CloudRouterPackageType) {
+// SetPackage gets a reference to the given CloudRouterPostRequestPackage and assigns it to the Package field.
+func (o *CloudRouterPostRequest) SetPackage(v CloudRouterPostRequestPackage) {
 	o.Package = &v
 }
 
