@@ -1,0 +1,12 @@
+diff --git a/spec/services/fabricv4/oas3.patched/swagger.yaml b/spec/services/fabricv4/oas3.patched/swagger.yaml
+index 761c5fa..1c138bf 100644
+--- a/spec/services/fabricv4/oas3.patched/swagger.yaml
++++ b/spec/services/fabricv4/oas3.patched/swagger.yaml
+@@ -8238,6 +8238,7 @@ components:
+       required:
+         - type
+       type: object
++      additionalProperties: false
+       properties:
+         uuid:
+           type: string
