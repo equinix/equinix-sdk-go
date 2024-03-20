@@ -1,0 +1,22 @@
+diff --git a/spec/services/fabricv4/oas3.patched/swagger.yaml b/spec/services/fabricv4/oas3.patched/swagger.yaml
+index 1c138bf..e8b0692 100644
+--- a/spec/services/fabricv4/oas3.patched/swagger.yaml
++++ b/spec/services/fabricv4/oas3.patched/swagger.yaml
+@@ -9475,7 +9475,7 @@ components:
+         location:
+           $ref: "#/components/schemas/SimplifiedLocationWithoutIBX"
+         package:
+-          $ref: "#/components/schemas/CloudRouterPackageType"
++          $ref: "#/components/schemas/CloudRouterPostRequestPackage"
+         order:
+           $ref: "#/components/schemas/Order"
+         project:
+@@ -11699,7 +11699,7 @@ components:
+         metroCode:
+           type: string
+           example: AM
+-    CloudRouterPackageType:
++    CloudRouterPostRequestPackage:
+       required:
+         - code
+       type: object
