@@ -292,7 +292,7 @@ func (r ApiCreatePortRequest) Port(port Port) ApiCreatePortRequest {
 	return r
 }
 
-func (r ApiCreatePortRequest) Execute() (*Port, *http.Response, error) {
+func (r ApiCreatePortRequest) Execute() (*PortResponse, *http.Response, error) {
 	return r.ApiService.CreatePortExecute(r)
 }
 
@@ -313,13 +313,13 @@ func (a *PortsApiService) CreatePort(ctx context.Context) ApiCreatePortRequest {
 
 // Execute executes the request
 //
-//	@return Port
-func (a *PortsApiService) CreatePortExecute(r ApiCreatePortRequest) (*Port, *http.Response, error) {
+//	@return PortResponse
+func (a *PortsApiService) CreatePortExecute(r ApiCreatePortRequest) (*PortResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *Port
+		localVarReturnValue *PortResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PortsApiService.CreatePort")
@@ -419,7 +419,7 @@ type ApiGetPortByUuidRequest struct {
 	portId     string
 }
 
-func (r ApiGetPortByUuidRequest) Execute() (*Port, *http.Response, error) {
+func (r ApiGetPortByUuidRequest) Execute() (*PortResponse, *http.Response, error) {
 	return r.ApiService.GetPortByUuidExecute(r)
 }
 
@@ -442,13 +442,13 @@ func (a *PortsApiService) GetPortByUuid(ctx context.Context, portId string) ApiG
 
 // Execute executes the request
 //
-//	@return Port
-func (a *PortsApiService) GetPortByUuidExecute(r ApiGetPortByUuidRequest) (*Port, *http.Response, error) {
+//	@return PortResponse
+func (a *PortsApiService) GetPortByUuidExecute(r ApiGetPortByUuidRequest) (*PortResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *Port
+		localVarReturnValue *PortResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PortsApiService.GetPortByUuid")

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Data** | Pointer to [**[]Port**](Port.md) |  | [optional] 
+**Data** | Pointer to [**[]PortResponse**](PortResponse.md) |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetData
 
-`func (o *BulkPort) GetData() []Port`
+`func (o *BulkPort) GetData() []PortResponse`
 
 GetData returns the Data field if non-nil, zero value otherwise.
 
 ### GetDataOk
 
-`func (o *BulkPort) GetDataOk() (*[]Port, bool)`
+`func (o *BulkPort) GetDataOk() (*[]PortResponse, bool)`
 
 GetDataOk returns a tuple with the Data field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetData
 
-`func (o *BulkPort) SetData(v []Port)`
+`func (o *BulkPort) SetData(v []PortResponse)`
 
 SetData sets Data field to given value.
 

@@ -1,11 +1,11 @@
-# PortBmmrType
+# PortResponseServiceType
 
 ## Enum
 
 
-* `SELF` (value: `"SELF"`)
+* `EPL` (value: `"EPL"`)
 
-* `EQUINIX` (value: `"EQUINIX"`)
+* `MSP` (value: `"MSP"`)
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

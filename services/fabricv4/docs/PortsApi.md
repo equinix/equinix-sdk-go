@@ -154,7 +154,7 @@ Name | Type | Description  | Notes
 
 ## CreatePort
 
-> Port CreatePort(ctx).Port(port).Execute()
+> PortResponse CreatePort(ctx).Port(port).Execute()
 
 Create Port
 
@@ -173,7 +173,7 @@ import (
 )
 
 func main() {
-	port := *openapiclient.NewPort(openapiclient.PortType("XF_PORT"), int32(123), openapiclient.Port_physicalPortsType("1000BASE_LX"), openapiclient.Port_connectivitySourceType("COLO"), *openapiclient.NewSimplifiedAccount(), *openapiclient.NewSimplifiedLocation(), *openapiclient.NewPortEncapsulation(), *openapiclient.NewPortSettings()) // Port | 
+	port := *openapiclient.NewPort(openapiclient.PortType("XF_PORT"), int32(123), openapiclient.PortResponse_physicalPortsType("1000BASE_LX"), openapiclient.PortResponse_connectivitySourceType("COLO"), *openapiclient.NewSimplifiedAccount(), *openapiclient.NewSimplifiedLocation(), *openapiclient.NewPortEncapsulation(), *openapiclient.NewPortSettings()) // Port | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -182,7 +182,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `PortsApi.CreatePort``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CreatePort`: Port
+	// response from `CreatePort`: PortResponse
 	fmt.Fprintf(os.Stdout, "Response from `PortsApi.CreatePort`: %v\n", resp)
 }
 ```
@@ -202,7 +202,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Port**](Port.md)
+[**PortResponse**](PortResponse.md)
 
 ### Authorization
 
@@ -220,7 +220,7 @@ Name | Type | Description  | Notes
 
 ## GetPortByUuid
 
-> Port GetPortByUuid(ctx, portId).Execute()
+> PortResponse GetPortByUuid(ctx, portId).Execute()
 
 Get Port by uuid
 
@@ -248,7 +248,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `PortsApi.GetPortByUuid``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetPortByUuid`: Port
+	// response from `GetPortByUuid`: PortResponse
 	fmt.Fprintf(os.Stdout, "Response from `PortsApi.GetPortByUuid`: %v\n", resp)
 }
 ```
@@ -272,7 +272,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Port**](Port.md)
+[**PortResponse**](PortResponse.md)
 
 ### Authorization
 

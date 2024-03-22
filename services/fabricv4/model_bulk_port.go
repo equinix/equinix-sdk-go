@@ -20,7 +20,7 @@ var _ MappedNullable = &BulkPort{}
 
 // BulkPort Create bulk port request
 type BulkPort struct {
-	Data                 []Port `json:"data,omitempty"`
+	Data                 []PortResponse `json:"data,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -44,9 +44,9 @@ func NewBulkPortWithDefaults() *BulkPort {
 }
 
 // GetData returns the Data field value if set, zero value otherwise.
-func (o *BulkPort) GetData() []Port {
+func (o *BulkPort) GetData() []PortResponse {
 	if o == nil || IsNil(o.Data) {
-		var ret []Port
+		var ret []PortResponse
 		return ret
 	}
 	return o.Data
@@ -54,7 +54,7 @@ func (o *BulkPort) GetData() []Port {
 
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BulkPort) GetDataOk() ([]Port, bool) {
+func (o *BulkPort) GetDataOk() ([]PortResponse, bool) {
 	if o == nil || IsNil(o.Data) {
 		return nil, false
 	}
@@ -70,8 +70,8 @@ func (o *BulkPort) HasData() bool {
 	return false
 }
 
-// SetData gets a reference to the given []Port and assigns it to the Data field.
-func (o *BulkPort) SetData(v []Port) {
+// SetData gets a reference to the given []PortResponse and assigns it to the Data field.
+func (o *BulkPort) SetData(v []PortResponse) {
 	o.Data = v
 }
 
