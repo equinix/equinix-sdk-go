@@ -38,10 +38,10 @@ type SimplifiedPort struct {
 	Project          *Project   `json:"project,omitempty"`
 	State            *PortState `json:"state,omitempty"`
 	// Equinix assigned response attribute for Unique ID for a virtual port.
-	CvpId       *string            `json:"cvpId,omitempty"`
-	Operation   *PortOperation     `json:"operation,omitempty"`
-	Account     *SimplifiedAccount `json:"account,omitempty"`
-	ServiceType *PortServiceType   `json:"serviceType,omitempty"`
+	CvpId       *string                  `json:"cvpId,omitempty"`
+	Operation   *PortOperation           `json:"operation,omitempty"`
+	Account     *SimplifiedAccount       `json:"account,omitempty"`
+	ServiceType *PortResponseServiceType `json:"serviceType,omitempty"`
 	// Equinix assigned response attribute for Port bandwidth in Mbps
 	Bandwidth *int32 `json:"bandwidth,omitempty"`
 	// Equinix assigned response attribute for Port available bandwidth in Mbps
@@ -503,9 +503,9 @@ func (o *SimplifiedPort) SetAccount(v SimplifiedAccount) {
 }
 
 // GetServiceType returns the ServiceType field value if set, zero value otherwise.
-func (o *SimplifiedPort) GetServiceType() PortServiceType {
+func (o *SimplifiedPort) GetServiceType() PortResponseServiceType {
 	if o == nil || IsNil(o.ServiceType) {
-		var ret PortServiceType
+		var ret PortResponseServiceType
 		return ret
 	}
 	return *o.ServiceType
@@ -513,7 +513,7 @@ func (o *SimplifiedPort) GetServiceType() PortServiceType {
 
 // GetServiceTypeOk returns a tuple with the ServiceType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SimplifiedPort) GetServiceTypeOk() (*PortServiceType, bool) {
+func (o *SimplifiedPort) GetServiceTypeOk() (*PortResponseServiceType, bool) {
 	if o == nil || IsNil(o.ServiceType) {
 		return nil, false
 	}
@@ -529,8 +529,8 @@ func (o *SimplifiedPort) HasServiceType() bool {
 	return false
 }
 
-// SetServiceType gets a reference to the given PortServiceType and assigns it to the ServiceType field.
-func (o *SimplifiedPort) SetServiceType(v PortServiceType) {
+// SetServiceType gets a reference to the given PortResponseServiceType and assigns it to the ServiceType field.
+func (o *SimplifiedPort) SetServiceType(v PortResponseServiceType) {
 	o.ServiceType = &v
 }
 

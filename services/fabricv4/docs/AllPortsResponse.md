@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pagination** | Pointer to [**Pagination**](Pagination.md) |  | [optional] 
-**Data** | Pointer to [**[]Port**](Port.md) | GET All User Port Across Fabric Metros | [optional] 
+**Data** | Pointer to [**[]PortResponse**](PortResponse.md) | GET All User Port Across Fabric Metros | [optional] 
 
 ## Methods
 
@@ -53,20 +53,20 @@ HasPagination returns a boolean if a field has been set.
 
 ### GetData
 
-`func (o *AllPortsResponse) GetData() []Port`
+`func (o *AllPortsResponse) GetData() []PortResponse`
 
 GetData returns the Data field if non-nil, zero value otherwise.
 
 ### GetDataOk
 
-`func (o *AllPortsResponse) GetDataOk() (*[]Port, bool)`
+`func (o *AllPortsResponse) GetDataOk() (*[]PortResponse, bool)`
 
 GetDataOk returns a tuple with the Data field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetData
 
-`func (o *AllPortsResponse) SetData(v []Port)`
+`func (o *AllPortsResponse) SetData(v []PortResponse)`
 
 SetData sets Data field to given value.
 
