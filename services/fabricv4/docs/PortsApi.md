@@ -173,7 +173,7 @@ import (
 )
 
 func main() {
-	port := *openapiclient.NewPort(openapiclient.PortType("XF_PORT"), int32(123), openapiclient.PortResponse_physicalPortsType("1000BASE_LX"), openapiclient.PortResponse_connectivitySourceType("COLO"), *openapiclient.NewSimplifiedAccount(), *openapiclient.NewSimplifiedLocation(), *openapiclient.NewPortEncapsulation(), *openapiclient.NewPortSettings()) // Port | 
+	port := *openapiclient.NewPort(*openapiclient.NewSimplifiedAccount(), openapiclient.PortType("XF_PORT"), int32(123), openapiclient.PortResponse_physicalPortsType("1000BASE_LX"), openapiclient.PortResponse_connectivitySourceType("COLO"), *openapiclient.NewSimplifiedLocation(), *openapiclient.NewPortEncapsulation(), *openapiclient.NewPortSettings()) // Port | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

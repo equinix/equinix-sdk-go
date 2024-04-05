@@ -21,7 +21,8 @@ var _ MappedNullable = &Port{}
 
 // Port Port is the Request Object for Creating Fabric Ports
 type Port struct {
-	Type PortType `json:"type"`
+	Account SimplifiedAccount `json:"account"`
+	Type    PortType          `json:"type"`
 	// Equinix assigned response attribute for Port Id
 	Id *int32 `json:"id,omitempty"`
 	// Equinix assigned response attribute for an absolute URL that is the subject of the link's context.
@@ -46,7 +47,6 @@ type Port struct {
 	// Equinix assigned response attribute for Unique ID for a virtual port.
 	CvpId       *string                  `json:"cvpId,omitempty"`
 	Operation   *PortOperation           `json:"operation,omitempty"`
-	Account     SimplifiedAccount        `json:"account"`
 	Changelog   *Changelog               `json:"changelog,omitempty"`
 	ServiceType *PortResponseServiceType `json:"serviceType,omitempty"`
 	// Equinix assigned response attribute for Port bandwidth in Mbps
@@ -90,7 +90,7 @@ type _Port Port
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPort(type_ PortType, physicalPortsSpeed int32, physicalPortsType PortResponsePhysicalPortsType, connectivitySourceType PortResponseConnectivitySourceType, account SimplifiedAccount, location SimplifiedLocation, encapsulation PortEncapsulation, settings PortSettings) *Port {
+func NewPort(account SimplifiedAccount, type_ PortType, physicalPortsSpeed int32, physicalPortsType PortResponsePhysicalPortsType, connectivitySourceType PortResponseConnectivitySourceType, location SimplifiedLocation, encapsulation PortEncapsulation, settings PortSettings) *Port {
 	this := Port{}
 	this.Type = type_
 	this.PhysicalPortsSpeed = physicalPortsSpeed
@@ -109,6 +109,30 @@ func NewPort(type_ PortType, physicalPortsSpeed int32, physicalPortsType PortRes
 func NewPortWithDefaults() *Port {
 	this := Port{}
 	return &this
+}
+
+// GetAccount returns the Account field value
+func (o *Port) GetAccount() SimplifiedAccount {
+	if o == nil {
+		var ret SimplifiedAccount
+		return ret
+	}
+
+	return o.Account
+}
+
+// GetAccountOk returns a tuple with the Account field value
+// and a boolean to check if the value has been set.
+func (o *Port) GetAccountOk() (*SimplifiedAccount, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Account, true
+}
+
+// SetAccount sets field value
+func (o *Port) SetAccount(v SimplifiedAccount) {
+	o.Account = v
 }
 
 // GetType returns the Type field value
@@ -621,30 +645,6 @@ func (o *Port) HasOperation() bool {
 // SetOperation gets a reference to the given PortOperation and assigns it to the Operation field.
 func (o *Port) SetOperation(v PortOperation) {
 	o.Operation = &v
-}
-
-// GetAccount returns the Account field value
-func (o *Port) GetAccount() SimplifiedAccount {
-	if o == nil {
-		var ret SimplifiedAccount
-		return ret
-	}
-
-	return o.Account
-}
-
-// GetAccountOk returns a tuple with the Account field value
-// and a boolean to check if the value has been set.
-func (o *Port) GetAccountOk() (*SimplifiedAccount, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Account, true
-}
-
-// SetAccount sets field value
-func (o *Port) SetAccount(v SimplifiedAccount) {
-	o.Account = v
 }
 
 // GetChangelog returns the Changelog field value if set, zero value otherwise.
@@ -1337,6 +1337,7 @@ func (o Port) MarshalJSON() ([]byte, error) {
 
 func (o Port) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["account"] = o.Account
 	toSerialize["type"] = o.Type
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -1380,7 +1381,6 @@ func (o Port) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Operation) {
 		toSerialize["operation"] = o.Operation
 	}
-	toSerialize["account"] = o.Account
 	if !IsNil(o.Changelog) {
 		toSerialize["changelog"] = o.Changelog
 	}
@@ -1454,11 +1454,11 @@ func (o *Port) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
+		"account",
 		"type",
 		"physicalPortsSpeed",
 		"physicalPortsType",
 		"connectivitySourceType",
-		"account",
 		"location",
 		"encapsulation",
 		"settings",
@@ -1491,6 +1491,7 @@ func (o *Port) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "account")
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "href")
@@ -1508,7 +1509,6 @@ func (o *Port) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "order")
 		delete(additionalProperties, "cvpId")
 		delete(additionalProperties, "operation")
-		delete(additionalProperties, "account")
 		delete(additionalProperties, "changelog")
 		delete(additionalProperties, "serviceType")
 		delete(additionalProperties, "bandwidth")

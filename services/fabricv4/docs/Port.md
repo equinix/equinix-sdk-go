@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Account** | [**SimplifiedAccount**](SimplifiedAccount.md) |  | 
 **Type** | [**PortType**](PortType.md) |  | 
 **Id** | Pointer to **int32** | Equinix assigned response attribute for Port Id | [optional] 
 **Href** | Pointer to **string** | Equinix assigned response attribute for an absolute URL that is the subject of the link&#39;s context. | [optional] [readonly] 
@@ -21,7 +22,6 @@ Name | Type | Description | Notes
 **Order** | Pointer to [**PortOrder**](PortOrder.md) |  | [optional] 
 **CvpId** | Pointer to **string** | Equinix assigned response attribute for Unique ID for a virtual port. | [optional] 
 **Operation** | Pointer to [**PortOperation**](PortOperation.md) |  | [optional] 
-**Account** | [**SimplifiedAccount**](SimplifiedAccount.md) |  | 
 **Changelog** | Pointer to [**Changelog**](Changelog.md) |  | [optional] 
 **ServiceType** | Pointer to [**PortResponseServiceType**](PortResponseServiceType.md) |  | [optional] 
 **Bandwidth** | Pointer to **int32** | Equinix assigned response attribute for Port bandwidth in Mbps | [optional] 
@@ -49,7 +49,7 @@ Name | Type | Description | Notes
 
 ### NewPort
 
-`func NewPort(type_ PortType, physicalPortsSpeed int32, physicalPortsType PortResponsePhysicalPortsType, connectivitySourceType PortResponseConnectivitySourceType, account SimplifiedAccount, location SimplifiedLocation, encapsulation PortEncapsulation, settings PortSettings, ) *Port`
+`func NewPort(account SimplifiedAccount, type_ PortType, physicalPortsSpeed int32, physicalPortsType PortResponsePhysicalPortsType, connectivitySourceType PortResponseConnectivitySourceType, location SimplifiedLocation, encapsulation PortEncapsulation, settings PortSettings, ) *Port`
 
 NewPort instantiates a new Port object
 This constructor will assign default values to properties that have it defined,
@@ -63,6 +63,26 @@ will change when the set of required properties is changed
 NewPortWithDefaults instantiates a new Port object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAccount
+
+`func (o *Port) GetAccount() SimplifiedAccount`
+
+GetAccount returns the Account field if non-nil, zero value otherwise.
+
+### GetAccountOk
+
+`func (o *Port) GetAccountOk() (*SimplifiedAccount, bool)`
+
+GetAccountOk returns a tuple with the Account field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccount
+
+`func (o *Port) SetAccount(v SimplifiedAccount)`
+
+SetAccount sets Account field to given value.
+
 
 ### GetType
 
@@ -468,26 +488,6 @@ SetOperation sets Operation field to given value.
 `func (o *Port) HasOperation() bool`
 
 HasOperation returns a boolean if a field has been set.
-
-### GetAccount
-
-`func (o *Port) GetAccount() SimplifiedAccount`
-
-GetAccount returns the Account field if non-nil, zero value otherwise.
-
-### GetAccountOk
-
-`func (o *Port) GetAccountOk() (*SimplifiedAccount, bool)`
-
-GetAccountOk returns a tuple with the Account field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAccount
-
-`func (o *Port) SetAccount(v SimplifiedAccount)`
-
-SetAccount sets Account field to given value.
-
 
 ### GetChangelog
 

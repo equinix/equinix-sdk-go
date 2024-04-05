@@ -532,6 +532,7 @@ Class | Method | HTTP request | Description
  - [ServiceTokenType](docs/ServiceTokenType.md)
  - [ServiceTokens](docs/ServiceTokens.md)
  - [SimplifiedAccount](docs/SimplifiedAccount.md)
+ - [SimplifiedAccountPortResponse](docs/SimplifiedAccountPortResponse.md)
  - [SimplifiedLinkProtocol](docs/SimplifiedLinkProtocol.md)
  - [SimplifiedLocation](docs/SimplifiedLocation.md)
  - [SimplifiedLocationWithoutIBX](docs/SimplifiedLocationWithoutIBX.md)

@@ -43,11 +43,11 @@ type PortResponse struct {
 	State                  *PortState                          `json:"state,omitempty"`
 	Order                  *PortOrder                          `json:"order,omitempty"`
 	// Equinix assigned response attribute for Unique ID for a virtual port.
-	CvpId       *string                  `json:"cvpId,omitempty"`
-	Operation   *PortOperation           `json:"operation,omitempty"`
-	Account     *SimplifiedAccount       `json:"account,omitempty"`
-	Changelog   *Changelog               `json:"changelog,omitempty"`
-	ServiceType *PortResponseServiceType `json:"serviceType,omitempty"`
+	CvpId       *string                        `json:"cvpId,omitempty"`
+	Operation   *PortOperation                 `json:"operation,omitempty"`
+	Account     *SimplifiedAccountPortResponse `json:"account,omitempty"`
+	Changelog   *Changelog                     `json:"changelog,omitempty"`
+	ServiceType *PortResponseServiceType       `json:"serviceType,omitempty"`
 	// Equinix assigned response attribute for Port bandwidth in Mbps
 	Bandwidth *int32 `json:"bandwidth,omitempty"`
 	// Equinix assigned response attribute for Port available bandwidth in Mbps
@@ -647,9 +647,9 @@ func (o *PortResponse) SetOperation(v PortOperation) {
 }
 
 // GetAccount returns the Account field value if set, zero value otherwise.
-func (o *PortResponse) GetAccount() SimplifiedAccount {
+func (o *PortResponse) GetAccount() SimplifiedAccountPortResponse {
 	if o == nil || IsNil(o.Account) {
-		var ret SimplifiedAccount
+		var ret SimplifiedAccountPortResponse
 		return ret
 	}
 	return *o.Account
@@ -657,7 +657,7 @@ func (o *PortResponse) GetAccount() SimplifiedAccount {
 
 // GetAccountOk returns a tuple with the Account field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PortResponse) GetAccountOk() (*SimplifiedAccount, bool) {
+func (o *PortResponse) GetAccountOk() (*SimplifiedAccountPortResponse, bool) {
 	if o == nil || IsNil(o.Account) {
 		return nil, false
 	}
@@ -673,8 +673,8 @@ func (o *PortResponse) HasAccount() bool {
 	return false
 }
 
-// SetAccount gets a reference to the given SimplifiedAccount and assigns it to the Account field.
-func (o *PortResponse) SetAccount(v SimplifiedAccount) {
+// SetAccount gets a reference to the given SimplifiedAccountPortResponse and assigns it to the Account field.
+func (o *PortResponse) SetAccount(v SimplifiedAccountPortResponse) {
 	o.Account = &v
 }
 

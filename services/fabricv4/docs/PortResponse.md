@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 **Order** | Pointer to [**PortOrder**](PortOrder.md) |  | [optional] 
 **CvpId** | Pointer to **string** | Equinix assigned response attribute for Unique ID for a virtual port. | [optional] 
 **Operation** | Pointer to [**PortOperation**](PortOperation.md) |  | [optional] 
-**Account** | Pointer to [**SimplifiedAccount**](SimplifiedAccount.md) |  | [optional] 
+**Account** | Pointer to [**SimplifiedAccountPortResponse**](SimplifiedAccountPortResponse.md) |  | [optional] 
 **Changelog** | Pointer to [**Changelog**](Changelog.md) |  | [optional] 
 **ServiceType** | Pointer to [**PortResponseServiceType**](PortResponseServiceType.md) |  | [optional] 
 **Bandwidth** | Pointer to **int32** | Equinix assigned response attribute for Port bandwidth in Mbps | [optional] 
@@ -491,20 +491,20 @@ HasOperation returns a boolean if a field has been set.
 
 ### GetAccount
 
-`func (o *PortResponse) GetAccount() SimplifiedAccount`
+`func (o *PortResponse) GetAccount() SimplifiedAccountPortResponse`
 
 GetAccount returns the Account field if non-nil, zero value otherwise.
 
 ### GetAccountOk
 
-`func (o *PortResponse) GetAccountOk() (*SimplifiedAccount, bool)`
+`func (o *PortResponse) GetAccountOk() (*SimplifiedAccountPortResponse, bool)`
 
 GetAccountOk returns a tuple with the Account field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAccount
 
-`func (o *PortResponse) SetAccount(v SimplifiedAccount)`
+`func (o *PortResponse) SetAccount(v SimplifiedAccountPortResponse)`
 
 SetAccount sets Account field to given value.
 
