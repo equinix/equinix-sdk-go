@@ -1,4 +1,4 @@
-# PortPhysicalPortsType
+# PortResponsePhysicalPortsType
 
 ## Enum
 

@@ -3228,7 +3228,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Port"
+                $ref: "#/components/schemas/PortResponse"
               examples:
                 portExample:
                   $ref: "#/components/examples/COLOSinglePortNonLagResponse"
@@ -3355,7 +3355,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Port"
+                $ref: "#/components/schemas/PortResponse"
               examples:
                 portExample:
                   $ref: "#/components/examples/portByUUID"
@@ -8238,6 +8238,7 @@ components:
       required:
         - type
       type: object
+      additionalProperties: false
       properties:
         uuid:
           type: string
@@ -8799,18 +8800,9 @@ components:
           type: array
           description: GET All User Port Across Fabric Metros
           items:
-            $ref: "#/components/schemas/Port"
+            $ref: "#/components/schemas/PortResponse"
       description: GET All User Port Across Fabric Metros
-    Port:
-      required:
-        - account
-        - connectivitySourceType
-        - encapsulation
-        - location
-        - physicalPortsSpeed
-        - physicalPortsType
-        - settings
-        - type
+    PortResponse:
       type: object
       properties:
         type:
@@ -8876,7 +8868,7 @@ components:
         operation:
           $ref: "#/components/schemas/PortOperation"
         account:
-          $ref: "#/components/schemas/SimplifiedAccount"
+          $ref: "#/components/schemas/SimplifiedAccountPortResponse"
         changelog:
           $ref: "#/components/schemas/Changelog"
         serviceType:
@@ -8948,7 +8940,24 @@ components:
           description: Port Loas
           items:
             $ref: "#/components/schemas/PortLoa"
-      description: Port specification
+      description: Port response specification
+    Port:
+      required:
+        - account
+        - connectivitySourceType
+        - encapsulation
+        - location
+        - physicalPortsSpeed
+        - physicalPortsType
+        - settings
+        - type
+      type: object
+      description: Port is the Request Object for Creating Fabric Ports
+      allOf:
+        - $ref: "#/components/schemas/PortResponse"
+      properties:
+        account:
+          $ref: "#/components/schemas/SimplifiedAccount"
     PhysicalPort:
       type: object
       properties:
@@ -9474,7 +9483,7 @@ components:
         location:
           $ref: "#/components/schemas/SimplifiedLocationWithoutIBX"
         package:
-          $ref: "#/components/schemas/CloudRouterPackageType"
+          $ref: "#/components/schemas/CloudRouterPostRequestPackage"
         order:
           $ref: "#/components/schemas/Order"
         project:
@@ -10629,6 +10638,24 @@ components:
           type: integer
           description: Reseller customer organization identifier
           format: int64
+    SimplifiedAccountPortResponse:
+      type: object
+      description: Temporary SimplifiedAccount for PortResponse data mismatch of all strings in account
+      allOf:
+        - $ref: "#/components/schemas/SimplifiedAccount"
+      properties:
+        accountNumber:
+          type: string
+          description: Account number
+        orgId:
+          type: string
+          description: Customer organization identifier
+        resellerAccountNumber:
+          type: string
+          description: Reseller account number
+        resellerOrgId:
+          type: string
+          description: Reseller customer organization identifier
     Changelog:
       type: object
       properties:
@@ -11698,7 +11725,7 @@ components:
         metroCode:
           type: string
           example: AM
-    CloudRouterPackageType:
+    CloudRouterPostRequestPackage:
       required:
         - code
       type: object

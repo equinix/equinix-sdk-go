@@ -12,6 +12,7 @@ Contact: api-support@equinix.com
 package fabricv4
 
 import (
+	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -27,7 +28,6 @@ type ServiceProfileAccessPointTypeVD struct {
 	// Allow remote connections to Service Profile
 	AllowRemoteConnections *bool `json:"allowRemoteConnections,omitempty"`
 	AllowCustomBandwidth   *bool `json:"allowCustomBandwidth,omitempty"`
-	AdditionalProperties   map[string]interface{}
 }
 
 type _ServiceProfileAccessPointTypeVD ServiceProfileAccessPointTypeVD
@@ -225,11 +225,6 @@ func (o ServiceProfileAccessPointTypeVD) ToMap() (map[string]interface{}, error)
 	if !IsNil(o.AllowCustomBandwidth) {
 		toSerialize["allowCustomBandwidth"] = o.AllowCustomBandwidth
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
 }
 
@@ -257,24 +252,15 @@ func (o *ServiceProfileAccessPointTypeVD) UnmarshalJSON(data []byte) (err error)
 
 	varServiceProfileAccessPointTypeVD := _ServiceProfileAccessPointTypeVD{}
 
-	err = json.Unmarshal(data, &varServiceProfileAccessPointTypeVD)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varServiceProfileAccessPointTypeVD)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ServiceProfileAccessPointTypeVD(varServiceProfileAccessPointTypeVD)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "uuid")
-		delete(additionalProperties, "type")
-		delete(additionalProperties, "supportedBandwidths")
-		delete(additionalProperties, "allowRemoteConnections")
-		delete(additionalProperties, "allowCustomBandwidth")
-		o.AdditionalProperties = additionalProperties
-	}
 
 	return err
 }

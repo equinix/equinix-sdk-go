@@ -38,15 +38,15 @@ type CloudRouter struct {
 	// Number of distinct ipv4 routes
 	DistinctIpv4PrefixesCount *int32 `json:"distinctIpv4PrefixesCount,omitempty"`
 	// Number of distinct ipv6 routes
-	DistinctIpv6PrefixesCount *int32                        `json:"distinctIpv6PrefixesCount,omitempty"`
-	ChangeLog                 *Changelog                    `json:"changeLog,omitempty"`
-	Change                    *CloudRouterChange            `json:"change,omitempty"`
-	Type                      *CloudRouterPostRequestType   `json:"type,omitempty"`
-	Location                  *SimplifiedLocationWithoutIBX `json:"location,omitempty"`
-	Package                   *CloudRouterPackageType       `json:"package,omitempty"`
-	Order                     *Order                        `json:"order,omitempty"`
-	Project                   *Project                      `json:"project,omitempty"`
-	Account                   *SimplifiedAccount            `json:"account,omitempty"`
+	DistinctIpv6PrefixesCount *int32                         `json:"distinctIpv6PrefixesCount,omitempty"`
+	ChangeLog                 *Changelog                     `json:"changeLog,omitempty"`
+	Change                    *CloudRouterChange             `json:"change,omitempty"`
+	Type                      *CloudRouterPostRequestType    `json:"type,omitempty"`
+	Location                  *SimplifiedLocationWithoutIBX  `json:"location,omitempty"`
+	Package                   *CloudRouterPostRequestPackage `json:"package,omitempty"`
+	Order                     *Order                         `json:"order,omitempty"`
+	Project                   *Project                       `json:"project,omitempty"`
+	Account                   *SimplifiedAccount             `json:"account,omitempty"`
 	// Preferences for notifications on connection configuration or status changes
 	Notifications        []SimplifiedNotification `json:"notifications,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -520,9 +520,9 @@ func (o *CloudRouter) SetLocation(v SimplifiedLocationWithoutIBX) {
 }
 
 // GetPackage returns the Package field value if set, zero value otherwise.
-func (o *CloudRouter) GetPackage() CloudRouterPackageType {
+func (o *CloudRouter) GetPackage() CloudRouterPostRequestPackage {
 	if o == nil || IsNil(o.Package) {
-		var ret CloudRouterPackageType
+		var ret CloudRouterPostRequestPackage
 		return ret
 	}
 	return *o.Package
@@ -530,7 +530,7 @@ func (o *CloudRouter) GetPackage() CloudRouterPackageType {
 
 // GetPackageOk returns a tuple with the Package field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CloudRouter) GetPackageOk() (*CloudRouterPackageType, bool) {
+func (o *CloudRouter) GetPackageOk() (*CloudRouterPostRequestPackage, bool) {
 	if o == nil || IsNil(o.Package) {
 		return nil, false
 	}
@@ -546,8 +546,8 @@ func (o *CloudRouter) HasPackage() bool {
 	return false
 }
 
-// SetPackage gets a reference to the given CloudRouterPackageType and assigns it to the Package field.
-func (o *CloudRouter) SetPackage(v CloudRouterPackageType) {
+// SetPackage gets a reference to the given CloudRouterPostRequestPackage and assigns it to the Package field.
+func (o *CloudRouter) SetPackage(v CloudRouterPostRequestPackage) {
 	o.Package = &v
 }
 
