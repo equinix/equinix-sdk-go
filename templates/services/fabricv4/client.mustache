@@ -757,7 +757,7 @@ func formatErrorMessage(status string, v interface{}) string {
 
 	if ok {
 	  errs := []string{}
-	  for _, e := range errorModelList {
+	  for _, e := range *errorModelList {
       errs = append(errs, fmt.Sprintf("Code: %s", e.GetErrorCode()))
       errs = append(errs, fmt.Sprintf("Message: %s", e.GetErrorMessage()))
       errs = append(errs, fmt.Sprintf("Details: %s", e.GetDetails()))
