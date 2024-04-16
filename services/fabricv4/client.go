@@ -705,7 +705,7 @@ func FormatFabricv4AdditionalInfo(additionalInfo []PriceErrorAdditionalInfo) str
 // the Error component schema or when it implements rfc7807
 func formatErrorMessage(status string, v interface{}) string {
 	str := ""
-	errorModelList, ok := v.([]Error)
+	errorModelList, ok := v.(*[]Error)
 
 	if ok {
 		errs := []string{}
