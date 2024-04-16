@@ -683,20 +683,54 @@ func (e GenericOpenAPIError) Model() interface{} {
 	return e.model
 }
 
-// format error message using title and detail when model implements rfc7807
+// Helper method for parsing Fabric API errors
+func FormatFabricv4AdditionalInfo(additionalInfo []PriceErrorAdditionalInfo) string {
+	var str []string
+	for _, addInfo := range additionalInfo {
+		property, reason := addInfo.GetProperty(), addInfo.GetReason()
+		if property != "" {
+			property = fmt.Sprintf("Property: %s, ", property)
+		}
+		if reason != "" {
+			reason = fmt.Sprintf("%s", reason)
+		} else {
+			reason = fmt.Sprintf("No Reason included in API Response")
+		}
+		str = append(str, fmt.Sprintf("{%s%s}", property, reason))
+	}
+	return strings.Join(str, ", ")
+}
+
+// format error message using title and detail when model is an instance of
+// the Error component schema or when it implements rfc7807
 func formatErrorMessage(status string, v interface{}) string {
 	str := ""
-	metaValue := reflect.ValueOf(v).Elem()
+	errorModelList, ok := v.([]Error)
 
-	if metaValue.Kind() == reflect.Struct {
-		field := metaValue.FieldByName("Title")
-		if field != (reflect.Value{}) {
-			str = fmt.Sprintf("%s", field.Interface())
+	if ok {
+		errs := []string{}
+		for _, e := range errorModelList {
+			errs = append(errs, fmt.Sprintf("Code: %s", e.GetErrorCode()))
+			errs = append(errs, fmt.Sprintf("Message: %s", e.GetErrorMessage()))
+			errs = append(errs, fmt.Sprintf("Details: %s", e.GetDetails()))
+			if additionalInfo := FormatFabricv4AdditionalInfo(e.GetAdditionalInfo()); additionalInfo != "" {
+				errs = append(errs, fmt.Sprintf("AdditionalInfo: [%s]", additionalInfo))
+			}
 		}
+		str = strings.Join(errs, ", ")
+	} else {
+		metaValue := reflect.ValueOf(v).Elem()
 
-		field = metaValue.FieldByName("Detail")
-		if field != (reflect.Value{}) {
-			str = fmt.Sprintf("%s (%s)", str, field.Interface())
+		if metaValue.Kind() == reflect.Struct {
+			field := metaValue.FieldByName("Title")
+			if field != (reflect.Value{}) {
+				str = fmt.Sprintf("%s", field.Interface())
+			}
+
+			field = metaValue.FieldByName("Detail")
+			if field != (reflect.Value{}) {
+				str = fmt.Sprintf("%s (%s)", str, field.Interface())
+			}
 		}
 	}
 
