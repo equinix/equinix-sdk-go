@@ -1,0 +1,31 @@
+# GetVpnsUsingGETStatusListParameterInner
+
+## Enum
+
+
+* `PROVISIONED` (value: `"PROVISIONED"`)
+
+* `PROVISIONING` (value: `"PROVISIONING"`)
+
+* `PROVISIONING_RETRYING` (value: `"PROVISIONING_RETRYING"`)
+
+* `UPDATING` (value: `"UPDATING"`)
+
+* `PROVISIONING_UPDATE_RETRYING` (value: `"PROVISIONING_UPDATE_RETRYING"`)
+
+* `DEPROVISIONED` (value: `"DEPROVISIONED"`)
+
+* `DEPROVISIONING` (value: `"DEPROVISIONING"`)
+
+* `DEPROVISIONING_RETRYING` (value: `"DEPROVISIONING_RETRYING"`)
+
+* `PROVISIONING_FAILED` (value: `"PROVISIONING_FAILED"`)
+
+* `PROVISIONING_UPDATE_FAILED` (value: `"PROVISIONING_UPDATE_FAILED"`)
+
+* `DEPROVISIONING_FAILED` (value: `"DEPROVISIONING_FAILED"`)
+
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+
