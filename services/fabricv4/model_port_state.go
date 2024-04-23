@@ -3,7 +3,6 @@ Equinix Fabric API v4
 
 Equinix Fabric is an advanced software-defined interconnection solution that enables you to directly, securely and dynamically connect to distributed infrastructure and digital ecosystems on platform Equinix via a single port, Customers can use Fabric to connect to: </br> 1. Cloud Service Providers - Clouds, network and other service providers.  </br> 2. Enterprises - Other Equinix customers, vendors and partners.  </br> 3. Myself - Another customer instance deployed at Equinix. </br>
 
-API version: 4.12
 Contact: api-support@equinix.com
 */
 
@@ -29,6 +28,10 @@ const (
 	PORTSTATE_DEPROVISIONED  PortState = "DEPROVISIONED"
 	PORTSTATE_INACTIVE       PortState = "INACTIVE"
 	PORTSTATE_FAILED         PortState = "FAILED"
+	PORTSTATE_ADDED          PortState = "ADDED"
+	PORTSTATE_DELETED        PortState = "DELETED"
+	PORTSTATE_TO_BE_ADDED    PortState = "TO_BE_ADDED"
+	PORTSTATE_TO_BE_DELETED  PortState = "TO_BE_DELETED"
 )
 
 // All allowed values of PortState enum
@@ -41,6 +44,10 @@ var AllowedPortStateEnumValues = []PortState{
 	"DEPROVISIONED",
 	"INACTIVE",
 	"FAILED",
+	"ADDED",
+	"DELETED",
+	"TO_BE_ADDED",
+	"TO_BE_DELETED",
 }
 
 func (v *PortState) UnmarshalJSON(src []byte) error {

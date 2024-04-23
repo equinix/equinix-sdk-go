@@ -4,17 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to [**ConnectionRouteFilterDataType**](ConnectionRouteFilterDataType.md) |  | [optional] 
-**Name** | Pointer to **string** |  | [optional] 
+**Type** | [**ConnectionRouteFilterDataType**](ConnectionRouteFilterDataType.md) |  | 
+**Name** | **string** |  | 
 **Description** | Pointer to **string** | Customer-provided connection description | [optional] 
-**Project** | Pointer to [**Project**](Project.md) |  | [optional] 
-**Notifications** | Pointer to [**[]SimplifiedNotification**](SimplifiedNotification.md) | Preferences for notifications on route filter configuration or status changes | [optional] 
+**Project** | [**Project**](Project.md) |  | 
 
 ## Methods
 
 ### NewRouteFiltersBase
 
-`func NewRouteFiltersBase() *RouteFiltersBase`
+`func NewRouteFiltersBase(type_ ConnectionRouteFilterDataType, name string, project Project, ) *RouteFiltersBase`
 
 NewRouteFiltersBase instantiates a new RouteFiltersBase object
 This constructor will assign default values to properties that have it defined,
@@ -48,11 +47,6 @@ and a boolean to check if the value has been set.
 
 SetType sets Type field to given value.
 
-### HasType
-
-`func (o *RouteFiltersBase) HasType() bool`
-
-HasType returns a boolean if a field has been set.
 
 ### GetName
 
@@ -73,11 +67,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-### HasName
-
-`func (o *RouteFiltersBase) HasName() bool`
-
-HasName returns a boolean if a field has been set.
 
 ### GetDescription
 
@@ -123,36 +112,6 @@ and a boolean to check if the value has been set.
 
 SetProject sets Project field to given value.
 
-### HasProject
-
-`func (o *RouteFiltersBase) HasProject() bool`
-
-HasProject returns a boolean if a field has been set.
-
-### GetNotifications
-
-`func (o *RouteFiltersBase) GetNotifications() []SimplifiedNotification`
-
-GetNotifications returns the Notifications field if non-nil, zero value otherwise.
-
-### GetNotificationsOk
-
-`func (o *RouteFiltersBase) GetNotificationsOk() (*[]SimplifiedNotification, bool)`
-
-GetNotificationsOk returns a tuple with the Notifications field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetNotifications
-
-`func (o *RouteFiltersBase) SetNotifications(v []SimplifiedNotification)`
-
-SetNotifications sets Notifications field to given value.
-
-### HasNotifications
-
-`func (o *RouteFiltersBase) HasNotifications() bool`
-
-HasNotifications returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

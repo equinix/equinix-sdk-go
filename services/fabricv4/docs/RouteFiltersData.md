@@ -15,7 +15,6 @@ Name | Type | Description | Notes
 **ConnectionsCount** | Pointer to **int32** |  | [optional] 
 **RulesCount** | Pointer to **int32** |  | [optional] 
 **Project** | Pointer to [**RouteFiltersDataProject**](RouteFiltersDataProject.md) |  | [optional] 
-**Notifications** | Pointer to [**[]SimplifiedNotification**](SimplifiedNotification.md) | Preferences for notifications on route filter configuration or status changes | [optional] 
 **Changelog** | Pointer to [**Changelog**](Changelog.md) |  | [optional] 
 
 ## Methods
@@ -311,31 +310,6 @@ SetProject sets Project field to given value.
 `func (o *RouteFiltersData) HasProject() bool`
 
 HasProject returns a boolean if a field has been set.
-
-### GetNotifications
-
-`func (o *RouteFiltersData) GetNotifications() []SimplifiedNotification`
-
-GetNotifications returns the Notifications field if non-nil, zero value otherwise.
-
-### GetNotificationsOk
-
-`func (o *RouteFiltersData) GetNotificationsOk() (*[]SimplifiedNotification, bool)`
-
-GetNotificationsOk returns a tuple with the Notifications field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetNotifications
-
-`func (o *RouteFiltersData) SetNotifications(v []SimplifiedNotification)`
-
-SetNotifications sets Notifications field to given value.
-
-### HasNotifications
-
-`func (o *RouteFiltersData) HasNotifications() bool`
-
-HasNotifications returns a boolean if a field has been set.
 
 ### GetChangelog
 

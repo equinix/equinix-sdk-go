@@ -3,7 +3,6 @@ Equinix Fabric API v4
 
 Equinix Fabric is an advanced software-defined interconnection solution that enables you to directly, securely and dynamically connect to distributed infrastructure and digital ecosystems on platform Equinix via a single port, Customers can use Fabric to connect to: </br> 1. Cloud Service Providers - Clouds, network and other service providers.  </br> 2. Enterprises - Other Equinix customers, vendors and partners.  </br> 3. Myself - Another customer instance deployed at Equinix. </br>
 
-API version: 4.12
 Contact: api-support@equinix.com
 */
 
@@ -21,26 +20,27 @@ type ProviderStatus string
 
 // List of ProviderStatus
 const (
-	PROVIDERSTATUS_AVAILABLE        ProviderStatus = "AVAILABLE"
-	PROVIDERSTATUS_DEPROVISIONED    ProviderStatus = "DEPROVISIONED"
-	PROVIDERSTATUS_DEPROVISIONING   ProviderStatus = "DEPROVISIONING"
-	PROVIDERSTATUS_FAILED           ProviderStatus = "FAILED"
-	PROVIDERSTATUS_NOT_AVAILABLE    ProviderStatus = "NOT_AVAILABLE"
-	PROVIDERSTATUS_PENDING_APPROVAL ProviderStatus = "PENDING_APPROVAL"
-	PROVIDERSTATUS_PROVISIONED      ProviderStatus = "PROVISIONED"
-	PROVIDERSTATUS_PROVISIONING     ProviderStatus = "PROVISIONING"
-	PROVIDERSTATUS_REJECTED         ProviderStatus = "REJECTED"
-	PROVIDERSTATUS_PENDING_BGP      ProviderStatus = "PENDING_BGP"
-	PROVIDERSTATUS_OUT_OF_BANDWIDTH ProviderStatus = "OUT_OF_BANDWIDTH"
-	PROVIDERSTATUS_DELETED          ProviderStatus = "DELETED"
-	PROVIDERSTATUS_ERROR            ProviderStatus = "ERROR"
-	PROVIDERSTATUS_ERRORED          ProviderStatus = "ERRORED"
-	PROVIDERSTATUS_NOTPROVISIONED   ProviderStatus = "NOTPROVISIONED"
-	PROVIDERSTATUS_NOT_PROVISIONED  ProviderStatus = "NOT_PROVISIONED"
-	PROVIDERSTATUS_ORDERING         ProviderStatus = "ORDERING"
-	PROVIDERSTATUS_DELETING         ProviderStatus = "DELETING"
-	PROVIDERSTATUS_PENDING_DELETE   ProviderStatus = "PENDING DELETE"
-	PROVIDERSTATUS_N_A              ProviderStatus = "N/A"
+	PROVIDERSTATUS_AVAILABLE             ProviderStatus = "AVAILABLE"
+	PROVIDERSTATUS_DEPROVISIONED         ProviderStatus = "DEPROVISIONED"
+	PROVIDERSTATUS_DEPROVISIONING        ProviderStatus = "DEPROVISIONING"
+	PROVIDERSTATUS_FAILED                ProviderStatus = "FAILED"
+	PROVIDERSTATUS_NOT_AVAILABLE         ProviderStatus = "NOT_AVAILABLE"
+	PROVIDERSTATUS_PENDING_APPROVAL      ProviderStatus = "PENDING_APPROVAL"
+	PROVIDERSTATUS_PENDING_CONFIGURATION ProviderStatus = "PENDING_CONFIGURATION"
+	PROVIDERSTATUS_PROVISIONED           ProviderStatus = "PROVISIONED"
+	PROVIDERSTATUS_PROVISIONING          ProviderStatus = "PROVISIONING"
+	PROVIDERSTATUS_REJECTED              ProviderStatus = "REJECTED"
+	PROVIDERSTATUS_PENDING_BGP           ProviderStatus = "PENDING_BGP"
+	PROVIDERSTATUS_OUT_OF_BANDWIDTH      ProviderStatus = "OUT_OF_BANDWIDTH"
+	PROVIDERSTATUS_DELETED               ProviderStatus = "DELETED"
+	PROVIDERSTATUS_ERROR                 ProviderStatus = "ERROR"
+	PROVIDERSTATUS_ERRORED               ProviderStatus = "ERRORED"
+	PROVIDERSTATUS_NOTPROVISIONED        ProviderStatus = "NOTPROVISIONED"
+	PROVIDERSTATUS_NOT_PROVISIONED       ProviderStatus = "NOT_PROVISIONED"
+	PROVIDERSTATUS_ORDERING              ProviderStatus = "ORDERING"
+	PROVIDERSTATUS_DELETING              ProviderStatus = "DELETING"
+	PROVIDERSTATUS_PENDING_DELETE        ProviderStatus = "PENDING DELETE"
+	PROVIDERSTATUS_N_A                   ProviderStatus = "N/A"
 )
 
 // All allowed values of ProviderStatus enum
@@ -51,6 +51,7 @@ var AllowedProviderStatusEnumValues = []ProviderStatus{
 	"FAILED",
 	"NOT_AVAILABLE",
 	"PENDING_APPROVAL",
+	"PENDING_CONFIGURATION",
 	"PROVISIONED",
 	"PROVISIONING",
 	"REJECTED",

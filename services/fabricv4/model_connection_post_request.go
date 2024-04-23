@@ -3,7 +3,6 @@ Equinix Fabric API v4
 
 Equinix Fabric is an advanced software-defined interconnection solution that enables you to directly, securely and dynamically connect to distributed infrastructure and digital ecosystems on platform Equinix via a single port, Customers can use Fabric to connect to: </br> 1. Cloud Service Providers - Clouds, network and other service providers.  </br> 2. Enterprises - Other Equinix customers, vendors and partners.  </br> 3. Myself - Another customer instance deployed at Equinix. </br>
 
-API version: 4.12
 Contact: api-support@equinix.com
 */
 
@@ -13,6 +12,7 @@ package fabricv4
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the ConnectionPostRequest type satisfies the MappedNullable interface at compile time
@@ -20,18 +20,18 @@ var _ MappedNullable = &ConnectionPostRequest{}
 
 // ConnectionPostRequest Create connection post request
 type ConnectionPostRequest struct {
-	Type *ConnectionType `json:"type,omitempty"`
+	Type ConnectionType `json:"type"`
 	// Customer-provided connection name
-	Name  *string `json:"name,omitempty"`
-	Order *Order  `json:"order,omitempty"`
+	Name  string `json:"name"`
+	Order *Order `json:"order,omitempty"`
 	// Preferences for notifications on connection configuration or status changes
-	Notifications []SimplifiedNotification `json:"notifications,omitempty"`
+	Notifications []SimplifiedNotification `json:"notifications"`
 	// Connection bandwidth in Mbps
-	Bandwidth  *int32                `json:"bandwidth,omitempty"`
+	Bandwidth  int32                 `json:"bandwidth"`
 	GeoScope   *GeoScopeType         `json:"geoScope,omitempty"`
 	Redundancy *ConnectionRedundancy `json:"redundancy,omitempty"`
-	ASide      *ConnectionSide       `json:"aSide,omitempty"`
-	ZSide      *ConnectionSide       `json:"zSide,omitempty"`
+	ASide      ConnectionSide        `json:"aSide"`
+	ZSide      ConnectionSide        `json:"zSide"`
 	Project    *Project              `json:"project,omitempty"`
 	// Connection additional information
 	AdditionalInfo       []ConnectionSideAdditionalInfo `json:"additionalInfo,omitempty"`
@@ -44,8 +44,14 @@ type _ConnectionPostRequest ConnectionPostRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewConnectionPostRequest() *ConnectionPostRequest {
+func NewConnectionPostRequest(type_ ConnectionType, name string, notifications []SimplifiedNotification, bandwidth int32, aSide ConnectionSide, zSide ConnectionSide) *ConnectionPostRequest {
 	this := ConnectionPostRequest{}
+	this.Type = type_
+	this.Name = name
+	this.Notifications = notifications
+	this.Bandwidth = bandwidth
+	this.ASide = aSide
+	this.ZSide = zSide
 	return &this
 }
 
@@ -57,68 +63,52 @@ func NewConnectionPostRequestWithDefaults() *ConnectionPostRequest {
 	return &this
 }
 
-// GetType returns the Type field value if set, zero value otherwise.
+// GetType returns the Type field value
 func (o *ConnectionPostRequest) GetType() ConnectionType {
-	if o == nil || IsNil(o.Type) {
+	if o == nil {
 		var ret ConnectionType
 		return ret
 	}
-	return *o.Type
+
+	return o.Type
 }
 
-// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
 func (o *ConnectionPostRequest) GetTypeOk() (*ConnectionType, bool) {
-	if o == nil || IsNil(o.Type) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Type, true
+	return &o.Type, true
 }
 
-// HasType returns a boolean if a field has been set.
-func (o *ConnectionPostRequest) HasType() bool {
-	if o != nil && !IsNil(o.Type) {
-		return true
-	}
-
-	return false
-}
-
-// SetType gets a reference to the given ConnectionType and assigns it to the Type field.
+// SetType sets field value
 func (o *ConnectionPostRequest) SetType(v ConnectionType) {
-	o.Type = &v
+	o.Type = v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value
 func (o *ConnectionPostRequest) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Name
+
+	return o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *ConnectionPostRequest) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return &o.Name, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *ConnectionPostRequest) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName sets field value
 func (o *ConnectionPostRequest) SetName(v string) {
-	o.Name = &v
+	o.Name = v
 }
 
 // GetOrder returns the Order field value if set, zero value otherwise.
@@ -153,68 +143,52 @@ func (o *ConnectionPostRequest) SetOrder(v Order) {
 	o.Order = &v
 }
 
-// GetNotifications returns the Notifications field value if set, zero value otherwise.
+// GetNotifications returns the Notifications field value
 func (o *ConnectionPostRequest) GetNotifications() []SimplifiedNotification {
-	if o == nil || IsNil(o.Notifications) {
+	if o == nil {
 		var ret []SimplifiedNotification
 		return ret
 	}
+
 	return o.Notifications
 }
 
-// GetNotificationsOk returns a tuple with the Notifications field value if set, nil otherwise
+// GetNotificationsOk returns a tuple with the Notifications field value
 // and a boolean to check if the value has been set.
 func (o *ConnectionPostRequest) GetNotificationsOk() ([]SimplifiedNotification, bool) {
-	if o == nil || IsNil(o.Notifications) {
+	if o == nil {
 		return nil, false
 	}
 	return o.Notifications, true
 }
 
-// HasNotifications returns a boolean if a field has been set.
-func (o *ConnectionPostRequest) HasNotifications() bool {
-	if o != nil && !IsNil(o.Notifications) {
-		return true
-	}
-
-	return false
-}
-
-// SetNotifications gets a reference to the given []SimplifiedNotification and assigns it to the Notifications field.
+// SetNotifications sets field value
 func (o *ConnectionPostRequest) SetNotifications(v []SimplifiedNotification) {
 	o.Notifications = v
 }
 
-// GetBandwidth returns the Bandwidth field value if set, zero value otherwise.
+// GetBandwidth returns the Bandwidth field value
 func (o *ConnectionPostRequest) GetBandwidth() int32 {
-	if o == nil || IsNil(o.Bandwidth) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.Bandwidth
+
+	return o.Bandwidth
 }
 
-// GetBandwidthOk returns a tuple with the Bandwidth field value if set, nil otherwise
+// GetBandwidthOk returns a tuple with the Bandwidth field value
 // and a boolean to check if the value has been set.
 func (o *ConnectionPostRequest) GetBandwidthOk() (*int32, bool) {
-	if o == nil || IsNil(o.Bandwidth) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Bandwidth, true
+	return &o.Bandwidth, true
 }
 
-// HasBandwidth returns a boolean if a field has been set.
-func (o *ConnectionPostRequest) HasBandwidth() bool {
-	if o != nil && !IsNil(o.Bandwidth) {
-		return true
-	}
-
-	return false
-}
-
-// SetBandwidth gets a reference to the given int32 and assigns it to the Bandwidth field.
+// SetBandwidth sets field value
 func (o *ConnectionPostRequest) SetBandwidth(v int32) {
-	o.Bandwidth = &v
+	o.Bandwidth = v
 }
 
 // GetGeoScope returns the GeoScope field value if set, zero value otherwise.
@@ -281,68 +255,52 @@ func (o *ConnectionPostRequest) SetRedundancy(v ConnectionRedundancy) {
 	o.Redundancy = &v
 }
 
-// GetASide returns the ASide field value if set, zero value otherwise.
+// GetASide returns the ASide field value
 func (o *ConnectionPostRequest) GetASide() ConnectionSide {
-	if o == nil || IsNil(o.ASide) {
+	if o == nil {
 		var ret ConnectionSide
 		return ret
 	}
-	return *o.ASide
+
+	return o.ASide
 }
 
-// GetASideOk returns a tuple with the ASide field value if set, nil otherwise
+// GetASideOk returns a tuple with the ASide field value
 // and a boolean to check if the value has been set.
 func (o *ConnectionPostRequest) GetASideOk() (*ConnectionSide, bool) {
-	if o == nil || IsNil(o.ASide) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ASide, true
+	return &o.ASide, true
 }
 
-// HasASide returns a boolean if a field has been set.
-func (o *ConnectionPostRequest) HasASide() bool {
-	if o != nil && !IsNil(o.ASide) {
-		return true
-	}
-
-	return false
-}
-
-// SetASide gets a reference to the given ConnectionSide and assigns it to the ASide field.
+// SetASide sets field value
 func (o *ConnectionPostRequest) SetASide(v ConnectionSide) {
-	o.ASide = &v
+	o.ASide = v
 }
 
-// GetZSide returns the ZSide field value if set, zero value otherwise.
+// GetZSide returns the ZSide field value
 func (o *ConnectionPostRequest) GetZSide() ConnectionSide {
-	if o == nil || IsNil(o.ZSide) {
+	if o == nil {
 		var ret ConnectionSide
 		return ret
 	}
-	return *o.ZSide
+
+	return o.ZSide
 }
 
-// GetZSideOk returns a tuple with the ZSide field value if set, nil otherwise
+// GetZSideOk returns a tuple with the ZSide field value
 // and a boolean to check if the value has been set.
 func (o *ConnectionPostRequest) GetZSideOk() (*ConnectionSide, bool) {
-	if o == nil || IsNil(o.ZSide) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ZSide, true
+	return &o.ZSide, true
 }
 
-// HasZSide returns a boolean if a field has been set.
-func (o *ConnectionPostRequest) HasZSide() bool {
-	if o != nil && !IsNil(o.ZSide) {
-		return true
-	}
-
-	return false
-}
-
-// SetZSide gets a reference to the given ConnectionSide and assigns it to the ZSide field.
+// SetZSide sets field value
 func (o *ConnectionPostRequest) SetZSide(v ConnectionSide) {
-	o.ZSide = &v
+	o.ZSide = v
 }
 
 // GetProject returns the Project field value if set, zero value otherwise.
@@ -419,33 +377,21 @@ func (o ConnectionPostRequest) MarshalJSON() ([]byte, error) {
 
 func (o ConnectionPostRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Type) {
-		toSerialize["type"] = o.Type
-	}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
+	toSerialize["type"] = o.Type
+	toSerialize["name"] = o.Name
 	if !IsNil(o.Order) {
 		toSerialize["order"] = o.Order
 	}
-	if !IsNil(o.Notifications) {
-		toSerialize["notifications"] = o.Notifications
-	}
-	if !IsNil(o.Bandwidth) {
-		toSerialize["bandwidth"] = o.Bandwidth
-	}
+	toSerialize["notifications"] = o.Notifications
+	toSerialize["bandwidth"] = o.Bandwidth
 	if !IsNil(o.GeoScope) {
 		toSerialize["geoScope"] = o.GeoScope
 	}
 	if !IsNil(o.Redundancy) {
 		toSerialize["redundancy"] = o.Redundancy
 	}
-	if !IsNil(o.ASide) {
-		toSerialize["aSide"] = o.ASide
-	}
-	if !IsNil(o.ZSide) {
-		toSerialize["zSide"] = o.ZSide
-	}
+	toSerialize["aSide"] = o.ASide
+	toSerialize["zSide"] = o.ZSide
 	if !IsNil(o.Project) {
 		toSerialize["project"] = o.Project
 	}
@@ -461,6 +407,32 @@ func (o ConnectionPostRequest) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *ConnectionPostRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"type",
+		"name",
+		"notifications",
+		"bandwidth",
+		"aSide",
+		"zSide",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
 	varConnectionPostRequest := _ConnectionPostRequest{}
 
 	err = json.Unmarshal(data, &varConnectionPostRequest)

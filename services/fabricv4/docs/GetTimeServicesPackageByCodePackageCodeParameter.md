@@ -1,4 +1,4 @@
-# PrecisionTimePackageResponseCode
+# GetTimeServicesPackageByCodePackageCodeParameter
 
 ## Enum
 

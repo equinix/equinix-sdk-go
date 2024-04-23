@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to [**ConnectionType**](ConnectionType.md) |  | [optional] 
-**Name** | Pointer to **string** | Customer-provided connection name | [optional] 
+**Type** | [**ConnectionType**](ConnectionType.md) |  | 
+**Name** | **string** | Customer-provided connection name | 
 **Order** | Pointer to [**Order**](Order.md) |  | [optional] 
-**Notifications** | Pointer to [**[]SimplifiedNotification**](SimplifiedNotification.md) | Preferences for notifications on connection configuration or status changes | [optional] 
-**Bandwidth** | Pointer to **int32** | Connection bandwidth in Mbps | [optional] 
+**Notifications** | [**[]SimplifiedNotification**](SimplifiedNotification.md) | Preferences for notifications on connection configuration or status changes | 
+**Bandwidth** | **int32** | Connection bandwidth in Mbps | 
 **GeoScope** | Pointer to [**GeoScopeType**](GeoScopeType.md) |  | [optional] 
 **Redundancy** | Pointer to [**ConnectionRedundancy**](ConnectionRedundancy.md) |  | [optional] 
-**ASide** | Pointer to [**ConnectionSide**](ConnectionSide.md) |  | [optional] 
-**ZSide** | Pointer to [**ConnectionSide**](ConnectionSide.md) |  | [optional] 
+**ASide** | [**ConnectionSide**](ConnectionSide.md) |  | 
+**ZSide** | [**ConnectionSide**](ConnectionSide.md) |  | 
 **Project** | Pointer to [**Project**](Project.md) |  | [optional] 
 **AdditionalInfo** | Pointer to [**[]ConnectionSideAdditionalInfo**](ConnectionSideAdditionalInfo.md) | Connection additional information | [optional] 
 
@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 
 ### NewConnectionPostRequest
 
-`func NewConnectionPostRequest() *ConnectionPostRequest`
+`func NewConnectionPostRequest(type_ ConnectionType, name string, notifications []SimplifiedNotification, bandwidth int32, aSide ConnectionSide, zSide ConnectionSide, ) *ConnectionPostRequest`
 
 NewConnectionPostRequest instantiates a new ConnectionPostRequest object
 This constructor will assign default values to properties that have it defined,
@@ -54,11 +54,6 @@ and a boolean to check if the value has been set.
 
 SetType sets Type field to given value.
 
-### HasType
-
-`func (o *ConnectionPostRequest) HasType() bool`
-
-HasType returns a boolean if a field has been set.
 
 ### GetName
 
@@ -79,11 +74,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-### HasName
-
-`func (o *ConnectionPostRequest) HasName() bool`
-
-HasName returns a boolean if a field has been set.
 
 ### GetOrder
 
@@ -129,11 +119,6 @@ and a boolean to check if the value has been set.
 
 SetNotifications sets Notifications field to given value.
 
-### HasNotifications
-
-`func (o *ConnectionPostRequest) HasNotifications() bool`
-
-HasNotifications returns a boolean if a field has been set.
 
 ### GetBandwidth
 
@@ -154,11 +139,6 @@ and a boolean to check if the value has been set.
 
 SetBandwidth sets Bandwidth field to given value.
 
-### HasBandwidth
-
-`func (o *ConnectionPostRequest) HasBandwidth() bool`
-
-HasBandwidth returns a boolean if a field has been set.
 
 ### GetGeoScope
 
@@ -229,11 +209,6 @@ and a boolean to check if the value has been set.
 
 SetASide sets ASide field to given value.
 
-### HasASide
-
-`func (o *ConnectionPostRequest) HasASide() bool`
-
-HasASide returns a boolean if a field has been set.
 
 ### GetZSide
 
@@ -254,11 +229,6 @@ and a boolean to check if the value has been set.
 
 SetZSide sets ZSide field to given value.
 
-### HasZSide
-
-`func (o *ConnectionPostRequest) HasZSide() bool`
-
-HasZSide returns a boolean if a field has been set.
 
 ### GetProject
 

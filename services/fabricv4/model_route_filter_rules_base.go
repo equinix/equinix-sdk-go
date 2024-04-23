@@ -3,7 +3,6 @@ Equinix Fabric API v4
 
 Equinix Fabric is an advanced software-defined interconnection solution that enables you to directly, securely and dynamically connect to distributed infrastructure and digital ecosystems on platform Equinix via a single port, Customers can use Fabric to connect to: </br> 1. Cloud Service Providers - Clouds, network and other service providers.  </br> 2. Enterprises - Other Equinix customers, vendors and partners.  </br> 3. Myself - Another customer instance deployed at Equinix. </br>
 
-API version: 4.12
 Contact: api-support@equinix.com
 */
 
@@ -13,6 +12,7 @@ package fabricv4
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the RouteFilterRulesBase type satisfies the MappedNullable interface at compile time
@@ -23,7 +23,7 @@ type RouteFilterRulesBase struct {
 	Name *string `json:"name,omitempty"`
 	// Customer-provided Route Filter Rule description
 	Description          *string `json:"description,omitempty"`
-	Prefix               *string `json:"prefix,omitempty"`
+	Prefix               string  `json:"prefix"`
 	PrefixMatch          *string `json:"prefixMatch,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -34,8 +34,9 @@ type _RouteFilterRulesBase RouteFilterRulesBase
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRouteFilterRulesBase() *RouteFilterRulesBase {
+func NewRouteFilterRulesBase(prefix string) *RouteFilterRulesBase {
 	this := RouteFilterRulesBase{}
+	this.Prefix = prefix
 	var prefixMatch string = "orlonger"
 	this.PrefixMatch = &prefixMatch
 	return &this
@@ -115,36 +116,28 @@ func (o *RouteFilterRulesBase) SetDescription(v string) {
 	o.Description = &v
 }
 
-// GetPrefix returns the Prefix field value if set, zero value otherwise.
+// GetPrefix returns the Prefix field value
 func (o *RouteFilterRulesBase) GetPrefix() string {
-	if o == nil || IsNil(o.Prefix) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Prefix
+
+	return o.Prefix
 }
 
-// GetPrefixOk returns a tuple with the Prefix field value if set, nil otherwise
+// GetPrefixOk returns a tuple with the Prefix field value
 // and a boolean to check if the value has been set.
 func (o *RouteFilterRulesBase) GetPrefixOk() (*string, bool) {
-	if o == nil || IsNil(o.Prefix) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Prefix, true
+	return &o.Prefix, true
 }
 
-// HasPrefix returns a boolean if a field has been set.
-func (o *RouteFilterRulesBase) HasPrefix() bool {
-	if o != nil && !IsNil(o.Prefix) {
-		return true
-	}
-
-	return false
-}
-
-// SetPrefix gets a reference to the given string and assigns it to the Prefix field.
+// SetPrefix sets field value
 func (o *RouteFilterRulesBase) SetPrefix(v string) {
-	o.Prefix = &v
+	o.Prefix = v
 }
 
 // GetPrefixMatch returns the PrefixMatch field value if set, zero value otherwise.
@@ -195,9 +188,7 @@ func (o RouteFilterRulesBase) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !IsNil(o.Prefix) {
-		toSerialize["prefix"] = o.Prefix
-	}
+	toSerialize["prefix"] = o.Prefix
 	if !IsNil(o.PrefixMatch) {
 		toSerialize["prefixMatch"] = o.PrefixMatch
 	}
@@ -210,6 +201,27 @@ func (o RouteFilterRulesBase) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *RouteFilterRulesBase) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"prefix",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
 	varRouteFilterRulesBase := _RouteFilterRulesBase{}
 
 	err = json.Unmarshal(data, &varRouteFilterRulesBase)

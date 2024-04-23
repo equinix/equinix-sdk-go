@@ -38,7 +38,7 @@ import (
 
 func main() {
 	routeFilterId := "routeFilterId_example" // string | Route Filters Id
-	routeFilterRulesBase := *openapiclient.NewRouteFilterRulesBase() // RouteFilterRulesBase | 
+	routeFilterRulesBase := *openapiclient.NewRouteFilterRulesBase("192.168.0.0/24") // RouteFilterRulesBase | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -631,7 +631,7 @@ import (
 func main() {
 	routeFilterId := "routeFilterId_example" // string | Route Filters Id
 	routeFilterRuleId := "routeFilterRuleId_example" // string | Route  Filter  Rules Id
-	routeFilterRulesBase := *openapiclient.NewRouteFilterRulesBase() // RouteFilterRulesBase | 
+	routeFilterRulesBase := *openapiclient.NewRouteFilterRulesBase("192.168.0.0/24") // RouteFilterRulesBase | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

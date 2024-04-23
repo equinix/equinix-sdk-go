@@ -3,7 +3,6 @@ Equinix Fabric API v4
 
 Equinix Fabric is an advanced software-defined interconnection solution that enables you to directly, securely and dynamically connect to distributed infrastructure and digital ecosystems on platform Equinix via a single port, Customers can use Fabric to connect to: </br> 1. Cloud Service Providers - Clouds, network and other service providers.  </br> 2. Enterprises - Other Equinix customers, vendors and partners.  </br> 3. Myself - Another customer instance deployed at Equinix. </br>
 
-API version: 4.12
 Contact: api-support@equinix.com
 */
 
@@ -12,6 +11,7 @@ Contact: api-support@equinix.com
 package fabricv4
 
 import (
+	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -41,10 +41,9 @@ type ServiceProfileAccessPointTypeCOLO struct {
 	ConnectionRedundancyRequired *bool      `json:"connectionRedundancyRequired,omitempty"`
 	ApiConfig                    *ApiConfig `json:"apiConfig,omitempty"`
 	// custom name for \"Connection\"
-	ConnectionLabel      *string                 `json:"connectionLabel,omitempty"`
-	AuthenticationKey    *AuthenticationKey      `json:"authenticationKey,omitempty"`
-	Metadata             *ServiceProfileMetadata `json:"metadata,omitempty"`
-	AdditionalProperties map[string]interface{}
+	ConnectionLabel   *string                 `json:"connectionLabel,omitempty"`
+	AuthenticationKey *AuthenticationKey      `json:"authenticationKey,omitempty"`
+	Metadata          *ServiceProfileMetadata `json:"metadata,omitempty"`
 }
 
 type _ServiceProfileAccessPointTypeCOLO ServiceProfileAccessPointTypeCOLO
@@ -608,11 +607,6 @@ func (o ServiceProfileAccessPointTypeCOLO) ToMap() (map[string]interface{}, erro
 	if !IsNil(o.Metadata) {
 		toSerialize["metadata"] = o.Metadata
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
 }
 
@@ -640,34 +634,15 @@ func (o *ServiceProfileAccessPointTypeCOLO) UnmarshalJSON(data []byte) (err erro
 
 	varServiceProfileAccessPointTypeCOLO := _ServiceProfileAccessPointTypeCOLO{}
 
-	err = json.Unmarshal(data, &varServiceProfileAccessPointTypeCOLO)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varServiceProfileAccessPointTypeCOLO)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ServiceProfileAccessPointTypeCOLO(varServiceProfileAccessPointTypeCOLO)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "uuid")
-		delete(additionalProperties, "type")
-		delete(additionalProperties, "supportedBandwidths")
-		delete(additionalProperties, "allowRemoteConnections")
-		delete(additionalProperties, "allowCustomBandwidth")
-		delete(additionalProperties, "bandwidthAlertThreshold")
-		delete(additionalProperties, "allowBandwidthAutoApproval")
-		delete(additionalProperties, "allowBandwidthUpgrade")
-		delete(additionalProperties, "linkProtocolConfig")
-		delete(additionalProperties, "enableAutoGenerateServiceKey")
-		delete(additionalProperties, "connectionRedundancyRequired")
-		delete(additionalProperties, "apiConfig")
-		delete(additionalProperties, "connectionLabel")
-		delete(additionalProperties, "authenticationKey")
-		delete(additionalProperties, "metadata")
-		o.AdditionalProperties = additionalProperties
-	}
 
 	return err
 }

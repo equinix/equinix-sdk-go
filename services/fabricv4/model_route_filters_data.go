@@ -3,7 +3,6 @@ Equinix Fabric API v4
 
 Equinix Fabric is an advanced software-defined interconnection solution that enables you to directly, securely and dynamically connect to distributed infrastructure and digital ecosystems on platform Equinix via a single port, Customers can use Fabric to connect to: </br> 1. Cloud Service Providers - Clouds, network and other service providers.  </br> 2. Enterprises - Other Equinix customers, vendors and partners.  </br> 3. Myself - Another customer instance deployed at Equinix. </br>
 
-API version: 4.12
 Contact: api-support@equinix.com
 */
 
@@ -34,9 +33,7 @@ type RouteFiltersData struct {
 	ConnectionsCount     *int32                                `json:"connectionsCount,omitempty"`
 	RulesCount           *int32                                `json:"rulesCount,omitempty"`
 	Project              *RouteFiltersDataProject              `json:"project,omitempty"`
-	// Preferences for notifications on route filter configuration or status changes
-	Notifications        []SimplifiedNotification `json:"notifications,omitempty"`
-	Changelog            *Changelog               `json:"changelog,omitempty"`
+	Changelog            *Changelog                            `json:"changelog,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -411,38 +408,6 @@ func (o *RouteFiltersData) SetProject(v RouteFiltersDataProject) {
 	o.Project = &v
 }
 
-// GetNotifications returns the Notifications field value if set, zero value otherwise.
-func (o *RouteFiltersData) GetNotifications() []SimplifiedNotification {
-	if o == nil || IsNil(o.Notifications) {
-		var ret []SimplifiedNotification
-		return ret
-	}
-	return o.Notifications
-}
-
-// GetNotificationsOk returns a tuple with the Notifications field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *RouteFiltersData) GetNotificationsOk() ([]SimplifiedNotification, bool) {
-	if o == nil || IsNil(o.Notifications) {
-		return nil, false
-	}
-	return o.Notifications, true
-}
-
-// HasNotifications returns a boolean if a field has been set.
-func (o *RouteFiltersData) HasNotifications() bool {
-	if o != nil && !IsNil(o.Notifications) {
-		return true
-	}
-
-	return false
-}
-
-// SetNotifications gets a reference to the given []SimplifiedNotification and assigns it to the Notifications field.
-func (o *RouteFiltersData) SetNotifications(v []SimplifiedNotification) {
-	o.Notifications = v
-}
-
 // GetChangelog returns the Changelog field value if set, zero value otherwise.
 func (o *RouteFiltersData) GetChangelog() Changelog {
 	if o == nil || IsNil(o.Changelog) {
@@ -518,9 +483,6 @@ func (o RouteFiltersData) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Project) {
 		toSerialize["project"] = o.Project
 	}
-	if !IsNil(o.Notifications) {
-		toSerialize["notifications"] = o.Notifications
-	}
 	if !IsNil(o.Changelog) {
 		toSerialize["changelog"] = o.Changelog
 	}
@@ -557,7 +519,6 @@ func (o *RouteFiltersData) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "connectionsCount")
 		delete(additionalProperties, "rulesCount")
 		delete(additionalProperties, "project")
-		delete(additionalProperties, "notifications")
 		delete(additionalProperties, "changelog")
 		o.AdditionalProperties = additionalProperties
 	}

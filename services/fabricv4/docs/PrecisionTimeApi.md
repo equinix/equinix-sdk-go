@@ -7,6 +7,9 @@ Method | HTTP request | Description
 [**CreateTimeServices**](PrecisionTimeApi.md#CreateTimeServices) | **Post** /fabric/v4/timeServices | Create Time Service
 [**DeleteTimeServiceById**](PrecisionTimeApi.md#DeleteTimeServiceById) | **Delete** /fabric/v4/timeServices/{serviceId} | Delete time service
 [**GetTimeServicesById**](PrecisionTimeApi.md#GetTimeServicesById) | **Get** /fabric/v4/timeServices/{serviceId} | Get Time Service
+[**GetTimeServicesConnectionsByServiceId**](PrecisionTimeApi.md#GetTimeServicesConnectionsByServiceId) | **Get** /fabric/v4/timeServices/{serviceId}/connections | Get Connection Links
+[**GetTimeServicesPackageByCode**](PrecisionTimeApi.md#GetTimeServicesPackageByCode) | **Get** /fabric/v4/timeServicePackages/{packageCode} | Get Package By Code
+[**GetTimeServicesPackages**](PrecisionTimeApi.md#GetTimeServicesPackages) | **Get** /fabric/v4/timeServicePackages | Get Packages
 [**UpdateTimeServicesById**](PrecisionTimeApi.md#UpdateTimeServicesById) | **Patch** /fabric/v4/timeServices/{serviceId} | Patch time service
 
 
@@ -32,7 +35,7 @@ import (
 )
 
 func main() {
-	precisionTimeServiceRequest := *openapiclient.NewPrecisionTimeServiceRequest(openapiclient.precisionTimeServiceRequest_type("NTP"), "Name_example", *openapiclient.NewPrecisionTimePackageRequest(openapiclient.precisionTimePackageResponse_code("NTP_STANDARD")), []openapiclient.FabricConnectionUuid{*openapiclient.NewFabricConnectionUuid("Uuid_example")}, *openapiclient.NewIpv4()) // PrecisionTimeServiceRequest | 
+	precisionTimeServiceRequest := *openapiclient.NewPrecisionTimeServiceRequest(openapiclient.precisionTimeServiceRequest_type("NTP"), "Name_example", *openapiclient.NewPrecisionTimePackageRequest(openapiclient.getTimeServicesPackageByCode_packageCode_parameter("NTP_STANDARD")), []openapiclient.FabricConnectionUuid{*openapiclient.NewFabricConnectionUuid("Uuid_example")}, *openapiclient.NewIpv4()) // PrecisionTimeServiceRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -202,6 +205,207 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**PrecisionTimeServiceCreateResponse**](PrecisionTimeServiceCreateResponse.md)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetTimeServicesConnectionsByServiceId
+
+> PrecisionTimeServiceConnectionsResponse GetTimeServicesConnectionsByServiceId(ctx, serviceId).Execute()
+
+Get Connection Links
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/equinix/equinix-sdk-go/services/fabricv4"
+)
+
+func main() {
+	serviceId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Service UUID
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PrecisionTimeApi.GetTimeServicesConnectionsByServiceId(context.Background(), serviceId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PrecisionTimeApi.GetTimeServicesConnectionsByServiceId``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetTimeServicesConnectionsByServiceId`: PrecisionTimeServiceConnectionsResponse
+	fmt.Fprintf(os.Stdout, "Response from `PrecisionTimeApi.GetTimeServicesConnectionsByServiceId`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**serviceId** | **string** | Service UUID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetTimeServicesConnectionsByServiceIdRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**PrecisionTimeServiceConnectionsResponse**](PrecisionTimeServiceConnectionsResponse.md)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetTimeServicesPackageByCode
+
+> PrecisionTimePackageResponse GetTimeServicesPackageByCode(ctx, packageCode).Execute()
+
+Get Package By Code
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/equinix/equinix-sdk-go/services/fabricv4"
+)
+
+func main() {
+	packageCode := openapiclient.getTimeServicesPackageByCode_packageCode_parameter("NTP_STANDARD") // GetTimeServicesPackageByCodePackageCodeParameter | Package Code
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PrecisionTimeApi.GetTimeServicesPackageByCode(context.Background(), packageCode).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PrecisionTimeApi.GetTimeServicesPackageByCode``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetTimeServicesPackageByCode`: PrecisionTimePackageResponse
+	fmt.Fprintf(os.Stdout, "Response from `PrecisionTimeApi.GetTimeServicesPackageByCode`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**packageCode** | [**GetTimeServicesPackageByCodePackageCodeParameter**](.md) | Package Code | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetTimeServicesPackageByCodeRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**PrecisionTimePackageResponse**](PrecisionTimePackageResponse.md)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetTimeServicesPackages
+
+> PrecisionTimeServicePackagesResponse GetTimeServicesPackages(ctx).Execute()
+
+Get Packages
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/equinix/equinix-sdk-go/services/fabricv4"
+)
+
+func main() {
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PrecisionTimeApi.GetTimeServicesPackages(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PrecisionTimeApi.GetTimeServicesPackages``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetTimeServicesPackages`: PrecisionTimeServicePackagesResponse
+	fmt.Fprintf(os.Stdout, "Response from `PrecisionTimeApi.GetTimeServicesPackages`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetTimeServicesPackagesRequest struct via the builder pattern
+
+
+### Return type
+
+[**PrecisionTimeServicePackagesResponse**](PrecisionTimeServicePackagesResponse.md)
 
 ### Authorization
 

@@ -4,17 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | **string** | name of  route filter rule | 
-**Description** | Pointer to **string** | cust provided description | [optional] 
-**Type** | [**RouteFilterRulesChangeOperationType**](RouteFilterRulesChangeOperationType.md) |  | 
-**Prefix** | **string** | given prefix (does not change) | 
-**Action** | [**RouteFilterRulesChangeOperationAction**](RouteFilterRulesChangeOperationAction.md) |  | 
+**Op** | [**RoutingProtocolChangeOperationOp**](RoutingProtocolChangeOperationOp.md) |  | 
+**Path** | **string** | path inside document leading to updated parameter | 
+**Value** | [**RouteFilterRulesBase**](RouteFilterRulesBase.md) |  | 
 
 ## Methods
 
 ### NewRouteFilterRulesChangeOperation
 
-`func NewRouteFilterRulesChangeOperation(name string, type_ RouteFilterRulesChangeOperationType, prefix string, action RouteFilterRulesChangeOperationAction, ) *RouteFilterRulesChangeOperation`
+`func NewRouteFilterRulesChangeOperation(op RoutingProtocolChangeOperationOp, path string, value RouteFilterRulesBase, ) *RouteFilterRulesChangeOperation`
 
 NewRouteFilterRulesChangeOperation instantiates a new RouteFilterRulesChangeOperation object
 This constructor will assign default values to properties that have it defined,
@@ -29,109 +27,64 @@ NewRouteFilterRulesChangeOperationWithDefaults instantiates a new RouteFilterRul
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetName
+### GetOp
 
-`func (o *RouteFilterRulesChangeOperation) GetName() string`
+`func (o *RouteFilterRulesChangeOperation) GetOp() RoutingProtocolChangeOperationOp`
 
-GetName returns the Name field if non-nil, zero value otherwise.
+GetOp returns the Op field if non-nil, zero value otherwise.
 
-### GetNameOk
+### GetOpOk
 
-`func (o *RouteFilterRulesChangeOperation) GetNameOk() (*string, bool)`
+`func (o *RouteFilterRulesChangeOperation) GetOpOk() (*RoutingProtocolChangeOperationOp, bool)`
 
-GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+GetOpOk returns a tuple with the Op field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetName
+### SetOp
 
-`func (o *RouteFilterRulesChangeOperation) SetName(v string)`
+`func (o *RouteFilterRulesChangeOperation) SetOp(v RoutingProtocolChangeOperationOp)`
 
-SetName sets Name field to given value.
+SetOp sets Op field to given value.
 
 
-### GetDescription
+### GetPath
 
-`func (o *RouteFilterRulesChangeOperation) GetDescription() string`
+`func (o *RouteFilterRulesChangeOperation) GetPath() string`
 
-GetDescription returns the Description field if non-nil, zero value otherwise.
+GetPath returns the Path field if non-nil, zero value otherwise.
 
-### GetDescriptionOk
+### GetPathOk
 
-`func (o *RouteFilterRulesChangeOperation) GetDescriptionOk() (*string, bool)`
+`func (o *RouteFilterRulesChangeOperation) GetPathOk() (*string, bool)`
 
-GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+GetPathOk returns a tuple with the Path field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetDescription
+### SetPath
 
-`func (o *RouteFilterRulesChangeOperation) SetDescription(v string)`
+`func (o *RouteFilterRulesChangeOperation) SetPath(v string)`
 
-SetDescription sets Description field to given value.
+SetPath sets Path field to given value.
 
-### HasDescription
 
-`func (o *RouteFilterRulesChangeOperation) HasDescription() bool`
+### GetValue
 
-HasDescription returns a boolean if a field has been set.
+`func (o *RouteFilterRulesChangeOperation) GetValue() RouteFilterRulesBase`
 
-### GetType
+GetValue returns the Value field if non-nil, zero value otherwise.
 
-`func (o *RouteFilterRulesChangeOperation) GetType() RouteFilterRulesChangeOperationType`
+### GetValueOk
 
-GetType returns the Type field if non-nil, zero value otherwise.
+`func (o *RouteFilterRulesChangeOperation) GetValueOk() (*RouteFilterRulesBase, bool)`
 
-### GetTypeOk
-
-`func (o *RouteFilterRulesChangeOperation) GetTypeOk() (*RouteFilterRulesChangeOperationType, bool)`
-
-GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+GetValueOk returns a tuple with the Value field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetType
+### SetValue
 
-`func (o *RouteFilterRulesChangeOperation) SetType(v RouteFilterRulesChangeOperationType)`
+`func (o *RouteFilterRulesChangeOperation) SetValue(v RouteFilterRulesBase)`
 
-SetType sets Type field to given value.
-
-
-### GetPrefix
-
-`func (o *RouteFilterRulesChangeOperation) GetPrefix() string`
-
-GetPrefix returns the Prefix field if non-nil, zero value otherwise.
-
-### GetPrefixOk
-
-`func (o *RouteFilterRulesChangeOperation) GetPrefixOk() (*string, bool)`
-
-GetPrefixOk returns a tuple with the Prefix field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPrefix
-
-`func (o *RouteFilterRulesChangeOperation) SetPrefix(v string)`
-
-SetPrefix sets Prefix field to given value.
-
-
-### GetAction
-
-`func (o *RouteFilterRulesChangeOperation) GetAction() RouteFilterRulesChangeOperationAction`
-
-GetAction returns the Action field if non-nil, zero value otherwise.
-
-### GetActionOk
-
-`func (o *RouteFilterRulesChangeOperation) GetActionOk() (*RouteFilterRulesChangeOperationAction, bool)`
-
-GetActionOk returns a tuple with the Action field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAction
-
-`func (o *RouteFilterRulesChangeOperation) SetAction(v RouteFilterRulesChangeOperationAction)`
-
-SetAction sets Action field to given value.
+SetValue sets Value field to given value.
 
 
 

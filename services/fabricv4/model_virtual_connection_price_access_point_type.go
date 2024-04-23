@@ -3,7 +3,6 @@ Equinix Fabric API v4
 
 Equinix Fabric is an advanced software-defined interconnection solution that enables you to directly, securely and dynamically connect to distributed infrastructure and digital ecosystems on platform Equinix via a single port, Customers can use Fabric to connect to: </br> 1. Cloud Service Providers - Clouds, network and other service providers.  </br> 2. Enterprises - Other Equinix customers, vendors and partners.  </br> 3. Myself - Another customer instance deployed at Equinix. </br>
 
-API version: 4.12
 Contact: api-support@equinix.com
 */
 
@@ -21,12 +20,13 @@ type VirtualConnectionPriceAccessPointType string
 
 // List of VirtualConnectionPriceAccessPointType
 const (
-	VIRTUALCONNECTIONPRICEACCESSPOINTTYPE_VD           VirtualConnectionPriceAccessPointType = "VD"
-	VIRTUALCONNECTIONPRICEACCESSPOINTTYPE_SP           VirtualConnectionPriceAccessPointType = "SP"
-	VIRTUALCONNECTIONPRICEACCESSPOINTTYPE_COLO         VirtualConnectionPriceAccessPointType = "COLO"
-	VIRTUALCONNECTIONPRICEACCESSPOINTTYPE_CLOUD_ROUTER VirtualConnectionPriceAccessPointType = "CLOUD_ROUTER"
-	VIRTUALCONNECTIONPRICEACCESSPOINTTYPE_CHAINGROUP   VirtualConnectionPriceAccessPointType = "CHAINGROUP"
-	VIRTUALCONNECTIONPRICEACCESSPOINTTYPE_NETWORK      VirtualConnectionPriceAccessPointType = "NETWORK"
+	VIRTUALCONNECTIONPRICEACCESSPOINTTYPE_VD            VirtualConnectionPriceAccessPointType = "VD"
+	VIRTUALCONNECTIONPRICEACCESSPOINTTYPE_SP            VirtualConnectionPriceAccessPointType = "SP"
+	VIRTUALCONNECTIONPRICEACCESSPOINTTYPE_COLO          VirtualConnectionPriceAccessPointType = "COLO"
+	VIRTUALCONNECTIONPRICEACCESSPOINTTYPE_CLOUD_ROUTER  VirtualConnectionPriceAccessPointType = "CLOUD_ROUTER"
+	VIRTUALCONNECTIONPRICEACCESSPOINTTYPE_CHAINGROUP    VirtualConnectionPriceAccessPointType = "CHAINGROUP"
+	VIRTUALCONNECTIONPRICEACCESSPOINTTYPE_NETWORK       VirtualConnectionPriceAccessPointType = "NETWORK"
+	VIRTUALCONNECTIONPRICEACCESSPOINTTYPE_METAL_NETWORK VirtualConnectionPriceAccessPointType = "METAL_NETWORK"
 )
 
 // All allowed values of VirtualConnectionPriceAccessPointType enum
@@ -37,6 +37,7 @@ var AllowedVirtualConnectionPriceAccessPointTypeEnumValues = []VirtualConnection
 	"CLOUD_ROUTER",
 	"CHAINGROUP",
 	"NETWORK",
+	"METAL_NETWORK",
 }
 
 func (v *VirtualConnectionPriceAccessPointType) UnmarshalJSON(src []byte) error {

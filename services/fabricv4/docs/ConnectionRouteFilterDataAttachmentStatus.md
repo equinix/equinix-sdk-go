@@ -13,6 +13,8 @@
 
 * `FAILED` (value: `"FAILED"`)
 
+* `PENDING_BGP_CONFIGURATION` (value: `"PENDING_BGP_CONFIGURATION"`)
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

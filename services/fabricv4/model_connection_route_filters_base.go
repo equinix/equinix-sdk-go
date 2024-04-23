@@ -3,7 +3,6 @@ Equinix Fabric API v4
 
 Equinix Fabric is an advanced software-defined interconnection solution that enables you to directly, securely and dynamically connect to distributed infrastructure and digital ecosystems on platform Equinix via a single port, Customers can use Fabric to connect to: </br> 1. Cloud Service Providers - Clouds, network and other service providers.  </br> 2. Enterprises - Other Equinix customers, vendors and partners.  </br> 3. Myself - Another customer instance deployed at Equinix. </br>
 
-API version: 4.12
 Contact: api-support@equinix.com
 */
 
@@ -13,6 +12,7 @@ package fabricv4
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the ConnectionRouteFiltersBase type satisfies the MappedNullable interface at compile time
@@ -20,7 +20,7 @@ var _ MappedNullable = &ConnectionRouteFiltersBase{}
 
 // ConnectionRouteFiltersBase struct for ConnectionRouteFiltersBase
 type ConnectionRouteFiltersBase struct {
-	Direction            *ConnectionRouteFiltersBaseDirection `json:"direction,omitempty"`
+	Direction            ConnectionRouteFiltersBaseDirection `json:"direction"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -30,8 +30,9 @@ type _ConnectionRouteFiltersBase ConnectionRouteFiltersBase
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewConnectionRouteFiltersBase() *ConnectionRouteFiltersBase {
+func NewConnectionRouteFiltersBase(direction ConnectionRouteFiltersBaseDirection) *ConnectionRouteFiltersBase {
 	this := ConnectionRouteFiltersBase{}
+	this.Direction = direction
 	return &this
 }
 
@@ -43,36 +44,28 @@ func NewConnectionRouteFiltersBaseWithDefaults() *ConnectionRouteFiltersBase {
 	return &this
 }
 
-// GetDirection returns the Direction field value if set, zero value otherwise.
+// GetDirection returns the Direction field value
 func (o *ConnectionRouteFiltersBase) GetDirection() ConnectionRouteFiltersBaseDirection {
-	if o == nil || IsNil(o.Direction) {
+	if o == nil {
 		var ret ConnectionRouteFiltersBaseDirection
 		return ret
 	}
-	return *o.Direction
+
+	return o.Direction
 }
 
-// GetDirectionOk returns a tuple with the Direction field value if set, nil otherwise
+// GetDirectionOk returns a tuple with the Direction field value
 // and a boolean to check if the value has been set.
 func (o *ConnectionRouteFiltersBase) GetDirectionOk() (*ConnectionRouteFiltersBaseDirection, bool) {
-	if o == nil || IsNil(o.Direction) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Direction, true
+	return &o.Direction, true
 }
 
-// HasDirection returns a boolean if a field has been set.
-func (o *ConnectionRouteFiltersBase) HasDirection() bool {
-	if o != nil && !IsNil(o.Direction) {
-		return true
-	}
-
-	return false
-}
-
-// SetDirection gets a reference to the given ConnectionRouteFiltersBaseDirection and assigns it to the Direction field.
+// SetDirection sets field value
 func (o *ConnectionRouteFiltersBase) SetDirection(v ConnectionRouteFiltersBaseDirection) {
-	o.Direction = &v
+	o.Direction = v
 }
 
 func (o ConnectionRouteFiltersBase) MarshalJSON() ([]byte, error) {
@@ -85,9 +78,7 @@ func (o ConnectionRouteFiltersBase) MarshalJSON() ([]byte, error) {
 
 func (o ConnectionRouteFiltersBase) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Direction) {
-		toSerialize["direction"] = o.Direction
-	}
+	toSerialize["direction"] = o.Direction
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -97,6 +88,27 @@ func (o ConnectionRouteFiltersBase) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *ConnectionRouteFiltersBase) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"direction",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
 	varConnectionRouteFiltersBase := _ConnectionRouteFiltersBase{}
 
 	err = json.Unmarshal(data, &varConnectionRouteFiltersBase)

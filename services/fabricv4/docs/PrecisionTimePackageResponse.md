@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Href** | Pointer to **string** |  | [optional] 
-**Code** | [**PrecisionTimePackageResponseCode**](PrecisionTimePackageResponseCode.md) |  | 
+**Code** | [**GetTimeServicesPackageByCodePackageCodeParameter**](GetTimeServicesPackageByCodePackageCodeParameter.md) |  | 
 **Type** | Pointer to [**PrecisionTimePackageResponseType**](PrecisionTimePackageResponseType.md) |  | [optional] 
 **Bandwidth** | Pointer to **int32** |  | [optional] 
 **ClientsPerSecondMax** | Pointer to **int32** |  | [optional] 
@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 
 ### NewPrecisionTimePackageResponse
 
-`func NewPrecisionTimePackageResponse(code PrecisionTimePackageResponseCode, ) *PrecisionTimePackageResponse`
+`func NewPrecisionTimePackageResponse(code GetTimeServicesPackageByCodePackageCodeParameter, ) *PrecisionTimePackageResponse`
 
 NewPrecisionTimePackageResponse instantiates a new PrecisionTimePackageResponse object
 This constructor will assign default values to properties that have it defined,
@@ -63,20 +63,20 @@ HasHref returns a boolean if a field has been set.
 
 ### GetCode
 
-`func (o *PrecisionTimePackageResponse) GetCode() PrecisionTimePackageResponseCode`
+`func (o *PrecisionTimePackageResponse) GetCode() GetTimeServicesPackageByCodePackageCodeParameter`
 
 GetCode returns the Code field if non-nil, zero value otherwise.
 
 ### GetCodeOk
 
-`func (o *PrecisionTimePackageResponse) GetCodeOk() (*PrecisionTimePackageResponseCode, bool)`
+`func (o *PrecisionTimePackageResponse) GetCodeOk() (*GetTimeServicesPackageByCodePackageCodeParameter, bool)`
 
 GetCodeOk returns a tuple with the Code field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCode
 
-`func (o *PrecisionTimePackageResponse) SetCode(v PrecisionTimePackageResponseCode)`
+`func (o *PrecisionTimePackageResponse) SetCode(v GetTimeServicesPackageByCodePackageCodeParameter)`
 
 SetCode sets Code field to given value.
 
