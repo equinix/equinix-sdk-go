@@ -3,7 +3,6 @@ Equinix Fabric API v4
 
 Equinix Fabric is an advanced software-defined interconnection solution that enables you to directly, securely and dynamically connect to distributed infrastructure and digital ecosystems on platform Equinix via a single port, Customers can use Fabric to connect to: </br> 1. Cloud Service Providers - Clouds, network and other service providers.  </br> 2. Enterprises - Other Equinix customers, vendors and partners.  </br> 3. Myself - Another customer instance deployed at Equinix. </br>
 
-API version: 4.12
 Contact: api-support@equinix.com
 */
 
@@ -22,6 +21,8 @@ var _ MappedNullable = &Order{}
 type Order struct {
 	// Purchase order number
 	PurchaseOrderNumber *string `json:"purchaseOrderNumber,omitempty"`
+	// Customer reference number
+	CustomerReferenceNumber *string `json:"customerReferenceNumber,omitempty"`
 	// Billing tier for connection bandwidth
 	BillingTier *string `json:"billingTier,omitempty"`
 	// Order Identification
@@ -80,6 +81,38 @@ func (o *Order) HasPurchaseOrderNumber() bool {
 // SetPurchaseOrderNumber gets a reference to the given string and assigns it to the PurchaseOrderNumber field.
 func (o *Order) SetPurchaseOrderNumber(v string) {
 	o.PurchaseOrderNumber = &v
+}
+
+// GetCustomerReferenceNumber returns the CustomerReferenceNumber field value if set, zero value otherwise.
+func (o *Order) GetCustomerReferenceNumber() string {
+	if o == nil || IsNil(o.CustomerReferenceNumber) {
+		var ret string
+		return ret
+	}
+	return *o.CustomerReferenceNumber
+}
+
+// GetCustomerReferenceNumberOk returns a tuple with the CustomerReferenceNumber field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Order) GetCustomerReferenceNumberOk() (*string, bool) {
+	if o == nil || IsNil(o.CustomerReferenceNumber) {
+		return nil, false
+	}
+	return o.CustomerReferenceNumber, true
+}
+
+// HasCustomerReferenceNumber returns a boolean if a field has been set.
+func (o *Order) HasCustomerReferenceNumber() bool {
+	if o != nil && !IsNil(o.CustomerReferenceNumber) {
+		return true
+	}
+
+	return false
+}
+
+// SetCustomerReferenceNumber gets a reference to the given string and assigns it to the CustomerReferenceNumber field.
+func (o *Order) SetCustomerReferenceNumber(v string) {
+	o.CustomerReferenceNumber = &v
 }
 
 // GetBillingTier returns the BillingTier field value if set, zero value otherwise.
@@ -191,6 +224,9 @@ func (o Order) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.PurchaseOrderNumber) {
 		toSerialize["purchaseOrderNumber"] = o.PurchaseOrderNumber
 	}
+	if !IsNil(o.CustomerReferenceNumber) {
+		toSerialize["customerReferenceNumber"] = o.CustomerReferenceNumber
+	}
 	if !IsNil(o.BillingTier) {
 		toSerialize["billingTier"] = o.BillingTier
 	}
@@ -223,6 +259,7 @@ func (o *Order) UnmarshalJSON(data []byte) (err error) {
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "purchaseOrderNumber")
+		delete(additionalProperties, "customerReferenceNumber")
 		delete(additionalProperties, "billingTier")
 		delete(additionalProperties, "orderId")
 		delete(additionalProperties, "orderNumber")

@@ -7,6 +7,8 @@ Name | Type | Description | Notes
 **CustomerPeerIp** | **string** | Customer side peering ip | 
 **EquinixPeerIp** | Pointer to **string** | Equinix side peering ip | [optional] 
 **Enabled** | **bool** | Admin status for the BGP session | 
+**OutboundASPrependCount** | Pointer to **int64** | AS path prepend count | [optional] 
+**Operation** | Pointer to [**BGPConnectionOperation**](BGPConnectionOperation.md) |  | [optional] 
 
 ## Methods
 
@@ -91,6 +93,56 @@ and a boolean to check if the value has been set.
 
 SetEnabled sets Enabled field to given value.
 
+
+### GetOutboundASPrependCount
+
+`func (o *BGPConnectionIpv6) GetOutboundASPrependCount() int64`
+
+GetOutboundASPrependCount returns the OutboundASPrependCount field if non-nil, zero value otherwise.
+
+### GetOutboundASPrependCountOk
+
+`func (o *BGPConnectionIpv6) GetOutboundASPrependCountOk() (*int64, bool)`
+
+GetOutboundASPrependCountOk returns a tuple with the OutboundASPrependCount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOutboundASPrependCount
+
+`func (o *BGPConnectionIpv6) SetOutboundASPrependCount(v int64)`
+
+SetOutboundASPrependCount sets OutboundASPrependCount field to given value.
+
+### HasOutboundASPrependCount
+
+`func (o *BGPConnectionIpv6) HasOutboundASPrependCount() bool`
+
+HasOutboundASPrependCount returns a boolean if a field has been set.
+
+### GetOperation
+
+`func (o *BGPConnectionIpv6) GetOperation() BGPConnectionOperation`
+
+GetOperation returns the Operation field if non-nil, zero value otherwise.
+
+### GetOperationOk
+
+`func (o *BGPConnectionIpv6) GetOperationOk() (*BGPConnectionOperation, bool)`
+
+GetOperationOk returns a tuple with the Operation field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOperation
+
+`func (o *BGPConnectionIpv6) SetOperation(v BGPConnectionOperation)`
+
+SetOperation sets Operation field to given value.
+
+### HasOperation
+
+`func (o *BGPConnectionIpv6) HasOperation() bool`
+
+HasOperation returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

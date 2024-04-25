@@ -56,6 +56,40 @@ func Test_fabricv4_PrecisionTimeApiService(t *testing.T) {
 		assert.Equal(t, 200, httpRes.StatusCode)
 	})
 
+	t.Run("Test PrecisionTimeApiService GetTimeServicesConnectionsByServiceId", func(t *testing.T) {
+		t.Skip("skip test") // remove to run test
+
+		var serviceId string
+
+		resp, httpRes, err := apiClient.PrecisionTimeApi.GetTimeServicesConnectionsByServiceId(context.Background(), serviceId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+	})
+
+	t.Run("Test PrecisionTimeApiService GetTimeServicesPackageByCode", func(t *testing.T) {
+		t.Skip("skip test") // remove to run test
+
+		var packageCode openapiclient.GetTimeServicesPackageByCodePackageCodeParameter
+
+		resp, httpRes, err := apiClient.PrecisionTimeApi.GetTimeServicesPackageByCode(context.Background(), packageCode).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+	})
+
+	t.Run("Test PrecisionTimeApiService GetTimeServicesPackages", func(t *testing.T) {
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.PrecisionTimeApi.GetTimeServicesPackages(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+	})
+
 	t.Run("Test PrecisionTimeApiService UpdateTimeServicesById", func(t *testing.T) {
 		t.Skip("skip test") // remove to run test
 

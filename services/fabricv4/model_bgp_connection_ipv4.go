@@ -3,7 +3,6 @@ Equinix Fabric API v4
 
 Equinix Fabric is an advanced software-defined interconnection solution that enables you to directly, securely and dynamically connect to distributed infrastructure and digital ecosystems on platform Equinix via a single port, Customers can use Fabric to connect to: </br> 1. Cloud Service Providers - Clouds, network and other service providers.  </br> 2. Enterprises - Other Equinix customers, vendors and partners.  </br> 3. Myself - Another customer instance deployed at Equinix. </br>
 
-API version: 4.12
 Contact: api-support@equinix.com
 */
 
@@ -26,8 +25,11 @@ type BGPConnectionIpv4 struct {
 	// Equinix side peering ip
 	EquinixPeerIp *string `json:"equinixPeerIp,omitempty"`
 	// Admin status for the BGP session
-	Enabled              bool `json:"enabled"`
-	AdditionalProperties map[string]interface{}
+	Enabled bool `json:"enabled"`
+	// AS path prepend count
+	OutboundASPrependCount *int64                  `json:"outboundASPrependCount,omitempty"`
+	Operation              *BGPConnectionOperation `json:"operation,omitempty"`
+	AdditionalProperties   map[string]interface{}
 }
 
 type _BGPConnectionIpv4 BGPConnectionIpv4
@@ -131,6 +133,70 @@ func (o *BGPConnectionIpv4) SetEnabled(v bool) {
 	o.Enabled = v
 }
 
+// GetOutboundASPrependCount returns the OutboundASPrependCount field value if set, zero value otherwise.
+func (o *BGPConnectionIpv4) GetOutboundASPrependCount() int64 {
+	if o == nil || IsNil(o.OutboundASPrependCount) {
+		var ret int64
+		return ret
+	}
+	return *o.OutboundASPrependCount
+}
+
+// GetOutboundASPrependCountOk returns a tuple with the OutboundASPrependCount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BGPConnectionIpv4) GetOutboundASPrependCountOk() (*int64, bool) {
+	if o == nil || IsNil(o.OutboundASPrependCount) {
+		return nil, false
+	}
+	return o.OutboundASPrependCount, true
+}
+
+// HasOutboundASPrependCount returns a boolean if a field has been set.
+func (o *BGPConnectionIpv4) HasOutboundASPrependCount() bool {
+	if o != nil && !IsNil(o.OutboundASPrependCount) {
+		return true
+	}
+
+	return false
+}
+
+// SetOutboundASPrependCount gets a reference to the given int64 and assigns it to the OutboundASPrependCount field.
+func (o *BGPConnectionIpv4) SetOutboundASPrependCount(v int64) {
+	o.OutboundASPrependCount = &v
+}
+
+// GetOperation returns the Operation field value if set, zero value otherwise.
+func (o *BGPConnectionIpv4) GetOperation() BGPConnectionOperation {
+	if o == nil || IsNil(o.Operation) {
+		var ret BGPConnectionOperation
+		return ret
+	}
+	return *o.Operation
+}
+
+// GetOperationOk returns a tuple with the Operation field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BGPConnectionIpv4) GetOperationOk() (*BGPConnectionOperation, bool) {
+	if o == nil || IsNil(o.Operation) {
+		return nil, false
+	}
+	return o.Operation, true
+}
+
+// HasOperation returns a boolean if a field has been set.
+func (o *BGPConnectionIpv4) HasOperation() bool {
+	if o != nil && !IsNil(o.Operation) {
+		return true
+	}
+
+	return false
+}
+
+// SetOperation gets a reference to the given BGPConnectionOperation and assigns it to the Operation field.
+func (o *BGPConnectionIpv4) SetOperation(v BGPConnectionOperation) {
+	o.Operation = &v
+}
+
 func (o BGPConnectionIpv4) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -146,6 +212,12 @@ func (o BGPConnectionIpv4) ToMap() (map[string]interface{}, error) {
 		toSerialize["equinixPeerIp"] = o.EquinixPeerIp
 	}
 	toSerialize["enabled"] = o.Enabled
+	if !IsNil(o.OutboundASPrependCount) {
+		toSerialize["outboundASPrependCount"] = o.OutboundASPrependCount
+	}
+	if !IsNil(o.Operation) {
+		toSerialize["operation"] = o.Operation
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -193,6 +265,8 @@ func (o *BGPConnectionIpv4) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "customerPeerIp")
 		delete(additionalProperties, "equinixPeerIp")
 		delete(additionalProperties, "enabled")
+		delete(additionalProperties, "outboundASPrependCount")
+		delete(additionalProperties, "operation")
 		o.AdditionalProperties = additionalProperties
 	}
 

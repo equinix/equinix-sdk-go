@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Direction** | Pointer to [**ConnectionRouteFiltersBaseDirection**](ConnectionRouteFiltersBaseDirection.md) |  | [optional] 
+**Direction** | [**ConnectionRouteFiltersBaseDirection**](ConnectionRouteFiltersBaseDirection.md) |  | 
 
 ## Methods
 
 ### NewConnectionRouteFiltersBase
 
-`func NewConnectionRouteFiltersBase() *ConnectionRouteFiltersBase`
+`func NewConnectionRouteFiltersBase(direction ConnectionRouteFiltersBaseDirection, ) *ConnectionRouteFiltersBase`
 
 NewConnectionRouteFiltersBase instantiates a new ConnectionRouteFiltersBase object
 This constructor will assign default values to properties that have it defined,
@@ -44,11 +44,6 @@ and a boolean to check if the value has been set.
 
 SetDirection sets Direction field to given value.
 
-### HasDirection
-
-`func (o *ConnectionRouteFiltersBase) HasDirection() bool`
-
-HasDirection returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

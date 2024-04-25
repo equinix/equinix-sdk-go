@@ -3,7 +3,6 @@ Equinix Fabric API v4
 
 Equinix Fabric is an advanced software-defined interconnection solution that enables you to directly, securely and dynamically connect to distributed infrastructure and digital ecosystems on platform Equinix via a single port, Customers can use Fabric to connect to: </br> 1. Cloud Service Providers - Clouds, network and other service providers.  </br> 2. Enterprises - Other Equinix customers, vendors and partners.  </br> 3. Myself - Another customer instance deployed at Equinix. </br>
 
-API version: 4.12
 Contact: api-support@equinix.com
 */
 
@@ -13,6 +12,7 @@ package fabricv4
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the RouteFiltersBase type satisfies the MappedNullable interface at compile time
@@ -20,13 +20,11 @@ var _ MappedNullable = &RouteFiltersBase{}
 
 // RouteFiltersBase struct for RouteFiltersBase
 type RouteFiltersBase struct {
-	Type *ConnectionRouteFilterDataType `json:"type,omitempty"`
-	Name *string                        `json:"name,omitempty"`
+	Type ConnectionRouteFilterDataType `json:"type"`
+	Name string                        `json:"name"`
 	// Customer-provided connection description
-	Description *string  `json:"description,omitempty"`
-	Project     *Project `json:"project,omitempty"`
-	// Preferences for notifications on route filter configuration or status changes
-	Notifications        []SimplifiedNotification `json:"notifications,omitempty"`
+	Description          *string `json:"description,omitempty"`
+	Project              Project `json:"project"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -36,8 +34,11 @@ type _RouteFiltersBase RouteFiltersBase
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRouteFiltersBase() *RouteFiltersBase {
+func NewRouteFiltersBase(type_ ConnectionRouteFilterDataType, name string, project Project) *RouteFiltersBase {
 	this := RouteFiltersBase{}
+	this.Type = type_
+	this.Name = name
+	this.Project = project
 	return &this
 }
 
@@ -49,68 +50,52 @@ func NewRouteFiltersBaseWithDefaults() *RouteFiltersBase {
 	return &this
 }
 
-// GetType returns the Type field value if set, zero value otherwise.
+// GetType returns the Type field value
 func (o *RouteFiltersBase) GetType() ConnectionRouteFilterDataType {
-	if o == nil || IsNil(o.Type) {
+	if o == nil {
 		var ret ConnectionRouteFilterDataType
 		return ret
 	}
-	return *o.Type
+
+	return o.Type
 }
 
-// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
 func (o *RouteFiltersBase) GetTypeOk() (*ConnectionRouteFilterDataType, bool) {
-	if o == nil || IsNil(o.Type) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Type, true
+	return &o.Type, true
 }
 
-// HasType returns a boolean if a field has been set.
-func (o *RouteFiltersBase) HasType() bool {
-	if o != nil && !IsNil(o.Type) {
-		return true
-	}
-
-	return false
-}
-
-// SetType gets a reference to the given ConnectionRouteFilterDataType and assigns it to the Type field.
+// SetType sets field value
 func (o *RouteFiltersBase) SetType(v ConnectionRouteFilterDataType) {
-	o.Type = &v
+	o.Type = v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value
 func (o *RouteFiltersBase) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Name
+
+	return o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *RouteFiltersBase) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return &o.Name, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *RouteFiltersBase) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName sets field value
 func (o *RouteFiltersBase) SetName(v string) {
-	o.Name = &v
+	o.Name = v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -145,68 +130,28 @@ func (o *RouteFiltersBase) SetDescription(v string) {
 	o.Description = &v
 }
 
-// GetProject returns the Project field value if set, zero value otherwise.
+// GetProject returns the Project field value
 func (o *RouteFiltersBase) GetProject() Project {
-	if o == nil || IsNil(o.Project) {
+	if o == nil {
 		var ret Project
 		return ret
 	}
-	return *o.Project
+
+	return o.Project
 }
 
-// GetProjectOk returns a tuple with the Project field value if set, nil otherwise
+// GetProjectOk returns a tuple with the Project field value
 // and a boolean to check if the value has been set.
 func (o *RouteFiltersBase) GetProjectOk() (*Project, bool) {
-	if o == nil || IsNil(o.Project) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Project, true
+	return &o.Project, true
 }
 
-// HasProject returns a boolean if a field has been set.
-func (o *RouteFiltersBase) HasProject() bool {
-	if o != nil && !IsNil(o.Project) {
-		return true
-	}
-
-	return false
-}
-
-// SetProject gets a reference to the given Project and assigns it to the Project field.
+// SetProject sets field value
 func (o *RouteFiltersBase) SetProject(v Project) {
-	o.Project = &v
-}
-
-// GetNotifications returns the Notifications field value if set, zero value otherwise.
-func (o *RouteFiltersBase) GetNotifications() []SimplifiedNotification {
-	if o == nil || IsNil(o.Notifications) {
-		var ret []SimplifiedNotification
-		return ret
-	}
-	return o.Notifications
-}
-
-// GetNotificationsOk returns a tuple with the Notifications field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *RouteFiltersBase) GetNotificationsOk() ([]SimplifiedNotification, bool) {
-	if o == nil || IsNil(o.Notifications) {
-		return nil, false
-	}
-	return o.Notifications, true
-}
-
-// HasNotifications returns a boolean if a field has been set.
-func (o *RouteFiltersBase) HasNotifications() bool {
-	if o != nil && !IsNil(o.Notifications) {
-		return true
-	}
-
-	return false
-}
-
-// SetNotifications gets a reference to the given []SimplifiedNotification and assigns it to the Notifications field.
-func (o *RouteFiltersBase) SetNotifications(v []SimplifiedNotification) {
-	o.Notifications = v
+	o.Project = v
 }
 
 func (o RouteFiltersBase) MarshalJSON() ([]byte, error) {
@@ -219,21 +164,12 @@ func (o RouteFiltersBase) MarshalJSON() ([]byte, error) {
 
 func (o RouteFiltersBase) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Type) {
-		toSerialize["type"] = o.Type
-	}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
+	toSerialize["type"] = o.Type
+	toSerialize["name"] = o.Name
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !IsNil(o.Project) {
-		toSerialize["project"] = o.Project
-	}
-	if !IsNil(o.Notifications) {
-		toSerialize["notifications"] = o.Notifications
-	}
+	toSerialize["project"] = o.Project
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -243,6 +179,29 @@ func (o RouteFiltersBase) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *RouteFiltersBase) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"type",
+		"name",
+		"project",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
 	varRouteFiltersBase := _RouteFiltersBase{}
 
 	err = json.Unmarshal(data, &varRouteFiltersBase)
@@ -260,7 +219,6 @@ func (o *RouteFiltersBase) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "project")
-		delete(additionalProperties, "notifications")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Href** | Pointer to **string** |  | [optional] 
-**Code** | [**PrecisionTimePackageResponseCode**](PrecisionTimePackageResponseCode.md) |  | 
+**Code** | [**GetTimeServicesPackageByCodePackageCodeParameter**](GetTimeServicesPackageByCodePackageCodeParameter.md) |  | 
 
 ## Methods
 
 ### NewPrecisionTimePackageRequest
 
-`func NewPrecisionTimePackageRequest(code PrecisionTimePackageResponseCode, ) *PrecisionTimePackageRequest`
+`func NewPrecisionTimePackageRequest(code GetTimeServicesPackageByCodePackageCodeParameter, ) *PrecisionTimePackageRequest`
 
 NewPrecisionTimePackageRequest instantiates a new PrecisionTimePackageRequest object
 This constructor will assign default values to properties that have it defined,
@@ -53,20 +53,20 @@ HasHref returns a boolean if a field has been set.
 
 ### GetCode
 
-`func (o *PrecisionTimePackageRequest) GetCode() PrecisionTimePackageResponseCode`
+`func (o *PrecisionTimePackageRequest) GetCode() GetTimeServicesPackageByCodePackageCodeParameter`
 
 GetCode returns the Code field if non-nil, zero value otherwise.
 
 ### GetCodeOk
 
-`func (o *PrecisionTimePackageRequest) GetCodeOk() (*PrecisionTimePackageResponseCode, bool)`
+`func (o *PrecisionTimePackageRequest) GetCodeOk() (*GetTimeServicesPackageByCodePackageCodeParameter, bool)`
 
 GetCodeOk returns a tuple with the Code field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCode
 
-`func (o *PrecisionTimePackageRequest) SetCode(v PrecisionTimePackageResponseCode)`
+`func (o *PrecisionTimePackageRequest) SetCode(v GetTimeServicesPackageByCodePackageCodeParameter)`
 
 SetCode sets Code field to given value.
 

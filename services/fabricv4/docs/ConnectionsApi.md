@@ -35,7 +35,7 @@ import (
 )
 
 func main() {
-	connectionPostRequest := *openapiclient.NewConnectionPostRequest() // ConnectionPostRequest | 
+	connectionPostRequest := *openapiclient.NewConnectionPostRequest(openapiclient.ConnectionType("EVPL_VC"), "Name_example", []openapiclient.SimplifiedNotification{*openapiclient.NewSimplifiedNotification(openapiclient.SimplifiedNotification_type("NOTIFICATION"), []string{"Emails_example"})}, int32(123), *openapiclient.NewConnectionSide(), *openapiclient.NewConnectionSide()) // ConnectionPostRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

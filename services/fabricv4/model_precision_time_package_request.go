@@ -3,7 +3,6 @@ Equinix Fabric API v4
 
 Equinix Fabric is an advanced software-defined interconnection solution that enables you to directly, securely and dynamically connect to distributed infrastructure and digital ecosystems on platform Equinix via a single port, Customers can use Fabric to connect to: </br> 1. Cloud Service Providers - Clouds, network and other service providers.  </br> 2. Enterprises - Other Equinix customers, vendors and partners.  </br> 3. Myself - Another customer instance deployed at Equinix. </br>
 
-API version: 4.12
 Contact: api-support@equinix.com
 */
 
@@ -21,8 +20,8 @@ var _ MappedNullable = &PrecisionTimePackageRequest{}
 
 // PrecisionTimePackageRequest EPT Package Request
 type PrecisionTimePackageRequest struct {
-	Href                 *string                          `json:"href,omitempty"`
-	Code                 PrecisionTimePackageResponseCode `json:"code"`
+	Href                 *string                                          `json:"href,omitempty"`
+	Code                 GetTimeServicesPackageByCodePackageCodeParameter `json:"code"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -32,7 +31,7 @@ type _PrecisionTimePackageRequest PrecisionTimePackageRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPrecisionTimePackageRequest(code PrecisionTimePackageResponseCode) *PrecisionTimePackageRequest {
+func NewPrecisionTimePackageRequest(code GetTimeServicesPackageByCodePackageCodeParameter) *PrecisionTimePackageRequest {
 	this := PrecisionTimePackageRequest{}
 	this.Code = code
 	return &this
@@ -79,9 +78,9 @@ func (o *PrecisionTimePackageRequest) SetHref(v string) {
 }
 
 // GetCode returns the Code field value
-func (o *PrecisionTimePackageRequest) GetCode() PrecisionTimePackageResponseCode {
+func (o *PrecisionTimePackageRequest) GetCode() GetTimeServicesPackageByCodePackageCodeParameter {
 	if o == nil {
-		var ret PrecisionTimePackageResponseCode
+		var ret GetTimeServicesPackageByCodePackageCodeParameter
 		return ret
 	}
 
@@ -90,7 +89,7 @@ func (o *PrecisionTimePackageRequest) GetCode() PrecisionTimePackageResponseCode
 
 // GetCodeOk returns a tuple with the Code field value
 // and a boolean to check if the value has been set.
-func (o *PrecisionTimePackageRequest) GetCodeOk() (*PrecisionTimePackageResponseCode, bool) {
+func (o *PrecisionTimePackageRequest) GetCodeOk() (*GetTimeServicesPackageByCodePackageCodeParameter, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -98,7 +97,7 @@ func (o *PrecisionTimePackageRequest) GetCodeOk() (*PrecisionTimePackageResponse
 }
 
 // SetCode sets field value
-func (o *PrecisionTimePackageRequest) SetCode(v PrecisionTimePackageResponseCode) {
+func (o *PrecisionTimePackageRequest) SetCode(v GetTimeServicesPackageByCodePackageCodeParameter) {
 	o.Code = v
 }
 

@@ -3,7 +3,6 @@ Equinix Fabric API v4
 
 Equinix Fabric is an advanced software-defined interconnection solution that enables you to directly, securely and dynamically connect to distributed infrastructure and digital ecosystems on platform Equinix via a single port, Customers can use Fabric to connect to: </br> 1. Cloud Service Providers - Clouds, network and other service providers.  </br> 2. Enterprises - Other Equinix customers, vendors and partners.  </br> 3. Myself - Another customer instance deployed at Equinix. </br>
 
-API version: 4.12
 Contact: api-support@equinix.com
 */
 
@@ -21,18 +20,18 @@ var _ MappedNullable = &PrecisionTimePackageResponse{}
 
 // PrecisionTimePackageResponse EPT Service Package Information
 type PrecisionTimePackageResponse struct {
-	Href                 *string                           `json:"href,omitempty"`
-	Code                 PrecisionTimePackageResponseCode  `json:"code"`
-	Type                 *PrecisionTimePackageResponseType `json:"type,omitempty"`
-	Bandwidth            *int32                            `json:"bandwidth,omitempty"`
-	ClientsPerSecondMax  *int32                            `json:"clientsPerSecondMax,omitempty"`
-	RedundancySupported  *bool                             `json:"redundancySupported,omitempty"`
-	MultiSubnetSupported *bool                             `json:"multiSubnetSupported,omitempty"`
-	AccuracyUnit         *string                           `json:"accuracyUnit,omitempty"`
-	AccuracySla          *int32                            `json:"accuracySla,omitempty"`
-	AccuracyAvgMin       *int32                            `json:"accuracyAvgMin,omitempty"`
-	AccuracyAvgMax       *int32                            `json:"accuracyAvgMax,omitempty"`
-	Changelog            *Changelog                        `json:"changelog,omitempty"`
+	Href                 *string                                          `json:"href,omitempty"`
+	Code                 GetTimeServicesPackageByCodePackageCodeParameter `json:"code"`
+	Type                 *PrecisionTimePackageResponseType                `json:"type,omitempty"`
+	Bandwidth            *int32                                           `json:"bandwidth,omitempty"`
+	ClientsPerSecondMax  *int32                                           `json:"clientsPerSecondMax,omitempty"`
+	RedundancySupported  *bool                                            `json:"redundancySupported,omitempty"`
+	MultiSubnetSupported *bool                                            `json:"multiSubnetSupported,omitempty"`
+	AccuracyUnit         *string                                          `json:"accuracyUnit,omitempty"`
+	AccuracySla          *int32                                           `json:"accuracySla,omitempty"`
+	AccuracyAvgMin       *int32                                           `json:"accuracyAvgMin,omitempty"`
+	AccuracyAvgMax       *int32                                           `json:"accuracyAvgMax,omitempty"`
+	Changelog            *Changelog                                       `json:"changelog,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -42,7 +41,7 @@ type _PrecisionTimePackageResponse PrecisionTimePackageResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPrecisionTimePackageResponse(code PrecisionTimePackageResponseCode) *PrecisionTimePackageResponse {
+func NewPrecisionTimePackageResponse(code GetTimeServicesPackageByCodePackageCodeParameter) *PrecisionTimePackageResponse {
 	this := PrecisionTimePackageResponse{}
 	this.Code = code
 	return &this
@@ -89,9 +88,9 @@ func (o *PrecisionTimePackageResponse) SetHref(v string) {
 }
 
 // GetCode returns the Code field value
-func (o *PrecisionTimePackageResponse) GetCode() PrecisionTimePackageResponseCode {
+func (o *PrecisionTimePackageResponse) GetCode() GetTimeServicesPackageByCodePackageCodeParameter {
 	if o == nil {
-		var ret PrecisionTimePackageResponseCode
+		var ret GetTimeServicesPackageByCodePackageCodeParameter
 		return ret
 	}
 
@@ -100,7 +99,7 @@ func (o *PrecisionTimePackageResponse) GetCode() PrecisionTimePackageResponseCod
 
 // GetCodeOk returns a tuple with the Code field value
 // and a boolean to check if the value has been set.
-func (o *PrecisionTimePackageResponse) GetCodeOk() (*PrecisionTimePackageResponseCode, bool) {
+func (o *PrecisionTimePackageResponse) GetCodeOk() (*GetTimeServicesPackageByCodePackageCodeParameter, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -108,7 +107,7 @@ func (o *PrecisionTimePackageResponse) GetCodeOk() (*PrecisionTimePackageRespons
 }
 
 // SetCode sets field value
-func (o *PrecisionTimePackageResponse) SetCode(v PrecisionTimePackageResponseCode) {
+func (o *PrecisionTimePackageResponse) SetCode(v GetTimeServicesPackageByCodePackageCodeParameter) {
 	o.Code = v
 }
 

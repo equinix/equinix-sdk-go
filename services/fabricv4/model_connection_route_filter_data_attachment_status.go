@@ -3,7 +3,6 @@ Equinix Fabric API v4
 
 Equinix Fabric is an advanced software-defined interconnection solution that enables you to directly, securely and dynamically connect to distributed infrastructure and digital ecosystems on platform Equinix via a single port, Customers can use Fabric to connect to: </br> 1. Cloud Service Providers - Clouds, network and other service providers.  </br> 2. Enterprises - Other Equinix customers, vendors and partners.  </br> 3. Myself - Another customer instance deployed at Equinix. </br>
 
-API version: 4.12
 Contact: api-support@equinix.com
 */
 
@@ -21,11 +20,12 @@ type ConnectionRouteFilterDataAttachmentStatus string
 
 // List of ConnectionRouteFilterData_attachmentStatus
 const (
-	CONNECTIONROUTEFILTERDATAATTACHMENTSTATUS_ATTACHING ConnectionRouteFilterDataAttachmentStatus = "ATTACHING"
-	CONNECTIONROUTEFILTERDATAATTACHMENTSTATUS_ATTACHED  ConnectionRouteFilterDataAttachmentStatus = "ATTACHED"
-	CONNECTIONROUTEFILTERDATAATTACHMENTSTATUS_DETACHED  ConnectionRouteFilterDataAttachmentStatus = "DETACHED"
-	CONNECTIONROUTEFILTERDATAATTACHMENTSTATUS_DETACHING ConnectionRouteFilterDataAttachmentStatus = "DETACHING"
-	CONNECTIONROUTEFILTERDATAATTACHMENTSTATUS_FAILED    ConnectionRouteFilterDataAttachmentStatus = "FAILED"
+	CONNECTIONROUTEFILTERDATAATTACHMENTSTATUS_ATTACHING                 ConnectionRouteFilterDataAttachmentStatus = "ATTACHING"
+	CONNECTIONROUTEFILTERDATAATTACHMENTSTATUS_ATTACHED                  ConnectionRouteFilterDataAttachmentStatus = "ATTACHED"
+	CONNECTIONROUTEFILTERDATAATTACHMENTSTATUS_DETACHED                  ConnectionRouteFilterDataAttachmentStatus = "DETACHED"
+	CONNECTIONROUTEFILTERDATAATTACHMENTSTATUS_DETACHING                 ConnectionRouteFilterDataAttachmentStatus = "DETACHING"
+	CONNECTIONROUTEFILTERDATAATTACHMENTSTATUS_FAILED                    ConnectionRouteFilterDataAttachmentStatus = "FAILED"
+	CONNECTIONROUTEFILTERDATAATTACHMENTSTATUS_PENDING_BGP_CONFIGURATION ConnectionRouteFilterDataAttachmentStatus = "PENDING_BGP_CONFIGURATION"
 )
 
 // All allowed values of ConnectionRouteFilterDataAttachmentStatus enum
@@ -35,6 +35,7 @@ var AllowedConnectionRouteFilterDataAttachmentStatusEnumValues = []ConnectionRou
 	"DETACHED",
 	"DETACHING",
 	"FAILED",
+	"PENDING_BGP_CONFIGURATION",
 }
 
 func (v *ConnectionRouteFilterDataAttachmentStatus) UnmarshalJSON(src []byte) error {

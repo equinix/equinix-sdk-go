@@ -42,7 +42,7 @@ import (
 func main() {
 	routeFilterId := "routeFilterId_example" // string | Route Filters Id
 	connectionId := "connectionId_example" // string | Connection Id
-	connectionRouteFiltersBase := *openapiclient.NewConnectionRouteFiltersBase() // ConnectionRouteFiltersBase | 
+	connectionRouteFiltersBase := *openapiclient.NewConnectionRouteFiltersBase(openapiclient.ConnectionRouteFiltersBase_direction("INBOUND")) // ConnectionRouteFiltersBase | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -115,7 +115,7 @@ import (
 )
 
 func main() {
-	routeFiltersBase := *openapiclient.NewRouteFiltersBase() // RouteFiltersBase | 
+	routeFiltersBase := *openapiclient.NewRouteFiltersBase(openapiclient.ConnectionRouteFilterData_type("BGP_IPv4_PREFIX_FILTER"), "My-direct-route-1", *openapiclient.NewProject("44f4c4f8-2f39-494e-838c-d8e640591be5")) // RouteFiltersBase | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

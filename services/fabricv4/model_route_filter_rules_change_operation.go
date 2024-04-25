@@ -3,7 +3,6 @@ Equinix Fabric API v4
 
 Equinix Fabric is an advanced software-defined interconnection solution that enables you to directly, securely and dynamically connect to distributed infrastructure and digital ecosystems on platform Equinix via a single port, Customers can use Fabric to connect to: </br> 1. Cloud Service Providers - Clouds, network and other service providers.  </br> 2. Enterprises - Other Equinix customers, vendors and partners.  </br> 3. Myself - Another customer instance deployed at Equinix. </br>
 
-API version: 4.12
 Contact: api-support@equinix.com
 */
 
@@ -19,16 +18,12 @@ import (
 // checks if the RouteFilterRulesChangeOperation type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &RouteFilterRulesChangeOperation{}
 
-// RouteFilterRulesChangeOperation Route Filter change operation data
+// RouteFilterRulesChangeOperation Route Filter Rule change operation data
 type RouteFilterRulesChangeOperation struct {
-	// name of  route filter rule
-	Name string `json:"name"`
-	// cust provided description
-	Description *string                             `json:"description,omitempty"`
-	Type        RouteFilterRulesChangeOperationType `json:"type"`
-	// given prefix (does not change)
-	Prefix               string                                `json:"prefix"`
-	Action               RouteFilterRulesChangeOperationAction `json:"action"`
+	Op RoutingProtocolChangeOperationOp `json:"op"`
+	// path inside document leading to updated parameter
+	Path                 string               `json:"path"`
+	Value                RouteFilterRulesBase `json:"value"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -38,12 +33,11 @@ type _RouteFilterRulesChangeOperation RouteFilterRulesChangeOperation
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRouteFilterRulesChangeOperation(name string, type_ RouteFilterRulesChangeOperationType, prefix string, action RouteFilterRulesChangeOperationAction) *RouteFilterRulesChangeOperation {
+func NewRouteFilterRulesChangeOperation(op RoutingProtocolChangeOperationOp, path string, value RouteFilterRulesBase) *RouteFilterRulesChangeOperation {
 	this := RouteFilterRulesChangeOperation{}
-	this.Name = name
-	this.Type = type_
-	this.Prefix = prefix
-	this.Action = action
+	this.Op = op
+	this.Path = path
+	this.Value = value
 	return &this
 }
 
@@ -55,132 +49,76 @@ func NewRouteFilterRulesChangeOperationWithDefaults() *RouteFilterRulesChangeOpe
 	return &this
 }
 
-// GetName returns the Name field value
-func (o *RouteFilterRulesChangeOperation) GetName() string {
+// GetOp returns the Op field value
+func (o *RouteFilterRulesChangeOperation) GetOp() RoutingProtocolChangeOperationOp {
+	if o == nil {
+		var ret RoutingProtocolChangeOperationOp
+		return ret
+	}
+
+	return o.Op
+}
+
+// GetOpOk returns a tuple with the Op field value
+// and a boolean to check if the value has been set.
+func (o *RouteFilterRulesChangeOperation) GetOpOk() (*RoutingProtocolChangeOperationOp, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Op, true
+}
+
+// SetOp sets field value
+func (o *RouteFilterRulesChangeOperation) SetOp(v RoutingProtocolChangeOperationOp) {
+	o.Op = v
+}
+
+// GetPath returns the Path field value
+func (o *RouteFilterRulesChangeOperation) GetPath() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.Name
+	return o.Path
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetPathOk returns a tuple with the Path field value
 // and a boolean to check if the value has been set.
-func (o *RouteFilterRulesChangeOperation) GetNameOk() (*string, bool) {
+func (o *RouteFilterRulesChangeOperation) GetPathOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Name, true
+	return &o.Path, true
 }
 
-// SetName sets field value
-func (o *RouteFilterRulesChangeOperation) SetName(v string) {
-	o.Name = v
+// SetPath sets field value
+func (o *RouteFilterRulesChangeOperation) SetPath(v string) {
+	o.Path = v
 }
 
-// GetDescription returns the Description field value if set, zero value otherwise.
-func (o *RouteFilterRulesChangeOperation) GetDescription() string {
-	if o == nil || IsNil(o.Description) {
-		var ret string
-		return ret
-	}
-	return *o.Description
-}
-
-// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *RouteFilterRulesChangeOperation) GetDescriptionOk() (*string, bool) {
-	if o == nil || IsNil(o.Description) {
-		return nil, false
-	}
-	return o.Description, true
-}
-
-// HasDescription returns a boolean if a field has been set.
-func (o *RouteFilterRulesChangeOperation) HasDescription() bool {
-	if o != nil && !IsNil(o.Description) {
-		return true
-	}
-
-	return false
-}
-
-// SetDescription gets a reference to the given string and assigns it to the Description field.
-func (o *RouteFilterRulesChangeOperation) SetDescription(v string) {
-	o.Description = &v
-}
-
-// GetType returns the Type field value
-func (o *RouteFilterRulesChangeOperation) GetType() RouteFilterRulesChangeOperationType {
+// GetValue returns the Value field value
+func (o *RouteFilterRulesChangeOperation) GetValue() RouteFilterRulesBase {
 	if o == nil {
-		var ret RouteFilterRulesChangeOperationType
+		var ret RouteFilterRulesBase
 		return ret
 	}
 
-	return o.Type
+	return o.Value
 }
 
-// GetTypeOk returns a tuple with the Type field value
+// GetValueOk returns a tuple with the Value field value
 // and a boolean to check if the value has been set.
-func (o *RouteFilterRulesChangeOperation) GetTypeOk() (*RouteFilterRulesChangeOperationType, bool) {
+func (o *RouteFilterRulesChangeOperation) GetValueOk() (*RouteFilterRulesBase, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Type, true
+	return &o.Value, true
 }
 
-// SetType sets field value
-func (o *RouteFilterRulesChangeOperation) SetType(v RouteFilterRulesChangeOperationType) {
-	o.Type = v
-}
-
-// GetPrefix returns the Prefix field value
-func (o *RouteFilterRulesChangeOperation) GetPrefix() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Prefix
-}
-
-// GetPrefixOk returns a tuple with the Prefix field value
-// and a boolean to check if the value has been set.
-func (o *RouteFilterRulesChangeOperation) GetPrefixOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Prefix, true
-}
-
-// SetPrefix sets field value
-func (o *RouteFilterRulesChangeOperation) SetPrefix(v string) {
-	o.Prefix = v
-}
-
-// GetAction returns the Action field value
-func (o *RouteFilterRulesChangeOperation) GetAction() RouteFilterRulesChangeOperationAction {
-	if o == nil {
-		var ret RouteFilterRulesChangeOperationAction
-		return ret
-	}
-
-	return o.Action
-}
-
-// GetActionOk returns a tuple with the Action field value
-// and a boolean to check if the value has been set.
-func (o *RouteFilterRulesChangeOperation) GetActionOk() (*RouteFilterRulesChangeOperationAction, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Action, true
-}
-
-// SetAction sets field value
-func (o *RouteFilterRulesChangeOperation) SetAction(v RouteFilterRulesChangeOperationAction) {
-	o.Action = v
+// SetValue sets field value
+func (o *RouteFilterRulesChangeOperation) SetValue(v RouteFilterRulesBase) {
+	o.Value = v
 }
 
 func (o RouteFilterRulesChangeOperation) MarshalJSON() ([]byte, error) {
@@ -193,13 +131,9 @@ func (o RouteFilterRulesChangeOperation) MarshalJSON() ([]byte, error) {
 
 func (o RouteFilterRulesChangeOperation) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
-	if !IsNil(o.Description) {
-		toSerialize["description"] = o.Description
-	}
-	toSerialize["type"] = o.Type
-	toSerialize["prefix"] = o.Prefix
-	toSerialize["action"] = o.Action
+	toSerialize["op"] = o.Op
+	toSerialize["path"] = o.Path
+	toSerialize["value"] = o.Value
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -213,10 +147,9 @@ func (o *RouteFilterRulesChangeOperation) UnmarshalJSON(data []byte) (err error)
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"name",
-		"type",
-		"prefix",
-		"action",
+		"op",
+		"path",
+		"value",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -246,11 +179,9 @@ func (o *RouteFilterRulesChangeOperation) UnmarshalJSON(data []byte) (err error)
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "description")
-		delete(additionalProperties, "type")
-		delete(additionalProperties, "prefix")
-		delete(additionalProperties, "action")
+		delete(additionalProperties, "op")
+		delete(additionalProperties, "path")
+		delete(additionalProperties, "value")
 		o.AdditionalProperties = additionalProperties
 	}
 

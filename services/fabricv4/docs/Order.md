@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **PurchaseOrderNumber** | Pointer to **string** | Purchase order number | [optional] 
+**CustomerReferenceNumber** | Pointer to **string** | Customer reference number | [optional] 
 **BillingTier** | Pointer to **string** | Billing tier for connection bandwidth | [optional] 
 **OrderId** | Pointer to **string** | Order Identification | [optional] 
 **OrderNumber** | Pointer to **string** | Order Reference Number | [optional] 
@@ -52,6 +53,31 @@ SetPurchaseOrderNumber sets PurchaseOrderNumber field to given value.
 `func (o *Order) HasPurchaseOrderNumber() bool`
 
 HasPurchaseOrderNumber returns a boolean if a field has been set.
+
+### GetCustomerReferenceNumber
+
+`func (o *Order) GetCustomerReferenceNumber() string`
+
+GetCustomerReferenceNumber returns the CustomerReferenceNumber field if non-nil, zero value otherwise.
+
+### GetCustomerReferenceNumberOk
+
+`func (o *Order) GetCustomerReferenceNumberOk() (*string, bool)`
+
+GetCustomerReferenceNumberOk returns a tuple with the CustomerReferenceNumber field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCustomerReferenceNumber
+
+`func (o *Order) SetCustomerReferenceNumber(v string)`
+
+SetCustomerReferenceNumber sets CustomerReferenceNumber field to given value.
+
+### HasCustomerReferenceNumber
+
+`func (o *Order) HasCustomerReferenceNumber() bool`
+
+HasCustomerReferenceNumber returns a boolean if a field has been set.
 
 ### GetBillingTier
 
