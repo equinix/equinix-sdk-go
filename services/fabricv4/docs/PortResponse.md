@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **PhysicalPortsCount** | Pointer to **int32** |  | [optional] 
 **ConnectivitySourceType** | Pointer to [**PortResponseConnectivitySourceType**](PortResponseConnectivitySourceType.md) |  | [optional] 
 **BmmrType** | Pointer to [**PortResponseBmmrType**](PortResponseBmmrType.md) |  | [optional] 
-**Project** | Pointer to [**Project**](Project.md) |  | [optional] 
+**Project** | Pointer to [**PortResponseProject**](PortResponseProject.md) |  | [optional] 
 **State** | Pointer to [**PortState**](PortState.md) |  | [optional] 
 **Order** | Pointer to [**PortOrder**](PortOrder.md) |  | [optional] 
 **CvpId** | Pointer to **string** | Equinix assigned response attribute for Unique ID for a virtual port. | [optional] 
@@ -366,20 +366,20 @@ HasBmmrType returns a boolean if a field has been set.
 
 ### GetProject
 
-`func (o *PortResponse) GetProject() Project`
+`func (o *PortResponse) GetProject() PortResponseProject`
 
 GetProject returns the Project field if non-nil, zero value otherwise.
 
 ### GetProjectOk
 
-`func (o *PortResponse) GetProjectOk() (*Project, bool)`
+`func (o *PortResponse) GetProjectOk() (*PortResponseProject, bool)`
 
 GetProjectOk returns a tuple with the Project field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetProject
 
-`func (o *PortResponse) SetProject(v Project)`
+`func (o *PortResponse) SetProject(v PortResponseProject)`
 
 SetProject sets Project field to given value.
 
