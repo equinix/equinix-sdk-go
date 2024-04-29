@@ -1,0 +1,27 @@
+diff --git a/spec/services/fabricv4/oas3.patched/swagger.yaml b/spec/services/fabricv4/oas3.patched/swagger.yaml
+index 403295f..359bed7 100644
+--- a/spec/services/fabricv4/oas3.patched/swagger.yaml
++++ b/spec/services/fabricv4/oas3.patched/swagger.yaml
+@@ -9046,7 +9046,7 @@ components:
+             - SELF
+             - EQUINIX
+         project:
+-          $ref: "#/components/schemas/Project"
++          $ref: "#/components/schemas/PortResponseProject"
+         state:
+           $ref: "#/components/schemas/PortState"
+         order:
+@@ -10719,6 +10719,13 @@ components:
+           type: string
+           description: Subscriber-assigned project ID
+           example: 44f4c4f8-2f39-494e-838c-d8e640591be5
++    PortResponseProject:
++      type: object
++      properties:
++        projectId:
++          type: string
++          description: Subscriber-assigned project ID
++          example: 44f4c4f8-2f39-494e-838c-d8e640591be5
+     ConnectionSideAdditionalInfo:
+       type: object
+       properties:
