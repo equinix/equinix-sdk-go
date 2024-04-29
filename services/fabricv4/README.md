@@ -385,6 +385,7 @@ Class | Method | HTTP request | Description
  - [PortResponseBmmrType](docs/PortResponseBmmrType.md)
  - [PortResponseConnectivitySourceType](docs/PortResponseConnectivitySourceType.md)
  - [PortResponsePhysicalPortsType](docs/PortResponsePhysicalPortsType.md)
+ - [PortResponseProject](docs/PortResponseProject.md)
  - [PortResponseServiceType](docs/PortResponseServiceType.md)
  - [PortSearchFieldName](docs/PortSearchFieldName.md)
  - [PortSettings](docs/PortSettings.md)
