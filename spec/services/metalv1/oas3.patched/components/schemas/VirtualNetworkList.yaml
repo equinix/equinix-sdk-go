@@ -1,6 +1,0 @@
-properties:
-  virtual_networks:
-    items:
-      $ref: './VirtualNetwork.yaml'
-    type: array
-type: object

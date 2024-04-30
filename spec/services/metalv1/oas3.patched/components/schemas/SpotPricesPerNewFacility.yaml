@@ -1,4 +1,0 @@
-properties:
-  baremetal_1e:
-    $ref: './SpotPricesPerBaremetal.yaml'
-type: object

@@ -1,6 +1,0 @@
-properties:
-  role:
-    items:
-      type: string
-    type: array
-type: object

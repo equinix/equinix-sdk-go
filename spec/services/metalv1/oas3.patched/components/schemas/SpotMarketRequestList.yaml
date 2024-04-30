@@ -1,6 +1,0 @@
-properties:
-  spot_market_requests:
-    items:
-      $ref: './SpotMarketRequest.yaml'
-    type: array
-type: object

@@ -1,5 +1,0 @@
-properties:
-  target_organization_id:
-    format: uuid
-    type: string
-type: object

@@ -1,4 +1,0 @@
-properties:
-  prices_history:
-    $ref: './SpotPricesDatapoints.yaml'
-type: object
