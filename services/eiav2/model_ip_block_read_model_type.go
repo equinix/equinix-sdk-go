@@ -3,7 +3,6 @@ Equinix Internet Access API
 
 Equinix Internet Access provides direct access to the Internet with scalable bandwidth options in IBX data centers.
 
-API version: 2.0
 Contact: api-support@equinix.com
 */
 
