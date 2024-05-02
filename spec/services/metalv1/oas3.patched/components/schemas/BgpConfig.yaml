@@ -3,7 +3,9 @@ properties:
     description: Autonomous System Number. ASN is required with Global BGP. With Local
       BGP the private ASN, 65000, is assigned.
     example: 65000
-    format: int32
+    minimum: 0
+    maximum: 4294967295
+    format: int64
     type: integer
   created_at:
     format: date-time

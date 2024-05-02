@@ -1,5 +1,5 @@
 get:
-  description: Returns the IP Reservation for the VRF.
+  description: Returns the specified IP Reservation for the VRF.
   operationId: findVrfIpReservation
   parameters:
   - description: VRF UUID
@@ -55,6 +55,6 @@ get:
           schema:
             $ref: '../../../../components/schemas/Error.yaml'
       description: not found
-  summary: Retrieve all VRF IP Reservations in the VRF
+  summary: Retrieve the Specified VRF IP Reservation
   tags:
     - VRFs

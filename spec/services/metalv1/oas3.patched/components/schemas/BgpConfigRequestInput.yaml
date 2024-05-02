@@ -1,6 +1,7 @@
 properties:
   asn:
     type: integer
+    format: int64
     minimum: 0
     maximum: 4294967295
     description: Autonomous System Number for local BGP deployment.

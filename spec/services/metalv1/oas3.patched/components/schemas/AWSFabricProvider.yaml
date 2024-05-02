@@ -6,7 +6,8 @@ properties:
   account_id:
     type: string
     description: "AWS Account ID"
-    example: "129312"
+    example: "123412341234"
+    pattern: '^\d{12}$'
   location:
     type: string
     example: "us-west-1"
