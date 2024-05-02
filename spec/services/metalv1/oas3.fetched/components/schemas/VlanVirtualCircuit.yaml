@@ -52,6 +52,11 @@ properties:
     - changing_vlan_failed
     - deactivation_failed
     - delete_failed
+    - configure_fabric_routing_protocols
+  provider_connection_id:
+    type: string
+    example: dxcon-fggxx63k
+    description: This field is relevant if using the `shared_port_vlan_to_csp` interconnection type. Once activated on the CSP, this field should contain the resource name that the virtual circuit is connected to on the provider's end.
   tags:
     items:
       type: string

@@ -29,6 +29,10 @@ properties:
   peer_asn:
     description: The peer ASN that will be used with the VRF on the Virtual Circuit.
     type: integer
+    format: int64
+    minimum: 0
+    maximum: 4294967295
+    example: 65000
   speed:
     description: Speed can be changed only if it is an interconnection on a Dedicated Port
     type: string
