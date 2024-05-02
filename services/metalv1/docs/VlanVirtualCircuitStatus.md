@@ -27,6 +27,8 @@
 
 * `DELETE_FAILED` (value: `"delete_failed"`)
 
+* `CONFIGURE_FABRIC_ROUTING_PROTOCOLS` (value: `"configure_fabric_routing_protocols"`)
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

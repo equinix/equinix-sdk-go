@@ -79,6 +79,10 @@ properties:
       The 'dedicated' type of interconnection refers to interconnections created with Dedicated Ports.
       The 'shared_port_vlan' type of interconnection refers to shared connections created without service tokens.
       The 'shared_port_vlan_to_csp' type of interconnection refers to connections created directly to a supported cloud service provider.
+  fabric_provider:
+    description: Configuration information for connecting to external cloud service provider. Only available if the fabric_provider param was used when creating the interconnection.
+    oneOf:
+      - $ref: './AWSFabricProvider.yaml'
   created_at:
     format: date-time
     type: string

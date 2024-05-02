@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | The unique identifier for the resource | [optional] [readonly] 
-**BgpNeighborAsn** | Pointer to **int32** | The ASN of the dynamic BGP neighbor | [optional] 
+**BgpNeighborAsn** | Pointer to **int64** | The ASN of the dynamic BGP neighbor | [optional] 
 **BgpNeighborRange** | Pointer to **string** | Network range of the dynamic BGP neighbor in CIDR format | [optional] 
 **MetalGateway** | Pointer to [**VrfMetalGateway**](VrfMetalGateway.md) |  | [optional] 
 **State** | Pointer to [**BgpDynamicNeighborState**](BgpDynamicNeighborState.md) |  | [optional] 
@@ -61,20 +61,20 @@ HasId returns a boolean if a field has been set.
 
 ### GetBgpNeighborAsn
 
-`func (o *BgpDynamicNeighbor) GetBgpNeighborAsn() int32`
+`func (o *BgpDynamicNeighbor) GetBgpNeighborAsn() int64`
 
 GetBgpNeighborAsn returns the BgpNeighborAsn field if non-nil, zero value otherwise.
 
 ### GetBgpNeighborAsnOk
 
-`func (o *BgpDynamicNeighbor) GetBgpNeighborAsnOk() (*int32, bool)`
+`func (o *BgpDynamicNeighbor) GetBgpNeighborAsnOk() (*int64, bool)`
 
 GetBgpNeighborAsnOk returns a tuple with the BgpNeighborAsn field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBgpNeighborAsn
 
-`func (o *BgpDynamicNeighbor) SetBgpNeighborAsn(v int32)`
+`func (o *BgpDynamicNeighbor) SetBgpNeighborAsn(v int64)`
 
 SetBgpNeighborAsn sets BgpNeighborAsn field to given value.
 

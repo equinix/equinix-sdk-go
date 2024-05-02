@@ -6,6 +6,9 @@ properties:
   bgp_neighbor_asn:
     description: The ASN of the dynamic BGP neighbor
     type: integer
+    format: int64
+    minimum: 0
+    maximum: 4294967295
     example: 12345
   tags:
     items:

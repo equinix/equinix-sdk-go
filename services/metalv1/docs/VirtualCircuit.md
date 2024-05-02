@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **Project** | Pointer to [**Project**](Project.md) |  | [optional] 
 **Speed** | Pointer to **int64** | integer representing bps speed | [optional] 
 **Status** | Pointer to [**VrfVirtualCircuitStatus**](VrfVirtualCircuitStatus.md) |  | [optional] 
+**ProviderConnectionId** | Pointer to **string** | This field is relevant if using the &#x60;shared_port_vlan_to_csp&#x60; interconnection type. Once activated on the CSP, this field should contain the resource name that the virtual circuit is connected to on the provider&#39;s end. | [optional] 
 **Tags** | Pointer to **[]string** |  | [optional] 
 **Type** | Pointer to [**VrfIpReservationType**](VrfIpReservationType.md) |  | [optional] 
 **VirtualNetwork** | Pointer to [**Href**](Href.md) |  | [optional] 
@@ -23,7 +24,7 @@ Name | Type | Description | Notes
 **CustomerIp** | Pointer to **string** | An IP address from the subnet that will be used on the Customer side. This parameter is optional, but if supplied, we will use the other usable IP address in the subnet as the Metal IP. By default, the last usable IP address in the subnet will be used. | [optional] 
 **Md5** | Pointer to **string** | The MD5 password for the BGP peering in plaintext (not a checksum). | [optional] 
 **MetalIp** | Pointer to **string** | An IP address from the subnet that will be used on the Metal side. This parameter is optional, but if supplied, we will use the other usable IP address in the subnet as the Customer IP. By default, the first usable IP address in the subnet will be used. | [optional] 
-**PeerAsn** | Pointer to **int32** | The peer ASN that will be used with the VRF on the Virtual Circuit. | [optional] 
+**PeerAsn** | Pointer to **int64** | The peer ASN that will be used with the VRF on the Virtual Circuit. | [optional] 
 **Subnet** | Pointer to **string** | The /30 or /31 subnet of one of the VRF IP Blocks that will be used with the VRF for the Virtual Circuit. This subnet does not have to be an existing VRF IP reservation, as we will create the VRF IP reservation on creation if it does not exist. The Metal IP and Customer IP must be IPs from this subnet. For /30 subnets, the network and broadcast IPs cannot be used as the Metal or Customer IP. | [optional] 
 **Vrf** | [**Vrf**](Vrf.md) |  | 
 
@@ -306,6 +307,31 @@ SetStatus sets Status field to given value.
 
 HasStatus returns a boolean if a field has been set.
 
+### GetProviderConnectionId
+
+`func (o *VirtualCircuit) GetProviderConnectionId() string`
+
+GetProviderConnectionId returns the ProviderConnectionId field if non-nil, zero value otherwise.
+
+### GetProviderConnectionIdOk
+
+`func (o *VirtualCircuit) GetProviderConnectionIdOk() (*string, bool)`
+
+GetProviderConnectionIdOk returns a tuple with the ProviderConnectionId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProviderConnectionId
+
+`func (o *VirtualCircuit) SetProviderConnectionId(v string)`
+
+SetProviderConnectionId sets ProviderConnectionId field to given value.
+
+### HasProviderConnectionId
+
+`func (o *VirtualCircuit) HasProviderConnectionId() bool`
+
+HasProviderConnectionId returns a boolean if a field has been set.
+
 ### GetTags
 
 `func (o *VirtualCircuit) GetTags() []string`
@@ -533,20 +559,20 @@ HasMetalIp returns a boolean if a field has been set.
 
 ### GetPeerAsn
 
-`func (o *VirtualCircuit) GetPeerAsn() int32`
+`func (o *VirtualCircuit) GetPeerAsn() int64`
 
 GetPeerAsn returns the PeerAsn field if non-nil, zero value otherwise.
 
 ### GetPeerAsnOk
 
-`func (o *VirtualCircuit) GetPeerAsnOk() (*int32, bool)`
+`func (o *VirtualCircuit) GetPeerAsnOk() (*int64, bool)`
 
 GetPeerAsnOk returns a tuple with the PeerAsn field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPeerAsn
 
-`func (o *VirtualCircuit) SetPeerAsn(v int32)`
+`func (o *VirtualCircuit) SetPeerAsn(v int64)`
 
 SetPeerAsn sets PeerAsn field to given value.
 

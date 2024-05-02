@@ -14,7 +14,10 @@ properties:
     $ref: './VrfIpRangeCreateInput.yaml'
   local_asn:
     type: integer
-    format: int32
+    format: int64
+    minimum: 0
+    maximum: 4294967295
+    example: 65000
   metro:
     description: The UUID (or metro code) for the Metro in which to create this VRF.
     type: string

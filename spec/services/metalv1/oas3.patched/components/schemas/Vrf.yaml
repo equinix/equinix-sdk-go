@@ -23,7 +23,10 @@ properties:
   local_asn:
     description: A 4-byte ASN associated with the VRF.
     type: integer
-    format: int32
+    format: int64
+    minimum: 0
+    maximum: 4294967295
+    example: 65000
   virtual_circuits:
     description: Virtual circuits that are in the VRF
     type: array

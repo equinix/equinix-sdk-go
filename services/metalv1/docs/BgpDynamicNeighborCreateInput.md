@@ -5,14 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **BgpNeighborRange** | **string** | Network range of the dynamic BGP neighbor in CIDR format | 
-**BgpNeighborAsn** | **int32** | The ASN of the dynamic BGP neighbor | 
+**BgpNeighborAsn** | **int64** | The ASN of the dynamic BGP neighbor | 
 **Tags** | Pointer to **[]string** |  | [optional] 
 
 ## Methods
 
 ### NewBgpDynamicNeighborCreateInput
 
-`func NewBgpDynamicNeighborCreateInput(bgpNeighborRange string, bgpNeighborAsn int32, ) *BgpDynamicNeighborCreateInput`
+`func NewBgpDynamicNeighborCreateInput(bgpNeighborRange string, bgpNeighborAsn int64, ) *BgpDynamicNeighborCreateInput`
 
 NewBgpDynamicNeighborCreateInput instantiates a new BgpDynamicNeighborCreateInput object
 This constructor will assign default values to properties that have it defined,
@@ -49,20 +49,20 @@ SetBgpNeighborRange sets BgpNeighborRange field to given value.
 
 ### GetBgpNeighborAsn
 
-`func (o *BgpDynamicNeighborCreateInput) GetBgpNeighborAsn() int32`
+`func (o *BgpDynamicNeighborCreateInput) GetBgpNeighborAsn() int64`
 
 GetBgpNeighborAsn returns the BgpNeighborAsn field if non-nil, zero value otherwise.
 
 ### GetBgpNeighborAsnOk
 
-`func (o *BgpDynamicNeighborCreateInput) GetBgpNeighborAsnOk() (*int32, bool)`
+`func (o *BgpDynamicNeighborCreateInput) GetBgpNeighborAsnOk() (*int64, bool)`
 
 GetBgpNeighborAsnOk returns a tuple with the BgpNeighborAsn field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBgpNeighborAsn
 
-`func (o *BgpDynamicNeighborCreateInput) SetBgpNeighborAsn(v int32)`
+`func (o *BgpDynamicNeighborCreateInput) SetBgpNeighborAsn(v int64)`
 
 SetBgpNeighborAsn sets BgpNeighborAsn field to given value.
 

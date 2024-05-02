@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **BgpDynamicNeighborsBfdEnabled** | Pointer to **bool** | Toggle BFD on dynamic bgp neighbors sessions | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
 **IpRanges** | Pointer to **[]string** | A list of CIDR network addresses. Like [\&quot;10.0.0.0/16\&quot;, \&quot;2001:d78::/56\&quot;]. IPv4 blocks must be between /8 and /29 in size. IPv6 blocks must be between /56 and /64. A VRF\\&#39;s IP ranges must be defined in order to create VRF IP Reservations, which can then be used for Metal Gateways or Virtual Circuits. | [optional] 
-**LocalAsn** | Pointer to **int32** |  | [optional] 
+**LocalAsn** | Pointer to **int64** |  | [optional] 
 **Metro** | **string** | The UUID (or metro code) for the Metro in which to create this VRF. | 
 **Name** | **string** |  | 
 **Tags** | Pointer to **[]string** |  | [optional] 
@@ -160,20 +160,20 @@ HasIpRanges returns a boolean if a field has been set.
 
 ### GetLocalAsn
 
-`func (o *VrfCreateInput) GetLocalAsn() int32`
+`func (o *VrfCreateInput) GetLocalAsn() int64`
 
 GetLocalAsn returns the LocalAsn field if non-nil, zero value otherwise.
 
 ### GetLocalAsnOk
 
-`func (o *VrfCreateInput) GetLocalAsnOk() (*int32, bool)`
+`func (o *VrfCreateInput) GetLocalAsnOk() (*int64, bool)`
 
 GetLocalAsnOk returns a tuple with the LocalAsn field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLocalAsn
 
-`func (o *VrfCreateInput) SetLocalAsn(v int32)`
+`func (o *VrfCreateInput) SetLocalAsn(v int64)`
 
 SetLocalAsn sets LocalAsn field to given value.
 

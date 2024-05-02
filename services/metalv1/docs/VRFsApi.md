@@ -12,11 +12,13 @@ Method | HTTP request | Description
 [**DeleteVrf**](VRFsApi.md#DeleteVrf) | **Delete** /vrfs/{id} | Delete the VRF
 [**DeleteVrfRouteById**](VRFsApi.md#DeleteVrfRouteById) | **Delete** /routes/{id} | Delete a VRF Route
 [**FindVrfById**](VRFsApi.md#FindVrfById) | **Get** /vrfs/{id} | Retrieve a VRF
-[**FindVrfIpReservation**](VRFsApi.md#FindVrfIpReservation) | **Get** /vrfs/{vrf_id}/ips/{id} | Retrieve all VRF IP Reservations in the VRF
+[**FindVrfIpReservation**](VRFsApi.md#FindVrfIpReservation) | **Get** /vrfs/{vrf_id}/ips/{id} | Retrieve the Specified VRF IP Reservation
 [**FindVrfIpReservations**](VRFsApi.md#FindVrfIpReservations) | **Get** /vrfs/{id}/ips | Retrieve all VRF IP Reservations in the VRF
 [**FindVrfRouteById**](VRFsApi.md#FindVrfRouteById) | **Get** /routes/{id} | Retrieve a VRF Route
 [**FindVrfs**](VRFsApi.md#FindVrfs) | **Get** /projects/{id}/vrfs | Retrieve all VRFs in the project
 [**GetBgpDynamicNeighbors**](VRFsApi.md#GetBgpDynamicNeighbors) | **Get** /metal-gateways/{id}/bgp-dynamic-neighbors | List BGP Dynamic Neighbors
+[**GetVrfBGPNeighbors**](VRFsApi.md#GetVrfBGPNeighbors) | **Get** /vrfs/{id}/bgp-neighbors | Retreive BGP neighbor states for the VRF
+[**GetVrfLearnedRoutes**](VRFsApi.md#GetVrfLearnedRoutes) | **Get** /vrfs/{id}/learned-routes | Retreive learned L3 routes within the VRF
 [**GetVrfRoutes**](VRFsApi.md#GetVrfRoutes) | **Get** /vrfs/{id}/routes | Retrieve all routes in the VRF
 [**UpdateVrf**](VRFsApi.md#UpdateVrf) | **Put** /vrfs/{id} | Update the VRF
 [**UpdateVrfRouteById**](VRFsApi.md#UpdateVrfRouteById) | **Put** /routes/{id} | Update a VRF Route
@@ -119,7 +121,7 @@ import (
 
 func main() {
     id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Metal Gateway UUID
-    bgpDynamicNeighborCreateInput := *openapiclient.NewBgpDynamicNeighborCreateInput("192.168.1.0/25", int32(12345)) // BgpDynamicNeighborCreateInput | 
+    bgpDynamicNeighborCreateInput := *openapiclient.NewBgpDynamicNeighborCreateInput("192.168.1.0/25", int64(12345)) // BgpDynamicNeighborCreateInput | 
     include := []string{"Inner_example"} // []string | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
     exclude := []string{"Inner_example"} // []string | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
 
@@ -619,7 +621,7 @@ Name | Type | Description  | Notes
 
 > VrfIpReservation FindVrfIpReservation(ctx, vrfId, id).Include(include).Exclude(exclude).Execute()
 
-Retrieve all VRF IP Reservations in the VRF
+Retrieve the Specified VRF IP Reservation
 
 
 
@@ -975,6 +977,146 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**BgpDynamicNeighborList**](BgpDynamicNeighborList.md)
+
+### Authorization
+
+[x_auth_token](../README.md#x_auth_token)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetVrfBGPNeighbors
+
+> VrfBGPNeighbors GetVrfBGPNeighbors(ctx, id).Execute()
+
+Retreive BGP neighbor states for the VRF
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/equinix/equinix-sdk-go/services/metalv1"
+)
+
+func main() {
+    id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | VRF UUID
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.VRFsApi.GetVrfBGPNeighbors(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `VRFsApi.GetVrfBGPNeighbors``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetVrfBGPNeighbors`: VrfBGPNeighbors
+    fmt.Fprintf(os.Stdout, "Response from `VRFsApi.GetVrfBGPNeighbors`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | VRF UUID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetVrfBGPNeighborsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**VrfBGPNeighbors**](VrfBGPNeighbors.md)
+
+### Authorization
+
+[x_auth_token](../README.md#x_auth_token)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetVrfLearnedRoutes
+
+> VrfLearnedRoutes GetVrfLearnedRoutes(ctx, id).Execute()
+
+Retreive learned L3 routes within the VRF
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/equinix/equinix-sdk-go/services/metalv1"
+)
+
+func main() {
+    id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | VRF UUID
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.VRFsApi.GetVrfLearnedRoutes(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `VRFsApi.GetVrfLearnedRoutes``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetVrfLearnedRoutes`: VrfLearnedRoutes
+    fmt.Fprintf(os.Stdout, "Response from `VRFsApi.GetVrfLearnedRoutes`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | VRF UUID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetVrfLearnedRoutesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**VrfLearnedRoutes**](VrfLearnedRoutes.md)
 
 ### Authorization
 

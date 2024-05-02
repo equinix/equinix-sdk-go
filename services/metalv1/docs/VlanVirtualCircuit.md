@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **Project** | Pointer to [**Project**](Project.md) |  | [optional] 
 **Speed** | Pointer to **int64** | For Virtual Circuits on shared and dedicated connections, this speed should match the one set on their Interconnection Ports. For Virtual Circuits on Fabric VCs (both Metal and Fabric Billed) that have found their corresponding Fabric connection, this is the actual speed of the interconnection that was configured when setting up the interconnection on the Fabric Portal. Details on Fabric VCs are included in the specification as a developer preview and is generally unavailable. Please contact our Support team for more details. | [optional] 
 **Status** | Pointer to [**VlanVirtualCircuitStatus**](VlanVirtualCircuitStatus.md) |  | [optional] 
+**ProviderConnectionId** | Pointer to **string** | This field is relevant if using the &#x60;shared_port_vlan_to_csp&#x60; interconnection type. Once activated on the CSP, this field should contain the resource name that the virtual circuit is connected to on the provider&#39;s end. | [optional] 
 **Tags** | Pointer to **[]string** |  | [optional] 
 **Type** | Pointer to [**VlanVirtualCircuitType**](VlanVirtualCircuitType.md) |  | [optional] 
 **VirtualNetwork** | Pointer to [**Href**](Href.md) |  | [optional] 
@@ -299,6 +300,31 @@ SetStatus sets Status field to given value.
 `func (o *VlanVirtualCircuit) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
+
+### GetProviderConnectionId
+
+`func (o *VlanVirtualCircuit) GetProviderConnectionId() string`
+
+GetProviderConnectionId returns the ProviderConnectionId field if non-nil, zero value otherwise.
+
+### GetProviderConnectionIdOk
+
+`func (o *VlanVirtualCircuit) GetProviderConnectionIdOk() (*string, bool)`
+
+GetProviderConnectionIdOk returns a tuple with the ProviderConnectionId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProviderConnectionId
+
+`func (o *VlanVirtualCircuit) SetProviderConnectionId(v string)`
+
+SetProviderConnectionId sets ProviderConnectionId field to given value.
+
+### HasProviderConnectionId
+
+`func (o *VlanVirtualCircuit) HasProviderConnectionId() bool`
+
+HasProviderConnectionId returns a boolean if a field has been set.
 
 ### GetTags
 

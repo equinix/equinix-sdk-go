@@ -61,4 +61,5 @@ required:
 - type
 - redundancy
 - service_token_type
+- vlans
 type: object

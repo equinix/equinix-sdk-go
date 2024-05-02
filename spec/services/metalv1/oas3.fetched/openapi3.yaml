@@ -509,6 +509,10 @@ components:
       $ref: './components/schemas/VrfVirtualCircuitCreateInput.yaml'
     VrfVirtualCircuitUpdateInput:
       $ref: './components/schemas/VrfVirtualCircuitUpdateInput.yaml'
+    VrfBGPNeighbors:
+      $ref: './components/schemas/VrfBGPNeighbors.yaml'
+    VrfLearnedRoutes:
+      $ref: './components/schemas/VrfLearnedRoutes.yaml'
   securitySchemes:
     x_auth_token:
       in: header
@@ -816,6 +820,11 @@ paths:
     $ref: ./paths/vrfs/vrf_id/ips/id.yaml
   /vrfs/{id}/routes:
     $ref: ./paths/vrfs/id/routes.yaml
+  /vrfs/{id}/learned-routes:
+    $ref: ./paths/vrfs/id/learned-routes.yaml
+  /vrfs/{id}/bgp-neighbors:
+    $ref: ./paths/vrfs/id/bgp-neighbors.yaml
+
 tags:
   - description: |+
       Nearly all of the endpoints in the API require authentication. Authentication is performed by providing an authentication token (interchangeably referred to as an API key) in the `X-Auth-Token` HTTP request header.

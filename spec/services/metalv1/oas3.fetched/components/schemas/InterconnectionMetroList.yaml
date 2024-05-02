@@ -22,5 +22,17 @@ properties:
                       type: string
                       example: "us-east-1"
                       description: "The provider's network region name that is equivalent to the Equinix Metro."
+                  bandwidths:
+                    type: array
+                    items:
+                      type: integer
+                      example: 50
+                      description: "Supported bandwidths in Mbps"
+                  features:
+                    type: array
+                    items:
+                      type: string
+                      example: "high capacity"
+                      description: "Additional features available in this profile."
   meta:
     $ref: '../../components/schemas/Meta.yaml'
