@@ -15,13 +15,13 @@ Name | Type | Description | Notes
 **Speed** | Pointer to **string** | A interconnection speed, in bps, mbps, or gbps. For Fabric VCs, this represents the maximum speed of the interconnection. For Fabric VCs (Metal Billed), this can only be one of the following:  &#39;&#39;50mbps&#39;&#39;, &#39;&#39;200mbps&#39;&#39;, &#39;&#39;500mbps&#39;&#39;, &#39;&#39;1gbps&#39;&#39;, &#39;&#39;2gbps&#39;&#39;, &#39;&#39;5gbps&#39;&#39; or &#39;&#39;10gbps&#39;&#39;, and is required for creation. For Fabric VCs (Fabric Billed), this field will always default to &#39;&#39;10gbps&#39;&#39; even if it is not provided. For example, &#39;&#39;500000000&#39;&#39;, &#39;&#39;50m&#39;&#39;, or&#39; &#39;&#39;500mbps&#39;&#39; will all work as valid inputs. | [optional] 
 **Tags** | Pointer to **[]string** |  | [optional] 
 **Type** | [**VlanFabricVcCreateInputType**](VlanFabricVcCreateInputType.md) |  | 
-**Vlans** | Pointer to **[]int32** | A list of one or two metro-based VLANs that will be set on the virtual circuits of primary and/or secondary (if redundant) interconnections respectively when creating Fabric VCs. VLANs can also be set after the interconnection is created, but are required to fully activate the virtual circuits. | [optional] 
+**Vlans** | **[]int32** | A list of one or two metro-based VLANs that will be set on the virtual circuits of primary and/or secondary (if redundant) interconnections respectively when creating Fabric VCs. VLANs can also be set after the interconnection is created, but are required to fully activate the virtual circuits. | 
 
 ## Methods
 
 ### NewVlanFabricVcCreateInput
 
-`func NewVlanFabricVcCreateInput(metro string, name string, redundancy string, serviceTokenType VlanFabricVcCreateInputServiceTokenType, type_ VlanFabricVcCreateInputType, ) *VlanFabricVcCreateInput`
+`func NewVlanFabricVcCreateInput(metro string, name string, redundancy string, serviceTokenType VlanFabricVcCreateInputServiceTokenType, type_ VlanFabricVcCreateInputType, vlans []int32, ) *VlanFabricVcCreateInput`
 
 NewVlanFabricVcCreateInput instantiates a new VlanFabricVcCreateInput object
 This constructor will assign default values to properties that have it defined,
@@ -305,11 +305,6 @@ and a boolean to check if the value has been set.
 
 SetVlans sets Vlans field to given value.
 
-### HasVlans
-
-`func (o *VlanFabricVcCreateInput) HasVlans() bool`
-
-HasVlans returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

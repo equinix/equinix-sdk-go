@@ -11,6 +11,16 @@ Name | Type | Description | Notes
 **Plan** | Pointer to [**Plan**](Plan.md) |  | [optional] 
 **Unit** | Pointer to **string** |  | [optional] 
 **UnitPrice** | Pointer to **float32** |  | [optional] 
+**Hostname** | Pointer to **string** |  | [optional] 
+**Location** | Pointer to **string** |  | [optional] 
+**ItemType** | Pointer to **string** |  | [optional] 
+**ServiceId** | Pointer to **string** |  | [optional] 
+**StartDate** | Pointer to **string** |  | [optional] 
+**EndDate** | Pointer to **string** |  | [optional] 
+**ProjectId** | Pointer to **string** |  | [optional] 
+**PlanId** | Pointer to **string** |  | [optional] 
+**Project** | Pointer to [**ProjectIdName**](ProjectIdName.md) |  | [optional] 
+**Adjustments** | Pointer to [**[]LineItemAdjustment**](LineItemAdjustment.md) | Adjustments for the line item | [optional] 
 
 ## Methods
 
@@ -205,6 +215,256 @@ SetUnitPrice sets UnitPrice field to given value.
 `func (o *LineItem) HasUnitPrice() bool`
 
 HasUnitPrice returns a boolean if a field has been set.
+
+### GetHostname
+
+`func (o *LineItem) GetHostname() string`
+
+GetHostname returns the Hostname field if non-nil, zero value otherwise.
+
+### GetHostnameOk
+
+`func (o *LineItem) GetHostnameOk() (*string, bool)`
+
+GetHostnameOk returns a tuple with the Hostname field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHostname
+
+`func (o *LineItem) SetHostname(v string)`
+
+SetHostname sets Hostname field to given value.
+
+### HasHostname
+
+`func (o *LineItem) HasHostname() bool`
+
+HasHostname returns a boolean if a field has been set.
+
+### GetLocation
+
+`func (o *LineItem) GetLocation() string`
+
+GetLocation returns the Location field if non-nil, zero value otherwise.
+
+### GetLocationOk
+
+`func (o *LineItem) GetLocationOk() (*string, bool)`
+
+GetLocationOk returns a tuple with the Location field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLocation
+
+`func (o *LineItem) SetLocation(v string)`
+
+SetLocation sets Location field to given value.
+
+### HasLocation
+
+`func (o *LineItem) HasLocation() bool`
+
+HasLocation returns a boolean if a field has been set.
+
+### GetItemType
+
+`func (o *LineItem) GetItemType() string`
+
+GetItemType returns the ItemType field if non-nil, zero value otherwise.
+
+### GetItemTypeOk
+
+`func (o *LineItem) GetItemTypeOk() (*string, bool)`
+
+GetItemTypeOk returns a tuple with the ItemType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetItemType
+
+`func (o *LineItem) SetItemType(v string)`
+
+SetItemType sets ItemType field to given value.
+
+### HasItemType
+
+`func (o *LineItem) HasItemType() bool`
+
+HasItemType returns a boolean if a field has been set.
+
+### GetServiceId
+
+`func (o *LineItem) GetServiceId() string`
+
+GetServiceId returns the ServiceId field if non-nil, zero value otherwise.
+
+### GetServiceIdOk
+
+`func (o *LineItem) GetServiceIdOk() (*string, bool)`
+
+GetServiceIdOk returns a tuple with the ServiceId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetServiceId
+
+`func (o *LineItem) SetServiceId(v string)`
+
+SetServiceId sets ServiceId field to given value.
+
+### HasServiceId
+
+`func (o *LineItem) HasServiceId() bool`
+
+HasServiceId returns a boolean if a field has been set.
+
+### GetStartDate
+
+`func (o *LineItem) GetStartDate() string`
+
+GetStartDate returns the StartDate field if non-nil, zero value otherwise.
+
+### GetStartDateOk
+
+`func (o *LineItem) GetStartDateOk() (*string, bool)`
+
+GetStartDateOk returns a tuple with the StartDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStartDate
+
+`func (o *LineItem) SetStartDate(v string)`
+
+SetStartDate sets StartDate field to given value.
+
+### HasStartDate
+
+`func (o *LineItem) HasStartDate() bool`
+
+HasStartDate returns a boolean if a field has been set.
+
+### GetEndDate
+
+`func (o *LineItem) GetEndDate() string`
+
+GetEndDate returns the EndDate field if non-nil, zero value otherwise.
+
+### GetEndDateOk
+
+`func (o *LineItem) GetEndDateOk() (*string, bool)`
+
+GetEndDateOk returns a tuple with the EndDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEndDate
+
+`func (o *LineItem) SetEndDate(v string)`
+
+SetEndDate sets EndDate field to given value.
+
+### HasEndDate
+
+`func (o *LineItem) HasEndDate() bool`
+
+HasEndDate returns a boolean if a field has been set.
+
+### GetProjectId
+
+`func (o *LineItem) GetProjectId() string`
+
+GetProjectId returns the ProjectId field if non-nil, zero value otherwise.
+
+### GetProjectIdOk
+
+`func (o *LineItem) GetProjectIdOk() (*string, bool)`
+
+GetProjectIdOk returns a tuple with the ProjectId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProjectId
+
+`func (o *LineItem) SetProjectId(v string)`
+
+SetProjectId sets ProjectId field to given value.
+
+### HasProjectId
+
+`func (o *LineItem) HasProjectId() bool`
+
+HasProjectId returns a boolean if a field has been set.
+
+### GetPlanId
+
+`func (o *LineItem) GetPlanId() string`
+
+GetPlanId returns the PlanId field if non-nil, zero value otherwise.
+
+### GetPlanIdOk
+
+`func (o *LineItem) GetPlanIdOk() (*string, bool)`
+
+GetPlanIdOk returns a tuple with the PlanId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPlanId
+
+`func (o *LineItem) SetPlanId(v string)`
+
+SetPlanId sets PlanId field to given value.
+
+### HasPlanId
+
+`func (o *LineItem) HasPlanId() bool`
+
+HasPlanId returns a boolean if a field has been set.
+
+### GetProject
+
+`func (o *LineItem) GetProject() ProjectIdName`
+
+GetProject returns the Project field if non-nil, zero value otherwise.
+
+### GetProjectOk
+
+`func (o *LineItem) GetProjectOk() (*ProjectIdName, bool)`
+
+GetProjectOk returns a tuple with the Project field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProject
+
+`func (o *LineItem) SetProject(v ProjectIdName)`
+
+SetProject sets Project field to given value.
+
+### HasProject
+
+`func (o *LineItem) HasProject() bool`
+
+HasProject returns a boolean if a field has been set.
+
+### GetAdjustments
+
+`func (o *LineItem) GetAdjustments() []LineItemAdjustment`
+
+GetAdjustments returns the Adjustments field if non-nil, zero value otherwise.
+
+### GetAdjustmentsOk
+
+`func (o *LineItem) GetAdjustmentsOk() (*[]LineItemAdjustment, bool)`
+
+GetAdjustmentsOk returns a tuple with the Adjustments field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdjustments
+
+`func (o *LineItem) SetAdjustments(v []LineItemAdjustment)`
+
+SetAdjustments sets Adjustments field to given value.
+
+### HasAdjustments
+
+`func (o *LineItem) HasAdjustments() bool`
+
+HasAdjustments returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

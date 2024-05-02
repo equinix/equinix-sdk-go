@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Asn** | Pointer to **int32** | Autonomous System Number. ASN is required with Global BGP. With Local BGP the private ASN, 65000, is assigned. | [optional] 
+**Asn** | Pointer to **int64** | Autonomous System Number. ASN is required with Global BGP. With Local BGP the private ASN, 65000, is assigned. | [optional] 
 **CreatedAt** | Pointer to **time.Time** |  | [optional] 
 **DeploymentType** | Pointer to [**BgpConfigDeploymentType**](BgpConfigDeploymentType.md) |  | [optional] 
 **Href** | Pointer to **string** |  | [optional] 
@@ -39,20 +39,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetAsn
 
-`func (o *BgpConfig) GetAsn() int32`
+`func (o *BgpConfig) GetAsn() int64`
 
 GetAsn returns the Asn field if non-nil, zero value otherwise.
 
 ### GetAsnOk
 
-`func (o *BgpConfig) GetAsnOk() (*int32, bool)`
+`func (o *BgpConfig) GetAsnOk() (*int64, bool)`
 
 GetAsnOk returns a tuple with the Asn field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAsn
 
-`func (o *BgpConfig) SetAsn(v int32)`
+`func (o *BgpConfig) SetAsn(v int64)`
 
 SetAsn sets Asn field to given value.
 

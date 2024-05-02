@@ -388,7 +388,7 @@ import (
 
 func main() {
     id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project UUID
-    bgpConfigRequestInput := *openapiclient.NewBgpConfigRequestInput(int32(65000), openapiclient.BgpConfigRequestInput_deployment_type("local")) // BgpConfigRequestInput | BGP config Request to create
+    bgpConfigRequestInput := *openapiclient.NewBgpConfigRequestInput(int64(65000), openapiclient.BgpConfigRequestInput_deployment_type("local")) // BgpConfigRequestInput | BGP config Request to create
     include := []string{"Inner_example"} // []string | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
 
     configuration := openapiclient.NewConfiguration()

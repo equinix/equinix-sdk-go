@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** |  | [optional] 
 **Port** | Pointer to [**InterconnectionPort**](InterconnectionPort.md) |  | [optional] 
 **NniVlan** | Pointer to **int32** |  | [optional] 
-**PeerAsn** | Pointer to **int32** | The peer ASN that will be used with the VRF on the Virtual Circuit. | [optional] 
+**PeerAsn** | Pointer to **int64** | The peer ASN that will be used with the VRF on the Virtual Circuit. | [optional] 
 **Project** | Pointer to [**Project**](Project.md) |  | [optional] 
 **Speed** | Pointer to **int64** | integer representing bps speed | [optional] 
 **Status** | Pointer to [**VrfVirtualCircuitStatus**](VrfVirtualCircuitStatus.md) |  | [optional] 
@@ -244,20 +244,20 @@ HasNniVlan returns a boolean if a field has been set.
 
 ### GetPeerAsn
 
-`func (o *VrfVirtualCircuit) GetPeerAsn() int32`
+`func (o *VrfVirtualCircuit) GetPeerAsn() int64`
 
 GetPeerAsn returns the PeerAsn field if non-nil, zero value otherwise.
 
 ### GetPeerAsnOk
 
-`func (o *VrfVirtualCircuit) GetPeerAsnOk() (*int32, bool)`
+`func (o *VrfVirtualCircuit) GetPeerAsnOk() (*int64, bool)`
 
 GetPeerAsnOk returns a tuple with the PeerAsn field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPeerAsn
 
-`func (o *VrfVirtualCircuit) SetPeerAsn(v int32)`
+`func (o *VrfVirtualCircuit) SetPeerAsn(v int64)`
 
 SetPeerAsn sets PeerAsn field to given value.
 

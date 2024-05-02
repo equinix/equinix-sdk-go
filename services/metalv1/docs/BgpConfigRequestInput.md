@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Asn** | **int32** | Autonomous System Number for local BGP deployment. | 
+**Asn** | **int64** | Autonomous System Number for local BGP deployment. | 
 **DeploymentType** | [**BgpConfigRequestInputDeploymentType**](BgpConfigRequestInputDeploymentType.md) |  | 
 **Md5** | Pointer to **string** | The plaintext password to share between BGP neighbors as an MD5 checksum: * must be 10-20 characters long * may not include punctuation * must be a combination of numbers and letters * must contain at least one lowercase, uppercase, and digit character  | [optional] 
 **UseCase** | Pointer to **string** | A use case explanation (necessary for global BGP request review). | [optional] 
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 ### NewBgpConfigRequestInput
 
-`func NewBgpConfigRequestInput(asn int32, deploymentType BgpConfigRequestInputDeploymentType, ) *BgpConfigRequestInput`
+`func NewBgpConfigRequestInput(asn int64, deploymentType BgpConfigRequestInputDeploymentType, ) *BgpConfigRequestInput`
 
 NewBgpConfigRequestInput instantiates a new BgpConfigRequestInput object
 This constructor will assign default values to properties that have it defined,
@@ -30,20 +30,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetAsn
 
-`func (o *BgpConfigRequestInput) GetAsn() int32`
+`func (o *BgpConfigRequestInput) GetAsn() int64`
 
 GetAsn returns the Asn field if non-nil, zero value otherwise.
 
 ### GetAsnOk
 
-`func (o *BgpConfigRequestInput) GetAsnOk() (*int32, bool)`
+`func (o *BgpConfigRequestInput) GetAsnOk() (*int64, bool)`
 
 GetAsnOk returns a tuple with the Asn field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAsn
 
-`func (o *BgpConfigRequestInput) SetAsn(v int32)`
+`func (o *BgpConfigRequestInput) SetAsn(v int64)`
 
 SetAsn sets Asn field to given value.
 

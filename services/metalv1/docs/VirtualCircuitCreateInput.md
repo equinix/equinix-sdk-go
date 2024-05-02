@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **CustomerIp** | Pointer to **string** | An IP address from the subnet that will be used on the Customer side. This parameter is optional, but if supplied, we will use the other usable IP address in the subnet as the Metal IP. By default, the last usable IP address in the subnet will be used. | [optional] 
 **Md5** | Pointer to **NullableString** | The plaintext BGP peering password shared by neighbors as an MD5 checksum: * must be 10-20 characters long * may not include punctuation * must be a combination of numbers and letters * must contain at least one lowercase, uppercase, and digit character  | [optional] 
 **MetalIp** | Pointer to **string** | An IP address from the subnet that will be used on the Metal side. This parameter is optional, but if supplied, we will use the other usable IP address in the subnet as the Customer IP. By default, the first usable IP address in the subnet will be used. | [optional] 
-**PeerAsn** | **int32** | The peer ASN that will be used with the VRF on the Virtual Circuit. | 
+**PeerAsn** | **int64** | The peer ASN that will be used with the VRF on the Virtual Circuit. | 
 **Subnet** | **string** | The /30 or /31 subnet of one of the VRF IP Blocks that will be used with the VRF for the Virtual Circuit. This subnet does not have to be an existing VRF IP reservation, as we will create the VRF IP reservation on creation if it does not exist. The Metal IP and Customer IP must be IPs from this subnet. For /30 subnets, the network and broadcast IPs cannot be used as the Metal or Customer IP. The subnet specified must be contained within an already-defined IP Range for the VRF. | 
 **Vrf** | **string** | The UUID of the VRF that will be associated with the Virtual Circuit. | 
 
@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 
 ### NewVirtualCircuitCreateInput
 
-`func NewVirtualCircuitCreateInput(nniVlan int32, projectId string, peerAsn int32, subnet string, vrf string, ) *VirtualCircuitCreateInput`
+`func NewVirtualCircuitCreateInput(nniVlan int32, projectId string, peerAsn int64, subnet string, vrf string, ) *VirtualCircuitCreateInput`
 
 NewVirtualCircuitCreateInput instantiates a new VirtualCircuitCreateInput object
 This constructor will assign default values to properties that have it defined,
@@ -289,20 +289,20 @@ HasMetalIp returns a boolean if a field has been set.
 
 ### GetPeerAsn
 
-`func (o *VirtualCircuitCreateInput) GetPeerAsn() int32`
+`func (o *VirtualCircuitCreateInput) GetPeerAsn() int64`
 
 GetPeerAsn returns the PeerAsn field if non-nil, zero value otherwise.
 
 ### GetPeerAsnOk
 
-`func (o *VirtualCircuitCreateInput) GetPeerAsnOk() (*int32, bool)`
+`func (o *VirtualCircuitCreateInput) GetPeerAsnOk() (*int64, bool)`
 
 GetPeerAsnOk returns a tuple with the PeerAsn field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPeerAsn
 
-`func (o *VirtualCircuitCreateInput) SetPeerAsn(v int32)`
+`func (o *VirtualCircuitCreateInput) SetPeerAsn(v int64)`
 
 SetPeerAsn sets PeerAsn field to given value.
 
