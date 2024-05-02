@@ -1,5 +1,0 @@
-description: Filter results by name.
-in: query
-name: name
-schema:
-  type: string

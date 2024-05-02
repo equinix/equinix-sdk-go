@@ -1,8 +1,0 @@
-properties:
-  meta:
-    $ref: './Meta.yaml'
-  projects:
-    items:
-      $ref: './Project.yaml'
-    type: array
-type: object

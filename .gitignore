@@ -8,3 +8,4 @@ services/*/api/
 pkg
 .certs
 .idea/
+spec/services/*/oas3.patched

@@ -1,6 +1,0 @@
-properties:
-  facilities:
-    items:
-      $ref: './Facility.yaml'
-    type: array
-type: object
