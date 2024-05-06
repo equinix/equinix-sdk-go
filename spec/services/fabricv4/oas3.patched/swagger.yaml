@@ -10711,8 +10711,6 @@ components:
             $ref: "#/components/schemas/ConnectionSideAdditionalInfo"
       description: Connection configuration object for each side of multi-segment connection
     Project:
-      required:
-        - projectId
       type: object
       properties:
         projectId:

@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ProjectId** | **string** | Subscriber-assigned project ID | 
+**ProjectId** | Pointer to **string** | Subscriber-assigned project ID | [optional] 
 
 ## Methods
 
 ### NewProject
 
-`func NewProject(projectId string, ) *Project`
+`func NewProject() *Project`
 
 NewProject instantiates a new Project object
 This constructor will assign default values to properties that have it defined,
@@ -44,6 +44,11 @@ and a boolean to check if the value has been set.
 
 SetProjectId sets ProjectId field to given value.
 
+### HasProjectId
+
+`func (o *Project) HasProjectId() bool`
+
+HasProjectId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
