@@ -40,7 +40,7 @@ type Port struct {
 	PhysicalPortsCount     *int32                             `json:"physicalPortsCount,omitempty"`
 	ConnectivitySourceType PortResponseConnectivitySourceType `json:"connectivitySourceType"`
 	BmmrType               *PortResponseBmmrType              `json:"bmmrType,omitempty"`
-	Project                *PortResponseProject               `json:"project,omitempty"`
+	Project                *Project                           `json:"project,omitempty"`
 	State                  *PortState                         `json:"state,omitempty"`
 	Order                  *PortOrder                         `json:"order,omitempty"`
 	// Equinix assigned response attribute for Unique ID for a virtual port.
@@ -487,9 +487,9 @@ func (o *Port) SetBmmrType(v PortResponseBmmrType) {
 }
 
 // GetProject returns the Project field value if set, zero value otherwise.
-func (o *Port) GetProject() PortResponseProject {
+func (o *Port) GetProject() Project {
 	if o == nil || IsNil(o.Project) {
-		var ret PortResponseProject
+		var ret Project
 		return ret
 	}
 	return *o.Project
@@ -497,7 +497,7 @@ func (o *Port) GetProject() PortResponseProject {
 
 // GetProjectOk returns a tuple with the Project field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Port) GetProjectOk() (*PortResponseProject, bool) {
+func (o *Port) GetProjectOk() (*Project, bool) {
 	if o == nil || IsNil(o.Project) {
 		return nil, false
 	}
@@ -513,8 +513,8 @@ func (o *Port) HasProject() bool {
 	return false
 }
 
-// SetProject gets a reference to the given PortResponseProject and assigns it to the Project field.
-func (o *Port) SetProject(v PortResponseProject) {
+// SetProject gets a reference to the given Project and assigns it to the Project field.
+func (o *Port) SetProject(v Project) {
 	o.Project = &v
 }
 

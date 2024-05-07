@@ -9046,7 +9046,7 @@ components:
             - SELF
             - EQUINIX
         project:
-          $ref: "#/components/schemas/PortResponseProject"
+          $ref: "#/components/schemas/Project"
         state:
           $ref: "#/components/schemas/PortState"
         order:
@@ -10711,15 +10711,6 @@ components:
             $ref: "#/components/schemas/ConnectionSideAdditionalInfo"
       description: Connection configuration object for each side of multi-segment connection
     Project:
-      required:
-        - projectId
-      type: object
-      properties:
-        projectId:
-          type: string
-          description: Subscriber-assigned project ID
-          example: 44f4c4f8-2f39-494e-838c-d8e640591be5
-    PortResponseProject:
       type: object
       properties:
         projectId:

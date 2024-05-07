@@ -12,7 +12,6 @@ package fabricv4
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the Project type satisfies the MappedNullable interface at compile time
@@ -21,7 +20,7 @@ var _ MappedNullable = &Project{}
 // Project struct for Project
 type Project struct {
 	// Subscriber-assigned project ID
-	ProjectId            string `json:"projectId"`
+	ProjectId            *string `json:"projectId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -31,9 +30,8 @@ type _Project Project
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProject(projectId string) *Project {
+func NewProject() *Project {
 	this := Project{}
-	this.ProjectId = projectId
 	return &this
 }
 
@@ -45,28 +43,36 @@ func NewProjectWithDefaults() *Project {
 	return &this
 }
 
-// GetProjectId returns the ProjectId field value
+// GetProjectId returns the ProjectId field value if set, zero value otherwise.
 func (o *Project) GetProjectId() string {
-	if o == nil {
+	if o == nil || IsNil(o.ProjectId) {
 		var ret string
 		return ret
 	}
-
-	return o.ProjectId
+	return *o.ProjectId
 }
 
-// GetProjectIdOk returns a tuple with the ProjectId field value
+// GetProjectIdOk returns a tuple with the ProjectId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Project) GetProjectIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ProjectId) {
 		return nil, false
 	}
-	return &o.ProjectId, true
+	return o.ProjectId, true
 }
 
-// SetProjectId sets field value
+// HasProjectId returns a boolean if a field has been set.
+func (o *Project) HasProjectId() bool {
+	if o != nil && !IsNil(o.ProjectId) {
+		return true
+	}
+
+	return false
+}
+
+// SetProjectId gets a reference to the given string and assigns it to the ProjectId field.
 func (o *Project) SetProjectId(v string) {
-	o.ProjectId = v
+	o.ProjectId = &v
 }
 
 func (o Project) MarshalJSON() ([]byte, error) {
@@ -79,7 +85,9 @@ func (o Project) MarshalJSON() ([]byte, error) {
 
 func (o Project) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["projectId"] = o.ProjectId
+	if !IsNil(o.ProjectId) {
+		toSerialize["projectId"] = o.ProjectId
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -89,27 +97,6 @@ func (o Project) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *Project) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"projectId",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
 	varProject := _Project{}
 
 	err = json.Unmarshal(data, &varProject)
