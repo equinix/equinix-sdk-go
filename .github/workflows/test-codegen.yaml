@@ -30,7 +30,7 @@ jobs:
       id: golangcilint
       run: |
         line=$(grep -i GOLANGCI_LINT_VERSION Makefile)
-        version=$(echo $API_SPEC_LINE | cut -d = -f2)
+        version=$(echo ${line} | cut -d = -f2)
         echo "version=$version" >> "$GITHUB_OUTPUT"
     - name: Lint
       uses: golangci/golangci-lint-action@v3
