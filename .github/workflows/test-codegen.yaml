@@ -1,12 +1,9 @@
-name: Test __PACKAGE_NAME__ codegen
+
+name: Generate and lint code
 
 on:
   push:
-    paths:
-    - "**/__PACKAGE_NAME__/**"
   pull_request:
-    paths:
-    - "**/__PACKAGE_NAME__/**"
 
 jobs:
   test:
@@ -23,9 +20,20 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
     - name: Verify Patches
-      run: make -f Makefile.__PACKAGE_NAME__ patch
+      run: make patch-all
     - name: Generate
       run: |
-        make -f Makefile.__PACKAGE_NAME__ generate
+        make generate-all
         # Expect all changes to be accounted for
         ! git status --porcelain | grep .
+    - name: Determine golangci-lint version
+      id: golangcilint
+      run: |
+        line=$(grep GOLANGCI_LINT_VERSION= Makefile)
+        version=$(echo ${line} | cut -d = -f2)
+        echo "version=$version" >> "$GITHUB_OUTPUT"
+    - name: Lint
+      uses: golangci/golangci-lint-action@v6
+      with:
+        version: ${{ steps.golangcilint.outputs.version }}
+        skip-cache: true
