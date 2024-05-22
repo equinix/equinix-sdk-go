@@ -13,8 +13,6 @@ package eiav2
 import (
 	"encoding/json"
 	"fmt"
-	"reflect"
-	"strings"
 )
 
 // checks if the StaticRoutingProtocolRequest type satisfies the MappedNullable interface at compile time
@@ -22,7 +20,12 @@ var _ MappedNullable = &StaticRoutingProtocolRequest{}
 
 // StaticRoutingProtocolRequest struct for StaticRoutingProtocolRequest
 type StaticRoutingProtocolRequest struct {
-	RoutingProtocolRequest
+	Tags []string            `json:"tags,omitempty"`
+	Type RoutingProtocolType `json:"type"`
+	// Name of the routing protocol instance.
+	Name *string `json:"name,omitempty"`
+	// Description of the routing protocol instance
+	Description          *string                     `json:"description,omitempty"`
 	Ipv4                 *RoutingProtocolIpv4Request `json:"ipv4,omitempty"`
 	Ipv6                 *RoutingProtocolIpv6Request `json:"ipv6,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -46,6 +49,126 @@ func NewStaticRoutingProtocolRequest(type_ RoutingProtocolType) *StaticRoutingPr
 func NewStaticRoutingProtocolRequestWithDefaults() *StaticRoutingProtocolRequest {
 	this := StaticRoutingProtocolRequest{}
 	return &this
+}
+
+// GetTags returns the Tags field value if set, zero value otherwise.
+func (o *StaticRoutingProtocolRequest) GetTags() []string {
+	if o == nil || IsNil(o.Tags) {
+		var ret []string
+		return ret
+	}
+	return o.Tags
+}
+
+// GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StaticRoutingProtocolRequest) GetTagsOk() ([]string, bool) {
+	if o == nil || IsNil(o.Tags) {
+		return nil, false
+	}
+	return o.Tags, true
+}
+
+// HasTags returns a boolean if a field has been set.
+func (o *StaticRoutingProtocolRequest) HasTags() bool {
+	if o != nil && !IsNil(o.Tags) {
+		return true
+	}
+
+	return false
+}
+
+// SetTags gets a reference to the given []string and assigns it to the Tags field.
+func (o *StaticRoutingProtocolRequest) SetTags(v []string) {
+	o.Tags = v
+}
+
+// GetType returns the Type field value
+func (o *StaticRoutingProtocolRequest) GetType() RoutingProtocolType {
+	if o == nil {
+		var ret RoutingProtocolType
+		return ret
+	}
+
+	return o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value
+// and a boolean to check if the value has been set.
+func (o *StaticRoutingProtocolRequest) GetTypeOk() (*RoutingProtocolType, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Type, true
+}
+
+// SetType sets field value
+func (o *StaticRoutingProtocolRequest) SetType(v RoutingProtocolType) {
+	o.Type = v
+}
+
+// GetName returns the Name field value if set, zero value otherwise.
+func (o *StaticRoutingProtocolRequest) GetName() string {
+	if o == nil || IsNil(o.Name) {
+		var ret string
+		return ret
+	}
+	return *o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StaticRoutingProtocolRequest) GetNameOk() (*string, bool) {
+	if o == nil || IsNil(o.Name) {
+		return nil, false
+	}
+	return o.Name, true
+}
+
+// HasName returns a boolean if a field has been set.
+func (o *StaticRoutingProtocolRequest) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
+func (o *StaticRoutingProtocolRequest) SetName(v string) {
+	o.Name = &v
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *StaticRoutingProtocolRequest) GetDescription() string {
+	if o == nil || IsNil(o.Description) {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StaticRoutingProtocolRequest) GetDescriptionOk() (*string, bool) {
+	if o == nil || IsNil(o.Description) {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *StaticRoutingProtocolRequest) HasDescription() bool {
+	if o != nil && !IsNil(o.Description) {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *StaticRoutingProtocolRequest) SetDescription(v string) {
+	o.Description = &v
 }
 
 // GetIpv4 returns the Ipv4 field value if set, zero value otherwise.
@@ -122,13 +245,15 @@ func (o StaticRoutingProtocolRequest) MarshalJSON() ([]byte, error) {
 
 func (o StaticRoutingProtocolRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	serializedRoutingProtocolRequest, errRoutingProtocolRequest := json.Marshal(o.RoutingProtocolRequest)
-	if errRoutingProtocolRequest != nil {
-		return map[string]interface{}{}, errRoutingProtocolRequest
+	if !IsNil(o.Tags) {
+		toSerialize["tags"] = o.Tags
 	}
-	errRoutingProtocolRequest = json.Unmarshal([]byte(serializedRoutingProtocolRequest), &toSerialize)
-	if errRoutingProtocolRequest != nil {
-		return map[string]interface{}{}, errRoutingProtocolRequest
+	toSerialize["type"] = o.Type
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
 	}
 	if !IsNil(o.Ipv4) {
 		toSerialize["ipv4"] = o.Ipv4
@@ -166,56 +291,25 @@ func (o *StaticRoutingProtocolRequest) UnmarshalJSON(data []byte) (err error) {
 		}
 	}
 
-	type StaticRoutingProtocolRequestWithoutEmbeddedStruct struct {
-		Ipv4 *RoutingProtocolIpv4Request `json:"ipv4,omitempty"`
-		Ipv6 *RoutingProtocolIpv6Request `json:"ipv6,omitempty"`
-	}
-
-	varStaticRoutingProtocolRequestWithoutEmbeddedStruct := StaticRoutingProtocolRequestWithoutEmbeddedStruct{}
-
-	err = json.Unmarshal(data, &varStaticRoutingProtocolRequestWithoutEmbeddedStruct)
-	if err == nil {
-		varStaticRoutingProtocolRequest := _StaticRoutingProtocolRequest{}
-		varStaticRoutingProtocolRequest.Ipv4 = varStaticRoutingProtocolRequestWithoutEmbeddedStruct.Ipv4
-		varStaticRoutingProtocolRequest.Ipv6 = varStaticRoutingProtocolRequestWithoutEmbeddedStruct.Ipv6
-		*o = StaticRoutingProtocolRequest(varStaticRoutingProtocolRequest)
-	} else {
-		return err
-	}
-
 	varStaticRoutingProtocolRequest := _StaticRoutingProtocolRequest{}
 
 	err = json.Unmarshal(data, &varStaticRoutingProtocolRequest)
-	if err == nil {
-		o.RoutingProtocolRequest = varStaticRoutingProtocolRequest.RoutingProtocolRequest
-	} else {
+
+	if err != nil {
 		return err
 	}
+
+	*o = StaticRoutingProtocolRequest(varStaticRoutingProtocolRequest)
 
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "tags")
+		delete(additionalProperties, "type")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "description")
 		delete(additionalProperties, "ipv4")
 		delete(additionalProperties, "ipv6")
-
-		// remove fields from embedded structs
-		reflectRoutingProtocolRequest := reflect.ValueOf(o.RoutingProtocolRequest)
-		for i := 0; i < reflectRoutingProtocolRequest.Type().NumField(); i++ {
-			t := reflectRoutingProtocolRequest.Type().Field(i)
-
-			if jsonTag := t.Tag.Get("json"); jsonTag != "" {
-				fieldName := ""
-				if commaIdx := strings.Index(jsonTag, ","); commaIdx > 0 {
-					fieldName = jsonTag[:commaIdx]
-				} else {
-					fieldName = jsonTag
-				}
-				if fieldName != "AdditionalProperties" {
-					delete(additionalProperties, fieldName)
-				}
-			}
-		}
-
 		o.AdditionalProperties = additionalProperties
 	}
 

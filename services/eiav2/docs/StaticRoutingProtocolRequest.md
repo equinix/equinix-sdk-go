@@ -4,6 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Tags** | Pointer to **[]string** |  | [optional] 
+**Type** | [**RoutingProtocolType**](RoutingProtocolType.md) |  | 
+**Name** | Pointer to **string** | Name of the routing protocol instance.  | [optional] 
+**Description** | Pointer to **string** | Description of the routing protocol instance  | [optional] 
 **Ipv4** | Pointer to [**RoutingProtocolIpv4Request**](RoutingProtocolIpv4Request.md) |  | [optional] 
 **Ipv6** | Pointer to [**RoutingProtocolIpv6Request**](RoutingProtocolIpv6Request.md) |  | [optional] 
 
@@ -11,7 +15,7 @@ Name | Type | Description | Notes
 
 ### NewStaticRoutingProtocolRequest
 
-`func NewStaticRoutingProtocolRequest() *StaticRoutingProtocolRequest`
+`func NewStaticRoutingProtocolRequest(type_ RoutingProtocolType, ) *StaticRoutingProtocolRequest`
 
 NewStaticRoutingProtocolRequest instantiates a new StaticRoutingProtocolRequest object
 This constructor will assign default values to properties that have it defined,
@@ -25,6 +29,101 @@ will change when the set of required properties is changed
 NewStaticRoutingProtocolRequestWithDefaults instantiates a new StaticRoutingProtocolRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetTags
+
+`func (o *StaticRoutingProtocolRequest) GetTags() []string`
+
+GetTags returns the Tags field if non-nil, zero value otherwise.
+
+### GetTagsOk
+
+`func (o *StaticRoutingProtocolRequest) GetTagsOk() (*[]string, bool)`
+
+GetTagsOk returns a tuple with the Tags field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTags
+
+`func (o *StaticRoutingProtocolRequest) SetTags(v []string)`
+
+SetTags sets Tags field to given value.
+
+### HasTags
+
+`func (o *StaticRoutingProtocolRequest) HasTags() bool`
+
+HasTags returns a boolean if a field has been set.
+
+### GetType
+
+`func (o *StaticRoutingProtocolRequest) GetType() RoutingProtocolType`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *StaticRoutingProtocolRequest) GetTypeOk() (*RoutingProtocolType, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *StaticRoutingProtocolRequest) SetType(v RoutingProtocolType)`
+
+SetType sets Type field to given value.
+
+
+### GetName
+
+`func (o *StaticRoutingProtocolRequest) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *StaticRoutingProtocolRequest) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *StaticRoutingProtocolRequest) SetName(v string)`
+
+SetName sets Name field to given value.
+
+### HasName
+
+`func (o *StaticRoutingProtocolRequest) HasName() bool`
+
+HasName returns a boolean if a field has been set.
+
+### GetDescription
+
+`func (o *StaticRoutingProtocolRequest) GetDescription() string`
+
+GetDescription returns the Description field if non-nil, zero value otherwise.
+
+### GetDescriptionOk
+
+`func (o *StaticRoutingProtocolRequest) GetDescriptionOk() (*string, bool)`
+
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *StaticRoutingProtocolRequest) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
+
+### HasDescription
+
+`func (o *StaticRoutingProtocolRequest) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
 
 ### GetIpv4
 

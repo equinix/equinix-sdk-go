@@ -4,6 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Tags** | Pointer to **[]string** |  | [optional] 
+**Type** | [**RoutingProtocolType**](RoutingProtocolType.md) |  | 
+**Name** | Pointer to **string** | Name of the routing protocol instance.  | [optional] 
+**Description** | Pointer to **string** | Description of the routing protocol instance  | [optional] 
 **CustomerAsnRange** | Pointer to [**BgpRoutingProtocolRequestAllOfCustomerAsnRange**](BgpRoutingProtocolRequestAllOfCustomerAsnRange.md) |  | [optional] 
 **CustomerAsn** | Pointer to **int64** | Customer Autonomous System Number  | [optional] 
 **BgpAuthKey** | Pointer to **string** | BGP authentication key  | [optional] 
@@ -15,7 +19,7 @@ Name | Type | Description | Notes
 
 ### NewBgpRoutingProtocolRequest
 
-`func NewBgpRoutingProtocolRequest(exportPolicy BgpRoutingProtocolRequestAllOfExportPolicy, ) *BgpRoutingProtocolRequest`
+`func NewBgpRoutingProtocolRequest(type_ RoutingProtocolType, exportPolicy BgpRoutingProtocolRequestAllOfExportPolicy, ) *BgpRoutingProtocolRequest`
 
 NewBgpRoutingProtocolRequest instantiates a new BgpRoutingProtocolRequest object
 This constructor will assign default values to properties that have it defined,
@@ -29,6 +33,101 @@ will change when the set of required properties is changed
 NewBgpRoutingProtocolRequestWithDefaults instantiates a new BgpRoutingProtocolRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetTags
+
+`func (o *BgpRoutingProtocolRequest) GetTags() []string`
+
+GetTags returns the Tags field if non-nil, zero value otherwise.
+
+### GetTagsOk
+
+`func (o *BgpRoutingProtocolRequest) GetTagsOk() (*[]string, bool)`
+
+GetTagsOk returns a tuple with the Tags field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTags
+
+`func (o *BgpRoutingProtocolRequest) SetTags(v []string)`
+
+SetTags sets Tags field to given value.
+
+### HasTags
+
+`func (o *BgpRoutingProtocolRequest) HasTags() bool`
+
+HasTags returns a boolean if a field has been set.
+
+### GetType
+
+`func (o *BgpRoutingProtocolRequest) GetType() RoutingProtocolType`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *BgpRoutingProtocolRequest) GetTypeOk() (*RoutingProtocolType, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *BgpRoutingProtocolRequest) SetType(v RoutingProtocolType)`
+
+SetType sets Type field to given value.
+
+
+### GetName
+
+`func (o *BgpRoutingProtocolRequest) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *BgpRoutingProtocolRequest) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *BgpRoutingProtocolRequest) SetName(v string)`
+
+SetName sets Name field to given value.
+
+### HasName
+
+`func (o *BgpRoutingProtocolRequest) HasName() bool`
+
+HasName returns a boolean if a field has been set.
+
+### GetDescription
+
+`func (o *BgpRoutingProtocolRequest) GetDescription() string`
+
+GetDescription returns the Description field if non-nil, zero value otherwise.
+
+### GetDescriptionOk
+
+`func (o *BgpRoutingProtocolRequest) GetDescriptionOk() (*string, bool)`
+
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *BgpRoutingProtocolRequest) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
+
+### HasDescription
+
+`func (o *BgpRoutingProtocolRequest) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
 
 ### GetCustomerAsnRange
 
