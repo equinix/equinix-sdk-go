@@ -45,7 +45,6 @@ func main() {
 	configuration.HTTPClient = standardClient
 	configuration.AddDefaultHeader("X-SOURCE", "API")
 	configuration.AddDefaultHeader("X-CORRELATION-ID", "asdfdkioinasdoinfiek183859573")
-	// configuration.AddDefaultHeader("Content-Type", "json")
 	client := fabricv4.NewAPIClient(configuration)
 
 	conn, resp, err := client.ConnectionsApi.GetConnectionByUuid(ctx, "<connection_uuid>").Execute()
