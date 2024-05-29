@@ -2,19 +2,25 @@ package main
 
 import (
 	"context"
+	"flag"
 	"log"
-	"net/url"
 	"os"
 	"time"
 
-	"github.com/hashicorp/go-retryablehttp"
-	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/logging"
-
 	"github.com/equinix/equinix-sdk-go/services/eiav2"
 	"github.com/equinix/oauth2-go"
+	"github.com/hashicorp/go-retryablehttp"
 )
 
 func main() {
+	// Pulls the connection_uuid from the command line so that you can input it with
+	// `go run main.go -connection_uuid="<your_connection_uuid>"`
+	var connection_uuid string
+	flag.StringVar(&connection_uuid, "connection_uuid", "", "")
+	flag.Parse()
+
+	// Initializes the Equinix oauth2 with the EQUINIX_API_CLIENTID and EQUINIX_API_CLIENTSECRET
+	// details set as environment variables.
 	ctx := context.Background()
 	clientId := os.Getenv("EQUINIX_API_CLIENTID")
 	clientSecret := os.Getenv("EQUINIX_API_CLIENTSECRET")
@@ -25,33 +31,41 @@ func main() {
 		BaseURL:      baseURL,
 	}
 	authClient := authConfig.New(ctx)
-	authClient.Transport = logging.NewTransport("Equinix", authClient.Transport)
 
-	transport := logging.NewTransport("Equinix Fabric (eiav2)", authClient.Transport)
+	/*
+		The following code is setting up configuration of the
+		SDK for retries in the case that there is a network connection error or the server returns a 5XX error.
+		It is using Hashicorp's retryablehttp Go package but the same could be done with an alternative like req.
+		See https://req.cool/docs/tutorial/retry/ for details.
 
+		For this example we're doing the following:
+		* Adding auth to our retry client
+		* Setting the minimum wait time between retries to 1 second
+		* Setting the maximum time between retries to 60 seconds
+		* Returning our config using the StandardClient from retryablehttp that returns http.Client with our
+			config details
+	*/
 	retryClient := retryablehttp.NewClient()
-	retryClient.HTTPClient.Transport = transport
+	retryClient.HTTPClient.Transport = authClient.Transport
 	retryClient.RetryWaitMin = time.Second
 	retryClient.RetryWaitMax = time.Second * 60
 	standardClient := retryClient.StandardClient()
 
-	baseURLParsed, _ := url.Parse(baseURL)
-
+	// The following configuration allows us to add custom headers, add our retryable http.client to the SDK,
+	// and creates an EIAv2 API client from the result
 	configuration := eiav2.NewConfiguration()
-	configuration.Servers = eiav2.ServerConfigurations{
-		eiav2.ServerConfiguration{
-			URL: baseURLParsed.String(),
-		},
-	}
 	configuration.HTTPClient = standardClient
 	configuration.AddDefaultHeader("X-SOURCE", "API")
 	configuration.AddDefaultHeader("X-CORRELATION-ID", "asdfdkioinasdoinfiek183859573")
 	client := eiav2.NewAPIClient(configuration)
 
+	// From here to the end of the example we are defining the details of our POST /internetAccess/v2/services
+	// request that will create an Equinix Internet Access service on top of the connection_uuid
+	// you've passed in as a command line parameter
 	eiaServiceRequest := eiav2.ServiceRequest{}
 	eiaServiceRequest.SetName("EIAv2_SDK_Testing")
 	eiaServiceRequest.SetType(eiav2.SERVICETYPEV2_SINGLE)
-	eiaServiceRequest.SetConnections([]string{"<connection_uuid>"})
+	eiaServiceRequest.SetConnections([]string{connection_uuid})
 
 	routingProtocol := eiav2.DirectRoutingProtocolRequest{}
 	routingProtocol.SetType(eiav2.ROUTINGPROTOCOLTYPE_DIRECT)
