@@ -5,6 +5,5 @@
     "inlineSchemaOptions": {
         "RESOLVE_INLINE_ENUMS": true
     },
-    "enumClassPrefix": true,
-    "useOneOfDiscriminatorLookup": true
+    "enumClassPrefix": true
 }

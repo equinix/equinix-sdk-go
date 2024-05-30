@@ -43,6 +43,7 @@ clean:
 codegen:
 	${OPENAPI_GENERATOR} generate -g go \
 		--package-name ${PACKAGE_NAME} \
+		--additional-properties=useOneOfDiscriminatorLookup=true \
 		--http-user-agent "${USER_AGENT}" \
 		-p packageVersion=${PACKAGE_VERSION} \
 		--git-user-id ${GIT_ORG} \
