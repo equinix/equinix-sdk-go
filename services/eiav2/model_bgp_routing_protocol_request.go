@@ -13,8 +13,6 @@ package eiav2
 import (
 	"encoding/json"
 	"fmt"
-	"reflect"
-	"strings"
 )
 
 // checks if the BgpRoutingProtocolRequest type satisfies the MappedNullable interface at compile time
@@ -22,7 +20,12 @@ var _ MappedNullable = &BgpRoutingProtocolRequest{}
 
 // BgpRoutingProtocolRequest struct for BgpRoutingProtocolRequest
 type BgpRoutingProtocolRequest struct {
-	RoutingProtocolRequest
+	Tags []string            `json:"tags,omitempty"`
+	Type RoutingProtocolType `json:"type"`
+	// Name of the routing protocol instance.
+	Name *string `json:"name,omitempty"`
+	// Description of the routing protocol instance
+	Description      *string                                         `json:"description,omitempty"`
 	CustomerAsnRange *BgpRoutingProtocolRequestAllOfCustomerAsnRange `json:"customerAsnRange,omitempty"`
 	// Customer Autonomous System Number
 	CustomerAsn *int64 `json:"customerAsn,omitempty"`
@@ -40,7 +43,7 @@ type _BgpRoutingProtocolRequest BgpRoutingProtocolRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBgpRoutingProtocolRequest(exportPolicy BgpRoutingProtocolRequestAllOfExportPolicy, type_ RoutingProtocolType) *BgpRoutingProtocolRequest {
+func NewBgpRoutingProtocolRequest(type_ RoutingProtocolType, exportPolicy BgpRoutingProtocolRequestAllOfExportPolicy) *BgpRoutingProtocolRequest {
 	this := BgpRoutingProtocolRequest{}
 	this.Type = type_
 	this.ExportPolicy = exportPolicy
@@ -53,6 +56,126 @@ func NewBgpRoutingProtocolRequest(exportPolicy BgpRoutingProtocolRequestAllOfExp
 func NewBgpRoutingProtocolRequestWithDefaults() *BgpRoutingProtocolRequest {
 	this := BgpRoutingProtocolRequest{}
 	return &this
+}
+
+// GetTags returns the Tags field value if set, zero value otherwise.
+func (o *BgpRoutingProtocolRequest) GetTags() []string {
+	if o == nil || IsNil(o.Tags) {
+		var ret []string
+		return ret
+	}
+	return o.Tags
+}
+
+// GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BgpRoutingProtocolRequest) GetTagsOk() ([]string, bool) {
+	if o == nil || IsNil(o.Tags) {
+		return nil, false
+	}
+	return o.Tags, true
+}
+
+// HasTags returns a boolean if a field has been set.
+func (o *BgpRoutingProtocolRequest) HasTags() bool {
+	if o != nil && !IsNil(o.Tags) {
+		return true
+	}
+
+	return false
+}
+
+// SetTags gets a reference to the given []string and assigns it to the Tags field.
+func (o *BgpRoutingProtocolRequest) SetTags(v []string) {
+	o.Tags = v
+}
+
+// GetType returns the Type field value
+func (o *BgpRoutingProtocolRequest) GetType() RoutingProtocolType {
+	if o == nil {
+		var ret RoutingProtocolType
+		return ret
+	}
+
+	return o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value
+// and a boolean to check if the value has been set.
+func (o *BgpRoutingProtocolRequest) GetTypeOk() (*RoutingProtocolType, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Type, true
+}
+
+// SetType sets field value
+func (o *BgpRoutingProtocolRequest) SetType(v RoutingProtocolType) {
+	o.Type = v
+}
+
+// GetName returns the Name field value if set, zero value otherwise.
+func (o *BgpRoutingProtocolRequest) GetName() string {
+	if o == nil || IsNil(o.Name) {
+		var ret string
+		return ret
+	}
+	return *o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BgpRoutingProtocolRequest) GetNameOk() (*string, bool) {
+	if o == nil || IsNil(o.Name) {
+		return nil, false
+	}
+	return o.Name, true
+}
+
+// HasName returns a boolean if a field has been set.
+func (o *BgpRoutingProtocolRequest) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
+func (o *BgpRoutingProtocolRequest) SetName(v string) {
+	o.Name = &v
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *BgpRoutingProtocolRequest) GetDescription() string {
+	if o == nil || IsNil(o.Description) {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BgpRoutingProtocolRequest) GetDescriptionOk() (*string, bool) {
+	if o == nil || IsNil(o.Description) {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *BgpRoutingProtocolRequest) HasDescription() bool {
+	if o != nil && !IsNil(o.Description) {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *BgpRoutingProtocolRequest) SetDescription(v string) {
+	o.Description = &v
 }
 
 // GetCustomerAsnRange returns the CustomerAsnRange field value if set, zero value otherwise.
@@ -249,13 +372,15 @@ func (o BgpRoutingProtocolRequest) MarshalJSON() ([]byte, error) {
 
 func (o BgpRoutingProtocolRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	serializedRoutingProtocolRequest, errRoutingProtocolRequest := json.Marshal(o.RoutingProtocolRequest)
-	if errRoutingProtocolRequest != nil {
-		return map[string]interface{}{}, errRoutingProtocolRequest
+	if !IsNil(o.Tags) {
+		toSerialize["tags"] = o.Tags
 	}
-	errRoutingProtocolRequest = json.Unmarshal([]byte(serializedRoutingProtocolRequest), &toSerialize)
-	if errRoutingProtocolRequest != nil {
-		return map[string]interface{}{}, errRoutingProtocolRequest
+	toSerialize["type"] = o.Type
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
 	}
 	if !IsNil(o.CustomerAsnRange) {
 		toSerialize["customerAsnRange"] = o.CustomerAsnRange
@@ -286,8 +411,8 @@ func (o *BgpRoutingProtocolRequest) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"exportPolicy",
 		"type",
+		"exportPolicy",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -304,70 +429,29 @@ func (o *BgpRoutingProtocolRequest) UnmarshalJSON(data []byte) (err error) {
 		}
 	}
 
-	type BgpRoutingProtocolRequestWithoutEmbeddedStruct struct {
-		CustomerAsnRange *BgpRoutingProtocolRequestAllOfCustomerAsnRange `json:"customerAsnRange,omitempty"`
-		// Customer Autonomous System Number
-		CustomerAsn *int64 `json:"customerAsn,omitempty"`
-		// BGP authentication key
-		BgpAuthKey   *string                                    `json:"bgpAuthKey,omitempty"`
-		ExportPolicy BgpRoutingProtocolRequestAllOfExportPolicy `json:"exportPolicy"`
-		Ipv4         *RoutingProtocolIpv4Request                `json:"ipv4,omitempty"`
-		Ipv6         *RoutingProtocolIpv6Request                `json:"ipv6,omitempty"`
-	}
-
-	varBgpRoutingProtocolRequestWithoutEmbeddedStruct := BgpRoutingProtocolRequestWithoutEmbeddedStruct{}
-
-	err = json.Unmarshal(data, &varBgpRoutingProtocolRequestWithoutEmbeddedStruct)
-	if err == nil {
-		varBgpRoutingProtocolRequest := _BgpRoutingProtocolRequest{}
-		varBgpRoutingProtocolRequest.CustomerAsnRange = varBgpRoutingProtocolRequestWithoutEmbeddedStruct.CustomerAsnRange
-		varBgpRoutingProtocolRequest.CustomerAsn = varBgpRoutingProtocolRequestWithoutEmbeddedStruct.CustomerAsn
-		varBgpRoutingProtocolRequest.BgpAuthKey = varBgpRoutingProtocolRequestWithoutEmbeddedStruct.BgpAuthKey
-		varBgpRoutingProtocolRequest.ExportPolicy = varBgpRoutingProtocolRequestWithoutEmbeddedStruct.ExportPolicy
-		varBgpRoutingProtocolRequest.Ipv4 = varBgpRoutingProtocolRequestWithoutEmbeddedStruct.Ipv4
-		varBgpRoutingProtocolRequest.Ipv6 = varBgpRoutingProtocolRequestWithoutEmbeddedStruct.Ipv6
-		*o = BgpRoutingProtocolRequest(varBgpRoutingProtocolRequest)
-	} else {
-		return err
-	}
-
 	varBgpRoutingProtocolRequest := _BgpRoutingProtocolRequest{}
 
 	err = json.Unmarshal(data, &varBgpRoutingProtocolRequest)
-	if err == nil {
-		o.RoutingProtocolRequest = varBgpRoutingProtocolRequest.RoutingProtocolRequest
-	} else {
+
+	if err != nil {
 		return err
 	}
+
+	*o = BgpRoutingProtocolRequest(varBgpRoutingProtocolRequest)
 
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "tags")
+		delete(additionalProperties, "type")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "description")
 		delete(additionalProperties, "customerAsnRange")
 		delete(additionalProperties, "customerAsn")
 		delete(additionalProperties, "bgpAuthKey")
 		delete(additionalProperties, "exportPolicy")
 		delete(additionalProperties, "ipv4")
 		delete(additionalProperties, "ipv6")
-
-		// remove fields from embedded structs
-		reflectRoutingProtocolRequest := reflect.ValueOf(o.RoutingProtocolRequest)
-		for i := 0; i < reflectRoutingProtocolRequest.Type().NumField(); i++ {
-			t := reflectRoutingProtocolRequest.Type().Field(i)
-
-			if jsonTag := t.Tag.Get("json"); jsonTag != "" {
-				fieldName := ""
-				if commaIdx := strings.Index(jsonTag, ","); commaIdx > 0 {
-					fieldName = jsonTag[:commaIdx]
-				} else {
-					fieldName = jsonTag
-				}
-				if fieldName != "AdditionalProperties" {
-					delete(additionalProperties, fieldName)
-				}
-			}
-		}
-
 		o.AdditionalProperties = additionalProperties
 	}
 

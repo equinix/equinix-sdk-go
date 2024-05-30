@@ -169,6 +169,7 @@ Class | Method | HTTP request | Description
  - [ServicePurchaseOrder](docs/ServicePurchaseOrder.md)
  - [ServicePurchaseOrderAttachment](docs/ServicePurchaseOrderAttachment.md)
  - [ServiceRequest](docs/ServiceRequest.md)
+ - [ServiceRequestAllOfRoutingProtocol](docs/ServiceRequestAllOfRoutingProtocol.md)
  - [ServiceState](docs/ServiceState.md)
  - [ServiceType](docs/ServiceType.md)
  - [ServiceTypeV2](docs/ServiceTypeV2.md)

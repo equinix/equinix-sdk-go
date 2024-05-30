@@ -25,9 +25,9 @@ type ServiceRequest struct {
 	Description *string       `json:"description,omitempty"`
 	Type        ServiceTypeV2 `json:"type"`
 	// Collection of service connections uuids
-	Connections          []string               `json:"connections"`
-	RoutingProtocol      RoutingProtocolRequest `json:"routingProtocol"`
-	Order                *ServiceOrderRequest   `json:"order,omitempty"`
+	Connections          []string                           `json:"connections"`
+	RoutingProtocol      ServiceRequestAllOfRoutingProtocol `json:"routingProtocol"`
+	Order                *ServiceOrderRequest               `json:"order,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -37,7 +37,7 @@ type _ServiceRequest ServiceRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewServiceRequest(type_ ServiceTypeV2, connections []string, routingProtocol RoutingProtocolRequest) *ServiceRequest {
+func NewServiceRequest(type_ ServiceTypeV2, connections []string, routingProtocol ServiceRequestAllOfRoutingProtocol) *ServiceRequest {
 	this := ServiceRequest{}
 	this.Type = type_
 	this.Connections = connections
@@ -198,9 +198,9 @@ func (o *ServiceRequest) SetConnections(v []string) {
 }
 
 // GetRoutingProtocol returns the RoutingProtocol field value
-func (o *ServiceRequest) GetRoutingProtocol() RoutingProtocolRequest {
+func (o *ServiceRequest) GetRoutingProtocol() ServiceRequestAllOfRoutingProtocol {
 	if o == nil {
-		var ret RoutingProtocolRequest
+		var ret ServiceRequestAllOfRoutingProtocol
 		return ret
 	}
 
@@ -209,7 +209,7 @@ func (o *ServiceRequest) GetRoutingProtocol() RoutingProtocolRequest {
 
 // GetRoutingProtocolOk returns a tuple with the RoutingProtocol field value
 // and a boolean to check if the value has been set.
-func (o *ServiceRequest) GetRoutingProtocolOk() (*RoutingProtocolRequest, bool) {
+func (o *ServiceRequest) GetRoutingProtocolOk() (*ServiceRequestAllOfRoutingProtocol, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -217,7 +217,7 @@ func (o *ServiceRequest) GetRoutingProtocolOk() (*RoutingProtocolRequest, bool) 
 }
 
 // SetRoutingProtocol sets field value
-func (o *ServiceRequest) SetRoutingProtocol(v RoutingProtocolRequest) {
+func (o *ServiceRequest) SetRoutingProtocol(v ServiceRequestAllOfRoutingProtocol) {
 	o.RoutingProtocol = v
 }
 

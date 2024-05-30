@@ -29,7 +29,7 @@ import (
 )
 
 func main() {
-	serviceRequest := *openapiclient.NewServiceRequest(openapiclient.ServiceTypeV2("SINGLE"), []string{"Connections_example"}, *openapiclient.NewRoutingProtocolRequest(openapiclient.RoutingProtocolType("DIRECT"))) // ServiceRequest | Options for creating Equinix Internet Access Service product 
+	serviceRequest := *openapiclient.NewServiceRequest(openapiclient.ServiceTypeV2("SINGLE"), []string{"Connections_example"}, openapiclient.ServiceRequest_allOf_routingProtocol{BgpRoutingProtocolRequest: openapiclient.NewBgpRoutingProtocolRequest(openapiclient.RoutingProtocolType("DIRECT"), openapiclient.BgpRoutingProtocolRequest_allOf_exportPolicy("FULL"))}) // ServiceRequest | Options for creating Equinix Internet Access Service product 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

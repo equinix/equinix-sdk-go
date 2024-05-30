@@ -479,7 +479,16 @@ components:
                 type: string
                 format: uuid
             routingProtocol:
-              $ref: '#/components/schemas/RoutingProtocolRequest'
+              oneOf:
+                - $ref: '#/components/schemas/DirectRoutingProtocolRequest'
+                - $ref: '#/components/schemas/StaticRoutingProtocolRequest'
+                - $ref: '#/components/schemas/BgpRoutingProtocolRequest'
+              discriminator:
+                propertyName: type
+                mapping:
+                  DIRECT: '#/components/schemas/DirectRoutingProtocolRequest'
+                  STATIC: '#/components/schemas/StaticRoutingProtocolRequest'
+                  BGP: '#/components/schemas/BgpRoutingProtocolRequest'
             order:
               $ref: '#/components/schemas/ServiceOrderRequest'
     Service:
@@ -656,12 +665,6 @@ components:
                 Description of the routing protocol instance
               example: |
                 Routes to customer facing web servers
-          discriminator:
-            propertyName: type
-            mapping:
-              DIRECT: '#/components/schemas/DirectRoutingProtocolRequest'
-              STATIC: '#/components/schemas/StaticRoutingProtocolRequest'
-              BGP: '#/components/schemas/BgpRoutingProtocolRequest'
     DirectRoutingProtocolRequest:
       allOf:
         - $ref: '#/components/schemas/RoutingProtocolRequest'

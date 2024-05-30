@@ -9,14 +9,14 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** |  | [optional] 
 **Type** | [**ServiceTypeV2**](ServiceTypeV2.md) |  | 
 **Connections** | **[]string** | Collection of service connections uuids | 
-**RoutingProtocol** | [**RoutingProtocolRequest**](RoutingProtocolRequest.md) |  | 
+**RoutingProtocol** | [**ServiceRequestAllOfRoutingProtocol**](ServiceRequestAllOfRoutingProtocol.md) |  | 
 **Order** | Pointer to [**ServiceOrderRequest**](ServiceOrderRequest.md) |  | [optional] 
 
 ## Methods
 
 ### NewServiceRequest
 
-`func NewServiceRequest(type_ ServiceTypeV2, connections []string, routingProtocol RoutingProtocolRequest, ) *ServiceRequest`
+`func NewServiceRequest(type_ ServiceTypeV2, connections []string, routingProtocol ServiceRequestAllOfRoutingProtocol, ) *ServiceRequest`
 
 NewServiceRequest instantiates a new ServiceRequest object
 This constructor will assign default values to properties that have it defined,
@@ -148,20 +148,20 @@ SetConnections sets Connections field to given value.
 
 ### GetRoutingProtocol
 
-`func (o *ServiceRequest) GetRoutingProtocol() RoutingProtocolRequest`
+`func (o *ServiceRequest) GetRoutingProtocol() ServiceRequestAllOfRoutingProtocol`
 
 GetRoutingProtocol returns the RoutingProtocol field if non-nil, zero value otherwise.
 
 ### GetRoutingProtocolOk
 
-`func (o *ServiceRequest) GetRoutingProtocolOk() (*RoutingProtocolRequest, bool)`
+`func (o *ServiceRequest) GetRoutingProtocolOk() (*ServiceRequestAllOfRoutingProtocol, bool)`
 
 GetRoutingProtocolOk returns a tuple with the RoutingProtocol field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRoutingProtocol
 
-`func (o *ServiceRequest) SetRoutingProtocol(v RoutingProtocolRequest)`
+`func (o *ServiceRequest) SetRoutingProtocol(v ServiceRequestAllOfRoutingProtocol)`
 
 SetRoutingProtocol sets RoutingProtocol field to given value.
 
