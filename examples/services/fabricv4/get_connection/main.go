@@ -3,17 +3,17 @@ package main
 import (
 	"context"
 	"flag"
-	"github.com/equinix/equinix-sdk-go/services/fabricv4"
 	"log"
 	"os"
 	"time"
+
+	"github.com/equinix/equinix-sdk-go/services/fabricv4"
 
 	"github.com/equinix/oauth2-go"
 	"github.com/hashicorp/go-retryablehttp"
 )
 
 func main() {
-
 	// Pulls the connection_uuid from the command line so that you can input it with
 	// `go run main.go -connection_uuid="<your_connection_uuid>"`
 	var connection_uuid string
@@ -62,12 +62,10 @@ func main() {
 	// From here to the end of the example we are defining the details of our GET /fabric/v4/connections/{connectionId}
 	// request that will retrieve a Fabric Connection from its UUID
 	conn, resp, err := client.ConnectionsApi.GetConnectionByUuid(ctx, connection_uuid).Execute()
-
 	if err != nil {
 		log.Printf("Error getting Fabric Connection: %v", err)
 	}
 
 	log.Printf("Response API body from create call: %s", resp.Body)
 	log.Printf("Response struct from create API call: %v", conn)
-
 }
