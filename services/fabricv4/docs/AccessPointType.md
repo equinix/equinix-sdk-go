@@ -21,6 +21,8 @@
 
 * `METAL_NETWORK` (value: `"METAL_NETWORK"`)
 
+* `VPIC_INTERFACE` (value: `"VPIC_INTERFACE"`)
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

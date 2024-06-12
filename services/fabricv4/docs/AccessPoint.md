@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **ProviderConnectionId** | Pointer to **string** | Provider assigned Connection Id | [optional] 
 **VirtualNetwork** | Pointer to [**VirtualNetwork**](VirtualNetwork.md) |  | [optional] 
 **Interconnection** | Pointer to [**MetalInterconnection**](MetalInterconnection.md) |  | [optional] 
+**VpicInterface** | Pointer to [**VpicInterface**](VpicInterface.md) |  | [optional] 
 
 ## Methods
 
@@ -439,6 +440,31 @@ SetInterconnection sets Interconnection field to given value.
 `func (o *AccessPoint) HasInterconnection() bool`
 
 HasInterconnection returns a boolean if a field has been set.
+
+### GetVpicInterface
+
+`func (o *AccessPoint) GetVpicInterface() VpicInterface`
+
+GetVpicInterface returns the VpicInterface field if non-nil, zero value otherwise.
+
+### GetVpicInterfaceOk
+
+`func (o *AccessPoint) GetVpicInterfaceOk() (*VpicInterface, bool)`
+
+GetVpicInterfaceOk returns a tuple with the VpicInterface field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVpicInterface
+
+`func (o *AccessPoint) SetVpicInterface(v VpicInterface)`
+
+SetVpicInterface sets VpicInterface field to given value.
+
+### HasVpicInterface
+
+`func (o *AccessPoint) HasVpicInterface() bool`
+
+HasVpicInterface returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

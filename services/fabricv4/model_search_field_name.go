@@ -1,8 +1,6 @@
 /*
 Equinix Fabric API v4
 
-Equinix Fabric is an advanced software-defined interconnection solution that enables you to directly, securely and dynamically connect to distributed infrastructure and digital ecosystems on platform Equinix via a single port, Customers can use Fabric to connect to: </br> 1. Cloud Service Providers - Clouds, network and other service providers.  </br> 2. Enterprises - Other Equinix customers, vendors and partners.  </br> 3. Myself - Another customer instance deployed at Equinix. </br>
-
 Contact: api-support@equinix.com
 */
 
@@ -65,6 +63,7 @@ const (
 	SEARCHFIELDNAME_Z_SIDE_ACCESS_POINT_VIRTUAL_DEVICE_NAME        SearchFieldName = "/zSide/accessPoint/virtualDevice/name"
 	SEARCHFIELDNAME_Z_SIDE_ACCESS_POINT_VIRTUAL_DEVICE_UUID        SearchFieldName = "/zSide/accessPoint/virtualDevice/uuid"
 	SEARCHFIELDNAME_Z_SIDE_SERVICE_TOKEN_UUID                      SearchFieldName = "/zSide/serviceToken/uuid"
+	SEARCHFIELDNAME_Z_SIDE_INTERNET_ACCESS_UUID                    SearchFieldName = "/zSide/internetAccess/uuid"
 	SEARCHFIELDNAME_STAR                                           SearchFieldName = "*"
 )
 
@@ -115,6 +114,7 @@ var AllowedSearchFieldNameEnumValues = []SearchFieldName{
 	"/zSide/accessPoint/virtualDevice/name",
 	"/zSide/accessPoint/virtualDevice/uuid",
 	"/zSide/serviceToken/uuid",
+	"/zSide/internetAccess/uuid",
 	"*",
 }
 

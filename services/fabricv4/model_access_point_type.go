@@ -1,8 +1,6 @@
 /*
 Equinix Fabric API v4
 
-Equinix Fabric is an advanced software-defined interconnection solution that enables you to directly, securely and dynamically connect to distributed infrastructure and digital ecosystems on platform Equinix via a single port, Customers can use Fabric to connect to: </br> 1. Cloud Service Providers - Clouds, network and other service providers.  </br> 2. Enterprises - Other Equinix customers, vendors and partners.  </br> 3. Myself - Another customer instance deployed at Equinix. </br>
-
 Contact: api-support@equinix.com
 */
 
@@ -20,15 +18,16 @@ type AccessPointType string
 
 // List of AccessPointType
 const (
-	ACCESSPOINTTYPE_VD            AccessPointType = "VD"
-	ACCESSPOINTTYPE_VG            AccessPointType = "VG"
-	ACCESSPOINTTYPE_SP            AccessPointType = "SP"
-	ACCESSPOINTTYPE_IGW           AccessPointType = "IGW"
-	ACCESSPOINTTYPE_COLO          AccessPointType = "COLO"
-	ACCESSPOINTTYPE_SUBNET        AccessPointType = "SUBNET"
-	ACCESSPOINTTYPE_CLOUD_ROUTER  AccessPointType = "CLOUD_ROUTER"
-	ACCESSPOINTTYPE_NETWORK       AccessPointType = "NETWORK"
-	ACCESSPOINTTYPE_METAL_NETWORK AccessPointType = "METAL_NETWORK"
+	ACCESSPOINTTYPE_VD             AccessPointType = "VD"
+	ACCESSPOINTTYPE_VG             AccessPointType = "VG"
+	ACCESSPOINTTYPE_SP             AccessPointType = "SP"
+	ACCESSPOINTTYPE_IGW            AccessPointType = "IGW"
+	ACCESSPOINTTYPE_COLO           AccessPointType = "COLO"
+	ACCESSPOINTTYPE_SUBNET         AccessPointType = "SUBNET"
+	ACCESSPOINTTYPE_CLOUD_ROUTER   AccessPointType = "CLOUD_ROUTER"
+	ACCESSPOINTTYPE_NETWORK        AccessPointType = "NETWORK"
+	ACCESSPOINTTYPE_METAL_NETWORK  AccessPointType = "METAL_NETWORK"
+	ACCESSPOINTTYPE_VPIC_INTERFACE AccessPointType = "VPIC_INTERFACE"
 )
 
 // All allowed values of AccessPointType enum
@@ -42,6 +41,7 @@ var AllowedAccessPointTypeEnumValues = []AccessPointType{
 	"CLOUD_ROUTER",
 	"NETWORK",
 	"METAL_NETWORK",
+	"VPIC_INTERFACE",
 }
 
 func (v *AccessPointType) UnmarshalJSON(src []byte) error {

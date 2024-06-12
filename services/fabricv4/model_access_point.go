@@ -1,8 +1,6 @@
 /*
 Equinix Fabric API v4
 
-Equinix Fabric is an advanced software-defined interconnection solution that enables you to directly, securely and dynamically connect to distributed infrastructure and digital ecosystems on platform Equinix via a single port, Customers can use Fabric to connect to: </br> 1. Cloud Service Providers - Clouds, network and other service providers.  </br> 2. Enterprises - Other Equinix customers, vendors and partners.  </br> 3. Myself - Another customer instance deployed at Equinix. </br>
-
 Contact: api-support@equinix.com
 */
 
@@ -38,6 +36,7 @@ type AccessPoint struct {
 	ProviderConnectionId *string               `json:"providerConnectionId,omitempty"`
 	VirtualNetwork       *VirtualNetwork       `json:"virtualNetwork,omitempty"`
 	Interconnection      *MetalInterconnection `json:"interconnection,omitempty"`
+	VpicInterface        *VpicInterface        `json:"vpic_interface,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -572,6 +571,38 @@ func (o *AccessPoint) SetInterconnection(v MetalInterconnection) {
 	o.Interconnection = &v
 }
 
+// GetVpicInterface returns the VpicInterface field value if set, zero value otherwise.
+func (o *AccessPoint) GetVpicInterface() VpicInterface {
+	if o == nil || IsNil(o.VpicInterface) {
+		var ret VpicInterface
+		return ret
+	}
+	return *o.VpicInterface
+}
+
+// GetVpicInterfaceOk returns a tuple with the VpicInterface field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccessPoint) GetVpicInterfaceOk() (*VpicInterface, bool) {
+	if o == nil || IsNil(o.VpicInterface) {
+		return nil, false
+	}
+	return o.VpicInterface, true
+}
+
+// HasVpicInterface returns a boolean if a field has been set.
+func (o *AccessPoint) HasVpicInterface() bool {
+	if o != nil && !IsNil(o.VpicInterface) {
+		return true
+	}
+
+	return false
+}
+
+// SetVpicInterface gets a reference to the given VpicInterface and assigns it to the VpicInterface field.
+func (o *AccessPoint) SetVpicInterface(v VpicInterface) {
+	o.VpicInterface = &v
+}
+
 func (o AccessPoint) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -630,6 +661,9 @@ func (o AccessPoint) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Interconnection) {
 		toSerialize["interconnection"] = o.Interconnection
 	}
+	if !IsNil(o.VpicInterface) {
+		toSerialize["vpic_interface"] = o.VpicInterface
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -668,6 +702,7 @@ func (o *AccessPoint) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "providerConnectionId")
 		delete(additionalProperties, "virtualNetwork")
 		delete(additionalProperties, "interconnection")
+		delete(additionalProperties, "vpic_interface")
 		o.AdditionalProperties = additionalProperties
 	}
 

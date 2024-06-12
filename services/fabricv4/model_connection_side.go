@@ -1,8 +1,6 @@
 /*
 Equinix Fabric API v4
 
-Equinix Fabric is an advanced software-defined interconnection solution that enables you to directly, securely and dynamically connect to distributed infrastructure and digital ecosystems on platform Equinix via a single port, Customers can use Fabric to connect to: </br> 1. Cloud Service Providers - Clouds, network and other service providers.  </br> 2. Enterprises - Other Equinix customers, vendors and partners.  </br> 3. Myself - Another customer instance deployed at Equinix. </br>
-
 Contact: api-support@equinix.com
 */
 
@@ -21,6 +19,7 @@ var _ MappedNullable = &ConnectionSide{}
 type ConnectionSide struct {
 	ServiceToken   *ServiceToken             `json:"serviceToken,omitempty"`
 	AccessPoint    *AccessPoint              `json:"accessPoint,omitempty"`
+	InternetAccess *InternetAccess           `json:"internetAccess,omitempty"`
 	CompanyProfile *ConnectionCompanyProfile `json:"companyProfile,omitempty"`
 	Invitation     *ConnectionInvitation     `json:"invitation,omitempty"`
 	// Any additional information, which is not part of connection metadata or configuration
@@ -109,6 +108,38 @@ func (o *ConnectionSide) HasAccessPoint() bool {
 // SetAccessPoint gets a reference to the given AccessPoint and assigns it to the AccessPoint field.
 func (o *ConnectionSide) SetAccessPoint(v AccessPoint) {
 	o.AccessPoint = &v
+}
+
+// GetInternetAccess returns the InternetAccess field value if set, zero value otherwise.
+func (o *ConnectionSide) GetInternetAccess() InternetAccess {
+	if o == nil || IsNil(o.InternetAccess) {
+		var ret InternetAccess
+		return ret
+	}
+	return *o.InternetAccess
+}
+
+// GetInternetAccessOk returns a tuple with the InternetAccess field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ConnectionSide) GetInternetAccessOk() (*InternetAccess, bool) {
+	if o == nil || IsNil(o.InternetAccess) {
+		return nil, false
+	}
+	return o.InternetAccess, true
+}
+
+// HasInternetAccess returns a boolean if a field has been set.
+func (o *ConnectionSide) HasInternetAccess() bool {
+	if o != nil && !IsNil(o.InternetAccess) {
+		return true
+	}
+
+	return false
+}
+
+// SetInternetAccess gets a reference to the given InternetAccess and assigns it to the InternetAccess field.
+func (o *ConnectionSide) SetInternetAccess(v InternetAccess) {
+	o.InternetAccess = &v
 }
 
 // GetCompanyProfile returns the CompanyProfile field value if set, zero value otherwise.
@@ -223,6 +254,9 @@ func (o ConnectionSide) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AccessPoint) {
 		toSerialize["accessPoint"] = o.AccessPoint
 	}
+	if !IsNil(o.InternetAccess) {
+		toSerialize["internetAccess"] = o.InternetAccess
+	}
 	if !IsNil(o.CompanyProfile) {
 		toSerialize["companyProfile"] = o.CompanyProfile
 	}
@@ -256,6 +290,7 @@ func (o *ConnectionSide) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "serviceToken")
 		delete(additionalProperties, "accessPoint")
+		delete(additionalProperties, "internetAccess")
 		delete(additionalProperties, "companyProfile")
 		delete(additionalProperties, "invitation")
 		delete(additionalProperties, "additionalInfo")

@@ -54,6 +54,18 @@ func Test_fabricv4_PortsApiService(t *testing.T) {
 		assert.Equal(t, 200, httpRes.StatusCode)
 	})
 
+	t.Run("Test PortsApiService DeletePort", func(t *testing.T) {
+		t.Skip("skip test") // remove to run test
+
+		var portId string
+
+		resp, httpRes, err := apiClient.PortsApi.DeletePort(context.Background(), portId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+	})
+
 	t.Run("Test PortsApiService GetPortByUuid", func(t *testing.T) {
 		t.Skip("skip test") // remove to run test
 
