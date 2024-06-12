@@ -1,8 +1,6 @@
 /*
 Equinix Fabric API v4
 
-Equinix Fabric is an advanced software-defined interconnection solution that enables you to directly, securely and dynamically connect to distributed infrastructure and digital ecosystems on platform Equinix via a single port, Customers can use Fabric to connect to: </br> 1. Cloud Service Providers - Clouds, network and other service providers.  </br> 2. Enterprises - Other Equinix customers, vendors and partners.  </br> 3. Myself - Another customer instance deployed at Equinix. </br>
-
 Contact: api-support@equinix.com
 */
 
@@ -23,7 +21,6 @@ const (
 	PORTSETTINGSPACKAGETYPE_STANDARD       PortSettingsPackageType = "STANDARD"
 	PORTSETTINGSPACKAGETYPE_UNTAGGED       PortSettingsPackageType = "UNTAGGED"
 	PORTSETTINGSPACKAGETYPE_UNLIMITED      PortSettingsPackageType = "UNLIMITED"
-	PORTSETTINGSPACKAGETYPE_FREE           PortSettingsPackageType = "FREE"
 	PORTSETTINGSPACKAGETYPE_UNLIMITED_PLUS PortSettingsPackageType = "UNLIMITED PLUS"
 )
 
@@ -32,7 +29,6 @@ var AllowedPortSettingsPackageTypeEnumValues = []PortSettingsPackageType{
 	"STANDARD",
 	"UNTAGGED",
 	"UNLIMITED",
-	"FREE",
 	"UNLIMITED PLUS",
 }
 

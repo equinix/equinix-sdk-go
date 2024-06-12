@@ -9,8 +9,6 @@
 
 * `UNLIMITED` (value: `"UNLIMITED"`)
 
-* `FREE` (value: `"FREE"`)
-
 * `UNLIMITED_PLUS` (value: `"UNLIMITED PLUS"`)
 
 

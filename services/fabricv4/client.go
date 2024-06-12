@@ -1,8 +1,6 @@
 /*
 Equinix Fabric API v4
 
-Equinix Fabric is an advanced software-defined interconnection solution that enables you to directly, securely and dynamically connect to distributed infrastructure and digital ecosystems on platform Equinix via a single port, Customers can use Fabric to connect to: </br> 1. Cloud Service Providers - Clouds, network and other service providers.  </br> 2. Enterprises - Other Equinix customers, vendors and partners.  </br> 3. Myself - Another customer instance deployed at Equinix. </br>
-
 Contact: api-support@equinix.com
 */
 
@@ -40,7 +38,7 @@ var (
 	queryDescape    = strings.NewReplacer("%5B", "[", "%5D", "]")
 )
 
-// APIClient manages communication with the Equinix Fabric API v4 API v4.13
+// APIClient manages communication with the Equinix Fabric API v4 API v4.14
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
 	cfg    *Configuration

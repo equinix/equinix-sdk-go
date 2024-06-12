@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ServiceToken** | Pointer to [**ServiceToken**](ServiceToken.md) |  | [optional] 
 **AccessPoint** | Pointer to [**AccessPoint**](AccessPoint.md) |  | [optional] 
+**InternetAccess** | Pointer to [**InternetAccess**](InternetAccess.md) |  | [optional] 
 **CompanyProfile** | Pointer to [**ConnectionCompanyProfile**](ConnectionCompanyProfile.md) |  | [optional] 
 **Invitation** | Pointer to [**ConnectionInvitation**](ConnectionInvitation.md) |  | [optional] 
 **AdditionalInfo** | Pointer to [**[]ConnectionSideAdditionalInfo**](ConnectionSideAdditionalInfo.md) | Any additional information, which is not part of connection metadata or configuration | [optional] 
@@ -78,6 +79,31 @@ SetAccessPoint sets AccessPoint field to given value.
 `func (o *ConnectionSide) HasAccessPoint() bool`
 
 HasAccessPoint returns a boolean if a field has been set.
+
+### GetInternetAccess
+
+`func (o *ConnectionSide) GetInternetAccess() InternetAccess`
+
+GetInternetAccess returns the InternetAccess field if non-nil, zero value otherwise.
+
+### GetInternetAccessOk
+
+`func (o *ConnectionSide) GetInternetAccessOk() (*InternetAccess, bool)`
+
+GetInternetAccessOk returns a tuple with the InternetAccess field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInternetAccess
+
+`func (o *ConnectionSide) SetInternetAccess(v InternetAccess)`
+
+SetInternetAccess sets InternetAccess field to given value.
+
+### HasInternetAccess
+
+`func (o *ConnectionSide) HasInternetAccess() bool`
+
+HasInternetAccess returns a boolean if a field has been set.
 
 ### GetCompanyProfile
 

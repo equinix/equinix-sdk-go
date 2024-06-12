@@ -93,6 +93,8 @@
 
 * `Z_SIDE_SERVICE_TOKEN_UUID` (value: `"/zSide/serviceToken/uuid"`)
 
+* `Z_SIDE_INTERNET_ACCESS_UUID` (value: `"/zSide/internetAccess/uuid"`)
+
 * `STAR` (value: `"*"`)
 
 
