@@ -1,6 +1,6 @@
 get:
   tags:
-  - Firmware Sets
+  - FirmwareSets
   summary: Get Project's Firmware Sets
   description: Returns all firmware sets associated with the project or organization.
   operationId: getProjectFirmwareSets
