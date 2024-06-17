@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 ## CreateUser
 
-> User CreateUser(ctx).UserCreateInput(userCreateInput).Include(include).Exclude(exclude).Execute()
+> CreateUser(ctx).UserCreateInput(userCreateInput).Include(include).Exclude(exclude).Execute()
 
 Create a user
 
@@ -41,13 +41,11 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.UsersApi.CreateUser(context.Background()).UserCreateInput(userCreateInput).Include(include).Exclude(exclude).Execute()
+    r, err := apiClient.UsersApi.CreateUser(context.Background()).UserCreateInput(userCreateInput).Include(include).Exclude(exclude).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UsersApi.CreateUser``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateUser`: User
-    fmt.Fprintf(os.Stdout, "Response from `UsersApi.CreateUser`: %v\n", resp)
 }
 ```
 
@@ -68,7 +66,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**User**](User.md)
+ (empty response body)
 
 ### Authorization
 

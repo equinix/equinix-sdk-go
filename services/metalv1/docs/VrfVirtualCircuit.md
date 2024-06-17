@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CustomerIp** | Pointer to **string** | An IP address from the subnet that will be used on the Customer side. This parameter is optional, but if supplied, we will use the other usable IP address in the subnet as the Metal IP. By default, the last usable IP address in the subnet will be used. | [optional] 
+**CustomerIp** | Pointer to **string** | An IPv4 address from the subnet that will be used on the Customer side. This parameter is optional, but if supplied, we will use the other usable IP address in the subnet as the Metal IP. By default, the last usable IP address in the subnet will be used. | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
 **Id** | Pointer to **string** |  | [optional] 
 **Md5** | Pointer to **string** | The MD5 password for the BGP peering in plaintext (not a checksum). | [optional] 
-**MetalIp** | Pointer to **string** | An IP address from the subnet that will be used on the Metal side. This parameter is optional, but if supplied, we will use the other usable IP address in the subnet as the Customer IP. By default, the first usable IP address in the subnet will be used. | [optional] 
+**MetalIp** | Pointer to **string** | An IPv4 address from the subnet that will be used on the Metal side. This parameter is optional, but if supplied, we will use the other usable IP address in the subnet as the Customer IP. By default, the first usable IP address in the subnet will be used. | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **Port** | Pointer to [**InterconnectionPort**](InterconnectionPort.md) |  | [optional] 
 **NniVlan** | Pointer to **int32** |  | [optional] 
@@ -16,7 +16,8 @@ Name | Type | Description | Notes
 **Project** | Pointer to [**Project**](Project.md) |  | [optional] 
 **Speed** | Pointer to **int64** | integer representing bps speed | [optional] 
 **Status** | Pointer to [**VrfVirtualCircuitStatus**](VrfVirtualCircuitStatus.md) |  | [optional] 
-**Subnet** | Pointer to **string** | The /30 or /31 subnet of one of the VRF IP Blocks that will be used with the VRF for the Virtual Circuit. This subnet does not have to be an existing VRF IP reservation, as we will create the VRF IP reservation on creation if it does not exist. The Metal IP and Customer IP must be IPs from this subnet. For /30 subnets, the network and broadcast IPs cannot be used as the Metal or Customer IP. | [optional] 
+**Subnet** | Pointer to **string** | The /30 or /31 IPv4 subnet of one of the VRF IP Blocks that will be used with the VRF for the Virtual Circuit. This subnet does not have to be an existing VRF IP reservation, as we will create the VRF IP reservation on creation if it does not exist. The Metal IP and Customer IP must be IPs from this subnet. For /30 subnets, the network and broadcast IPs cannot be used as the Metal or Customer IP. | [optional] 
+**SubnetIpv6** | Pointer to **string** | The /126 or /127 IPv6 subnet of one of the VRF IP Blocks that will be used with the VRF for the Virtual Circuit. This subnet does not have to be an existing VRF IP reservation, as we will create the VRF IP reservation on creation if it does not exist. The Metal IPv6 and Customer IPv6 must be IPs from this subnet. For /126 subnets, the network and broadcast IPs cannot be used as the Metal IPv6 or Customer IPv6. The subnet specified must be contained within an already-defined IP Range for the VRF. | [optional] 
 **Tags** | Pointer to **[]string** |  | [optional] 
 **Type** | Pointer to [**VrfIpReservationType**](VrfIpReservationType.md) |  | [optional] 
 **Vrf** | [**Vrf**](Vrf.md) |  | 
@@ -366,6 +367,31 @@ SetSubnet sets Subnet field to given value.
 `func (o *VrfVirtualCircuit) HasSubnet() bool`
 
 HasSubnet returns a boolean if a field has been set.
+
+### GetSubnetIpv6
+
+`func (o *VrfVirtualCircuit) GetSubnetIpv6() string`
+
+GetSubnetIpv6 returns the SubnetIpv6 field if non-nil, zero value otherwise.
+
+### GetSubnetIpv6Ok
+
+`func (o *VrfVirtualCircuit) GetSubnetIpv6Ok() (*string, bool)`
+
+GetSubnetIpv6Ok returns a tuple with the SubnetIpv6 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSubnetIpv6
+
+`func (o *VrfVirtualCircuit) SetSubnetIpv6(v string)`
+
+SetSubnetIpv6 sets SubnetIpv6 field to given value.
+
+### HasSubnetIpv6
+
+`func (o *VrfVirtualCircuit) HasSubnetIpv6() bool`
+
+HasSubnetIpv6 returns a boolean if a field has been set.
 
 ### GetTags
 

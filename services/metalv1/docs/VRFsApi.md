@@ -17,8 +17,8 @@ Method | HTTP request | Description
 [**FindVrfRouteById**](VRFsApi.md#FindVrfRouteById) | **Get** /routes/{id} | Retrieve a VRF Route
 [**FindVrfs**](VRFsApi.md#FindVrfs) | **Get** /projects/{id}/vrfs | Retrieve all VRFs in the project
 [**GetBgpDynamicNeighbors**](VRFsApi.md#GetBgpDynamicNeighbors) | **Get** /metal-gateways/{id}/bgp-dynamic-neighbors | List BGP Dynamic Neighbors
-[**GetVrfBGPNeighbors**](VRFsApi.md#GetVrfBGPNeighbors) | **Get** /vrfs/{id}/bgp-neighbors | Retreive BGP neighbor states for the VRF
-[**GetVrfLearnedRoutes**](VRFsApi.md#GetVrfLearnedRoutes) | **Get** /vrfs/{id}/learned-routes | Retreive learned L3 routes within the VRF
+[**GetVrfBGPNeighbors**](VRFsApi.md#GetVrfBGPNeighbors) | **Get** /vrfs/{id}/bgp-neighbors | Retrieve BGP neighbor states for the VRF
+[**GetVrfLearnedRoutes**](VRFsApi.md#GetVrfLearnedRoutes) | **Get** /vrfs/{id}/learned-routes | Retrieve learned L3 routes within the VRF
 [**GetVrfRoutes**](VRFsApi.md#GetVrfRoutes) | **Get** /vrfs/{id}/routes | Retrieve all routes in the VRF
 [**UpdateVrf**](VRFsApi.md#UpdateVrf) | **Put** /vrfs/{id} | Update the VRF
 [**UpdateVrfRouteById**](VRFsApi.md#UpdateVrfRouteById) | **Put** /routes/{id} | Update a VRF Route
@@ -994,9 +994,9 @@ Name | Type | Description  | Notes
 
 ## GetVrfBGPNeighbors
 
-> VrfBGPNeighbors GetVrfBGPNeighbors(ctx, id).Execute()
+> VrfBGPNeighborsList GetVrfBGPNeighbors(ctx, id).Execute()
 
-Retreive BGP neighbor states for the VRF
+Retrieve BGP neighbor states for the VRF
 
 
 
@@ -1022,7 +1022,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `VRFsApi.GetVrfBGPNeighbors``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetVrfBGPNeighbors`: VrfBGPNeighbors
+    // response from `GetVrfBGPNeighbors`: VrfBGPNeighborsList
     fmt.Fprintf(os.Stdout, "Response from `VRFsApi.GetVrfBGPNeighbors`: %v\n", resp)
 }
 ```
@@ -1046,7 +1046,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**VrfBGPNeighbors**](VrfBGPNeighbors.md)
+[**VrfBGPNeighborsList**](VrfBGPNeighborsList.md)
 
 ### Authorization
 
@@ -1064,9 +1064,9 @@ Name | Type | Description  | Notes
 
 ## GetVrfLearnedRoutes
 
-> VrfLearnedRoutes GetVrfLearnedRoutes(ctx, id).Execute()
+> VrfLearnedRoutesList GetVrfLearnedRoutes(ctx, id).Execute()
 
-Retreive learned L3 routes within the VRF
+Retrieve learned L3 routes within the VRF
 
 
 
@@ -1092,7 +1092,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `VRFsApi.GetVrfLearnedRoutes``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetVrfLearnedRoutes`: VrfLearnedRoutes
+    // response from `GetVrfLearnedRoutes`: VrfLearnedRoutesList
     fmt.Fprintf(os.Stdout, "Response from `VRFsApi.GetVrfLearnedRoutes`: %v\n", resp)
 }
 ```
@@ -1116,7 +1116,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**VrfLearnedRoutes**](VrfLearnedRoutes.md)
+[**VrfLearnedRoutesList**](VrfLearnedRoutesList.md)
 
 ### Authorization
 

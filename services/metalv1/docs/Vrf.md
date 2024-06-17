@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **BgpDynamicNeighborsBfdEnabled** | Pointer to **bool** | Toggle BFD on dynamic bgp neighbors sessions | [optional] 
 **LocalAsn** | Pointer to **int64** | A 4-byte ASN associated with the VRF. | [optional] 
 **VirtualCircuits** | Pointer to [**[]VrfVirtualCircuit**](VrfVirtualCircuit.md) | Virtual circuits that are in the VRF | [optional] 
-**IpRanges** | Pointer to **[]string** | A list of CIDR network addresses. Like [\&quot;10.0.0.0/16\&quot;, \&quot;2001:d78::/56\&quot;]. | [optional] 
+**IpRanges** | Pointer to **[]string** | A list of CIDR network addresses. Like [\&quot;10.0.0.0/16\&quot;, \&quot;2001:d78::/59\&quot;]. | [optional] 
 **Project** | Pointer to [**Project**](Project.md) |  | [optional] 
 **Metro** | Pointer to [**Metro**](Metro.md) |  | [optional] 
 **CreatedBy** | Pointer to [**User**](User.md) |  | [optional] 

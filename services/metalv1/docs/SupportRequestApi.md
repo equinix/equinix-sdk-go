@@ -4,13 +4,13 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**RequestSuppert**](SupportRequestApi.md#RequestSuppert) | **Post** /support-requests | Create a support ticket
+[**RequestSupport**](SupportRequestApi.md#RequestSupport) | **Post** /support-requests | Create a support ticket
 
 
 
-## RequestSuppert
+## RequestSupport
 
-> RequestSuppert(ctx).SupportRequestInput(supportRequestInput).Execute()
+> RequestSupport(ctx).SupportRequestInput(supportRequestInput).Execute()
 
 Create a support ticket
 
@@ -33,9 +33,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.SupportRequestApi.RequestSuppert(context.Background()).SupportRequestInput(supportRequestInput).Execute()
+    r, err := apiClient.SupportRequestApi.RequestSupport(context.Background()).SupportRequestInput(supportRequestInput).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SupportRequestApi.RequestSuppert``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SupportRequestApi.RequestSupport``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -47,7 +47,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiRequestSuppertRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiRequestSupportRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

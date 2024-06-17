@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Currency** | Pointer to **string** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
 **Details** | Pointer to **string** |  | [optional] 
-**Plan** | Pointer to [**Plan**](Plan.md) |  | [optional] 
+**Plan** | Pointer to [**PlanIdName**](PlanIdName.md) |  | [optional] 
 **Unit** | Pointer to **string** |  | [optional] 
 **UnitPrice** | Pointer to **float32** |  | [optional] 
 **Hostname** | Pointer to **string** |  | [optional] 
@@ -143,20 +143,20 @@ HasDetails returns a boolean if a field has been set.
 
 ### GetPlan
 
-`func (o *LineItem) GetPlan() Plan`
+`func (o *LineItem) GetPlan() PlanIdName`
 
 GetPlan returns the Plan field if non-nil, zero value otherwise.
 
 ### GetPlanOk
 
-`func (o *LineItem) GetPlanOk() (*Plan, bool)`
+`func (o *LineItem) GetPlanOk() (*PlanIdName, bool)`
 
 GetPlanOk returns a tuple with the Plan field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPlan
 
-`func (o *LineItem) SetPlan(v Plan)`
+`func (o *LineItem) SetPlan(v PlanIdName)`
 
 SetPlan sets Plan field to given value.
 
