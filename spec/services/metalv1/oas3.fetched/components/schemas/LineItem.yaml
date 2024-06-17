@@ -9,7 +9,7 @@ properties:
   details:
     type: string
   plan:
-    $ref: './Plan.yaml'
+    $ref: './PlanIdName.yaml'
   unit:
     type: string
   unit_price:

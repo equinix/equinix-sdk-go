@@ -1,4 +1,6 @@
 properties:
+  meta:
+    $ref: './Meta.yaml'
   vrfs:
     items:
       $ref: './Vrf.yaml'
