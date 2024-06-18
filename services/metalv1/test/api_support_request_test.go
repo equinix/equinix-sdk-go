@@ -22,10 +22,10 @@ func Test_metalv1_SupportRequestApiService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test SupportRequestApiService RequestSuppert", func(t *testing.T) {
+	t.Run("Test SupportRequestApiService RequestSupport", func(t *testing.T) {
 		t.Skip("skip test") // remove to run test
 
-		httpRes, err := apiClient.SupportRequestApi.RequestSuppert(context.Background()).Execute()
+		httpRes, err := apiClient.SupportRequestApi.RequestSupport(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)

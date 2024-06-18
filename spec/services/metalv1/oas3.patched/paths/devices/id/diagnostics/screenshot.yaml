@@ -10,7 +10,7 @@ get:
       format: uuid
       type: string
   tags:
-    - Console Log Details
+    - ConsoleLogDetails
   responses:
     "200":
       description: An image file

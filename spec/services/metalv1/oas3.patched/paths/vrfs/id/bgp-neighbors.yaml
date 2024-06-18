@@ -1,7 +1,7 @@
 get:
   description: Provides BGP peering information such as the IP and state
    of the neighbor.
-  summary: Retreive BGP neighbor states for the VRF
+  summary: Retrieve BGP neighbor states for the VRF
   operationId: getVrfBGPNeighbors
   tags:
     - VRFs
@@ -18,7 +18,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: '../../../components/schemas/VrfBGPNeighbors.yaml'
+            $ref: '../../../components/schemas/VrfBGPNeighborsList.yaml'
       description: ok
     "403":
       content:

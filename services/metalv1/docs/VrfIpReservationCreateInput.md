@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Cidr** | **int32** | The size of the VRF IP Reservation&#39;s subnet | 
+**Cidr** | **int32** | The size of the VRF IP Reservation&#39;s subnet. The following subnet sizes are supported: - IPv4: between 22 - 29 inclusive - IPv6: exactly 64  | 
 **Customdata** | Pointer to **map[string]interface{}** |  | [optional] 
 **Details** | Pointer to **string** |  | [optional] 
-**Network** | **string** | The starting address for this VRF IP Reservation&#39;s subnet | 
+**Network** | **string** | The starting address for this VRF IP Reservation&#39;s subnet. Both IPv4 and IPv6 are supported. | 
 **Tags** | Pointer to **[]string** |  | [optional] 
 **Type** | **string** | Must be set to &#39;vrf&#39; | 
 **VrfId** | **string** | The ID of the VRF in which this VRF IP Reservation is created. The VRF must have an existing IP Range that contains the requested subnet. This field may be aliased as just &#39;vrf&#39;. | 

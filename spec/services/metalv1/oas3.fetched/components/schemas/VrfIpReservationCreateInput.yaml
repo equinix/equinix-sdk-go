@@ -1,8 +1,11 @@
 properties:
   cidr:
     type: integer
-    example: 16
-    description: The size of the VRF IP Reservation's subnet
+    example: 22
+    description: |
+      The size of the VRF IP Reservation's subnet. The following subnet sizes are supported:
+      - IPv4: between 22 - 29 inclusive
+      - IPv6: exactly 64
   customdata:
     type: object
   details:
@@ -10,7 +13,7 @@ properties:
   network:
     type: string
     example: "10.1.2.0"
-    description: "The starting address for this VRF IP Reservation's subnet"
+    description: "The starting address for this VRF IP Reservation's subnet. Both IPv4 and IPv6 are supported."
   tags:
     items:
       type: string

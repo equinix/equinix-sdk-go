@@ -920,10 +920,10 @@ tags:
     name: Facilities
   - description: >
       Firmware Sets Management. Notice: Firmware Sets are a test feature currently under active development, and only available to certain users. Please contact Customer Success for more information.
-    name: Firmware Sets
+    name: FirmwareSets
   - description: >
       Console Log Details. Notice: This is a test feature currently under active development, and only available to certain users. Please contact Customer Success for more information.
-    name: Console Log Details
+    name: ConsoleLogDetails
   - description: >
       Global BGP Range Management
     name: GlobalBgpRanges
@@ -1128,6 +1128,8 @@ x-tagGroups:
       - Devices
       - Batches
       - Capacity
+      - ConsoleLogDetails
+      - FirmwareSets
       - HardwareReservations
       - OperatingSystems
       - Ports

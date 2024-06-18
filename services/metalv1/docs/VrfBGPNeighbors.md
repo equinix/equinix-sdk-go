@@ -4,7 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**BgpNeighbors** | Pointer to **map[string]interface{}** |  | [optional] 
+**PeerIp** | Pointer to **string** |  | [optional] 
+**PeerAs** | Pointer to **int64** | The ASN of the peer that advertised the prefix. | [optional] 
+**State** | Pointer to **string** | The current status of the connection to the BGP peer. State is either up or down. | [optional] 
 
 ## Methods
 
@@ -25,30 +27,80 @@ NewVrfBGPNeighborsWithDefaults instantiates a new VrfBGPNeighbors object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetBgpNeighbors
+### GetPeerIp
 
-`func (o *VrfBGPNeighbors) GetBgpNeighbors() map[string]interface{}`
+`func (o *VrfBGPNeighbors) GetPeerIp() string`
 
-GetBgpNeighbors returns the BgpNeighbors field if non-nil, zero value otherwise.
+GetPeerIp returns the PeerIp field if non-nil, zero value otherwise.
 
-### GetBgpNeighborsOk
+### GetPeerIpOk
 
-`func (o *VrfBGPNeighbors) GetBgpNeighborsOk() (*map[string]interface{}, bool)`
+`func (o *VrfBGPNeighbors) GetPeerIpOk() (*string, bool)`
 
-GetBgpNeighborsOk returns a tuple with the BgpNeighbors field if it's non-nil, zero value otherwise
+GetPeerIpOk returns a tuple with the PeerIp field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetBgpNeighbors
+### SetPeerIp
 
-`func (o *VrfBGPNeighbors) SetBgpNeighbors(v map[string]interface{})`
+`func (o *VrfBGPNeighbors) SetPeerIp(v string)`
 
-SetBgpNeighbors sets BgpNeighbors field to given value.
+SetPeerIp sets PeerIp field to given value.
 
-### HasBgpNeighbors
+### HasPeerIp
 
-`func (o *VrfBGPNeighbors) HasBgpNeighbors() bool`
+`func (o *VrfBGPNeighbors) HasPeerIp() bool`
 
-HasBgpNeighbors returns a boolean if a field has been set.
+HasPeerIp returns a boolean if a field has been set.
+
+### GetPeerAs
+
+`func (o *VrfBGPNeighbors) GetPeerAs() int64`
+
+GetPeerAs returns the PeerAs field if non-nil, zero value otherwise.
+
+### GetPeerAsOk
+
+`func (o *VrfBGPNeighbors) GetPeerAsOk() (*int64, bool)`
+
+GetPeerAsOk returns a tuple with the PeerAs field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPeerAs
+
+`func (o *VrfBGPNeighbors) SetPeerAs(v int64)`
+
+SetPeerAs sets PeerAs field to given value.
+
+### HasPeerAs
+
+`func (o *VrfBGPNeighbors) HasPeerAs() bool`
+
+HasPeerAs returns a boolean if a field has been set.
+
+### GetState
+
+`func (o *VrfBGPNeighbors) GetState() string`
+
+GetState returns the State field if non-nil, zero value otherwise.
+
+### GetStateOk
+
+`func (o *VrfBGPNeighbors) GetStateOk() (*string, bool)`
+
+GetStateOk returns a tuple with the State field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetState
+
+`func (o *VrfBGPNeighbors) SetState(v string)`
+
+SetState sets State field to given value.
+
+### HasState
+
+`func (o *VrfBGPNeighbors) HasState() bool`
+
+HasState returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

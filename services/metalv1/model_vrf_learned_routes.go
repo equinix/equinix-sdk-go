@@ -20,7 +20,9 @@ var _ MappedNullable = &VrfLearnedRoutes{}
 
 // VrfLearnedRoutes struct for VrfLearnedRoutes
 type VrfLearnedRoutes struct {
-	LearnedRoutes        map[string]interface{} `json:"learned_routes,omitempty"`
+	Prefix *string `json:"prefix,omitempty"`
+	// The ASN of the peer that advertised the prefix.
+	OriginAs             *int64 `json:"origin_as,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -43,36 +45,68 @@ func NewVrfLearnedRoutesWithDefaults() *VrfLearnedRoutes {
 	return &this
 }
 
-// GetLearnedRoutes returns the LearnedRoutes field value if set, zero value otherwise.
-func (o *VrfLearnedRoutes) GetLearnedRoutes() map[string]interface{} {
-	if o == nil || IsNil(o.LearnedRoutes) {
-		var ret map[string]interface{}
+// GetPrefix returns the Prefix field value if set, zero value otherwise.
+func (o *VrfLearnedRoutes) GetPrefix() string {
+	if o == nil || IsNil(o.Prefix) {
+		var ret string
 		return ret
 	}
-	return o.LearnedRoutes
+	return *o.Prefix
 }
 
-// GetLearnedRoutesOk returns a tuple with the LearnedRoutes field value if set, nil otherwise
+// GetPrefixOk returns a tuple with the Prefix field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VrfLearnedRoutes) GetLearnedRoutesOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.LearnedRoutes) {
-		return map[string]interface{}{}, false
+func (o *VrfLearnedRoutes) GetPrefixOk() (*string, bool) {
+	if o == nil || IsNil(o.Prefix) {
+		return nil, false
 	}
-	return o.LearnedRoutes, true
+	return o.Prefix, true
 }
 
-// HasLearnedRoutes returns a boolean if a field has been set.
-func (o *VrfLearnedRoutes) HasLearnedRoutes() bool {
-	if o != nil && !IsNil(o.LearnedRoutes) {
+// HasPrefix returns a boolean if a field has been set.
+func (o *VrfLearnedRoutes) HasPrefix() bool {
+	if o != nil && !IsNil(o.Prefix) {
 		return true
 	}
 
 	return false
 }
 
-// SetLearnedRoutes gets a reference to the given map[string]interface{} and assigns it to the LearnedRoutes field.
-func (o *VrfLearnedRoutes) SetLearnedRoutes(v map[string]interface{}) {
-	o.LearnedRoutes = v
+// SetPrefix gets a reference to the given string and assigns it to the Prefix field.
+func (o *VrfLearnedRoutes) SetPrefix(v string) {
+	o.Prefix = &v
+}
+
+// GetOriginAs returns the OriginAs field value if set, zero value otherwise.
+func (o *VrfLearnedRoutes) GetOriginAs() int64 {
+	if o == nil || IsNil(o.OriginAs) {
+		var ret int64
+		return ret
+	}
+	return *o.OriginAs
+}
+
+// GetOriginAsOk returns a tuple with the OriginAs field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *VrfLearnedRoutes) GetOriginAsOk() (*int64, bool) {
+	if o == nil || IsNil(o.OriginAs) {
+		return nil, false
+	}
+	return o.OriginAs, true
+}
+
+// HasOriginAs returns a boolean if a field has been set.
+func (o *VrfLearnedRoutes) HasOriginAs() bool {
+	if o != nil && !IsNil(o.OriginAs) {
+		return true
+	}
+
+	return false
+}
+
+// SetOriginAs gets a reference to the given int64 and assigns it to the OriginAs field.
+func (o *VrfLearnedRoutes) SetOriginAs(v int64) {
+	o.OriginAs = &v
 }
 
 func (o VrfLearnedRoutes) MarshalJSON() ([]byte, error) {
@@ -85,8 +119,11 @@ func (o VrfLearnedRoutes) MarshalJSON() ([]byte, error) {
 
 func (o VrfLearnedRoutes) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.LearnedRoutes) {
-		toSerialize["learned_routes"] = o.LearnedRoutes
+	if !IsNil(o.Prefix) {
+		toSerialize["prefix"] = o.Prefix
+	}
+	if !IsNil(o.OriginAs) {
+		toSerialize["origin_as"] = o.OriginAs
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -110,7 +147,8 @@ func (o *VrfLearnedRoutes) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "learned_routes")
+		delete(additionalProperties, "prefix")
+		delete(additionalProperties, "origin_as")
 		o.AdditionalProperties = additionalProperties
 	}
 

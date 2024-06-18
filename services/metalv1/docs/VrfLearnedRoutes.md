@@ -4,7 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**LearnedRoutes** | Pointer to **map[string]interface{}** |  | [optional] 
+**Prefix** | Pointer to **string** |  | [optional] 
+**OriginAs** | Pointer to **int64** | The ASN of the peer that advertised the prefix. | [optional] 
 
 ## Methods
 
@@ -25,30 +26,55 @@ NewVrfLearnedRoutesWithDefaults instantiates a new VrfLearnedRoutes object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetLearnedRoutes
+### GetPrefix
 
-`func (o *VrfLearnedRoutes) GetLearnedRoutes() map[string]interface{}`
+`func (o *VrfLearnedRoutes) GetPrefix() string`
 
-GetLearnedRoutes returns the LearnedRoutes field if non-nil, zero value otherwise.
+GetPrefix returns the Prefix field if non-nil, zero value otherwise.
 
-### GetLearnedRoutesOk
+### GetPrefixOk
 
-`func (o *VrfLearnedRoutes) GetLearnedRoutesOk() (*map[string]interface{}, bool)`
+`func (o *VrfLearnedRoutes) GetPrefixOk() (*string, bool)`
 
-GetLearnedRoutesOk returns a tuple with the LearnedRoutes field if it's non-nil, zero value otherwise
+GetPrefixOk returns a tuple with the Prefix field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetLearnedRoutes
+### SetPrefix
 
-`func (o *VrfLearnedRoutes) SetLearnedRoutes(v map[string]interface{})`
+`func (o *VrfLearnedRoutes) SetPrefix(v string)`
 
-SetLearnedRoutes sets LearnedRoutes field to given value.
+SetPrefix sets Prefix field to given value.
 
-### HasLearnedRoutes
+### HasPrefix
 
-`func (o *VrfLearnedRoutes) HasLearnedRoutes() bool`
+`func (o *VrfLearnedRoutes) HasPrefix() bool`
 
-HasLearnedRoutes returns a boolean if a field has been set.
+HasPrefix returns a boolean if a field has been set.
+
+### GetOriginAs
+
+`func (o *VrfLearnedRoutes) GetOriginAs() int64`
+
+GetOriginAs returns the OriginAs field if non-nil, zero value otherwise.
+
+### GetOriginAsOk
+
+`func (o *VrfLearnedRoutes) GetOriginAsOk() (*int64, bool)`
+
+GetOriginAsOk returns a tuple with the OriginAs field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOriginAs
+
+`func (o *VrfLearnedRoutes) SetOriginAs(v int64)`
+
+SetOriginAs sets OriginAs field to given value.
+
+### HasOriginAs
+
+`func (o *VrfLearnedRoutes) HasOriginAs() bool`
+
+HasOriginAs returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

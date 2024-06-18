@@ -38,12 +38,8 @@ post:
   - $ref: '../components/parameters/Include.yaml'
   - $ref: '../components/parameters/Exclude.yaml'
   responses:
-    "201":
-      content:
-        application/json:
-          schema:
-            $ref: '../components/schemas/User.yaml'
-      description: created
+    "202":
+      description: accepted
     "401":
       content:
         application/json:
@@ -57,7 +53,7 @@ post:
             $ref: '../components/schemas/Error.yaml'
           example:
             errors:
-              - "Email address username@example.com has already been taken"
+              - "username@example.com is not a valid email address"
       description: unprocessable entity
   summary: Create a user
   tags:

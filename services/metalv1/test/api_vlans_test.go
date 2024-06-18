@@ -39,10 +39,9 @@ func Test_metalv1_VLANsApiService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.VLANsApi.DeleteVirtualNetwork(context.Background(), id).Execute()
+		httpRes, err := apiClient.VLANsApi.DeleteVirtualNetwork(context.Background(), id).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 	})
 
@@ -64,6 +63,18 @@ func Test_metalv1_VLANsApiService(t *testing.T) {
 		var id string
 
 		resp, httpRes, err := apiClient.VLANsApi.GetVirtualNetwork(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+	})
+
+	t.Run("Test VLANsApiService UpdateVirtualNetwork", func(t *testing.T) {
+		t.Skip("skip test") // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.VLANsApi.UpdateVirtualNetwork(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

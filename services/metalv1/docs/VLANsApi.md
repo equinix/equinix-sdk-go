@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**DeleteVirtualNetwork**](VLANsApi.md#DeleteVirtualNetwork) | **Delete** /virtual-networks/{id} | Delete a virtual network
 [**FindVirtualNetworks**](VLANsApi.md#FindVirtualNetworks) | **Get** /projects/{id}/virtual-networks | Retrieve all virtual networks
 [**GetVirtualNetwork**](VLANsApi.md#GetVirtualNetwork) | **Get** /virtual-networks/{id} | Get a virtual network
+[**UpdateVirtualNetwork**](VLANsApi.md#UpdateVirtualNetwork) | **Put** /virtual-networks/{id} | Updates the virtual network
 
 
 
@@ -89,7 +90,7 @@ Name | Type | Description  | Notes
 
 ## DeleteVirtualNetwork
 
-> VirtualNetwork DeleteVirtualNetwork(ctx, id).Include(include).Exclude(exclude).Execute()
+> DeleteVirtualNetwork(ctx, id).Include(include).Exclude(exclude).Execute()
 
 Delete a virtual network
 
@@ -114,13 +115,11 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.VLANsApi.DeleteVirtualNetwork(context.Background(), id).Include(include).Exclude(exclude).Execute()
+    r, err := apiClient.VLANsApi.DeleteVirtualNetwork(context.Background(), id).Include(include).Exclude(exclude).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `VLANsApi.DeleteVirtualNetwork``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `DeleteVirtualNetwork`: VirtualNetwork
-    fmt.Fprintf(os.Stdout, "Response from `VLANsApi.DeleteVirtualNetwork`: %v\n", resp)
 }
 ```
 
@@ -145,7 +144,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**VirtualNetwork**](VirtualNetwork.md)
+ (empty response body)
 
 ### Authorization
 
@@ -306,6 +305,82 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateVirtualNetwork
+
+> VirtualNetwork UpdateVirtualNetwork(ctx, id).VirtualNetworkUpdateInput(virtualNetworkUpdateInput).Include(include).Exclude(exclude).Execute()
+
+Updates the virtual network
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/equinix/equinix-sdk-go/services/metalv1"
+)
+
+func main() {
+    id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Virtual Network UUID
+    virtualNetworkUpdateInput := *openapiclient.NewVirtualNetworkUpdateInput() // VirtualNetworkUpdateInput | Virtual network to update
+    include := []string{"Inner_example"} // []string | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+    exclude := []string{"Inner_example"} // []string | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.VLANsApi.UpdateVirtualNetwork(context.Background(), id).VirtualNetworkUpdateInput(virtualNetworkUpdateInput).Include(include).Exclude(exclude).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `VLANsApi.UpdateVirtualNetwork``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateVirtualNetwork`: VirtualNetwork
+    fmt.Fprintf(os.Stdout, "Response from `VLANsApi.UpdateVirtualNetwork`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | Virtual Network UUID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateVirtualNetworkRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **virtualNetworkUpdateInput** | [**VirtualNetworkUpdateInput**](VirtualNetworkUpdateInput.md) | Virtual network to update | 
+ **include** | **[]string** | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | 
+ **exclude** | **[]string** | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | 
+
+### Return type
+
+[**VirtualNetwork**](VirtualNetwork.md)
+
+### Authorization
+
+[x_auth_token](../README.md#x_auth_token)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

@@ -1,6 +1,6 @@
 post:
   description: Support Ticket.
-  operationId: requestSuppert
+  operationId: requestSupport
   requestBody:
     content:
       application/json:
