@@ -8,6 +8,12 @@ properties:
       the last usable IP address in the subnet will be used.
     type: string
     example: "12.0.0.2"
+  customer_ipv6:
+    description: An IPv6 address from the subnet IPv6 that will be used on the Customer side. This parameter is optional,
+      but if supplied, we will use the other usable IP address in the subnet IPv6 as the Metal IPv6. By default,
+      the last usable IP address in the subnet IPv6 will be used.
+    type: string
+    example: "2604:1380:4641:a00::6"
   description:
     type: string
   id:
@@ -24,6 +30,12 @@ properties:
       the first usable IP address in the subnet will be used.
     type: string
     example: "12.0.0.1"
+  metal_ipv6:
+    description: An IPv6 address from the subnet IPv6 that will be used on the Metal side. This parameter is optional,
+      but if supplied, we will use the other usable IPv6 address in the subnet IPv6 as the Customer IP. By default,
+      the first usable IPv6 address in the subnet IPv6 will be used.
+    type: string
+    example: "2604:1380:4641:a00::6"
   name:
     type: string
   port:

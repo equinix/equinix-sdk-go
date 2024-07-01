@@ -5,9 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Count** | Pointer to **int32** |  | [optional] 
-**Type** | Pointer to **string** |  | [optional] 
+**Type** | Pointer to **string** | Values may include &#39;HDD&#39;, &#39;SSD&#39;, &#39;NVME&#39; | [optional] 
 **Size** | Pointer to **string** |  | [optional] 
-**Category** | Pointer to [**PlanSpecsDrivesInnerCategory**](PlanSpecsDrivesInnerCategory.md) |  | [optional] 
+**Category** | Pointer to **string** | Values may include &#39;boot&#39;, &#39;cache&#39;, &#39;storage&#39; | [optional] 
 
 ## Methods
 
@@ -105,20 +105,20 @@ HasSize returns a boolean if a field has been set.
 
 ### GetCategory
 
-`func (o *PlanSpecsDrivesInner) GetCategory() PlanSpecsDrivesInnerCategory`
+`func (o *PlanSpecsDrivesInner) GetCategory() string`
 
 GetCategory returns the Category field if non-nil, zero value otherwise.
 
 ### GetCategoryOk
 
-`func (o *PlanSpecsDrivesInner) GetCategoryOk() (*PlanSpecsDrivesInnerCategory, bool)`
+`func (o *PlanSpecsDrivesInner) GetCategoryOk() (*string, bool)`
 
 GetCategoryOk returns a tuple with the Category field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCategory
 
-`func (o *PlanSpecsDrivesInner) SetCategory(v PlanSpecsDrivesInnerCategory)`
+`func (o *PlanSpecsDrivesInner) SetCategory(v string)`
 
 SetCategory sets Category field to given value.
 

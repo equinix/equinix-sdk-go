@@ -1,4 +1,5 @@
 post:
+  deprecated: true
   description: Add a new email address to the current user.
   operationId: createEmail
   requestBody:

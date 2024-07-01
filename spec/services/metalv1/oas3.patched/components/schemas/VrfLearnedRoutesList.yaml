@@ -1,5 +1,5 @@
 properties:
-  learned routes:
+  learned_routes:
     items:
       $ref: './VrfLearnedRoutes.yaml'
     type: array

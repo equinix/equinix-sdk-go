@@ -94,15 +94,13 @@ properties:
               type: integer
             type:
               type: string
+              description: Values may include 'HDD', 'SSD', 'NVME'
             size:
               type: string
               example: 3.84TB
             category:
               type: string
-              enum:
-                - boot
-                - cache
-                - storage
+              description: Values may include 'boot', 'cache', 'storage'
       nics:
         type: array
         items:
@@ -113,6 +111,7 @@ properties:
               example: 2
             type:
               type: string
+              description: Values may include '1Gbps', '10Gbps', '25Gbps'
       features:
         type: object
         properties:
