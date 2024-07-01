@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Count** | Pointer to **int32** |  | [optional] 
-**Type** | Pointer to **string** |  | [optional] 
+**Type** | Pointer to **string** | Values may include &#39;1Gbps&#39;, &#39;10Gbps&#39;, &#39;25Gbps&#39; | [optional] 
 
 ## Methods
 

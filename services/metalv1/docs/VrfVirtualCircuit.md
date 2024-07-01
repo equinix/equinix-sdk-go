@@ -5,10 +5,12 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CustomerIp** | Pointer to **string** | An IPv4 address from the subnet that will be used on the Customer side. This parameter is optional, but if supplied, we will use the other usable IP address in the subnet as the Metal IP. By default, the last usable IP address in the subnet will be used. | [optional] 
+**CustomerIpv6** | Pointer to **string** | An IPv6 address from the subnet IPv6 that will be used on the Customer side. This parameter is optional, but if supplied, we will use the other usable IP address in the subnet IPv6 as the Metal IPv6. By default, the last usable IP address in the subnet IPv6 will be used. | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
 **Id** | Pointer to **string** |  | [optional] 
 **Md5** | Pointer to **string** | The MD5 password for the BGP peering in plaintext (not a checksum). | [optional] 
 **MetalIp** | Pointer to **string** | An IPv4 address from the subnet that will be used on the Metal side. This parameter is optional, but if supplied, we will use the other usable IP address in the subnet as the Customer IP. By default, the first usable IP address in the subnet will be used. | [optional] 
+**MetalIpv6** | Pointer to **string** | An IPv6 address from the subnet IPv6 that will be used on the Metal side. This parameter is optional, but if supplied, we will use the other usable IPv6 address in the subnet IPv6 as the Customer IP. By default, the first usable IPv6 address in the subnet IPv6 will be used. | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **Port** | Pointer to [**InterconnectionPort**](InterconnectionPort.md) |  | [optional] 
 **NniVlan** | Pointer to **int32** |  | [optional] 
@@ -67,6 +69,31 @@ SetCustomerIp sets CustomerIp field to given value.
 `func (o *VrfVirtualCircuit) HasCustomerIp() bool`
 
 HasCustomerIp returns a boolean if a field has been set.
+
+### GetCustomerIpv6
+
+`func (o *VrfVirtualCircuit) GetCustomerIpv6() string`
+
+GetCustomerIpv6 returns the CustomerIpv6 field if non-nil, zero value otherwise.
+
+### GetCustomerIpv6Ok
+
+`func (o *VrfVirtualCircuit) GetCustomerIpv6Ok() (*string, bool)`
+
+GetCustomerIpv6Ok returns a tuple with the CustomerIpv6 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCustomerIpv6
+
+`func (o *VrfVirtualCircuit) SetCustomerIpv6(v string)`
+
+SetCustomerIpv6 sets CustomerIpv6 field to given value.
+
+### HasCustomerIpv6
+
+`func (o *VrfVirtualCircuit) HasCustomerIpv6() bool`
+
+HasCustomerIpv6 returns a boolean if a field has been set.
 
 ### GetDescription
 
@@ -167,6 +194,31 @@ SetMetalIp sets MetalIp field to given value.
 `func (o *VrfVirtualCircuit) HasMetalIp() bool`
 
 HasMetalIp returns a boolean if a field has been set.
+
+### GetMetalIpv6
+
+`func (o *VrfVirtualCircuit) GetMetalIpv6() string`
+
+GetMetalIpv6 returns the MetalIpv6 field if non-nil, zero value otherwise.
+
+### GetMetalIpv6Ok
+
+`func (o *VrfVirtualCircuit) GetMetalIpv6Ok() (*string, bool)`
+
+GetMetalIpv6Ok returns a tuple with the MetalIpv6 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMetalIpv6
+
+`func (o *VrfVirtualCircuit) SetMetalIpv6(v string)`
+
+SetMetalIpv6 sets MetalIpv6 field to given value.
+
+### HasMetalIpv6
+
+`func (o *VrfVirtualCircuit) HasMetalIpv6() bool`
+
+HasMetalIpv6 returns a boolean if a field has been set.
 
 ### GetName
 

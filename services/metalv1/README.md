@@ -589,7 +589,6 @@ Class | Method | HTTP request | Description
  - [PlanSpecs](docs/PlanSpecs.md)
  - [PlanSpecsCpusInner](docs/PlanSpecsCpusInner.md)
  - [PlanSpecsDrivesInner](docs/PlanSpecsDrivesInner.md)
- - [PlanSpecsDrivesInnerCategory](docs/PlanSpecsDrivesInnerCategory.md)
  - [PlanSpecsFeatures](docs/PlanSpecsFeatures.md)
  - [PlanSpecsMemory](docs/PlanSpecsMemory.md)
  - [PlanSpecsNicsInner](docs/PlanSpecsNicsInner.md)

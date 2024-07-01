@@ -4,14 +4,21 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**BuildDate** | Pointer to **string** | The date on which the current OS image was build and released | [optional] 
+**DeprecationDate** | Pointer to **string** | The date when the OS is deprecated | [optional] 
 **Distro** | Pointer to **string** |  | [optional] 
 **DistroLabel** | Pointer to **string** |  | [optional] 
+**EndOfLifeDate** | Pointer to **string** | The OS no longer receives any updates and may be disabled at any time | [optional] 
+**EndOfServiceDate** | Pointer to **string** | When the OS is nearing end of life, typically 30 days before end of life | [optional] 
 **Id** | Pointer to **string** |  | [optional] 
 **Licensed** | Pointer to **bool** | Licenced OS is priced according to pricing property | [optional] 
+**LifecycleState** | Pointer to **string** | Where in the support lifecycle the OS is | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **Preinstallable** | Pointer to **bool** | Servers can be already preinstalled with OS in order to shorten provision time. | [optional] 
 **Pricing** | Pointer to **map[string]interface{}** | This object contains price per time unit and optional multiplier value if licence price depends on hardware plan or components (e.g. number of cores) | [optional] 
 **ProvisionableOn** | Pointer to **[]string** |  | [optional] 
+**ReleaseDate** | Pointer to **string** | The date when the OS was released | [optional] 
+**ReleaseNotes** | Pointer to **string** | The current release notes for this OS image, typically in Markdown format | [optional] 
 **Slug** | Pointer to **string** |  | [optional] 
 **Version** | Pointer to **string** |  | [optional] 
 **DefaultOperatingSystem** | Pointer to **bool** | Default operating system for the distro. | [optional] [readonly] 
@@ -34,6 +41,56 @@ will change when the set of required properties is changed
 NewOperatingSystemWithDefaults instantiates a new OperatingSystem object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetBuildDate
+
+`func (o *OperatingSystem) GetBuildDate() string`
+
+GetBuildDate returns the BuildDate field if non-nil, zero value otherwise.
+
+### GetBuildDateOk
+
+`func (o *OperatingSystem) GetBuildDateOk() (*string, bool)`
+
+GetBuildDateOk returns a tuple with the BuildDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBuildDate
+
+`func (o *OperatingSystem) SetBuildDate(v string)`
+
+SetBuildDate sets BuildDate field to given value.
+
+### HasBuildDate
+
+`func (o *OperatingSystem) HasBuildDate() bool`
+
+HasBuildDate returns a boolean if a field has been set.
+
+### GetDeprecationDate
+
+`func (o *OperatingSystem) GetDeprecationDate() string`
+
+GetDeprecationDate returns the DeprecationDate field if non-nil, zero value otherwise.
+
+### GetDeprecationDateOk
+
+`func (o *OperatingSystem) GetDeprecationDateOk() (*string, bool)`
+
+GetDeprecationDateOk returns a tuple with the DeprecationDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeprecationDate
+
+`func (o *OperatingSystem) SetDeprecationDate(v string)`
+
+SetDeprecationDate sets DeprecationDate field to given value.
+
+### HasDeprecationDate
+
+`func (o *OperatingSystem) HasDeprecationDate() bool`
+
+HasDeprecationDate returns a boolean if a field has been set.
 
 ### GetDistro
 
@@ -85,6 +142,56 @@ SetDistroLabel sets DistroLabel field to given value.
 
 HasDistroLabel returns a boolean if a field has been set.
 
+### GetEndOfLifeDate
+
+`func (o *OperatingSystem) GetEndOfLifeDate() string`
+
+GetEndOfLifeDate returns the EndOfLifeDate field if non-nil, zero value otherwise.
+
+### GetEndOfLifeDateOk
+
+`func (o *OperatingSystem) GetEndOfLifeDateOk() (*string, bool)`
+
+GetEndOfLifeDateOk returns a tuple with the EndOfLifeDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEndOfLifeDate
+
+`func (o *OperatingSystem) SetEndOfLifeDate(v string)`
+
+SetEndOfLifeDate sets EndOfLifeDate field to given value.
+
+### HasEndOfLifeDate
+
+`func (o *OperatingSystem) HasEndOfLifeDate() bool`
+
+HasEndOfLifeDate returns a boolean if a field has been set.
+
+### GetEndOfServiceDate
+
+`func (o *OperatingSystem) GetEndOfServiceDate() string`
+
+GetEndOfServiceDate returns the EndOfServiceDate field if non-nil, zero value otherwise.
+
+### GetEndOfServiceDateOk
+
+`func (o *OperatingSystem) GetEndOfServiceDateOk() (*string, bool)`
+
+GetEndOfServiceDateOk returns a tuple with the EndOfServiceDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEndOfServiceDate
+
+`func (o *OperatingSystem) SetEndOfServiceDate(v string)`
+
+SetEndOfServiceDate sets EndOfServiceDate field to given value.
+
+### HasEndOfServiceDate
+
+`func (o *OperatingSystem) HasEndOfServiceDate() bool`
+
+HasEndOfServiceDate returns a boolean if a field has been set.
+
 ### GetId
 
 `func (o *OperatingSystem) GetId() string`
@@ -134,6 +241,31 @@ SetLicensed sets Licensed field to given value.
 `func (o *OperatingSystem) HasLicensed() bool`
 
 HasLicensed returns a boolean if a field has been set.
+
+### GetLifecycleState
+
+`func (o *OperatingSystem) GetLifecycleState() string`
+
+GetLifecycleState returns the LifecycleState field if non-nil, zero value otherwise.
+
+### GetLifecycleStateOk
+
+`func (o *OperatingSystem) GetLifecycleStateOk() (*string, bool)`
+
+GetLifecycleStateOk returns a tuple with the LifecycleState field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLifecycleState
+
+`func (o *OperatingSystem) SetLifecycleState(v string)`
+
+SetLifecycleState sets LifecycleState field to given value.
+
+### HasLifecycleState
+
+`func (o *OperatingSystem) HasLifecycleState() bool`
+
+HasLifecycleState returns a boolean if a field has been set.
 
 ### GetName
 
@@ -234,6 +366,56 @@ SetProvisionableOn sets ProvisionableOn field to given value.
 `func (o *OperatingSystem) HasProvisionableOn() bool`
 
 HasProvisionableOn returns a boolean if a field has been set.
+
+### GetReleaseDate
+
+`func (o *OperatingSystem) GetReleaseDate() string`
+
+GetReleaseDate returns the ReleaseDate field if non-nil, zero value otherwise.
+
+### GetReleaseDateOk
+
+`func (o *OperatingSystem) GetReleaseDateOk() (*string, bool)`
+
+GetReleaseDateOk returns a tuple with the ReleaseDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetReleaseDate
+
+`func (o *OperatingSystem) SetReleaseDate(v string)`
+
+SetReleaseDate sets ReleaseDate field to given value.
+
+### HasReleaseDate
+
+`func (o *OperatingSystem) HasReleaseDate() bool`
+
+HasReleaseDate returns a boolean if a field has been set.
+
+### GetReleaseNotes
+
+`func (o *OperatingSystem) GetReleaseNotes() string`
+
+GetReleaseNotes returns the ReleaseNotes field if non-nil, zero value otherwise.
+
+### GetReleaseNotesOk
+
+`func (o *OperatingSystem) GetReleaseNotesOk() (*string, bool)`
+
+GetReleaseNotesOk returns a tuple with the ReleaseNotes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetReleaseNotes
+
+`func (o *OperatingSystem) SetReleaseNotes(v string)`
+
+SetReleaseNotes sets ReleaseNotes field to given value.
+
+### HasReleaseNotes
+
+`func (o *OperatingSystem) HasReleaseNotes() bool`
+
+HasReleaseNotes returns a boolean if a field has been set.
 
 ### GetSlug
 
