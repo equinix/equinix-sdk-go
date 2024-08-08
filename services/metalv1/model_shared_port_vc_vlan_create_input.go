@@ -18,7 +18,7 @@ var _ MappedNullable = &SharedPortVCVlanCreateInput{}
 
 // SharedPortVCVlanCreateInput struct for SharedPortVCVlanCreateInput
 type SharedPortVCVlanCreateInput struct {
-	// The preferred email used for communication and notifications about the Equinix Fabric interconnection. Required when using a Project API key. Optional and defaults to the primary user email address when using a User API key.
+	// The preferred email used for communication and notifications about the Equinix Fabric interconnection. Optional and defaults to the primary user email address when using a User API key or the organization owner email address when using a Project API key.
 	ContactEmail *string `json:"contact_email,omitempty"`
 	Description  *string `json:"description,omitempty"`
 	Name         string  `json:"name"`

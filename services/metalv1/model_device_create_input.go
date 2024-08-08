@@ -87,10 +87,6 @@ func NewDeviceCreateInput(operatingSystem string, plan string) *DeviceCreateInpu
 	this.NoSshKeys = &noSshKeys
 	this.OperatingSystem = operatingSystem
 	this.Plan = plan
-	var privateIpv4SubnetSize int32 = 28
-	this.PrivateIpv4SubnetSize = &privateIpv4SubnetSize
-	var publicIpv4SubnetSize int32 = 31
-	this.PublicIpv4SubnetSize = &publicIpv4SubnetSize
 	return &this
 }
 
@@ -107,10 +103,6 @@ func NewDeviceCreateInputWithDefaults() *DeviceCreateInput {
 	this.Locked = &locked
 	var noSshKeys bool = false
 	this.NoSshKeys = &noSshKeys
-	var privateIpv4SubnetSize int32 = 28
-	this.PrivateIpv4SubnetSize = &privateIpv4SubnetSize
-	var publicIpv4SubnetSize int32 = 31
-	this.PublicIpv4SubnetSize = &publicIpv4SubnetSize
 	return &this
 }
 

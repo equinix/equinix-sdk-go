@@ -11,7 +11,6 @@ package metalv1
 import (
 	"encoding/json"
 	"fmt"
-	"os"
 	"time"
 )
 
@@ -20,7 +19,6 @@ var _ MappedNullable = &UserCreateInput{}
 
 // UserCreateInput struct for UserCreateInput
 type UserCreateInput struct {
-	Avatar               **os.File              `json:"avatar,omitempty"`
 	CompanyName          *string                `json:"company_name,omitempty"`
 	CompanyUrl           *string                `json:"company_url,omitempty"`
 	Customdata           map[string]interface{} `json:"customdata,omitempty"`
@@ -60,38 +58,6 @@ func NewUserCreateInput(emails []EmailInput, firstName string, lastName string) 
 func NewUserCreateInputWithDefaults() *UserCreateInput {
 	this := UserCreateInput{}
 	return &this
-}
-
-// GetAvatar returns the Avatar field value if set, zero value otherwise.
-func (o *UserCreateInput) GetAvatar() *os.File {
-	if o == nil || IsNil(o.Avatar) {
-		var ret *os.File
-		return ret
-	}
-	return *o.Avatar
-}
-
-// GetAvatarOk returns a tuple with the Avatar field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *UserCreateInput) GetAvatarOk() (**os.File, bool) {
-	if o == nil || IsNil(o.Avatar) {
-		return nil, false
-	}
-	return o.Avatar, true
-}
-
-// HasAvatar returns a boolean if a field has been set.
-func (o *UserCreateInput) HasAvatar() bool {
-	if o != nil && !IsNil(o.Avatar) {
-		return true
-	}
-
-	return false
-}
-
-// SetAvatar gets a reference to the given *os.File and assigns it to the Avatar field.
-func (o *UserCreateInput) SetAvatar(v *os.File) {
-	o.Avatar = &v
 }
 
 // GetCompanyName returns the CompanyName field value if set, zero value otherwise.
@@ -592,9 +558,6 @@ func (o UserCreateInput) MarshalJSON() ([]byte, error) {
 
 func (o UserCreateInput) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Avatar) {
-		toSerialize["avatar"] = o.Avatar
-	}
 	if !IsNil(o.CompanyName) {
 		toSerialize["company_name"] = o.CompanyName
 	}
@@ -682,7 +645,6 @@ func (o *UserCreateInput) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "avatar")
 		delete(additionalProperties, "company_name")
 		delete(additionalProperties, "company_url")
 		delete(additionalProperties, "customdata")

@@ -20,7 +20,7 @@ var _ MappedNullable = &DedicatedPortCreateInput{}
 type DedicatedPortCreateInput struct {
 	// The billing account name of the Equinix Fabric account.
 	BillingAccountName *string `json:"billing_account_name,omitempty"`
-	// The preferred email used for communication and notifications about the Equinix Fabric interconnection. Required when using a Project API key. Optional and defaults to the primary user email address when using a User API key.
+	// The preferred email used for communication and notifications about the Equinix Fabric interconnection. Optional and defaults to the primary user email address when using a User API key or the organization owner email address when using a Project API key.
 	ContactEmail *string `json:"contact_email,omitempty"`
 	Description  *string `json:"description,omitempty"`
 	FacilityId   *string `json:"facility_id,omitempty"`
