@@ -1,6 +1,6 @@
 # Development
 
-## Contents
+## Repository Contents
 
 - `Makefile` includes tasks to generate and validate the full SDK and to onboard a new service to the SDK
 - `Makefile.<service>` includes tasks for generating and validating a single service from its OpenAPI spec
@@ -83,3 +83,24 @@ While we aim to publish OpenAPI specs that can be used as-is for code generation
 3. ``patchfilename`` should be in format: ``<patch_index>-<short_patch_decription_or_identifier>.patch``
 4. Run ``make -f Makefile.<service> patch`` to reapply the changes to the fetched OpenAPI spec and confirm that the patched spec includes the expected changes
 5. Run `make -f Makefile.<service> generate` to regenerate the code using the patched spec and confirm that the code generates successfully and works as expected
+
+## Update the OpenAPI spec for a service
+
+The steps below may vary by service, depending on decisions made by the CODEOWNERS for that service, but by default the process for pulling in the latest OpenAPI specification for a service and regenerating the code is:
+
+1. Publish the updated OpenAPI specification (that happens outside of this repository)
+2. If necessary, update the `SPEC_BASE_URL` and `SPEC_ROOT_FILE` to match the URL where the updated OpenAPI specification is published
+3. Go to the [Actions page](https://github.com/equinix/equinix-sdk-go/actions) and find the sync workflow for your service, and click the workflow name.  The name will be in the format `Sync <service> API spec`.
+4. Click the gray `Run workflow` button, check that `main` is selected in the popup, and then click the green `Run workflow` button in the popup to run the sync workflow
+5.  The sync workflow will open a Pull Request (PR) that includes the OpenAPI specification updates as well as any code changes caused by the update.
+
+After merging your service changes you can release a new version of this SDK that includes your updates.
+
+## Release the SDK
+
+This SDK uses a Semantic Release action to automatically determine the next release version based on Conventional Commit tags in commit messages.  There is a push-button workflow for releasing the SDK after changes are made:
+
+1. Navigate to the [Release workflow](https://github.com/equinix/equinix-sdk-go/actions/workflows/release.yaml).
+2. Click the gray `Run workflow` button, check that `main` is selected in the popup, and then click the green `Run workflow` button in the popup to run the sync workflow
+
+The release workflow will determine the next version, regenerate the code with the updated version number, and create a [GitHub Release](https://github.com/equinix/equinix-sdk-go/releases).
