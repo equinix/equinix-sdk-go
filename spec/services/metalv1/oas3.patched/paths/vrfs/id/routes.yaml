@@ -1,8 +1,6 @@
 post:
   description: |
     Create a route in a VRF. Currently only static default routes are supported.
-
-    Notice: VRFs are a test feature currently under active development, and only available to certain users. Please contact Customer Success for more information.
   operationId: createVrfRoute
   parameters:
     - description: VRF UUID
