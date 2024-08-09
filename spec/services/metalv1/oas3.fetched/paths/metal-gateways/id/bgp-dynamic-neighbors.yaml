@@ -4,8 +4,6 @@ post:
     Create a VRF BGP Dynamic Neighbor range.
 
     BGP Dynamic Neighbor records are limited to 2 per Virtual Network.
-
-    Notice: VRFs are a test feature currently under active development, and only available to certain users. Please contact Customer Success for more information.
   operationId: createBgpDynamicNeighbor
   parameters:
     - description: Metal Gateway UUID
@@ -55,7 +53,7 @@ post:
             $ref: '../../../components/schemas/Error.yaml'
       description: Unprocessable entity
   tags:
-  - VRFs
+  - MetalGateways
 
 get:
   description: Returns the list of VRF BGP Dynamic Neighbors for this Metal Gateway
@@ -91,4 +89,4 @@ get:
             $ref: '../../../components/schemas/Error.yaml'
       description: Not Found
   tags:
-  - VRFs
+  - MetalGateways

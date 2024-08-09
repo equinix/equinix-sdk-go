@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **BillingAccountName** | Pointer to **string** | The billing account name of the Equinix Fabric account. | [optional] 
-**ContactEmail** | Pointer to **string** | The preferred email used for communication and notifications about the Equinix Fabric interconnection. Required when using a Project API key. Optional and defaults to the primary user email address when using a User API key. | [optional] 
+**ContactEmail** | Pointer to **string** | The preferred email used for communication and notifications about the Equinix Fabric interconnection. Optional and defaults to the primary user email address when using a User API key or the organization owner email address when using a Project API key. | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
 **FacilityId** | Pointer to **string** |  | [optional] 
 **Metro** | **string** | A Metro ID or code. For interconnections with Dedicated Ports, this will be the location of the issued Dedicated Ports. | 

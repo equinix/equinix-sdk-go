@@ -9,7 +9,6 @@ Name | Type | Description | Notes
 **Customdata** | Pointer to **map[string]interface{}** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
 **Enforce2faAt** | Pointer to **time.Time** | Force to all members to have enabled the two factor authentication after that date, unless the value is null | [optional] 
-**Logo** | Pointer to **string** | The logo for the organization; must be base64-encoded image data | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **Twitter** | Pointer to **string** |  | [optional] 
 **Website** | Pointer to **string** |  | [optional] 
@@ -157,31 +156,6 @@ SetEnforce2faAt sets Enforce2faAt field to given value.
 `func (o *OrganizationInput) HasEnforce2faAt() bool`
 
 HasEnforce2faAt returns a boolean if a field has been set.
-
-### GetLogo
-
-`func (o *OrganizationInput) GetLogo() string`
-
-GetLogo returns the Logo field if non-nil, zero value otherwise.
-
-### GetLogoOk
-
-`func (o *OrganizationInput) GetLogoOk() (*string, bool)`
-
-GetLogoOk returns a tuple with the Logo field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLogo
-
-`func (o *OrganizationInput) SetLogo(v string)`
-
-SetLogo sets Logo field to given value.
-
-### HasLogo
-
-`func (o *OrganizationInput) HasLogo() bool`
-
-HasLogo returns a boolean if a field has been set.
 
 ### GetName
 

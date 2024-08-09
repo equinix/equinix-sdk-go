@@ -13,7 +13,7 @@ info:
     of your Equinix Metal resources, including devices, networks, addresses, organizations,
     projects, and your user account. Every feature of the Equinix Metal web interface is accessible through the API.
 
-    The API docs are generated from the Equinix Metal OpenAPI specification and are officially hosted at <https://metal.equinix.com/developers/api>.
+    The API docs are generated from the Equinix Metal OpenAPI specification and are officially hosted at <https://deploy.equinix.com/developers/api/metal/>.
 
     # Common Parameters
 
@@ -89,8 +89,8 @@ info:
     To exclude resources, and optimize response delivery, use the `exclude` query parameter. The `exclude` parameter is generally accepted in `GET`, `POST`, `PUT`, and `PATCH` requests for fields with nested object responses. When excluded, these fields will be replaced with an object that contains only an `href` field.
   license:
     name: Equinix Metal
-    url: https://metal.equinix.com/legal/
-  termsOfService: https://metal.equinix.com/legal/
+    url: https://www.equinix.com/about/legal/terms
+  termsOfService: https://www.equinix.com/about/legal/privacy
 security:
   - x_auth_token: []
 servers:
@@ -849,7 +849,7 @@ tags:
       API keys can be deleted without affecting any of the resources created with them. Access to applications using the API can be revoked by deleting the API key used to authenticate the application.
     name: Authentication
     externalDocs:
-      url: https://metal.equinix.com/developers/docs/accounts/users/#api-keys
+      url: https://deploy.equinix.com/developers/docs/metal/identity-access-management/api-keys/
   - description: |
       Equinix Metal uses conventional HTTP response codes to indicate the success or failure of an API request.
 
@@ -881,44 +881,44 @@ tags:
   - description: >
       Manage device batches. See project endpoints to list batches for a
       particular project. Check out the product docs to learn more about [Batch
-      Deployment](https://metal.equinix.com/developers/docs/deploy/batch-deployment/).
+      Deployment](https://deploy.equinix.com/developers/docs/metal/deploy/batch-deployment/).
     name: Batches
     externalDocs:
-      url: https://metal.equinix.com/developers/docs/deploy/batch-deployment/
+      url: https://deploy.equinix.com/developers/docs/metal/deploy/batch-deployment/
   - description: >
       Manage BGP configs and sessions. See device endpoints to create and list BGP
       sessions for a particular device. Check out the product docs to learn more
       about [Local and Global
-      BGP](https://metal.equinix.com/developers/docs/networking/local-global-bgp/).
+      BGP](https://deploy.equinix.com/developers/docs/metal/bgp/bgp-on-equinix-metal/#local-bgp-vs-global-bgp).
     name: BGP
     externalDocs:
-      url: https://metal.equinix.com/developers/docs/bgp/bgp-on-equinix-metal/
+      url: https://deploy.equinix.com/developers/docs/metal/bgp/bgp-on-equinix-metal/
   - description: >
       Capacity Management. Check out the product docs to learn more about
-      [Capacity](https://metal.equinix.com/developers/docs/locations/capacity/).
+      [Capacity](https://deploy.equinix.com/developers/docs/metal/locations/capacity/).
     name: Capacity
     externalDocs:
-      url: https://metal.equinix.com/developers/docs/locations/capacity/
+      url: https://deploy.equinix.com/developers/docs/metal/locations/capacity/
   - description: >
       Network Interconnections. See Instructions to create Network
       Interconnections at Check out the product docs to learn more about [Equinix
-      Fabric](https://metal.equinix.com/developers/docs/networking/fabric/).
+      Fabric](https://deploy.equinix.com/developers/docs/metal/interconnections/dedicated-ports-fabric/).
     name: Interconnections
     externalDocs:
-      url: https://metal.equinix.com/developers/docs/equinix-interconnect/introduction/
+      url: https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/
   - description: >
       Device Management. Check out the product docs to learn more about [Server
-      Devices](https://metal.equinix.com/developers/docs/servers/).
+      Devices](https://deploy.equinix.com/developers/docs/metal/hardware/).
     name: Devices
     externalDocs:
-      url: https://metal.equinix.com/developers/docs/deploy/on-demand/
+      url: https://deploy.equinix.com/developers/docs/metal/deploy/on-demand/
   - description: Email Management
     name: Emails
   - description: Event Management
     name: Events
   - description: >
       Facility Management. Check out the product docs to learn more about
-      [Facilities](https://metal.equinix.com/developers/docs/locations/).
+      [Facilities](https://deploy.equinix.com/developers/docs/metal/locations/metros/).
     name: Facilities
   - description: >
       Firmware Sets Management. Notice: Firmware Sets are a test feature currently under active development, and only available to certain users. Please contact Customer Success for more information.
@@ -930,172 +930,172 @@ tags:
       Global BGP Range Management
     name: GlobalBgpRanges
     externalDocs:
-      url: https://metal.equinix.com/developers/docs/bgp/global-bgp/
+      url: https://deploy.equinix.com/developers/docs/metal/bgp/global-bgp/
   - description: >
       Hardware Reservation Management. Check out the product docs to learn more
       about [Reserved
-      Hardware](https://metal.equinix.com/developers/docs/deploy/reserved/).
+      Hardware](https://deploy.equinix.com/developers/docs/metal/deploy/reserved/).
     name: HardwareReservations
     externalDocs:
-      url: https://metal.equinix.com/developers/docs/deploy/reserved/
+      url: https://deploy.equinix.com/developers/docs/metal/deploy/reserved/
   - description: >
       Incident Management
     name: Incidents
     externalDocs:
-      url: https://metal.equinix.com/developers/docs/locations/maintenance/
+      url: https://deploy.equinix.com/developers/docs/metal/locations/maintenance/
   - description: >
       Manage invitations. See project endpoints to create a new invitation. Check
       out the product docs to learn more about
-      [Invitations](https://metal.equinix.com/developers/docs/accounts/).
+      [Invitations](https://deploy.equinix.com/developers/docs/metal/identity-access-management/users//).
     name: Invitations
   - description: >
       Manage IP addresses. See device and project endpoints to list and create IP
       assignments for a particular project or device. Check out the product docs
       to learn more about [the basic networking
-      features](https://metal.equinix.com/developers/docs/networking/standard-ips/).
+      features](https://deploy.equinix.com/developers/docs/metal/networking/ip-addresses/).
     name: IPAddresses
     externalDocs:
-      url: https://metal.equinix.com/developers/docs/networking/
+      url: https://deploy.equinix.com/developers/docs/metal/networking/server-level-networking/
   - description: >
       Manage licenses. See project endpoints to list and create licenses for a
       particular project.
     name: Licenses
     externalDocs:
-      url: https://metal.equinix.com/developers/docs/operating-systems/licensed/
+      url: https://deploy.equinix.com/developers/docs/metal/operating-systems/licensed/
   - description: >
       Membership Management (Project). Check out the product docs to learn more
-      about [Membership](https://metal.equinix.com/developers/docs/accounts/).
+      about [Membership](https://deploy.equinix.com/developers/docs/metal/projects/managing-a-project/).
     name: Memberships
     externalDocs:
-      url: https://metal.equinix.com/developers/docs/accounts/projects/#inviting-a-user-to-a-project
+      url: https://deploy.equinix.com/developers/docs/metal/projects/managing-a-project/
   - description: >
       Device Metadata
     name: Metadata
     externalDocs:
-      url: https://metal.equinix.com/developers/docs/server-metadata/metadata/
+      url: https://deploy.equinix.com/developers/docs/metal/server-metadata/metadata/
   - description: >
       Metal Gateway Management.Check out the product docs to learn more about
       [Metal
-      Gateways](https://metal.equinix.com/developers/docs/networking/metal-gateway/).
+      Gateways](https://deploy.equinix.com/developers/docs/metal/networking/vrf/).
     name: MetalGateways
     externalDocs:
-      url: https://metal.equinix.com/developers/docs/networking/metal-gateway/
-  - description: Metro Management. Check out the product docs to learn more about [Metros](https://metal.equinix.com/developers/docs/locations/metros/).
+      url: https://deploy.equinix.com/developers/docs/metal/networking/vrf/
+  - description: Metro Management. Check out the product docs to learn more about [Metros](https://deploy.equinix.com/developers/docs/metal/locations/metros/).
     name: Metros
     externalDocs:
-      url: https://metal.equinix.com/developers/docs/locations/metros/
+      url: https://deploy.equinix.com/developers/docs/metal/locations/metros/
   - description: >
       Operating System Management. Check out the product docs to learn more about
       [Operating Systems
-      choices](https://metal.equinix.com/developers/docs/operating-systems/).
+      choices](https://deploy.equinix.com/developers/docs/metal/operating-systems/licensed/).
     name: OperatingSystems
     externalDocs:
-      url: https://metal.equinix.com/developers/docs/operating-systems/supported/
+      url: https://deploy.equinix.com/developers/docs/metal/operating-systems/supported/
   - description:
       Organizations Management. Check out the product docs to learn more
-      about [Organizations](https://metal.equinix.com/developers/docs/accounts/).
+      about [Organizations](https://deploy.equinix.com/developers/docs/metal/identity-access-management/organizations/).
     name: Organizations
   - description: >
-      OTP Management. Check out the product docs to learn more about [OTP](https://metal.equinix.com/developers/docs/accounts/two-factor-authentication/).
+      OTP Management. Check out the product docs to learn more about [OTP](https://deploy.equinix.com/developers/docs/metal/identity-access-management/users/#multi-factor-authentication).
     externalDocs:
-      url: https://metal.equinix.com/developers/docs/accounts/two-factor-authentication/
+      url: https://deploy.equinix.com/developers/docs/metal/identity-access-management/users/#multi-factor-authentication
     name: OTPs
   - description: >
       Password Reset Token Management
     name: PasswordResetTokens
     externalDocs:
-      url: https://metal.equinix.com/developers/docs/accounts/users/#security-settings
+      url: https://deploy.equinix.com/developers/docs/metal/identity-access-management/users/#changing-your-password
   - description: >
       Payment Method Management
     name: PaymentMethods
     externalDocs:
-      url: https://metal.equinix.com/developers/docs/billing/payment-methods/
+      url: https://deploy.equinix.com/developers/docs/metal/billing/payment-methods/
   - description: >
       Plan Management (Device). Check out the product docs to learn more
-      about [Device Plans](https://metal.equinix.com/developers/docs/servers/).
+      about [Device Plans](https://deploy.equinix.com/developers/docs/metal/hardware/).
     name: Plans
   - description: >
-      Port ManagementCheck out the product docs to learn more about [Port
-      configurations](https://metal.equinix.com/developers/docs/layer2-networking/overview/).
+      Port Management. Check out the product docs to learn more about [Port
+      configurations](https://deploy.equinix.com/developers/docs/metal/layer2-networking/overview/).
     name: Ports
     externalDocs:
-      url: https://metal.equinix.com/developers/docs/layer2-networking/overview/
+      url: https://deploy.equinix.com/developers/docs/metal/layer2-networking/overview/
   - description: >
       Project Management. Check out the product docs to learn more about
-      [Projects](https://metal.equinix.com/developers/docs/accounts/projects/).
+      [Projects](https://deploy.equinix.com/developers/docs/metal/projects/).
     externalDocs:
-      url: https://metal.equinix.com/developers/docs/accounts/projects/
+      url: https://deploy.equinix.com/developers/docs/metal/projects/
     name: Projects
   - description: >
       Self Service Reservations
     name: SelfServiceReservations
     externalDocs:
-      url: https://metal.equinix.com/developers/docs/deploy/reserved/
+      url: https://deploy.equinix.com/developers/docs/metal/deploy/reserved/
   - description: >
       Spot Market Pricing and Requests Management. Check out the product docs to learn more
       about [Spot Market
-      features](https://metal.equinix.com/developers/docs/deploy/spot-market/).
+      features](https://deploy.equinix.com/developers/docs/metal/deploy/spot-market/).
     name: SpotMarket
     externalDocs:
-      url: https://metal.equinix.com/developers/docs/deploy/spot-market/
+      url: https://deploy.equinix.com/developers/docs/metal/deploy/spot-market/
   - description: >
       Manage SSH keys. See project endpoints to list and create project-level SSH
       keys.
     name: SSHKeys
     externalDocs:
-      url: https://metal.equinix.com/developers/docs/accounts/ssh-keys/
+      url: https://deploy.equinix.com/developers/docs/metal/identity-access-management/ssh-keys/
   - description: >
       Support request
     name: SupportRequest
     externalDocs:
-      url: https://metal.equinix.com/developers/docs/accounts/support/
+      url: https://deploy.equinix.com/developers/docs/metal/support-center/
   - description: >
       Project Transfer Requests Management
     name: TransferRequests
     externalDocs:
-      url: https://metal.equinix.com/developers/docs/accounts/projects/#transferring-a-project
+      url: https://deploy.equinix.com/developers/docs/metal/projects/#transferring-a-project
   - description: >
       Two Factor Authentication Management. Check out the product docs to learn
       more about
-      [2FA](https://metal.equinix.com/developers/docs/accounts/two-factor-authentication/).
+      [2FA](https://deploy.equinix.com/developers/docs/metal/identity-access-management/users/#multi-factor-authentication).
     name: TwoFactorAuth
     externalDocs:
-      url: https://metal.equinix.com/developers/docs/accounts/two-factor-authentication/
+      url: https://deploy.equinix.com/developers/docs/metal/identity-access-management/users/#multi-factor-authentication
   - description: Usage Management
     name: Usages
     externalDocs:
-      url: https://metal.equinix.com/developers/docs/billing/checking-usage/
+      url: https://deploy.equinix.com/developers/docs/metal/billing/checking-usage/
   - description: >
       Userdata Management
     name: Userdata
     externalDocs:
-      url: https://metal.equinix.com/developers/docs/server-metadata/user-data/
+      url: https://deploy.equinix.com/developers/docs/metal/server-metadata/user-data/
   - description: >
       User Management
     name: Users
     externalDocs:
-      url: https://metal.equinix.com/developers/docs/accounts/users/
+      url: https://deploy.equinix.com/developers/docs/metal/identity-access-management/users/
   - description: >
       User Verification Token Management
     name: UserVerificationTokens
     externalDocs:
-      url: https://metal.equinix.com/developers/docs/accounts/organizations/#managing-team-members
+      url: https://deploy.equinix.com/developers/docs/metal/identity-access-management/organizations/#adding-team-members-to-an-organization
   - description: >
       Manage virtual networks (VLANs). See project endpoints to list and create
       virtual networks. Check out the product docs to learn more about
-      [VLANs](https://metal.equinix.com/developers/docs/networking/layer2/).
+      [VLANs](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vlans/).
     name: VLANs
     externalDocs:
-      url: https://metal.equinix.com/developers/docs/networking/layer2/
+      url: https://deploy.equinix.com/developers/docs/metal/layer2-networking/vlans/
   - description: >
       Volume Management (Block Storage). Notice: Block storage support will
-      be deprecated soon. Please check here: https://metal.equinix.com/developers/docs/resilience-recovery/elastic-block-storage/
+      be deprecated soon. Please check here: https://deploy.equinix.com/developers/docs/metal/storage/storage-appliances/
       for more details.
     name: Volumes
     externalDocs:
-      url: https://metal.equinix.com/developers/docs/resilience-recovery/elastic-block-storage/
+      url: https://deploy.equinix.com/developers/docs/metal/storage/storage-appliances/
   - description: >
-      VRF Management. A VRF is a project-scoped virtual router resource that defines a collection of customer-managed IP blocks that can be used in BGP peering on one or more virtual networks. Metal Gateways and Interconnection Virtual Circuits can take advantage of VRFs to enable Layer 3 routing with bespoke network ranges. Notice: VRFs are a test feature currently under active development, and only available to certain users. Please contact Customer Success for more information.
+      VRF Management. A VRF is a project-scoped virtual router resource that defines a collection of customer-managed IP blocks that can be used in BGP peering on one or more virtual networks. Metal Gateways and Interconnection Virtual Circuits can take advantage of VRFs to enable Layer 3 routing with custom network ranges.
     name: VRFs
 x-tagGroups:
   - name: Accounts and Organization

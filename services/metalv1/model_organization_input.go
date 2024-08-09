@@ -23,12 +23,10 @@ type OrganizationInput struct {
 	Customdata     map[string]interface{} `json:"customdata,omitempty"`
 	Description    *string                `json:"description,omitempty"`
 	// Force to all members to have enabled the two factor authentication after that date, unless the value is null
-	Enforce2faAt *time.Time `json:"enforce_2fa_at,omitempty"`
-	// The logo for the organization; must be base64-encoded image data
-	Logo                 *string `json:"logo,omitempty"`
-	Name                 *string `json:"name,omitempty"`
-	Twitter              *string `json:"twitter,omitempty"`
-	Website              *string `json:"website,omitempty"`
+	Enforce2faAt         *time.Time `json:"enforce_2fa_at,omitempty"`
+	Name                 *string    `json:"name,omitempty"`
+	Twitter              *string    `json:"twitter,omitempty"`
+	Website              *string    `json:"website,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -211,38 +209,6 @@ func (o *OrganizationInput) SetEnforce2faAt(v time.Time) {
 	o.Enforce2faAt = &v
 }
 
-// GetLogo returns the Logo field value if set, zero value otherwise.
-func (o *OrganizationInput) GetLogo() string {
-	if o == nil || IsNil(o.Logo) {
-		var ret string
-		return ret
-	}
-	return *o.Logo
-}
-
-// GetLogoOk returns a tuple with the Logo field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OrganizationInput) GetLogoOk() (*string, bool) {
-	if o == nil || IsNil(o.Logo) {
-		return nil, false
-	}
-	return o.Logo, true
-}
-
-// HasLogo returns a boolean if a field has been set.
-func (o *OrganizationInput) HasLogo() bool {
-	if o != nil && !IsNil(o.Logo) {
-		return true
-	}
-
-	return false
-}
-
-// SetLogo gets a reference to the given string and assigns it to the Logo field.
-func (o *OrganizationInput) SetLogo(v string) {
-	o.Logo = &v
-}
-
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *OrganizationInput) GetName() string {
 	if o == nil || IsNil(o.Name) {
@@ -364,9 +330,6 @@ func (o OrganizationInput) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Enforce2faAt) {
 		toSerialize["enforce_2fa_at"] = o.Enforce2faAt
 	}
-	if !IsNil(o.Logo) {
-		toSerialize["logo"] = o.Logo
-	}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
@@ -403,7 +366,6 @@ func (o *OrganizationInput) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "customdata")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "enforce_2fa_at")
-		delete(additionalProperties, "logo")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "twitter")
 		delete(additionalProperties, "website")

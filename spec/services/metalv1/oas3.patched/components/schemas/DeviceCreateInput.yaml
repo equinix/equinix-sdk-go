@@ -116,7 +116,6 @@ properties:
     type: string
     example: "c3.large.x86"
   private_ipv4_subnet_size:
-    default: 28
     description: Deprecated. Use ip_addresses. Subnet range for addresses allocated
       to this device.
     format: int32
@@ -136,7 +135,6 @@ properties:
       type: string
     type: array
   public_ipv4_subnet_size:
-    default: 31
     description: Deprecated. Use ip_addresses. Subnet range for addresses allocated
       to this device. Your project must have addresses available for a non-default
       request.

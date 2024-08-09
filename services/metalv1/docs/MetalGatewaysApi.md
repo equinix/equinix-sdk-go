@@ -4,13 +4,91 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**CreateBgpDynamicNeighbor**](MetalGatewaysApi.md#CreateBgpDynamicNeighbor) | **Post** /metal-gateways/{id}/bgp-dynamic-neighbors | Create a VRF BGP Dynamic Neighbor range
 [**CreateMetalGateway**](MetalGatewaysApi.md#CreateMetalGateway) | **Post** /projects/{project_id}/metal-gateways | Create a metal gateway
 [**CreateMetalGatewayElasticIp**](MetalGatewaysApi.md#CreateMetalGatewayElasticIp) | **Post** /metal-gateways/{id}/ips | Create a Metal Gateway Elastic IP
 [**DeleteMetalGateway**](MetalGatewaysApi.md#DeleteMetalGateway) | **Delete** /metal-gateways/{id} | Deletes the metal gateway
 [**FindMetalGatewayById**](MetalGatewaysApi.md#FindMetalGatewayById) | **Get** /metal-gateways/{id} | Returns the metal gateway
 [**FindMetalGatewaysByProject**](MetalGatewaysApi.md#FindMetalGatewaysByProject) | **Get** /projects/{project_id}/metal-gateways | Returns all metal gateways for a project
+[**GetBgpDynamicNeighbors**](MetalGatewaysApi.md#GetBgpDynamicNeighbors) | **Get** /metal-gateways/{id}/bgp-dynamic-neighbors | List BGP Dynamic Neighbors
 [**GetMetalGatewayElasticIps**](MetalGatewaysApi.md#GetMetalGatewayElasticIps) | **Get** /metal-gateways/{id}/ips | List Metal Gateway Elastic IPs
 
+
+
+## CreateBgpDynamicNeighbor
+
+> BgpDynamicNeighbor CreateBgpDynamicNeighbor(ctx, id).BgpDynamicNeighborCreateInput(bgpDynamicNeighborCreateInput).Include(include).Exclude(exclude).Execute()
+
+Create a VRF BGP Dynamic Neighbor range
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/equinix/equinix-sdk-go/services/metalv1"
+)
+
+func main() {
+    id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Metal Gateway UUID
+    bgpDynamicNeighborCreateInput := *openapiclient.NewBgpDynamicNeighborCreateInput("192.168.1.0/25", int64(12345)) // BgpDynamicNeighborCreateInput | 
+    include := []string{"Inner_example"} // []string | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+    exclude := []string{"Inner_example"} // []string | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MetalGatewaysApi.CreateBgpDynamicNeighbor(context.Background(), id).BgpDynamicNeighborCreateInput(bgpDynamicNeighborCreateInput).Include(include).Exclude(exclude).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MetalGatewaysApi.CreateBgpDynamicNeighbor``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateBgpDynamicNeighbor`: BgpDynamicNeighbor
+    fmt.Fprintf(os.Stdout, "Response from `MetalGatewaysApi.CreateBgpDynamicNeighbor`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | Metal Gateway UUID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateBgpDynamicNeighborRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **bgpDynamicNeighborCreateInput** | [**BgpDynamicNeighborCreateInput**](BgpDynamicNeighborCreateInput.md) |  | 
+ **include** | **[]string** | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | 
+ **exclude** | **[]string** | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | 
+
+### Return type
+
+[**BgpDynamicNeighbor**](BgpDynamicNeighbor.md)
+
+### Authorization
+
+[x_auth_token](../README.md#x_auth_token)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## CreateMetalGateway
@@ -381,6 +459,80 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**MetalGatewayList**](MetalGatewayList.md)
+
+### Authorization
+
+[x_auth_token](../README.md#x_auth_token)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetBgpDynamicNeighbors
+
+> BgpDynamicNeighborList GetBgpDynamicNeighbors(ctx, id).Include(include).Exclude(exclude).Execute()
+
+List BGP Dynamic Neighbors
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/equinix/equinix-sdk-go/services/metalv1"
+)
+
+func main() {
+    id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Metal Gateway UUID
+    include := []string{"Inner_example"} // []string | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+    exclude := []string{"Inner_example"} // []string | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MetalGatewaysApi.GetBgpDynamicNeighbors(context.Background(), id).Include(include).Exclude(exclude).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MetalGatewaysApi.GetBgpDynamicNeighbors``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetBgpDynamicNeighbors`: BgpDynamicNeighborList
+    fmt.Fprintf(os.Stdout, "Response from `MetalGatewaysApi.GetBgpDynamicNeighbors`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | Metal Gateway UUID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetBgpDynamicNeighborsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **include** | **[]string** | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | 
+ **exclude** | **[]string** | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | 
+
+### Return type
+
+[**BgpDynamicNeighborList**](BgpDynamicNeighborList.md)
 
 ### Authorization
 

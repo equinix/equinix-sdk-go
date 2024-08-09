@@ -22,6 +22,18 @@ func Test_metalv1_MetalGatewaysApiService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
+	t.Run("Test MetalGatewaysApiService CreateBgpDynamicNeighbor", func(t *testing.T) {
+		t.Skip("skip test") // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.MetalGatewaysApi.CreateBgpDynamicNeighbor(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+	})
+
 	t.Run("Test MetalGatewaysApiService CreateMetalGateway", func(t *testing.T) {
 		t.Skip("skip test") // remove to run test
 
@@ -84,6 +96,18 @@ func Test_metalv1_MetalGatewaysApiService(t *testing.T) {
 		resp, err = apiClient.MetalGatewaysApi.FindMetalGatewaysByProject(context.Background(), projectId).ExecuteWithPagination()
 		require.Nil(t, err)
 		require.NotNil(t, resp)
+	})
+
+	t.Run("Test MetalGatewaysApiService GetBgpDynamicNeighbors", func(t *testing.T) {
+		t.Skip("skip test") // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.MetalGatewaysApi.GetBgpDynamicNeighbors(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
 	})
 
 	t.Run("Test MetalGatewaysApiService GetMetalGatewayElasticIps", func(t *testing.T) {
