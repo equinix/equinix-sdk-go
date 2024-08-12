@@ -32,8 +32,9 @@ type ConnectionPostRequest struct {
 	ZSide      ConnectionSide        `json:"zSide"`
 	Project    *Project              `json:"project,omitempty"`
 	// Connection additional information
-	AdditionalInfo       []ConnectionSideAdditionalInfo `json:"additionalInfo,omitempty"`
-	AdditionalProperties map[string]interface{}
+	AdditionalInfo          []ConnectionSideAdditionalInfo `json:"additionalInfo,omitempty"`
+	MarketplaceSubscription *MarketplaceSubscription       `json:"marketplaceSubscription,omitempty"`
+	AdditionalProperties    map[string]interface{}
 }
 
 type _ConnectionPostRequest ConnectionPostRequest
@@ -365,6 +366,38 @@ func (o *ConnectionPostRequest) SetAdditionalInfo(v []ConnectionSideAdditionalIn
 	o.AdditionalInfo = v
 }
 
+// GetMarketplaceSubscription returns the MarketplaceSubscription field value if set, zero value otherwise.
+func (o *ConnectionPostRequest) GetMarketplaceSubscription() MarketplaceSubscription {
+	if o == nil || IsNil(o.MarketplaceSubscription) {
+		var ret MarketplaceSubscription
+		return ret
+	}
+	return *o.MarketplaceSubscription
+}
+
+// GetMarketplaceSubscriptionOk returns a tuple with the MarketplaceSubscription field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ConnectionPostRequest) GetMarketplaceSubscriptionOk() (*MarketplaceSubscription, bool) {
+	if o == nil || IsNil(o.MarketplaceSubscription) {
+		return nil, false
+	}
+	return o.MarketplaceSubscription, true
+}
+
+// HasMarketplaceSubscription returns a boolean if a field has been set.
+func (o *ConnectionPostRequest) HasMarketplaceSubscription() bool {
+	if o != nil && !IsNil(o.MarketplaceSubscription) {
+		return true
+	}
+
+	return false
+}
+
+// SetMarketplaceSubscription gets a reference to the given MarketplaceSubscription and assigns it to the MarketplaceSubscription field.
+func (o *ConnectionPostRequest) SetMarketplaceSubscription(v MarketplaceSubscription) {
+	o.MarketplaceSubscription = &v
+}
+
 func (o ConnectionPostRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -395,6 +428,9 @@ func (o ConnectionPostRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AdditionalInfo) {
 		toSerialize["additionalInfo"] = o.AdditionalInfo
+	}
+	if !IsNil(o.MarketplaceSubscription) {
+		toSerialize["marketplaceSubscription"] = o.MarketplaceSubscription
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -455,6 +491,7 @@ func (o *ConnectionPostRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "zSide")
 		delete(additionalProperties, "project")
 		delete(additionalProperties, "additionalInfo")
+		delete(additionalProperties, "marketplaceSubscription")
 		o.AdditionalProperties = additionalProperties
 	}
 

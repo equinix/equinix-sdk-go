@@ -18,7 +18,7 @@ var _ MappedNullable = &Md5{}
 // Md5 struct for Md5
 type Md5 struct {
 	Type                 *Md5Type `json:"type,omitempty"`
-	Id                   *string  `json:"id,omitempty"`
+	Id                   *int32   `json:"id,omitempty"`
 	Password             *string  `json:"password,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -75,9 +75,9 @@ func (o *Md5) SetType(v Md5Type) {
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *Md5) GetId() string {
+func (o *Md5) GetId() int32 {
 	if o == nil || IsNil(o.Id) {
-		var ret string
+		var ret int32
 		return ret
 	}
 	return *o.Id
@@ -85,7 +85,7 @@ func (o *Md5) GetId() string {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Md5) GetIdOk() (*string, bool) {
+func (o *Md5) GetIdOk() (*int32, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -101,8 +101,8 @@ func (o *Md5) HasId() bool {
 	return false
 }
 
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *Md5) SetId(v string) {
+// SetId gets a reference to the given int32 and assigns it to the Id field.
+func (o *Md5) SetId(v int32) {
 	o.Id = &v
 }
 

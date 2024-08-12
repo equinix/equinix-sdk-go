@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | Pointer to [**Md5Type**](Md5Type.md) |  | [optional] 
-**Id** | Pointer to **string** |  | [optional] 
+**Id** | Pointer to **int32** |  | [optional] 
 **Password** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -54,20 +54,20 @@ HasType returns a boolean if a field has been set.
 
 ### GetId
 
-`func (o *Md5) GetId() string`
+`func (o *Md5) GetId() int32`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *Md5) GetIdOk() (*string, bool)`
+`func (o *Md5) GetIdOk() (*int32, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *Md5) SetId(v string)`
+`func (o *Md5) SetId(v int32)`
 
 SetId sets Id field to given value.
 

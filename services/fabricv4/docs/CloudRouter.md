@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **ConnectionsCount** | Pointer to **int32** | Number of connections associated with this Access point | [optional] 
 **DistinctIpv4PrefixesCount** | Pointer to **int32** | Number of distinct ipv4 routes | [optional] 
 **DistinctIpv6PrefixesCount** | Pointer to **int32** | Number of distinct ipv6 routes | [optional] 
+**MarketplaceSubscription** | Pointer to [**MarketplaceSubscription**](MarketplaceSubscription.md) |  | [optional] 
 **ChangeLog** | Pointer to [**Changelog**](Changelog.md) |  | [optional] 
 **Change** | Pointer to [**CloudRouterChange**](CloudRouterChange.md) |  | [optional] 
 **Type** | Pointer to [**CloudRouterPostRequestType**](CloudRouterPostRequestType.md) |  | [optional] 
@@ -292,6 +293,31 @@ SetDistinctIpv6PrefixesCount sets DistinctIpv6PrefixesCount field to given value
 `func (o *CloudRouter) HasDistinctIpv6PrefixesCount() bool`
 
 HasDistinctIpv6PrefixesCount returns a boolean if a field has been set.
+
+### GetMarketplaceSubscription
+
+`func (o *CloudRouter) GetMarketplaceSubscription() MarketplaceSubscription`
+
+GetMarketplaceSubscription returns the MarketplaceSubscription field if non-nil, zero value otherwise.
+
+### GetMarketplaceSubscriptionOk
+
+`func (o *CloudRouter) GetMarketplaceSubscriptionOk() (*MarketplaceSubscription, bool)`
+
+GetMarketplaceSubscriptionOk returns a tuple with the MarketplaceSubscription field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMarketplaceSubscription
+
+`func (o *CloudRouter) SetMarketplaceSubscription(v MarketplaceSubscription)`
+
+SetMarketplaceSubscription sets MarketplaceSubscription field to given value.
+
+### HasMarketplaceSubscription
+
+`func (o *CloudRouter) HasMarketplaceSubscription() bool`
+
+HasMarketplaceSubscription returns a boolean if a field has been set.
 
 ### GetChangeLog
 

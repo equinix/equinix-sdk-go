@@ -19,15 +19,11 @@ type PrecisionTimeChangeOperationOp string
 // List of precisionTimeChangeOperation_op
 const (
 	PRECISIONTIMECHANGEOPERATIONOP_REPLACE PrecisionTimeChangeOperationOp = "replace"
-	PRECISIONTIMECHANGEOPERATIONOP_ADD     PrecisionTimeChangeOperationOp = "add"
-	PRECISIONTIMECHANGEOPERATIONOP_REMOVE  PrecisionTimeChangeOperationOp = "remove"
 )
 
 // All allowed values of PrecisionTimeChangeOperationOp enum
 var AllowedPrecisionTimeChangeOperationOpEnumValues = []PrecisionTimeChangeOperationOp{
 	"replace",
-	"add",
-	"remove",
 }
 
 func (v *PrecisionTimeChangeOperationOp) UnmarshalJSON(src []byte) error {

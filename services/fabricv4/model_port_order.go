@@ -20,6 +20,8 @@ type PortOrder struct {
 	PurchaseOrder *PortOrderPurchaseOrder `json:"purchaseOrder,omitempty"`
 	// Order Identification
 	OrderId *string `json:"orderId,omitempty"`
+	// Customer order reference Id
+	CustomerReferenceId *string `json:"customerReferenceId,omitempty"`
 	// Order Reference Number
 	OrderNumber *string `json:"orderNumber,omitempty"`
 	// Equinix-assigned order identifier
@@ -109,6 +111,38 @@ func (o *PortOrder) HasOrderId() bool {
 // SetOrderId gets a reference to the given string and assigns it to the OrderId field.
 func (o *PortOrder) SetOrderId(v string) {
 	o.OrderId = &v
+}
+
+// GetCustomerReferenceId returns the CustomerReferenceId field value if set, zero value otherwise.
+func (o *PortOrder) GetCustomerReferenceId() string {
+	if o == nil || IsNil(o.CustomerReferenceId) {
+		var ret string
+		return ret
+	}
+	return *o.CustomerReferenceId
+}
+
+// GetCustomerReferenceIdOk returns a tuple with the CustomerReferenceId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PortOrder) GetCustomerReferenceIdOk() (*string, bool) {
+	if o == nil || IsNil(o.CustomerReferenceId) {
+		return nil, false
+	}
+	return o.CustomerReferenceId, true
+}
+
+// HasCustomerReferenceId returns a boolean if a field has been set.
+func (o *PortOrder) HasCustomerReferenceId() bool {
+	if o != nil && !IsNil(o.CustomerReferenceId) {
+		return true
+	}
+
+	return false
+}
+
+// SetCustomerReferenceId gets a reference to the given string and assigns it to the CustomerReferenceId field.
+func (o *PortOrder) SetCustomerReferenceId(v string) {
+	o.CustomerReferenceId = &v
 }
 
 // GetOrderNumber returns the OrderNumber field value if set, zero value otherwise.
@@ -223,6 +257,9 @@ func (o PortOrder) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.OrderId) {
 		toSerialize["orderId"] = o.OrderId
 	}
+	if !IsNil(o.CustomerReferenceId) {
+		toSerialize["customerReferenceId"] = o.CustomerReferenceId
+	}
 	if !IsNil(o.OrderNumber) {
 		toSerialize["orderNumber"] = o.OrderNumber
 	}
@@ -256,6 +293,7 @@ func (o *PortOrder) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "purchaseOrder")
 		delete(additionalProperties, "orderId")
+		delete(additionalProperties, "customerReferenceId")
 		delete(additionalProperties, "orderNumber")
 		delete(additionalProperties, "uuid")
 		delete(additionalProperties, "signature")

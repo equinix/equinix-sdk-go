@@ -26,8 +26,10 @@ type RoutingProtocolBGPData struct {
 	// Equinix asn
 	EquinixAsn *int64 `json:"equinixAsn,omitempty"`
 	// BGP authorization key
-	BgpAuthKey *string             `json:"bgpAuthKey,omitempty"`
-	Bfd        *RoutingProtocolBFD `json:"bfd,omitempty"`
+	BgpAuthKey *string `json:"bgpAuthKey,omitempty"`
+	// Enable AS number override
+	AsOverrideEnabled *bool               `json:"asOverrideEnabled,omitempty"`
+	Bfd               *RoutingProtocolBFD `json:"bfd,omitempty"`
 	// Routing Protocol URI
 	Href *string `json:"href,omitempty"`
 	// Routing protocol identifier
@@ -280,6 +282,38 @@ func (o *RoutingProtocolBGPData) HasBgpAuthKey() bool {
 // SetBgpAuthKey gets a reference to the given string and assigns it to the BgpAuthKey field.
 func (o *RoutingProtocolBGPData) SetBgpAuthKey(v string) {
 	o.BgpAuthKey = &v
+}
+
+// GetAsOverrideEnabled returns the AsOverrideEnabled field value if set, zero value otherwise.
+func (o *RoutingProtocolBGPData) GetAsOverrideEnabled() bool {
+	if o == nil || IsNil(o.AsOverrideEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.AsOverrideEnabled
+}
+
+// GetAsOverrideEnabledOk returns a tuple with the AsOverrideEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RoutingProtocolBGPData) GetAsOverrideEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.AsOverrideEnabled) {
+		return nil, false
+	}
+	return o.AsOverrideEnabled, true
+}
+
+// HasAsOverrideEnabled returns a boolean if a field has been set.
+func (o *RoutingProtocolBGPData) HasAsOverrideEnabled() bool {
+	if o != nil && !IsNil(o.AsOverrideEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetAsOverrideEnabled gets a reference to the given bool and assigns it to the AsOverrideEnabled field.
+func (o *RoutingProtocolBGPData) SetAsOverrideEnabled(v bool) {
+	o.AsOverrideEnabled = &v
 }
 
 // GetBfd returns the Bfd field value if set, zero value otherwise.
@@ -537,6 +571,9 @@ func (o RoutingProtocolBGPData) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.BgpAuthKey) {
 		toSerialize["bgpAuthKey"] = o.BgpAuthKey
 	}
+	if !IsNil(o.AsOverrideEnabled) {
+		toSerialize["asOverrideEnabled"] = o.AsOverrideEnabled
+	}
 	if !IsNil(o.Bfd) {
 		toSerialize["bfd"] = o.Bfd
 	}
@@ -587,6 +624,7 @@ func (o *RoutingProtocolBGPData) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "customerAsn")
 		delete(additionalProperties, "equinixAsn")
 		delete(additionalProperties, "bgpAuthKey")
+		delete(additionalProperties, "asOverrideEnabled")
 		delete(additionalProperties, "bfd")
 		delete(additionalProperties, "href")
 		delete(additionalProperties, "uuid")

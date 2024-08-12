@@ -8,6 +8,8 @@ Name | Type | Description | Notes
 **EquinixPeerIp** | Pointer to **string** | Equinix side peering ip | [optional] 
 **Enabled** | **bool** | Admin status for the BGP session | 
 **OutboundASPrependCount** | Pointer to **int64** | AS path prepend count | [optional] 
+**InboundMED** | Pointer to **int64** | inbound Multi Exit Discriminator attribute | [optional] 
+**OutboundMED** | Pointer to **int64** | inbound Multi Exit Discriminator attribute | [optional] 
 **Operation** | Pointer to [**BGPConnectionOperation**](BGPConnectionOperation.md) |  | [optional] 
 
 ## Methods
@@ -118,6 +120,56 @@ SetOutboundASPrependCount sets OutboundASPrependCount field to given value.
 `func (o *BGPConnectionIpv6) HasOutboundASPrependCount() bool`
 
 HasOutboundASPrependCount returns a boolean if a field has been set.
+
+### GetInboundMED
+
+`func (o *BGPConnectionIpv6) GetInboundMED() int64`
+
+GetInboundMED returns the InboundMED field if non-nil, zero value otherwise.
+
+### GetInboundMEDOk
+
+`func (o *BGPConnectionIpv6) GetInboundMEDOk() (*int64, bool)`
+
+GetInboundMEDOk returns a tuple with the InboundMED field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInboundMED
+
+`func (o *BGPConnectionIpv6) SetInboundMED(v int64)`
+
+SetInboundMED sets InboundMED field to given value.
+
+### HasInboundMED
+
+`func (o *BGPConnectionIpv6) HasInboundMED() bool`
+
+HasInboundMED returns a boolean if a field has been set.
+
+### GetOutboundMED
+
+`func (o *BGPConnectionIpv6) GetOutboundMED() int64`
+
+GetOutboundMED returns the OutboundMED field if non-nil, zero value otherwise.
+
+### GetOutboundMEDOk
+
+`func (o *BGPConnectionIpv6) GetOutboundMEDOk() (*int64, bool)`
+
+GetOutboundMEDOk returns a tuple with the OutboundMED field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOutboundMED
+
+`func (o *BGPConnectionIpv6) SetOutboundMED(v int64)`
+
+SetOutboundMED sets OutboundMED field to given value.
+
+### HasOutboundMED
+
+`func (o *BGPConnectionIpv6) HasOutboundMED() bool`
+
+HasOutboundMED returns a boolean if a field has been set.
 
 ### GetOperation
 

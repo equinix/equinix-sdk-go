@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **CustomerAsn** | Pointer to **int64** | Customer asn | [optional] 
 **EquinixAsn** | Pointer to **int64** | Equinix asn | [optional] 
 **BgpAuthKey** | Pointer to **string** | BGP authorization key | [optional] 
+**AsOverrideEnabled** | Pointer to **bool** | Enable AS number override | [optional] 
 **Bfd** | Pointer to [**RoutingProtocolBFD**](RoutingProtocolBFD.md) |  | [optional] 
 **Href** | Pointer to **string** | Routing Protocol URI | [optional] 
 **Uuid** | Pointer to **string** | Routing protocol identifier | [optional] 
@@ -214,6 +215,31 @@ SetBgpAuthKey sets BgpAuthKey field to given value.
 `func (o *RoutingProtocolData) HasBgpAuthKey() bool`
 
 HasBgpAuthKey returns a boolean if a field has been set.
+
+### GetAsOverrideEnabled
+
+`func (o *RoutingProtocolData) GetAsOverrideEnabled() bool`
+
+GetAsOverrideEnabled returns the AsOverrideEnabled field if non-nil, zero value otherwise.
+
+### GetAsOverrideEnabledOk
+
+`func (o *RoutingProtocolData) GetAsOverrideEnabledOk() (*bool, bool)`
+
+GetAsOverrideEnabledOk returns a tuple with the AsOverrideEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAsOverrideEnabled
+
+`func (o *RoutingProtocolData) SetAsOverrideEnabled(v bool)`
+
+SetAsOverrideEnabled sets AsOverrideEnabled field to given value.
+
+### HasAsOverrideEnabled
+
+`func (o *RoutingProtocolData) HasAsOverrideEnabled() bool`
+
+HasAsOverrideEnabled returns a boolean if a field has been set.
 
 ### GetBfd
 

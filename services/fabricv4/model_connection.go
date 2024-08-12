@@ -40,10 +40,11 @@ type Connection struct {
 	GeoScope   *GeoScopeType         `json:"geoScope,omitempty"`
 	Redundancy *ConnectionRedundancy `json:"redundancy,omitempty"`
 	// Connection property derived from access point locations
-	IsRemote  *bool                `json:"isRemote,omitempty"`
-	Direction *ConnectionDirection `json:"direction,omitempty"`
-	ASide     ConnectionSide       `json:"aSide"`
-	ZSide     ConnectionSide       `json:"zSide"`
+	IsRemote                *bool                    `json:"isRemote,omitempty"`
+	Direction               *ConnectionDirection     `json:"direction,omitempty"`
+	ASide                   ConnectionSide           `json:"aSide"`
+	ZSide                   ConnectionSide           `json:"zSide"`
+	MarketplaceSubscription *MarketplaceSubscription `json:"marketplaceSubscription,omitempty"`
 	// Connection additional information
 	AdditionalInfo       []ConnectionSideAdditionalInfo `json:"additionalInfo,omitempty"`
 	Project              *Project                       `json:"project,omitempty"`
@@ -642,6 +643,38 @@ func (o *Connection) SetZSide(v ConnectionSide) {
 	o.ZSide = v
 }
 
+// GetMarketplaceSubscription returns the MarketplaceSubscription field value if set, zero value otherwise.
+func (o *Connection) GetMarketplaceSubscription() MarketplaceSubscription {
+	if o == nil || IsNil(o.MarketplaceSubscription) {
+		var ret MarketplaceSubscription
+		return ret
+	}
+	return *o.MarketplaceSubscription
+}
+
+// GetMarketplaceSubscriptionOk returns a tuple with the MarketplaceSubscription field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Connection) GetMarketplaceSubscriptionOk() (*MarketplaceSubscription, bool) {
+	if o == nil || IsNil(o.MarketplaceSubscription) {
+		return nil, false
+	}
+	return o.MarketplaceSubscription, true
+}
+
+// HasMarketplaceSubscription returns a boolean if a field has been set.
+func (o *Connection) HasMarketplaceSubscription() bool {
+	if o != nil && !IsNil(o.MarketplaceSubscription) {
+		return true
+	}
+
+	return false
+}
+
+// SetMarketplaceSubscription gets a reference to the given MarketplaceSubscription and assigns it to the MarketplaceSubscription field.
+func (o *Connection) SetMarketplaceSubscription(v MarketplaceSubscription) {
+	o.MarketplaceSubscription = &v
+}
+
 // GetAdditionalInfo returns the AdditionalInfo field value if set, zero value otherwise.
 func (o *Connection) GetAdditionalInfo() []ConnectionSideAdditionalInfo {
 	if o == nil || IsNil(o.AdditionalInfo) {
@@ -763,6 +796,9 @@ func (o Connection) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["aSide"] = o.ASide
 	toSerialize["zSide"] = o.ZSide
+	if !IsNil(o.MarketplaceSubscription) {
+		toSerialize["marketplaceSubscription"] = o.MarketplaceSubscription
+	}
 	if !IsNil(o.AdditionalInfo) {
 		toSerialize["additionalInfo"] = o.AdditionalInfo
 	}
@@ -835,6 +871,7 @@ func (o *Connection) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "direction")
 		delete(additionalProperties, "aSide")
 		delete(additionalProperties, "zSide")
+		delete(additionalProperties, "marketplaceSubscription")
 		delete(additionalProperties, "additionalInfo")
 		delete(additionalProperties, "project")
 		o.AdditionalProperties = additionalProperties

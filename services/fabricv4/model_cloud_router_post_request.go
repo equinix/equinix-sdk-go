@@ -26,8 +26,9 @@ type CloudRouterPostRequest struct {
 	Project  *Project                       `json:"project,omitempty"`
 	Account  *SimplifiedAccount             `json:"account,omitempty"`
 	// Preferences for notifications on connection configuration or status changes
-	Notifications        []SimplifiedNotification `json:"notifications,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Notifications           []SimplifiedNotification `json:"notifications,omitempty"`
+	MarketplaceSubscription *MarketplaceSubscription `json:"marketplaceSubscription,omitempty"`
+	AdditionalProperties    map[string]interface{}
 }
 
 type _CloudRouterPostRequest CloudRouterPostRequest
@@ -305,6 +306,38 @@ func (o *CloudRouterPostRequest) SetNotifications(v []SimplifiedNotification) {
 	o.Notifications = v
 }
 
+// GetMarketplaceSubscription returns the MarketplaceSubscription field value if set, zero value otherwise.
+func (o *CloudRouterPostRequest) GetMarketplaceSubscription() MarketplaceSubscription {
+	if o == nil || IsNil(o.MarketplaceSubscription) {
+		var ret MarketplaceSubscription
+		return ret
+	}
+	return *o.MarketplaceSubscription
+}
+
+// GetMarketplaceSubscriptionOk returns a tuple with the MarketplaceSubscription field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CloudRouterPostRequest) GetMarketplaceSubscriptionOk() (*MarketplaceSubscription, bool) {
+	if o == nil || IsNil(o.MarketplaceSubscription) {
+		return nil, false
+	}
+	return o.MarketplaceSubscription, true
+}
+
+// HasMarketplaceSubscription returns a boolean if a field has been set.
+func (o *CloudRouterPostRequest) HasMarketplaceSubscription() bool {
+	if o != nil && !IsNil(o.MarketplaceSubscription) {
+		return true
+	}
+
+	return false
+}
+
+// SetMarketplaceSubscription gets a reference to the given MarketplaceSubscription and assigns it to the MarketplaceSubscription field.
+func (o *CloudRouterPostRequest) SetMarketplaceSubscription(v MarketplaceSubscription) {
+	o.MarketplaceSubscription = &v
+}
+
 func (o CloudRouterPostRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -339,6 +372,9 @@ func (o CloudRouterPostRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Notifications) {
 		toSerialize["notifications"] = o.Notifications
 	}
+	if !IsNil(o.MarketplaceSubscription) {
+		toSerialize["marketplaceSubscription"] = o.MarketplaceSubscription
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -369,6 +405,7 @@ func (o *CloudRouterPostRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "project")
 		delete(additionalProperties, "account")
 		delete(additionalProperties, "notifications")
+		delete(additionalProperties, "marketplaceSubscription")
 		o.AdditionalProperties = additionalProperties
 	}
 
