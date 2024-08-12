@@ -3,7 +3,7 @@
 include Makefile
 
 PACKAGE_NAME=fabricv4
-SPEC_BASE_URL:=https://api.swaggerhub.com/apis/equinix-api/fabric/4.14
+SPEC_BASE_URL:=https://api.swaggerhub.com/apis/equinix-api/fabric/4.15
 SPEC_ROOT_FILE:=swagger.yaml
 
 CODE_DIR=${CODE_BASE_DIR}/${PACKAGE_NAME}
