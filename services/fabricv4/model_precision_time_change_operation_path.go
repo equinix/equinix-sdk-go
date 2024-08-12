@@ -18,20 +18,14 @@ type PrecisionTimeChangeOperationPath string
 
 // List of precisionTimeChangeOperation_path
 const (
-	PRECISIONTIMECHANGEOPERATIONPATH_IPV4                      PrecisionTimeChangeOperationPath = "/ipv4"
-	PRECISIONTIMECHANGEOPERATIONPATH_NAME                      PrecisionTimeChangeOperationPath = "/name"
-	PRECISIONTIMECHANGEOPERATIONPATH_ADVANCE_CONFIGURATION_NTP PrecisionTimeChangeOperationPath = "/advanceConfiguration/ntp"
-	PRECISIONTIMECHANGEOPERATIONPATH_ADVANCE_CONFIGURATION_PTP PrecisionTimeChangeOperationPath = "/advanceConfiguration/ptp"
-	PRECISIONTIMECHANGEOPERATIONPATH_PACKAGE                   PrecisionTimeChangeOperationPath = "/package"
+	PRECISIONTIMECHANGEOPERATIONPATH_NAME         PrecisionTimeChangeOperationPath = "/name"
+	PRECISIONTIMECHANGEOPERATIONPATH_PACKAGE_CODE PrecisionTimeChangeOperationPath = "/package/code"
 )
 
 // All allowed values of PrecisionTimeChangeOperationPath enum
 var AllowedPrecisionTimeChangeOperationPathEnumValues = []PrecisionTimeChangeOperationPath{
-	"/ipv4",
 	"/name",
-	"/advanceConfiguration/ntp",
-	"/advanceConfiguration/ptp",
-	"/package",
+	"/package/code",
 }
 
 func (v *PrecisionTimeChangeOperationPath) UnmarshalJSON(src []byte) error {

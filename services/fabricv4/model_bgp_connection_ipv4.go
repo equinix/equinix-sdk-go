@@ -25,9 +25,13 @@ type BGPConnectionIpv4 struct {
 	// Admin status for the BGP session
 	Enabled bool `json:"enabled"`
 	// AS path prepend count
-	OutboundASPrependCount *int64                  `json:"outboundASPrependCount,omitempty"`
-	Operation              *BGPConnectionOperation `json:"operation,omitempty"`
-	AdditionalProperties   map[string]interface{}
+	OutboundASPrependCount *int64 `json:"outboundASPrependCount,omitempty"`
+	// inbound Multi Exit Discriminator attribute
+	InboundMED *int64 `json:"inboundMED,omitempty"`
+	// inbound Multi Exit Discriminator attribute
+	OutboundMED          *int64                  `json:"outboundMED,omitempty"`
+	Operation            *BGPConnectionOperation `json:"operation,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _BGPConnectionIpv4 BGPConnectionIpv4
@@ -163,6 +167,70 @@ func (o *BGPConnectionIpv4) SetOutboundASPrependCount(v int64) {
 	o.OutboundASPrependCount = &v
 }
 
+// GetInboundMED returns the InboundMED field value if set, zero value otherwise.
+func (o *BGPConnectionIpv4) GetInboundMED() int64 {
+	if o == nil || IsNil(o.InboundMED) {
+		var ret int64
+		return ret
+	}
+	return *o.InboundMED
+}
+
+// GetInboundMEDOk returns a tuple with the InboundMED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BGPConnectionIpv4) GetInboundMEDOk() (*int64, bool) {
+	if o == nil || IsNil(o.InboundMED) {
+		return nil, false
+	}
+	return o.InboundMED, true
+}
+
+// HasInboundMED returns a boolean if a field has been set.
+func (o *BGPConnectionIpv4) HasInboundMED() bool {
+	if o != nil && !IsNil(o.InboundMED) {
+		return true
+	}
+
+	return false
+}
+
+// SetInboundMED gets a reference to the given int64 and assigns it to the InboundMED field.
+func (o *BGPConnectionIpv4) SetInboundMED(v int64) {
+	o.InboundMED = &v
+}
+
+// GetOutboundMED returns the OutboundMED field value if set, zero value otherwise.
+func (o *BGPConnectionIpv4) GetOutboundMED() int64 {
+	if o == nil || IsNil(o.OutboundMED) {
+		var ret int64
+		return ret
+	}
+	return *o.OutboundMED
+}
+
+// GetOutboundMEDOk returns a tuple with the OutboundMED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BGPConnectionIpv4) GetOutboundMEDOk() (*int64, bool) {
+	if o == nil || IsNil(o.OutboundMED) {
+		return nil, false
+	}
+	return o.OutboundMED, true
+}
+
+// HasOutboundMED returns a boolean if a field has been set.
+func (o *BGPConnectionIpv4) HasOutboundMED() bool {
+	if o != nil && !IsNil(o.OutboundMED) {
+		return true
+	}
+
+	return false
+}
+
+// SetOutboundMED gets a reference to the given int64 and assigns it to the OutboundMED field.
+func (o *BGPConnectionIpv4) SetOutboundMED(v int64) {
+	o.OutboundMED = &v
+}
+
 // GetOperation returns the Operation field value if set, zero value otherwise.
 func (o *BGPConnectionIpv4) GetOperation() BGPConnectionOperation {
 	if o == nil || IsNil(o.Operation) {
@@ -212,6 +280,12 @@ func (o BGPConnectionIpv4) ToMap() (map[string]interface{}, error) {
 	toSerialize["enabled"] = o.Enabled
 	if !IsNil(o.OutboundASPrependCount) {
 		toSerialize["outboundASPrependCount"] = o.OutboundASPrependCount
+	}
+	if !IsNil(o.InboundMED) {
+		toSerialize["inboundMED"] = o.InboundMED
+	}
+	if !IsNil(o.OutboundMED) {
+		toSerialize["outboundMED"] = o.OutboundMED
 	}
 	if !IsNil(o.Operation) {
 		toSerialize["operation"] = o.Operation
@@ -264,6 +338,8 @@ func (o *BGPConnectionIpv4) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "equinixPeerIp")
 		delete(additionalProperties, "enabled")
 		delete(additionalProperties, "outboundASPrependCount")
+		delete(additionalProperties, "inboundMED")
+		delete(additionalProperties, "outboundMED")
 		delete(additionalProperties, "operation")
 		o.AdditionalProperties = additionalProperties
 	}

@@ -30,6 +30,8 @@ type PhysicalPort struct {
 	InterfaceType    *string               `json:"interfaceType,omitempty"`
 	Tether           *PortTether           `json:"tether,omitempty"`
 	DemarcationPoint *PortDemarcationPoint `json:"demarcationPoint,omitempty"`
+	// Notification preferences
+	Notifications []PortNotification `json:"notifications,omitempty"`
 	// Physical Port additional information
 	AdditionalInfo []PortAdditionalInfo `json:"additionalInfo,omitempty"`
 	Order          *PortOrder           `json:"order,omitempty"`
@@ -346,6 +348,38 @@ func (o *PhysicalPort) SetDemarcationPoint(v PortDemarcationPoint) {
 	o.DemarcationPoint = &v
 }
 
+// GetNotifications returns the Notifications field value if set, zero value otherwise.
+func (o *PhysicalPort) GetNotifications() []PortNotification {
+	if o == nil || IsNil(o.Notifications) {
+		var ret []PortNotification
+		return ret
+	}
+	return o.Notifications
+}
+
+// GetNotificationsOk returns a tuple with the Notifications field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PhysicalPort) GetNotificationsOk() ([]PortNotification, bool) {
+	if o == nil || IsNil(o.Notifications) {
+		return nil, false
+	}
+	return o.Notifications, true
+}
+
+// HasNotifications returns a boolean if a field has been set.
+func (o *PhysicalPort) HasNotifications() bool {
+	if o != nil && !IsNil(o.Notifications) {
+		return true
+	}
+
+	return false
+}
+
+// SetNotifications gets a reference to the given []PortNotification and assigns it to the Notifications field.
+func (o *PhysicalPort) SetNotifications(v []PortNotification) {
+	o.Notifications = v
+}
+
 // GetAdditionalInfo returns the AdditionalInfo field value if set, zero value otherwise.
 func (o *PhysicalPort) GetAdditionalInfo() []PortAdditionalInfo {
 	if o == nil || IsNil(o.AdditionalInfo) {
@@ -511,6 +545,9 @@ func (o PhysicalPort) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DemarcationPoint) {
 		toSerialize["demarcationPoint"] = o.DemarcationPoint
 	}
+	if !IsNil(o.Notifications) {
+		toSerialize["notifications"] = o.Notifications
+	}
 	if !IsNil(o.AdditionalInfo) {
 		toSerialize["additionalInfo"] = o.AdditionalInfo
 	}
@@ -554,6 +591,7 @@ func (o *PhysicalPort) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "interfaceType")
 		delete(additionalProperties, "tether")
 		delete(additionalProperties, "demarcationPoint")
+		delete(additionalProperties, "notifications")
 		delete(additionalProperties, "additionalInfo")
 		delete(additionalProperties, "order")
 		delete(additionalProperties, "operation")

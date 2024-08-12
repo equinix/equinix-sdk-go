@@ -90,6 +90,16 @@ func Test_fabricv4_PrecisionTimeApiService(t *testing.T) {
 		assert.Equal(t, 200, httpRes.StatusCode)
 	})
 
+	t.Run("Test PrecisionTimeApiService SearchTimeServices", func(t *testing.T) {
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.PrecisionTimeApi.SearchTimeServices(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+	})
+
 	t.Run("Test PrecisionTimeApiService UpdateTimeServicesById", func(t *testing.T) {
 		t.Skip("skip test") // remove to run test
 

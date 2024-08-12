@@ -23,6 +23,7 @@ Name | Type | Description | Notes
 **Direction** | Pointer to [**ConnectionDirection**](ConnectionDirection.md) |  | [optional] 
 **ASide** | [**ConnectionSide**](ConnectionSide.md) |  | 
 **ZSide** | [**ConnectionSide**](ConnectionSide.md) |  | 
+**MarketplaceSubscription** | Pointer to [**MarketplaceSubscription**](MarketplaceSubscription.md) |  | [optional] 
 **AdditionalInfo** | Pointer to [**[]ConnectionSideAdditionalInfo**](ConnectionSideAdditionalInfo.md) | Connection additional information | [optional] 
 **Project** | Pointer to [**Project**](Project.md) |  | [optional] 
 
@@ -494,6 +495,31 @@ and a boolean to check if the value has been set.
 
 SetZSide sets ZSide field to given value.
 
+
+### GetMarketplaceSubscription
+
+`func (o *Connection) GetMarketplaceSubscription() MarketplaceSubscription`
+
+GetMarketplaceSubscription returns the MarketplaceSubscription field if non-nil, zero value otherwise.
+
+### GetMarketplaceSubscriptionOk
+
+`func (o *Connection) GetMarketplaceSubscriptionOk() (*MarketplaceSubscription, bool)`
+
+GetMarketplaceSubscriptionOk returns a tuple with the MarketplaceSubscription field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMarketplaceSubscription
+
+`func (o *Connection) SetMarketplaceSubscription(v MarketplaceSubscription)`
+
+SetMarketplaceSubscription sets MarketplaceSubscription field to given value.
+
+### HasMarketplaceSubscription
+
+`func (o *Connection) HasMarketplaceSubscription() bool`
+
+HasMarketplaceSubscription returns a boolean if a field has been set.
 
 ### GetAdditionalInfo
 

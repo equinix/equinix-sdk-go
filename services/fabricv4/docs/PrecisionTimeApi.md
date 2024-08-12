@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**GetTimeServicesConnectionsByServiceId**](PrecisionTimeApi.md#GetTimeServicesConnectionsByServiceId) | **Get** /fabric/v4/timeServices/{serviceId}/connections | Get Connection Links
 [**GetTimeServicesPackageByCode**](PrecisionTimeApi.md#GetTimeServicesPackageByCode) | **Get** /fabric/v4/timeServicePackages/{packageCode} | Get Package By Code
 [**GetTimeServicesPackages**](PrecisionTimeApi.md#GetTimeServicesPackages) | **Get** /fabric/v4/timeServicePackages | Get Packages
+[**SearchTimeServices**](PrecisionTimeApi.md#SearchTimeServices) | **Post** /fabric/v4/timeServices/search | Search Time Services
 [**UpdateTimeServicesById**](PrecisionTimeApi.md#UpdateTimeServicesById) | **Patch** /fabric/v4/timeServices/{serviceId} | Patch time service
 
 
@@ -421,6 +422,72 @@ Other parameters are passed through a pointer to a apiGetTimeServicesPackagesReq
 [[Back to README]](../README.md)
 
 
+## SearchTimeServices
+
+> ServiceSearchResponse SearchTimeServices(ctx).TimeServicesSearchRequest(timeServicesSearchRequest).Execute()
+
+Search Time Services
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/equinix/equinix-sdk-go/services/fabricv4"
+)
+
+func main() {
+	timeServicesSearchRequest := *openapiclient.NewTimeServicesSearchRequest() // TimeServicesSearchRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PrecisionTimeApi.SearchTimeServices(context.Background()).TimeServicesSearchRequest(timeServicesSearchRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PrecisionTimeApi.SearchTimeServices``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `SearchTimeServices`: ServiceSearchResponse
+	fmt.Fprintf(os.Stdout, "Response from `PrecisionTimeApi.SearchTimeServices`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSearchTimeServicesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **timeServicesSearchRequest** | [**TimeServicesSearchRequest**](TimeServicesSearchRequest.md) |  | 
+
+### Return type
+
+[**ServiceSearchResponse**](ServiceSearchResponse.md)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## UpdateTimeServicesById
 
 > PrecisionTimeServiceCreateResponse UpdateTimeServicesById(ctx, serviceId).PrecisionTimeChangeOperation(precisionTimeChangeOperation).Execute()
@@ -443,7 +510,7 @@ import (
 
 func main() {
 	serviceId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Service UUID
-	precisionTimeChangeOperation := []openapiclient.PrecisionTimeChangeOperation{*openapiclient.NewPrecisionTimeChangeOperation(openapiclient.precisionTimeChangeOperation_op("replace"), openapiclient.precisionTimeChangeOperation_path("/ipv4"), interface{}(123))} // []PrecisionTimeChangeOperation | 
+	precisionTimeChangeOperation := []openapiclient.PrecisionTimeChangeOperation{*openapiclient.NewPrecisionTimeChangeOperation(openapiclient.precisionTimeChangeOperation_op("replace"), openapiclient.precisionTimeChangeOperation_path("/name"), interface{}(123))} // []PrecisionTimeChangeOperation | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

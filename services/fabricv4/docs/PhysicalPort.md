@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **InterfaceType** | Pointer to **string** | Physical Port Interface Type | [optional] 
 **Tether** | Pointer to [**PortTether**](PortTether.md) |  | [optional] 
 **DemarcationPoint** | Pointer to [**PortDemarcationPoint**](PortDemarcationPoint.md) |  | [optional] 
+**Notifications** | Pointer to [**[]PortNotification**](PortNotification.md) | Notification preferences | [optional] 
 **AdditionalInfo** | Pointer to [**[]PortAdditionalInfo**](PortAdditionalInfo.md) | Physical Port additional information | [optional] 
 **Order** | Pointer to [**PortOrder**](PortOrder.md) |  | [optional] 
 **Operation** | Pointer to [**PortOperation**](PortOperation.md) |  | [optional] 
@@ -261,6 +262,31 @@ SetDemarcationPoint sets DemarcationPoint field to given value.
 `func (o *PhysicalPort) HasDemarcationPoint() bool`
 
 HasDemarcationPoint returns a boolean if a field has been set.
+
+### GetNotifications
+
+`func (o *PhysicalPort) GetNotifications() []PortNotification`
+
+GetNotifications returns the Notifications field if non-nil, zero value otherwise.
+
+### GetNotificationsOk
+
+`func (o *PhysicalPort) GetNotificationsOk() (*[]PortNotification, bool)`
+
+GetNotificationsOk returns a tuple with the Notifications field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNotifications
+
+`func (o *PhysicalPort) SetNotifications(v []PortNotification)`
+
+SetNotifications sets Notifications field to given value.
+
+### HasNotifications
+
+`func (o *PhysicalPort) HasNotifications() bool`
+
+HasNotifications returns a boolean if a field has been set.
 
 ### GetAdditionalInfo
 

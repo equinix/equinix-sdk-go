@@ -17,7 +17,9 @@ var _ MappedNullable = &ConnectionAcceptanceData{}
 
 // ConnectionAcceptanceData Connection acceptance data
 type ConnectionAcceptanceData struct {
-	ZSide                *ConnectionSide `json:"zSide,omitempty"`
+	ZSide *ConnectionSide `json:"zSide,omitempty"`
+	// Authorization key bandwidth in Mbps
+	ProviderBandwidth    *int32 `json:"providerBandwidth,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -72,6 +74,38 @@ func (o *ConnectionAcceptanceData) SetZSide(v ConnectionSide) {
 	o.ZSide = &v
 }
 
+// GetProviderBandwidth returns the ProviderBandwidth field value if set, zero value otherwise.
+func (o *ConnectionAcceptanceData) GetProviderBandwidth() int32 {
+	if o == nil || IsNil(o.ProviderBandwidth) {
+		var ret int32
+		return ret
+	}
+	return *o.ProviderBandwidth
+}
+
+// GetProviderBandwidthOk returns a tuple with the ProviderBandwidth field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ConnectionAcceptanceData) GetProviderBandwidthOk() (*int32, bool) {
+	if o == nil || IsNil(o.ProviderBandwidth) {
+		return nil, false
+	}
+	return o.ProviderBandwidth, true
+}
+
+// HasProviderBandwidth returns a boolean if a field has been set.
+func (o *ConnectionAcceptanceData) HasProviderBandwidth() bool {
+	if o != nil && !IsNil(o.ProviderBandwidth) {
+		return true
+	}
+
+	return false
+}
+
+// SetProviderBandwidth gets a reference to the given int32 and assigns it to the ProviderBandwidth field.
+func (o *ConnectionAcceptanceData) SetProviderBandwidth(v int32) {
+	o.ProviderBandwidth = &v
+}
+
 func (o ConnectionAcceptanceData) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -84,6 +118,9 @@ func (o ConnectionAcceptanceData) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.ZSide) {
 		toSerialize["zSide"] = o.ZSide
+	}
+	if !IsNil(o.ProviderBandwidth) {
+		toSerialize["providerBandwidth"] = o.ProviderBandwidth
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -108,6 +145,7 @@ func (o *ConnectionAcceptanceData) UnmarshalJSON(data []byte) (err error) {
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "zSide")
+		delete(additionalProperties, "providerBandwidth")
 		o.AdditionalProperties = additionalProperties
 	}
 

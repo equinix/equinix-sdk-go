@@ -18,7 +18,7 @@ var _ MappedNullable = &ServiceTokenChangeOperation{}
 
 // ServiceTokenChangeOperation Service Token change operation data
 type ServiceTokenChangeOperation struct {
-	Op PrecisionTimeChangeOperationOp `json:"op"`
+	Op ServiceTokenChangeOperationOp `json:"op"`
 	// path inside document leading to updated parameter
 	Path string `json:"path"`
 	// new value for updated parameter
@@ -32,7 +32,7 @@ type _ServiceTokenChangeOperation ServiceTokenChangeOperation
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewServiceTokenChangeOperation(op PrecisionTimeChangeOperationOp, path string, value interface{}) *ServiceTokenChangeOperation {
+func NewServiceTokenChangeOperation(op ServiceTokenChangeOperationOp, path string, value interface{}) *ServiceTokenChangeOperation {
 	this := ServiceTokenChangeOperation{}
 	this.Op = op
 	this.Path = path
@@ -49,9 +49,9 @@ func NewServiceTokenChangeOperationWithDefaults() *ServiceTokenChangeOperation {
 }
 
 // GetOp returns the Op field value
-func (o *ServiceTokenChangeOperation) GetOp() PrecisionTimeChangeOperationOp {
+func (o *ServiceTokenChangeOperation) GetOp() ServiceTokenChangeOperationOp {
 	if o == nil {
-		var ret PrecisionTimeChangeOperationOp
+		var ret ServiceTokenChangeOperationOp
 		return ret
 	}
 
@@ -60,7 +60,7 @@ func (o *ServiceTokenChangeOperation) GetOp() PrecisionTimeChangeOperationOp {
 
 // GetOpOk returns a tuple with the Op field value
 // and a boolean to check if the value has been set.
-func (o *ServiceTokenChangeOperation) GetOpOk() (*PrecisionTimeChangeOperationOp, bool) {
+func (o *ServiceTokenChangeOperation) GetOpOk() (*ServiceTokenChangeOperationOp, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -68,7 +68,7 @@ func (o *ServiceTokenChangeOperation) GetOpOk() (*PrecisionTimeChangeOperationOp
 }
 
 // SetOp sets field value
-func (o *ServiceTokenChangeOperation) SetOp(v PrecisionTimeChangeOperationOp) {
+func (o *ServiceTokenChangeOperation) SetOp(v ServiceTokenChangeOperationOp) {
 	o.Op = v
 }
 

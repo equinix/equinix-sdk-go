@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **PurchaseOrder** | Pointer to [**PortOrderPurchaseOrder**](PortOrderPurchaseOrder.md) |  | [optional] 
 **OrderId** | Pointer to **string** | Order Identification | [optional] 
+**CustomerReferenceId** | Pointer to **string** | Customer order reference Id | [optional] 
 **OrderNumber** | Pointer to **string** | Order Reference Number | [optional] 
 **Uuid** | Pointer to **string** | Equinix-assigned order identifier | [optional] 
 **Signature** | Pointer to [**PortOrderSignature**](PortOrderSignature.md) |  | [optional] 
@@ -78,6 +79,31 @@ SetOrderId sets OrderId field to given value.
 `func (o *PortOrder) HasOrderId() bool`
 
 HasOrderId returns a boolean if a field has been set.
+
+### GetCustomerReferenceId
+
+`func (o *PortOrder) GetCustomerReferenceId() string`
+
+GetCustomerReferenceId returns the CustomerReferenceId field if non-nil, zero value otherwise.
+
+### GetCustomerReferenceIdOk
+
+`func (o *PortOrder) GetCustomerReferenceIdOk() (*string, bool)`
+
+GetCustomerReferenceIdOk returns a tuple with the CustomerReferenceId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCustomerReferenceId
+
+`func (o *PortOrder) SetCustomerReferenceId(v string)`
+
+SetCustomerReferenceId sets CustomerReferenceId field to given value.
+
+### HasCustomerReferenceId
+
+`func (o *PortOrder) HasCustomerReferenceId() bool`
+
+HasCustomerReferenceId returns a boolean if a field has been set.
 
 ### GetOrderNumber
 

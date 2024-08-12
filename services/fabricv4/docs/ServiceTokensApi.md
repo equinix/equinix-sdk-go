@@ -446,7 +446,7 @@ import (
 
 func main() {
 	serviceTokenId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Service Token UUID
-	serviceTokenChangeOperation := []openapiclient.ServiceTokenChangeOperation{*openapiclient.NewServiceTokenChangeOperation(openapiclient.precisionTimeChangeOperation_op("replace"), "/expirationDateTime", interface{}(123))} // []ServiceTokenChangeOperation | 
+	serviceTokenChangeOperation := []openapiclient.ServiceTokenChangeOperation{*openapiclient.NewServiceTokenChangeOperation(openapiclient.ServiceTokenChangeOperation_op("replace"), "/expirationDateTime", interface{}(123))} // []ServiceTokenChangeOperation | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

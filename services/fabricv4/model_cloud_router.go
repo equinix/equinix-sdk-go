@@ -36,6 +36,7 @@ type CloudRouter struct {
 	DistinctIpv4PrefixesCount *int32 `json:"distinctIpv4PrefixesCount,omitempty"`
 	// Number of distinct ipv6 routes
 	DistinctIpv6PrefixesCount *int32                         `json:"distinctIpv6PrefixesCount,omitempty"`
+	MarketplaceSubscription   *MarketplaceSubscription       `json:"marketplaceSubscription,omitempty"`
 	ChangeLog                 *Changelog                     `json:"changeLog,omitempty"`
 	Change                    *CloudRouterChange             `json:"change,omitempty"`
 	Type                      *CloudRouterPostRequestType    `json:"type,omitempty"`
@@ -388,6 +389,38 @@ func (o *CloudRouter) SetDistinctIpv6PrefixesCount(v int32) {
 	o.DistinctIpv6PrefixesCount = &v
 }
 
+// GetMarketplaceSubscription returns the MarketplaceSubscription field value if set, zero value otherwise.
+func (o *CloudRouter) GetMarketplaceSubscription() MarketplaceSubscription {
+	if o == nil || IsNil(o.MarketplaceSubscription) {
+		var ret MarketplaceSubscription
+		return ret
+	}
+	return *o.MarketplaceSubscription
+}
+
+// GetMarketplaceSubscriptionOk returns a tuple with the MarketplaceSubscription field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CloudRouter) GetMarketplaceSubscriptionOk() (*MarketplaceSubscription, bool) {
+	if o == nil || IsNil(o.MarketplaceSubscription) {
+		return nil, false
+	}
+	return o.MarketplaceSubscription, true
+}
+
+// HasMarketplaceSubscription returns a boolean if a field has been set.
+func (o *CloudRouter) HasMarketplaceSubscription() bool {
+	if o != nil && !IsNil(o.MarketplaceSubscription) {
+		return true
+	}
+
+	return false
+}
+
+// SetMarketplaceSubscription gets a reference to the given MarketplaceSubscription and assigns it to the MarketplaceSubscription field.
+func (o *CloudRouter) SetMarketplaceSubscription(v MarketplaceSubscription) {
+	o.MarketplaceSubscription = &v
+}
+
 // GetChangeLog returns the ChangeLog field value if set, zero value otherwise.
 func (o *CloudRouter) GetChangeLog() Changelog {
 	if o == nil || IsNil(o.ChangeLog) {
@@ -716,6 +749,9 @@ func (o CloudRouter) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DistinctIpv6PrefixesCount) {
 		toSerialize["distinctIpv6PrefixesCount"] = o.DistinctIpv6PrefixesCount
 	}
+	if !IsNil(o.MarketplaceSubscription) {
+		toSerialize["marketplaceSubscription"] = o.MarketplaceSubscription
+	}
 	if !IsNil(o.ChangeLog) {
 		toSerialize["changeLog"] = o.ChangeLog
 	}
@@ -775,6 +811,7 @@ func (o *CloudRouter) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "connectionsCount")
 		delete(additionalProperties, "distinctIpv4PrefixesCount")
 		delete(additionalProperties, "distinctIpv6PrefixesCount")
+		delete(additionalProperties, "marketplaceSubscription")
 		delete(additionalProperties, "changeLog")
 		delete(additionalProperties, "change")
 		delete(additionalProperties, "type")

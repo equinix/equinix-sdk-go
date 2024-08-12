@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **ZSide** | [**ConnectionSide**](ConnectionSide.md) |  | 
 **Project** | Pointer to [**Project**](Project.md) |  | [optional] 
 **AdditionalInfo** | Pointer to [**[]ConnectionSideAdditionalInfo**](ConnectionSideAdditionalInfo.md) | Connection additional information | [optional] 
+**MarketplaceSubscription** | Pointer to [**MarketplaceSubscription**](MarketplaceSubscription.md) |  | [optional] 
 
 ## Methods
 
@@ -279,6 +280,31 @@ SetAdditionalInfo sets AdditionalInfo field to given value.
 `func (o *ConnectionPostRequest) HasAdditionalInfo() bool`
 
 HasAdditionalInfo returns a boolean if a field has been set.
+
+### GetMarketplaceSubscription
+
+`func (o *ConnectionPostRequest) GetMarketplaceSubscription() MarketplaceSubscription`
+
+GetMarketplaceSubscription returns the MarketplaceSubscription field if non-nil, zero value otherwise.
+
+### GetMarketplaceSubscriptionOk
+
+`func (o *ConnectionPostRequest) GetMarketplaceSubscriptionOk() (*MarketplaceSubscription, bool)`
+
+GetMarketplaceSubscriptionOk returns a tuple with the MarketplaceSubscription field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMarketplaceSubscription
+
+`func (o *ConnectionPostRequest) SetMarketplaceSubscription(v MarketplaceSubscription)`
+
+SetMarketplaceSubscription sets MarketplaceSubscription field to given value.
+
+### HasMarketplaceSubscription
+
+`func (o *ConnectionPostRequest) HasMarketplaceSubscription() bool`
+
+HasMarketplaceSubscription returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
