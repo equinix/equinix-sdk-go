@@ -20,7 +20,7 @@ type ConnectionResponse struct {
 	// Additional information
 	AdditionalInfo []ConnectionSideAdditionalInfo `json:"additionalInfo,omitempty"`
 	// Connection response data
-	Data                 []Connection `json:"data,omitempty"`
+	Data                 []BaseConnection `json:"data,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -76,9 +76,9 @@ func (o *ConnectionResponse) SetAdditionalInfo(v []ConnectionSideAdditionalInfo)
 }
 
 // GetData returns the Data field value if set, zero value otherwise.
-func (o *ConnectionResponse) GetData() []Connection {
+func (o *ConnectionResponse) GetData() []BaseConnection {
 	if o == nil || IsNil(o.Data) {
-		var ret []Connection
+		var ret []BaseConnection
 		return ret
 	}
 	return o.Data
@@ -86,7 +86,7 @@ func (o *ConnectionResponse) GetData() []Connection {
 
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ConnectionResponse) GetDataOk() ([]Connection, bool) {
+func (o *ConnectionResponse) GetDataOk() ([]BaseConnection, bool) {
 	if o == nil || IsNil(o.Data) {
 		return nil, false
 	}
@@ -102,8 +102,8 @@ func (o *ConnectionResponse) HasData() bool {
 	return false
 }
 
-// SetData gets a reference to the given []Connection and assigns it to the Data field.
-func (o *ConnectionResponse) SetData(v []Connection) {
+// SetData gets a reference to the given []BaseConnection and assigns it to the Data field.
+func (o *ConnectionResponse) SetData(v []BaseConnection) {
 	o.Data = v
 }
 

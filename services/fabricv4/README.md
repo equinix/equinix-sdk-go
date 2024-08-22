@@ -205,6 +205,7 @@ Class | Method | HTTP request | Description
  - [BGPConnectionOperationOperationalStatus](docs/BGPConnectionOperationOperationalStatus.md)
  - [BandwidthUtilization](docs/BandwidthUtilization.md)
  - [BandwidthUtilizationUnit](docs/BandwidthUtilizationUnit.md)
+ - [BaseConnection](docs/BaseConnection.md)
  - [BulkPhysicalPort](docs/BulkPhysicalPort.md)
  - [BulkPort](docs/BulkPort.md)
  - [Change](docs/Change.md)
