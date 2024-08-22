@@ -7720,13 +7720,7 @@ components:
         marketplaceSubscription:
           $ref: "#/components/schemas/marketplaceSubscription"
       description: Create connection post request
-    Connection:
-      required:
-        - aSide
-        - bandwidth
-        - name
-        - type
-        - zSide
+    BaseConnection:
       type: object
       properties:
         type:
@@ -7789,6 +7783,17 @@ components:
             $ref: "#/components/schemas/ConnectionSideAdditionalInfo"
         project:
           $ref: "#/components/schemas/Project"
+      description: Connection base specification
+    Connection:
+      required:
+        - aSide
+        - bandwidth
+        - name
+        - type
+        - zSide
+      type: object
+      allOf:
+        - $ref: "#/components/schemas/BaseConnection"
       description: Connection specification
     ErrorList:
       type: array
@@ -10421,7 +10426,7 @@ components:
           type: array
           description: Connection response data
           items:
-            $ref: "#/components/schemas/Connection"
+            $ref: "#/components/schemas/BaseConnection"
       description: ValidateResponse
     Pagination:
       required:
