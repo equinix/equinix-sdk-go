@@ -6,13 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Op** | **string** | Handy shortcut for operation name | 
 **Path** | **string** | path to change | 
-**Value** | **map[string]interface{}** | new value for updated parameter | 
+**Value** | **interface{}** | new value for updated parameter | 
 
 ## Methods
 
 ### NewRouteFiltersPatchRequestItem
 
-`func NewRouteFiltersPatchRequestItem(op string, path string, value map[string]interface{}, ) *RouteFiltersPatchRequestItem`
+`func NewRouteFiltersPatchRequestItem(op string, path string, value interface{}, ) *RouteFiltersPatchRequestItem`
 
 NewRouteFiltersPatchRequestItem instantiates a new RouteFiltersPatchRequestItem object
 This constructor will assign default values to properties that have it defined,
@@ -69,24 +69,34 @@ SetPath sets Path field to given value.
 
 ### GetValue
 
-`func (o *RouteFiltersPatchRequestItem) GetValue() map[string]interface{}`
+`func (o *RouteFiltersPatchRequestItem) GetValue() interface{}`
 
 GetValue returns the Value field if non-nil, zero value otherwise.
 
 ### GetValueOk
 
-`func (o *RouteFiltersPatchRequestItem) GetValueOk() (*map[string]interface{}, bool)`
+`func (o *RouteFiltersPatchRequestItem) GetValueOk() (*interface{}, bool)`
 
 GetValueOk returns a tuple with the Value field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetValue
 
-`func (o *RouteFiltersPatchRequestItem) SetValue(v map[string]interface{})`
+`func (o *RouteFiltersPatchRequestItem) SetValue(v interface{})`
 
 SetValue sets Value field to given value.
 
 
+### SetValueNil
+
+`func (o *RouteFiltersPatchRequestItem) SetValueNil(b bool)`
+
+ SetValueNil sets the value for Value to be an explicit nil
+
+### UnsetValue
+`func (o *RouteFiltersPatchRequestItem) UnsetValue()`
+
+UnsetValue ensures that no value is present for Value, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

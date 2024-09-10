@@ -1,0 +1,20 @@
+diff --git a/spec/services/fabricv4/oas3.patched/swagger.yaml b/spec/services/fabricv4/oas3.patched/swagger.yaml
+index ac39f1e..3276e4a 100644
+--- a/spec/services/fabricv4/oas3.patched/swagger.yaml
++++ b/spec/services/fabricv4/oas3.patched/swagger.yaml
+@@ -12346,7 +12346,6 @@ components:
+           description: path to change
+           example: /name
+         value:
+-          type: object
+           description: new value for updated parameter
+       description: Route Filter change operation data
+     RouteFiltersChangeOperation:
+@@ -12439,7 +12438,6 @@ components:
+           description: path to change
+           example: /prefixMatch
+         value:
+-          type: object
+           description: new value for updated parameter
+       description: Route Filter Rule change operation data
+     RouteFilterRulesChangeOperation:

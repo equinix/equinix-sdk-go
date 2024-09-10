@@ -755,7 +755,7 @@ import (
 
 func main() {
 	routeFilterId := "routeFilterId_example" // string | Route Filters Id
-	routeFiltersPatchRequestItem := []openapiclient.RouteFiltersPatchRequestItem{*openapiclient.NewRouteFiltersPatchRequestItem("replace", "/name", map[string]interface{}(123))} // []RouteFiltersPatchRequestItem | 
+	routeFiltersPatchRequestItem := []openapiclient.RouteFiltersPatchRequestItem{*openapiclient.NewRouteFiltersPatchRequestItem("replace", "/name", interface{}(123))} // []RouteFiltersPatchRequestItem | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

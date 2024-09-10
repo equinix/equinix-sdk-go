@@ -12346,7 +12346,6 @@ components:
           description: path to change
           example: /name
         value:
-          type: object
           description: new value for updated parameter
       description: Route Filter change operation data
     RouteFiltersChangeOperation:
@@ -12439,7 +12438,6 @@ components:
           description: path to change
           example: /prefixMatch
         value:
-          type: object
           description: new value for updated parameter
       description: Route Filter Rule change operation data
     RouteFilterRulesChangeOperation:

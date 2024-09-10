@@ -556,7 +556,7 @@ import (
 func main() {
 	routeFilterId := "routeFilterId_example" // string | Route Filters Id
 	routeFilterRuleId := "routeFilterRuleId_example" // string | Route  Filter  Rules Id
-	routeFilterRulesPatchRequestItem := []openapiclient.RouteFilterRulesPatchRequestItem{*openapiclient.NewRouteFilterRulesPatchRequestItem("replace", "/prefixMatch", map[string]interface{}(123))} // []RouteFilterRulesPatchRequestItem | 
+	routeFilterRulesPatchRequestItem := []openapiclient.RouteFilterRulesPatchRequestItem{*openapiclient.NewRouteFilterRulesPatchRequestItem("replace", "/prefixMatch", interface{}(123))} // []RouteFilterRulesPatchRequestItem | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
