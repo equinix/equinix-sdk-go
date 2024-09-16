@@ -1,5 +1,8 @@
 get:
-  description: Returns traffic for a specific device.
+  description: |
+    Returns the total amount of inbound or outbound traffic for a specific device. The default time period is 1 hour.
+
+    Please note the results capture all network traffic for the server, but not all traffic may come from or be destined to the Internet and may be non-billable. Only Internet bound traffic is charged.
   operationId: findTraffic
   parameters:
   - description: Device UUID
