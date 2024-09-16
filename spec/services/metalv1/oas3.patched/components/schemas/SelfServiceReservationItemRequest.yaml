@@ -1,15 +1,16 @@
 properties:
-  amount:
-    format: float
-    type: number
   metro_id:
     format: uuid
     type: string
+    description: Metro ID of the item.
   plan_id:
     format: uuid
     type: string
+    description: Plan ID of the item.
   quantity:
     type: integer
+    description: Number of items.
   term:
     type: string
+    description: Contract term of the item.
 type: object
