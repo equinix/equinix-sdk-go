@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **Customdata** | Pointer to **map[string]interface{}** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
 **Enforce2faAt** | Pointer to **time.Time** | Force to all members to have enabled the two factor authentication after that date, unless the value is null | [optional] 
+**Href** | Pointer to **string** |  | [optional] 
 **Id** | Pointer to **string** |  | [optional] 
 **Logo** | Pointer to **string** |  | [optional] 
 **Members** | Pointer to [**[]Href**](Href.md) |  | [optional] 
@@ -215,6 +216,31 @@ SetEnforce2faAt sets Enforce2faAt field to given value.
 `func (o *Organization) HasEnforce2faAt() bool`
 
 HasEnforce2faAt returns a boolean if a field has been set.
+
+### GetHref
+
+`func (o *Organization) GetHref() string`
+
+GetHref returns the Href field if non-nil, zero value otherwise.
+
+### GetHrefOk
+
+`func (o *Organization) GetHrefOk() (*string, bool)`
+
+GetHrefOk returns a tuple with the Href field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHref
+
+`func (o *Organization) SetHref(v string)`
+
+SetHref sets Href field to given value.
+
+### HasHref
+
+`func (o *Organization) HasHref() bool`
+
+HasHref returns a boolean if a field has been set.
 
 ### GetId
 

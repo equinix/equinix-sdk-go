@@ -31,28 +31,10 @@ func Test_metalv1_TwoFactorAuthApiService(t *testing.T) {
 		assert.Equal(t, 200, httpRes.StatusCode)
 	})
 
-	t.Run("Test TwoFactorAuthApiService DisableTfaSms", func(t *testing.T) {
-		t.Skip("skip test") // remove to run test
-
-		httpRes, err := apiClient.TwoFactorAuthApi.DisableTfaSms(context.Background()).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-	})
-
 	t.Run("Test TwoFactorAuthApiService EnableTfaApp", func(t *testing.T) {
 		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.TwoFactorAuthApi.EnableTfaApp(context.Background()).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-	})
-
-	t.Run("Test TwoFactorAuthApiService EnableTfaSms", func(t *testing.T) {
-		t.Skip("skip test") // remove to run test
-
-		httpRes, err := apiClient.TwoFactorAuthApi.EnableTfaSms(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
