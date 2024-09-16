@@ -1,4 +1,6 @@
 properties:
+  backend_transfer_enabled:
+    type: boolean
   bgp_config:
     $ref: './Href.yaml'
   created_at:

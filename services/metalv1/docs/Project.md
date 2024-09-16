@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**BackendTransferEnabled** | Pointer to **bool** |  | [optional] 
 **BgpConfig** | Pointer to [**Href**](Href.md) |  | [optional] 
 **CreatedAt** | Pointer to **time.Time** |  | [optional] 
 **Customdata** | Pointer to **map[string]interface{}** |  | [optional] 
@@ -43,6 +44,31 @@ will change when the set of required properties is changed
 NewProjectWithDefaults instantiates a new Project object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetBackendTransferEnabled
+
+`func (o *Project) GetBackendTransferEnabled() bool`
+
+GetBackendTransferEnabled returns the BackendTransferEnabled field if non-nil, zero value otherwise.
+
+### GetBackendTransferEnabledOk
+
+`func (o *Project) GetBackendTransferEnabledOk() (*bool, bool)`
+
+GetBackendTransferEnabledOk returns a tuple with the BackendTransferEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBackendTransferEnabled
+
+`func (o *Project) SetBackendTransferEnabled(v bool)`
+
+SetBackendTransferEnabled sets BackendTransferEnabled field to given value.
+
+### HasBackendTransferEnabled
+
+`func (o *Project) HasBackendTransferEnabled() bool`
+
+HasBackendTransferEnabled returns a boolean if a field has been set.
 
 ### GetBgpConfig
 

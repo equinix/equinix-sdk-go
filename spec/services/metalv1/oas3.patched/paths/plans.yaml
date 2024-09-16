@@ -4,7 +4,7 @@ get:
   parameters:
   - description: Filter plans by its category
     in: query
-    name: categories
+    name: categories[]
     schema:
       type: array
       items:
