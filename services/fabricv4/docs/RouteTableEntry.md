@@ -10,10 +10,10 @@ Name | Type | Description | Notes
 **Age** | Pointer to **string** |  | [optional] 
 **Prefix** | Pointer to **string** |  | [optional] 
 **NextHop** | Pointer to **string** |  | [optional] 
-**Metric** | Pointer to **int32** |  | [optional] 
+**MED** | Pointer to **int32** |  | [optional] 
 **LocalPreference** | Pointer to **int32** |  | [optional] 
-**AsPath** | Pointer to **[]int32** |  | [optional] 
-**Connection** | Pointer to [**RouteTableEntryConnection**](RouteTableEntryConnection.md) |  | [optional] 
+**AsPath** | Pointer to **[]string** |  | [optional] 
+**Connection** | Pointer to [**ConnectionRouteTableEntryConnection**](ConnectionRouteTableEntryConnection.md) |  | [optional] 
 **ChangeLog** | [**Changelog**](Changelog.md) |  | 
 
 ## Methods
@@ -175,30 +175,30 @@ SetNextHop sets NextHop field to given value.
 
 HasNextHop returns a boolean if a field has been set.
 
-### GetMetric
+### GetMED
 
-`func (o *RouteTableEntry) GetMetric() int32`
+`func (o *RouteTableEntry) GetMED() int32`
 
-GetMetric returns the Metric field if non-nil, zero value otherwise.
+GetMED returns the MED field if non-nil, zero value otherwise.
 
-### GetMetricOk
+### GetMEDOk
 
-`func (o *RouteTableEntry) GetMetricOk() (*int32, bool)`
+`func (o *RouteTableEntry) GetMEDOk() (*int32, bool)`
 
-GetMetricOk returns a tuple with the Metric field if it's non-nil, zero value otherwise
+GetMEDOk returns a tuple with the MED field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetMetric
+### SetMED
 
-`func (o *RouteTableEntry) SetMetric(v int32)`
+`func (o *RouteTableEntry) SetMED(v int32)`
 
-SetMetric sets Metric field to given value.
+SetMED sets MED field to given value.
 
-### HasMetric
+### HasMED
 
-`func (o *RouteTableEntry) HasMetric() bool`
+`func (o *RouteTableEntry) HasMED() bool`
 
-HasMetric returns a boolean if a field has been set.
+HasMED returns a boolean if a field has been set.
 
 ### GetLocalPreference
 
@@ -227,20 +227,20 @@ HasLocalPreference returns a boolean if a field has been set.
 
 ### GetAsPath
 
-`func (o *RouteTableEntry) GetAsPath() []int32`
+`func (o *RouteTableEntry) GetAsPath() []string`
 
 GetAsPath returns the AsPath field if non-nil, zero value otherwise.
 
 ### GetAsPathOk
 
-`func (o *RouteTableEntry) GetAsPathOk() (*[]int32, bool)`
+`func (o *RouteTableEntry) GetAsPathOk() (*[]string, bool)`
 
 GetAsPathOk returns a tuple with the AsPath field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAsPath
 
-`func (o *RouteTableEntry) SetAsPath(v []int32)`
+`func (o *RouteTableEntry) SetAsPath(v []string)`
 
 SetAsPath sets AsPath field to given value.
 
@@ -252,20 +252,20 @@ HasAsPath returns a boolean if a field has been set.
 
 ### GetConnection
 
-`func (o *RouteTableEntry) GetConnection() RouteTableEntryConnection`
+`func (o *RouteTableEntry) GetConnection() ConnectionRouteTableEntryConnection`
 
 GetConnection returns the Connection field if non-nil, zero value otherwise.
 
 ### GetConnectionOk
 
-`func (o *RouteTableEntry) GetConnectionOk() (*RouteTableEntryConnection, bool)`
+`func (o *RouteTableEntry) GetConnectionOk() (*ConnectionRouteTableEntryConnection, bool)`
 
 GetConnectionOk returns a tuple with the Connection field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetConnection
 
-`func (o *RouteTableEntry) SetConnection(v RouteTableEntryConnection)`
+`func (o *RouteTableEntry) SetConnection(v ConnectionRouteTableEntryConnection)`
 
 SetConnection sets Connection field to given value.
 

@@ -14,13 +14,12 @@ Name | Type | Description | Notes
 **ConnectionsCount** | Pointer to **int32** | Equinix assigned response attribute for Connection count | [optional] 
 **Project** | Pointer to [**Project**](Project.md) |  | [optional] 
 **State** | Pointer to [**PortState**](PortState.md) |  | [optional] 
-**CvpId** | Pointer to **string** | Equinix assigned response attribute for Unique ID for a virtual port. | [optional] 
 **Operation** | Pointer to [**PortOperation**](PortOperation.md) |  | [optional] 
 **Account** | Pointer to [**SimplifiedAccount**](SimplifiedAccount.md) |  | [optional] 
-**ServiceType** | Pointer to [**PortResponseServiceType**](PortResponseServiceType.md) |  | [optional] 
-**Bandwidth** | Pointer to **int32** | Equinix assigned response attribute for Port bandwidth in Mbps | [optional] 
-**AvailableBandwidth** | Pointer to **int32** | Equinix assigned response attribute for Port available bandwidth in Mbps | [optional] 
-**UsedBandwidth** | Pointer to **int32** | Equinix assigned response attribute for Port used bandwidth in Mbps | [optional] 
+**ServiceType** | Pointer to [**PortServiceType**](PortServiceType.md) |  | [optional] 
+**Bandwidth** | Pointer to **int64** | Equinix assigned response attribute for Port bandwidth in Mbps | [optional] 
+**AvailableBandwidth** | Pointer to **int64** | Equinix assigned response attribute for Port available bandwidth in Mbps | [optional] 
+**UsedBandwidth** | Pointer to **int64** | Equinix assigned response attribute for Port used bandwidth in Mbps | [optional] 
 **Location** | Pointer to [**SimplifiedLocation**](SimplifiedLocation.md) |  | [optional] 
 **Device** | Pointer to [**PortDevice**](PortDevice.md) |  | [optional] 
 **Interface** | Pointer to [**PortInterface**](PortInterface.md) |  | [optional] 
@@ -29,6 +28,7 @@ Name | Type | Description | Notes
 **Redundancy** | Pointer to [**PortRedundancy**](PortRedundancy.md) |  | [optional] 
 **Encapsulation** | Pointer to [**PortEncapsulation**](PortEncapsulation.md) |  | [optional] 
 **LagEnabled** | Pointer to **bool** | If LAG enabled | [optional] 
+**Package** | Pointer to [**Package**](Package.md) |  | [optional] 
 **Settings** | Pointer to [**PortSettings**](PortSettings.md) |  | [optional] 
 **PhysicalPortQuantity** | Pointer to **int32** | Number of physical ports | [optional] 
 **AdditionalInfo** | Pointer to [**[]PortAdditionalInfo**](PortAdditionalInfo.md) | Port additional information | [optional] 
@@ -303,31 +303,6 @@ SetState sets State field to given value.
 
 HasState returns a boolean if a field has been set.
 
-### GetCvpId
-
-`func (o *SimplifiedPort) GetCvpId() string`
-
-GetCvpId returns the CvpId field if non-nil, zero value otherwise.
-
-### GetCvpIdOk
-
-`func (o *SimplifiedPort) GetCvpIdOk() (*string, bool)`
-
-GetCvpIdOk returns a tuple with the CvpId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCvpId
-
-`func (o *SimplifiedPort) SetCvpId(v string)`
-
-SetCvpId sets CvpId field to given value.
-
-### HasCvpId
-
-`func (o *SimplifiedPort) HasCvpId() bool`
-
-HasCvpId returns a boolean if a field has been set.
-
 ### GetOperation
 
 `func (o *SimplifiedPort) GetOperation() PortOperation`
@@ -380,20 +355,20 @@ HasAccount returns a boolean if a field has been set.
 
 ### GetServiceType
 
-`func (o *SimplifiedPort) GetServiceType() PortResponseServiceType`
+`func (o *SimplifiedPort) GetServiceType() PortServiceType`
 
 GetServiceType returns the ServiceType field if non-nil, zero value otherwise.
 
 ### GetServiceTypeOk
 
-`func (o *SimplifiedPort) GetServiceTypeOk() (*PortResponseServiceType, bool)`
+`func (o *SimplifiedPort) GetServiceTypeOk() (*PortServiceType, bool)`
 
 GetServiceTypeOk returns a tuple with the ServiceType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetServiceType
 
-`func (o *SimplifiedPort) SetServiceType(v PortResponseServiceType)`
+`func (o *SimplifiedPort) SetServiceType(v PortServiceType)`
 
 SetServiceType sets ServiceType field to given value.
 
@@ -405,20 +380,20 @@ HasServiceType returns a boolean if a field has been set.
 
 ### GetBandwidth
 
-`func (o *SimplifiedPort) GetBandwidth() int32`
+`func (o *SimplifiedPort) GetBandwidth() int64`
 
 GetBandwidth returns the Bandwidth field if non-nil, zero value otherwise.
 
 ### GetBandwidthOk
 
-`func (o *SimplifiedPort) GetBandwidthOk() (*int32, bool)`
+`func (o *SimplifiedPort) GetBandwidthOk() (*int64, bool)`
 
 GetBandwidthOk returns a tuple with the Bandwidth field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBandwidth
 
-`func (o *SimplifiedPort) SetBandwidth(v int32)`
+`func (o *SimplifiedPort) SetBandwidth(v int64)`
 
 SetBandwidth sets Bandwidth field to given value.
 
@@ -430,20 +405,20 @@ HasBandwidth returns a boolean if a field has been set.
 
 ### GetAvailableBandwidth
 
-`func (o *SimplifiedPort) GetAvailableBandwidth() int32`
+`func (o *SimplifiedPort) GetAvailableBandwidth() int64`
 
 GetAvailableBandwidth returns the AvailableBandwidth field if non-nil, zero value otherwise.
 
 ### GetAvailableBandwidthOk
 
-`func (o *SimplifiedPort) GetAvailableBandwidthOk() (*int32, bool)`
+`func (o *SimplifiedPort) GetAvailableBandwidthOk() (*int64, bool)`
 
 GetAvailableBandwidthOk returns a tuple with the AvailableBandwidth field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAvailableBandwidth
 
-`func (o *SimplifiedPort) SetAvailableBandwidth(v int32)`
+`func (o *SimplifiedPort) SetAvailableBandwidth(v int64)`
 
 SetAvailableBandwidth sets AvailableBandwidth field to given value.
 
@@ -455,20 +430,20 @@ HasAvailableBandwidth returns a boolean if a field has been set.
 
 ### GetUsedBandwidth
 
-`func (o *SimplifiedPort) GetUsedBandwidth() int32`
+`func (o *SimplifiedPort) GetUsedBandwidth() int64`
 
 GetUsedBandwidth returns the UsedBandwidth field if non-nil, zero value otherwise.
 
 ### GetUsedBandwidthOk
 
-`func (o *SimplifiedPort) GetUsedBandwidthOk() (*int32, bool)`
+`func (o *SimplifiedPort) GetUsedBandwidthOk() (*int64, bool)`
 
 GetUsedBandwidthOk returns a tuple with the UsedBandwidth field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUsedBandwidth
 
-`func (o *SimplifiedPort) SetUsedBandwidth(v int32)`
+`func (o *SimplifiedPort) SetUsedBandwidth(v int64)`
 
 SetUsedBandwidth sets UsedBandwidth field to given value.
 
@@ -677,6 +652,31 @@ SetLagEnabled sets LagEnabled field to given value.
 `func (o *SimplifiedPort) HasLagEnabled() bool`
 
 HasLagEnabled returns a boolean if a field has been set.
+
+### GetPackage
+
+`func (o *SimplifiedPort) GetPackage() Package`
+
+GetPackage returns the Package field if non-nil, zero value otherwise.
+
+### GetPackageOk
+
+`func (o *SimplifiedPort) GetPackageOk() (*Package, bool)`
+
+GetPackageOk returns a tuple with the Package field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPackage
+
+`func (o *SimplifiedPort) SetPackage(v Package)`
+
+SetPackage sets Package field to given value.
+
+### HasPackage
+
+`func (o *SimplifiedPort) HasPackage() bool`
+
+HasPackage returns a boolean if a field has been set.
 
 ### GetSettings
 

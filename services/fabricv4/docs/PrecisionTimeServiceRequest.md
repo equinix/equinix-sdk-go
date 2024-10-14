@@ -5,19 +5,20 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | [**PrecisionTimeServiceRequestType**](PrecisionTimeServiceRequestType.md) |  | 
-**Name** | **string** |  | 
-**Description** | Pointer to **string** |  | [optional] 
+**Name** | **string** | Precision Time Service name. | 
 **Package** | [**PrecisionTimePackageRequest**](PrecisionTimePackageRequest.md) |  | 
-**Connections** | [**[]FabricConnectionUuid**](FabricConnectionUuid.md) |  | 
+**Connections** | [**[]VirtualConnectionUuid**](VirtualConnectionUuid.md) |  | 
 **Ipv4** | [**Ipv4**](Ipv4.md) |  | 
-**AdvanceConfiguration** | Pointer to [**AdvanceConfiguration**](AdvanceConfiguration.md) |  | [optional] 
+**NtpAdvancedConfiguration** | Pointer to [**[]Md5**](Md5.md) | NTP Advanced configuration - MD5 Authentication. | [optional] 
+**PtpAdvancedConfiguration** | Pointer to [**PtpAdvanceConfiguration**](PtpAdvanceConfiguration.md) |  | [optional] 
 **Project** | Pointer to [**Project**](Project.md) |  | [optional] 
+**Order** | Pointer to [**PrecisionTimeOrder**](PrecisionTimeOrder.md) |  | [optional] 
 
 ## Methods
 
 ### NewPrecisionTimeServiceRequest
 
-`func NewPrecisionTimeServiceRequest(type_ PrecisionTimeServiceRequestType, name string, package_ PrecisionTimePackageRequest, connections []FabricConnectionUuid, ipv4 Ipv4, ) *PrecisionTimeServiceRequest`
+`func NewPrecisionTimeServiceRequest(type_ PrecisionTimeServiceRequestType, name string, package_ PrecisionTimePackageRequest, connections []VirtualConnectionUuid, ipv4 Ipv4, ) *PrecisionTimeServiceRequest`
 
 NewPrecisionTimeServiceRequest instantiates a new PrecisionTimeServiceRequest object
 This constructor will assign default values to properties that have it defined,
@@ -72,31 +73,6 @@ and a boolean to check if the value has been set.
 SetName sets Name field to given value.
 
 
-### GetDescription
-
-`func (o *PrecisionTimeServiceRequest) GetDescription() string`
-
-GetDescription returns the Description field if non-nil, zero value otherwise.
-
-### GetDescriptionOk
-
-`func (o *PrecisionTimeServiceRequest) GetDescriptionOk() (*string, bool)`
-
-GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDescription
-
-`func (o *PrecisionTimeServiceRequest) SetDescription(v string)`
-
-SetDescription sets Description field to given value.
-
-### HasDescription
-
-`func (o *PrecisionTimeServiceRequest) HasDescription() bool`
-
-HasDescription returns a boolean if a field has been set.
-
 ### GetPackage
 
 `func (o *PrecisionTimeServiceRequest) GetPackage() PrecisionTimePackageRequest`
@@ -119,20 +95,20 @@ SetPackage sets Package field to given value.
 
 ### GetConnections
 
-`func (o *PrecisionTimeServiceRequest) GetConnections() []FabricConnectionUuid`
+`func (o *PrecisionTimeServiceRequest) GetConnections() []VirtualConnectionUuid`
 
 GetConnections returns the Connections field if non-nil, zero value otherwise.
 
 ### GetConnectionsOk
 
-`func (o *PrecisionTimeServiceRequest) GetConnectionsOk() (*[]FabricConnectionUuid, bool)`
+`func (o *PrecisionTimeServiceRequest) GetConnectionsOk() (*[]VirtualConnectionUuid, bool)`
 
 GetConnectionsOk returns a tuple with the Connections field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetConnections
 
-`func (o *PrecisionTimeServiceRequest) SetConnections(v []FabricConnectionUuid)`
+`func (o *PrecisionTimeServiceRequest) SetConnections(v []VirtualConnectionUuid)`
 
 SetConnections sets Connections field to given value.
 
@@ -157,30 +133,55 @@ and a boolean to check if the value has been set.
 SetIpv4 sets Ipv4 field to given value.
 
 
-### GetAdvanceConfiguration
+### GetNtpAdvancedConfiguration
 
-`func (o *PrecisionTimeServiceRequest) GetAdvanceConfiguration() AdvanceConfiguration`
+`func (o *PrecisionTimeServiceRequest) GetNtpAdvancedConfiguration() []Md5`
 
-GetAdvanceConfiguration returns the AdvanceConfiguration field if non-nil, zero value otherwise.
+GetNtpAdvancedConfiguration returns the NtpAdvancedConfiguration field if non-nil, zero value otherwise.
 
-### GetAdvanceConfigurationOk
+### GetNtpAdvancedConfigurationOk
 
-`func (o *PrecisionTimeServiceRequest) GetAdvanceConfigurationOk() (*AdvanceConfiguration, bool)`
+`func (o *PrecisionTimeServiceRequest) GetNtpAdvancedConfigurationOk() (*[]Md5, bool)`
 
-GetAdvanceConfigurationOk returns a tuple with the AdvanceConfiguration field if it's non-nil, zero value otherwise
+GetNtpAdvancedConfigurationOk returns a tuple with the NtpAdvancedConfiguration field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAdvanceConfiguration
+### SetNtpAdvancedConfiguration
 
-`func (o *PrecisionTimeServiceRequest) SetAdvanceConfiguration(v AdvanceConfiguration)`
+`func (o *PrecisionTimeServiceRequest) SetNtpAdvancedConfiguration(v []Md5)`
 
-SetAdvanceConfiguration sets AdvanceConfiguration field to given value.
+SetNtpAdvancedConfiguration sets NtpAdvancedConfiguration field to given value.
 
-### HasAdvanceConfiguration
+### HasNtpAdvancedConfiguration
 
-`func (o *PrecisionTimeServiceRequest) HasAdvanceConfiguration() bool`
+`func (o *PrecisionTimeServiceRequest) HasNtpAdvancedConfiguration() bool`
 
-HasAdvanceConfiguration returns a boolean if a field has been set.
+HasNtpAdvancedConfiguration returns a boolean if a field has been set.
+
+### GetPtpAdvancedConfiguration
+
+`func (o *PrecisionTimeServiceRequest) GetPtpAdvancedConfiguration() PtpAdvanceConfiguration`
+
+GetPtpAdvancedConfiguration returns the PtpAdvancedConfiguration field if non-nil, zero value otherwise.
+
+### GetPtpAdvancedConfigurationOk
+
+`func (o *PrecisionTimeServiceRequest) GetPtpAdvancedConfigurationOk() (*PtpAdvanceConfiguration, bool)`
+
+GetPtpAdvancedConfigurationOk returns a tuple with the PtpAdvancedConfiguration field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPtpAdvancedConfiguration
+
+`func (o *PrecisionTimeServiceRequest) SetPtpAdvancedConfiguration(v PtpAdvanceConfiguration)`
+
+SetPtpAdvancedConfiguration sets PtpAdvancedConfiguration field to given value.
+
+### HasPtpAdvancedConfiguration
+
+`func (o *PrecisionTimeServiceRequest) HasPtpAdvancedConfiguration() bool`
+
+HasPtpAdvancedConfiguration returns a boolean if a field has been set.
 
 ### GetProject
 
@@ -206,6 +207,31 @@ SetProject sets Project field to given value.
 `func (o *PrecisionTimeServiceRequest) HasProject() bool`
 
 HasProject returns a boolean if a field has been set.
+
+### GetOrder
+
+`func (o *PrecisionTimeServiceRequest) GetOrder() PrecisionTimeOrder`
+
+GetOrder returns the Order field if non-nil, zero value otherwise.
+
+### GetOrderOk
+
+`func (o *PrecisionTimeServiceRequest) GetOrderOk() (*PrecisionTimeOrder, bool)`
+
+GetOrderOk returns a tuple with the Order field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOrder
+
+`func (o *PrecisionTimeServiceRequest) SetOrder(v PrecisionTimeOrder)`
+
+SetOrder sets Order field to given value.
+
+### HasOrder
+
+`func (o *PrecisionTimeServiceRequest) HasOrder() bool`
+
+HasOrder returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

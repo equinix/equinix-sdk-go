@@ -4,25 +4,26 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | [**PrecisionTimeServiceCreateResponseType**](PrecisionTimeServiceCreateResponseType.md) |  | 
-**Href** | **string** |  | 
-**Uuid** | **string** | uuid of the ept service | 
-**Name** | Pointer to **string** | name of the ept service | [optional] 
-**Description** | Pointer to **string** |  | [optional] 
-**State** | [**PrecisionTimeServiceCreateResponseState**](PrecisionTimeServiceCreateResponseState.md) |  | 
+**Href** | **string** | Precision Time Service URI. | 
+**Type** | [**PrecisionTimeServiceResponseType**](PrecisionTimeServiceResponseType.md) |  | 
+**Name** | Pointer to **string** | Precision Time Service Name. | [optional] 
+**Uuid** | **string** | Precision Time Service UUID. | 
+**State** | [**PrecisionTimeServiceResponseState**](PrecisionTimeServiceResponseState.md) |  | 
 **Package** | [**PrecisionTimePackageResponse**](PrecisionTimePackageResponse.md) |  | 
-**Connections** | Pointer to [**[]FabricConnectionUuid**](FabricConnectionUuid.md) | fabric l2 connections used for the ept service | [optional] 
-**Order** | [**Order**](Order.md) |  | 
-**Ipv4** | [**Ipv4**](Ipv4.md) |  | 
-**AdvanceConfiguration** | Pointer to [**AdvanceConfiguration**](AdvanceConfiguration.md) |  | [optional] 
+**Connections** | Pointer to [**[]VirtualConnectionTimeServiceResponse**](VirtualConnectionTimeServiceResponse.md) | Fabric Connections associated with Precision Time Service. | [optional] 
+**Ipv4** | Pointer to [**Ipv4**](Ipv4.md) |  | [optional] 
+**NtpAdvancedConfiguration** | Pointer to [**[]Md5**](Md5.md) | NTP Advanced configuration - MD5 Authentication. | [optional] 
+**PtpAdvancedConfiguration** | Pointer to [**PtpAdvanceConfiguration**](PtpAdvanceConfiguration.md) |  | [optional] 
 **Project** | Pointer to [**Project**](Project.md) |  | [optional] 
-**Account** | Pointer to [**Account**](Account.md) |  | [optional] 
+**Account** | Pointer to [**SimplifiedAccount**](SimplifiedAccount.md) |  | [optional] 
+**Order** | Pointer to [**PrecisionTimeOrder**](PrecisionTimeOrder.md) |  | [optional] 
+**ChangeLog** | Pointer to [**Changelog**](Changelog.md) |  | [optional] 
 
 ## Methods
 
 ### NewPrecisionTimeServiceResponse
 
-`func NewPrecisionTimeServiceResponse(type_ PrecisionTimeServiceCreateResponseType, href string, uuid string, state PrecisionTimeServiceCreateResponseState, package_ PrecisionTimePackageResponse, order Order, ipv4 Ipv4, ) *PrecisionTimeServiceResponse`
+`func NewPrecisionTimeServiceResponse(href string, type_ PrecisionTimeServiceResponseType, uuid string, state PrecisionTimeServiceResponseState, package_ PrecisionTimePackageResponse, ) *PrecisionTimeServiceResponse`
 
 NewPrecisionTimeServiceResponse instantiates a new PrecisionTimeServiceResponse object
 This constructor will assign default values to properties that have it defined,
@@ -36,26 +37,6 @@ will change when the set of required properties is changed
 NewPrecisionTimeServiceResponseWithDefaults instantiates a new PrecisionTimeServiceResponse object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetType
-
-`func (o *PrecisionTimeServiceResponse) GetType() PrecisionTimeServiceCreateResponseType`
-
-GetType returns the Type field if non-nil, zero value otherwise.
-
-### GetTypeOk
-
-`func (o *PrecisionTimeServiceResponse) GetTypeOk() (*PrecisionTimeServiceCreateResponseType, bool)`
-
-GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetType
-
-`func (o *PrecisionTimeServiceResponse) SetType(v PrecisionTimeServiceCreateResponseType)`
-
-SetType sets Type field to given value.
-
 
 ### GetHref
 
@@ -77,24 +58,24 @@ and a boolean to check if the value has been set.
 SetHref sets Href field to given value.
 
 
-### GetUuid
+### GetType
 
-`func (o *PrecisionTimeServiceResponse) GetUuid() string`
+`func (o *PrecisionTimeServiceResponse) GetType() PrecisionTimeServiceResponseType`
 
-GetUuid returns the Uuid field if non-nil, zero value otherwise.
+GetType returns the Type field if non-nil, zero value otherwise.
 
-### GetUuidOk
+### GetTypeOk
 
-`func (o *PrecisionTimeServiceResponse) GetUuidOk() (*string, bool)`
+`func (o *PrecisionTimeServiceResponse) GetTypeOk() (*PrecisionTimeServiceResponseType, bool)`
 
-GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetUuid
+### SetType
 
-`func (o *PrecisionTimeServiceResponse) SetUuid(v string)`
+`func (o *PrecisionTimeServiceResponse) SetType(v PrecisionTimeServiceResponseType)`
 
-SetUuid sets Uuid field to given value.
+SetType sets Type field to given value.
 
 
 ### GetName
@@ -122,47 +103,42 @@ SetName sets Name field to given value.
 
 HasName returns a boolean if a field has been set.
 
-### GetDescription
+### GetUuid
 
-`func (o *PrecisionTimeServiceResponse) GetDescription() string`
+`func (o *PrecisionTimeServiceResponse) GetUuid() string`
 
-GetDescription returns the Description field if non-nil, zero value otherwise.
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
 
-### GetDescriptionOk
+### GetUuidOk
 
-`func (o *PrecisionTimeServiceResponse) GetDescriptionOk() (*string, bool)`
+`func (o *PrecisionTimeServiceResponse) GetUuidOk() (*string, bool)`
 
-GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetDescription
+### SetUuid
 
-`func (o *PrecisionTimeServiceResponse) SetDescription(v string)`
+`func (o *PrecisionTimeServiceResponse) SetUuid(v string)`
 
-SetDescription sets Description field to given value.
+SetUuid sets Uuid field to given value.
 
-### HasDescription
-
-`func (o *PrecisionTimeServiceResponse) HasDescription() bool`
-
-HasDescription returns a boolean if a field has been set.
 
 ### GetState
 
-`func (o *PrecisionTimeServiceResponse) GetState() PrecisionTimeServiceCreateResponseState`
+`func (o *PrecisionTimeServiceResponse) GetState() PrecisionTimeServiceResponseState`
 
 GetState returns the State field if non-nil, zero value otherwise.
 
 ### GetStateOk
 
-`func (o *PrecisionTimeServiceResponse) GetStateOk() (*PrecisionTimeServiceCreateResponseState, bool)`
+`func (o *PrecisionTimeServiceResponse) GetStateOk() (*PrecisionTimeServiceResponseState, bool)`
 
 GetStateOk returns a tuple with the State field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetState
 
-`func (o *PrecisionTimeServiceResponse) SetState(v PrecisionTimeServiceCreateResponseState)`
+`func (o *PrecisionTimeServiceResponse) SetState(v PrecisionTimeServiceResponseState)`
 
 SetState sets State field to given value.
 
@@ -189,20 +165,20 @@ SetPackage sets Package field to given value.
 
 ### GetConnections
 
-`func (o *PrecisionTimeServiceResponse) GetConnections() []FabricConnectionUuid`
+`func (o *PrecisionTimeServiceResponse) GetConnections() []VirtualConnectionTimeServiceResponse`
 
 GetConnections returns the Connections field if non-nil, zero value otherwise.
 
 ### GetConnectionsOk
 
-`func (o *PrecisionTimeServiceResponse) GetConnectionsOk() (*[]FabricConnectionUuid, bool)`
+`func (o *PrecisionTimeServiceResponse) GetConnectionsOk() (*[]VirtualConnectionTimeServiceResponse, bool)`
 
 GetConnectionsOk returns a tuple with the Connections field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetConnections
 
-`func (o *PrecisionTimeServiceResponse) SetConnections(v []FabricConnectionUuid)`
+`func (o *PrecisionTimeServiceResponse) SetConnections(v []VirtualConnectionTimeServiceResponse)`
 
 SetConnections sets Connections field to given value.
 
@@ -211,26 +187,6 @@ SetConnections sets Connections field to given value.
 `func (o *PrecisionTimeServiceResponse) HasConnections() bool`
 
 HasConnections returns a boolean if a field has been set.
-
-### GetOrder
-
-`func (o *PrecisionTimeServiceResponse) GetOrder() Order`
-
-GetOrder returns the Order field if non-nil, zero value otherwise.
-
-### GetOrderOk
-
-`func (o *PrecisionTimeServiceResponse) GetOrderOk() (*Order, bool)`
-
-GetOrderOk returns a tuple with the Order field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetOrder
-
-`func (o *PrecisionTimeServiceResponse) SetOrder(v Order)`
-
-SetOrder sets Order field to given value.
-
 
 ### GetIpv4
 
@@ -251,31 +207,61 @@ and a boolean to check if the value has been set.
 
 SetIpv4 sets Ipv4 field to given value.
 
+### HasIpv4
 
-### GetAdvanceConfiguration
+`func (o *PrecisionTimeServiceResponse) HasIpv4() bool`
 
-`func (o *PrecisionTimeServiceResponse) GetAdvanceConfiguration() AdvanceConfiguration`
+HasIpv4 returns a boolean if a field has been set.
 
-GetAdvanceConfiguration returns the AdvanceConfiguration field if non-nil, zero value otherwise.
+### GetNtpAdvancedConfiguration
 
-### GetAdvanceConfigurationOk
+`func (o *PrecisionTimeServiceResponse) GetNtpAdvancedConfiguration() []Md5`
 
-`func (o *PrecisionTimeServiceResponse) GetAdvanceConfigurationOk() (*AdvanceConfiguration, bool)`
+GetNtpAdvancedConfiguration returns the NtpAdvancedConfiguration field if non-nil, zero value otherwise.
 
-GetAdvanceConfigurationOk returns a tuple with the AdvanceConfiguration field if it's non-nil, zero value otherwise
+### GetNtpAdvancedConfigurationOk
+
+`func (o *PrecisionTimeServiceResponse) GetNtpAdvancedConfigurationOk() (*[]Md5, bool)`
+
+GetNtpAdvancedConfigurationOk returns a tuple with the NtpAdvancedConfiguration field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAdvanceConfiguration
+### SetNtpAdvancedConfiguration
 
-`func (o *PrecisionTimeServiceResponse) SetAdvanceConfiguration(v AdvanceConfiguration)`
+`func (o *PrecisionTimeServiceResponse) SetNtpAdvancedConfiguration(v []Md5)`
 
-SetAdvanceConfiguration sets AdvanceConfiguration field to given value.
+SetNtpAdvancedConfiguration sets NtpAdvancedConfiguration field to given value.
 
-### HasAdvanceConfiguration
+### HasNtpAdvancedConfiguration
 
-`func (o *PrecisionTimeServiceResponse) HasAdvanceConfiguration() bool`
+`func (o *PrecisionTimeServiceResponse) HasNtpAdvancedConfiguration() bool`
 
-HasAdvanceConfiguration returns a boolean if a field has been set.
+HasNtpAdvancedConfiguration returns a boolean if a field has been set.
+
+### GetPtpAdvancedConfiguration
+
+`func (o *PrecisionTimeServiceResponse) GetPtpAdvancedConfiguration() PtpAdvanceConfiguration`
+
+GetPtpAdvancedConfiguration returns the PtpAdvancedConfiguration field if non-nil, zero value otherwise.
+
+### GetPtpAdvancedConfigurationOk
+
+`func (o *PrecisionTimeServiceResponse) GetPtpAdvancedConfigurationOk() (*PtpAdvanceConfiguration, bool)`
+
+GetPtpAdvancedConfigurationOk returns a tuple with the PtpAdvancedConfiguration field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPtpAdvancedConfiguration
+
+`func (o *PrecisionTimeServiceResponse) SetPtpAdvancedConfiguration(v PtpAdvanceConfiguration)`
+
+SetPtpAdvancedConfiguration sets PtpAdvancedConfiguration field to given value.
+
+### HasPtpAdvancedConfiguration
+
+`func (o *PrecisionTimeServiceResponse) HasPtpAdvancedConfiguration() bool`
+
+HasPtpAdvancedConfiguration returns a boolean if a field has been set.
 
 ### GetProject
 
@@ -304,20 +290,20 @@ HasProject returns a boolean if a field has been set.
 
 ### GetAccount
 
-`func (o *PrecisionTimeServiceResponse) GetAccount() Account`
+`func (o *PrecisionTimeServiceResponse) GetAccount() SimplifiedAccount`
 
 GetAccount returns the Account field if non-nil, zero value otherwise.
 
 ### GetAccountOk
 
-`func (o *PrecisionTimeServiceResponse) GetAccountOk() (*Account, bool)`
+`func (o *PrecisionTimeServiceResponse) GetAccountOk() (*SimplifiedAccount, bool)`
 
 GetAccountOk returns a tuple with the Account field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAccount
 
-`func (o *PrecisionTimeServiceResponse) SetAccount(v Account)`
+`func (o *PrecisionTimeServiceResponse) SetAccount(v SimplifiedAccount)`
 
 SetAccount sets Account field to given value.
 
@@ -326,6 +312,56 @@ SetAccount sets Account field to given value.
 `func (o *PrecisionTimeServiceResponse) HasAccount() bool`
 
 HasAccount returns a boolean if a field has been set.
+
+### GetOrder
+
+`func (o *PrecisionTimeServiceResponse) GetOrder() PrecisionTimeOrder`
+
+GetOrder returns the Order field if non-nil, zero value otherwise.
+
+### GetOrderOk
+
+`func (o *PrecisionTimeServiceResponse) GetOrderOk() (*PrecisionTimeOrder, bool)`
+
+GetOrderOk returns a tuple with the Order field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOrder
+
+`func (o *PrecisionTimeServiceResponse) SetOrder(v PrecisionTimeOrder)`
+
+SetOrder sets Order field to given value.
+
+### HasOrder
+
+`func (o *PrecisionTimeServiceResponse) HasOrder() bool`
+
+HasOrder returns a boolean if a field has been set.
+
+### GetChangeLog
+
+`func (o *PrecisionTimeServiceResponse) GetChangeLog() Changelog`
+
+GetChangeLog returns the ChangeLog field if non-nil, zero value otherwise.
+
+### GetChangeLogOk
+
+`func (o *PrecisionTimeServiceResponse) GetChangeLogOk() (*Changelog, bool)`
+
+GetChangeLogOk returns a tuple with the ChangeLog field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetChangeLog
+
+`func (o *PrecisionTimeServiceResponse) SetChangeLog(v Changelog)`
+
+SetChangeLog sets ChangeLog field to given value.
+
+### HasChangeLog
+
+`func (o *PrecisionTimeServiceResponse) HasChangeLog() bool`
+
+HasChangeLog returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

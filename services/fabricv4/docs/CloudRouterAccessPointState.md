@@ -11,7 +11,7 @@
 
 * `DEPROVISIONED` (value: `"DEPROVISIONED"`)
 
-* `LOCKED` (value: `"LOCKED"`)
+* `REPROVISIONING` (value: `"REPROVISIONING"`)
 
 * `NOT_PROVISIONED` (value: `"NOT_PROVISIONED"`)
 

@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **EndDate** | Pointer to **string** |  | [optional] 
 **AttachmentId** | Pointer to **string** |  | [optional] 
 **SelectionType** | Pointer to [**PortOrderPurchaseOrderSelectionType**](PortOrderPurchaseOrderSelectionType.md) |  | [optional] 
+**Type** | Pointer to [**PortOrderPurchaseOrderType**](PortOrderPurchaseOrderType.md) |  | [optional] 
 
 ## Methods
 
@@ -179,6 +180,31 @@ SetSelectionType sets SelectionType field to given value.
 `func (o *PortOrderPurchaseOrder) HasSelectionType() bool`
 
 HasSelectionType returns a boolean if a field has been set.
+
+### GetType
+
+`func (o *PortOrderPurchaseOrder) GetType() PortOrderPurchaseOrderType`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *PortOrderPurchaseOrder) GetTypeOk() (*PortOrderPurchaseOrderType, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *PortOrderPurchaseOrder) SetType(v PortOrderPurchaseOrderType)`
+
+SetType sets Type field to given value.
+
+### HasType
+
+`func (o *PortOrderPurchaseOrder) HasType() bool`
+
+HasType returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

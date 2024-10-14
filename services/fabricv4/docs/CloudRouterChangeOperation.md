@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Op** | [**ServiceTokenChangeOperationOp**](ServiceTokenChangeOperationOp.md) |  | 
+**Op** | [**PrecisionTimeChangeOperationOp**](PrecisionTimeChangeOperationOp.md) |  | 
 **Path** | **string** | path inside document leading to updated parameter | 
 **Value** | **interface{}** | new value for updated parameter | 
 
@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 ### NewCloudRouterChangeOperation
 
-`func NewCloudRouterChangeOperation(op ServiceTokenChangeOperationOp, path string, value interface{}, ) *CloudRouterChangeOperation`
+`func NewCloudRouterChangeOperation(op PrecisionTimeChangeOperationOp, path string, value interface{}, ) *CloudRouterChangeOperation`
 
 NewCloudRouterChangeOperation instantiates a new CloudRouterChangeOperation object
 This constructor will assign default values to properties that have it defined,
@@ -29,20 +29,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetOp
 
-`func (o *CloudRouterChangeOperation) GetOp() ServiceTokenChangeOperationOp`
+`func (o *CloudRouterChangeOperation) GetOp() PrecisionTimeChangeOperationOp`
 
 GetOp returns the Op field if non-nil, zero value otherwise.
 
 ### GetOpOk
 
-`func (o *CloudRouterChangeOperation) GetOpOk() (*ServiceTokenChangeOperationOp, bool)`
+`func (o *CloudRouterChangeOperation) GetOpOk() (*PrecisionTimeChangeOperationOp, bool)`
 
 GetOpOk returns a tuple with the Op field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOp
 
-`func (o *CloudRouterChangeOperation) SetOp(v ServiceTokenChangeOperationOp)`
+`func (o *CloudRouterChangeOperation) SetOp(v PrecisionTimeChangeOperationOp)`
 
 SetOp sets Op field to given value.
 

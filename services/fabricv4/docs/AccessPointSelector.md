@@ -6,7 +6,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | Pointer to [**AccessPointSelectorType**](AccessPointSelectorType.md) |  | [optional] 
 **Port** | Pointer to [**SimplifiedMetadataEntity**](SimplifiedMetadataEntity.md) |  | [optional] 
-**LinkProtocol** | Pointer to [**LinkProtocol**](LinkProtocol.md) |  | [optional] 
+**LinkProtocol** | Pointer to [**SimplifiedLinkProtocol**](SimplifiedLinkProtocol.md) |  | [optional] 
+**VirtualDevice** | Pointer to [**SimplifiedVirtualDevice**](SimplifiedVirtualDevice.md) |  | [optional] 
+**Interface** | Pointer to [**VirtualDeviceInterface**](VirtualDeviceInterface.md) |  | [optional] 
+**Network** | Pointer to [**SimplifiedTokenNetwork**](SimplifiedTokenNetwork.md) |  | [optional] 
 
 ## Methods
 
@@ -79,20 +82,20 @@ HasPort returns a boolean if a field has been set.
 
 ### GetLinkProtocol
 
-`func (o *AccessPointSelector) GetLinkProtocol() LinkProtocol`
+`func (o *AccessPointSelector) GetLinkProtocol() SimplifiedLinkProtocol`
 
 GetLinkProtocol returns the LinkProtocol field if non-nil, zero value otherwise.
 
 ### GetLinkProtocolOk
 
-`func (o *AccessPointSelector) GetLinkProtocolOk() (*LinkProtocol, bool)`
+`func (o *AccessPointSelector) GetLinkProtocolOk() (*SimplifiedLinkProtocol, bool)`
 
 GetLinkProtocolOk returns a tuple with the LinkProtocol field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinkProtocol
 
-`func (o *AccessPointSelector) SetLinkProtocol(v LinkProtocol)`
+`func (o *AccessPointSelector) SetLinkProtocol(v SimplifiedLinkProtocol)`
 
 SetLinkProtocol sets LinkProtocol field to given value.
 
@@ -101,6 +104,81 @@ SetLinkProtocol sets LinkProtocol field to given value.
 `func (o *AccessPointSelector) HasLinkProtocol() bool`
 
 HasLinkProtocol returns a boolean if a field has been set.
+
+### GetVirtualDevice
+
+`func (o *AccessPointSelector) GetVirtualDevice() SimplifiedVirtualDevice`
+
+GetVirtualDevice returns the VirtualDevice field if non-nil, zero value otherwise.
+
+### GetVirtualDeviceOk
+
+`func (o *AccessPointSelector) GetVirtualDeviceOk() (*SimplifiedVirtualDevice, bool)`
+
+GetVirtualDeviceOk returns a tuple with the VirtualDevice field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVirtualDevice
+
+`func (o *AccessPointSelector) SetVirtualDevice(v SimplifiedVirtualDevice)`
+
+SetVirtualDevice sets VirtualDevice field to given value.
+
+### HasVirtualDevice
+
+`func (o *AccessPointSelector) HasVirtualDevice() bool`
+
+HasVirtualDevice returns a boolean if a field has been set.
+
+### GetInterface
+
+`func (o *AccessPointSelector) GetInterface() VirtualDeviceInterface`
+
+GetInterface returns the Interface field if non-nil, zero value otherwise.
+
+### GetInterfaceOk
+
+`func (o *AccessPointSelector) GetInterfaceOk() (*VirtualDeviceInterface, bool)`
+
+GetInterfaceOk returns a tuple with the Interface field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInterface
+
+`func (o *AccessPointSelector) SetInterface(v VirtualDeviceInterface)`
+
+SetInterface sets Interface field to given value.
+
+### HasInterface
+
+`func (o *AccessPointSelector) HasInterface() bool`
+
+HasInterface returns a boolean if a field has been set.
+
+### GetNetwork
+
+`func (o *AccessPointSelector) GetNetwork() SimplifiedTokenNetwork`
+
+GetNetwork returns the Network field if non-nil, zero value otherwise.
+
+### GetNetworkOk
+
+`func (o *AccessPointSelector) GetNetworkOk() (*SimplifiedTokenNetwork, bool)`
+
+GetNetworkOk returns a tuple with the Network field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNetwork
+
+`func (o *AccessPointSelector) SetNetwork(v SimplifiedTokenNetwork)`
+
+SetNetwork sets Network field to given value.
+
+### HasNetwork
+
+`func (o *AccessPointSelector) HasNetwork() bool`
+
+HasNetwork returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

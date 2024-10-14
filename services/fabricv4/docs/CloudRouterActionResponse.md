@@ -9,6 +9,9 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** |  | [optional] 
 **State** | [**CloudRouterActionState**](CloudRouterActionState.md) |  | 
 **ChangeLog** | [**Changelog**](Changelog.md) |  | 
+**Href** | Pointer to **string** |  | [optional] 
+**Connection** | Pointer to [**RouterActionsConnection**](RouterActionsConnection.md) |  | [optional] 
+**Operation** | Pointer to [**Operation**](Operation.md) |  | [optional] 
 
 ## Methods
 
@@ -133,6 +136,81 @@ and a boolean to check if the value has been set.
 
 SetChangeLog sets ChangeLog field to given value.
 
+
+### GetHref
+
+`func (o *CloudRouterActionResponse) GetHref() string`
+
+GetHref returns the Href field if non-nil, zero value otherwise.
+
+### GetHrefOk
+
+`func (o *CloudRouterActionResponse) GetHrefOk() (*string, bool)`
+
+GetHrefOk returns a tuple with the Href field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHref
+
+`func (o *CloudRouterActionResponse) SetHref(v string)`
+
+SetHref sets Href field to given value.
+
+### HasHref
+
+`func (o *CloudRouterActionResponse) HasHref() bool`
+
+HasHref returns a boolean if a field has been set.
+
+### GetConnection
+
+`func (o *CloudRouterActionResponse) GetConnection() RouterActionsConnection`
+
+GetConnection returns the Connection field if non-nil, zero value otherwise.
+
+### GetConnectionOk
+
+`func (o *CloudRouterActionResponse) GetConnectionOk() (*RouterActionsConnection, bool)`
+
+GetConnectionOk returns a tuple with the Connection field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConnection
+
+`func (o *CloudRouterActionResponse) SetConnection(v RouterActionsConnection)`
+
+SetConnection sets Connection field to given value.
+
+### HasConnection
+
+`func (o *CloudRouterActionResponse) HasConnection() bool`
+
+HasConnection returns a boolean if a field has been set.
+
+### GetOperation
+
+`func (o *CloudRouterActionResponse) GetOperation() Operation`
+
+GetOperation returns the Operation field if non-nil, zero value otherwise.
+
+### GetOperationOk
+
+`func (o *CloudRouterActionResponse) GetOperationOk() (*Operation, bool)`
+
+GetOperationOk returns a tuple with the Operation field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOperation
+
+`func (o *CloudRouterActionResponse) SetOperation(v Operation)`
+
+SetOperation sets Operation field to given value.
+
+### HasOperation
+
+`func (o *CloudRouterActionResponse) HasOperation() bool`
+
+HasOperation returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

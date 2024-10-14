@@ -4,16 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Primary** | Pointer to **string** |  | [optional] 
-**Secondary** | Pointer to **string** |  | [optional] 
-**NetworkMask** | Pointer to **string** |  | [optional] 
-**DefaultGateway** | Pointer to **string** |  | [optional] 
+**Primary** | **string** | Primary Timing Server IP Address | 
+**Secondary** | **string** | Secondary Timing Server IP Address | 
+**NetworkMask** | **string** | Network Mask | 
+**DefaultGateway** | Pointer to **string** | Gateway Interface IP address | [optional] 
 
 ## Methods
 
 ### NewIpv4
 
-`func NewIpv4() *Ipv4`
+`func NewIpv4(primary string, secondary string, networkMask string, ) *Ipv4`
 
 NewIpv4 instantiates a new Ipv4 object
 This constructor will assign default values to properties that have it defined,
@@ -47,11 +47,6 @@ and a boolean to check if the value has been set.
 
 SetPrimary sets Primary field to given value.
 
-### HasPrimary
-
-`func (o *Ipv4) HasPrimary() bool`
-
-HasPrimary returns a boolean if a field has been set.
 
 ### GetSecondary
 
@@ -72,11 +67,6 @@ and a boolean to check if the value has been set.
 
 SetSecondary sets Secondary field to given value.
 
-### HasSecondary
-
-`func (o *Ipv4) HasSecondary() bool`
-
-HasSecondary returns a boolean if a field has been set.
 
 ### GetNetworkMask
 
@@ -97,11 +87,6 @@ and a boolean to check if the value has been set.
 
 SetNetworkMask sets NetworkMask field to given value.
 
-### HasNetworkMask
-
-`func (o *Ipv4) HasNetworkMask() bool`
-
-HasNetworkMask returns a boolean if a field has been set.
 
 ### GetDefaultGateway
 

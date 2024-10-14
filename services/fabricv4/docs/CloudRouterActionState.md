@@ -3,7 +3,7 @@
 ## Enum
 
 
-* `DONE` (value: `"DONE"`)
+* `SUCCEEDED` (value: `"SUCCEEDED"`)
 
 * `FAILED` (value: `"FAILED"`)
 

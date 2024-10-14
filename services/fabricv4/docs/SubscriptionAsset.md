@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to [**SubscriptionAssetType**](SubscriptionAssetType.md) |  | [optional] 
+**Type** | Pointer to **string** | Type of the subscription asset ( XF_ROUTER ,IP_VC, IPWAN_VC ) | [optional] 
 **Package** | Pointer to [**SubscriptionRouterPackageType**](SubscriptionRouterPackageType.md) |  | [optional] 
-**Bandwidth** | Pointer to **int32** |  | [optional] 
+**Bandwidth** | Pointer to **int32** | Bandwidth of the asset in Mbps | [optional] 
 
 ## Methods
 
@@ -29,20 +29,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetType
 
-`func (o *SubscriptionAsset) GetType() SubscriptionAssetType`
+`func (o *SubscriptionAsset) GetType() string`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *SubscriptionAsset) GetTypeOk() (*SubscriptionAssetType, bool)`
+`func (o *SubscriptionAsset) GetTypeOk() (*string, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *SubscriptionAsset) SetType(v SubscriptionAssetType)`
+`func (o *SubscriptionAsset) SetType(v string)`
 
 SetType sets Type field to given value.
 

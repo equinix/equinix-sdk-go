@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Enabled** | Pointer to **bool** |  | [optional] 
-**ExpiryDateTime** | Pointer to **time.Time** |  | [optional] 
+**Enabled** | Pointer to **bool** | Free Trial Enabled | [optional] 
+**ExpiryDateTime** | Pointer to **time.Time** | Free Trial Expiry Date | [optional] 
 
 ## Methods
 

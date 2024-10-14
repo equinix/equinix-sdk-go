@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AdditionalInfo** | Pointer to [**[]ConnectionSideAdditionalInfo**](ConnectionSideAdditionalInfo.md) | Additional information | [optional] 
-**Data** | Pointer to [**[]BaseConnection**](BaseConnection.md) | Connection response data | [optional] 
+**Data** | Pointer to [**[]ValidateConnectionResponse**](ValidateConnectionResponse.md) | Connection response data | [optional] 
 
 ## Methods
 
@@ -53,20 +53,20 @@ HasAdditionalInfo returns a boolean if a field has been set.
 
 ### GetData
 
-`func (o *ConnectionResponse) GetData() []BaseConnection`
+`func (o *ConnectionResponse) GetData() []ValidateConnectionResponse`
 
 GetData returns the Data field if non-nil, zero value otherwise.
 
 ### GetDataOk
 
-`func (o *ConnectionResponse) GetDataOk() (*[]BaseConnection, bool)`
+`func (o *ConnectionResponse) GetDataOk() (*[]ValidateConnectionResponse, bool)`
 
 GetDataOk returns a tuple with the Data field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetData
 
-`func (o *ConnectionResponse) SetData(v []BaseConnection)`
+`func (o *ConnectionResponse) SetData(v []ValidateConnectionResponse)`
 
 SetData sets Data field to given value.
 

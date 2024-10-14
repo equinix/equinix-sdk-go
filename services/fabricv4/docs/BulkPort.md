@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Data** | Pointer to [**[]Port**](Port.md) |  | [optional] 
+**Data** | Pointer to [**[]Port**](Port.md) | Ports that are part of BulkPort | [optional] 
 
 ## Methods
 

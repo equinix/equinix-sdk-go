@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | [**CloudRouterActionType**](CloudRouterActionType.md) |  | 
+**Connection** | Pointer to [**RouterActionsConnection**](RouterActionsConnection.md) |  | [optional] 
 
 ## Methods
 
@@ -44,6 +45,31 @@ and a boolean to check if the value has been set.
 
 SetType sets Type field to given value.
 
+
+### GetConnection
+
+`func (o *CloudRouterActionRequest) GetConnection() RouterActionsConnection`
+
+GetConnection returns the Connection field if non-nil, zero value otherwise.
+
+### GetConnectionOk
+
+`func (o *CloudRouterActionRequest) GetConnectionOk() (*RouterActionsConnection, bool)`
+
+GetConnectionOk returns a tuple with the Connection field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConnection
+
+`func (o *CloudRouterActionRequest) SetConnection(v RouterActionsConnection)`
+
+SetConnection sets Connection field to given value.
+
+### HasConnection
+
+`func (o *CloudRouterActionRequest) HasConnection() bool`
+
+HasConnection returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -5,9 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Uuid** | Pointer to **string** | Subscription Entitlement Id | [optional] 
-**QuantityEntitled** | Pointer to **int32** |  | [optional] 
-**QuantityConsumed** | Pointer to **int32** |  | [optional] 
-**QuantityAvailable** | Pointer to **int32** |  | [optional] 
+**QuantityEntitled** | Pointer to **int32** | Quantity entitled for the subscription | [optional] 
+**QuantityConsumed** | Pointer to **int32** | Quantity consumed from the entitlement | [optional] 
+**QuantityAvailable** | Pointer to **int32** | Quantity available from the entitlement | [optional] 
 **Asset** | Pointer to [**SubscriptionAsset**](SubscriptionAsset.md) |  | [optional] 
 
 ## Methods

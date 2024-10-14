@@ -5,23 +5,23 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Href** | Pointer to **string** |  | [optional] 
+**Type** | [**PrecisionTimePackageResponseType**](PrecisionTimePackageResponseType.md) |  | 
 **Code** | [**GetTimeServicesPackageByCodePackageCodeParameter**](GetTimeServicesPackageByCodePackageCodeParameter.md) |  | 
-**Type** | Pointer to [**PrecisionTimePackageResponseType**](PrecisionTimePackageResponseType.md) |  | [optional] 
-**Bandwidth** | Pointer to **int32** |  | [optional] 
-**ClientsPerSecondMax** | Pointer to **int32** |  | [optional] 
-**RedundancySupported** | Pointer to **bool** |  | [optional] 
-**MultiSubnetSupported** | Pointer to **bool** |  | [optional] 
-**AccuracyUnit** | Pointer to **string** |  | [optional] 
-**AccuracySla** | Pointer to **int32** |  | [optional] 
-**AccuracyAvgMin** | Pointer to **int32** |  | [optional] 
-**AccuracyAvgMax** | Pointer to **int32** |  | [optional] 
+**Bandwidth** | **int32** | Connection bandwidth in Mbps. | 
+**ClientsPerSecondMax** | Pointer to **int32** | Max. number of clients that can be synchronized per second at a packet rate of 1 per second. | [optional] 
+**RedundancySupported** | Pointer to **bool** | Is Redundant virtual connection supported for the package code. | [optional] 
+**MultiSubnetSupported** | Pointer to **bool** | Is Multiple subnet supported for the package code. | [optional] 
+**AccuracySlaUnit** | Pointer to **string** | Accuracy SLA unit. | [optional] 
+**AccuracySla** | Pointer to **int32** | Accuracy SLA for the package code, -1 value denotes the accuracySla is not published. | [optional] 
+**AccuracySlaMin** | Pointer to **int32** | Typical minimum Accuracy for the package code. | [optional] 
+**AccuracySlaMax** | Pointer to **int32** | Typical maximum Accuracy for the package code. | [optional] 
 **Changelog** | Pointer to [**Changelog**](Changelog.md) |  | [optional] 
 
 ## Methods
 
 ### NewPrecisionTimePackageResponse
 
-`func NewPrecisionTimePackageResponse(code GetTimeServicesPackageByCodePackageCodeParameter, ) *PrecisionTimePackageResponse`
+`func NewPrecisionTimePackageResponse(type_ PrecisionTimePackageResponseType, code GetTimeServicesPackageByCodePackageCodeParameter, bandwidth int32, ) *PrecisionTimePackageResponse`
 
 NewPrecisionTimePackageResponse instantiates a new PrecisionTimePackageResponse object
 This constructor will assign default values to properties that have it defined,
@@ -61,6 +61,26 @@ SetHref sets Href field to given value.
 
 HasHref returns a boolean if a field has been set.
 
+### GetType
+
+`func (o *PrecisionTimePackageResponse) GetType() PrecisionTimePackageResponseType`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *PrecisionTimePackageResponse) GetTypeOk() (*PrecisionTimePackageResponseType, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *PrecisionTimePackageResponse) SetType(v PrecisionTimePackageResponseType)`
+
+SetType sets Type field to given value.
+
+
 ### GetCode
 
 `func (o *PrecisionTimePackageResponse) GetCode() GetTimeServicesPackageByCodePackageCodeParameter`
@@ -81,31 +101,6 @@ and a boolean to check if the value has been set.
 SetCode sets Code field to given value.
 
 
-### GetType
-
-`func (o *PrecisionTimePackageResponse) GetType() PrecisionTimePackageResponseType`
-
-GetType returns the Type field if non-nil, zero value otherwise.
-
-### GetTypeOk
-
-`func (o *PrecisionTimePackageResponse) GetTypeOk() (*PrecisionTimePackageResponseType, bool)`
-
-GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetType
-
-`func (o *PrecisionTimePackageResponse) SetType(v PrecisionTimePackageResponseType)`
-
-SetType sets Type field to given value.
-
-### HasType
-
-`func (o *PrecisionTimePackageResponse) HasType() bool`
-
-HasType returns a boolean if a field has been set.
-
 ### GetBandwidth
 
 `func (o *PrecisionTimePackageResponse) GetBandwidth() int32`
@@ -125,11 +120,6 @@ and a boolean to check if the value has been set.
 
 SetBandwidth sets Bandwidth field to given value.
 
-### HasBandwidth
-
-`func (o *PrecisionTimePackageResponse) HasBandwidth() bool`
-
-HasBandwidth returns a boolean if a field has been set.
 
 ### GetClientsPerSecondMax
 
@@ -206,30 +196,30 @@ SetMultiSubnetSupported sets MultiSubnetSupported field to given value.
 
 HasMultiSubnetSupported returns a boolean if a field has been set.
 
-### GetAccuracyUnit
+### GetAccuracySlaUnit
 
-`func (o *PrecisionTimePackageResponse) GetAccuracyUnit() string`
+`func (o *PrecisionTimePackageResponse) GetAccuracySlaUnit() string`
 
-GetAccuracyUnit returns the AccuracyUnit field if non-nil, zero value otherwise.
+GetAccuracySlaUnit returns the AccuracySlaUnit field if non-nil, zero value otherwise.
 
-### GetAccuracyUnitOk
+### GetAccuracySlaUnitOk
 
-`func (o *PrecisionTimePackageResponse) GetAccuracyUnitOk() (*string, bool)`
+`func (o *PrecisionTimePackageResponse) GetAccuracySlaUnitOk() (*string, bool)`
 
-GetAccuracyUnitOk returns a tuple with the AccuracyUnit field if it's non-nil, zero value otherwise
+GetAccuracySlaUnitOk returns a tuple with the AccuracySlaUnit field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAccuracyUnit
+### SetAccuracySlaUnit
 
-`func (o *PrecisionTimePackageResponse) SetAccuracyUnit(v string)`
+`func (o *PrecisionTimePackageResponse) SetAccuracySlaUnit(v string)`
 
-SetAccuracyUnit sets AccuracyUnit field to given value.
+SetAccuracySlaUnit sets AccuracySlaUnit field to given value.
 
-### HasAccuracyUnit
+### HasAccuracySlaUnit
 
-`func (o *PrecisionTimePackageResponse) HasAccuracyUnit() bool`
+`func (o *PrecisionTimePackageResponse) HasAccuracySlaUnit() bool`
 
-HasAccuracyUnit returns a boolean if a field has been set.
+HasAccuracySlaUnit returns a boolean if a field has been set.
 
 ### GetAccuracySla
 
@@ -256,55 +246,55 @@ SetAccuracySla sets AccuracySla field to given value.
 
 HasAccuracySla returns a boolean if a field has been set.
 
-### GetAccuracyAvgMin
+### GetAccuracySlaMin
 
-`func (o *PrecisionTimePackageResponse) GetAccuracyAvgMin() int32`
+`func (o *PrecisionTimePackageResponse) GetAccuracySlaMin() int32`
 
-GetAccuracyAvgMin returns the AccuracyAvgMin field if non-nil, zero value otherwise.
+GetAccuracySlaMin returns the AccuracySlaMin field if non-nil, zero value otherwise.
 
-### GetAccuracyAvgMinOk
+### GetAccuracySlaMinOk
 
-`func (o *PrecisionTimePackageResponse) GetAccuracyAvgMinOk() (*int32, bool)`
+`func (o *PrecisionTimePackageResponse) GetAccuracySlaMinOk() (*int32, bool)`
 
-GetAccuracyAvgMinOk returns a tuple with the AccuracyAvgMin field if it's non-nil, zero value otherwise
+GetAccuracySlaMinOk returns a tuple with the AccuracySlaMin field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAccuracyAvgMin
+### SetAccuracySlaMin
 
-`func (o *PrecisionTimePackageResponse) SetAccuracyAvgMin(v int32)`
+`func (o *PrecisionTimePackageResponse) SetAccuracySlaMin(v int32)`
 
-SetAccuracyAvgMin sets AccuracyAvgMin field to given value.
+SetAccuracySlaMin sets AccuracySlaMin field to given value.
 
-### HasAccuracyAvgMin
+### HasAccuracySlaMin
 
-`func (o *PrecisionTimePackageResponse) HasAccuracyAvgMin() bool`
+`func (o *PrecisionTimePackageResponse) HasAccuracySlaMin() bool`
 
-HasAccuracyAvgMin returns a boolean if a field has been set.
+HasAccuracySlaMin returns a boolean if a field has been set.
 
-### GetAccuracyAvgMax
+### GetAccuracySlaMax
 
-`func (o *PrecisionTimePackageResponse) GetAccuracyAvgMax() int32`
+`func (o *PrecisionTimePackageResponse) GetAccuracySlaMax() int32`
 
-GetAccuracyAvgMax returns the AccuracyAvgMax field if non-nil, zero value otherwise.
+GetAccuracySlaMax returns the AccuracySlaMax field if non-nil, zero value otherwise.
 
-### GetAccuracyAvgMaxOk
+### GetAccuracySlaMaxOk
 
-`func (o *PrecisionTimePackageResponse) GetAccuracyAvgMaxOk() (*int32, bool)`
+`func (o *PrecisionTimePackageResponse) GetAccuracySlaMaxOk() (*int32, bool)`
 
-GetAccuracyAvgMaxOk returns a tuple with the AccuracyAvgMax field if it's non-nil, zero value otherwise
+GetAccuracySlaMaxOk returns a tuple with the AccuracySlaMax field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAccuracyAvgMax
+### SetAccuracySlaMax
 
-`func (o *PrecisionTimePackageResponse) SetAccuracyAvgMax(v int32)`
+`func (o *PrecisionTimePackageResponse) SetAccuracySlaMax(v int32)`
 
-SetAccuracyAvgMax sets AccuracyAvgMax field to given value.
+SetAccuracySlaMax sets AccuracySlaMax field to given value.
 
-### HasAccuracyAvgMax
+### HasAccuracySlaMax
 
-`func (o *PrecisionTimePackageResponse) HasAccuracyAvgMax() bool`
+`func (o *PrecisionTimePackageResponse) HasAccuracySlaMax() bool`
 
-HasAccuracyAvgMax returns a boolean if a field has been set.
+HasAccuracySlaMax returns a boolean if a field has been set.
 
 ### GetChangelog
 

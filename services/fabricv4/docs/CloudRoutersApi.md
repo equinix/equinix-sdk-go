@@ -8,11 +8,15 @@ Method | HTTP request | Description
 [**CreateCloudRouterAction**](CloudRoutersApi.md#CreateCloudRouterAction) | **Post** /fabric/v4/routers/{routerId}/actions | Route table actions
 [**DeleteCloudRouterByUuid**](CloudRoutersApi.md#DeleteCloudRouterByUuid) | **Delete** /fabric/v4/routers/{routerId} | Delete Routers
 [**GetCloudRouterActions**](CloudRoutersApi.md#GetCloudRouterActions) | **Get** /fabric/v4/routers/{routerId}/actions | Get actions
+[**GetCloudRouterActionsByUuid**](CloudRoutersApi.md#GetCloudRouterActionsByUuid) | **Get** /fabric/v4/routers/{routerId}/actions/{actionId} | Get actions
 [**GetCloudRouterByUuid**](CloudRoutersApi.md#GetCloudRouterByUuid) | **Get** /fabric/v4/routers/{routerId} | Get Routers
 [**GetCloudRouterPackageByCode**](CloudRoutersApi.md#GetCloudRouterPackageByCode) | **Get** /fabric/v4/routerPackages/{routerPackageCode} | Get Package Details
 [**GetCloudRouterPackages**](CloudRoutersApi.md#GetCloudRouterPackages) | **Get** /fabric/v4/routerPackages | List Packages
 [**SearchCloudRouterRoutes**](CloudRoutersApi.md#SearchCloudRouterRoutes) | **Post** /fabric/v4/routers/{routerId}/routes/search | Search Route Table
 [**SearchCloudRouters**](CloudRoutersApi.md#SearchCloudRouters) | **Post** /fabric/v4/routers/search | Search Routers
+[**SearchConnectionAdvertisedRoutes**](CloudRoutersApi.md#SearchConnectionAdvertisedRoutes) | **Post** /fabric/v4/connections/{connectionId}/advertisedRoutes/search | search advertised
+[**SearchConnectionReceivedRoutes**](CloudRoutersApi.md#SearchConnectionReceivedRoutes) | **Post** /fabric/v4/connections/{connectionId}/receivedRoutes/search | Search received
+[**SearchRouterActions**](CloudRoutersApi.md#SearchRouterActions) | **Post** /fabric/v4/routers/{routerId}/actions/search | Search actions
 [**UpdateCloudRouterByUuid**](CloudRoutersApi.md#UpdateCloudRouterByUuid) | **Patch** /fabric/v4/routers/{routerId} | Update Routers
 
 
@@ -245,7 +249,7 @@ import (
 
 func main() {
 	routerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Router UUID
-	state := openapiclient.CloudRouterActionState("DONE") // CloudRouterActionState | Action state (optional)
+	state := openapiclient.CloudRouterActionState("SUCCEEDED") // CloudRouterActionState | Action state (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -274,6 +278,81 @@ Other parameters are passed through a pointer to a apiGetCloudRouterActionsReque
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
+ **state** | [**CloudRouterActionState**](CloudRouterActionState.md) | Action state | 
+
+### Return type
+
+[**CloudRouterActionResponse**](CloudRouterActionResponse.md)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetCloudRouterActionsByUuid
+
+> CloudRouterActionResponse GetCloudRouterActionsByUuid(ctx, routerId, actionId).State(state).Execute()
+
+Get actions
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/equinix/equinix-sdk-go/services/fabricv4"
+)
+
+func main() {
+	routerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Router UUID
+	actionId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Action UUID
+	state := openapiclient.CloudRouterActionState("SUCCEEDED") // CloudRouterActionState | Action state (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CloudRoutersApi.GetCloudRouterActionsByUuid(context.Background(), routerId, actionId).State(state).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CloudRoutersApi.GetCloudRouterActionsByUuid``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetCloudRouterActionsByUuid`: CloudRouterActionResponse
+	fmt.Fprintf(os.Stdout, "Response from `CloudRoutersApi.GetCloudRouterActionsByUuid`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**routerId** | **string** | Router UUID | 
+**actionId** | **string** | Action UUID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetCloudRouterActionsByUuidRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
 
  **state** | [**CloudRouterActionState**](CloudRouterActionState.md) | Action state | 
 
@@ -641,6 +720,222 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## SearchConnectionAdvertisedRoutes
+
+> ConnectionRouteTableEntrySearchResponse SearchConnectionAdvertisedRoutes(ctx, connectionId).ConnectionRouteSearchRequest(connectionRouteSearchRequest).Execute()
+
+search advertised
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/equinix/equinix-sdk-go/services/fabricv4"
+)
+
+func main() {
+	connectionId := "connectionId_example" // string | Connection Id
+	connectionRouteSearchRequest := *openapiclient.NewConnectionRouteSearchRequest() // ConnectionRouteSearchRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CloudRoutersApi.SearchConnectionAdvertisedRoutes(context.Background(), connectionId).ConnectionRouteSearchRequest(connectionRouteSearchRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CloudRoutersApi.SearchConnectionAdvertisedRoutes``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `SearchConnectionAdvertisedRoutes`: ConnectionRouteTableEntrySearchResponse
+	fmt.Fprintf(os.Stdout, "Response from `CloudRoutersApi.SearchConnectionAdvertisedRoutes`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**connectionId** | **string** | Connection Id | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSearchConnectionAdvertisedRoutesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **connectionRouteSearchRequest** | [**ConnectionRouteSearchRequest**](ConnectionRouteSearchRequest.md) |  | 
+
+### Return type
+
+[**ConnectionRouteTableEntrySearchResponse**](ConnectionRouteTableEntrySearchResponse.md)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SearchConnectionReceivedRoutes
+
+> ConnectionRouteTableEntrySearchResponse SearchConnectionReceivedRoutes(ctx, connectionId).ConnectionRouteSearchRequest(connectionRouteSearchRequest).Execute()
+
+Search received
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/equinix/equinix-sdk-go/services/fabricv4"
+)
+
+func main() {
+	connectionId := "connectionId_example" // string | Connection Id
+	connectionRouteSearchRequest := *openapiclient.NewConnectionRouteSearchRequest() // ConnectionRouteSearchRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CloudRoutersApi.SearchConnectionReceivedRoutes(context.Background(), connectionId).ConnectionRouteSearchRequest(connectionRouteSearchRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CloudRoutersApi.SearchConnectionReceivedRoutes``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `SearchConnectionReceivedRoutes`: ConnectionRouteTableEntrySearchResponse
+	fmt.Fprintf(os.Stdout, "Response from `CloudRoutersApi.SearchConnectionReceivedRoutes`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**connectionId** | **string** | Connection Id | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSearchConnectionReceivedRoutesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **connectionRouteSearchRequest** | [**ConnectionRouteSearchRequest**](ConnectionRouteSearchRequest.md) |  | 
+
+### Return type
+
+[**ConnectionRouteTableEntrySearchResponse**](ConnectionRouteTableEntrySearchResponse.md)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SearchRouterActions
+
+> CloudRouterActionsSearchResponse SearchRouterActions(ctx, routerId).CloudRouterActionsSearchRequest(cloudRouterActionsSearchRequest).Execute()
+
+Search actions
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/equinix/equinix-sdk-go/services/fabricv4"
+)
+
+func main() {
+	routerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Router UUID
+	cloudRouterActionsSearchRequest := *openapiclient.NewCloudRouterActionsSearchRequest() // CloudRouterActionsSearchRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CloudRoutersApi.SearchRouterActions(context.Background(), routerId).CloudRouterActionsSearchRequest(cloudRouterActionsSearchRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CloudRoutersApi.SearchRouterActions``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `SearchRouterActions`: CloudRouterActionsSearchResponse
+	fmt.Fprintf(os.Stdout, "Response from `CloudRoutersApi.SearchRouterActions`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**routerId** | **string** | Router UUID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSearchRouterActionsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **cloudRouterActionsSearchRequest** | [**CloudRouterActionsSearchRequest**](CloudRouterActionsSearchRequest.md) |  | 
+
+### Return type
+
+[**CloudRouterActionsSearchResponse**](CloudRouterActionsSearchResponse.md)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## UpdateCloudRouterByUuid
 
 > CloudRouter UpdateCloudRouterByUuid(ctx, routerId).CloudRouterChangeOperation(cloudRouterChangeOperation).Execute()
@@ -663,7 +958,7 @@ import (
 
 func main() {
 	routerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cloud Router UUID
-	cloudRouterChangeOperation := []openapiclient.CloudRouterChangeOperation{*openapiclient.NewCloudRouterChangeOperation(openapiclient.ServiceTokenChangeOperation_op("replace"), "Path_example", interface{}(123))} // []CloudRouterChangeOperation | 
+	cloudRouterChangeOperation := []openapiclient.CloudRouterChangeOperation{*openapiclient.NewCloudRouterChangeOperation(openapiclient.precisionTimeChangeOperation_op("replace"), "Path_example", interface{}(123))} // []CloudRouterChangeOperation | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
