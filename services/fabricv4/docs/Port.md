@@ -4,41 +4,41 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Account** | [**SimplifiedAccount**](SimplifiedAccount.md) |  | 
-**Type** | [**PortType**](PortType.md) |  | 
-**Id** | Pointer to **int32** | Equinix assigned response attribute for Port Id | [optional] 
 **Href** | Pointer to **string** | Equinix assigned response attribute for an absolute URL that is the subject of the link&#39;s context. | [optional] [readonly] 
+**Type** | Pointer to [**PortType**](PortType.md) |  | [optional] 
+**Id** | Pointer to **int32** | Equinix assigned response attribute for Port Id | [optional] 
 **Uuid** | Pointer to **string** | Equinix assigned response attribute for  port identifier | [optional] 
 **Name** | Pointer to **string** | Equinix assigned response attribute for Port name | [optional] 
 **Description** | Pointer to **string** | Equinix assigned response attribute for Port description | [optional] 
-**PhysicalPortsSpeed** | **int32** | Physical Ports Speed in Mbps | 
+**PhysicalPortsSpeed** | Pointer to **int32** | Physical Ports Speed in Mbps | [optional] 
 **ConnectionsCount** | Pointer to **int32** | Equinix assigned response attribute for Connection count | [optional] 
-**PhysicalPortsType** | [**PortResponsePhysicalPortsType**](PortResponsePhysicalPortsType.md) |  | 
+**PhysicalPortsType** | Pointer to [**PortPhysicalPortsType**](PortPhysicalPortsType.md) |  | [optional] 
 **PhysicalPortsCount** | Pointer to **int32** |  | [optional] 
-**ConnectivitySourceType** | [**PortResponseConnectivitySourceType**](PortResponseConnectivitySourceType.md) |  | 
-**BmmrType** | Pointer to [**PortResponseBmmrType**](PortResponseBmmrType.md) |  | [optional] 
+**ConnectivitySourceType** | Pointer to [**PortConnectivitySourceType**](PortConnectivitySourceType.md) |  | [optional] 
+**BmmrType** | Pointer to [**PortBmmrType**](PortBmmrType.md) |  | [optional] 
 **Project** | Pointer to [**Project**](Project.md) |  | [optional] 
 **State** | Pointer to [**PortState**](PortState.md) |  | [optional] 
 **Order** | Pointer to [**PortOrder**](PortOrder.md) |  | [optional] 
-**CvpId** | Pointer to **string** | Equinix assigned response attribute for Unique ID for a virtual port. | [optional] 
 **Operation** | Pointer to [**PortOperation**](PortOperation.md) |  | [optional] 
-**Changelog** | Pointer to [**Changelog**](Changelog.md) |  | [optional] 
-**ServiceType** | Pointer to [**PortResponseServiceType**](PortResponseServiceType.md) |  | [optional] 
+**Account** | Pointer to [**SimplifiedAccount**](SimplifiedAccount.md) |  | [optional] 
+**ChangeLog** | Pointer to [**Changelog**](Changelog.md) |  | [optional] 
+**ServiceType** | Pointer to [**PortServiceType**](PortServiceType.md) |  | [optional] 
 **Bandwidth** | Pointer to **int32** | Equinix assigned response attribute for Port bandwidth in Mbps | [optional] 
 **AvailableBandwidth** | Pointer to **int32** | Equinix assigned response attribute for Port available bandwidth in Mbps | [optional] 
 **UsedBandwidth** | Pointer to **int32** | Equinix assigned response attribute for Port used bandwidth in Mbps | [optional] 
-**Location** | [**SimplifiedLocation**](SimplifiedLocation.md) |  | 
+**Location** | Pointer to [**SimplifiedLocation**](SimplifiedLocation.md) |  | [optional] 
 **Device** | Pointer to [**PortDevice**](PortDevice.md) |  | [optional] 
 **Interface** | Pointer to [**PortInterface**](PortInterface.md) |  | [optional] 
 **DemarcationPointIbx** | Pointer to **string** | A-side/Equinix ibx | [optional] 
 **TetherIbx** | Pointer to **string** | z-side/Equinix ibx | [optional] 
 **DemarcationPoint** | Pointer to [**PortDemarcationPoint**](PortDemarcationPoint.md) |  | [optional] 
 **Redundancy** | Pointer to [**PortRedundancy**](PortRedundancy.md) |  | [optional] 
-**Encapsulation** | [**PortEncapsulation**](PortEncapsulation.md) |  | 
+**Encapsulation** | Pointer to [**PortEncapsulation**](PortEncapsulation.md) |  | [optional] 
 **LagEnabled** | Pointer to **bool** | If LAG enabled | [optional] 
 **Lag** | Pointer to [**PortLag**](PortLag.md) |  | [optional] 
 **Asn** | Pointer to **int32** | Port ASN | [optional] 
-**Settings** | [**PortSettings**](PortSettings.md) |  | 
+**Package** | Pointer to [**Package**](Package.md) |  | [optional] 
+**Settings** | Pointer to [**PortSettings**](PortSettings.md) |  | [optional] 
 **PhysicalPortQuantity** | Pointer to **int32** | Number of physical ports | [optional] 
 **Notifications** | Pointer to [**[]PortNotification**](PortNotification.md) | Notification preferences | [optional] 
 **AdditionalInfo** | Pointer to [**[]PortAdditionalInfo**](PortAdditionalInfo.md) | Port additional information | [optional] 
@@ -49,7 +49,7 @@ Name | Type | Description | Notes
 
 ### NewPort
 
-`func NewPort(account SimplifiedAccount, type_ PortType, physicalPortsSpeed int32, physicalPortsType PortResponsePhysicalPortsType, connectivitySourceType PortResponseConnectivitySourceType, location SimplifiedLocation, encapsulation PortEncapsulation, settings PortSettings, ) *Port`
+`func NewPort() *Port`
 
 NewPort instantiates a new Port object
 This constructor will assign default values to properties that have it defined,
@@ -63,71 +63,6 @@ will change when the set of required properties is changed
 NewPortWithDefaults instantiates a new Port object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetAccount
-
-`func (o *Port) GetAccount() SimplifiedAccount`
-
-GetAccount returns the Account field if non-nil, zero value otherwise.
-
-### GetAccountOk
-
-`func (o *Port) GetAccountOk() (*SimplifiedAccount, bool)`
-
-GetAccountOk returns a tuple with the Account field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAccount
-
-`func (o *Port) SetAccount(v SimplifiedAccount)`
-
-SetAccount sets Account field to given value.
-
-
-### GetType
-
-`func (o *Port) GetType() PortType`
-
-GetType returns the Type field if non-nil, zero value otherwise.
-
-### GetTypeOk
-
-`func (o *Port) GetTypeOk() (*PortType, bool)`
-
-GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetType
-
-`func (o *Port) SetType(v PortType)`
-
-SetType sets Type field to given value.
-
-
-### GetId
-
-`func (o *Port) GetId() int32`
-
-GetId returns the Id field if non-nil, zero value otherwise.
-
-### GetIdOk
-
-`func (o *Port) GetIdOk() (*int32, bool)`
-
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetId
-
-`func (o *Port) SetId(v int32)`
-
-SetId sets Id field to given value.
-
-### HasId
-
-`func (o *Port) HasId() bool`
-
-HasId returns a boolean if a field has been set.
 
 ### GetHref
 
@@ -153,6 +88,56 @@ SetHref sets Href field to given value.
 `func (o *Port) HasHref() bool`
 
 HasHref returns a boolean if a field has been set.
+
+### GetType
+
+`func (o *Port) GetType() PortType`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *Port) GetTypeOk() (*PortType, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *Port) SetType(v PortType)`
+
+SetType sets Type field to given value.
+
+### HasType
+
+`func (o *Port) HasType() bool`
+
+HasType returns a boolean if a field has been set.
+
+### GetId
+
+`func (o *Port) GetId() int32`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *Port) GetIdOk() (*int32, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *Port) SetId(v int32)`
+
+SetId sets Id field to given value.
+
+### HasId
+
+`func (o *Port) HasId() bool`
+
+HasId returns a boolean if a field has been set.
 
 ### GetUuid
 
@@ -248,6 +233,11 @@ and a boolean to check if the value has been set.
 
 SetPhysicalPortsSpeed sets PhysicalPortsSpeed field to given value.
 
+### HasPhysicalPortsSpeed
+
+`func (o *Port) HasPhysicalPortsSpeed() bool`
+
+HasPhysicalPortsSpeed returns a boolean if a field has been set.
 
 ### GetConnectionsCount
 
@@ -276,23 +266,28 @@ HasConnectionsCount returns a boolean if a field has been set.
 
 ### GetPhysicalPortsType
 
-`func (o *Port) GetPhysicalPortsType() PortResponsePhysicalPortsType`
+`func (o *Port) GetPhysicalPortsType() PortPhysicalPortsType`
 
 GetPhysicalPortsType returns the PhysicalPortsType field if non-nil, zero value otherwise.
 
 ### GetPhysicalPortsTypeOk
 
-`func (o *Port) GetPhysicalPortsTypeOk() (*PortResponsePhysicalPortsType, bool)`
+`func (o *Port) GetPhysicalPortsTypeOk() (*PortPhysicalPortsType, bool)`
 
 GetPhysicalPortsTypeOk returns a tuple with the PhysicalPortsType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPhysicalPortsType
 
-`func (o *Port) SetPhysicalPortsType(v PortResponsePhysicalPortsType)`
+`func (o *Port) SetPhysicalPortsType(v PortPhysicalPortsType)`
 
 SetPhysicalPortsType sets PhysicalPortsType field to given value.
 
+### HasPhysicalPortsType
+
+`func (o *Port) HasPhysicalPortsType() bool`
+
+HasPhysicalPortsType returns a boolean if a field has been set.
 
 ### GetPhysicalPortsCount
 
@@ -321,40 +316,45 @@ HasPhysicalPortsCount returns a boolean if a field has been set.
 
 ### GetConnectivitySourceType
 
-`func (o *Port) GetConnectivitySourceType() PortResponseConnectivitySourceType`
+`func (o *Port) GetConnectivitySourceType() PortConnectivitySourceType`
 
 GetConnectivitySourceType returns the ConnectivitySourceType field if non-nil, zero value otherwise.
 
 ### GetConnectivitySourceTypeOk
 
-`func (o *Port) GetConnectivitySourceTypeOk() (*PortResponseConnectivitySourceType, bool)`
+`func (o *Port) GetConnectivitySourceTypeOk() (*PortConnectivitySourceType, bool)`
 
 GetConnectivitySourceTypeOk returns a tuple with the ConnectivitySourceType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetConnectivitySourceType
 
-`func (o *Port) SetConnectivitySourceType(v PortResponseConnectivitySourceType)`
+`func (o *Port) SetConnectivitySourceType(v PortConnectivitySourceType)`
 
 SetConnectivitySourceType sets ConnectivitySourceType field to given value.
 
+### HasConnectivitySourceType
+
+`func (o *Port) HasConnectivitySourceType() bool`
+
+HasConnectivitySourceType returns a boolean if a field has been set.
 
 ### GetBmmrType
 
-`func (o *Port) GetBmmrType() PortResponseBmmrType`
+`func (o *Port) GetBmmrType() PortBmmrType`
 
 GetBmmrType returns the BmmrType field if non-nil, zero value otherwise.
 
 ### GetBmmrTypeOk
 
-`func (o *Port) GetBmmrTypeOk() (*PortResponseBmmrType, bool)`
+`func (o *Port) GetBmmrTypeOk() (*PortBmmrType, bool)`
 
 GetBmmrTypeOk returns a tuple with the BmmrType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBmmrType
 
-`func (o *Port) SetBmmrType(v PortResponseBmmrType)`
+`func (o *Port) SetBmmrType(v PortBmmrType)`
 
 SetBmmrType sets BmmrType field to given value.
 
@@ -439,31 +439,6 @@ SetOrder sets Order field to given value.
 
 HasOrder returns a boolean if a field has been set.
 
-### GetCvpId
-
-`func (o *Port) GetCvpId() string`
-
-GetCvpId returns the CvpId field if non-nil, zero value otherwise.
-
-### GetCvpIdOk
-
-`func (o *Port) GetCvpIdOk() (*string, bool)`
-
-GetCvpIdOk returns a tuple with the CvpId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCvpId
-
-`func (o *Port) SetCvpId(v string)`
-
-SetCvpId sets CvpId field to given value.
-
-### HasCvpId
-
-`func (o *Port) HasCvpId() bool`
-
-HasCvpId returns a boolean if a field has been set.
-
 ### GetOperation
 
 `func (o *Port) GetOperation() PortOperation`
@@ -489,47 +464,72 @@ SetOperation sets Operation field to given value.
 
 HasOperation returns a boolean if a field has been set.
 
-### GetChangelog
+### GetAccount
 
-`func (o *Port) GetChangelog() Changelog`
+`func (o *Port) GetAccount() SimplifiedAccount`
 
-GetChangelog returns the Changelog field if non-nil, zero value otherwise.
+GetAccount returns the Account field if non-nil, zero value otherwise.
 
-### GetChangelogOk
+### GetAccountOk
 
-`func (o *Port) GetChangelogOk() (*Changelog, bool)`
+`func (o *Port) GetAccountOk() (*SimplifiedAccount, bool)`
 
-GetChangelogOk returns a tuple with the Changelog field if it's non-nil, zero value otherwise
+GetAccountOk returns a tuple with the Account field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetChangelog
+### SetAccount
 
-`func (o *Port) SetChangelog(v Changelog)`
+`func (o *Port) SetAccount(v SimplifiedAccount)`
 
-SetChangelog sets Changelog field to given value.
+SetAccount sets Account field to given value.
 
-### HasChangelog
+### HasAccount
 
-`func (o *Port) HasChangelog() bool`
+`func (o *Port) HasAccount() bool`
 
-HasChangelog returns a boolean if a field has been set.
+HasAccount returns a boolean if a field has been set.
+
+### GetChangeLog
+
+`func (o *Port) GetChangeLog() Changelog`
+
+GetChangeLog returns the ChangeLog field if non-nil, zero value otherwise.
+
+### GetChangeLogOk
+
+`func (o *Port) GetChangeLogOk() (*Changelog, bool)`
+
+GetChangeLogOk returns a tuple with the ChangeLog field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetChangeLog
+
+`func (o *Port) SetChangeLog(v Changelog)`
+
+SetChangeLog sets ChangeLog field to given value.
+
+### HasChangeLog
+
+`func (o *Port) HasChangeLog() bool`
+
+HasChangeLog returns a boolean if a field has been set.
 
 ### GetServiceType
 
-`func (o *Port) GetServiceType() PortResponseServiceType`
+`func (o *Port) GetServiceType() PortServiceType`
 
 GetServiceType returns the ServiceType field if non-nil, zero value otherwise.
 
 ### GetServiceTypeOk
 
-`func (o *Port) GetServiceTypeOk() (*PortResponseServiceType, bool)`
+`func (o *Port) GetServiceTypeOk() (*PortServiceType, bool)`
 
 GetServiceTypeOk returns a tuple with the ServiceType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetServiceType
 
-`func (o *Port) SetServiceType(v PortResponseServiceType)`
+`func (o *Port) SetServiceType(v PortServiceType)`
 
 SetServiceType sets ServiceType field to given value.
 
@@ -633,6 +633,11 @@ and a boolean to check if the value has been set.
 
 SetLocation sets Location field to given value.
 
+### HasLocation
+
+`func (o *Port) HasLocation() bool`
+
+HasLocation returns a boolean if a field has been set.
 
 ### GetDevice
 
@@ -803,6 +808,11 @@ and a boolean to check if the value has been set.
 
 SetEncapsulation sets Encapsulation field to given value.
 
+### HasEncapsulation
+
+`func (o *Port) HasEncapsulation() bool`
+
+HasEncapsulation returns a boolean if a field has been set.
 
 ### GetLagEnabled
 
@@ -879,6 +889,31 @@ SetAsn sets Asn field to given value.
 
 HasAsn returns a boolean if a field has been set.
 
+### GetPackage
+
+`func (o *Port) GetPackage() Package`
+
+GetPackage returns the Package field if non-nil, zero value otherwise.
+
+### GetPackageOk
+
+`func (o *Port) GetPackageOk() (*Package, bool)`
+
+GetPackageOk returns a tuple with the Package field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPackage
+
+`func (o *Port) SetPackage(v Package)`
+
+SetPackage sets Package field to given value.
+
+### HasPackage
+
+`func (o *Port) HasPackage() bool`
+
+HasPackage returns a boolean if a field has been set.
+
 ### GetSettings
 
 `func (o *Port) GetSettings() PortSettings`
@@ -898,6 +933,11 @@ and a boolean to check if the value has been set.
 
 SetSettings sets Settings field to given value.
 
+### HasSettings
+
+`func (o *Port) HasSettings() bool`
+
+HasSettings returns a boolean if a field has been set.
 
 ### GetPhysicalPortQuantity
 

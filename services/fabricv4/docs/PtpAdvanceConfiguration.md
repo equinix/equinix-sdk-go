@@ -5,12 +5,12 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **TimeScale** | Pointer to [**PtpAdvanceConfigurationTimeScale**](PtpAdvanceConfigurationTimeScale.md) |  | [optional] 
-**Domain** | Pointer to **int32** |  | [optional] 
-**Priority1** | Pointer to **int32** |  | [optional] 
-**Priority2** | Pointer to **int32** |  | [optional] 
-**LogAnnounceInterval** | Pointer to **int32** | The mean time interval between Announce messages. A shorter interval makes ptp4l react faster to the changes in the master-slave hierarchy. The interval should be the same in the whole domain. It&#39;s specified as a power of two in seconds. The default is 1 (2 seconds). | [optional] 
-**LogSyncInterval** | Pointer to **int32** | The mean time interval between Sync messages. A shorter interval may improve accuracy of the local clock. It&#39;s specified as a power of two in seconds. The default is 0 (1 second). | [optional] 
-**LogDelayReqInterval** | Pointer to **int32** |  | [optional] 
+**Domain** | Pointer to **int32** | The PTP domain value. | [optional] 
+**Priority1** | Pointer to **int32** | The priority1 value determines the best primary clock, Lower value indicates higher priority. | [optional] 
+**Priority2** | Pointer to **int32** | The priority2 value differentiates and prioritizes the primary clock to avoid confusion when priority1-value is the same for different primary clocks in a network. | [optional] 
+**LogAnnounceInterval** | Pointer to [**PtpAdvanceConfigurationLogAnnounceInterval**](PtpAdvanceConfigurationLogAnnounceInterval.md) |  | [optional] 
+**LogSyncInterval** | Pointer to [**PtpAdvanceConfigurationLogSyncInterval**](PtpAdvanceConfigurationLogSyncInterval.md) |  | [optional] 
+**LogDelayReqInterval** | Pointer to [**PtpAdvanceConfigurationLogDelayReqInterval**](PtpAdvanceConfigurationLogDelayReqInterval.md) |  | [optional] 
 **TransportMode** | Pointer to [**PtpAdvanceConfigurationTransportMode**](PtpAdvanceConfigurationTransportMode.md) |  | [optional] 
 **GrantTime** | Pointer to **int32** | Unicast Grant Time in seconds. For Multicast and Hybrid transport modes, grant time defaults to 300 seconds. For Unicast mode, grant time can be between 30 to 7200. | [optional] 
 
@@ -135,20 +135,20 @@ HasPriority2 returns a boolean if a field has been set.
 
 ### GetLogAnnounceInterval
 
-`func (o *PtpAdvanceConfiguration) GetLogAnnounceInterval() int32`
+`func (o *PtpAdvanceConfiguration) GetLogAnnounceInterval() PtpAdvanceConfigurationLogAnnounceInterval`
 
 GetLogAnnounceInterval returns the LogAnnounceInterval field if non-nil, zero value otherwise.
 
 ### GetLogAnnounceIntervalOk
 
-`func (o *PtpAdvanceConfiguration) GetLogAnnounceIntervalOk() (*int32, bool)`
+`func (o *PtpAdvanceConfiguration) GetLogAnnounceIntervalOk() (*PtpAdvanceConfigurationLogAnnounceInterval, bool)`
 
 GetLogAnnounceIntervalOk returns a tuple with the LogAnnounceInterval field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLogAnnounceInterval
 
-`func (o *PtpAdvanceConfiguration) SetLogAnnounceInterval(v int32)`
+`func (o *PtpAdvanceConfiguration) SetLogAnnounceInterval(v PtpAdvanceConfigurationLogAnnounceInterval)`
 
 SetLogAnnounceInterval sets LogAnnounceInterval field to given value.
 
@@ -160,20 +160,20 @@ HasLogAnnounceInterval returns a boolean if a field has been set.
 
 ### GetLogSyncInterval
 
-`func (o *PtpAdvanceConfiguration) GetLogSyncInterval() int32`
+`func (o *PtpAdvanceConfiguration) GetLogSyncInterval() PtpAdvanceConfigurationLogSyncInterval`
 
 GetLogSyncInterval returns the LogSyncInterval field if non-nil, zero value otherwise.
 
 ### GetLogSyncIntervalOk
 
-`func (o *PtpAdvanceConfiguration) GetLogSyncIntervalOk() (*int32, bool)`
+`func (o *PtpAdvanceConfiguration) GetLogSyncIntervalOk() (*PtpAdvanceConfigurationLogSyncInterval, bool)`
 
 GetLogSyncIntervalOk returns a tuple with the LogSyncInterval field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLogSyncInterval
 
-`func (o *PtpAdvanceConfiguration) SetLogSyncInterval(v int32)`
+`func (o *PtpAdvanceConfiguration) SetLogSyncInterval(v PtpAdvanceConfigurationLogSyncInterval)`
 
 SetLogSyncInterval sets LogSyncInterval field to given value.
 
@@ -185,20 +185,20 @@ HasLogSyncInterval returns a boolean if a field has been set.
 
 ### GetLogDelayReqInterval
 
-`func (o *PtpAdvanceConfiguration) GetLogDelayReqInterval() int32`
+`func (o *PtpAdvanceConfiguration) GetLogDelayReqInterval() PtpAdvanceConfigurationLogDelayReqInterval`
 
 GetLogDelayReqInterval returns the LogDelayReqInterval field if non-nil, zero value otherwise.
 
 ### GetLogDelayReqIntervalOk
 
-`func (o *PtpAdvanceConfiguration) GetLogDelayReqIntervalOk() (*int32, bool)`
+`func (o *PtpAdvanceConfiguration) GetLogDelayReqIntervalOk() (*PtpAdvanceConfigurationLogDelayReqInterval, bool)`
 
 GetLogDelayReqIntervalOk returns a tuple with the LogDelayReqInterval field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLogDelayReqInterval
 
-`func (o *PtpAdvanceConfiguration) SetLogDelayReqInterval(v int32)`
+`func (o *PtpAdvanceConfiguration) SetLogDelayReqInterval(v PtpAdvanceConfigurationLogDelayReqInterval)`
 
 SetLogDelayReqInterval sets LogDelayReqInterval field to given value.
 

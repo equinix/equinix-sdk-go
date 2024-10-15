@@ -3,11 +3,11 @@
 ## Enum
 
 
-* `MULTICAST` (value: `"Multicast"`)
+* `MULTICAST` (value: `"MULTICAST"`)
 
-* `UNICAST` (value: `"Unicast"`)
+* `UNICAST` (value: `"UNICAST"`)
 
-* `HYBRID` (value: `"Hybrid"`)
+* `HYBRID` (value: `"HYBRID"`)
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

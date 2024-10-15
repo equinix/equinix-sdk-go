@@ -6,7 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | Pointer to [**ServiceTokenType**](ServiceTokenType.md) |  | [optional] 
 **Href** | Pointer to **string** | An absolute URL that is the subject of the link&#39;s context. | [optional] [readonly] 
-**Uuid** | **string** | Equinix-assigned service token identifier | 
+**Uuid** | Pointer to **string** | Equinix-assigned service token identifier | [optional] 
+**IssuerSide** | Pointer to [**ServiceTokenIssuerSide**](ServiceTokenIssuerSide.md) |  | [optional] 
 **Name** | Pointer to **string** | Customer-provided service token name | [optional] 
 **Description** | Pointer to **string** | Customer-provided service token description | [optional] 
 **ExpirationDateTime** | Pointer to **time.Time** | Expiration date and time of the service token. | [optional] 
@@ -21,7 +22,7 @@ Name | Type | Description | Notes
 
 ### NewServiceToken
 
-`func NewServiceToken(uuid string, ) *ServiceToken`
+`func NewServiceToken() *ServiceToken`
 
 NewServiceToken instantiates a new ServiceToken object
 This constructor will assign default values to properties that have it defined,
@@ -105,6 +106,36 @@ and a boolean to check if the value has been set.
 
 SetUuid sets Uuid field to given value.
 
+### HasUuid
+
+`func (o *ServiceToken) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
+
+### GetIssuerSide
+
+`func (o *ServiceToken) GetIssuerSide() ServiceTokenIssuerSide`
+
+GetIssuerSide returns the IssuerSide field if non-nil, zero value otherwise.
+
+### GetIssuerSideOk
+
+`func (o *ServiceToken) GetIssuerSideOk() (*ServiceTokenIssuerSide, bool)`
+
+GetIssuerSideOk returns a tuple with the IssuerSide field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIssuerSide
+
+`func (o *ServiceToken) SetIssuerSide(v ServiceTokenIssuerSide)`
+
+SetIssuerSide sets IssuerSide field to given value.
+
+### HasIssuerSide
+
+`func (o *ServiceToken) HasIssuerSide() bool`
+
+HasIssuerSide returns a boolean if a field has been set.
 
 ### GetName
 

@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | [**ConnectionType**](ConnectionType.md) |  | 
 **Href** | Pointer to **string** | Connection URI | [optional] [readonly] 
+**Type** | [**ConnectionType**](ConnectionType.md) |  | 
 **Uuid** | Pointer to **string** | Equinix-assigned connection identifier | [optional] 
 **Name** | **string** | Customer-provided connection name | 
 **Description** | Pointer to **string** | Customer-provided connection description | [optional] 
@@ -46,26 +46,6 @@ NewConnectionWithDefaults instantiates a new Connection object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetType
-
-`func (o *Connection) GetType() ConnectionType`
-
-GetType returns the Type field if non-nil, zero value otherwise.
-
-### GetTypeOk
-
-`func (o *Connection) GetTypeOk() (*ConnectionType, bool)`
-
-GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetType
-
-`func (o *Connection) SetType(v ConnectionType)`
-
-SetType sets Type field to given value.
-
-
 ### GetHref
 
 `func (o *Connection) GetHref() string`
@@ -90,6 +70,26 @@ SetHref sets Href field to given value.
 `func (o *Connection) HasHref() bool`
 
 HasHref returns a boolean if a field has been set.
+
+### GetType
+
+`func (o *Connection) GetType() ConnectionType`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *Connection) GetTypeOk() (*ConnectionType, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *Connection) SetType(v ConnectionType)`
+
+SetType sets Type field to given value.
+
 
 ### GetUuid
 

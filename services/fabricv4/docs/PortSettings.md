@@ -4,12 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Product** | Pointer to **string** | Product name | [optional] 
 **Buyout** | Pointer to **bool** |  | [optional] 
 **ViewPortPermission** | Pointer to **bool** |  | [optional] 
 **PlaceVcOrderPermission** | Pointer to **bool** |  | [optional] 
 **Layer3Enabled** | Pointer to **bool** |  | [optional] 
-**ProductCode** | Pointer to **string** |  | [optional] 
 **SharedPortType** | Pointer to **bool** |  | [optional] 
 **SharedPortProduct** | Pointer to [**PortSettingsSharedPortProduct**](PortSettingsSharedPortProduct.md) |  | [optional] 
 **PackageType** | Pointer to [**PortSettingsPackageType**](PortSettingsPackageType.md) |  | [optional] 
@@ -32,31 +30,6 @@ will change when the set of required properties is changed
 NewPortSettingsWithDefaults instantiates a new PortSettings object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetProduct
-
-`func (o *PortSettings) GetProduct() string`
-
-GetProduct returns the Product field if non-nil, zero value otherwise.
-
-### GetProductOk
-
-`func (o *PortSettings) GetProductOk() (*string, bool)`
-
-GetProductOk returns a tuple with the Product field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetProduct
-
-`func (o *PortSettings) SetProduct(v string)`
-
-SetProduct sets Product field to given value.
-
-### HasProduct
-
-`func (o *PortSettings) HasProduct() bool`
-
-HasProduct returns a boolean if a field has been set.
 
 ### GetBuyout
 
@@ -157,31 +130,6 @@ SetLayer3Enabled sets Layer3Enabled field to given value.
 `func (o *PortSettings) HasLayer3Enabled() bool`
 
 HasLayer3Enabled returns a boolean if a field has been set.
-
-### GetProductCode
-
-`func (o *PortSettings) GetProductCode() string`
-
-GetProductCode returns the ProductCode field if non-nil, zero value otherwise.
-
-### GetProductCodeOk
-
-`func (o *PortSettings) GetProductCodeOk() (*string, bool)`
-
-GetProductCodeOk returns a tuple with the ProductCode field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetProductCode
-
-`func (o *PortSettings) SetProductCode(v string)`
-
-SetProductCode sets ProductCode field to given value.
-
-### HasProductCode
-
-`func (o *PortSettings) HasProductCode() bool`
-
-HasProductCode returns a boolean if a field has been set.
 
 ### GetSharedPortType
 

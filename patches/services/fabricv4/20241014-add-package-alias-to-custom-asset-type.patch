@@ -1,0 +1,31 @@
+diff --git a/services/fabricv4/test/api_streams_test.go b/services/fabricv4/test/api_streams_test.go
+index f760724..ca429c7 100644
+--- a/services/fabricv4/test/api_streams_test.go
++++ b/services/fabricv4/test/api_streams_test.go
+@@ -36,7 +36,7 @@ func Test_fabricv4_StreamsApiService(t *testing.T) {
+ 		t.Skip("skip test") // remove to run test
+ 
+ 		var assetId string
+-		var asset Asset
++		var asset openapiclient.Asset
+ 		var streamId string
+ 
+ 		resp, httpRes, err := apiClient.StreamsApi.DeleteStreamAssetByUuid(context.Background(), assetId, asset, streamId).Execute()
+@@ -62,7 +62,7 @@ func Test_fabricv4_StreamsApiService(t *testing.T) {
+ 		t.Skip("skip test") // remove to run test
+ 
+ 		var assetId string
+-		var asset Asset
++		var asset openapiclient.Asset
+ 		var streamId string
+ 
+ 		resp, httpRes, err := apiClient.StreamsApi.GetStreamAssetByUuid(context.Background(), assetId, asset, streamId).Execute()
+@@ -120,7 +120,7 @@ func Test_fabricv4_StreamsApiService(t *testing.T) {
+ 		t.Skip("skip test") // remove to run test
+ 
+ 		var assetId string
+-		var asset Asset
++		var asset openapiclient.Asset
+ 		var streamId string
+ 
+ 		resp, httpRes, err := apiClient.StreamsApi.UpdateStreamAssetByUuid(context.Background(), assetId, asset, streamId).Execute()

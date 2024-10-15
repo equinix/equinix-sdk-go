@@ -89,7 +89,7 @@ Name | Type | Description  | Notes
 
 ## CreateBulkPort
 
-> AllPortsResponse CreateBulkPort(ctx).BulkPort(bulkPort).Execute()
+> BulkPort CreateBulkPort(ctx).BulkPortRequest(bulkPortRequest).Execute()
 
 Create Port
 
@@ -108,16 +108,16 @@ import (
 )
 
 func main() {
-	bulkPort := *openapiclient.NewBulkPort() // BulkPort | 
+	bulkPortRequest := *openapiclient.NewBulkPortRequest() // BulkPortRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PortsApi.CreateBulkPort(context.Background()).BulkPort(bulkPort).Execute()
+	resp, r, err := apiClient.PortsApi.CreateBulkPort(context.Background()).BulkPortRequest(bulkPortRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `PortsApi.CreateBulkPort``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CreateBulkPort`: AllPortsResponse
+	// response from `CreateBulkPort`: BulkPort
 	fmt.Fprintf(os.Stdout, "Response from `PortsApi.CreateBulkPort`: %v\n", resp)
 }
 ```
@@ -133,11 +133,11 @@ Other parameters are passed through a pointer to a apiCreateBulkPortRequest stru
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **bulkPort** | [**BulkPort**](BulkPort.md) |  | 
+ **bulkPortRequest** | [**BulkPortRequest**](BulkPortRequest.md) |  | 
 
 ### Return type
 
-[**AllPortsResponse**](AllPortsResponse.md)
+[**BulkPort**](BulkPort.md)
 
 ### Authorization
 
@@ -155,7 +155,7 @@ Name | Type | Description  | Notes
 
 ## CreatePort
 
-> PortResponse CreatePort(ctx).Port(port).Execute()
+> Port CreatePort(ctx).PortRequest(portRequest).Execute()
 
 Create Port
 
@@ -174,16 +174,16 @@ import (
 )
 
 func main() {
-	port := *openapiclient.NewPort(*openapiclient.NewSimplifiedAccount(), openapiclient.PortType("XF_PORT"), int32(123), openapiclient.PortResponse_physicalPortsType("1000BASE_LX"), openapiclient.PortResponse_connectivitySourceType("COLO"), *openapiclient.NewSimplifiedLocation(), *openapiclient.NewPortEncapsulation(), *openapiclient.NewPortSettings()) // Port | 
+	portRequest := *openapiclient.NewPortRequest(openapiclient.PortType("XF_PORT"), int32(123), openapiclient.Port_physicalPortsType("1000BASE_LX"), openapiclient.Port_connectivitySourceType("COLO"), *openapiclient.NewSimplifiedAccount(), *openapiclient.NewSimplifiedLocation(), *openapiclient.NewPortEncapsulation(), *openapiclient.NewPortSettings()) // PortRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PortsApi.CreatePort(context.Background()).Port(port).Execute()
+	resp, r, err := apiClient.PortsApi.CreatePort(context.Background()).PortRequest(portRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `PortsApi.CreatePort``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CreatePort`: PortResponse
+	// response from `CreatePort`: Port
 	fmt.Fprintf(os.Stdout, "Response from `PortsApi.CreatePort`: %v\n", resp)
 }
 ```
@@ -199,11 +199,11 @@ Other parameters are passed through a pointer to a apiCreatePortRequest struct v
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **port** | [**Port**](Port.md) |  | 
+ **portRequest** | [**PortRequest**](PortRequest.md) |  | 
 
 ### Return type
 
-[**PortResponse**](PortResponse.md)
+[**Port**](Port.md)
 
 ### Authorization
 
@@ -291,7 +291,7 @@ Name | Type | Description  | Notes
 
 ## GetPortByUuid
 
-> PortResponse GetPortByUuid(ctx, portId).Execute()
+> Port GetPortByUuid(ctx, portId).Execute()
 
 Get Port by uuid
 
@@ -319,7 +319,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `PortsApi.GetPortByUuid``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetPortByUuid`: PortResponse
+	// response from `GetPortByUuid`: Port
 	fmt.Fprintf(os.Stdout, "Response from `PortsApi.GetPortByUuid`: %v\n", resp)
 }
 ```
@@ -343,7 +343,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PortResponse**](PortResponse.md)
+[**Port**](Port.md)
 
 ### Authorization
 

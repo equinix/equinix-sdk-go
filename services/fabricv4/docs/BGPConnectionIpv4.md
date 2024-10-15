@@ -8,8 +8,9 @@ Name | Type | Description | Notes
 **EquinixPeerIp** | Pointer to **string** | Equinix side peering ip | [optional] 
 **Enabled** | **bool** | Admin status for the BGP session | 
 **OutboundASPrependCount** | Pointer to **int64** | AS path prepend count | [optional] 
-**InboundMED** | Pointer to **int64** | inbound Multi Exit Discriminator attribute | [optional] 
-**OutboundMED** | Pointer to **int64** | inbound Multi Exit Discriminator attribute | [optional] 
+**InboundMED** | Pointer to **int64** | Inbound Multi Exit Discriminator attribute | [optional] 
+**OutboundMED** | Pointer to **int64** | Outbound Multi Exit Discriminator attribute | [optional] 
+**RoutesMax** | Pointer to **int64** | Maximum learnt prefixes limit | [optional] 
 **Operation** | Pointer to [**BGPConnectionOperation**](BGPConnectionOperation.md) |  | [optional] 
 
 ## Methods
@@ -170,6 +171,31 @@ SetOutboundMED sets OutboundMED field to given value.
 `func (o *BGPConnectionIpv4) HasOutboundMED() bool`
 
 HasOutboundMED returns a boolean if a field has been set.
+
+### GetRoutesMax
+
+`func (o *BGPConnectionIpv4) GetRoutesMax() int64`
+
+GetRoutesMax returns the RoutesMax field if non-nil, zero value otherwise.
+
+### GetRoutesMaxOk
+
+`func (o *BGPConnectionIpv4) GetRoutesMaxOk() (*int64, bool)`
+
+GetRoutesMaxOk returns a tuple with the RoutesMax field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRoutesMax
+
+`func (o *BGPConnectionIpv4) SetRoutesMax(v int64)`
+
+SetRoutesMax sets RoutesMax field to given value.
+
+### HasRoutesMax
+
+`func (o *BGPConnectionIpv4) HasRoutesMax() bool`
+
+HasRoutesMax returns a boolean if a field has been set.
 
 ### GetOperation
 

@@ -49,9 +49,10 @@ func Test_fabricv4_ServiceTokensApiService(t *testing.T) {
 
 		var serviceTokenId string
 
-		httpRes, err := apiClient.ServiceTokensApi.DeleteServiceTokenByUuid(context.Background(), serviceTokenId).Execute()
+		resp, httpRes, err := apiClient.ServiceTokensApi.DeleteServiceTokenByUuid(context.Background(), serviceTokenId).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 	})
 

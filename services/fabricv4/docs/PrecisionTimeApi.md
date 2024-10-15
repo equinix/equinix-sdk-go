@@ -5,19 +5,20 @@ All URIs are relative to *https://api.equinix.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateTimeServices**](PrecisionTimeApi.md#CreateTimeServices) | **Post** /fabric/v4/timeServices | Create Time Service
-[**DeleteTimeServiceById**](PrecisionTimeApi.md#DeleteTimeServiceById) | **Delete** /fabric/v4/timeServices/{serviceId} | Delete time service
-[**GetTimeServicesById**](PrecisionTimeApi.md#GetTimeServicesById) | **Get** /fabric/v4/timeServices/{serviceId} | Get Time Service
+[**DeleteTimeServiceById**](PrecisionTimeApi.md#DeleteTimeServiceById) | **Delete** /fabric/v4/timeServices/{serviceId} | Delete by ID.
+[**FulfillTimeServices**](PrecisionTimeApi.md#FulfillTimeServices) | **Put** /fabric/v4/timeServices/{serviceId} | Configure Service.
+[**GetTimeServicesById**](PrecisionTimeApi.md#GetTimeServicesById) | **Get** /fabric/v4/timeServices/{serviceId} | Get Service By ID.
 [**GetTimeServicesConnectionsByServiceId**](PrecisionTimeApi.md#GetTimeServicesConnectionsByServiceId) | **Get** /fabric/v4/timeServices/{serviceId}/connections | Get Connection Links
 [**GetTimeServicesPackageByCode**](PrecisionTimeApi.md#GetTimeServicesPackageByCode) | **Get** /fabric/v4/timeServicePackages/{packageCode} | Get Package By Code
 [**GetTimeServicesPackages**](PrecisionTimeApi.md#GetTimeServicesPackages) | **Get** /fabric/v4/timeServicePackages | Get Packages
 [**SearchTimeServices**](PrecisionTimeApi.md#SearchTimeServices) | **Post** /fabric/v4/timeServices/search | Search Time Services
-[**UpdateTimeServicesById**](PrecisionTimeApi.md#UpdateTimeServicesById) | **Patch** /fabric/v4/timeServices/{serviceId} | Patch time service
+[**UpdateTimeServicesById**](PrecisionTimeApi.md#UpdateTimeServicesById) | **Patch** /fabric/v4/timeServices/{serviceId} | Update By ID.
 
 
 
 ## CreateTimeServices
 
-> PrecisionTimeServiceCreateResponse CreateTimeServices(ctx).PrecisionTimeServiceRequest(precisionTimeServiceRequest).Execute()
+> PrecisionTimeServiceResponse CreateTimeServices(ctx).PrecisionTimeServiceRequest(precisionTimeServiceRequest).Execute()
 
 Create Time Service
 
@@ -36,7 +37,7 @@ import (
 )
 
 func main() {
-	precisionTimeServiceRequest := *openapiclient.NewPrecisionTimeServiceRequest(openapiclient.precisionTimeServiceRequest_type("NTP"), "Name_example", *openapiclient.NewPrecisionTimePackageRequest(openapiclient.getTimeServicesPackageByCode_packageCode_parameter("NTP_STANDARD")), []openapiclient.FabricConnectionUuid{*openapiclient.NewFabricConnectionUuid("Uuid_example")}, *openapiclient.NewIpv4()) // PrecisionTimeServiceRequest | 
+	precisionTimeServiceRequest := *openapiclient.NewPrecisionTimeServiceRequest(openapiclient.precisionTimeServiceRequest_type("NTP"), "Name_example", *openapiclient.NewPrecisionTimePackageRequest(openapiclient.precisionTimePackageRequest_code("NTP_STANDARD")), []openapiclient.VirtualConnectionUuid{*openapiclient.NewVirtualConnectionUuid("Uuid_example")}, *openapiclient.NewIpv4("Primary_example", "Secondary_example", "NetworkMask_example")) // PrecisionTimeServiceRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -45,7 +46,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `PrecisionTimeApi.CreateTimeServices``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CreateTimeServices`: PrecisionTimeServiceCreateResponse
+	// response from `CreateTimeServices`: PrecisionTimeServiceResponse
 	fmt.Fprintf(os.Stdout, "Response from `PrecisionTimeApi.CreateTimeServices`: %v\n", resp)
 }
 ```
@@ -65,7 +66,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PrecisionTimeServiceCreateResponse**](PrecisionTimeServiceCreateResponse.md)
+[**PrecisionTimeServiceResponse**](PrecisionTimeServiceResponse.md)
 
 ### Authorization
 
@@ -83,9 +84,9 @@ Name | Type | Description  | Notes
 
 ## DeleteTimeServiceById
 
-> PrecisionTimeServiceCreateResponse DeleteTimeServiceById(ctx, serviceId).Execute()
+> PrecisionTimeServiceResponse DeleteTimeServiceById(ctx, serviceId).Execute()
 
-Delete time service
+Delete by ID.
 
 
 
@@ -111,7 +112,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `PrecisionTimeApi.DeleteTimeServiceById``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DeleteTimeServiceById`: PrecisionTimeServiceCreateResponse
+	// response from `DeleteTimeServiceById`: PrecisionTimeServiceResponse
 	fmt.Fprintf(os.Stdout, "Response from `PrecisionTimeApi.DeleteTimeServiceById`: %v\n", resp)
 }
 ```
@@ -135,7 +136,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PrecisionTimeServiceCreateResponse**](PrecisionTimeServiceCreateResponse.md)
+[**PrecisionTimeServiceResponse**](PrecisionTimeServiceResponse.md)
 
 ### Authorization
 
@@ -151,11 +152,83 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## FulfillTimeServices
+
+> PrecisionTimeServiceResponse FulfillTimeServices(ctx, serviceId).PrecisionTimeServiceRequest(precisionTimeServiceRequest).Execute()
+
+Configure Service.
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/equinix/equinix-sdk-go/services/fabricv4"
+)
+
+func main() {
+	serviceId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Service UUID
+	precisionTimeServiceRequest := *openapiclient.NewPrecisionTimeServiceRequest(openapiclient.precisionTimeServiceRequest_type("NTP"), "Name_example", *openapiclient.NewPrecisionTimePackageRequest(openapiclient.precisionTimePackageRequest_code("NTP_STANDARD")), []openapiclient.VirtualConnectionUuid{*openapiclient.NewVirtualConnectionUuid("Uuid_example")}, *openapiclient.NewIpv4("Primary_example", "Secondary_example", "NetworkMask_example")) // PrecisionTimeServiceRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PrecisionTimeApi.FulfillTimeServices(context.Background(), serviceId).PrecisionTimeServiceRequest(precisionTimeServiceRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PrecisionTimeApi.FulfillTimeServices``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `FulfillTimeServices`: PrecisionTimeServiceResponse
+	fmt.Fprintf(os.Stdout, "Response from `PrecisionTimeApi.FulfillTimeServices`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**serviceId** | **string** | Service UUID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiFulfillTimeServicesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **precisionTimeServiceRequest** | [**PrecisionTimeServiceRequest**](PrecisionTimeServiceRequest.md) |  | 
+
+### Return type
+
+[**PrecisionTimeServiceResponse**](PrecisionTimeServiceResponse.md)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GetTimeServicesById
 
-> PrecisionTimeServiceCreateResponse GetTimeServicesById(ctx, serviceId).Execute()
+> PrecisionTimeServiceResponse GetTimeServicesById(ctx, serviceId).Execute()
 
-Get Time Service
+Get Service By ID.
 
 
 
@@ -181,7 +254,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `PrecisionTimeApi.GetTimeServicesById``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetTimeServicesById`: PrecisionTimeServiceCreateResponse
+	// response from `GetTimeServicesById`: PrecisionTimeServiceResponse
 	fmt.Fprintf(os.Stdout, "Response from `PrecisionTimeApi.GetTimeServicesById`: %v\n", resp)
 }
 ```
@@ -205,7 +278,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PrecisionTimeServiceCreateResponse**](PrecisionTimeServiceCreateResponse.md)
+[**PrecisionTimeServiceResponse**](PrecisionTimeServiceResponse.md)
 
 ### Authorization
 
@@ -490,9 +563,9 @@ Name | Type | Description  | Notes
 
 ## UpdateTimeServicesById
 
-> PrecisionTimeServiceCreateResponse UpdateTimeServicesById(ctx, serviceId).PrecisionTimeChangeOperation(precisionTimeChangeOperation).Execute()
+> PrecisionTimeServiceResponse UpdateTimeServicesById(ctx, serviceId).PrecisionTimeChangeOperation(precisionTimeChangeOperation).Execute()
 
-Patch time service
+Update By ID.
 
 
 
@@ -519,7 +592,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `PrecisionTimeApi.UpdateTimeServicesById``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `UpdateTimeServicesById`: PrecisionTimeServiceCreateResponse
+	// response from `UpdateTimeServicesById`: PrecisionTimeServiceResponse
 	fmt.Fprintf(os.Stdout, "Response from `PrecisionTimeApi.UpdateTimeServicesById`: %v\n", resp)
 }
 ```
@@ -544,7 +617,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PrecisionTimeServiceCreateResponse**](PrecisionTimeServiceCreateResponse.md)
+[**PrecisionTimeServiceResponse**](PrecisionTimeServiceResponse.md)
 
 ### Authorization
 

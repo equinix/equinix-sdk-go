@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Href** | Pointer to **string** | An absolute URL that is the subject of the link&#39;s context. | [optional] [readonly] 
 **Uuid** | Pointer to **string** | Equinix-assigned connection identifier | [optional] 
 **AllowRemoteConnection** | Pointer to **bool** | Authorization to connect remotely | [optional] [default to false]
+**AllowCustomBandwidth** | Pointer to **bool** | Allow custom bandwidth value | [optional] [default to false]
 **BandwidthLimit** | Pointer to **int32** | Connection bandwidth limit in Mbps | [optional] 
 **SupportedBandwidths** | Pointer to **[]int32** | List of permitted bandwidths. | [optional] 
 **ASide** | Pointer to [**ServiceTokenSide**](ServiceTokenSide.md) |  | [optional] 
@@ -126,6 +127,31 @@ SetAllowRemoteConnection sets AllowRemoteConnection field to given value.
 `func (o *ServiceTokenConnection) HasAllowRemoteConnection() bool`
 
 HasAllowRemoteConnection returns a boolean if a field has been set.
+
+### GetAllowCustomBandwidth
+
+`func (o *ServiceTokenConnection) GetAllowCustomBandwidth() bool`
+
+GetAllowCustomBandwidth returns the AllowCustomBandwidth field if non-nil, zero value otherwise.
+
+### GetAllowCustomBandwidthOk
+
+`func (o *ServiceTokenConnection) GetAllowCustomBandwidthOk() (*bool, bool)`
+
+GetAllowCustomBandwidthOk returns a tuple with the AllowCustomBandwidth field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAllowCustomBandwidth
+
+`func (o *ServiceTokenConnection) SetAllowCustomBandwidth(v bool)`
+
+SetAllowCustomBandwidth sets AllowCustomBandwidth field to given value.
+
+### HasAllowCustomBandwidth
+
+`func (o *ServiceTokenConnection) HasAllowCustomBandwidth() bool`
+
+HasAllowCustomBandwidth returns a boolean if a field has been set.
 
 ### GetBandwidthLimit
 

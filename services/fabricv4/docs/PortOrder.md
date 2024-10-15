@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **OrderId** | Pointer to **string** | Order Identification | [optional] 
 **CustomerReferenceId** | Pointer to **string** | Customer order reference Id | [optional] 
 **OrderNumber** | Pointer to **string** | Order Reference Number | [optional] 
-**Uuid** | Pointer to **string** | Equinix-assigned order identifier | [optional] 
+**Uuid** | Pointer to **string** | Equinix-assigned order identifier, this is a derived response atrribute | [optional] 
 **Signature** | Pointer to [**PortOrderSignature**](PortOrderSignature.md) |  | [optional] 
 
 ## Methods

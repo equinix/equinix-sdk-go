@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | [**Actions**](Actions.md) |  | 
-**Description** | Pointer to **string** | Connection rejection reason datail | [optional] 
+**Description** | Pointer to **string** | Connection rejection reason detail | [optional] 
 **Data** | Pointer to [**ConnectionAcceptanceData**](ConnectionAcceptanceData.md) |  | [optional] 
 
 ## Methods

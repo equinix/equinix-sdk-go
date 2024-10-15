@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | Pointer to [**Md5Type**](Md5Type.md) |  | [optional] 
-**Id** | Pointer to **int32** |  | [optional] 
-**Password** | Pointer to **string** |  | [optional] 
+**KeyNumber** | Pointer to **int32** | The authentication Key ID. | [optional] 
+**Key** | Pointer to **string** | The plaintext authentication key. For ASCII type, the key must contain printable ASCII characters, range 10-20 characters. For HEX type, range should be 10-40 characters. | [optional] 
 
 ## Methods
 
@@ -52,55 +52,55 @@ SetType sets Type field to given value.
 
 HasType returns a boolean if a field has been set.
 
-### GetId
+### GetKeyNumber
 
-`func (o *Md5) GetId() int32`
+`func (o *Md5) GetKeyNumber() int32`
 
-GetId returns the Id field if non-nil, zero value otherwise.
+GetKeyNumber returns the KeyNumber field if non-nil, zero value otherwise.
 
-### GetIdOk
+### GetKeyNumberOk
 
-`func (o *Md5) GetIdOk() (*int32, bool)`
+`func (o *Md5) GetKeyNumberOk() (*int32, bool)`
 
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+GetKeyNumberOk returns a tuple with the KeyNumber field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetId
+### SetKeyNumber
 
-`func (o *Md5) SetId(v int32)`
+`func (o *Md5) SetKeyNumber(v int32)`
 
-SetId sets Id field to given value.
+SetKeyNumber sets KeyNumber field to given value.
 
-### HasId
+### HasKeyNumber
 
-`func (o *Md5) HasId() bool`
+`func (o *Md5) HasKeyNumber() bool`
 
-HasId returns a boolean if a field has been set.
+HasKeyNumber returns a boolean if a field has been set.
 
-### GetPassword
+### GetKey
 
-`func (o *Md5) GetPassword() string`
+`func (o *Md5) GetKey() string`
 
-GetPassword returns the Password field if non-nil, zero value otherwise.
+GetKey returns the Key field if non-nil, zero value otherwise.
 
-### GetPasswordOk
+### GetKeyOk
 
-`func (o *Md5) GetPasswordOk() (*string, bool)`
+`func (o *Md5) GetKeyOk() (*string, bool)`
 
-GetPasswordOk returns a tuple with the Password field if it's non-nil, zero value otherwise
+GetKeyOk returns a tuple with the Key field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetPassword
+### SetKey
 
-`func (o *Md5) SetPassword(v string)`
+`func (o *Md5) SetKey(v string)`
 
-SetPassword sets Password field to given value.
+SetKey sets Key field to given value.
 
-### HasPassword
+### HasKey
 
-`func (o *Md5) HasPassword() bool`
+`func (o *Md5) HasKey() bool`
 
-HasPassword returns a boolean if a field has been set.
+HasKey returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

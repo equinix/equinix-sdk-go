@@ -4,23 +4,23 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Href** | Pointer to **string** |  | [optional] 
-**Uuid** | Pointer to **string** |  | [optional] 
-**Status** | Pointer to [**SubscriptionStatus**](SubscriptionStatus.md) |  | [optional] 
-**Marketplace** | Pointer to [**SubscriptionResponseMarketplace**](SubscriptionResponseMarketplace.md) |  | [optional] 
+**Href** | Pointer to **string** | Subscription URL | [optional] 
+**Uuid** | Pointer to **string** | Unique identifier of the Subscription | [optional] 
+**State** | [**SubscriptionState**](SubscriptionState.md) |  | 
+**Marketplace** | [**SubscriptionResponseMarketplace**](SubscriptionResponseMarketplace.md) |  | 
 **OfferType** | Pointer to [**SubscriptionResponseOfferType**](SubscriptionResponseOfferType.md) |  | [optional] 
-**IsAutoRenew** | Pointer to **bool** |  | [optional] 
-**OfferId** | Pointer to **string** |  | [optional] 
+**IsAutoRenew** | Pointer to **bool** | Is Auto Renewal Enabled | [optional] 
+**OfferId** | Pointer to **string** | Marketplace Offer Id | [optional] 
 **Trial** | Pointer to [**SubscriptionTrial**](SubscriptionTrial.md) |  | [optional] 
-**SubscriptionKey** | Pointer to **string** |  | [optional] 
-**Entitlements** | Pointer to [**[]SubscriptionEntitlementResponse**](SubscriptionEntitlementResponse.md) |  | [optional] 
+**SubscriptionKey** | Pointer to **string** | Subscription Key | [optional] 
+**Entitlements** | [**[]SubscriptionEntitlementResponse**](SubscriptionEntitlementResponse.md) | List of entitlements associated with the subscription | 
 **Changelog** | Pointer to [**Changelog**](Changelog.md) |  | [optional] 
 
 ## Methods
 
 ### NewSubscriptionResponse
 
-`func NewSubscriptionResponse() *SubscriptionResponse`
+`func NewSubscriptionResponse(state SubscriptionState, marketplace SubscriptionResponseMarketplace, entitlements []SubscriptionEntitlementResponse, ) *SubscriptionResponse`
 
 NewSubscriptionResponse instantiates a new SubscriptionResponse object
 This constructor will assign default values to properties that have it defined,
@@ -85,30 +85,25 @@ SetUuid sets Uuid field to given value.
 
 HasUuid returns a boolean if a field has been set.
 
-### GetStatus
+### GetState
 
-`func (o *SubscriptionResponse) GetStatus() SubscriptionStatus`
+`func (o *SubscriptionResponse) GetState() SubscriptionState`
 
-GetStatus returns the Status field if non-nil, zero value otherwise.
+GetState returns the State field if non-nil, zero value otherwise.
 
-### GetStatusOk
+### GetStateOk
 
-`func (o *SubscriptionResponse) GetStatusOk() (*SubscriptionStatus, bool)`
+`func (o *SubscriptionResponse) GetStateOk() (*SubscriptionState, bool)`
 
-GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
+GetStateOk returns a tuple with the State field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetStatus
+### SetState
 
-`func (o *SubscriptionResponse) SetStatus(v SubscriptionStatus)`
+`func (o *SubscriptionResponse) SetState(v SubscriptionState)`
 
-SetStatus sets Status field to given value.
+SetState sets State field to given value.
 
-### HasStatus
-
-`func (o *SubscriptionResponse) HasStatus() bool`
-
-HasStatus returns a boolean if a field has been set.
 
 ### GetMarketplace
 
@@ -129,11 +124,6 @@ and a boolean to check if the value has been set.
 
 SetMarketplace sets Marketplace field to given value.
 
-### HasMarketplace
-
-`func (o *SubscriptionResponse) HasMarketplace() bool`
-
-HasMarketplace returns a boolean if a field has been set.
 
 ### GetOfferType
 
@@ -279,11 +269,6 @@ and a boolean to check if the value has been set.
 
 SetEntitlements sets Entitlements field to given value.
 
-### HasEntitlements
-
-`func (o *SubscriptionResponse) HasEntitlements() bool`
-
-HasEntitlements returns a boolean if a field has been set.
 
 ### GetChangelog
 
