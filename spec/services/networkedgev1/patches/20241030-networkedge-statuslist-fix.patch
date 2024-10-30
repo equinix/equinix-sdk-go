@@ -1,0 +1,36 @@
+diff --git a/spec/services/networkedgev1/oas3.patched/ne-v1-catalog-ne_v1.yaml b/spec/services/networkedgev1/oas3.patched/ne-v1-catalog-ne_v1.yaml
+index 51c0bfdf..37736f06 100644
+--- a/spec/services/networkedgev1/oas3.patched/ne-v1-catalog-ne_v1.yaml
++++ b/spec/services/networkedgev1/oas3.patched/ne-v1-catalog-ne_v1.yaml
+@@ -2487,19 +2487,19 @@ paths:
+         type: array
+         items:
+           type: string
++          enum:
++          - PROVISIONED
++          - PROVISIONING
++          - PROVISIONING_RETRYING
++          - UPDATING
++          - PROVISIONING_UPDATE_RETRYING
++          - DEPROVISIONED
++          - DEPROVISIONING
++          - DEPROVISIONING_RETRYING
++          - PROVISIONING_FAILED
++          - PROVISIONING_UPDATE_FAILED
++          - DEPROVISIONING_FAILED
+         collectionFormat: multi
+-        enum:
+-        - PROVISIONED
+-        - PROVISIONING
+-        - PROVISIONING_RETRYING
+-        - UPDATING
+-        - PROVISIONING_UPDATE_RETRYING
+-        - DEPROVISIONED
+-        - DEPROVISIONING
+-        - DEPROVISIONING_RETRYING
+-        - PROVISIONING_FAILED
+-        - PROVISIONING_UPDATE_FAILED
+-        - DEPROVISIONING_FAILED
+       - name: virtualDeviceUuid
+         in: query
+         description: Unique Id of a virtual device
