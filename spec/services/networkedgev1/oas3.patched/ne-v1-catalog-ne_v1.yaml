@@ -2487,19 +2487,19 @@ paths:
         type: array
         items:
           type: string
+          enum:
+          - PROVISIONED
+          - PROVISIONING
+          - PROVISIONING_RETRYING
+          - UPDATING
+          - PROVISIONING_UPDATE_RETRYING
+          - DEPROVISIONED
+          - DEPROVISIONING
+          - DEPROVISIONING_RETRYING
+          - PROVISIONING_FAILED
+          - PROVISIONING_UPDATE_FAILED
+          - DEPROVISIONING_FAILED
         collectionFormat: multi
-        enum:
-        - PROVISIONED
-        - PROVISIONING
-        - PROVISIONING_RETRYING
-        - UPDATING
-        - PROVISIONING_UPDATE_RETRYING
-        - DEPROVISIONED
-        - DEPROVISIONING
-        - DEPROVISIONING_RETRYING
-        - PROVISIONING_FAILED
-        - PROVISIONING_UPDATE_FAILED
-        - DEPROVISIONING_FAILED
       - name: virtualDeviceUuid
         in: query
         description: Unique Id of a virtual device
