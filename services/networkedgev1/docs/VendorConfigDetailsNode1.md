@@ -7,6 +7,8 @@ Name | Type | Description | Notes
 **Hostname** | Pointer to **string** | The host name. Only a-z, A-Z, 0-9, and hyphen(-) are allowed. It should start with a letter and end with a letter or digit. The length should be between 2-30 characters. Exceptions - FTDv 2-14; Aruba 2-24. | [optional] 
 **RootPassword** | Pointer to **string** |  | [optional] 
 **AdminPassword** | Pointer to **string** | The administrative password of the device. You can use it to log in to the console. This field is not available for all device types. | [optional] 
+**PanoramaIpAddress** | Pointer to **string** | IP address of the Panorama controller. Provide this value to have Panorama integration. Relevant for Palo Alto Self-Configured devices with Internet Access | [optional] 
+**PanoramaAuthKey** | Pointer to **string** | This key supports secure onboarding of the Palo Alto firewall devices. Provide this value to have Panorama integration. Relevant for Palo Alto Self-Configured devices with Internet Access. | [optional] 
 
 ## Methods
 
@@ -101,6 +103,56 @@ SetAdminPassword sets AdminPassword field to given value.
 `func (o *VendorConfigDetailsNode1) HasAdminPassword() bool`
 
 HasAdminPassword returns a boolean if a field has been set.
+
+### GetPanoramaIpAddress
+
+`func (o *VendorConfigDetailsNode1) GetPanoramaIpAddress() string`
+
+GetPanoramaIpAddress returns the PanoramaIpAddress field if non-nil, zero value otherwise.
+
+### GetPanoramaIpAddressOk
+
+`func (o *VendorConfigDetailsNode1) GetPanoramaIpAddressOk() (*string, bool)`
+
+GetPanoramaIpAddressOk returns a tuple with the PanoramaIpAddress field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPanoramaIpAddress
+
+`func (o *VendorConfigDetailsNode1) SetPanoramaIpAddress(v string)`
+
+SetPanoramaIpAddress sets PanoramaIpAddress field to given value.
+
+### HasPanoramaIpAddress
+
+`func (o *VendorConfigDetailsNode1) HasPanoramaIpAddress() bool`
+
+HasPanoramaIpAddress returns a boolean if a field has been set.
+
+### GetPanoramaAuthKey
+
+`func (o *VendorConfigDetailsNode1) GetPanoramaAuthKey() string`
+
+GetPanoramaAuthKey returns the PanoramaAuthKey field if non-nil, zero value otherwise.
+
+### GetPanoramaAuthKeyOk
+
+`func (o *VendorConfigDetailsNode1) GetPanoramaAuthKeyOk() (*string, bool)`
+
+GetPanoramaAuthKeyOk returns a tuple with the PanoramaAuthKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPanoramaAuthKey
+
+`func (o *VendorConfigDetailsNode1) SetPanoramaAuthKey(v string)`
+
+SetPanoramaAuthKey sets PanoramaAuthKey field to given value.
+
+### HasPanoramaAuthKey
+
+`func (o *VendorConfigDetailsNode1) HasPanoramaAuthKey() bool`
+
+HasPanoramaAuthKey returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

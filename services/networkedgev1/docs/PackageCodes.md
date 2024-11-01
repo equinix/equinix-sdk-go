@@ -7,8 +7,9 @@ Name | Type | Description | Notes
 **PackageCode** | Pointer to **string** | The type of package. | [optional] 
 **ExcludedVersions** | Pointer to **[]string** |  | [optional] 
 **ExcludedClusterVersions** | Pointer to **[]string** |  | [optional] 
+**SupportedLicenseTiers** | Pointer to **[]string** |  | [optional] 
 **Throughputs** | Pointer to [**[]ThroughputConfig**](ThroughputConfig.md) |  | [optional] 
-**Supported** | Pointer to **bool** | Whether this software package is supported. | [optional] 
+**Supported** | Pointer to **bool** | Whether this software package is supported or not. | [optional] 
 
 ## Methods
 
@@ -103,6 +104,31 @@ SetExcludedClusterVersions sets ExcludedClusterVersions field to given value.
 `func (o *PackageCodes) HasExcludedClusterVersions() bool`
 
 HasExcludedClusterVersions returns a boolean if a field has been set.
+
+### GetSupportedLicenseTiers
+
+`func (o *PackageCodes) GetSupportedLicenseTiers() []string`
+
+GetSupportedLicenseTiers returns the SupportedLicenseTiers field if non-nil, zero value otherwise.
+
+### GetSupportedLicenseTiersOk
+
+`func (o *PackageCodes) GetSupportedLicenseTiersOk() (*[]string, bool)`
+
+GetSupportedLicenseTiersOk returns a tuple with the SupportedLicenseTiers field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSupportedLicenseTiers
+
+`func (o *PackageCodes) SetSupportedLicenseTiers(v []string)`
+
+SetSupportedLicenseTiers sets SupportedLicenseTiers field to given value.
+
+### HasSupportedLicenseTiers
+
+`func (o *PackageCodes) HasSupportedLicenseTiers() bool`
+
+HasSupportedLicenseTiers returns a boolean if a field has been set.
 
 ### GetThroughputs
 

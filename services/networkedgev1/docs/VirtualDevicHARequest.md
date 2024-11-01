@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **AdditionalBandwidth** | Pointer to **int32** | Secondary additional bandwidth to be configured (in Mbps for HA). Default bandwidth provided is 15 Mbps. | [optional] 
 **LicenseFileId** | Pointer to **string** |  | [optional] 
 **LicenseToken** | Pointer to **string** |  | [optional] 
+**Day0TextFileId** | Pointer to **string** | Some devices require a day0TextFileId. Upload your license file by calling Upload File API. You&#39;ll get a fileUuid in the response. You can enter the value in the day0TextFileId field of the create payload to create a virtual device. Check the payloads of individual devices (provided as Postman Scripts on our API doc site) for details. | [optional] 
 **MetroCode** | **string** |  | 
 **Notifications** | [**[]VirtualDevicHARequestNotificationsInner**](VirtualDevicHARequestNotificationsInner.md) |  | 
 **AclDetails** | Pointer to [**[]ACLDetails**](ACLDetails.md) | An array of ACLs | [optional] 
@@ -191,6 +192,31 @@ SetLicenseToken sets LicenseToken field to given value.
 `func (o *VirtualDevicHARequest) HasLicenseToken() bool`
 
 HasLicenseToken returns a boolean if a field has been set.
+
+### GetDay0TextFileId
+
+`func (o *VirtualDevicHARequest) GetDay0TextFileId() string`
+
+GetDay0TextFileId returns the Day0TextFileId field if non-nil, zero value otherwise.
+
+### GetDay0TextFileIdOk
+
+`func (o *VirtualDevicHARequest) GetDay0TextFileIdOk() (*string, bool)`
+
+GetDay0TextFileIdOk returns a tuple with the Day0TextFileId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDay0TextFileId
+
+`func (o *VirtualDevicHARequest) SetDay0TextFileId(v string)`
+
+SetDay0TextFileId sets Day0TextFileId field to given value.
+
+### HasDay0TextFileId
+
+`func (o *VirtualDevicHARequest) HasDay0TextFileId() bool`
+
+HasDay0TextFileId returns a boolean if a field has been set.
 
 ### GetMetroCode
 

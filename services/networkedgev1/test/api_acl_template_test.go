@@ -99,16 +99,6 @@ func Test_networkedgev1_ACLTemplateApiService(t *testing.T) {
 		assert.Equal(t, 200, httpRes.StatusCode)
 	})
 
-	t.Run("Test ACLTemplateApiService SendDnsLookupPOST1", func(t *testing.T) {
-		t.Skip("skip test") // remove to run test
-
-		resp, httpRes, err := apiClient.ACLTemplateApi.SendDnsLookupPOST1(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-	})
-
 	t.Run("Test ACLTemplateApiService UpdateDeviceACLTemplateUsingPUT", func(t *testing.T) {
 		t.Skip("skip test") // remove to run test
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Supported** | Pointer to **bool** | Whether this throughput is supported. | [optional] 
+**Supported** | Pointer to **bool** | Whether this throughput is supported or not. | [optional] 
 **Throughput** | Pointer to **string** | Throughput. | [optional] 
 **ThroughputUnit** | Pointer to **string** | Throughput unit. | [optional] 
 

@@ -1,12 +1,15 @@
-swagger: '2.0'
+
+
+
+swagger: '2.0' 
 info:
   description: Network Edge (NE) is a platform that allows customers to deploy and run virtual network services and appliances such as routers, load balancers, and firewalls on a generic device instead of additional dedicated hardware, CapEx and colo space. The Network Edge REST APIs allow you to interact with the Equinix Platform to programmatically create a virtual device and add services. Details on specific use cases can be found in the documentation available on the developer portal.
   version: '1.0'
   title: Network Edge APIs
-  termsOfService: 'https://developer.equinix.com/agreement'
+  termsOfService: 'https://www.equinix.com/about/legal/terms'
   contact:
    name: Equinix API Support
-   email: api-support@equinix.com
+   url: https://docs.equinix.com/api-support.htm
 host: api.equinix.com
 schemes:
 - https
@@ -86,11 +89,6 @@ paths:
         required: false
         description: License mode, either Subscription or BYOL. 
         type: string
-      - name: licenseCategory
-        in: query
-        required: false
-        type: string
-        description: Relevant for Fortinet devices. Choose "flex" if you want to enter a token and "classic" if you want to upload a license file.
       - name: cluster
         in: query
         description: Whether you want a cluster device.
@@ -1389,32 +1387,7 @@ paths:
           description: Internal Server Error
           schema:
             $ref: '#/definitions/ErrorMessageResponse'
-  /ne/v1/dnsLookup:
-    post:
-      tags:
-        - ACL Template
-      summary: Post DNS Lookup
-      description: Call this method to lookup IP addresses associated with domains of a metro or a virtual device.
-      operationId: sendDnsLookupPOST_1
-      consumes:
-        - application/json
-      produces:
-        - application/json
-      parameters:
-        - in: body
-          name: dnsLookupRequest
-          description: dnsLookupRequest
-          required: true
-          schema:
-            $ref: '#/definitions/DNSLookupRequest'
-        - $ref: '#/parameters/authorizationHeader'
-      responses:
-        '200':
-          description: 'Successfully posted terms '
-          schema:
-            $ref: '#/definitions/DNSLookupResponse'
-        '404':
-          description: Resource not found
+
 
   /ne/v1/devices/{virtualDeviceUuid}/acl:
     get:
@@ -1932,339 +1905,7 @@ paths:
           schema:
             $ref: "#/definitions/ErrorMessageResponse"
 
-  /ne/v1/l2/serviceprofiles/services:
-    get:
-      tags:
-      - Layer 2 Connections & Service Profiles
-      summary: Get L2 Service Profiles
-      description: Get the list of all active and valid Layer 2 service profiles to which connections can be created.
-      operationId: getProfilesByMetroUsingGET
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters:
-      - $ref: '#/parameters/authorizationHeader'
-      - name: metroCode
-        in: query
-        description: metroCode
-        required: false
-        type: array
-        items:
-          type: string
-        collectionFormat: multi
-      - name: pageNumber
-        in: query
-        description: page number
-        required: false
-        type: integer
-        default: 0
-        format: int32
-      - name: pageSize
-        in: query
-        description: total number of records
-        required: false
-        type: integer
-        default: 20
-        format: int32
-      responses:
-        '200':
-          description: Success
-          schema:
-            $ref: '#/definitions/GetServProfServicesResp'
-        '204':
-          description: No Content
-        '400':
-          description: Bad Request
-          schema:
-            $ref: '#/definitions/ErrorResponseArray'
-        '404':
-          description: Record Not Found
-          schema:
-            $ref: '#/definitions/ErrorResponse'
-        '500':
-          description: Internal Server Error
-          schema:
-            $ref: '#/definitions/ErrorResponse'
-  /ne/v1/l2/serviceprofiles/services/{uuid}:
-    get:
-      tags:
-      - Layer 2 Connections & Service Profiles
-      summary: Get L2 Service Profile {uuid}
-      description: Get all the pertinent details for a Layer 2 service profile specified by its uuid.
-      operationId: getProfileByIdUsingGET
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters:
-      - $ref: '#/parameters/authorizationHeader'
-      - name: uuid
-        in: path
-        description: uuid
-        required: true
-        type: string
-      responses:
-        '200':
-          description: Success
-          schema:
-            $ref: '#/definitions/GetServProfServicesResp'
-        '204':
-          description: Request fulfilled
-        '400':
-          description: Bad Request
-          schema:
-            $ref: '#/definitions/ErrorResponseArray'
-        '404':
-          description: Record Not Found
-          schema:
-            $ref: '#/definitions/ErrorResponse'
-        '500':
-          description: Internal Server Error
-          schema:
-            $ref: '#/definitions/ErrorResponse'
-  /ne/v1/l2/connections/validateAuthorizationKey:
-    get:
-      tags:
-      - Layer 2 Connections & Service Profiles
-      summary: Get L2 Validate Authorization Key
-      description: Validates authorization/service key or account ID to connect to cloud service providers. The participant must first use the provider console to establish a connection and obtain a valid account or service which could then be used to create connections to CSPs. Participants may validate their keys using this API.
-      operationId: validateAuthorizationKeyUsingGET
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters:
-      - $ref: '#/parameters/authorizationHeader'
-      - name: authorizationKey
-        in: query
-        description: Could be AWS Account ID or Azure Service Key or Google Pairing Key or Oracle connection Id or any other authorization key
-        required: true
-        type: string
-      - name: metroCode
-        in: query
-        description: metroCode
-        required: true
-        type: string
-      - name: profileId
-        in: query
-        description: profileId
-        required: true
-        type: string
-      - name: region
-        in: query
-        description: region
-        required: true
-        type: string
-      - name: Content-Type
-        in: header
-        description: Content-Type
-        required: false
-        type: string
-        default: application/json
-      responses:
-        '200':
-          description: Success
-          schema:
-            $ref: '#/definitions/GetValidateAuthKeyRes'
-        '400':
-          description: Bad Request
-          schema:
-            $ref: '#/definitions/ErrorResponseArray'
-        '404':
-          description: Not Found
-          schema:
-            $ref: '#/definitions/ErrorResponse'
-        '500':
-          description: Internal Server Error
-          schema:
-            $ref: '#/definitions/ErrorResponse'
-  /ne/v1/l2/connections:
-    post:
-      tags:
-      - Layer 2 Connections & Service Profiles
-      summary: Create L2 Connection
-      description: Create a new Layer 2 connection on a virtual device to a cloud service provider, another ECX participant or to your own assets in another metro.
-      operationId: createConnectionUsingPOST
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters:
-      - $ref: '#/parameters/authorizationHeader'
-      - in: body
-        name: request
-        description: request
-        required: true
-        schema:
-          $ref: '#/definitions/PostConnectionRequest'
-      responses:
-        '200':
-          description: success
-          schema:
-            $ref: '#/definitions/PostConnectionResponse'
-        '400':
-          description: Bad request
-          schema:
-            $ref: '#/definitions/ErrorResponseArray'
-        '401':
-          description: Unauthorized
-          schema:
-            $ref: '#/definitions/ErrorResponse'
-        '500':
-          description: Internal Server Error
-          schema:
-            $ref: '#/definitions/ErrorResponse'
-  /ne/v1/l2/buyer/connections:
-    get:
-      tags:
-      - Layer 2 Connections & Service Profiles
-      summary: Get L2 Buyer Connections
-      description: Fetches all connections of this user. To get the details of a connection, call Get Connections {uuid} API. 
-      operationId: getConnectionsByGET
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters:
-      - $ref: '#/parameters/authorizationHeader'
-      - name: pageNumber
-        in: query
-        description: page number
-        required: false
-        type: integer
-        default: 0
-        format: int32
-      - name: pageSize
-        in: query
-        description: total number of records
-        required: false
-        type: integer
-        default: 20
-        format: int32
-      responses:
-        '200':
-          description: OK
-          schema:
-            $ref: '#/definitions/GETConnectionsPageResponse'
-        '400':
-          description: Bad Request
-          schema:
-            $ref: '#/definitions/ErrorResponseArray'
-        '404':
-          description: Not Found
-          schema:
-            $ref: '#/definitions/ErrorResponse'
-        '500':
-          description: Internal server error
-          schema:
-            $ref: '#/definitions/ErrorResponse'
-  /ne/v1/l2/connections/{uuid}:
-    patch:
-      tags:
-      - Layer 2 Connections & Service Profiles
-      summary: Update Connection {uuid}
-      description: Update (or approve) connection to complete the provisioning or to perform any updates to the Layer 2 connection. It is typically used to accept a hosted connection.
-      operationId: performUserActionUsingPATCH
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters:
-      - $ref: '#/parameters/authorizationHeader'
-      - name: action
-        in: query
-        description: action
-        required: true
-        type: string
-      - name: uuid
-        in: path
-        description: connId
-        required: true
-        type: string
-      - in: body
-        name: request
-        description: request
-        required: true
-        schema:
-          $ref: '#/definitions/PatchRequest'
-      responses:
-        '200':
-          description: success
-          schema:
-            $ref: '#/definitions/DeleteConnectionResponse'
-        '400':
-          description: Bad request
-          schema:
-            $ref: '#/definitions/ErrorResponseArray'
-        '401':
-          description: Unauthorized
-          schema:
-            $ref: '#/definitions/ErrorResponse'
-        '500':
-          description: Internal Server Error
-          schema:
-            $ref: '#/definitions/ErrorResponse'
-    get:
-      tags:
-      - Layer 2 Connections & Service Profiles
-      summary: Get L2 Connection {uuid}
-      description: Get connection details including its status, allocated bandwidth, VLAN tag, the service profile (or cloud provider).
-      operationId: getConnectionByUuidUsingGET
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters:
-      - $ref: '#/parameters/authorizationHeader'
-      - name: uuid
-        in: path
-        description: Connection UUID
-        required: true
-        type: string
-      responses:
-        '200':
-          description: OK
-          schema:
-            $ref: '#/definitions/GETConnectionByUuidResponse'
-        '400':
-          description: Bad Request
-          schema:
-            $ref: '#/definitions/ErrorResponseArray'
-        '404':
-          description: Not Found
-          schema:
-            $ref: '#/definitions/ErrorResponse'
-        '500':
-          description: Internal server error
-          schema:
-            $ref: '#/definitions/ErrorResponse'
-    delete:
-      tags:
-      - Layer 2 Connections & Service Profiles
-      summary: Delete Connection {uuid}
-      description: Deletes a virtual connection specified by its unique Id. Once a connection has been successfully deleted, billing for that connections will also be stopped.
-      operationId: deleteConnectionUsingDELETE
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters:
-      - $ref: '#/parameters/authorizationHeader'
-      - name: uuid
-        in: path
-        description: connId
-        required: true
-        type: string
-      responses:
-        '200':
-          description: Success
-          schema:
-            $ref: '#/definitions/DeleteConnectionResponse'
-        '400':
-          description: Bad Request
-          schema:
-            $ref: '#/definitions/ErrorResponseArray'
+
   /ne/v1/bgp:
     post:
       tags:
@@ -2737,422 +2378,7 @@ paths:
           description: Internal Server Error
           schema:
             $ref: '#/definitions/ErrorMessageResponse'
-  /ne/v1/sshUsers:
-    get:
-      tags:
-        - SSH User
-      summary: Get SSH Users
-      description: Returns a list of all SSH Users associated with this account. Authorization checks are performed on the users of this API.
-      operationId: getSshUsersUsingGET
-      consumes:
-        - application/json
-      produces:
-        - application/json
-      parameters:
-        - name: username
-          in: query
-          description: SSH user name
-          required: false
-          type: string
-        - name: virtualDeviceUuid
-          in: query
-          description: Virtual Device unique Id
-          required: false
-          type: string
-        - name: verbose
-          in: query
-          description: Is detailed info required
-          required: false
-          type: boolean
-        - name: accountUcmId
-          in: query
-          description: Unique ID of an account
-          type: string
-        - name: offset
-          in: query
-          description: Specifies where to start a page. It is the starting point of the collection returned from the server.
-          required: false
-          type: string
-          default: 0
-          format: int32
-        - name: limit
-          in: query
-          description: Specifies the page size.
-          required: false
-          type: string 
-          default: 20
-          format: int32
 
-        - $ref: '#/parameters/authorizationHeader'
-      responses:
-        '200':
-          description: OK
-          schema:
-            $ref: '#/definitions/SshUserPageResponse'
-        '403':
-          description: Unauthorized User
-          schema:
-            $ref: '#/definitions/FieldErrorResponse'
-        '500':
-          description: Internal Server Error
-          schema:
-            $ref: '#/definitions/ErrorMessageResponse'
-    post:
-      tags:
-        - SSH User
-      summary: Create SSH User
-      description: Creates a new SSH user and associates the user with a virtual device. Authorization checks are performed on users of this API. 
-      operationId: createSshUserUsingPOST
-      consumes:
-        - application/json
-      produces:
-        - application/json
-      parameters:
-        - in: body
-          name: request
-          description: SSH user info
-          required: false
-          schema:
-            $ref: '#/definitions/SshUserCreateRequest'
-        - $ref: '#/parameters/authorizationHeader'
-      responses:
-        '201':
-          description: Created Successfully
-          schema:
-            $ref: '#/definitions/SshUserCreateResponse'
-        '400':
-          description: Bad Request
-          schema:
-            $ref: '#/definitions/FieldErrorResponse'
-        '403':
-          description: Unauthorized User
-          schema:
-            $ref: '#/definitions/FieldErrorResponse'
-        '500':
-          description: Internal Server Error
-          schema:
-            $ref: '#/definitions/ErrorMessageResponse'
-  /ne/v1/sshUsers/availability:
-    get:
-      tags:
-        - SSH User
-      summary: Check SSH Username Availability
-      description: Checks if an SSH username is available. Failed response indicates that the given username already exists or is restricted.
-      operationId: isSshUserAvailableForCreationUsingGET
-      consumes:
-        - application/json
-      produces:
-        - application/json
-      parameters:
-        - name: username
-          in: query
-          description: user name
-          required: true
-          type: string
-        - $ref: '#/parameters/authorizationHeader'
-      responses:
-        '204':
-          description: The username is available
-        '400':
-          description: Invalid input
-          schema:
-            $ref: '#/definitions/FieldErrorResponse'
-        '500':
-          description: Internal Server Error
-          schema:
-            $ref: '#/definitions/ErrorMessageResponse'
-            
-  /ne/v1/sshUsers/{uuid}:
-    get:
-      tags:
-        - SSH User
-      summary: Get SSH User {uuid}
-      description: Returns the ssh user details by its unique Id. Authorization checks are performed on the users of this API.
-      operationId: getSshUserUsingGET
-      consumes:
-        - application/json
-      produces:
-        - application/json
-      parameters:
-        - name: uuid
-          in: path
-          description: uuid
-          required: true
-          type: string
-        - $ref: '#/parameters/authorizationHeader'
-      responses:
-        '200':
-          description: Read Successfully
-          schema:
-            $ref: '#/definitions/SshUserInfoVerbose'
-        '403':
-          description: Unauthorized User
-          schema:
-            $ref: '#/definitions/FieldErrorResponse'
-        '404':
-          description: Resource Not found
-          schema:
-            type: string
-            enum:
-              - INTERNAL_SERVER_ERROR
-              - INVALID_JSON_FORMAT
-              - RESOURCE_NOT_FOUND
-              - UNAUTHORIZED_USER
-              - INVALID_REQUEST_FORMAT
-              - ZONE_NOT_FOUND
-              - SOURCE_ZONE_NOT_FOUND
-              - DESTINATION_ZONE_NOT_FOUND
-              - ZONES_NOT_PART_SAME_DEVICE
-              - CONNECTION_ALREADY_PART_OF_ZONE
-              - ZONE_PART_OF_FIREWALL
-              - CONNECTION_NOT_AVAILABLE
-              - ZONE_ALREADY_EXISTS
-              - FIREWALL_NOT_FOUND
-              - FIREWALL_ALREADY_EXISTS
-              - RULE_ALREADY_EXISTS
-              - RULE_NOT_FOUND
-              - RULE_NOT_PART_OF_FIREWALL
-              - VIRTUAL_DEVICE_NOT_FOUND
-              - VIRTUAL_DEVICE_NOT_PROVISIONED
-              - DEVICE_LICENSE_NOT_REGISTERED
-              - MGMT_INTERFACE_NOT_AVAILABLE
-              - INTERFACE_NOT_AVAILABLE
-              - INTERFACE_NOT_PROVISIONED
-              - NAT_CONFIG_ALREADY_EXISTS
-              - NAT_CONFIG_NOT_FOUND
-              - ADD_NAT_CONFIG_FAILED
-              - EDIT_NAT_CONFIG_FAILED
-              - REMOVE_NAT_CONFIG_FAILED
-              - NAT_POOL_TYPE_CHANGE_DISABLED
-              - INVALID_ACTION_TYPE
-              - INVALID_ADD_ACTION
-              - INVALID_MODIFY_ACTION
-              - INVALID_STATIC_NAT_UUID
-              - OVERLAP_IP_CONFLICT
-              - CONNECTION_NOT_FOUND
-              - BGP_NOT_FOUND
-              - INVALID_IP_ADDRESS
-              - INVALID_NETWORK_SERVICE_TYPE
-              - ERROR_DELETING_CONNECTION
-              - IBX_NOT_FOUND
-              - PRICE_SERVICE_REQUEST_INVALID
-              - PRICE_SERVICE_REQUEST_FAILED
-              - BGP_CONFIG_NOT_FOUND
-              - BGP_NEIGHBOR_INFO_NOT_FOUND
-              - LOCAL_IP_ADDRESS_NOT_IN_RANGE
-              - REMOTE_IP_ADDRESS_NOT_IN_RANGE
-              - CONNECTION_DEVICE_NOT_FOUND
-              - CONNECTION_NOT_PROVISIONED
-              - BROADCAST_ADDRESS_NOT_ALLOWED
-              - NETWORK_ADDRESS_NOT_ALLOWED
-              - OVERLAP_LOCAL_IP_ADDRESS
-              - DATA_INTERFACE_NOT_AVAILABLE
-              - ADD_BGP_CONFIG_FAILED
-              - REMOVE_BGP_CONFIG_FAILED
-              - INTERFACE_NOT_FOUND
-              - UPDATE_BGP_CONFIG_FAILED
-              - EXISTING_CONNECTION_BGP
-              - BGP_EXISTING_NAT_SERVICES
-              - BGP_EXISTING_FIREWALL_SERVICES
-              - BGP_UPDATE_NOT_ALLOWED
-              - BGP_EXISTING_VPN_SERVICES
-              - REMOTE_LOCAL_SAME_IP_ADDRESS
-              - BGP_FAILED_ASN_UPDATE
-              - BGP_FAILED_INTERFACE_DESC
-              - BGP_NSO_FAILED_FETCH
-              - BGP_NSO_FAILED_UPDATE
-              - BGP_FAILED_VPN_UPDATE
-              - BGP_RETRY_FAILED
-              - BGP_NOT_SUPPORTED
-              - BGP_MULTI_ASN_NOT_SUPPORTED
-              - VPN_NAME_ALREADY_IN_USE
-              - VPN_DEVICE_NOT_FOUND
-              - VPN_DEVICE_CUST_ORG_MISMATCH
-              - VPN_DEVICE_NOT_REGISTERED
-              - VPN_NO_CONFIGURED_CLOUD_BGP_FOUND
-              - VPN_DEVICE_ASN_NOT_CONFIGURED
-              - VPN_MATCHING_ASN
-              - VPN_LIMIT_EXCEEDED
-              - VPN_NO_INTERFACES_FOUND
-              - VPN_SSH_INTERFACE_ID_NOT_FOUND
-              - VPN_INVALID_SSH_INTERFACE_ID
-              - VPN_CONFIG_NOT_FOUND
-              - VPN_NSO_CREATE_TRANSIENT_FAILURE
-              - VPN_NSO_CREATE_PERMANENT_FAILURE
-              - VPN_NSO_DELETE_TRANSIENT_FAILURE
-              - VPN_NSO_DELETE_PERMANENT_FAILURE
-              - VPN_PEER_IP_ALREADY_IN_USE
-              - VPN_DEVICE_MISSING_IPSEC_PACKAGE
-              - VPN_INVALID_STATUS_LIST
-              - VPN_RESTRICTED_ASN
-              - VPN_UNAUTHORIZED_ACCESS
-              - VPN_ALREADY_DELETED
-              - VPN_RESTRICTED_IP_ADDRESS
-              - VPN_NSO_UPDATE_TRANSIENT_FAILURE
-              - VPN_NSO_UPDATE_PERMANENT_FAILURE
-              - VPN_IN_PROVISIONING_STATE
-              - VPN_TUNNEL_IP_OVERLAPS_DATA_BGP
-              - VPN_TUNNEL_IP_OVERLAP
-              - VPN_REMOTE_IP_SAME_AS_EXISTING_DATA_BGP
-              - VPN_REMOTE_IP_ALREADY_IN_USE
-              - VPN_REMOTE_IP_INVALID_FIRST_OCTET
-              - VPN_TUNNEL_IP_INVALID_FIRST_OCTET
-              - VPN_DEVICE_SSH_NOT_CONFIGURED
-              - VPN_HA_SECONDARY_REQUEST_REQUIRED
-              - VPN_HA_SECONDARY_DEVICE_REQUIRED
-              - VPN_HA_ROLLED_BACK
-              - VPN_HA_REDUNDANT_VPN_DELETED
-              - VPN_STATUS_UPDATE_FAILED
-              - VPN_STATUS_UPDATE_PROCESS_FAILED
-              - VPN_DEVICE_CLOUD_SEQ_ID_NOT_CONFIGURED
-              - SSH_CREATE_USER_FAILED
-              - SSH_DELETE_USER_FAILED
-              - TACACS_GET_USERS_FAILED
-              - SSH_GET_USER_FAILED
-              - SSH_UPDATE_USER_FAILED
-              - SSH_REPLACE_DEVICE_ASSOCIATION_FAILED
-              - SSH_APPEND_DEVICE_ASSOCIATION_FAILED
-              - SSH_USER_ALREADY_EXISTS
-              - SSH_USER_PARTIAL_FAILURE
-              - SSH_USER_SERVICE_NOT_SUPPORTED
-              - SSH_USER_UNAUTHORIZED_ACCESS
-              - SSH_USER_DELETE_FAILED_ASSOCIATIONS_EXIST
-              - SSH_USER_DEVICE_NOT_REGISTERED
-              - SSH_USER_DEVICE_STATE_NOT_VALID
-              - SSH_USER_PER_DEVICE_LIMIT_EXCEEDED
-              - SSH_USER_DEVICE_IP_ADDRESS_NOT_SET
-              - UNABLE_TO_GET_DEVICE_COUNT
-        '500':
-          description: Internal Server Error
-          schema:
-            $ref: '#/definitions/ErrorMessageResponse'
-    put:
-      tags:
-        - SSH User
-      summary: Update SSH User Password
-      description: Updates the password of an SSH user. Please pass the unique Id of the ssh user as a path parameter.  
-      operationId: updateSshUserUsingPUT
-      consumes:
-        - application/json
-      produces:
-        - application/json
-      parameters:
-        - name: uuid
-          in: path
-          description: uuid
-          required: true
-          type: string
-        - in: body
-          name: request
-          description: SSH user info
-          required: false
-          schema:
-            $ref: '#/definitions/SshUserUpdateRequest'
-        - $ref: '#/parameters/authorizationHeader'
-      responses:
-        '204':
-          description: Password updated successfully
-        '400':
-          description: Bad Request
-          schema:
-            $ref: '#/definitions/FieldErrorResponse'
-        '403':
-          description: Unauthorized User
-          schema:
-            $ref: '#/definitions/FieldErrorResponse'
-        '404':
-          description: Resource Not Found
-          schema:
-            $ref: '#/definitions/FieldErrorResponse'
-        '500':
-          description: Internal Server Error
-          schema:
-            $ref: '#/definitions/ErrorMessageResponse'
-  /ne/v1/sshUsers/{sshUserUuid}/devices/{deviceUuid}:
-    delete:
-      tags:
-        - SSH User
-      summary: Delete SSH User
-      description: The given SSH user is dissociated from the given device. The ssh user is deleted if there are no other devices associated with this user. 
-      operationId: dissociateDeviceUsingDELETE
-      consumes:
-        - application/json
-      produces:
-        - application/json
-      parameters:
-        - name: sshUserUuid
-          in: path
-          description: uuid
-          required: true
-          type: string
-        - name: deviceUuid
-          in: path
-          description: device unique Id
-          required: true
-          type: string
-        - $ref: '#/parameters/authorizationHeader'
-      responses:
-        '200':
-          description: OK
-          schema:
-            $ref: '#/definitions/SshUserInfoDissociateResponse'
-        '400':
-          description: Bad Request
-          schema:
-            $ref: '#/definitions/FieldErrorResponse'
-        '403':
-          description: Unauthorized User
-          schema:
-            $ref: '#/definitions/FieldErrorResponse'
-        '404':
-          description: Resource Not Found
-          schema:
-            $ref: '#/definitions/FieldErrorResponse'
-        '500':
-          description: Internal Server Error
-          schema:
-            $ref: '#/definitions/ErrorMessageResponse'
-    post:
-      tags:
-        - SSH User
-      summary: Update SSH User {uuid}
-      description: Call this API to associate a device to an SSH user. The ssh user should be able to log onto the device if this operation is successful.
-      operationId: associateDeviceUsingPOST
-      consumes:
-        - application/json
-      produces:
-        - application/json
-      parameters:
-        - name: sshUserUuid
-          in: path
-          description: The id of the SSH user
-          required: true
-          type: string
-        - name: deviceUuid
-          in: path
-          description: The unique Id of the device
-          required: true
-          type: string
-        - $ref: '#/parameters/authorizationHeader'
-      responses:
-        '201':
-          description: Created Successfully
-        '400':
-          description: Bad Request
-          schema:
-            $ref: '#/definitions/FieldErrorResponse'
-        '403':
-          description: Unauthorized User
-          schema:
-            $ref: '#/definitions/FieldErrorResponse'
-        '404':
-          description: Resource Not Found
-          schema:
-            $ref: '#/definitions/FieldErrorResponse'
-        '500':
-          description: Internal Server Error
-          schema:
-            $ref: '#/definitions/ErrorMessageResponse'
   /ne/v1/deviceBackups:
     get:
       tags:
@@ -3503,6 +2729,78 @@ paths:
           schema:
             $ref: '#/definitions/ErrorMessageResponse'
 
+  /ne/v1/devices/{deviceType}/repositories:
+    get:
+      tags:
+        - Download Image
+      summary: Get Downloadable Images
+      description: Returns the downloadable images of a device type. Pass any device type as a path parameter to get the list of downloadable images. 
+      operationId: getDownloadableImagesUsingGET
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: deviceType
+          in: path
+          description: Device type
+          required: true
+          type: string
+        - $ref: '#/parameters/authorizationHeader'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/GetDownloadableImageResponse'
+        '400':
+          description: Invalid input
+          schema:
+            $ref: '#/definitions/FieldErrorResponse'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorMessageResponse'
+
+  /ne/v1/devices/{deviceType}/repositories/{version}/download:
+    post:
+      tags:
+        - Download Image
+      summary: Download an Image
+      description: Returns a link to download image. You need to provide a device type and version as path parameters.
+      operationId: postDownloadImage
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: deviceType
+          in: path
+          description: Device type
+          required: true
+          type: string
+        - name: version
+          in: path
+          description: Version
+          required: true
+          type: string
+        - $ref: '#/parameters/authorizationHeader'
+      responses:
+        '202':
+          description: Download link of the image
+          schema:
+            $ref: '#/definitions/PostDownloadImageResponse'
+        '400':
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/FieldErrorResponse'
+        '403':
+          description: Unauthorized User
+          schema:
+            $ref: '#/definitions/FieldErrorResponse'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorMessageResponse'
 
 
 definitions:
@@ -3522,7 +2820,44 @@ definitions:
         type: string
         example: 
 
+  GetDownloadableImageResponse:
+    type: array
+    items:
+      $ref: '#/definitions/ListOfDownloadableImages'
+    
+  
+  ListOfDownloadableImages:
+    type: object
+    properties:
+      uuid:
+        type: string
+        example: 4cfb5675-5c3f-4275-adba-0c9e3c26c96b
+        description: The unique Id of the downloadable link.
+      deviceType:
+        type: string
+        example: C8000V
+        description: Device type. As of now, we only support C8000V.
+      imageName:
+        type: string
+        example: CiscoSyst-C8000VCon-17.11.01a-3270
+        description: Device type. As of now, we only support C8000V.
+      version:
+        type: string
+        example: 17.11.01a
+        description: Device version      
+      
+  PostDownloadImageResponse:
+    type: object
+    properties:
+      downloadLink:
+        type: string
+        example: https://mb2lxfsprod.equinix.com/owncloud/index.php/s/7BTqXaZbggTURBO/download
+        description: The link to download the image
+        
 
+
+
+      
   InterfaceStatsObject:
     type: object
     properties:
@@ -3654,46 +2989,19 @@ definitions:
         type: string
         example: provisioningKeysample
         description: Mandatory for Zscaler devices
+      panoramaIpAddress: 
+        type: string
+        example: 1.1.1.1
+        description: IP address of the Panorama controller. Provide this value to have Panorama integration. Relevant for Palo Alto Self-Configured devices with Internet Access
+      panoramaAuthKey:
+        type: string
+        example: 123456
+        description: This key supports secure onboarding of the Palo Alto firewall devices. Provide this value to have Panorama integration. Relevant for Palo Alto Self-Configured devices with Internet Access.
+      
         
         
-  DNSLookupRequest:
-    type: object
-    properties:
-      fqdns:
-        type: array
-        items:
-          type: string
-        example: [velocloud.net]
-        description: Domain names
-      uuid:
-        type: string
-        description: The unique Id of a virtual device
-        example: 4cfb5675-5c3f-4275-adba-0c9e3c26c96b
-      metroCode:
-        type: string
-        description: Metro code
-        example: SY
-  DNSLookupResponse:
-    type: object
-    properties:
-      additionalProp:
-        $ref: '#/definitions/DNSLookupResponseDetails'
-  DNSLookupResponseDetails:
-    type: object
-    properties:
-      cdn:
-        type: boolean
-        example: true
-        description: True or false
-      ips:
-        type: array
-        items:
-          type: string
-        example: 
-          - 104.24.100.23/32
-          - 104.24.101.23/32
-          - 172.67.218.217/32
-        description: Domain names
+        
+
   AgreementAcceptRequest:
     type: object
     properties:
@@ -3726,6 +3034,11 @@ definitions:
      versionDate:
         type: string
         example: 2019-01-01
+        description: The date the software was released
+     retireDate:
+        type: string
+        example: 2024:12:12
+        description: The date the software will no longer be available for new devices. This field will not show if the software does not have a retire date.
      status:
         type: string
         example: ACTIVE
@@ -3737,6 +3050,13 @@ definitions:
         items:
          type: string
          example: 16.09.03
+     supportedLicenseTypes:
+        type: array
+        items:
+          type: string
+        example:
+         - BYOL
+         - Subscription
   SshUserCreateRequest:
     type: object
     required:
@@ -4354,6 +3674,10 @@ definitions:
         type: string
         example: 209809
         description: AccountReferenceId. This is a temporary ID that can be used to create a device when the account status is still pending, not active. Either an account number or accountReferenceId is required.
+      projectId:
+        type: string
+        example: 11111111
+        description: Customer project Id. Required for CRH-enabled customers.
       version:
         type: string
         example: "16.09.03"
@@ -4377,7 +3701,7 @@ definitions:
       licenseCategory:
         type: string
         example: flex
-        description: This field is required for Fortinet devices. Select "flex" to enter a token and "classic" if you want to upload a license file. The actual token or license is not required at the time of device creation for Fortinet devices.
+        description: This field will be deprecated in the future. 
       licenseFileId:
         type: string
         example: d6e21e0c-86dd-11e8-adc0-fa7ae01bbebc
@@ -4386,6 +3710,10 @@ definitions:
         type: string
         example: V74191621
         description: In case you want to BYOL (Bring Your Own License) for a Palo Alto device, you must provide a license token. This field must have 8 alphanumeric characters.
+      day0TextFileId:
+        type: string
+        example: 4cfb5675-5c3f-4275-adba-0c9e3c26c96b
+        description:   Some devices require a day0TextFileId. Upload your license file by calling Upload File API. You'll get a fileUuid in the response. You can enter the value in the day0TextFileId field of the create payload to create a virtual device. Check the payloads of individual devices (provided as Postman Scripts on our API doc site) for details.
       termlength:
         type: string
         description: Term length in months. 
@@ -4407,11 +3735,15 @@ definitions:
         type: integer
         format: int32
         example: 1
-        description: Device throughput. This is required for Juniper devices.
+        description: Numeric throughput. For Cisco8KV self-configured devices, you can choose either numeric or tier throughput options.
       throughputUnit:
         type: string
         example: Gbps
-        description: Throughput unit. This is required for Juniper devices.
+        description: Throughput unit. 
+      tier:
+        type: integer
+        example: 1
+        description: Tier throughput. Relevant for Cisco8KV devices. For Cisco8KV self-configured devices, you can choose either numeric or tier throughput options. Possible values - 0, 1, 2, 3. Default - 2
       virtualDeviceName:
         type: string
         example: Router1-c8000v
@@ -4535,6 +3867,10 @@ definitions:
       licenseToken:
         type: string
         example: V74191621
+      day0TextFileId:
+        type: string
+        example: 4cfb5675-5c3f-4275-adba-0c9e3c26c96b
+        description:   Some devices require a day0TextFileId. Upload your license file by calling Upload File API. You'll get a fileUuid in the response. You can enter the value in the day0TextFileId field of the create payload to create a virtual device. Check the payloads of individual devices (provided as Postman Scripts on our API doc site) for details.
       metroCode:
         type: string
         example: SV
@@ -4656,6 +3992,15 @@ definitions:
       controller1:
         type: string
         example: 54.219.248.29
+      panoramaIpAddress: 
+        type: string
+        example: 1.1.1.1
+        description: IP address of the Panorama controller. Provide this value to have Panorama integration. Relevant for Palo Alto Self-Configured devices with Internet Access
+      panoramaAuthKey:
+        type: string
+        example: 123456
+        description: This key supports secure onboarding of the Palo Alto firewall devices. Provide this value to have Panorama integration. Relevant for Palo Alto Self-Configured devices with Internet Access.
+      
 
         
   VendorConfigDetailsNode1:
@@ -4672,6 +4017,15 @@ definitions:
         type: string
         example: ZQeIDI7sUd
         description: The administrative password of the device. You can use it to log in to the console. This field is not available for all device types.
+      panoramaIpAddress: 
+        type: string
+        example: 1.1.1.1
+        description: IP address of the Panorama controller. Provide this value to have Panorama integration. Relevant for Palo Alto Self-Configured devices with Internet Access
+      panoramaAuthKey:
+        type: string
+        example: 123456
+        description: This key supports secure onboarding of the Palo Alto firewall devices. Provide this value to have Panorama integration. Relevant for Palo Alto Self-Configured devices with Internet Access.
+      
         
   aclObject:
     type: object
@@ -4840,6 +4194,12 @@ definitions:
       createdDate:
         type: string
         example: '2018-01-30T10:30:31.387Z'
+      deletedBy:
+        type: string
+        example: cust0001
+      deletedDate:
+        type: string
+        example: '2018-01-30T10:30:31.387Z'
       deviceSerialNo:
         type: string
         example: '53791666484'
@@ -4959,6 +4319,9 @@ definitions:
       deviceManagementType:
         type: string
         example: EQUINIX-CONFIGURED
+      plane:
+        type: string
+        example: PRIMARY
       userPublicKey:
         type: object
         $ref: '#/definitions/UserPublicKeyConfig'
@@ -4983,6 +4346,11 @@ definitions:
       termLength:
         type: string
         example: 12
+        description: Term length in months. 
+      newTermLength:
+        type: string
+        example: 24
+        description: The term length effective upon the expiration of the current term. 
       additionalBandwidth:
         type: string
         example: 200
@@ -6296,10 +5664,10 @@ definitions:
     properties:
       accessKey:
         type: string
-        example: AKIAIOSFODNN7EXAMPLE 
+        example: AKIAIOSFODNN7EXAMPLE
       secretKey:
         type: string
-        example: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+        example:  wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
   DeleteConnectionResponse:
     type: object
     properties:
@@ -7068,20 +6436,28 @@ definitions:
         items:
           type: string
           example: 18.4R2-S1.4
-                
+      supportedLicenseTiers:
+        type: array
+        items:
+          type: string
+        example:
+          - 0
+          - 1
+          - 2
+          - 3
       throughputs:
         type: array
         items:
           $ref: "#/definitions/ThroughputConfig" 
       supported:
         type: boolean
-        description: Whether this software package is supported.
+        description: Whether this software package is supported or not.
   ThroughputConfig:
     type: object
     properties:
       supported:
         type: boolean
-        description: Whether this throughput is supported. 
+        description: Whether this throughput is supported or not. 
       throughput:
         type: string
         description: Throughput.
@@ -7184,9 +6560,36 @@ definitions:
       cvpToken:
         type: string
         description: Only relevant for Arista devices. CvpToken is required if connectToCloudVision=true and (cvpType=On-Premise or cvpType=As-a-Service).
-        example: 123        
-        
-        
+        example: 123
+      provisioningKey:
+        type: string
+        description: Only relevant for Zscaler devices
+        example: samppleKey
+      privateAddress:
+        type: string
+        description: Private address. Only relevant for BlueCat devices.
+        example: 192.168.20.32
+      privateCidrMask:
+        type: string
+        description: Private CIDR mask. Only relevant for BlueCat devices.
+        example: 24
+      privateGateway:
+        type: string
+        description: Private gateway. Only relevant for BlueCat devices.
+        example: 192.168.20.1
+      licenseId:
+        type: string
+        description: License Id. Only relevant for BlueCat devices.
+        example: 000000123457777
+      panoramaIpAddress: 
+        type: string
+        example: 1.1.1.1
+        description: Provide this field to have Panorama integration. Relevant for Palo Alto Self-Configured devices with Internet Access
+      panoramaAuthKey:
+        type: string
+        example: 123456
+        description: Provide this field to have Panorama integration. Relevant for Palo Alto Self-Configured devices with Internet Access
+
       
 
   VirtualDeviceInternalPatchRequestDto:
@@ -7203,8 +6606,12 @@ definitions:
           example: test1@example.com
       termLength:
         type: string
-        description: Term length in months. Please keep in mind that you cannot downgrade the term length.
-        example: 4
+        description: Term length in months. 
+        example: 1, 12, 24, 36
+      termLengthEffectiveImmediate:
+        type: boolean
+        description: By default, this field is true. Set it to false if you want to change the term length at the end of the current term. You cannot downgrade the term length before the end of your current term. 
+        example: false
       virtualDeviceName:
          type: string
          description: Virtual device name. This should be a minimum of 3 and a maximum of 50 characters.
@@ -7217,6 +6624,10 @@ definitions:
         type: string
         description: Status of the device. Use this field to update the license status of a device.
         example: PROVISIONED
+      autoRenewalOptOut:
+        type: boolean
+        description: By default, the autoRenewalOptOut field is false. Set it to true if you do not want to automatically renew your terms. Your device will move to a monthly cycle at the expiration of the current terms.
+        example: true
       vendorConfig:
         type: object
         description: vendor config properties
@@ -7242,4 +6653,3 @@ parameters:
     type: string
     required: true
     x-prefix: 'Bearer '
-

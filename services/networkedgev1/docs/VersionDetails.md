@@ -7,10 +7,12 @@ Name | Type | Description | Notes
 **Cause** | Pointer to [**VersionDetails**](VersionDetails.md) |  | [optional] 
 **Version** | Pointer to **string** |  | [optional] 
 **ImageName** | Pointer to **string** |  | [optional] 
-**VersionDate** | Pointer to **string** |  | [optional] 
+**VersionDate** | Pointer to **string** | The date the software was released | [optional] 
+**RetireDate** | Pointer to **string** | The date the software will no longer be available for new devices. This field will not show if the software does not have a retire date. | [optional] 
 **Status** | Pointer to **string** |  | [optional] 
 **StableVersion** | Pointer to **string** |  | [optional] 
 **AllowedUpgradableVersions** | Pointer to **[]string** |  | [optional] 
+**SupportedLicenseTypes** | Pointer to **[]string** |  | [optional] 
 
 ## Methods
 
@@ -131,6 +133,31 @@ SetVersionDate sets VersionDate field to given value.
 
 HasVersionDate returns a boolean if a field has been set.
 
+### GetRetireDate
+
+`func (o *VersionDetails) GetRetireDate() string`
+
+GetRetireDate returns the RetireDate field if non-nil, zero value otherwise.
+
+### GetRetireDateOk
+
+`func (o *VersionDetails) GetRetireDateOk() (*string, bool)`
+
+GetRetireDateOk returns a tuple with the RetireDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRetireDate
+
+`func (o *VersionDetails) SetRetireDate(v string)`
+
+SetRetireDate sets RetireDate field to given value.
+
+### HasRetireDate
+
+`func (o *VersionDetails) HasRetireDate() bool`
+
+HasRetireDate returns a boolean if a field has been set.
+
 ### GetStatus
 
 `func (o *VersionDetails) GetStatus() string`
@@ -205,6 +232,31 @@ SetAllowedUpgradableVersions sets AllowedUpgradableVersions field to given value
 `func (o *VersionDetails) HasAllowedUpgradableVersions() bool`
 
 HasAllowedUpgradableVersions returns a boolean if a field has been set.
+
+### GetSupportedLicenseTypes
+
+`func (o *VersionDetails) GetSupportedLicenseTypes() []string`
+
+GetSupportedLicenseTypes returns the SupportedLicenseTypes field if non-nil, zero value otherwise.
+
+### GetSupportedLicenseTypesOk
+
+`func (o *VersionDetails) GetSupportedLicenseTypesOk() (*[]string, bool)`
+
+GetSupportedLicenseTypesOk returns a tuple with the SupportedLicenseTypes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSupportedLicenseTypes
+
+`func (o *VersionDetails) SetSupportedLicenseTypes(v []string)`
+
+SetSupportedLicenseTypes sets SupportedLicenseTypes field to given value.
+
+### HasSupportedLicenseTypes
+
+`func (o *VersionDetails) HasSupportedLicenseTypes() bool`
+
+HasSupportedLicenseTypes returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

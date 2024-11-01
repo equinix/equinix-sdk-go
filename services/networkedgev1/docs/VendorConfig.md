@@ -30,6 +30,13 @@ Name | Type | Description | Notes
 **CvaasPort** | Pointer to **string** | Only relevant for Arista devices. CvaasPort is required if connectToCloudVision&#x3D;true and cvpType&#x3D;As-a-Service. | [optional] 
 **CvpPort** | Pointer to **string** | Only relevant for Arista devices. CvpPort is required if connectToCloudVision&#x3D;true and cvpType&#x3D;On-Premise. | [optional] 
 **CvpToken** | Pointer to **string** | Only relevant for Arista devices. CvpToken is required if connectToCloudVision&#x3D;true and (cvpType&#x3D;On-Premise or cvpType&#x3D;As-a-Service). | [optional] 
+**ProvisioningKey** | Pointer to **string** | Only relevant for Zscaler devices | [optional] 
+**PrivateAddress** | Pointer to **string** | Private address. Only relevant for BlueCat devices. | [optional] 
+**PrivateCidrMask** | Pointer to **string** | Private CIDR mask. Only relevant for BlueCat devices. | [optional] 
+**PrivateGateway** | Pointer to **string** | Private gateway. Only relevant for BlueCat devices. | [optional] 
+**LicenseId** | Pointer to **string** | License Id. Only relevant for BlueCat devices. | [optional] 
+**PanoramaIpAddress** | Pointer to **string** | Provide this field to have Panorama integration. Relevant for Palo Alto Self-Configured devices with Internet Access | [optional] 
+**PanoramaAuthKey** | Pointer to **string** | Provide this field to have Panorama integration. Relevant for Palo Alto Self-Configured devices with Internet Access | [optional] 
 
 ## Methods
 
@@ -699,6 +706,181 @@ SetCvpToken sets CvpToken field to given value.
 `func (o *VendorConfig) HasCvpToken() bool`
 
 HasCvpToken returns a boolean if a field has been set.
+
+### GetProvisioningKey
+
+`func (o *VendorConfig) GetProvisioningKey() string`
+
+GetProvisioningKey returns the ProvisioningKey field if non-nil, zero value otherwise.
+
+### GetProvisioningKeyOk
+
+`func (o *VendorConfig) GetProvisioningKeyOk() (*string, bool)`
+
+GetProvisioningKeyOk returns a tuple with the ProvisioningKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProvisioningKey
+
+`func (o *VendorConfig) SetProvisioningKey(v string)`
+
+SetProvisioningKey sets ProvisioningKey field to given value.
+
+### HasProvisioningKey
+
+`func (o *VendorConfig) HasProvisioningKey() bool`
+
+HasProvisioningKey returns a boolean if a field has been set.
+
+### GetPrivateAddress
+
+`func (o *VendorConfig) GetPrivateAddress() string`
+
+GetPrivateAddress returns the PrivateAddress field if non-nil, zero value otherwise.
+
+### GetPrivateAddressOk
+
+`func (o *VendorConfig) GetPrivateAddressOk() (*string, bool)`
+
+GetPrivateAddressOk returns a tuple with the PrivateAddress field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPrivateAddress
+
+`func (o *VendorConfig) SetPrivateAddress(v string)`
+
+SetPrivateAddress sets PrivateAddress field to given value.
+
+### HasPrivateAddress
+
+`func (o *VendorConfig) HasPrivateAddress() bool`
+
+HasPrivateAddress returns a boolean if a field has been set.
+
+### GetPrivateCidrMask
+
+`func (o *VendorConfig) GetPrivateCidrMask() string`
+
+GetPrivateCidrMask returns the PrivateCidrMask field if non-nil, zero value otherwise.
+
+### GetPrivateCidrMaskOk
+
+`func (o *VendorConfig) GetPrivateCidrMaskOk() (*string, bool)`
+
+GetPrivateCidrMaskOk returns a tuple with the PrivateCidrMask field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPrivateCidrMask
+
+`func (o *VendorConfig) SetPrivateCidrMask(v string)`
+
+SetPrivateCidrMask sets PrivateCidrMask field to given value.
+
+### HasPrivateCidrMask
+
+`func (o *VendorConfig) HasPrivateCidrMask() bool`
+
+HasPrivateCidrMask returns a boolean if a field has been set.
+
+### GetPrivateGateway
+
+`func (o *VendorConfig) GetPrivateGateway() string`
+
+GetPrivateGateway returns the PrivateGateway field if non-nil, zero value otherwise.
+
+### GetPrivateGatewayOk
+
+`func (o *VendorConfig) GetPrivateGatewayOk() (*string, bool)`
+
+GetPrivateGatewayOk returns a tuple with the PrivateGateway field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPrivateGateway
+
+`func (o *VendorConfig) SetPrivateGateway(v string)`
+
+SetPrivateGateway sets PrivateGateway field to given value.
+
+### HasPrivateGateway
+
+`func (o *VendorConfig) HasPrivateGateway() bool`
+
+HasPrivateGateway returns a boolean if a field has been set.
+
+### GetLicenseId
+
+`func (o *VendorConfig) GetLicenseId() string`
+
+GetLicenseId returns the LicenseId field if non-nil, zero value otherwise.
+
+### GetLicenseIdOk
+
+`func (o *VendorConfig) GetLicenseIdOk() (*string, bool)`
+
+GetLicenseIdOk returns a tuple with the LicenseId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLicenseId
+
+`func (o *VendorConfig) SetLicenseId(v string)`
+
+SetLicenseId sets LicenseId field to given value.
+
+### HasLicenseId
+
+`func (o *VendorConfig) HasLicenseId() bool`
+
+HasLicenseId returns a boolean if a field has been set.
+
+### GetPanoramaIpAddress
+
+`func (o *VendorConfig) GetPanoramaIpAddress() string`
+
+GetPanoramaIpAddress returns the PanoramaIpAddress field if non-nil, zero value otherwise.
+
+### GetPanoramaIpAddressOk
+
+`func (o *VendorConfig) GetPanoramaIpAddressOk() (*string, bool)`
+
+GetPanoramaIpAddressOk returns a tuple with the PanoramaIpAddress field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPanoramaIpAddress
+
+`func (o *VendorConfig) SetPanoramaIpAddress(v string)`
+
+SetPanoramaIpAddress sets PanoramaIpAddress field to given value.
+
+### HasPanoramaIpAddress
+
+`func (o *VendorConfig) HasPanoramaIpAddress() bool`
+
+HasPanoramaIpAddress returns a boolean if a field has been set.
+
+### GetPanoramaAuthKey
+
+`func (o *VendorConfig) GetPanoramaAuthKey() string`
+
+GetPanoramaAuthKey returns the PanoramaAuthKey field if non-nil, zero value otherwise.
+
+### GetPanoramaAuthKeyOk
+
+`func (o *VendorConfig) GetPanoramaAuthKeyOk() (*string, bool)`
+
+GetPanoramaAuthKeyOk returns a tuple with the PanoramaAuthKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPanoramaAuthKey
+
+`func (o *VendorConfig) SetPanoramaAuthKey(v string)`
+
+SetPanoramaAuthKey sets PanoramaAuthKey field to given value.
+
+### HasPanoramaAuthKey
+
+`func (o *VendorConfig) HasPanoramaAuthKey() bool`
+
+HasPanoramaAuthKey returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

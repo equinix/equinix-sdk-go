@@ -165,7 +165,7 @@ No authorization required
 
 ## GetAllowedInterfacesUsingGET
 
-> AllowedInterfaceResponse GetAllowedInterfacesUsingGET(ctx, deviceType).DeviceManagementType(deviceManagementType).Core(core).Authorization(authorization).Mode(mode).LicenseCategory(licenseCategory).Cluster(cluster).Sdwan(sdwan).Connectivity(connectivity).Memory(memory).Unit(unit).Flavor(flavor).Version(version).SoftwarePkg(softwarePkg).Execute()
+> AllowedInterfaceResponse GetAllowedInterfacesUsingGET(ctx, deviceType).DeviceManagementType(deviceManagementType).Core(core).Authorization(authorization).Mode(mode).Cluster(cluster).Sdwan(sdwan).Connectivity(connectivity).Memory(memory).Unit(unit).Flavor(flavor).Version(version).SoftwarePkg(softwarePkg).Execute()
 
 Get Allowed Interfaces
 
@@ -189,7 +189,6 @@ func main() {
 	core := int32(56) // int32 | The desired number of cores.
 	authorization := "authorization_example" // string | The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
 	mode := "mode_example" // string | License mode, either Subscription or BYOL. (optional)
-	licenseCategory := "licenseCategory_example" // string | Relevant for Fortinet devices. Choose \"flex\" if you want to enter a token and \"classic\" if you want to upload a license file. (optional)
 	cluster := true // bool | Whether you want a cluster device. (optional)
 	sdwan := true // bool | Whether you want an SD-WAN device. (optional)
 	connectivity := "connectivity_example" // string | Type of connectivity you want. INTERNET-ACCESS, PRIVATE, or INTERNET-ACCESS-WITH-PRVT-MGMT. PRIVATE devices do not have ACLs or bandwidth. (optional)
@@ -201,7 +200,7 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SetupApi.GetAllowedInterfacesUsingGET(context.Background(), deviceType).DeviceManagementType(deviceManagementType).Core(core).Authorization(authorization).Mode(mode).LicenseCategory(licenseCategory).Cluster(cluster).Sdwan(sdwan).Connectivity(connectivity).Memory(memory).Unit(unit).Flavor(flavor).Version(version).SoftwarePkg(softwarePkg).Execute()
+	resp, r, err := apiClient.SetupApi.GetAllowedInterfacesUsingGET(context.Background(), deviceType).DeviceManagementType(deviceManagementType).Core(core).Authorization(authorization).Mode(mode).Cluster(cluster).Sdwan(sdwan).Connectivity(connectivity).Memory(memory).Unit(unit).Flavor(flavor).Version(version).SoftwarePkg(softwarePkg).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SetupApi.GetAllowedInterfacesUsingGET``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -231,7 +230,6 @@ Name | Type | Description  | Notes
  **core** | **int32** | The desired number of cores. | 
  **authorization** | **string** | The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token. | 
  **mode** | **string** | License mode, either Subscription or BYOL. | 
- **licenseCategory** | **string** | Relevant for Fortinet devices. Choose \&quot;flex\&quot; if you want to enter a token and \&quot;classic\&quot; if you want to upload a license file. | 
  **cluster** | **bool** | Whether you want a cluster device. | 
  **sdwan** | **bool** | Whether you want an SD-WAN device. | 
  **connectivity** | **string** | Type of connectivity you want. INTERNET-ACCESS, PRIVATE, or INTERNET-ACCESS-WITH-PRVT-MGMT. PRIVATE devices do not have ACLs or bandwidth. | 

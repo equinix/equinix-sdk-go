@@ -6,20 +6,23 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccountNumber** | Pointer to **string** | Account number. Either an account number or accountReferenceId is required. | [optional] 
 **AccountReferenceId** | Pointer to **string** | AccountReferenceId. This is a temporary ID that can be used to create a device when the account status is still pending, not active. Either an account number or accountReferenceId is required. | [optional] 
+**ProjectId** | Pointer to **string** | Customer project Id. Required for CRH-enabled customers. | [optional] 
 **Version** | **string** | Version. | 
 **DeviceTypeCode** | **string** | Virtual device type (device type code) | 
 **HostNamePrefix** | Pointer to **string** | Host name prefix for identification. Only a-z, A-Z, 0-9, and hyphen(-) are allowed. It should start with a letter and end with a letter or digit. The length should be between 2-30 characters. Exceptions - FTDv 2-14 characters; Aruba 2-24 characters. | [optional] 
 **AgreeOrderTerms** | **bool** | To create a device, you must accept the order terms. Call Get Order Terms to review the details. If you are creating an Equinix-Configured device, read your vendor&#39;s terms by calling Get Vendor Terms. | 
 **LicenseMode** | **string** | License type. One of SUB (Subscription) or BYOL (Bring Your Own License) | 
-**LicenseCategory** | Pointer to **string** | This field is required for Fortinet devices. Select \&quot;flex\&quot; to enter a token and \&quot;classic\&quot; if you want to upload a license file. The actual token or license is not required at the time of device creation for Fortinet devices. | [optional] 
+**LicenseCategory** | Pointer to **string** | This field will be deprecated in the future. | [optional] 
 **LicenseFileId** | Pointer to **string** | For Juniper devices you need to provide a licenseFileId if you want to BYOL (Bring Your Own License). You get a licenseFileId when you upload a license file by calling license upload API (Upload a license file before creating a virtual device). For Cisco devices, you do not need to provide a licenseFileId at the time of device creation. Once the device is provisioned, you can get the deviceSerialNo by calling Get virtual device {uuid} API. With the deviceSerialNo you can generate a license file on Cisco site. Afterward, you can upload the license file by calling license upload API (Upload a license file after creating a virtual device). | [optional] 
 **LicenseToken** | Pointer to **string** | In case you want to BYOL (Bring Your Own License) for a Palo Alto device, you must provide a license token. This field must have 8 alphanumeric characters. | [optional] 
+**Day0TextFileId** | Pointer to **string** | Some devices require a day0TextFileId. Upload your license file by calling Upload File API. You&#39;ll get a fileUuid in the response. You can enter the value in the day0TextFileId field of the create payload to create a virtual device. Check the payloads of individual devices (provided as Postman Scripts on our API doc site) for details. | [optional] 
 **Termlength** | Pointer to **string** | Term length in months. | [optional] 
 **MetroCode** | **string** | Metro code | 
 **PackageCode** | Pointer to **string** | Software package code | [optional] 
 **SshUsers** | Pointer to [**[]SshUsers**](SshUsers.md) | An array of sshUsernames and passwords | [optional] 
-**Throughput** | Pointer to **int32** | Device throughput. This is required for Juniper devices. | [optional] 
-**ThroughputUnit** | Pointer to **string** | Throughput unit. This is required for Juniper devices. | [optional] 
+**Throughput** | Pointer to **int32** | Numeric throughput. For Cisco8KV self-configured devices, you can choose either numeric or tier throughput options. | [optional] 
+**ThroughputUnit** | Pointer to **string** | Throughput unit. | [optional] 
+**Tier** | Pointer to **int32** | Tier throughput. Relevant for Cisco8KV devices. For Cisco8KV self-configured devices, you can choose either numeric or tier throughput options. Possible values - 0, 1, 2, 3. Default - 2 | [optional] 
 **VirtualDeviceName** | **string** | Virtual device name for identification. This should be minimum 3 and maximum 50 characters long. | 
 **OrderingContact** | Pointer to **string** |  | [optional] 
 **Notifications** | **[]string** | Email addresses for notification. We need a minimum of 1 and no more than 5 email addresses. | 
@@ -113,6 +116,31 @@ SetAccountReferenceId sets AccountReferenceId field to given value.
 `func (o *VirtualDeviceRequest) HasAccountReferenceId() bool`
 
 HasAccountReferenceId returns a boolean if a field has been set.
+
+### GetProjectId
+
+`func (o *VirtualDeviceRequest) GetProjectId() string`
+
+GetProjectId returns the ProjectId field if non-nil, zero value otherwise.
+
+### GetProjectIdOk
+
+`func (o *VirtualDeviceRequest) GetProjectIdOk() (*string, bool)`
+
+GetProjectIdOk returns a tuple with the ProjectId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProjectId
+
+`func (o *VirtualDeviceRequest) SetProjectId(v string)`
+
+SetProjectId sets ProjectId field to given value.
+
+### HasProjectId
+
+`func (o *VirtualDeviceRequest) HasProjectId() bool`
+
+HasProjectId returns a boolean if a field has been set.
 
 ### GetVersion
 
@@ -294,6 +322,31 @@ SetLicenseToken sets LicenseToken field to given value.
 
 HasLicenseToken returns a boolean if a field has been set.
 
+### GetDay0TextFileId
+
+`func (o *VirtualDeviceRequest) GetDay0TextFileId() string`
+
+GetDay0TextFileId returns the Day0TextFileId field if non-nil, zero value otherwise.
+
+### GetDay0TextFileIdOk
+
+`func (o *VirtualDeviceRequest) GetDay0TextFileIdOk() (*string, bool)`
+
+GetDay0TextFileIdOk returns a tuple with the Day0TextFileId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDay0TextFileId
+
+`func (o *VirtualDeviceRequest) SetDay0TextFileId(v string)`
+
+SetDay0TextFileId sets Day0TextFileId field to given value.
+
+### HasDay0TextFileId
+
+`func (o *VirtualDeviceRequest) HasDay0TextFileId() bool`
+
+HasDay0TextFileId returns a boolean if a field has been set.
+
 ### GetTermlength
 
 `func (o *VirtualDeviceRequest) GetTermlength() string`
@@ -438,6 +491,31 @@ SetThroughputUnit sets ThroughputUnit field to given value.
 `func (o *VirtualDeviceRequest) HasThroughputUnit() bool`
 
 HasThroughputUnit returns a boolean if a field has been set.
+
+### GetTier
+
+`func (o *VirtualDeviceRequest) GetTier() int32`
+
+GetTier returns the Tier field if non-nil, zero value otherwise.
+
+### GetTierOk
+
+`func (o *VirtualDeviceRequest) GetTierOk() (*int32, bool)`
+
+GetTierOk returns a tuple with the Tier field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTier
+
+`func (o *VirtualDeviceRequest) SetTier(v int32)`
+
+SetTier sets Tier field to given value.
+
+### HasTier
+
+`func (o *VirtualDeviceRequest) HasTier() bool`
+
+HasTier returns a boolean if a field has been set.
 
 ### GetVirtualDeviceName
 

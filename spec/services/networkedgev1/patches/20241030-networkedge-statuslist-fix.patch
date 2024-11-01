@@ -1,7 +1,7 @@
-diff --git a/spec/services/networkedgev1/oas3.patched/ne-v1-catalog-ne_v1.yaml b/spec/services/networkedgev1/oas3.patched/ne-v1-catalog-ne_v1.yaml
+diff --git a/spec/services/networkedgev1/oas3.patched/openapi.yaml b/spec/services/networkedgev1/oas3.patched/openapi.yaml
 index 51c0bfdf..37736f06 100644
---- a/spec/services/networkedgev1/oas3.patched/ne-v1-catalog-ne_v1.yaml
-+++ b/spec/services/networkedgev1/oas3.patched/ne-v1-catalog-ne_v1.yaml
+--- a/spec/services/networkedgev1/oas3.patched/openapi.yaml
++++ b/spec/services/networkedgev1/oas3.patched/openapi.yaml
 @@ -2487,19 +2487,19 @@ paths:
          type: array
          items:

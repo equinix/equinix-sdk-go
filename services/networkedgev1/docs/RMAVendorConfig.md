@@ -12,6 +12,8 @@ Name | Type | Description | Notes
 **AdminPassword** | Pointer to **string** | The administrative password of the device. You can use it to log in to the console. This field is not available for all device types. Should be at least 6 characters long and must include an uppercase letter and a number. This field may be required for some vendors. | [optional] 
 **ActivationKey** | Pointer to **string** | Available on VMware Orchestration Portal | [optional] 
 **ProvisioningKey** | Pointer to **string** | Mandatory for Zscaler devices | [optional] 
+**PanoramaIpAddress** | Pointer to **string** | IP address of the Panorama controller. Provide this value to have Panorama integration. Relevant for Palo Alto Self-Configured devices with Internet Access | [optional] 
+**PanoramaAuthKey** | Pointer to **string** | This key supports secure onboarding of the Palo Alto firewall devices. Provide this value to have Panorama integration. Relevant for Palo Alto Self-Configured devices with Internet Access. | [optional] 
 
 ## Methods
 
@@ -231,6 +233,56 @@ SetProvisioningKey sets ProvisioningKey field to given value.
 `func (o *RMAVendorConfig) HasProvisioningKey() bool`
 
 HasProvisioningKey returns a boolean if a field has been set.
+
+### GetPanoramaIpAddress
+
+`func (o *RMAVendorConfig) GetPanoramaIpAddress() string`
+
+GetPanoramaIpAddress returns the PanoramaIpAddress field if non-nil, zero value otherwise.
+
+### GetPanoramaIpAddressOk
+
+`func (o *RMAVendorConfig) GetPanoramaIpAddressOk() (*string, bool)`
+
+GetPanoramaIpAddressOk returns a tuple with the PanoramaIpAddress field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPanoramaIpAddress
+
+`func (o *RMAVendorConfig) SetPanoramaIpAddress(v string)`
+
+SetPanoramaIpAddress sets PanoramaIpAddress field to given value.
+
+### HasPanoramaIpAddress
+
+`func (o *RMAVendorConfig) HasPanoramaIpAddress() bool`
+
+HasPanoramaIpAddress returns a boolean if a field has been set.
+
+### GetPanoramaAuthKey
+
+`func (o *RMAVendorConfig) GetPanoramaAuthKey() string`
+
+GetPanoramaAuthKey returns the PanoramaAuthKey field if non-nil, zero value otherwise.
+
+### GetPanoramaAuthKeyOk
+
+`func (o *RMAVendorConfig) GetPanoramaAuthKeyOk() (*string, bool)`
+
+GetPanoramaAuthKeyOk returns a tuple with the PanoramaAuthKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPanoramaAuthKey
+
+`func (o *RMAVendorConfig) SetPanoramaAuthKey(v string)`
+
+SetPanoramaAuthKey sets PanoramaAuthKey field to given value.
+
+### HasPanoramaAuthKey
+
+`func (o *RMAVendorConfig) HasPanoramaAuthKey() bool`
+
+HasPanoramaAuthKey returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
