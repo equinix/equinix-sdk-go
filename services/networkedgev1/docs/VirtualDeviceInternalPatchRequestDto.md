@@ -6,10 +6,12 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Core** | Pointer to **int32** | Use this field to resize your device. When you call this API for device resizing, you cannot change other fields simultaneously. | [optional] 
 **Notifications** | Pointer to **[]string** |  | [optional] 
-**TermLength** | Pointer to **string** | Term length in months. Please keep in mind that you cannot downgrade the term length. | [optional] 
+**TermLength** | Pointer to **string** | Term length in months. | [optional] 
+**TermLengthEffectiveImmediate** | Pointer to **bool** | By default, this field is true. Set it to false if you want to change the term length at the end of the current term. You cannot downgrade the term length before the end of your current term. | [optional] 
 **VirtualDeviceName** | Pointer to **string** | Virtual device name. This should be a minimum of 3 and a maximum of 50 characters. | [optional] 
 **ClusterName** | Pointer to **string** | Cluster name. This should be a minimum of 3 and a maximum of 50 characters. | [optional] 
 **Status** | Pointer to **string** | Status of the device. Use this field to update the license status of a device. | [optional] 
+**AutoRenewalOptOut** | Pointer to **bool** | By default, the autoRenewalOptOut field is false. Set it to true if you do not want to automatically renew your terms. Your device will move to a monthly cycle at the expiration of the current terms. | [optional] 
 **VendorConfig** | Pointer to [**VirtualDeviceInternalPatchRequestDtoVendorConfig**](VirtualDeviceInternalPatchRequestDtoVendorConfig.md) |  | [optional] 
 
 ## Methods
@@ -106,6 +108,31 @@ SetTermLength sets TermLength field to given value.
 
 HasTermLength returns a boolean if a field has been set.
 
+### GetTermLengthEffectiveImmediate
+
+`func (o *VirtualDeviceInternalPatchRequestDto) GetTermLengthEffectiveImmediate() bool`
+
+GetTermLengthEffectiveImmediate returns the TermLengthEffectiveImmediate field if non-nil, zero value otherwise.
+
+### GetTermLengthEffectiveImmediateOk
+
+`func (o *VirtualDeviceInternalPatchRequestDto) GetTermLengthEffectiveImmediateOk() (*bool, bool)`
+
+GetTermLengthEffectiveImmediateOk returns a tuple with the TermLengthEffectiveImmediate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTermLengthEffectiveImmediate
+
+`func (o *VirtualDeviceInternalPatchRequestDto) SetTermLengthEffectiveImmediate(v bool)`
+
+SetTermLengthEffectiveImmediate sets TermLengthEffectiveImmediate field to given value.
+
+### HasTermLengthEffectiveImmediate
+
+`func (o *VirtualDeviceInternalPatchRequestDto) HasTermLengthEffectiveImmediate() bool`
+
+HasTermLengthEffectiveImmediate returns a boolean if a field has been set.
+
 ### GetVirtualDeviceName
 
 `func (o *VirtualDeviceInternalPatchRequestDto) GetVirtualDeviceName() string`
@@ -180,6 +207,31 @@ SetStatus sets Status field to given value.
 `func (o *VirtualDeviceInternalPatchRequestDto) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
+
+### GetAutoRenewalOptOut
+
+`func (o *VirtualDeviceInternalPatchRequestDto) GetAutoRenewalOptOut() bool`
+
+GetAutoRenewalOptOut returns the AutoRenewalOptOut field if non-nil, zero value otherwise.
+
+### GetAutoRenewalOptOutOk
+
+`func (o *VirtualDeviceInternalPatchRequestDto) GetAutoRenewalOptOutOk() (*bool, bool)`
+
+GetAutoRenewalOptOutOk returns a tuple with the AutoRenewalOptOut field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAutoRenewalOptOut
+
+`func (o *VirtualDeviceInternalPatchRequestDto) SetAutoRenewalOptOut(v bool)`
+
+SetAutoRenewalOptOut sets AutoRenewalOptOut field to given value.
+
+### HasAutoRenewalOptOut
+
+`func (o *VirtualDeviceInternalPatchRequestDto) HasAutoRenewalOptOut() bool`
+
+HasAutoRenewalOptOut returns a boolean if a field has been set.
 
 ### GetVendorConfig
 

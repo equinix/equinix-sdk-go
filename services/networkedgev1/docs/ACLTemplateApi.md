@@ -11,7 +11,6 @@ Method | HTTP request | Description
 [**GetDeviceTemplatesbyUuid**](ACLTemplateApi.md#GetDeviceTemplatesbyUuid) | **Get** /ne/v1/devices/{virtualDeviceUuid}/acl | Get ACL of Virtual Device
 [**PatchDeviceTemplatesbyUuid**](ACLTemplateApi.md#PatchDeviceTemplatesbyUuid) | **Patch** /ne/v1/devices/{virtualDeviceUuid}/acl | Update ACL of Virtual Device
 [**PostDeviceTemplatesbyUuid**](ACLTemplateApi.md#PostDeviceTemplatesbyUuid) | **Post** /ne/v1/devices/{virtualDeviceUuid}/acl | Add ACL to Virtual Device
-[**SendDnsLookupPOST1**](ACLTemplateApi.md#SendDnsLookupPOST1) | **Post** /ne/v1/dnsLookup | Post DNS Lookup
 [**UpdateDeviceACLTemplateUsingPUT**](ACLTemplateApi.md#UpdateDeviceACLTemplateUsingPUT) | **Put** /ne/v1/aclTemplates/{uuid} | Update ACL Template
 
 
@@ -507,74 +506,6 @@ Name | Type | Description  | Notes
 ### Return type
 
  (empty response body)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## SendDnsLookupPOST1
-
-> DNSLookupResponse SendDnsLookupPOST1(ctx).Authorization(authorization).DnsLookupRequest(dnsLookupRequest).Execute()
-
-Post DNS Lookup
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/equinix/equinix-sdk-go/services/networkedgev1"
-)
-
-func main() {
-	authorization := "authorization_example" // string | The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
-	dnsLookupRequest := *openapiclient.NewDNSLookupRequest() // DNSLookupRequest | dnsLookupRequest
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ACLTemplateApi.SendDnsLookupPOST1(context.Background()).Authorization(authorization).DnsLookupRequest(dnsLookupRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ACLTemplateApi.SendDnsLookupPOST1``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SendDnsLookupPOST1`: DNSLookupResponse
-	fmt.Fprintf(os.Stdout, "Response from `ACLTemplateApi.SendDnsLookupPOST1`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiSendDnsLookupPOST1Request struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **authorization** | **string** | The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token. | 
- **dnsLookupRequest** | [**DNSLookupRequest**](DNSLookupRequest.md) | dnsLookupRequest | 
-
-### Return type
-
-[**DNSLookupResponse**](DNSLookupResponse.md)
 
 ### Authorization
 

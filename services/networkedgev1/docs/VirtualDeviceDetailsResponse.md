@@ -8,6 +8,8 @@ Name | Type | Description | Notes
 **AccountNumber** | Pointer to **string** |  | [optional] 
 **CreatedBy** | Pointer to **string** |  | [optional] 
 **CreatedDate** | Pointer to **string** |  | [optional] 
+**DeletedBy** | Pointer to **string** |  | [optional] 
+**DeletedDate** | Pointer to **string** |  | [optional] 
 **DeviceSerialNo** | Pointer to **string** |  | [optional] 
 **DeviceTypeCategory** | Pointer to **string** |  | [optional] 
 **DiverseFromDeviceName** | Pointer to **string** | The name of a device that is in a location different from this device. | [optional] 
@@ -46,6 +48,7 @@ Name | Type | Description | Notes
 **PricingDetails** | Pointer to [**PricingSiebelConfig**](PricingSiebelConfig.md) |  | [optional] 
 **InterfaceCount** | Pointer to **int32** |  | [optional] 
 **DeviceManagementType** | Pointer to **string** |  | [optional] 
+**Plane** | Pointer to **string** |  | [optional] 
 **UserPublicKey** | Pointer to [**UserPublicKeyConfig**](UserPublicKeyConfig.md) |  | [optional] 
 **ManagementIp** | Pointer to **string** |  | [optional] 
 **ManagementGatewayIp** | Pointer to **string** |  | [optional] 
@@ -53,7 +56,8 @@ Name | Type | Description | Notes
 **PublicGatewayIp** | Pointer to **string** |  | [optional] 
 **PrimaryDnsName** | Pointer to **string** |  | [optional] 
 **SecondaryDnsName** | Pointer to **string** |  | [optional] 
-**TermLength** | Pointer to **string** |  | [optional] 
+**TermLength** | Pointer to **string** | Term length in months. | [optional] 
+**NewTermLength** | Pointer to **string** | The term length effective upon the expiration of the current term. | [optional] 
 **AdditionalBandwidth** | Pointer to **string** |  | [optional] 
 **SiteId** | Pointer to **string** |  | [optional] 
 **SystemIpAddress** | Pointer to **string** |  | [optional] 
@@ -180,6 +184,56 @@ SetCreatedDate sets CreatedDate field to given value.
 `func (o *VirtualDeviceDetailsResponse) HasCreatedDate() bool`
 
 HasCreatedDate returns a boolean if a field has been set.
+
+### GetDeletedBy
+
+`func (o *VirtualDeviceDetailsResponse) GetDeletedBy() string`
+
+GetDeletedBy returns the DeletedBy field if non-nil, zero value otherwise.
+
+### GetDeletedByOk
+
+`func (o *VirtualDeviceDetailsResponse) GetDeletedByOk() (*string, bool)`
+
+GetDeletedByOk returns a tuple with the DeletedBy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeletedBy
+
+`func (o *VirtualDeviceDetailsResponse) SetDeletedBy(v string)`
+
+SetDeletedBy sets DeletedBy field to given value.
+
+### HasDeletedBy
+
+`func (o *VirtualDeviceDetailsResponse) HasDeletedBy() bool`
+
+HasDeletedBy returns a boolean if a field has been set.
+
+### GetDeletedDate
+
+`func (o *VirtualDeviceDetailsResponse) GetDeletedDate() string`
+
+GetDeletedDate returns the DeletedDate field if non-nil, zero value otherwise.
+
+### GetDeletedDateOk
+
+`func (o *VirtualDeviceDetailsResponse) GetDeletedDateOk() (*string, bool)`
+
+GetDeletedDateOk returns a tuple with the DeletedDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeletedDate
+
+`func (o *VirtualDeviceDetailsResponse) SetDeletedDate(v string)`
+
+SetDeletedDate sets DeletedDate field to given value.
+
+### HasDeletedDate
+
+`func (o *VirtualDeviceDetailsResponse) HasDeletedDate() bool`
+
+HasDeletedDate returns a boolean if a field has been set.
 
 ### GetDeviceSerialNo
 
@@ -1131,6 +1185,31 @@ SetDeviceManagementType sets DeviceManagementType field to given value.
 
 HasDeviceManagementType returns a boolean if a field has been set.
 
+### GetPlane
+
+`func (o *VirtualDeviceDetailsResponse) GetPlane() string`
+
+GetPlane returns the Plane field if non-nil, zero value otherwise.
+
+### GetPlaneOk
+
+`func (o *VirtualDeviceDetailsResponse) GetPlaneOk() (*string, bool)`
+
+GetPlaneOk returns a tuple with the Plane field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPlane
+
+`func (o *VirtualDeviceDetailsResponse) SetPlane(v string)`
+
+SetPlane sets Plane field to given value.
+
+### HasPlane
+
+`func (o *VirtualDeviceDetailsResponse) HasPlane() bool`
+
+HasPlane returns a boolean if a field has been set.
+
 ### GetUserPublicKey
 
 `func (o *VirtualDeviceDetailsResponse) GetUserPublicKey() UserPublicKeyConfig`
@@ -1330,6 +1409,31 @@ SetTermLength sets TermLength field to given value.
 `func (o *VirtualDeviceDetailsResponse) HasTermLength() bool`
 
 HasTermLength returns a boolean if a field has been set.
+
+### GetNewTermLength
+
+`func (o *VirtualDeviceDetailsResponse) GetNewTermLength() string`
+
+GetNewTermLength returns the NewTermLength field if non-nil, zero value otherwise.
+
+### GetNewTermLengthOk
+
+`func (o *VirtualDeviceDetailsResponse) GetNewTermLengthOk() (*string, bool)`
+
+GetNewTermLengthOk returns a tuple with the NewTermLength field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNewTermLength
+
+`func (o *VirtualDeviceDetailsResponse) SetNewTermLength(v string)`
+
+SetNewTermLength sets NewTermLength field to given value.
+
+### HasNewTermLength
+
+`func (o *VirtualDeviceDetailsResponse) HasNewTermLength() bool`
+
+HasNewTermLength returns a boolean if a field has been set.
 
 ### GetAdditionalBandwidth
 
