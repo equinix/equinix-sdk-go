@@ -9,11 +9,7 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** | Customer-provided Cloud Router name | [optional] 
 **State** | Pointer to [**CloudRouterAccessPointState**](CloudRouterAccessPointState.md) |  | [optional] 
 **EquinixAsn** | Pointer to **int64** | Equinix ASN | [optional] 
-**BgpIpv4RoutesCount** | Pointer to **int32** | Access point used and maximum number of IPv4 BGP routes | [optional] 
-**BgpIpv6RoutesCount** | Pointer to **int32** | Access point used and maximum number of IPv6 BGP routes | [optional] 
 **ConnectionsCount** | Pointer to **int32** | Number of connections associated with this Access point | [optional] 
-**DistinctIpv4PrefixesCount** | Pointer to **int32** | Number of distinct ipv4 routes | [optional] 
-**DistinctIpv6PrefixesCount** | Pointer to **int32** | Number of distinct ipv6 routes | [optional] 
 **MarketplaceSubscription** | Pointer to [**MarketplaceSubscription**](MarketplaceSubscription.md) |  | [optional] 
 **ChangeLog** | Pointer to [**Changelog**](Changelog.md) |  | [optional] 
 **Change** | Pointer to [**CloudRouterChange**](CloudRouterChange.md) |  | [optional] 
@@ -169,56 +165,6 @@ SetEquinixAsn sets EquinixAsn field to given value.
 
 HasEquinixAsn returns a boolean if a field has been set.
 
-### GetBgpIpv4RoutesCount
-
-`func (o *CloudRouter) GetBgpIpv4RoutesCount() int32`
-
-GetBgpIpv4RoutesCount returns the BgpIpv4RoutesCount field if non-nil, zero value otherwise.
-
-### GetBgpIpv4RoutesCountOk
-
-`func (o *CloudRouter) GetBgpIpv4RoutesCountOk() (*int32, bool)`
-
-GetBgpIpv4RoutesCountOk returns a tuple with the BgpIpv4RoutesCount field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetBgpIpv4RoutesCount
-
-`func (o *CloudRouter) SetBgpIpv4RoutesCount(v int32)`
-
-SetBgpIpv4RoutesCount sets BgpIpv4RoutesCount field to given value.
-
-### HasBgpIpv4RoutesCount
-
-`func (o *CloudRouter) HasBgpIpv4RoutesCount() bool`
-
-HasBgpIpv4RoutesCount returns a boolean if a field has been set.
-
-### GetBgpIpv6RoutesCount
-
-`func (o *CloudRouter) GetBgpIpv6RoutesCount() int32`
-
-GetBgpIpv6RoutesCount returns the BgpIpv6RoutesCount field if non-nil, zero value otherwise.
-
-### GetBgpIpv6RoutesCountOk
-
-`func (o *CloudRouter) GetBgpIpv6RoutesCountOk() (*int32, bool)`
-
-GetBgpIpv6RoutesCountOk returns a tuple with the BgpIpv6RoutesCount field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetBgpIpv6RoutesCount
-
-`func (o *CloudRouter) SetBgpIpv6RoutesCount(v int32)`
-
-SetBgpIpv6RoutesCount sets BgpIpv6RoutesCount field to given value.
-
-### HasBgpIpv6RoutesCount
-
-`func (o *CloudRouter) HasBgpIpv6RoutesCount() bool`
-
-HasBgpIpv6RoutesCount returns a boolean if a field has been set.
-
 ### GetConnectionsCount
 
 `func (o *CloudRouter) GetConnectionsCount() int32`
@@ -243,56 +189,6 @@ SetConnectionsCount sets ConnectionsCount field to given value.
 `func (o *CloudRouter) HasConnectionsCount() bool`
 
 HasConnectionsCount returns a boolean if a field has been set.
-
-### GetDistinctIpv4PrefixesCount
-
-`func (o *CloudRouter) GetDistinctIpv4PrefixesCount() int32`
-
-GetDistinctIpv4PrefixesCount returns the DistinctIpv4PrefixesCount field if non-nil, zero value otherwise.
-
-### GetDistinctIpv4PrefixesCountOk
-
-`func (o *CloudRouter) GetDistinctIpv4PrefixesCountOk() (*int32, bool)`
-
-GetDistinctIpv4PrefixesCountOk returns a tuple with the DistinctIpv4PrefixesCount field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDistinctIpv4PrefixesCount
-
-`func (o *CloudRouter) SetDistinctIpv4PrefixesCount(v int32)`
-
-SetDistinctIpv4PrefixesCount sets DistinctIpv4PrefixesCount field to given value.
-
-### HasDistinctIpv4PrefixesCount
-
-`func (o *CloudRouter) HasDistinctIpv4PrefixesCount() bool`
-
-HasDistinctIpv4PrefixesCount returns a boolean if a field has been set.
-
-### GetDistinctIpv6PrefixesCount
-
-`func (o *CloudRouter) GetDistinctIpv6PrefixesCount() int32`
-
-GetDistinctIpv6PrefixesCount returns the DistinctIpv6PrefixesCount field if non-nil, zero value otherwise.
-
-### GetDistinctIpv6PrefixesCountOk
-
-`func (o *CloudRouter) GetDistinctIpv6PrefixesCountOk() (*int32, bool)`
-
-GetDistinctIpv6PrefixesCountOk returns a tuple with the DistinctIpv6PrefixesCount field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDistinctIpv6PrefixesCount
-
-`func (o *CloudRouter) SetDistinctIpv6PrefixesCount(v int32)`
-
-SetDistinctIpv6PrefixesCount sets DistinctIpv6PrefixesCount field to given value.
-
-### HasDistinctIpv6PrefixesCount
-
-`func (o *CloudRouter) HasDistinctIpv6PrefixesCount() bool`
-
-HasDistinctIpv6PrefixesCount returns a boolean if a field has been set.
 
 ### GetMarketplaceSubscription
 

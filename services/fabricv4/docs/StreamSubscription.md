@@ -14,8 +14,10 @@ Name | Type | Description | Notes
 **Enabled** | Pointer to **bool** | Stream subscription enabled status | [optional] 
 **Stream** | Pointer to [**StreamTarget**](StreamTarget.md) |  | [optional] 
 **Filters** | Pointer to [**StreamSubscriptionFilter**](StreamSubscriptionFilter.md) |  | [optional] 
+**MetricSelector** | Pointer to [**StreamSubscriptionSelector**](StreamSubscriptionSelector.md) |  | [optional] 
+**EventSelector** | Pointer to [**StreamSubscriptionSelector**](StreamSubscriptionSelector.md) |  | [optional] 
 **Sink** | Pointer to [**StreamSubscriptionSink**](StreamSubscriptionSink.md) |  | [optional] 
-**Changelog** | Pointer to [**Changelog**](Changelog.md) |  | [optional] 
+**ChangeLog** | Pointer to [**Changelog**](Changelog.md) |  | [optional] 
 
 ## Methods
 
@@ -286,6 +288,56 @@ SetFilters sets Filters field to given value.
 
 HasFilters returns a boolean if a field has been set.
 
+### GetMetricSelector
+
+`func (o *StreamSubscription) GetMetricSelector() StreamSubscriptionSelector`
+
+GetMetricSelector returns the MetricSelector field if non-nil, zero value otherwise.
+
+### GetMetricSelectorOk
+
+`func (o *StreamSubscription) GetMetricSelectorOk() (*StreamSubscriptionSelector, bool)`
+
+GetMetricSelectorOk returns a tuple with the MetricSelector field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMetricSelector
+
+`func (o *StreamSubscription) SetMetricSelector(v StreamSubscriptionSelector)`
+
+SetMetricSelector sets MetricSelector field to given value.
+
+### HasMetricSelector
+
+`func (o *StreamSubscription) HasMetricSelector() bool`
+
+HasMetricSelector returns a boolean if a field has been set.
+
+### GetEventSelector
+
+`func (o *StreamSubscription) GetEventSelector() StreamSubscriptionSelector`
+
+GetEventSelector returns the EventSelector field if non-nil, zero value otherwise.
+
+### GetEventSelectorOk
+
+`func (o *StreamSubscription) GetEventSelectorOk() (*StreamSubscriptionSelector, bool)`
+
+GetEventSelectorOk returns a tuple with the EventSelector field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEventSelector
+
+`func (o *StreamSubscription) SetEventSelector(v StreamSubscriptionSelector)`
+
+SetEventSelector sets EventSelector field to given value.
+
+### HasEventSelector
+
+`func (o *StreamSubscription) HasEventSelector() bool`
+
+HasEventSelector returns a boolean if a field has been set.
+
 ### GetSink
 
 `func (o *StreamSubscription) GetSink() StreamSubscriptionSink`
@@ -311,30 +363,30 @@ SetSink sets Sink field to given value.
 
 HasSink returns a boolean if a field has been set.
 
-### GetChangelog
+### GetChangeLog
 
-`func (o *StreamSubscription) GetChangelog() Changelog`
+`func (o *StreamSubscription) GetChangeLog() Changelog`
 
-GetChangelog returns the Changelog field if non-nil, zero value otherwise.
+GetChangeLog returns the ChangeLog field if non-nil, zero value otherwise.
 
-### GetChangelogOk
+### GetChangeLogOk
 
-`func (o *StreamSubscription) GetChangelogOk() (*Changelog, bool)`
+`func (o *StreamSubscription) GetChangeLogOk() (*Changelog, bool)`
 
-GetChangelogOk returns a tuple with the Changelog field if it's non-nil, zero value otherwise
+GetChangeLogOk returns a tuple with the ChangeLog field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetChangelog
+### SetChangeLog
 
-`func (o *StreamSubscription) SetChangelog(v Changelog)`
+`func (o *StreamSubscription) SetChangeLog(v Changelog)`
 
-SetChangelog sets Changelog field to given value.
+SetChangeLog sets ChangeLog field to given value.
 
-### HasChangelog
+### HasChangeLog
 
-`func (o *StreamSubscription) HasChangelog() bool`
+`func (o *StreamSubscription) HasChangeLog() bool`
 
-HasChangelog returns a boolean if a field has been set.
+HasChangeLog returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

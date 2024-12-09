@@ -5,6 +5,8 @@
 
 * `CANCELLED` (value: `"CANCELLED"`)
 
+* `CANCELLING` (value: `"CANCELLING"`)
+
 * `CONFIGURING` (value: `"CONFIGURING"`)
 
 * `CONFIGURING_FAILED` (value: `"CONFIGURING_FAILED"`)

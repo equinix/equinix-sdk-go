@@ -9,11 +9,11 @@ Method | HTTP request | Description
 [**DeleteRouteFilterByUuid**](RouteFiltersApi.md#DeleteRouteFilterByUuid) | **Delete** /fabric/v4/routeFilters/{routeFilterId} | Delete Route Filter
 [**DetachConnectionRouteFilter**](RouteFiltersApi.md#DetachConnectionRouteFilter) | **Delete** /fabric/v4/connections/{connectionId}/routeFilters/{routeFilterId} | Detach Route Filter
 [**GetConnectionRouteFilterByUuid**](RouteFiltersApi.md#GetConnectionRouteFilterByUuid) | **Get** /fabric/v4/connections/{connectionId}/routeFilters/{routeFilterId} | Get Route Filter
-[**GetConnectionRouteFilters**](RouteFiltersApi.md#GetConnectionRouteFilters) | **Get** /fabric/v4/connections/{connectionId}/routeFilters | Get All RouteFilters
-[**GetRouteFilterByUuid**](RouteFiltersApi.md#GetRouteFilterByUuid) | **Get** /fabric/v4/routeFilters/{routeFilterId} | Get Filter By UUID
+[**GetConnectionRouteFilters**](RouteFiltersApi.md#GetConnectionRouteFilters) | **Get** /fabric/v4/connections/{connectionId}/routeFilters | Get All Route Filters
+[**GetRouteFilterByUuid**](RouteFiltersApi.md#GetRouteFilterByUuid) | **Get** /fabric/v4/routeFilters/{routeFilterId} | Get Route Filter By UUID
 [**GetRouteFilterChangeByUuid**](RouteFiltersApi.md#GetRouteFilterChangeByUuid) | **Get** /fabric/v4/routeFilters/{routeFilterId}/changes/{changeId} | Get Change By ID
 [**GetRouteFilterChanges**](RouteFiltersApi.md#GetRouteFilterChanges) | **Get** /fabric/v4/routeFilters/{routeFilterId}/changes | Get All Changes
-[**GetRouteFilterConnections**](RouteFiltersApi.md#GetRouteFilterConnections) | **Get** /fabric/v4/routeFilters/{routeFilterId}/connections | Get Connections
+[**GetRouteFilterConnections**](RouteFiltersApi.md#GetRouteFilterConnections) | **Get** /fabric/v4/routeFilters/{routeFilterId}/connections | Get All Connections on Route Filter
 [**PatchRouteFilterByUuid**](RouteFiltersApi.md#PatchRouteFilterByUuid) | **Patch** /fabric/v4/routeFilters/{routeFilterId} | Patch Route Filter
 [**SearchRouteFilters**](RouteFiltersApi.md#SearchRouteFilters) | **Post** /fabric/v4/routeFilters/search | Search Route Filters
 
@@ -115,7 +115,7 @@ import (
 )
 
 func main() {
-	routeFiltersBase := *openapiclient.NewRouteFiltersBase(openapiclient.ConnectionRouteFilterData_type("BGP_IPv4_PREFIX_FILTER"), "My-direct-route-1", *openapiclient.NewProject("44f4c4f8-2f39-494e-838c-d8e640591be5")) // RouteFiltersBase | 
+	routeFiltersBase := *openapiclient.NewRouteFiltersBase(openapiclient.RouteFiltersBase_type("BGP_IPv4_PREFIX_FILTER"), "My-direct-route-1", *openapiclient.NewProject("44f4c4f8-2f39-494e-838c-d8e640591be5")) // RouteFiltersBase | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -380,7 +380,7 @@ Name | Type | Description  | Notes
 
 > GetAllConnectionRouteFiltersResponse GetConnectionRouteFilters(ctx, connectionId).Execute()
 
-Get All RouteFilters
+Get All Route Filters
 
 
 
@@ -450,7 +450,7 @@ Name | Type | Description  | Notes
 
 > RouteFiltersData GetRouteFilterByUuid(ctx, routeFilterId).Execute()
 
-Get Filter By UUID
+Get Route Filter By UUID
 
 
 
@@ -667,7 +667,7 @@ Name | Type | Description  | Notes
 
 > GetRouteFilterGetConnectionsResponse GetRouteFilterConnections(ctx, routeFilterId).Execute()
 
-Get Connections
+Get All Connections on Route Filter
 
 
 

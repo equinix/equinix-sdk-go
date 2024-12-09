@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **IsAutoRenew** | Pointer to **bool** | Is Auto Renewal Enabled | [optional] 
 **OfferId** | Pointer to **string** | Marketplace Offer Id | [optional] 
 **Trial** | Pointer to [**SubscriptionTrial**](SubscriptionTrial.md) |  | [optional] 
-**SubscriptionKey** | Pointer to **string** | Subscription Key | [optional] 
+**MetroCodes** | Pointer to **[]string** | List of available metro | [optional] 
 **Entitlements** | [**[]SubscriptionEntitlementResponse**](SubscriptionEntitlementResponse.md) | List of entitlements associated with the subscription | 
 **Changelog** | Pointer to [**Changelog**](Changelog.md) |  | [optional] 
 
@@ -225,30 +225,30 @@ SetTrial sets Trial field to given value.
 
 HasTrial returns a boolean if a field has been set.
 
-### GetSubscriptionKey
+### GetMetroCodes
 
-`func (o *SubscriptionResponse) GetSubscriptionKey() string`
+`func (o *SubscriptionResponse) GetMetroCodes() []string`
 
-GetSubscriptionKey returns the SubscriptionKey field if non-nil, zero value otherwise.
+GetMetroCodes returns the MetroCodes field if non-nil, zero value otherwise.
 
-### GetSubscriptionKeyOk
+### GetMetroCodesOk
 
-`func (o *SubscriptionResponse) GetSubscriptionKeyOk() (*string, bool)`
+`func (o *SubscriptionResponse) GetMetroCodesOk() (*[]string, bool)`
 
-GetSubscriptionKeyOk returns a tuple with the SubscriptionKey field if it's non-nil, zero value otherwise
+GetMetroCodesOk returns a tuple with the MetroCodes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetSubscriptionKey
+### SetMetroCodes
 
-`func (o *SubscriptionResponse) SetSubscriptionKey(v string)`
+`func (o *SubscriptionResponse) SetMetroCodes(v []string)`
 
-SetSubscriptionKey sets SubscriptionKey field to given value.
+SetMetroCodes sets MetroCodes field to given value.
 
-### HasSubscriptionKey
+### HasMetroCodes
 
-`func (o *SubscriptionResponse) HasSubscriptionKey() bool`
+`func (o *SubscriptionResponse) HasMetroCodes() bool`
 
-HasSubscriptionKey returns a boolean if a field has been set.
+HasMetroCodes returns a boolean if a field has been set.
 
 ### GetEntitlements
 

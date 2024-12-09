@@ -25,25 +25,17 @@ type CloudRouter struct {
 	State *CloudRouterAccessPointState `json:"state,omitempty"`
 	// Equinix ASN
 	EquinixAsn *int64 `json:"equinixAsn,omitempty"`
-	// Access point used and maximum number of IPv4 BGP routes
-	BgpIpv4RoutesCount *int32 `json:"bgpIpv4RoutesCount,omitempty"`
-	// Access point used and maximum number of IPv6 BGP routes
-	BgpIpv6RoutesCount *int32 `json:"bgpIpv6RoutesCount,omitempty"`
 	// Number of connections associated with this Access point
-	ConnectionsCount *int32 `json:"connectionsCount,omitempty"`
-	// Number of distinct ipv4 routes
-	DistinctIpv4PrefixesCount *int32 `json:"distinctIpv4PrefixesCount,omitempty"`
-	// Number of distinct ipv6 routes
-	DistinctIpv6PrefixesCount *int32                         `json:"distinctIpv6PrefixesCount,omitempty"`
-	MarketplaceSubscription   *MarketplaceSubscription       `json:"marketplaceSubscription,omitempty"`
-	ChangeLog                 *Changelog                     `json:"changeLog,omitempty"`
-	Change                    *CloudRouterChange             `json:"change,omitempty"`
-	Type                      *CloudRouterPostRequestType    `json:"type,omitempty"`
-	Location                  *SimplifiedLocationWithoutIBX  `json:"location,omitempty"`
-	Package                   *CloudRouterPostRequestPackage `json:"package,omitempty"`
-	Order                     *Order                         `json:"order,omitempty"`
-	Project                   *Project                       `json:"project,omitempty"`
-	Account                   *SimplifiedAccount             `json:"account,omitempty"`
+	ConnectionsCount        *int32                         `json:"connectionsCount,omitempty"`
+	MarketplaceSubscription *MarketplaceSubscription       `json:"marketplaceSubscription,omitempty"`
+	ChangeLog               *Changelog                     `json:"changeLog,omitempty"`
+	Change                  *CloudRouterChange             `json:"change,omitempty"`
+	Type                    *CloudRouterPostRequestType    `json:"type,omitempty"`
+	Location                *SimplifiedLocationWithoutIBX  `json:"location,omitempty"`
+	Package                 *CloudRouterPostRequestPackage `json:"package,omitempty"`
+	Order                   *Order                         `json:"order,omitempty"`
+	Project                 *Project                       `json:"project,omitempty"`
+	Account                 *SimplifiedAccount             `json:"account,omitempty"`
 	// Preferences for notifications on connection configuration or status changes
 	Notifications        []SimplifiedNotification `json:"notifications,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -228,70 +220,6 @@ func (o *CloudRouter) SetEquinixAsn(v int64) {
 	o.EquinixAsn = &v
 }
 
-// GetBgpIpv4RoutesCount returns the BgpIpv4RoutesCount field value if set, zero value otherwise.
-func (o *CloudRouter) GetBgpIpv4RoutesCount() int32 {
-	if o == nil || IsNil(o.BgpIpv4RoutesCount) {
-		var ret int32
-		return ret
-	}
-	return *o.BgpIpv4RoutesCount
-}
-
-// GetBgpIpv4RoutesCountOk returns a tuple with the BgpIpv4RoutesCount field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CloudRouter) GetBgpIpv4RoutesCountOk() (*int32, bool) {
-	if o == nil || IsNil(o.BgpIpv4RoutesCount) {
-		return nil, false
-	}
-	return o.BgpIpv4RoutesCount, true
-}
-
-// HasBgpIpv4RoutesCount returns a boolean if a field has been set.
-func (o *CloudRouter) HasBgpIpv4RoutesCount() bool {
-	if o != nil && !IsNil(o.BgpIpv4RoutesCount) {
-		return true
-	}
-
-	return false
-}
-
-// SetBgpIpv4RoutesCount gets a reference to the given int32 and assigns it to the BgpIpv4RoutesCount field.
-func (o *CloudRouter) SetBgpIpv4RoutesCount(v int32) {
-	o.BgpIpv4RoutesCount = &v
-}
-
-// GetBgpIpv6RoutesCount returns the BgpIpv6RoutesCount field value if set, zero value otherwise.
-func (o *CloudRouter) GetBgpIpv6RoutesCount() int32 {
-	if o == nil || IsNil(o.BgpIpv6RoutesCount) {
-		var ret int32
-		return ret
-	}
-	return *o.BgpIpv6RoutesCount
-}
-
-// GetBgpIpv6RoutesCountOk returns a tuple with the BgpIpv6RoutesCount field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CloudRouter) GetBgpIpv6RoutesCountOk() (*int32, bool) {
-	if o == nil || IsNil(o.BgpIpv6RoutesCount) {
-		return nil, false
-	}
-	return o.BgpIpv6RoutesCount, true
-}
-
-// HasBgpIpv6RoutesCount returns a boolean if a field has been set.
-func (o *CloudRouter) HasBgpIpv6RoutesCount() bool {
-	if o != nil && !IsNil(o.BgpIpv6RoutesCount) {
-		return true
-	}
-
-	return false
-}
-
-// SetBgpIpv6RoutesCount gets a reference to the given int32 and assigns it to the BgpIpv6RoutesCount field.
-func (o *CloudRouter) SetBgpIpv6RoutesCount(v int32) {
-	o.BgpIpv6RoutesCount = &v
-}
-
 // GetConnectionsCount returns the ConnectionsCount field value if set, zero value otherwise.
 func (o *CloudRouter) GetConnectionsCount() int32 {
 	if o == nil || IsNil(o.ConnectionsCount) {
@@ -322,70 +250,6 @@ func (o *CloudRouter) HasConnectionsCount() bool {
 // SetConnectionsCount gets a reference to the given int32 and assigns it to the ConnectionsCount field.
 func (o *CloudRouter) SetConnectionsCount(v int32) {
 	o.ConnectionsCount = &v
-}
-
-// GetDistinctIpv4PrefixesCount returns the DistinctIpv4PrefixesCount field value if set, zero value otherwise.
-func (o *CloudRouter) GetDistinctIpv4PrefixesCount() int32 {
-	if o == nil || IsNil(o.DistinctIpv4PrefixesCount) {
-		var ret int32
-		return ret
-	}
-	return *o.DistinctIpv4PrefixesCount
-}
-
-// GetDistinctIpv4PrefixesCountOk returns a tuple with the DistinctIpv4PrefixesCount field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CloudRouter) GetDistinctIpv4PrefixesCountOk() (*int32, bool) {
-	if o == nil || IsNil(o.DistinctIpv4PrefixesCount) {
-		return nil, false
-	}
-	return o.DistinctIpv4PrefixesCount, true
-}
-
-// HasDistinctIpv4PrefixesCount returns a boolean if a field has been set.
-func (o *CloudRouter) HasDistinctIpv4PrefixesCount() bool {
-	if o != nil && !IsNil(o.DistinctIpv4PrefixesCount) {
-		return true
-	}
-
-	return false
-}
-
-// SetDistinctIpv4PrefixesCount gets a reference to the given int32 and assigns it to the DistinctIpv4PrefixesCount field.
-func (o *CloudRouter) SetDistinctIpv4PrefixesCount(v int32) {
-	o.DistinctIpv4PrefixesCount = &v
-}
-
-// GetDistinctIpv6PrefixesCount returns the DistinctIpv6PrefixesCount field value if set, zero value otherwise.
-func (o *CloudRouter) GetDistinctIpv6PrefixesCount() int32 {
-	if o == nil || IsNil(o.DistinctIpv6PrefixesCount) {
-		var ret int32
-		return ret
-	}
-	return *o.DistinctIpv6PrefixesCount
-}
-
-// GetDistinctIpv6PrefixesCountOk returns a tuple with the DistinctIpv6PrefixesCount field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CloudRouter) GetDistinctIpv6PrefixesCountOk() (*int32, bool) {
-	if o == nil || IsNil(o.DistinctIpv6PrefixesCount) {
-		return nil, false
-	}
-	return o.DistinctIpv6PrefixesCount, true
-}
-
-// HasDistinctIpv6PrefixesCount returns a boolean if a field has been set.
-func (o *CloudRouter) HasDistinctIpv6PrefixesCount() bool {
-	if o != nil && !IsNil(o.DistinctIpv6PrefixesCount) {
-		return true
-	}
-
-	return false
-}
-
-// SetDistinctIpv6PrefixesCount gets a reference to the given int32 and assigns it to the DistinctIpv6PrefixesCount field.
-func (o *CloudRouter) SetDistinctIpv6PrefixesCount(v int32) {
-	o.DistinctIpv6PrefixesCount = &v
 }
 
 // GetMarketplaceSubscription returns the MarketplaceSubscription field value if set, zero value otherwise.
@@ -733,20 +597,8 @@ func (o CloudRouter) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EquinixAsn) {
 		toSerialize["equinixAsn"] = o.EquinixAsn
 	}
-	if !IsNil(o.BgpIpv4RoutesCount) {
-		toSerialize["bgpIpv4RoutesCount"] = o.BgpIpv4RoutesCount
-	}
-	if !IsNil(o.BgpIpv6RoutesCount) {
-		toSerialize["bgpIpv6RoutesCount"] = o.BgpIpv6RoutesCount
-	}
 	if !IsNil(o.ConnectionsCount) {
 		toSerialize["connectionsCount"] = o.ConnectionsCount
-	}
-	if !IsNil(o.DistinctIpv4PrefixesCount) {
-		toSerialize["distinctIpv4PrefixesCount"] = o.DistinctIpv4PrefixesCount
-	}
-	if !IsNil(o.DistinctIpv6PrefixesCount) {
-		toSerialize["distinctIpv6PrefixesCount"] = o.DistinctIpv6PrefixesCount
 	}
 	if !IsNil(o.MarketplaceSubscription) {
 		toSerialize["marketplaceSubscription"] = o.MarketplaceSubscription
@@ -805,11 +657,7 @@ func (o *CloudRouter) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "state")
 		delete(additionalProperties, "equinixAsn")
-		delete(additionalProperties, "bgpIpv4RoutesCount")
-		delete(additionalProperties, "bgpIpv6RoutesCount")
 		delete(additionalProperties, "connectionsCount")
-		delete(additionalProperties, "distinctIpv4PrefixesCount")
-		delete(additionalProperties, "distinctIpv6PrefixesCount")
 		delete(additionalProperties, "marketplaceSubscription")
 		delete(additionalProperties, "changeLog")
 		delete(additionalProperties, "change")

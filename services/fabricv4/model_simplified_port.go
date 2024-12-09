@@ -16,11 +16,11 @@ var _ MappedNullable = &SimplifiedPort{}
 
 // SimplifiedPort Port specification
 type SimplifiedPort struct {
+	// Equinix assigned response attribute for an absolute URL that is the subject of the link's context.
+	Href *string   `json:"href,omitempty"`
 	Type *PortType `json:"type,omitempty"`
 	// Equinix assigned response attribute for Port Id
 	Id *int32 `json:"id,omitempty"`
-	// Equinix assigned response attribute for an absolute URL that is the subject of the link's context.
-	Href *string `json:"href,omitempty"`
 	// Equinix assigned response attribute for  port identifier
 	Uuid *string `json:"uuid,omitempty"`
 	// Equinix assigned response attribute for Port name
@@ -80,6 +80,38 @@ func NewSimplifiedPort() *SimplifiedPort {
 func NewSimplifiedPortWithDefaults() *SimplifiedPort {
 	this := SimplifiedPort{}
 	return &this
+}
+
+// GetHref returns the Href field value if set, zero value otherwise.
+func (o *SimplifiedPort) GetHref() string {
+	if o == nil || IsNil(o.Href) {
+		var ret string
+		return ret
+	}
+	return *o.Href
+}
+
+// GetHrefOk returns a tuple with the Href field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SimplifiedPort) GetHrefOk() (*string, bool) {
+	if o == nil || IsNil(o.Href) {
+		return nil, false
+	}
+	return o.Href, true
+}
+
+// HasHref returns a boolean if a field has been set.
+func (o *SimplifiedPort) HasHref() bool {
+	if o != nil && !IsNil(o.Href) {
+		return true
+	}
+
+	return false
+}
+
+// SetHref gets a reference to the given string and assigns it to the Href field.
+func (o *SimplifiedPort) SetHref(v string) {
+	o.Href = &v
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
@@ -144,38 +176,6 @@ func (o *SimplifiedPort) HasId() bool {
 // SetId gets a reference to the given int32 and assigns it to the Id field.
 func (o *SimplifiedPort) SetId(v int32) {
 	o.Id = &v
-}
-
-// GetHref returns the Href field value if set, zero value otherwise.
-func (o *SimplifiedPort) GetHref() string {
-	if o == nil || IsNil(o.Href) {
-		var ret string
-		return ret
-	}
-	return *o.Href
-}
-
-// GetHrefOk returns a tuple with the Href field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SimplifiedPort) GetHrefOk() (*string, bool) {
-	if o == nil || IsNil(o.Href) {
-		return nil, false
-	}
-	return o.Href, true
-}
-
-// HasHref returns a boolean if a field has been set.
-func (o *SimplifiedPort) HasHref() bool {
-	if o != nil && !IsNil(o.Href) {
-		return true
-	}
-
-	return false
-}
-
-// SetHref gets a reference to the given string and assigns it to the Href field.
-func (o *SimplifiedPort) SetHref(v string) {
-	o.Href = &v
 }
 
 // GetUuid returns the Uuid field value if set, zero value otherwise.
@@ -1023,14 +1023,14 @@ func (o SimplifiedPort) MarshalJSON() ([]byte, error) {
 
 func (o SimplifiedPort) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Href) {
+		toSerialize["href"] = o.Href
+	}
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
-	}
-	if !IsNil(o.Href) {
-		toSerialize["href"] = o.Href
 	}
 	if !IsNil(o.Uuid) {
 		toSerialize["uuid"] = o.Uuid
@@ -1132,9 +1132,9 @@ func (o *SimplifiedPort) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "href")
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "id")
-		delete(additionalProperties, "href")
 		delete(additionalProperties, "uuid")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")

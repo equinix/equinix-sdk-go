@@ -15,7 +15,7 @@ import (
 // checks if the ConnectionRouteTableEntry type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &ConnectionRouteTableEntry{}
 
-// ConnectionRouteTableEntry Adv/Rec Route table entry object
+// ConnectionRouteTableEntry Advertised and received route table entry object
 type ConnectionRouteTableEntry struct {
 	Type                 RouteTableEntryType                  `json:"type"`
 	ProtocolType         *RouteTableEntryProtocolType         `json:"protocolType,omitempty"`

@@ -17,12 +17,16 @@ type MarketplaceSubscriptionType string
 
 // List of marketplaceSubscription_type
 const (
-	MARKETPLACESUBSCRIPTIONTYPE_AWS_MARKETPLACE_SUBSCRIPTION MarketplaceSubscriptionType = "AWS_MARKETPLACE_SUBSCRIPTION"
+	MARKETPLACESUBSCRIPTIONTYPE_AWS_MARKETPLACE_SUBSCRIPTION   MarketplaceSubscriptionType = "AWS_MARKETPLACE_SUBSCRIPTION"
+	MARKETPLACESUBSCRIPTIONTYPE_GCP_MARKETPLACE_SUBSCRIPTION   MarketplaceSubscriptionType = "GCP_MARKETPLACE_SUBSCRIPTION"
+	MARKETPLACESUBSCRIPTIONTYPE_AZURE_MARKETPLACE_SUBSCRIPTION MarketplaceSubscriptionType = "AZURE_MARKETPLACE_SUBSCRIPTION"
 )
 
 // All allowed values of MarketplaceSubscriptionType enum
 var AllowedMarketplaceSubscriptionTypeEnumValues = []MarketplaceSubscriptionType{
 	"AWS_MARKETPLACE_SUBSCRIPTION",
+	"GCP_MARKETPLACE_SUBSCRIPTION",
+	"AZURE_MARKETPLACE_SUBSCRIPTION",
 }
 
 func (v *MarketplaceSubscriptionType) UnmarshalJSON(src []byte) error {

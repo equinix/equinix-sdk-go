@@ -12,7 +12,7 @@ import (
 	"fmt"
 )
 
-// CloudRouterActionState Cloud Router action state
+// CloudRouterActionState Cloud router action state
 type CloudRouterActionState string
 
 // List of CloudRouterActionState

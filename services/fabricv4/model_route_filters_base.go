@@ -17,8 +17,8 @@ var _ MappedNullable = &RouteFiltersBase{}
 
 // RouteFiltersBase struct for RouteFiltersBase
 type RouteFiltersBase struct {
-	Type ConnectionRouteFilterDataType `json:"type"`
-	Name string                        `json:"name"`
+	Type RouteFiltersBaseType `json:"type"`
+	Name string               `json:"name"`
 	// Customer-provided connection description
 	Description          *string `json:"description,omitempty"`
 	Project              Project `json:"project"`
@@ -31,7 +31,7 @@ type _RouteFiltersBase RouteFiltersBase
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRouteFiltersBase(type_ ConnectionRouteFilterDataType, name string, project Project) *RouteFiltersBase {
+func NewRouteFiltersBase(type_ RouteFiltersBaseType, name string, project Project) *RouteFiltersBase {
 	this := RouteFiltersBase{}
 	this.Type = type_
 	this.Name = name
@@ -48,9 +48,9 @@ func NewRouteFiltersBaseWithDefaults() *RouteFiltersBase {
 }
 
 // GetType returns the Type field value
-func (o *RouteFiltersBase) GetType() ConnectionRouteFilterDataType {
+func (o *RouteFiltersBase) GetType() RouteFiltersBaseType {
 	if o == nil {
-		var ret ConnectionRouteFilterDataType
+		var ret RouteFiltersBaseType
 		return ret
 	}
 
@@ -59,7 +59,7 @@ func (o *RouteFiltersBase) GetType() ConnectionRouteFilterDataType {
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *RouteFiltersBase) GetTypeOk() (*ConnectionRouteFilterDataType, bool) {
+func (o *RouteFiltersBase) GetTypeOk() (*RouteFiltersBaseType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -67,7 +67,7 @@ func (o *RouteFiltersBase) GetTypeOk() (*ConnectionRouteFilterDataType, bool) {
 }
 
 // SetType sets field value
-func (o *RouteFiltersBase) SetType(v ConnectionRouteFilterDataType) {
+func (o *RouteFiltersBase) SetType(v RouteFiltersBaseType) {
 	o.Type = v
 }
 

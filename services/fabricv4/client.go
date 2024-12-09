@@ -37,7 +37,7 @@ var (
 	queryDescape    = strings.NewReplacer("%5B", "[", "%5D", "]")
 )
 
-// APIClient manages communication with the Equinix Fabric API v4 API v4.17
+// APIClient manages communication with the Equinix Fabric API v4 API v4.18
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
 	cfg    *Configuration
@@ -62,6 +62,10 @@ type APIClient struct {
 	PrecisionTimeApi *PrecisionTimeApiService
 
 	PricesApi *PricesApiService
+
+	RouteAggregationRulesApi *RouteAggregationRulesApiService
+
+	RouteAggregationsApi *RouteAggregationsApiService
 
 	RouteFilterRulesApi *RouteFilterRulesApiService
 
@@ -105,6 +109,8 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.PortsApi = (*PortsApiService)(&c.common)
 	c.PrecisionTimeApi = (*PrecisionTimeApiService)(&c.common)
 	c.PricesApi = (*PricesApiService)(&c.common)
+	c.RouteAggregationRulesApi = (*RouteAggregationRulesApiService)(&c.common)
+	c.RouteAggregationsApi = (*RouteAggregationsApiService)(&c.common)
 	c.RouteFilterRulesApi = (*RouteFilterRulesApiService)(&c.common)
 	c.RouteFiltersApi = (*RouteFiltersApiService)(&c.common)
 	c.RoutingProtocolsApi = (*RoutingProtocolsApiService)(&c.common)

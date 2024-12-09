@@ -905,7 +905,7 @@ func (r ApiGetConnectionRouteFiltersRequest) Execute() (*GetAllConnectionRouteFi
 }
 
 /*
-GetConnectionRouteFilters Get All RouteFilters
+GetConnectionRouteFilters Get All Route Filters
 
 This API provides capability to view all Route Filters attached to a Connection
 
@@ -1074,7 +1074,7 @@ func (r ApiGetRouteFilterByUuidRequest) Execute() (*RouteFiltersData, *http.Resp
 }
 
 /*
-GetRouteFilterByUuid Get Filter By UUID
+GetRouteFilterByUuid Get Route Filter By UUID
 
 This API provides capability to view a Route Filter by UUID
 
@@ -1583,7 +1583,7 @@ func (r ApiGetRouteFilterConnectionsRequest) Execute() (*GetRouteFilterGetConnec
 }
 
 /*
-GetRouteFilterConnections Get Connections
+GetRouteFilterConnections Get All Connections on Route Filter
 
 This API provides capability to view all Connections using the Route Filter
 

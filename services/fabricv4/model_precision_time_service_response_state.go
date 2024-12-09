@@ -18,6 +18,7 @@ type PrecisionTimeServiceResponseState string
 // List of precisionTimeServiceResponse_state
 const (
 	PRECISIONTIMESERVICERESPONSESTATE_CANCELLED             PrecisionTimeServiceResponseState = "CANCELLED"
+	PRECISIONTIMESERVICERESPONSESTATE_CANCELLING            PrecisionTimeServiceResponseState = "CANCELLING"
 	PRECISIONTIMESERVICERESPONSESTATE_CONFIGURING           PrecisionTimeServiceResponseState = "CONFIGURING"
 	PRECISIONTIMESERVICERESPONSESTATE_CONFIGURING_FAILED    PrecisionTimeServiceResponseState = "CONFIGURING_FAILED"
 	PRECISIONTIMESERVICERESPONSESTATE_DRAFT                 PrecisionTimeServiceResponseState = "DRAFT"
@@ -34,6 +35,7 @@ const (
 // All allowed values of PrecisionTimeServiceResponseState enum
 var AllowedPrecisionTimeServiceResponseStateEnumValues = []PrecisionTimeServiceResponseState{
 	"CANCELLED",
+	"CANCELLING",
 	"CONFIGURING",
 	"CONFIGURING_FAILED",
 	"DRAFT",

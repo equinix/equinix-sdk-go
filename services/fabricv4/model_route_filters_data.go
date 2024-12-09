@@ -16,10 +16,10 @@ var _ MappedNullable = &RouteFiltersData{}
 
 // RouteFiltersData struct for RouteFiltersData
 type RouteFiltersData struct {
-	// Route Filter URI
-	Href *string                        `json:"href,omitempty"`
-	Type *ConnectionRouteFilterDataType `json:"type,omitempty"`
-	// Route Filter identifier
+	// Route filter URI
+	Href *string               `json:"href,omitempty"`
+	Type *RouteFiltersBaseType `json:"type,omitempty"`
+	// Route filter identifier
 	Uuid *string `json:"uuid,omitempty"`
 	Name *string `json:"name,omitempty"`
 	// Customer-provided connection description
@@ -86,9 +86,9 @@ func (o *RouteFiltersData) SetHref(v string) {
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
-func (o *RouteFiltersData) GetType() ConnectionRouteFilterDataType {
+func (o *RouteFiltersData) GetType() RouteFiltersBaseType {
 	if o == nil || IsNil(o.Type) {
-		var ret ConnectionRouteFilterDataType
+		var ret RouteFiltersBaseType
 		return ret
 	}
 	return *o.Type
@@ -96,7 +96,7 @@ func (o *RouteFiltersData) GetType() ConnectionRouteFilterDataType {
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RouteFiltersData) GetTypeOk() (*ConnectionRouteFilterDataType, bool) {
+func (o *RouteFiltersData) GetTypeOk() (*RouteFiltersBaseType, bool) {
 	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
@@ -112,8 +112,8 @@ func (o *RouteFiltersData) HasType() bool {
 	return false
 }
 
-// SetType gets a reference to the given ConnectionRouteFilterDataType and assigns it to the Type field.
-func (o *RouteFiltersData) SetType(v ConnectionRouteFilterDataType) {
+// SetType gets a reference to the given RouteFiltersBaseType and assigns it to the Type field.
+func (o *RouteFiltersData) SetType(v RouteFiltersBaseType) {
 	o.Type = &v
 }
 

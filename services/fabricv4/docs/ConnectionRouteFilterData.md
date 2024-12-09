@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Href** | Pointer to **string** | Route Filter URI | [optional] 
+**Href** | Pointer to **string** | Route filter URI | [optional] 
 **Type** | Pointer to [**ConnectionRouteFilterDataType**](ConnectionRouteFilterDataType.md) |  | [optional] 
 **Uuid** | Pointer to **string** | Route Filter identifier | [optional] 
-**AttachmentStatus** | Pointer to [**ConnectionRouteFilterDataAttachmentStatus**](ConnectionRouteFilterDataAttachmentStatus.md) |  | [optional] 
+**AttachmentStatus** | Pointer to [**ConnectionRouteAggregationDataAttachmentStatus**](ConnectionRouteAggregationDataAttachmentStatus.md) |  | [optional] 
 **Direction** | Pointer to [**ConnectionRouteFilterDataDirection**](ConnectionRouteFilterDataDirection.md) |  | [optional] 
 
 ## Methods
@@ -106,20 +106,20 @@ HasUuid returns a boolean if a field has been set.
 
 ### GetAttachmentStatus
 
-`func (o *ConnectionRouteFilterData) GetAttachmentStatus() ConnectionRouteFilterDataAttachmentStatus`
+`func (o *ConnectionRouteFilterData) GetAttachmentStatus() ConnectionRouteAggregationDataAttachmentStatus`
 
 GetAttachmentStatus returns the AttachmentStatus field if non-nil, zero value otherwise.
 
 ### GetAttachmentStatusOk
 
-`func (o *ConnectionRouteFilterData) GetAttachmentStatusOk() (*ConnectionRouteFilterDataAttachmentStatus, bool)`
+`func (o *ConnectionRouteFilterData) GetAttachmentStatusOk() (*ConnectionRouteAggregationDataAttachmentStatus, bool)`
 
 GetAttachmentStatusOk returns a tuple with the AttachmentStatus field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAttachmentStatus
 
-`func (o *ConnectionRouteFilterData) SetAttachmentStatus(v ConnectionRouteFilterDataAttachmentStatus)`
+`func (o *ConnectionRouteFilterData) SetAttachmentStatus(v ConnectionRouteAggregationDataAttachmentStatus)`
 
 SetAttachmentStatus sets AttachmentStatus field to given value.
 

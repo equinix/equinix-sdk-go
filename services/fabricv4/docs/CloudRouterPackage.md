@@ -10,13 +10,7 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** | Fabric Cloud Router Package description | [optional] 
 **TotalIPv4RoutesMax** | Pointer to **int32** | Cloud Router package BGP IPv4 routes limit | [optional] 
 **TotalIPv6RoutesMax** | Pointer to **int32** | Cloud Router package BGP IPv6 routes limit | [optional] 
-**StaticIPv4RoutesMax** | Pointer to **int32** | CloudRouter package static IPv4 routes limit | [optional] 
-**StaticIPv6RoutesMax** | Pointer to **int32** | CloudRouter package static IPv6 routes limit | [optional] 
-**NaclsMax** | Pointer to **int32** | CloudRouter package NACLs limit | [optional] 
-**NaclRulesMax** | Pointer to **int32** | CloudRouter package NACLs rules limit | [optional] 
-**HaSupported** | Pointer to **bool** | CloudRouter package high-available configuration support | [optional] 
 **RouteFilterSupported** | Pointer to **bool** | CloudRouter package route filter support | [optional] 
-**NatType** | Pointer to [**CloudRouterPackageNatType**](CloudRouterPackageNatType.md) |  | [optional] 
 **VcCountMax** | Pointer to **int32** | CloudRouter package Max Connection limit | [optional] 
 **CrCountMax** | Pointer to **int32** | CloudRouter package Max CloudRouter limit | [optional] 
 **VcBandwidthMax** | Pointer to **int32** | CloudRouter package Max Bandwidth limit | [optional] 
@@ -191,131 +185,6 @@ SetTotalIPv6RoutesMax sets TotalIPv6RoutesMax field to given value.
 
 HasTotalIPv6RoutesMax returns a boolean if a field has been set.
 
-### GetStaticIPv4RoutesMax
-
-`func (o *CloudRouterPackage) GetStaticIPv4RoutesMax() int32`
-
-GetStaticIPv4RoutesMax returns the StaticIPv4RoutesMax field if non-nil, zero value otherwise.
-
-### GetStaticIPv4RoutesMaxOk
-
-`func (o *CloudRouterPackage) GetStaticIPv4RoutesMaxOk() (*int32, bool)`
-
-GetStaticIPv4RoutesMaxOk returns a tuple with the StaticIPv4RoutesMax field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetStaticIPv4RoutesMax
-
-`func (o *CloudRouterPackage) SetStaticIPv4RoutesMax(v int32)`
-
-SetStaticIPv4RoutesMax sets StaticIPv4RoutesMax field to given value.
-
-### HasStaticIPv4RoutesMax
-
-`func (o *CloudRouterPackage) HasStaticIPv4RoutesMax() bool`
-
-HasStaticIPv4RoutesMax returns a boolean if a field has been set.
-
-### GetStaticIPv6RoutesMax
-
-`func (o *CloudRouterPackage) GetStaticIPv6RoutesMax() int32`
-
-GetStaticIPv6RoutesMax returns the StaticIPv6RoutesMax field if non-nil, zero value otherwise.
-
-### GetStaticIPv6RoutesMaxOk
-
-`func (o *CloudRouterPackage) GetStaticIPv6RoutesMaxOk() (*int32, bool)`
-
-GetStaticIPv6RoutesMaxOk returns a tuple with the StaticIPv6RoutesMax field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetStaticIPv6RoutesMax
-
-`func (o *CloudRouterPackage) SetStaticIPv6RoutesMax(v int32)`
-
-SetStaticIPv6RoutesMax sets StaticIPv6RoutesMax field to given value.
-
-### HasStaticIPv6RoutesMax
-
-`func (o *CloudRouterPackage) HasStaticIPv6RoutesMax() bool`
-
-HasStaticIPv6RoutesMax returns a boolean if a field has been set.
-
-### GetNaclsMax
-
-`func (o *CloudRouterPackage) GetNaclsMax() int32`
-
-GetNaclsMax returns the NaclsMax field if non-nil, zero value otherwise.
-
-### GetNaclsMaxOk
-
-`func (o *CloudRouterPackage) GetNaclsMaxOk() (*int32, bool)`
-
-GetNaclsMaxOk returns a tuple with the NaclsMax field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetNaclsMax
-
-`func (o *CloudRouterPackage) SetNaclsMax(v int32)`
-
-SetNaclsMax sets NaclsMax field to given value.
-
-### HasNaclsMax
-
-`func (o *CloudRouterPackage) HasNaclsMax() bool`
-
-HasNaclsMax returns a boolean if a field has been set.
-
-### GetNaclRulesMax
-
-`func (o *CloudRouterPackage) GetNaclRulesMax() int32`
-
-GetNaclRulesMax returns the NaclRulesMax field if non-nil, zero value otherwise.
-
-### GetNaclRulesMaxOk
-
-`func (o *CloudRouterPackage) GetNaclRulesMaxOk() (*int32, bool)`
-
-GetNaclRulesMaxOk returns a tuple with the NaclRulesMax field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetNaclRulesMax
-
-`func (o *CloudRouterPackage) SetNaclRulesMax(v int32)`
-
-SetNaclRulesMax sets NaclRulesMax field to given value.
-
-### HasNaclRulesMax
-
-`func (o *CloudRouterPackage) HasNaclRulesMax() bool`
-
-HasNaclRulesMax returns a boolean if a field has been set.
-
-### GetHaSupported
-
-`func (o *CloudRouterPackage) GetHaSupported() bool`
-
-GetHaSupported returns the HaSupported field if non-nil, zero value otherwise.
-
-### GetHaSupportedOk
-
-`func (o *CloudRouterPackage) GetHaSupportedOk() (*bool, bool)`
-
-GetHaSupportedOk returns a tuple with the HaSupported field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetHaSupported
-
-`func (o *CloudRouterPackage) SetHaSupported(v bool)`
-
-SetHaSupported sets HaSupported field to given value.
-
-### HasHaSupported
-
-`func (o *CloudRouterPackage) HasHaSupported() bool`
-
-HasHaSupported returns a boolean if a field has been set.
-
 ### GetRouteFilterSupported
 
 `func (o *CloudRouterPackage) GetRouteFilterSupported() bool`
@@ -340,31 +209,6 @@ SetRouteFilterSupported sets RouteFilterSupported field to given value.
 `func (o *CloudRouterPackage) HasRouteFilterSupported() bool`
 
 HasRouteFilterSupported returns a boolean if a field has been set.
-
-### GetNatType
-
-`func (o *CloudRouterPackage) GetNatType() CloudRouterPackageNatType`
-
-GetNatType returns the NatType field if non-nil, zero value otherwise.
-
-### GetNatTypeOk
-
-`func (o *CloudRouterPackage) GetNatTypeOk() (*CloudRouterPackageNatType, bool)`
-
-GetNatTypeOk returns a tuple with the NatType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetNatType
-
-`func (o *CloudRouterPackage) SetNatType(v CloudRouterPackageNatType)`
-
-SetNatType sets NatType field to given value.
-
-### HasNatType
-
-`func (o *CloudRouterPackage) HasNatType() bool`
-
-HasNatType returns a boolean if a field has been set.
 
 ### GetVcCountMax
 

@@ -33,6 +33,7 @@ type ConnectionPostRequest struct {
 	// Connection additional information
 	AdditionalInfo          []ConnectionSideAdditionalInfo `json:"additionalInfo,omitempty"`
 	MarketplaceSubscription *MarketplaceSubscription       `json:"marketplaceSubscription,omitempty"`
+	EndCustomer             *EndCustomer                   `json:"endCustomer,omitempty"`
 	AdditionalProperties    map[string]interface{}
 }
 
@@ -397,6 +398,38 @@ func (o *ConnectionPostRequest) SetMarketplaceSubscription(v MarketplaceSubscrip
 	o.MarketplaceSubscription = &v
 }
 
+// GetEndCustomer returns the EndCustomer field value if set, zero value otherwise.
+func (o *ConnectionPostRequest) GetEndCustomer() EndCustomer {
+	if o == nil || IsNil(o.EndCustomer) {
+		var ret EndCustomer
+		return ret
+	}
+	return *o.EndCustomer
+}
+
+// GetEndCustomerOk returns a tuple with the EndCustomer field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ConnectionPostRequest) GetEndCustomerOk() (*EndCustomer, bool) {
+	if o == nil || IsNil(o.EndCustomer) {
+		return nil, false
+	}
+	return o.EndCustomer, true
+}
+
+// HasEndCustomer returns a boolean if a field has been set.
+func (o *ConnectionPostRequest) HasEndCustomer() bool {
+	if o != nil && !IsNil(o.EndCustomer) {
+		return true
+	}
+
+	return false
+}
+
+// SetEndCustomer gets a reference to the given EndCustomer and assigns it to the EndCustomer field.
+func (o *ConnectionPostRequest) SetEndCustomer(v EndCustomer) {
+	o.EndCustomer = &v
+}
+
 func (o ConnectionPostRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -430,6 +463,9 @@ func (o ConnectionPostRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.MarketplaceSubscription) {
 		toSerialize["marketplaceSubscription"] = o.MarketplaceSubscription
+	}
+	if !IsNil(o.EndCustomer) {
+		toSerialize["endCustomer"] = o.EndCustomer
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -491,6 +527,7 @@ func (o *ConnectionPostRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "project")
 		delete(additionalProperties, "additionalInfo")
 		delete(additionalProperties, "marketplaceSubscription")
+		delete(additionalProperties, "endCustomer")
 		o.AdditionalProperties = additionalProperties
 	}
 

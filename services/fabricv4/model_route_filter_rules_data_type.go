@@ -12,7 +12,7 @@ import (
 	"fmt"
 )
 
-// RouteFilterRulesDataType Route Filter type
+// RouteFilterRulesDataType Route filter type
 type RouteFilterRulesDataType string
 
 // List of RouteFilterRulesData_type

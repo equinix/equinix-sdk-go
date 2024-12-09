@@ -26,7 +26,7 @@ type Stream struct {
 	AssetsCount *int32 `json:"assetsCount,omitempty"`
 	// Stream subscriptions count
 	StreamSubscriptionsCount *int32                 `json:"streamSubscriptionsCount,omitempty"`
-	Changelog                *Changelog             `json:"changelog,omitempty"`
+	ChangeLog                *Changelog             `json:"changeLog,omitempty"`
 	Type                     *StreamPostRequestType `json:"type,omitempty"`
 	// Customer-provided stream name
 	Name *string `json:"name,omitempty"`
@@ -217,36 +217,36 @@ func (o *Stream) SetStreamSubscriptionsCount(v int32) {
 	o.StreamSubscriptionsCount = &v
 }
 
-// GetChangelog returns the Changelog field value if set, zero value otherwise.
-func (o *Stream) GetChangelog() Changelog {
-	if o == nil || IsNil(o.Changelog) {
+// GetChangeLog returns the ChangeLog field value if set, zero value otherwise.
+func (o *Stream) GetChangeLog() Changelog {
+	if o == nil || IsNil(o.ChangeLog) {
 		var ret Changelog
 		return ret
 	}
-	return *o.Changelog
+	return *o.ChangeLog
 }
 
-// GetChangelogOk returns a tuple with the Changelog field value if set, nil otherwise
+// GetChangeLogOk returns a tuple with the ChangeLog field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Stream) GetChangelogOk() (*Changelog, bool) {
-	if o == nil || IsNil(o.Changelog) {
+func (o *Stream) GetChangeLogOk() (*Changelog, bool) {
+	if o == nil || IsNil(o.ChangeLog) {
 		return nil, false
 	}
-	return o.Changelog, true
+	return o.ChangeLog, true
 }
 
-// HasChangelog returns a boolean if a field has been set.
-func (o *Stream) HasChangelog() bool {
-	if o != nil && !IsNil(o.Changelog) {
+// HasChangeLog returns a boolean if a field has been set.
+func (o *Stream) HasChangeLog() bool {
+	if o != nil && !IsNil(o.ChangeLog) {
 		return true
 	}
 
 	return false
 }
 
-// SetChangelog gets a reference to the given Changelog and assigns it to the Changelog field.
-func (o *Stream) SetChangelog(v Changelog) {
-	o.Changelog = &v
+// SetChangeLog gets a reference to the given Changelog and assigns it to the ChangeLog field.
+func (o *Stream) SetChangeLog(v Changelog) {
+	o.ChangeLog = &v
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
@@ -434,8 +434,8 @@ func (o Stream) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.StreamSubscriptionsCount) {
 		toSerialize["streamSubscriptionsCount"] = o.StreamSubscriptionsCount
 	}
-	if !IsNil(o.Changelog) {
-		toSerialize["changelog"] = o.Changelog
+	if !IsNil(o.ChangeLog) {
+		toSerialize["changeLog"] = o.ChangeLog
 	}
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
@@ -479,7 +479,7 @@ func (o *Stream) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "state")
 		delete(additionalProperties, "assetsCount")
 		delete(additionalProperties, "streamSubscriptionsCount")
-		delete(additionalProperties, "changelog")
+		delete(additionalProperties, "changeLog")
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")

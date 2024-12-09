@@ -26,19 +26,8 @@ type CloudRouterPackage struct {
 	TotalIPv4RoutesMax *int32 `json:"totalIPv4RoutesMax,omitempty"`
 	// Cloud Router package BGP IPv6 routes limit
 	TotalIPv6RoutesMax *int32 `json:"totalIPv6RoutesMax,omitempty"`
-	// CloudRouter package static IPv4 routes limit
-	StaticIPv4RoutesMax *int32 `json:"staticIPv4RoutesMax,omitempty"`
-	// CloudRouter package static IPv6 routes limit
-	StaticIPv6RoutesMax *int32 `json:"staticIPv6RoutesMax,omitempty"`
-	// CloudRouter package NACLs limit
-	NaclsMax *int32 `json:"naclsMax,omitempty"`
-	// CloudRouter package NACLs rules limit
-	NaclRulesMax *int32 `json:"naclRulesMax,omitempty"`
-	// CloudRouter package high-available configuration support
-	HaSupported *bool `json:"haSupported,omitempty"`
 	// CloudRouter package route filter support
-	RouteFilterSupported *bool                      `json:"routeFilterSupported,omitempty"`
-	NatType              *CloudRouterPackageNatType `json:"natType,omitempty"`
+	RouteFilterSupported *bool `json:"routeFilterSupported,omitempty"`
 	// CloudRouter package Max Connection limit
 	VcCountMax *int32 `json:"vcCountMax,omitempty"`
 	// CloudRouter package Max CloudRouter limit
@@ -260,166 +249,6 @@ func (o *CloudRouterPackage) SetTotalIPv6RoutesMax(v int32) {
 	o.TotalIPv6RoutesMax = &v
 }
 
-// GetStaticIPv4RoutesMax returns the StaticIPv4RoutesMax field value if set, zero value otherwise.
-func (o *CloudRouterPackage) GetStaticIPv4RoutesMax() int32 {
-	if o == nil || IsNil(o.StaticIPv4RoutesMax) {
-		var ret int32
-		return ret
-	}
-	return *o.StaticIPv4RoutesMax
-}
-
-// GetStaticIPv4RoutesMaxOk returns a tuple with the StaticIPv4RoutesMax field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CloudRouterPackage) GetStaticIPv4RoutesMaxOk() (*int32, bool) {
-	if o == nil || IsNil(o.StaticIPv4RoutesMax) {
-		return nil, false
-	}
-	return o.StaticIPv4RoutesMax, true
-}
-
-// HasStaticIPv4RoutesMax returns a boolean if a field has been set.
-func (o *CloudRouterPackage) HasStaticIPv4RoutesMax() bool {
-	if o != nil && !IsNil(o.StaticIPv4RoutesMax) {
-		return true
-	}
-
-	return false
-}
-
-// SetStaticIPv4RoutesMax gets a reference to the given int32 and assigns it to the StaticIPv4RoutesMax field.
-func (o *CloudRouterPackage) SetStaticIPv4RoutesMax(v int32) {
-	o.StaticIPv4RoutesMax = &v
-}
-
-// GetStaticIPv6RoutesMax returns the StaticIPv6RoutesMax field value if set, zero value otherwise.
-func (o *CloudRouterPackage) GetStaticIPv6RoutesMax() int32 {
-	if o == nil || IsNil(o.StaticIPv6RoutesMax) {
-		var ret int32
-		return ret
-	}
-	return *o.StaticIPv6RoutesMax
-}
-
-// GetStaticIPv6RoutesMaxOk returns a tuple with the StaticIPv6RoutesMax field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CloudRouterPackage) GetStaticIPv6RoutesMaxOk() (*int32, bool) {
-	if o == nil || IsNil(o.StaticIPv6RoutesMax) {
-		return nil, false
-	}
-	return o.StaticIPv6RoutesMax, true
-}
-
-// HasStaticIPv6RoutesMax returns a boolean if a field has been set.
-func (o *CloudRouterPackage) HasStaticIPv6RoutesMax() bool {
-	if o != nil && !IsNil(o.StaticIPv6RoutesMax) {
-		return true
-	}
-
-	return false
-}
-
-// SetStaticIPv6RoutesMax gets a reference to the given int32 and assigns it to the StaticIPv6RoutesMax field.
-func (o *CloudRouterPackage) SetStaticIPv6RoutesMax(v int32) {
-	o.StaticIPv6RoutesMax = &v
-}
-
-// GetNaclsMax returns the NaclsMax field value if set, zero value otherwise.
-func (o *CloudRouterPackage) GetNaclsMax() int32 {
-	if o == nil || IsNil(o.NaclsMax) {
-		var ret int32
-		return ret
-	}
-	return *o.NaclsMax
-}
-
-// GetNaclsMaxOk returns a tuple with the NaclsMax field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CloudRouterPackage) GetNaclsMaxOk() (*int32, bool) {
-	if o == nil || IsNil(o.NaclsMax) {
-		return nil, false
-	}
-	return o.NaclsMax, true
-}
-
-// HasNaclsMax returns a boolean if a field has been set.
-func (o *CloudRouterPackage) HasNaclsMax() bool {
-	if o != nil && !IsNil(o.NaclsMax) {
-		return true
-	}
-
-	return false
-}
-
-// SetNaclsMax gets a reference to the given int32 and assigns it to the NaclsMax field.
-func (o *CloudRouterPackage) SetNaclsMax(v int32) {
-	o.NaclsMax = &v
-}
-
-// GetNaclRulesMax returns the NaclRulesMax field value if set, zero value otherwise.
-func (o *CloudRouterPackage) GetNaclRulesMax() int32 {
-	if o == nil || IsNil(o.NaclRulesMax) {
-		var ret int32
-		return ret
-	}
-	return *o.NaclRulesMax
-}
-
-// GetNaclRulesMaxOk returns a tuple with the NaclRulesMax field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CloudRouterPackage) GetNaclRulesMaxOk() (*int32, bool) {
-	if o == nil || IsNil(o.NaclRulesMax) {
-		return nil, false
-	}
-	return o.NaclRulesMax, true
-}
-
-// HasNaclRulesMax returns a boolean if a field has been set.
-func (o *CloudRouterPackage) HasNaclRulesMax() bool {
-	if o != nil && !IsNil(o.NaclRulesMax) {
-		return true
-	}
-
-	return false
-}
-
-// SetNaclRulesMax gets a reference to the given int32 and assigns it to the NaclRulesMax field.
-func (o *CloudRouterPackage) SetNaclRulesMax(v int32) {
-	o.NaclRulesMax = &v
-}
-
-// GetHaSupported returns the HaSupported field value if set, zero value otherwise.
-func (o *CloudRouterPackage) GetHaSupported() bool {
-	if o == nil || IsNil(o.HaSupported) {
-		var ret bool
-		return ret
-	}
-	return *o.HaSupported
-}
-
-// GetHaSupportedOk returns a tuple with the HaSupported field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CloudRouterPackage) GetHaSupportedOk() (*bool, bool) {
-	if o == nil || IsNil(o.HaSupported) {
-		return nil, false
-	}
-	return o.HaSupported, true
-}
-
-// HasHaSupported returns a boolean if a field has been set.
-func (o *CloudRouterPackage) HasHaSupported() bool {
-	if o != nil && !IsNil(o.HaSupported) {
-		return true
-	}
-
-	return false
-}
-
-// SetHaSupported gets a reference to the given bool and assigns it to the HaSupported field.
-func (o *CloudRouterPackage) SetHaSupported(v bool) {
-	o.HaSupported = &v
-}
-
 // GetRouteFilterSupported returns the RouteFilterSupported field value if set, zero value otherwise.
 func (o *CloudRouterPackage) GetRouteFilterSupported() bool {
 	if o == nil || IsNil(o.RouteFilterSupported) {
@@ -450,38 +279,6 @@ func (o *CloudRouterPackage) HasRouteFilterSupported() bool {
 // SetRouteFilterSupported gets a reference to the given bool and assigns it to the RouteFilterSupported field.
 func (o *CloudRouterPackage) SetRouteFilterSupported(v bool) {
 	o.RouteFilterSupported = &v
-}
-
-// GetNatType returns the NatType field value if set, zero value otherwise.
-func (o *CloudRouterPackage) GetNatType() CloudRouterPackageNatType {
-	if o == nil || IsNil(o.NatType) {
-		var ret CloudRouterPackageNatType
-		return ret
-	}
-	return *o.NatType
-}
-
-// GetNatTypeOk returns a tuple with the NatType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CloudRouterPackage) GetNatTypeOk() (*CloudRouterPackageNatType, bool) {
-	if o == nil || IsNil(o.NatType) {
-		return nil, false
-	}
-	return o.NatType, true
-}
-
-// HasNatType returns a boolean if a field has been set.
-func (o *CloudRouterPackage) HasNatType() bool {
-	if o != nil && !IsNil(o.NatType) {
-		return true
-	}
-
-	return false
-}
-
-// SetNatType gets a reference to the given CloudRouterPackageNatType and assigns it to the NatType field.
-func (o *CloudRouterPackage) SetNatType(v CloudRouterPackageNatType) {
-	o.NatType = &v
 }
 
 // GetVcCountMax returns the VcCountMax field value if set, zero value otherwise.
@@ -640,26 +437,8 @@ func (o CloudRouterPackage) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.TotalIPv6RoutesMax) {
 		toSerialize["totalIPv6RoutesMax"] = o.TotalIPv6RoutesMax
 	}
-	if !IsNil(o.StaticIPv4RoutesMax) {
-		toSerialize["staticIPv4RoutesMax"] = o.StaticIPv4RoutesMax
-	}
-	if !IsNil(o.StaticIPv6RoutesMax) {
-		toSerialize["staticIPv6RoutesMax"] = o.StaticIPv6RoutesMax
-	}
-	if !IsNil(o.NaclsMax) {
-		toSerialize["naclsMax"] = o.NaclsMax
-	}
-	if !IsNil(o.NaclRulesMax) {
-		toSerialize["naclRulesMax"] = o.NaclRulesMax
-	}
-	if !IsNil(o.HaSupported) {
-		toSerialize["haSupported"] = o.HaSupported
-	}
 	if !IsNil(o.RouteFilterSupported) {
 		toSerialize["routeFilterSupported"] = o.RouteFilterSupported
-	}
-	if !IsNil(o.NatType) {
-		toSerialize["natType"] = o.NatType
 	}
 	if !IsNil(o.VcCountMax) {
 		toSerialize["vcCountMax"] = o.VcCountMax
@@ -701,13 +480,7 @@ func (o *CloudRouterPackage) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "totalIPv4RoutesMax")
 		delete(additionalProperties, "totalIPv6RoutesMax")
-		delete(additionalProperties, "staticIPv4RoutesMax")
-		delete(additionalProperties, "staticIPv6RoutesMax")
-		delete(additionalProperties, "naclsMax")
-		delete(additionalProperties, "naclRulesMax")
-		delete(additionalProperties, "haSupported")
 		delete(additionalProperties, "routeFilterSupported")
-		delete(additionalProperties, "natType")
 		delete(additionalProperties, "vcCountMax")
 		delete(additionalProperties, "crCountMax")
 		delete(additionalProperties, "vcBandwidthMax")

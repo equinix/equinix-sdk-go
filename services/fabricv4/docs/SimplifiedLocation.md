@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**MetroHref** | Pointer to **string** |  | [optional] 
 **Region** | Pointer to **string** |  | [optional] 
 **MetroName** | Pointer to **string** |  | [optional] 
 **MetroCode** | Pointer to **string** |  | [optional] 
-**MetroHref** | Pointer to **string** |  | [optional] 
 **Ibx** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -28,6 +28,31 @@ will change when the set of required properties is changed
 NewSimplifiedLocationWithDefaults instantiates a new SimplifiedLocation object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetMetroHref
+
+`func (o *SimplifiedLocation) GetMetroHref() string`
+
+GetMetroHref returns the MetroHref field if non-nil, zero value otherwise.
+
+### GetMetroHrefOk
+
+`func (o *SimplifiedLocation) GetMetroHrefOk() (*string, bool)`
+
+GetMetroHrefOk returns a tuple with the MetroHref field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMetroHref
+
+`func (o *SimplifiedLocation) SetMetroHref(v string)`
+
+SetMetroHref sets MetroHref field to given value.
+
+### HasMetroHref
+
+`func (o *SimplifiedLocation) HasMetroHref() bool`
+
+HasMetroHref returns a boolean if a field has been set.
 
 ### GetRegion
 
@@ -103,31 +128,6 @@ SetMetroCode sets MetroCode field to given value.
 `func (o *SimplifiedLocation) HasMetroCode() bool`
 
 HasMetroCode returns a boolean if a field has been set.
-
-### GetMetroHref
-
-`func (o *SimplifiedLocation) GetMetroHref() string`
-
-GetMetroHref returns the MetroHref field if non-nil, zero value otherwise.
-
-### GetMetroHrefOk
-
-`func (o *SimplifiedLocation) GetMetroHrefOk() (*string, bool)`
-
-GetMetroHrefOk returns a tuple with the MetroHref field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMetroHref
-
-`func (o *SimplifiedLocation) SetMetroHref(v string)`
-
-SetMetroHref sets MetroHref field to given value.
-
-### HasMetroHref
-
-`func (o *SimplifiedLocation) HasMetroHref() bool`
-
-HasMetroHref returns a boolean if a field has been set.
 
 ### GetIbx
 

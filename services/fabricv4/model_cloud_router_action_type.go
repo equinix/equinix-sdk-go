@@ -12,7 +12,7 @@ import (
 	"fmt"
 )
 
-// CloudRouterActionType Cloud Router action type
+// CloudRouterActionType Cloud router action type
 type CloudRouterActionType string
 
 // List of CloudRouterActionType

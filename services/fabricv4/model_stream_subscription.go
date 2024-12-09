@@ -28,11 +28,13 @@ type StreamSubscription struct {
 	Project     *Project                 `json:"project,omitempty"`
 	State       *StreamSubscriptionState `json:"state,omitempty"`
 	// Stream subscription enabled status
-	Enabled              *bool                     `json:"enabled,omitempty"`
-	Stream               *StreamTarget             `json:"stream,omitempty"`
-	Filters              *StreamSubscriptionFilter `json:"filters,omitempty"`
-	Sink                 *StreamSubscriptionSink   `json:"sink,omitempty"`
-	Changelog            *Changelog                `json:"changelog,omitempty"`
+	Enabled              *bool                       `json:"enabled,omitempty"`
+	Stream               *StreamTarget               `json:"stream,omitempty"`
+	Filters              *StreamSubscriptionFilter   `json:"filters,omitempty"`
+	MetricSelector       *StreamSubscriptionSelector `json:"metricSelector,omitempty"`
+	EventSelector        *StreamSubscriptionSelector `json:"eventSelector,omitempty"`
+	Sink                 *StreamSubscriptionSink     `json:"sink,omitempty"`
+	ChangeLog            *Changelog                  `json:"changeLog,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -375,6 +377,70 @@ func (o *StreamSubscription) SetFilters(v StreamSubscriptionFilter) {
 	o.Filters = &v
 }
 
+// GetMetricSelector returns the MetricSelector field value if set, zero value otherwise.
+func (o *StreamSubscription) GetMetricSelector() StreamSubscriptionSelector {
+	if o == nil || IsNil(o.MetricSelector) {
+		var ret StreamSubscriptionSelector
+		return ret
+	}
+	return *o.MetricSelector
+}
+
+// GetMetricSelectorOk returns a tuple with the MetricSelector field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamSubscription) GetMetricSelectorOk() (*StreamSubscriptionSelector, bool) {
+	if o == nil || IsNil(o.MetricSelector) {
+		return nil, false
+	}
+	return o.MetricSelector, true
+}
+
+// HasMetricSelector returns a boolean if a field has been set.
+func (o *StreamSubscription) HasMetricSelector() bool {
+	if o != nil && !IsNil(o.MetricSelector) {
+		return true
+	}
+
+	return false
+}
+
+// SetMetricSelector gets a reference to the given StreamSubscriptionSelector and assigns it to the MetricSelector field.
+func (o *StreamSubscription) SetMetricSelector(v StreamSubscriptionSelector) {
+	o.MetricSelector = &v
+}
+
+// GetEventSelector returns the EventSelector field value if set, zero value otherwise.
+func (o *StreamSubscription) GetEventSelector() StreamSubscriptionSelector {
+	if o == nil || IsNil(o.EventSelector) {
+		var ret StreamSubscriptionSelector
+		return ret
+	}
+	return *o.EventSelector
+}
+
+// GetEventSelectorOk returns a tuple with the EventSelector field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamSubscription) GetEventSelectorOk() (*StreamSubscriptionSelector, bool) {
+	if o == nil || IsNil(o.EventSelector) {
+		return nil, false
+	}
+	return o.EventSelector, true
+}
+
+// HasEventSelector returns a boolean if a field has been set.
+func (o *StreamSubscription) HasEventSelector() bool {
+	if o != nil && !IsNil(o.EventSelector) {
+		return true
+	}
+
+	return false
+}
+
+// SetEventSelector gets a reference to the given StreamSubscriptionSelector and assigns it to the EventSelector field.
+func (o *StreamSubscription) SetEventSelector(v StreamSubscriptionSelector) {
+	o.EventSelector = &v
+}
+
 // GetSink returns the Sink field value if set, zero value otherwise.
 func (o *StreamSubscription) GetSink() StreamSubscriptionSink {
 	if o == nil || IsNil(o.Sink) {
@@ -407,36 +473,36 @@ func (o *StreamSubscription) SetSink(v StreamSubscriptionSink) {
 	o.Sink = &v
 }
 
-// GetChangelog returns the Changelog field value if set, zero value otherwise.
-func (o *StreamSubscription) GetChangelog() Changelog {
-	if o == nil || IsNil(o.Changelog) {
+// GetChangeLog returns the ChangeLog field value if set, zero value otherwise.
+func (o *StreamSubscription) GetChangeLog() Changelog {
+	if o == nil || IsNil(o.ChangeLog) {
 		var ret Changelog
 		return ret
 	}
-	return *o.Changelog
+	return *o.ChangeLog
 }
 
-// GetChangelogOk returns a tuple with the Changelog field value if set, nil otherwise
+// GetChangeLogOk returns a tuple with the ChangeLog field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *StreamSubscription) GetChangelogOk() (*Changelog, bool) {
-	if o == nil || IsNil(o.Changelog) {
+func (o *StreamSubscription) GetChangeLogOk() (*Changelog, bool) {
+	if o == nil || IsNil(o.ChangeLog) {
 		return nil, false
 	}
-	return o.Changelog, true
+	return o.ChangeLog, true
 }
 
-// HasChangelog returns a boolean if a field has been set.
-func (o *StreamSubscription) HasChangelog() bool {
-	if o != nil && !IsNil(o.Changelog) {
+// HasChangeLog returns a boolean if a field has been set.
+func (o *StreamSubscription) HasChangeLog() bool {
+	if o != nil && !IsNil(o.ChangeLog) {
 		return true
 	}
 
 	return false
 }
 
-// SetChangelog gets a reference to the given Changelog and assigns it to the Changelog field.
-func (o *StreamSubscription) SetChangelog(v Changelog) {
-	o.Changelog = &v
+// SetChangeLog gets a reference to the given Changelog and assigns it to the ChangeLog field.
+func (o *StreamSubscription) SetChangeLog(v Changelog) {
+	o.ChangeLog = &v
 }
 
 func (o StreamSubscription) MarshalJSON() ([]byte, error) {
@@ -479,11 +545,17 @@ func (o StreamSubscription) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Filters) {
 		toSerialize["filters"] = o.Filters
 	}
+	if !IsNil(o.MetricSelector) {
+		toSerialize["metricSelector"] = o.MetricSelector
+	}
+	if !IsNil(o.EventSelector) {
+		toSerialize["eventSelector"] = o.EventSelector
+	}
 	if !IsNil(o.Sink) {
 		toSerialize["sink"] = o.Sink
 	}
-	if !IsNil(o.Changelog) {
-		toSerialize["changelog"] = o.Changelog
+	if !IsNil(o.ChangeLog) {
+		toSerialize["changeLog"] = o.ChangeLog
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -517,8 +589,10 @@ func (o *StreamSubscription) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "enabled")
 		delete(additionalProperties, "stream")
 		delete(additionalProperties, "filters")
+		delete(additionalProperties, "metricSelector")
+		delete(additionalProperties, "eventSelector")
 		delete(additionalProperties, "sink")
-		delete(additionalProperties, "changelog")
+		delete(additionalProperties, "changeLog")
 		o.AdditionalProperties = additionalProperties
 	}
 

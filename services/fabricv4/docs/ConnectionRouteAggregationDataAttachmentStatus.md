@@ -1,4 +1,4 @@
-# ConnectionRouteFilterDataAttachmentStatus
+# ConnectionRouteAggregationDataAttachmentStatus
 
 ## Enum
 

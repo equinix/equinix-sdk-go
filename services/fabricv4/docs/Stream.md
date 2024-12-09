@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **State** | Pointer to **string** | Stream provision state | [optional] 
 **AssetsCount** | Pointer to **int32** | Stream assets count | [optional] 
 **StreamSubscriptionsCount** | Pointer to **int32** | Stream subscriptions count | [optional] 
-**Changelog** | Pointer to [**Changelog**](Changelog.md) |  | [optional] 
+**ChangeLog** | Pointer to [**Changelog**](Changelog.md) |  | [optional] 
 **Type** | Pointer to [**StreamPostRequestType**](StreamPostRequestType.md) |  | [optional] 
 **Name** | Pointer to **string** | Customer-provided stream name | [optional] 
 **Description** | Pointer to **string** | Customer-provided stream description | [optional] 
@@ -160,30 +160,30 @@ SetStreamSubscriptionsCount sets StreamSubscriptionsCount field to given value.
 
 HasStreamSubscriptionsCount returns a boolean if a field has been set.
 
-### GetChangelog
+### GetChangeLog
 
-`func (o *Stream) GetChangelog() Changelog`
+`func (o *Stream) GetChangeLog() Changelog`
 
-GetChangelog returns the Changelog field if non-nil, zero value otherwise.
+GetChangeLog returns the ChangeLog field if non-nil, zero value otherwise.
 
-### GetChangelogOk
+### GetChangeLogOk
 
-`func (o *Stream) GetChangelogOk() (*Changelog, bool)`
+`func (o *Stream) GetChangeLogOk() (*Changelog, bool)`
 
-GetChangelogOk returns a tuple with the Changelog field if it's non-nil, zero value otherwise
+GetChangeLogOk returns a tuple with the ChangeLog field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetChangelog
+### SetChangeLog
 
-`func (o *Stream) SetChangelog(v Changelog)`
+`func (o *Stream) SetChangeLog(v Changelog)`
 
-SetChangelog sets Changelog field to given value.
+SetChangeLog sets ChangeLog field to given value.
 
-### HasChangelog
+### HasChangeLog
 
-`func (o *Stream) HasChangelog() bool`
+`func (o *Stream) HasChangeLog() bool`
 
-HasChangelog returns a boolean if a field has been set.
+HasChangeLog returns a boolean if a field has been set.
 
 ### GetType
 

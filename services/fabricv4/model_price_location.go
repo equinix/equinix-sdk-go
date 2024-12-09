@@ -17,6 +17,7 @@ var _ MappedNullable = &PriceLocation{}
 // PriceLocation struct for PriceLocation
 type PriceLocation struct {
 	MetroCode            *string `json:"metroCode,omitempty"`
+	Ibx                  *string `json:"ibx,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -71,6 +72,38 @@ func (o *PriceLocation) SetMetroCode(v string) {
 	o.MetroCode = &v
 }
 
+// GetIbx returns the Ibx field value if set, zero value otherwise.
+func (o *PriceLocation) GetIbx() string {
+	if o == nil || IsNil(o.Ibx) {
+		var ret string
+		return ret
+	}
+	return *o.Ibx
+}
+
+// GetIbxOk returns a tuple with the Ibx field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PriceLocation) GetIbxOk() (*string, bool) {
+	if o == nil || IsNil(o.Ibx) {
+		return nil, false
+	}
+	return o.Ibx, true
+}
+
+// HasIbx returns a boolean if a field has been set.
+func (o *PriceLocation) HasIbx() bool {
+	if o != nil && !IsNil(o.Ibx) {
+		return true
+	}
+
+	return false
+}
+
+// SetIbx gets a reference to the given string and assigns it to the Ibx field.
+func (o *PriceLocation) SetIbx(v string) {
+	o.Ibx = &v
+}
+
 func (o PriceLocation) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -83,6 +116,9 @@ func (o PriceLocation) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.MetroCode) {
 		toSerialize["metroCode"] = o.MetroCode
+	}
+	if !IsNil(o.Ibx) {
+		toSerialize["ibx"] = o.Ibx
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -107,6 +143,7 @@ func (o *PriceLocation) UnmarshalJSON(data []byte) (err error) {
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "metroCode")
+		delete(additionalProperties, "ibx")
 		o.AdditionalProperties = additionalProperties
 	}
 

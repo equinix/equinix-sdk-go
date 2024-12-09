@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 ## CreateServiceToken
 
-> ServiceToken CreateServiceToken(ctx).ServiceToken(serviceToken).Execute()
+> ServiceToken CreateServiceToken(ctx).ServiceToken(serviceToken).DryRun(dryRun).Execute()
 
 Create Service Token
 
@@ -36,10 +36,11 @@ import (
 
 func main() {
 	serviceToken := *openapiclient.NewServiceToken() // ServiceToken | 
+	dryRun := true // bool | option to verify that API calls will succeed (optional) (default to false)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ServiceTokensApi.CreateServiceToken(context.Background()).ServiceToken(serviceToken).Execute()
+	resp, r, err := apiClient.ServiceTokensApi.CreateServiceToken(context.Background()).ServiceToken(serviceToken).DryRun(dryRun).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ServiceTokensApi.CreateServiceToken``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -61,6 +62,7 @@ Other parameters are passed through a pointer to a apiCreateServiceTokenRequest 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **serviceToken** | [**ServiceToken**](ServiceToken.md) |  | 
+ **dryRun** | **bool** | option to verify that API calls will succeed | [default to false]
 
 ### Return type
 

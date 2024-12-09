@@ -73,6 +73,7 @@ type Port struct {
 	Notifications []PortNotification `json:"notifications,omitempty"`
 	// Port additional information
 	AdditionalInfo []PortAdditionalInfo `json:"additionalInfo,omitempty"`
+	EndCustomer    *EndCustomer         `json:"endCustomer,omitempty"`
 	// Physical ports that implement this port
 	PhysicalPorts []PhysicalPort `json:"physicalPorts,omitempty"`
 	// Port Loas
@@ -1321,6 +1322,38 @@ func (o *Port) SetAdditionalInfo(v []PortAdditionalInfo) {
 	o.AdditionalInfo = v
 }
 
+// GetEndCustomer returns the EndCustomer field value if set, zero value otherwise.
+func (o *Port) GetEndCustomer() EndCustomer {
+	if o == nil || IsNil(o.EndCustomer) {
+		var ret EndCustomer
+		return ret
+	}
+	return *o.EndCustomer
+}
+
+// GetEndCustomerOk returns a tuple with the EndCustomer field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Port) GetEndCustomerOk() (*EndCustomer, bool) {
+	if o == nil || IsNil(o.EndCustomer) {
+		return nil, false
+	}
+	return o.EndCustomer, true
+}
+
+// HasEndCustomer returns a boolean if a field has been set.
+func (o *Port) HasEndCustomer() bool {
+	if o != nil && !IsNil(o.EndCustomer) {
+		return true
+	}
+
+	return false
+}
+
+// SetEndCustomer gets a reference to the given EndCustomer and assigns it to the EndCustomer field.
+func (o *Port) SetEndCustomer(v EndCustomer) {
+	o.EndCustomer = &v
+}
+
 // GetPhysicalPorts returns the PhysicalPorts field value if set, zero value otherwise.
 func (o *Port) GetPhysicalPorts() []PhysicalPort {
 	if o == nil || IsNil(o.PhysicalPorts) {
@@ -1509,6 +1542,9 @@ func (o Port) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AdditionalInfo) {
 		toSerialize["additionalInfo"] = o.AdditionalInfo
 	}
+	if !IsNil(o.EndCustomer) {
+		toSerialize["endCustomer"] = o.EndCustomer
+	}
 	if !IsNil(o.PhysicalPorts) {
 		toSerialize["physicalPorts"] = o.PhysicalPorts
 	}
@@ -1575,6 +1611,7 @@ func (o *Port) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "physicalPortQuantity")
 		delete(additionalProperties, "notifications")
 		delete(additionalProperties, "additionalInfo")
+		delete(additionalProperties, "endCustomer")
 		delete(additionalProperties, "physicalPorts")
 		delete(additionalProperties, "loas")
 		o.AdditionalProperties = additionalProperties

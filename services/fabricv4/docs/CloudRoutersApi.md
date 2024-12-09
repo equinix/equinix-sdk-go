@@ -5,25 +5,25 @@ All URIs are relative to *https://api.equinix.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateCloudRouter**](CloudRoutersApi.md#CreateCloudRouter) | **Post** /fabric/v4/routers | Create Routers
-[**CreateCloudRouterAction**](CloudRoutersApi.md#CreateCloudRouterAction) | **Post** /fabric/v4/routers/{routerId}/actions | Route table actions
+[**CreateCloudRouterAction**](CloudRoutersApi.md#CreateCloudRouterAction) | **Post** /fabric/v4/routers/{routerId}/actions | Create Route Table Action
 [**DeleteCloudRouterByUuid**](CloudRoutersApi.md#DeleteCloudRouterByUuid) | **Delete** /fabric/v4/routers/{routerId} | Delete Routers
-[**GetCloudRouterActions**](CloudRoutersApi.md#GetCloudRouterActions) | **Get** /fabric/v4/routers/{routerId}/actions | Get actions
-[**GetCloudRouterActionsByUuid**](CloudRoutersApi.md#GetCloudRouterActionsByUuid) | **Get** /fabric/v4/routers/{routerId}/actions/{actionId} | Get actions
+[**GetCloudRouterActions**](CloudRoutersApi.md#GetCloudRouterActions) | **Get** /fabric/v4/routers/{routerId}/actions | Get Route Table Actions
+[**GetCloudRouterActionsByUuid**](CloudRoutersApi.md#GetCloudRouterActionsByUuid) | **Get** /fabric/v4/routers/{routerId}/actions/{actionId} | Get Route Table Action by ID
 [**GetCloudRouterByUuid**](CloudRoutersApi.md#GetCloudRouterByUuid) | **Get** /fabric/v4/routers/{routerId} | Get Routers
 [**GetCloudRouterPackageByCode**](CloudRoutersApi.md#GetCloudRouterPackageByCode) | **Get** /fabric/v4/routerPackages/{routerPackageCode} | Get Package Details
 [**GetCloudRouterPackages**](CloudRoutersApi.md#GetCloudRouterPackages) | **Get** /fabric/v4/routerPackages | List Packages
 [**SearchCloudRouterRoutes**](CloudRoutersApi.md#SearchCloudRouterRoutes) | **Post** /fabric/v4/routers/{routerId}/routes/search | Search Route Table
 [**SearchCloudRouters**](CloudRoutersApi.md#SearchCloudRouters) | **Post** /fabric/v4/routers/search | Search Routers
-[**SearchConnectionAdvertisedRoutes**](CloudRoutersApi.md#SearchConnectionAdvertisedRoutes) | **Post** /fabric/v4/connections/{connectionId}/advertisedRoutes/search | search advertised
-[**SearchConnectionReceivedRoutes**](CloudRoutersApi.md#SearchConnectionReceivedRoutes) | **Post** /fabric/v4/connections/{connectionId}/receivedRoutes/search | Search received
-[**SearchRouterActions**](CloudRoutersApi.md#SearchRouterActions) | **Post** /fabric/v4/routers/{routerId}/actions/search | Search actions
+[**SearchConnectionAdvertisedRoutes**](CloudRoutersApi.md#SearchConnectionAdvertisedRoutes) | **Post** /fabric/v4/connections/{connectionId}/advertisedRoutes/search | Search Advertised Routes
+[**SearchConnectionReceivedRoutes**](CloudRoutersApi.md#SearchConnectionReceivedRoutes) | **Post** /fabric/v4/connections/{connectionId}/receivedRoutes/search | Search Received Routes
+[**SearchRouterActions**](CloudRoutersApi.md#SearchRouterActions) | **Post** /fabric/v4/routers/{routerId}/actions/search | Search Route Table Actions
 [**UpdateCloudRouterByUuid**](CloudRoutersApi.md#UpdateCloudRouterByUuid) | **Patch** /fabric/v4/routers/{routerId} | Update Routers
 
 
 
 ## CreateCloudRouter
 
-> CloudRouter CreateCloudRouter(ctx).CloudRouterPostRequest(cloudRouterPostRequest).Execute()
+> CloudRouter CreateCloudRouter(ctx).CloudRouterPostRequest(cloudRouterPostRequest).DryRun(dryRun).Execute()
 
 Create Routers
 
@@ -43,10 +43,11 @@ import (
 
 func main() {
 	cloudRouterPostRequest := *openapiclient.NewCloudRouterPostRequest() // CloudRouterPostRequest | 
+	dryRun := true // bool | option to verify that API calls will succeed (optional) (default to false)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CloudRoutersApi.CreateCloudRouter(context.Background()).CloudRouterPostRequest(cloudRouterPostRequest).Execute()
+	resp, r, err := apiClient.CloudRoutersApi.CreateCloudRouter(context.Background()).CloudRouterPostRequest(cloudRouterPostRequest).DryRun(dryRun).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CloudRoutersApi.CreateCloudRouter``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -68,6 +69,7 @@ Other parameters are passed through a pointer to a apiCreateCloudRouterRequest s
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **cloudRouterPostRequest** | [**CloudRouterPostRequest**](CloudRouterPostRequest.md) |  | 
+ **dryRun** | **bool** | option to verify that API calls will succeed | [default to false]
 
 ### Return type
 
@@ -91,7 +93,7 @@ Name | Type | Description  | Notes
 
 > CloudRouterActionResponse CreateCloudRouterAction(ctx, routerId).CloudRouterActionRequest(cloudRouterActionRequest).Execute()
 
-Route table actions
+Create Route Table Action
 
 
 
@@ -231,7 +233,7 @@ Name | Type | Description  | Notes
 
 > CloudRouterActionResponse GetCloudRouterActions(ctx, routerId).State(state).Execute()
 
-Get actions
+Get Route Table Actions
 
 
 
@@ -303,7 +305,7 @@ Name | Type | Description  | Notes
 
 > CloudRouterActionResponse GetCloudRouterActionsByUuid(ctx, routerId, actionId).State(state).Execute()
 
-Get actions
+Get Route Table Action by ID
 
 
 
@@ -724,7 +726,7 @@ Name | Type | Description  | Notes
 
 > ConnectionRouteTableEntrySearchResponse SearchConnectionAdvertisedRoutes(ctx, connectionId).ConnectionRouteSearchRequest(connectionRouteSearchRequest).Execute()
 
-search advertised
+Search Advertised Routes
 
 
 
@@ -796,7 +798,7 @@ Name | Type | Description  | Notes
 
 > ConnectionRouteTableEntrySearchResponse SearchConnectionReceivedRoutes(ctx, connectionId).ConnectionRouteSearchRequest(connectionRouteSearchRequest).Execute()
 
-Search received
+Search Received Routes
 
 
 
@@ -868,7 +870,7 @@ Name | Type | Description  | Notes
 
 > CloudRouterActionsSearchResponse SearchRouterActions(ctx, routerId).CloudRouterActionsSearchRequest(cloudRouterActionsSearchRequest).Execute()
 
-Search actions
+Search Route Table Actions
 
 
 

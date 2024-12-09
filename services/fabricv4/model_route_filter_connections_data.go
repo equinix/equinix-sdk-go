@@ -19,7 +19,7 @@ type RouteFilterConnectionsData struct {
 	// Connection URI
 	Href *string         `json:"href,omitempty"`
 	Type *ConnectionType `json:"type,omitempty"`
-	// Route Filter identifier
+	// Route filter identifier
 	Uuid                 *string `json:"uuid,omitempty"`
 	Name                 *string `json:"name,omitempty"`
 	AdditionalProperties map[string]interface{}

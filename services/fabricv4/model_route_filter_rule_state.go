@@ -12,7 +12,7 @@ import (
 	"fmt"
 )
 
-// RouteFilterRuleState Route Filter Rule status
+// RouteFilterRuleState Route filter rule status
 type RouteFilterRuleState string
 
 // List of RouteFilterRuleState

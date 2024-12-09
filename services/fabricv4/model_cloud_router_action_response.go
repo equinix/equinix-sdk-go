@@ -15,7 +15,7 @@ import (
 // checks if the CloudRouterActionResponse type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &CloudRouterActionResponse{}
 
-// CloudRouterActionResponse Cloud Router actions response object
+// CloudRouterActionResponse Cloud router actions response object
 type CloudRouterActionResponse struct {
 	Type                 CloudRouterActionType    `json:"type"`
 	Uuid                 string                   `json:"uuid"`

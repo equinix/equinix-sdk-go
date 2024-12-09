@@ -12,7 +12,7 @@ import (
 	"fmt"
 )
 
-// ConnectionRouteFilterDataType Route Filter type
+// ConnectionRouteFilterDataType Route filter type
 type ConnectionRouteFilterDataType string
 
 // List of ConnectionRouteFilterData_type

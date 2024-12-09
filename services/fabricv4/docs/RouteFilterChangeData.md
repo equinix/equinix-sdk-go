@@ -5,15 +5,15 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Status** | Pointer to **string** | Current outcome of the change flow | [optional] 
-**CreatedBy** | Pointer to **string** | Created by User Key | [optional] 
+**CreatedBy** | Pointer to **string** | Created by user key | [optional] 
 **CreatedDateTime** | Pointer to **time.Time** | Set when change flow starts | [optional] 
-**UpdatedBy** | Pointer to **string** | Updated by User Key | [optional] 
+**UpdatedBy** | Pointer to **string** | Updated by user key | [optional] 
 **UpdatedDateTime** | Pointer to **time.Time** | Set when change object is updated | [optional] 
 **Information** | Pointer to **string** | Additional information | [optional] 
 **Data** | Pointer to [**RouteFiltersChangeOperation**](RouteFiltersChangeOperation.md) |  | [optional] 
 **Uuid** | **string** | Uniquely identifies a change | 
 **Type** | [**RouteFiltersChangeType**](RouteFiltersChangeType.md) |  | 
-**Href** | Pointer to **string** | Route Filter Change URI | [optional] 
+**Href** | Pointer to **string** | Route filter change URI | [optional] 
 
 ## Methods
 

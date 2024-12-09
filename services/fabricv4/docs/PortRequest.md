@@ -42,6 +42,7 @@ Name | Type | Description | Notes
 **PhysicalPortQuantity** | Pointer to **int32** | Number of physical ports | [optional] 
 **Notifications** | Pointer to [**[]PortNotification**](PortNotification.md) | Notification preferences | [optional] 
 **AdditionalInfo** | Pointer to [**[]PortAdditionalInfo**](PortAdditionalInfo.md) | Port additional information | [optional] 
+**EndCustomer** | Pointer to [**EndCustomer**](EndCustomer.md) |  | [optional] 
 **PhysicalPorts** | Pointer to [**[]PhysicalPort**](PhysicalPort.md) | Physical ports that implement this port | [optional] 
 **Loas** | Pointer to [**[]PortLoa**](PortLoa.md) | Port Loas | [optional] 
 
@@ -973,6 +974,31 @@ SetAdditionalInfo sets AdditionalInfo field to given value.
 `func (o *PortRequest) HasAdditionalInfo() bool`
 
 HasAdditionalInfo returns a boolean if a field has been set.
+
+### GetEndCustomer
+
+`func (o *PortRequest) GetEndCustomer() EndCustomer`
+
+GetEndCustomer returns the EndCustomer field if non-nil, zero value otherwise.
+
+### GetEndCustomerOk
+
+`func (o *PortRequest) GetEndCustomerOk() (*EndCustomer, bool)`
+
+GetEndCustomerOk returns a tuple with the EndCustomer field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEndCustomer
+
+`func (o *PortRequest) SetEndCustomer(v EndCustomer)`
+
+SetEndCustomer sets EndCustomer field to given value.
+
+### HasEndCustomer
+
+`func (o *PortRequest) HasEndCustomer() bool`
+
+HasEndCustomer returns a boolean if a field has been set.
 
 ### GetPhysicalPorts
 

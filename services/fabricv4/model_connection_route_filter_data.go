@@ -16,13 +16,13 @@ var _ MappedNullable = &ConnectionRouteFilterData{}
 
 // ConnectionRouteFilterData struct for ConnectionRouteFilterData
 type ConnectionRouteFilterData struct {
-	// Route Filter URI
+	// Route filter URI
 	Href *string                        `json:"href,omitempty"`
 	Type *ConnectionRouteFilterDataType `json:"type,omitempty"`
 	// Route Filter identifier
-	Uuid                 *string                                    `json:"uuid,omitempty"`
-	AttachmentStatus     *ConnectionRouteFilterDataAttachmentStatus `json:"attachmentStatus,omitempty"`
-	Direction            *ConnectionRouteFilterDataDirection        `json:"direction,omitempty"`
+	Uuid                 *string                                         `json:"uuid,omitempty"`
+	AttachmentStatus     *ConnectionRouteAggregationDataAttachmentStatus `json:"attachmentStatus,omitempty"`
+	Direction            *ConnectionRouteFilterDataDirection             `json:"direction,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -142,9 +142,9 @@ func (o *ConnectionRouteFilterData) SetUuid(v string) {
 }
 
 // GetAttachmentStatus returns the AttachmentStatus field value if set, zero value otherwise.
-func (o *ConnectionRouteFilterData) GetAttachmentStatus() ConnectionRouteFilterDataAttachmentStatus {
+func (o *ConnectionRouteFilterData) GetAttachmentStatus() ConnectionRouteAggregationDataAttachmentStatus {
 	if o == nil || IsNil(o.AttachmentStatus) {
-		var ret ConnectionRouteFilterDataAttachmentStatus
+		var ret ConnectionRouteAggregationDataAttachmentStatus
 		return ret
 	}
 	return *o.AttachmentStatus
@@ -152,7 +152,7 @@ func (o *ConnectionRouteFilterData) GetAttachmentStatus() ConnectionRouteFilterD
 
 // GetAttachmentStatusOk returns a tuple with the AttachmentStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ConnectionRouteFilterData) GetAttachmentStatusOk() (*ConnectionRouteFilterDataAttachmentStatus, bool) {
+func (o *ConnectionRouteFilterData) GetAttachmentStatusOk() (*ConnectionRouteAggregationDataAttachmentStatus, bool) {
 	if o == nil || IsNil(o.AttachmentStatus) {
 		return nil, false
 	}
@@ -168,8 +168,8 @@ func (o *ConnectionRouteFilterData) HasAttachmentStatus() bool {
 	return false
 }
 
-// SetAttachmentStatus gets a reference to the given ConnectionRouteFilterDataAttachmentStatus and assigns it to the AttachmentStatus field.
-func (o *ConnectionRouteFilterData) SetAttachmentStatus(v ConnectionRouteFilterDataAttachmentStatus) {
+// SetAttachmentStatus gets a reference to the given ConnectionRouteAggregationDataAttachmentStatus and assigns it to the AttachmentStatus field.
+func (o *ConnectionRouteFilterData) SetAttachmentStatus(v ConnectionRouteAggregationDataAttachmentStatus) {
 	o.AttachmentStatus = &v
 }
 

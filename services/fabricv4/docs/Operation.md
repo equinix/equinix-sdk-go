@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**BgpIpv4RoutesCount** | Pointer to **int32** | IPV4 Route Count | [optional] 
-**BgpIpv6RoutesCount** | Pointer to **int32** | IPV6 Route Count | [optional] 
+**BgpIpv4RoutesCount** | Pointer to **int32** | IPV4 route count | [optional] 
+**BgpIpv6RoutesCount** | Pointer to **int32** | IPV6 route count | [optional] 
 
 ## Methods
 

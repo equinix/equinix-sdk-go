@@ -20,9 +20,13 @@ type ServiceToken struct {
 	Type *ServiceTokenType `json:"type,omitempty"`
 	// An absolute URL that is the subject of the link's context.
 	Href *string `json:"href,omitempty"`
+	// Deprecated
+	Expiry *int32 `json:"expiry,omitempty"`
 	// Equinix-assigned service token identifier
-	Uuid       *string                 `json:"uuid,omitempty"`
-	IssuerSide *ServiceTokenIssuerSide `json:"issuerSide,omitempty"`
+	Uuid *string `json:"uuid,omitempty"`
+	// information about token side
+	// Deprecated
+	IssuerSide *string `json:"issuerSide,omitempty"`
 	// Customer-provided service token name
 	Name *string `json:"name,omitempty"`
 	// Customer-provided service token description
@@ -122,6 +126,41 @@ func (o *ServiceToken) SetHref(v string) {
 	o.Href = &v
 }
 
+// GetExpiry returns the Expiry field value if set, zero value otherwise.
+// Deprecated
+func (o *ServiceToken) GetExpiry() int32 {
+	if o == nil || IsNil(o.Expiry) {
+		var ret int32
+		return ret
+	}
+	return *o.Expiry
+}
+
+// GetExpiryOk returns a tuple with the Expiry field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// Deprecated
+func (o *ServiceToken) GetExpiryOk() (*int32, bool) {
+	if o == nil || IsNil(o.Expiry) {
+		return nil, false
+	}
+	return o.Expiry, true
+}
+
+// HasExpiry returns a boolean if a field has been set.
+func (o *ServiceToken) HasExpiry() bool {
+	if o != nil && !IsNil(o.Expiry) {
+		return true
+	}
+
+	return false
+}
+
+// SetExpiry gets a reference to the given int32 and assigns it to the Expiry field.
+// Deprecated
+func (o *ServiceToken) SetExpiry(v int32) {
+	o.Expiry = &v
+}
+
 // GetUuid returns the Uuid field value if set, zero value otherwise.
 func (o *ServiceToken) GetUuid() string {
 	if o == nil || IsNil(o.Uuid) {
@@ -155,9 +194,10 @@ func (o *ServiceToken) SetUuid(v string) {
 }
 
 // GetIssuerSide returns the IssuerSide field value if set, zero value otherwise.
-func (o *ServiceToken) GetIssuerSide() ServiceTokenIssuerSide {
+// Deprecated
+func (o *ServiceToken) GetIssuerSide() string {
 	if o == nil || IsNil(o.IssuerSide) {
-		var ret ServiceTokenIssuerSide
+		var ret string
 		return ret
 	}
 	return *o.IssuerSide
@@ -165,7 +205,8 @@ func (o *ServiceToken) GetIssuerSide() ServiceTokenIssuerSide {
 
 // GetIssuerSideOk returns a tuple with the IssuerSide field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ServiceToken) GetIssuerSideOk() (*ServiceTokenIssuerSide, bool) {
+// Deprecated
+func (o *ServiceToken) GetIssuerSideOk() (*string, bool) {
 	if o == nil || IsNil(o.IssuerSide) {
 		return nil, false
 	}
@@ -181,8 +222,9 @@ func (o *ServiceToken) HasIssuerSide() bool {
 	return false
 }
 
-// SetIssuerSide gets a reference to the given ServiceTokenIssuerSide and assigns it to the IssuerSide field.
-func (o *ServiceToken) SetIssuerSide(v ServiceTokenIssuerSide) {
+// SetIssuerSide gets a reference to the given string and assigns it to the IssuerSide field.
+// Deprecated
+func (o *ServiceToken) SetIssuerSide(v string) {
 	o.IssuerSide = &v
 }
 
@@ -490,6 +532,9 @@ func (o ServiceToken) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Href) {
 		toSerialize["href"] = o.Href
 	}
+	if !IsNil(o.Expiry) {
+		toSerialize["expiry"] = o.Expiry
+	}
 	if !IsNil(o.Uuid) {
 		toSerialize["uuid"] = o.Uuid
 	}
@@ -547,6 +592,7 @@ func (o *ServiceToken) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "href")
+		delete(additionalProperties, "expiry")
 		delete(additionalProperties, "uuid")
 		delete(additionalProperties, "issuerSide")
 		delete(additionalProperties, "name")

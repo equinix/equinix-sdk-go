@@ -36,7 +36,7 @@ func (r ApiCreateRouteFilterRuleRequest) Execute() (*RouteFilterRulesData, *http
 }
 
 /*
-CreateRouteFilterRule Create RFRule
+CreateRouteFilterRule Create Route Filter Rule
 
 This API provides capability to create a Route Filter Rule
 
@@ -216,7 +216,7 @@ func (r ApiCreateRouteFilterRulesInBulkRequest) Execute() (*GetRouteFilterRulesR
 }
 
 /*
-CreateRouteFilterRulesInBulk Bulk RFRules
+CreateRouteFilterRulesInBulk Bulk Create Route Filter Rules
 
 This API provides capability to create bulk route filter rules
 
@@ -391,7 +391,7 @@ func (r ApiDeleteRouteFilterRuleByUuidRequest) Execute() (*RouteFilterRulesData,
 }
 
 /*
-DeleteRouteFilterRuleByUuid DeleteRFRule
+DeleteRouteFilterRuleByUuid Delete Route Filter Rule
 
 This API provides capability to delete a Route Filter Rule
 
@@ -564,7 +564,7 @@ func (r ApiGetRouteFilterRuleByUuidRequest) Execute() (*RouteFilterRulesData, *h
 }
 
 /*
-GetRouteFilterRuleByUuid GetRFRule By UUID
+GetRouteFilterRuleByUuid Get Route Filter Rule By UUID
 
 This API provides capability to view a Route Filter Rule by UUID
 
@@ -1098,7 +1098,7 @@ func (r ApiGetRouteFilterRulesRequest) Execute() (*GetRouteFilterRulesResponse, 
 }
 
 /*
-GetRouteFilterRules GetRFRules
+GetRouteFilterRules Get Route Filter Rules
 
 This API provides capability to get all Route Filters Rules for Fabric
 
@@ -1269,7 +1269,7 @@ func (r ApiPatchRouteFilterRuleByUuidRequest) Execute() (*RouteFilterRulesData, 
 }
 
 /*
-PatchRouteFilterRuleByUuid PatchRFilterRule
+PatchRouteFilterRuleByUuid Patch Route Filter Rule
 
 This API provides capability to partially update a Route Filter Rule
 
@@ -1456,7 +1456,7 @@ func (r ApiReplaceRouteFilterRuleByUuidRequest) Execute() (*RouteFilterRulesData
 }
 
 /*
-ReplaceRouteFilterRuleByUuid ReplaceRFRule
+ReplaceRouteFilterRuleByUuid Replace Route Filter Rule
 
 This API provides capability to replace a Route Filter Rule completely
 

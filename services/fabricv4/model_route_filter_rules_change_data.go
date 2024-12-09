@@ -16,7 +16,7 @@ import (
 // checks if the RouteFilterRulesChangeData type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &RouteFilterRulesChangeData{}
 
-// RouteFilterRulesChangeData Current state of latest Route Filter Rules change
+// RouteFilterRulesChangeData Current state of latest route filter rules change
 type RouteFilterRulesChangeData struct {
 	// Current outcome of the change flow
 	Status *string `json:"status,omitempty"`
