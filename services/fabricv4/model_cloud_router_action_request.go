@@ -15,7 +15,7 @@ import (
 // checks if the CloudRouterActionRequest type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &CloudRouterActionRequest{}
 
-// CloudRouterActionRequest Cloud Router action request
+// CloudRouterActionRequest Cloud router action request
 type CloudRouterActionRequest struct {
 	Type                 CloudRouterActionType    `json:"type"`
 	Connection           *RouterActionsConnection `json:"connection,omitempty"`

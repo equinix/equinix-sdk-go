@@ -19,7 +19,8 @@ type StreamAsset struct {
 	// Stream Asset URI
 	Href *string `json:"href,omitempty"`
 	// Equinix-assigned access point identifier
-	Uuid *string `json:"uuid,omitempty"`
+	Uuid *string          `json:"uuid,omitempty"`
+	Type *StreamAssetType `json:"type,omitempty"`
 	// enable metric
 	MetricsEnabled       *bool                        `json:"metricsEnabled,omitempty"`
 	AttachmentStatus     *StreamAssetAttachmentStatus `json:"attachmentStatus,omitempty"`
@@ -109,6 +110,38 @@ func (o *StreamAsset) SetUuid(v string) {
 	o.Uuid = &v
 }
 
+// GetType returns the Type field value if set, zero value otherwise.
+func (o *StreamAsset) GetType() StreamAssetType {
+	if o == nil || IsNil(o.Type) {
+		var ret StreamAssetType
+		return ret
+	}
+	return *o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamAsset) GetTypeOk() (*StreamAssetType, bool) {
+	if o == nil || IsNil(o.Type) {
+		return nil, false
+	}
+	return o.Type, true
+}
+
+// HasType returns a boolean if a field has been set.
+func (o *StreamAsset) HasType() bool {
+	if o != nil && !IsNil(o.Type) {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given StreamAssetType and assigns it to the Type field.
+func (o *StreamAsset) SetType(v StreamAssetType) {
+	o.Type = &v
+}
+
 // GetMetricsEnabled returns the MetricsEnabled field value if set, zero value otherwise.
 func (o *StreamAsset) GetMetricsEnabled() bool {
 	if o == nil || IsNil(o.MetricsEnabled) {
@@ -189,6 +222,9 @@ func (o StreamAsset) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Uuid) {
 		toSerialize["uuid"] = o.Uuid
 	}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
 	if !IsNil(o.MetricsEnabled) {
 		toSerialize["metricsEnabled"] = o.MetricsEnabled
 	}
@@ -219,6 +255,7 @@ func (o *StreamAsset) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "href")
 		delete(additionalProperties, "uuid")
+		delete(additionalProperties, "type")
 		delete(additionalProperties, "metricsEnabled")
 		delete(additionalProperties, "attachmentStatus")
 		o.AdditionalProperties = additionalProperties

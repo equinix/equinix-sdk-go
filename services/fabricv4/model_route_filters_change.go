@@ -15,12 +15,12 @@ import (
 // checks if the RouteFiltersChange type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &RouteFiltersChange{}
 
-// RouteFiltersChange Current state of latest Route Filter change
+// RouteFiltersChange Current state of latest route filter change
 type RouteFiltersChange struct {
 	// Uniquely identifies a change
 	Uuid string                 `json:"uuid"`
 	Type RouteFiltersChangeType `json:"type"`
-	// Route Filter Change URI
+	// Route filter change URI
 	Href                 *string `json:"href,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

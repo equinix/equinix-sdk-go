@@ -11,6 +11,8 @@ Name | Type | Description | Notes
 **Enabled** | Pointer to **bool** | Stream subscription enabled status | [optional] 
 **Stream** | Pointer to [**StreamTarget**](StreamTarget.md) |  | [optional] 
 **Filters** | Pointer to [**StreamSubscriptionFilter**](StreamSubscriptionFilter.md) |  | [optional] 
+**MetricSelector** | Pointer to [**StreamSubscriptionSelector**](StreamSubscriptionSelector.md) |  | [optional] 
+**EventSelector** | Pointer to [**StreamSubscriptionSelector**](StreamSubscriptionSelector.md) |  | [optional] 
 **Sink** | Pointer to [**StreamSubscriptionSink**](StreamSubscriptionSink.md) |  | [optional] 
 
 ## Methods
@@ -206,6 +208,56 @@ SetFilters sets Filters field to given value.
 `func (o *StreamSubscriptionPostRequest) HasFilters() bool`
 
 HasFilters returns a boolean if a field has been set.
+
+### GetMetricSelector
+
+`func (o *StreamSubscriptionPostRequest) GetMetricSelector() StreamSubscriptionSelector`
+
+GetMetricSelector returns the MetricSelector field if non-nil, zero value otherwise.
+
+### GetMetricSelectorOk
+
+`func (o *StreamSubscriptionPostRequest) GetMetricSelectorOk() (*StreamSubscriptionSelector, bool)`
+
+GetMetricSelectorOk returns a tuple with the MetricSelector field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMetricSelector
+
+`func (o *StreamSubscriptionPostRequest) SetMetricSelector(v StreamSubscriptionSelector)`
+
+SetMetricSelector sets MetricSelector field to given value.
+
+### HasMetricSelector
+
+`func (o *StreamSubscriptionPostRequest) HasMetricSelector() bool`
+
+HasMetricSelector returns a boolean if a field has been set.
+
+### GetEventSelector
+
+`func (o *StreamSubscriptionPostRequest) GetEventSelector() StreamSubscriptionSelector`
+
+GetEventSelector returns the EventSelector field if non-nil, zero value otherwise.
+
+### GetEventSelectorOk
+
+`func (o *StreamSubscriptionPostRequest) GetEventSelectorOk() (*StreamSubscriptionSelector, bool)`
+
+GetEventSelectorOk returns a tuple with the EventSelector field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEventSelector
+
+`func (o *StreamSubscriptionPostRequest) SetEventSelector(v StreamSubscriptionSelector)`
+
+SetEventSelector sets EventSelector field to given value.
+
+### HasEventSelector
+
+`func (o *StreamSubscriptionPostRequest) HasEventSelector() bool`
+
+HasEventSelector returns a boolean if a field has been set.
 
 ### GetSink
 

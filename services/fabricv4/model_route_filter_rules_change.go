@@ -15,7 +15,7 @@ import (
 // checks if the RouteFilterRulesChange type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &RouteFilterRulesChange{}
 
-// RouteFilterRulesChange Current state of latest Route Filter Rule change
+// RouteFilterRulesChange Current state of latest route filter rule change
 type RouteFilterRulesChange struct {
 	// Uniquely identifies a change
 	Uuid string                     `json:"uuid"`

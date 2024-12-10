@@ -11,6 +11,8 @@
 
 * `CLOUD_ROUTER_PRODUCT` (value: `"CLOUD_ROUTER_PRODUCT"`)
 
+* `PRECISION_TIME_PRODUCT` (value: `"PRECISION_TIME_PRODUCT"`)
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

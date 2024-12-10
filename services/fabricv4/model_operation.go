@@ -16,9 +16,9 @@ var _ MappedNullable = &Operation{}
 
 // Operation Operation object for router actions
 type Operation struct {
-	// IPV4 Route Count
+	// IPV4 route count
 	BgpIpv4RoutesCount *int32 `json:"bgpIpv4RoutesCount,omitempty"`
-	// IPV6 Route Count
+	// IPV6 route count
 	BgpIpv6RoutesCount   *int32 `json:"bgpIpv6RoutesCount,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

@@ -19,12 +19,14 @@ type GeoScopeType string
 const (
 	GEOSCOPETYPE_CANADA GeoScopeType = "CANADA"
 	GEOSCOPETYPE_CONUS  GeoScopeType = "CONUS"
+	GEOSCOPETYPE_JAPAN  GeoScopeType = "JAPAN"
 )
 
 // All allowed values of GeoScopeType enum
 var AllowedGeoScopeTypeEnumValues = []GeoScopeType{
 	"CANADA",
 	"CONUS",
+	"JAPAN",
 }
 
 func (v *GeoScopeType) UnmarshalJSON(src []byte) error {

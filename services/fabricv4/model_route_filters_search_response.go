@@ -17,7 +17,7 @@ var _ MappedNullable = &RouteFiltersSearchResponse{}
 // RouteFiltersSearchResponse struct for RouteFiltersSearchResponse
 type RouteFiltersSearchResponse struct {
 	Pagination *Pagination `json:"pagination,omitempty"`
-	// List of Route Filters
+	// List of route filters
 	Data                 []RouteFiltersData `json:"data,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

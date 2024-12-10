@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Href** | Pointer to **string** | Equinix assigned response attribute for an absolute URL that is the subject of the link&#39;s context. | [optional] [readonly] 
 **Type** | Pointer to [**PortType**](PortType.md) |  | [optional] 
 **Id** | Pointer to **int32** | Equinix assigned response attribute for Port Id | [optional] 
-**Href** | Pointer to **string** | Equinix assigned response attribute for an absolute URL that is the subject of the link&#39;s context. | [optional] [readonly] 
 **Uuid** | Pointer to **string** | Equinix assigned response attribute for  port identifier | [optional] 
 **Name** | Pointer to **string** | Equinix assigned response attribute for Port name | [optional] 
 **Description** | Pointer to **string** | Equinix assigned response attribute for Port description | [optional] 
@@ -52,6 +52,31 @@ will change when the set of required properties is changed
 NewSimplifiedPortWithDefaults instantiates a new SimplifiedPort object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetHref
+
+`func (o *SimplifiedPort) GetHref() string`
+
+GetHref returns the Href field if non-nil, zero value otherwise.
+
+### GetHrefOk
+
+`func (o *SimplifiedPort) GetHrefOk() (*string, bool)`
+
+GetHrefOk returns a tuple with the Href field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHref
+
+`func (o *SimplifiedPort) SetHref(v string)`
+
+SetHref sets Href field to given value.
+
+### HasHref
+
+`func (o *SimplifiedPort) HasHref() bool`
+
+HasHref returns a boolean if a field has been set.
 
 ### GetType
 
@@ -102,31 +127,6 @@ SetId sets Id field to given value.
 `func (o *SimplifiedPort) HasId() bool`
 
 HasId returns a boolean if a field has been set.
-
-### GetHref
-
-`func (o *SimplifiedPort) GetHref() string`
-
-GetHref returns the Href field if non-nil, zero value otherwise.
-
-### GetHrefOk
-
-`func (o *SimplifiedPort) GetHrefOk() (*string, bool)`
-
-GetHrefOk returns a tuple with the Href field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetHref
-
-`func (o *SimplifiedPort) SetHref(v string)`
-
-SetHref sets Href field to given value.
-
-### HasHref
-
-`func (o *SimplifiedPort) HasHref() bool`
-
-HasHref returns a boolean if a field has been set.
 
 ### GetUuid
 

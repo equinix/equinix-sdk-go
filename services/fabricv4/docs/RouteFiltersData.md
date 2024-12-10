@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Href** | Pointer to **string** | Route Filter URI | [optional] 
-**Type** | Pointer to [**ConnectionRouteFilterDataType**](ConnectionRouteFilterDataType.md) |  | [optional] 
-**Uuid** | Pointer to **string** | Route Filter identifier | [optional] 
+**Href** | Pointer to **string** | Route filter URI | [optional] 
+**Type** | Pointer to [**RouteFiltersBaseType**](RouteFiltersBaseType.md) |  | [optional] 
+**Uuid** | Pointer to **string** | Route filter identifier | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **Description** | Pointer to **string** | Customer-provided connection description | [optional] 
 **State** | Pointer to [**RouteFilterState**](RouteFilterState.md) |  | [optional] 
@@ -63,20 +63,20 @@ HasHref returns a boolean if a field has been set.
 
 ### GetType
 
-`func (o *RouteFiltersData) GetType() ConnectionRouteFilterDataType`
+`func (o *RouteFiltersData) GetType() RouteFiltersBaseType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *RouteFiltersData) GetTypeOk() (*ConnectionRouteFilterDataType, bool)`
+`func (o *RouteFiltersData) GetTypeOk() (*RouteFiltersBaseType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *RouteFiltersData) SetType(v ConnectionRouteFilterDataType)`
+`func (o *RouteFiltersData) SetType(v RouteFiltersBaseType)`
 
 SetType sets Type field to given value.
 

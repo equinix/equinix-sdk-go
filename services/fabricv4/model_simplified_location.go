@@ -16,10 +16,10 @@ var _ MappedNullable = &SimplifiedLocation{}
 
 // SimplifiedLocation struct for SimplifiedLocation
 type SimplifiedLocation struct {
+	MetroHref *string `json:"metroHref,omitempty"`
 	Region    *string `json:"region,omitempty"`
 	MetroName *string `json:"metroName,omitempty"`
 	MetroCode *string `json:"metroCode,omitempty"`
-	MetroHref *string `json:"metroHref,omitempty"`
 	// Deprecated
 	Ibx                  *string `json:"ibx,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -42,6 +42,38 @@ func NewSimplifiedLocation() *SimplifiedLocation {
 func NewSimplifiedLocationWithDefaults() *SimplifiedLocation {
 	this := SimplifiedLocation{}
 	return &this
+}
+
+// GetMetroHref returns the MetroHref field value if set, zero value otherwise.
+func (o *SimplifiedLocation) GetMetroHref() string {
+	if o == nil || IsNil(o.MetroHref) {
+		var ret string
+		return ret
+	}
+	return *o.MetroHref
+}
+
+// GetMetroHrefOk returns a tuple with the MetroHref field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SimplifiedLocation) GetMetroHrefOk() (*string, bool) {
+	if o == nil || IsNil(o.MetroHref) {
+		return nil, false
+	}
+	return o.MetroHref, true
+}
+
+// HasMetroHref returns a boolean if a field has been set.
+func (o *SimplifiedLocation) HasMetroHref() bool {
+	if o != nil && !IsNil(o.MetroHref) {
+		return true
+	}
+
+	return false
+}
+
+// SetMetroHref gets a reference to the given string and assigns it to the MetroHref field.
+func (o *SimplifiedLocation) SetMetroHref(v string) {
+	o.MetroHref = &v
 }
 
 // GetRegion returns the Region field value if set, zero value otherwise.
@@ -140,38 +172,6 @@ func (o *SimplifiedLocation) SetMetroCode(v string) {
 	o.MetroCode = &v
 }
 
-// GetMetroHref returns the MetroHref field value if set, zero value otherwise.
-func (o *SimplifiedLocation) GetMetroHref() string {
-	if o == nil || IsNil(o.MetroHref) {
-		var ret string
-		return ret
-	}
-	return *o.MetroHref
-}
-
-// GetMetroHrefOk returns a tuple with the MetroHref field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SimplifiedLocation) GetMetroHrefOk() (*string, bool) {
-	if o == nil || IsNil(o.MetroHref) {
-		return nil, false
-	}
-	return o.MetroHref, true
-}
-
-// HasMetroHref returns a boolean if a field has been set.
-func (o *SimplifiedLocation) HasMetroHref() bool {
-	if o != nil && !IsNil(o.MetroHref) {
-		return true
-	}
-
-	return false
-}
-
-// SetMetroHref gets a reference to the given string and assigns it to the MetroHref field.
-func (o *SimplifiedLocation) SetMetroHref(v string) {
-	o.MetroHref = &v
-}
-
 // GetIbx returns the Ibx field value if set, zero value otherwise.
 // Deprecated
 func (o *SimplifiedLocation) GetIbx() string {
@@ -217,6 +217,9 @@ func (o SimplifiedLocation) MarshalJSON() ([]byte, error) {
 
 func (o SimplifiedLocation) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.MetroHref) {
+		toSerialize["metroHref"] = o.MetroHref
+	}
 	if !IsNil(o.Region) {
 		toSerialize["region"] = o.Region
 	}
@@ -225,9 +228,6 @@ func (o SimplifiedLocation) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.MetroCode) {
 		toSerialize["metroCode"] = o.MetroCode
-	}
-	if !IsNil(o.MetroHref) {
-		toSerialize["metroHref"] = o.MetroHref
 	}
 	if !IsNil(o.Ibx) {
 		toSerialize["ibx"] = o.Ibx
@@ -254,10 +254,10 @@ func (o *SimplifiedLocation) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "metroHref")
 		delete(additionalProperties, "region")
 		delete(additionalProperties, "metroName")
 		delete(additionalProperties, "metroCode")
-		delete(additionalProperties, "metroHref")
 		delete(additionalProperties, "ibx")
 		o.AdditionalProperties = additionalProperties
 	}

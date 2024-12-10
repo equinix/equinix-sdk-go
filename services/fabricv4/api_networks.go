@@ -23,10 +23,17 @@ type ApiCreateNetworkRequest struct {
 	ctx                context.Context
 	ApiService         *NetworksApiService
 	networkPostRequest *NetworkPostRequest
+	dryRun             *bool
 }
 
 func (r ApiCreateNetworkRequest) NetworkPostRequest(networkPostRequest NetworkPostRequest) ApiCreateNetworkRequest {
 	r.networkPostRequest = &networkPostRequest
+	return r
+}
+
+// option to verify that API calls will succeed
+func (r ApiCreateNetworkRequest) DryRun(dryRun bool) ApiCreateNetworkRequest {
+	r.dryRun = &dryRun
 	return r
 }
 
@@ -74,6 +81,12 @@ func (a *NetworksApiService) CreateNetworkExecute(r ApiCreateNetworkRequest) (*N
 		return localVarReturnValue, nil, reportError("networkPostRequest is required and must be specified")
 	}
 
+	if r.dryRun != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "dryRun", r.dryRun, "")
+	} else {
+		var defaultValue bool = false
+		r.dryRun = &defaultValue
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
 

@@ -35,6 +35,7 @@ type Price struct {
 	IpBlock              *IpBlockPrice           `json:"ipBlock,omitempty"`
 	Router               *FabricCloudRouterPrice `json:"router,omitempty"`
 	Port                 *VirtualPortPrice       `json:"port,omitempty"`
+	TimeService          *TimeServicePrice       `json:"timeService,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -505,6 +506,38 @@ func (o *Price) SetPort(v VirtualPortPrice) {
 	o.Port = &v
 }
 
+// GetTimeService returns the TimeService field value if set, zero value otherwise.
+func (o *Price) GetTimeService() TimeServicePrice {
+	if o == nil || IsNil(o.TimeService) {
+		var ret TimeServicePrice
+		return ret
+	}
+	return *o.TimeService
+}
+
+// GetTimeServiceOk returns a tuple with the TimeService field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Price) GetTimeServiceOk() (*TimeServicePrice, bool) {
+	if o == nil || IsNil(o.TimeService) {
+		return nil, false
+	}
+	return o.TimeService, true
+}
+
+// HasTimeService returns a boolean if a field has been set.
+func (o *Price) HasTimeService() bool {
+	if o != nil && !IsNil(o.TimeService) {
+		return true
+	}
+
+	return false
+}
+
+// SetTimeService gets a reference to the given TimeServicePrice and assigns it to the TimeService field.
+func (o *Price) SetTimeService(v TimeServicePrice) {
+	o.TimeService = &v
+}
+
 func (o Price) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -557,6 +590,9 @@ func (o Price) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Port) {
 		toSerialize["port"] = o.Port
 	}
+	if !IsNil(o.TimeService) {
+		toSerialize["timeService"] = o.TimeService
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -593,6 +629,7 @@ func (o *Price) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "ipBlock")
 		delete(additionalProperties, "router")
 		delete(additionalProperties, "port")
+		delete(additionalProperties, "timeService")
 		o.AdditionalProperties = additionalProperties
 	}
 

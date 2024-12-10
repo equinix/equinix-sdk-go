@@ -35,6 +35,7 @@ type PrecisionTimeServiceResponse struct {
 	Project                  *Project                 `json:"project,omitempty"`
 	Account                  *SimplifiedAccount       `json:"account,omitempty"`
 	Order                    *PrecisionTimeOrder      `json:"order,omitempty"`
+	Pricing                  *PrecisionTimePrice      `json:"pricing,omitempty"`
 	ChangeLog                *Changelog               `json:"changeLog,omitempty"`
 	AdditionalProperties     map[string]interface{}
 }
@@ -439,6 +440,38 @@ func (o *PrecisionTimeServiceResponse) SetOrder(v PrecisionTimeOrder) {
 	o.Order = &v
 }
 
+// GetPricing returns the Pricing field value if set, zero value otherwise.
+func (o *PrecisionTimeServiceResponse) GetPricing() PrecisionTimePrice {
+	if o == nil || IsNil(o.Pricing) {
+		var ret PrecisionTimePrice
+		return ret
+	}
+	return *o.Pricing
+}
+
+// GetPricingOk returns a tuple with the Pricing field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PrecisionTimeServiceResponse) GetPricingOk() (*PrecisionTimePrice, bool) {
+	if o == nil || IsNil(o.Pricing) {
+		return nil, false
+	}
+	return o.Pricing, true
+}
+
+// HasPricing returns a boolean if a field has been set.
+func (o *PrecisionTimeServiceResponse) HasPricing() bool {
+	if o != nil && !IsNil(o.Pricing) {
+		return true
+	}
+
+	return false
+}
+
+// SetPricing gets a reference to the given PrecisionTimePrice and assigns it to the Pricing field.
+func (o *PrecisionTimeServiceResponse) SetPricing(v PrecisionTimePrice) {
+	o.Pricing = &v
+}
+
 // GetChangeLog returns the ChangeLog field value if set, zero value otherwise.
 func (o *PrecisionTimeServiceResponse) GetChangeLog() Changelog {
 	if o == nil || IsNil(o.ChangeLog) {
@@ -510,6 +543,9 @@ func (o PrecisionTimeServiceResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Order) {
 		toSerialize["order"] = o.Order
 	}
+	if !IsNil(o.Pricing) {
+		toSerialize["pricing"] = o.Pricing
+	}
 	if !IsNil(o.ChangeLog) {
 		toSerialize["changeLog"] = o.ChangeLog
 	}
@@ -573,6 +609,7 @@ func (o *PrecisionTimeServiceResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "project")
 		delete(additionalProperties, "account")
 		delete(additionalProperties, "order")
+		delete(additionalProperties, "pricing")
 		delete(additionalProperties, "changeLog")
 		o.AdditionalProperties = additionalProperties
 	}

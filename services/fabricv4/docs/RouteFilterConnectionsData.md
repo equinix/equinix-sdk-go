@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Href** | Pointer to **string** | Connection URI | [optional] 
 **Type** | Pointer to [**ConnectionType**](ConnectionType.md) |  | [optional] 
-**Uuid** | Pointer to **string** | Route Filter identifier | [optional] 
+**Uuid** | Pointer to **string** | Route filter identifier | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 
 ## Methods

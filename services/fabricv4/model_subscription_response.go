@@ -29,8 +29,8 @@ type SubscriptionResponse struct {
 	// Marketplace Offer Id
 	OfferId *string            `json:"offerId,omitempty"`
 	Trial   *SubscriptionTrial `json:"trial,omitempty"`
-	// Subscription Key
-	SubscriptionKey *string `json:"subscriptionKey,omitempty"`
+	// List of available metro
+	MetroCodes []string `json:"metroCodes,omitempty"`
 	// List of entitlements associated with the subscription
 	Entitlements         []SubscriptionEntitlementResponse `json:"entitlements"`
 	Changelog            *Changelog                        `json:"changelog,omitempty"`
@@ -299,36 +299,36 @@ func (o *SubscriptionResponse) SetTrial(v SubscriptionTrial) {
 	o.Trial = &v
 }
 
-// GetSubscriptionKey returns the SubscriptionKey field value if set, zero value otherwise.
-func (o *SubscriptionResponse) GetSubscriptionKey() string {
-	if o == nil || IsNil(o.SubscriptionKey) {
-		var ret string
+// GetMetroCodes returns the MetroCodes field value if set, zero value otherwise.
+func (o *SubscriptionResponse) GetMetroCodes() []string {
+	if o == nil || IsNil(o.MetroCodes) {
+		var ret []string
 		return ret
 	}
-	return *o.SubscriptionKey
+	return o.MetroCodes
 }
 
-// GetSubscriptionKeyOk returns a tuple with the SubscriptionKey field value if set, nil otherwise
+// GetMetroCodesOk returns a tuple with the MetroCodes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SubscriptionResponse) GetSubscriptionKeyOk() (*string, bool) {
-	if o == nil || IsNil(o.SubscriptionKey) {
+func (o *SubscriptionResponse) GetMetroCodesOk() ([]string, bool) {
+	if o == nil || IsNil(o.MetroCodes) {
 		return nil, false
 	}
-	return o.SubscriptionKey, true
+	return o.MetroCodes, true
 }
 
-// HasSubscriptionKey returns a boolean if a field has been set.
-func (o *SubscriptionResponse) HasSubscriptionKey() bool {
-	if o != nil && !IsNil(o.SubscriptionKey) {
+// HasMetroCodes returns a boolean if a field has been set.
+func (o *SubscriptionResponse) HasMetroCodes() bool {
+	if o != nil && !IsNil(o.MetroCodes) {
 		return true
 	}
 
 	return false
 }
 
-// SetSubscriptionKey gets a reference to the given string and assigns it to the SubscriptionKey field.
-func (o *SubscriptionResponse) SetSubscriptionKey(v string) {
-	o.SubscriptionKey = &v
+// SetMetroCodes gets a reference to the given []string and assigns it to the MetroCodes field.
+func (o *SubscriptionResponse) SetMetroCodes(v []string) {
+	o.MetroCodes = v
 }
 
 // GetEntitlements returns the Entitlements field value
@@ -417,8 +417,8 @@ func (o SubscriptionResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Trial) {
 		toSerialize["trial"] = o.Trial
 	}
-	if !IsNil(o.SubscriptionKey) {
-		toSerialize["subscriptionKey"] = o.SubscriptionKey
+	if !IsNil(o.MetroCodes) {
+		toSerialize["metroCodes"] = o.MetroCodes
 	}
 	toSerialize["entitlements"] = o.Entitlements
 	if !IsNil(o.Changelog) {
@@ -477,7 +477,7 @@ func (o *SubscriptionResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "isAutoRenew")
 		delete(additionalProperties, "offerId")
 		delete(additionalProperties, "trial")
-		delete(additionalProperties, "subscriptionKey")
+		delete(additionalProperties, "metroCodes")
 		delete(additionalProperties, "entitlements")
 		delete(additionalProperties, "changelog")
 		o.AdditionalProperties = additionalProperties

@@ -4,15 +4,15 @@ All URIs are relative to *https://api.equinix.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateRouteFilterRule**](RouteFilterRulesApi.md#CreateRouteFilterRule) | **Post** /fabric/v4/routeFilters/{routeFilterId}/routeFilterRules | Create RFRule
-[**CreateRouteFilterRulesInBulk**](RouteFilterRulesApi.md#CreateRouteFilterRulesInBulk) | **Post** /fabric/v4/routeFilters/{routeFilterId}/routeFilterRules/bulk | Bulk RFRules
-[**DeleteRouteFilterRuleByUuid**](RouteFilterRulesApi.md#DeleteRouteFilterRuleByUuid) | **Delete** /fabric/v4/routeFilters/{routeFilterId}/routeFilterRules/{routeFilterRuleId} | DeleteRFRule
-[**GetRouteFilterRuleByUuid**](RouteFilterRulesApi.md#GetRouteFilterRuleByUuid) | **Get** /fabric/v4/routeFilters/{routeFilterId}/routeFilterRules/{routeFilterRuleId} | GetRFRule By UUID
+[**CreateRouteFilterRule**](RouteFilterRulesApi.md#CreateRouteFilterRule) | **Post** /fabric/v4/routeFilters/{routeFilterId}/routeFilterRules | Create Route Filter Rule
+[**CreateRouteFilterRulesInBulk**](RouteFilterRulesApi.md#CreateRouteFilterRulesInBulk) | **Post** /fabric/v4/routeFilters/{routeFilterId}/routeFilterRules/bulk | Bulk Create Route Filter Rules
+[**DeleteRouteFilterRuleByUuid**](RouteFilterRulesApi.md#DeleteRouteFilterRuleByUuid) | **Delete** /fabric/v4/routeFilters/{routeFilterId}/routeFilterRules/{routeFilterRuleId} | Delete Route Filter Rule
+[**GetRouteFilterRuleByUuid**](RouteFilterRulesApi.md#GetRouteFilterRuleByUuid) | **Get** /fabric/v4/routeFilters/{routeFilterId}/routeFilterRules/{routeFilterRuleId} | Get Route Filter Rule By UUID
 [**GetRouteFilterRuleChangeByUuid**](RouteFilterRulesApi.md#GetRouteFilterRuleChangeByUuid) | **Get** /fabric/v4/routeFilters/{routeFilterId}/routeFilterRules/{routeFilterRuleId}/changes/{changeId} | Get Change By ID
 [**GetRouteFilterRuleChanges**](RouteFilterRulesApi.md#GetRouteFilterRuleChanges) | **Get** /fabric/v4/routeFilters/{routeFilterId}/routeFilterRules/{routeFilterRuleId}/changes | Get All Changes
-[**GetRouteFilterRules**](RouteFilterRulesApi.md#GetRouteFilterRules) | **Get** /fabric/v4/routeFilters/{routeFilterId}/routeFilterRules | GetRFRules
-[**PatchRouteFilterRuleByUuid**](RouteFilterRulesApi.md#PatchRouteFilterRuleByUuid) | **Patch** /fabric/v4/routeFilters/{routeFilterId}/routeFilterRules/{routeFilterRuleId} | PatchRFilterRule
-[**ReplaceRouteFilterRuleByUuid**](RouteFilterRulesApi.md#ReplaceRouteFilterRuleByUuid) | **Put** /fabric/v4/routeFilters/{routeFilterId}/routeFilterRules/{routeFilterRuleId} | ReplaceRFRule
+[**GetRouteFilterRules**](RouteFilterRulesApi.md#GetRouteFilterRules) | **Get** /fabric/v4/routeFilters/{routeFilterId}/routeFilterRules | Get Route Filter Rules
+[**PatchRouteFilterRuleByUuid**](RouteFilterRulesApi.md#PatchRouteFilterRuleByUuid) | **Patch** /fabric/v4/routeFilters/{routeFilterId}/routeFilterRules/{routeFilterRuleId} | Patch Route Filter Rule
+[**ReplaceRouteFilterRuleByUuid**](RouteFilterRulesApi.md#ReplaceRouteFilterRuleByUuid) | **Put** /fabric/v4/routeFilters/{routeFilterId}/routeFilterRules/{routeFilterRuleId} | Replace Route Filter Rule
 
 
 
@@ -20,7 +20,7 @@ Method | HTTP request | Description
 
 > RouteFilterRulesData CreateRouteFilterRule(ctx, routeFilterId).RouteFilterRulesBase(routeFilterRulesBase).Execute()
 
-Create RFRule
+Create Route Filter Rule
 
 
 
@@ -92,7 +92,7 @@ Name | Type | Description  | Notes
 
 > GetRouteFilterRulesResponse CreateRouteFilterRulesInBulk(ctx, routeFilterId).RouteFilterRulesPostRequest(routeFilterRulesPostRequest).Execute()
 
-Bulk RFRules
+Bulk Create Route Filter Rules
 
 
 
@@ -164,7 +164,7 @@ Name | Type | Description  | Notes
 
 > RouteFilterRulesData DeleteRouteFilterRuleByUuid(ctx, routeFilterId, routeFilterRuleId).Execute()
 
-DeleteRFRule
+Delete Route Filter Rule
 
 
 
@@ -237,7 +237,7 @@ Name | Type | Description  | Notes
 
 > RouteFilterRulesData GetRouteFilterRuleByUuid(ctx, routeFilterId, routeFilterRuleId).Execute()
 
-GetRFRule By UUID
+Get Route Filter Rule By UUID
 
 
 
@@ -463,7 +463,7 @@ Name | Type | Description  | Notes
 
 > GetRouteFilterRulesResponse GetRouteFilterRules(ctx, routeFilterId).Offset(offset).Limit(limit).Execute()
 
-GetRFRules
+Get Route Filter Rules
 
 
 
@@ -537,7 +537,7 @@ Name | Type | Description  | Notes
 
 > RouteFilterRulesData PatchRouteFilterRuleByUuid(ctx, routeFilterId, routeFilterRuleId).RouteFilterRulesPatchRequestItem(routeFilterRulesPatchRequestItem).Execute()
 
-PatchRFilterRule
+Patch Route Filter Rule
 
 
 
@@ -612,7 +612,7 @@ Name | Type | Description  | Notes
 
 > RouteFilterRulesData ReplaceRouteFilterRuleByUuid(ctx, routeFilterId, routeFilterRuleId).RouteFilterRulesBase(routeFilterRulesBase).Execute()
 
-ReplaceRFRule
+Replace Route Filter Rule
 
 
 

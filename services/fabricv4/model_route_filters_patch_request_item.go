@@ -15,7 +15,7 @@ import (
 // checks if the RouteFiltersPatchRequestItem type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &RouteFiltersPatchRequestItem{}
 
-// RouteFiltersPatchRequestItem Route Filter change operation data
+// RouteFiltersPatchRequestItem Route filter change operation data
 type RouteFiltersPatchRequestItem struct {
 	// Handy shortcut for operation name
 	Op string `json:"op"`

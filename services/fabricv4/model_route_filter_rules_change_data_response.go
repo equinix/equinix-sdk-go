@@ -14,7 +14,7 @@ import (
 // checks if the RouteFilterRulesChangeDataResponse type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &RouteFilterRulesChangeDataResponse{}
 
-// RouteFilterRulesChangeDataResponse List of Route Filter Rule changes
+// RouteFilterRulesChangeDataResponse List of route filter rule changes
 type RouteFilterRulesChangeDataResponse struct {
 	Pagination           *Pagination                  `json:"pagination,omitempty"`
 	Data                 []RouteFilterRulesChangeData `json:"data,omitempty"`

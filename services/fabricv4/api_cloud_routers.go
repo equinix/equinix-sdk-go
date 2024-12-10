@@ -23,10 +23,17 @@ type ApiCreateCloudRouterRequest struct {
 	ctx                    context.Context
 	ApiService             *CloudRoutersApiService
 	cloudRouterPostRequest *CloudRouterPostRequest
+	dryRun                 *bool
 }
 
 func (r ApiCreateCloudRouterRequest) CloudRouterPostRequest(cloudRouterPostRequest CloudRouterPostRequest) ApiCreateCloudRouterRequest {
 	r.cloudRouterPostRequest = &cloudRouterPostRequest
+	return r
+}
+
+// option to verify that API calls will succeed
+func (r ApiCreateCloudRouterRequest) DryRun(dryRun bool) ApiCreateCloudRouterRequest {
+	r.dryRun = &dryRun
 	return r
 }
 
@@ -74,6 +81,12 @@ func (a *CloudRoutersApiService) CreateCloudRouterExecute(r ApiCreateCloudRouter
 		return localVarReturnValue, nil, reportError("cloudRouterPostRequest is required and must be specified")
 	}
 
+	if r.dryRun != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "dryRun", r.dryRun, "")
+	} else {
+		var defaultValue bool = false
+		r.dryRun = &defaultValue
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
 
@@ -201,7 +214,7 @@ func (r ApiCreateCloudRouterActionRequest) Execute() (*CloudRouterActionResponse
 }
 
 /*
-CreateCloudRouterAction Route table actions
+CreateCloudRouterAction Create Route Table Action
 
 This API provides capability to refresh route table and bgp session summary information
 
@@ -528,7 +541,7 @@ func (r ApiGetCloudRouterActionsRequest) Execute() (*CloudRouterActionResponse, 
 }
 
 /*
-GetCloudRouterActions Get actions
+GetCloudRouterActions Get Route Table Actions
 
 This API provides capability to fetch action status
 
@@ -708,7 +721,7 @@ func (r ApiGetCloudRouterActionsByUuidRequest) Execute() (*CloudRouterActionResp
 }
 
 /*
-GetCloudRouterActionsByUuid Get actions
+GetCloudRouterActionsByUuid Get Route Table Action by ID
 
 This API provides capability to fetch action status
 
@@ -1702,7 +1715,7 @@ func (r ApiSearchConnectionAdvertisedRoutesRequest) Execute() (*ConnectionRouteT
 }
 
 /*
-SearchConnectionAdvertisedRoutes search advertised
+SearchConnectionAdvertisedRoutes Search Advertised Routes
 
 The API provides capability to get list of user's advertised routes using search criteria, including optional filtering, pagination and sorting
 
@@ -1860,7 +1873,7 @@ func (r ApiSearchConnectionReceivedRoutesRequest) Execute() (*ConnectionRouteTab
 }
 
 /*
-SearchConnectionReceivedRoutes Search received
+SearchConnectionReceivedRoutes Search Received Routes
 
 The API provides capability to get list of received routes using search criteria, including optional filtering, pagination and sorting
 
@@ -2018,7 +2031,7 @@ func (r ApiSearchRouterActionsRequest) Execute() (*CloudRouterActionsSearchRespo
 }
 
 /*
-SearchRouterActions Search actions
+SearchRouterActions Search Route Table Actions
 
 This API provides capability to refresh route table and bgp session summary information
 

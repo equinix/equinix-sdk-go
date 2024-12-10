@@ -6,8 +6,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | Pointer to [**ServiceTokenType**](ServiceTokenType.md) |  | [optional] 
 **Href** | Pointer to **string** | An absolute URL that is the subject of the link&#39;s context. | [optional] [readonly] 
+**Expiry** | Pointer to **int32** |  | [optional] 
 **Uuid** | Pointer to **string** | Equinix-assigned service token identifier | [optional] 
-**IssuerSide** | Pointer to [**ServiceTokenIssuerSide**](ServiceTokenIssuerSide.md) |  | [optional] 
+**IssuerSide** | Pointer to **string** | information about token side | [optional] 
 **Name** | Pointer to **string** | Customer-provided service token name | [optional] 
 **Description** | Pointer to **string** | Customer-provided service token description | [optional] 
 **ExpirationDateTime** | Pointer to **time.Time** | Expiration date and time of the service token. | [optional] 
@@ -87,6 +88,31 @@ SetHref sets Href field to given value.
 
 HasHref returns a boolean if a field has been set.
 
+### GetExpiry
+
+`func (o *ServiceToken) GetExpiry() int32`
+
+GetExpiry returns the Expiry field if non-nil, zero value otherwise.
+
+### GetExpiryOk
+
+`func (o *ServiceToken) GetExpiryOk() (*int32, bool)`
+
+GetExpiryOk returns a tuple with the Expiry field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExpiry
+
+`func (o *ServiceToken) SetExpiry(v int32)`
+
+SetExpiry sets Expiry field to given value.
+
+### HasExpiry
+
+`func (o *ServiceToken) HasExpiry() bool`
+
+HasExpiry returns a boolean if a field has been set.
+
 ### GetUuid
 
 `func (o *ServiceToken) GetUuid() string`
@@ -114,20 +140,20 @@ HasUuid returns a boolean if a field has been set.
 
 ### GetIssuerSide
 
-`func (o *ServiceToken) GetIssuerSide() ServiceTokenIssuerSide`
+`func (o *ServiceToken) GetIssuerSide() string`
 
 GetIssuerSide returns the IssuerSide field if non-nil, zero value otherwise.
 
 ### GetIssuerSideOk
 
-`func (o *ServiceToken) GetIssuerSideOk() (*ServiceTokenIssuerSide, bool)`
+`func (o *ServiceToken) GetIssuerSideOk() (*string, bool)`
 
 GetIssuerSideOk returns a tuple with the IssuerSide field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIssuerSide
 
-`func (o *ServiceToken) SetIssuerSide(v ServiceTokenIssuerSide)`
+`func (o *ServiceToken) SetIssuerSide(v string)`
 
 SetIssuerSide sets IssuerSide field to given value.
 

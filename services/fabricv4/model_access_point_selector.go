@@ -16,7 +16,9 @@ var _ MappedNullable = &AccessPointSelector{}
 
 // AccessPointSelector List of criteria for selecting network access points with optimal efficiency, security, compatibility, and availability.
 type AccessPointSelector struct {
-	Type                 *AccessPointSelectorType  `json:"type,omitempty"`
+	Type *AccessPointSelectorType `json:"type,omitempty"`
+	// Deprecated
+	HideAssetInfo        *bool                     `json:"hideAssetInfo,omitempty"`
 	Port                 *SimplifiedMetadataEntity `json:"port,omitempty"`
 	LinkProtocol         *SimplifiedLinkProtocol   `json:"linkProtocol,omitempty"`
 	VirtualDevice        *SimplifiedVirtualDevice  `json:"virtualDevice,omitempty"`
@@ -74,6 +76,41 @@ func (o *AccessPointSelector) HasType() bool {
 // SetType gets a reference to the given AccessPointSelectorType and assigns it to the Type field.
 func (o *AccessPointSelector) SetType(v AccessPointSelectorType) {
 	o.Type = &v
+}
+
+// GetHideAssetInfo returns the HideAssetInfo field value if set, zero value otherwise.
+// Deprecated
+func (o *AccessPointSelector) GetHideAssetInfo() bool {
+	if o == nil || IsNil(o.HideAssetInfo) {
+		var ret bool
+		return ret
+	}
+	return *o.HideAssetInfo
+}
+
+// GetHideAssetInfoOk returns a tuple with the HideAssetInfo field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// Deprecated
+func (o *AccessPointSelector) GetHideAssetInfoOk() (*bool, bool) {
+	if o == nil || IsNil(o.HideAssetInfo) {
+		return nil, false
+	}
+	return o.HideAssetInfo, true
+}
+
+// HasHideAssetInfo returns a boolean if a field has been set.
+func (o *AccessPointSelector) HasHideAssetInfo() bool {
+	if o != nil && !IsNil(o.HideAssetInfo) {
+		return true
+	}
+
+	return false
+}
+
+// SetHideAssetInfo gets a reference to the given bool and assigns it to the HideAssetInfo field.
+// Deprecated
+func (o *AccessPointSelector) SetHideAssetInfo(v bool) {
+	o.HideAssetInfo = &v
 }
 
 // GetPort returns the Port field value if set, zero value otherwise.
@@ -249,6 +286,9 @@ func (o AccessPointSelector) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
+	if !IsNil(o.HideAssetInfo) {
+		toSerialize["hideAssetInfo"] = o.HideAssetInfo
+	}
 	if !IsNil(o.Port) {
 		toSerialize["port"] = o.Port
 	}
@@ -287,6 +327,7 @@ func (o *AccessPointSelector) UnmarshalJSON(data []byte) (err error) {
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "type")
+		delete(additionalProperties, "hideAssetInfo")
 		delete(additionalProperties, "port")
 		delete(additionalProperties, "linkProtocol")
 		delete(additionalProperties, "virtualDevice")

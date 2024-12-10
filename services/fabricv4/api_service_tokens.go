@@ -23,10 +23,17 @@ type ApiCreateServiceTokenRequest struct {
 	ctx          context.Context
 	ApiService   *ServiceTokensApiService
 	serviceToken *ServiceToken
+	dryRun       *bool
 }
 
 func (r ApiCreateServiceTokenRequest) ServiceToken(serviceToken ServiceToken) ApiCreateServiceTokenRequest {
 	r.serviceToken = &serviceToken
+	return r
+}
+
+// option to verify that API calls will succeed
+func (r ApiCreateServiceTokenRequest) DryRun(dryRun bool) ApiCreateServiceTokenRequest {
+	r.dryRun = &dryRun
 	return r
 }
 
@@ -74,6 +81,12 @@ func (a *ServiceTokensApiService) CreateServiceTokenExecute(r ApiCreateServiceTo
 		return localVarReturnValue, nil, reportError("serviceToken is required and must be specified")
 	}
 
+	if r.dryRun != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "dryRun", r.dryRun, "")
+	} else {
+		var defaultValue bool = false
+		r.dryRun = &defaultValue
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
 

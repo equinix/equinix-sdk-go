@@ -15,7 +15,7 @@ import (
 // checks if the RouteFilterRulesChangeOperation type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &RouteFilterRulesChangeOperation{}
 
-// RouteFilterRulesChangeOperation Route Filter Rule change operation data
+// RouteFilterRulesChangeOperation Route filter rule change operation data
 type RouteFilterRulesChangeOperation struct {
 	Op RoutingProtocolChangeOperationOp `json:"op"`
 	// path inside document leading to updated parameter

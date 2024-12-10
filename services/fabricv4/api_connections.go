@@ -23,10 +23,17 @@ type ApiCreateConnectionRequest struct {
 	ctx                   context.Context
 	ApiService            *ConnectionsApiService
 	connectionPostRequest *ConnectionPostRequest
+	dryRun                *bool
 }
 
 func (r ApiCreateConnectionRequest) ConnectionPostRequest(connectionPostRequest ConnectionPostRequest) ApiCreateConnectionRequest {
 	r.connectionPostRequest = &connectionPostRequest
+	return r
+}
+
+// option to verify that API calls will succeed
+func (r ApiCreateConnectionRequest) DryRun(dryRun bool) ApiCreateConnectionRequest {
+	r.dryRun = &dryRun
 	return r
 }
 
@@ -74,6 +81,12 @@ func (a *ConnectionsApiService) CreateConnectionExecute(r ApiCreateConnectionReq
 		return localVarReturnValue, nil, reportError("connectionPostRequest is required and must be specified")
 	}
 
+	if r.dryRun != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "dryRun", r.dryRun, "")
+	} else {
+		var defaultValue bool = false
+		r.dryRun = &defaultValue
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
 

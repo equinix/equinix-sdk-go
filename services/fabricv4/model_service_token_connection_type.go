@@ -18,6 +18,7 @@ type ServiceTokenConnectionType string
 // List of ServiceTokenConnection_type
 const (
 	SERVICETOKENCONNECTIONTYPE_EVPL_VC   ServiceTokenConnectionType = "EVPL_VC"
+	SERVICETOKENCONNECTIONTYPE_EPL_VC    ServiceTokenConnectionType = "EPL_VC"
 	SERVICETOKENCONNECTIONTYPE_EVPLAN_VC ServiceTokenConnectionType = "EVPLAN_VC"
 	SERVICETOKENCONNECTIONTYPE_EPLAN_VC  ServiceTokenConnectionType = "EPLAN_VC"
 	SERVICETOKENCONNECTIONTYPE_IPWAN_VC  ServiceTokenConnectionType = "IPWAN_VC"
@@ -26,6 +27,7 @@ const (
 // All allowed values of ServiceTokenConnectionType enum
 var AllowedServiceTokenConnectionTypeEnumValues = []ServiceTokenConnectionType{
 	"EVPL_VC",
+	"EPL_VC",
 	"EVPLAN_VC",
 	"EPLAN_VC",
 	"IPWAN_VC",

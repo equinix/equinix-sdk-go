@@ -5,6 +5,8 @@
 
 * `EVPL_VC` (value: `"EVPL_VC"`)
 
+* `EPL_VC` (value: `"EPL_VC"`)
+
 * `EVPLAN_VC` (value: `"EVPLAN_VC"`)
 
 * `EPLAN_VC` (value: `"EPLAN_VC"`)

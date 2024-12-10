@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | [**ConnectionRouteFilterDataType**](ConnectionRouteFilterDataType.md) |  | 
+**Type** | [**RouteFiltersBaseType**](RouteFiltersBaseType.md) |  | 
 **Name** | **string** |  | 
 **Description** | Pointer to **string** | Customer-provided connection description | [optional] 
 **Project** | [**Project**](Project.md) |  | 
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 ### NewRouteFiltersBase
 
-`func NewRouteFiltersBase(type_ ConnectionRouteFilterDataType, name string, project Project, ) *RouteFiltersBase`
+`func NewRouteFiltersBase(type_ RouteFiltersBaseType, name string, project Project, ) *RouteFiltersBase`
 
 NewRouteFiltersBase instantiates a new RouteFiltersBase object
 This constructor will assign default values to properties that have it defined,
@@ -30,20 +30,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetType
 
-`func (o *RouteFiltersBase) GetType() ConnectionRouteFilterDataType`
+`func (o *RouteFiltersBase) GetType() RouteFiltersBaseType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *RouteFiltersBase) GetTypeOk() (*ConnectionRouteFilterDataType, bool)`
+`func (o *RouteFiltersBase) GetTypeOk() (*RouteFiltersBaseType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *RouteFiltersBase) SetType(v ConnectionRouteFilterDataType)`
+`func (o *RouteFiltersBase) SetType(v RouteFiltersBaseType)`
 
 SetType sets Type field to given value.
 

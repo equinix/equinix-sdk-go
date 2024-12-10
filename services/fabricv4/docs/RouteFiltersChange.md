@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Uuid** | **string** | Uniquely identifies a change | 
 **Type** | [**RouteFiltersChangeType**](RouteFiltersChangeType.md) |  | 
-**Href** | Pointer to **string** | Route Filter Change URI | [optional] 
+**Href** | Pointer to **string** | Route filter change URI | [optional] 
 
 ## Methods
 

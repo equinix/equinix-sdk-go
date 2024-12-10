@@ -16,15 +16,15 @@ import (
 // checks if the RouteFilterChangeData type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &RouteFilterChangeData{}
 
-// RouteFilterChangeData Current state of latest Route Filter change
+// RouteFilterChangeData Current state of latest route filter change
 type RouteFilterChangeData struct {
 	// Current outcome of the change flow
 	Status *string `json:"status,omitempty"`
-	// Created by User Key
+	// Created by user key
 	CreatedBy *string `json:"createdBy,omitempty"`
 	// Set when change flow starts
 	CreatedDateTime *time.Time `json:"createdDateTime,omitempty"`
-	// Updated by User Key
+	// Updated by user key
 	UpdatedBy *string `json:"updatedBy,omitempty"`
 	// Set when change object is updated
 	UpdatedDateTime *time.Time `json:"updatedDateTime,omitempty"`
@@ -34,7 +34,7 @@ type RouteFilterChangeData struct {
 	// Uniquely identifies a change
 	Uuid string                 `json:"uuid"`
 	Type RouteFiltersChangeType `json:"type"`
-	// Route Filter Change URI
+	// Route filter change URI
 	Href                 *string `json:"href,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

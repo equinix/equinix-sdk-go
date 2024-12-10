@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Href** | Pointer to **string** | Stream Asset URI | [optional] [readonly] 
 **Uuid** | Pointer to **string** | Equinix-assigned access point identifier | [optional] 
+**Type** | Pointer to [**StreamAssetType**](StreamAssetType.md) |  | [optional] 
 **MetricsEnabled** | Pointer to **bool** | enable metric | [optional] 
 **AttachmentStatus** | Pointer to [**StreamAssetAttachmentStatus**](StreamAssetAttachmentStatus.md) |  | [optional] 
 
@@ -77,6 +78,31 @@ SetUuid sets Uuid field to given value.
 `func (o *StreamAsset) HasUuid() bool`
 
 HasUuid returns a boolean if a field has been set.
+
+### GetType
+
+`func (o *StreamAsset) GetType() StreamAssetType`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *StreamAsset) GetTypeOk() (*StreamAssetType, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *StreamAsset) SetType(v StreamAssetType)`
+
+SetType sets Type field to given value.
+
+### HasType
+
+`func (o *StreamAsset) HasType() bool`
+
+HasType returns a boolean if a field has been set.
 
 ### GetMetricsEnabled
 

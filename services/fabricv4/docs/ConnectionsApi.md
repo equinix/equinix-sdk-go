@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 ## CreateConnection
 
-> Connection CreateConnection(ctx).ConnectionPostRequest(connectionPostRequest).Execute()
+> Connection CreateConnection(ctx).ConnectionPostRequest(connectionPostRequest).DryRun(dryRun).Execute()
 
 Create Connection
 
@@ -36,10 +36,11 @@ import (
 
 func main() {
 	connectionPostRequest := *openapiclient.NewConnectionPostRequest(openapiclient.ConnectionType("EVPL_VC"), "Name_example", []openapiclient.SimplifiedNotification{*openapiclient.NewSimplifiedNotification(openapiclient.SimplifiedNotification_type("NOTIFICATION"), []string{"Emails_example"})}, int32(123), *openapiclient.NewConnectionSide(), *openapiclient.NewConnectionSide()) // ConnectionPostRequest | 
+	dryRun := true // bool | option to verify that API calls will succeed (optional) (default to false)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ConnectionsApi.CreateConnection(context.Background()).ConnectionPostRequest(connectionPostRequest).Execute()
+	resp, r, err := apiClient.ConnectionsApi.CreateConnection(context.Background()).ConnectionPostRequest(connectionPostRequest).DryRun(dryRun).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ConnectionsApi.CreateConnection``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -61,6 +62,7 @@ Other parameters are passed through a pointer to a apiCreateConnectionRequest st
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **connectionPostRequest** | [**ConnectionPostRequest**](ConnectionPostRequest.md) |  | 
+ **dryRun** | **bool** | option to verify that API calls will succeed | [default to false]
 
 ### Return type
 

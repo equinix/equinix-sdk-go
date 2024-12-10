@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 ## CreateNetwork
 
-> Network CreateNetwork(ctx).NetworkPostRequest(networkPostRequest).Execute()
+> Network CreateNetwork(ctx).NetworkPostRequest(networkPostRequest).DryRun(dryRun).Execute()
 
 Create Network
 
@@ -37,10 +37,11 @@ import (
 
 func main() {
 	networkPostRequest := *openapiclient.NewNetworkPostRequest(openapiclient.NetworkType("EVPLAN"), "Name_example", openapiclient.NetworkScope("REGIONAL"), []openapiclient.SimplifiedNotification{*openapiclient.NewSimplifiedNotification(openapiclient.SimplifiedNotification_type("NOTIFICATION"), []string{"Emails_example"})}) // NetworkPostRequest | 
+	dryRun := true // bool | option to verify that API calls will succeed (optional) (default to false)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.NetworksApi.CreateNetwork(context.Background()).NetworkPostRequest(networkPostRequest).Execute()
+	resp, r, err := apiClient.NetworksApi.CreateNetwork(context.Background()).NetworkPostRequest(networkPostRequest).DryRun(dryRun).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `NetworksApi.CreateNetwork``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -62,6 +63,7 @@ Other parameters are passed through a pointer to a apiCreateNetworkRequest struc
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **networkPostRequest** | [**NetworkPostRequest**](NetworkPostRequest.md) |  | 
+ **dryRun** | **bool** | option to verify that API calls will succeed | [default to false]
 
 ### Return type
 

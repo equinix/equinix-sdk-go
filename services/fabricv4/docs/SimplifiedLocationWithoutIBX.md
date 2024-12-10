@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Href** | Pointer to **string** | The Canonical URL at which the resource resides. | [optional] 
+**MetroHref** | Pointer to **string** | The Canonical URL at which the resource resides. | [optional] 
 **Region** | Pointer to **string** |  | [optional] 
 **MetroName** | Pointer to **string** |  | [optional] 
 **MetroCode** | **string** |  | 
@@ -28,30 +28,30 @@ NewSimplifiedLocationWithoutIBXWithDefaults instantiates a new SimplifiedLocatio
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetHref
+### GetMetroHref
 
-`func (o *SimplifiedLocationWithoutIBX) GetHref() string`
+`func (o *SimplifiedLocationWithoutIBX) GetMetroHref() string`
 
-GetHref returns the Href field if non-nil, zero value otherwise.
+GetMetroHref returns the MetroHref field if non-nil, zero value otherwise.
 
-### GetHrefOk
+### GetMetroHrefOk
 
-`func (o *SimplifiedLocationWithoutIBX) GetHrefOk() (*string, bool)`
+`func (o *SimplifiedLocationWithoutIBX) GetMetroHrefOk() (*string, bool)`
 
-GetHrefOk returns a tuple with the Href field if it's non-nil, zero value otherwise
+GetMetroHrefOk returns a tuple with the MetroHref field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetHref
+### SetMetroHref
 
-`func (o *SimplifiedLocationWithoutIBX) SetHref(v string)`
+`func (o *SimplifiedLocationWithoutIBX) SetMetroHref(v string)`
 
-SetHref sets Href field to given value.
+SetMetroHref sets MetroHref field to given value.
 
-### HasHref
+### HasMetroHref
 
-`func (o *SimplifiedLocationWithoutIBX) HasHref() bool`
+`func (o *SimplifiedLocationWithoutIBX) HasMetroHref() bool`
 
-HasHref returns a boolean if a field has been set.
+HasMetroHref returns a boolean if a field has been set.
 
 ### GetRegion
 

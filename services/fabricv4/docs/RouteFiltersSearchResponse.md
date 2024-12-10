@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pagination** | Pointer to [**Pagination**](Pagination.md) |  | [optional] 
-**Data** | Pointer to [**[]RouteFiltersData**](RouteFiltersData.md) | List of Route Filters | [optional] 
+**Data** | Pointer to [**[]RouteFiltersData**](RouteFiltersData.md) | List of route filters | [optional] 
 
 ## Methods
 

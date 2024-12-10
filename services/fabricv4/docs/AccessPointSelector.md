@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | Pointer to [**AccessPointSelectorType**](AccessPointSelectorType.md) |  | [optional] 
+**HideAssetInfo** | Pointer to **bool** |  | [optional] 
 **Port** | Pointer to [**SimplifiedMetadataEntity**](SimplifiedMetadataEntity.md) |  | [optional] 
 **LinkProtocol** | Pointer to [**SimplifiedLinkProtocol**](SimplifiedLinkProtocol.md) |  | [optional] 
 **VirtualDevice** | Pointer to [**SimplifiedVirtualDevice**](SimplifiedVirtualDevice.md) |  | [optional] 
@@ -54,6 +55,31 @@ SetType sets Type field to given value.
 `func (o *AccessPointSelector) HasType() bool`
 
 HasType returns a boolean if a field has been set.
+
+### GetHideAssetInfo
+
+`func (o *AccessPointSelector) GetHideAssetInfo() bool`
+
+GetHideAssetInfo returns the HideAssetInfo field if non-nil, zero value otherwise.
+
+### GetHideAssetInfoOk
+
+`func (o *AccessPointSelector) GetHideAssetInfoOk() (*bool, bool)`
+
+GetHideAssetInfoOk returns a tuple with the HideAssetInfo field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHideAssetInfo
+
+`func (o *AccessPointSelector) SetHideAssetInfo(v bool)`
+
+SetHideAssetInfo sets HideAssetInfo field to given value.
+
+### HasHideAssetInfo
+
+`func (o *AccessPointSelector) HasHideAssetInfo() bool`
+
+HasHideAssetInfo returns a boolean if a field has been set.
 
 ### GetPort
 

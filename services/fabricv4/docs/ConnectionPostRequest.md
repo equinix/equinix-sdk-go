@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **Project** | Pointer to [**Project**](Project.md) |  | [optional] 
 **AdditionalInfo** | Pointer to [**[]ConnectionSideAdditionalInfo**](ConnectionSideAdditionalInfo.md) | Connection additional information | [optional] 
 **MarketplaceSubscription** | Pointer to [**MarketplaceSubscription**](MarketplaceSubscription.md) |  | [optional] 
+**EndCustomer** | Pointer to [**EndCustomer**](EndCustomer.md) |  | [optional] 
 
 ## Methods
 
@@ -305,6 +306,31 @@ SetMarketplaceSubscription sets MarketplaceSubscription field to given value.
 `func (o *ConnectionPostRequest) HasMarketplaceSubscription() bool`
 
 HasMarketplaceSubscription returns a boolean if a field has been set.
+
+### GetEndCustomer
+
+`func (o *ConnectionPostRequest) GetEndCustomer() EndCustomer`
+
+GetEndCustomer returns the EndCustomer field if non-nil, zero value otherwise.
+
+### GetEndCustomerOk
+
+`func (o *ConnectionPostRequest) GetEndCustomerOk() (*EndCustomer, bool)`
+
+GetEndCustomerOk returns a tuple with the EndCustomer field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEndCustomer
+
+`func (o *ConnectionPostRequest) SetEndCustomer(v EndCustomer)`
+
+SetEndCustomer sets EndCustomer field to given value.
+
+### HasEndCustomer
+
+`func (o *ConnectionPostRequest) HasEndCustomer() bool`
+
+HasEndCustomer returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

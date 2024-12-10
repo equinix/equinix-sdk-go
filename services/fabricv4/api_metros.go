@@ -32,7 +32,7 @@ func (r ApiGetMetroByCodeRequest) Execute() (*Metro, *http.Response, error) {
 /*
 GetMetroByCode Get Metro by Code
 
-GET Metros retrieves all Equinix Fabric metros, as well as latency data between each metro location. .
+GET Metros retrieves all Equinix Fabric metros, as well as latency data between each metro location.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param metroCode Metro Code

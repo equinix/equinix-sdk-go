@@ -22,9 +22,11 @@ type StreamSubscriptionPutRequest struct {
 	Description *string       `json:"description,omitempty"`
 	Stream      *StreamTarget `json:"stream,omitempty"`
 	// Stream subscription enabled status
-	Enabled              *bool                     `json:"enabled,omitempty"`
-	Filters              *StreamSubscriptionFilter `json:"filters,omitempty"`
-	Sink                 *StreamSubscriptionSink   `json:"sink,omitempty"`
+	Enabled              *bool                       `json:"enabled,omitempty"`
+	Filters              *StreamSubscriptionFilter   `json:"filters,omitempty"`
+	MetricSelector       *StreamSubscriptionSelector `json:"metricSelector,omitempty"`
+	EventSelector        *StreamSubscriptionSelector `json:"eventSelector,omitempty"`
+	Sink                 *StreamSubscriptionSink     `json:"sink,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -207,6 +209,70 @@ func (o *StreamSubscriptionPutRequest) SetFilters(v StreamSubscriptionFilter) {
 	o.Filters = &v
 }
 
+// GetMetricSelector returns the MetricSelector field value if set, zero value otherwise.
+func (o *StreamSubscriptionPutRequest) GetMetricSelector() StreamSubscriptionSelector {
+	if o == nil || IsNil(o.MetricSelector) {
+		var ret StreamSubscriptionSelector
+		return ret
+	}
+	return *o.MetricSelector
+}
+
+// GetMetricSelectorOk returns a tuple with the MetricSelector field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamSubscriptionPutRequest) GetMetricSelectorOk() (*StreamSubscriptionSelector, bool) {
+	if o == nil || IsNil(o.MetricSelector) {
+		return nil, false
+	}
+	return o.MetricSelector, true
+}
+
+// HasMetricSelector returns a boolean if a field has been set.
+func (o *StreamSubscriptionPutRequest) HasMetricSelector() bool {
+	if o != nil && !IsNil(o.MetricSelector) {
+		return true
+	}
+
+	return false
+}
+
+// SetMetricSelector gets a reference to the given StreamSubscriptionSelector and assigns it to the MetricSelector field.
+func (o *StreamSubscriptionPutRequest) SetMetricSelector(v StreamSubscriptionSelector) {
+	o.MetricSelector = &v
+}
+
+// GetEventSelector returns the EventSelector field value if set, zero value otherwise.
+func (o *StreamSubscriptionPutRequest) GetEventSelector() StreamSubscriptionSelector {
+	if o == nil || IsNil(o.EventSelector) {
+		var ret StreamSubscriptionSelector
+		return ret
+	}
+	return *o.EventSelector
+}
+
+// GetEventSelectorOk returns a tuple with the EventSelector field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamSubscriptionPutRequest) GetEventSelectorOk() (*StreamSubscriptionSelector, bool) {
+	if o == nil || IsNil(o.EventSelector) {
+		return nil, false
+	}
+	return o.EventSelector, true
+}
+
+// HasEventSelector returns a boolean if a field has been set.
+func (o *StreamSubscriptionPutRequest) HasEventSelector() bool {
+	if o != nil && !IsNil(o.EventSelector) {
+		return true
+	}
+
+	return false
+}
+
+// SetEventSelector gets a reference to the given StreamSubscriptionSelector and assigns it to the EventSelector field.
+func (o *StreamSubscriptionPutRequest) SetEventSelector(v StreamSubscriptionSelector) {
+	o.EventSelector = &v
+}
+
 // GetSink returns the Sink field value if set, zero value otherwise.
 func (o *StreamSubscriptionPutRequest) GetSink() StreamSubscriptionSink {
 	if o == nil || IsNil(o.Sink) {
@@ -264,6 +330,12 @@ func (o StreamSubscriptionPutRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Filters) {
 		toSerialize["filters"] = o.Filters
 	}
+	if !IsNil(o.MetricSelector) {
+		toSerialize["metricSelector"] = o.MetricSelector
+	}
+	if !IsNil(o.EventSelector) {
+		toSerialize["eventSelector"] = o.EventSelector
+	}
 	if !IsNil(o.Sink) {
 		toSerialize["sink"] = o.Sink
 	}
@@ -294,6 +366,8 @@ func (o *StreamSubscriptionPutRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "stream")
 		delete(additionalProperties, "enabled")
 		delete(additionalProperties, "filters")
+		delete(additionalProperties, "metricSelector")
+		delete(additionalProperties, "eventSelector")
 		delete(additionalProperties, "sink")
 		o.AdditionalProperties = additionalProperties
 	}

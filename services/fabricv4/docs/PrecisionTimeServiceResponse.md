@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **Project** | Pointer to [**Project**](Project.md) |  | [optional] 
 **Account** | Pointer to [**SimplifiedAccount**](SimplifiedAccount.md) |  | [optional] 
 **Order** | Pointer to [**PrecisionTimeOrder**](PrecisionTimeOrder.md) |  | [optional] 
+**Pricing** | Pointer to [**PrecisionTimePrice**](PrecisionTimePrice.md) |  | [optional] 
 **ChangeLog** | Pointer to [**Changelog**](Changelog.md) |  | [optional] 
 
 ## Methods
@@ -337,6 +338,31 @@ SetOrder sets Order field to given value.
 `func (o *PrecisionTimeServiceResponse) HasOrder() bool`
 
 HasOrder returns a boolean if a field has been set.
+
+### GetPricing
+
+`func (o *PrecisionTimeServiceResponse) GetPricing() PrecisionTimePrice`
+
+GetPricing returns the Pricing field if non-nil, zero value otherwise.
+
+### GetPricingOk
+
+`func (o *PrecisionTimeServiceResponse) GetPricingOk() (*PrecisionTimePrice, bool)`
+
+GetPricingOk returns a tuple with the Pricing field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPricing
+
+`func (o *PrecisionTimeServiceResponse) SetPricing(v PrecisionTimePrice)`
+
+SetPricing sets Pricing field to given value.
+
+### HasPricing
+
+`func (o *PrecisionTimeServiceResponse) HasPricing() bool`
+
+HasPricing returns a boolean if a field has been set.
 
 ### GetChangeLog
 
