@@ -17,30 +17,30 @@ var _ MappedNullable = &OperatingSystem{}
 
 // OperatingSystem struct for OperatingSystem
 type OperatingSystem struct {
-	// The date on which the current OS image was build and released
+	// The date when Metal's current OS image was built and released.
 	BuildDate *string `json:"build_date,omitempty"`
-	// The date when the OS is deprecated
+	// The date when the OS is deprecated. This is the date set by the upstream operating system maintainer.
 	DeprecationDate *string `json:"deprecation_date,omitempty"`
 	Distro          *string `json:"distro,omitempty"`
 	DistroLabel     *string `json:"distro_label,omitempty"`
-	// The OS no longer receives any updates and may be disabled at any time
+	// The date when the Metal OS image no longer receives any updates and may be disabled at any time. Typically the same as the deprecation date set by the upstream OS maintainers.
 	EndOfLifeDate *string `json:"end_of_life_date,omitempty"`
-	// When the OS is nearing end of life, typically 30 days before end of life
+	// Metal-set date for when the OS is nearing end of life, typically 30 days before end of life.
 	EndOfServiceDate *string `json:"end_of_service_date,omitempty"`
 	Id               *string `json:"id,omitempty"`
-	// Licenced OS is priced according to pricing property
+	// Indicates if the OS is licensed or not. Licensed operating systems are priced according to pricing property.
 	Licensed *bool `json:"licensed,omitempty"`
-	// Where in the support lifecycle the OS is
+	// Where in the lifecycle the OS image is. Possible states are - `\"testing\"`, `\"pre_release\"`, `\"active\"`, `\"deprecated\"`, `\"end_of_service\"`, or `\"end_of_life\"`.
 	LifecycleState *string `json:"lifecycle_state,omitempty"`
 	Name           *string `json:"name,omitempty"`
-	// Servers can be already preinstalled with OS in order to shorten provision time.
+	// Indicates whether servers can be preinstalled with OS image in order to shorten provision time.
 	Preinstallable *bool `json:"preinstallable,omitempty"`
-	// This object contains price per time unit and optional multiplier value if licence price depends on hardware plan or components (e.g. number of cores)
+	// This object contains price per time unit and optional multiplier value if license price depends on hardware plan or components (e.g. number of cores).
 	Pricing         map[string]interface{} `json:"pricing,omitempty"`
 	ProvisionableOn []string               `json:"provisionable_on,omitempty"`
-	// The date when the OS was released
+	// The date the upstream operating system maintainer released this version of the OS.
 	ReleaseDate *string `json:"release_date,omitempty"`
-	// The current release notes for this OS image, typically in Markdown format
+	// The current release notes for this OS image, typically in Markdown format.
 	ReleaseNotes *string `json:"release_notes,omitempty"`
 	Slug         *string `json:"slug,omitempty"`
 	Version      *string `json:"version,omitempty"`

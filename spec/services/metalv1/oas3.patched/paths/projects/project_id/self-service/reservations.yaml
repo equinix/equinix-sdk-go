@@ -21,7 +21,6 @@ get:
         enum:
           - compute
           - storage
-          - vmce
           - legacy_gen
           - current_gen
         example: compute

@@ -20,7 +20,6 @@ get:
         enum:
           - compute
           - storage
-          - vmce
           - legacy_gen
           - current_gen
         example: compute
@@ -117,9 +116,7 @@ post:
     content:
       application/json:
         schema:
-          oneOf:
-          - $ref: '../../../components/schemas/DeviceCreateInMetroInput.yaml'
-          - $ref: '../../../components/schemas/DeviceCreateInFacilityInput.yaml'
+          $ref: '../../../components/schemas/DeviceCreateInMetroInput.yaml'
     description: Device to create
     required: true
   responses:

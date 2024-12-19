@@ -388,7 +388,6 @@ type ApiFindVirtualNetworksRequest struct {
 	id         string
 	include    *[]string
 	exclude    *[]string
-	facility   *string
 	metro      *string
 }
 
@@ -401,13 +400,6 @@ func (r ApiFindVirtualNetworksRequest) Include(include []string) ApiFindVirtualN
 // Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
 func (r ApiFindVirtualNetworksRequest) Exclude(exclude []string) ApiFindVirtualNetworksRequest {
 	r.exclude = &exclude
-	return r
-}
-
-// Filter by Facility ID (uuid) or Facility Code
-// Deprecated
-func (r ApiFindVirtualNetworksRequest) Facility(facility string) ApiFindVirtualNetworksRequest {
-	r.facility = &facility
 	return r
 }
 
@@ -466,9 +458,6 @@ func (a *VLANsApiService) FindVirtualNetworksExecute(r ApiFindVirtualNetworksReq
 	}
 	if r.exclude != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "csv")
-	}
-	if r.facility != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "facility", r.facility, "")
 	}
 	if r.metro != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "metro", r.metro, "")

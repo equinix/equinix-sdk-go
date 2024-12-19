@@ -20,7 +20,6 @@ type FindOrganizationDevicesCategoriesParameterInner string
 const (
 	FINDORGANIZATIONDEVICESCATEGORIESPARAMETERINNER_COMPUTE     FindOrganizationDevicesCategoriesParameterInner = "compute"
 	FINDORGANIZATIONDEVICESCATEGORIESPARAMETERINNER_STORAGE     FindOrganizationDevicesCategoriesParameterInner = "storage"
-	FINDORGANIZATIONDEVICESCATEGORIESPARAMETERINNER_VMCE        FindOrganizationDevicesCategoriesParameterInner = "vmce"
 	FINDORGANIZATIONDEVICESCATEGORIESPARAMETERINNER_LEGACY_GEN  FindOrganizationDevicesCategoriesParameterInner = "legacy_gen"
 	FINDORGANIZATIONDEVICESCATEGORIESPARAMETERINNER_CURRENT_GEN FindOrganizationDevicesCategoriesParameterInner = "current_gen"
 )
@@ -29,7 +28,6 @@ const (
 var AllowedFindOrganizationDevicesCategoriesParameterInnerEnumValues = []FindOrganizationDevicesCategoriesParameterInner{
 	"compute",
 	"storage",
-	"vmce",
 	"legacy_gen",
 	"current_gen",
 }

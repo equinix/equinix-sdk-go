@@ -62,8 +62,6 @@ type APIClient struct {
 
 	EventsApi *EventsApiService
 
-	FacilitiesApi *FacilitiesApiService
-
 	FirmwareSetsApi *FirmwareSetsApiService
 
 	HardwareReservationsApi *HardwareReservationsApiService
@@ -99,6 +97,8 @@ type APIClient struct {
 	PortsApi *PortsApiService
 
 	ProjectsApi *ProjectsApiService
+
+	RolesApi *RolesApiService
 
 	SSHKeysApi *SSHKeysApiService
 
@@ -149,7 +149,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.DevicesApi = (*DevicesApiService)(&c.common)
 	c.EmailsApi = (*EmailsApiService)(&c.common)
 	c.EventsApi = (*EventsApiService)(&c.common)
-	c.FacilitiesApi = (*FacilitiesApiService)(&c.common)
 	c.FirmwareSetsApi = (*FirmwareSetsApiService)(&c.common)
 	c.HardwareReservationsApi = (*HardwareReservationsApiService)(&c.common)
 	c.IPAddressesApi = (*IPAddressesApiService)(&c.common)
@@ -168,6 +167,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.PlansApi = (*PlansApiService)(&c.common)
 	c.PortsApi = (*PortsApiService)(&c.common)
 	c.ProjectsApi = (*ProjectsApiService)(&c.common)
+	c.RolesApi = (*RolesApiService)(&c.common)
 	c.SSHKeysApi = (*SSHKeysApiService)(&c.common)
 	c.SelfServiceReservationsApi = (*SelfServiceReservationsApiService)(&c.common)
 	c.SpotMarketApi = (*SpotMarketApiService)(&c.common)
