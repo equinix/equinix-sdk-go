@@ -11,12 +11,6 @@ get:
       type: string
   - $ref: '../../../components/parameters/Include.yaml'
   - $ref: '../../../components/parameters/Exclude.yaml'
-  - description: Filter by Facility ID (uuid) or Facility Code
-    deprecated: true
-    in: query
-    name: facility
-    schema:
-      type: string
   - description: Filter by Metro ID (uuid) or Metro Code
     in: query
     name: metro

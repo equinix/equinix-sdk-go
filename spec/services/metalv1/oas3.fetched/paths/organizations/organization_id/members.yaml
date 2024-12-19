@@ -1,23 +1,21 @@
 get:
-  deprecated: true
-  description: Returns a listing of available datacenters for the given project
-  operationId: findFacilitiesByProject
+  description: Get all Members of an Organization
+  operationId: getOrganizationMembers
   parameters:
-  - description: Project UUID
+  - $ref: '../../../components/parameters/Include.yaml'
+  - description: Organization UUID
     in: path
-    name: id
+    name: organization_id
     required: true
     schema:
       format: uuid
       type: string
-  - $ref: '../../../components/parameters/Include.yaml'
-  - $ref: '../../../components/parameters/Exclude.yaml'
   responses:
     "200":
       content:
         application/json:
           schema:
-            $ref: '../../../components/schemas/FacilityList.yaml'
+            $ref: '../../../components/schemas/MemberList.yaml'
       description: ok
     "401":
       content:
@@ -37,6 +35,6 @@ get:
           schema:
             $ref: '../../../components/schemas/Error.yaml'
       description: not found
-  summary: Retrieve all facilities visible by the project
+  summary: Retrieve organization members
   tags:
-  - Facilities
+  - Organizations
