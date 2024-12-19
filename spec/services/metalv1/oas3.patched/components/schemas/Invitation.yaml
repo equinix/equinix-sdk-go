@@ -34,4 +34,10 @@ properties:
   updated_at:
     format: date-time
     type: string
+  bound_roles:
+    type: array
+    items:
+      type: string
+    example:
+      - "permrv2-:id"
 type: object
