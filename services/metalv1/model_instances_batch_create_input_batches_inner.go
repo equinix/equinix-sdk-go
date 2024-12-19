@@ -19,11 +19,7 @@ var _ MappedNullable = &InstancesBatchCreateInputBatchesInner{}
 
 // InstancesBatchCreateInputBatchesInner struct for InstancesBatchCreateInputBatchesInner
 type InstancesBatchCreateInputBatchesInner struct {
-	Hostnames []string `json:"hostnames,omitempty"`
-	// The number of devices to create in this batch. The hostname may contain an `{{index}}` placeholder, which will be replaced with the index of the device in the batch. For example, if the hostname is `device-{{index}}`, the first device in the batch will have the hostname `device-01`, the second device will have the hostname `device-02`, and so on.
-	Quantity *int32 `json:"quantity,omitempty"`
-	// Metro code or ID of where the device should be provisioned in, or it can be instructed to create the device in the best available metro with `{ \"metro\": \"any\" }`. The special metro value of any means anywhere, any metro. When any is chosen in the request, the metro location is picked per our scheduling algorithms that favor the following factors: hardware reservation location (if requesting reserved hardware), ip reservations, spot instances, etc. The any keyword *does not* optimize for cost, this means that usage costs (instance, transfer, other features dependent on location) will vary. Please check metro value in response to see where the device was created. Either metro or facility must be provided.
-	Metro string `json:"metro"`
+	Metro MetroInputMetro `json:"metro"`
 	// When true, devices with a `custom_ipxe` OS will always boot to iPXE. The default setting of false ensures that iPXE will be used on only the first boot.
 	AlwaysPxe    *bool                          `json:"always_pxe,omitempty"`
 	BillingCycle *DeviceCreateInputBillingCycle `json:"billing_cycle,omitempty"`
@@ -70,10 +66,10 @@ type InstancesBatchCreateInputBatchesInner struct {
 	// A list of UUIDs identifying the users that should be authorized to access this device (typically via /root/.ssh/authorized_keys).  These keys will also appear in the device metadata.  The users must be members of the project or organization.  If no SSH keys are specified (`user_ssh_keys`, `project_ssh_keys`, and `ssh_keys` are all empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included. This behaviour can be changed with 'no_ssh_keys' option to omit any SSH key being added.
 	UserSshKeys []string `json:"user_ssh_keys,omitempty"`
 	// The userdata presented in the metadata service for this device.  Userdata is fetched and interpreted by the operating system installed on the device. Acceptable formats are determined by the operating system, with the exception of a special iPXE enabling syntax which is handled before the operating system starts.  See [Server User Data](https://deploy.equinix.com/developers/docs/metal/server-metadata/user-data/) and [Provisioning with Custom iPXE](https://deploy.equinix.com/developers/docs/metal/operating-systems/custom-ipxe/#provisioning-with-custom-ipxe) for more details.
-	Userdata *string `json:"userdata,omitempty"`
-	// The datacenter where the device should be created.  Either metro or facility must be provided.  The API will accept either a single facility `{ \"facility\": \"f1\" }`, or it can be instructed to create the device in the best available datacenter `{ \"facility\": \"any\" }`.  Additionally it is possible to set a prioritized location selection. For example `{ \"facility\": [\"f3\", \"f2\", \"any\"] }` can be used to prioritize `f3` and then `f2` before accepting `any` facility. If none of the facilities provided have availability for the requested device the request will fail.
-	// Deprecated
-	Facility             []string `json:"facility"`
+	Userdata  *string  `json:"userdata,omitempty"`
+	Hostnames []string `json:"hostnames,omitempty"`
+	// The number of devices to create in this batch. The hostname may contain an `{{index}}` placeholder, which will be replaced with the index of the device in the batch. For example, if the hostname is `device-{{index}}`, the first device in the batch will have the hostname `device-01`, the second device will have the hostname `device-02`, and so on.
+	Quantity             *int32 `json:"quantity,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -83,7 +79,7 @@ type _InstancesBatchCreateInputBatchesInner InstancesBatchCreateInputBatchesInne
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInstancesBatchCreateInputBatchesInner(metro string, operatingSystem string, plan string, facility []string) *InstancesBatchCreateInputBatchesInner {
+func NewInstancesBatchCreateInputBatchesInner(metro MetroInputMetro, operatingSystem string, plan string) *InstancesBatchCreateInputBatchesInner {
 	this := InstancesBatchCreateInputBatchesInner{}
 	this.Metro = metro
 	var alwaysPxe bool = false
@@ -96,7 +92,6 @@ func NewInstancesBatchCreateInputBatchesInner(metro string, operatingSystem stri
 	this.NoSshKeys = &noSshKeys
 	this.OperatingSystem = operatingSystem
 	this.Plan = plan
-	this.Facility = facility
 	return &this
 }
 
@@ -116,74 +111,10 @@ func NewInstancesBatchCreateInputBatchesInnerWithDefaults() *InstancesBatchCreat
 	return &this
 }
 
-// GetHostnames returns the Hostnames field value if set, zero value otherwise.
-func (o *InstancesBatchCreateInputBatchesInner) GetHostnames() []string {
-	if o == nil || IsNil(o.Hostnames) {
-		var ret []string
-		return ret
-	}
-	return o.Hostnames
-}
-
-// GetHostnamesOk returns a tuple with the Hostnames field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *InstancesBatchCreateInputBatchesInner) GetHostnamesOk() ([]string, bool) {
-	if o == nil || IsNil(o.Hostnames) {
-		return nil, false
-	}
-	return o.Hostnames, true
-}
-
-// HasHostnames returns a boolean if a field has been set.
-func (o *InstancesBatchCreateInputBatchesInner) HasHostnames() bool {
-	if o != nil && !IsNil(o.Hostnames) {
-		return true
-	}
-
-	return false
-}
-
-// SetHostnames gets a reference to the given []string and assigns it to the Hostnames field.
-func (o *InstancesBatchCreateInputBatchesInner) SetHostnames(v []string) {
-	o.Hostnames = v
-}
-
-// GetQuantity returns the Quantity field value if set, zero value otherwise.
-func (o *InstancesBatchCreateInputBatchesInner) GetQuantity() int32 {
-	if o == nil || IsNil(o.Quantity) {
-		var ret int32
-		return ret
-	}
-	return *o.Quantity
-}
-
-// GetQuantityOk returns a tuple with the Quantity field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *InstancesBatchCreateInputBatchesInner) GetQuantityOk() (*int32, bool) {
-	if o == nil || IsNil(o.Quantity) {
-		return nil, false
-	}
-	return o.Quantity, true
-}
-
-// HasQuantity returns a boolean if a field has been set.
-func (o *InstancesBatchCreateInputBatchesInner) HasQuantity() bool {
-	if o != nil && !IsNil(o.Quantity) {
-		return true
-	}
-
-	return false
-}
-
-// SetQuantity gets a reference to the given int32 and assigns it to the Quantity field.
-func (o *InstancesBatchCreateInputBatchesInner) SetQuantity(v int32) {
-	o.Quantity = &v
-}
-
 // GetMetro returns the Metro field value
-func (o *InstancesBatchCreateInputBatchesInner) GetMetro() string {
+func (o *InstancesBatchCreateInputBatchesInner) GetMetro() MetroInputMetro {
 	if o == nil {
-		var ret string
+		var ret MetroInputMetro
 		return ret
 	}
 
@@ -192,7 +123,7 @@ func (o *InstancesBatchCreateInputBatchesInner) GetMetro() string {
 
 // GetMetroOk returns a tuple with the Metro field value
 // and a boolean to check if the value has been set.
-func (o *InstancesBatchCreateInputBatchesInner) GetMetroOk() (*string, bool) {
+func (o *InstancesBatchCreateInputBatchesInner) GetMetroOk() (*MetroInputMetro, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -200,7 +131,7 @@ func (o *InstancesBatchCreateInputBatchesInner) GetMetroOk() (*string, bool) {
 }
 
 // SetMetro sets field value
-func (o *InstancesBatchCreateInputBatchesInner) SetMetro(v string) {
+func (o *InstancesBatchCreateInputBatchesInner) SetMetro(v MetroInputMetro) {
 	o.Metro = v
 }
 
@@ -988,31 +919,68 @@ func (o *InstancesBatchCreateInputBatchesInner) SetUserdata(v string) {
 	o.Userdata = &v
 }
 
-// GetFacility returns the Facility field value
-// Deprecated
-func (o *InstancesBatchCreateInputBatchesInner) GetFacility() []string {
-	if o == nil {
+// GetHostnames returns the Hostnames field value if set, zero value otherwise.
+func (o *InstancesBatchCreateInputBatchesInner) GetHostnames() []string {
+	if o == nil || IsNil(o.Hostnames) {
 		var ret []string
 		return ret
 	}
-
-	return o.Facility
+	return o.Hostnames
 }
 
-// GetFacilityOk returns a tuple with the Facility field value
+// GetHostnamesOk returns a tuple with the Hostnames field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// Deprecated
-func (o *InstancesBatchCreateInputBatchesInner) GetFacilityOk() ([]string, bool) {
-	if o == nil {
+func (o *InstancesBatchCreateInputBatchesInner) GetHostnamesOk() ([]string, bool) {
+	if o == nil || IsNil(o.Hostnames) {
 		return nil, false
 	}
-	return o.Facility, true
+	return o.Hostnames, true
 }
 
-// SetFacility sets field value
-// Deprecated
-func (o *InstancesBatchCreateInputBatchesInner) SetFacility(v []string) {
-	o.Facility = v
+// HasHostnames returns a boolean if a field has been set.
+func (o *InstancesBatchCreateInputBatchesInner) HasHostnames() bool {
+	if o != nil && !IsNil(o.Hostnames) {
+		return true
+	}
+
+	return false
+}
+
+// SetHostnames gets a reference to the given []string and assigns it to the Hostnames field.
+func (o *InstancesBatchCreateInputBatchesInner) SetHostnames(v []string) {
+	o.Hostnames = v
+}
+
+// GetQuantity returns the Quantity field value if set, zero value otherwise.
+func (o *InstancesBatchCreateInputBatchesInner) GetQuantity() int32 {
+	if o == nil || IsNil(o.Quantity) {
+		var ret int32
+		return ret
+	}
+	return *o.Quantity
+}
+
+// GetQuantityOk returns a tuple with the Quantity field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *InstancesBatchCreateInputBatchesInner) GetQuantityOk() (*int32, bool) {
+	if o == nil || IsNil(o.Quantity) {
+		return nil, false
+	}
+	return o.Quantity, true
+}
+
+// HasQuantity returns a boolean if a field has been set.
+func (o *InstancesBatchCreateInputBatchesInner) HasQuantity() bool {
+	if o != nil && !IsNil(o.Quantity) {
+		return true
+	}
+
+	return false
+}
+
+// SetQuantity gets a reference to the given int32 and assigns it to the Quantity field.
+func (o *InstancesBatchCreateInputBatchesInner) SetQuantity(v int32) {
+	o.Quantity = &v
 }
 
 func (o InstancesBatchCreateInputBatchesInner) MarshalJSON() ([]byte, error) {
@@ -1025,12 +993,6 @@ func (o InstancesBatchCreateInputBatchesInner) MarshalJSON() ([]byte, error) {
 
 func (o InstancesBatchCreateInputBatchesInner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Hostnames) {
-		toSerialize["hostnames"] = o.Hostnames
-	}
-	if !IsNil(o.Quantity) {
-		toSerialize["quantity"] = o.Quantity
-	}
 	toSerialize["metro"] = o.Metro
 	if !IsNil(o.AlwaysPxe) {
 		toSerialize["always_pxe"] = o.AlwaysPxe
@@ -1103,7 +1065,12 @@ func (o InstancesBatchCreateInputBatchesInner) ToMap() (map[string]interface{}, 
 	if !IsNil(o.Userdata) {
 		toSerialize["userdata"] = o.Userdata
 	}
-	toSerialize["facility"] = o.Facility
+	if !IsNil(o.Hostnames) {
+		toSerialize["hostnames"] = o.Hostnames
+	}
+	if !IsNil(o.Quantity) {
+		toSerialize["quantity"] = o.Quantity
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -1120,7 +1087,6 @@ func (o *InstancesBatchCreateInputBatchesInner) UnmarshalJSON(data []byte) (err 
 		"metro",
 		"operating_system",
 		"plan",
-		"facility",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -1150,8 +1116,6 @@ func (o *InstancesBatchCreateInputBatchesInner) UnmarshalJSON(data []byte) (err 
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "hostnames")
-		delete(additionalProperties, "quantity")
 		delete(additionalProperties, "metro")
 		delete(additionalProperties, "always_pxe")
 		delete(additionalProperties, "billing_cycle")
@@ -1178,7 +1142,8 @@ func (o *InstancesBatchCreateInputBatchesInner) UnmarshalJSON(data []byte) (err 
 		delete(additionalProperties, "termination_time")
 		delete(additionalProperties, "user_ssh_keys")
 		delete(additionalProperties, "userdata")
-		delete(additionalProperties, "facility")
+		delete(additionalProperties, "hostnames")
+		delete(additionalProperties, "quantity")
 		o.AdditionalProperties = additionalProperties
 	}
 

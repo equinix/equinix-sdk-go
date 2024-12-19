@@ -2039,11 +2039,12 @@ func (a *InterconnectionsApiService) ListInterconnectionVirtualCircuitsExecute(r
 }
 
 type ApiOrganizationListInterconnectionsRequest struct {
-	ctx            context.Context
-	ApiService     *InterconnectionsApiService
-	organizationId string
-	include        *[]string
-	exclude        *[]string
+	ctx              context.Context
+	ApiService       *InterconnectionsApiService
+	organizationId   string
+	include          *[]string
+	exclude          *[]string
+	projectprojectId *string
 }
 
 // Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
@@ -2058,14 +2059,20 @@ func (r ApiOrganizationListInterconnectionsRequest) Exclude(exclude []string) Ap
 	return r
 }
 
+// Filter the list to return only the interconnections for the specified Project.
+func (r ApiOrganizationListInterconnectionsRequest) ProjectprojectId(projectprojectId string) ApiOrganizationListInterconnectionsRequest {
+	r.projectprojectId = &projectprojectId
+	return r
+}
+
 func (r ApiOrganizationListInterconnectionsRequest) Execute() (*InterconnectionList, *http.Response, error) {
 	return r.ApiService.OrganizationListInterconnectionsExecute(r)
 }
 
 /*
-OrganizationListInterconnections List organization connections
+OrganizationListInterconnections List an Organization's interconnections
 
-List the connections belonging to the organization
+Returns a list of the interconnections belonging to the Organization.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param organizationId UUID of the organization
@@ -2107,6 +2114,9 @@ func (a *InterconnectionsApiService) OrganizationListInterconnectionsExecute(r A
 	}
 	if r.exclude != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "csv")
+	}
+	if r.projectprojectId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "project={project_id}", r.projectprojectId, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2236,9 +2246,9 @@ func (r ApiProjectListInterconnectionsRequest) Execute() (*InterconnectionList, 
 }
 
 /*
-ProjectListInterconnections List project connections
+ProjectListInterconnections List a Project's and Organization's interconnections
 
-List the connections belonging to the project
+Returns a List of all the interconnections in an Organization, including the interconnections in the specified Project. To reliably get a list of interconnections filtered to just the interconnections accessible to the specified Project, use the [`/organizations/{organization_id}/interconnections?project={project_id}`](https://deploy.equinix.com/developers/api/metal/#tag/Interconnections/operation/organizationListInterconnections) endpoint, filtering on the Project ID.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param projectId UUID of the project

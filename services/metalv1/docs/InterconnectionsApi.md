@@ -17,8 +17,8 @@ Method | HTTP request | Description
 [**ListInterconnectionPortVirtualCircuits**](InterconnectionsApi.md#ListInterconnectionPortVirtualCircuits) | **Get** /connections/{connection_id}/ports/{port_id}/virtual-circuits | List a interconnection port&#39;s virtual circuits
 [**ListInterconnectionPorts**](InterconnectionsApi.md#ListInterconnectionPorts) | **Get** /connections/{connection_id}/ports | List a interconnection&#39;s ports
 [**ListInterconnectionVirtualCircuits**](InterconnectionsApi.md#ListInterconnectionVirtualCircuits) | **Get** /connections/{connection_id}/virtual-circuits | List a interconnection&#39;s virtual circuits
-[**OrganizationListInterconnections**](InterconnectionsApi.md#OrganizationListInterconnections) | **Get** /organizations/{organization_id}/connections | List organization connections
-[**ProjectListInterconnections**](InterconnectionsApi.md#ProjectListInterconnections) | **Get** /projects/{project_id}/connections | List project connections
+[**OrganizationListInterconnections**](InterconnectionsApi.md#OrganizationListInterconnections) | **Get** /organizations/{organization_id}/connections | List an Organization&#39;s interconnections
+[**ProjectListInterconnections**](InterconnectionsApi.md#ProjectListInterconnections) | **Get** /projects/{project_id}/connections | List a Project&#39;s and Organization&#39;s interconnections
 [**UpdateInterconnection**](InterconnectionsApi.md#UpdateInterconnection) | **Put** /connections/{connection_id} | Update interconnection
 [**UpdateVirtualCircuit**](InterconnectionsApi.md#UpdateVirtualCircuit) | **Put** /virtual-circuits/{id} | Update a virtual circuit
 
@@ -965,9 +965,9 @@ Name | Type | Description  | Notes
 
 ## OrganizationListInterconnections
 
-> InterconnectionList OrganizationListInterconnections(ctx, organizationId).Include(include).Exclude(exclude).Execute()
+> InterconnectionList OrganizationListInterconnections(ctx, organizationId).Include(include).Exclude(exclude).ProjectprojectId(projectprojectId).Execute()
 
-List organization connections
+List an Organization's interconnections
 
 
 
@@ -987,10 +987,11 @@ func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | UUID of the organization
     include := []string{"Inner_example"} // []string | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
     exclude := []string{"Inner_example"} // []string | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
+    projectprojectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Filter the list to return only the interconnections for the specified Project. (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.InterconnectionsApi.OrganizationListInterconnections(context.Background(), organizationId).Include(include).Exclude(exclude).Execute()
+    resp, r, err := apiClient.InterconnectionsApi.OrganizationListInterconnections(context.Background(), organizationId).Include(include).Exclude(exclude).ProjectprojectId(projectprojectId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `InterconnectionsApi.OrganizationListInterconnections``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1018,6 +1019,7 @@ Name | Type | Description  | Notes
 
  **include** | **[]string** | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | 
  **exclude** | **[]string** | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | 
+ **projectprojectId** | **string** | Filter the list to return only the interconnections for the specified Project. | 
 
 ### Return type
 
@@ -1041,7 +1043,7 @@ Name | Type | Description  | Notes
 
 > InterconnectionList ProjectListInterconnections(ctx, projectId).Include(include).Exclude(exclude).Page(page).PerPage(perPage).Execute()
 
-List project connections
+List a Project's and Organization's interconnections
 
 
 ProjectListInterconnections is a paginated API operation. You can specify page number and per page parameters with `Execute`, or to fetch and return all pages of results as a single slice you can call `ExecuteWithPagination()`. `ExecuteWithPagination()`, while convenient, can significantly increase the overhead of API calls in terms of time, network utilization, and memory. Excludes can make the call more efficient by removing any unneeded nested fields that are included by default. If any of the requests fail, the list of results will be nil and the error returned will represent the failed request.

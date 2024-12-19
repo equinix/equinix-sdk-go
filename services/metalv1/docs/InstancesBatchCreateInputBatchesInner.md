@@ -4,9 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Hostnames** | Pointer to **[]string** |  | [optional] 
-**Quantity** | Pointer to **int32** | The number of devices to create in this batch. The hostname may contain an &#x60;{{index}}&#x60; placeholder, which will be replaced with the index of the device in the batch. For example, if the hostname is &#x60;device-{{index}}&#x60;, the first device in the batch will have the hostname &#x60;device-01&#x60;, the second device will have the hostname &#x60;device-02&#x60;, and so on. | [optional] 
-**Metro** | **string** | Metro code or ID of where the device should be provisioned in, or it can be instructed to create the device in the best available metro with &#x60;{ \&quot;metro\&quot;: \&quot;any\&quot; }&#x60;. The special metro value of any means anywhere, any metro. When any is chosen in the request, the metro location is picked per our scheduling algorithms that favor the following factors: hardware reservation location (if requesting reserved hardware), ip reservations, spot instances, etc. The any keyword *does not* optimize for cost, this means that usage costs (instance, transfer, other features dependent on location) will vary. Please check metro value in response to see where the device was created. Either metro or facility must be provided. | 
+**Metro** | [**MetroInputMetro**](MetroInputMetro.md) |  | 
 **AlwaysPxe** | Pointer to **bool** | When true, devices with a &#x60;custom_ipxe&#x60; OS will always boot to iPXE. The default setting of false ensures that iPXE will be used on only the first boot. | [optional] [default to false]
 **BillingCycle** | Pointer to [**DeviceCreateInputBillingCycle**](DeviceCreateInputBillingCycle.md) |  | [optional] 
 **Customdata** | Pointer to **map[string]interface{}** | Customdata is an arbitrary JSON value that can be accessed via the metadata service. | [optional] [default to {}]
@@ -32,13 +30,14 @@ Name | Type | Description | Notes
 **TerminationTime** | Pointer to **time.Time** | When the device will be terminated. If you don&#39;t supply timezone info, the timestamp is assumed to be in UTC.  This is commonly set in advance for ephemeral spot market instances but this field may also be set with on-demand and reservation instances to automatically delete the resource at a given time. The termination time can also be used to release a hardware reservation instance at a given time, keeping the reservation open for other uses.  On a spot market device, the termination time will be set automatically when outbid.  | [optional] 
 **UserSshKeys** | Pointer to **[]string** | A list of UUIDs identifying the users that should be authorized to access this device (typically via /root/.ssh/authorized_keys).  These keys will also appear in the device metadata.  The users must be members of the project or organization.  If no SSH keys are specified (&#x60;user_ssh_keys&#x60;, &#x60;project_ssh_keys&#x60;, and &#x60;ssh_keys&#x60; are all empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included. This behaviour can be changed with &#39;no_ssh_keys&#39; option to omit any SSH key being added.  | [optional] 
 **Userdata** | Pointer to **string** | The userdata presented in the metadata service for this device.  Userdata is fetched and interpreted by the operating system installed on the device. Acceptable formats are determined by the operating system, with the exception of a special iPXE enabling syntax which is handled before the operating system starts.  See [Server User Data](https://deploy.equinix.com/developers/docs/metal/server-metadata/user-data/) and [Provisioning with Custom iPXE](https://deploy.equinix.com/developers/docs/metal/operating-systems/custom-ipxe/#provisioning-with-custom-ipxe) for more details. | [optional] 
-**Facility** | **[]string** | The datacenter where the device should be created.  Either metro or facility must be provided.  The API will accept either a single facility &#x60;{ \&quot;facility\&quot;: \&quot;f1\&quot; }&#x60;, or it can be instructed to create the device in the best available datacenter &#x60;{ \&quot;facility\&quot;: \&quot;any\&quot; }&#x60;.  Additionally it is possible to set a prioritized location selection. For example &#x60;{ \&quot;facility\&quot;: [\&quot;f3\&quot;, \&quot;f2\&quot;, \&quot;any\&quot;] }&#x60; can be used to prioritize &#x60;f3&#x60; and then &#x60;f2&#x60; before accepting &#x60;any&#x60; facility. If none of the facilities provided have availability for the requested device the request will fail. | 
+**Hostnames** | Pointer to **[]string** |  | [optional] 
+**Quantity** | Pointer to **int32** | The number of devices to create in this batch. The hostname may contain an &#x60;{{index}}&#x60; placeholder, which will be replaced with the index of the device in the batch. For example, if the hostname is &#x60;device-{{index}}&#x60;, the first device in the batch will have the hostname &#x60;device-01&#x60;, the second device will have the hostname &#x60;device-02&#x60;, and so on. | [optional] 
 
 ## Methods
 
 ### NewInstancesBatchCreateInputBatchesInner
 
-`func NewInstancesBatchCreateInputBatchesInner(metro string, operatingSystem string, plan string, facility []string, ) *InstancesBatchCreateInputBatchesInner`
+`func NewInstancesBatchCreateInputBatchesInner(metro MetroInputMetro, operatingSystem string, plan string, ) *InstancesBatchCreateInputBatchesInner`
 
 NewInstancesBatchCreateInputBatchesInner instantiates a new InstancesBatchCreateInputBatchesInner object
 This constructor will assign default values to properties that have it defined,
@@ -53,72 +52,22 @@ NewInstancesBatchCreateInputBatchesInnerWithDefaults instantiates a new Instance
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetHostnames
-
-`func (o *InstancesBatchCreateInputBatchesInner) GetHostnames() []string`
-
-GetHostnames returns the Hostnames field if non-nil, zero value otherwise.
-
-### GetHostnamesOk
-
-`func (o *InstancesBatchCreateInputBatchesInner) GetHostnamesOk() (*[]string, bool)`
-
-GetHostnamesOk returns a tuple with the Hostnames field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetHostnames
-
-`func (o *InstancesBatchCreateInputBatchesInner) SetHostnames(v []string)`
-
-SetHostnames sets Hostnames field to given value.
-
-### HasHostnames
-
-`func (o *InstancesBatchCreateInputBatchesInner) HasHostnames() bool`
-
-HasHostnames returns a boolean if a field has been set.
-
-### GetQuantity
-
-`func (o *InstancesBatchCreateInputBatchesInner) GetQuantity() int32`
-
-GetQuantity returns the Quantity field if non-nil, zero value otherwise.
-
-### GetQuantityOk
-
-`func (o *InstancesBatchCreateInputBatchesInner) GetQuantityOk() (*int32, bool)`
-
-GetQuantityOk returns a tuple with the Quantity field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetQuantity
-
-`func (o *InstancesBatchCreateInputBatchesInner) SetQuantity(v int32)`
-
-SetQuantity sets Quantity field to given value.
-
-### HasQuantity
-
-`func (o *InstancesBatchCreateInputBatchesInner) HasQuantity() bool`
-
-HasQuantity returns a boolean if a field has been set.
-
 ### GetMetro
 
-`func (o *InstancesBatchCreateInputBatchesInner) GetMetro() string`
+`func (o *InstancesBatchCreateInputBatchesInner) GetMetro() MetroInputMetro`
 
 GetMetro returns the Metro field if non-nil, zero value otherwise.
 
 ### GetMetroOk
 
-`func (o *InstancesBatchCreateInputBatchesInner) GetMetroOk() (*string, bool)`
+`func (o *InstancesBatchCreateInputBatchesInner) GetMetroOk() (*MetroInputMetro, bool)`
 
 GetMetroOk returns a tuple with the Metro field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMetro
 
-`func (o *InstancesBatchCreateInputBatchesInner) SetMetro(v string)`
+`func (o *InstancesBatchCreateInputBatchesInner) SetMetro(v MetroInputMetro)`
 
 SetMetro sets Metro field to given value.
 
@@ -738,25 +687,55 @@ SetUserdata sets Userdata field to given value.
 
 HasUserdata returns a boolean if a field has been set.
 
-### GetFacility
+### GetHostnames
 
-`func (o *InstancesBatchCreateInputBatchesInner) GetFacility() []string`
+`func (o *InstancesBatchCreateInputBatchesInner) GetHostnames() []string`
 
-GetFacility returns the Facility field if non-nil, zero value otherwise.
+GetHostnames returns the Hostnames field if non-nil, zero value otherwise.
 
-### GetFacilityOk
+### GetHostnamesOk
 
-`func (o *InstancesBatchCreateInputBatchesInner) GetFacilityOk() (*[]string, bool)`
+`func (o *InstancesBatchCreateInputBatchesInner) GetHostnamesOk() (*[]string, bool)`
 
-GetFacilityOk returns a tuple with the Facility field if it's non-nil, zero value otherwise
+GetHostnamesOk returns a tuple with the Hostnames field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetFacility
+### SetHostnames
 
-`func (o *InstancesBatchCreateInputBatchesInner) SetFacility(v []string)`
+`func (o *InstancesBatchCreateInputBatchesInner) SetHostnames(v []string)`
 
-SetFacility sets Facility field to given value.
+SetHostnames sets Hostnames field to given value.
 
+### HasHostnames
+
+`func (o *InstancesBatchCreateInputBatchesInner) HasHostnames() bool`
+
+HasHostnames returns a boolean if a field has been set.
+
+### GetQuantity
+
+`func (o *InstancesBatchCreateInputBatchesInner) GetQuantity() int32`
+
+GetQuantity returns the Quantity field if non-nil, zero value otherwise.
+
+### GetQuantityOk
+
+`func (o *InstancesBatchCreateInputBatchesInner) GetQuantityOk() (*int32, bool)`
+
+GetQuantityOk returns a tuple with the Quantity field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetQuantity
+
+`func (o *InstancesBatchCreateInputBatchesInner) SetQuantity(v int32)`
+
+SetQuantity sets Quantity field to given value.
+
+### HasQuantity
+
+`func (o *InstancesBatchCreateInputBatchesInner) HasQuantity() bool`
+
+HasQuantity returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

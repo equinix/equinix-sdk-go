@@ -18,9 +18,6 @@ var _ MappedNullable = &VirtualNetworkCreateInput{}
 // VirtualNetworkCreateInput struct for VirtualNetworkCreateInput
 type VirtualNetworkCreateInput struct {
 	Description *string `json:"description,omitempty"`
-	// The UUID (or facility code) for the Facility in which to create this Virtual network.
-	// Deprecated
-	Facility *string `json:"facility,omitempty"`
 	// The UUID (or metro code) for the Metro in which to create this Virtual Network.
 	Metro *string `json:"metro,omitempty"`
 	// VLAN ID between 2-3999. Must be unique for the project within the Metro in which this Virtual Network is being created. If no value is specified, the next-available VLAN ID in the range 1000-1999 will be automatically selected.
@@ -78,41 +75,6 @@ func (o *VirtualNetworkCreateInput) HasDescription() bool {
 // SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *VirtualNetworkCreateInput) SetDescription(v string) {
 	o.Description = &v
-}
-
-// GetFacility returns the Facility field value if set, zero value otherwise.
-// Deprecated
-func (o *VirtualNetworkCreateInput) GetFacility() string {
-	if o == nil || IsNil(o.Facility) {
-		var ret string
-		return ret
-	}
-	return *o.Facility
-}
-
-// GetFacilityOk returns a tuple with the Facility field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// Deprecated
-func (o *VirtualNetworkCreateInput) GetFacilityOk() (*string, bool) {
-	if o == nil || IsNil(o.Facility) {
-		return nil, false
-	}
-	return o.Facility, true
-}
-
-// HasFacility returns a boolean if a field has been set.
-func (o *VirtualNetworkCreateInput) HasFacility() bool {
-	if o != nil && !IsNil(o.Facility) {
-		return true
-	}
-
-	return false
-}
-
-// SetFacility gets a reference to the given string and assigns it to the Facility field.
-// Deprecated
-func (o *VirtualNetworkCreateInput) SetFacility(v string) {
-	o.Facility = &v
 }
 
 // GetMetro returns the Metro field value if set, zero value otherwise.
@@ -224,9 +186,6 @@ func (o VirtualNetworkCreateInput) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !IsNil(o.Facility) {
-		toSerialize["facility"] = o.Facility
-	}
 	if !IsNil(o.Metro) {
 		toSerialize["metro"] = o.Metro
 	}
@@ -259,7 +218,6 @@ func (o *VirtualNetworkCreateInput) UnmarshalJSON(data []byte) (err error) {
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "description")
-		delete(additionalProperties, "facility")
 		delete(additionalProperties, "metro")
 		delete(additionalProperties, "vxlan")
 		delete(additionalProperties, "tags")
