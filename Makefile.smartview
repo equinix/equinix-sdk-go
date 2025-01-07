@@ -1,0 +1,103 @@
+.PHONY: all pull fetch patch combine generate clean codegen mod docs move-other patch-post fmt test stage validate
+
+include Makefile
+
+PACKAGE_NAME=smartview
+# OAS2:
+SOURCE_URLS=https://developer.equinix.com/sites/default/files/smartview-v2-catalog-environmental_v2_0.json \
+            https://developer.equinix.com/sites/default/files/2024-09/power_v1.json \
+			https://developer.equinix.com/sites/default/files/2024-09/environmental_v1.json \
+			https://developer.equinix.com/sites/default/files/smartview-v2-catalog-feed-subscription_v2_3.json \
+			https://developer.equinix.com/sites/default/files/smartview-v1-catalog-alert_v1_0.yaml \
+			https://developer.equinix.com/sites/default/files/smartview-v1-catalog-assets_v1_1.json \
+			https://developer.equinix.com/sites/default/files/smartview-v1-catalog-hierarchy_v1_2.json			
+# TODO(OAS3): https://developer.equinix.com/sites/default/files/smartview-v2-catalog-system-alerts_v2_2.json
+SPEC_ROOT_FILE=swagger.yaml
+
+CODE_DIR=${CODE_BASE_DIR}/${PACKAGE_NAME}
+TEMPLATE_DIR=${TEMPLATE_BASE_DIR}/${PACKAGE_NAME}
+SPEC_FETCHED_DIR=${SPEC_BASE_DIR}/${PACKAGE_NAME}/oas3.fetched
+SPEC_PATCH_DIR=${SPEC_BASE_DIR}/${PACKAGE_NAME}/patches
+SPEC_PATCHED_DIR=${SPEC_BASE_DIR}/${PACKAGE_NAME}/oas3.patched
+MERGED_SPEC_FILE=${SPEC_BASE_DIR}/${PACKAGE_NAME}/merged-spec.yaml
+SPEC_FETCHER=curl
+
+all: pull fetch patch combine generate stage
+
+generate: clean codegen remove-unused patch-post mod fmt test
+
+pull:
+	${CRI} pull ${OPENAPI_IMAGE}
+
+# Fetch multiple source URLs into SPEC_FETCHED_DIR with numeric suffixes
+fetch:
+	mkdir -p ${SPEC_FETCHED_DIR}
+	rm -f ${SPEC_FETCHED_DIR}/*
+	$(eval INDEX=0)
+	for URL in ${SOURCE_URLS}; do \
+		${SPEC_FETCHER} \
+			-H 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0' \
+			-o ${SPEC_FETCHED_DIR}/spec_$$INDEX.yaml $$URL; \
+		INDEX=$$((INDEX + 1)); \
+	done
+
+patch:
+	rm -rf ${SPEC_PATCHED_DIR}
+	cp -r ${SPEC_FETCHED_DIR} ${SPEC_PATCHED_DIR}
+	
+	for diff in $(shell set -x; find ${SPEC_PATCH_DIR} -name '*.patch' | sort -n); do \
+		patch --no-backup-if-mismatch -N -t -p1 -i $$diff; \
+	done
+
+combine:
+	touch ${MERGED_SPEC_FILE}.yaml
+	#docker run -v $(CURDIR):/local -w /local mikefarah/yq eval-all '. as $$item ireduce ({}; . * $$item)' ${SPEC_FETCHED_DIR}/* > ${MERGED_SPEC_FILE}
+	# docker run -v $(CURDIR):/local ghcr.io/marcelthole/openapi-merge \
+	#   ${SPEC_FETCHED_DIR}/*
+	#   --outputfile=${MERGED_SPEC_FILE}
+
+	#${OPENAPI_GENERATOR} generate -g openapi-yaml \
+	#    -i /local/${SPEC_FETCHED_DIR}/spec_.yaml \
+	#	--skip-validate-spec \
+	#	--input-spec-root-directory /local/${SPEC_FETCHED_DIR} \
+	#	-o /local/${SPEC_BASE_DIR}/${PACKAGE_NAME}/ \
+	#	-p outputFile=${MERGED_SPEC_FILE}.yaml
+	#	# --merged-spec-filename /local/${MERGED_SPEC_FILE}
+	${GOSWAGGER} mixin ${SPEC_FETCHED_DIR}/spec* --output=${SPEC_FETCHED_DIR}/merged-spec.yaml --format=yaml --keep-spec-order || true
+	${GOSWAGGER} flatten --with-flatten=minimal ${SPEC_FETCHED_DIR}/merged-spec.yaml --output=${SPEC_FETCHED_DIR}/${SPEC_ROOT_FILE} --format=yaml
+	# rm ${SPEC_FETCHED_DIR}/merged-spec.yaml ${SPEC_FETCHED_DIR}/spec*
+
+patch-post:
+	# patch is idempotent, always starting with the generated files
+	for diff in $(shell find patches/services/${PACKAGE_NAME} -name \*.patch | sort -n); do \
+		patch --no-backup-if-mismatch -N -t -p1 -i $$diff; \
+	done
+
+clean:
+	rm -rf $(CODE_DIR) ${MERGED_SPEC_FILE}
+
+codegen:
+	${OPENAPI_GENERATOR} generate -g go \
+		--package-name ${PACKAGE_NAME} \
+		--additional-properties=useOneOfDiscriminatorLookup=true \
+		--http-user-agent "${USER_AGENT}" \
+		-p packageVersion=${PACKAGE_VERSION} \
+		--git-user-id ${GIT_ORG} \
+		--git-repo-id ${GIT_REPO}/services \
+		-c /local/config/openapi-generator.json \
+		-t /local/${TEMPLATE_DIR} \
+		-o /local/${CODE_DIR} \
+		--skip-validate-spec \
+		--openapi-normalizer FIX_DUPLICATED_OPERATIONID=true \
+		-i /local/${SPEC_FETCHED_DIR}/${SPEC_ROOT_FILE}
+
+validate:
+	${OPENAPI_GENERATOR} validate \
+		--recommend \
+		-i /local/${SPEC_FETCHED_DIR}/${SPEC_ROOT_FILE}
+
+remove-unused:
+	rm -rf ${CODE_DIR}/api \
+		${CODE_DIR}/.travis.yml \
+		${CODE_DIR}/git_push.sh \
+		${CODE_DIR}/.openapi-generator
