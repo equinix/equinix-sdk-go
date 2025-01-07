@@ -187,7 +187,6 @@ paths:
         get:
             description: |
                 The powerData endpoint returns power consumption info ( power consumption data with comparison data of current [% Kva] vs  yesterday, lastWeek, lastMonth, lastQuarter ) for input ibx, cage, cabinet, circuit.
-            operationId: Mixin0
             parameters:
                 - description: Specify the OAuth Bearer token with prefix 'Bearer '.
                   in: header
@@ -265,6 +264,7 @@ paths:
         get:
             description: |
                 The trending power data for draw kVA to max allowed (%) for input ibx, cage, cabinet, circuit.
+            operationId: Mixin0
             parameters:
                 - description: Specify the OAuth Bearer token with prefix 'Bearer '.
                   in: header
