@@ -1,0 +1,4777 @@
+consumes:
+    - application/json
+produces:
+    - application/json
+schemes:
+    - https
+swagger: "2.0"
+info:
+    contact:
+        name: Equinix API Support
+        url: https://docs.equinix.com/api-support.htm
+    description: Empower yourself with Environmental APIs. The API makes it possible to fetch current environmental data including humidity and temperature for a single sensor (identified by IBX code and sensor ID) or for all the sensors within an IBX (identified by IBX code) in a paginated way. When fetching all sensor readings you can apply additional sort criteria.
+    termsOfService: https://www.equinix.com/about/legal/terms
+    title: Smart View Environmental API
+    version: "2.0"
+host: api.equinix.com
+paths:
+    /environment/v1/current:
+        get:
+            description: The endpoint returns environment information on temperature and humidity from inputs (ibx, zone, cage, sensor)
+            operationId: Mixin1
+            parameters:
+                - description: The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
+                  in: header
+                  name: Authorization
+                  required: true
+                  type: string
+                  x-prefix: 'Bearer '
+                - description: Customer Account Number
+                  in: query
+                  name: accountNo
+                  required: true
+                  type: string
+                - description: IBX Code
+                  in: query
+                  name: ibx
+                  required: true
+                  type: string
+                - description: Level Type
+                  enum:
+                    - IBX
+                    - ZONE
+                    - CAGE
+                    - SENSOR
+                  in: query
+                  name: levelType
+                  required: true
+                  type: string
+                - description: "Level Value is ibxCode, zoneUsID, cageUsID, sensorid for \nlevelType ibx, zone, cage, sensor resp.\n"
+                  in: query
+                  name: levelValue
+                  required: true
+                  type: string
+            responses:
+                "200":
+                    description: Environment Details
+                    schema:
+                        $ref: '#/definitions/EnvironmentData'
+                default:
+                    description: Unexpected error
+                    schema:
+                        $ref: '#/definitions/Error'
+            summary: Get current environmental data
+            tags:
+                - Smart View Environment
+    /environment/v1/listCurrent:
+        get:
+            description: |
+                The GET endpoint returns environment info ( humidity and temperature ) for all the values for input level type  IBX, ZONE, CAGE, SENSOR
+            operationId: Mixin1
+            parameters:
+                - description: The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
+                  in: header
+                  name: Authorization
+                  required: true
+                  type: string
+                  x-prefix: 'Bearer '
+                - description: Customer Account Number
+                  in: query
+                  name: accountNo
+                  required: true
+                  type: string
+                - description: IBX Code
+                  in: query
+                  name: ibx
+                  required: true
+                  type: string
+                - description: Level Type
+                  enum:
+                    - IBX
+                    - ZONE
+                    - CAGE
+                    - SENSOR
+                  in: query
+                  name: levelType
+                  required: true
+                  type: string
+            responses:
+                "200":
+                    description: Environment Details
+                    schema:
+                        $ref: '#/definitions/EnvironmentDataResponse'
+                default:
+                    description: Unexpected error
+                    schema:
+                        $ref: '#/definitions/Error'
+            summary: Fetch list of environmental data
+            tags:
+                - Smart View Environment
+    /environment/v1/trending:
+        get:
+            description: "The endpoint returns trending environment information (temperature and humidity) for\ninput ibx, zone, cage, sensor  \n"
+            operationId: Mixin1
+            parameters:
+                - description: The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
+                  in: header
+                  name: Authorization
+                  required: true
+                  type: string
+                  x-prefix: 'Bearer '
+                - description: Customer Account Number
+                  in: query
+                  name: accountNo
+                  required: true
+                  type: string
+                - description: IBX Code
+                  in: query
+                  name: ibx
+                  required: true
+                  type: number
+                - description: data point
+                  enum:
+                    - temperature
+                    - humidity
+                  in: query
+                  name: dataPoint
+                  required: true
+                  type: string
+                - description: Level Type
+                  enum:
+                    - IBX
+                    - ZONE
+                    - CAGE
+                    - SENSOR
+                  in: query
+                  name: levelType
+                  required: true
+                  type: string
+                - description: "Level Value is ibxCode, zone, cage, sensorid for \nlevelType ibx, zone, cage, sensor resp.\n"
+                  in: query
+                  name: levelValue
+                  required: true
+                  type: string
+                - enum:
+                    - reading
+                    - 1h
+                    - 1d
+                  in: query
+                  name: interval
+                  required: true
+                  type: string
+                - description: date in long
+                  format: date-time
+                  in: query
+                  name: fromDate
+                  required: true
+                  type: string
+                - description: date in long
+                  format: date-time
+                  in: query
+                  name: toDate
+                  required: true
+                  type: string
+            responses:
+                "200":
+                    description: Trending Environment Data Response
+                    schema:
+                        $ref: '#/definitions/TrendingEnvironmentData'
+                default:
+                    description: Unexpected error
+                    schema:
+                        $ref: '#/definitions/Error'
+            summary: Fetch trending environmental data
+            tags:
+                - Smart View Environment
+    /power/v1/current:
+        get:
+            description: |
+                The powerData endpoint returns power consumption info ( power consumption data with comparison data of current [% Kva] vs  yesterday, lastWeek, lastMonth, lastQuarter ) for input ibx, cage, cabinet, circuit.
+            operationId: Mixin0
+            parameters:
+                - description: Specify the OAuth Bearer token with prefix 'Bearer '.
+                  in: header
+                  name: Authorization
+                  required: true
+                  type: string
+                  x-prefix: 'Bearer '
+                - description: Customer Account Number
+                  in: query
+                  name: accountNo
+                  required: true
+                  type: string
+                - description: IBX Code
+                  in: query
+                  name: ibx
+                  required: true
+                  type: string
+                - description: level type allowed value [ibx|cage|cabinet|circuit]
+                  enum:
+                    - ibx
+                    - cage
+                    - cabinet
+                    - circuit
+                  in: query
+                  name: levelType
+                  required: true
+                  type: string
+                - description: |
+                    level value - ibx code, cage unique space id, cabinet unique space id, serial number for level type ibx, cage, cabinet, circuit respectively.
+                  in: query
+                  name: levelValue
+                  required: true
+                  type: string
+            responses:
+                "200":
+                    description: Valid Response
+                    schema:
+                        $ref: '#/definitions/PowerData'
+                default:
+                    description: Error response
+                    schema:
+                        $ref: '#/definitions/PowerData_Error'
+            summary: Fetch current power consumption data
+            tags:
+                - DCIM Power
+        post:
+            description: |
+                The powerdata endpoint returns power consumption info for all values of input level type ibx, cage, cabinet or circuit.
+            operationId: Mixin0
+            parameters:
+                - description: Specify the OAuth Bearer token with prefix 'Bearer '.
+                  in: header
+                  name: Authorization
+                  required: true
+                  type: string
+                  x-prefix: 'Bearer '
+                - description: request payload
+                  in: body
+                  name: body
+                  schema:
+                    $ref: '#/definitions/PowerCurrentPostRequest'
+            responses:
+                "200":
+                    description: Valid Response
+                    schema:
+                        $ref: '#/definitions/PowerDataResponse_IBX'
+                default:
+                    description: Error response
+                    schema:
+                        $ref: '#/definitions/PowerData_Error'
+            summary: Fetch current power consumption data
+            tags:
+                - DCIM Power
+    /power/v1/trending:
+        get:
+            description: |
+                The trending power data for draw kVA to max allowed (%) for input ibx, cage, cabinet, circuit.
+            parameters:
+                - description: Specify the OAuth Bearer token with prefix 'Bearer '.
+                  in: header
+                  name: Authorization
+                  required: true
+                  type: string
+                  x-prefix: 'Bearer '
+                - description: Customer Account Number
+                  in: query
+                  name: accountNo
+                  required: true
+                  type: string
+                - description: IBX Code
+                  in: query
+                  name: ibx
+                  required: true
+                  type: number
+                - description: '[ibx|cage|cabinet|circuit]'
+                  enum:
+                    - ibx
+                    - cage
+                    - cabinet
+                    - circuit
+                  in: query
+                  name: levelType
+                  required: true
+                  type: string
+                - description: |
+                    ibx code, cage unique space id, cabinet unique space id and serial number for level type ibx, cage, cabinet and circuit respectively.
+                  in: query
+                  name: levelValue
+                  required: true
+                  type: string
+                - description: '[recording|1h|1d]'
+                  in: query
+                  name: interval
+                  required: true
+                  type: string
+                - description: timestamp expected to be epoch long ( milliseconds ).
+                  in: query
+                  name: fromDate
+                  required: true
+                  type: string
+                - description: timestamp expected to be epoch long ( milliseconds ).
+                  in: query
+                  name: toDate
+                  required: true
+                  type: string
+            responses:
+                "200":
+                    description: Valid Response
+                    schema:
+                        $ref: '#/definitions/TrendingPowerData'
+                default:
+                    description: Error response
+                    schema:
+                        $ref: '#/definitions/PowerData_Error'
+            summary: |
+                Fetch Trending Power Data.
+            tags:
+                - DCIM Power
+    /smartview/v1/alerts/getAlertActivityLog:
+        get:
+            description: |
+                This endpoint returns alert log for inputs (ibx,category,event type,account number,page number,limit, order by, sort by,acknowledged).
+            operationId: getAlertActivityLog
+            parameters:
+                - description: The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
+                  in: header
+                  name: Authorization
+                  required: true
+                  type: string
+                  x-prefix: 'Bearer '
+                - description: IBX
+                  in: query
+                  name: ibx
+                  type: string
+                - description: Category
+                  in: query
+                  name: category
+                  type: string
+                - description: Event Type
+                  in: query
+                  name: eventType
+                  type: string
+                - description: Is Acknowledged
+                  in: query
+                  name: isAcknowledged
+                  type: string
+                - description: Account Number
+                  in: query
+                  name: accountNo
+                  type: string
+                - description: Page Number
+                  in: query
+                  name: pageNum
+                  required: true
+                  type: string
+                - description: Limit
+                  in: query
+                  name: limit
+                  required: true
+                  type: string
+                - description: |
+                    order by ascending or descending
+                  in: query
+                  name: orderBy
+                  type: string
+                - description: |
+                    sortBy value
+                  in: query
+                  name: sortBy
+                  type: string
+            responses:
+                "200":
+                    description: Valid Response
+                    schema:
+                        $ref: '#/definitions/AlertActivityLog'
+                default:
+                    description: Error response
+                    schema:
+                        $ref: '#/definitions/PowerData_Error'
+            summary: get alert activity logs
+            tags:
+                - Alert  Log
+    /smartview/v1/alerts/getAlerts:
+        get:
+            description: |
+                The get alert endpoint returns alert info for inputs (ibx,category,event type,account number,page number,limit, order by, sort by).
+            operationId: getAlerts
+            parameters:
+                - description: The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
+                  in: header
+                  name: Authorization
+                  required: true
+                  type: string
+                  x-prefix: 'Bearer '
+                - description: IBX
+                  in: query
+                  name: ibx
+                  type: string
+                - description: Category
+                  in: query
+                  name: category
+                  type: string
+                - description: Event Type.
+                  in: query
+                  name: eventType
+                  type: string
+                - description: Account Number
+                  in: query
+                  name: accountNo
+                  type: string
+                - description: Page Number
+                  in: query
+                  name: pageNum
+                  required: true
+                  type: string
+                - description: Limit
+                  in: query
+                  name: limit
+                  required: true
+                  type: string
+                - description: |
+                    order by ascending or descending
+                  in: query
+                  name: orderBy
+                  type: string
+                - description: |
+                    sortBy value
+                  in: query
+                  name: sortBy
+                  type: string
+            responses:
+                "200":
+                    description: Valid Response
+                    schema:
+                        $ref: '#/definitions/Alerts'
+                default:
+                    description: Error response
+                    schema:
+                        $ref: '#/definitions/PowerData_Error'
+            summary: obtain active SmartView alerts.
+            tags:
+                - Alerts
+    /smartview/v1/asset/details:
+        get:
+            description: This endpoint returns information about asset details including tag points lists for a given asset identifier.
+            operationId: getAssetDetails
+            parameters:
+                - description: Specify the OAuth Bearer token with prefix 'Bearer '.
+                  in: header
+                  name: Authorization
+                  required: true
+                  type: string
+                  x-prefix: 'Bearer '
+                - description: customer account number
+                  in: query
+                  name: accountNo
+                  required: true
+                  type: string
+                - description: ibx code
+                  in: query
+                  name: ibx
+                  required: true
+                  type: string
+                - description: asset classification (Electrical, Mechanical)
+                  in: query
+                  name: classification
+                  required: true
+                  type: string
+                - description: asset id
+                  in: query
+                  name: assetId
+                  required: true
+                  type: string
+            responses:
+                "200":
+                    description: Asset Details
+                    schema:
+                        $ref: '#/definitions/AssetDetailsGetResponse'
+                default:
+                    description: Unexpected error
+                    schema:
+                        $ref: '#/definitions/Error'
+            summary: get details for an asset.
+            tags:
+                - Smart View Assets
+        parameters:
+            - description: The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
+              in: header
+              name: Authorization
+              required: true
+              type: string
+              x-prefix: 'Bearer '
+        post:
+            description: This endpoint returns information about assets details including the assets tag points list for the given multiple asset identifiers.
+            operationId: Mixin4
+            parameters:
+                - description: Specify the OAuth Bearer token with prefix 'Bearer '.
+                  in: header
+                  name: Authorization
+                  required: true
+                  type: string
+                  x-prefix: 'Bearer '
+                - description: request schema
+                  in: body
+                  name: payload
+                  schema:
+                    $ref: '#/definitions/AssetDetailsRequest'
+            responses:
+                "200":
+                    description: Asset Details response object
+                    schema:
+                        $ref: '#/definitions/AssetDetailsResponse'
+                default:
+                    description: Unexpected error
+                    schema:
+                        $ref: '#/definitions/Error'
+            summary: get asset details
+            tags:
+                - Smart View Assets
+    /smartview/v1/asset/list:
+        get:
+            description: This endpoint returns information about asset in a hierarchical structure ( category / template / asset ) based on the input account number, IBX code, cage and asset classification (Electrical, Mechanical).
+            operationId: getAsset
+            parameters:
+                - description: Specify the OAuth Bearer token with prefix 'Bearer '.
+                  in: header
+                  name: Authorization
+                  required: true
+                  type: string
+                  x-prefix: 'Bearer '
+                - description: customer account number
+                  in: query
+                  name: accountNo
+                  required: true
+                  type: string
+                - description: ibx code
+                  in: query
+                  name: ibx
+                  required: true
+                  type: string
+                - description: asset classification (Electrical, Mechanical)
+                  enum:
+                    - Electrical
+                    - Mechanical
+                  in: query
+                  name: classification
+                  required: true
+                  type: string
+                - description: |
+                    cage unique space id to be used to filter the assets list
+                    assumed to be all cage unique space id if no value is sent.
+                  in: query
+                  items:
+                    type: string
+                  name: cages
+                  type: array
+            responses:
+                "200":
+                    description: Asset Details
+                    schema:
+                        $ref: '#/definitions/AssetsList'
+                default:
+                    description: Unexpected error
+                    schema:
+                        $ref: '#/definitions/Error'
+            summary: get assets list information
+            tags:
+                - Smart View Assets
+        parameters:
+            - description: The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
+              in: header
+              name: Authorization
+              required: true
+              type: string
+              x-prefix: 'Bearer '
+    /smartview/v1/asset/search:
+        get:
+            description: This endpoint is used to search for assets using wild card search patterns matching the asset identifier.
+            operationId: searchAsset
+            parameters:
+                - description: Specify the OAuth Bearer token with prefix 'Bearer '.
+                  in: header
+                  name: Authorization
+                  required: true
+                  type: string
+                  x-prefix: 'Bearer '
+                - description: Customer Account Number
+                  in: query
+                  name: accountNo
+                  required: true
+                  type: string
+                - description: IBX Code
+                  in: query
+                  name: ibx
+                  required: true
+                  type: string
+                - description: Search String
+                  in: query
+                  name: searchString
+                  required: true
+                  type: string
+            responses:
+                "200":
+                    description: Asset Details
+                    schema:
+                        $ref: '#/definitions/Assets'
+                default:
+                    description: Unexpected error
+                    schema:
+                        $ref: '#/definitions/Error'
+            summary: Search for Assets matching identifiers
+            tags:
+                - Smart View Assets
+        parameters:
+            - description: The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
+              in: header
+              name: Authorization
+              required: true
+              type: string
+              x-prefix: 'Bearer '
+    /smartview/v1/asset/tagpoint/affected-assets:
+        get:
+            description: The endpoint returns information regarding the affected assets of customers for a given asset identifier
+            operationId: getAffectedAsset
+            parameters:
+                - description: Specify the OAuth Bearer token with prefix 'Bearer '.
+                  in: header
+                  name: Authorization
+                  required: true
+                  type: string
+                  x-prefix: 'Bearer '
+                - description: customer account number
+                  in: query
+                  name: accountNo
+                  required: true
+                  type: string
+                - description: ibx code
+                  in: query
+                  name: ibx
+                  required: true
+                  type: string
+                - description: asset id
+                  in: query
+                  name: assetId
+                  required: true
+                  type: string
+                - description: asset classification(Electrical, Mechanical)
+                  enum:
+                    - Electrical
+                    - Mechanical
+                  in: query
+                  name: classification
+                  required: true
+                  type: string
+            responses:
+                "200":
+                    description: Affect Customer Circuits ( Cage > Cabinet > Circuit hierarchy )
+                    schema:
+                        $ref: '#/definitions/HierarchyNode'
+                default:
+                    description: Unexpected error
+                    schema:
+                        $ref: '#/definitions/Error'
+            summary: get affected customers assets hierarchy
+            tags:
+                - Smart View Assets
+        parameters:
+            - description: The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
+              in: header
+              name: Authorization
+              required: true
+              type: string
+              x-prefix: 'Bearer '
+    /smartview/v1/asset/tagpoint/current:
+        get:
+            description: This endpoint fetches and provides the most recent tag point information for a given tag identifier.
+            operationId: getCurrentTagPoint
+            parameters:
+                - description: Specify the OAuth Bearer token with prefix 'Bearer '.
+                  in: header
+                  name: Authorization
+                  required: true
+                  type: string
+                  x-prefix: 'Bearer '
+                - description: customer account number
+                  in: query
+                  name: accountNo
+                  required: true
+                  type: string
+                - description: ibx code
+                  in: query
+                  name: ibx
+                  required: true
+                  type: string
+                - description: tag id is the unique identifier for the tag point
+                  in: query
+                  name: tagid
+                  required: true
+                  type: string
+            responses:
+                "200":
+                    description: the current tag point data
+                    schema:
+                        $ref: '#/definitions/TagPointData'
+                default:
+                    description: Unexpected error
+                    schema:
+                        $ref: '#/definitions/Error'
+            summary: obtain latest tag point data
+            tags:
+                - Smart View Assets
+        parameters:
+            - description: The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
+              in: header
+              name: Authorization
+              required: true
+              type: string
+              x-prefix: 'Bearer '
+        post:
+            description: This endpoint fetches the latest read values for given tag points using given tag identifiers.
+            operationId: Mixin4
+            parameters:
+                - description: Specify the OAuth Bearer token with prefix 'Bearer '.
+                  in: header
+                  name: Authorization
+                  required: true
+                  type: string
+                  x-prefix: 'Bearer '
+                - in: body
+                  name: payload
+                  schema:
+                    $ref: '#/definitions/CurrentTagPointRequest'
+            responses:
+                "200":
+                    description: data for tag points based on input payload
+                    schema:
+                        $ref: '#/definitions/TagPointData'
+                default:
+                    description: Unexpected error
+                    schema:
+                        $ref: '#/definitions/Error'
+            summary: get current tag points data
+            tags:
+                - Smart View Assets
+    /smartview/v1/asset/tagpoint/trending:
+        get:
+            description: This endpoint fetches and returns the trending tag point information for a given tag identifier.
+            operationId: getTagpointTrending
+            parameters:
+                - description: Specify the OAuth Bearer token with prefix 'Bearer '.
+                  in: header
+                  name: Authorization
+                  required: true
+                  type: string
+                  x-prefix: 'Bearer '
+                - description: customer account number
+                  in: query
+                  name: accountNo
+                  required: true
+                  type: string
+                - description: ibx code
+                  in: query
+                  name: ibx
+                  required: true
+                  type: string
+                - description: tag id is the unique identifier for the tag point
+                  in: query
+                  name: tagid
+                  required: true
+                  type: string
+                - description: tag point data interval (1h, 1d, reading)
+                  in: query
+                  name: interval
+                  required: true
+                  type: string
+                - description: from date UTC time (1494345600000)
+                  in: query
+                  name: fromDate
+                  required: true
+                  type: integer
+                - description: to date UTC time (1494432000000)
+                  in: query
+                  name: toDate
+                  required: true
+                  type: integer
+            responses:
+                "200":
+                    description: the current tag point data
+                    schema:
+                        $ref: '#/definitions/TagPointTrendingResponse'
+                default:
+                    description: Unexpected error
+                    schema:
+                        $ref: '#/definitions/Error'
+            summary: obtain trending tag point data
+            tags:
+                - Smart View Assets
+        parameters:
+            - description: The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
+              in: header
+              name: Authorization
+              required: true
+              type: string
+              x-prefix: 'Bearer '
+    /smartview/v1/hierarchy/location:
+        get:
+            description: |
+                The location hierarchy endpoint returns the location hierarchy. This endpoint provides data for invoking other APIs such as Environmental APIs that require location hierarchy information.
+            operationId: getLocationHierarchy
+            parameters:
+                - description: Specify the OAuth Bearer token with prefix 'Bearer '.
+                  in: header
+                  name: Authorization
+                  required: true
+                  type: string
+                  x-prefix: 'Bearer '
+                - description: Customer Account Number
+                  in: query
+                  name: accountNo
+                  required: true
+                  type: string
+                - description: IBX Code
+                  in: query
+                  name: ibx
+                  type: string
+                - description: The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
+                  in: header
+                  name: Authorization
+                  required: true
+                  type: string
+                  x-prefix: 'Bearer '
+            responses:
+                "200":
+                    description: Location Hierarchy Details
+                    schema:
+                        $ref: '#/definitions/LocationResponse'
+                default:
+                    description: Unexpected error
+                    schema:
+                        $ref: '#/definitions/Error'
+            summary: Fetch the Location Hierarchy
+            tags:
+                - Smart View Hierarchy APIs
+    /smartview/v1/hierarchy/power:
+        get:
+            description: |
+                The power hierarchy endpoint returns the power hierarchy. This endpoint provides data for invoking other APIs such as Power APIs that require power hierarchy information.
+            operationId: getPowerHierarchy
+            parameters:
+                - description: Specify the OAuth Bearer token with prefix 'Bearer '.
+                  in: header
+                  name: Authorization
+                  required: true
+                  type: string
+                  x-prefix: 'Bearer '
+                - description: Customer Account Number
+                  in: query
+                  name: accountNo
+                  required: true
+                  type: string
+                - description: IBX Code
+                  in: query
+                  name: ibx
+                  type: string
+                - description: The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
+                  in: header
+                  name: Authorization
+                  required: true
+                  type: string
+                  x-prefix: 'Bearer '
+            responses:
+                "200":
+                    description: Location Hierarchy Details
+                    schema:
+                        $ref: '#/definitions/PowerResponse'
+                default:
+                    description: Unexpected error
+                    schema:
+                        $ref: '#/definitions/Error'
+            summary: Fetch the Power Hierarchy
+            tags:
+                - Smart View Hierarchy APIs
+    /smartview/v2/environmental/ibxs/{ibx}/sensors/readings:
+        get:
+            description: Returns current environmental (temperature and humidity) sensor readings for the given IBX code in a paginated way.
+            operationId: getSensorReadings
+            parameters:
+                - description: IBX where the sensor is located.
+                  in: path
+                  name: ibx
+                  required: true
+                  type: string
+                  x-example: CH2
+                - description: Type of sensor data to display, e.g. specifying 'HUMIDITY' means only sensor readings with HUMIDITY value will be included
+                  in: query
+                  name: type
+                  type: string
+                  x-example: HUMIDITY
+                - description: Zone name. Adding this parameter limits the query to sensors in the specified zone
+                  in: query
+                  name: zone
+                  type: string
+                  x-example: CH2:1:06:ColoArea:1
+                - default: !!float 0
+                  description: Results offset you want to retrieve (0..N)
+                  in: query
+                  name: offset
+                  type: integer
+                - default: !!float 20
+                  description: Number of records to retrieve per request.
+                  in: query
+                  name: limit
+                  type: integer
+                - description: The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
+                  in: header
+                  name: Authorization
+                  required: true
+                  type: string
+                  x-prefix: 'Bearer '
+            produces:
+                - application/json
+            responses:
+                "200":
+                    description: OK
+                    schema:
+                        $ref: '#/definitions/SensorReadingsResponse'
+                "400":
+                    description: Bad request
+                "401":
+                    description: Unauthorized
+                "403":
+                    description: Forbidden
+                "422":
+                    description: Unprocessable entity
+            summary: IBX sensors current readings
+            tags:
+                - Smart View Environmental
+    /smartview/v2/environmental/ibxs/{ibx}/sensors/{sensorId}/readings:
+        get:
+            description: Returns current environmental sensor readings such as temperature and humidity for the given sensor ID and IBX code.
+            operationId: getSingleSensorReadings
+            parameters:
+                - description: IBX where the sensor is located.
+                  in: path
+                  name: ibx
+                  required: true
+                  type: string
+                  x-example: SV2
+                - description: Id of sensor to read.
+                  in: path
+                  name: sensorId
+                  required: true
+                  type: string
+                  x-example: CH2.Environmental.MbusColo3Mod5.MOD35.C3TS03
+                - description: The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
+                  in: header
+                  name: Authorization
+                  required: true
+                  type: string
+                  x-prefix: 'Bearer '
+            produces:
+                - application/json
+            responses:
+                "200":
+                    description: OK
+                    schema:
+                        $ref: '#/definitions/Sensor%20reading'
+                "400":
+                    description: Bad request
+                "401":
+                    description: Unauthorized
+                "403":
+                    description: Forbidden
+                "422":
+                    description: Unprocessable entity
+            summary: Single sensor current value(s)
+            tags:
+                - Smart View Environmental
+    /smartview/v2/streaming/subscriptionData/{subscriptionId}:
+        get:
+            description: obtain API+ near real time data via a simple REST endpoint by employing subscription ID alongside other specified criteria, enabling a comprehensive and targeted approach to data retrieval. Subscription data endpoint works for all channels and not just REST channel.
+            operationId: getSubscriptionData
+            parameters:
+                - description: Subscription ID
+                  in: path
+                  name: subscriptionId
+                  required: true
+                  type: string
+                - description: Filter, set of IBXs
+                  in: query
+                  items:
+                    type: string
+                  name: ibxs
+                  type: array
+                - description: Filter, set of message types
+                  in: query
+                  items:
+                    enum:
+                        - ALARM
+                        - ALERT
+                        - ENVIRONMENTAL
+                        - METERED_POWER
+                        - POWER
+                        - TAG_POINT
+                    type: string
+                  name: messageTypes
+                  type: array
+                - description: Filter, set of stream IDs
+                  in: query
+                  items:
+                    type: string
+                  name: streamIds
+                  type: array
+                - default: !!float 0
+                  description: Pagination, offset of the first item
+                  format: int32
+                  in: query
+                  name: offset
+                  type: integer
+                - default: !!float 250
+                  description: Pagination, limit of items returned
+                  format: int32
+                  in: query
+                  name: limit
+                  type: integer
+                - description: The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
+                  in: header
+                  name: Authorization
+                  required: true
+                  type: string
+                  x-prefix: 'Bearer '
+            responses:
+                "200":
+                    description: OK
+                    schema:
+                        $ref: '#/definitions/SubscriptionData'
+                "401":
+                    description: Unauthorized
+                "403":
+                    description: Forbidden
+                "404":
+                    description: Not Found
+                "500":
+                    description: Internal server error
+            summary: Get subscription data via REST
+    /smartview/v2/streaming/subscriptions:
+        get:
+            description: The endpoint allows users to fetch details for all streaming subscriptions for a given organization.
+            operationId: getAllSubscriptions
+            parameters:
+                - description: The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
+                  in: header
+                  name: Authorization
+                  required: true
+                  type: string
+                  x-prefix: 'Bearer '
+            responses:
+                "200":
+                    description: OK
+                    schema:
+                        items:
+                            $ref: '#/definitions/SubscriptionResponse'
+                        type: array
+                "401":
+                    description: Unauthorized
+                "403":
+                    description: Forbidden
+                "404":
+                    description: Not Found
+                "500":
+                    description: Internal server error
+            summary: Get all subscription endpoint
+        post:
+            description: The endpoint allows users to define and create a new streaming subscription for a given organization.
+            operationId: createSubscription
+            parameters:
+                - in: body
+                  name: body
+                  schema:
+                    $ref: '#/definitions/SubscriptionRequest'
+                - description: The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
+                  in: header
+                  name: Authorization
+                  required: true
+                  type: string
+                  x-prefix: 'Bearer '
+            responses:
+                "201":
+                    description: Created
+                    headers:
+                        Location:
+                            description: 'Location of created subscription. For Example: /smartview/v2/streaming/subscriptions/607460b4e4a78360425bca56'
+                            type: string
+                "400":
+                    description: Bad request
+                "401":
+                    description: Unauthorized
+                "403":
+                    description: Forbidden
+                "422":
+                    description: Unprocessable entity
+                    schema:
+                        $ref: '#/definitions/ApiError'
+                "500":
+                    description: Internal server error
+            summary: Create subscription endpoint
+    /smartview/v2/streaming/subscriptions/{id}:
+        delete:
+            description: The endpoint allows users to delete and remove an existing streaming subscription for a given organization.
+            operationId: deleteSubscriptionById
+            parameters:
+                - in: path
+                  name: id
+                  required: true
+                  type: string
+                - description: The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
+                  in: header
+                  name: Authorization
+                  required: true
+                  type: string
+                  x-prefix: 'Bearer '
+            responses:
+                "204":
+                    description: No Content
+                "401":
+                    description: Unauthorized
+                "403":
+                    description: Forbidden
+                "404":
+                    description: Not Found
+                "500":
+                    description: Internal server error
+            summary: Delete subscription endpoint
+        get:
+            description: The endpoint allows users to fetch details for a given streaming subscription for a given organization.
+            operationId: getSubscriptionById
+            parameters:
+                - in: path
+                  name: id
+                  required: true
+                  type: string
+                - description: The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
+                  in: header
+                  name: Authorization
+                  required: true
+                  type: string
+                  x-prefix: 'Bearer '
+            responses:
+                "200":
+                    description: OK
+                    schema:
+                        $ref: '#/definitions/SubscriptionResponse'
+                "401":
+                    description: Unauthorized
+                "403":
+                    description: Forbidden
+                "404":
+                    description: Not Found
+                "500":
+                    description: Internal server error
+            summary: Get subscription endpoint
+        put:
+            description: The endpoint allows users to modify and update an existing streaming subscription for a given organization. Request payload replaces current subscription.
+            operationId: updateSubscription
+            parameters:
+                - in: path
+                  name: id
+                  required: true
+                  type: string
+                - in: body
+                  name: body
+                  schema:
+                    $ref: '#/definitions/SubscriptionRequest'
+                - description: The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
+                  in: header
+                  name: Authorization
+                  required: true
+                  type: string
+                  x-prefix: 'Bearer '
+            responses:
+                "204":
+                    description: No Content
+                "400":
+                    description: Bad request
+                "401":
+                    description: Unauthorized
+                "403":
+                    description: Forbidden
+                "404":
+                    description: Not Found
+                "422":
+                    description: Unprocessable entity
+                    schema:
+                        $ref: '#/definitions/ApiError'
+                "500":
+                    description: Internal server error
+            summary: Update subscription endpoint
+definitions:
+    Alarm:
+        description: message data
+        properties:
+            asset:
+                $ref: '#/definitions/AlarmAssetDetails'
+                x-order: !!float 12
+            conditionName:
+                description: condition name
+                example: High
+                type: string
+                x-order: !!float 5
+            country:
+                description: country
+                example: FR
+                type: string
+                x-order: !!float 4
+            currentValue:
+                $ref: '#/definitions/AlarmCurrentValueDetails'
+                x-order: !!float 11
+            dataQuality:
+                description: 'data quality: Good | Bad | Uncertain'
+                example: Good
+                type: string
+                x-order: !!float 20
+            definitionId:
+                description: unique message id
+                example: IBX.CRAH-EQ1-04:dirtyfilter#ABSOLUTE:HIGH
+                type: string
+                x-order: !!float 10
+            heartbeat:
+                description: heartbeat
+                example: true
+                type: boolean
+                x-order: !!float 8
+            ibx:
+                description: ibx
+                example: IBX
+                type: string
+                x-order: !!float 1
+            metro:
+                description: metro
+                example: metro
+                type: string
+                x-order: !!float 3
+            normalProcessedTime:
+                description: alarm normal processed time
+                example: 2023-10-03T13:09:32
+                type: string
+                x-order: !!float 18
+            normalTriggeredTime:
+                description: alarm normal triggered time
+                example: 2023-10-03T13:09:32
+                type: string
+                x-order: !!float 19
+            processedTime:
+                description: alarm processed time
+                example: 2023-10-03T13:09:32
+                type: string
+                x-order: !!float 17
+            region:
+                description: region
+                example: EMEA
+                type: string
+                x-order: !!float 2
+            severity:
+                description: severity
+                example: !!float 900
+                format: int32
+                type: integer
+                x-order: !!float 6
+            status:
+                $ref: '#/definitions/AlarmStatusDetails'
+                x-order: !!float 14
+            streamId:
+                description: unique message id
+                example: IBX.CRAH-EQ1-04:dirtyfilter#ABSOLUTE:HIGH
+                type: string
+                x-order: !!float 0
+            tag:
+                $ref: '#/definitions/AlarmTagDetails'
+                x-order: !!float 13
+            threshold:
+                $ref: '#/definitions/AlarmThresholdDetails'
+                x-order: !!float 15
+            triggerRule:
+                description: trigger rule
+                example: RULE:123:1
+                type: string
+                x-order: !!float 9
+            triggeredTime:
+                description: alarm triggered time
+                example: 2023-10-03T13:09:32
+                type: string
+                x-order: !!float 16
+            type:
+                description: type
+                example: Absolute
+                type: string
+                x-order: !!float 7
+        required:
+            - asset
+            - currentValue
+            - definitionId
+            - ibx
+            - status
+            - streamId
+            - tag
+            - threshold
+        type: object
+    AlarmAssetDetails:
+        description: asset details
+        properties:
+            classification:
+                description: asset classification
+                example: Mechanical
+                type: string
+                x-order: !!float 2
+            id:
+                description: asset id
+                example: IBX.CRAH-EQ1-04
+                type: string
+                x-order: !!float 0
+            type:
+                description: asset type
+                example: CRAH
+                type: string
+                x-order: !!float 1
+        type: object
+    AlarmCurrentValueDetails:
+        description: currentValue details
+        properties:
+            type:
+                description: current value type
+                example: Float
+                type: string
+                x-order: !!float 2
+            unit:
+                description: current value unit
+                example: '%'
+                type: string
+                x-order: !!float 0
+            value:
+                description: current value value
+                example: "35.023"
+                type: string
+                x-order: !!float 1
+        type: object
+    AlarmMessageData:
+        description: alarm message data
+        properties:
+            data:
+                $ref: '#/definitions/Alarm'
+                x-order: !!float 1
+            type:
+                default: system-alert
+                description: message type
+                example: system-alert
+                type: string
+                x-order: !!float 0
+        required:
+            - data
+            - type
+        type: object
+    AlarmStatusDetails:
+        description: status details
+        properties:
+            acknowledged:
+                description: status acknowledged
+                example: false
+                type: boolean
+                x-order: !!float 0
+            acknowledgementTime:
+                description: status acknowledgement time
+                example: 2023-10-03T13:09:32
+                type: string
+                x-order: !!float 1
+            active:
+                description: status active
+                example: true
+                type: boolean
+                x-order: !!float 3
+            cleared:
+                description: status cleared
+                example: false
+                type: boolean
+                x-order: !!float 2
+        type: object
+    AlarmTagDetails:
+        description: tag details
+        properties:
+            displayName:
+                description: tag display name
+                example: Temperature7
+                type: string
+                x-order: !!float 1
+            id:
+                description: tag id
+                example: IBX.CRAH-EQ1-04:dirtyfilter
+                type: string
+                x-order: !!float 0
+        type: object
+    AlarmThresholdDetails:
+        description: threshold details
+        properties:
+            message:
+                description: threshold message
+                example: NA
+                type: string
+                x-order: !!float 2
+            stateLimit:
+                description: threshold state limit
+                example: "20"
+                type: string
+                x-order: !!float 1
+            unit:
+                description: threshold unit
+                example: '%'
+                type: string
+                x-order: !!float 0
+        type: object
+    Alert:
+        description: message data
+        properties:
+            asset:
+                $ref: '#/definitions/AlertAssetDetails'
+                x-order: !!float 9
+            conditional:
+                description: conditional
+                example: N
+                type: string
+                x-order: !!float 6
+            dataQuality:
+                description: 'data quality: Good | Bad | Uncertain'
+                example: Good
+                type: string
+                x-order: !!float 13
+            eventType:
+                description: event type
+                example: Falls below
+                type: string
+                x-order: !!float 7
+            heartbeat:
+                description: heartbeat
+                example: true
+                type: boolean
+                x-order: !!float 8
+            ibx:
+                description: ibx
+                example: IBX
+                type: string
+                x-order: !!float 1
+            id:
+                description: id
+                example: IBX.685306-15843739015670.6640131967865078
+                type: string
+                x-order: !!float 3
+            region:
+                description: region
+                example: APAC
+                type: string
+                x-order: !!float 2
+            streamId:
+                description: unique message id
+                example: IBX.685306-15843739015670.6640131967865078
+                type: string
+                x-order: !!float 0
+            tag:
+                $ref: '#/definitions/AlertTagDetails'
+                x-order: !!float 10
+            threshold:
+                $ref: '#/definitions/AlertThresholdDetails'
+                x-order: !!float 11
+            triggeredTime:
+                description: alert triggered time
+                example: 2023-10-03T13:09:32
+                type: string
+                x-order: !!float 12
+            type:
+                description: type
+                example: power
+                type: string
+                x-order: !!float 4
+            typeId:
+                description: type id
+                example: drawAmpFalls
+                type: string
+                x-order: !!float 5
+        required:
+            - asset
+            - ibx
+            - streamId
+            - tag
+            - threshold
+        type: object
+    AlertActivityLog:
+        properties:
+            payLoad:
+                items:
+                    $ref: '#/definitions/AlertActivityLogObj'
+                type: array
+                x-order: !!float 0
+            status:
+                $ref: '#/definitions/status'
+                x-order: !!float 1
+        type: object
+    AlertActivityLogObj:
+        properties:
+            alerts:
+                items:
+                    $ref: '#/definitions/AlertDto2'
+                type: array
+                x-order: !!float 0
+            totalCount:
+                description: totalCount
+                example: "1000"
+                pattern: ^[0-9]{4}$
+                type: number
+                x-order: !!float 1
+        type: object
+    AlertAssetDetails:
+        description: asset details
+        properties:
+            classification:
+                description: asset classification
+                example: Electrical
+                type: string
+                x-order: !!float 2
+            id:
+                description: asset id
+                example: "1.20849261E7"
+                type: string
+                x-order: !!float 0
+            type:
+                description: asset type
+                example: CIRCUIT
+                type: string
+                x-order: !!float 1
+        type: object
+    AlertDto1:
+        properties:
+            accountNo:
+                example: !!float 3213213
+                type: string
+                x-order: !!float 22
+            alertPaused:
+                description: isAlertPaused
+                example: true
+                type: boolean
+                x-order: !!float 28
+            alertType:
+                $ref: '#/definitions/AlertType'
+                type: object
+                x-order: !!float 2
+            conditionalAlert:
+                example: test
+                type: string
+                x-order: !!float 8
+            country:
+                example: SG
+                type: string
+                x-order: !!float 26
+            createdBy:
+                example: test
+                type: string
+                x-order: !!float 13
+            createdOn:
+                description: createdOn
+                example: !!float 1547696687748
+                pattern: ^[0-9]{4}$
+                type: number
+                x-order: !!float 14
+            customerAssets:
+                items:
+                    $ref: '#/definitions/CustomerAssets'
+                type: array
+                x-order: !!float 4
+            enabledAction:
+                example: Enabled
+                type: string
+                x-order: !!float 18
+            formatedSection:
+                example: Power Draw
+                type: string
+                x-order: !!float 17
+            heartbeatType:
+                example: off
+                type: string
+                x-order: !!float 6
+            ibx:
+                example: CH1
+                type: string
+                x-order: !!float 1
+            id:
+                example: 15476966877480.828
+                type: string
+                x-order: !!float 0
+            infraAssets:
+                items:
+                    $ref: '#/definitions/CustomerAssets'
+                type: array
+                x-order: !!float 5
+            isDuplicate:
+                example: false
+                type: boolean
+                x-order: !!float 19
+            lastTriggeredOn:
+                description: lastTriggeredOn
+                example: !!float 1547696687748
+                pattern: ^[0-9]{4}$
+                type: number
+                x-order: !!float 16
+            metro:
+                example: SG
+                type: string
+                x-order: !!float 27
+            modifiedOn:
+                description: modifiedOn
+                example: !!float 1547696687748
+                pattern: ^[0-9]{4}$
+                type: number
+                x-order: !!float 15
+            recipients:
+                items:
+                    $ref: '#/definitions/recipientsArray'
+                type: array
+                x-order: !!float 7
+            region:
+                example: APAC
+                type: string
+                x-order: !!float 25
+            section:
+                example: electrical
+                type: string
+                x-order: !!float 3
+            status:
+                example: status
+                type: string
+                x-order: !!float 24
+            thresholdUnit:
+                example: '%'
+                type: string
+                x-order: !!float 9
+            thresholdValue:
+                example: "12"
+                type: string
+                x-order: !!float 12
+            thresholdValueMax:
+                example: "12"
+                type: string
+                x-order: !!float 11
+            thresholdValueMin:
+                example: "12"
+                type: string
+                x-order: !!float 10
+            ucmid:
+                example: ucmid
+                type: string
+                x-order: !!float 21
+            uom:
+                example: STANDARD
+                type: string
+                x-order: !!float 23
+            userId:
+                example: userId
+                type: string
+                x-order: !!float 20
+        type: object
+    AlertDto2:
+        properties:
+            accountNo:
+                example: !!float 115767
+                type: string
+                x-order: !!float 12
+            acknowledge:
+                example: true
+                type: boolean
+                x-order: !!float 37
+            affectedCustomerAsset:
+                example: !!float 1069
+                type: string
+                x-order: !!float 9
+            alertType:
+                $ref: '#/definitions/AlertType'
+                type: object
+                x-order: !!float 5
+            alertTypeName:
+                example: tempExceeds
+                type: string
+                x-order: !!float 10
+            asset:
+                example: SG3
+                type: string
+                x-order: !!float 8
+            assetclassification:
+                example: assetclassification
+                type: string
+                x-order: !!float 19
+            assetname:
+                example: SG3
+                type: string
+                x-order: !!float 28
+            assettype:
+                example: IBX
+                type: string
+                x-order: !!float 16
+            conditionalAlert:
+                items:
+                    $ref: '#/definitions/ConditionalAlert'
+                type: array
+                x-order: !!float 13
+            country:
+                example: SG
+                type: string
+                x-order: !!float 35
+            createdOn:
+                description: createdOn
+                example: !!float 1547696687748
+                pattern: ^[0-9]{4}$
+                type: number
+                x-order: !!float 3
+            currentvalue:
+                example: 23.38019323671497
+                type: string
+                x-order: !!float 15
+            eventtype:
+                example: Exceeds
+                type: string
+                x-order: !!float 18
+            ibx:
+                example: CH1
+                type: string
+                x-order: !!float 2
+            id:
+                example: 15476966877480.828
+                type: string
+                x-order: !!float 0
+            lastmaintenance:
+                example: !!float 1547008897864
+                type: string
+                x-order: !!float 23
+            metro:
+                example: SG
+                type: string
+                x-order: !!float 36
+            modifiedOn:
+                description: modifiedOn
+                example: !!float 1547696687748
+                pattern: ^[0-9]{4}$
+                type: number
+                x-order: !!float 4
+            notificationType:
+                example: ALERT
+                type: string
+                x-order: !!float 14
+            region:
+                example: APAC
+                type: string
+                x-order: !!float 1
+            relatedincidents:
+                example: assetclassification
+                type: string
+                x-order: !!float 20
+            resiliency:
+                example: off
+                type: string
+                x-order: !!float 25
+            section:
+                example: electrical
+                type: string
+                x-order: !!float 6
+            severity:
+                example: ALERT
+                type: string
+                x-order: !!float 24
+            tagid:
+                example: Temperature
+                type: string
+                x-order: !!float 17
+            thresholdUnit:
+                example: '%'
+                type: string
+                x-order: !!float 31
+            thresholdValue:
+                example: "12"
+                type: string
+                x-order: !!float 34
+            thresholdValueMax:
+                example: "12"
+                type: string
+                x-order: !!float 33
+            thresholdValueMin:
+                example: "12"
+                type: string
+                x-order: !!float 32
+            timeZone:
+                example: Asia/Singapore
+                type: string
+                x-order: !!float 30
+            timeacknowledged:
+                example: !!float 1547008897864
+                type: string
+                x-order: !!float 22
+            timeprocessed:
+                example: off
+                type: string
+                x-order: !!float 26
+            timetriggeredMilisec:
+                example: "1547007734678"
+                type: string
+                x-order: !!float 27
+            triggeredOn:
+                description: lastTriggeredOn
+                example: !!float 1547696687748
+                pattern: ^[0-9]{4}$
+                type: number
+                x-order: !!float 7
+            type:
+                example: ALERT
+                type: string
+                x-order: !!float 21
+            uom:
+                example: STANDARD
+                type: string
+                x-order: !!float 29
+            year:
+                example: !!float 2019
+                type: string
+                x-order: !!float 11
+        type: object
+    AlertMessageData:
+        description: alert message data
+        properties:
+            data:
+                $ref: '#/definitions/Alert'
+                x-order: !!float 1
+            type:
+                default: custom-alert
+                description: message type
+                example: custom-alert
+                type: string
+                x-order: !!float 0
+        required:
+            - data
+            - type
+        type: object
+    AlertObj:
+        properties:
+            alerts:
+                items:
+                    $ref: '#/definitions/AlertDto1'
+                type: array
+                x-order: !!float 0
+            totalCount:
+                description: totalCount
+                example: "1000"
+                pattern: ^[0-9]{4}$
+                type: number
+                x-order: !!float 1
+        type: object
+    AlertTagDetails:
+        description: tag details
+        properties:
+            id:
+                description: tag id
+                example: IBX.CIRCUIT-EQ1-04:dirtyfilter
+                type: string
+                x-order: !!float 0
+        type: object
+    AlertThresholdDetails:
+        description: threshold details
+        properties:
+            maxValue:
+                description: threshold max value
+                example: "5"
+                type: string
+                x-order: !!float 1
+            minValue:
+                description: threshold min value
+                example: "1"
+                type: string
+                x-order: !!float 2
+            unit:
+                description: threshold unit
+                example: Amp
+                type: string
+                x-order: !!float 0
+            value:
+                description: threshold value
+                example: "10"
+                type: string
+                x-order: !!float 3
+        type: object
+    AlertType:
+        properties:
+            defaultValue:
+                example: "258"
+                type: string
+                x-order: !!float 5
+            eventType:
+                example: Exceeds
+                type: string
+                x-order: !!float 6
+            id:
+                example: cageDrawExceeds
+                type: string
+                x-order: !!float 0
+            tagId:
+                example: "258"
+                type: string
+                x-order: !!float 4
+            type:
+                example: value
+                type: string
+                x-order: !!float 1
+            unit:
+                example: percentage
+                type: string
+                x-order: !!float 3
+            value:
+                example: Cage Draw kVA to Contractual kVA% Exceeds
+                type: string
+                x-order: !!float 2
+        type: object
+    Alerts:
+        properties:
+            payLoad:
+                items:
+                    $ref: '#/definitions/AlertObj'
+                type: array
+                x-order: !!float 0
+            status:
+                $ref: '#/definitions/status'
+                x-order: !!float 1
+        type: object
+    ApiError:
+        description: ApiError provides information about the occurred error.
+        properties:
+            additionalInfo:
+                $ref: '#/definitions/ApiErrorAdditionalInfo'
+                x-order: !!float 5
+            correlationId:
+                example: 06ce37f6-12af-4f47-9d15-e4f8fc77e1c5
+                type: string
+                x-order: !!float 2
+            details:
+                example: The submitted payload does not meet validation criteria.
+                type: string
+                x-order: !!float 3
+            errorCode:
+                example: EQIX-ES-5000422
+                type: string
+                x-order: !!float 0
+            errorMessage:
+                example: Unprocessable Entity
+                type: string
+                x-order: !!float 1
+            help:
+                example: ' '
+                type: string
+                x-order: !!float 4
+        type: object
+    ApiErrorAdditionalInfo:
+        properties:
+            constraintCode:
+                example: IbxesMustExistOnPaidView
+                type: string
+                x-order: !!float 0
+            reason:
+                example: the [PA8] have no access to paid view
+                type: string
+                x-order: !!float 1
+        type: object
+    Asset:
+        description: Asset messages provide the latest readings for environmental, electrical, and mechanical assets within an IBX
+        properties:
+            accountNumber:
+                example: "135888"
+                type: string
+                x-order: !!float 0
+            assetClassification:
+                description: Asset Classification value if specified, otherwise all allowable classifications
+                items:
+                    enum:
+                        - MECHANICAL
+                        - ENVIRONMENTAL
+                        - ELECTRICAL
+                    type: string
+                maxItems: !!float 2147483647
+                minItems: !!float 1
+                type: array
+                uniqueItems: true
+                x-order: !!float 2
+            assetId:
+                items:
+                    type: string
+                maxItems: !!float 2147483647
+                minItems: !!float 1
+                type: array
+                uniqueItems: true
+                x-order: !!float 3
+            ibx:
+                items:
+                    type: string
+                type: array
+                uniqueItems: true
+                x-order: !!float 1
+        required:
+            - accountNumber
+            - ibx
+        type: object
+    AssetDetailResponse:
+        description: response object for asset/details POST request
+        properties:
+            payLoad:
+                properties:
+                    assetDetails:
+                        items:
+                            $ref: '#/definitions/AssetDetails'
+                        type: array
+                        x-order: !!float 0
+                type: object
+                x-order: !!float 0
+            status:
+                properties:
+                    msg:
+                        description: '[Ok|Permission Denied|Invalid Account number|Invalid IBX|Invalid LevelType|Invalid LevelValue|Invalid Interval|Invalid From/To Date|INVALID_SESSION|INVALID_SESSION_IBX|INTERNAL_ERROR] are the possible messages'
+                        example: OK
+                        type: string
+                        x-order: !!float 2
+                    statuscode:
+                        description: '[1000|3001|3002|3003|4000] are the possible status codes'
+                        example: "1000"
+                        type: number
+                        x-order: !!float 1
+                    type:
+                        description: '[INFO|ERROR] are the possible values'
+                        enum:
+                            - INFO
+                        type: string
+                        x-order: !!float 0
+                type: object
+                x-order: !!float 1
+        type: object
+    AssetDetails:
+        description: Asset Details includes Tag Points with Data for the asset
+        properties:
+            alarmLastProcessedTime:
+                description: Datetime when the latest alarm was processed on the asset
+                example: Aug 21,2017 05:52 AM
+                type: string
+                x-order: !!float 9
+            alarmLastTriggeredTime:
+                description: Datetime when the latest alarm was triggered on the asset
+                example: Aug 21,2017 04:38 AM
+                type: string
+                x-order: !!float 8
+            assetId:
+                description: asset id for the Asset
+                example: CH1.Chiller-1
+                type: string
+                x-order: !!float 0
+            assetType:
+                description: Template Name for the asset
+                example: Cooling
+                type: string
+                x-order: !!float 1
+            equipmentModelNumber:
+                description: Equipment Model Number
+                example: SACAC110-3EXX-2A1-16A-010
+                type: string
+                x-order: !!float 6
+            equipmentSerialNumber:
+                description: Equipment Serial Number
+                example: FF0010I233Q1276
+                type: string
+                x-order: !!float 7
+            lastMaintenanceDate:
+                description: Datetime when the machine had its last maintenance
+                example: Aug 03,2016
+                type: string
+                x-order: !!float 4
+            manufacturerName:
+                description: Manufacturer name for the Asset
+                example: SMARDT
+                type: string
+                x-order: !!float 5
+            tags:
+                description: List of tag points for the Asset
+                items:
+                    $ref: '#/definitions/TagPointDataArray'
+                type: array
+                x-order: !!float 3
+            userPrefTimeZone:
+                description: Time zone for the user
+                example: Asia/Katmandu
+                type: string
+                x-order: !!float 2
+        type: object
+    AssetDetailsGetResponse:
+        properties:
+            payLoad:
+                properties:
+                    alarmLastProcessedTime:
+                        description: Datetime when the latest alarm was processed on the asset
+                        example: Aug 21,2017 05:52 AM
+                        type: string
+                        x-order: !!float 9
+                    alarmLastTriggeredTime:
+                        description: Datetime when the latest alarm was triggered on the asset
+                        example: Aug 21,2017 04:38 AM
+                        type: string
+                        x-order: !!float 8
+                    assetId:
+                        description: asset id for the Asset
+                        example: CH1.Chiller-1
+                        type: string
+                        x-order: !!float 0
+                    assetType:
+                        description: Template Name for the asset
+                        example: Cooling
+                        type: string
+                        x-order: !!float 1
+                    equipmentModelNumber:
+                        description: Equipment Model Number
+                        example: SACAC110-3EXX-2A1-16A-010
+                        type: string
+                        x-order: !!float 6
+                    equipmentSerialNumber:
+                        description: Equipment Serial Number
+                        example: FF0010I233Q1276
+                        type: string
+                        x-order: !!float 7
+                    lastMaintenanceDate:
+                        description: Datetime when the machine had its last maintenance
+                        example: Aug 03,2016
+                        type: string
+                        x-order: !!float 4
+                    manufacturerName:
+                        description: Manufacturer name for the Asset
+                        example: SMARDT
+                        type: string
+                        x-order: !!float 5
+                    tags:
+                        description: List of tag points for the Asset
+                        items:
+                            $ref: '#/definitions/TagPointDataArray'
+                        type: array
+                        x-order: !!float 3
+                    userPrefTimeZone:
+                        description: Time zone for the user
+                        example: Asia/Katmandu
+                        type: string
+                        x-order: !!float 2
+                type: object
+                x-order: !!float 0
+            status:
+                properties:
+                    msg:
+                        description: '[Ok|Permission Denied|Invalid Account number|Invalid IBX|Invalid LevelType|Invalid LevelValue|Invalid Interval|Invalid From/To Date|INVALID_SESSION|INVALID_SESSION_IBX|INTERNAL_ERROR] are the possible messages'
+                        example: OK
+                        type: string
+                        x-order: !!float 2
+                    statuscode:
+                        description: '[1000|3001|3002|3003|4000] are the possible status codes'
+                        example: "1000"
+                        type: number
+                        x-order: !!float 1
+                    type:
+                        description: '[INFO|ERROR] are the possible values'
+                        enum:
+                            - INFO
+                        type: string
+                        x-order: !!float 0
+                type: object
+                x-order: !!float 1
+        type: object
+    AssetDetailsRequest:
+        allOf:
+            - $ref: '#/definitions/GenericRequest'
+            - properties:
+                assetIds:
+                    items:
+                        description: asset id
+                        type: string
+                    type: array
+    AssetDetailsResponse:
+        description: response object for asset/details POST request
+        properties:
+            payLoad:
+                properties:
+                    assetDetails:
+                        items:
+                            $ref: '#/definitions/AssetDetails'
+                        type: array
+                        x-order: !!float 1
+                    totalCount:
+                        description: total number of assets that match the request filters
+                        example: !!float 1
+                        type: integer
+                        x-order: !!float 0
+                type: object
+                x-order: !!float 0
+            status:
+                properties:
+                    msg:
+                        description: '[Ok|Permission Denied|Invalid Account number|Invalid IBX|Invalid LevelType|Invalid LevelValue|Invalid Interval|Invalid From/To Date|INVALID_SESSION|INVALID_SESSION_IBX|INTERNAL_ERROR] are the possible messages'
+                        example: OK
+                        type: string
+                        x-order: !!float 2
+                    statuscode:
+                        description: '[1000|3001|3002|3003|4000] are the possible status codes'
+                        example: "1000"
+                        type: number
+                        x-order: !!float 1
+                    type:
+                        description: '[INFO|ERROR] are the possible values'
+                        enum:
+                            - INFO
+                        type: string
+                        x-order: !!float 0
+                type: object
+                x-order: !!float 1
+        type: object
+    AssetDetailsTagPointData:
+        properties:
+            payLoad:
+                items:
+                    $ref: '#/definitions/TagPointDataArray'
+                type: array
+                x-order: !!float 0
+        type: object
+    Assets:
+        properties:
+            payLoad:
+                properties:
+                    assetsList:
+                        items:
+                            $ref: '#/definitions/AssetsArray'
+                        type: array
+                        x-order: !!float 1
+                    totalCount:
+                        example: !!float 1
+                        type: integer
+                        x-order: !!float 0
+                type: object
+                x-order: !!float 0
+            status:
+                properties:
+                    msg:
+                        description: '[Ok|Permission Denied|Invalid Account number|Invalid IBX|Invalid LevelType|Invalid LevelValue|Invalid Interval|Invalid From/To Date|INVALID_SESSION|INVALID_SESSION_IBX|INTERNAL_ERROR] are the possible messages            possible messages            '
+                        example: OK
+                        type: string
+                        x-order: !!float 2
+                    statuscode:
+                        description: '[1000|3001|3002|3003|4000] are the possible status codes'
+                        example: "1000"
+                        type: number
+                        x-order: !!float 1
+                    type:
+                        description: '[INFO|ERROR] are the possible values'
+                        enum:
+                            - INFO
+                        type: string
+                        x-order: !!float 0
+                type: object
+                x-order: !!float 1
+        type: object
+    AssetsArray:
+        properties:
+            assetClassification:
+                description: |
+                    Asset   classification is electrical or mechanical
+                example: Electrical
+                type: string
+                x-order: !!float 3
+            assetId:
+                description: "The assetid is the circuit number, sensor id, asset id, asset id \nfor type circuit, sensor, electrical and mechanical resp.\n"
+                example: CH1.ASTS-1-2-A
+                type: string
+                x-order: !!float 0
+            assetLabel:
+                description: "Asset Label is the Circuit display label, Sensor ID, and Asset ID\nfor types circuit, sensor, electrical and mechanical resp. \n"
+                example: CH1.ASTS-1-2-A
+                type: string
+                x-order: !!float 2
+            type:
+                example: ASTS
+                type: string
+                x-order: !!float 1
+        type: object
+    AssetsList:
+        properties:
+            payLoad:
+                properties:
+                    categories:
+                        items:
+                            $ref: '#/definitions/Category'
+                        type: array
+                        x-order: !!float 1
+                    classification:
+                        description: asset classification for the Electrical and Mechanical
+                        example: Mechanical
+                        type: string
+                        x-order: !!float 0
+                type: object
+                x-order: !!float 0
+            status:
+                properties:
+                    msg:
+                        description: '[Ok|Permission Denied|Invalid Account number|Invalid IBX|Invalid LevelType|Invalid LevelValue|Invalid Interval|Invalid From/To Date|INVALID_SESSION|INVALID_SESSION_IBX|INTERNAL_ERROR] are the possible messages            possible messages'
+                        example: OK
+                        type: string
+                        x-order: !!float 2
+                    statuscode:
+                        description: '[1000|3001|3002|3003|4000] are the possible status codes'
+                        example: "1000"
+                        type: number
+                        x-order: !!float 1
+                    type:
+                        description: '[INFO|ERROR] are the possible values'
+                        enum:
+                            - INFO
+                        type: string
+                        x-order: !!float 0
+                type: object
+                x-order: !!float 1
+        type: object
+    AwsIotCoreChannelConfiguration:
+        description: The configuration for an 'AWS_IOT_CORE' channel
+        properties:
+            url:
+                example: https://b4c3mzxe8syvhd-ats.iot.us-west-2.amazonaws.com
+                type: string
+                x-order: !!float 0
+        required:
+            - url
+        type: object
+    AzureChannelConfiguration:
+        description: The configuration for an 'AZURE' channel
+        properties:
+            batchSize:
+                format: int32
+                maximum: !!float 20
+                minimum: !!float 5
+                type: integer
+                x-order: !!float 2
+            numberOfConcurrentCalls:
+                format: int32
+                maximum: !!float 50
+                minimum: !!float 20
+                type: integer
+                x-order: !!float 1
+            numberOfRetries:
+                format: int32
+                maximum: !!float 5
+                minimum: !!float 1
+                type: integer
+                x-order: !!float 0
+        type: object
+    Cabinets:
+        properties:
+            circuits:
+                items:
+                    $ref: '#/definitions/Circuits'
+                type: array
+                x-order: !!float 2
+            name:
+                enum:
+                    - CH1:05:000430:0105
+                type: string
+                x-order: !!float 0
+            type:
+                example: cabinet
+                type: string
+                x-order: !!float 1
+        type: object
+    Cages:
+        properties:
+            cabinets:
+                items:
+                    $ref: '#/definitions/Cabinets'
+                type: array
+                x-order: !!float 2
+            name:
+                description: Cage Unique Space Id
+                example: CH1:05:000430
+                type: string
+                x-order: !!float 0
+            type:
+                description: type of the asset
+                example: cage
+                type: string
+                x-order: !!float 1
+        type: object
+    Category:
+        properties:
+            categoryName:
+                example: Cooling
+                type: string
+                x-order: !!float 1
+            templates:
+                items:
+                    $ref: '#/definitions/Template'
+                type: array
+                x-order: !!float 0
+        type: object
+    Channel:
+        description: Subscription can be created using one channel.
+        properties:
+            awsIotCoreChannelConfiguration:
+                $ref: '#/definitions/AwsIotCoreChannelConfiguration'
+                x-order: !!float 1
+            azureChannelConfiguration:
+                $ref: '#/definitions/AzureChannelConfiguration'
+                x-order: !!float 3
+            channelType:
+                enum:
+                    - AWS_IOT_CORE
+                    - WEBHOOK
+                    - AZURE
+                type: string
+                x-order: !!float 0
+            webhookChannelConfiguration:
+                $ref: '#/definitions/WebhookChannelConfiguration'
+                x-order: !!float 2
+        type: object
+    Circuits:
+        properties:
+            name:
+                enum:
+                    - !!float 877484
+                type: string
+                x-order: !!float 0
+            type:
+                enum:
+                    - circuit
+                type: string
+                x-order: !!float 1
+        type: object
+    CircuitsMapWithCage:
+        properties:
+            name:
+                enum:
+                    - !!float 877483
+                type: string
+                x-order: !!float 0
+            type:
+                enum:
+                    - circuit
+                type: string
+                x-order: !!float 1
+        type: object
+    ComparisonData:
+        description: |
+            comparison of readings with the current reading for specified datapoint
+        properties:
+            datapoint:
+                description: datapoint on which the comparison is done.
+                enum:
+                    - percentageKva
+                type: string
+                x-order: !!float 0
+            lastMonth:
+                description: "comparison for the current value of the datapoint with the last \nmonth's value\n"
+                example: -0.184
+                type: number
+                x-order: !!float 3
+            lastQuarter:
+                description: "comparison for the current value of the datapoint with the last \nquarter's value \n"
+                example: 52.434
+                type: number
+                x-order: !!float 4
+            lastWeek:
+                description: "comparison for the current value of the datapoint with last week's \nvalue\n"
+                example: -0.295
+                type: number
+                x-order: !!float 2
+            yesterday:
+                description: "comparison for the current value of the datapoint with yesterday's \nvalue\n"
+                example: 0.147
+                type: number
+                x-order: !!float 1
+        type: object
+    ComparisonData_Trend:
+        description: |
+            date and corresponding values
+        properties:
+            datetime:
+                description: datetime.
+                example: "201701010004"
+                type: string
+                x-order: !!float 0
+            value:
+                description: trending values
+                example: "0.147"
+                type: string
+                x-order: !!float 1
+        type: object
+    ConditionalAlert:
+        properties:
+            affectedCustomerAsset:
+                example: "258"
+                type: string
+                x-order: !!float 4
+            alertType:
+                example: "258"
+                type: string
+                x-order: !!float 8
+            asset:
+                example: "12"
+                type: string
+                x-order: !!float 13
+            assetname:
+                example: "12"
+                type: string
+                x-order: !!float 20
+            assettype:
+                example: "12"
+                type: string
+                x-order: !!float 21
+            condalerttypeid:
+                example: "12"
+                type: string
+                x-order: !!float 14
+            condassetclassification:
+                example: "12"
+                type: string
+                x-order: !!float 15
+            condassetid:
+                example: "12"
+                type: string
+                x-order: !!float 16
+            condcurrentvalue:
+                example: "12"
+                type: string
+                x-order: !!float 17
+            condeventtype:
+                example: "12"
+                type: string
+                x-order: !!float 18
+            condtagid:
+                example: "12"
+                type: string
+                x-order: !!float 19
+            customerAssets:
+                example: "258"
+                type: string
+                x-order: !!float 5
+            ibx:
+                example: SG3
+                type: string
+                x-order: !!float 1
+            infraAssets:
+                example: "258"
+                type: string
+                x-order: !!float 6
+            measurementType:
+                example: "258"
+                type: string
+                x-order: !!float 7
+            region:
+                example: APAC
+                type: string
+                x-order: !!float 0
+            section:
+                example: mechanical
+                type: string
+                x-order: !!float 3
+            thresholdUnit:
+                example: '%'
+                type: string
+                x-order: !!float 9
+            thresholdValue:
+                example: "12"
+                type: string
+                x-order: !!float 12
+            thresholdValueMax:
+                example: "12"
+                type: string
+                x-order: !!float 11
+            thresholdValueMin:
+                example: "12"
+                type: string
+                x-order: !!float 10
+            uom:
+                example: STANDARD
+                type: string
+                x-order: !!float 2
+        type: object
+    CurrentTagPointRequest:
+        description: request object for tagpoint/current POST request
+        properties:
+            accountNo:
+                description: customer account number
+                type: string
+                x-order: !!float 0
+            ibx:
+                description: ibx code
+                type: string
+                x-order: !!float 2
+            tagIds:
+                items:
+                    description: tag ids
+                    type: string
+                maxLength: !!float 1000
+                type: array
+                x-order: !!float 1
+        type: object
+    CurrentTagPointResponse:
+        description: response object for tagpoint/current POST request
+        properties:
+            totalCount:
+                description: total number of current tag point
+                x-order: !!float 0
+        type: object
+    CustomAlert:
+        description: Custom Alert messages are sent when user-defined alert conditions become true. The message contains the data point value that triggered the alert.
+        properties:
+            accountNumber:
+                example: "135888"
+                type: string
+                x-order: !!float 0
+            ibx:
+                items:
+                    type: string
+                type: array
+                uniqueItems: true
+                x-order: !!float 1
+            user:
+                type: string
+                x-order: !!float 2
+        required:
+            - accountNumber
+            - ibx
+        type: object
+    CustomerAssets:
+        properties:
+            assets:
+                items:
+                    example: "1069"
+                type: array
+                x-order: !!float 1
+            assetsName:
+                items:
+                    example: SG1:03:A20011
+                type: array
+                x-order: !!float 2
+            type:
+                example: cage
+                type: string
+                x-order: !!float 0
+        type: object
+    DataValue:
+        description: This object contains a single reading for the data point.
+        properties:
+            datetime:
+                description: timestamp since epoch. reading timestamp
+                example: "1483977600000"
+                type: string
+                x-order: !!float 2
+            modifiers:
+                description: modifiers applicable for the reading value
+                items:
+                    example: recorded
+                    type: string
+                type: array
+                x-order: !!float 1
+            value:
+                description: reading value for the datapoint
+                example: "21.11"
+                type: string
+                x-order: !!float 0
+        type: object
+    Environment:
+        description: message data
+        properties:
+            asset:
+                $ref: '#/definitions/EnvironmentAssetDetails'
+                x-order: !!float 2
+            dataQuality:
+                description: 'data quality: Good | Bad | Uncertain'
+                example: Good
+                type: string
+                x-order: !!float 6
+            ibx:
+                description: ibx
+                example: IBX
+                type: string
+                x-order: !!float 1
+            reading:
+                $ref: '#/definitions/EnvironmentValueWithUnit'
+                x-order: !!float 3
+            readingTime:
+                description: message reading time
+                example: 2023-10-03T13:09:32
+                type: string
+                x-order: !!float 5
+            streamId:
+                description: unique message id
+                example: IBX.IBX:humidity
+                type: string
+                x-order: !!float 0
+            tag:
+                $ref: '#/definitions/EnvironmentTagDetails'
+                x-order: !!float 4
+        required:
+            - asset
+            - ibx
+            - reading
+            - streamId
+            - tag
+        type: object
+    EnvironmentAssetDetails:
+        description: asset details
+        properties:
+            id:
+                description: asset id
+                example: IBX
+                type: string
+                x-order: !!float 0
+            level:
+                description: asset level
+                example: IBX
+                type: string
+                x-order: !!float 1
+        required:
+            - id
+            - level
+        type: object
+    EnvironmentData:
+        properties:
+            payLoad:
+                properties:
+                    accountNo:
+                        description: account number
+                        example: "1"
+                        type: string
+                        x-order: !!float 1
+                    cabinet:
+                        description: cabinet unique space id
+                        example: CH1:05:000550:0105
+                        type: string
+                        x-order: !!float 4
+                    cage:
+                        description: cage unique space id
+                        example: CH1:05:000550
+                        type: string
+                        x-order: !!float 3
+                    humidity:
+                        description: current humidity
+                        example: "43.00"
+                        type: string
+                        x-order: !!float 7
+                    humidityUom:
+                        description: unit of measure for humidity
+                        example: '%'
+                        type: string
+                        x-order: !!float 10
+                    ibx:
+                        description: ibx code
+                        example: CH1
+                        type: string
+                        x-order: !!float 0
+                    sensor:
+                        description: sensor id
+                        example: CH1.Colo.CH1_05_000550_0105
+                        type: string
+                        x-order: !!float 5
+                    temperature:
+                        description: current temperature
+                        example: "20.0"
+                        type: string
+                        x-order: !!float 6
+                    temperatureUom:
+                        description: unit of measure for temperature values
+                        example: Â°C
+                        type: string
+                        x-order: !!float 9
+                    timestamp:
+                        description: epoch timestamp when the current reading was read
+                        example: "1506665106579"
+                        type: string
+                        x-order: !!float 8
+                    zone:
+                        description: zone unique space id
+                        example: CH1:1:05:ColoArea:2
+                        type: string
+                        x-order: !!float 2
+                type: object
+                x-order: !!float 0
+            status:
+                properties:
+                    msg:
+                        description: '[Ok|Invalid Level Type|Invalid Level Value|Invalid Account Details Or User is not Entitled|User Preference is not set as expected in the account|Invalid IBX|Invalid Account number|User is not entitled to the ibx|INVALID_SESSION|INVALID_SESSION_IBX|INTERNAL_ERROR|NO_DATA|UNAUTHORISZED_ACCESS] are the possible messages'
+                        example: OK
+                        type: string
+                        x-order: !!float 2
+                    statuscode:
+                        description: '[1000|3001|3002|3003|3004|3005|4000|5000|6001] are the possible status codes'
+                        example: "1000"
+                        type: number
+                        x-order: !!float 1
+                    type:
+                        description: '[INFO|ERROR] are the possible values'
+                        enum:
+                            - INFO
+                        type: string
+                        x-order: !!float 0
+                type: object
+                x-order: !!float 1
+        type: object
+    EnvironmentDataForArray:
+        properties:
+            accountNo:
+                description: account number
+                example: "1"
+                type: string
+                x-order: !!float 1
+            cabinet:
+                description: cabinet unique space id
+                example: CH1:05:000550:0105
+                type: string
+                x-order: !!float 4
+            cage:
+                description: cage unique space id
+                example: CH1:05:000550
+                type: string
+                x-order: !!float 3
+            humidity:
+                description: current humidity
+                example: "43.00"
+                type: string
+                x-order: !!float 7
+            humidityUom:
+                description: unit of measure for humidity
+                example: '%'
+                type: string
+                x-order: !!float 10
+            ibx:
+                description: ibx code
+                example: CH1
+                type: string
+                x-order: !!float 0
+            sensor:
+                description: sensor id
+                example: CH1.Colo.CH1_05_000550_0105
+                type: string
+                x-order: !!float 5
+            temperature:
+                description: current temperature
+                example: "20.0"
+                type: string
+                x-order: !!float 6
+            temperatureUom:
+                description: unit of measure for temperature values
+                example: Â°C
+                type: string
+                x-order: !!float 9
+            timestamp:
+                description: epoch timestamp when the current reading was read
+                example: "1506665106579"
+                type: string
+                x-order: !!float 8
+            zone:
+                description: zone unique space id
+                example: CH1:1:05:ColoArea:2
+                type: string
+                x-order: !!float 2
+        type: object
+    EnvironmentDataResponse:
+        properties:
+            payLoad:
+                properties:
+                    data:
+                        items:
+                            $ref: '#/definitions/EnvironmentDataForArray'
+                        type: array
+                        x-order: !!float 1
+                    totalCount:
+                        description: total number of data values
+                        example: !!float 1
+                        type: integer
+                        x-order: !!float 0
+                type: object
+                x-order: !!float 0
+            status:
+                properties:
+                    msg:
+                        description: '[Ok|Invalid Level Type|Invalid Level Value|Invalid Account Details Or User is not Entitled|User Preference is not set as expected in the account|Invalid IBX|Invalid Account number|User is not entitled to the ibx|INVALID_SESSION|INVALID_SESSION_IBX|INTERNAL_ERROR|NO_DATA|UNAUTHORISZED_ACCESS] are the possible messages        '
+                        example: OK
+                        type: string
+                        x-order: !!float 2
+                    statuscode:
+                        description: '[1000|3001|3002|3003|3004|3005|4000|5000|6001] are the possible status codes'
+                        example: "1000"
+                        type: number
+                        x-order: !!float 1
+                    type:
+                        description: '[INFO|ERROR] are the possible values'
+                        enum:
+                            - INFO
+                        type: string
+                        x-order: !!float 0
+                type: object
+                x-order: !!float 1
+        type: object
+    EnvironmentMessageData:
+        description: environment message data
+        properties:
+            data:
+                $ref: '#/definitions/Environment'
+                x-order: !!float 1
+            type:
+                default: environmental
+                description: message type
+                example: environmental
+                type: string
+                x-order: !!float 0
+        required:
+            - data
+            - type
+        type: object
+    EnvironmentTagDetails:
+        description: tag details
+        properties:
+            displayName:
+                description: tag display name
+                example: Humidity
+                type: string
+                x-order: !!float 1
+            id:
+                description: tag id
+                example: humidity
+                type: string
+                x-order: !!float 0
+        required:
+            - id
+        type: object
+    EnvironmentValueWithUnit:
+        description: reading details
+        properties:
+            unit:
+                description: Environmental reading unit
+                example: PERCENT
+                type: string
+                x-order: !!float 1
+            value:
+                description: Environmental reading value
+                example: "50.045"
+                type: string
+                x-order: !!float 0
+        required:
+            - unit
+            - value
+        type: object
+    Environmental:
+        description: Environmental messages provide the latest temperature and humidity readings at the IBX and zone levels.
+        properties:
+            accountNumber:
+                example: "135888"
+                type: string
+                x-order: !!float 0
+            ibx:
+                items:
+                    type: string
+                type: array
+                uniqueItems: true
+                x-order: !!float 1
+            level:
+                description: This field is not required. If not provided in the request, subscription will include all environmental messages at the IBX, zone, and cage levels. If granularity is specified, at least one level must be provided.
+                items:
+                    enum:
+                        - ZONE
+                        - IBX
+                        - CAGE
+                    type: string
+                maxItems: !!float 3
+                minItems: !!float 1
+                type: array
+                uniqueItems: true
+                x-order: !!float 2
+        required:
+            - accountNumber
+            - ibx
+        type: object
+    Error:
+        properties:
+            payLoad:
+                type: object
+                x-order: !!float 0
+            status:
+                properties:
+                    msg:
+                        description: '[Ok|Invalid Level Type|Invalid Level Value|Invalid DataPoint|Invalid Interval|Invalid FromDate|Invalid ToDate|ToDate interval cannot be greater  than 1 year|Invalid Account Details Or User is not Entitled|User Preference is not set as expected in the account|Invalid IBX|Invalid Account number|User is not entitled to the ibx|INVALID_SESSION|INVALID_SESSION_IBX|INTERNAL_ERROR|NO_DATA|UNAUTHORISZED_ACCESS] are the possible messages'
+                        example: INTERNAL_ERROR
+                        type: string
+                        x-order: !!float 2
+                    statuscode:
+                        description: '[1000|3001|3002|3003|3004|3005|4000|5000|6001] are the possible status codes'
+                        example: "4000"
+                        type: number
+                        x-order: !!float 1
+                    type:
+                        description: '[INFO|ERROR] are the possible values'
+                        enum:
+                            - ERROR
+                        type: string
+                        x-order: !!float 0
+                type: object
+                x-order: !!float 1
+        type: object
+    GenericRequest:
+        properties:
+            accountNo:
+                description: customer account number
+                type: string
+                x-order: !!float 0
+            classification:
+                description: asset classification
+                type: string
+                x-order: !!float 2
+            ibx:
+                description: ibx code
+                type: string
+                x-order: !!float 1
+        type: object
+    HierarchyNode:
+        properties:
+            payLoad:
+                properties:
+                    cages:
+                        items:
+                            $ref: '#/definitions/Cages'
+                        type: array
+                        x-order: !!float 0
+                    circuits:
+                        items:
+                            $ref: '#/definitions/CircuitsMapWithCage'
+                        type: array
+                        x-order: !!float 1
+                type: object
+                x-order: !!float 0
+            status:
+                properties:
+                    msg:
+                        description: '[Ok|Permission Denied|Invalid Account number|Invalid IBX|Invalid LevelType|Invalid LevelValue|Invalid Interval|Invalid From/To Date|INVALID_SESSION|INVALID_SESSION_IBX|INTERNAL_ERROR] are the possible messages'
+                        example: OK
+                        type: string
+                        x-order: !!float 2
+                    statuscode:
+                        description: '[1000|3001|3002|3003|4000] are the possible status codes'
+                        example: "1000"
+                        type: number
+                        x-order: !!float 1
+                    type:
+                        description: '[INFO|ERROR] are the possible values'
+                        enum:
+                            - INFO
+                        type: string
+                        x-order: !!float 0
+                type: object
+                x-order: !!float 1
+        type: object
+    LocationResponse:
+        items:
+            $ref: '#/definitions/HierarchyNode'
+        type: array
+    MessageType:
+        description: Message type for a given subscription
+        properties:
+            asset:
+                description: List of asset message type to subscribe
+                items:
+                    $ref: '#/definitions/Asset'
+                type: array
+                x-order: !!float 0
+            customAlert:
+                description: List of custom alert message type to subscribe
+                items:
+                    $ref: '#/definitions/CustomAlert'
+                type: array
+                x-order: !!float 5
+            environmental:
+                description: List of environmental message type to subscribe
+                items:
+                    $ref: '#/definitions/Environmental'
+                type: array
+                x-order: !!float 1
+            meteredPower:
+                description: List of metered power message type to subscribe
+                items:
+                    $ref: '#/definitions/MeteredPower'
+                type: array
+                x-order: !!float 3
+            power:
+                description: List of power message type to subscribe
+                items:
+                    $ref: '#/definitions/PowerMessage'
+                type: array
+                x-order: !!float 2
+            systemAlert:
+                description: List of system alert message type to subscribe
+                items:
+                    $ref: '#/definitions/SystemAlert'
+                type: array
+                x-order: !!float 4
+        type: object
+    MeteredPower:
+        description: message data
+        properties:
+            accountNumber:
+                description: account number
+                example: "123456"
+                type: string
+                x-order: !!float 5
+            asset:
+                $ref: '#/definitions/MeteredPowerAssetDetails'
+                x-order: !!float 2
+            cage:
+                description: cage
+                example: IBX:02:021305
+                type: string
+                x-order: !!float 3
+            cageSerialNo:
+                description: cage serial number
+                example: 021305-20604711
+                type: string
+                x-order: !!float 4
+            dataQuality:
+                description: 'data quality: Good | Bad | Uncertain'
+                example: Good
+                type: string
+                x-order: !!float 9
+            ibx:
+                description: ibx
+                example: IBX
+                type: string
+                x-order: !!float 1
+            reading:
+                $ref: '#/definitions/MeteredPowerValueWithUnit'
+                x-order: !!float 7
+            readingTime:
+                description: message reading time
+                example: 2023-10-03T13:09:32
+                type: string
+                x-order: !!float 8
+            streamId:
+                description: unique message id
+                example: IBX.CBM-B1-4-1:kilowattHour
+                type: string
+                x-order: !!float 0
+            tag:
+                $ref: '#/definitions/MeteredPowerTagDetails'
+                x-order: !!float 6
+        required:
+            - asset
+            - ibx
+            - reading
+            - streamId
+            - tag
+        type: object
+    MeteredPowerAssetDetails:
+        description: asset details
+        properties:
+            id:
+                description: asset id
+                example: IBX.CBM-B1-4-1
+                type: string
+                x-order: !!float 0
+            type:
+                description: asset type
+                example: Customer Billing Meter
+                type: string
+                x-order: !!float 1
+        required:
+            - id
+        type: object
+    MeteredPowerMessageData:
+        description: metered-power message data
+        properties:
+            data:
+                $ref: '#/definitions/MeteredPower'
+                x-order: !!float 1
+            type:
+                default: metered-power
+                description: message type
+                example: metered-power
+                type: string
+                x-order: !!float 0
+        required:
+            - data
+            - type
+        type: object
+    MeteredPowerTagDetails:
+        description: tag details
+        properties:
+            displayName:
+                description: tag display name
+                example: kilowattHour
+                type: string
+                x-order: !!float 1
+            id:
+                description: tag id
+                example: IBX.CBM-B1-4-1:kilowattHour
+                type: string
+                x-order: !!float 0
+        required:
+            - id
+        type: object
+    MeteredPowerValueWithUnit:
+        description: reading details
+        properties:
+            unit:
+                description: reading unit
+                example: kWh
+                type: string
+                x-order: !!float 1
+            value:
+                description: reading value
+                example: "412568.125"
+                type: string
+                x-order: !!float 0
+        required:
+            - value
+        type: object
+    Pagination:
+        description: Represents pagination component of the paginated response
+        properties:
+            limit:
+                description: The page size.
+                format: int64
+                type: integer
+            next:
+                description: Represents a relative link to the next page. This can be empty if there is no next page available.
+                type: string
+            offset:
+                description: The number of elements to skip.
+                format: int64
+                type: integer
+            previous:
+                description: Represents a relative link to the previous page. This can be empty if there is no previous page available.
+                type: string
+            total:
+                description: The total number of elements in the result set.
+                format: int64
+                type: integer
+        required:
+            - limit
+            - offset
+            - total
+        type: object
+    Power:
+        description: message data
+        properties:
+            accountNumber:
+                description: account number
+                example: "123456"
+                type: string
+                x-order: !!float 5
+            apparentPower:
+                $ref: '#/definitions/PowerApparentPowerValueWithUnit'
+                x-order: !!float 10
+            asset:
+                $ref: '#/definitions/PowerAssetDetails'
+                x-order: !!float 2
+            cabinet:
+                description: cabinet
+                example: IBX:01:000Z4Z:0102
+                type: string
+                x-order: !!float 4
+            cabinetRating:
+                $ref: '#/definitions/PowerCabinetRatingValueWithUnit'
+                x-order: !!float 17
+            cage:
+                description: cage
+                example: IBX:02:021305
+                type: string
+                x-order: !!float 3
+            circuitType:
+                description: circuit type
+                example: PRIMARY
+                type: string
+                x-order: !!float 8
+            contractualPower:
+                $ref: '#/definitions/PowerContractualPowerValueWithUnit'
+                x-order: !!float 11
+            current:
+                $ref: '#/definitions/PowerCurrentValueWithUnit'
+                x-order: !!float 12
+            description:
+                description: description
+                example: 32-amp 230v Single Phase Primary AC Power
+                type: string
+                x-order: !!float 6
+            ibx:
+                description: ibx
+                example: IBX
+                type: string
+                x-order: !!float 1
+            lastUpdated:
+                description: last updated time
+                example: 2023-10-03T13:09:32
+                type: string
+                x-order: !!float 22
+            oid:
+                description: oid
+                example: 1.3.6.1.2.1.299.36.10.1099
+                type: string
+                x-order: !!float 7
+            peakLastSevenDays:
+                $ref: '#/definitions/PowerPeakLastSevenDaysValueWithUnit'
+                x-order: !!float 18
+            peakLastSevenDaysContractualPower:
+                $ref: '#/definitions/PowerPeakLastSevenDaysContractualPowerValueWithUnit'
+                x-order: !!float 20
+            peakLastSevenDaysRatio:
+                $ref: '#/definitions/PowerPeakLastSevenDaysRatioValueWithUnit'
+                x-order: !!float 19
+            peakLastSevenDaysTime:
+                description: peak last seven days time
+                example: 2023-10-03T13:09:32
+                type: string
+                x-order: !!float 21
+            powerConsumptionToContractual:
+                $ref: '#/definitions/PowerPowerConsumptionToContractualValueWithUnit'
+                x-order: !!float 16
+            powerFactor:
+                $ref: '#/definitions/PowerPowerFactorValueWithUnit'
+                x-order: !!float 13
+            readingTime:
+                description: message reading time
+                example: 2023-10-03T13:09:32
+                type: string
+                x-order: !!float 23
+            realPower:
+                $ref: '#/definitions/PowerRealPowerValueWithUnit'
+                x-order: !!float 9
+            soldCurrent:
+                $ref: '#/definitions/PowerSoldCurrentValueWithUnit'
+                x-order: !!float 14
+            soldPower:
+                $ref: '#/definitions/PowerSoldPowerValueWithUnit'
+                x-order: !!float 15
+            streamId:
+                description: unique message id
+                example: IBX:140838
+                type: string
+                x-order: !!float 0
+        required:
+            - asset
+            - ibx
+            - streamId
+        type: object
+    PowerApparentPowerValueWithUnit:
+        description: apparentPower details
+        properties:
+            unit:
+                description: ApparentPower reading unit
+                example: kVA
+                type: string
+                x-order: !!float 1
+            value:
+                description: ApparentPower reading value
+                example: "7.36"
+                type: string
+                x-order: !!float 0
+        required:
+            - unit
+            - value
+        type: object
+    PowerAssetDetails:
+        description: asset details
+        properties:
+            id:
+                description: asset id
+                example: IBX:140838
+                type: string
+                x-order: !!float 0
+            type:
+                description: asset type
+                example: CIRCUIT
+                type: string
+                x-order: !!float 1
+        required:
+            - id
+            - type
+        type: object
+    PowerCabinetRatingValueWithUnit:
+        description: cabinetRating details
+        properties:
+            unit:
+                description: CabinetRating reading unit
+                example: kVA
+                type: string
+                x-order: !!float 1
+            value:
+                description: CabinetRating reading value
+                example: "8.125"
+                type: string
+                x-order: !!float 0
+        required:
+            - unit
+            - value
+        type: object
+    PowerContractualPowerValueWithUnit:
+        description: contractualPower details
+        properties:
+            unit:
+                description: ContractualPower reading unit
+                example: kVA
+                type: string
+                x-order: !!float 1
+            value:
+                description: ContractualPower reading value
+                example: "0.0"
+                type: string
+                x-order: !!float 0
+        required:
+            - unit
+            - value
+        type: object
+    PowerCurrentPostRequest:
+        description: |
+            date and corresponding values
+        properties:
+            accountNo:
+                description: ' Customer Account Number'
+                example: "1234"
+                type: string
+                x-order: !!float 0
+            ibx:
+                description: trending values
+                example: "0.147"
+                type: string
+                x-order: !!float 1
+            levelType:
+                description: level type allowed value [ibx|cage|cabinet|circuit]
+                enum:
+                    - ibx
+                    - cage
+                    - cabinet
+                    - circuit
+                example: "0.147"
+                type: string
+                x-order: !!float 2
+        type: object
+    PowerCurrentValueWithUnit:
+        description: current details
+        properties:
+            unit:
+                description: Current reading unit
+                example: A
+                type: string
+                x-order: !!float 1
+            value:
+                description: Current reading value
+                example: "7.36"
+                type: string
+                x-order: !!float 0
+        required:
+            - unit
+            - value
+        type: object
+    PowerData:
+        properties:
+            payLoad:
+                properties:
+                    accountNo:
+                        description: customer account number
+                        example: ABC
+                        type: string
+                        x-order: !!float 1
+                    amps:
+                        description: instantaneous current amp reading on circuits
+                        example: !!float 123
+                        type: number
+                        x-order: !!float 6
+                    cabinetRating:
+                        description: maximum kVA draw allowed for the cabinet|cabinet description when the levelType is cabinet. Null otherwise.
+                        example: 341.54
+                        type: number
+                        x-order: !!float 8
+                    comparisonData:
+                        $ref: '#/definitions/ComparisonData'
+                        x-order: !!float 11
+                    contractualKva:
+                        description: "The maximum power draw contractually allowable in a \nprivate cage. \n"
+                        example: 341.54
+                        type: number
+                        x-order: !!float 9
+                    customerName:
+                        example: ABC
+                        type: string
+                        x-order: !!float 23
+                    ibx:
+                        description: ibx code
+                        example: ABC
+                        type: string
+                        x-order: !!float 0
+                    isAlarm:
+                        description: returns boolean based on breakertip alarm
+                        example: "true"
+                        type: string
+                        x-order: !!float 4
+                    kva:
+                        description: power consumption in kva
+                        example: 54.402
+                        type: number
+                        x-order: !!float 5
+                    kw:
+                        description: "measure of real power expressed in kilowatt applicable for ibxs\nthat have capability of energy meter reading|value will be \"NA\" for AMER and APAC regions \n"
+                        example: NA
+                        type: string
+                        x-order: !!float 19
+                    lastUpdatedTime:
+                        description: |
+                            date-time when the latest value was updated (epoc - milliseconds).
+                        example: "1497410520000"
+                        type: string
+                        x-order: !!float 22
+                    levelType:
+                        description: power hierarchy node levelType linked to the power data
+                        enum:
+                            - ibx
+                            - cage
+                            - cabinet
+                            - circuit
+                        example: ibx
+                        type: string
+                        x-order: !!float 2
+                    levelValue:
+                        description: power hierarchy node levelValue linked to the power data
+                        example: ABC
+                        type: string
+                        x-order: !!float 3
+                    peakKvaLastSevenDays:
+                        example: 55.296
+                        type: number
+                        x-order: !!float 12
+                    peakKvaLastSevenDaysContractualKva:
+                        example: 55.296
+                        type: number
+                        x-order: !!float 14
+                    peakKvaLastSevenDaysPercentage:
+                        example: 55.296
+                        type: number
+                        x-order: !!float 13
+                    peakKvaLastSevenDaysTime:
+                        example: 55.296
+                        type: integer
+                        x-order: !!float 15
+                    percentageKva:
+                        description: calculated field kva / contractualKva
+                        example: 341.54
+                        type: number
+                        x-order: !!float 10
+                    powerFactor:
+                        description: |
+                            The ratio between real power and apparent power in a circuit.(kW/kVA)|value will be "NA" for AMER and APAC regions
+                        example: NA
+                        type: string
+                        x-order: !!float 20
+                    primaryKva:
+                        description: "the sum of instantaneous power draw reading on all the primary \ncircuits within the levelType.\n"
+                        example: 28.31
+                        type: number
+                        x-order: !!float 17
+                    readingTime:
+                        description: |
+                            date-time when the latest value was read in (epoc - milliseconds).
+                        example: "1497410400000"
+                        type: string
+                        x-order: !!float 21
+                    redundantKva:
+                        description: "the sum of instantaneous power draw reading on all the redundant \ncircuits within the levelType.\n"
+                        example: 26.092
+                        type: number
+                        x-order: !!float 18
+                    soldAmps:
+                        description: circuit description when the levelType is circuit. Null otherwise.
+                        example: !!float 123
+                        type: integer
+                        x-order: !!float 16
+                    soldKva:
+                        description: maximum amp draw allowable on a circuit
+                        example: 598.349
+                        type: number
+                        x-order: !!float 7
+                type: object
+                x-order: !!float 0
+            status:
+                properties:
+                    msg:
+                        description: '[Ok|Permission Denied|Invalid Account number|Invalid IBX|Invalid LevelType|Invalid LevelValue|Invalid Interval|Invalid From/To Date|INVALID_SESSION|INVALID_SESSION_IBX|INTERNAL_ERROR] are the possible messages'
+                        example: OK
+                        type: string
+                        x-order: !!float 2
+                    statuscode:
+                        description: '[1000|3001|3002|3003|4000] are the possible status codes'
+                        example: "1000"
+                        type: number
+                        x-order: !!float 1
+                    type:
+                        description: '[INFO|ERROR] are the possible values'
+                        enum:
+                            - INFO
+                        type: string
+                        x-order: !!float 0
+                type: object
+                x-order: !!float 1
+        type: object
+    PowerDataResponse_IBX:
+        properties:
+            payLoad:
+                properties:
+                    data:
+                        items:
+                            $ref: '#/definitions/PowerData_IBX'
+                        type: array
+                        x-order: !!float 0
+                type: object
+                x-order: !!float 0
+            status:
+                properties:
+                    msg:
+                        description: '[Ok|Permission Denied|Invalid Account number|Invalid IBX|Invalid LevelType|Invalid LevelValue|Invalid Interval|Invalid From/To Date|INVALID_SESSION|INVALID_SESSION_IBX|INTERNAL_ERROR] are the possible messages'
+                        example: OK
+                        type: string
+                        x-order: !!float 2
+                    statuscode:
+                        description: '[1000|3001|3002|3003|4000] are the possible status codes'
+                        example: "1000"
+                        type: number
+                        x-order: !!float 1
+                    type:
+                        description: '[INFO|ERROR] are the possible values'
+                        enum:
+                            - INFO
+                        type: string
+                        x-order: !!float 0
+                type: object
+                x-order: !!float 1
+        type: object
+    PowerData_Error:
+        properties:
+            payLoad:
+                type: object
+                x-order: !!float 0
+            status:
+                properties:
+                    msg:
+                        description: '[Ok|Permission Denied|Invalid Account number|Invalid IBX|Invalid LevelType|Invalid LevelValue|Invalid Interval|Invalid From/To Date|INVALID_SESSION|INVALID_SESSION_IBX|INTERNAL_ERROR] are the possible messages'
+                        example: INTERNAL_ERROR
+                        type: string
+                        x-order: !!float 2
+                    statuscode:
+                        description: '[1000|3001|3002|3003|4000] are the possible status codes'
+                        example: "4000"
+                        type: number
+                        x-order: !!float 1
+                    type:
+                        description: '[INFO|ERROR] are the possible values'
+                        enum:
+                            - ERROR
+                        type: string
+                        x-order: !!float 0
+                type: object
+                x-order: !!float 1
+        type: object
+    PowerData_IBX:
+        properties:
+            accountNo:
+                description: customer account number
+                example: ABC
+                type: string
+                x-order: !!float 1
+            amps:
+                description: instantaneous current amp reading on circuits
+                example: !!float 123
+                type: number
+                x-order: !!float 6
+            cabinetRating:
+                description: maximum kVA draw allowed for the cabinet
+                example: !!float 123
+                type: number
+                x-order: !!float 8
+            comparisonData:
+                $ref: '#/definitions/ComparisonData'
+                x-order: !!float 11
+            contractualKva:
+                description: "The maximum power draw contractually allowable in a \nprivate cage. \nexample: 341.54\n"
+                type: number
+                x-order: !!float 9
+            customerName:
+                example: ABC
+                type: string
+                x-order: !!float 23
+            ibx:
+                description: ibx code
+                example: ABC
+                type: string
+                x-order: !!float 0
+            isAlarm:
+                description: returns boolean based on breakertip alarm
+                example: "true"
+                type: string
+                x-order: !!float 4
+            kva:
+                description: power consumption in kva
+                example: 54.402
+                type: number
+                x-order: !!float 5
+            kw:
+                description: |
+                    measure of real power expressed in kilowatt applicable for ibxs
+                    that have capability of energy meter reading|value will be "NA" for AMER and APAC regions
+                example: NA
+                type: string
+                x-order: !!float 19
+            lastUpdatedTime:
+                description: |
+                    date-time when the latest value was updated (epoc - milliseconds).
+                example: "1497410520000"
+                type: string
+                x-order: !!float 22
+            levelType:
+                description: power hierarchy node levelType linked to the power data
+                enum:
+                    - ibx
+                    - cage
+                    - cabinet
+                    - circuit
+                example: ibx
+                type: string
+                x-order: !!float 2
+            levelValue:
+                description: power hierarchy node levelValue linked to the power data
+                example: ABC
+                type: string
+                x-order: !!float 3
+            peakKvaLastSevenDays:
+                example: 55.296
+                type: number
+                x-order: !!float 12
+            peakKvaLastSevenDaysContractualKva:
+                example: 55.296
+                type: number
+                x-order: !!float 14
+            peakKvaLastSevenDaysPercentage:
+                example: 55.296
+                type: number
+                x-order: !!float 13
+            peakKvaLastSevenDaysTime:
+                example: 55.296
+                type: integer
+                x-order: !!float 15
+            percentageKva:
+                description: calculated field kva / contractualKva
+                example: 15.928
+                type: number
+                x-order: !!float 10
+            powerFactor:
+                description: |
+                    The ratio between real power and apparent power in a circuit.(kW/kVA)|value will be "NA" for AMER and APAC regions
+                example: NA
+                type: string
+                x-order: !!float 20
+            primaryKva:
+                description: "the sum of instantaneous power draw reading on all the primary \ncircuits within the levelType.\n"
+                example: 28.31
+                type: number
+                x-order: !!float 17
+            readingTime:
+                description: |
+                    date-time when the latest value was read in (epoc - milliseconds).
+                example: "1497410400000"
+                type: string
+                x-order: !!float 21
+            redundantKva:
+                description: "the sum of instantaneous power draw reading on all the redundant \ncircuits within the levelType.\n"
+                example: 26.092
+                type: number
+                x-order: !!float 18
+            soldAmps:
+                description: circuit description when the levelType is circuit. Null otherwise.
+                example: !!float 123
+                type: integer
+                x-order: !!float 16
+            soldKva:
+                description: maximum amp draw allowable on a circuit
+                example: 598.349
+                type: number
+                x-order: !!float 7
+        type: object
+    PowerHierarchyNode:
+        properties:
+            children:
+                description: "ibx, cage, cabinet nodes can have cage, cabinet and circuit, \ncircuit nodes as children respectively.\n"
+                example:
+                    - children:
+                        - children:
+                            - children: []
+                              label: 208V 20A 1Ph Red (3693)
+                              levelType: CIRCUIT
+                              levelValue: XYZA3693
+                          label: XY1:06:061600:0101
+                          levelType: CABINET
+                          levelValue: "102563"
+                        - children:
+                            - children: []
+                              label: 208V 20A 1Ph Red (3694)
+                              levelType: CIRCUIT
+                              levelValue: XYZA3694
+                            - children: []
+                              label: 208V 20A 1Ph Pri (3692)
+                              levelType: CIRCUIT
+                              levelValue: XYZA3692
+                          label: XY1:06:061600:0102
+                          levelType: CABINET
+                          levelValue: "102564"
+                        - children:
+                            - children: []
+                              label: 120V 30A 1Ph Red (7863)
+                              levelType: CIRCUIT
+                              levelValue: XYZE7863
+                            - children: []
+                              label: 120V 30A 1Ph Pri (7862)
+                              levelType: CIRCUIT
+                              levelValue: XYZE7862
+                          label: XY1:06:061600:0302
+                          levelType: CABINET
+                          levelValue: "102582"
+                        - children:
+                            - children: []
+                              label: 208V 20A 1Ph Red (4836)
+                              levelType: CIRCUIT
+                              levelValue: XYZG4836
+                          label: XY1:06:061600:0307
+                          levelType: CABINET
+                          levelValue: "102587"
+                      label: XY1:06:061600
+                      levelType: CAGE
+                      levelValue: "5902"
+                    - children:
+                        - children:
+                            - children: []
+                              label: 120V 20A 1Ph Red (2630)
+                              levelType: CIRCUIT
+                              levelValue: XYZH2630
+                            - children: []
+                              label: 120V 20A 1Ph Pri (2629)
+                              levelType: CIRCUIT
+                              levelValue: XYZH2629
+                          label: XY1:06:063000:0101
+                          levelType: CABINET
+                          levelValue: "100798"
+                      label: XY1:06:063000
+                      levelType: CAGE
+                      levelValue: "60442"
+                items:
+                    $ref: '#/definitions/PowerHierarchyNode'
+                type: array
+                x-order: !!float 3
+            label:
+                description: |
+                    ibx code, cage unique space id, cabinet unique space id, circuit label
+                    for levelType ibx, cage, cabinet, circuit resp.
+                example: XY1
+                type: string
+                x-order: !!float 2
+            levelType:
+                description: "levelType indicates which level in the power hierarchy \ndoes the node belong to.\n"
+                enum:
+                    - ibx
+                    - cage
+                    - cabinet
+                    - circuit
+                example: IBX
+                type: string
+                x-order: !!float 0
+            levelValue:
+                description: "ibx code, cage us id, cabinet us id, circuit number for \nlevelType ibx, cage, cabinet, circuit resp.\n"
+                example: XY1
+                type: string
+                x-order: !!float 1
+        type: object
+    PowerMessage:
+        description: Power messages provide the latest power usage data at the circuit-level.
+        properties:
+            accountNumber:
+                example: "135888"
+                type: string
+                x-order: !!float 0
+            ibx:
+                items:
+                    type: string
+                type: array
+                uniqueItems: true
+                x-order: !!float 1
+        required:
+            - accountNumber
+            - ibx
+        type: object
+    PowerMessageData:
+        description: power message data
+        properties:
+            data:
+                $ref: '#/definitions/Power'
+                x-order: !!float 1
+            type:
+                default: power
+                description: message type
+                example: power
+                type: string
+                x-order: !!float 0
+        required:
+            - data
+            - type
+        type: object
+    PowerPeakLastSevenDaysContractualPowerValueWithUnit:
+        description: peakLastSevenDaysContractualPower details
+        properties:
+            unit:
+                description: PeakLastSevenDaysContractualPower reading unit
+                example: kVA
+                type: string
+                x-order: !!float 1
+            value:
+                description: PeakLastSevenDaysContractualPower reading value
+                example: "0.0"
+                type: string
+                x-order: !!float 0
+        required:
+            - unit
+            - value
+        type: object
+    PowerPeakLastSevenDaysRatioValueWithUnit:
+        description: peakLastSevenDaysRatio details
+        properties:
+            unit:
+                description: PeakLastSevenDaysRatio reading unit
+                example: PERCENT
+                type: string
+                x-order: !!float 1
+            value:
+                description: PeakLastSevenDaysRatio reading value
+                example: "48.125"
+                type: string
+                x-order: !!float 0
+        required:
+            - unit
+            - value
+        type: object
+    PowerPeakLastSevenDaysValueWithUnit:
+        description: peakLastSevenDays details
+        properties:
+            unit:
+                description: PeakLastSevenDays reading unit
+                example: kVA
+                type: string
+                x-order: !!float 1
+            value:
+                description: PeakLastSevenDays reading value
+                example: "7.36"
+                type: string
+                x-order: !!float 0
+        required:
+            - unit
+            - value
+        type: object
+    PowerPowerConsumptionToContractualValueWithUnit:
+        description: powerConsumptionToContractual details
+        properties:
+            unit:
+                description: PowerConsumptionToContractual reading unit
+                example: PERCENT
+                type: string
+                x-order: !!float 1
+            value:
+                description: PowerConsumptionToContractual reading value
+                example: "68.125"
+                type: string
+                x-order: !!float 0
+        required:
+            - unit
+            - value
+        type: object
+    PowerPowerFactorValueWithUnit:
+        description: powerFactor details
+        properties:
+            unit:
+                description: PowerFactor reading unit
+                example: pf
+                type: string
+                x-order: !!float 1
+            value:
+                description: PowerFactor reading value
+                example: "0.0"
+                type: string
+                x-order: !!float 0
+        required:
+            - unit
+            - value
+        type: object
+    PowerRealPowerValueWithUnit:
+        description: realPower details
+        properties:
+            unit:
+                description: RealPower reading unit
+                example: kW
+                type: string
+                x-order: !!float 1
+            value:
+                description: RealPower reading value
+                example: "0.0"
+                type: string
+                x-order: !!float 0
+        required:
+            - unit
+            - value
+        type: object
+    PowerResponse:
+        items:
+            $ref: '#/definitions/PowerHierarchyNode'
+        type: array
+    PowerSoldCurrentValueWithUnit:
+        description: soldCurrent details
+        properties:
+            unit:
+                description: SoldCurrent reading unit
+                example: A
+                type: string
+                x-order: !!float 1
+            value:
+                description: SoldCurrent reading value
+                example: "7.36"
+                type: string
+                x-order: !!float 0
+        required:
+            - unit
+            - value
+        type: object
+    PowerSoldPowerValueWithUnit:
+        description: soldPower details
+        properties:
+            unit:
+                description: SoldPower reading unit
+                example: kVA
+                type: string
+                x-order: !!float 1
+            value:
+                description: SoldPower reading value
+                example: "68.125"
+                type: string
+                x-order: !!float 0
+        required:
+            - unit
+            - value
+        type: object
+    Sensor reading:
+        description: Single environmental sensor reading.
+        properties:
+            humidity:
+                $ref: '#/definitions/ValueWithUnit'
+                description: 'Sensor reading: humidity'
+                example: '{ value: 33.3, unit: "%" }'
+            ibx:
+                description: The ibx identifier where the sensor is placed.
+                example: SV2
+                type: string
+            sensorId:
+                description: The sensor identifier.
+                example: SV2.Environmental.Colo4-ZoneHumidity1
+                type: string
+            temperature:
+                $ref: '#/definitions/ValueWithUnit'
+                description: 'Sensor reading: temperature'
+                example: '{ value: 23.08, unit: "CELSIUS" }'
+            zoneId:
+                description: The zone where the sensor is placed.
+                example: CH2:1:06:ColoArea:1
+                type: string
+        required:
+            - ibx
+            - sensorId
+            - zoneId
+        type: object
+    SensorReadingsResponse:
+        properties:
+            data:
+                description: List of data objects
+                items:
+                    $ref: '#/definitions/Sensor%20reading'
+                type: array
+            pagination:
+                $ref: '#/definitions/Pagination'
+                description: Pagination metadata
+        required:
+            - data
+            - pagination
+        type: object
+    SubscriptionData:
+        properties:
+            alarmMessageData:
+                description: alarm message data
+                items:
+                    $ref: '#/definitions/AlarmMessageData'
+                type: array
+                x-order: !!float 0
+            alertMessageData:
+                description: alert message data
+                items:
+                    $ref: '#/definitions/AlertMessageData'
+                type: array
+                x-order: !!float 1
+            environmentMessageData:
+                description: environment message data
+                items:
+                    $ref: '#/definitions/EnvironmentMessageData'
+                type: array
+                x-order: !!float 2
+            meteredPowerMessageData:
+                description: metered-power message data
+                items:
+                    $ref: '#/definitions/MeteredPowerMessageData'
+                type: array
+                x-order: !!float 3
+            pagination:
+                $ref: '#/definitions/Pagination'
+                x-order: !!float 6
+            powerMessageData:
+                description: power message data
+                items:
+                    $ref: '#/definitions/PowerMessageData'
+                type: array
+                x-order: !!float 4
+            tagPointMessageData:
+                description: tag-point message data
+                items:
+                    $ref: '#/definitions/TagPointMessageData'
+                type: array
+                x-order: !!float 5
+        type: object
+    SubscriptionRequest:
+        description: Subscription Request Payload
+        properties:
+            channel:
+                $ref: '#/definitions/Channel'
+                description: channel
+                x-order: !!float 1
+            messageType:
+                $ref: '#/definitions/MessageType'
+                x-order: !!float 0
+        type: object
+    SubscriptionResponse:
+        description: Subscription Response
+        properties:
+            channel:
+                $ref: '#/definitions/Channel'
+                x-order: !!float 3
+            createdBy:
+                type: string
+                x-order: !!float 5
+            createdDateTime:
+                format: date-time
+                type: string
+                x-order: !!float 6
+            id:
+                type: string
+                x-order: !!float 0
+            messageType:
+                $ref: '#/definitions/MessageType'
+                x-order: !!float 2
+            orgId:
+                type: string
+                x-order: !!float 4
+            status:
+                enum:
+                    - PENDING
+                    - ACTIVE
+                    - FAILED
+                    - DELETE_IN_PROGRESS
+                    - DELETED
+                type: string
+                x-order: !!float 1
+            updatedBy:
+                type: string
+                x-order: !!float 7
+            updatedDateTime:
+                format: date-time
+                type: string
+                x-order: !!float 8
+        type: object
+    SystemAlert:
+        description: System Alert messages are sent when Equinix-defined alert conditions become true. The message contains the data point value that triggered the alert as well as the current value.
+        properties:
+            accountNumber:
+                example: "135888"
+                type: string
+                x-order: !!float 0
+            ibx:
+                items:
+                    type: string
+                type: array
+                uniqueItems: true
+                x-order: !!float 1
+        required:
+            - accountNumber
+            - ibx
+        type: object
+    TagDetails:
+        description: tag details
+        properties:
+            displayName:
+                description: tag display name
+                example: Output Voltage CA
+                type: string
+                x-order: !!float 1
+            id:
+                description: tag id
+                example: IBX.ATS-M1-04:outputvoltageca
+                type: string
+                x-order: !!float 0
+        required:
+            - id
+        type: object
+    TagPoint:
+        description: message data
+        properties:
+            dataQuality:
+                description: 'data quality: Good | Bad | Uncertain'
+                example: Good
+                type: string
+                x-order: !!float 5
+            ibx:
+                description: ibx
+                example: IBX
+                type: string
+                x-order: !!float 1
+            reading:
+                $ref: '#/definitions/TagPointValueWithUnit'
+                x-order: !!float 3
+            readingTime:
+                description: message reading time
+                example: 2023-10-03T13:09:32
+                type: string
+                x-order: !!float 4
+            streamId:
+                description: unique message id
+                example: IBX.ATS-M1-04:outputvoltageca
+                type: string
+                x-order: !!float 0
+            tag:
+                $ref: '#/definitions/TagDetails'
+                x-order: !!float 2
+        required:
+            - dataQuality
+            - ibx
+            - reading
+            - readingTime
+            - streamId
+            - tag
+        type: object
+    TagPointData:
+        properties:
+            payLoad:
+                items:
+                    $ref: '#/definitions/TagPointDataArrayCurrent'
+                type: array
+                x-order: !!float 0
+            status:
+                properties:
+                    msg:
+                        description: '[Ok|Permission Denied|Invalid Account number|Invalid IBX|Invalid LevelType|Invalid LevelValue|Invalid Interval|Invalid From/To Date|INVALID_SESSION|INVALID_SESSION_IBX|INTERNAL_ERROR] are the'
+                        example: OK
+                        type: string
+                        x-order: !!float 2
+                    statuscode:
+                        description: '[1000|3001|3002|3003|4000] are the possible status codes'
+                        example: "1000"
+                        type: number
+                        x-order: !!float 1
+                    type:
+                        description: '[INFO|ERROR] are the possible values'
+                        enum:
+                            - INFO
+                        type: string
+                        x-order: !!float 0
+                type: object
+                x-order: !!float 1
+        type: object
+    TagPointDataArray:
+        description: |
+            Tag Point is a property of the Asset it is linked to.
+        properties:
+            alarmStatus:
+                description: "Generic label for the tag point   \n"
+                example: OK
+                type: string
+                x-order: !!float 4
+            readingTime:
+                description: |
+                    date time when the tag point value was read from the device.
+                example: "20170907060449"
+                type: string
+                x-order: !!float 5
+            tagDisplayName:
+                description: |
+                    Generic label for the tag point
+                example: Evaporator Leaving Water Temperature
+                type: string
+                x-order: !!float 2
+            tagId:
+                description: |
+                    ID for the tagPoint - Unique Identifier for the Tag Point
+                example: CH1.Chiller-1:evapleavingwatertemperature
+                type: string
+                x-order: !!float 1
+            uom:
+                description: |
+                    Unit of measure for the data value for the tag point
+                example: Â°C
+                type: string
+                x-order: !!float 3
+            value:
+                description: |
+                    Current data value for the tag point
+                example: 4.9
+                type: string
+                x-order: !!float 0
+        type: object
+    TagPointDataArrayCurrent:
+        description: |
+            Tag Point is a property of the Asset it is linked to.
+        properties:
+            readingTime:
+                description: "date time when the tag point value was read from the device.          \n"
+                example: "20170907125336"
+                type: string
+                x-order: !!float 4
+            tagDisplayName:
+                description: |
+                    Generic label for the tag point
+                example: Evaporator Leaving Water Temperature
+                type: string
+                x-order: !!float 2
+            tagId:
+                description: |
+                    ID for the tagPoint - Unique Identifier for the Tag Point
+                example: CH1.Chiller-1:evapleavingwatertemperature
+                type: string
+                x-order: !!float 1
+            uom:
+                description: |
+                    Unit of measure for the data value for the tag point
+                example: Â°C
+                type: string
+                x-order: !!float 3
+            value:
+                description: |
+                    Current data value for the tag point
+                example: 4.9
+                type: string
+                x-order: !!float 0
+        type: object
+    TagPointMessageData:
+        description: tag-point message data
+        properties:
+            data:
+                $ref: '#/definitions/TagPoint'
+                x-order: !!float 1
+            type:
+                default: tag-point
+                description: message type
+                example: tag-point
+                type: string
+                x-order: !!float 0
+        required:
+            - data
+            - type
+        type: object
+    TagPointTrendingData:
+        properties:
+            datetime:
+                description: UTC time
+                example: "1504779867508"
+                type: string
+                x-order: !!float 0
+            value:
+                example: "0.0"
+                type: string
+                x-order: !!float 1
+        type: object
+    TagPointTrendingResponse:
+        properties:
+            payLoad:
+                properties:
+                    accountNumber:
+                        example: "1"
+                        type: string
+                        x-order: !!float 0
+                    data:
+                        description: trend data of tag
+                        items:
+                            $ref: '#/definitions/TagPointTrendingData'
+                        type: array
+                        x-order: !!float 7
+                    dataType:
+                        description: data type of trend data vlaues
+                        example: Float
+                        type: string
+                        x-order: !!float 6
+                    ibx:
+                        example: CH1
+                        type: string
+                        x-order: !!float 1
+                    interval:
+                        description: data sampling interval
+                        enum:
+                            - 5m
+                            - 15m
+                            - 1h
+                            - 1d
+                        example: 1h
+                        type: string
+                        x-order: !!float 2
+                    tagDisplayName:
+                        description: "the \n"
+                        example: Battery Time Remaining
+                        type: string
+                        x-order: !!float 5
+                    tagId:
+                        description: |
+                            the unique identifiers for the tag point ids for which the trending point is requested.
+                        example: CH1.UPS-20:batterytimeremaining
+                        type: string
+                        x-order: !!float 4
+                    uom:
+                        example: s
+                        type: string
+                        x-order: !!float 3
+                type: object
+                x-order: !!float 0
+            status:
+                properties:
+                    msg:
+                        description: '[Ok|Permission Denied|Invalid Account number|Invalid IBX|Invalid Interval|Invalid FromDate|Invalid ToDate|From/ToDate interval cannot be greater  than 1 year] are the possible messages'
+                        example: OK
+                        type: string
+                        x-order: !!float 2
+                    statuscode:
+                        description: '[1000|3001|4000] are the possible status codes'
+                        example: "1000"
+                        type: number
+                        x-order: !!float 1
+                    type:
+                        description: '[INFO|ERROR] are the possible values'
+                        enum:
+                            - INFO
+                        type: string
+                        x-order: !!float 0
+                type: object
+                x-order: !!float 1
+        type: object
+    TagPointValueWithUnit:
+        description: reading details
+        properties:
+            unit:
+                description: reading unit
+                example: V
+                type: string
+                x-order: !!float 1
+            value:
+                description: reading value
+                example: "50.045"
+                type: string
+                x-order: !!float 0
+        required:
+            - value
+        type: object
+    Template:
+        description: template is a blueprint for an asset.
+        properties:
+            assets:
+                items:
+                    $ref: '#/definitions/Asset'
+                type: array
+                x-order: !!float 0
+            templateId:
+                description: template id - unique identifier for the template
+                example: Cooling Plant
+                type: string
+                x-order: !!float 1
+        type: object
+    TrendingEnvironmentData:
+        properties:
+            payLoad:
+                properties:
+                    accountNo:
+                        description: customer account num
+                        example: "1"
+                        type: string
+                        x-order: !!float 1
+                    datapoint:
+                        description: data point for which the timeseries data is fetched
+                        example: temperature
+                        type: string
+                        x-order: !!float 3
+                    ibx:
+                        description: ibx code
+                        example: CH1
+                        type: string
+                        x-order: !!float 0
+                    interval:
+                        description: interval
+                        example: reading
+                        type: string
+                        x-order: !!float 2
+                    series:
+                        description: Time series data for the data point
+                        items:
+                            $ref: '#/definitions/DataValue'
+                        type: array
+                        x-order: !!float 5
+                    uom:
+                        description: unit of measure used for the datapoint
+                        example: Â°C
+                        type: string
+                        x-order: !!float 4
+                type: object
+                x-order: !!float 0
+        type: object
+    TrendingPowerData:
+        properties:
+            payLoad:
+                properties:
+                    accountNumber:
+                        example: "123456"
+                        type: string
+                        x-order: !!float 0
+                    data:
+                        items:
+                            $ref: '#/definitions/ComparisonData_Trend'
+                        type: array
+                        x-order: !!float 5
+                    ibx:
+                        example: ABX
+                        type: string
+                        x-order: !!float 1
+                    interval:
+                        description: serial number
+                        enum:
+                            - 5m
+                            - 15m
+                            - 1h
+                            - 1d
+                        example: 1h
+                        type: string
+                        x-order: !!float 4
+                    levelType:
+                        description: power hierarchy node levelType linked to the power data
+                        enum:
+                            - ibx
+                            - cage
+                            - cabinet
+                            - circuit
+                        type: string
+                        x-order: !!float 2
+                    levelValue:
+                        description: ibx code, cage unique space id, cabinet unique space id and serial number for levelType ibx, cage, cabinet, circuit resp.
+                        example: ABX
+                        type: string
+                        x-order: !!float 3
+                type: object
+                x-order: !!float 0
+            status:
+                properties:
+                    msg:
+                        description: '[Ok|Permission Denied|Invalid Account number|Invalid IBX|Invalid LevelType|Invalid LevelValue|Invalid Interval|Invalid From/To Date|From/ToDate interval cannot be greater  than 1 year|INVALID_SESSION|INVALID_SESSION_IBX|INTERNAL_ERROR] are the possible messages'
+                        example: OK
+                        type: string
+                        x-order: !!float 2
+                    statuscode:
+                        description: '[1000|3001|3002|3003|4000] are the possible status codes'
+                        example: "1000"
+                        type: number
+                        x-order: !!float 1
+                    type:
+                        description: '[INFO|ERROR] are the possible values'
+                        enum:
+                            - INFO
+                        type: string
+                        x-order: !!float 0
+                type: object
+                x-order: !!float 1
+        type: object
+    ValueWithUnit:
+        description: Single value with related unit (e.g. percentage for humidity or Celsius degree for temperature).
+        properties:
+            unit:
+                description: Unit for value.
+                example: CELSIUS
+                type: object
+            value:
+                description: Specific value, to be read together with unit.
+                example: "33.3"
+                type: object
+        required:
+            - unit
+            - value
+        type: object
+    ValueWithUnitDoubleHumidityUnit:
+        description: Single value with related unit (e.g. percentage for humidity or Celsius degree for temperature).
+        properties:
+            unit:
+                description: Unit for value.
+                enum:
+                    - PERCENT
+                example: CELSIUS
+                type: string
+            value:
+                description: Specific value, to be read together with unit.
+                example: 33.3
+                format: double
+                type: number
+        required:
+            - unit
+            - value
+        type: object
+    ValueWithUnitDoubleTemperatureUnit:
+        description: Single value with related unit (e.g. percentage for humidity or Celsius degree for temperature).
+        properties:
+            unit:
+                description: Unit for value.
+                enum:
+                    - CELSIUS
+                    - FAHRENHEIT
+                example: CELSIUS
+                type: string
+            value:
+                description: Specific value, to be read together with unit.
+                example: 33.3
+                format: double
+                type: number
+        required:
+            - unit
+            - value
+        type: object
+    WebhookChannelConfiguration:
+        description: The configuration for a 'WEBHOOK' channel
+        properties:
+            batchSize:
+                format: int32
+                maximum: !!float 20
+                minimum: !!float 5
+                type: integer
+                x-order: !!float 4
+            numberOfConcurrentCalls:
+                format: int32
+                maximum: !!float 50
+                minimum: !!float 20
+                type: integer
+                x-order: !!float 3
+            numberOfRetries:
+                format: int32
+                maximum: !!float 5
+                minimum: !!float 1
+                type: integer
+                x-order: !!float 2
+            sslCertificate:
+                example: ZkFzZLY1IGRpY31kZXI=
+                type: string
+                x-order: !!float 0
+            url:
+                example: https://b4c3mzxe8syvhd-ats.iot.us-west-2.amazonaws.com
+                type: string
+                x-order: !!float 1
+        required:
+            - url
+        type: object
+    recipientsArray:
+        properties:
+            email:
+                example: true
+                type: boolean
+                x-order: !!float 8
+            email_address:
+                example: test
+                type: string
+                x-order: !!float 2
+            firstName:
+                example: test
+                type: string
+                x-order: !!float 0
+            lastName:
+                example: test
+                type: string
+                x-order: !!float 1
+            mobilePhoneCode:
+                example: test
+                type: string
+                x-order: !!float 3
+            mobilePhoneNumber:
+                example: test
+                type: string
+                x-order: !!float 4
+            self:
+                example: true
+                type: boolean
+                x-order: !!float 5
+            sms:
+                example: true
+                type: boolean
+                x-order: !!float 6
+            voice:
+                example: true
+                type: boolean
+                x-order: !!float 7
+        type: object
+    status:
+        properties:
+            cause:
+                description: root cause for error
+                example: "null"
+                type: string
+                x-order: !!float 1
+            info:
+                properties:
+                    code:
+                        description: '[1000|3001|3002|3003|4000] are the possible status codes'
+                        example: "1000"
+                        maximum: !!float 7000
+                        minimum: !!float 1000
+                        pattern: ^[0-9]{4}$
+                        type: number
+                        x-order: !!float 0
+                    msg:
+                        description: '[Ok|Permission Denied|Invalid Account number|Invalid IBX|Invalid LevelType|Invalid LevelValue|Invalid Interval|Invalid From/To Date|INVALID_SESSION|INVALID_SESSION_IBX|INTERNAL_ERROR] are the possible messages'
+                        example: OK
+                        type: string
+                        x-order: !!float 1
+                type: object
+                x-order: !!float 2
+            type:
+                description: '[INFO|ERROR] are the possible values'
+                enum:
+                    - INFO
+                type: string
+                x-order: !!float 0
+        type: object
+parameters:
+    authorizationHeader:
+        description: The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
+        in: header
+        name: Authorization
+        required: true
+        type: string
+        x-prefix: 'Bearer '
+tags:
+    - description: Access Power Consumption Information
+      name: DCIM Power
+    - description: Access Environment Information
+      name: Smart View Environment
+    - description: Access alert information
+      name: DCIM Alerts
+    - description: Access Asset Information
+      name: Smart View Assets
+    - description: APIs to get Location, Power Hierarchy
+      name: Smart View Hierarchy APIs
