@@ -9,8 +9,8 @@ Method | HTTP request | Description
 [**GetAssetDetails**](SmartViewAssetsApi.md#GetAssetDetails) | **Get** /smartview/v1/asset/details | get details for an asset.
 [**GetCurrentTagPoint**](SmartViewAssetsApi.md#GetCurrentTagPoint) | **Get** /smartview/v1/asset/tagpoint/current | obtain latest tag point data
 [**GetTagpointTrending**](SmartViewAssetsApi.md#GetTagpointTrending) | **Get** /smartview/v1/asset/tagpoint/trending | obtain trending tag point data
-[**Mixin4**](SmartViewAssetsApi.md#Mixin4) | **Post** /smartview/v1/asset/details | get asset details
-[**Mixin4_0**](SmartViewAssetsApi.md#Mixin4_0) | **Post** /smartview/v1/asset/tagpoint/current | get current tag points data
+[**Mixin3**](SmartViewAssetsApi.md#Mixin3) | **Post** /smartview/v1/asset/details | get asset details
+[**Mixin3_0**](SmartViewAssetsApi.md#Mixin3_0) | **Post** /smartview/v1/asset/tagpoint/current | get current tag points data
 [**SearchAsset**](SmartViewAssetsApi.md#SearchAsset) | **Get** /smartview/v1/asset/search | Search for Assets matching identifiers
 
 
@@ -387,9 +387,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## Mixin4
+## Mixin3
 
-> AssetDetailsResponse Mixin4(ctx).Authorization(authorization).Payload(payload).Execute()
+> AssetDetailsResponse Mixin3(ctx).Authorization(authorization).Payload(payload).Execute()
 
 get asset details
 
@@ -413,13 +413,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SmartViewAssetsApi.Mixin4(context.Background()).Authorization(authorization).Payload(payload).Execute()
+	resp, r, err := apiClient.SmartViewAssetsApi.Mixin3(context.Background()).Authorization(authorization).Payload(payload).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SmartViewAssetsApi.Mixin4``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `SmartViewAssetsApi.Mixin3``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Mixin4`: AssetDetailsResponse
-	fmt.Fprintf(os.Stdout, "Response from `SmartViewAssetsApi.Mixin4`: %v\n", resp)
+	// response from `Mixin3`: AssetDetailsResponse
+	fmt.Fprintf(os.Stdout, "Response from `SmartViewAssetsApi.Mixin3`: %v\n", resp)
 }
 ```
 
@@ -429,7 +429,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiMixin4Request struct via the builder pattern
+Other parameters are passed through a pointer to a apiMixin3Request struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -455,9 +455,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## Mixin4_0
+## Mixin3_0
 
-> TagPointData Mixin4_0(ctx).Authorization(authorization).Payload(payload).Execute()
+> TagPointData Mixin3_0(ctx).Authorization(authorization).Payload(payload).Execute()
 
 get current tag points data
 
@@ -481,13 +481,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SmartViewAssetsApi.Mixin4_0(context.Background()).Authorization(authorization).Payload(payload).Execute()
+	resp, r, err := apiClient.SmartViewAssetsApi.Mixin3_0(context.Background()).Authorization(authorization).Payload(payload).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SmartViewAssetsApi.Mixin4_0``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `SmartViewAssetsApi.Mixin3_0``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Mixin4_0`: TagPointData
-	fmt.Fprintf(os.Stdout, "Response from `SmartViewAssetsApi.Mixin4_0`: %v\n", resp)
+	// response from `Mixin3_0`: TagPointData
+	fmt.Fprintf(os.Stdout, "Response from `SmartViewAssetsApi.Mixin3_0`: %v\n", resp)
 }
 ```
 
@@ -497,7 +497,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiMixin4_1Request struct via the builder pattern
+Other parameters are passed through a pointer to a apiMixin3_1Request struct via the builder pattern
 
 
 Name | Type | Description  | Notes

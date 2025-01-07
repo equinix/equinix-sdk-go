@@ -4,17 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Limit** | **int64** | The page size. | 
-**Next** | Pointer to **string** | Represents a relative link to the next page. This can be empty if there is no next page available. | [optional] 
-**Offset** | **int64** | The number of elements to skip. | 
-**Previous** | Pointer to **string** | Represents a relative link to the previous page. This can be empty if there is no previous page available. | [optional] 
-**Total** | **int64** | The total number of elements in the result set. | 
+**Limit** | **int32** | limit specifies the maximum limit of items returned | 
+**Next** | Pointer to **string** | relative URL to the next page, has value only when next page exists | [optional] 
+**Offset** | **int32** | offset of the first item in the given page | 
+**Previous** | Pointer to **string** | relative URL to the previous page, has value only when previous page exists | [optional] 
+**Total** | **int32** | number of total records | 
 
 ## Methods
 
 ### NewPagination
 
-`func NewPagination(limit int64, offset int64, total int64, ) *Pagination`
+`func NewPagination(limit int32, offset int32, total int32, ) *Pagination`
 
 NewPagination instantiates a new Pagination object
 This constructor will assign default values to properties that have it defined,
@@ -31,20 +31,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetLimit
 
-`func (o *Pagination) GetLimit() int64`
+`func (o *Pagination) GetLimit() int32`
 
 GetLimit returns the Limit field if non-nil, zero value otherwise.
 
 ### GetLimitOk
 
-`func (o *Pagination) GetLimitOk() (*int64, bool)`
+`func (o *Pagination) GetLimitOk() (*int32, bool)`
 
 GetLimitOk returns a tuple with the Limit field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLimit
 
-`func (o *Pagination) SetLimit(v int64)`
+`func (o *Pagination) SetLimit(v int32)`
 
 SetLimit sets Limit field to given value.
 
@@ -76,20 +76,20 @@ HasNext returns a boolean if a field has been set.
 
 ### GetOffset
 
-`func (o *Pagination) GetOffset() int64`
+`func (o *Pagination) GetOffset() int32`
 
 GetOffset returns the Offset field if non-nil, zero value otherwise.
 
 ### GetOffsetOk
 
-`func (o *Pagination) GetOffsetOk() (*int64, bool)`
+`func (o *Pagination) GetOffsetOk() (*int32, bool)`
 
 GetOffsetOk returns a tuple with the Offset field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOffset
 
-`func (o *Pagination) SetOffset(v int64)`
+`func (o *Pagination) SetOffset(v int32)`
 
 SetOffset sets Offset field to given value.
 
@@ -121,20 +121,20 @@ HasPrevious returns a boolean if a field has been set.
 
 ### GetTotal
 
-`func (o *Pagination) GetTotal() int64`
+`func (o *Pagination) GetTotal() int32`
 
 GetTotal returns the Total field if non-nil, zero value otherwise.
 
 ### GetTotalOk
 
-`func (o *Pagination) GetTotalOk() (*int64, bool)`
+`func (o *Pagination) GetTotalOk() (*int32, bool)`
 
 GetTotalOk returns a tuple with the Total field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTotal
 
-`func (o *Pagination) SetTotal(v int64)`
+`func (o *Pagination) SetTotal(v int32)`
 
 SetTotal sets Total field to given value.
 
