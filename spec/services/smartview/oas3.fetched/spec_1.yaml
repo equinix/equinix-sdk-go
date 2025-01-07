@@ -1,0 +1,717 @@
+{
+"swagger": "2.0",
+"info": {
+"title": "DCIM Power APIs",
+"description": "Empower yourself with DCIM Power APIs. Use them to get current and trending information on power consumption by assets. These APIs return the power consumption info for all level values, given a customer account number, IBX and level type of ibx - cage, cabinet or circuit. Trending power data returns the kVA power draw and max allowed (%) for the given asset.\n",
+"version": "1.0",
+"termsOfService": "https://www.equinix.com/about/legal/terms",
+"contact": {
+"name": "Equinix API Support",
+"url": "https://docs.equinix.com/api-support.htm"
+}
+},
+"host": "api.equinix.com",
+"schemes": [
+"https"
+],
+"produces": [
+"application/json"
+],
+"consumes": [
+"application/json"
+],
+"tags": [
+{
+"name": "DCIM Power",
+"description": "Access Power Consumption Information"
+}
+],
+"paths": {
+"/power/v1/current": {
+"get": {
+"tags": [
+"DCIM Power"
+],
+"summary": "Fetch current power consumption data",
+"description": "The powerData endpoint returns power consumption info ( power consumption data with comparison data of current [% Kva] vs  yesterday, lastWeek, lastMonth, lastQuarter ) for input ibx, cage, cabinet, circuit.\n",
+"parameters": [
+{
+"name": "Authorization",
+"in": "header",
+"description": "Specify the OAuth Bearer token with prefix 'Bearer '.",
+"required": true,
+"type": "string",
+"x-prefix": "Bearer "
+},
+{
+"name": "accountNo",
+"in": "query",
+"description": "Customer Account Number",
+"type": "string",
+"required": true
+},
+{
+"name": "ibx",
+"in": "query",
+"description": "IBX Code",
+"type": "string",
+"required": true
+},
+{
+"name": "levelType",
+"in": "query",
+"description": "level type allowed value [ibx|cage|cabinet|circuit]",
+"type": "string",
+"required": true,
+"enum": [
+"ibx",
+"cage",
+"cabinet",
+"circuit"
+]
+},
+{
+"name": "levelValue",
+"in": "query",
+"required": true,
+"description": "level value - ibx code, cage unique space id, cabinet unique space id, serial number for level type ibx, cage, cabinet, circuit respectively.\n",
+"type": "string"
+}
+],
+"responses": {
+"200": {
+"description": "Valid Response",
+"schema": {
+"$ref": "#/definitions/PowerData"
+}
+},
+"default": {
+"description": "Error response",
+"schema": {
+"$ref": "#/definitions/PowerData_Error"
+}
+}
+}
+},
+"post": {
+"tags": [
+"DCIM Power"
+],
+"summary": "Fetch current power consumption data",
+"description": "The powerdata endpoint returns power consumption info for all values of input level type ibx, cage, cabinet or circuit.\n",
+"parameters": [
+{
+"name": "Authorization",
+"in": "header",
+"description": "Specify the OAuth Bearer token with prefix 'Bearer '.",
+"required": true,
+"type": "string",
+"x-prefix": "Bearer "
+},
+{
+"name": "body",
+"in": "body",
+"description": "request payload",
+"schema": {
+"$ref": "#/definitions/PowerCurrentPostRequest"
+}
+}
+],
+"responses": {
+"200": {
+"description": "Valid Response",
+"schema": {
+"$ref": "#/definitions/PowerDataResponse_IBX"
+}
+},
+"default": {
+"description": "Error response",
+"schema": {
+"$ref": "#/definitions/PowerData_Error"
+}
+}
+}
+}
+},
+"/power/v1/trending": {
+"get": {
+"tags": [
+"DCIM Power"
+],
+"summary": "Fetch Trending Power Data.\n",
+"description": "The trending power data for draw kVA to max allowed (%) for input ibx, cage, cabinet, circuit.\n",
+"parameters": [
+{
+"name": "Authorization",
+"in": "header",
+"description": "Specify the OAuth Bearer token with prefix 'Bearer '.",
+"required": true,
+"type": "string",
+"x-prefix": "Bearer "
+},
+{
+"name": "accountNo",
+"in": "query",
+"description": "Customer Account Number",
+"type": "string",
+"required": true
+},
+{
+"name": "ibx",
+"in": "query",
+"description": "IBX Code",
+"type": "number",
+"required": true
+},
+{
+"name": "levelType",
+"in": "query",
+"type": "string",
+"required": true,
+"description": "[ibx|cage|cabinet|circuit]",
+"enum": [
+"ibx",
+"cage",
+"cabinet",
+"circuit"
+]
+},
+{
+"name": "levelValue",
+"in": "query",
+"description": "ibx code, cage unique space id, cabinet unique space id and serial number for level type ibx, cage, cabinet and circuit respectively.\n",
+"type": "string",
+"required": true
+},
+{
+"name": "interval",
+"in": "query",
+"description": "[recording|1h|1d]",
+"type": "string",
+"required": true
+},
+{
+"name": "fromDate",
+"in": "query",
+"description": "timestamp expected to be epoch long ( milliseconds ).",
+"type": "string",
+"required": true
+},
+{
+"name": "toDate",
+"in": "query",
+"type": "string",
+"required": true,
+"description": "timestamp expected to be epoch long ( milliseconds )."
+}
+],
+"responses": {
+"200": {
+"description": "Valid Response",
+"schema": {
+"$ref": "#/definitions/TrendingPowerData"
+}
+},
+"default": {
+"description": "Error response",
+"schema": {
+"$ref": "#/definitions/PowerData_Error"
+}
+}
+}
+}
+}
+},
+"definitions": {
+"PowerDataResponse_IBX": {
+"type": "object",
+"properties": {
+"payLoad": {
+"type": "object",
+"properties": {
+"data": {
+"type": "array",
+"items": {
+"$ref": "#/definitions/PowerData_IBX"
+}
+}
+}
+},
+"status": {
+"type": "object",
+"properties": {
+"type": {
+"type": "string",
+"description": "[INFO|ERROR] are the possible values",
+"enum": [
+"INFO"
+]
+},
+"statuscode": {
+"type": "number",
+"example": "1000",
+"description": "[1000|3001|3002|3003|4000] are the possible status codes"
+},
+"msg": {
+"type": "string",
+"example": "OK",
+"description": "[Ok|Permission Denied|Invalid Account number|Invalid IBX|Invalid LevelType|Invalid LevelValue|Invalid Interval|Invalid From/To Date|INVALID_SESSION|INVALID_SESSION_IBX|INTERNAL_ERROR] are the possible messages"
+}
+}
+}
+}
+},
+"TrendingPowerData": {
+"type": "object",
+"properties": {
+"payLoad": {
+"type": "object",
+"properties": {
+"accountNumber": {
+"type": "string",
+"example": "123456"
+},
+"ibx": {
+"type": "string",
+"example": "ABX"
+},
+"levelType": {
+"type": "string",
+"description": "power hierarchy node levelType linked to the power data",
+"enum": [
+"ibx",
+"cage",
+"cabinet",
+"circuit"
+]
+},
+"levelValue": {
+"type": "string",
+"example": "ABX",
+"description": "ibx code, cage unique space id, cabinet unique space id and serial number for levelType ibx, cage, cabinet, circuit resp."
+},
+"interval": {
+"type": "string",
+"example": "1h",
+"description": "serial number",
+"enum": [
+"5m",
+"15m",
+"1h",
+"1d"
+]
+},
+"data": {
+"type": "array",
+"items": {
+"$ref": "#/definitions/ComparisonData_Trend"
+}
+}
+}
+},
+"status": {
+"type": "object",
+"properties": {
+"type": {
+"type": "string",
+"description": "[INFO|ERROR] are the possible values",
+"enum": [
+"INFO"
+]
+},
+"statuscode": {
+"type": "number",
+"example": "1000",
+"description": "[1000|3001|3002|3003|4000] are the possible status codes"
+},
+"msg": {
+"type": "string",
+"example": "OK",
+"description": "[Ok|Permission Denied|Invalid Account number|Invalid IBX|Invalid LevelType|Invalid LevelValue|Invalid Interval|Invalid From/To Date|From/ToDate interval cannot be greater  than 1 year|INVALID_SESSION|INVALID_SESSION_IBX|INTERNAL_ERROR] are the possible messages"
+}
+}
+}
+}
+},
+"PowerData": {
+"type": "object",
+"properties": {
+"payLoad": {
+"type": "object",
+"properties": {
+"ibx": {
+"type": "string",
+"description": "ibx code",
+"example": "ABC"
+},
+"accountNo": {
+"type": "string",
+"description": "customer account number",
+"example": "ABC"
+},
+"levelType": {
+"type": "string",
+"description": "power hierarchy node levelType linked to the power data",
+"enum": [
+"ibx",
+"cage",
+"cabinet",
+"circuit"
+],
+"example": "ibx"
+},
+"levelValue": {
+"type": "string",
+"description": "power hierarchy node levelValue linked to the power data",
+"example": "ABC"
+},
+"isAlarm": {
+"type": "string",
+"example": "true",
+"description": "returns boolean based on breakertip alarm"
+},
+"kva": {
+"type": "number",
+"description": "power consumption in kva",
+"example": 54.402
+},
+"amps": {
+"type": "number",
+"description": "instantaneous current amp reading on circuits",
+"example": 123
+},
+"soldKva": {
+"type": "number",
+"description": "maximum amp draw allowable on a circuit",
+"example": 598.349
+},
+"cabinetRating": {
+"type": "number",
+"description": "maximum kVA draw allowed for the cabinet|cabinet description when the levelType is cabinet. Null otherwise.",
+"example": 341.54
+},
+"contractualKva": {
+"type": "number",
+"example": 341.54,
+"description": "The maximum power draw contractually allowable in a \nprivate cage. \n"
+},
+"percentageKva": {
+"type": "number",
+"example": 341.54,
+"description": "calculated field kva / contractualKva"
+},
+"comparisonData": {
+"$ref": "#/definitions/ComparisonData"
+},
+"peakKvaLastSevenDays": {
+"type": "number",
+"example": 55.296
+},
+"peakKvaLastSevenDaysPercentage": {
+"type": "number",
+"example": 55.296
+},
+"peakKvaLastSevenDaysContractualKva": {
+"type": "number",
+"example": 55.296
+},
+"peakKvaLastSevenDaysTime": {
+"type": "integer",
+"example": 55.296
+},
+"soldAmps": {
+"type": "integer",
+"example": 123,
+"description": "circuit description when the levelType is circuit. Null otherwise."
+},
+"primaryKva": {
+"type": "number",
+"example": 28.31,
+"description": "the sum of instantaneous power draw reading on all the primary \ncircuits within the levelType.\n"
+},
+"redundantKva": {
+"type": "number",
+"example": 26.092,
+"description": "the sum of instantaneous power draw reading on all the redundant \ncircuits within the levelType.\n"
+},
+"kw": {
+"type": "string",
+"example": "NA",
+"description": "measure of real power expressed in kilowatt applicable for ibxs\nthat have capability of energy meter reading|value will be \"NA\" for AMER and APAC regions \n"
+},
+"powerFactor": {
+"type": "string",
+"example": "NA",
+"description": "The ratio between real power and apparent power in a circuit.(kW/kVA)|value will be \"NA\" for AMER and APAC regions\n"
+},
+"readingTime": {
+"type": "string",
+"example": "1497410400000",
+"description": "date-time when the latest value was read in (epoc - milliseconds).\n"
+},
+"lastUpdatedTime": {
+"type": "string",
+"example": "1497410520000",
+"description": "date-time when the latest value was updated (epoc - milliseconds).\n"
+},
+"customerName": {
+"type": "string",
+"example": "ABC"
+}
+}
+},
+"status": {
+"type": "object",
+"properties": {
+"type": {
+"type": "string",
+"description": "[INFO|ERROR] are the possible values",
+"enum": [
+"INFO"
+]
+},
+"statuscode": {
+"type": "number",
+"example": "1000",
+"description": "[1000|3001|3002|3003|4000] are the possible status codes"
+},
+"msg": {
+"type": "string",
+"example": "OK",
+"description": "[Ok|Permission Denied|Invalid Account number|Invalid IBX|Invalid LevelType|Invalid LevelValue|Invalid Interval|Invalid From/To Date|INVALID_SESSION|INVALID_SESSION_IBX|INTERNAL_ERROR] are the possible messages"
+}
+}
+}
+}
+},
+"PowerData_Error": {
+"type": "object",
+"properties": {
+"payLoad": {
+"type": "object"
+},
+"status": {
+"type": "object",
+"properties": {
+"type": {
+"type": "string",
+"description": "[INFO|ERROR] are the possible values",
+"enum": [
+"ERROR"
+]
+},
+"statuscode": {
+"type": "number",
+"example": "4000",
+"description": "[1000|3001|3002|3003|4000] are the possible status codes"
+},
+"msg": {
+"type": "string",
+"example": "INTERNAL_ERROR",
+"description": "[Ok|Permission Denied|Invalid Account number|Invalid IBX|Invalid LevelType|Invalid LevelValue|Invalid Interval|Invalid From/To Date|INVALID_SESSION|INVALID_SESSION_IBX|INTERNAL_ERROR] are the possible messages"
+}
+}
+}
+}
+},
+"PowerData_IBX": {
+"type": "object",
+"properties": {
+"ibx": {
+"type": "string",
+"description": "ibx code",
+"example": "ABC"
+},
+"accountNo": {
+"type": "string",
+"description": "customer account number",
+"example": "ABC"
+},
+"levelType": {
+"type": "string",
+"description": "power hierarchy node levelType linked to the power data",
+"enum": [
+"ibx",
+"cage",
+"cabinet",
+"circuit"
+],
+"example": "ibx"
+},
+"levelValue": {
+"type": "string",
+"description": "power hierarchy node levelValue linked to the power data",
+"example": "ABC"
+},
+"isAlarm": {
+"type": "string",
+"example": "true",
+"description": "returns boolean based on breakertip alarm"
+},
+"kva": {
+"type": "number",
+"description": "power consumption in kva",
+"example": 54.402
+},
+"amps": {
+"type": "number",
+"description": "instantaneous current amp reading on circuits",
+"example": 123
+},
+"soldKva": {
+"type": "number",
+"description": "maximum amp draw allowable on a circuit",
+"example": 598.349
+},
+"cabinetRating": {
+"type": "number",
+"description": "maximum kVA draw allowed for the cabinet",
+"example": 123
+},
+"contractualKva": {
+"type": "number",
+"description": "The maximum power draw contractually allowable in a \nprivate cage. \nexample: 341.54\n"
+},
+"percentageKva": {
+"type": "number",
+"example": 15.928,
+"description": "calculated field kva / contractualKva"
+},
+"comparisonData": {
+"$ref": "#/definitions/ComparisonData"
+},
+"peakKvaLastSevenDays": {
+"type": "number",
+"example": 55.296
+},
+"peakKvaLastSevenDaysPercentage": {
+"type": "number",
+"example": 55.296
+},
+"peakKvaLastSevenDaysContractualKva": {
+"type": "number",
+"example": 55.296
+},
+"peakKvaLastSevenDaysTime": {
+"type": "integer",
+"example": 55.296
+},
+"soldAmps": {
+"type": "integer",
+"example": 123,
+"description": "circuit description when the levelType is circuit. Null otherwise."
+},
+"primaryKva": {
+"type": "number",
+"example": 28.31,
+"description": "the sum of instantaneous power draw reading on all the primary \ncircuits within the levelType.\n"
+},
+"redundantKva": {
+"type": "number",
+"example": 26.092,
+"description": "the sum of instantaneous power draw reading on all the redundant \ncircuits within the levelType.\n"
+},
+"kw": {
+"type": "string",
+"example": "NA",
+"description": "measure of real power expressed in kilowatt applicable for ibxs\nthat have capability of energy meter reading|value will be \"NA\" for AMER and APAC regions\n"
+},
+"powerFactor": {
+"type": "string",
+"example": "NA",
+"description": "The ratio between real power and apparent power in a circuit.(kW/kVA)|value will be \"NA\" for AMER and APAC regions\n"
+},
+"readingTime": {
+"type": "string",
+"example": "1497410400000",
+"description": "date-time when the latest value was read in (epoc - milliseconds).\n"
+},
+"lastUpdatedTime": {
+"type": "string",
+"example": "1497410520000",
+"description": "date-time when the latest value was updated (epoc - milliseconds).\n"
+},
+"customerName": {
+"type": "string",
+"example": "ABC"
+}
+}
+},
+"ComparisonData": {
+"type": "object",
+"description": "comparison of readings with the current reading for specified datapoint\n",
+"properties": {
+"datapoint": {
+"type": "string",
+"description": "datapoint on which the comparison is done.",
+"enum": [
+"percentageKva"
+]
+},
+"yesterday": {
+"type": "number",
+"example": 0.147,
+"description": "comparison for the current value of the datapoint with yesterday's \nvalue\n"
+},
+"lastWeek": {
+"type": "number",
+"example": -0.295,
+"description": "comparison for the current value of the datapoint with last week's \nvalue\n"
+},
+"lastMonth": {
+"type": "number",
+"example": -0.184,
+"description": "comparison for the current value of the datapoint with the last \nmonth's value\n"
+},
+"lastQuarter": {
+"type": "number",
+"example": 52.434,
+"description": "comparison for the current value of the datapoint with the last \nquarter's value \n"
+}
+}
+},
+"ComparisonData_Trend": {
+"type": "object",
+"description": "date and corresponding values\n",
+"properties": {
+"datetime": {
+"type": "string",
+"example": "201701010004",
+"description": "datetime."
+},
+"value": {
+"type": "string",
+"example": "0.147",
+"description": "trending values"
+}
+}
+},
+"PowerCurrentPostRequest": {
+"type": "object",
+"description": "date and corresponding values\n",
+"properties": {
+"accountNo": {
+"type": "string",
+"example": "1234",
+"description": " Customer Account Number"
+},
+"ibx": {
+"type": "string",
+"example": "0.147",
+"description": "trending values"
+},
+"levelType": {
+"type": "string",
+"example": "0.147",
+"description": "level type allowed value [ibx|cage|cabinet|circuit]",
+"enum": [
+"ibx",
+"cage",
+"cabinet",
+"circuit"
+]
+}
+}
+}
+}
+}

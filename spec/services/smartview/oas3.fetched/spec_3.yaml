@@ -1,0 +1,1876 @@
+{
+  "swagger" : "2.0",
+  "host" : "api.equinix.com",
+  "info" : {
+    "title" : "Streaming Subscription API",
+    "description" : "IBX SmartView's subscription API allows users to subscribe to near real-time message feeds for events occurring within an IBX. Users can specify the types of messages to receive for each IBX. Users are able to view all subscriptions within their organization and update any subscription to modify the message feed being received.",
+    "version" : "1.0",
+    "termsOfService" : "https://www.equinix.com/about/legal/terms",
+    "contact" : {
+      "name" : "Equinix API Support",
+      "url" : "https://docs.equinix.com/api-support.htm"
+    }
+  },
+  "produces" : [ "application/json" ],
+  "consumes" : [ "application/json" ],
+  "schemes" : [ "https" ],
+  "paths" : {
+    "/smartview/v2/streaming/subscriptions" : {
+      "get" : {
+        "summary" : "Get all subscription endpoint",
+        "description" : "The endpoint allows users to fetch details for all streaming subscriptions for a given organization.",
+        "parameters" : [ {
+          "$ref" : "#/parameters/authorizationHeader"
+        } ],
+        "operationId" : "getAllSubscriptions",
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/SubscriptionResponse"
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          },
+          "403" : {
+            "description" : "Forbidden"
+          },
+          "404" : {
+            "description" : "Not Found"
+          },
+          "500" : {
+            "description" : "Internal server error"
+          }
+        }
+      },
+      "post" : {
+        "summary" : "Create subscription endpoint",
+        "description" : "The endpoint allows users to define and create a new streaming subscription for a given organization.",
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/SubscriptionRequest"
+          }
+        }, {
+          "$ref" : "#/parameters/authorizationHeader"
+        } ],
+        "operationId" : "createSubscription",
+        "responses" : {
+          "201" : {
+            "description" : "Created",
+            "headers" : {
+              "Location" : {
+                "type" : "string",
+                "description" : "Location of created subscription. For Example: /smartview/v2/streaming/subscriptions/607460b4e4a78360425bca56"
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad request"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          },
+          "403" : {
+            "description" : "Forbidden"
+          },
+          "422" : {
+            "description" : "Unprocessable entity",
+            "schema" : {
+              "$ref" : "#/definitions/ApiError"
+            }
+          },
+          "500" : {
+            "description" : "Internal server error"
+          }
+        }
+      }
+    },
+    "/smartview/v2/streaming/subscriptions/{id}" : {
+      "get" : {
+        "summary" : "Get subscription endpoint",
+        "description" : "The endpoint allows users to fetch details for a given streaming subscription for a given organization.",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "type" : "string",
+          "required" : true
+        }, {
+          "$ref" : "#/parameters/authorizationHeader"
+        } ],
+        "operationId" : "getSubscriptionById",
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "$ref" : "#/definitions/SubscriptionResponse"
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          },
+          "403" : {
+            "description" : "Forbidden"
+          },
+          "404" : {
+            "description" : "Not Found"
+          },
+          "500" : {
+            "description" : "Internal server error"
+          }
+        }
+      },
+      "put" : {
+        "summary" : "Update subscription endpoint",
+        "description" : "The endpoint allows users to modify and update an existing streaming subscription for a given organization. Request payload replaces current subscription.",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "type" : "string",
+          "required" : true
+        }, {
+          "name" : "body",
+          "in" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/SubscriptionRequest"
+          }
+        }, {
+          "$ref" : "#/parameters/authorizationHeader"
+        } ],
+        "operationId" : "updateSubscription",
+        "responses" : {
+          "204" : {
+            "description" : "No Content"
+          },
+          "400" : {
+            "description" : "Bad request"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          },
+          "403" : {
+            "description" : "Forbidden"
+          },
+          "404" : {
+            "description" : "Not Found"
+          },
+          "422" : {
+            "description" : "Unprocessable entity",
+            "schema" : {
+              "$ref" : "#/definitions/ApiError"
+            }
+          },
+          "500" : {
+            "description" : "Internal server error"
+          }
+        }
+      },
+      "delete" : {
+        "summary" : "Delete subscription endpoint",
+        "description" : "The endpoint allows users to delete and remove an existing streaming subscription for a given organization.",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "type" : "string",
+          "required" : true
+        }, {
+          "$ref" : "#/parameters/authorizationHeader"
+        } ],
+        "operationId" : "deleteSubscriptionById",
+        "responses" : {
+          "204" : {
+            "description" : "No Content"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          },
+          "403" : {
+            "description" : "Forbidden"
+          },
+          "404" : {
+            "description" : "Not Found"
+          },
+          "500" : {
+            "description" : "Internal server error"
+          }
+        }
+      }
+    },
+    "/smartview/v2/streaming/subscriptionData/{subscriptionId}": {
+      "get": {
+        "summary": "Get subscription data via REST",
+        "description": "obtain API+ near real time data via a simple REST endpoint by employing subscription ID alongside other specified criteria, enabling a comprehensive and targeted approach to data retrieval. Subscription data endpoint works for all channels and not just REST channel.",
+        "operationId": "getSubscriptionData",
+        "parameters": [
+          {
+            "name": "subscriptionId",
+            "in": "path",
+            "description": "Subscription ID",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "ibxs",
+            "in": "query",
+            "description": "Filter, set of IBXs",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "messageTypes",
+            "in": "query",
+            "description": "Filter, set of message types",
+            "required": false,
+            "type": "array",
+            "items": {
+                "type": "string",
+                "enum": [
+                  "ALARM",
+                  "ALERT",
+                  "ENVIRONMENTAL",
+                  "METERED_POWER",
+                  "POWER",
+                  "TAG_POINT"
+                ]
+              }
+          },
+          {
+            "name": "streamIds",
+            "in": "query",
+            "description": "Filter, set of stream IDs",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "Pagination, offset of the first item",
+            "required": false,
+            "type": "integer",
+            "format": "int32",
+            "default": 0
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Pagination, limit of items returned",
+            "required": false,
+            "type": "integer",
+            "format": "int32",
+            "default": 250
+          },{
+            "$ref" : "#/parameters/authorizationHeader"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/SubscriptionData"
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          },
+          "403" : {
+            "description" : "Forbidden"
+          },
+          "404" : {
+            "description" : "Not Found"
+          },
+          "500" : {
+            "description" : "Internal server error"
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "ApiError" : {
+      "type" : "object",
+      "description" : "ApiError provides information about the occurred error.",
+      "properties" : {
+        "errorCode" : {
+          "type" : "string",
+          "example" : "EQIX-ES-5000422"
+        },
+        "errorMessage" : {
+          "type" : "string",
+          "example" : "Unprocessable Entity"
+        },
+        "correlationId" : {
+          "type" : "string",
+          "example" : "06ce37f6-12af-4f47-9d15-e4f8fc77e1c5"
+        },
+        "details" : {
+          "type" : "string",
+          "example" : "The submitted payload does not meet validation criteria."
+        },
+        "help" : {
+          "type" : "string",
+          "example" : " "
+        },
+        "additionalInfo" : {
+          "$ref" : "#/definitions/ApiErrorAdditionalInfo"
+        }
+      }
+    },
+    "ApiErrorAdditionalInfo" : {
+      "type" : "object",
+      "properties" : {
+        "constraintCode" : {
+          "type" : "string",
+          "example" : "IbxesMustExistOnPaidView"
+        },
+        "reason" : {
+          "type" : "string",
+          "example" : "the [PA8] have no access to paid view"
+        }
+      }
+    },
+    "Asset" : {
+      "type" : "object",
+      "description" : "Asset messages provide the latest readings for environmental, electrical, and mechanical assets within an IBX",
+      "required" : [ "accountNumber", "ibx" ],
+      "properties" : {
+        "accountNumber" : {
+          "type" : "string",
+          "example" : "135888"
+        },
+        "ibx" : {
+          "type" : "array",
+          "uniqueItems" : true,
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "assetClassification" : {
+          "type" : "array",
+          "description" : "Asset Classification value if specified, otherwise all allowable classifications",
+          "uniqueItems" : true,
+          "items" : {
+            "type" : "string",
+            "enum" : [ "MECHANICAL", "ENVIRONMENTAL", "ELECTRICAL" ]
+          },
+          "maxItems" : 2147483647,
+          "minItems" : 1
+        },
+        "assetId" : {
+          "type" : "array",
+          "uniqueItems" : true,
+          "items" : {
+            "type" : "string"
+          },
+          "maxItems" : 2147483647,
+          "minItems" : 1
+        }
+      }
+    },
+    "AwsIotCoreChannelConfiguration" : {
+      "type" : "object",
+      "description" : "The configuration for an 'AWS_IOT_CORE' channel",
+      "required" : [ "url" ],
+      "properties" : {
+        "url" : {
+          "type" : "string",
+          "example" : "https://b4c3mzxe8syvhd-ats.iot.us-west-2.amazonaws.com"
+        }
+      }
+    },
+    "AzureChannelConfiguration" : {
+      "type" : "object",
+      "description" : "The configuration for an 'AZURE' channel",
+      "properties" : {
+        "numberOfRetries" : {
+          "type" : "integer",
+          "format" : "int32",
+          "minimum" : 1,
+          "maximum" : 5
+        },
+        "numberOfConcurrentCalls" : {
+          "type" : "integer",
+          "format" : "int32",
+          "minimum" : 20,
+          "maximum" : 50
+        },
+        "batchSize" : {
+          "type" : "integer",
+          "format" : "int32",
+          "minimum" : 5,
+          "maximum" : 20
+        }
+      }
+    },
+    "Channel" : {
+      "type" : "object",
+      "description" : "Subscription can be created using one channel.",
+      "properties" : {
+        "channelType" : {
+          "type" : "string",
+          "enum" : [ "AWS_IOT_CORE", "WEBHOOK", "AZURE" ]
+        },
+        "awsIotCoreChannelConfiguration" : {
+          "$ref" : "#/definitions/AwsIotCoreChannelConfiguration"
+        },
+        "webhookChannelConfiguration" : {
+          "$ref" : "#/definitions/WebhookChannelConfiguration"
+        },
+        "azureChannelConfiguration" : {
+          "$ref" : "#/definitions/AzureChannelConfiguration"
+        }
+      }
+    },
+    "CustomAlert" : {
+      "type" : "object",
+      "description" : "Custom Alert messages are sent when user-defined alert conditions become true. The message contains the data point value that triggered the alert.",
+      "required" : [ "accountNumber", "ibx" ],
+      "properties" : {
+        "accountNumber" : {
+          "type" : "string",
+          "example" : "135888"
+        },
+        "ibx" : {
+          "type" : "array",
+          "uniqueItems" : true,
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "user" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Environmental" : {
+      "type" : "object",
+      "description" : "Environmental messages provide the latest temperature and humidity readings at the IBX and zone levels.",
+      "required" : [ "accountNumber", "ibx" ],
+      "properties" : {
+        "accountNumber" : {
+          "type" : "string",
+          "example" : "135888"
+        },
+        "ibx" : {
+          "type" : "array",
+          "uniqueItems" : true,
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "level" : {
+          "type" : "array",
+          "description" : "This field is not required. If not provided in the request, subscription will include all environmental messages at the IBX, zone, and cage levels. If granularity is specified, at least one level must be provided.",
+          "uniqueItems" : true,
+          "items" : {
+            "type" : "string",
+            "enum" : [ "ZONE", "IBX", "CAGE" ]
+          },
+          "maxItems" : 3,
+          "minItems" : 1
+        }
+      }
+    },
+    "MessageType" : {
+      "type" : "object",
+      "description" : "Message type for a given subscription",
+      "properties" : {
+        "asset" : {
+          "type" : "array",
+          "description" : "List of asset message type to subscribe",
+          "items" : {
+            "$ref" : "#/definitions/Asset"
+          }
+        },
+        "environmental" : {
+          "type" : "array",
+          "description" : "List of environmental message type to subscribe",
+          "items" : {
+            "$ref" : "#/definitions/Environmental"
+          }
+        },
+        "power" : {
+          "type" : "array",
+          "description" : "List of power message type to subscribe",
+          "items" : {
+            "$ref" : "#/definitions/PowerMessage"
+          }
+        },
+        "meteredPower" : {
+          "type" : "array",
+          "description" : "List of metered power message type to subscribe",
+          "items" : {
+            "$ref" : "#/definitions/MeteredPower"
+          }
+        },
+        "systemAlert" : {
+          "type" : "array",
+          "description" : "List of system alert message type to subscribe",
+          "items" : {
+            "$ref" : "#/definitions/SystemAlert"
+          }
+        },
+        "customAlert" : {
+          "type" : "array",
+          "description" : "List of custom alert message type to subscribe",
+          "items" : {
+            "$ref" : "#/definitions/CustomAlert"
+          }
+        }
+      }
+    },
+    "PowerMessage" : {
+      "type" : "object",
+      "description" : "Power messages provide the latest power usage data at the circuit-level.",
+      "required" : [ "accountNumber", "ibx" ],
+      "properties" : {
+        "accountNumber" : {
+          "type" : "string",
+          "example" : "135888"
+        },
+        "ibx" : {
+          "type" : "array",
+          "uniqueItems" : true,
+          "items" : {
+            "type" : "string"
+          }
+        }
+      }
+    },
+    "SubscriptionRequest" : {
+      "type" : "object",
+      "description" : "Subscription Request Payload",
+      "properties" : {
+        "messageType" : {
+          "$ref" : "#/definitions/MessageType"
+        },
+        "channel" : {
+          "description" : "channel",
+          "$ref" : "#/definitions/Channel"
+        }
+      }
+    },
+    "SubscriptionResponse" : {
+      "type" : "object",
+      "description" : "Subscription Response",
+      "properties" : {
+        "id" : {
+          "type" : "string"
+        },
+        "status" : {
+          "type" : "string",
+          "enum" : [ "PENDING", "ACTIVE", "FAILED", "DELETE_IN_PROGRESS", "DELETED" ]
+        },
+        "messageType" : {
+          "$ref" : "#/definitions/MessageType"
+        },
+        "channel" : {
+          "$ref" : "#/definitions/Channel"
+        },
+        "orgId" : {
+          "type" : "string"
+        },
+        "createdBy" : {
+          "type" : "string"
+        },
+        "createdDateTime" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "updatedBy" : {
+          "type" : "string"
+        },
+        "updatedDateTime" : {
+          "type" : "string",
+          "format" : "date-time"
+        }
+      }
+    },
+    "SystemAlert" : {
+      "type" : "object",
+      "description" : "System Alert messages are sent when Equinix-defined alert conditions become true. The message contains the data point value that triggered the alert as well as the current value.",
+      "required" : [ "accountNumber", "ibx" ],
+      "properties" : {
+        "accountNumber" : {
+          "type" : "string",
+          "example" : "135888"
+        },
+        "ibx" : {
+          "type" : "array",
+          "uniqueItems" : true,
+          "items" : {
+            "type" : "string"
+          }
+        }
+      }
+    },
+    "WebhookChannelConfiguration" : {
+      "type" : "object",
+      "description" : "The configuration for a 'WEBHOOK' channel",
+      "required" : [ "url" ],
+      "properties" : {
+        "sslCertificate" : {
+          "type" : "string",
+          "example" : "ZkFzZLY1IGRpY31kZXI="
+        },
+        "url" : {
+          "type" : "string",
+          "example" : "https://b4c3mzxe8syvhd-ats.iot.us-west-2.amazonaws.com"
+        },
+        "numberOfRetries" : {
+          "type" : "integer",
+          "format" : "int32",
+          "minimum" : 1,
+          "maximum" : 5
+        },
+        "numberOfConcurrentCalls" : {
+          "type" : "integer",
+          "format" : "int32",
+          "minimum" : 20,
+          "maximum" : 50
+        },
+        "batchSize" : {
+          "type" : "integer",
+          "format" : "int32",
+          "minimum" : 5,
+          "maximum" : 20
+        }
+      }
+    },
+    "Alarm": {
+      "required": [
+        "asset",
+        "currentValue",
+        "definitionId",
+        "ibx",
+        "status",
+        "streamId",
+        "tag",
+        "threshold"
+      ],
+      "type": "object",
+      "properties": {
+        "streamId": {
+          "type": "string",
+          "description": "unique message id",
+          "example": "IBX.CRAH-EQ1-04:dirtyfilter#ABSOLUTE:HIGH"
+        },
+        "ibx": {
+          "type": "string",
+          "description": "ibx",
+          "example": "IBX"
+        },
+        "region": {
+          "type": "string",
+          "description": "region",
+          "example": "EMEA"
+        },
+        "metro": {
+          "type": "string",
+          "description": "metro",
+          "example": "metro"
+        },
+        "country": {
+          "type": "string",
+          "description": "country",
+          "example": "FR"
+        },
+        "conditionName": {
+          "type": "string",
+          "description": "condition name",
+          "example": "High"
+        },
+        "severity": {
+          "type": "integer",
+          "description": "severity",
+          "format": "int32",
+          "example": 900
+        },
+        "type": {
+          "type": "string",
+          "description": "type",
+          "example": "Absolute"
+        },
+        "heartbeat": {
+          "type": "boolean",
+          "description": "heartbeat",
+          "example": true
+        },
+        "triggerRule": {
+          "type": "string",
+          "description": "trigger rule",
+          "example": "RULE:123:1"
+        },
+        "definitionId": {
+          "type": "string",
+          "description": "unique message id",
+          "example": "IBX.CRAH-EQ1-04:dirtyfilter#ABSOLUTE:HIGH"
+        },
+        "currentValue": {
+          "$ref": "#/definitions/AlarmCurrentValueDetails"
+        },
+        "asset": {
+          "$ref": "#/definitions/AlarmAssetDetails"
+        },
+        "tag": {
+          "$ref": "#/definitions/AlarmTagDetails"
+        },
+        "status": {
+          "$ref": "#/definitions/AlarmStatusDetails"
+        },
+        "threshold": {
+          "$ref": "#/definitions/AlarmThresholdDetails"
+        },
+        "triggeredTime": {
+          "type": "string",
+          "description": "alarm triggered time",
+          "example": "2023-10-03T13:09:32"
+        },
+        "processedTime": {
+          "type": "string",
+          "description": "alarm processed time",
+          "example": "2023-10-03T13:09:32"
+        },
+        "normalProcessedTime": {
+          "type": "string",
+          "description": "alarm normal processed time",
+          "example": "2023-10-03T13:09:32"
+        },
+        "normalTriggeredTime": {
+          "type": "string",
+          "description": "alarm normal triggered time",
+          "example": "2023-10-03T13:09:32"
+        },
+        "dataQuality": {
+          "type": "string",
+          "description": "data quality: Good | Bad | Uncertain",
+          "example": "Good"
+        }
+      },
+      "description": "message data"
+    },
+    "AlarmAssetDetails": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "asset id",
+          "example": "IBX.CRAH-EQ1-04"
+        },
+        "type": {
+          "type": "string",
+          "description": "asset type",
+          "example": "CRAH"
+        },
+        "classification": {
+          "type": "string",
+          "description": "asset classification",
+          "example": "Mechanical"
+        }
+      },
+      "description": "asset details"
+    },
+    "AlarmCurrentValueDetails": {
+      "type": "object",
+      "properties": {
+        "unit": {
+          "type": "string",
+          "description": "current value unit",
+          "example": "%"
+        },
+        "value": {
+          "type": "string",
+          "description": "current value value",
+          "example": "35.023"
+        },
+        "type": {
+          "type": "string",
+          "description": "current value type",
+          "example": "Float"
+        }
+      },
+      "description": "currentValue details"
+    },
+    "AlarmMessageData": {
+      "required": [
+        "data",
+        "type"
+      ],
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "message type",
+          "example": "system-alert",
+          "default": "system-alert"
+        },
+        "data": {
+          "$ref": "#/definitions/Alarm"
+        }
+      },
+      "description": "alarm message data"
+    },
+    "AlarmStatusDetails": {
+      "type": "object",
+      "properties": {
+        "acknowledged": {
+          "type": "boolean",
+          "description": "status acknowledged",
+          "example": false
+        },
+        "acknowledgementTime": {
+          "type": "string",
+          "description": "status acknowledgement time",
+          "example": "2023-10-03T13:09:32"
+        },
+        "cleared": {
+          "type": "boolean",
+          "description": "status cleared",
+          "example": false
+        },
+        "active": {
+          "type": "boolean",
+          "description": "status active",
+          "example": true
+        }
+      },
+      "description": "status details"
+    },
+    "AlarmTagDetails": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "tag id",
+          "example": "IBX.CRAH-EQ1-04:dirtyfilter"
+        },
+        "displayName": {
+          "type": "string",
+          "description": "tag display name",
+          "example": "Temperature7"
+        }
+      },
+      "description": "tag details"
+    },
+    "AlarmThresholdDetails": {
+      "type": "object",
+      "properties": {
+        "unit": {
+          "type": "string",
+          "description": "threshold unit",
+          "example": "%"
+        },
+        "stateLimit": {
+          "type": "string",
+          "description": "threshold state limit",
+          "example": "20"
+        },
+        "message": {
+          "type": "string",
+          "description": "threshold message",
+          "example": "NA"
+        }
+      },
+      "description": "threshold details"
+    },
+    "Alert": {
+      "required": [
+        "asset",
+        "ibx",
+        "streamId",
+        "tag",
+        "threshold"
+      ],
+      "type": "object",
+      "properties": {
+        "streamId": {
+          "type": "string",
+          "description": "unique message id",
+          "example": "IBX.685306-15843739015670.6640131967865078"
+        },
+        "ibx": {
+          "type": "string",
+          "description": "ibx",
+          "example": "IBX"
+        },
+        "region": {
+          "type": "string",
+          "description": "region",
+          "example": "APAC"
+        },
+        "id": {
+          "type": "string",
+          "description": "id",
+          "example": "IBX.685306-15843739015670.6640131967865078"
+        },
+        "type": {
+          "type": "string",
+          "description": "type",
+          "example": "power"
+        },
+        "typeId": {
+          "type": "string",
+          "description": "type id",
+          "example": "drawAmpFalls"
+        },
+        "conditional": {
+          "type": "string",
+          "description": "conditional",
+          "example": "N"
+        },
+        "eventType": {
+          "type": "string",
+          "description": "event type",
+          "example": "Falls below"
+        },
+        "heartbeat": {
+          "type": "boolean",
+          "description": "heartbeat",
+          "example": true
+        },
+        "asset": {
+          "$ref": "#/definitions/AlertAssetDetails"
+        },
+        "tag": {
+          "$ref": "#/definitions/AlertTagDetails"
+        },
+        "threshold": {
+          "$ref": "#/definitions/AlertThresholdDetails"
+        },
+        "triggeredTime": {
+          "type": "string",
+          "description": "alert triggered time",
+          "example": "2023-10-03T13:09:32"
+        },
+        "dataQuality": {
+          "type": "string",
+          "description": "data quality: Good | Bad | Uncertain",
+          "example": "Good"
+        }
+      },
+      "description": "message data"
+    },
+    "AlertAssetDetails": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "asset id",
+          "example": "1.20849261E7"
+        },
+        "type": {
+          "type": "string",
+          "description": "asset type",
+          "example": "CIRCUIT"
+        },
+        "classification": {
+          "type": "string",
+          "description": "asset classification",
+          "example": "Electrical"
+        }
+      },
+      "description": "asset details"
+    },
+    "AlertMessageData": {
+      "required": [
+        "data",
+        "type"
+      ],
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "message type",
+          "example": "custom-alert",
+          "default": "custom-alert"
+        },
+        "data": {
+          "$ref": "#/definitions/Alert"
+        }
+      },
+      "description": "alert message data"
+    },
+    "AlertTagDetails": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "tag id",
+          "example": "IBX.CIRCUIT-EQ1-04:dirtyfilter"
+        }
+      },
+      "description": "tag details"
+    },
+    "AlertThresholdDetails": {
+      "type": "object",
+      "properties": {
+        "unit": {
+          "type": "string",
+          "description": "threshold unit",
+          "example": "Amp"
+        },
+        "maxValue": {
+          "type": "string",
+          "description": "threshold max value",
+          "example": "5"
+        },
+        "minValue": {
+          "type": "string",
+          "description": "threshold min value",
+          "example": "1"
+        },
+        "value": {
+          "type": "string",
+          "description": "threshold value",
+          "example": "10"
+        }
+      },
+      "description": "threshold details"
+    },
+    "Environment": {
+      "required": [
+        "asset",
+        "ibx",
+        "reading",
+        "streamId",
+        "tag"
+      ],
+      "type": "object",
+      "properties": {
+        "streamId": {
+          "type": "string",
+          "description": "unique message id",
+          "example": "IBX.IBX:humidity"
+        },
+        "ibx": {
+          "type": "string",
+          "description": "ibx",
+          "example": "IBX"
+        },
+        "asset": {
+          "$ref": "#/definitions/EnvironmentAssetDetails"
+        },
+        "reading": {
+          "$ref": "#/definitions/EnvironmentValueWithUnit"
+        },
+        "tag": {
+          "$ref": "#/definitions/EnvironmentTagDetails"
+        },
+        "readingTime": {
+          "type": "string",
+          "description": "message reading time",
+          "example": "2023-10-03T13:09:32"
+        },
+        "dataQuality": {
+          "type": "string",
+          "description": "data quality: Good | Bad | Uncertain",
+          "example": "Good"
+        }
+      },
+      "description": "message data"
+    },
+    "EnvironmentAssetDetails": {
+      "required": [
+        "id",
+        "level"
+      ],
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "asset id",
+          "example": "IBX"
+        },
+        "level": {
+          "type": "string",
+          "description": "asset level",
+          "example": "IBX"
+        }
+      },
+      "description": "asset details"
+    },
+    "EnvironmentMessageData": {
+      "required": [
+        "data",
+        "type"
+      ],
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "message type",
+          "example": "environmental",
+          "default": "environmental"
+        },
+        "data": {
+          "$ref": "#/definitions/Environment"
+        }
+      },
+      "description": "environment message data"
+    },
+    "EnvironmentTagDetails": {
+      "required": [
+        "id"
+      ],
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "tag id",
+          "example": "humidity"
+        },
+        "displayName": {
+          "type": "string",
+          "description": "tag display name",
+          "example": "Humidity"
+        }
+      },
+      "description": "tag details"
+    },
+    "EnvironmentValueWithUnit": {
+      "required": [
+        "unit",
+        "value"
+      ],
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string",
+          "description": "Environmental reading value",
+          "example": "50.045"
+        },
+        "unit": {
+          "type": "string",
+          "description": "Environmental reading unit",
+          "example": "PERCENT"
+        }
+      },
+      "description": "reading details"
+    },
+    "MeteredPower": {
+      "required": [
+        "asset",
+        "ibx",
+        "reading",
+        "streamId",
+        "tag"
+      ],
+      "type": "object",
+      "properties": {
+        "streamId": {
+          "type": "string",
+          "description": "unique message id",
+          "example": "IBX.CBM-B1-4-1:kilowattHour"
+        },
+        "ibx": {
+          "type": "string",
+          "description": "ibx",
+          "example": "IBX"
+        },
+        "asset": {
+          "$ref": "#/definitions/MeteredPowerAssetDetails"
+        },
+        "cage": {
+          "type": "string",
+          "description": "cage",
+          "example": "IBX:02:021305"
+        },
+        "cageSerialNo": {
+          "type": "string",
+          "description": "cage serial number",
+          "example": "021305-20604711"
+        },
+        "accountNumber": {
+          "type": "string",
+          "description": "account number",
+          "example": "123456"
+        },
+        "tag": {
+          "$ref": "#/definitions/MeteredPowerTagDetails"
+        },
+        "reading": {
+          "$ref": "#/definitions/MeteredPowerValueWithUnit"
+        },
+        "readingTime": {
+          "type": "string",
+          "description": "message reading time",
+          "example": "2023-10-03T13:09:32"
+        },
+        "dataQuality": {
+          "type": "string",
+          "description": "data quality: Good | Bad | Uncertain",
+          "example": "Good"
+        }
+      },
+      "description": "message data"
+    },
+    "MeteredPowerAssetDetails": {
+      "required": [
+        "id"
+      ],
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "asset id",
+          "example": "IBX.CBM-B1-4-1"
+        },
+        "type": {
+          "type": "string",
+          "description": "asset type",
+          "example": "Customer Billing Meter"
+        }
+      },
+      "description": "asset details"
+    },
+    "MeteredPowerMessageData": {
+      "required": [
+        "data",
+        "type"
+      ],
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "message type",
+          "example": "metered-power",
+          "default": "metered-power"
+        },
+        "data": {
+          "$ref": "#/definitions/MeteredPower"
+        }
+      },
+      "description": "metered-power message data"
+    },
+    "MeteredPowerTagDetails": {
+      "required": [
+        "id"
+      ],
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "tag id",
+          "example": "IBX.CBM-B1-4-1:kilowattHour"
+        },
+        "displayName": {
+          "type": "string",
+          "description": "tag display name",
+          "example": "kilowattHour"
+        }
+      },
+      "description": "tag details"
+    },
+    "MeteredPowerValueWithUnit": {
+      "required": [
+        "value"
+      ],
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string",
+          "description": "reading value",
+          "example": "412568.125"
+        },
+        "unit": {
+          "type": "string",
+          "description": "reading unit",
+          "example": "kWh"
+        }
+      },
+      "description": "reading details"
+    },
+    "Pagination": {
+      "required": [
+        "limit",
+        "offset",
+        "total"
+      ],
+      "type": "object",
+      "properties": {
+        "offset": {
+          "type": "integer",
+          "description": "offset of the first item in the given page",
+          "format": "int32",
+          "example": 100
+        },
+        "limit": {
+          "type": "integer",
+          "description": "limit specifies the maximum limit of items returned",
+          "format": "int32",
+          "example": 100
+        },
+        "total": {
+          "type": "integer",
+          "description": "number of total records",
+          "format": "int32",
+          "example": 500
+        },
+        "next": {
+          "type": "string",
+          "description": "relative URL to the next page, has value only when next page exists",
+          "example": "?offset=200&limit=100"
+        },
+        "previous": {
+          "type": "string",
+          "description": "relative URL to the previous page, has value only when previous page exists",
+          "example": "?offset=0&limit=100"
+        }
+      },
+      "description": "pagination"
+    },
+    "Power": {
+      "required": [
+        "asset",
+        "ibx",
+        "streamId"
+      ],
+      "type": "object",
+      "properties": {
+        "streamId": {
+          "type": "string",
+          "description": "unique message id",
+          "example": "IBX:140838"
+        },
+        "ibx": {
+          "type": "string",
+          "description": "ibx",
+          "example": "IBX"
+        },
+        "asset": {
+          "$ref": "#/definitions/PowerAssetDetails"
+        },
+        "cage": {
+          "type": "string",
+          "description": "cage",
+          "example": "IBX:02:021305"
+        },
+        "cabinet": {
+          "type": "string",
+          "description": "cabinet",
+          "example": "IBX:01:000Z4Z:0102"
+        },
+        "accountNumber": {
+          "type": "string",
+          "description": "account number",
+          "example": "123456"
+        },
+        "description": {
+          "type": "string",
+          "description": "description",
+          "example": "32-amp 230v Single Phase Primary AC Power"
+        },
+        "oid": {
+          "type": "string",
+          "description": "oid",
+          "example": "1.3.6.1.2.1.299.36.10.1099"
+        },
+        "circuitType": {
+          "type": "string",
+          "description": "circuit type",
+          "example": "PRIMARY"
+        },
+        "realPower": {
+          "$ref": "#/definitions/PowerRealPowerValueWithUnit"
+        },
+        "apparentPower": {
+          "$ref": "#/definitions/PowerApparentPowerValueWithUnit"
+        },
+        "contractualPower": {
+          "$ref": "#/definitions/PowerContractualPowerValueWithUnit"
+        },
+        "current": {
+          "$ref": "#/definitions/PowerCurrentValueWithUnit"
+        },
+        "powerFactor": {
+          "$ref": "#/definitions/PowerPowerFactorValueWithUnit"
+        },
+        "soldCurrent": {
+          "$ref": "#/definitions/PowerSoldCurrentValueWithUnit"
+        },
+        "soldPower": {
+          "$ref": "#/definitions/PowerSoldPowerValueWithUnit"
+        },
+        "powerConsumptionToContractual": {
+          "$ref": "#/definitions/PowerPowerConsumptionToContractualValueWithUnit"
+        },
+        "cabinetRating": {
+          "$ref": "#/definitions/PowerCabinetRatingValueWithUnit"
+        },
+        "peakLastSevenDays": {
+          "$ref": "#/definitions/PowerPeakLastSevenDaysValueWithUnit"
+        },
+        "peakLastSevenDaysRatio": {
+          "$ref": "#/definitions/PowerPeakLastSevenDaysRatioValueWithUnit"
+        },
+        "peakLastSevenDaysContractualPower": {
+          "$ref": "#/definitions/PowerPeakLastSevenDaysContractualPowerValueWithUnit"
+        },
+        "peakLastSevenDaysTime": {
+          "type": "string",
+          "description": "peak last seven days time",
+          "example": "2023-10-03T13:09:32"
+        },
+        "lastUpdated": {
+          "type": "string",
+          "description": "last updated time",
+          "example": "2023-10-03T13:09:32"
+        },
+        "readingTime": {
+          "type": "string",
+          "description": "message reading time",
+          "example": "2023-10-03T13:09:32"
+        }
+      },
+      "description": "message data"
+    },
+    "PowerApparentPowerValueWithUnit": {
+      "required": [
+        "unit",
+        "value"
+      ],
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string",
+          "description": "ApparentPower reading value",
+          "example": "7.36"
+        },
+        "unit": {
+          "type": "string",
+          "description": "ApparentPower reading unit",
+          "example": "kVA"
+        }
+      },
+      "description": "apparentPower details"
+    },
+    "PowerAssetDetails": {
+      "required": [
+        "id",
+        "type"
+      ],
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "asset id",
+          "example": "IBX:140838"
+        },
+        "type": {
+          "type": "string",
+          "description": "asset type",
+          "example": "CIRCUIT"
+        }
+      },
+      "description": "asset details"
+    },
+    "PowerCabinetRatingValueWithUnit": {
+      "required": [
+        "unit",
+        "value"
+      ],
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string",
+          "description": "CabinetRating reading value",
+          "example": "8.125"
+        },
+        "unit": {
+          "type": "string",
+          "description": "CabinetRating reading unit",
+          "example": "kVA"
+        }
+      },
+      "description": "cabinetRating details"
+    },
+    "PowerContractualPowerValueWithUnit": {
+      "required": [
+        "unit",
+        "value"
+      ],
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string",
+          "description": "ContractualPower reading value",
+          "example": "0.0"
+        },
+        "unit": {
+          "type": "string",
+          "description": "ContractualPower reading unit",
+          "example": "kVA"
+        }
+      },
+      "description": "contractualPower details"
+    },
+    "PowerCurrentValueWithUnit": {
+      "required": [
+        "unit",
+        "value"
+      ],
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string",
+          "description": "Current reading value",
+          "example": "7.36"
+        },
+        "unit": {
+          "type": "string",
+          "description": "Current reading unit",
+          "example": "A"
+        }
+      },
+      "description": "current details"
+    },
+    "PowerMessageData": {
+      "required": [
+        "data",
+        "type"
+      ],
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "message type",
+          "example": "power",
+          "default": "power"
+        },
+        "data": {
+          "$ref": "#/definitions/Power"
+        }
+      },
+      "description": "power message data"
+    },
+    "PowerPeakLastSevenDaysContractualPowerValueWithUnit": {
+      "required": [
+        "unit",
+        "value"
+      ],
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string",
+          "description": "PeakLastSevenDaysContractualPower reading value",
+          "example": "0.0"
+        },
+        "unit": {
+          "type": "string",
+          "description": "PeakLastSevenDaysContractualPower reading unit",
+          "example": "kVA"
+        }
+      },
+      "description": "peakLastSevenDaysContractualPower details"
+    },
+    "PowerPeakLastSevenDaysRatioValueWithUnit": {
+      "required": [
+        "unit",
+        "value"
+      ],
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string",
+          "description": "PeakLastSevenDaysRatio reading value",
+          "example": "48.125"
+        },
+        "unit": {
+          "type": "string",
+          "description": "PeakLastSevenDaysRatio reading unit",
+          "example": "PERCENT"
+        }
+      },
+      "description": "peakLastSevenDaysRatio details"
+    },
+    "PowerPeakLastSevenDaysValueWithUnit": {
+      "required": [
+        "unit",
+        "value"
+      ],
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string",
+          "description": "PeakLastSevenDays reading value",
+          "example": "7.36"
+        },
+        "unit": {
+          "type": "string",
+          "description": "PeakLastSevenDays reading unit",
+          "example": "kVA"
+        }
+      },
+      "description": "peakLastSevenDays details"
+    },
+    "PowerPowerConsumptionToContractualValueWithUnit": {
+      "required": [
+        "unit",
+        "value"
+      ],
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string",
+          "description": "PowerConsumptionToContractual reading value",
+          "example": "68.125"
+        },
+        "unit": {
+          "type": "string",
+          "description": "PowerConsumptionToContractual reading unit",
+          "example": "PERCENT"
+        }
+      },
+      "description": "powerConsumptionToContractual details"
+    },
+    "PowerPowerFactorValueWithUnit": {
+      "required": [
+        "unit",
+        "value"
+      ],
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string",
+          "description": "PowerFactor reading value",
+          "example": "0.0"
+        },
+        "unit": {
+          "type": "string",
+          "description": "PowerFactor reading unit",
+          "example": "pf"
+        }
+      },
+      "description": "powerFactor details"
+    },
+    "PowerRealPowerValueWithUnit": {
+      "required": [
+        "unit",
+        "value"
+      ],
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string",
+          "description": "RealPower reading value",
+          "example": "0.0"
+        },
+        "unit": {
+          "type": "string",
+          "description": "RealPower reading unit",
+          "example": "kW"
+        }
+      },
+      "description": "realPower details"
+    },
+    "PowerSoldCurrentValueWithUnit": {
+      "required": [
+        "unit",
+        "value"
+      ],
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string",
+          "description": "SoldCurrent reading value",
+          "example": "7.36"
+        },
+        "unit": {
+          "type": "string",
+          "description": "SoldCurrent reading unit",
+          "example": "A"
+        }
+      },
+      "description": "soldCurrent details"
+    },
+    "PowerSoldPowerValueWithUnit": {
+      "required": [
+        "unit",
+        "value"
+      ],
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string",
+          "description": "SoldPower reading value",
+          "example": "68.125"
+        },
+        "unit": {
+          "type": "string",
+          "description": "SoldPower reading unit",
+          "example": "kVA"
+        }
+      },
+      "description": "soldPower details"
+    },
+    "SubscriptionData": {
+      "type": "object",
+      "properties": {
+        "alarmMessageData": {
+          "type": "array",
+          "description": "alarm message data",
+          "items": {
+            "$ref": "#/definitions/AlarmMessageData"
+          }
+        },
+        "alertMessageData": {
+          "type": "array",
+          "description": "alert message data",
+          "items": {
+            "$ref": "#/definitions/AlertMessageData"
+          }
+        },
+        "environmentMessageData": {
+          "type": "array",
+          "description": "environment message data",
+          "items": {
+            "$ref": "#/definitions/EnvironmentMessageData"
+          }
+        },
+        "meteredPowerMessageData": {
+          "type": "array",
+          "description": "metered-power message data",
+          "items": {
+            "$ref": "#/definitions/MeteredPowerMessageData"
+          }
+        },
+        "powerMessageData": {
+          "type": "array",
+          "description": "power message data",
+          "items": {
+            "$ref": "#/definitions/PowerMessageData"
+          }
+        },
+        "tagPointMessageData": {
+          "type": "array",
+          "description": "tag-point message data",
+          "items": {
+            "$ref": "#/definitions/TagPointMessageData"
+          }
+        },
+        "pagination": {
+          "$ref": "#/definitions/Pagination"
+        }
+      }
+    },
+    "TagDetails": {
+      "required": [
+        "id"
+      ],
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "tag id",
+          "example": "IBX.ATS-M1-04:outputvoltageca"
+        },
+        "displayName": {
+          "type": "string",
+          "description": "tag display name",
+          "example": "Output Voltage CA"
+        }
+      },
+      "description": "tag details"
+    },
+    "TagPoint": {
+      "required": [
+        "dataQuality",
+        "ibx",
+        "reading",
+        "readingTime",
+        "streamId",
+        "tag"
+      ],
+      "type": "object",
+      "properties": {
+        "streamId": {
+          "type": "string",
+          "description": "unique message id",
+          "example": "IBX.ATS-M1-04:outputvoltageca"
+        },
+        "ibx": {
+          "type": "string",
+          "description": "ibx",
+          "example": "IBX"
+        },
+        "tag": {
+          "$ref": "#/definitions/TagDetails"
+        },
+        "reading": {
+          "$ref": "#/definitions/TagPointValueWithUnit"
+        },
+        "readingTime": {
+          "type": "string",
+          "description": "message reading time",
+          "example": "2023-10-03T13:09:32"
+        },
+        "dataQuality": {
+          "type": "string",
+          "description": "data quality: Good | Bad | Uncertain",
+          "example": "Good"
+        }
+      },
+      "description": "message data"
+    },
+    "TagPointMessageData": {
+      "required": [
+        "data",
+        "type"
+      ],
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "message type",
+          "example": "tag-point",
+          "default": "tag-point"
+        },
+        "data": {
+          "$ref": "#/definitions/TagPoint"
+        }
+      },
+      "description": "tag-point message data"
+    },
+    "TagPointValueWithUnit": {
+      "required": [
+        "value"
+      ],
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string",
+          "description": "reading value",
+          "example": "50.045"
+        },
+        "unit": {
+          "type": "string",
+          "description": "reading unit",
+          "example": "V"
+        }
+      },
+      "description": "reading details"
+    }
+  },
+  "parameters" : {
+    "authorizationHeader" : {
+      "name" : "Authorization",
+      "in" : "header",
+      "type" : "string",
+      "description" : "The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.",
+      "required" : true,
+      "x-prefix" : "Bearer "
+    }
+  }
+}

@@ -1,0 +1,1384 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Smart View Assets APIs",
+    "description": "Empower yourself with Smart View Assets API. These provide the ability to consumers to list infra asset, fetch infra asset details, get affected customer assets based on asset id. Given an account number, IBX code, cage and asset classification (Electrical, Mechanical), information about the asset in a hierarchical structure comprising of the category, template and asset is returned. Given a category and a template, a list of assets is returned.\n",
+    "version": "1.0",
+    "termsOfService": "https://www.equinix.com/about/legal/terms",
+    "contact": {
+      "name": "Equinix API Support",
+      "url": "https://docs.equinix.com/api-support.htm"
+    }
+  },
+  "host": "api.equinix.com",
+  "schemes": [
+    "https"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "tags": [
+    {
+      "name": "Smart View Assets",
+      "description": "Access Asset Information"
+    }
+  ],
+  "paths": {
+    "/smartview/v1/asset/list": {
+
+      "get": {
+        "tags": [
+          "Smart View Assets"
+        ],
+        "operationId": "getAsset",
+        "summary": "get assets list information",
+        "description": "This endpoint returns information about asset in a hierarchical structure ( category / template / asset ) based on the input account number, IBX code, cage and asset classification (Electrical, Mechanical).",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Specify the OAuth Bearer token with prefix 'Bearer '.",
+            "required": true,
+            "type": "string",
+            "x-prefix": "Bearer "
+          },
+          {
+            "name": "accountNo",
+            "in": "query",
+            "description": "customer account number",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "ibx",
+            "in": "query",
+            "description": "ibx code",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "classification",
+            "in": "query",
+            "description": "asset classification (Electrical, Mechanical)",
+            "type": "string",
+            "enum": [
+              "Electrical",
+              "Mechanical"
+            ],
+            "required": true
+          },
+          {
+            "name": "cages",
+            "in": "query",
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "cage unique space id to be used to filter the assets list\nassumed to be all cage unique space id if no value is sent.\n"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Asset Details",
+            "schema": {
+              "$ref": "#/definitions/AssetsList"
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/parameters/authorizationHeader"
+        }
+      ]
+    },
+    "/smartview/v1/asset/details": {
+
+      "get": {
+        "tags": [
+          "Smart View Assets"
+        ],
+        "operationId": "getAssetDetails",
+        "summary": "get details for an asset.",
+        "description": "This endpoint returns information about asset details including tag points lists for a given asset identifier.",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Specify the OAuth Bearer token with prefix 'Bearer '.",
+            "required": true,
+            "type": "string",
+            "x-prefix": "Bearer "
+          },
+          {
+            "name": "accountNo",
+            "in": "query",
+            "description": "customer account number",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "ibx",
+            "in": "query",
+            "description": "ibx code",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "classification",
+            "in": "query",
+            "type": "string",
+            "description": "asset classification (Electrical, Mechanical)",
+            "required": true
+          },
+          {
+            "name": "assetId",
+            "in": "query",
+            "description": "asset id",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Asset Details",
+            "schema": {
+              "$ref": "#/definitions/AssetDetailsGetResponse"
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/parameters/authorizationHeader"
+        }
+      ],
+      "post": {
+        "tags": [
+          "Smart View Assets"
+        ],
+        "summary": "get asset details",
+        "description": "This endpoint returns information about assets details including the assets tag points list for the given multiple asset identifiers.",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Specify the OAuth Bearer token with prefix 'Bearer '.",
+            "required": true,
+            "type": "string",
+            "x-prefix": "Bearer "
+          },
+          {
+            "name": "payload",
+            "in": "body",
+            "description": "request schema",
+            "schema": {
+              "$ref": "#/definitions/AssetDetailsRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Asset Details response object",
+            "schema": {
+              "$ref": "#/definitions/AssetDetailsResponse"
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+
+    },
+    "/smartview/v1/asset/tagpoint/affected-assets": {
+
+      "get": {
+        "tags": [
+          "Smart View Assets"
+        ],
+        "operationId": "getAffectedAsset",
+        "summary": "get affected customers assets hierarchy",
+        "description": "The endpoint returns information regarding the affected assets of customers for a given asset identifier",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Specify the OAuth Bearer token with prefix 'Bearer '.",
+            "required": true,
+            "type": "string",
+            "x-prefix": "Bearer "
+          },
+          {
+            "name": "accountNo",
+            "in": "query",
+            "description": "customer account number",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "ibx",
+            "in": "query",
+            "description": "ibx code",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "assetId",
+            "in": "query",
+            "description": "asset id",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "classification",
+            "in": "query",
+            "description": "asset classification(Electrical, Mechanical)",
+            "type": "string",
+            "required": true,
+            "enum": [
+              "Electrical",
+              "Mechanical"
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Affect Customer Circuits ( Cage > Cabinet > Circuit hierarchy )",
+            "schema": {
+              "$ref": "#/definitions/HierarchyNode"
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/parameters/authorizationHeader"
+        }
+      ]
+    },
+    "/smartview/v1/asset/search": {
+
+      "get": {
+        "tags": [
+          "Smart View Assets"
+        ],
+        "operationId": "searchAsset",
+        "summary": "Search for Assets matching identifiers",
+        "description": "This endpoint is used to search for assets using wild card search patterns matching the asset identifier.",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Specify the OAuth Bearer token with prefix 'Bearer '.",
+            "required": true,
+            "type": "string",
+            "x-prefix": "Bearer "
+          },
+          {
+            "name": "accountNo",
+            "in": "query",
+            "description": "Customer Account Number",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "ibx",
+            "in": "query",
+            "description": "IBX Code",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "searchString",
+            "in": "query",
+            "description": "Search String",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Asset Details",
+            "schema": {
+              "$ref": "#/definitions/Assets"
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/parameters/authorizationHeader"
+        }
+      ]
+    },
+    "/smartview/v1/asset/tagpoint/current": {
+      "get": {
+        "tags": [
+          "Smart View Assets"
+        ],
+        "operationId": "getCurrentTagPoint",
+        "summary": "obtain latest tag point data",
+        "description": "This endpoint fetches and provides the most recent tag point information for a given tag identifier.",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Specify the OAuth Bearer token with prefix 'Bearer '.",
+            "required": true,
+            "type": "string",
+            "x-prefix": "Bearer "
+          },
+          {
+            "name": "accountNo",
+            "in": "query",
+            "type": "string",
+            "description": "customer account number",
+            "required": true
+          },
+          {
+            "name": "ibx",
+            "in": "query",
+            "type": "string",
+            "description": "ibx code",
+            "required": true
+          },
+          {
+            "name": "tagid",
+            "in": "query",
+            "type": "string",
+            "description": "tag id is the unique identifier for the tag point",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "the current tag point data",
+            "schema": {
+              "$ref": "#/definitions/TagPointData"
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/parameters/authorizationHeader"
+        }
+      ],
+      "post": {
+        "tags": [
+          "Smart View Assets"
+        ],
+        "summary": "get current tag points data",
+        "description": "This endpoint fetches the latest read values for given tag points using given tag identifiers.",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Specify the OAuth Bearer token with prefix 'Bearer '.",
+            "required": true,
+            "type": "string",
+            "x-prefix": "Bearer "
+          },
+          {
+            "name": "payload",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/CurrentTagPointRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "data for tag points based on input payload",
+            "schema": {
+              "$ref": "#/definitions/TagPointData"
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/smartview/v1/asset/tagpoint/trending": {
+      "get": {
+        "tags": [
+          "Smart View Assets"
+        ],
+        "operationId": "getTagpointTrending",
+        "summary": "obtain trending tag point data",
+        "description": "This endpoint fetches and returns the trending tag point information for a given tag identifier.",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Specify the OAuth Bearer token with prefix 'Bearer '.",
+            "required": true,
+            "type": "string",
+            "x-prefix": "Bearer "
+          },
+          {
+            "name": "accountNo",
+            "in": "query",
+            "type": "string",
+            "description": "customer account number",
+            "required": true
+          },
+          {
+            "name": "ibx",
+            "in": "query",
+            "type": "string",
+            "description": "ibx code",
+            "required": true
+          },
+          {
+            "name": "tagid",
+            "in": "query",
+            "type": "string",
+            "description": "tag id is the unique identifier for the tag point",
+            "required": true
+          },
+          {
+            "name": "interval",
+            "in": "query",
+            "type": "string",
+            "required": true,
+            "description": "tag point data interval (1h, 1d, reading)"
+          },
+          {
+            "name": "fromDate",
+            "in": "query",
+            "type": "integer",
+            "required": true,
+            "description": "from date UTC time (1494345600000)"
+          },
+          {
+            "name": "toDate",
+            "in": "query",
+            "type": "integer",
+            "required": true,
+            "description": "to date UTC time (1494432000000)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "the current tag point data",
+            "schema": {
+              "$ref": "#/definitions/TagPointTrendingResponse"
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/parameters/authorizationHeader"
+        }
+      ]
+    }
+  },
+  "definitions": {
+    "GenericRequest": {
+      "type": "object",
+      "properties": {
+        "accountNo": {
+          "type": "string",
+          "description": "customer account number"
+        },
+        "ibx": {
+          "type": "string",
+          "description": "ibx code"
+        },
+        "classification": {
+          "type": "string",
+          "description": "asset classification"
+        }
+      }
+    },
+    "CurrentTagPointRequest": {
+      "type": "object",
+      "description": "request object for tagpoint/current POST request",
+      "properties": {
+        "accountNo": {
+          "type": "string",
+          "description": "customer account number"
+        },
+        "tagIds": {
+          "type": "array",
+          "maxLength": 1000,
+          "items": {
+            "type": "string",
+            "description": "tag ids"
+          }
+        },
+        "ibx": {
+          "type": "string",
+          "description": "ibx code"
+        }
+      }
+    },
+    "AssetDetailsRequest": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/GenericRequest"
+        },
+        {
+          "properties": {
+            "assetIds": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "description": "asset id"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "CurrentTagPointResponse": {
+      "type": "object",
+      "description": "response object for tagpoint/current POST request",
+      "properties": {
+        "totalCount": {
+          "description": "total number of current tag point"
+        }
+      }
+    },
+    "AssetDetailsGetResponse": {
+      "type": "object",
+      "properties": {
+        "payLoad": {
+          "type": "object",
+          "properties": {
+            "assetId": {
+              "type": "string",
+              "description": "asset id for the Asset",
+              "example": "CH1.Chiller-1"
+            },
+            "assetType": {
+              "type": "string",
+              "description": "Template Name for the asset",
+              "example": "Cooling"
+            },
+            "userPrefTimeZone": {
+              "type": "string",
+              "description": "Time zone for the user",
+              "example": "Asia/Katmandu"
+            },
+            "tags": {
+              "type": "array",
+              "description": "List of tag points for the Asset",
+              "items": {
+                "$ref": "#/definitions/TagPointDataArray"
+              }
+            },
+            "lastMaintenanceDate": {
+              "type": "string",
+              "example": "Aug 03,2016",
+              "description": "Datetime when the machine had its last maintenance"
+            },
+            "manufacturerName": {
+              "type": "string",
+              "description": "Manufacturer name for the Asset",
+              "example": "SMARDT"
+            },
+            "equipmentModelNumber": {
+              "type": "string",
+              "description": "Equipment Model Number",
+              "example": "SACAC110-3EXX-2A1-16A-010"
+            },
+            "equipmentSerialNumber": {
+              "type": "string",
+              "description": "Equipment Serial Number",
+              "example": "FF0010I233Q1276"
+            },
+            "alarmLastTriggeredTime": {
+              "type": "string",
+              "example": "Aug 21,2017 04:38 AM",
+              "description": "Datetime when the latest alarm was triggered on the asset"
+            },
+            "alarmLastProcessedTime": {
+              "type": "string",
+              "example": "Aug 21,2017 05:52 AM",
+              "description": "Datetime when the latest alarm was processed on the asset"
+            }
+          }
+        },
+        "status": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "description": "[INFO|ERROR] are the possible values",
+              "enum": [
+                "INFO"
+              ]
+            },
+            "statuscode": {
+              "type": "number",
+              "example": "1000",
+              "description": "[1000|3001|3002|3003|4000] are the possible status codes"
+            },
+            "msg": {
+              "type": "string",
+              "example": "OK",
+              "description": "[Ok|Permission Denied|Invalid Account number|Invalid IBX|Invalid LevelType|Invalid LevelValue|Invalid Interval|Invalid From/To Date|INVALID_SESSION|INVALID_SESSION_IBX|INTERNAL_ERROR] are the possible messages"
+            }
+          }
+        }
+      }
+    },
+    "AssetDetailsResponse": {
+      "type": "object",
+      "description": "response object for asset/details POST request",
+      "properties": {
+        "payLoad": {
+          "type": "object",
+          "properties": {
+            "totalCount": {
+              "description": "total number of assets that match the request filters",
+              "type": "integer",
+              "example": 1
+            },
+            "assetDetails": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/AssetDetails"
+              }
+            }
+          }
+        },
+        "status": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "description": "[INFO|ERROR] are the possible values",
+              "enum": [
+                "INFO"
+              ]
+            },
+            "statuscode": {
+              "type": "number",
+              "example": "1000",
+              "description": "[1000|3001|3002|3003|4000] are the possible status codes"
+            },
+            "msg": {
+              "type": "string",
+              "example": "OK",
+              "description": "[Ok|Permission Denied|Invalid Account number|Invalid IBX|Invalid LevelType|Invalid LevelValue|Invalid Interval|Invalid From/To Date|INVALID_SESSION|INVALID_SESSION_IBX|INTERNAL_ERROR] are the possible messages"
+            }
+          }
+        }
+      }
+    },
+    "AssetDetailResponse": {
+      "type": "object",
+      "description": "response object for asset/details POST request",
+      "properties": {
+        "payLoad": {
+          "type": "object",
+          "properties": {
+            "assetDetails": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/AssetDetails"
+              }
+            }
+          }
+        },
+        "status": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "description": "[INFO|ERROR] are the possible values",
+              "enum": [
+                "INFO"
+              ]
+            },
+            "statuscode": {
+              "type": "number",
+              "example": "1000",
+              "description": "[1000|3001|3002|3003|4000] are the possible status codes"
+            },
+            "msg": {
+              "type": "string",
+              "example": "OK",
+              "description": "[Ok|Permission Denied|Invalid Account number|Invalid IBX|Invalid LevelType|Invalid LevelValue|Invalid Interval|Invalid From/To Date|INVALID_SESSION|INVALID_SESSION_IBX|INTERNAL_ERROR] are the possible messages"
+            }
+          }
+        }
+      }
+    },
+    "TagPointTrendingData": {
+      "type": "object",
+      "properties": {
+        "datetime": {
+          "type": "string",
+          "example": "1504779867508",
+          "description": "UTC time"
+        },
+        "value": {
+          "type": "string",
+          "example": "0.0"
+        }
+      }
+    },
+    "TagPointTrendingResponse": {
+      "type": "object",
+      "properties": {
+        "payLoad": {
+          "type": "object",
+          "properties": {
+            "accountNumber": {
+              "type": "string",
+              "example": "1"
+            },
+            "ibx": {
+              "type": "string",
+              "example": "CH1"
+            },
+            "interval": {
+              "type": "string",
+              "example": "1h",
+              "description": "data sampling interval",
+              "enum": [
+                "5m",
+                "15m",
+                "1h",
+                "1d"
+              ]
+            },
+            "uom": {
+              "type": "string",
+              "example": "s"
+            },
+            "tagId": {
+              "type": "string",
+              "example": "CH1.UPS-20:batterytimeremaining",
+              "description": "the unique identifiers for the tag point ids for which the trending point is requested.\n"
+            },
+            "tagDisplayName": {
+              "type": "string",
+              "example": "Battery Time Remaining",
+              "description": "the \n"
+            },
+            "dataType": {
+              "example": "Float",
+              "description": "data type of trend data vlaues",
+              "type": "string"
+            },
+            "data": {
+              "type": "array",
+              "description": "trend data of tag",
+              "items": {
+                "$ref": "#/definitions/TagPointTrendingData"
+              }
+            }
+          }
+        },
+        "status": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "description": "[INFO|ERROR] are the possible values",
+              "enum": [
+                "INFO"
+              ]
+            },
+            "statuscode": {
+              "type": "number",
+              "example": "1000",
+              "description": "[1000|3001|4000] are the possible status codes"
+            },
+            "msg": {
+              "type": "string",
+              "example": "OK",
+              "description": "[Ok|Permission Denied|Invalid Account number|Invalid IBX|Invalid Interval|Invalid FromDate|Invalid ToDate|From/ToDate interval cannot be greater  than 1 year] are the possible messages"
+            }
+          }
+        }
+      }
+    },
+    "AssetsArray": {
+      "type": "object",
+      "properties": {
+        "assetId": {
+          "type": "string",
+          "example": "CH1.ASTS-1-2-A",
+          "description": "The assetid is the circuit number, sensor id, asset id, asset id \nfor type circuit, sensor, electrical and mechanical resp.\n"
+        },
+        "type": {
+          "type": "string",
+          "example": "ASTS"
+        },
+        "assetLabel": {
+          "type": "string",
+          "example": "CH1.ASTS-1-2-A",
+          "description": "Asset Label is the Circuit display label, Sensor ID, and Asset ID\nfor types circuit, sensor, electrical and mechanical resp. \n"
+        },
+        "assetClassification": {
+          "type": "string",
+          "description": "Asset   classification is electrical or mechanical\n",
+          "example": "Electrical"
+        }
+      }
+    },
+    "TagPointDataArray": {
+      "type": "object",
+      "description": "Tag Point is a property of the Asset it is linked to.\n",
+      "properties": {
+        "value": {
+          "type": "string",
+          "description": "Current data value for the tag point\n",
+          "example": 4.9
+        },
+        "tagId": {
+          "type": "string",
+          "description": "ID for the tagPoint - Unique Identifier for the Tag Point\n",
+          "example": "CH1.Chiller-1:evapleavingwatertemperature"
+        },
+        "tagDisplayName": {
+          "type": "string",
+          "description": "Generic label for the tag point\n",
+          "example": "Evaporator Leaving Water Temperature"
+        },
+        "uom": {
+          "type": "string",
+          "description": "Unit of measure for the data value for the tag point\n",
+          "example": "Â°C"
+        },
+        "alarmStatus": {
+          "type": "string",
+          "description": "Generic label for the tag point   \n",
+          "example": "OK"
+        },
+        "readingTime": {
+          "type": "string",
+          "example": "20170907060449",
+          "description": "date time when the tag point value was read from the device.\n"
+        }
+      }
+    },
+    "TagPointDataArrayCurrent": {
+      "type": "object",
+      "description": "Tag Point is a property of the Asset it is linked to.\n",
+      "properties": {
+        "value": {
+          "type": "string",
+          "example": 4.9,
+          "description": "Current data value for the tag point\n"
+        },
+        "tagId": {
+          "type": "string",
+          "example": "CH1.Chiller-1:evapleavingwatertemperature",
+          "description": "ID for the tagPoint - Unique Identifier for the Tag Point\n"
+        },
+        "tagDisplayName": {
+          "type": "string",
+          "example": "Evaporator Leaving Water Temperature",
+          "description": "Generic label for the tag point\n"
+        },
+        "uom": {
+          "type": "string",
+          "example": "Â°C",
+          "description": "Unit of measure for the data value for the tag point\n"
+        },
+        "readingTime": {
+          "type": "string",
+          "example": "20170907125336",
+          "description": "date time when the tag point value was read from the device.          \n"
+        }
+      }
+    },
+    "AssetDetails": {
+      "type": "object",
+      "description": "Asset Details includes Tag Points with Data for the asset",
+      "properties": {
+        "assetId": {
+          "type": "string",
+          "description": "asset id for the Asset",
+          "example": "CH1.Chiller-1"
+        },
+        "assetType": {
+          "type": "string",
+          "description": "Template Name for the asset",
+          "example": "Cooling"
+        },
+        "userPrefTimeZone": {
+          "type": "string",
+          "description": "Time zone for the user",
+          "example": "Asia/Katmandu"
+        },
+        "tags": {
+          "type": "array",
+          "description": "List of tag points for the Asset",
+          "items": {
+            "$ref": "#/definitions/TagPointDataArray"
+          }
+        },
+        "lastMaintenanceDate": {
+          "type": "string",
+          "example": "Aug 03,2016",
+          "description": "Datetime when the machine had its last maintenance"
+        },
+        "manufacturerName": {
+          "type": "string",
+          "description": "Manufacturer name for the Asset",
+          "example": "SMARDT"
+        },
+        "equipmentModelNumber": {
+          "type": "string",
+          "description": "Equipment Model Number",
+          "example": "SACAC110-3EXX-2A1-16A-010"
+        },
+        "equipmentSerialNumber": {
+          "type": "string",
+          "description": "Equipment Serial Number",
+          "example": "FF0010I233Q1276"
+        },
+        "alarmLastTriggeredTime": {
+          "type": "string",
+          "example": "Aug 21,2017 04:38 AM",
+          "description": "Datetime when the latest alarm was triggered on the asset"
+        },
+        "alarmLastProcessedTime": {
+          "type": "string",
+          "example": "Aug 21,2017 05:52 AM",
+          "description": "Datetime when the latest alarm was processed on the asset"
+        }
+      }
+    },
+    "AssetDetailsTagPointData": {
+      "type": "object",
+      "properties": {
+        "payLoad": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TagPointDataArray"
+          }
+        }
+      }
+    },
+    "TagPointData": {
+      "type": "object",
+      "properties": {
+        "payLoad": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TagPointDataArrayCurrent"
+          }
+        },
+        "status": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "description": "[INFO|ERROR] are the possible values",
+              "enum": [
+                "INFO"
+              ]
+            },
+            "statuscode": {
+              "type": "number",
+              "example": "1000",
+              "description": "[1000|3001|3002|3003|4000] are the possible status codes"
+            },
+            "msg": {
+              "type": "string",
+              "example": "OK",
+              "description": "[Ok|Permission Denied|Invalid Account number|Invalid IBX|Invalid LevelType|Invalid LevelValue|Invalid Interval|Invalid From/To Date|INVALID_SESSION|INVALID_SESSION_IBX|INTERNAL_ERROR] are the"
+            }
+          }
+        }
+      }
+    },
+    "AssetsList": {
+      "type": "object",
+      "properties": {
+        "payLoad": {
+          "type": "object",
+          "properties": {
+            "classification": {
+              "type": "string",
+              "description": "asset classification for the Electrical and Mechanical",
+              "example": "Mechanical"
+            },
+            "categories": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Category"
+              }
+            }
+          }
+        },
+        "status": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "description": "[INFO|ERROR] are the possible values",
+              "enum": [
+                "INFO"
+              ]
+            },
+            "statuscode": {
+              "type": "number",
+              "example": "1000",
+              "description": "[1000|3001|3002|3003|4000] are the possible status codes"
+            },
+            "msg": {
+              "type": "string",
+              "example": "OK",
+              "description": "[Ok|Permission Denied|Invalid Account number|Invalid IBX|Invalid LevelType|Invalid LevelValue|Invalid Interval|Invalid From/To Date|INVALID_SESSION|INVALID_SESSION_IBX|INTERNAL_ERROR] are the possible messages            possible messages"
+            }
+          }
+        }
+      }
+    },
+    "Assets": {
+      "type": "object",
+      "properties": {
+        "payLoad": {
+          "type": "object",
+          "properties": {
+            "totalCount": {
+              "type": "integer",
+              "example": 1
+            },
+            "assetsList": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/AssetsArray"
+              }
+            }
+          }
+        },
+        "status": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "description": "[INFO|ERROR] are the possible values",
+              "enum": [
+                "INFO"
+              ]
+            },
+            "statuscode": {
+              "type": "number",
+              "example": "1000",
+              "description": "[1000|3001|3002|3003|4000] are the possible status codes"
+            },
+            "msg": {
+              "type": "string",
+              "example": "OK",
+              "description": "[Ok|Permission Denied|Invalid Account number|Invalid IBX|Invalid LevelType|Invalid LevelValue|Invalid Interval|Invalid From/To Date|INVALID_SESSION|INVALID_SESSION_IBX|INTERNAL_ERROR] are the possible messages            possible messages            "
+            }
+          }
+        }
+      }
+    },
+    "Asset": {
+      "type": "object",
+      "properties": {
+        "assetId": {
+          "type": "string",
+          "description": "asset id for the asset",
+          "enum": [
+            "CH1.Lead Chilled Water Manager",
+            "CH1.Chiller-6"
+          ]
+        },
+        "ibx": {
+          "type": "string",
+          "description": "ibx code for the ibx in which the asset it present",
+          "enum": [
+            "CH1",
+            "SG2"
+          ]
+        },
+        "alarmStatus": {
+          "type": "string",
+          "description": "alarm status for the asset",
+          "enum": [
+            "NOT OK",
+            "OK"
+          ]
+        },
+        "resiliencyStatus": {
+          "type": "string",
+          "description": "resiliency status for the asset",
+          "enum": [
+            "Resiliency as Designed",
+            "Resiliency at Fault",
+            "Resiliency in Maintenance"
+          ]
+        },
+        "alarmLastTriggeredTime": {
+          "type": "string",
+          "example": "Aug 21,2017 04:52 AM",
+          "description": "datetime when the latest alarm on the asset was triggered"
+        },
+        "alarmLastClearedTime": {
+          "type": "string",
+          "example": "Aug 21,2017 05:52 AM",
+          "description": "datetime when the latest alarm on the asset was cleared"
+        },
+        "primaryParentAsset": {
+          "type": "string",
+          "description": "the primary parent of the current asset it can be multi-valued (provided via comma separated asset id)",
+          "enum": [
+            "[CH1.UPS-5]",
+            "[CH1.UPS-5,CH1.UPS-6]"
+          ]
+        },
+        "alternateParentAsset": {
+          "type": "string",
+          "description": "the alternate parent of the current asset it can be multi-valued (provided via comma separated asset id)",
+          "enum": [
+            "[CH1.UPS-13]",
+            "[CH1.UPS-13,CH1.UPS-14]"
+          ]
+        }
+      }
+    },
+    "Template": {
+      "type": "object",
+      "description": "template is a blueprint for an asset.",
+      "properties": {
+        "assets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Asset"
+          }
+        },
+        "templateId": {
+          "type": "string",
+          "description": "template id - unique identifier for the template",
+          "example": "Cooling Plant"
+        }
+      }
+    },
+    "Category": {
+      "type": "object",
+      "properties": {
+        "templates": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Template"
+          }
+        },
+        "categoryName": {
+          "type": "string",
+          "example": "Cooling"
+        }
+      }
+    },
+    "Cages": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Cage Unique Space Id",
+          "example": "CH1:05:000430"
+        },
+        "type": {
+          "type": "string",
+          "description": "type of the asset",
+          "example": "cage"
+        },
+        "cabinets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Cabinets"
+          }
+        }
+      }
+    },
+    "Cabinets": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "enum": [
+            "CH1:05:000430:0105"
+          ]
+        },
+        "type": {
+          "type": "string",
+          "example": "cabinet"
+        },
+        "circuits": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Circuits"
+          }
+        }
+      }
+    },
+    "Circuits": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "enum": [
+            877484
+          ]
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "circuit"
+          ]
+        }
+      }
+    },
+    "CircuitsMapWithCage": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "enum": [
+            877483
+          ]
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "circuit"
+          ]
+        }
+      }
+    },
+    "HierarchyNode": {
+      "type": "object",
+      "properties": {
+        "payLoad": {
+          "type": "object",
+          "properties": {
+            "cages": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Cages"
+              }
+            },
+            "circuits": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/CircuitsMapWithCage"
+              }
+            }
+          }
+        },
+        "status": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "description": "[INFO|ERROR] are the possible values",
+              "enum": [
+                "INFO"
+              ]
+            },
+            "statuscode": {
+              "type": "number",
+              "example": "1000",
+              "description": "[1000|3001|3002|3003|4000] are the possible status codes"
+            },
+            "msg": {
+              "type": "string",
+              "example": "OK",
+              "description": "[Ok|Permission Denied|Invalid Account number|Invalid IBX|Invalid LevelType|Invalid LevelValue|Invalid Interval|Invalid From/To Date|INVALID_SESSION|INVALID_SESSION_IBX|INTERNAL_ERROR] are the possible messages"
+            }
+          }
+        }
+      }
+    },
+    "Error": {
+      "type": "object",
+      "properties": {
+        "payLoad": {
+          "type": "object"
+        },
+        "status": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "description": "[INFO|ERROR] are the possible values",
+              "enum": [
+                "ERROR"
+              ]
+            },
+            "statuscode": {
+              "type": "number",
+              "example": "4000",
+              "description": "[1000|3001|3002|3003|4000] are the possible status codes"
+            },
+            "msg": {
+              "type": "string",
+              "example": "INTERNAL_ERROR",
+              "description": "[Ok|Permission Denied|Invalid Account number|Invalid IBX|Invalid LevelType|Invalid LevelValue|Invalid Interval|Invalid From/To Date|INVALID_SESSION|INVALID_SESSION_IBX|INTERNAL_ERROR] are the possible messages"
+            }
+          }
+        }
+      }
+    }
+  },
+  "parameters": {
+    "authorizationHeader": {
+      "name": "Authorization",
+      "in": "header",
+      "description": "Specify the Access token with prefix 'Bearer'.",
+      "type": "string",
+      "required": true
+    }
+  }
+}
