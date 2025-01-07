@@ -33,7 +33,7 @@ pull:
 fetch:
 	mkdir -p ${SPEC_FETCHED_DIR}
 	rm -f ${SPEC_FETCHED_DIR}/*
-	$(eval INDEX=0)
+	$(eval INDEX=1)
 	for URL in ${SOURCE_URLS}; do \
 		${SPEC_FETCHER} \
 			-H 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0' \
@@ -50,20 +50,7 @@ patch:
 	done
 
 combine:
-	touch ${MERGED_SPEC_FILE}.yaml
-	#docker run -v $(CURDIR):/local -w /local mikefarah/yq eval-all '. as $$item ireduce ({}; . * $$item)' ${SPEC_FETCHED_DIR}/* > ${MERGED_SPEC_FILE}
-	# docker run -v $(CURDIR):/local ghcr.io/marcelthole/openapi-merge \
-	#   ${SPEC_FETCHED_DIR}/*
-	#   --outputfile=${MERGED_SPEC_FILE}
-
-	#${OPENAPI_GENERATOR} generate -g openapi-yaml \
-	#    -i /local/${SPEC_FETCHED_DIR}/spec_.yaml \
-	#	--skip-validate-spec \
-	#	--input-spec-root-directory /local/${SPEC_FETCHED_DIR} \
-	#	-o /local/${SPEC_BASE_DIR}/${PACKAGE_NAME}/ \
-	#	-p outputFile=${MERGED_SPEC_FILE}.yaml
-	#	# --merged-spec-filename /local/${MERGED_SPEC_FILE}
-	${GOSWAGGER} mixin ${SPEC_FETCHED_DIR}/spec* --output=${SPEC_FETCHED_DIR}/merged-spec.yaml --format=yaml --keep-spec-order || true
+	${GOSWAGGER} mixin ${SPEC_FETCHED_DIR}/spec* --output=${SPEC_FETCHED_DIR}/merged-spec.yaml --format=yaml || true
 	${GOSWAGGER} flatten --with-flatten=minimal ${SPEC_FETCHED_DIR}/merged-spec.yaml --output=${SPEC_FETCHED_DIR}/${SPEC_ROOT_FILE} --format=yaml
 	# rm ${SPEC_FETCHED_DIR}/merged-spec.yaml ${SPEC_FETCHED_DIR}/spec*
 
