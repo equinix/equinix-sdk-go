@@ -40,6 +40,20 @@ clean:
 	rm -rf $(CODE_DIR)
 
 codegen:
+	# TODO: fetch the merged (single-file) spec
+	# instead of merging it here
+	# *NOTE*: Due to a bug in swagger-parser, we have
+	# to use v7.4.0 of openapi-generator to merge the
+	# spec in order to avoid introducing duplicate models
+	${CRI} run --rm -u ${CURRENT_UID}:${CURRENT_GID} \
+	    -v $(CURDIR):/local \
+		openapitools/openapi-generator-cli:v7.4.0 \
+		generate \
+		-i /local/${SPEC_PATCHED_DIR}/${SPEC_ROOT_FILE} \
+		-g openapi-yaml \
+		-p skipOperationExample=true -p outputFile=${SPEC_ROOT_FILE} \
+		-o /local/${SPEC_BASE_DIR}/${PACKAGE_NAME}/temp_merged_spec
+
 	${OPENAPI_GENERATOR} generate -g go \
 		--package-name ${PACKAGE_NAME} \
 		--http-user-agent "${USER_AGENT}" \
@@ -49,8 +63,9 @@ codegen:
 		-c /local/config/openapi-generator.json \
 		-t /local/${TEMPLATE_DIR} \
 		-o /local/${CODE_DIR} \
-		-i /local/${SPEC_PATCHED_DIR}/${SPEC_ROOT_FILE}
-
+		-i /local/${SPEC_BASE_DIR}/${PACKAGE_NAME}/temp_merged_spec/${SPEC_ROOT_FILE}
+        # -i /local/${SPEC_PATCHED_DIR}/${SPEC_ROOT_FILE} # switch back to this when the temporary merged spec is removed
+		
 validate:
 	${OPENAPI_GENERATOR} validate \
 		--recommend \
