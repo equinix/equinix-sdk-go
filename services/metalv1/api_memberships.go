@@ -216,7 +216,7 @@ func (a *MembershipsApiService) FindMembershipByIdExecute(r ApiFindMembershipByI
 	localVarFormParams := url.Values{}
 
 	if r.include != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "form", "csv")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -386,7 +386,7 @@ func (a *MembershipsApiService) UpdateMembershipExecute(r ApiUpdateMembershipReq
 	}
 
 	if r.include != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "form", "csv")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

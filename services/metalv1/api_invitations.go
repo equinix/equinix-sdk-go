@@ -78,7 +78,7 @@ func (a *InvitationsApiService) AcceptInvitationExecute(r ApiAcceptInvitationReq
 	localVarFormParams := url.Values{}
 
 	if r.include != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "form", "csv")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -376,7 +376,7 @@ func (a *InvitationsApiService) FindInvitationByIdExecute(r ApiFindInvitationByI
 	localVarFormParams := url.Values{}
 
 	if r.include != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "form", "csv")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

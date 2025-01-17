@@ -389,7 +389,7 @@ func (a *ServiceProfilesApiService) GetServiceProfileByUuidExecute(r ApiGetServi
 	localVarFormParams := url.Values{}
 
 	if r.viewPoint != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "viewPoint", r.viewPoint, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "viewPoint", r.viewPoint, "form", "")
 	} else {
 		var defaultValue GetServiceProfilesViewPointParameter = "aSide"
 		r.viewPoint = &defaultValue
@@ -556,10 +556,10 @@ func (a *ServiceProfilesApiService) GetServiceProfileMetrosByUuidExecute(r ApiGe
 	localVarFormParams := url.Values{}
 
 	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
 	}
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -726,13 +726,13 @@ func (a *ServiceProfilesApiService) GetServiceProfilesExecute(r ApiGetServicePro
 	localVarFormParams := url.Values{}
 
 	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
 	}
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	}
 	if r.viewPoint != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "viewPoint", r.viewPoint, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "viewPoint", r.viewPoint, "form", "")
 	} else {
 		var defaultValue GetServiceProfilesViewPointParameter = "aSide"
 		r.viewPoint = &defaultValue
@@ -920,7 +920,7 @@ func (a *ServiceProfilesApiService) PutServiceProfileByUuidExecute(r ApiPutServi
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "If-Match", r.ifMatch, "")
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "If-Match", r.ifMatch, "simple", "")
 	// body params
 	localVarPostBody = r.serviceProfileRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -1077,7 +1077,7 @@ func (a *ServiceProfilesApiService) SearchServiceProfilesExecute(r ApiSearchServ
 	}
 
 	if r.viewPoint != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "viewPoint", r.viewPoint, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "viewPoint", r.viewPoint, "form", "")
 	} else {
 		var defaultValue GetServiceProfilesViewPointParameter = "aSide"
 		r.viewPoint = &defaultValue
@@ -1256,7 +1256,7 @@ func (a *ServiceProfilesApiService) UpdateServiceProfileByUuidExecute(r ApiUpdat
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "If-Match", r.ifMatch, "")
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "If-Match", r.ifMatch, "simple", "")
 	// body params
 	localVarPostBody = r.jsonPatchOperation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)

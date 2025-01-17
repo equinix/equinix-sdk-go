@@ -88,7 +88,7 @@ func (a *SSHKeysApiService) CreateProjectSSHKeyExecute(r ApiCreateProjectSSHKeyR
 	}
 
 	if r.include != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "form", "csv")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -245,7 +245,7 @@ func (a *SSHKeysApiService) CreateSSHKeyExecute(r ApiCreateSSHKeyRequest) (*SSHK
 	}
 
 	if r.include != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "form", "csv")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -541,10 +541,10 @@ func (a *SSHKeysApiService) FindDeviceSSHKeysExecute(r ApiFindDeviceSSHKeysReque
 	localVarFormParams := url.Values{}
 
 	if r.searchString != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Search string", r.searchString, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search string", r.searchString, "form", "")
 	}
 	if r.include != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "form", "csv")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -689,10 +689,10 @@ func (a *SSHKeysApiService) FindProjectSSHKeysExecute(r ApiFindProjectSSHKeysReq
 	localVarFormParams := url.Values{}
 
 	if r.query != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "query", r.query, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "query", r.query, "form", "")
 	}
 	if r.include != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "form", "csv")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -830,7 +830,7 @@ func (a *SSHKeysApiService) FindSSHKeyByIdExecute(r ApiFindSSHKeyByIdRequest) (*
 	localVarFormParams := url.Values{}
 
 	if r.include != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "form", "csv")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -993,10 +993,10 @@ func (a *SSHKeysApiService) FindSSHKeysExecute(r ApiFindSSHKeysRequest) (*SSHKey
 	localVarFormParams := url.Values{}
 
 	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	if r.include != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "form", "csv")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1144,7 +1144,7 @@ func (a *SSHKeysApiService) UpdateSSHKeyExecute(r ApiUpdateSSHKeyRequest) (*SSHK
 	}
 
 	if r.include != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "form", "csv")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

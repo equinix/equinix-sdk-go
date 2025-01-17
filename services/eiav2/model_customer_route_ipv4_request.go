@@ -21,7 +21,7 @@ var _ MappedNullable = &CustomerRouteIpv4Request{}
 type CustomerRouteIpv4Request struct {
 	IpBlock *IpBlockIpv4Request `json:"ipBlock,omitempty"`
 	// Subnet prefix
-	Prefix               *string `json:"prefix,omitempty"`
+	Prefix               *string `json:"prefix,omitempty" validate:"regexp=^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(?:\\/[0-2]*\\\\d{1}|\\/3[0-2]){1}$"`
 	AdditionalProperties map[string]interface{}
 }
 

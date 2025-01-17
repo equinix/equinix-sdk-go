@@ -80,7 +80,7 @@ func (a *UserVerificationTokensApiService) ConsumeVerificationRequestExecute(r A
 	}
 
 	if r.include != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "form", "csv")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -224,9 +224,9 @@ func (a *UserVerificationTokensApiService) CreateValidationRequestExecute(r ApiC
 		return nil, reportError("login is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "login", r.login, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "login", r.login, "form", "")
 	if r.include != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "form", "csv")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

@@ -82,7 +82,7 @@ func (a *ConnectionsApiService) CreateConnectionExecute(r ApiCreateConnectionReq
 	}
 
 	if r.dryRun != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "dryRun", r.dryRun, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "dryRun", r.dryRun, "form", "")
 	} else {
 		var defaultValue bool = false
 		r.dryRun = &defaultValue
@@ -560,7 +560,7 @@ func (a *ConnectionsApiService) GetConnectionByUuidExecute(r ApiGetConnectionByU
 	localVarFormParams := url.Values{}
 
 	if r.direction != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "direction", r.direction, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "direction", r.direction, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

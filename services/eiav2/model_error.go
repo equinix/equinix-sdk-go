@@ -21,7 +21,7 @@ var _ MappedNullable = &Error{}
 // Error Error Response with details
 type Error struct {
 	// Error code
-	ErrorCode string `json:"errorCode"`
+	ErrorCode string `json:"errorCode" validate:"regexp=^EQ-\\\\d{7}$"`
 	// Error message
 	ErrorMessage string `json:"errorMessage"`
 	// Correlation ID identifying the request

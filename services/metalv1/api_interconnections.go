@@ -250,10 +250,10 @@ func (a *InterconnectionsApiService) CreateOrganizationInterconnectionExecute(r 
 	}
 
 	if r.include != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "form", "csv")
 	}
 	if r.exclude != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "csv")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -432,10 +432,10 @@ func (a *InterconnectionsApiService) CreateProjectInterconnectionExecute(r ApiCr
 	}
 
 	if r.include != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "form", "csv")
 	}
 	if r.exclude != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "csv")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -593,10 +593,10 @@ func (a *InterconnectionsApiService) DeleteInterconnectionExecute(r ApiDeleteInt
 	localVarFormParams := url.Values{}
 
 	if r.include != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "form", "csv")
 	}
 	if r.exclude != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "csv")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -752,10 +752,10 @@ func (a *InterconnectionsApiService) DeleteVirtualCircuitExecute(r ApiDeleteVirt
 	localVarFormParams := url.Values{}
 
 	if r.include != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "form", "csv")
 	}
 	if r.exclude != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "csv")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -911,10 +911,10 @@ func (a *InterconnectionsApiService) GetInterconnectionExecute(r ApiGetInterconn
 	localVarFormParams := url.Values{}
 
 	if r.include != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "form", "csv")
 	}
 	if r.exclude != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "csv")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1209,10 +1209,10 @@ func (a *InterconnectionsApiService) GetInterconnectionPortExecute(r ApiGetInter
 	localVarFormParams := url.Values{}
 
 	if r.include != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "form", "csv")
 	}
 	if r.exclude != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "csv")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1503,10 +1503,10 @@ func (a *InterconnectionsApiService) GetVirtualCircuitExecute(r ApiGetVirtualCir
 	localVarFormParams := url.Values{}
 
 	if r.include != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "form", "csv")
 	}
 	if r.exclude != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "csv")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1666,10 +1666,10 @@ func (a *InterconnectionsApiService) ListInterconnectionPortVirtualCircuitsExecu
 	localVarFormParams := url.Values{}
 
 	if r.include != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "form", "csv")
 	}
 	if r.exclude != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "csv")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2103,10 +2103,10 @@ func (a *InterconnectionsApiService) OrganizationListInterconnectionsExecute(r A
 	localVarFormParams := url.Values{}
 
 	if r.include != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "form", "csv")
 	}
 	if r.exclude != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "csv")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2276,16 +2276,16 @@ func (a *InterconnectionsApiService) ProjectListInterconnectionsExecute(r ApiPro
 	localVarFormParams := url.Values{}
 
 	if r.include != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "form", "csv")
 	}
 	if r.exclude != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "csv")
 	}
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.perPage != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "per_page", r.perPage, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "per_page", r.perPage, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2476,10 +2476,10 @@ func (a *InterconnectionsApiService) UpdateInterconnectionExecute(r ApiUpdateInt
 	}
 
 	if r.include != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "form", "csv")
 	}
 	if r.exclude != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "csv")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -2647,10 +2647,10 @@ func (a *InterconnectionsApiService) UpdateVirtualCircuitExecute(r ApiUpdateVirt
 	}
 
 	if r.include != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "form", "csv")
 	}
 	if r.exclude != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "csv")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

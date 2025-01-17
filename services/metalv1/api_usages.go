@@ -85,10 +85,10 @@ func (a *UsagesApiService) FindDeviceUsagesExecute(r ApiFindDeviceUsagesRequest)
 	localVarFormParams := url.Values{}
 
 	if r.createdAfter != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "created[after]", r.createdAfter, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "created[after]", r.createdAfter, "form", "")
 	}
 	if r.createdBefore != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "created[before]", r.createdBefore, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "created[before]", r.createdBefore, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -244,10 +244,10 @@ func (a *UsagesApiService) FindProjectUsageExecute(r ApiFindProjectUsageRequest)
 	localVarFormParams := url.Values{}
 
 	if r.createdAfter != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "created[after]", r.createdAfter, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "created[after]", r.createdAfter, "form", "")
 	}
 	if r.createdBefore != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "created[before]", r.createdBefore, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "created[before]", r.createdBefore, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

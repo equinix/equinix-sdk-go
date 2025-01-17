@@ -11,6 +11,7 @@ package metalv1
 import (
 	"encoding/json"
 	"fmt"
+	"gopkg.in/validator.v2"
 )
 
 // FindIPAddressById200Response - struct for FindIPAddressById200Response
@@ -52,7 +53,11 @@ func (dst *FindIPAddressById200Response) UnmarshalJSON(data []byte) error {
 		if string(jsonIPAssignment) == "{}" { // empty struct
 			dst.IPAssignment = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.IPAssignment); err != nil {
+				dst.IPAssignment = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.IPAssignment = nil
@@ -65,7 +70,11 @@ func (dst *FindIPAddressById200Response) UnmarshalJSON(data []byte) error {
 		if string(jsonIPReservation) == "{}" { // empty struct
 			dst.IPReservation = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.IPReservation); err != nil {
+				dst.IPReservation = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.IPReservation = nil
@@ -78,7 +87,11 @@ func (dst *FindIPAddressById200Response) UnmarshalJSON(data []byte) error {
 		if string(jsonVrfIpReservation) == "{}" { // empty struct
 			dst.VrfIpReservation = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.VrfIpReservation); err != nil {
+				dst.VrfIpReservation = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.VrfIpReservation = nil

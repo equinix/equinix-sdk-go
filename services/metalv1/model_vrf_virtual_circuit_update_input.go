@@ -21,7 +21,7 @@ type VrfVirtualCircuitUpdateInput struct {
 	CustomerIp  *string `json:"customer_ip,omitempty"`
 	Description *string `json:"description,omitempty"`
 	// The plaintext BGP peering password shared by neighbors as an MD5 checksum: * must be 10-20 characters long * may not include punctuation * must be a combination of numbers and letters * must contain at least one lowercase, uppercase, and digit character
-	Md5 *string `json:"md5,omitempty"`
+	Md5 *string `json:"md5,omitempty" validate:"regexp=^(?=.*[a-z])(?=.*[A-Z])(?=.*\\\\d)[a-zA-Z\\\\d]{10,20}$"`
 	// An IPv4 address from the subnet that will be used on the Metal side. This parameter is optional, but if supplied, we will use the other usable IP address in the subnet as the Customer IP. By default, the first usable IP address in the subnet will be used.
 	MetalIp *string `json:"metal_ip,omitempty"`
 	Name    *string `json:"name,omitempty"`

@@ -20,7 +20,7 @@ var _ MappedNullable = &AWSFabricProvider{}
 type AWSFabricProvider struct {
 	Type AWSFabricProviderType `json:"type"`
 	// AWS Account ID
-	AccountId            string  `json:"account_id"`
+	AccountId            string  `json:"account_id" validate:"regexp=^\\\\d{12}$"`
 	Location             *string `json:"location,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

@@ -11,6 +11,7 @@ package metalv1
 import (
 	"encoding/json"
 	"fmt"
+	"gopkg.in/validator.v2"
 )
 
 // CreateOrganizationInterconnectionRequest - struct for CreateOrganizationInterconnectionRequest
@@ -68,7 +69,11 @@ func (dst *CreateOrganizationInterconnectionRequest) UnmarshalJSON(data []byte) 
 		if string(jsonDedicatedPortCreateInput) == "{}" { // empty struct
 			dst.DedicatedPortCreateInput = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.DedicatedPortCreateInput); err != nil {
+				dst.DedicatedPortCreateInput = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.DedicatedPortCreateInput = nil
@@ -81,7 +86,11 @@ func (dst *CreateOrganizationInterconnectionRequest) UnmarshalJSON(data []byte) 
 		if string(jsonSharedPortVCVlanCreateInput) == "{}" { // empty struct
 			dst.SharedPortVCVlanCreateInput = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.SharedPortVCVlanCreateInput); err != nil {
+				dst.SharedPortVCVlanCreateInput = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.SharedPortVCVlanCreateInput = nil
@@ -94,7 +103,11 @@ func (dst *CreateOrganizationInterconnectionRequest) UnmarshalJSON(data []byte) 
 		if string(jsonVlanCSPConnectionCreateInput) == "{}" { // empty struct
 			dst.VlanCSPConnectionCreateInput = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.VlanCSPConnectionCreateInput); err != nil {
+				dst.VlanCSPConnectionCreateInput = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.VlanCSPConnectionCreateInput = nil
@@ -107,7 +120,11 @@ func (dst *CreateOrganizationInterconnectionRequest) UnmarshalJSON(data []byte) 
 		if string(jsonVlanFabricVcCreateInput) == "{}" { // empty struct
 			dst.VlanFabricVcCreateInput = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.VlanFabricVcCreateInput); err != nil {
+				dst.VlanFabricVcCreateInput = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.VlanFabricVcCreateInput = nil
@@ -120,7 +137,11 @@ func (dst *CreateOrganizationInterconnectionRequest) UnmarshalJSON(data []byte) 
 		if string(jsonVrfFabricVcCreateInput) == "{}" { // empty struct
 			dst.VrfFabricVcCreateInput = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.VrfFabricVcCreateInput); err != nil {
+				dst.VrfFabricVcCreateInput = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.VrfFabricVcCreateInput = nil

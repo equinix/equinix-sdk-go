@@ -82,7 +82,7 @@ func (a *CloudRoutersApiService) CreateCloudRouterExecute(r ApiCreateCloudRouter
 	}
 
 	if r.dryRun != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "dryRun", r.dryRun, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "dryRun", r.dryRun, "form", "")
 	} else {
 		var defaultValue bool = false
 		r.dryRun = &defaultValue
@@ -581,7 +581,7 @@ func (a *CloudRoutersApiService) GetCloudRouterActionsExecute(r ApiGetCloudRoute
 	localVarFormParams := url.Values{}
 
 	if r.state != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "state", r.state, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "state", r.state, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -764,7 +764,7 @@ func (a *CloudRoutersApiService) GetCloudRouterActionsByUuidExecute(r ApiGetClou
 	localVarFormParams := url.Values{}
 
 	if r.state != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "state", r.state, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "state", r.state, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1251,10 +1251,10 @@ func (a *CloudRoutersApiService) GetCloudRouterPackagesExecute(r ApiGetCloudRout
 	localVarFormParams := url.Values{}
 
 	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
 	}
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

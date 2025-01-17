@@ -88,7 +88,7 @@ func (a *TwoFactorAuthApiService) DisableTfaAppExecute(r ApiDisableTfaAppRequest
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "x-otp-token", r.xOtpToken, "")
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "x-otp-token", r.xOtpToken, "simple", "")
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -221,7 +221,7 @@ func (a *TwoFactorAuthApiService) EnableTfaAppExecute(r ApiEnableTfaAppRequest) 
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "x-otp-token", r.xOtpToken, "")
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "x-otp-token", r.xOtpToken, "simple", "")
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

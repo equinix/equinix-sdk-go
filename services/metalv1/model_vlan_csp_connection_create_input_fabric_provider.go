@@ -11,6 +11,7 @@ package metalv1
 import (
 	"encoding/json"
 	"fmt"
+	"gopkg.in/validator.v2"
 )
 
 // VlanCSPConnectionCreateInputFabricProvider - Configuration information for connecting to external cloud service provider.
@@ -36,7 +37,11 @@ func (dst *VlanCSPConnectionCreateInputFabricProvider) UnmarshalJSON(data []byte
 		if string(jsonAWSFabricProvider) == "{}" { // empty struct
 			dst.AWSFabricProvider = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.AWSFabricProvider); err != nil {
+				dst.AWSFabricProvider = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.AWSFabricProvider = nil

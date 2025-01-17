@@ -10,6 +10,7 @@ package fabricv4
 import (
 	"encoding/json"
 	"fmt"
+	"gopkg.in/validator.v2"
 )
 
 // RoutingProtocolData - struct for RoutingProtocolData
@@ -43,7 +44,11 @@ func (dst *RoutingProtocolData) UnmarshalJSON(data []byte) error {
 		if string(jsonRoutingProtocolBGPData) == "{}" { // empty struct
 			dst.RoutingProtocolBGPData = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.RoutingProtocolBGPData); err != nil {
+				dst.RoutingProtocolBGPData = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.RoutingProtocolBGPData = nil
@@ -56,7 +61,11 @@ func (dst *RoutingProtocolData) UnmarshalJSON(data []byte) error {
 		if string(jsonRoutingProtocolDirectData) == "{}" { // empty struct
 			dst.RoutingProtocolDirectData = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.RoutingProtocolDirectData); err != nil {
+				dst.RoutingProtocolDirectData = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.RoutingProtocolDirectData = nil

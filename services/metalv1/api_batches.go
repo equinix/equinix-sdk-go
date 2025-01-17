@@ -248,7 +248,7 @@ func (a *BatchesApiService) DeleteBatchExecute(r ApiDeleteBatchRequest) (*http.R
 	localVarFormParams := url.Values{}
 
 	if r.removeAssociatedInstances != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "remove_associated_instances", r.removeAssociatedInstances, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "remove_associated_instances", r.removeAssociatedInstances, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -388,7 +388,7 @@ func (a *BatchesApiService) FindBatchByIdExecute(r ApiFindBatchByIdRequest) (*Ba
 	localVarFormParams := url.Values{}
 
 	if r.include != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "form", "csv")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -537,7 +537,7 @@ func (a *BatchesApiService) FindBatchesByProjectExecute(r ApiFindBatchesByProjec
 	localVarFormParams := url.Values{}
 
 	if r.include != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "form", "csv")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

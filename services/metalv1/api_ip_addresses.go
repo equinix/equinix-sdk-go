@@ -14,6 +14,7 @@ import (
 	"io"
 	"net/http"
 	"net/url"
+	"reflect"
 	"strings"
 )
 
@@ -231,10 +232,10 @@ func (a *IPAddressesApiService) FindIPAddressByIdExecute(r ApiFindIPAddressByIdR
 	localVarFormParams := url.Values{}
 
 	if r.include != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "form", "csv")
 	}
 	if r.exclude != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "csv")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -534,7 +535,7 @@ func (a *IPAddressesApiService) FindIPAvailabilitiesExecute(r ApiFindIPAvailabil
 		return localVarReturnValue, nil, reportError("cidr is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "cidr", r.cidr, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "cidr", r.cidr, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -721,19 +722,27 @@ func (a *IPAddressesApiService) FindIPReservationsExecute(r ApiFindIPReservation
 	localVarFormParams := url.Values{}
 
 	if r.types != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "types", r.types, "csv")
+		t := *r.types
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				parameterAddToHeaderOrQuery(localVarQueryParams, "types", s.Index(i).Interface(), "form", "multi")
+			}
+		} else {
+			parameterAddToHeaderOrQuery(localVarQueryParams, "types", t, "form", "multi")
+		}
 	}
 	if r.include != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "form", "csv")
 	}
 	if r.exclude != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "csv")
 	}
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.perPage != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "per_page", r.perPage, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "per_page", r.perPage, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -935,10 +944,10 @@ func (a *IPAddressesApiService) RequestIPReservationExecute(r ApiRequestIPReserv
 	}
 
 	if r.include != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "form", "csv")
 	}
 	if r.exclude != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "csv")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1124,10 +1133,10 @@ func (a *IPAddressesApiService) UpdateIPAddressExecute(r ApiUpdateIPAddressReque
 	localVarFormParams := url.Values{}
 
 	if r.include != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "form", "csv")
 	}
 	if r.exclude != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "csv")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

@@ -70,7 +70,7 @@ func (a *UserdataApiService) ValidateUserdataExecute(r ApiValidateUserdataReques
 	localVarFormParams := url.Values{}
 
 	if r.userdata != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "userdata", r.userdata, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "userdata", r.userdata, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

@@ -245,7 +245,7 @@ func (a *SpotMarketApiService) DeleteSpotMarketRequestExecute(r ApiDeleteSpotMar
 	localVarFormParams := url.Values{}
 
 	if r.forceTermination != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "force_termination", r.forceTermination, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "force_termination", r.forceTermination, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -399,10 +399,10 @@ func (a *SpotMarketApiService) FindMetroSpotMarketPricesExecute(r ApiFindMetroSp
 	localVarFormParams := url.Values{}
 
 	if r.metro != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "metro", r.metro, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "metro", r.metro, "form", "")
 	}
 	if r.plan != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "plan", r.plan, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "plan", r.plan, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -554,10 +554,10 @@ func (a *SpotMarketApiService) FindSpotMarketPricesExecute(r ApiFindSpotMarketPr
 	localVarFormParams := url.Values{}
 
 	if r.facility != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "facility", r.facility, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "facility", r.facility, "form", "")
 	}
 	if r.plan != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "plan", r.plan, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "plan", r.plan, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -743,13 +743,13 @@ func (a *SpotMarketApiService) FindSpotMarketPricesHistoryExecute(r ApiFindSpotM
 		return localVarReturnValue, nil, reportError("until is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "facility", r.facility, "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "plan", r.plan, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "facility", r.facility, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "plan", r.plan, "form", "")
 	if r.metro != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "metro", r.metro, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "metro", r.metro, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "until", r.until, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "until", r.until, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -897,7 +897,7 @@ func (a *SpotMarketApiService) FindSpotMarketRequestByIdExecute(r ApiFindSpotMar
 	localVarFormParams := url.Values{}
 
 	if r.include != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "form", "csv")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

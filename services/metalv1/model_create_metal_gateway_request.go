@@ -11,6 +11,7 @@ package metalv1
 import (
 	"encoding/json"
 	"fmt"
+	"gopkg.in/validator.v2"
 )
 
 // CreateMetalGatewayRequest - struct for CreateMetalGatewayRequest
@@ -44,7 +45,11 @@ func (dst *CreateMetalGatewayRequest) UnmarshalJSON(data []byte) error {
 		if string(jsonMetalGatewayCreateInput) == "{}" { // empty struct
 			dst.MetalGatewayCreateInput = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.MetalGatewayCreateInput); err != nil {
+				dst.MetalGatewayCreateInput = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.MetalGatewayCreateInput = nil
@@ -57,7 +62,11 @@ func (dst *CreateMetalGatewayRequest) UnmarshalJSON(data []byte) error {
 		if string(jsonVrfMetalGatewayCreateInput) == "{}" { // empty struct
 			dst.VrfMetalGatewayCreateInput = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.VrfMetalGatewayCreateInput); err != nil {
+				dst.VrfMetalGatewayCreateInput = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.VrfMetalGatewayCreateInput = nil

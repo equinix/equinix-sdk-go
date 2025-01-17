@@ -11,6 +11,7 @@ package metalv1
 import (
 	"encoding/json"
 	"fmt"
+	"gopkg.in/validator.v2"
 )
 
 // CreateDeviceRequest - struct for CreateDeviceRequest
@@ -44,7 +45,11 @@ func (dst *CreateDeviceRequest) UnmarshalJSON(data []byte) error {
 		if string(jsonDeviceCreateInFacilityInput) == "{}" { // empty struct
 			dst.DeviceCreateInFacilityInput = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.DeviceCreateInFacilityInput); err != nil {
+				dst.DeviceCreateInFacilityInput = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.DeviceCreateInFacilityInput = nil
@@ -57,7 +62,11 @@ func (dst *CreateDeviceRequest) UnmarshalJSON(data []byte) error {
 		if string(jsonDeviceCreateInMetroInput) == "{}" { // empty struct
 			dst.DeviceCreateInMetroInput = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.DeviceCreateInMetroInput); err != nil {
+				dst.DeviceCreateInMetroInput = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.DeviceCreateInMetroInput = nil

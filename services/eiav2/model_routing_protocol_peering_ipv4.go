@@ -26,8 +26,8 @@ type RoutingProtocolPeeringIpv4 struct {
 	// Indicates if VRRP is enabled.
 	VrrpEnabled          bool     `json:"vrrpEnabled"`
 	EquinixPeerIps       []string `json:"equinixPeerIps"`
-	EquinixVRRPIp        *string  `json:"equinixVRRPIp,omitempty"`
-	CustomerVRRPIp       *string  `json:"customerVRRPIp,omitempty"`
+	EquinixVRRPIp        *string  `json:"equinixVRRPIp,omitempty" validate:"regexp=^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$"`
+	CustomerVRRPIp       *string  `json:"customerVRRPIp,omitempty" validate:"regexp=^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$"`
 	AdditionalProperties map[string]interface{}
 }
 
