@@ -19,8 +19,7 @@ type StreamSubscriptionPutRequest struct {
 	// Customer-provided stream subscription name
 	Name *string `json:"name,omitempty"`
 	// Customer-provided stream subscription description
-	Description *string       `json:"description,omitempty"`
-	Stream      *StreamTarget `json:"stream,omitempty"`
+	Description *string `json:"description,omitempty"`
 	// Stream subscription enabled status
 	Enabled              *bool                       `json:"enabled,omitempty"`
 	Filters              *StreamSubscriptionFilter   `json:"filters,omitempty"`
@@ -111,38 +110,6 @@ func (o *StreamSubscriptionPutRequest) HasDescription() bool {
 // SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *StreamSubscriptionPutRequest) SetDescription(v string) {
 	o.Description = &v
-}
-
-// GetStream returns the Stream field value if set, zero value otherwise.
-func (o *StreamSubscriptionPutRequest) GetStream() StreamTarget {
-	if o == nil || IsNil(o.Stream) {
-		var ret StreamTarget
-		return ret
-	}
-	return *o.Stream
-}
-
-// GetStreamOk returns a tuple with the Stream field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *StreamSubscriptionPutRequest) GetStreamOk() (*StreamTarget, bool) {
-	if o == nil || IsNil(o.Stream) {
-		return nil, false
-	}
-	return o.Stream, true
-}
-
-// HasStream returns a boolean if a field has been set.
-func (o *StreamSubscriptionPutRequest) HasStream() bool {
-	if o != nil && !IsNil(o.Stream) {
-		return true
-	}
-
-	return false
-}
-
-// SetStream gets a reference to the given StreamTarget and assigns it to the Stream field.
-func (o *StreamSubscriptionPutRequest) SetStream(v StreamTarget) {
-	o.Stream = &v
 }
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
@@ -321,9 +288,6 @@ func (o StreamSubscriptionPutRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !IsNil(o.Stream) {
-		toSerialize["stream"] = o.Stream
-	}
 	if !IsNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled
 	}
@@ -363,7 +327,6 @@ func (o *StreamSubscriptionPutRequest) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")
-		delete(additionalProperties, "stream")
 		delete(additionalProperties, "enabled")
 		delete(additionalProperties, "filters")
 		delete(additionalProperties, "metricSelector")

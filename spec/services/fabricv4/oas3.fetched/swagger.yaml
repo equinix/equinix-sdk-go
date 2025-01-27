@@ -9,7 +9,7 @@ info:
   license:
     name: Equinix Inc
     url: https://developer.equinix.com/agreement
-  version: '4.18'
+  version: '4.19'
 externalDocs:
   description: Find more information on Equinix Developer Portal
   url: https://developer.equinix.com
@@ -169,6 +169,8 @@ paths:
                 $ref: "#/components/examples/Fcr2Sp-Aws-marketplaceSubscription"
               Fcr2MetalNetwork:
                 $ref: "#/components/examples/Fcr2Metal-Network"
+              Fcr2ServiceToken:
+                $ref: "#/components/examples/Fcr2ServiceToken"
               AsideServiceToken2ColoWithDot1q:
                 $ref: "#/components/examples/AsideServiceToken2PortWithDot1q"
               AsideServiceToken2ColoWithQinq:
@@ -195,8 +197,18 @@ paths:
                 $ref: "#/components/examples/Metal2ServiceToken"
               Metal2Sp-Generic:
                 $ref: "#/components/examples/Metal2Sp-Generic"
+              MultiCloudNetwork2Sp-Alibaba:
+                $ref: "#/components/examples/MCNS2Sp-Alibaba"
               MultiCloudNetwork2Sp-Aws:
                 $ref: "#/components/examples/MCNS2Sp-Aws"
+              MultiCloudNetwork2Sp-GCP:
+                $ref: "#/components/examples/MCNS2Sp-GCP"
+              MultiCloudNetwork2Sp-IBM2:
+                $ref: "#/components/examples/MCNS2Sp-IBM2"
+              MultiCloudNetwork2Sp-Azure:
+                $ref: "#/components/examples/MCNS2Sp-Azure"
+              MultiCloudNetwork2Sp-OCI:
+                $ref: "#/components/examples/MCNS2Sp-OCI"
               Vd2IASp:
                 $ref: "#/components/examples/Vd2IAProfile-Request"
               Fcr2Metal-Network:
@@ -212,8 +224,28 @@ paths:
               schema:
                 $ref: "#/components/schemas/Connection"
               examples:
+                ConnectionDryRun-Colo2AWS:
+                  $ref: "#/components/examples/CreateConnectionDryRunResponse-Colo2AWS"
+                ConnectionDryRun-Colo2Azure:
+                  $ref: "#/components/examples/CreateConnectionDryRunResponse-Colo2Azure"
+                ConnectionDryRun-Colo2Google:
+                  $ref: "#/components/examples/CreateConnectionDryRunResponse-Colo2Google"
+                ConnectionDryRun-Colo2IBM:
+                  $ref: "#/components/examples/CreateConnectionDryRunResponse-Colo2IBM"
+                ConnectionDryRun-Colo2Network-EPLAN_VC:
+                  $ref: "#/components/examples/CreateConnectionDryRunResponse-Colo2Network-EPLAN_VC"
+                ConnectionDryRun-Colo2Network-EVPLAN_VC:
+                  $ref: "#/components/examples/CreateConnectionDryRunResponse-Colo2Network-EVPLAN_VC"
                 ConnectionDryRun-Colo2Sp-Generic:
-                  $ref: "#/components/examples/CreateConnectionDryRunResponse"
+                  $ref: "#/components/examples/CreateConnectionDryRunResponse-Colo2Sp-Generic"
+                ConnectionDryRun-Fcr2Colo:
+                  $ref: "#/components/examples/CreateConnectionDryRunResponse-Fcr2Colo"
+                ConnectionDryRun-Fcr2Ipwan:
+                  $ref: "#/components/examples/CreateConnectionDryRunResponse-Fcr2Ipwan"
+                ConnectionDryRun-Fcr2Sp-Generic:
+                  $ref: "#/components/examples/CreateConnectionDryRunResponse-Fcr2Sp-Generic"
+                ConnectionDryRun-PortServiceToken2Port:
+                  $ref: "#/components/examples/CreateConnectionDryRunResponse-PortServiceToken2Port"
         "201":
           description: Accept Connection Request
           content:
@@ -273,6 +305,18 @@ paths:
                   $ref: "#/components/examples/Metal2ServiceToken-Response"
                 Metal2Sp-Generic:
                   $ref: "#/components/examples/Metal2Sp-Generic-Response"
+                MultiCloudNetwork2Sp-Alibaba:
+                  $ref: "#/components/examples/MCNS2Sp-Alibaba-Response"
+                MultiCloudNetwork2Sp-Aws:
+                  $ref: "#/components/examples/MCNS2Sp-Aws-Response"
+                MultiCloudNetwork2Sp-GCP:
+                  $ref: "#/components/examples/MCNS2Sp-GCP-Response"
+                MultiCloudNetwork2Sp-IBM2:
+                  $ref: "#/components/examples/MCNS2Sp-IBM2-Response"
+                MultiCloudNetwork2Sp-Azure:
+                  $ref: "#/components/examples/MCNS2Sp-Azure-Response"
+                MultiCloudNetwork2Sp-OCI:
+                  $ref: "#/components/examples/MCNS2Sp-OCI-Response"
                 Fcr2Metal-Network:
                   $ref: "#/components/examples/Fcr2Metal-Network"
                 Colo2Network-EVPLAN_VC:
@@ -487,8 +531,6 @@ paths:
                 $ref: "#/components/examples/ConnectionUpdateBandwidthRequest"
               ConnectionAddAccessAndSecretKeyAWSRequest:
                 $ref: "#/components/examples/ConnectionAddAccessAndSecretKeyAWSRequest"
-              ConnectionAddRoutingRequest:
-                $ref: "#/components/examples/ConnectionAddRoutingRequest"
               ConnectionMigrationAsideRequest:
                 $ref: "#/components/examples/ConnectionMigrationAsideRequest"
               ConnectionUpdateNotificationEmailRequest:
@@ -2202,84 +2244,6 @@ paths:
               examples:
                 example:
                   $ref: "#/components/examples/500"
-  /fabric/v4/ports/stats:
-    get:
-      tags:
-        - Statistics
-      summary: Top Port Statistics
-      description: This API provides top utilized service-level traffic metrics so that you can view access and gather key information required to manage service subscription sizing and capacity.
-      operationId: getPortStats
-      parameters:
-        - name: sort
-          in: query
-          description: Key or set of keys that organizes the search payload by property (such as createdDate or metroCode) or by direction. Ascending (ASC) is the default value. The "?" prefix indicates descending (DESC) order.
-          required: false
-          schema:
-            $ref: "#/components/schemas/sort"
-        - name: top
-          in: query
-          description: Filter returning only the specified number of most heavily trafficked ports. The standard value is [1...10], and the default is 5.
-          required: false
-          schema:
-            $ref: "#/components/schemas/top"
-        - name: duration
-          in: query
-          description: duration
-          required: false
-          schema:
-            $ref: "#/components/schemas/duration"
-        - name: direction
-          in: query
-          description: Direction of traffic from the requester's viewpoint. The default is outbound.
-          required: false
-          schema:
-            $ref: "#/components/schemas/query_direction"
-        - name: metricInterval
-          in: query
-          description: metricInterval
-          required: false
-          schema:
-            $ref: "#/components/schemas/metricInterval"
-        - name: metros
-          in: query
-          description: Two-letter prefix indicating the metropolitan area in which a specified Equinix asset is located.
-          required: true
-          schema:
-            $ref: "#/components/schemas/metros"
-        - name: projectId
-          in: query
-          description: projectId
-          required: false
-          schema:
-            $ref: "#/components/schemas/projectId"
-      responses:
-        "200":
-          description: Successful operation
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TopUtilizedStatistics"
-              examples:
-                statsExample:
-                  $ref: "#/components/examples/200_top"
-        "401":
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorList"
-              examples:
-                example:
-                  $ref: "#/components/examples/401"
-        "403":
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorList"
-              examples:
-                example:
-                  $ref: "#/components/examples/403"
   "/fabric/v4/connections/{connectionId}/stats":
     get:
       tags:
@@ -3221,6 +3185,8 @@ paths:
                 $ref: "#/components/examples/createZsideServiceTokenWithNetwork"
               AsideTokenWithDot1QDryRunCreate:
                 $ref: "#/components/examples/createServiceTokenDryRunRequest"
+              AsideFCRWithZsidePortBasedToken:
+                $ref: "#/components/examples/createZsideServiceTokenWithAsideFCR"
         required: true
       responses:
         "200":
@@ -3801,6 +3767,65 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorList"
+    patch:
+      tags:
+        - Ports
+      summary: Update by UUID
+      description: Update Port by UUID
+      operationId: updatePortByUuid
+      parameters:
+        - name: portId
+          in: path
+          description: Port UUID
+          required: true
+          schema:
+            $ref: "#/components/schemas/PortUUID"
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: "#/components/schemas/PortUpdateRequest"
+            examples:
+              PortUpdateNameRequest:
+                $ref: "#/components/examples/PortUpdateNameRequest"
+        required: true
+      responses:
+        "202":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AllPortsResponse"
+              examples:
+                portExample:
+                  $ref: "#/components/examples/ports"
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+              examples:
+                example:
+                  $ref: "#/components/examples/400"
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+              examples:
+                example:
+                  $ref: "#/components/examples/403"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+              examples:
+                example:
+                  $ref: "#/components/examples/500"
   "/fabric/v4/ports/{portUuid}/linkProtocols":
     get:
       tags:
@@ -10737,81 +10762,7 @@ paths:
               examples:
                 example:
                   $ref: "#/components/examples/500"
-  "/fabric/v4/streams/{streamId}/streamSubscriptions":
-    get:
-      tags:
-        - Streams
-      summary: Get Stream's Subs
-      description: This API provides capability to retrieve subscriptions in a stream
-      operationId: getSubscriptionsInStream
-      parameters:
-        - name: streamId
-          in: path
-          description: Stream UUID
-          required: true
-          schema:
-            $ref: "#/components/schemas/StreamId"
-        - name: offset
-          in: query
-          description: offset
-          required: false
-          schema:
-            type: integer
-          example: 1
-        - name: limit
-          in: query
-          description: number of records to fetch
-          required: false
-          schema:
-            type: integer
-          example: 10
-      responses:
-        "200":
-          description: Successful operation
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/GetSubscriptionsInStreamResponse"
-              examples:
-                Example:
-                  $ref: "#/components/examples/stream-get-all-subscription-example"
-        "401":
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorList"
-              examples:
-                example:
-                  $ref: "#/components/examples/401"
-        "403":
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorList"
-              examples:
-                example:
-                  $ref: "#/components/examples/403"
-        "404":
-          description: Not Found
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorList"
-              examples:
-                example:
-                  $ref: "#/components/examples/404"
-        "500":
-          description: Internal server error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorList"
-              examples:
-                example:
-                  $ref: "#/components/examples/500"
-  /fabric/v4/streamSubscriptions:
+  "/fabric/v4/streams/{streamId}/subscriptions":
     get:
       tags:
         - Stream Subscriptions
@@ -10819,6 +10770,12 @@ paths:
       description: This API provides capability to retrieve stream subscriptions
       operationId: getStreamSubscriptions
       parameters:
+        - name: streamId
+          in: path
+          description: Stream UUID
+          required: true
+          schema:
+            $ref: "#/components/schemas/StreamId"
         - name: offset
           in: query
           description: offset
@@ -10885,13 +10842,21 @@ paths:
       summary: Create Subscription
       description: This API provides capability to create user's Stream Subscriptions
       operationId: createStreamSubscriptions
-      parameters: []
+      parameters:
+        - name: streamId
+          in: path
+          description: Stream UUID
+          required: true
+          schema:
+            $ref: "#/components/schemas/StreamId"
       requestBody:
         content:
           application/json:
             schema:
               $ref: "#/components/schemas/StreamSubscriptionPostRequest"
             examples:
+              CreateStreamSubscription_Splunk_Simple:
+                $ref: "#/components/examples/StreamSubscriptionPostRequestExampleSimpleDefaultSplunk"
               CreateStreamSubscription_Splunk:
                 $ref: "#/components/examples/StreamSubscriptionPostRequestExampleSplunk"
               CreateStreamSubscription_Slack:
@@ -10900,6 +10865,8 @@ paths:
                 $ref: "#/components/examples/StreamSubscriptionPostRequestExamplePagerduty"
               CreateStreamSubscription_Datadog:
                 $ref: "#/components/examples/StreamSubscriptionPostRequestExampleDatadog"
+              CreateStreamSubscription_Microsoft_Teams:
+                $ref: "#/components/examples/StreamSubscriptionPostRequestExampleTeams"
         required: true
       responses:
         "202":
@@ -10953,7 +10920,7 @@ paths:
               examples:
                 example:
                   $ref: "#/components/examples/500"
-  "/fabric/v4/streamSubscriptions/{streamSubscriptionId}":
+  "/fabric/v4/streams/{streamId}/subscriptions/{subscriptionId}":
     get:
       tags:
         - Stream Subscriptions
@@ -10961,7 +10928,13 @@ paths:
       description: This API provides capability to delete user's get Stream Subscriptions
       operationId: getStreamSubscriptionByUuid
       parameters:
-        - name: streamSubscriptionId
+        - name: streamId
+          in: path
+          description: Stream UUID
+          required: true
+          schema:
+            $ref: "#/components/schemas/StreamId"
+        - name: subscriptionId
           in: path
           description: Stream Subscription UUID
           required: true
@@ -11026,7 +10999,13 @@ paths:
       description: This API provides capability to update user's Stream Subscriptions
       operationId: updateStreamSubscriptionByUuid
       parameters:
-        - name: streamSubscriptionId
+        - name: streamId
+          in: path
+          description: Stream UUID
+          required: true
+          schema:
+            $ref: "#/components/schemas/StreamId"
+        - name: subscriptionId
           in: path
           description: Stream Subscription UUID
           required: true
@@ -11109,7 +11088,13 @@ paths:
       description: This API provides capability to delete user's Stream Subscriptions
       operationId: deleteStreamSubscriptionByUuid
       parameters:
-        - name: streamSubscriptionId
+        - name: streamId
+          in: path
+          description: Stream UUID
+          required: true
+          schema:
+            $ref: "#/components/schemas/StreamId"
+        - name: subscriptionId
           in: path
           description: Stream Subscription UUID
           required: true
@@ -11936,57 +11921,6 @@ components:
           description: Mean bandwidth within statistics object time interval, represented in units specified by response "units" field
           format: float
       description: Bandwidth utilization statistics for a specified interval.
-    sort:
-      type: string
-      description: Key or set of keys that organizes the search payload by property (such as createdDate or metroCode) or by direction. Ascending (ASC) is the default value. The "?" prefix indicates descending (DESC) order.
-      default: -bandwidthUtilization
-      enum:
-        - -bandwidthUtilization
-    top:
-      type: integer
-      description: Filter returning only the specified number of most heavily trafficked ports. The standard value is [1...10], and the default is 5.
-      default: 5
-    duration:
-      type: string
-      description: Duration of the statistical analysis interval.
-      default: P7D
-      enum:
-        - P7D
-        - P1M
-        - P3M
-    query_direction:
-      type: string
-      description: Direction of traffic from the requester's viewpoint.
-      default: outbound
-      enum:
-        - inbound
-        - outbound
-    metricInterval:
-      type: string
-      description: metric interval
-      default: P7D
-      enum:
-        - P7D
-    metros:
-      type: array
-      description: Two-letter prefix indicating the metropolitan area in which a specified Equinix asset is located.
-      items:
-        type: string
-    projectId:
-      type: string
-      description: projectId
-      example: 30ad25e2-53dc-11ed-bdc3-0242ac120002
-    TopUtilizedStatistics:
-      type: object
-      properties:
-        pagination:
-          $ref: "#/components/schemas/Pagination"
-        data:
-          type: array
-          description: Data returned from the API call.
-          items:
-            $ref: "#/components/schemas/Statistics"
-      description: This API provides service-level traffic metrics for the top utilized ports so that you can view access and gather key information required to manage service subscription sizing and capacity.
     viewPoint:
       type: string
       description: viewPoint
@@ -13117,6 +13051,12 @@ components:
           items:
             $ref: "#/components/schemas/PhysicalPort"
       description: GET All Physical Ports
+    PortUpdateRequest:
+      minItems: 1
+      type: array
+      description: Port Update Request
+      items:
+        $ref: "#/components/schemas/PortChangeOperation"
     LinkProtocolGetResponse:
       type: object
       properties:
@@ -13174,6 +13114,85 @@ components:
           $ref: "#/components/schemas/PortSortDirection"
         property:
           $ref: "#/components/schemas/PortSortBy"
+    PortCapacitySearchRequest:
+      type: object
+      properties:
+        filter:
+          $ref: "#/components/schemas/PortCapacityExpression"
+        pagination:
+          $ref: "#/components/schemas/Pagination"
+      description: Search requests containing criteria
+    PortCapacityExpression:
+      type: object
+      properties:
+        and:
+          $ref: "#/components/schemas/PortCapacityExpression"
+        or:
+          $ref: "#/components/schemas/PortCapacityExpression"
+        property:
+          $ref: "#/components/schemas/PortCapacitySearchFieldName"
+        operator:
+          type: string
+          enum:
+            - =
+        values:
+          type: array
+          items:
+            type: string
+    PortCapacitySearchFieldName:
+      type: string
+      description: Possible field names to use on filters
+      enum:
+        - /demarcationPointIbx
+        - /tetherIbx
+        - /physicalPortsSpeed
+        - /physicalPortsType
+        - /lagEnabled
+    CheckCapacityResponse:
+      type: object
+      properties:
+        pagination:
+          $ref: "#/components/schemas/Pagination"
+        data:
+          type: array
+          description: GET All available ports
+          items:
+            $ref: "#/components/schemas/CheckCapacity"
+      description: GET All available ports
+    CheckCapacity:
+      type: object
+      properties:
+        demarcationPointIbx:
+          type: string
+          description: demarcation point IBX
+        tetherIbx:
+          type: string
+          description: cloud port ibx location
+        metroConnectUsed:
+          type: boolean
+          description: metroConnect
+        campusCrossConnectUsed:
+          type: boolean
+          description: campusCrossConnect
+        lagEnabled:
+          type: boolean
+          description: lag or non lag port
+        physicalPortsSpeed:
+          minimum: 0
+          type: integer
+          description: Physical Ports Speed in Mbps
+        redundancy:
+          $ref: "#/components/schemas/CheckCapacityPortRedundancy"
+        physicalPortsType:
+          type: string
+          description: Physical Ports Type
+          enum:
+            - 1000BASE_LX
+            - 10GBASE_LR
+            - 100GBASE_LR4
+            - 10GBASE_ER
+            - 1000BASE_SX
+      description: Check capcaity Port specification
     GetAllConnectionRouteAggregationsResponse:
       type: object
       properties:
@@ -15427,16 +15446,6 @@ components:
           description: enable metric
           example: false
       description: Update Stream Asset
-    GetSubscriptionsInStreamResponse:
-      type: object
-      properties:
-        pagination:
-          $ref: "#/components/schemas/Pagination"
-        data:
-          type: array
-          description: Data returned from the API call.
-          items:
-            $ref: "#/components/schemas/StreamGetSubscriptions"
     GetAllStreamSubscriptionResponse:
       type: object
       properties:
@@ -15460,14 +15469,10 @@ components:
         description:
           type: string
           description: Customer-provided stream subscription description
-        project:
-          $ref: "#/components/schemas/Project"
         enabled:
           type: boolean
           description: Stream subscription enabled status
           example: true
-        stream:
-          $ref: "#/components/schemas/StreamTarget"
         filters:
           $ref: "#/components/schemas/StreamSubscriptionFilter"
         metricSelector:
@@ -15499,7 +15504,7 @@ components:
             Possible field names to use on filters:
              * `/subject` - subject
              * `/type` - type
-          example: /equinixproject
+          example: /type
         operator:
           type: string
           description: |
@@ -15511,6 +15516,31 @@ components:
           example: =
         values:
           type: array
+          description: |
+            ### Supported event or metric names to use on filters with property /type:
+              * `*` - all events or metrics
+              * `equinix.fabric.port.*` - port events or metrics
+              * `equinix.fabric.connection.*` - connection events or metrics
+              * `equinix.fabric.router.*` - cloud router events
+              * `equinix.fabric.metro.*` - metro metrics
+              * `equinix.fabric.network.*` - network events
+              * `equinix.fabric.service_token.*` - service token events
+              * `equinix.network_edge.*` - network edge events
+              * `equinix.network_edge.acl.*` - network edge acl events
+              * `equinix.network_edge.device.*` - network edge device events
+              * `equinix.access_manager.*` - identity access manager events
+              * `equinix.access_manager.user.role.*` - identity access manager user role events
+            ### Supported event or metric names to use on filters with property /subject:
+              * `*` - all events or metrics
+              * `/fabric/v4/ports/<uuid>` - port events or metrics
+              * `/fabric/v4/connections/<uuid>` - connection events or metrics
+              * `/fabric/v4/routers/<uuid>` - cloud router events
+              * `/fabric/v4/metros/<metroCode>` - metro metrics
+              * `/fabric/v4/networks/<uuid>` - network events
+              * `/fabric/v4/tokens/<uuid>` - service token events
+              * `/ne/v1/acl/<uuid>` - network edge acl events
+              * `/ne/v1/devices/<uuid>` - network edge device events
+              * `/am/v2/users/<uuid>/roleAssignments/<uuid>` - identity access manager events
           items:
             type: string
     StreamFilterOrFilter:
@@ -15528,24 +15558,28 @@ components:
           maxItems: 8
           type: array
           items:
-            $ref: "#/components/schemas/StreamSubscriptionExpression"
+            $ref: "#/components/schemas/StreamSubscriptionSelectorExpression"
         except:
           maxItems: 8
           type: array
           items:
-            $ref: "#/components/schemas/StreamSubscriptionExpression"
-    StreamSubscriptionExpression:
+            $ref: "#/components/schemas/StreamSubscriptionSelectorExpression"
+    StreamSubscriptionSelectorExpression:
       type: string
       description: |
-        Possible event or metric names to use on event and metric selectors:
+        Supported event or metric types to use on event and metric selectors:
          * `*` - all events or metrics
          * `equinix.fabric.port.*` - port events or metrics
          * `equinix.fabric.connection.*` - connection events or metrics
-         * `equinix.fabric.cloudrouter.*` - cloud router events
+         * `equinix.fabric.router.*` - cloud router events
          * `equinix.fabric.metro.*` - metro metrics
          * `equinix.fabric.network.*` - network events
          * `equinix.fabric.service_token.*` - service token events
-         * `equinix.fabric.network_edge.*` - network edge events
+         * `equinix.network_edge.*` - network edge events
+         * `equinix.network_edge.acl.*` - network edge acl events
+         * `equinix.network_edge.device.*` - network edge device events
+         * `equinix.access_manager.*` - identity access manager events
+         * `equinix.access_manager.user.role.*` - identity access manager user role events
       example: equinix.fabric.connection.*
     StreamSubscriptionSink:
       type: object
@@ -15577,6 +15611,9 @@ components:
           $ref: "#/components/schemas/StreamSubscriptionSinkCredential"
         settings:
           $ref: "#/components/schemas/StreamSubscriptionSinkSetting"
+        host:
+          type: string
+          description: sink host
       description: Create Stream destination
     StreamSubscriptionSinkCredential:
       type: object
@@ -15588,6 +15625,7 @@ components:
             - ACCESS_TOKEN
             - INTEGRATION_KEY
             - API_KEY
+            - USERNAME_PASSWORD
         accessToken:
           type: string
           description: passed as Authorization header value
@@ -15595,6 +15633,12 @@ components:
           type: string
           description: passed as Authorization header value
         apiKey:
+          type: string
+          description: passed as Authorization header value
+        username:
+          type: string
+          description: passed as Authorization header value
+        password:
           type: string
           description: passed as Authorization header value
       description: Stream subscription sink credentials
@@ -15613,6 +15657,16 @@ components:
         applicationKey:
           type: string
           description: Application key
+        eventUri:
+          type: string
+          description: event uri
+        metricUri:
+          type: string
+          description: metric uri
+        transformAlerts:
+          type: boolean
+          description: transform alerts
+          example: true
       description: Stream subscription sink settings
     StreamSubscription:
       type: object
@@ -15622,7 +15676,7 @@ components:
           description: Stream Subscription URI
           format: uri
           readOnly: true
-          example: https://api.equinix.com/fabric/v4/streamSubscription/3c9b8e7a2-f3b1-4576-a4a9-1366a63df170
+          example: https://api.equinix.com/fabric/v4/streams/d684aa26-8276-48b7-bb42-a6d9def0a418/subscriptions/3c9b8e7a2-f3b1-4576-a4a9-1366a63df170
         uuid:
           type: string
           description: Equinix-assigned access point identifier
@@ -15639,8 +15693,6 @@ components:
         description:
           type: string
           description: Customer-provided subscription description
-        project:
-          $ref: "#/components/schemas/Project"
         state:
           type: string
           description: Steam subscription provision state
@@ -15653,8 +15705,6 @@ components:
         enabled:
           type: boolean
           description: Stream subscription enabled status
-        stream:
-          $ref: "#/components/schemas/StreamTarget"
         filters:
           $ref: "#/components/schemas/StreamSubscriptionFilter"
         metricSelector:
@@ -15680,8 +15730,6 @@ components:
         description:
           type: string
           description: Customer-provided stream subscription description
-        stream:
-          $ref: "#/components/schemas/StreamTarget"
         enabled:
           type: boolean
           description: Stream subscription enabled status
@@ -16538,8 +16586,6 @@ components:
         - VC_TOKEN
         - EPL_TOKEN
     ServiceTokenConnection:
-      required:
-        - type
       type: object
       properties:
         type:
@@ -16551,6 +16597,7 @@ components:
             - EVPLAN_VC
             - EPLAN_VC
             - IPWAN_VC
+            - IP_VC
         href:
           type: string
           description: An absolute URL that is the subject of the link's context.
@@ -16917,6 +16964,25 @@ components:
           type: string
           deprecated: true
       description: Physical Port configuration settings
+    PortChangeOperation:
+      required:
+        - op
+        - path
+        - value
+      type: object
+      properties:
+        op:
+          type: string
+          description: Handy shortcut for operation name
+          example: replace
+        path:
+          type: string
+          description: path inside document leading to updated parameter
+          example: /name
+        value:
+          type: object
+          description: new value for updated parameter
+      description: Port change operation data
     LinkProtocolResponse:
       type: object
       properties:
@@ -16980,6 +17046,12 @@ components:
       default: /device/name
       enum:
         - /device/name
+    CheckCapacityPortRedundancy:
+      type: object
+      properties:
+        priority:
+          $ref: "#/components/schemas/PortPriority"
+      description: Check Capacity Port redundancy configuration
     RouteFilterState:
       type: string
       description: Route Filter status
@@ -17868,31 +17940,6 @@ components:
         uuid:
           type: string
           format: uuid
-    StreamGetSubscriptions:
-      type: object
-      properties:
-        href:
-          type: string
-          description: Stream Get Stream Subscriptions URI
-          format: uri
-          readOnly: true
-        uuid:
-          type: string
-          description: Equinix-assigned access point identifier
-          format: uuid
-          example: c9b8e7a2-f3b1-4576-a4a9-1366a63df170
-        type:
-          type: string
-          description: Stream subscription type
-          enum:
-            - STREAM_SUBSCRIPTION
-      description: Stream object
-    StreamTarget:
-      type: object
-      properties:
-        uuid:
-          $ref: "#/components/schemas/StreamId"
-      description: Stream uuid
     ConnectionPriority:
       type: string
       description: Connection priority in redundancy group
@@ -20667,6 +20714,7 @@ components:
             emails:
               - test@equinix.com
               - test1@equinix.com
+    Fcr2ServiceToken: {}
     AsideServiceToken2PortWithDot1q:
       value:
         type: EVPL_VC
@@ -20981,10 +21029,36 @@ components:
           - type: ALL
             emails:
               - test@test.com
+    MCNS2Sp-Alibaba:
+      value:
+        type: EVPL_VC
+        name: My-MCNS2Alibaba-Connection
+        bandwidth: 50
+        aSide:
+          accessPoint:
+            type: VPIC_INTERFACE
+            authenticationKey: xxxx-xxx-xxxx
+        zSide:
+          accessPoint:
+            type: SP
+            profile:
+              type: L2_PROFILE
+              uuid: 4c4b8edf-873b-4c6c-805a-edb2c335bd6c
+            location:
+              metroCode: DC
+            authenticationKey: xxxx-xxx-xxxx
+            sellerRegion: us-east-1
+        project:
+          projectId: 16799d66-ef43-445c-ba29-d17522d8a137
+        notifications:
+          - type: ALL
+            emails:
+              - fabric@gmail.com
+              - fabric1@gmail.com
     MCNS2Sp-Aws:
       value:
         type: EVPL_VC
-        name: My-MCNS2Aws-connection
+        name: My-MCNS2Aws-Connection
         bandwidth: 50
         aSide:
           accessPoint:
@@ -21000,13 +21074,126 @@ components:
               metroCode: DC
             authenticationKey: xxxx-xxx-xxxx
             sellerRegion: us-east-1
+        project:
+          projectId: b543e64d-1e13-423a-9d81-4eae7b0e1959
         notifications:
           - type: ALL
             emails:
-              - test@equinix.com
-              - test1@equinix.com
+              - fabric@gmail.com
+              - fabric1@gmail.com
+    MCNS2Sp-GCP:
+      value:
+        type: EVPL_VC
+        name: My-MCNS2GCP-Connection
+        bandwidth: 50
+        aSide:
+          accessPoint:
+            type: VPIC_INTERFACE
+            authenticationKey: xxxx-xxx-xxxx
+        zSide:
+          accessPoint:
+            type: SP
+            profile:
+              type: L2_PROFILE
+              uuid: bd4570e2-d792-4a00-87f5-3bde040cdcd7
+            location:
+              metroCode: DC
+            authenticationKey: xxxx-xxx-xxxx
+            sellerRegion: us-east1
         project:
-          projectId: b543e64d-1e13-423a-9d81-4eae7b0e1959
+          projectId: 16799d66-ef43-445c-ba29-d17522d8a137
+        notifications:
+          - type: ALL
+            emails:
+              - fabric@gmail.com
+              - fabric1@gmail.com
+    MCNS2Sp-IBM2:
+      value:
+        type: EVPL_VC
+        name: My-MCNS2IBM2-Connection
+        bandwidth: 50
+        aSide:
+          accessPoint:
+            type: VPIC_INTERFACE
+            authenticationKey: xxxx-xxx-xxxx
+        zSide:
+          accessPoint:
+            type: SP
+            profile:
+              type: L2_PROFILE
+              uuid: e092ed47-63d2-4f4a-87a0-82e3b08eefe5
+            location:
+              metroCode: DC
+            authenticationKey: xxxx-xxx-xxxx
+            sellerRegion: Washington 2
+        additionalInfo:
+          - key: ASN
+            value: 12345
+          - key: BGP_CER_CIDR
+            value: 172.16.0.17/30
+          - key: BGP_IBM_CIDR
+            value: 172.16.0.18/30
+          - key: Global
+            value: false
+        project:
+          projectId: 16799d66-ef43-445c-ba29-d17522d8a137
+        notifications:
+          - type: ALL
+            emails:
+              - fabric@gmail.com
+              - fabric1@gmail.com
+    MCNS2Sp-Azure:
+      value:
+        type: EVPL_VC
+        name: My-MCNS2Azure-Connection
+        bandwidth: 50
+        aSide:
+          accessPoint:
+            type: VPIC_INTERFACE
+            authenticationKey: xxxx-xxx-xxxx
+        zSide:
+          accessPoint:
+            type: SP
+            profile:
+              type: L2_PROFILE
+              uuid: a1390b22-bbe0-4e93-ad37-85beef9d254d
+            location:
+              metroCode: DC
+            authenticationKey: xxxx-xxx-xxxx
+            peeringType: PRIVATE
+        project:
+          projectId: 16799d66-ef43-445c-ba29-d17522d8a137
+        notifications:
+          - type: ALL
+            emails:
+              - fabric@gmail.com
+              - fabric1@gmail.com
+    MCNS2Sp-OCI:
+      value:
+        type: EVPL_VC
+        name: My-MCNS2OCI-Connection
+        bandwidth: 50
+        aSide:
+          accessPoint:
+            type: VPIC_INTERFACE
+            authenticationKey: xxxx-xxx-xxxx
+        zSide:
+          accessPoint:
+            type: SP
+            profile:
+              type: L2_PROFILE
+              uuid: 60ef0382-cdaa-44e7-bd36-b803731816b8
+            location:
+              metroCode: DC
+            authenticationKey: xxxx-xxx-xxxx
+            sellerRegion: us-ashburn-1
+        project:
+          projectId: 16799d66-ef43-445c-ba29-d17522d8a137
+        notifications:
+          - type: ALL
+            emails:
+              - fabric@gmail.com
+              - fabric1@gmail.com
     Vd2IAProfile-Request:
       value:
         type: IA_VC
@@ -21062,18 +21249,227 @@ components:
             location:
               metroCode: DC
         project:
-          projectId: 41418
+          projectId: a347a370-39b5-427f-c330-7471a9abd9
         order:
           purchaseOrderNumber: 1-129105284100
         notifications:
           - type: ALL
             emails:
               - test@test.com
-    CreateConnectionDryRunResponse:
+    CreateConnectionDryRunResponse-Colo2AWS:
+      value:
+        type: EVPL_VC
+        name: Colo to AWS Connection
+        bandwidth: 50
+        redundancy:
+          priority: PRIMARY
+        aSide:
+          accessPoint:
+            type: COLO
+            port:
+              href: https://api.equinix.com/fabric/v4/ports/2a4fb415-5a7f-436f-bae6-02f5e403deec
+              uuid: 2a4fb415-5a7f-436f-bae6-02f5e403deec
+            linkProtocol:
+              type: DOT1Q
+              vlanTag: 1137
+        zSide:
+          accessPoint:
+            type: SP
+            profile:
+              href: https://api.equinix.com/fabric/v4/serviceProfiles/20d32a80-0d61-4333-bc03-707b591ae2f5
+              type: L2_PROFILE
+              uuid: 20d32a80-0d61-4333-bc03-707b591ae2f5
+            location:
+              metroHref: https://api.equinix.com/fabric/v4/metros/SV
+              metroCode: SV
+            sellerRegion: us-west-1
+            authenticationKey: xxx-xxx-xxx
+        project:
+          projectId: a347a370-39b5-427f-c330-7471a9abd9
+        order:
+          purchaseOrderNumber: 1-129105284100
+        notifications:
+          - type: ALL
+            emails:
+              - test@test.com
+    CreateConnectionDryRunResponse-Colo2Azure:
+      value:
+        type: EVPL_VC
+        name: Colo to Azure Connection
+        bandwidth: 50
+        redundancy:
+          priority: PRIMARY
+        aSide:
+          accessPoint:
+            type: COLO
+            port:
+              href: https://api.equinix.com/fabric/v4/ports/2a4fb415-5a7f-436f-bae6-02f5e403deec
+              uuid: 2a4fb415-5a7f-436f-bae6-02f5e403deec
+            linkProtocol:
+              type: DOT1Q
+              vlanTag: 1137
+        zSide:
+          accessPoint:
+            type: SP
+            profile:
+              href: https://api.equinix.com/fabric/v4/serviceProfiles/20d32a80-0d61-4333-bc03-707b591ae2f5
+              type: L2_PROFILE
+              uuid: 20d32a80-0d61-4333-bc03-707b591ae2f5
+            location:
+              metroHref: https://api.equinix.com/fabric/v4/metros/SV
+              metroCode: SV
+            authenticationKey: xxx-xxx-xxx
+            peeringType: PRIVATE
+        project:
+          projectId: a347a370-39b5-427f-c330-7471a9abd9
+        order:
+          purchaseOrderNumber: 1-129105284100
+        notifications:
+          - type: ALL
+            emails:
+              - test@test.com
+    CreateConnectionDryRunResponse-Colo2Google:
+      value:
+        type: EVPL_VC
+        name: Colo to Google Connection
+        bandwidth: 50
+        redundancy:
+          priority: PRIMARY
+        aSide:
+          accessPoint:
+            type: COLO
+            port:
+              href: https://api.equinix.com/fabric/v4/ports/2a4fb415-5a7f-436f-bae6-02f5e403deec
+              uuid: 2a4fb415-5a7f-436f-bae6-02f5e403deec
+            linkProtocol:
+              type: DOT1Q
+              vlanTag: 1137
+        zSide:
+          accessPoint:
+            type: SP
+            profile:
+              href: https://api.equinix.com/fabric/v4/serviceProfiles/bd4570e2-d792-4a00-87f5-3bde040cdcd7
+              type: L2_PROFILE
+              uuid: bd4570e2-d792-4a00-87f5-3bde040cdcd7
+            location:
+              metroHref: https://api.equinix.com/fabric/v4/metros/SV
+              metroCode: SV
+            sellerRegion: us-west-1
+            authenticationKey: xxx-xxx-xxx
+        project:
+          projectId: a347a370-39b5-427f-c330-7471a9abd9
+        order:
+          purchaseOrderNumber: 1-129105284100
+        notifications:
+          - type: ALL
+            emails:
+              - test@test.com
+    CreateConnectionDryRunResponse-Colo2IBM:
+      value:
+        type: EVPL_VC
+        name: Colo to IBM Connection
+        bandwidth: 50
+        redundancy:
+          priority: PRIMARY
+        aSide:
+          accessPoint:
+            type: COLO
+            port:
+              href: https://api.equinix.com/fabric/v4/ports/2a4fb415-5a7f-436f-bae6-02f5e403deec
+              uuid: 2a4fb415-5a7f-436f-bae6-02f5e403deec
+            linkProtocol:
+              type: DOT1Q
+              vlanTag: 1137
+        zSide:
+          accessPoint:
+            type: SP
+            profile:
+              href: https://api.equinix.com/fabric/v4/serviceProfiles/22d4e853-ef33-4ff0-b5b2-a2b1d5dfa50c
+              type: L2_PROFILE
+              uuid: 22d4e853-ef33-4ff0-b5b2-a2b1d5dfa50c
+            location:
+              metroHref: https://api.equinix.com/fabric/v4/metros/SV
+              metroCode: SV
+            sellerRegion: us-west-1
+            authenticationKey: xxx-xxx-xxx
+        additionalInfo:
+          - key: ASN
+            value: 1234
+          - key: Global
+            value: false
+        project:
+          projectId: a347a370-39b5-427f-c330-7471a9abd9
+        order:
+          purchaseOrderNumber: 1-129105284100
+        notifications:
+          - type: ALL
+            emails:
+              - test@test.com
+    CreateConnectionDryRunResponse-Colo2Network-EPLAN_VC:
+      value:
+        type: EPLAN_VC
+        name: My Colo to Network EPLAN_VC Connection
+        bandwidth: 50
+        redundancy:
+          priority: PRIMARY
+        aSide:
+          accessPoint:
+            type: COLO
+            port:
+              href: https://api.equinix.com/fabric/v4/ports/2a4fb415-5a7f-436f-bae6-02f5e403deec
+              uuid: 2a4fb415-5a7f-436f-bae6-02f5e403deec
+            linkProtocol:
+              type: DOT1Q
+              vlanTag: 1137
+        zSide:
+          accessPoint:
+            type: NETWORK
+            network:
+              href: https://api.equinix.com/fabric/v4/networks/20d32a80-0d61-4333-bc03-707b591ae2f4
+              uuid: 20d32a80-0d61-4333-bc03-707b591ae2f4
+        project:
+          projectId: a347a370-39b5-427f-c330-7471a9abd9
+        order:
+          purchaseOrderNumber: 1-129105284100
+        notifications:
+          - type: ALL
+            emails:
+              - test@test.com
+    CreateConnectionDryRunResponse-Colo2Network-EVPLAN_VC:
+      value:
+        type: EVPLAN_VC
+        name: My Colo to Network EVPLAN_VC Connection
+        bandwidth: 50
+        redundancy:
+          priority: PRIMARY
+        aSide:
+          accessPoint:
+            type: COLO
+            port:
+              href: https://api.equinix.com/fabric/v4/ports/2a4fb415-5a7f-436f-bae6-02f5e403deec
+              uuid: 2a4fb415-5a7f-436f-bae6-02f5e403deec
+            linkProtocol:
+              type: DOT1Q
+              vlanTag: 1137
+        zSide:
+          accessPoint:
+            type: NETWORK
+            network:
+              href: https://api.equinix.com/fabric/v4/networks/25f8884e-85e3-4eaa-8ea9-a7ad2ca5b3c2
+              uuid: 25f8884e-85e3-4eaa-8ea9-a7ad2ca5b3c2
+        project:
+          projectId: a347a370-39b5-427f-c330-7471a9abd9
+        order:
+          purchaseOrderNumber: 1-129105284100
+        notifications:
+          - type: ALL
+            emails:
+              - test@test.com
+    CreateConnectionDryRunResponse-Colo2Sp-Generic:
       value:
         type: EVPL_VC
         name: My-EVPL-Connection
-        bandwidth: 500
+        bandwidth: 50
         redundancy:
           priority: PRIMARY
         aSide:
@@ -21096,7 +21492,129 @@ components:
               metroHref: https://api.equinix.com/fabric/v4/metros/DC
               metroCode: DC
         project:
-          projectId: 41418
+          projectId: a347a370-39b5-427f-c330-7471a9abd9
+        order:
+          purchaseOrderNumber: 1-129105284100
+        notifications:
+          - type: ALL
+            emails:
+              - test@test.com
+    CreateConnectionDryRunResponse-Fcr2Colo:
+      value:
+        type: EVPL_VC
+        name: Fcr to Colo Connection
+        bandwidth: 50
+        redundancy:
+          priority: PRIMARY
+        aSide:
+          accessPoint:
+            type: CLOUD_ROUTER
+            router:
+              href: https://api.equinix.com/fabric/v4/routers/66a21614-1c4a-11ec-9621-0242ac130002
+              uuid: 66a21614-1c4a-11ec-9621-0242ac130002
+        zSide:
+          accessPoint:
+            type: COLO
+            port:
+              href: https://api.equinix.com/fabric/v4/ports/2a4fb415-5a7f-436f-bae6-02f5e403deec
+              uuid: 2a4fb415-5a7f-436f-bae6-02f5e403deec
+            linkProtocol:
+              type: DOT1Q
+              vlanTag: 1137
+        project:
+          projectId: a347a370-39b5-427f-c330-7471a9abd9
+        order:
+          purchaseOrderNumber: 1-129105284100
+        notifications:
+          - type: ALL
+            emails:
+              - test@test.com
+    CreateConnectionDryRunResponse-Fcr2Ipwan:
+      value:
+        type: EVPL_VC
+        name: Fcr to Ipwan Connection
+        bandwidth: 50
+        redundancy:
+          priority: PRIMARY
+        aSide:
+          accessPoint:
+            type: CLOUD_ROUTER
+            router:
+              href: https://api.equinix.com/fabric/v4/routers/66a21614-1c4a-11ec-9621-0242ac130002
+              uuid: 66a21614-1c4a-11ec-9621-0242ac130002
+        zSide:
+          accessPoint:
+            network:
+              href: https://api.equinix.com/fabric/v4/networks/20d32a80-0d61-4333-bc03-707b591ae2f4
+              uuid: 20d32a80-0d61-4333-bc03-707b591ae2f4
+        project:
+          projectId: a347a370-39b5-427f-c330-7471a9abd9
+        order:
+          purchaseOrderNumber: 1-129105284100
+        notifications:
+          - type: ALL
+            emails:
+              - test@test.com
+    CreateConnectionDryRunResponse-Fcr2Sp-Generic:
+      value:
+        type: EVPL_VC
+        name: Fcr to Sp-Generic Connection
+        bandwidth: 50
+        redundancy:
+          priority: PRIMARY
+        aSide:
+          accessPoint:
+            type: CLOUD_ROUTER
+            router:
+              href: https://api.equinix.com/fabric/v4/routers/66a21614-1c4a-11ec-9621-0242ac130002
+              uuid: 66a21614-1c4a-11ec-9621-0242ac130002
+        zSide:
+          accessPoint:
+            type: SP
+            profile:
+              href: https://api.equinix.com/fabric/v4/serviceProfiles/92dc376a-a932-43aa-a6a2-c806dedbd784
+              type: L2_PROFILE
+              uuid: 92dc376a-a932-43aa-a6a2-c806dedbd784
+            location:
+              metroHref: https://api.equinix.com/fabric/v4/metros/DC
+              metroCode: DC
+        project:
+          projectId: a347a370-39b5-427f-c330-7471a9abd9
+        order:
+          purchaseOrderNumber: 1-129105284100
+        notifications:
+          - type: ALL
+            emails:
+              - test@test.com
+    CreateConnectionDryRunResponse-PortServiceToken2Port:
+      value:
+        type: EVPL_VC
+        name: Port Service Token to Port Connection
+        bandwidth: 50
+        redundancy:
+          priority: PRIMARY
+        aSide:
+          serviceToken:
+            uuid: 20d32a80-0d61-4333-bc03-707b591ae2f5
+          accessPoint:
+            type: COLO
+            port:
+              href: https://api.equinix.com/fabric/v4/ports/20d32a80-0d61-4333-bc03-707b591ae2f5
+              uuid: 20d32a80-0d61-4333-bc03-707b591ae2f5
+            linkProtocol:
+              type: DOT1Q
+              vlanTag: 1137
+        zSide:
+          accessPoint:
+            type: COLO
+            port:
+              href: https://api.equinix.com/fabric/v4/ports/2a4fb415-5a7f-436f-bae6-02f5e403deec
+              uuid: 2a4fb415-5a7f-436f-bae6-02f5e403deec
+            linkProtocol:
+              type: DOT1Q
+              vlanTag: 1137
+        project:
+          projectId: a347a370-39b5-427f-c330-7471a9abd9
         order:
           purchaseOrderNumber: 1-129105284100
         notifications:
@@ -21861,7 +22379,7 @@ components:
         href: https://api.equinix.com/fabric/v4/connections/f37e40c5-2802-4df7-9732-839a8a5868ce
         type: EVPL_VC
         uuid: f37e40c5-2802-4df7-9732-839a8a5868ce
-        name: My-Metal-sp-connection
+        name: My-Metal2Aws-Connection
         bandwidth: 1000
         aSide:
           accessPoint:
@@ -21877,7 +22395,7 @@ components:
             profile:
               type: L2_PROFILE
               uuid: 9127bb72-5f4f-4517-be74-3af7ce612687
-            authenticationKey: xxxxxxxxx
+            authenticationKey: xxxx-xxx-xxxx
             sellerRegion: us-west-1
         order:
           purchaseOrderNumber: 1-129105284100
@@ -21892,11 +22410,12 @@ components:
           notifications:
             - type: ALL
               emails:
-                - test@equinix.com
+                - fabric@gmail.com
+                - fabric1@gmail.com
         changeLog:
-          createdBy: testuser
-          createdByEmail: testuser@equinix.com
-          createdByFullName: testuser testuser
+          createdBy: fabric
+          createdByEmail: fabric@gmail.com
+          createdByFullName: fabric
           createdDateTime: 2020-05-21T10:30:00Z
     Metal2Sp-Azure-Response:
       value:
@@ -21948,7 +22467,7 @@ components:
         type: EVPL_VC
         href: https://api.equinix.com/fabric/v4/connections/d3b69c6b-3b23-4ac0-a1bb-8db16460714d
         uuid: d3b69c6b-3b23-4ac0-a1bb-8db16460714d
-        name: Metal2GCP Connection
+        name: My-Metal2GCP-Connection
         operation:
           providerStatus: PROVISIONING
           equinixStatus: PROVISIONING
@@ -21957,7 +22476,7 @@ components:
         notifications:
           - type: ALL
             emails:
-              - eqxfabricamcrh@gmail.com
+              - fabric@gmail.com
         changeLog:
           createdBy: fabric
           createdByFullName: fabric
@@ -21987,7 +22506,7 @@ components:
               type: L2_PROFILE
               name: GCP Service Profile
               uuid: 063f4b0f-2d5b-4db7-95da-d9eddfc92602
-            authenticationKey: xxxxxxxxx
+            authenticationKey: xxxx-xxx-xxxx
     Metal2Sp-Oracle-Response:
       value:
         type: EVPL_VC
@@ -22271,6 +22790,275 @@ components:
               type: L2_PROFILE
               name: Generic Service Profile
               uuid: f1a247aa-8f86-4a89-88c2-72497686cd0d
+    MCNS2Sp-Alibaba-Response:
+      value:
+        href: https://api.equinix.com/fabric/v4/connections/974cb1c6-5090-4796-9d38-f5c14432d2c4
+        type: EVPL_VC
+        uuid: 974cb1c6-5090-4796-9d38-f5c14432d2c4
+        name: My-MCNS2Alibaba-Connection
+        operation:
+          providerStatus: PROVISIONING
+          equinixStatus: PROVISIONING
+        order:
+          billingTier: Up to 50 MB
+        notifications:
+          - type: ALL
+            emails:
+              - fabric@gmail.com
+        changeLog:
+          createdBy: fabric
+          createdByFullName: fabric
+          createdByEmail: fabric@gmail.com
+          createdDateTime: 2024-09-07T05:35:23.750Z
+          updatedBy: fabric
+          updatedByFullName: fabric
+          updatedByEmail: fabric@gmail.com
+          updatedDateTime: 2024-09-07T05:35:23.750Z
+        bandwidth: 50
+        redundancy:
+          group: 9d92f86f-2c2a-4b88-b9a1-a61ec83c28cf
+          priority: PRIMARY
+        aSide:
+          accessPoint:
+            type: VPIC_INTERFACE
+            vpicInterface:
+              uuid: cd67f685-41b0-1b07-6de0-0320a5c00abe
+        zSide:
+          accessPoint:
+            location:
+              metroHref: http://api.corp.equinix.com/fabric/v4/metros/DC
+              metroCode: DC
+            profile:
+              href: https://api.equinix.com/fabric/v4/serviceProfiles/4c4b8edf-873b-4c6c-805a-edb2c335bd6c
+              type: L2_PROFILE
+              name: Alibaba Cloud Express Connect
+              uuid: 4c4b8edf-873b-4c6c-805a-edb2c335bd6c
+            sellerRegion: us-east-1
+            authenticationKey: xxxx-xxx-xxxx
+    MCNS2Sp-Aws-Response:
+      value:
+        href: https://api.equinix.com/fabric/v4/connections/729a1248-afa5-4dee-a4e7-5f24cab53287
+        type: EVPL_VC
+        uuid: 729a1248-afa5-4dee-a4e7-5f24cab53287
+        name: My-MCNS2AWS-Connection
+        operation:
+          providerStatus: PROVISIONING
+          equinixStatus: PROVISIONING
+        order:
+          billingTier: Up to 50 MB
+        notifications:
+          - type: ALL
+            emails:
+              - fabric@gmail.com
+        changeLog:
+          createdBy: fabric
+          createdByFullName: fabric
+          createdByEmail: fabric@gmail.com
+          createdDateTime: 2024-09-06T17:08:45.548Z
+          updatedBy: fabric
+          updatedByFullName: fabric
+          updatedByEmail: fabric@gmail.com
+          updatedDateTime: 2024-09-06T17:08:45.548Z
+        bandwidth: 50
+        redundancy:
+          group: 75346f39-4193-466e-9a83-78c7e153f6e2
+          priority: PRIMARY
+        aSide:
+          accessPoint:
+            type: VPIC_INTERFACE
+            vpicInterface:
+              uuid: cd67f685-41b0-1b07-6de0-0320a5c00abe
+        zSide:
+          accessPoint:
+            location:
+              metroHref: http://api.corp.equinix.com/fabric/v4/metros/DC
+              metroCode: DC
+            profile:
+              href: https://api.equinix.com/fabric/v4/serviceProfiles/69ee618d-be52-468d-bc99-00566f2dd2b9
+              type: L2_PROFILE
+              name: AWS Direct Connect
+              uuid: 69ee618d-be52-468d-bc99-00566f2dd2b9
+            sellerRegion: us-east-1
+            authenticationKey: xxxx-xxx-xxxx
+    MCNS2Sp-GCP-Response:
+      value:
+        href: https://api.equinix.com/fabric/v4/connections/4c2c8739-f476-47ae-a0fa-f924e1081e62
+        type: EVPL_VC
+        uuid: 4c2c8739-f476-47ae-a0fa-f924e1081e62
+        name: My-MCNS2GCP-Connection
+        operation:
+          providerStatus: PROVISIONING
+          equinixStatus: PROVISIONING
+        order:
+          billingTier: Up to 50 MB
+        notifications:
+          - type: ALL
+            emails:
+              - fabric@gmail.com
+        changeLog:
+          createdBy: fabric
+          createdByFullName: fabric
+          createdByEmail: fabric@gmail.com
+          createdDateTime: 2024-09-06T19:25:09.527Z
+          updatedBy: fabric
+          updatedByFullName: fabric
+          updatedByEmail: fabric@gmail.com
+          updatedDateTime: 2024-09-06T19:25:09.527Z
+        bandwidth: 50
+        redundancy:
+          group: 33286a70-e0d5-466b-873e-f2c1836d1f0c
+          priority: PRIMARY
+        aSide:
+          accessPoint:
+            type: VPIC_INTERFACE
+            vpicInterface:
+              uuid: cd67f685-41b0-1b07-6de0-0320a5c00abe
+        zSide:
+          accessPoint:
+            location:
+              metroHref: http://api.corp.equinix.com/fabric/v4/metros/DC
+              metroCode: DC
+            profile:
+              href: https://api.equinix.com/fabric/v4/serviceProfiles/bd4570e2-d792-4a00-87f5-3bde040cdcd7
+              type: L2_PROFILE
+              name: Google Cloud Partner Interconnect Zone 1
+              uuid: bd4570e2-d792-4a00-87f5-3bde040cdcd7
+            sellerRegion: us-east1
+            authenticationKey: xxxx-xxx-xxxx
+    MCNS2Sp-IBM2-Response:
+      value:
+        href: https://api.equinix.com/fabric/v4/connections/d9e3f826-71e4-40a5-9e27-6030d1498e13
+        type: EVPL_VC
+        uuid: d9e3f826-71e4-40a5-9e27-6030d1498e13
+        name: MY-MCNS2IBM2-Connection
+        operation:
+          providerStatus: PROVISIONING
+          equinixStatus: PROVISIONING
+        order:
+          billingTier: Up to 50 MB
+        notifications:
+          - type: ALL
+            emails:
+              - fabric@gmail.com
+        changeLog:
+          createdBy: fabric
+          createdByFullName: fabric
+          createdByEmail: fabric@gmail.com
+          createdDateTime: 2024-09-07T05:23:43.711Z
+          updatedBy: fabric
+          updatedByFullName: fabric
+          updatedByEmail: fabric@gmail.com
+          updatedDateTime: 2024-09-07T05:23:43.711Z
+        bandwidth: 50
+        redundancy:
+          group: f65c252c-ea74-4a12-87aa-7bc0236cb24a
+          priority: PRIMARY
+        aSide:
+          accessPoint:
+            type: VPIC_INTERFACE
+            vpicInterface:
+              uuid: cd67f685-41b0-1b07-6de0-0320a5c00abe
+        zSide:
+          accessPoint:
+            location:
+              metroHref: http://api.corp.equinix.com/fabric/v4/metros/DC
+              metroCode: DC
+            profile:
+              href: https://api.equinix.com/fabric/v4/serviceProfiles/e092ed47-63d2-4f4a-87a0-82e3b08eefe5
+              type: L2_PROFILE
+              name: IBM Cloud Direct Link 2
+              uuid: e092ed47-63d2-4f4a-87a0-82e3b08eefe5
+            sellerRegion: Washington 2
+            authenticationKey: xxxx-xxx-xxxx
+    MCNS2Sp-Azure-Response:
+      value:
+        href: https://api.equinix.com/fabric/v4/connections/43504d46-f5ce-4d47-99f6-d220df13f81d
+        type: EVPL_VC
+        uuid: 43504d46-f5ce-4d47-99f6-d220df13f81d
+        name: My-MCNS2Azure-Connection
+        operation:
+          providerStatus: PROVISIONING
+          equinixStatus: PROVISIONING
+        order:
+          billingTier: Up to 50 MB
+        notifications:
+          - type: ALL
+            emails:
+              - fabric@gmail.com
+        changeLog:
+          createdBy: fabric
+          createdByFullName: fabric
+          createdByEmail: fabric@gmail.com
+          createdDateTime: 2024-09-07T04:41:43.111Z
+          updatedBy: fabric
+          updatedByFullName: fabric
+          updatedByEmail: fabric@gmail.com
+          updatedDateTime: 2024-09-07T04:41:43.111Z
+        bandwidth: 50
+        redundancy:
+          group: d88b8fe3-23ac-42b6-8c28-33d33f0b9760
+          priority: PRIMARY
+        aSide:
+          accessPoint:
+            type: VPIC_INTERFACE
+            vpicInterface:
+              uuid: cd67f685-41b0-1b07-6de0-0320a5c00abe
+        zSide:
+          accessPoint:
+            location:
+              metroHref: http://api.corp.equinix.com/fabric/v4/metros/DC
+              metroCode: DC
+            profile:
+              href: https://api.equinix.com/fabric/v4/serviceProfiles/a1390b22-bbe0-4e93-ad37-85beef9d254d
+              type: L2_PROFILE
+              name: Azure ExpressRoute
+              uuid: a1390b22-bbe0-4e93-ad37-85beef9d254d
+            authenticationKey: xxxx-xxx-xxxx
+    MCNS2Sp-OCI-Response:
+      value:
+        href: https://api.equinix.com/fabric/v4/connections/addae6f7-69c1-494e-905a-3d94b8cb8f1a
+        type: EVPL_VC
+        uuid: addae6f7-69c1-494e-905a-3d94b8cb8f1a
+        name: My-MCNS2OCI-Connection
+        operation:
+          providerStatus: PROVISIONING
+          equinixStatus: PROVISIONING
+        order:
+          billingTier: Up to 50 MB
+        notifications:
+          - type: ALL
+            emails:
+              - fabric@gmail.com
+        changeLog:
+          createdBy: fabric
+          createdByFullName: fabric
+          createdByEmail: fabric@gmail.com
+          createdDateTime: 2024-09-07T05:09:26.587Z
+          updatedBy: fabric
+          updatedByFullName: fabric
+          updatedByEmail: fabric@gmail.com
+          updatedDateTime: 2024-09-07T05:09:26.587Z
+        bandwidth: 50
+        redundancy:
+          group: 6620b2a3-d3d7-420b-a3a0-4b5ae8b0cd10
+          priority: PRIMARY
+        aSide:
+          accessPoint:
+            type: VPIC_INTERFACE
+            vpicInterface:
+              uuid: cd67f685-41b0-1b07-6de0-0320a5c00abe
+        zSide:
+          accessPoint:
+            location:
+              metroHref: http://api.corp.equinix.com/fabric/v4/metros/DC
+              metroCode: DC
+            profile:
+              href: https://api.equinix.com/fabric/v4/serviceProfiles/60ef0382-cdaa-44e7-bd36-b803731816b8
+              type: L2_PROFILE
+              name: Oracle Cloud Infrastructure FastConnect
+              uuid: 60ef0382-cdaa-44e7-bd36-b803731816b8
+            sellerRegion: us-ashburn-1
+            authenticationKey: xxxx-xxx-xxxx
     COLO2NETWORKwithDot1q-Response:
       value:
         type: EVPLAN_VC
@@ -23975,12 +24763,6 @@ components:
                 value: nTTgtgoQbTQCRHTbynll
               - key: secretKey
                 value: NwPcpbWgFEPofydsZEQGwjtHqJOYrUmBbrcxtOzP
-    ConnectionAddRoutingRequest:
-      value:
-        - op: add
-          path: /ipv6
-          value:
-            equinixIfaceIp: 1202:ABCD::/64
     ConnectionMigrationAsideRequest:
       value:
         - op: replace
@@ -26313,88 +27095,6 @@ components:
                 - intervalEndDateTime: 2020-05-21T10:30:00Z
                   max: 42.01401189333334
                   mean: 39.40894303096296
-    200_top:
-      value:
-        pagination:
-          offset: 0
-          limit: 5
-          total: 5
-        data:
-          - href: http://api.equinix.com/fabric/v4/ports/xxxxx191-xx70-xxxx-xx04-xxxxxxxa37xx
-            type: XF_PORT
-            uuid: xxxxx191-xx70-xxxx-xx04-xxxxxxxa37xx
-            name: testUser-CX-SV2-NL-Dot1Q-BO-1G-PRI-JP-15
-            bandwidth: 10000
-            stats:
-              startDateTime: 2021-03-11T22:08:30.851Z
-              endDateTime: 2021-06-09T22:08:30.851Z
-              bandwidthUtilization:
-                unit: Mbps
-                metricInterval: PT5M
-                inbound:
-                  max: 1913400000
-                  mean: 474960.24489120545
-                  lastPolled: 53.333333333333336
-                  metrics:
-                    - intervalEndDateTime: 2021-03-18T18:49:21Z
-                      max: 53.333333333333336
-                      mean: 53.333333333333336
-                    - intervalEndDateTime: 2021-03-18T18:54:21Z
-                      max: 53.333333333333336
-                      mean: 53.333333333333336
-                    - intervalEndDateTime: 2021-03-18T18:59:21Z
-                      max: 53.333333333333336
-                      mean: 53.333333333333336
-                    - intervalEndDateTime: 2021-03-18T19:04:21Z
-                      max: 53.333333333333336
-                      mean: 53.333333333333336
-          - href: http://api.equinix.com/fabric/v4/ports/xxxxx191-xx70-xxxx-xx04-xxxxxxxa37xx
-            type: XF_PORT
-            uuid: xxxxx191-xx70-xxxx-xx04-xxxxxxxa37xx
-            name: testUser-CX-SV2-NL-Dot1Q-BO-1G-PRI-JP-15
-            bandwidth: 10000
-            stats:
-              startDateTime: 2021-03-11T22:08:30.851Z
-              endDateTime: 2021-06-09T22:08:30.851Z
-              bandwidthUtilization:
-                unit: Mbps
-                metricInterval: PT5M
-                inbound: {}
-          - href: http://api.equinix.com/fabric/v4/ports/xxxxx191-xx70-xxxx-xx04-xxxxxxxa37xx
-            type: XF_PORT
-            uuid: xxxxx191-xx70-xxxx-xx04-xxxxxxxa37xx
-            name: testUser-CX-SV2-NL-Dot1Q-BO-1G-PRI-JP-15
-            bandwidth: 10000
-            stats:
-              startDateTime: 2021-03-11T22:08:30.851Z
-              endDateTime: 2021-06-09T22:08:30.851Z
-              bandwidthUtilization:
-                unit: Mbps
-                metricInterval: PT5M
-                inbound: {}
-          - href: http://api.equinix.com/fabric/v4/ports/xxxxx191-xx70-xxxx-xx04-xxxxxxxa37xx
-            type: XF_PORT
-            uuid: xxxxx191-xx70-xxxx-xx04-xxxxxxxa37xx
-            name: testUser-CX-SV2-NL-Dot1Q-BO-1G-PRI-JP-15
-            bandwidth: 10000
-            stats:
-              startDateTime: 2021-03-11T22:08:30.851Z
-              endDateTime: 2021-06-09T22:08:30.851Z
-              bandwidthUtilization:
-                unit: Mbps
-                metricInterval: PT5M
-                inbound: {}
-          - type: XF_PORT
-            uuid: xxxxx191-xx70-xxxx-xx04-xxxxxxxa37xx
-            name: testUser-CX-SV2-NL-Dot1Q-BO-1G-PRI-JP-15
-            bandwidth: 10000
-            stats:
-              startDateTime: 2021-03-11T22:08:30.851Z
-              endDateTime: 2021-06-09T22:08:30.851Z
-              bandwidthUtilization:
-                unit: Mbps
-                metricInterval: PT5M
-                inbound: {}
     200_vc:
       value:
         href: https://api.equinix.com/fabric/v4/connections/97d1850f-4df0-468c-9281-fa7b0dfa2096
@@ -27849,6 +28549,7 @@ components:
             emails:
               - abc@company.com
               - provider@company.com
+    createZsideServiceTokenWithAsideFCR: {}
     createServiceTokenDryRunResponse:
       value:
         type: VC_TOKEN
@@ -29195,6 +29896,11 @@ components:
           organizationName: Cust_Org_100179
         changeLog:
           createdDateTime: 2018-06-14T17:21:25.587Z
+    PortUpdateNameRequest:
+      value:
+        - op: replace
+          path: /name
+          value: 1234-ibx-port
     LinkProtocolGetQinqResponseExample:
       value:
         pagination:
@@ -29416,6 +30122,65 @@ components:
         sort:
           - property: /device/name
             direction: DESC
+    PortSearchByDemarcationIbx:
+      value:
+        filter:
+          - and:
+              - operator: =
+                property: /demarcationPointIbx
+                values:
+                  - FR4
+              - operator: =
+                property: /physicalPortsSpeed
+                values:
+                  - 1000
+        pagination:
+          limit: 5
+          offset: 0
+          total: 0
+    checkCapacity:
+      value:
+        pagination:
+          offset: 0
+          limit: 5
+          total: 4
+        data:
+          - demarcationPointIbx: AM2
+            tetherIbx: AM2
+            metroConnectUsed: false
+            lagEnabled: true
+            physicalPortsType: 10GBASE_LR
+            physicalPortsSpeed: 10000
+            physicalPortsAvailable: 4
+            redundancy:
+              priority: PRIMARY
+          - demarcationPointIbx: AM2
+            tetherIbx: AM2
+            metroConnectUsed: false
+            lagEnabled: true
+            physicalPortsType: 10GBASE_LR
+            physicalPortsSpeed: 10000
+            physicalPortsAvailable: 8
+            redundancy:
+              priority: SECONDARY
+          - demarcationPointIbx: AM2
+            tetherIbx: AM1
+            metroConnectUsed: true
+            lagEnabled: true
+            physicalPortsType: 10GBASE_L
+            physicalPortsSpeed: 10000
+            physicalPortsAvailable: 8
+            redundancy:
+              priority: PRIMARY
+          - demarcationPointIbx: AM2
+            tetherIbx: AM1
+            metroConnectUsed: true
+            lagEnabled: true
+            physicalPortsType: 10GBASE_L
+            physicalPortsSpeed: 10000
+            physicalPortsAvailable: 8
+            redundancy:
+              priority: SECONDARY
     ConnectionRouteAggregationsGetAll:
       value:
         pagination:
@@ -33565,16 +34330,6 @@ components:
         type: XF_ROUTER
         metricsEnabled: false
         attachmentStatus: DETACHING
-    stream-get-all-subscription-example:
-      value:
-        pagination:
-          offset: 0
-          limit: 20
-          total: 1
-        data:
-          - href: https://api.equinix.com/fabric/v4/streams/d684aa26-8276-48b7-bb42-a6d9def0a418/streamSubscriptions
-            uuid: d684aa26-8276-48b7-bb42-a6d9def0a418
-            type: STREAM_SUBSCRIPTION
     stream-subscription-get-all-example:
       value:
         pagination:
@@ -33582,29 +34337,23 @@ components:
           limit: 20
           total: 1
         data:
-          - href: https://api.equinix.com/fabric/v4/streamSubscriptions/d684aa26-8276-48b7-bb42-a6d9def0a418
+          - href: https://api.equinix.com/fabric/v4/streams/d684aa26-8276-48b7-bb42-a6d9def0a418/subscriptions/d684aa26-8276-48b7-bb42-a6d9def0a418
             uuid: d684aa26-8276-48b7-bb42-a6d9def0a418
             type: STREAM_SUBSCRIPTION
             name: splunk
             description: subscription 1
-            project:
-              projectId: dadd3ab6-c0af-430c-8216-43d44f08c1c5
             state: PROVISIONED
             enabled: true
-            stream:
-              href: https://api.equinix.com/fabric/v4/streams/d684aa26-8276-48b7-bb42-a6d9def0a418
-              type: TELEMETRY_STREAM
-              uuid: d684aa26-8276-48b7-bb42-a6d9def0a418
             filters:
               and:
                 - property: /subject
                   operator: LIKE
                   values:
-                    - "%36276e58-b5a1-4864-ab5e-be10dff9eac1%"
-                - property: /equinixproject
+                    - "%/fabric/v4/connections/36276e58-b5a1-4864-ab5e-be10dff9eac1%"
+                - property: /type
                   operator: IN
                   values:
-                    - "197607000886247"
+                    - equinix.fabric.connection.state.provisioned
             metricSelector:
               include:
                 - equinix.fabric.connection.*
@@ -33619,22 +34368,34 @@ components:
               batchWaitTimeMax: 5
             changeLog:
               createdDateTime: 2024-05-06T16:21:18.545214Z
+    StreamSubscriptionPostRequestExampleSimpleDefaultSplunk:
+      value:
+        type: STREAM_SUBSCRIPTION
+        name: splunk1
+        description: subscription-1
+        enabled: true
+        sink:
+          uri: https://xxxxxx
+          type: SPLUNK_HEC
+          credential:
+            type: ACCESS_TOKEN
+            accessToken: Splunk <my-access-token>
+          settings:
+            source: Equinix
+            eventIndex: idx-hec-event
+            metricIndex: idx-hec-metric
     StreamSubscriptionPostRequestExampleSplunk:
       value:
         type: STREAM_SUBSCRIPTION
         name: splunk1
         description: subscription-1
         enabled: true
-        stream:
-          uuid: 36276e58-b5a1-4864-ab5e-be10dff9eac1
-        project:
-          projectId: dadd3ab6-c0af-430c-8216-43d44f08c1c5
         filters:
           and:
             - property: /type
               operator: LIKE
               values:
-                - "%com.equinix.fabric.connection%"
+                - equinix.fabric.connection%
         metricSelector:
           include:
             - equinix.fabric.connection.*
@@ -33646,7 +34407,7 @@ components:
           type: SPLUNK_HEC
           credential:
             type: ACCESS_TOKEN
-            accessToken: my-access-token
+            accessToken: Splunk <my-access-token>
           settings:
             source: Equinix
             eventIndex: idx-hec-event
@@ -33657,16 +34418,12 @@ components:
         name: slack1
         description: subscription-1
         enabled: true
-        stream:
-          uuid: 36276e58-b5a1-4864-ab5e-be10dff9eac1
-        project:
-          projectId: dadd3ab6-c0af-430c-8216-43d44f08c1c5
         filters:
           and:
             - property: /type
               operator: LIKE
               values:
-                - "%com.equinix.fabric.connection%"
+                - equinix.fabric.connection%
         metricSelector:
           include:
             - equinix.fabric.connection.*
@@ -33682,48 +34439,45 @@ components:
         name: pagerduty
         description: subscription-1
         enabled: true
-        stream:
-          uuid: 36276e58-b5a1-4864-ab5e-be10dff9eac1
-        project:
-          projectId: dadd3ab6-c0af-430c-8216-43d44f08c1c5
         filters:
           and:
             - property: /type
               operator: LIKE
               values:
-                - "%com.equinix.fabric.connection%"
+                - equinix.fabric.connection%
+        metricSelector:
+          include:
+            - equinix.fabric.connection.*
         eventSelector:
           include:
             - equinix.fabric.connection.*
         sink:
-          uri: https://xxxxxx
+          host: events.pagerduty.com
           type: PAGERDUTY
           credential:
             type: INTEGRATION_KEY
             integrationKey: my-integration-key
           settings:
-            source: Equinix
+            transformAlerts: true
+            changeUri: https://events.pagerduty.com/v2/change/enqueeue
+            alertUri: https://events.pagerduty.com/v2/enqueeue
     StreamSubscriptionPostRequestExampleDatadog:
       value:
         type: STREAM_SUBSCRIPTION
         name: datadog
         description: subscription-1
         enabled: true
-        stream:
-          uuid: 36276e58-b5a1-4864-ab5e-be10dff9eac1
-        project:
-          projectId: dadd3ab6-c0af-430c-8216-43d44f08c1c5
         filters:
           and:
             - property: /type
               operator: LIKE
               values:
-                - "%com.equinix.fabric.connection%"
+                - equinix.fabric.connection%
         metricSelector:
           include:
             - equinix.fabric.connection.*
         sink:
-          uri: https://xx.datadoghq.com
+          host: us.datadoghq.com
           type: DATADOG
           credential:
             type: API_KEY
@@ -33731,27 +34485,44 @@ components:
           settings:
             source: Equinix
             applicationKey: my-application-key
-    StreamSubscriptionResponseExample:
+            eventUri: https://us.datadoghq.com/api/v1/events
+            metricUri: https://us.datadoghq.com/api/v2/series
+    StreamSubscriptionPostRequestExampleTeams:
       value:
-        href: https://api.equinix.com/fabric/v4/streamSubscriptions/d684aa26-8276-48b7-bb42-a6d9def0a418
-        uuid: d684aa26-8276-48b7-bb42-a6d9def0a418
         type: STREAM_SUBSCRIPTION
-        name: stream 1
-        description: stream dec 1
-        project:
-          projectId: dadd3ab6-c0af-430c-8216-43d44f08c1c5
-        state: PROVISIONED
+        name: teams1
+        description: subscription-1
         enabled: true
-        stream:
-          href: https://api.equinix.com/fabric/v4/streams/d684aa26-8276-48b7-bb42-a6d9def0a418
-          type: TELEMETRY_STREAM
-          uuid: d684aa26-8276-48b7-bb42-a6d9def0a418
         filters:
           and:
             - property: /type
               operator: LIKE
               values:
-                - "%com.equinix.fabric.connection%"
+                - equinix.fabric.connection%
+        metricSelector:
+          include:
+            - equinix.fabric.connection.*
+        eventSelector:
+          include:
+            - equinix.fabric.connection.*
+        sink:
+          uri: https://xxxxxx
+          type: TEAMS
+    StreamSubscriptionResponseExample:
+      value:
+        href: https://api.equinix.com/fabric/v4/streams/d684aa26-8276-48b7-bb42-a6d9def0a418/subscriptions/d684aa26-8276-48b7-bb42-a6d9def0a418
+        uuid: d684aa26-8276-48b7-bb42-a6d9def0a418
+        type: STREAM_SUBSCRIPTION
+        name: stream 1
+        description: stream dec 1
+        state: PROVISIONED
+        enabled: true
+        filters:
+          and:
+            - property: /type
+              operator: LIKE
+              values:
+                - equinix.fabric.connection%
         metricSelector:
           include:
             - equinix.fabric.connection.*
@@ -33763,7 +34534,7 @@ components:
           type: SPLUNK_HEC
           credential:
             type: ACCESS_TOKEN
-            accessToken: my-access-token
+            accessToken: Splunk <my-access-token>
           settings:
             source: Equinix
             eventIndex: idx-hec-event
@@ -33778,14 +34549,12 @@ components:
         name: splunk1
         description: subscription 1
         enabled: true
-        stream:
-          uuid: 36276e58-b5a1-4864-ab5e-be10dff9eac1
         filters:
           and:
             - property: /type
               operator: LIKE
               values:
-                - "%equinix.event.fabric.connection%"
+                - equinix.fabric.connection%
         metricSelector:
           include:
             - equinix.fabric.connection.*
@@ -33807,25 +34576,19 @@ components:
           batchWaitTimeMax: 5
     StreamSubscriptionDeleteResponseExample:
       value:
-        href: https://api.equinix.com/fabric/v4/streamSubscriptions/d684aa26-8276-48b7-bb42-a6d9def0a418
+        href: https://api.equinix.com/fabric/v4/streams/d684aa26-8276-48b7-bb42-a6d9def0a418/subscriptions/d684aa26-8276-48b7-bb42-a6d9def0a418
         uuid: d684aa26-8276-48b7-bb42-a6d9def0a418
         type: STREAM_SUBSCRIPTION
         name: stream 1
         description: stream dec 1
-        project:
-          projectId: dadd3ab6-c0af-430c-8216-43d44f08c1c5
         state: DEPROVISIONING
         enabled: true
-        stream:
-          href: https://api.equinix.com/fabric/v4/streams/d684aa26-8276-48b7-bb42-a6d9def0a418
-          type: TELEMETRY_STREAM
-          uuid: d684aa26-8276-48b7-bb42-a6d9def0a418
         filters:
           and:
             - property: /type
               operator: LIKE
               values:
-                - "%com.equinix.fabric.connection%"
+                - equinix.fabric.connection%
         metricSelector:
           include:
             - equinix.fabric.connection.*
@@ -33837,7 +34600,7 @@ components:
           type: SPLUNK_HEC
           credential:
             type: ACCESS_TOKEN
-            accessToken: my-access-token
+            accessToken: Splunk <my-access-token>
           settings:
             source: Equinix
             eventIndex: idx-hec-event

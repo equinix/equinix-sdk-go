@@ -11,7 +11,6 @@ Method | HTTP request | Description
 [**GetStreamByUuid**](StreamsApi.md#GetStreamByUuid) | **Get** /fabric/v4/streams/{streamId} | Get Stream
 [**GetStreams**](StreamsApi.md#GetStreams) | **Get** /fabric/v4/streams | Get Streams
 [**GetStreamsAssets**](StreamsApi.md#GetStreamsAssets) | **Post** /fabric/v4/streamAssets/search | Get Assets
-[**GetSubscriptionsInStream**](StreamsApi.md#GetSubscriptionsInStream) | **Get** /fabric/v4/streams/{streamId}/streamSubscriptions | Get Stream&#39;s Subs
 [**UpdateStreamAssetByUuid**](StreamsApi.md#UpdateStreamAssetByUuid) | **Put** /fabric/v4/streams/{streamId}/{asset}/{assetId} | Attach Asset
 [**UpdateStreamByUuid**](StreamsApi.md#UpdateStreamByUuid) | **Put** /fabric/v4/streams/{streamId} | Update Stream
 
@@ -506,80 +505,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetSubscriptionsInStream
-
-> GetSubscriptionsInStreamResponse GetSubscriptionsInStream(ctx, streamId).Offset(offset).Limit(limit).Execute()
-
-Get Stream's Subs
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/equinix/equinix-sdk-go/services/fabricv4"
-)
-
-func main() {
-	streamId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Stream UUID
-	offset := int32(1) // int32 | offset (optional)
-	limit := int32(10) // int32 | number of records to fetch (optional)
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.StreamsApi.GetSubscriptionsInStream(context.Background(), streamId).Offset(offset).Limit(limit).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.GetSubscriptionsInStream``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetSubscriptionsInStream`: GetSubscriptionsInStreamResponse
-	fmt.Fprintf(os.Stdout, "Response from `StreamsApi.GetSubscriptionsInStream`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**streamId** | **string** | Stream UUID | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetSubscriptionsInStreamRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **offset** | **int32** | offset | 
- **limit** | **int32** | number of records to fetch | 
-
-### Return type
-
-[**GetSubscriptionsInStreamResponse**](GetSubscriptionsInStreamResponse.md)
-
-### Authorization
-
-[BearerAuth](../README.md#BearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

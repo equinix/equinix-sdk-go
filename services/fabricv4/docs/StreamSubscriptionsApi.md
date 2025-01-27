@@ -4,17 +4,17 @@ All URIs are relative to *https://api.equinix.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateStreamSubscriptions**](StreamSubscriptionsApi.md#CreateStreamSubscriptions) | **Post** /fabric/v4/streamSubscriptions | Create Subscription
-[**DeleteStreamSubscriptionByUuid**](StreamSubscriptionsApi.md#DeleteStreamSubscriptionByUuid) | **Delete** /fabric/v4/streamSubscriptions/{streamSubscriptionId} | Delete Subscription
-[**GetStreamSubscriptionByUuid**](StreamSubscriptionsApi.md#GetStreamSubscriptionByUuid) | **Get** /fabric/v4/streamSubscriptions/{streamSubscriptionId} | Get Subscription
-[**GetStreamSubscriptions**](StreamSubscriptionsApi.md#GetStreamSubscriptions) | **Get** /fabric/v4/streamSubscriptions | Get Subscriptions
-[**UpdateStreamSubscriptionByUuid**](StreamSubscriptionsApi.md#UpdateStreamSubscriptionByUuid) | **Put** /fabric/v4/streamSubscriptions/{streamSubscriptionId} | Update Subscription
+[**CreateStreamSubscriptions**](StreamSubscriptionsApi.md#CreateStreamSubscriptions) | **Post** /fabric/v4/streams/{streamId}/subscriptions | Create Subscription
+[**DeleteStreamSubscriptionByUuid**](StreamSubscriptionsApi.md#DeleteStreamSubscriptionByUuid) | **Delete** /fabric/v4/streams/{streamId}/subscriptions/{subscriptionId} | Delete Subscription
+[**GetStreamSubscriptionByUuid**](StreamSubscriptionsApi.md#GetStreamSubscriptionByUuid) | **Get** /fabric/v4/streams/{streamId}/subscriptions/{subscriptionId} | Get Subscription
+[**GetStreamSubscriptions**](StreamSubscriptionsApi.md#GetStreamSubscriptions) | **Get** /fabric/v4/streams/{streamId}/subscriptions | Get Subscriptions
+[**UpdateStreamSubscriptionByUuid**](StreamSubscriptionsApi.md#UpdateStreamSubscriptionByUuid) | **Put** /fabric/v4/streams/{streamId}/subscriptions/{subscriptionId} | Update Subscription
 
 
 
 ## CreateStreamSubscriptions
 
-> StreamSubscription CreateStreamSubscriptions(ctx).StreamSubscriptionPostRequest(streamSubscriptionPostRequest).Execute()
+> StreamSubscription CreateStreamSubscriptions(ctx, streamId).StreamSubscriptionPostRequest(streamSubscriptionPostRequest).Execute()
 
 Create Subscription
 
@@ -33,11 +33,12 @@ import (
 )
 
 func main() {
+	streamId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Stream UUID
 	streamSubscriptionPostRequest := *openapiclient.NewStreamSubscriptionPostRequest() // StreamSubscriptionPostRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.StreamSubscriptionsApi.CreateStreamSubscriptions(context.Background()).StreamSubscriptionPostRequest(streamSubscriptionPostRequest).Execute()
+	resp, r, err := apiClient.StreamSubscriptionsApi.CreateStreamSubscriptions(context.Background(), streamId).StreamSubscriptionPostRequest(streamSubscriptionPostRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `StreamSubscriptionsApi.CreateStreamSubscriptions``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -50,6 +51,10 @@ func main() {
 ### Path Parameters
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**streamId** | **string** | Stream UUID | 
 
 ### Other Parameters
 
@@ -58,6 +63,7 @@ Other parameters are passed through a pointer to a apiCreateStreamSubscriptionsR
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
  **streamSubscriptionPostRequest** | [**StreamSubscriptionPostRequest**](StreamSubscriptionPostRequest.md) |  | 
 
 ### Return type
@@ -80,7 +86,7 @@ Name | Type | Description  | Notes
 
 ## DeleteStreamSubscriptionByUuid
 
-> StreamSubscription DeleteStreamSubscriptionByUuid(ctx, streamSubscriptionId).Execute()
+> StreamSubscription DeleteStreamSubscriptionByUuid(ctx, streamId, subscriptionId).Execute()
 
 Delete Subscription
 
@@ -99,11 +105,12 @@ import (
 )
 
 func main() {
-	streamSubscriptionId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Stream Subscription UUID
+	streamId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Stream UUID
+	subscriptionId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Stream Subscription UUID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.StreamSubscriptionsApi.DeleteStreamSubscriptionByUuid(context.Background(), streamSubscriptionId).Execute()
+	resp, r, err := apiClient.StreamSubscriptionsApi.DeleteStreamSubscriptionByUuid(context.Background(), streamId, subscriptionId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `StreamSubscriptionsApi.DeleteStreamSubscriptionByUuid``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -119,7 +126,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**streamSubscriptionId** | **string** | Stream Subscription UUID | 
+**streamId** | **string** | Stream UUID | 
+**subscriptionId** | **string** | Stream Subscription UUID | 
 
 ### Other Parameters
 
@@ -128,6 +136,7 @@ Other parameters are passed through a pointer to a apiDeleteStreamSubscriptionBy
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
 
 
 ### Return type
@@ -150,7 +159,7 @@ Name | Type | Description  | Notes
 
 ## GetStreamSubscriptionByUuid
 
-> StreamSubscription GetStreamSubscriptionByUuid(ctx, streamSubscriptionId).Execute()
+> StreamSubscription GetStreamSubscriptionByUuid(ctx, streamId, subscriptionId).Execute()
 
 Get Subscription
 
@@ -169,11 +178,12 @@ import (
 )
 
 func main() {
-	streamSubscriptionId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Stream Subscription UUID
+	streamId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Stream UUID
+	subscriptionId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Stream Subscription UUID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.StreamSubscriptionsApi.GetStreamSubscriptionByUuid(context.Background(), streamSubscriptionId).Execute()
+	resp, r, err := apiClient.StreamSubscriptionsApi.GetStreamSubscriptionByUuid(context.Background(), streamId, subscriptionId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `StreamSubscriptionsApi.GetStreamSubscriptionByUuid``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -189,7 +199,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**streamSubscriptionId** | **string** | Stream Subscription UUID | 
+**streamId** | **string** | Stream UUID | 
+**subscriptionId** | **string** | Stream Subscription UUID | 
 
 ### Other Parameters
 
@@ -198,6 +209,7 @@ Other parameters are passed through a pointer to a apiGetStreamSubscriptionByUui
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
 
 
 ### Return type
@@ -220,7 +232,7 @@ Name | Type | Description  | Notes
 
 ## GetStreamSubscriptions
 
-> GetAllStreamSubscriptionResponse GetStreamSubscriptions(ctx).Offset(offset).Limit(limit).Execute()
+> GetAllStreamSubscriptionResponse GetStreamSubscriptions(ctx, streamId).Offset(offset).Limit(limit).Execute()
 
 Get Subscriptions
 
@@ -239,12 +251,13 @@ import (
 )
 
 func main() {
+	streamId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Stream UUID
 	offset := int32(1) // int32 | offset (optional)
 	limit := int32(10) // int32 | number of records to fetch (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.StreamSubscriptionsApi.GetStreamSubscriptions(context.Background()).Offset(offset).Limit(limit).Execute()
+	resp, r, err := apiClient.StreamSubscriptionsApi.GetStreamSubscriptions(context.Background(), streamId).Offset(offset).Limit(limit).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `StreamSubscriptionsApi.GetStreamSubscriptions``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -257,6 +270,10 @@ func main() {
 ### Path Parameters
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**streamId** | **string** | Stream UUID | 
 
 ### Other Parameters
 
@@ -265,6 +282,7 @@ Other parameters are passed through a pointer to a apiGetStreamSubscriptionsRequ
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
  **offset** | **int32** | offset | 
  **limit** | **int32** | number of records to fetch | 
 
@@ -288,7 +306,7 @@ Name | Type | Description  | Notes
 
 ## UpdateStreamSubscriptionByUuid
 
-> StreamSubscription UpdateStreamSubscriptionByUuid(ctx, streamSubscriptionId).StreamSubscriptionPutRequest(streamSubscriptionPutRequest).Execute()
+> StreamSubscription UpdateStreamSubscriptionByUuid(ctx, streamId, subscriptionId).StreamSubscriptionPutRequest(streamSubscriptionPutRequest).Execute()
 
 Update Subscription
 
@@ -307,12 +325,13 @@ import (
 )
 
 func main() {
-	streamSubscriptionId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Stream Subscription UUID
+	streamId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Stream UUID
+	subscriptionId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Stream Subscription UUID
 	streamSubscriptionPutRequest := *openapiclient.NewStreamSubscriptionPutRequest() // StreamSubscriptionPutRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.StreamSubscriptionsApi.UpdateStreamSubscriptionByUuid(context.Background(), streamSubscriptionId).StreamSubscriptionPutRequest(streamSubscriptionPutRequest).Execute()
+	resp, r, err := apiClient.StreamSubscriptionsApi.UpdateStreamSubscriptionByUuid(context.Background(), streamId, subscriptionId).StreamSubscriptionPutRequest(streamSubscriptionPutRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `StreamSubscriptionsApi.UpdateStreamSubscriptionByUuid``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -328,7 +347,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**streamSubscriptionId** | **string** | Stream Subscription UUID | 
+**streamId** | **string** | Stream UUID | 
+**subscriptionId** | **string** | Stream Subscription UUID | 
 
 ### Other Parameters
 
@@ -337,6 +357,7 @@ Other parameters are passed through a pointer to a apiUpdateStreamSubscriptionBy
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
 
  **streamSubscriptionPutRequest** | [**StreamSubscriptionPutRequest**](StreamSubscriptionPutRequest.md) |  | 
 

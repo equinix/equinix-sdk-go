@@ -22,7 +22,11 @@ type StreamSubscriptionSinkCredential struct {
 	// passed as Authorization header value
 	IntegrationKey *string `json:"integrationKey,omitempty"`
 	// passed as Authorization header value
-	ApiKey               *string `json:"apiKey,omitempty"`
+	ApiKey *string `json:"apiKey,omitempty"`
+	// passed as Authorization header value
+	Username *string `json:"username,omitempty"`
+	// passed as Authorization header value
+	Password             *string `json:"password,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -173,6 +177,70 @@ func (o *StreamSubscriptionSinkCredential) SetApiKey(v string) {
 	o.ApiKey = &v
 }
 
+// GetUsername returns the Username field value if set, zero value otherwise.
+func (o *StreamSubscriptionSinkCredential) GetUsername() string {
+	if o == nil || IsNil(o.Username) {
+		var ret string
+		return ret
+	}
+	return *o.Username
+}
+
+// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamSubscriptionSinkCredential) GetUsernameOk() (*string, bool) {
+	if o == nil || IsNil(o.Username) {
+		return nil, false
+	}
+	return o.Username, true
+}
+
+// HasUsername returns a boolean if a field has been set.
+func (o *StreamSubscriptionSinkCredential) HasUsername() bool {
+	if o != nil && !IsNil(o.Username) {
+		return true
+	}
+
+	return false
+}
+
+// SetUsername gets a reference to the given string and assigns it to the Username field.
+func (o *StreamSubscriptionSinkCredential) SetUsername(v string) {
+	o.Username = &v
+}
+
+// GetPassword returns the Password field value if set, zero value otherwise.
+func (o *StreamSubscriptionSinkCredential) GetPassword() string {
+	if o == nil || IsNil(o.Password) {
+		var ret string
+		return ret
+	}
+	return *o.Password
+}
+
+// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamSubscriptionSinkCredential) GetPasswordOk() (*string, bool) {
+	if o == nil || IsNil(o.Password) {
+		return nil, false
+	}
+	return o.Password, true
+}
+
+// HasPassword returns a boolean if a field has been set.
+func (o *StreamSubscriptionSinkCredential) HasPassword() bool {
+	if o != nil && !IsNil(o.Password) {
+		return true
+	}
+
+	return false
+}
+
+// SetPassword gets a reference to the given string and assigns it to the Password field.
+func (o *StreamSubscriptionSinkCredential) SetPassword(v string) {
+	o.Password = &v
+}
+
 func (o StreamSubscriptionSinkCredential) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -194,6 +262,12 @@ func (o StreamSubscriptionSinkCredential) ToMap() (map[string]interface{}, error
 	}
 	if !IsNil(o.ApiKey) {
 		toSerialize["apiKey"] = o.ApiKey
+	}
+	if !IsNil(o.Username) {
+		toSerialize["username"] = o.Username
+	}
+	if !IsNil(o.Password) {
+		toSerialize["password"] = o.Password
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -221,6 +295,8 @@ func (o *StreamSubscriptionSinkCredential) UnmarshalJSON(data []byte) (err error
 		delete(additionalProperties, "accessToken")
 		delete(additionalProperties, "integrationKey")
 		delete(additionalProperties, "apiKey")
+		delete(additionalProperties, "username")
+		delete(additionalProperties, "password")
 		o.AdditionalProperties = additionalProperties
 	}
 

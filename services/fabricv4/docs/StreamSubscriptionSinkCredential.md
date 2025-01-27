@@ -8,6 +8,8 @@ Name | Type | Description | Notes
 **AccessToken** | Pointer to **string** | passed as Authorization header value | [optional] 
 **IntegrationKey** | Pointer to **string** | passed as Authorization header value | [optional] 
 **ApiKey** | Pointer to **string** | passed as Authorization header value | [optional] 
+**Username** | Pointer to **string** | passed as Authorization header value | [optional] 
+**Password** | Pointer to **string** | passed as Authorization header value | [optional] 
 
 ## Methods
 
@@ -127,6 +129,56 @@ SetApiKey sets ApiKey field to given value.
 `func (o *StreamSubscriptionSinkCredential) HasApiKey() bool`
 
 HasApiKey returns a boolean if a field has been set.
+
+### GetUsername
+
+`func (o *StreamSubscriptionSinkCredential) GetUsername() string`
+
+GetUsername returns the Username field if non-nil, zero value otherwise.
+
+### GetUsernameOk
+
+`func (o *StreamSubscriptionSinkCredential) GetUsernameOk() (*string, bool)`
+
+GetUsernameOk returns a tuple with the Username field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUsername
+
+`func (o *StreamSubscriptionSinkCredential) SetUsername(v string)`
+
+SetUsername sets Username field to given value.
+
+### HasUsername
+
+`func (o *StreamSubscriptionSinkCredential) HasUsername() bool`
+
+HasUsername returns a boolean if a field has been set.
+
+### GetPassword
+
+`func (o *StreamSubscriptionSinkCredential) GetPassword() string`
+
+GetPassword returns the Password field if non-nil, zero value otherwise.
+
+### GetPasswordOk
+
+`func (o *StreamSubscriptionSinkCredential) GetPasswordOk() (*string, bool)`
+
+GetPasswordOk returns a tuple with the Password field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPassword
+
+`func (o *StreamSubscriptionSinkCredential) SetPassword(v string)`
+
+SetPassword sets Password field to given value.
+
+### HasPassword
+
+`func (o *StreamSubscriptionSinkCredential) HasPassword() bool`
+
+HasPassword returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -25,11 +25,9 @@ type StreamSubscription struct {
 	Name *string `json:"name,omitempty"`
 	// Customer-provided subscription description
 	Description *string                  `json:"description,omitempty"`
-	Project     *Project                 `json:"project,omitempty"`
 	State       *StreamSubscriptionState `json:"state,omitempty"`
 	// Stream subscription enabled status
 	Enabled              *bool                       `json:"enabled,omitempty"`
-	Stream               *StreamTarget               `json:"stream,omitempty"`
 	Filters              *StreamSubscriptionFilter   `json:"filters,omitempty"`
 	MetricSelector       *StreamSubscriptionSelector `json:"metricSelector,omitempty"`
 	EventSelector        *StreamSubscriptionSelector `json:"eventSelector,omitempty"`
@@ -217,38 +215,6 @@ func (o *StreamSubscription) SetDescription(v string) {
 	o.Description = &v
 }
 
-// GetProject returns the Project field value if set, zero value otherwise.
-func (o *StreamSubscription) GetProject() Project {
-	if o == nil || IsNil(o.Project) {
-		var ret Project
-		return ret
-	}
-	return *o.Project
-}
-
-// GetProjectOk returns a tuple with the Project field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *StreamSubscription) GetProjectOk() (*Project, bool) {
-	if o == nil || IsNil(o.Project) {
-		return nil, false
-	}
-	return o.Project, true
-}
-
-// HasProject returns a boolean if a field has been set.
-func (o *StreamSubscription) HasProject() bool {
-	if o != nil && !IsNil(o.Project) {
-		return true
-	}
-
-	return false
-}
-
-// SetProject gets a reference to the given Project and assigns it to the Project field.
-func (o *StreamSubscription) SetProject(v Project) {
-	o.Project = &v
-}
-
 // GetState returns the State field value if set, zero value otherwise.
 func (o *StreamSubscription) GetState() StreamSubscriptionState {
 	if o == nil || IsNil(o.State) {
@@ -311,38 +277,6 @@ func (o *StreamSubscription) HasEnabled() bool {
 // SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
 func (o *StreamSubscription) SetEnabled(v bool) {
 	o.Enabled = &v
-}
-
-// GetStream returns the Stream field value if set, zero value otherwise.
-func (o *StreamSubscription) GetStream() StreamTarget {
-	if o == nil || IsNil(o.Stream) {
-		var ret StreamTarget
-		return ret
-	}
-	return *o.Stream
-}
-
-// GetStreamOk returns a tuple with the Stream field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *StreamSubscription) GetStreamOk() (*StreamTarget, bool) {
-	if o == nil || IsNil(o.Stream) {
-		return nil, false
-	}
-	return o.Stream, true
-}
-
-// HasStream returns a boolean if a field has been set.
-func (o *StreamSubscription) HasStream() bool {
-	if o != nil && !IsNil(o.Stream) {
-		return true
-	}
-
-	return false
-}
-
-// SetStream gets a reference to the given StreamTarget and assigns it to the Stream field.
-func (o *StreamSubscription) SetStream(v StreamTarget) {
-	o.Stream = &v
 }
 
 // GetFilters returns the Filters field value if set, zero value otherwise.
@@ -530,17 +464,11 @@ func (o StreamSubscription) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !IsNil(o.Project) {
-		toSerialize["project"] = o.Project
-	}
 	if !IsNil(o.State) {
 		toSerialize["state"] = o.State
 	}
 	if !IsNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled
-	}
-	if !IsNil(o.Stream) {
-		toSerialize["stream"] = o.Stream
 	}
 	if !IsNil(o.Filters) {
 		toSerialize["filters"] = o.Filters
@@ -584,10 +512,8 @@ func (o *StreamSubscription) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")
-		delete(additionalProperties, "project")
 		delete(additionalProperties, "state")
 		delete(additionalProperties, "enabled")
-		delete(additionalProperties, "stream")
 		delete(additionalProperties, "filters")
 		delete(additionalProperties, "metricSelector")
 		delete(additionalProperties, "eventSelector")

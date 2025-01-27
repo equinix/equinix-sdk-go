@@ -9,10 +9,8 @@ Name | Type | Description | Notes
 **Type** | Pointer to [**StreamSubscriptionType**](StreamSubscriptionType.md) |  | [optional] 
 **Name** | Pointer to **string** | Customer-provided subscription name | [optional] 
 **Description** | Pointer to **string** | Customer-provided subscription description | [optional] 
-**Project** | Pointer to [**Project**](Project.md) |  | [optional] 
 **State** | Pointer to [**StreamSubscriptionState**](StreamSubscriptionState.md) |  | [optional] 
 **Enabled** | Pointer to **bool** | Stream subscription enabled status | [optional] 
-**Stream** | Pointer to [**StreamTarget**](StreamTarget.md) |  | [optional] 
 **Filters** | Pointer to [**StreamSubscriptionFilter**](StreamSubscriptionFilter.md) |  | [optional] 
 **MetricSelector** | Pointer to [**StreamSubscriptionSelector**](StreamSubscriptionSelector.md) |  | [optional] 
 **EventSelector** | Pointer to [**StreamSubscriptionSelector**](StreamSubscriptionSelector.md) |  | [optional] 
@@ -163,31 +161,6 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
-### GetProject
-
-`func (o *StreamSubscription) GetProject() Project`
-
-GetProject returns the Project field if non-nil, zero value otherwise.
-
-### GetProjectOk
-
-`func (o *StreamSubscription) GetProjectOk() (*Project, bool)`
-
-GetProjectOk returns a tuple with the Project field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetProject
-
-`func (o *StreamSubscription) SetProject(v Project)`
-
-SetProject sets Project field to given value.
-
-### HasProject
-
-`func (o *StreamSubscription) HasProject() bool`
-
-HasProject returns a boolean if a field has been set.
-
 ### GetState
 
 `func (o *StreamSubscription) GetState() StreamSubscriptionState`
@@ -237,31 +210,6 @@ SetEnabled sets Enabled field to given value.
 `func (o *StreamSubscription) HasEnabled() bool`
 
 HasEnabled returns a boolean if a field has been set.
-
-### GetStream
-
-`func (o *StreamSubscription) GetStream() StreamTarget`
-
-GetStream returns the Stream field if non-nil, zero value otherwise.
-
-### GetStreamOk
-
-`func (o *StreamSubscription) GetStreamOk() (*StreamTarget, bool)`
-
-GetStreamOk returns a tuple with the Stream field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetStream
-
-`func (o *StreamSubscription) SetStream(v StreamTarget)`
-
-SetStream sets Stream field to given value.
-
-### HasStream
-
-`func (o *StreamSubscription) HasStream() bool`
-
-HasStream returns a boolean if a field has been set.
 
 ### GetFilters
 

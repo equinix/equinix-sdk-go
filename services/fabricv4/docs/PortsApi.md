@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**GetPorts**](PortsApi.md#GetPorts) | **Get** /fabric/v4/ports | Get All Ports
 [**GetVlans**](PortsApi.md#GetVlans) | **Get** /fabric/v4/ports/{portUuid}/linkProtocols | Get Vlans
 [**SearchPorts**](PortsApi.md#SearchPorts) | **Post** /fabric/v4/ports/search | Search ports
+[**UpdatePortByUuid**](PortsApi.md#UpdatePortByUuid) | **Patch** /fabric/v4/ports/{portId} | Update by UUID
 
 
 
@@ -554,6 +555,78 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdatePortByUuid
+
+> AllPortsResponse UpdatePortByUuid(ctx, portId).PortChangeOperation(portChangeOperation).Execute()
+
+Update by UUID
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/equinix/equinix-sdk-go/services/fabricv4"
+)
+
+func main() {
+	portId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Port UUID
+	portChangeOperation := []openapiclient.PortChangeOperation{*openapiclient.NewPortChangeOperation("replace", "/name", map[string]interface{}(123))} // []PortChangeOperation | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PortsApi.UpdatePortByUuid(context.Background(), portId).PortChangeOperation(portChangeOperation).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PortsApi.UpdatePortByUuid``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdatePortByUuid`: AllPortsResponse
+	fmt.Fprintf(os.Stdout, "Response from `PortsApi.UpdatePortByUuid`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**portId** | **string** | Port UUID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdatePortByUuidRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **portChangeOperation** | [**[]PortChangeOperation**](PortChangeOperation.md) |  | 
+
+### Return type
+
+[**AllPortsResponse**](AllPortsResponse.md)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

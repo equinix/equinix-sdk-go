@@ -22,6 +22,7 @@ const (
 	SERVICETOKENCONNECTIONTYPE_EVPLAN_VC ServiceTokenConnectionType = "EVPLAN_VC"
 	SERVICETOKENCONNECTIONTYPE_EPLAN_VC  ServiceTokenConnectionType = "EPLAN_VC"
 	SERVICETOKENCONNECTIONTYPE_IPWAN_VC  ServiceTokenConnectionType = "IPWAN_VC"
+	SERVICETOKENCONNECTIONTYPE_IP_VC     ServiceTokenConnectionType = "IP_VC"
 )
 
 // All allowed values of ServiceTokenConnectionType enum
@@ -31,6 +32,7 @@ var AllowedServiceTokenConnectionTypeEnumValues = []ServiceTokenConnectionType{
 	"EVPLAN_VC",
 	"EPLAN_VC",
 	"IPWAN_VC",
+	"IP_VC",
 }
 
 func (v *ServiceTokenConnectionType) UnmarshalJSON(src []byte) error {
