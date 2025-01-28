@@ -20,11 +20,9 @@ type StreamSubscriptionPostRequest struct {
 	// Customer-provided stream subscription name
 	Name *string `json:"name,omitempty"`
 	// Customer-provided stream subscription description
-	Description *string  `json:"description,omitempty"`
-	Project     *Project `json:"project,omitempty"`
+	Description *string `json:"description,omitempty"`
 	// Stream subscription enabled status
 	Enabled              *bool                       `json:"enabled,omitempty"`
-	Stream               *StreamTarget               `json:"stream,omitempty"`
 	Filters              *StreamSubscriptionFilter   `json:"filters,omitempty"`
 	MetricSelector       *StreamSubscriptionSelector `json:"metricSelector,omitempty"`
 	EventSelector        *StreamSubscriptionSelector `json:"eventSelector,omitempty"`
@@ -147,38 +145,6 @@ func (o *StreamSubscriptionPostRequest) SetDescription(v string) {
 	o.Description = &v
 }
 
-// GetProject returns the Project field value if set, zero value otherwise.
-func (o *StreamSubscriptionPostRequest) GetProject() Project {
-	if o == nil || IsNil(o.Project) {
-		var ret Project
-		return ret
-	}
-	return *o.Project
-}
-
-// GetProjectOk returns a tuple with the Project field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *StreamSubscriptionPostRequest) GetProjectOk() (*Project, bool) {
-	if o == nil || IsNil(o.Project) {
-		return nil, false
-	}
-	return o.Project, true
-}
-
-// HasProject returns a boolean if a field has been set.
-func (o *StreamSubscriptionPostRequest) HasProject() bool {
-	if o != nil && !IsNil(o.Project) {
-		return true
-	}
-
-	return false
-}
-
-// SetProject gets a reference to the given Project and assigns it to the Project field.
-func (o *StreamSubscriptionPostRequest) SetProject(v Project) {
-	o.Project = &v
-}
-
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
 func (o *StreamSubscriptionPostRequest) GetEnabled() bool {
 	if o == nil || IsNil(o.Enabled) {
@@ -209,38 +175,6 @@ func (o *StreamSubscriptionPostRequest) HasEnabled() bool {
 // SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
 func (o *StreamSubscriptionPostRequest) SetEnabled(v bool) {
 	o.Enabled = &v
-}
-
-// GetStream returns the Stream field value if set, zero value otherwise.
-func (o *StreamSubscriptionPostRequest) GetStream() StreamTarget {
-	if o == nil || IsNil(o.Stream) {
-		var ret StreamTarget
-		return ret
-	}
-	return *o.Stream
-}
-
-// GetStreamOk returns a tuple with the Stream field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *StreamSubscriptionPostRequest) GetStreamOk() (*StreamTarget, bool) {
-	if o == nil || IsNil(o.Stream) {
-		return nil, false
-	}
-	return o.Stream, true
-}
-
-// HasStream returns a boolean if a field has been set.
-func (o *StreamSubscriptionPostRequest) HasStream() bool {
-	if o != nil && !IsNil(o.Stream) {
-		return true
-	}
-
-	return false
-}
-
-// SetStream gets a reference to the given StreamTarget and assigns it to the Stream field.
-func (o *StreamSubscriptionPostRequest) SetStream(v StreamTarget) {
-	o.Stream = &v
 }
 
 // GetFilters returns the Filters field value if set, zero value otherwise.
@@ -390,14 +324,8 @@ func (o StreamSubscriptionPostRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !IsNil(o.Project) {
-		toSerialize["project"] = o.Project
-	}
 	if !IsNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled
-	}
-	if !IsNil(o.Stream) {
-		toSerialize["stream"] = o.Stream
 	}
 	if !IsNil(o.Filters) {
 		toSerialize["filters"] = o.Filters
@@ -436,9 +364,7 @@ func (o *StreamSubscriptionPostRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")
-		delete(additionalProperties, "project")
 		delete(additionalProperties, "enabled")
-		delete(additionalProperties, "stream")
 		delete(additionalProperties, "filters")
 		delete(additionalProperties, "metricSelector")
 		delete(additionalProperties, "eventSelector")

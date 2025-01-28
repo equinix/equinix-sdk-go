@@ -22,6 +22,7 @@ type StreamSubscriptionsApiService service
 type ApiCreateStreamSubscriptionsRequest struct {
 	ctx                           context.Context
 	ApiService                    *StreamSubscriptionsApiService
+	streamId                      string
 	streamSubscriptionPostRequest *StreamSubscriptionPostRequest
 }
 
@@ -40,12 +41,14 @@ CreateStreamSubscriptions Create Subscription
 This API provides capability to create user's Stream Subscriptions
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param streamId Stream UUID
 	@return ApiCreateStreamSubscriptionsRequest
 */
-func (a *StreamSubscriptionsApiService) CreateStreamSubscriptions(ctx context.Context) ApiCreateStreamSubscriptionsRequest {
+func (a *StreamSubscriptionsApiService) CreateStreamSubscriptions(ctx context.Context, streamId string) ApiCreateStreamSubscriptionsRequest {
 	return ApiCreateStreamSubscriptionsRequest{
 		ApiService: a,
 		ctx:        ctx,
+		streamId:   streamId,
 	}
 }
 
@@ -65,7 +68,8 @@ func (a *StreamSubscriptionsApiService) CreateStreamSubscriptionsExecute(r ApiCr
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/fabric/v4/streamSubscriptions"
+	localVarPath := localBasePath + "/fabric/v4/streams/{streamId}/subscriptions"
+	localVarPath = strings.Replace(localVarPath, "{"+"streamId"+"}", url.PathEscape(parameterValueToString(r.streamId, "streamId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -185,9 +189,10 @@ func (a *StreamSubscriptionsApiService) CreateStreamSubscriptionsExecute(r ApiCr
 }
 
 type ApiDeleteStreamSubscriptionByUuidRequest struct {
-	ctx                  context.Context
-	ApiService           *StreamSubscriptionsApiService
-	streamSubscriptionId string
+	ctx            context.Context
+	ApiService     *StreamSubscriptionsApiService
+	streamId       string
+	subscriptionId string
 }
 
 func (r ApiDeleteStreamSubscriptionByUuidRequest) Execute() (*StreamSubscription, *http.Response, error) {
@@ -200,14 +205,16 @@ DeleteStreamSubscriptionByUuid Delete Subscription
 This API provides capability to delete user's Stream Subscriptions
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param streamSubscriptionId Stream Subscription UUID
+	@param streamId Stream UUID
+	@param subscriptionId Stream Subscription UUID
 	@return ApiDeleteStreamSubscriptionByUuidRequest
 */
-func (a *StreamSubscriptionsApiService) DeleteStreamSubscriptionByUuid(ctx context.Context, streamSubscriptionId string) ApiDeleteStreamSubscriptionByUuidRequest {
+func (a *StreamSubscriptionsApiService) DeleteStreamSubscriptionByUuid(ctx context.Context, streamId string, subscriptionId string) ApiDeleteStreamSubscriptionByUuidRequest {
 	return ApiDeleteStreamSubscriptionByUuidRequest{
-		ApiService:           a,
-		ctx:                  ctx,
-		streamSubscriptionId: streamSubscriptionId,
+		ApiService:     a,
+		ctx:            ctx,
+		streamId:       streamId,
+		subscriptionId: subscriptionId,
 	}
 }
 
@@ -227,8 +234,9 @@ func (a *StreamSubscriptionsApiService) DeleteStreamSubscriptionByUuidExecute(r 
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/fabric/v4/streamSubscriptions/{streamSubscriptionId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"streamSubscriptionId"+"}", url.PathEscape(parameterValueToString(r.streamSubscriptionId, "streamSubscriptionId")), -1)
+	localVarPath := localBasePath + "/fabric/v4/streams/{streamId}/subscriptions/{subscriptionId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"streamId"+"}", url.PathEscape(parameterValueToString(r.streamId, "streamId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"subscriptionId"+"}", url.PathEscape(parameterValueToString(r.subscriptionId, "subscriptionId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -343,9 +351,10 @@ func (a *StreamSubscriptionsApiService) DeleteStreamSubscriptionByUuidExecute(r 
 }
 
 type ApiGetStreamSubscriptionByUuidRequest struct {
-	ctx                  context.Context
-	ApiService           *StreamSubscriptionsApiService
-	streamSubscriptionId string
+	ctx            context.Context
+	ApiService     *StreamSubscriptionsApiService
+	streamId       string
+	subscriptionId string
 }
 
 func (r ApiGetStreamSubscriptionByUuidRequest) Execute() (*StreamSubscription, *http.Response, error) {
@@ -358,14 +367,16 @@ GetStreamSubscriptionByUuid Get Subscription
 This API provides capability to delete user's get Stream Subscriptions
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param streamSubscriptionId Stream Subscription UUID
+	@param streamId Stream UUID
+	@param subscriptionId Stream Subscription UUID
 	@return ApiGetStreamSubscriptionByUuidRequest
 */
-func (a *StreamSubscriptionsApiService) GetStreamSubscriptionByUuid(ctx context.Context, streamSubscriptionId string) ApiGetStreamSubscriptionByUuidRequest {
+func (a *StreamSubscriptionsApiService) GetStreamSubscriptionByUuid(ctx context.Context, streamId string, subscriptionId string) ApiGetStreamSubscriptionByUuidRequest {
 	return ApiGetStreamSubscriptionByUuidRequest{
-		ApiService:           a,
-		ctx:                  ctx,
-		streamSubscriptionId: streamSubscriptionId,
+		ApiService:     a,
+		ctx:            ctx,
+		streamId:       streamId,
+		subscriptionId: subscriptionId,
 	}
 }
 
@@ -385,8 +396,9 @@ func (a *StreamSubscriptionsApiService) GetStreamSubscriptionByUuidExecute(r Api
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/fabric/v4/streamSubscriptions/{streamSubscriptionId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"streamSubscriptionId"+"}", url.PathEscape(parameterValueToString(r.streamSubscriptionId, "streamSubscriptionId")), -1)
+	localVarPath := localBasePath + "/fabric/v4/streams/{streamId}/subscriptions/{subscriptionId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"streamId"+"}", url.PathEscape(parameterValueToString(r.streamId, "streamId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"subscriptionId"+"}", url.PathEscape(parameterValueToString(r.subscriptionId, "subscriptionId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -503,6 +515,7 @@ func (a *StreamSubscriptionsApiService) GetStreamSubscriptionByUuidExecute(r Api
 type ApiGetStreamSubscriptionsRequest struct {
 	ctx        context.Context
 	ApiService *StreamSubscriptionsApiService
+	streamId   string
 	offset     *int32
 	limit      *int32
 }
@@ -529,12 +542,14 @@ GetStreamSubscriptions Get Subscriptions
 This API provides capability to retrieve stream subscriptions
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param streamId Stream UUID
 	@return ApiGetStreamSubscriptionsRequest
 */
-func (a *StreamSubscriptionsApiService) GetStreamSubscriptions(ctx context.Context) ApiGetStreamSubscriptionsRequest {
+func (a *StreamSubscriptionsApiService) GetStreamSubscriptions(ctx context.Context, streamId string) ApiGetStreamSubscriptionsRequest {
 	return ApiGetStreamSubscriptionsRequest{
 		ApiService: a,
 		ctx:        ctx,
+		streamId:   streamId,
 	}
 }
 
@@ -554,7 +569,8 @@ func (a *StreamSubscriptionsApiService) GetStreamSubscriptionsExecute(r ApiGetSt
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/fabric/v4/streamSubscriptions"
+	localVarPath := localBasePath + "/fabric/v4/streams/{streamId}/subscriptions"
+	localVarPath = strings.Replace(localVarPath, "{"+"streamId"+"}", url.PathEscape(parameterValueToString(r.streamId, "streamId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -666,7 +682,8 @@ func (a *StreamSubscriptionsApiService) GetStreamSubscriptionsExecute(r ApiGetSt
 type ApiUpdateStreamSubscriptionByUuidRequest struct {
 	ctx                          context.Context
 	ApiService                   *StreamSubscriptionsApiService
-	streamSubscriptionId         string
+	streamId                     string
+	subscriptionId               string
 	streamSubscriptionPutRequest *StreamSubscriptionPutRequest
 }
 
@@ -685,14 +702,16 @@ UpdateStreamSubscriptionByUuid Update Subscription
 This API provides capability to update user's Stream Subscriptions
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param streamSubscriptionId Stream Subscription UUID
+	@param streamId Stream UUID
+	@param subscriptionId Stream Subscription UUID
 	@return ApiUpdateStreamSubscriptionByUuidRequest
 */
-func (a *StreamSubscriptionsApiService) UpdateStreamSubscriptionByUuid(ctx context.Context, streamSubscriptionId string) ApiUpdateStreamSubscriptionByUuidRequest {
+func (a *StreamSubscriptionsApiService) UpdateStreamSubscriptionByUuid(ctx context.Context, streamId string, subscriptionId string) ApiUpdateStreamSubscriptionByUuidRequest {
 	return ApiUpdateStreamSubscriptionByUuidRequest{
-		ApiService:           a,
-		ctx:                  ctx,
-		streamSubscriptionId: streamSubscriptionId,
+		ApiService:     a,
+		ctx:            ctx,
+		streamId:       streamId,
+		subscriptionId: subscriptionId,
 	}
 }
 
@@ -712,8 +731,9 @@ func (a *StreamSubscriptionsApiService) UpdateStreamSubscriptionByUuidExecute(r 
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/fabric/v4/streamSubscriptions/{streamSubscriptionId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"streamSubscriptionId"+"}", url.PathEscape(parameterValueToString(r.streamSubscriptionId, "streamSubscriptionId")), -1)
+	localVarPath := localBasePath + "/fabric/v4/streams/{streamId}/subscriptions/{subscriptionId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"streamId"+"}", url.PathEscape(parameterValueToString(r.streamId, "streamId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"subscriptionId"+"}", url.PathEscape(parameterValueToString(r.subscriptionId, "subscriptionId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

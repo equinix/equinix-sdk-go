@@ -37,7 +37,7 @@ var (
 	queryDescape    = strings.NewReplacer("%5B", "[", "%5D", "]")
 )
 
-// APIClient manages communication with the Equinix Fabric API v4 API v4.18
+// APIClient manages communication with the Equinix Fabric API v4 API v4.19
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
 	cfg    *Configuration

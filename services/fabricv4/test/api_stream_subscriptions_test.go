@@ -25,7 +25,9 @@ func Test_fabricv4_StreamSubscriptionsApiService(t *testing.T) {
 	t.Run("Test StreamSubscriptionsApiService CreateStreamSubscriptions", func(t *testing.T) {
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.StreamSubscriptionsApi.CreateStreamSubscriptions(context.Background()).Execute()
+		var streamId string
+
+		resp, httpRes, err := apiClient.StreamSubscriptionsApi.CreateStreamSubscriptions(context.Background(), streamId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,9 +37,10 @@ func Test_fabricv4_StreamSubscriptionsApiService(t *testing.T) {
 	t.Run("Test StreamSubscriptionsApiService DeleteStreamSubscriptionByUuid", func(t *testing.T) {
 		t.Skip("skip test") // remove to run test
 
-		var streamSubscriptionId string
+		var streamId string
+		var subscriptionId string
 
-		resp, httpRes, err := apiClient.StreamSubscriptionsApi.DeleteStreamSubscriptionByUuid(context.Background(), streamSubscriptionId).Execute()
+		resp, httpRes, err := apiClient.StreamSubscriptionsApi.DeleteStreamSubscriptionByUuid(context.Background(), streamId, subscriptionId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,9 +50,10 @@ func Test_fabricv4_StreamSubscriptionsApiService(t *testing.T) {
 	t.Run("Test StreamSubscriptionsApiService GetStreamSubscriptionByUuid", func(t *testing.T) {
 		t.Skip("skip test") // remove to run test
 
-		var streamSubscriptionId string
+		var streamId string
+		var subscriptionId string
 
-		resp, httpRes, err := apiClient.StreamSubscriptionsApi.GetStreamSubscriptionByUuid(context.Background(), streamSubscriptionId).Execute()
+		resp, httpRes, err := apiClient.StreamSubscriptionsApi.GetStreamSubscriptionByUuid(context.Background(), streamId, subscriptionId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -59,7 +63,9 @@ func Test_fabricv4_StreamSubscriptionsApiService(t *testing.T) {
 	t.Run("Test StreamSubscriptionsApiService GetStreamSubscriptions", func(t *testing.T) {
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.StreamSubscriptionsApi.GetStreamSubscriptions(context.Background()).Execute()
+		var streamId string
+
+		resp, httpRes, err := apiClient.StreamSubscriptionsApi.GetStreamSubscriptions(context.Background(), streamId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -69,9 +75,10 @@ func Test_fabricv4_StreamSubscriptionsApiService(t *testing.T) {
 	t.Run("Test StreamSubscriptionsApiService UpdateStreamSubscriptionByUuid", func(t *testing.T) {
 		t.Skip("skip test") // remove to run test
 
-		var streamSubscriptionId string
+		var streamId string
+		var subscriptionId string
 
-		resp, httpRes, err := apiClient.StreamSubscriptionsApi.UpdateStreamSubscriptionByUuid(context.Background(), streamSubscriptionId).Execute()
+		resp, httpRes, err := apiClient.StreamSubscriptionsApi.UpdateStreamSubscriptionByUuid(context.Background(), streamId, subscriptionId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | [**ServiceTokenConnectionType**](ServiceTokenConnectionType.md) |  | 
+**Type** | Pointer to [**ServiceTokenConnectionType**](ServiceTokenConnectionType.md) |  | [optional] 
 **Href** | Pointer to **string** | An absolute URL that is the subject of the link&#39;s context. | [optional] [readonly] 
 **Uuid** | Pointer to **string** | Equinix-assigned connection identifier | [optional] 
 **AllowRemoteConnection** | Pointer to **bool** | Authorization to connect remotely | [optional] [default to false]
@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 
 ### NewServiceTokenConnection
 
-`func NewServiceTokenConnection(type_ ServiceTokenConnectionType, ) *ServiceTokenConnection`
+`func NewServiceTokenConnection() *ServiceTokenConnection`
 
 NewServiceTokenConnection instantiates a new ServiceTokenConnection object
 This constructor will assign default values to properties that have it defined,
@@ -52,6 +52,11 @@ and a boolean to check if the value has been set.
 
 SetType sets Type field to given value.
 
+### HasType
+
+`func (o *ServiceTokenConnection) HasType() bool`
+
+HasType returns a boolean if a field has been set.
 
 ### GetHref
 

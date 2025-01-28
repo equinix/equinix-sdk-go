@@ -17,9 +17,10 @@ type StreamSubscriptionSinkCredentialType string
 
 // List of StreamSubscriptionSinkCredential_type
 const (
-	STREAMSUBSCRIPTIONSINKCREDENTIALTYPE_ACCESS_TOKEN    StreamSubscriptionSinkCredentialType = "ACCESS_TOKEN"
-	STREAMSUBSCRIPTIONSINKCREDENTIALTYPE_INTEGRATION_KEY StreamSubscriptionSinkCredentialType = "INTEGRATION_KEY"
-	STREAMSUBSCRIPTIONSINKCREDENTIALTYPE_API_KEY         StreamSubscriptionSinkCredentialType = "API_KEY"
+	STREAMSUBSCRIPTIONSINKCREDENTIALTYPE_ACCESS_TOKEN      StreamSubscriptionSinkCredentialType = "ACCESS_TOKEN"
+	STREAMSUBSCRIPTIONSINKCREDENTIALTYPE_INTEGRATION_KEY   StreamSubscriptionSinkCredentialType = "INTEGRATION_KEY"
+	STREAMSUBSCRIPTIONSINKCREDENTIALTYPE_API_KEY           StreamSubscriptionSinkCredentialType = "API_KEY"
+	STREAMSUBSCRIPTIONSINKCREDENTIALTYPE_USERNAME_PASSWORD StreamSubscriptionSinkCredentialType = "USERNAME_PASSWORD"
 )
 
 // All allowed values of StreamSubscriptionSinkCredentialType enum
@@ -27,6 +28,7 @@ var AllowedStreamSubscriptionSinkCredentialTypeEnumValues = []StreamSubscription
 	"ACCESS_TOKEN",
 	"INTEGRATION_KEY",
 	"API_KEY",
+	"USERNAME_PASSWORD",
 }
 
 func (v *StreamSubscriptionSinkCredentialType) UnmarshalJSON(src []byte) error {

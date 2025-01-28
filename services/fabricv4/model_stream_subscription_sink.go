@@ -24,9 +24,11 @@ type StreamSubscriptionSink struct {
 	// maximum batch size
 	BatchSizeMax *int32 `json:"batchSizeMax,omitempty"`
 	// maximum batch waiting time
-	BatchWaitTimeMax     *int32                            `json:"batchWaitTimeMax,omitempty"`
-	Credential           *StreamSubscriptionSinkCredential `json:"credential,omitempty"`
-	Settings             *StreamSubscriptionSinkSetting    `json:"settings,omitempty"`
+	BatchWaitTimeMax *int32                            `json:"batchWaitTimeMax,omitempty"`
+	Credential       *StreamSubscriptionSinkCredential `json:"credential,omitempty"`
+	Settings         *StreamSubscriptionSinkSetting    `json:"settings,omitempty"`
+	// sink host
+	Host                 *string `json:"host,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -273,6 +275,38 @@ func (o *StreamSubscriptionSink) SetSettings(v StreamSubscriptionSinkSetting) {
 	o.Settings = &v
 }
 
+// GetHost returns the Host field value if set, zero value otherwise.
+func (o *StreamSubscriptionSink) GetHost() string {
+	if o == nil || IsNil(o.Host) {
+		var ret string
+		return ret
+	}
+	return *o.Host
+}
+
+// GetHostOk returns a tuple with the Host field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamSubscriptionSink) GetHostOk() (*string, bool) {
+	if o == nil || IsNil(o.Host) {
+		return nil, false
+	}
+	return o.Host, true
+}
+
+// HasHost returns a boolean if a field has been set.
+func (o *StreamSubscriptionSink) HasHost() bool {
+	if o != nil && !IsNil(o.Host) {
+		return true
+	}
+
+	return false
+}
+
+// SetHost gets a reference to the given string and assigns it to the Host field.
+func (o *StreamSubscriptionSink) SetHost(v string) {
+	o.Host = &v
+}
+
 func (o StreamSubscriptionSink) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -304,6 +338,9 @@ func (o StreamSubscriptionSink) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Settings) {
 		toSerialize["settings"] = o.Settings
 	}
+	if !IsNil(o.Host) {
+		toSerialize["host"] = o.Host
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -333,6 +370,7 @@ func (o *StreamSubscriptionSink) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "batchWaitTimeMax")
 		delete(additionalProperties, "credential")
 		delete(additionalProperties, "settings")
+		delete(additionalProperties, "host")
 		o.AdditionalProperties = additionalProperties
 	}
 

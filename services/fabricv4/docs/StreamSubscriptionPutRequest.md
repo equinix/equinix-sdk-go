@@ -6,7 +6,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** | Customer-provided stream subscription name | [optional] 
 **Description** | Pointer to **string** | Customer-provided stream subscription description | [optional] 
-**Stream** | Pointer to [**StreamTarget**](StreamTarget.md) |  | [optional] 
 **Enabled** | Pointer to **bool** | Stream subscription enabled status | [optional] 
 **Filters** | Pointer to [**StreamSubscriptionFilter**](StreamSubscriptionFilter.md) |  | [optional] 
 **MetricSelector** | Pointer to [**StreamSubscriptionSelector**](StreamSubscriptionSelector.md) |  | [optional] 
@@ -81,31 +80,6 @@ SetDescription sets Description field to given value.
 `func (o *StreamSubscriptionPutRequest) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
-
-### GetStream
-
-`func (o *StreamSubscriptionPutRequest) GetStream() StreamTarget`
-
-GetStream returns the Stream field if non-nil, zero value otherwise.
-
-### GetStreamOk
-
-`func (o *StreamSubscriptionPutRequest) GetStreamOk() (*StreamTarget, bool)`
-
-GetStreamOk returns a tuple with the Stream field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetStream
-
-`func (o *StreamSubscriptionPutRequest) SetStream(v StreamTarget)`
-
-SetStream sets Stream field to given value.
-
-### HasStream
-
-`func (o *StreamSubscriptionPutRequest) HasStream() bool`
-
-HasStream returns a boolean if a field has been set.
 
 ### GetEnabled
 

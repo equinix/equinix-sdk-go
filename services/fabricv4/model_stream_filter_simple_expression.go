@@ -19,7 +19,8 @@ type StreamFilterSimpleExpression struct {
 	// Possible field names to use on filters:  * `/subject` - subject  * `/type` - type
 	Property *string `json:"property,omitempty"`
 	// Possible operators to use on filters:  * `=` - equal  * `in` - in  * `LIKE` - case-sensitive like  * `ILIKE` - case-insensitive like
-	Operator             *string  `json:"operator,omitempty"`
+	Operator *string `json:"operator,omitempty"`
+	// ### Supported event or metric names to use on filters with property /type:   * `*` - all events or metrics   * `equinix.fabric.port.*` - port events or metrics   * `equinix.fabric.connection.*` - connection events or metrics   * `equinix.fabric.router.*` - cloud router events   * `equinix.fabric.metro.*` - metro metrics   * `equinix.fabric.network.*` - network events   * `equinix.fabric.service_token.*` - service token events   * `equinix.network_edge.*` - network edge events   * `equinix.network_edge.acl.*` - network edge acl events   * `equinix.network_edge.device.*` - network edge device events   * `equinix.access_manager.*` - identity access manager events   * `equinix.access_manager.user.role.*` - identity access manager user role events ### Supported event or metric names to use on filters with property /subject:   * `*` - all events or metrics   * `/fabric/v4/ports/<uuid>` - port events or metrics   * `/fabric/v4/connections/<uuid>` - connection events or metrics   * `/fabric/v4/routers/<uuid>` - cloud router events   * `/fabric/v4/metros/<metroCode>` - metro metrics   * `/fabric/v4/networks/<uuid>` - network events   * `/fabric/v4/tokens/<uuid>` - service token events   * `/ne/v1/acl/<uuid>` - network edge acl events   * `/ne/v1/devices/<uuid>` - network edge device events   * `/am/v2/users/<uuid>/roleAssignments/<uuid>` - identity access manager events
 	Values               []string `json:"values,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

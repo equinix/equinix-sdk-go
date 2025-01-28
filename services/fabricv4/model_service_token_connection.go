@@ -9,7 +9,6 @@ package fabricv4
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the ServiceTokenConnection type satisfies the MappedNullable interface at compile time
@@ -17,7 +16,7 @@ var _ MappedNullable = &ServiceTokenConnection{}
 
 // ServiceTokenConnection Service Token Connection Type Information
 type ServiceTokenConnection struct {
-	Type ServiceTokenConnectionType `json:"type"`
+	Type *ServiceTokenConnectionType `json:"type,omitempty"`
 	// An absolute URL that is the subject of the link's context.
 	Href *string `json:"href,omitempty"`
 	// Equinix-assigned connection identifier
@@ -41,9 +40,8 @@ type _ServiceTokenConnection ServiceTokenConnection
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewServiceTokenConnection(type_ ServiceTokenConnectionType) *ServiceTokenConnection {
+func NewServiceTokenConnection() *ServiceTokenConnection {
 	this := ServiceTokenConnection{}
-	this.Type = type_
 	var allowRemoteConnection bool = false
 	this.AllowRemoteConnection = &allowRemoteConnection
 	var allowCustomBandwidth bool = false
@@ -63,28 +61,36 @@ func NewServiceTokenConnectionWithDefaults() *ServiceTokenConnection {
 	return &this
 }
 
-// GetType returns the Type field value
+// GetType returns the Type field value if set, zero value otherwise.
 func (o *ServiceTokenConnection) GetType() ServiceTokenConnectionType {
-	if o == nil {
+	if o == nil || IsNil(o.Type) {
 		var ret ServiceTokenConnectionType
 		return ret
 	}
-
-	return o.Type
+	return *o.Type
 }
 
-// GetTypeOk returns a tuple with the Type field value
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServiceTokenConnection) GetTypeOk() (*ServiceTokenConnectionType, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
-	return &o.Type, true
+	return o.Type, true
 }
 
-// SetType sets field value
+// HasType returns a boolean if a field has been set.
+func (o *ServiceTokenConnection) HasType() bool {
+	if o != nil && !IsNil(o.Type) {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given ServiceTokenConnectionType and assigns it to the Type field.
 func (o *ServiceTokenConnection) SetType(v ServiceTokenConnectionType) {
-	o.Type = v
+	o.Type = &v
 }
 
 // GetHref returns the Href field value if set, zero value otherwise.
@@ -353,7 +359,9 @@ func (o ServiceTokenConnection) MarshalJSON() ([]byte, error) {
 
 func (o ServiceTokenConnection) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["type"] = o.Type
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
 	if !IsNil(o.Href) {
 		toSerialize["href"] = o.Href
 	}
@@ -387,27 +395,6 @@ func (o ServiceTokenConnection) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *ServiceTokenConnection) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"type",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
 	varServiceTokenConnection := _ServiceTokenConnection{}
 
 	err = json.Unmarshal(data, &varServiceTokenConnection)

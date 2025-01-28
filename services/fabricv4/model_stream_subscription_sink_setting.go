@@ -23,7 +23,13 @@ type StreamSubscriptionSinkSetting struct {
 	// source
 	Source *string `json:"source,omitempty"`
 	// Application key
-	ApplicationKey       *string `json:"applicationKey,omitempty"`
+	ApplicationKey *string `json:"applicationKey,omitempty"`
+	// event uri
+	EventUri *string `json:"eventUri,omitempty"`
+	// metric uri
+	MetricUri *string `json:"metricUri,omitempty"`
+	// transform alerts
+	TransformAlerts      *bool `json:"transformAlerts,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -174,6 +180,102 @@ func (o *StreamSubscriptionSinkSetting) SetApplicationKey(v string) {
 	o.ApplicationKey = &v
 }
 
+// GetEventUri returns the EventUri field value if set, zero value otherwise.
+func (o *StreamSubscriptionSinkSetting) GetEventUri() string {
+	if o == nil || IsNil(o.EventUri) {
+		var ret string
+		return ret
+	}
+	return *o.EventUri
+}
+
+// GetEventUriOk returns a tuple with the EventUri field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamSubscriptionSinkSetting) GetEventUriOk() (*string, bool) {
+	if o == nil || IsNil(o.EventUri) {
+		return nil, false
+	}
+	return o.EventUri, true
+}
+
+// HasEventUri returns a boolean if a field has been set.
+func (o *StreamSubscriptionSinkSetting) HasEventUri() bool {
+	if o != nil && !IsNil(o.EventUri) {
+		return true
+	}
+
+	return false
+}
+
+// SetEventUri gets a reference to the given string and assigns it to the EventUri field.
+func (o *StreamSubscriptionSinkSetting) SetEventUri(v string) {
+	o.EventUri = &v
+}
+
+// GetMetricUri returns the MetricUri field value if set, zero value otherwise.
+func (o *StreamSubscriptionSinkSetting) GetMetricUri() string {
+	if o == nil || IsNil(o.MetricUri) {
+		var ret string
+		return ret
+	}
+	return *o.MetricUri
+}
+
+// GetMetricUriOk returns a tuple with the MetricUri field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamSubscriptionSinkSetting) GetMetricUriOk() (*string, bool) {
+	if o == nil || IsNil(o.MetricUri) {
+		return nil, false
+	}
+	return o.MetricUri, true
+}
+
+// HasMetricUri returns a boolean if a field has been set.
+func (o *StreamSubscriptionSinkSetting) HasMetricUri() bool {
+	if o != nil && !IsNil(o.MetricUri) {
+		return true
+	}
+
+	return false
+}
+
+// SetMetricUri gets a reference to the given string and assigns it to the MetricUri field.
+func (o *StreamSubscriptionSinkSetting) SetMetricUri(v string) {
+	o.MetricUri = &v
+}
+
+// GetTransformAlerts returns the TransformAlerts field value if set, zero value otherwise.
+func (o *StreamSubscriptionSinkSetting) GetTransformAlerts() bool {
+	if o == nil || IsNil(o.TransformAlerts) {
+		var ret bool
+		return ret
+	}
+	return *o.TransformAlerts
+}
+
+// GetTransformAlertsOk returns a tuple with the TransformAlerts field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamSubscriptionSinkSetting) GetTransformAlertsOk() (*bool, bool) {
+	if o == nil || IsNil(o.TransformAlerts) {
+		return nil, false
+	}
+	return o.TransformAlerts, true
+}
+
+// HasTransformAlerts returns a boolean if a field has been set.
+func (o *StreamSubscriptionSinkSetting) HasTransformAlerts() bool {
+	if o != nil && !IsNil(o.TransformAlerts) {
+		return true
+	}
+
+	return false
+}
+
+// SetTransformAlerts gets a reference to the given bool and assigns it to the TransformAlerts field.
+func (o *StreamSubscriptionSinkSetting) SetTransformAlerts(v bool) {
+	o.TransformAlerts = &v
+}
+
 func (o StreamSubscriptionSinkSetting) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -195,6 +297,15 @@ func (o StreamSubscriptionSinkSetting) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ApplicationKey) {
 		toSerialize["applicationKey"] = o.ApplicationKey
+	}
+	if !IsNil(o.EventUri) {
+		toSerialize["eventUri"] = o.EventUri
+	}
+	if !IsNil(o.MetricUri) {
+		toSerialize["metricUri"] = o.MetricUri
+	}
+	if !IsNil(o.TransformAlerts) {
+		toSerialize["transformAlerts"] = o.TransformAlerts
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -222,6 +333,9 @@ func (o *StreamSubscriptionSinkSetting) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "metricIndex")
 		delete(additionalProperties, "source")
 		delete(additionalProperties, "applicationKey")
+		delete(additionalProperties, "eventUri")
+		delete(additionalProperties, "metricUri")
+		delete(additionalProperties, "transformAlerts")
 		o.AdditionalProperties = additionalProperties
 	}
 

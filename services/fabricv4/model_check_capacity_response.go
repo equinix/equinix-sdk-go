@@ -11,38 +11,38 @@ import (
 	"encoding/json"
 )
 
-// checks if the TopUtilizedStatistics type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &TopUtilizedStatistics{}
+// checks if the CheckCapacityResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CheckCapacityResponse{}
 
-// TopUtilizedStatistics This API provides service-level traffic metrics for the top utilized ports so that you can view access and gather key information required to manage service subscription sizing and capacity.
-type TopUtilizedStatistics struct {
+// CheckCapacityResponse GET All available ports
+type CheckCapacityResponse struct {
 	Pagination *Pagination `json:"pagination,omitempty"`
-	// Data returned from the API call.
-	Data                 []Statistics `json:"data,omitempty"`
+	// GET All available ports
+	Data                 []CheckCapacity `json:"data,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _TopUtilizedStatistics TopUtilizedStatistics
+type _CheckCapacityResponse CheckCapacityResponse
 
-// NewTopUtilizedStatistics instantiates a new TopUtilizedStatistics object
+// NewCheckCapacityResponse instantiates a new CheckCapacityResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTopUtilizedStatistics() *TopUtilizedStatistics {
-	this := TopUtilizedStatistics{}
+func NewCheckCapacityResponse() *CheckCapacityResponse {
+	this := CheckCapacityResponse{}
 	return &this
 }
 
-// NewTopUtilizedStatisticsWithDefaults instantiates a new TopUtilizedStatistics object
+// NewCheckCapacityResponseWithDefaults instantiates a new CheckCapacityResponse object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewTopUtilizedStatisticsWithDefaults() *TopUtilizedStatistics {
-	this := TopUtilizedStatistics{}
+func NewCheckCapacityResponseWithDefaults() *CheckCapacityResponse {
+	this := CheckCapacityResponse{}
 	return &this
 }
 
 // GetPagination returns the Pagination field value if set, zero value otherwise.
-func (o *TopUtilizedStatistics) GetPagination() Pagination {
+func (o *CheckCapacityResponse) GetPagination() Pagination {
 	if o == nil || IsNil(o.Pagination) {
 		var ret Pagination
 		return ret
@@ -52,7 +52,7 @@ func (o *TopUtilizedStatistics) GetPagination() Pagination {
 
 // GetPaginationOk returns a tuple with the Pagination field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TopUtilizedStatistics) GetPaginationOk() (*Pagination, bool) {
+func (o *CheckCapacityResponse) GetPaginationOk() (*Pagination, bool) {
 	if o == nil || IsNil(o.Pagination) {
 		return nil, false
 	}
@@ -60,7 +60,7 @@ func (o *TopUtilizedStatistics) GetPaginationOk() (*Pagination, bool) {
 }
 
 // HasPagination returns a boolean if a field has been set.
-func (o *TopUtilizedStatistics) HasPagination() bool {
+func (o *CheckCapacityResponse) HasPagination() bool {
 	if o != nil && !IsNil(o.Pagination) {
 		return true
 	}
@@ -69,14 +69,14 @@ func (o *TopUtilizedStatistics) HasPagination() bool {
 }
 
 // SetPagination gets a reference to the given Pagination and assigns it to the Pagination field.
-func (o *TopUtilizedStatistics) SetPagination(v Pagination) {
+func (o *CheckCapacityResponse) SetPagination(v Pagination) {
 	o.Pagination = &v
 }
 
 // GetData returns the Data field value if set, zero value otherwise.
-func (o *TopUtilizedStatistics) GetData() []Statistics {
+func (o *CheckCapacityResponse) GetData() []CheckCapacity {
 	if o == nil || IsNil(o.Data) {
-		var ret []Statistics
+		var ret []CheckCapacity
 		return ret
 	}
 	return o.Data
@@ -84,7 +84,7 @@ func (o *TopUtilizedStatistics) GetData() []Statistics {
 
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TopUtilizedStatistics) GetDataOk() ([]Statistics, bool) {
+func (o *CheckCapacityResponse) GetDataOk() ([]CheckCapacity, bool) {
 	if o == nil || IsNil(o.Data) {
 		return nil, false
 	}
@@ -92,7 +92,7 @@ func (o *TopUtilizedStatistics) GetDataOk() ([]Statistics, bool) {
 }
 
 // HasData returns a boolean if a field has been set.
-func (o *TopUtilizedStatistics) HasData() bool {
+func (o *CheckCapacityResponse) HasData() bool {
 	if o != nil && !IsNil(o.Data) {
 		return true
 	}
@@ -100,12 +100,12 @@ func (o *TopUtilizedStatistics) HasData() bool {
 	return false
 }
 
-// SetData gets a reference to the given []Statistics and assigns it to the Data field.
-func (o *TopUtilizedStatistics) SetData(v []Statistics) {
+// SetData gets a reference to the given []CheckCapacity and assigns it to the Data field.
+func (o *CheckCapacityResponse) SetData(v []CheckCapacity) {
 	o.Data = v
 }
 
-func (o TopUtilizedStatistics) MarshalJSON() ([]byte, error) {
+func (o CheckCapacityResponse) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -113,7 +113,7 @@ func (o TopUtilizedStatistics) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o TopUtilizedStatistics) ToMap() (map[string]interface{}, error) {
+func (o CheckCapacityResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Pagination) {
 		toSerialize["pagination"] = o.Pagination
@@ -129,16 +129,16 @@ func (o TopUtilizedStatistics) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *TopUtilizedStatistics) UnmarshalJSON(data []byte) (err error) {
-	varTopUtilizedStatistics := _TopUtilizedStatistics{}
+func (o *CheckCapacityResponse) UnmarshalJSON(data []byte) (err error) {
+	varCheckCapacityResponse := _CheckCapacityResponse{}
 
-	err = json.Unmarshal(data, &varTopUtilizedStatistics)
+	err = json.Unmarshal(data, &varCheckCapacityResponse)
 
 	if err != nil {
 		return err
 	}
 
-	*o = TopUtilizedStatistics(varTopUtilizedStatistics)
+	*o = CheckCapacityResponse(varCheckCapacityResponse)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -151,38 +151,38 @@ func (o *TopUtilizedStatistics) UnmarshalJSON(data []byte) (err error) {
 	return err
 }
 
-type NullableTopUtilizedStatistics struct {
-	value *TopUtilizedStatistics
+type NullableCheckCapacityResponse struct {
+	value *CheckCapacityResponse
 	isSet bool
 }
 
-func (v NullableTopUtilizedStatistics) Get() *TopUtilizedStatistics {
+func (v NullableCheckCapacityResponse) Get() *CheckCapacityResponse {
 	return v.value
 }
 
-func (v *NullableTopUtilizedStatistics) Set(val *TopUtilizedStatistics) {
+func (v *NullableCheckCapacityResponse) Set(val *CheckCapacityResponse) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableTopUtilizedStatistics) IsSet() bool {
+func (v NullableCheckCapacityResponse) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableTopUtilizedStatistics) Unset() {
+func (v *NullableCheckCapacityResponse) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableTopUtilizedStatistics(val *TopUtilizedStatistics) *NullableTopUtilizedStatistics {
-	return &NullableTopUtilizedStatistics{value: val, isSet: true}
+func NewNullableCheckCapacityResponse(val *CheckCapacityResponse) *NullableCheckCapacityResponse {
+	return &NullableCheckCapacityResponse{value: val, isSet: true}
 }
 
-func (v NullableTopUtilizedStatistics) MarshalJSON() ([]byte, error) {
+func (v NullableCheckCapacityResponse) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableTopUtilizedStatistics) UnmarshalJSON(src []byte) error {
+func (v *NullableCheckCapacityResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

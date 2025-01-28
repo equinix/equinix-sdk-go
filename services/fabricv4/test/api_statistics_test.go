@@ -34,16 +34,6 @@ func Test_fabricv4_StatisticsApiService(t *testing.T) {
 		assert.Equal(t, 200, httpRes.StatusCode)
 	})
 
-	t.Run("Test StatisticsApiService GetPortStats", func(t *testing.T) {
-		t.Skip("skip test") // remove to run test
-
-		resp, httpRes, err := apiClient.StatisticsApi.GetPortStats(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-	})
-
 	t.Run("Test StatisticsApiService GetPortStatsByPortUuid", func(t *testing.T) {
 		t.Skip("skip test") // remove to run test
 

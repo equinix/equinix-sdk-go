@@ -8,6 +8,9 @@ Name | Type | Description | Notes
 **MetricIndex** | Pointer to **string** | metric index | [optional] 
 **Source** | Pointer to **string** | source | [optional] 
 **ApplicationKey** | Pointer to **string** | Application key | [optional] 
+**EventUri** | Pointer to **string** | event uri | [optional] 
+**MetricUri** | Pointer to **string** | metric uri | [optional] 
+**TransformAlerts** | Pointer to **bool** | transform alerts | [optional] 
 
 ## Methods
 
@@ -127,6 +130,81 @@ SetApplicationKey sets ApplicationKey field to given value.
 `func (o *StreamSubscriptionSinkSetting) HasApplicationKey() bool`
 
 HasApplicationKey returns a boolean if a field has been set.
+
+### GetEventUri
+
+`func (o *StreamSubscriptionSinkSetting) GetEventUri() string`
+
+GetEventUri returns the EventUri field if non-nil, zero value otherwise.
+
+### GetEventUriOk
+
+`func (o *StreamSubscriptionSinkSetting) GetEventUriOk() (*string, bool)`
+
+GetEventUriOk returns a tuple with the EventUri field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEventUri
+
+`func (o *StreamSubscriptionSinkSetting) SetEventUri(v string)`
+
+SetEventUri sets EventUri field to given value.
+
+### HasEventUri
+
+`func (o *StreamSubscriptionSinkSetting) HasEventUri() bool`
+
+HasEventUri returns a boolean if a field has been set.
+
+### GetMetricUri
+
+`func (o *StreamSubscriptionSinkSetting) GetMetricUri() string`
+
+GetMetricUri returns the MetricUri field if non-nil, zero value otherwise.
+
+### GetMetricUriOk
+
+`func (o *StreamSubscriptionSinkSetting) GetMetricUriOk() (*string, bool)`
+
+GetMetricUriOk returns a tuple with the MetricUri field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMetricUri
+
+`func (o *StreamSubscriptionSinkSetting) SetMetricUri(v string)`
+
+SetMetricUri sets MetricUri field to given value.
+
+### HasMetricUri
+
+`func (o *StreamSubscriptionSinkSetting) HasMetricUri() bool`
+
+HasMetricUri returns a boolean if a field has been set.
+
+### GetTransformAlerts
+
+`func (o *StreamSubscriptionSinkSetting) GetTransformAlerts() bool`
+
+GetTransformAlerts returns the TransformAlerts field if non-nil, zero value otherwise.
+
+### GetTransformAlertsOk
+
+`func (o *StreamSubscriptionSinkSetting) GetTransformAlertsOk() (*bool, bool)`
+
+GetTransformAlertsOk returns a tuple with the TransformAlerts field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTransformAlerts
+
+`func (o *StreamSubscriptionSinkSetting) SetTransformAlerts(v bool)`
+
+SetTransformAlerts sets TransformAlerts field to given value.
+
+### HasTransformAlerts
+
+`func (o *StreamSubscriptionSinkSetting) HasTransformAlerts() bool`
+
+HasTransformAlerts returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
