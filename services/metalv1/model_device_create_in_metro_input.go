@@ -19,8 +19,7 @@ var _ MappedNullable = &DeviceCreateInMetroInput{}
 
 // DeviceCreateInMetroInput struct for DeviceCreateInMetroInput
 type DeviceCreateInMetroInput struct {
-	// Metro code or ID of where the device should be provisioned in, or it can be instructed to create the device in the best available metro with `{ \"metro\": \"any\" }`. The special metro value of any means anywhere, any metro. When any is chosen in the request, the metro location is picked per our scheduling algorithms that favor the following factors: hardware reservation location (if requesting reserved hardware), ip reservations, spot instances, etc. The any keyword *does not* optimize for cost, this means that usage costs (instance, transfer, other features dependent on location) will vary. Please check metro value in response to see where the device was created. Either metro or facility must be provided.
-	Metro string `json:"metro"`
+	Metro MetroInputMetro `json:"metro"`
 	// When true, devices with a `custom_ipxe` OS will always boot to iPXE. The default setting of false ensures that iPXE will be used on only the first boot.
 	AlwaysPxe    *bool                          `json:"always_pxe,omitempty"`
 	BillingCycle *DeviceCreateInputBillingCycle `json:"billing_cycle,omitempty"`
@@ -77,7 +76,7 @@ type _DeviceCreateInMetroInput DeviceCreateInMetroInput
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDeviceCreateInMetroInput(metro string, operatingSystem string, plan string) *DeviceCreateInMetroInput {
+func NewDeviceCreateInMetroInput(metro MetroInputMetro, operatingSystem string, plan string) *DeviceCreateInMetroInput {
 	this := DeviceCreateInMetroInput{}
 	this.Metro = metro
 	var alwaysPxe bool = false
@@ -110,9 +109,9 @@ func NewDeviceCreateInMetroInputWithDefaults() *DeviceCreateInMetroInput {
 }
 
 // GetMetro returns the Metro field value
-func (o *DeviceCreateInMetroInput) GetMetro() string {
+func (o *DeviceCreateInMetroInput) GetMetro() MetroInputMetro {
 	if o == nil {
-		var ret string
+		var ret MetroInputMetro
 		return ret
 	}
 
@@ -121,7 +120,7 @@ func (o *DeviceCreateInMetroInput) GetMetro() string {
 
 // GetMetroOk returns a tuple with the Metro field value
 // and a boolean to check if the value has been set.
-func (o *DeviceCreateInMetroInput) GetMetroOk() (*string, bool) {
+func (o *DeviceCreateInMetroInput) GetMetroOk() (*MetroInputMetro, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -129,7 +128,7 @@ func (o *DeviceCreateInMetroInput) GetMetroOk() (*string, bool) {
 }
 
 // SetMetro sets field value
-func (o *DeviceCreateInMetroInput) SetMetro(v string) {
+func (o *DeviceCreateInMetroInput) SetMetro(v MetroInputMetro) {
 	o.Metro = v
 }
 

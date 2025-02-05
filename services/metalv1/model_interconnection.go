@@ -20,7 +20,6 @@ var _ MappedNullable = &Interconnection{}
 type Interconnection struct {
 	ContactEmail *string              `json:"contact_email,omitempty"`
 	Description  *string              `json:"description,omitempty"`
-	Facility     *Facility            `json:"facility,omitempty"`
 	Id           *string              `json:"id,omitempty"`
 	Metro        *Metro               `json:"metro,omitempty"`
 	Mode         *InterconnectionMode `json:"mode,omitempty"`
@@ -129,38 +128,6 @@ func (o *Interconnection) HasDescription() bool {
 // SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *Interconnection) SetDescription(v string) {
 	o.Description = &v
-}
-
-// GetFacility returns the Facility field value if set, zero value otherwise.
-func (o *Interconnection) GetFacility() Facility {
-	if o == nil || IsNil(o.Facility) {
-		var ret Facility
-		return ret
-	}
-	return *o.Facility
-}
-
-// GetFacilityOk returns a tuple with the Facility field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Interconnection) GetFacilityOk() (*Facility, bool) {
-	if o == nil || IsNil(o.Facility) {
-		return nil, false
-	}
-	return o.Facility, true
-}
-
-// HasFacility returns a boolean if a field has been set.
-func (o *Interconnection) HasFacility() bool {
-	if o != nil && !IsNil(o.Facility) {
-		return true
-	}
-
-	return false
-}
-
-// SetFacility gets a reference to the given Facility and assigns it to the Facility field.
-func (o *Interconnection) SetFacility(v Facility) {
-	o.Facility = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -787,9 +754,6 @@ func (o Interconnection) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !IsNil(o.Facility) {
-		toSerialize["facility"] = o.Facility
-	}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
@@ -871,7 +835,6 @@ func (o *Interconnection) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "contact_email")
 		delete(additionalProperties, "description")
-		delete(additionalProperties, "facility")
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "metro")
 		delete(additionalProperties, "mode")

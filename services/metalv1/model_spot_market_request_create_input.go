@@ -18,11 +18,9 @@ var _ MappedNullable = &SpotMarketRequestCreateInput{}
 
 // SpotMarketRequestCreateInput struct for SpotMarketRequestCreateInput
 type SpotMarketRequestCreateInput struct {
-	DevicesMax *int32     `json:"devices_max,omitempty"`
-	DevicesMin *int32     `json:"devices_min,omitempty"`
-	EndAt      *time.Time `json:"end_at,omitempty"`
-	// Deprecated
-	Facilities         []string                                        `json:"facilities,omitempty"`
+	DevicesMax         *int32                                          `json:"devices_max,omitempty"`
+	DevicesMin         *int32                                          `json:"devices_min,omitempty"`
+	EndAt              *time.Time                                      `json:"end_at,omitempty"`
 	InstanceParameters *SpotMarketRequestCreateInputInstanceParameters `json:"instance_parameters,omitempty"`
 	MaxBidPrice        *float32                                        `json:"max_bid_price,omitempty"`
 	// The metro ID or code the spot market request will be created in.
@@ -145,41 +143,6 @@ func (o *SpotMarketRequestCreateInput) SetEndAt(v time.Time) {
 	o.EndAt = &v
 }
 
-// GetFacilities returns the Facilities field value if set, zero value otherwise.
-// Deprecated
-func (o *SpotMarketRequestCreateInput) GetFacilities() []string {
-	if o == nil || IsNil(o.Facilities) {
-		var ret []string
-		return ret
-	}
-	return o.Facilities
-}
-
-// GetFacilitiesOk returns a tuple with the Facilities field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// Deprecated
-func (o *SpotMarketRequestCreateInput) GetFacilitiesOk() ([]string, bool) {
-	if o == nil || IsNil(o.Facilities) {
-		return nil, false
-	}
-	return o.Facilities, true
-}
-
-// HasFacilities returns a boolean if a field has been set.
-func (o *SpotMarketRequestCreateInput) HasFacilities() bool {
-	if o != nil && !IsNil(o.Facilities) {
-		return true
-	}
-
-	return false
-}
-
-// SetFacilities gets a reference to the given []string and assigns it to the Facilities field.
-// Deprecated
-func (o *SpotMarketRequestCreateInput) SetFacilities(v []string) {
-	o.Facilities = v
-}
-
 // GetInstanceParameters returns the InstanceParameters field value if set, zero value otherwise.
 func (o *SpotMarketRequestCreateInput) GetInstanceParameters() SpotMarketRequestCreateInputInstanceParameters {
 	if o == nil || IsNil(o.InstanceParameters) {
@@ -295,9 +258,6 @@ func (o SpotMarketRequestCreateInput) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EndAt) {
 		toSerialize["end_at"] = o.EndAt
 	}
-	if !IsNil(o.Facilities) {
-		toSerialize["facilities"] = o.Facilities
-	}
 	if !IsNil(o.InstanceParameters) {
 		toSerialize["instance_parameters"] = o.InstanceParameters
 	}
@@ -332,7 +292,6 @@ func (o *SpotMarketRequestCreateInput) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "devices_max")
 		delete(additionalProperties, "devices_min")
 		delete(additionalProperties, "end_at")
-		delete(additionalProperties, "facilities")
 		delete(additionalProperties, "instance_parameters")
 		delete(additionalProperties, "max_bid_price")
 		delete(additionalProperties, "metro")

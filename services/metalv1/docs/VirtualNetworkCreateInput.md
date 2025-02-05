@@ -5,7 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Description** | Pointer to **string** |  | [optional] 
-**Facility** | Pointer to **string** | The UUID (or facility code) for the Facility in which to create this Virtual network. | [optional] 
 **Metro** | Pointer to **string** | The UUID (or metro code) for the Metro in which to create this Virtual Network. | [optional] 
 **Vxlan** | Pointer to **int32** | VLAN ID between 2-3999. Must be unique for the project within the Metro in which this Virtual Network is being created. If no value is specified, the next-available VLAN ID in the range 1000-1999 will be automatically selected. | [optional] 
 **Tags** | Pointer to **[]string** |  | [optional] 
@@ -53,31 +52,6 @@ SetDescription sets Description field to given value.
 `func (o *VirtualNetworkCreateInput) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
-
-### GetFacility
-
-`func (o *VirtualNetworkCreateInput) GetFacility() string`
-
-GetFacility returns the Facility field if non-nil, zero value otherwise.
-
-### GetFacilityOk
-
-`func (o *VirtualNetworkCreateInput) GetFacilityOk() (*string, bool)`
-
-GetFacilityOk returns a tuple with the Facility field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetFacility
-
-`func (o *VirtualNetworkCreateInput) SetFacility(v string)`
-
-SetFacility sets Facility field to given value.
-
-### HasFacility
-
-`func (o *VirtualNetworkCreateInput) HasFacility() bool`
-
-HasFacility returns a boolean if a field has been set.
 
 ### GetMetro
 

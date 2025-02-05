@@ -17,8 +17,6 @@ var _ MappedNullable = &ServerInfo{}
 
 // ServerInfo struct for ServerInfo
 type ServerInfo struct {
-	// Deprecated
-	Facility *string `json:"facility,omitempty"`
 	// The metro ID or code to check the capacity in.
 	Metro *string `json:"metro,omitempty"`
 	// The plan ID or slug to check the capacity of.
@@ -45,41 +43,6 @@ func NewServerInfo() *ServerInfo {
 func NewServerInfoWithDefaults() *ServerInfo {
 	this := ServerInfo{}
 	return &this
-}
-
-// GetFacility returns the Facility field value if set, zero value otherwise.
-// Deprecated
-func (o *ServerInfo) GetFacility() string {
-	if o == nil || IsNil(o.Facility) {
-		var ret string
-		return ret
-	}
-	return *o.Facility
-}
-
-// GetFacilityOk returns a tuple with the Facility field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// Deprecated
-func (o *ServerInfo) GetFacilityOk() (*string, bool) {
-	if o == nil || IsNil(o.Facility) {
-		return nil, false
-	}
-	return o.Facility, true
-}
-
-// HasFacility returns a boolean if a field has been set.
-func (o *ServerInfo) HasFacility() bool {
-	if o != nil && !IsNil(o.Facility) {
-		return true
-	}
-
-	return false
-}
-
-// SetFacility gets a reference to the given string and assigns it to the Facility field.
-// Deprecated
-func (o *ServerInfo) SetFacility(v string) {
-	o.Facility = &v
 }
 
 // GetMetro returns the Metro field value if set, zero value otherwise.
@@ -188,9 +151,6 @@ func (o ServerInfo) MarshalJSON() ([]byte, error) {
 
 func (o ServerInfo) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Facility) {
-		toSerialize["facility"] = o.Facility
-	}
 	if !IsNil(o.Metro) {
 		toSerialize["metro"] = o.Metro
 	}
@@ -222,7 +182,6 @@ func (o *ServerInfo) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "facility")
 		delete(additionalProperties, "metro")
 		delete(additionalProperties, "plan")
 		delete(additionalProperties, "quantity")
