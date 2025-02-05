@@ -1,0 +1,6 @@
+properties:
+  members:
+    items:
+      $ref: './Member.yaml'
+    type: array
+type: object
