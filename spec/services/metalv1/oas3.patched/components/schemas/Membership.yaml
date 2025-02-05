@@ -18,4 +18,8 @@ properties:
     type: string
   user:
     $ref: './Href.yaml'
+  bound_roles:
+    type: array
+    items:
+      type: string
 type: object

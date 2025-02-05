@@ -1,5 +1,5 @@
 get:
-  description: List the connections belonging to the organization
+  description: Returns a list of the interconnections belonging to the Organization.
   operationId: organizationListInterconnections
   parameters:
   - description: UUID of the organization
@@ -11,6 +11,12 @@ get:
       type: string
   - $ref: '../../../components/parameters/Include.yaml'
   - $ref: '../../../components/parameters/Exclude.yaml'
+  - description: Filter the list to return only the interconnections for the specified Project.
+    in: query
+    name: project={project_id}
+    schema:
+      format: uuid
+      type: string
   responses:
     "200":
       content:
@@ -30,7 +36,7 @@ get:
           schema:
             $ref: '../../../components/schemas/Error.yaml'
       description: not found
-  summary: List organization connections
+  summary: List an Organization's interconnections
   tags:
   - Interconnections
 post:

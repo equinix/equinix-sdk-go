@@ -3,9 +3,6 @@ properties:
     type: string
   description:
     type: string
-  facility:
-    $ref: './Facility.yaml'
-    x-deprecated: true
   id:
     format: uuid
     type: string

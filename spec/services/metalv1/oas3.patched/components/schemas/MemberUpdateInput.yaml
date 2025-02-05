@@ -1,0 +1,25 @@
+properties:
+  role:
+    description: Primary role for the user within the organization
+    type: array
+    items:
+      type: string
+      enum:
+        - admin
+        - billing
+        - collaborator
+        - limited_collaborator
+  bound_roles:
+    type: array
+    description: Additional roles that can be bound to the user to grant extra permissions.
+    items:
+      type: string
+    example:
+      - "permrv2-:id"
+  project_ids:
+    description: Project IDs the user should be able to access. This field is only required when role is set to `collaborator` or `limited_collaborator`.
+    type: array
+    items:
+      type: string
+      format: uuid
+type: object
