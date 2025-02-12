@@ -29,6 +29,7 @@ type Invitation struct {
 	Projects             []Href                 `json:"projects,omitempty"`
 	Roles                []InvitationRolesInner `json:"roles,omitempty"`
 	UpdatedAt            *time.Time             `json:"updated_at,omitempty"`
+	BoundRoles           []string               `json:"bound_roles,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -403,6 +404,38 @@ func (o *Invitation) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt = &v
 }
 
+// GetBoundRoles returns the BoundRoles field value if set, zero value otherwise.
+func (o *Invitation) GetBoundRoles() []string {
+	if o == nil || IsNil(o.BoundRoles) {
+		var ret []string
+		return ret
+	}
+	return o.BoundRoles
+}
+
+// GetBoundRolesOk returns a tuple with the BoundRoles field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Invitation) GetBoundRolesOk() ([]string, bool) {
+	if o == nil || IsNil(o.BoundRoles) {
+		return nil, false
+	}
+	return o.BoundRoles, true
+}
+
+// HasBoundRoles returns a boolean if a field has been set.
+func (o *Invitation) HasBoundRoles() bool {
+	if o != nil && !IsNil(o.BoundRoles) {
+		return true
+	}
+
+	return false
+}
+
+// SetBoundRoles gets a reference to the given []string and assigns it to the BoundRoles field.
+func (o *Invitation) SetBoundRoles(v []string) {
+	o.BoundRoles = v
+}
+
 func (o Invitation) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -446,6 +479,9 @@ func (o Invitation) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.UpdatedAt) {
 		toSerialize["updated_at"] = o.UpdatedAt
 	}
+	if !IsNil(o.BoundRoles) {
+		toSerialize["bound_roles"] = o.BoundRoles
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -479,6 +515,7 @@ func (o *Invitation) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "projects")
 		delete(additionalProperties, "roles")
 		delete(additionalProperties, "updated_at")
+		delete(additionalProperties, "bound_roles")
 		o.AdditionalProperties = additionalProperties
 	}
 

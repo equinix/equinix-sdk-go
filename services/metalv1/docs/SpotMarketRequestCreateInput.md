@@ -7,7 +7,6 @@ Name | Type | Description | Notes
 **DevicesMax** | Pointer to **int32** |  | [optional] 
 **DevicesMin** | Pointer to **int32** |  | [optional] 
 **EndAt** | Pointer to **time.Time** |  | [optional] 
-**Facilities** | Pointer to **[]string** |  | [optional] 
 **InstanceParameters** | Pointer to [**SpotMarketRequestCreateInputInstanceParameters**](SpotMarketRequestCreateInputInstanceParameters.md) |  | [optional] 
 **MaxBidPrice** | Pointer to **float32** |  | [optional] 
 **Metro** | Pointer to **string** | The metro ID or code the spot market request will be created in. | [optional] 
@@ -105,31 +104,6 @@ SetEndAt sets EndAt field to given value.
 `func (o *SpotMarketRequestCreateInput) HasEndAt() bool`
 
 HasEndAt returns a boolean if a field has been set.
-
-### GetFacilities
-
-`func (o *SpotMarketRequestCreateInput) GetFacilities() []string`
-
-GetFacilities returns the Facilities field if non-nil, zero value otherwise.
-
-### GetFacilitiesOk
-
-`func (o *SpotMarketRequestCreateInput) GetFacilitiesOk() (*[]string, bool)`
-
-GetFacilitiesOk returns a tuple with the Facilities field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetFacilities
-
-`func (o *SpotMarketRequestCreateInput) SetFacilities(v []string)`
-
-SetFacilities sets Facilities field to given value.
-
-### HasFacilities
-
-`func (o *SpotMarketRequestCreateInput) HasFacilities() bool`
-
-HasFacilities returns a boolean if a field has been set.
 
 ### GetInstanceParameters
 

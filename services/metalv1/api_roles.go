@@ -14,52 +14,61 @@ import (
 	"io"
 	"net/http"
 	"net/url"
+	"strings"
 )
 
-// OperatingSystemsApiService OperatingSystemsApi service
-type OperatingSystemsApiService service
+// RolesApiService RolesApi service
+type RolesApiService service
 
-type ApiFindOperatingSystemVersionRequest struct {
+type ApiGetOrganizationRoleRequest struct {
 	ctx        context.Context
-	ApiService *OperatingSystemsApiService
+	ApiService *RolesApiService
+	id         string
+	roleId     string
 }
 
-func (r ApiFindOperatingSystemVersionRequest) Execute() (*OperatingSystemList, *http.Response, error) {
-	return r.ApiService.FindOperatingSystemVersionExecute(r)
+func (r ApiGetOrganizationRoleRequest) Execute() (*Role, *http.Response, error) {
+	return r.ApiService.GetOrganizationRoleExecute(r)
 }
 
 /*
-FindOperatingSystemVersion Retrieve all operating system versions
+GetOrganizationRole Get details about a specific role
 
-Provides a listing of available operating system versions.
+Learn what actions are in each role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiFindOperatingSystemVersionRequest
+	@param id Organization UUID
+	@param roleId Role ID
+	@return ApiGetOrganizationRoleRequest
 */
-func (a *OperatingSystemsApiService) FindOperatingSystemVersion(ctx context.Context) ApiFindOperatingSystemVersionRequest {
-	return ApiFindOperatingSystemVersionRequest{
+func (a *RolesApiService) GetOrganizationRole(ctx context.Context, id string, roleId string) ApiGetOrganizationRoleRequest {
+	return ApiGetOrganizationRoleRequest{
 		ApiService: a,
 		ctx:        ctx,
+		id:         id,
+		roleId:     roleId,
 	}
 }
 
 // Execute executes the request
 //
-//	@return OperatingSystemList
-func (a *OperatingSystemsApiService) FindOperatingSystemVersionExecute(r ApiFindOperatingSystemVersionRequest) (*OperatingSystemList, *http.Response, error) {
+//	@return Role
+func (a *RolesApiService) GetOrganizationRoleExecute(r ApiGetOrganizationRoleRequest) (*Role, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *OperatingSystemList
+		localVarReturnValue *Role
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OperatingSystemsApiService.FindOperatingSystemVersion")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RolesApiService.GetOrganizationRole")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/operating-system-versions"
+	localVarPath := localBasePath + "/organizations/{id}/roles/{role_id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"role_id"+"}", url.PathEscape(parameterValueToString(r.roleId, "roleId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -127,6 +136,17 @@ func (a *OperatingSystemsApiService) FindOperatingSystemVersionExecute(r ApiFind
 			}
 			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -143,47 +163,51 @@ func (a *OperatingSystemsApiService) FindOperatingSystemVersionExecute(r ApiFind
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiFindOperatingSystemsRequest struct {
+type ApiListOrganizationRolesRequest struct {
 	ctx        context.Context
-	ApiService *OperatingSystemsApiService
+	ApiService *RolesApiService
+	id         string
 }
 
-func (r ApiFindOperatingSystemsRequest) Execute() (*OperatingSystemList, *http.Response, error) {
-	return r.ApiService.FindOperatingSystemsExecute(r)
+func (r ApiListOrganizationRolesRequest) Execute() (*RoleList, *http.Response, error) {
+	return r.ApiService.ListOrganizationRolesExecute(r)
 }
 
 /*
-FindOperatingSystems Retrieve all operating systems
+ListOrganizationRoles List available roles
 
-Returns a list of available operating systems to provision your new device with.
+This list of roles can be used to update Members or new Invitations with additional permissions.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiFindOperatingSystemsRequest
+	@param id Organization UUID
+	@return ApiListOrganizationRolesRequest
 */
-func (a *OperatingSystemsApiService) FindOperatingSystems(ctx context.Context) ApiFindOperatingSystemsRequest {
-	return ApiFindOperatingSystemsRequest{
+func (a *RolesApiService) ListOrganizationRoles(ctx context.Context, id string) ApiListOrganizationRolesRequest {
+	return ApiListOrganizationRolesRequest{
 		ApiService: a,
 		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 //
-//	@return OperatingSystemList
-func (a *OperatingSystemsApiService) FindOperatingSystemsExecute(r ApiFindOperatingSystemsRequest) (*OperatingSystemList, *http.Response, error) {
+//	@return RoleList
+func (a *RolesApiService) ListOrganizationRolesExecute(r ApiListOrganizationRolesRequest) (*RoleList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *OperatingSystemList
+		localVarReturnValue *RoleList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OperatingSystemsApiService.FindOperatingSystems")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RolesApiService.ListOrganizationRoles")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/operating-systems"
+	localVarPath := localBasePath + "/organizations/{id}/roles"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -243,6 +267,17 @@ func (a *OperatingSystemsApiService) FindOperatingSystemsExecute(r ApiFindOperat
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
 			var v Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
