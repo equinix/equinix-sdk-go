@@ -1,18 +1,9 @@
 properties:
-  invitee:
-    type: string
-    format: email
-  message:
-    type: string
-  organization_id:
-    type: string
+  id:
     format: uuid
-  projects_ids:
-    items:
-      type: string
-      format: uuid
-    type: array
+    type: string
   roles:
+    type: array
     items:
       type: string
       enum:
@@ -20,13 +11,22 @@ properties:
         - billing
         - collaborator
         - limited_collaborator
-    type: array
+  projects_count:
+    type: integer
   bound_roles:
     type: array
     items:
       type: string
     example:
       - "permrv2-:id"
-required:
-- invitee
-type: object
+  user:
+    $ref: './Href.yaml'
+  organization:
+    $ref: './Href.yaml'
+  projects:
+    type: array
+    items:
+      type: object
+      $ref: './Href.yaml'
+  href:
+    type: "string"
