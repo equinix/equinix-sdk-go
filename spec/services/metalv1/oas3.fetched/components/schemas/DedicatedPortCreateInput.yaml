@@ -8,9 +8,6 @@ properties:
     format: email
   description:
     type: string
-  facility_id:
-    type: string
-    x-deprecated: true
   metro:
     description: A Metro ID or code. For interconnections with Dedicated Ports, this will be the location of the issued Dedicated Ports.
     type: string

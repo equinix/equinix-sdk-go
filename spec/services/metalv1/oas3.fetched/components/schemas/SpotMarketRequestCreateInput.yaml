@@ -6,12 +6,6 @@ properties:
   end_at:
     format: date-time
     type: string
-  facilities:
-    deprecated: true
-    items:
-      format: uuid
-      type: string
-    type: array
   instance_parameters:
     properties:
       always_pxe:
