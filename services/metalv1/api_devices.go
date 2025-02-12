@@ -194,17 +194,17 @@ func (a *DevicesApiService) CreateBgpSessionExecute(r ApiCreateBgpSessionRequest
 }
 
 type ApiCreateDeviceRequest struct {
-	ctx                 context.Context
-	ApiService          *DevicesApiService
-	id                  string
-	createDeviceRequest *CreateDeviceRequest
-	include             *[]string
-	exclude             *[]string
+	ctx                      context.Context
+	ApiService               *DevicesApiService
+	id                       string
+	deviceCreateInMetroInput *DeviceCreateInMetroInput
+	include                  *[]string
+	exclude                  *[]string
 }
 
 // Device to create
-func (r ApiCreateDeviceRequest) CreateDeviceRequest(createDeviceRequest CreateDeviceRequest) ApiCreateDeviceRequest {
-	r.createDeviceRequest = &createDeviceRequest
+func (r ApiCreateDeviceRequest) DeviceCreateInMetroInput(deviceCreateInMetroInput DeviceCreateInMetroInput) ApiCreateDeviceRequest {
+	r.deviceCreateInMetroInput = &deviceCreateInMetroInput
 	return r
 }
 
@@ -265,8 +265,8 @@ func (a *DevicesApiService) CreateDeviceExecute(r ApiCreateDeviceRequest) (*Devi
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.createDeviceRequest == nil {
-		return localVarReturnValue, nil, reportError("createDeviceRequest is required and must be specified")
+	if r.deviceCreateInMetroInput == nil {
+		return localVarReturnValue, nil, reportError("deviceCreateInMetroInput is required and must be specified")
 	}
 
 	if r.include != nil {
@@ -293,7 +293,7 @@ func (a *DevicesApiService) CreateDeviceExecute(r ApiCreateDeviceRequest) (*Devi
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.createDeviceRequest
+	localVarPostBody = r.deviceCreateInMetroInput
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

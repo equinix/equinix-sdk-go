@@ -176,11 +176,9 @@ Class | Method | HTTP request | Description
 *BatchesApi* | [**DeleteBatch**](docs/BatchesApi.md#deletebatch) | **Delete** /batches/{id} | Delete the Batch
 *BatchesApi* | [**FindBatchById**](docs/BatchesApi.md#findbatchbyid) | **Get** /batches/{id} | Retrieve a Batch
 *BatchesApi* | [**FindBatchesByProject**](docs/BatchesApi.md#findbatchesbyproject) | **Get** /projects/{id}/batches | Retrieve all batches by project
-*CapacityApi* | [**CheckCapacityForFacility**](docs/CapacityApi.md#checkcapacityforfacility) | **Post** /capacity | Check capacity
 *CapacityApi* | [**CheckCapacityForMetro**](docs/CapacityApi.md#checkcapacityformetro) | **Post** /capacity/metros | Check capacity for a metro
 *CapacityApi* | [**FindCapacityForFacility**](docs/CapacityApi.md#findcapacityforfacility) | **Get** /capacity | View capacity
 *CapacityApi* | [**FindCapacityForMetro**](docs/CapacityApi.md#findcapacityformetro) | **Get** /capacity/metros | View capacity for metros
-*CapacityApi* | [**FindOrganizationCapacityPerFacility**](docs/CapacityApi.md#findorganizationcapacityperfacility) | **Get** /organizations/{id}/capacity | View available hardware plans per Facility for given organization
 *CapacityApi* | [**FindOrganizationCapacityPerMetro**](docs/CapacityApi.md#findorganizationcapacitypermetro) | **Get** /organizations/{id}/capacity/metros | View available hardware plans per Metro for given organization
 *ConsoleLogDetailsApi* | [**CaptureScreenshot**](docs/ConsoleLogDetailsApi.md#capturescreenshot) | **Get** /devices/{id}/diagnostics/screenshot | 
 *DevicesApi* | [**CreateBgpSession**](docs/DevicesApi.md#createbgpsession) | **Post** /devices/{id}/bgp/sessions | Create a BGP session
@@ -216,9 +214,6 @@ Class | Method | HTTP request | Description
 *EventsApi* | [**FindProjectEvents**](docs/EventsApi.md#findprojectevents) | **Get** /projects/{id}/events | Retrieve project&#39;s events
 *EventsApi* | [**FindVirtualCircuitEvents**](docs/EventsApi.md#findvirtualcircuitevents) | **Get** /virtual-circuits/{id}/events | Retrieve virtual circuit events
 *EventsApi* | [**FindVrfRouteEvents**](docs/EventsApi.md#findvrfrouteevents) | **Get** /routes/{id}/events | Retrieve VRF route events
-*FacilitiesApi* | [**FindFacilities**](docs/FacilitiesApi.md#findfacilities) | **Get** /facilities | Retrieve all facilities
-*FacilitiesApi* | [**FindFacilitiesByOrganization**](docs/FacilitiesApi.md#findfacilitiesbyorganization) | **Get** /organizations/{id}/facilities | Retrieve all facilities visible by the organization
-*FacilitiesApi* | [**FindFacilitiesByProject**](docs/FacilitiesApi.md#findfacilitiesbyproject) | **Get** /projects/{id}/facilities | Retrieve all facilities visible by the project
 *FirmwareSetsApi* | [**GetOrganizationFirmwareSets**](docs/FirmwareSetsApi.md#getorganizationfirmwaresets) | **Get** /organizations/{id}/firmware-sets | Get Organization&#39;s Firmware Sets
 *FirmwareSetsApi* | [**GetProjectFirmwareSets**](docs/FirmwareSetsApi.md#getprojectfirmwaresets) | **Get** /projects/{id}/firmware-sets | Get Project&#39;s Firmware Sets
 *HardwareReservationsApi* | [**ActivateHardwareReservation**](docs/HardwareReservationsApi.md#activatehardwarereservation) | **Post** /hardware-reservations/{id}/activate | Activate a spare hardware reservation
@@ -246,8 +241,8 @@ Class | Method | HTTP request | Description
 *InterconnectionsApi* | [**ListInterconnectionPortVirtualCircuits**](docs/InterconnectionsApi.md#listinterconnectionportvirtualcircuits) | **Get** /connections/{connection_id}/ports/{port_id}/virtual-circuits | List a interconnection port&#39;s virtual circuits
 *InterconnectionsApi* | [**ListInterconnectionPorts**](docs/InterconnectionsApi.md#listinterconnectionports) | **Get** /connections/{connection_id}/ports | List a interconnection&#39;s ports
 *InterconnectionsApi* | [**ListInterconnectionVirtualCircuits**](docs/InterconnectionsApi.md#listinterconnectionvirtualcircuits) | **Get** /connections/{connection_id}/virtual-circuits | List a interconnection&#39;s virtual circuits
-*InterconnectionsApi* | [**OrganizationListInterconnections**](docs/InterconnectionsApi.md#organizationlistinterconnections) | **Get** /organizations/{organization_id}/connections | List organization connections
-*InterconnectionsApi* | [**ProjectListInterconnections**](docs/InterconnectionsApi.md#projectlistinterconnections) | **Get** /projects/{project_id}/connections | List project connections
+*InterconnectionsApi* | [**OrganizationListInterconnections**](docs/InterconnectionsApi.md#organizationlistinterconnections) | **Get** /organizations/{organization_id}/connections | List an Organization&#39;s interconnections
+*InterconnectionsApi* | [**ProjectListInterconnections**](docs/InterconnectionsApi.md#projectlistinterconnections) | **Get** /projects/{project_id}/connections | List a Project&#39;s and Organization&#39;s interconnections
 *InterconnectionsApi* | [**UpdateInterconnection**](docs/InterconnectionsApi.md#updateinterconnection) | **Put** /connections/{connection_id} | Update interconnection
 *InterconnectionsApi* | [**UpdateVirtualCircuit**](docs/InterconnectionsApi.md#updatevirtualcircuit) | **Put** /virtual-circuits/{id} | Update a virtual circuit
 *InvitationsApi* | [**AcceptInvitation**](docs/InvitationsApi.md#acceptinvitation) | **Put** /invitations/{id} | Accept an invitation
@@ -275,7 +270,6 @@ Class | Method | HTTP request | Description
 *MetrosApi* | [**GetMetro**](docs/MetrosApi.md#getmetro) | **Get** /locations/metros/{id} | Retrieve a specific Metro&#39;s details
 *OperatingSystemsApi* | [**FindOperatingSystemVersion**](docs/OperatingSystemsApi.md#findoperatingsystemversion) | **Get** /operating-system-versions | Retrieve all operating system versions
 *OperatingSystemsApi* | [**FindOperatingSystems**](docs/OperatingSystemsApi.md#findoperatingsystems) | **Get** /operating-systems | Retrieve all operating systems
-*OrganizationsApi* | [**CreateOrganization**](docs/OrganizationsApi.md#createorganization) | **Post** /organizations | Create an organization
 *OrganizationsApi* | [**CreateOrganizationInvitation**](docs/OrganizationsApi.md#createorganizationinvitation) | **Post** /organizations/{id}/invitations | Create an invitation for an organization
 *OrganizationsApi* | [**CreateOrganizationProject**](docs/OrganizationsApi.md#createorganizationproject) | **Post** /organizations/{id}/projects | Create a project for the organization
 *OrganizationsApi* | [**CreatePaymentMethod**](docs/OrganizationsApi.md#createpaymentmethod) | **Post** /organizations/{id}/payment-methods | Create a payment method for the given organization
@@ -289,7 +283,10 @@ Class | Method | HTTP request | Description
 *OrganizationsApi* | [**FindOrganizationTransfers**](docs/OrganizationsApi.md#findorganizationtransfers) | **Get** /organizations/{id}/transfers | Retrieve all project transfer requests from or to an organization
 *OrganizationsApi* | [**FindOrganizations**](docs/OrganizationsApi.md#findorganizations) | **Get** /organizations | Retrieve all organizations
 *OrganizationsApi* | [**FindPlansByOrganization**](docs/OrganizationsApi.md#findplansbyorganization) | **Get** /organizations/{id}/plans | Retrieve all plans visible by the organization
+*OrganizationsApi* | [**GetOrganizationMembers**](docs/OrganizationsApi.md#getorganizationmembers) | **Get** /organizations/{organization_id}/members | Retrieve organization members
+*OrganizationsApi* | [**RemoveOrganizationMember**](docs/OrganizationsApi.md#removeorganizationmember) | **Delete** /organizations/{organization_id}/members/{id} | Remove member from the organization
 *OrganizationsApi* | [**UpdateOrganization**](docs/OrganizationsApi.md#updateorganization) | **Put** /organizations/{id} | Update the organization
+*OrganizationsApi* | [**UpdateOrganizationMemberRoles**](docs/OrganizationsApi.md#updateorganizationmemberroles) | **Put** /organizations/{organization_id}/members/{id} | Update roles for an organization member
 *PasswordResetTokensApi* | [**CreatePasswordResetToken**](docs/PasswordResetTokensApi.md#createpasswordresettoken) | **Post** /reset-password | Create a password reset token
 *PasswordResetTokensApi* | [**ResetPassword**](docs/PasswordResetTokensApi.md#resetpassword) | **Delete** /reset-password | Reset current user password
 *PaymentMethodsApi* | [**DeletePaymentMethod**](docs/PaymentMethodsApi.md#deletepaymentmethod) | **Delete** /payment-methods/{id} | Delete the payment method
@@ -322,6 +319,8 @@ Class | Method | HTTP request | Description
 *ProjectsApi* | [**FindProjectMemberships**](docs/ProjectsApi.md#findprojectmemberships) | **Get** /projects/{project_id}/memberships | Retrieve project memberships
 *ProjectsApi* | [**FindProjects**](docs/ProjectsApi.md#findprojects) | **Get** /projects | Retrieve all projects
 *ProjectsApi* | [**UpdateProject**](docs/ProjectsApi.md#updateproject) | **Put** /projects/{id} | Update the project
+*RolesApi* | [**GetOrganizationRole**](docs/RolesApi.md#getorganizationrole) | **Get** /organizations/{id}/roles/{role_id} | Get details about a specific role
+*RolesApi* | [**ListOrganizationRoles**](docs/RolesApi.md#listorganizationroles) | **Get** /organizations/{id}/roles | List available roles
 *SSHKeysApi* | [**CreateProjectSSHKey**](docs/SSHKeysApi.md#createprojectsshkey) | **Post** /projects/{id}/ssh-keys | Create a ssh key for the given project
 *SSHKeysApi* | [**CreateSSHKey**](docs/SSHKeysApi.md#createsshkey) | **Post** /ssh-keys | Create a ssh key for the current user
 *SSHKeysApi* | [**DeleteSSHKey**](docs/SSHKeysApi.md#deletesshkey) | **Delete** /ssh-keys/{id} | Delete the ssh key
@@ -423,7 +422,6 @@ Class | Method | HTTP request | Description
  - [CapacityList](docs/CapacityList.md)
  - [Component](docs/Component.md)
  - [Coordinates](docs/Coordinates.md)
- - [CreateDeviceRequest](docs/CreateDeviceRequest.md)
  - [CreateEmailInput](docs/CreateEmailInput.md)
  - [CreateMetalGatewayRequest](docs/CreateMetalGatewayRequest.md)
  - [CreateOrganizationInterconnectionRequest](docs/CreateOrganizationInterconnectionRequest.md)
@@ -468,7 +466,6 @@ Class | Method | HTTP request | Description
  - [FacilityInput](docs/FacilityInput.md)
  - [FacilityList](docs/FacilityList.md)
  - [Filesystem](docs/Filesystem.md)
- - [FindFacilitiesIncludeParameterInner](docs/FindFacilitiesIncludeParameterInner.md)
  - [FindIPAddressById200Response](docs/FindIPAddressById200Response.md)
  - [FindIPAvailabilitiesCidrParameter](docs/FindIPAvailabilitiesCidrParameter.md)
  - [FindIPReservationsTypesParameterInner](docs/FindIPReservationsTypesParameterInner.md)
@@ -538,6 +535,9 @@ Class | Method | HTTP request | Description
  - [LicenseUpdateInput](docs/LicenseUpdateInput.md)
  - [LineItem](docs/LineItem.md)
  - [LineItemAdjustment](docs/LineItemAdjustment.md)
+ - [Member](docs/Member.md)
+ - [MemberList](docs/MemberList.md)
+ - [MemberUpdateInput](docs/MemberUpdateInput.md)
  - [Membership](docs/Membership.md)
  - [MembershipInput](docs/MembershipInput.md)
  - [MembershipList](docs/MembershipList.md)
@@ -555,6 +555,7 @@ Class | Method | HTTP request | Description
  - [MetalGatewayState](docs/MetalGatewayState.md)
  - [Metro](docs/Metro.md)
  - [MetroInput](docs/MetroInput.md)
+ - [MetroInputMetro](docs/MetroInputMetro.md)
  - [MetroList](docs/MetroList.md)
  - [Mount](docs/Mount.md)
  - [MoveHardwareReservationRequest](docs/MoveHardwareReservationRequest.md)
@@ -615,6 +616,9 @@ Class | Method | HTTP request | Description
  - [Raid](docs/Raid.md)
  - [RequestIPReservation201Response](docs/RequestIPReservation201Response.md)
  - [RequestIPReservationRequest](docs/RequestIPReservationRequest.md)
+ - [Role](docs/Role.md)
+ - [RoleList](docs/RoleList.md)
+ - [RoleListRolesInner](docs/RoleListRolesInner.md)
  - [SSHKey](docs/SSHKey.md)
  - [SSHKeyCreateInput](docs/SSHKeyCreateInput.md)
  - [SSHKeyInput](docs/SSHKeyInput.md)

@@ -21,7 +21,6 @@ type VrfFabricVcCreateInput struct {
 	// The preferred email used for communication and notifications about the Equinix Fabric interconnection. Optional and defaults to the primary user email address when using a User API key or the organization owner email address when using a Project API key.
 	ContactEmail *string `json:"contact_email,omitempty"`
 	Description  *string `json:"description,omitempty"`
-	FacilityId   *string `json:"facility_id,omitempty"`
 	// A Metro ID or code. When creating Fabric VCs (Metal Billed), this is where interconnection will be originating from, as we pre-authorize the use of one of our shared ports as the origin of the interconnection using A-Side service tokens. We only allow local connections for Fabric VCs (Metal Billed), so the destination location must be the same as the origin. For Fabric VCs (Fabric Billed), or shared connections, this will be the destination of the interconnection. We allow remote connections for Fabric VCs (Fabric Billed), so the origin of the interconnection can be a different metro set here.
 	Metro   string  `json:"metro"`
 	Name    string  `json:"name"`
@@ -125,38 +124,6 @@ func (o *VrfFabricVcCreateInput) HasDescription() bool {
 // SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *VrfFabricVcCreateInput) SetDescription(v string) {
 	o.Description = &v
-}
-
-// GetFacilityId returns the FacilityId field value if set, zero value otherwise.
-func (o *VrfFabricVcCreateInput) GetFacilityId() string {
-	if o == nil || IsNil(o.FacilityId) {
-		var ret string
-		return ret
-	}
-	return *o.FacilityId
-}
-
-// GetFacilityIdOk returns a tuple with the FacilityId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *VrfFabricVcCreateInput) GetFacilityIdOk() (*string, bool) {
-	if o == nil || IsNil(o.FacilityId) {
-		return nil, false
-	}
-	return o.FacilityId, true
-}
-
-// HasFacilityId returns a boolean if a field has been set.
-func (o *VrfFabricVcCreateInput) HasFacilityId() bool {
-	if o != nil && !IsNil(o.FacilityId) {
-		return true
-	}
-
-	return false
-}
-
-// SetFacilityId gets a reference to the given string and assigns it to the FacilityId field.
-func (o *VrfFabricVcCreateInput) SetFacilityId(v string) {
-	o.FacilityId = &v
 }
 
 // GetMetro returns the Metro field value
@@ -415,9 +382,6 @@ func (o VrfFabricVcCreateInput) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !IsNil(o.FacilityId) {
-		toSerialize["facility_id"] = o.FacilityId
-	}
 	toSerialize["metro"] = o.Metro
 	toSerialize["name"] = o.Name
 	if !IsNil(o.Project) {
@@ -483,7 +447,6 @@ func (o *VrfFabricVcCreateInput) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "contact_email")
 		delete(additionalProperties, "description")
-		delete(additionalProperties, "facility_id")
 		delete(additionalProperties, "metro")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "project")

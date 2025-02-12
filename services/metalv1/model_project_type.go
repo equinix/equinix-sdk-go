@@ -13,19 +13,17 @@ import (
 	"fmt"
 )
 
-// ProjectType The type of the project. Projects of type `vmce` are part of an in development feature and not available to all customers.
+// ProjectType The type of the project.
 type ProjectType string
 
 // List of Project_type
 const (
 	PROJECTTYPE_DEFAULT ProjectType = "default"
-	PROJECTTYPE_VMCE    ProjectType = "vmce"
 )
 
 // All allowed values of ProjectType enum
 var AllowedProjectTypeEnumValues = []ProjectType{
 	"default",
-	"vmce",
 }
 
 func (v *ProjectType) UnmarshalJSON(src []byte) error {

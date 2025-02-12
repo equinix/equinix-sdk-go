@@ -4,7 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Facility** | Pointer to **string** |  | [optional] 
 **Metro** | Pointer to **string** | The metro ID or code to check the capacity in. | [optional] 
 **Plan** | Pointer to **string** | The plan ID or slug to check the capacity of. | [optional] 
 **Quantity** | Pointer to **string** | The number of servers to check the capacity of. | [optional] 
@@ -27,31 +26,6 @@ will change when the set of required properties is changed
 NewServerInfoWithDefaults instantiates a new ServerInfo object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetFacility
-
-`func (o *ServerInfo) GetFacility() string`
-
-GetFacility returns the Facility field if non-nil, zero value otherwise.
-
-### GetFacilityOk
-
-`func (o *ServerInfo) GetFacilityOk() (*string, bool)`
-
-GetFacilityOk returns a tuple with the Facility field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetFacility
-
-`func (o *ServerInfo) SetFacility(v string)`
-
-SetFacility sets Facility field to given value.
-
-### HasFacility
-
-`func (o *ServerInfo) HasFacility() bool`
-
-HasFacility returns a boolean if a field has been set.
 
 ### GetMetro
 

@@ -18,8 +18,7 @@ var _ MappedNullable = &MetroInput{}
 
 // MetroInput struct for MetroInput
 type MetroInput struct {
-	// Metro code or ID of where the device should be provisioned in, or it can be instructed to create the device in the best available metro with `{ \"metro\": \"any\" }`. The special metro value of any means anywhere, any metro. When any is chosen in the request, the metro location is picked per our scheduling algorithms that favor the following factors: hardware reservation location (if requesting reserved hardware), ip reservations, spot instances, etc. The any keyword *does not* optimize for cost, this means that usage costs (instance, transfer, other features dependent on location) will vary. Please check metro value in response to see where the device was created. Either metro or facility must be provided.
-	Metro                string `json:"metro"`
+	Metro                MetroInputMetro `json:"metro"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -29,7 +28,7 @@ type _MetroInput MetroInput
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewMetroInput(metro string) *MetroInput {
+func NewMetroInput(metro MetroInputMetro) *MetroInput {
 	this := MetroInput{}
 	this.Metro = metro
 	return &this
@@ -44,9 +43,9 @@ func NewMetroInputWithDefaults() *MetroInput {
 }
 
 // GetMetro returns the Metro field value
-func (o *MetroInput) GetMetro() string {
+func (o *MetroInput) GetMetro() MetroInputMetro {
 	if o == nil {
-		var ret string
+		var ret MetroInputMetro
 		return ret
 	}
 
@@ -55,7 +54,7 @@ func (o *MetroInput) GetMetro() string {
 
 // GetMetroOk returns a tuple with the Metro field value
 // and a boolean to check if the value has been set.
-func (o *MetroInput) GetMetroOk() (*string, bool) {
+func (o *MetroInput) GetMetroOk() (*MetroInputMetro, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -63,7 +62,7 @@ func (o *MetroInput) GetMetroOk() (*string, bool) {
 }
 
 // SetMetro sets field value
-func (o *MetroInput) SetMetro(v string) {
+func (o *MetroInput) SetMetro(v MetroInputMetro) {
 	o.Metro = v
 }
 
