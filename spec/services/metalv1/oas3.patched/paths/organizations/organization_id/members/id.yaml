@@ -1,0 +1,100 @@
+put:
+  summary: Update roles for an organization member
+  operationId: updateOrganizationMemberRoles
+  description: |
+    Update organization member by assigning roles that determine which actions they can perform within the organization.
+  tags:
+    - Organizations
+  parameters:
+  - description: Organization UUID
+    in: path
+    required: true
+    name: organization_id
+    schema:
+      format: uuid
+      type: string
+  - description: Member UUID
+    in: path
+    required: true
+    name: id
+    schema:
+      format: uuid
+      type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../../../../components/schemas/MemberUpdateInput.yaml'
+    description: Organization to update
+  responses:
+    "200":
+      content:
+        application/json:
+          schema:
+            $ref: '../../../../components/schemas/Member.yaml'
+      description: ok
+    "401":
+      content:
+        application/json:
+          schema:
+            $ref: '../../../../components/schemas/Error.yaml'
+      description: unauthorized
+    "403":
+      content:
+        application/json:
+          schema:
+            $ref: '../../../../components/schemas/Error.yaml'
+      description: forbidden
+    "404":
+      content:
+        application/json:
+          schema:
+            $ref: '../../../../components/schemas/Error.yaml'
+      description: not found
+    "422":
+      content:
+        application/json:
+          schema:
+            $ref: '../../../../components/schemas/Error.yaml'
+      description: unprocessable entity
+delete:
+  summary: Remove member from the organization
+  operationId: removeOrganizationMember
+  tags:
+    - Organizations
+  parameters:
+  - description: Organization UUID
+    in: path
+    required: true
+    name: organization_id
+    schema:
+      format: uuid
+      type: string
+  - description: Member UUID
+    in: path
+    required: true
+    name: id
+    schema:
+      format: uuid
+      type: string
+  responses:
+    "204":
+      description: no content
+    "401":
+      content:
+        application/json:
+          schema:
+            $ref: '../../../../components/schemas/Error.yaml'
+      description: unauthorized
+    "403":
+      content:
+        application/json:
+          schema:
+            $ref: '../../../../components/schemas/Error.yaml'
+      description: forbidden
+    "404":
+      content:
+        application/json:
+          schema:
+            $ref: '../../../../components/schemas/Error.yaml'
+      description: not found

@@ -1,5 +1,5 @@
 get:
-  description: Provides a listing of available operating systems to provision your
+  description: Returns a list of available operating systems to provision your
     new device with.
   operationId: findOperatingSystems
   responses:
