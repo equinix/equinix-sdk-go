@@ -72,7 +72,7 @@ func (a *PasswordResetTokensApiService) CreatePasswordResetTokenExecute(r ApiCre
 		return nil, reportError("email is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "email", r.email, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "email", r.email, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

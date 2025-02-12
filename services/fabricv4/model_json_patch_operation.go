@@ -10,6 +10,7 @@ package fabricv4
 import (
 	"encoding/json"
 	"fmt"
+	"gopkg.in/validator.v2"
 )
 
 // JsonPatchOperation - Service Profile Access Points
@@ -51,7 +52,11 @@ func (dst *JsonPatchOperation) UnmarshalJSON(data []byte) error {
 		if string(jsonAddOperation) == "{}" { // empty struct
 			dst.AddOperation = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.AddOperation); err != nil {
+				dst.AddOperation = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.AddOperation = nil
@@ -64,7 +69,11 @@ func (dst *JsonPatchOperation) UnmarshalJSON(data []byte) error {
 		if string(jsonRemoveOperation) == "{}" { // empty struct
 			dst.RemoveOperation = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.RemoveOperation); err != nil {
+				dst.RemoveOperation = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.RemoveOperation = nil
@@ -77,7 +86,11 @@ func (dst *JsonPatchOperation) UnmarshalJSON(data []byte) error {
 		if string(jsonReplaceOperation) == "{}" { // empty struct
 			dst.ReplaceOperation = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.ReplaceOperation); err != nil {
+				dst.ReplaceOperation = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.ReplaceOperation = nil

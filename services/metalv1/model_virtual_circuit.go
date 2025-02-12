@@ -11,6 +11,7 @@ package metalv1
 import (
 	"encoding/json"
 	"fmt"
+	"gopkg.in/validator.v2"
 )
 
 // VirtualCircuit - struct for VirtualCircuit
@@ -44,7 +45,11 @@ func (dst *VirtualCircuit) UnmarshalJSON(data []byte) error {
 		if string(jsonVlanVirtualCircuit) == "{}" { // empty struct
 			dst.VlanVirtualCircuit = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.VlanVirtualCircuit); err != nil {
+				dst.VlanVirtualCircuit = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.VlanVirtualCircuit = nil
@@ -57,7 +62,11 @@ func (dst *VirtualCircuit) UnmarshalJSON(data []byte) error {
 		if string(jsonVrfVirtualCircuit) == "{}" { // empty struct
 			dst.VrfVirtualCircuit = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.VrfVirtualCircuit); err != nil {
+				dst.VrfVirtualCircuit = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.VrfVirtualCircuit = nil

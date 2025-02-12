@@ -11,6 +11,7 @@ package metalv1
 import (
 	"encoding/json"
 	"fmt"
+	"gopkg.in/validator.v2"
 )
 
 // InterconnectionFabricProvider - Configuration information for connecting to external cloud service provider. Only available if the fabric_provider param was used when creating the interconnection.
@@ -36,7 +37,11 @@ func (dst *InterconnectionFabricProvider) UnmarshalJSON(data []byte) error {
 		if string(jsonAWSFabricProvider) == "{}" { // empty struct
 			dst.AWSFabricProvider = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.AWSFabricProvider); err != nil {
+				dst.AWSFabricProvider = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.AWSFabricProvider = nil

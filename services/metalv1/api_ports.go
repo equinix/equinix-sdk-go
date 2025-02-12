@@ -14,6 +14,7 @@ import (
 	"io"
 	"net/http"
 	"net/url"
+	"reflect"
 	"strings"
 )
 
@@ -87,9 +88,9 @@ func (a *PortsApiService) AssignNativeVlanExecute(r ApiAssignNativeVlanRequest) 
 		return localVarReturnValue, nil, reportError("vnid is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "vnid", r.vnid, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "vnid", r.vnid, "form", "")
 	if r.include != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "form", "csv")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -259,7 +260,7 @@ func (a *PortsApiService) AssignPortExecute(r ApiAssignPortRequest) (*Port, *htt
 	}
 
 	if r.include != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "form", "csv")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -439,10 +440,10 @@ func (a *PortsApiService) BondPortExecute(r ApiBondPortRequest) (*Port, *http.Re
 	localVarFormParams := url.Values{}
 
 	if r.bulkEnable != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "bulk_enable", r.bulkEnable, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "bulk_enable", r.bulkEnable, "form", "")
 	}
 	if r.include != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "form", "csv")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -623,7 +624,7 @@ func (a *PortsApiService) ConvertLayer2Execute(r ApiConvertLayer2Request) (*Port
 	}
 
 	if r.include != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "form", "csv")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -803,7 +804,7 @@ func (a *PortsApiService) ConvertLayer3Execute(r ApiConvertLayer3Request) (*Port
 	localVarFormParams := url.Values{}
 
 	if r.include != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "form", "csv")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -986,7 +987,7 @@ func (a *PortsApiService) CreatePortVlanAssignmentBatchExecute(r ApiCreatePortVl
 	}
 
 	if r.include != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "form", "csv")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1159,7 +1160,7 @@ func (a *PortsApiService) DeleteNativeVlanExecute(r ApiDeleteNativeVlanRequest) 
 	localVarFormParams := url.Values{}
 
 	if r.include != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "form", "csv")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1326,10 +1327,10 @@ func (a *PortsApiService) DisbondPortExecute(r ApiDisbondPortRequest) (*Port, *h
 	localVarFormParams := url.Values{}
 
 	if r.bulkDisable != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "bulk_disable", r.bulkDisable, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "bulk_disable", r.bulkDisable, "form", "")
 	}
 	if r.include != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "form", "csv")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1500,7 +1501,7 @@ func (a *PortsApiService) FindPortByIdExecute(r ApiFindPortByIdRequest) (*Port, 
 	localVarFormParams := url.Values{}
 
 	if r.include != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "form", "csv")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1653,7 +1654,7 @@ func (a *PortsApiService) FindPortVlanAssignmentBatchByPortIdAndBatchIdExecute(r
 	localVarFormParams := url.Values{}
 
 	if r.include != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "form", "csv")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1967,7 +1968,15 @@ func (a *PortsApiService) FindPortVlanAssignmentByPortIdAndAssignmentIdExecute(r
 	localVarFormParams := url.Values{}
 
 	if r.include != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "csv")
+		t := *r.include
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				parameterAddToHeaderOrQuery(localVarQueryParams, "include", s.Index(i).Interface(), "form", "multi")
+			}
+		} else {
+			parameterAddToHeaderOrQuery(localVarQueryParams, "include", t, "form", "multi")
+		}
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2127,7 +2136,15 @@ func (a *PortsApiService) FindPortVlanAssignmentsExecute(r ApiFindPortVlanAssign
 	localVarFormParams := url.Values{}
 
 	if r.include != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "csv")
+		t := *r.include
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				parameterAddToHeaderOrQuery(localVarQueryParams, "include", s.Index(i).Interface(), "form", "multi")
+			}
+		} else {
+			parameterAddToHeaderOrQuery(localVarQueryParams, "include", t, "form", "multi")
+		}
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2297,7 +2314,7 @@ func (a *PortsApiService) UnassignPortExecute(r ApiUnassignPortRequest) (*Port, 
 	}
 
 	if r.include != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "form", "csv")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

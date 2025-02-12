@@ -23,7 +23,7 @@ type DirectPeeringIpv4Request struct {
 	// Peering IP addresses in Version 4 (IPv4)
 	EquinixPeerIps []string `json:"equinixPeerIps,omitempty"`
 	// Virtual router group IP addresses in Version 4 (IPv4)
-	EquinixVRRPIp        *string `json:"equinixVRRPIp,omitempty"`
+	EquinixVRRPIp        *string `json:"equinixVRRPIp,omitempty" validate:"regexp=^(?:\\\\d{1,3}\\\\.){3}\\\\d{1,3}(?:\\/(?:[0-2]?[0-9]|3[0-2]))?$"`
 	AdditionalProperties map[string]interface{}
 }
 

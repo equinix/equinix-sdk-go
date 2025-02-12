@@ -8,3 +8,4 @@ services/*/api/
 pkg
 .certs
 .idea/
+spec/services/metalv1/temp_merged_spec/

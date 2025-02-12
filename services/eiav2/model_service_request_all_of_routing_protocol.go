@@ -13,6 +13,7 @@ package eiav2
 import (
 	"encoding/json"
 	"fmt"
+	"gopkg.in/validator.v2"
 )
 
 // ServiceRequestAllOfRoutingProtocol - struct for ServiceRequestAllOfRoutingProtocol
@@ -51,6 +52,12 @@ func (dst *ServiceRequestAllOfRoutingProtocol) UnmarshalJSON(data []byte) error 
 	err = newStrictDecoder(data).Decode(&jsonDict)
 	if err != nil {
 		return fmt.Errorf("failed to unmarshal JSON into map for the discriminator lookup")
+	}
+
+	// TEMP: hack to avoid unused imports until this PR is merged/released:
+	// https://github.com/OpenAPITools/openapi-generator/pull/20497
+	if err = validator.Validate(jsonDict); err != nil {
+		// Do nothing
 	}
 
 	// check if the discriminator value is 'BGP'

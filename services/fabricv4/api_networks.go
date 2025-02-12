@@ -82,7 +82,7 @@ func (a *NetworksApiService) CreateNetworkExecute(r ApiCreateNetworkRequest) (*N
 	}
 
 	if r.dryRun != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "dryRun", r.dryRun, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "dryRun", r.dryRun, "form", "")
 	} else {
 		var defaultValue bool = false
 		r.dryRun = &defaultValue

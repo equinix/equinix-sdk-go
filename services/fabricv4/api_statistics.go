@@ -100,9 +100,9 @@ func (a *StatisticsApiService) GetConnectionStatsByPortUuidExecute(r ApiGetConne
 		return localVarReturnValue, nil, reportError("viewPoint is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "startDateTime", r.startDateTime, "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "endDateTime", r.endDateTime, "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "viewPoint", r.viewPoint, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "startDateTime", r.startDateTime, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "endDateTime", r.endDateTime, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "viewPoint", r.viewPoint, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -248,8 +248,8 @@ func (a *StatisticsApiService) GetPortStatsByPortUuidExecute(r ApiGetPortStatsBy
 		return localVarReturnValue, nil, reportError("endDateTime is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "startDateTime", r.startDateTime, "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "endDateTime", r.endDateTime, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "startDateTime", r.startDateTime, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "endDateTime", r.endDateTime, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

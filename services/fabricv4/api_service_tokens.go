@@ -82,7 +82,7 @@ func (a *ServiceTokensApiService) CreateServiceTokenExecute(r ApiCreateServiceTo
 	}
 
 	if r.dryRun != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "dryRun", r.dryRun, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "dryRun", r.dryRun, "form", "")
 	} else {
 		var defaultValue bool = false
 		r.dryRun = &defaultValue
@@ -666,10 +666,10 @@ func (a *ServiceTokensApiService) GetServiceTokensExecute(r ApiGetServiceTokensR
 	localVarFormParams := url.Values{}
 
 	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
 	}
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -805,10 +805,10 @@ func (a *ServiceTokensApiService) SearchServiceTokensExecute(r ApiSearchServiceT
 	}
 
 	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
 	}
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

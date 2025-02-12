@@ -11,6 +11,7 @@ package metalv1
 import (
 	"encoding/json"
 	"fmt"
+	"gopkg.in/validator.v2"
 )
 
 // RequestIPReservationRequest - struct for RequestIPReservationRequest
@@ -44,7 +45,11 @@ func (dst *RequestIPReservationRequest) UnmarshalJSON(data []byte) error {
 		if string(jsonIPReservationRequestInput) == "{}" { // empty struct
 			dst.IPReservationRequestInput = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.IPReservationRequestInput); err != nil {
+				dst.IPReservationRequestInput = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.IPReservationRequestInput = nil
@@ -57,7 +62,11 @@ func (dst *RequestIPReservationRequest) UnmarshalJSON(data []byte) error {
 		if string(jsonVrfIpReservationCreateInput) == "{}" { // empty struct
 			dst.VrfIpReservationCreateInput = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.VrfIpReservationCreateInput); err != nil {
+				dst.VrfIpReservationCreateInput = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.VrfIpReservationCreateInput = nil

@@ -10,6 +10,7 @@ package fabricv4
 import (
 	"encoding/json"
 	"fmt"
+	"gopkg.in/validator.v2"
 )
 
 // ServiceProfileAccessPointType - Access Point Type
@@ -43,7 +44,11 @@ func (dst *ServiceProfileAccessPointType) UnmarshalJSON(data []byte) error {
 		if string(jsonServiceProfileAccessPointTypeCOLO) == "{}" { // empty struct
 			dst.ServiceProfileAccessPointTypeCOLO = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.ServiceProfileAccessPointTypeCOLO); err != nil {
+				dst.ServiceProfileAccessPointTypeCOLO = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.ServiceProfileAccessPointTypeCOLO = nil
@@ -56,7 +61,11 @@ func (dst *ServiceProfileAccessPointType) UnmarshalJSON(data []byte) error {
 		if string(jsonServiceProfileAccessPointTypeVD) == "{}" { // empty struct
 			dst.ServiceProfileAccessPointTypeVD = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.ServiceProfileAccessPointTypeVD); err != nil {
+				dst.ServiceProfileAccessPointTypeVD = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.ServiceProfileAccessPointTypeVD = nil

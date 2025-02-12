@@ -22,7 +22,7 @@ var _ MappedNullable = &RoutingProtocolCustomerRouteIpv4{}
 type RoutingProtocolCustomerRouteIpv4 struct {
 	ImportPolicy map[string]interface{} `json:"importPolicy"`
 	// Subnet prefix
-	Prefix *string `json:"prefix,omitempty"`
+	Prefix *string `json:"prefix,omitempty" validate:"regexp=^([01]?\\\\d\\\\d?|2[0-4]\\\\d|25[0-5])(?:\\\\.(?:[01]?\\\\d\\\\d?|2[0-4]\\\\d|25[0-5])){3}(?:\\/[0-2]\\\\d|\\/3[0-2])+$"`
 	// Determines the size of ip subnet
 	PrefixLength         int32             `json:"prefixLength"`
 	IpBlock              *IpBlockReadModel `json:"ipBlock,omitempty"`

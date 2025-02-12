@@ -22,7 +22,7 @@ type BgpConfigRequestInput struct {
 	Asn            int64                               `json:"asn"`
 	DeploymentType BgpConfigRequestInputDeploymentType `json:"deployment_type"`
 	// The plaintext password to share between BGP neighbors as an MD5 checksum: * must be 10-20 characters long * may not include punctuation * must be a combination of numbers and letters * must contain at least one lowercase, uppercase, and digit character
-	Md5 *string `json:"md5,omitempty"`
+	Md5 *string `json:"md5,omitempty" validate:"regexp=^(?=.*[a-z])(?=.*[A-Z])(?=.*\\\\d)[a-zA-Z\\\\d]{10,20}$"`
 	// A use case explanation (necessary for global BGP request review).
 	UseCase              *string `json:"use_case,omitempty"`
 	AdditionalProperties map[string]interface{}

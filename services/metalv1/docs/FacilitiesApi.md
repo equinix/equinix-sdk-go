@@ -32,7 +32,7 @@ import (
 
 func main() {
     include := []openapiclient.FindFacilitiesIncludeParameterInner{openapiclient.findFacilities_include_parameter_inner("address")} // []FindFacilitiesIncludeParameterInner | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
-    exclude := []openapiclient.FindFacilitiesIncludeParameterInner{openapiclient.findFacilities_include_parameter_inner("address")} // []FindFacilitiesIncludeParameterInner | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional) (default to [address])
+    exclude := []openapiclient.FindFacilitiesIncludeParameterInner{openapiclient.findFacilities_include_parameter_inner("address")} // []FindFacilitiesIncludeParameterInner | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional) (default to ["address"])
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -58,7 +58,7 @@ Other parameters are passed through a pointer to a apiFindFacilitiesRequest stru
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **include** | [**[]FindFacilitiesIncludeParameterInner**](FindFacilitiesIncludeParameterInner.md) | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | 
- **exclude** | [**[]FindFacilitiesIncludeParameterInner**](FindFacilitiesIncludeParameterInner.md) | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [default to [address]]
+ **exclude** | [**[]FindFacilitiesIncludeParameterInner**](FindFacilitiesIncludeParameterInner.md) | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [default to [&quot;address&quot;]]
 
 ### Return type
 

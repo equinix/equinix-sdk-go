@@ -14,6 +14,7 @@ import (
 	"io"
 	"net/http"
 	"net/url"
+	"reflect"
 	"strings"
 )
 
@@ -88,7 +89,7 @@ func (a *DevicesApiService) CreateBgpSessionExecute(r ApiCreateBgpSessionRequest
 	}
 
 	if r.include != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "form", "csv")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -269,10 +270,10 @@ func (a *DevicesApiService) CreateDeviceExecute(r ApiCreateDeviceRequest) (*Devi
 	}
 
 	if r.include != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "form", "csv")
 	}
 	if r.exclude != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "csv")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -462,10 +463,10 @@ func (a *DevicesApiService) CreateIPAssignmentExecute(r ApiCreateIPAssignmentReq
 	}
 
 	if r.include != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "form", "csv")
 	}
 	if r.exclude != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "csv")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -624,7 +625,7 @@ func (a *DevicesApiService) DeleteDeviceExecute(r ApiDeleteDeviceRequest) (*http
 	localVarFormParams := url.Values{}
 
 	if r.forceDelete != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "force_delete", r.forceDelete, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "force_delete", r.forceDelete, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -786,7 +787,7 @@ func (a *DevicesApiService) FindBgpSessionsExecute(r ApiFindBgpSessionsRequest) 
 	localVarFormParams := url.Values{}
 
 	if r.include != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "form", "csv")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -944,10 +945,10 @@ func (a *DevicesApiService) FindDeviceByIdExecute(r ApiFindDeviceByIdRequest) (*
 	localVarFormParams := url.Values{}
 
 	if r.include != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "form", "csv")
 	}
 	if r.exclude != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "csv")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1694,10 +1695,10 @@ func (a *DevicesApiService) FindIPAssignmentsExecute(r ApiFindIPAssignmentsReque
 	localVarFormParams := url.Values{}
 
 	if r.include != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "form", "csv")
 	}
 	if r.exclude != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "csv")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1855,8 +1856,8 @@ func (a *DevicesApiService) FindInstanceBandwidthExecute(r ApiFindInstanceBandwi
 		return nil, reportError("until is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "until", r.until, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "until", r.until, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -2079,43 +2080,51 @@ func (a *DevicesApiService) FindOrganizationDevicesExecute(r ApiFindOrganization
 	localVarFormParams := url.Values{}
 
 	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	if r.categories != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "categories", r.categories, "csv")
+		t := *r.categories
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				parameterAddToHeaderOrQuery(localVarQueryParams, "categories", s.Index(i).Interface(), "form", "multi")
+			}
+		} else {
+			parameterAddToHeaderOrQuery(localVarQueryParams, "categories", t, "form", "multi")
+		}
 	}
 	if r.facility != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "facility", r.facility, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "facility", r.facility, "form", "")
 	}
 	if r.hostname != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "hostname", r.hostname, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "hostname", r.hostname, "form", "")
 	}
 	if r.reserved != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "reserved", r.reserved, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "reserved", r.reserved, "form", "")
 	}
 	if r.tag != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "tag", r.tag, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "tag", r.tag, "form", "")
 	}
 	if r.type_ != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "type", r.type_, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "type", r.type_, "form", "")
 	}
 	if r.hasTerminationTime != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "has_termination_time", r.hasTerminationTime, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "has_termination_time", r.hasTerminationTime, "form", "")
 	}
 	if r.macAddress != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "mac_address", r.macAddress, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "mac_address", r.macAddress, "form", "")
 	}
 	if r.include != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "form", "csv")
 	}
 	if r.exclude != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "csv")
 	}
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.perPage != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "per_page", r.perPage, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "per_page", r.perPage, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2391,46 +2400,54 @@ func (a *DevicesApiService) FindProjectDevicesExecute(r ApiFindProjectDevicesReq
 	localVarFormParams := url.Values{}
 
 	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	if r.categories != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "categories", r.categories, "csv")
+		t := *r.categories
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				parameterAddToHeaderOrQuery(localVarQueryParams, "categories", s.Index(i).Interface(), "form", "multi")
+			}
+		} else {
+			parameterAddToHeaderOrQuery(localVarQueryParams, "categories", t, "form", "multi")
+		}
 	}
 	if r.facility != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "facility", r.facility, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "facility", r.facility, "form", "")
 	}
 	if r.metro != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "metro", r.metro, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "metro", r.metro, "form", "")
 	}
 	if r.hostname != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "hostname", r.hostname, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "hostname", r.hostname, "form", "")
 	}
 	if r.reserved != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "reserved", r.reserved, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "reserved", r.reserved, "form", "")
 	}
 	if r.tag != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "tag", r.tag, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "tag", r.tag, "form", "")
 	}
 	if r.type_ != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "type", r.type_, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "type", r.type_, "form", "")
 	}
 	if r.hasTerminationTime != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "has_termination_time", r.hasTerminationTime, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "has_termination_time", r.hasTerminationTime, "form", "")
 	}
 	if r.macAddress != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "mac_address", r.macAddress, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "mac_address", r.macAddress, "form", "")
 	}
 	if r.include != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "form", "csv")
 	}
 	if r.exclude != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "csv")
 	}
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.perPage != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "per_page", r.perPage, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "per_page", r.perPage, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2636,15 +2653,15 @@ func (a *DevicesApiService) FindTrafficExecute(r ApiFindTrafficRequest) (*http.R
 		return nil, reportError("direction is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "direction", r.direction, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "direction", r.direction, "form", "")
 	if r.interval != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "interval", r.interval, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "interval", r.interval, "form", "")
 	}
 	if r.bucket != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "bucket", r.bucket, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "bucket", r.bucket, "form", "")
 	}
 	if r.timeframe != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "timeframe", r.timeframe, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "timeframe", r.timeframe, "deepObject", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2795,7 +2812,7 @@ func (a *DevicesApiService) GetBgpNeighborDataExecute(r ApiGetBgpNeighborDataReq
 	localVarFormParams := url.Values{}
 
 	if r.include != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "form", "csv")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -3378,10 +3395,10 @@ func (a *DevicesApiService) UpdateDeviceExecute(r ApiUpdateDeviceRequest) (*Devi
 	}
 
 	if r.include != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "form", "csv")
 	}
 	if r.exclude != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "csv")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
