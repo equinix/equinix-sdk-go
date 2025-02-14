@@ -162,7 +162,7 @@ Name | Type | Description  | Notes
 
 ## FindVirtualNetworks
 
-> VirtualNetworkList FindVirtualNetworks(ctx, id).Include(include).Exclude(exclude).Facility(facility).Metro(metro).Execute()
+> VirtualNetworkList FindVirtualNetworks(ctx, id).Include(include).Exclude(exclude).Metro(metro).Execute()
 
 Retrieve all virtual networks
 
@@ -184,12 +184,11 @@ func main() {
     id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project UUID
     include := []string{"Inner_example"} // []string | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
     exclude := []string{"Inner_example"} // []string | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
-    facility := "facility_example" // string | Filter by Facility ID (uuid) or Facility Code (optional)
     metro := "metro_example" // string | Filter by Metro ID (uuid) or Metro Code (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.VLANsApi.FindVirtualNetworks(context.Background(), id).Include(include).Exclude(exclude).Facility(facility).Metro(metro).Execute()
+    resp, r, err := apiClient.VLANsApi.FindVirtualNetworks(context.Background(), id).Include(include).Exclude(exclude).Metro(metro).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `VLANsApi.FindVirtualNetworks``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -217,7 +216,6 @@ Name | Type | Description  | Notes
 
  **include** | **[]string** | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | 
  **exclude** | **[]string** | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | 
- **facility** | **string** | Filter by Facility ID (uuid) or Facility Code | 
  **metro** | **string** | Filter by Metro ID (uuid) or Metro Code | 
 
 ### Return type

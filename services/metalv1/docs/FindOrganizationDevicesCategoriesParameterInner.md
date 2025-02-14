@@ -7,8 +7,6 @@
 
 * `STORAGE` (value: `"storage"`)
 
-* `VMCE` (value: `"vmce"`)
-
 * `LEGACY_GEN` (value: `"legacy_gen"`)
 
 * `CURRENT_GEN` (value: `"current_gen"`)

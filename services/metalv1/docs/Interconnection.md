@@ -6,7 +6,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ContactEmail** | Pointer to **string** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
-**Facility** | Pointer to [**Facility**](Facility.md) |  | [optional] 
 **Id** | Pointer to **string** |  | [optional] 
 **Metro** | Pointer to [**Metro**](Metro.md) |  | [optional] 
 **Mode** | Pointer to [**InterconnectionMode**](InterconnectionMode.md) |  | [optional] 
@@ -95,31 +94,6 @@ SetDescription sets Description field to given value.
 `func (o *Interconnection) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
-
-### GetFacility
-
-`func (o *Interconnection) GetFacility() Facility`
-
-GetFacility returns the Facility field if non-nil, zero value otherwise.
-
-### GetFacilityOk
-
-`func (o *Interconnection) GetFacilityOk() (*Facility, bool)`
-
-GetFacilityOk returns a tuple with the Facility field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetFacility
-
-`func (o *Interconnection) SetFacility(v Facility)`
-
-SetFacility sets Facility field to given value.
-
-### HasFacility
-
-`func (o *Interconnection) HasFacility() bool`
-
-HasFacility returns a boolean if a field has been set.
 
 ### GetId
 
