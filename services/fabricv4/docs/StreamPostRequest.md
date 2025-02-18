@@ -8,7 +8,6 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** | Customer-provided stream name | [optional] 
 **Description** | Pointer to **string** | Customer-provided stream description | [optional] 
 **Project** | Pointer to [**Project**](Project.md) |  | [optional] 
-**Enabled** | Pointer to **bool** | Stream enabled status | [optional] 
 
 ## Methods
 
@@ -128,31 +127,6 @@ SetProject sets Project field to given value.
 `func (o *StreamPostRequest) HasProject() bool`
 
 HasProject returns a boolean if a field has been set.
-
-### GetEnabled
-
-`func (o *StreamPostRequest) GetEnabled() bool`
-
-GetEnabled returns the Enabled field if non-nil, zero value otherwise.
-
-### GetEnabledOk
-
-`func (o *StreamPostRequest) GetEnabledOk() (*bool, bool)`
-
-GetEnabledOk returns a tuple with the Enabled field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEnabled
-
-`func (o *StreamPostRequest) SetEnabled(v bool)`
-
-SetEnabled sets Enabled field to given value.
-
-### HasEnabled
-
-`func (o *StreamPostRequest) HasEnabled() bool`
-
-HasEnabled returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -19,9 +19,7 @@ type StreamPutRequest struct {
 	// Customer-provided stream name
 	Name *string `json:"name,omitempty"`
 	// Customer-provided stream description
-	Description *string `json:"description,omitempty"`
-	// stream state
-	Enabled              *bool `json:"enabled,omitempty"`
+	Description          *string `json:"description,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -108,38 +106,6 @@ func (o *StreamPutRequest) SetDescription(v string) {
 	o.Description = &v
 }
 
-// GetEnabled returns the Enabled field value if set, zero value otherwise.
-func (o *StreamPutRequest) GetEnabled() bool {
-	if o == nil || IsNil(o.Enabled) {
-		var ret bool
-		return ret
-	}
-	return *o.Enabled
-}
-
-// GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *StreamPutRequest) GetEnabledOk() (*bool, bool) {
-	if o == nil || IsNil(o.Enabled) {
-		return nil, false
-	}
-	return o.Enabled, true
-}
-
-// HasEnabled returns a boolean if a field has been set.
-func (o *StreamPutRequest) HasEnabled() bool {
-	if o != nil && !IsNil(o.Enabled) {
-		return true
-	}
-
-	return false
-}
-
-// SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
-func (o *StreamPutRequest) SetEnabled(v bool) {
-	o.Enabled = &v
-}
-
 func (o StreamPutRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -155,9 +121,6 @@ func (o StreamPutRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
-	}
-	if !IsNil(o.Enabled) {
-		toSerialize["enabled"] = o.Enabled
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -183,7 +146,6 @@ func (o *StreamPutRequest) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")
-		delete(additionalProperties, "enabled")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -25,7 +25,9 @@ type Order struct {
 	// Order Identification
 	OrderId *string `json:"orderId,omitempty"`
 	// Order Reference Number
-	OrderNumber          *string `json:"orderNumber,omitempty"`
+	OrderNumber *string `json:"orderNumber,omitempty"`
+	// Term length in months, valid values are 1, 12, 24, 36 where 1 is the default value (for on-demand case).
+	TermLength           *int32 `json:"termLength,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -37,6 +39,8 @@ type _Order Order
 // will change when the set of required properties is changed
 func NewOrder() *Order {
 	this := Order{}
+	var termLength int32 = 1
+	this.TermLength = &termLength
 	return &this
 }
 
@@ -45,6 +49,8 @@ func NewOrder() *Order {
 // but it doesn't guarantee that properties required by API are set
 func NewOrderWithDefaults() *Order {
 	this := Order{}
+	var termLength int32 = 1
+	this.TermLength = &termLength
 	return &this
 }
 
@@ -208,6 +214,38 @@ func (o *Order) SetOrderNumber(v string) {
 	o.OrderNumber = &v
 }
 
+// GetTermLength returns the TermLength field value if set, zero value otherwise.
+func (o *Order) GetTermLength() int32 {
+	if o == nil || IsNil(o.TermLength) {
+		var ret int32
+		return ret
+	}
+	return *o.TermLength
+}
+
+// GetTermLengthOk returns a tuple with the TermLength field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Order) GetTermLengthOk() (*int32, bool) {
+	if o == nil || IsNil(o.TermLength) {
+		return nil, false
+	}
+	return o.TermLength, true
+}
+
+// HasTermLength returns a boolean if a field has been set.
+func (o *Order) HasTermLength() bool {
+	if o != nil && !IsNil(o.TermLength) {
+		return true
+	}
+
+	return false
+}
+
+// SetTermLength gets a reference to the given int32 and assigns it to the TermLength field.
+func (o *Order) SetTermLength(v int32) {
+	o.TermLength = &v
+}
+
 func (o Order) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -232,6 +270,9 @@ func (o Order) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.OrderNumber) {
 		toSerialize["orderNumber"] = o.OrderNumber
+	}
+	if !IsNil(o.TermLength) {
+		toSerialize["termLength"] = o.TermLength
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -260,6 +301,7 @@ func (o *Order) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "billingTier")
 		delete(additionalProperties, "orderId")
 		delete(additionalProperties, "orderNumber")
+		delete(additionalProperties, "termLength")
 		o.AdditionalProperties = additionalProperties
 	}
 

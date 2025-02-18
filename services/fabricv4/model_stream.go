@@ -31,10 +31,8 @@ type Stream struct {
 	// Customer-provided stream name
 	Name *string `json:"name,omitempty"`
 	// Customer-provided stream description
-	Description *string  `json:"description,omitempty"`
-	Project     *Project `json:"project,omitempty"`
-	// Stream enabled status
-	Enabled              *bool `json:"enabled,omitempty"`
+	Description          *string  `json:"description,omitempty"`
+	Project              *Project `json:"project,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -377,38 +375,6 @@ func (o *Stream) SetProject(v Project) {
 	o.Project = &v
 }
 
-// GetEnabled returns the Enabled field value if set, zero value otherwise.
-func (o *Stream) GetEnabled() bool {
-	if o == nil || IsNil(o.Enabled) {
-		var ret bool
-		return ret
-	}
-	return *o.Enabled
-}
-
-// GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Stream) GetEnabledOk() (*bool, bool) {
-	if o == nil || IsNil(o.Enabled) {
-		return nil, false
-	}
-	return o.Enabled, true
-}
-
-// HasEnabled returns a boolean if a field has been set.
-func (o *Stream) HasEnabled() bool {
-	if o != nil && !IsNil(o.Enabled) {
-		return true
-	}
-
-	return false
-}
-
-// SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
-func (o *Stream) SetEnabled(v bool) {
-	o.Enabled = &v
-}
-
 func (o Stream) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -449,9 +415,6 @@ func (o Stream) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Project) {
 		toSerialize["project"] = o.Project
 	}
-	if !IsNil(o.Enabled) {
-		toSerialize["enabled"] = o.Enabled
-	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -484,7 +447,6 @@ func (o *Stream) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "project")
-		delete(additionalProperties, "enabled")
 		o.AdditionalProperties = additionalProperties
 	}
 

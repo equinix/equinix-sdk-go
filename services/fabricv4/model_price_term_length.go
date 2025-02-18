@@ -12,11 +12,12 @@ import (
 	"fmt"
 )
 
-// PriceTermLength In months. No value means unlimited
+// PriceTermLength In months. No value or value of 1 means on-demand
 type PriceTermLength int32
 
 // List of Price_termLength
 const (
+	PRICETERMLENGTH__1  PriceTermLength = 1
 	PRICETERMLENGTH__12 PriceTermLength = 12
 	PRICETERMLENGTH__24 PriceTermLength = 24
 	PRICETERMLENGTH__36 PriceTermLength = 36
@@ -24,6 +25,7 @@ const (
 
 // All allowed values of PriceTermLength enum
 var AllowedPriceTermLengthEnumValues = []PriceTermLength{
+	1,
 	12,
 	24,
 	36,
