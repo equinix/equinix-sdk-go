@@ -9,7 +9,7 @@ info:
   license:
     name: Equinix Inc
     url: https://developer.equinix.com/agreement
-  version: '4.19'
+  version: '4.20'
 externalDocs:
   description: Find more information on Equinix Developer Portal
   url: https://developer.equinix.com
@@ -31,6 +31,10 @@ tags:
     description: Precision Time <font color="red"> <sup color='red'>Beta</sup></font>
   - name: Prices
     description: Prices
+  - name: Route Aggregation Rules
+    description: Route Aggregation Rules
+  - name: Route Aggregations
+    description: Route Aggregations
   - name: Route Filter Rules
     description: Route Filter Rules
   - name: Route Filters
@@ -43,6 +47,8 @@ tags:
     description: Service Tokens
   - name: Statistics
     description: Statistics
+  - name: Stream Alert Rules
+    description: Stream Subscriptions <font color="red"> <sup color='red'>Beta</sup></font>
   - name: Stream Subscriptions
     description: Stream Subscriptions <font color="red"> <sup color='red'>Beta</sup></font>
   - name: Streams
@@ -71,6 +77,8 @@ paths:
             examples:
               Colo2Colo-Dot1q2Dot1q:
                 $ref: "#/components/examples/COLO2COLOwithDot1q-Dot1q"
+              Colo2Colo-Dot1q2Dot1q-WithTerms:
+                $ref: "#/components/examples/COLO2COLOwithDot1qAndTerms-Dot1q"
               Colo2Colo-Dot1q2Dot1q-CRH:
                 $ref: "#/components/examples/COLO2COLOwithDot1q-Dot1q-CRH"
               Colo2Colo-Dot1q2Qinq:
@@ -83,6 +91,8 @@ paths:
                 $ref: "#/components/examples/COLO2COLO-AsReseller"
               Colo2Colo-Epl:
                 $ref: "#/components/examples/COLO2COLO-EPL"
+              Colo2Colo-Epl-With-Terms:
+                $ref: "#/components/examples/COLO2COLO-EPL-Terms"
               Colo2Colo-AccessEpl:
                 $ref: "#/components/examples/COLO2COLO-AccessEpl"
               Colo2Sp-Generic:
@@ -109,8 +119,12 @@ paths:
                 $ref: "#/components/examples/COLO2ServiceToken"
               Colo2Network-EVPLAN_VC:
                 $ref: "#/components/examples/COLO2NETWORKwithDot1q"
+              Colo2Network-EVPLAN_VC-With-Terms:
+                $ref: "#/components/examples/COLO2NETWORKwithDot1qAndTerms"
               Colo2Network-EPLAN_VC:
                 $ref: "#/components/examples/COLO2NETWORKwithEPL"
+              Colo2Network-EPLAN_VC-With-Terms:
+                $ref: "#/components/examples/COLO2NETWORKwithEPLAndTerms"
               Vd2Network:
                 $ref: "#/components/examples/Vd2NETWORK"
               Vd2Sp-Aws:
@@ -321,8 +335,12 @@ paths:
                   $ref: "#/components/examples/Fcr2Metal-Network"
                 Colo2Network-EVPLAN_VC:
                   $ref: "#/components/examples/COLO2NETWORKwithDot1q-Response"
+                Colo2Network-EVPLAN_VC-WithTerms:
+                  $ref: "#/components/examples/COLO2NETWORKwithDot1qAndTerms-Response"
                 Colo2Network-EPLAN_VC:
                   $ref: "#/components/examples/COLO2NETWORKwithEPL-Response"
+                Colo2Network-EPLAN_VC-WithTerms:
+                  $ref: "#/components/examples/COLO2NETWORKwithEPLAndTerms-Response"
                 Vd2IASp:
                   $ref: "#/components/examples/Vd2IAProfile-Response"
                 Vd2Network:
@@ -10867,6 +10885,8 @@ paths:
                 $ref: "#/components/examples/StreamSubscriptionPostRequestExampleDatadog"
               CreateStreamSubscription_Microsoft_Teams:
                 $ref: "#/components/examples/StreamSubscriptionPostRequestExampleTeams"
+              CreateStreamSubscription_Servicenow:
+                $ref: "#/components/examples/StreamSubscriptionPostRequestExampleServicenow"
         required: true
       responses:
         "202":
@@ -11110,6 +11130,386 @@ paths:
               examples:
                 StreamSubscriptionResponse:
                   $ref: "#/components/examples/StreamSubscriptionDeleteResponseExample"
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+              examples:
+                example:
+                  $ref: "#/components/examples/401"
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+              examples:
+                example:
+                  $ref: "#/components/examples/403"
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+              examples:
+                example:
+                  $ref: "#/components/examples/404"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+              examples:
+                example:
+                  $ref: "#/components/examples/500"
+  "/fabric/v4/streams/{streamId}/alertRules":
+    get:
+      tags:
+        - Stream Alert Rules
+      summary: Get Stream Alert Rules
+      description: This API provides capability to retrieve stream alert rules
+      operationId: getStreamAlertRules
+      parameters:
+        - name: streamId
+          in: path
+          description: Stream UUID
+          required: true
+          schema:
+            $ref: "#/components/schemas/StreamId"
+        - name: offset
+          in: query
+          description: offset
+          required: false
+          schema:
+            type: integer
+          example: 1
+        - name: limit
+          in: query
+          description: number of records to fetch
+          required: false
+          schema:
+            type: integer
+          example: 10
+      responses:
+        "200":
+          description: Stream Alert Rules object
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StreamAlertRule"
+              examples:
+                GetAllStreamAlertRuleResponse:
+                  $ref: "#/components/examples/stream-alert-rules-get-all-example"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+              examples:
+                example:
+                  $ref: "#/components/examples/401"
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+              examples:
+                example:
+                  $ref: "#/components/examples/403"
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+              examples:
+                example:
+                  $ref: "#/components/examples/404"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+              examples:
+                example:
+                  $ref: "#/components/examples/500"
+    post:
+      tags:
+        - Stream Alert Rules
+      summary: Create Stream Alert Rules
+      description: This API provides capability to create user's Stream Alert Rules
+      operationId: createStreamAlertRules
+      parameters:
+        - name: streamId
+          in: path
+          description: Stream UUID
+          required: true
+          schema:
+            $ref: "#/components/schemas/StreamId"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AlertRulePostRequest"
+            examples:
+              CreateStreamAlertRules:
+                $ref: "#/components/examples/StreamAlertRulePostRequestExample"
+        required: true
+      responses:
+        "202":
+          description: Stream Alert Rules object
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StreamAlertRule"
+              examples:
+                StreamAlertRuleRequestResponse:
+                  $ref: "#/components/examples/StreamAlertRuleResponseExample"
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+              examples:
+                example:
+                  $ref: "#/components/examples/401"
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+              examples:
+                example:
+                  $ref: "#/components/examples/403"
+        "415":
+          description: Unsupported Media Type
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+              examples:
+                example:
+                  $ref: "#/components/examples/415"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+              examples:
+                example:
+                  $ref: "#/components/examples/500"
+  "/fabric/v4/streams/{streamId}/alertRules/{alertRuleId}":
+    get:
+      tags:
+        - Stream Alert Rules
+      summary: Get Stream Alert Rules
+      description: This API provides capability to get user's stream alert rules
+      operationId: getStreamAlertRuleByUuid
+      parameters:
+        - name: streamId
+          in: path
+          description: Stream UUID
+          required: true
+          schema:
+            $ref: "#/components/schemas/StreamId"
+        - name: alertRuleId
+          in: path
+          description: alert rule UUID
+          required: true
+          schema:
+            $ref: "#/components/schemas/AlertRuleId"
+      responses:
+        "200":
+          description: Stream Alert Rules object
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StreamAlertRule"
+              examples:
+                StreamAlertRuleResponse:
+                  $ref: "#/components/examples/StreamAlertRuleResponseExample"
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+              examples:
+                example:
+                  $ref: "#/components/examples/401"
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+              examples:
+                example:
+                  $ref: "#/components/examples/403"
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+              examples:
+                example:
+                  $ref: "#/components/examples/404"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+              examples:
+                example:
+                  $ref: "#/components/examples/500"
+    put:
+      tags:
+        - Stream Alert Rules
+      summary: Update Stream Alert Rules
+      description: This API provides capability to update a user's stream alert rule
+      operationId: updateStreamAlertRuleByUuid
+      parameters:
+        - name: streamId
+          in: path
+          description: Stream UUID
+          required: true
+          schema:
+            $ref: "#/components/schemas/StreamId"
+        - name: alertRuleId
+          in: path
+          description: alert rule UUID
+          required: true
+          schema:
+            $ref: "#/components/schemas/AlertRuleId"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AlertRulePutRequest"
+            examples:
+              UpdateStreamAlertRules:
+                $ref: "#/components/examples/StreamAlertRulePutRequestExample"
+        required: true
+      responses:
+        "202":
+          description: Stream Alert Rules object
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StreamAlertRule"
+              examples:
+                StreamAlertRuleRequestResponse:
+                  $ref: "#/components/examples/StreamAlertRuleResponseExample"
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+              examples:
+                example:
+                  $ref: "#/components/examples/401"
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+              examples:
+                example:
+                  $ref: "#/components/examples/403"
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+              examples:
+                example:
+                  $ref: "#/components/examples/404"
+        "415":
+          description: Unsupported Media Type
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+              examples:
+                example:
+                  $ref: "#/components/examples/415"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+              examples:
+                example:
+                  $ref: "#/components/examples/500"
+    delete:
+      tags:
+        - Stream Alert Rules
+      summary: Update Stream Alert Rules
+      description: This API provides capability to delete a user's stream alert rule
+      operationId: deleteStreamAlertRuleByUuid
+      parameters:
+        - name: streamId
+          in: path
+          description: Stream UUID
+          required: true
+          schema:
+            $ref: "#/components/schemas/StreamId"
+        - name: alertRuleId
+          in: path
+          description: alert rule UUID
+          required: true
+          schema:
+            $ref: "#/components/schemas/AlertRuleId"
+      responses:
+        "202":
+          description: Stream Alert Rules object
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StreamAlertRule"
+              examples:
+                StreamAlertRuleDeleteResponse:
+                  $ref: "#/components/examples/StreamAlertRuleDeleteResponseExample"
         "400":
           description: Bad request
           content:
@@ -13114,85 +13514,6 @@ components:
           $ref: "#/components/schemas/PortSortDirection"
         property:
           $ref: "#/components/schemas/PortSortBy"
-    PortCapacitySearchRequest:
-      type: object
-      properties:
-        filter:
-          $ref: "#/components/schemas/PortCapacityExpression"
-        pagination:
-          $ref: "#/components/schemas/Pagination"
-      description: Search requests containing criteria
-    PortCapacityExpression:
-      type: object
-      properties:
-        and:
-          $ref: "#/components/schemas/PortCapacityExpression"
-        or:
-          $ref: "#/components/schemas/PortCapacityExpression"
-        property:
-          $ref: "#/components/schemas/PortCapacitySearchFieldName"
-        operator:
-          type: string
-          enum:
-            - =
-        values:
-          type: array
-          items:
-            type: string
-    PortCapacitySearchFieldName:
-      type: string
-      description: Possible field names to use on filters
-      enum:
-        - /demarcationPointIbx
-        - /tetherIbx
-        - /physicalPortsSpeed
-        - /physicalPortsType
-        - /lagEnabled
-    CheckCapacityResponse:
-      type: object
-      properties:
-        pagination:
-          $ref: "#/components/schemas/Pagination"
-        data:
-          type: array
-          description: GET All available ports
-          items:
-            $ref: "#/components/schemas/CheckCapacity"
-      description: GET All available ports
-    CheckCapacity:
-      type: object
-      properties:
-        demarcationPointIbx:
-          type: string
-          description: demarcation point IBX
-        tetherIbx:
-          type: string
-          description: cloud port ibx location
-        metroConnectUsed:
-          type: boolean
-          description: metroConnect
-        campusCrossConnectUsed:
-          type: boolean
-          description: campusCrossConnect
-        lagEnabled:
-          type: boolean
-          description: lag or non lag port
-        physicalPortsSpeed:
-          minimum: 0
-          type: integer
-          description: Physical Ports Speed in Mbps
-        redundancy:
-          $ref: "#/components/schemas/CheckCapacityPortRedundancy"
-        physicalPortsType:
-          type: string
-          description: Physical Ports Type
-          enum:
-            - 1000BASE_LX
-            - 10GBASE_LR
-            - 100GBASE_LR4
-            - 10GBASE_ER
-            - 1000BASE_SX
-      description: Check capcaity Port specification
     GetAllConnectionRouteAggregationsResponse:
       type: object
       properties:
@@ -15230,10 +15551,6 @@ components:
           description: Customer-provided stream description
         project:
           $ref: "#/components/schemas/Project"
-        enabled:
-          type: boolean
-          description: Stream enabled status
-          example: true
       description: Create Stream
     Stream:
       type: object
@@ -15255,6 +15572,7 @@ components:
           enum:
             - PROVISIONING
             - PROVISIONED
+            - REPROVISIONING
             - DEPROVISIONING
             - DEPROVISIONED
             - FAILED
@@ -15285,10 +15603,6 @@ components:
         description:
           type: string
           description: Customer-provided stream description
-        enabled:
-          type: boolean
-          description: stream state
-          example: true
       description: Update Stream
     StreamAssetSearchRequest:
       type: object
@@ -15699,6 +16013,7 @@ components:
           enum:
             - PROVISIONING
             - PROVISIONED
+            - REPROVISIONING
             - DEPROVISIONING
             - DEPROVISIONED
             - FAILED
@@ -15743,6 +16058,186 @@ components:
         sink:
           $ref: "#/components/schemas/StreamSubscriptionSink"
       description: Update Stream Subscription
+    StreamAlertRule:
+      type: object
+      properties:
+        href:
+          type: string
+          description: Stream Alert Rule URI
+          format: uri
+          readOnly: true
+        uuid:
+          type: string
+          description: Equinix-assigned access point identifier
+          format: uuid
+          example: c9b8e7a2-f3b1-4576-a4a9-1366a63df170
+        type:
+          type: string
+          description: Stream subscription type
+          enum:
+            - METRIC_ALERT
+        name:
+          type: string
+          description: Customer-provided stream alert rule name
+        description:
+          type: string
+          description: Customer-provided stream alert rule description
+        state:
+          type: string
+          description: Steam subscription provision state
+          enum:
+            - ACTIVE
+            - INACTIVE
+        enabled:
+          type: boolean
+          description: Stream alert rule enabled status
+          default: true
+        metricName:
+          type: string
+          description: Stream alert rule metric name
+          enum:
+            - equinix.fabric.connection.bandwidth_tx.usage
+            - equinix.fabric.connection.bandwidth_rx.usage
+            - equinix.fabric.port.bandwidth_tx.usage
+            - equinix.fabric.port.bandwidth_rx.usage
+            - equinix.fabric.port.packets_erred_tx.count
+            - equinix.fabric.port.packets_erred_rx.count
+            - equinix.fabric.port.packets_dropped_tx.count
+            - equinix.fabric.port.packets_dropped_rx.count
+            - equinix.fabric.metro.<source_metro_code>_<destination_metro_code>.latency
+        resourceSelector:
+          $ref: "#/components/schemas/ResourceSelector"
+        windowSize:
+          type: string
+          description: Stream alert rule metric window size
+          example: PT15M
+        operand:
+          type: string
+          description: Stream alert rule metric operand
+          enum:
+            - ABOVE
+            - BELOW
+        warningThreshold:
+          type: string
+          description: Stream alert rule metric warning threshold
+        criticalThreshold:
+          type: string
+          description: Stream alert rule metric critical threshold
+        changeLog:
+          $ref: "#/components/schemas/Changelog"
+      description: Stream object
+    AlertRulePostRequest:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+            - METRIC_ALERT
+        name:
+          type: string
+          description: Customer-provided stream name
+        description:
+          type: string
+          description: Customer-provided stream description
+        enabled:
+          type: boolean
+          description: Stream alert rule enabled status
+          default: true
+        metricName:
+          type: string
+          description: Stream alert rule metric name
+          enum:
+            - equinix.fabric.connection.bandwidth_tx.usage
+            - equinix.fabric.connection.bandwidth_rx.usage
+            - equinix.fabric.port.bandwidth_tx.usage
+            - equinix.fabric.port.bandwidth_rx.usage
+            - equinix.fabric.port.packets_erred_tx.count
+            - equinix.fabric.port.packets_erred_rx.count
+            - equinix.fabric.port.packets_dropped_tx.count
+            - equinix.fabric.port.packets_dropped_rx.count
+            - equinix.fabric.metro.<source_metro_code>_<destination_metro_code>.latency
+        resourceSelector:
+          $ref: "#/components/schemas/ResourceSelector"
+        windowSize:
+          type: string
+          description: Stream alert rule metric window size
+          example: PT15M
+        operand:
+          type: string
+          description: Stream alert rule metric operand
+          enum:
+            - ABOVE
+            - BELOW
+        warningThreshold:
+          type: string
+          description: Stream alert rule metric warning threshold
+        criticalThreshold:
+          type: string
+          description: Stream alert rule metric critical threshold
+      description: Create Stream Alert Rules
+    ResourceSelector:
+      type: object
+      properties:
+        include:
+          type: array
+          description: |
+            ### Supported metric names to use on filters with property /subject:
+              * `*` - all events or metrics
+              * `*/ports/<uuid>` - port metrics
+              * `*/connections/<uuid>` - connection metrics
+              * `*/metros/<metroCode>` - metro latency metrics
+          items:
+            type: string
+    AlertRuleId:
+      type: string
+      description: Stream Alert Rule UUID
+      format: uuid
+      example: 0bbcea48-1333-4ad5-a7ea-e4d58a5fbd15
+    AlertRulePutRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Customer-provided stream name
+        description:
+          type: string
+          description: Customer-provided stream description
+        enabled:
+          type: boolean
+          description: Stream alert rule enabled status
+          default: true
+        metricName:
+          type: string
+          description: Stream alert rule metric name
+          enum:
+            - equinix.fabric.connection.bandwidth_tx.usage
+            - equinix.fabric.connection.bandwidth_rx.usage
+            - equinix.fabric.port.bandwidth_tx.usage
+            - equinix.fabric.port.bandwidth_rx.usage
+            - equinix.fabric.port.packets_erred_tx.count
+            - equinix.fabric.port.packets_erred_rx.count
+            - equinix.fabric.port.packets_dropped_tx.count
+            - equinix.fabric.port.packets_dropped_rx.count
+            - equinix.fabric.metro.<source_metro_code>_<destination_metro_code>.latency
+        resourceSelector:
+          $ref: "#/components/schemas/ResourceSelector"
+        operand:
+          type: string
+          description: Stream alert rule metric operand
+          enum:
+            - ABOVE
+            - BELOW
+        windowSize:
+          type: string
+          description: Stream alert rule metric window size
+          example: PT15M
+        warningThreshold:
+          type: string
+          description: Stream alert rule metric warning threshold
+        criticalThreshold:
+          type: string
+          description: Stream alert rule metric critical threshold
+      description: Create Stream Alert Rules
     ConnectionType:
       type: string
       description: Connection type
@@ -15775,6 +16270,12 @@ components:
         orderNumber:
           type: string
           description: Order Reference Number
+        termLength:
+          maximum: 36
+          minimum: 1
+          type: integer
+          description: Term length in months, valid values are 1, 12, 24, 36 where 1 is the default value (for on-demand case).
+          default: 1
     SimplifiedNotification:
       required:
         - emails
@@ -16521,8 +17022,9 @@ components:
           description: Product offering price currency
         termLength:
           type: integer
-          description: In months. No value means unlimited
+          description: In months. No value or value of 1 means on-demand
           enum:
+            - 1
             - 12
             - 24
             - 36
@@ -17046,12 +17548,6 @@ components:
       default: /device/name
       enum:
         - /device/name
-    CheckCapacityPortRedundancy:
-      type: object
-      properties:
-        priority:
-          $ref: "#/components/schemas/PortPriority"
-      description: Check Capacity Port redundancy configuration
     RouteFilterState:
       type: string
       description: Route Filter status
@@ -19329,6 +19825,40 @@ components:
           - type: ALL
             emails:
               - test@test.com
+    COLO2COLOwithDot1qAndTerms-Dot1q:
+      value:
+        type: EVPL_VC
+        name: My-Layer2-Connection-3
+        bandwidth: 1000
+        redundancy:
+          priority: PRIMARY
+        aSide:
+          accessPoint:
+            type: COLO
+            port:
+              uuid: a8ba52de-faae-43b5-b0b1-6904d37ee063
+            location:
+              metroCode: SV
+            linkProtocol:
+              type: DOT1Q
+              vlanTag: 1001
+        order:
+          purchaseOrderNumber: po1234
+          termLength: 24
+        zSide:
+          accessPoint:
+            type: COLO
+            port:
+              uuid: a00cef6f-8e35-4794-9ff9-665e084e4e6d
+            location:
+              metroCode: DC
+            linkProtocol:
+              type: DOT1Q
+              vlanTag: 1001
+        notifications:
+          - type: ALL
+            emails:
+              - test@test.com
     COLO2COLOwithDot1q-Dot1q-CRH:
       value:
         type: EVPL_VC
@@ -19495,6 +20025,33 @@ components:
             type: COLO
             port:
               uuid: 20d32a80-0d61-4333-bc03-707b591ae2f4
+        notifications:
+          - type: ALL
+            emails:
+              - test@equinix.com
+              - test1@equinix.com
+    COLO2COLO-EPL-Terms:
+      value:
+        type: EPL_VC
+        name: Conn-1
+        order:
+          purchaseOrderNumber: 1-129105284100
+          termLength: 12
+        bandwidth: 100
+        aSide:
+          accessPoint:
+            type: COLO
+            port:
+              uuid: a00cef6f-8e35-4794-9ff9-665e084e4e6d
+            location:
+              metroCode: SV
+        zSide:
+          accessPoint:
+            type: COLO
+            port:
+              uuid: 20d32a80-0d61-4333-bc03-707b591ae2f4
+            location:
+              metroCode: DC
         notifications:
           - type: ALL
             emails:
@@ -19874,6 +20431,33 @@ components:
           - type: ALL
             emails:
               - fabric@equinix.com
+    COLO2NETWORKwithDot1qAndTerms:
+      value:
+        type: EVPLAN_VC
+        name: colo2network-evplan-vc
+        bandwidth: 50
+        aSide:
+          accessPoint:
+            type: COLO
+            port:
+              uuid: 9127bb72-5f4f-4517-be74-3af7ce612687
+            linkProtocol:
+              type: DOT1Q
+              vlanTag: 300
+        zSide:
+          accessPoint:
+            type: NETWORK
+            network:
+              uuid: 25f8884e-85e3-4eaa-8ea9-a7ad2ca5b3c2
+        order:
+          purchaseOrderNumber: 1-129105284100
+          termLength: 24
+        project:
+          projectId: ae708bbb-d669-406a-845a-99b39ff65fd0
+        notifications:
+          - type: ALL
+            emails:
+              - fabric@equinix.com
     COLO2NETWORKwithEPL:
       value:
         type: EPLAN_VC
@@ -19891,6 +20475,30 @@ components:
               uuid: 25f8884e-85e3-4eaa-8ea9-a7ad2ca5b3c2
         order:
           purchaseOrderNumber: 1-129105284100
+        project:
+          projectId: ae708bbb-d669-406a-845a-99b39ff65fd0
+        notifications:
+          - type: ALL
+            emails:
+              - fabric@equinix.com
+    COLO2NETWORKwithEPLAndTerms:
+      value:
+        type: EPLAN_VC
+        name: colo2network-eplan-vc
+        bandwidth: 50
+        aSide:
+          accessPoint:
+            type: COLO
+            port:
+              uuid: 9127bb72-5f4f-4517-be74-3af7ce612687
+        zSide:
+          accessPoint:
+            type: NETWORK
+            network:
+              uuid: 25f8884e-85e3-4eaa-8ea9-a7ad2ca5b3c2
+        order:
+          purchaseOrderNumber: 1-129105284100
+          termLength: 12
         project:
           projectId: ae708bbb-d669-406a-845a-99b39ff65fd0
         notifications:
@@ -20714,7 +21322,30 @@ components:
             emails:
               - test@equinix.com
               - test1@equinix.com
-    Fcr2ServiceToken: {}
+    Fcr2ServiceToken:
+      value:
+        type: IP_VC
+        name: My-FCR-Connection
+        bandwidth: 1000
+        aSide:
+          accessPoint:
+            type: CLOUD_ROUTER
+            router:
+              uuid: 66a21614-1c4a-11ec-9621-0242ac130002
+            location:
+              metroCode: SV
+        zSide:
+          serviceToken:
+            uuid: 4cc30499-d472-4edb-9114-1381ed17e356
+        order:
+          purchaseOrderNumber: 1-129105284100
+        project:
+          projectId: "567"
+        notifications:
+          - type: ALL
+            emails:
+              - test@equinix.com
+              - test1@equinix.com
     AsideServiceToken2PortWithDot1q:
       value:
         type: EVPL_VC
@@ -23111,6 +23742,59 @@ components:
               type: EVPLAN
               scope: GLOBAL
               location: null
+    COLO2NETWORKwithDot1qAndTerms-Response:
+      value:
+        type: EVPLAN_VC
+        href: https://api.equinix.com/fabric/v4/connections/f3dd7395-7196-45f4-9b6f-54094aa75f53
+        uuid: f3dd7395-7196-45f4-9b6f-54094aa75f53
+        name: colo2network-evplan-vc
+        operation:
+          providerStatus: NOT_AVAILABLE
+          equinixStatus: PROVISIONING
+        order:
+          purchaseOrderNumber: 1-129105284100
+          billingTier: Up to 50 MB
+          termLength: 24
+        notifications:
+          - type: ALL
+            emails:
+              - fabric@equinix.com
+        changeLog:
+          createdBy: fabric
+          createdByFullName: fabric
+          createdByEmail: fabric@equinix.com
+          createdDateTime: 2024-04-23T02:51:07.675Z
+          updatedBy: fabric
+          updatedByFullName: fabric
+          updatedByEmail: fabric@equinix.com
+          updatedDateTime: 2024-04-23T02:51:07.675Z
+        bandwidth: 50
+        redundancy:
+          group: ecebee55-975b-4017-857c-74617f821b87
+          priority: PRIMARY
+        aSide:
+          accessPoint:
+            location:
+              metroCode: DA
+            port:
+              type: XF_PORT
+              href: https://api.equinix.com/fabric/v4/ports/9127bb72-5f4f-4517-be74-3af7ce612687
+              uuid: 9127bb72-5f4f-4517-be74-3af7ce612687
+              name: 1-DA1-port
+            linkProtocol:
+              type: DOT1Q
+              vlanTag: 307
+        zSide:
+          accessPoint:
+            network:
+              href: https://api.equinix.com/fabric/v4/networks/25f8884e-85e3-4eaa-8ea9-a7ad2ca5b3c2
+              uuid: 25f8884e-85e3-4eaa-8ea9-a7ad2ca5b3c2
+              name: EVPLAN-GLOBAL
+              platformUuid: afe28606-8021-4161-802c-b80d4bc22f20
+              state: ACTIVE
+              type: EVPLAN
+              scope: GLOBAL
+              location: null
     COLO2NETWORKwithEPL-Response:
       value:
         type: EPLAN_VC
@@ -23123,6 +23807,58 @@ components:
           order:
             purchaseOrderNumber: 1-129105284100
             billingTier: Up to 50 MB
+          notifications:
+            - type: ALL
+              emails:
+                - fabric@test.com
+          changeLog:
+            createdBy: fabric
+            createdByFullName: fabric
+            createdByEmail: fabric@equinix.com
+            createdDateTime: 2024-04-23T03:07:17.587Z
+            updatedBy: fabric
+            updatedByFullName: fabric
+            updatedByEmail: fabric@equinix.com
+            updatedDateTime: 2024-04-23T03:07:17.587Z
+          bandwidth: 50
+          redundancy:
+            group: dbab0e00-db97-4abf-aebe-76c7a40a371e
+            priority: PRIMARY
+          aSide:
+            accessPoint:
+              location:
+                metroCode: SP
+              port:
+                type: XF_PORT
+                href: https://api.equinix.com/fabric/v4/ports/9127bb72-5f4f-4517-be74-3af7ce612687
+                uuid: 9127bb72-5f4f-4517-be74-3af7ce612687
+                name: 505783-port
+              linkProtocol:
+                type: UNTAGGED
+          zSide:
+            accessPoint:
+              network:
+                href: https://api.equinix.com/fabric/v4/networks/25f8884e-85e3-4eaa-8ea9-a7ad2ca5b3c2
+                uuid: 25f8884e-85e3-4eaa-8ea9-a7ad2ca5b3c2
+                name: EPLAN-GLOBAL
+                platformUuid: 8abb8305-258b-4690-9b49-714962591add
+                state: ACTIVE
+                type: EPLAN
+                scope: GLOBAL
+                location: null
+    COLO2NETWORKwithEPLAndTerms-Response:
+      value:
+        type: EPLAN_VC
+        href: https://api.equinix.com/fabric/v4/connections/cce170c5-a496-4928-8426-507e00818887
+        uuid: cce170c5-a496-4928-8426-507e00818887
+        name: colo2network-eplan-vc
+        operation:
+          providerStatus: NOT_AVAILABLE
+          equinixStatus: PROVISIONING
+          order:
+            purchaseOrderNumber: 1-129105284100
+            billingTier: Up to 50 MB
+            termLength: 12
           notifications:
             - type: ALL
               emails:
@@ -28549,7 +29285,36 @@ components:
             emails:
               - abc@company.com
               - provider@company.com
-    createZsideServiceTokenWithAsideFCR: {}
+    createZsideServiceTokenWithAsideFCR:
+      value:
+        type: VC_TOKEN
+        name: FCRa_Zside_ServiceToken_SV
+        description: FCRa_Zside_ServiceToken_SV_Description
+        connection:
+          allowRemoteConnection: true
+          allowCustomBandwidth: false
+          supportedBandwidths:
+            - 10
+            - 50
+          zSide:
+            accessPointSelectors:
+              - type: COLO
+                hideAssetInfo: false
+                port:
+                  uuid: b840a1db-5413-413f-97e0-328a5c00a874
+                linkProtocol:
+                  type: QINQ
+                  vlanCTag: 1399
+                  vlanSTag: 1388
+        account:
+          accountNumber: 272010
+        project:
+          projectId: 30ad25e2-53dc-11ed-bdc3-0242ac120002
+        expirationDateTime: 2021-03-18T06:43:49.980Z
+        notifications:
+          - type: NOTIFICATION
+            emails:
+              - abc@company.com
     createServiceTokenDryRunResponse:
       value:
         type: VC_TOKEN
@@ -34231,7 +34996,6 @@ components:
             description: stream dec 1
             project:
               projectId: dadd3ab6-c0af-430c-8216-43d44f08c1c5
-            enabled: true
             state: PROVISIONED
             assetsCount: 1
             streamSubscriptionsCount: 2
@@ -34244,7 +35008,6 @@ components:
         description: subscription-1
         project:
           projectId: dadd3ab6-c0af-430c-8216-43d44f08c1c5
-        enabled: true
     StreamResponseExample:
       value:
         href: https://api.equinix.com/fabric/v4/streams/d684aa26-8276-48b7-bb42-a6d9def0a418
@@ -34254,7 +35017,6 @@ components:
         description: stream 1
         project:
           projectId: dadd3ab6-c0af-430c-8216-43d44f08c1c5
-        enabled: true
         state: PROVISIONED
         assetsCount: 1
         streamSubscriptionsCount: 2
@@ -34264,7 +35026,6 @@ components:
       value:
         name: splunk1
         description: subscription 1
-        enabled: true
     StreamDeleteRequestExample:
       value:
         href: https://api.equinix.com/fabric/v4/streams/d684aa26-8276-48b7-bb42-a6d9def0a418
@@ -34274,7 +35035,6 @@ components:
         description: stream 1
         project:
           projectId: dadd3ab6-c0af-430c-8216-43d44f08c1c5
-        enabled: true
         state: DEPROVISIONING
         assetsCount: 1
         streamSubscriptionsCount: 2
@@ -34343,7 +35103,6 @@ components:
             name: splunk
             description: subscription 1
             state: PROVISIONED
-            enabled: true
             filters:
               and:
                 - property: /subject
@@ -34508,6 +35267,30 @@ components:
         sink:
           uri: https://xxxxxx
           type: TEAMS
+    StreamSubscriptionPostRequestExampleServicenow:
+      value:
+        type: STREAM_SUBSCRIPTION
+        name: servicenow-1
+        description: subscription-1
+        enabled: true
+        filters:
+          and:
+            - property: /type
+              operator: LIKE
+              values:
+                - equinix.fabric.connection%
+        eventSelector:
+          include:
+            - equinix.fabric.connection.*
+        sink:
+          host: https://<servicenow-host>.com
+          type: SERVICENOW
+          credential:
+            type: USERNAME_PASSWORD
+            username: <servicenow-username>
+            password: <servicenow-password>
+          settings:
+            source: Equinix
     StreamSubscriptionResponseExample:
       value:
         href: https://api.equinix.com/fabric/v4/streams/d684aa26-8276-48b7-bb42-a6d9def0a418/subscriptions/d684aa26-8276-48b7-bb42-a6d9def0a418
@@ -34610,6 +35393,102 @@ components:
           batchWaitTimeMax: 5
         changeLog:
           createdDateTime: 2024-05-06T16:21:18.545214Z
+    stream-alert-rules-get-all-example:
+      value:
+        pagination:
+          offset: 0
+          limit: 20
+          total: 1
+        data:
+          - href: https://api.equinix.com/fabric/v4/streams/d684aa26-8276-48b7-bb42-a6d9def0a418/alertRules/0bbcea48-1333-4ad5-a7ea-e4d58a5fbd15
+            uuid: 0bbcea48-1333-4ad5-a7ea-e4d58a5fbd15
+            type: METRIC_ALERT
+            name: metric-alert-1
+            description: metric-alert-1
+            state: ACTIVE
+            enabled: true
+            metricName: equinix.fabric.connection.bandwidth_tx.usage
+            resourceSelector:
+              include:
+                - "*/connections/8b140c74-0331-46d1-9cb3-2981be84dd1b"
+            windowSize: PT15M
+            operand: ABOVE
+            warningThreshold: 35000000
+            criticalThreshold: 45000000
+            changeLog:
+              createdBy: user
+              createdDateTime: 2024-05-06T16:21:18.545214Z
+    StreamAlertRulePostRequestExample:
+      value:
+        type: METRIC_ALERT
+        name: metric-alert-1
+        description: metric-alert-1
+        enabled: true
+        metricName: equinix.fabric.connection.bandwidth_tx.usage
+        resourceSelector:
+          include:
+            - "*/connections/8b140c74-0331-46d1-9cb3-2981be84dd1b"
+        operand: ABOVE
+        windowSize: PT15M
+        warningThreshold: 35000000
+        criticalThreshold: 45000000
+    StreamAlertRuleResponseExample:
+      value:
+        href: https://api.equinix.com/fabric/v4/streams/d684aa26-8276-48b7-bb42-a6d9def0a418/alertRules/0bbcea48-1333-4ad5-a7ea-e4d58a5fbd15
+        uuid: 0bbcea48-1333-4ad5-a7ea-e4d58a5fbd15
+        type: METRIC_ALERT
+        name: metric-alert-1
+        description: metric-alert-1
+        state: ACTIVE
+        enabled: true
+        metricName: equinix.fabric.connection.bandwidth_tx.usage
+        resourceSelector:
+          include:
+            - "*/connections/8b140c74-0331-46d1-9cb3-2981be84dd1b"
+        windowSize: PT15M
+        operand: ABOVE
+        warningThreshold: 35000000
+        criticalThreshold: 45000000
+        changeLog:
+          createdBy: user
+          createdDateTime: 2024-05-06T16:21:18.545214Z
+          updatedBy: user
+          updatedDateTime: 2025-02-04T00:20:54.511118575Z
+    StreamAlertRulePutRequestExample:
+      value:
+        name: metric-alert-1
+        description: metric-alert-1
+        enabled: true
+        metricName: equinix.fabric.connection.bandwidth_tx.usage
+        resourceSelector:
+          include:
+            - "*/connections/8b140c74-0331-46d1-9cb3-2981be84dd1b"
+        operand: ABOVE
+        windowSize: PT15M
+        warningThreshold: 35000000
+        criticalThreshold: 45000000
+    StreamAlertRuleDeleteResponseExample:
+      value:
+        href: https://api.equinix.com/fabric/v4/streams/d684aa26-8276-48b7-bb42-a6d9def0a418/alertRules/0bbcea48-1333-4ad5-a7ea-e4d58a5fbd15
+        uuid: 0bbcea48-1333-4ad5-a7ea-e4d58a5fbd15
+        type: METRIC_ALERT
+        name: metric-alert-1
+        description: metric-alert-1
+        state: INACTIVE
+        enabled: true
+        metricName: equinix.fabric.connection.bandwidth_tx.usage
+        resourceSelector:
+          include:
+            - "*/connections/8b140c74-0331-46d1-9cb3-2981be84dd1b"
+        windowSize: PT15M
+        operand: ABOVE
+        warningThreshold: 35000000
+        criticalThreshold: 45000000
+        changeLog:
+          createdBy: user
+          createdDateTime: 2024-05-06T16:21:18.545214Z
+          updatedBy: user
+          updatedDateTime: 2025-02-04T00:20:54.511118575Z
   headers:
     ETag:
       description: response header - identifier for a specific version of a resource.
