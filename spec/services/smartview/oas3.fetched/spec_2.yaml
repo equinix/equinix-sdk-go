@@ -1,0 +1,543 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Smart View Environment APIs",
+    "description": "Empower yourself with Smart View Environment APIs. Use these APIs to fetch current and trending environmental data (humidity and temperature). Given an account number, IBX code, get current and trending environment data for a level value. The environment info (temperature and humidity) is returned for input IBX, zone, cage and sensor.\n",
+    "version": "1.0",
+    "termsOfService": "https://www.equinix.com/about/legal/terms",
+    "contact": {
+      "name": "Equinix API Support",
+      "url": "https://docs.equinix.com/api-support.htm"
+    }
+  },
+  "tags": [
+    {
+      "name": "Smart View Environment",
+      "description": "Access Environment Information"
+    }
+  ],
+  "host": "api.equinix.com",
+  "schemes": [
+    "https"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/environment/v1/current": {
+      "get": {
+        "tags": [
+          "Smart View Environment"
+        ],
+        "summary": "Get current environmental data",
+        "description": "The endpoint returns environment information on temperature and humidity from inputs (ibx, zone, cage, sensor)",
+        "parameters": [
+          {
+            "$ref": "#/parameters/authorizationHeader"
+          },
+          {
+            "name": "accountNo",
+            "in": "query",
+            "description": "Customer Account Number",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "ibx",
+            "in": "query",
+            "description": "IBX Code",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "levelType",
+            "in": "query",
+            "description": "Level Type",
+            "type": "string",
+            "enum": [
+              "IBX",
+              "ZONE",
+              "CAGE",
+              "SENSOR"
+            ],
+            "required": true
+          },
+          {
+            "name": "levelValue",
+            "in": "query",
+            "description": "Level Value is ibxCode, zoneUsID, cageUsID, sensorid for \nlevelType ibx, zone, cage, sensor resp.\n",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Environment Details",
+            "schema": {
+              "$ref": "#/definitions/EnvironmentData"
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/environment/v1/listCurrent": {
+      "get": {
+        "tags": [
+          "Smart View Environment"
+        ],
+        "summary": "Fetch list of environmental data",
+        "description": "The GET endpoint returns environment info ( humidity and temperature ) for all the values for input level type  IBX, ZONE, CAGE, SENSOR\n",
+        "parameters": [
+          {
+            "$ref": "#/parameters/authorizationHeader"
+          },
+          {
+            "name": "accountNo",
+            "in": "query",
+            "description": "Customer Account Number",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "ibx",
+            "in": "query",
+            "description": "IBX Code",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "levelType",
+            "in": "query",
+            "description": "Level Type",
+            "type": "string",
+            "enum": [
+              "IBX",
+              "ZONE",
+              "CAGE",
+              "SENSOR"
+            ],
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Environment Details",
+            "schema": {
+              "$ref": "#/definitions/EnvironmentDataResponse"
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/environment/v1/trending": {
+      "get": {
+        "tags": [
+          "Smart View Environment"
+        ],
+        "summary": "Fetch trending environmental data",
+        "description": "The endpoint returns trending environment information (temperature and humidity) for\ninput ibx, zone, cage, sensor  \n",
+        "parameters": [
+          {
+            "$ref": "#/parameters/authorizationHeader"
+          },
+          {
+            "name": "accountNo",
+            "in": "query",
+            "description": "Customer Account Number",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "ibx",
+            "in": "query",
+            "description": "IBX Code",
+            "type": "number",
+            "required": true
+          },
+          {
+            "name": "dataPoint",
+            "in": "query",
+            "type": "string",
+            "description": "data point",
+            "required": true,
+            "enum": [
+              "temperature",
+              "humidity"
+            ]
+          },
+          {
+            "name": "levelType",
+            "in": "query",
+            "description": "Level Type",
+            "type": "string",
+            "enum": [
+              "IBX",
+              "ZONE",
+              "CAGE",
+              "SENSOR"
+            ],
+            "required": true
+          },
+          {
+            "name": "levelValue",
+            "in": "query",
+            "description": "Level Value is ibxCode, zone, cage, sensorid for \nlevelType ibx, zone, cage, sensor resp.\n",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "interval",
+            "in": "query",
+            "type": "string",
+            "enum": [
+              "reading",
+              "1h",
+              "1d"
+            ],
+            "required": true
+          },
+          {
+            "name": "fromDate",
+            "in": "query",
+            "description": "date in long",
+            "type": "string",
+            "format": "date-time",
+            "required": true
+          },
+          {
+            "name": "toDate",
+            "in": "query",
+            "description": "date in long",
+            "type": "string",
+            "format": "date-time",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Trending Environment Data Response",
+            "schema": {
+              "$ref": "#/definitions/TrendingEnvironmentData"
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "EnvironmentDataResponse": {
+      "type": "object",
+      "properties": {
+        "payLoad": {
+          "type": "object",
+          "properties": {
+            "totalCount": {
+              "type": "integer",
+              "description": "total number of data values",
+              "example": 1
+            },
+            "data": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/EnvironmentDataForArray"
+              }
+            }
+          }
+        },
+        "status": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "description": "[INFO|ERROR] are the possible values",
+              "enum": [
+                "INFO"
+              ]
+            },
+            "statuscode": {
+              "type": "number",
+              "example": "1000",
+              "description": "[1000|3001|3002|3003|3004|3005|4000|5000|6001] are the possible status codes"
+            },
+            "msg": {
+              "type": "string",
+              "example": "OK",
+              "description": "[Ok|Invalid Level Type|Invalid Level Value|Invalid Account Details Or User is not Entitled|User Preference is not set as expected in the account|Invalid IBX|Invalid Account number|User is not entitled to the ibx|INVALID_SESSION|INVALID_SESSION_IBX|INTERNAL_ERROR|NO_DATA|UNAUTHORISZED_ACCESS] are the possible messages        "
+            }
+          }
+        }
+      }
+    },
+    "EnvironmentData": {
+      "type": "object",
+      "properties": {
+        "payLoad": {
+          "type": "object",
+          "properties": {
+            "ibx": {
+              "type": "string",
+              "description": "ibx code",
+              "example": "CH1"
+            },
+            "accountNo": {
+              "type": "string",
+              "description": "account number",
+              "example": "1"
+            },
+            "zone": {
+              "type": "string",
+              "description": "zone unique space id",
+              "example": "CH1:1:05:ColoArea:2"
+            },
+            "cage": {
+              "type": "string",
+              "description": "cage unique space id",
+              "example": "CH1:05:000550"
+            },
+            "cabinet": {
+              "type": "string",
+              "description": "cabinet unique space id",
+              "example": "CH1:05:000550:0105"
+            },
+            "sensor": {
+              "type": "string",
+              "description": "sensor id",
+              "example": "CH1.Colo.CH1_05_000550_0105"
+            },
+            "temperature": {
+              "type": "string",
+              "description": "current temperature",
+              "example": "20.0"
+            },
+            "humidity": {
+              "type": "string",
+              "description": "current humidity",
+              "example": "43.00"
+            },
+            "timestamp": {
+              "type": "string",
+              "description": "epoch timestamp when the current reading was read",
+              "example": "1506665106579"
+            },
+            "temperatureUom": {
+              "type": "string",
+              "description": "unit of measure for temperature values",
+              "example": "Â°C"
+            },
+            "humidityUom": {
+              "type": "string",
+              "description": "unit of measure for humidity",
+              "example": "%"
+            }
+          }
+        },
+        "status": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "description": "[INFO|ERROR] are the possible values",
+              "enum": [
+                "INFO"
+              ]
+            },
+            "statuscode": {
+              "type": "number",
+              "example": "1000",
+              "description": "[1000|3001|3002|3003|3004|3005|4000|5000|6001] are the possible status codes"
+            },
+            "msg": {
+              "type": "string",
+              "example": "OK",
+              "description": "[Ok|Invalid Level Type|Invalid Level Value|Invalid Account Details Or User is not Entitled|User Preference is not set as expected in the account|Invalid IBX|Invalid Account number|User is not entitled to the ibx|INVALID_SESSION|INVALID_SESSION_IBX|INTERNAL_ERROR|NO_DATA|UNAUTHORISZED_ACCESS] are the possible messages"
+            }
+          }
+        }
+      }
+    },
+    "EnvironmentDataForArray": {
+      "type": "object",
+      "properties": {
+        "ibx": {
+          "type": "string",
+          "description": "ibx code",
+          "example": "CH1"
+        },
+        "accountNo": {
+          "type": "string",
+          "description": "account number",
+          "example": "1"
+        },
+        "zone": {
+          "type": "string",
+          "description": "zone unique space id",
+          "example": "CH1:1:05:ColoArea:2"
+        },
+        "cage": {
+          "type": "string",
+          "description": "cage unique space id",
+          "example": "CH1:05:000550"
+        },
+        "cabinet": {
+          "type": "string",
+          "description": "cabinet unique space id",
+          "example": "CH1:05:000550:0105"
+        },
+        "sensor": {
+          "type": "string",
+          "description": "sensor id",
+          "example": "CH1.Colo.CH1_05_000550_0105"
+        },
+        "temperature": {
+          "type": "string",
+          "description": "current temperature",
+          "example": "20.0"
+        },
+        "humidity": {
+          "type": "string",
+          "description": "current humidity",
+          "example": "43.00"
+        },
+        "timestamp": {
+          "type": "string",
+          "description": "epoch timestamp when the current reading was read",
+          "example": "1506665106579"
+        },
+        "temperatureUom": {
+          "type": "string",
+          "description": "unit of measure for temperature values",
+          "example": "Â°C"
+        },
+        "humidityUom": {
+          "type": "string",
+          "description": "unit of measure for humidity",
+          "example": "%"
+        }
+      }
+    },
+    "DataValue": {
+      "type": "object",
+      "description": "This object contains a single reading for the data point.",
+      "properties": {
+        "value": {
+          "type": "string",
+          "description": "reading value for the datapoint",
+          "example": "21.11"
+        },
+        "modifiers": {
+          "type": "array",
+          "description": "modifiers applicable for the reading value",
+          "items": {
+            "type": "string",
+            "example": "recorded"
+          }
+        },
+        "datetime": {
+          "type": "string",
+          "description": "timestamp since epoch. reading timestamp",
+          "example": "1483977600000"
+        }
+      }
+    },
+    "TrendingEnvironmentData": {
+      "type": "object",
+      "properties": {
+        "payLoad": {
+          "type": "object",
+          "properties": {
+            "ibx": {
+              "type": "string",
+              "description": "ibx code",
+              "example": "CH1"
+            },
+            "accountNo": {
+              "type": "string",
+              "description": "customer account num",
+              "example": "1"
+            },
+            "interval": {
+              "type": "string",
+              "description": "interval",
+              "example": "reading"
+            },
+            "datapoint": {
+              "type": "string",
+              "description": "data point for which the timeseries data is fetched",
+              "example": "temperature"
+            },
+            "uom": {
+              "type": "string",
+              "description": "unit of measure used for the datapoint",
+              "example": "Â°C"
+            },
+            "series": {
+              "type": "array",
+              "description": "Time series data for the data point",
+              "items": {
+                "$ref": "#/definitions/DataValue"
+              }
+            }
+          }
+        }
+      }
+    },
+    "Error": {
+      "type": "object",
+      "properties": {
+        "payLoad": {
+          "type": "object"
+        },
+        "status": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "description": "[INFO|ERROR] are the possible values",
+              "enum": [
+                "ERROR"
+              ]
+            },
+            "statuscode": {
+              "type": "number",
+              "example": "4000",
+              "description": "[1000|3001|3002|3003|3004|3005|4000|5000|6001] are the possible status codes"
+            },
+            "msg": {
+              "type": "string",
+              "example": "INTERNAL_ERROR",
+              "description": "[Ok|Invalid Level Type|Invalid Level Value|Invalid DataPoint|Invalid Interval|Invalid FromDate|Invalid ToDate|ToDate interval cannot be greater  than 1 year|Invalid Account Details Or User is not Entitled|User Preference is not set as expected in the account|Invalid IBX|Invalid Account number|User is not entitled to the ibx|INVALID_SESSION|INVALID_SESSION_IBX|INTERNAL_ERROR|NO_DATA|UNAUTHORISZED_ACCESS] are the possible messages"
+            }
+          }
+        }
+      }
+    }
+  },
+  "parameters": {
+    "authorizationHeader": {
+      "name": "Authorization",
+      "in": "header",
+      "description": "The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.",
+      "type": "string",
+      "required": true,
+      "x-prefix": "Bearer "
+    }
+  }
+}

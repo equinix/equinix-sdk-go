@@ -1,0 +1,604 @@
+swagger: '2.0'
+info:
+  title: DCIM Alert APIs
+  description: |
+    Empower yourself with DCIM Alert APIs. Use these APIs to fetch SmartView custom alert information, that is user-generated. They return custom alert data and alert activity logs from requested inputs (ibx,category,event type,account number,page number,limit, order by, sort by, acknowledged). Bearer authorization token is the only required header information and mandatory query parameters for the endpoints are limit and page number.
+  termsOfService: https://www.equinix.com/about/legal/terms
+  version: 0.0.2
+  contact:
+    name: Equinix API Support
+    url: https://docs.equinix.com/api-support.htm
+tags:
+  - name: DCIM Alerts
+    description: Access alert information
+host: api.equinix.com
+schemes:
+  - https
+
+produces:
+  - application/json
+paths:
+  /smartview/v1/alerts/getAlerts:
+    get:
+      tags:
+      - Alerts
+      operationId: getAlerts
+      summary: obtain active SmartView alerts.
+      description: >
+        The get alert endpoint returns alert info for inputs
+        (ibx,category,event type,account number,page number,limit, order by, sort by).
+      parameters:
+        - $ref: '#/parameters/authorizationHeader'
+        - name: ibx
+          in: query
+          description: IBX
+          type: string
+        - name: category
+          in: query
+          description: Category
+          type: string
+        - name: eventType
+          in: query
+          description: Event Type.
+          type: string
+        - name: accountNo
+          in: query
+          description: Account Number
+          type: string
+        - name: pageNum
+          in: query
+          required: true
+          description: Page Number
+          type: string
+        - name: limit
+          in: query
+          required: true
+          description: Limit
+          type: string
+        - name: orderBy
+          in: query
+          description: |
+            order by ascending or descending
+          type: string
+        - name: sortBy
+          in: query
+          description: |
+            sortBy value
+          type: string
+      responses:
+        '200':
+          description: Valid Response
+          schema:
+            $ref: '#/definitions/Alerts'
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/PowerData_Error'
+  /smartview/v1/alerts/getAlertActivityLog:
+    get:
+      tags:
+        - Alert  Log
+      operationId: getAlertActivityLog
+      summary: get alert activity logs
+      description: >
+        This endpoint returns alert log for inputs
+        (ibx,category,event type,account number,page number,limit, order by,
+        sort by,acknowledged).
+      parameters:
+        - $ref: '#/parameters/authorizationHeader'
+        - name: ibx
+          in: query
+          description: IBX
+          type: string
+        - name: category
+          in: query
+          description: Category
+          type: string
+        - name: eventType
+          in: query
+          description: Event Type
+          type: string
+        - name: isAcknowledged
+          in: query
+          description: Is Acknowledged
+          type: string
+        - name: accountNo
+          in: query
+          description: Account Number
+          type: string
+        - name: pageNum
+          in: query
+          required: true
+          description: Page Number
+          type: string
+        - name: limit
+          in: query
+          required: true
+          description: Limit
+          type: string
+        - name: orderBy
+          in: query
+          description: |
+            order by ascending or descending
+          type: string
+        - name: sortBy
+          in: query
+          description: |
+            sortBy value
+          type: string
+      responses:
+        '200':
+          description: Valid Response
+          schema:
+            $ref: '#/definitions/AlertActivityLog'
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/PowerData_Error'
+definitions:
+  status:
+    type: object
+    properties:
+      type:
+        type: string
+        description: '[INFO|ERROR] are the possible values'
+        enum:
+          - INFO
+      cause:
+        type: string
+        description: root cause for error
+        example: 'null'
+      info:
+        type: object
+        properties:
+          code:
+            type: number
+            example: '1000'
+            description: '[1000|3001|3002|3003|4000] are the possible status codes'
+            pattern: '^[0-9]{4}$'
+            minimum: 1000
+            maximum: 7000
+          msg:
+            type: string
+            example: OK
+            description: >-
+              [Ok|Permission Denied|Invalid Account number|Invalid IBX|Invalid
+              LevelType|Invalid LevelValue|Invalid Interval|Invalid From/To
+              Date|INVALID_SESSION|INVALID_SESSION_IBX|INTERNAL_ERROR] are the
+              possible messages
+  Alerts:
+    type: object
+    properties:
+      payLoad:
+        type: array
+        items:
+          $ref: '#/definitions/AlertObj'
+      status:
+        $ref: '#/definitions/status'
+  AlertActivityLog:
+    type: object
+    properties:
+      payLoad:
+        type: array
+        items:
+          $ref: '#/definitions/AlertActivityLogObj'
+      status:
+        $ref: '#/definitions/status'
+  AlertObj:
+    type: object
+    properties:
+      alerts:
+        type: array
+        items:
+          $ref: '#/definitions/AlertDto1'
+      totalCount:
+        type: number
+        example: '1000'
+        description: totalCount
+        pattern: '^[0-9]{4}$'
+  AlertActivityLogObj:
+    type: object
+    properties:
+      alerts:
+        type: array
+        items:
+          $ref: '#/definitions/AlertDto2'
+      totalCount:
+        type: number
+        example: '1000'
+        description: totalCount
+        pattern: '^[0-9]{4}$'
+  AlertDto1:
+    type: object
+    properties:
+      id:
+        type: string
+        example: 15476966877480.828
+      ibx:
+        type: string
+        example: CH1
+      alertType:
+        type: object
+        $ref: '#/definitions/AlertType'
+      section:
+        type: string
+        example: electrical
+      customerAssets:
+        type: array
+        items:
+          $ref: '#/definitions/CustomerAssets'
+      infraAssets:
+        type: array
+        items:
+          $ref: '#/definitions/CustomerAssets'
+      heartbeatType:
+        type: string
+        example: 'off'
+      recipients:
+        type: array
+        items:
+          $ref: '#/definitions/recipientsArray'
+      conditionalAlert:
+        type: string
+        example: test
+      thresholdUnit:
+        type: string
+        example: '%'
+      thresholdValueMin:
+        type: string
+        example: '12'
+      thresholdValueMax:
+        type: string
+        example: '12'
+      thresholdValue:
+        type: string
+        example: '12'
+      createdBy:
+        type: string
+        example: test
+      createdOn:
+        type: number
+        example: 1547696687748
+        description: createdOn
+        pattern: '^[0-9]{4}$'
+      modifiedOn:
+        type: number
+        example: 1547696687748
+        description: modifiedOn
+        pattern: '^[0-9]{4}$'
+      lastTriggeredOn:
+        type: number
+        example: 1547696687748
+        description: lastTriggeredOn
+        pattern: '^[0-9]{4}$'
+      formatedSection:
+        type: string
+        example: Power Draw
+      enabledAction:
+        type: string
+        example: Enabled
+      isDuplicate:
+        type: boolean
+        example: false
+      userId:
+        type: string
+        example: userId
+      ucmid:
+        type: string
+        example: ucmid
+      accountNo:
+        type: string
+        example: 3213213
+      uom:
+        type: string
+        example: STANDARD
+      status:
+        type: string
+        example: status
+      region:
+        type: string
+        example: APAC
+      country:
+        type: string
+        example: SG
+      metro:
+        type: string
+        example: SG
+      alertPaused:
+        type: boolean
+        example: true
+        description: isAlertPaused
+  AlertDto2:
+    type: object
+    properties:
+      id:
+        type: string
+        example: 15476966877480.828
+      region:
+        type: string
+        example: APAC
+      ibx:
+        type: string
+        example: CH1
+      createdOn:
+        type: number
+        example: 1547696687748
+        description: createdOn
+        pattern: '^[0-9]{4}$'
+      modifiedOn:
+        type: number
+        example: 1547696687748
+        description: modifiedOn
+        pattern: '^[0-9]{4}$'
+      alertType:
+        type: object
+        $ref: '#/definitions/AlertType'
+      section:
+        type: string
+        example: electrical
+      triggeredOn:
+        type: number
+        example: 1547696687748
+        description: lastTriggeredOn
+        pattern: '^[0-9]{4}$'
+      asset:
+        type: string
+        example: SG3
+      affectedCustomerAsset:
+        type: string
+        example: 1069
+      alertTypeName:
+        type: string
+        example: tempExceeds
+      year:
+        type: string
+        example: 2019
+      accountNo:
+        type: string
+        example: 115767
+      conditionalAlert:
+        type: array
+        items:
+          $ref: '#/definitions/ConditionalAlert'
+      notificationType:
+        type: string
+        example: ALERT
+      currentvalue:
+        type: string
+        example: 23.38019323671497
+      assettype:
+        type: string
+        example: IBX
+      tagid:
+        type: string
+        example: Temperature
+      eventtype:
+        type: string
+        example: Exceeds
+      assetclassification:
+        type: string
+        example: assetclassification
+      relatedincidents:
+        type: string
+        example: assetclassification
+      type:
+        type: string
+        example: ALERT
+      timeacknowledged:
+        type: string
+        example: 1547008897864
+      lastmaintenance:
+        type: string
+        example: 1547008897864
+      severity:
+        type: string
+        example: ALERT
+      resiliency:
+        type: string
+        example: 'off'
+      timeprocessed:
+        type: string
+        example: 'off'
+      timetriggeredMilisec:
+        type: string
+        example: '1547007734678'
+      assetname:
+        type: string
+        example: 'SG3'
+      uom:
+        type: string
+        example: 'STANDARD'
+      timeZone:
+        type: string
+        example: 'Asia/Singapore'
+      thresholdUnit:
+        type: string
+        example: '%'
+      thresholdValueMin:
+        type: string
+        example: '12'
+      thresholdValueMax:
+        type: string
+        example: '12'
+      thresholdValue:
+        type: string
+        example: '12'
+      country:
+        type: string
+        example: SG
+      metro:
+        type: string
+        example: SG
+      acknowledge:
+        type: boolean
+        example: true
+  CustomerAssets:
+    type: object
+    properties:
+      type:
+        type: string
+        example: cage
+      assets:
+        type: array
+        items:
+          example: '1069'
+      assetsName:
+        type: array
+        items:
+          example: 'SG1:03:A20011'
+  ConditionalAlert:
+    type: object
+    properties:
+      region:
+        type: string
+        example: APAC
+      ibx:
+        type: string
+        example: SG3
+      uom:
+        type: string
+        example: STANDARD
+      section:
+        type: string
+        example: mechanical
+      affectedCustomerAsset:
+        type: string
+        example: '258'
+      customerAssets:
+        type: string
+        example: '258'
+      infraAssets:
+        type: string
+        example: '258'
+      measurementType:
+        type: string
+        example: '258'
+      alertType:
+        type: string
+        example: '258'
+      thresholdUnit:
+        type: string
+        example: '%'
+      thresholdValueMin:
+        type: string
+        example: '12'
+      thresholdValueMax:
+        type: string
+        example: '12'
+      thresholdValue:
+        type: string
+        example: '12'
+      asset:
+        type: string
+        example: '12'
+      condalerttypeid:
+        type: string
+        example: '12'
+      condassetclassification:
+        type: string
+        example: '12'
+      condassetid:
+        type: string
+        example: '12'
+      condcurrentvalue:
+        type: string
+        example: '12'
+      condeventtype:
+        type: string
+        example: '12'
+      condtagid:
+        type: string
+        example: '12'
+      assetname:
+        type: string
+        example: '12'
+      assettype:
+        type: string
+        example: '12'
+  recipientsArray:
+    type: object
+    properties:
+      firstName:
+        type: string
+        example: test
+      lastName:
+        type: string
+        example: test
+      email_address:
+        type: string
+        example: test
+      mobilePhoneCode:
+        type: string
+        example: test
+      mobilePhoneNumber:
+        type: string
+        example: test
+      self:
+        type: boolean
+        example: true
+      sms:
+        type: boolean
+        example: true
+      voice:
+        type: boolean
+        example: true
+      email:
+        type: boolean
+        example: true
+  AlertType:
+    type: object
+    properties:
+      id:
+        type: string
+        example: cageDrawExceeds
+      type:
+        type: string
+        example: value
+      value:
+        type: string
+        example: Cage Draw kVA to Contractual kVA% Exceeds
+      unit:
+        type: string
+        example: percentage
+      tagId:
+        type: string
+        example: '258'
+      defaultValue:
+        type: string
+        example: '258'
+      eventType:
+        type: string
+        example: Exceeds
+  PowerData_Error:
+    type: object
+    properties:
+      payLoad:
+        type: object
+      status:
+        type: object
+        properties:
+          type:
+            type: string
+            description: '[INFO|ERROR] are the possible values'
+            enum:
+              - ERROR
+          statuscode:
+            type: number
+            example: '4000'
+            description: '[1000|3001|3002|3003|4000] are the possible status codes'
+          msg:
+            type: string
+            example: INTERNAL_ERROR
+            description: >-
+              - Ok|INVALID_SESSION|INVALID_SESSION_IBX|INTERNAL_ERROR|Invalid
+              IBX|Invalid EventType|Invalid category|Missing Pagenum|Invalid
+              Pagenum|Missing Limit|Invalid Limit|Invalid OrderBy|Invalid SortBy
+               are the
+              possible messages
+parameters:
+  authorizationHeader:
+    name: Authorization
+    in: header
+    description: Specify the Access token with prefix 'Bearer '.
+    type: string
+    required: true

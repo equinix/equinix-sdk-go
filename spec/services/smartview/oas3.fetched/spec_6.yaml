@@ -1,0 +1,442 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Smart View Hierarchy APIs",
+    "contact": {
+      "name": "Equinix API Support",    
+      "url": "https://docs.equinix.com/api-support.htm"
+    },
+    "description": "Empower yourself with Smart View Hierarchy APIs. Use these APIs to obtain location and power hierarchy for invoking other APIs. Given an account number, IBX code, and an asset Id, returns the corresponding location and power hierarchy of related assets. Required query parameters to obtain a valid response from these endpoints are account number and IBX code.",
+    "version": "1.0",
+    "termsOfService": "https://www.equinix.com/about/legal/terms"
+    },
+  "host": "api.equinix.com",
+  "schemes": [
+    "https"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "tags": [
+    {
+      "name": "Smart View Hierarchy APIs",
+      "description": "APIs to get Location, Power Hierarchy"
+    }
+  ],
+  "paths": {
+    "/smartview/v1/hierarchy/location": {
+      "get": {
+        "tags": [
+          "Smart View Hierarchy APIs"
+        ],
+        "operationId": "getLocationHierarchy",
+        "summary": "Fetch the Location Hierarchy",
+        "description": "The location hierarchy endpoint returns the location hierarchy. This endpoint provides data for invoking other APIs such as Environmental APIs that require location hierarchy information.\n",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Specify the OAuth Bearer token with prefix 'Bearer '.",
+            "required": true,
+            "type": "string",
+            "x-prefix": "Bearer "
+          },
+          {
+            "name": "accountNo",
+            "in": "query",
+            "description": "Customer Account Number",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "ibx",
+            "in": "query",
+            "description": "IBX Code",
+            "type": "string",
+            "required": false
+          },
+          {
+            "$ref": "#/parameters/authorizationHeader"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Location Hierarchy Details",
+            "schema": {
+              "$ref": "#/definitions/LocationResponse"
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/smartview/v1/hierarchy/power": {
+      "get": {
+        "tags": [
+          "Smart View Hierarchy APIs"
+        ],
+        "operationId": "getPowerHierarchy",
+        "summary": "Fetch the Power Hierarchy",
+        "description": "The power hierarchy endpoint returns the power hierarchy. This endpoint provides data for invoking other APIs such as Power APIs that require power hierarchy information.\n",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Specify the OAuth Bearer token with prefix 'Bearer '.",
+            "required": true,
+            "type": "string",
+            "x-prefix": "Bearer "
+          },
+          {
+            "name": "accountNo",
+            "in": "query",
+            "description": "Customer Account Number",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "ibx",
+            "in": "query",
+            "description": "IBX Code",
+            "type": "string",
+            "required": false
+          },
+          {
+            "$ref": "#/parameters/authorizationHeader"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Location Hierarchy Details",
+            "schema": {
+              "$ref": "#/definitions/PowerResponse"
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "LocationResponse": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/HierarchyNode"
+      }
+    },
+    "PowerResponse": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/PowerHierarchyNode"
+      }
+    },
+    "HierarchyNode": {
+      "type": "object",
+      "properties": {
+        "levelType": {
+          "type": "string",
+          "description": "levelType indicates which level in the location hierarchy \ndoes the node belong to.\n",
+          "enum": [
+            "ibx",
+            "zone",
+            "cage",
+            "cabinet",
+            "sensor"
+          ],
+          "example": "ibx"
+        },
+        "levelValue": {
+          "type": "string",
+          "description": "ibx code, zone us id, cage us id, cabinet us id, sensor number \nfor levelType ibx, zone, cage, cabinet, sensor resp.\n",
+          "example": "SV5"
+        },
+        "label": {
+          "type": "string",
+          "description": "ibx code, zone unique space id, cage unique space id, \ncabinet unique space id, sensor number for levelType ibx, zone, cage, \ncabinet, sensor resp.\n",
+          "example": "SV5"
+        },
+        "children": {
+          "type": "array",
+          "example": [
+            {
+              "levelType": "ZONE",
+              "levelValue": "XY3:1:03:LocoArea:1",
+              "label": "XY3:1:03:LocoArea:1",
+              "children": [
+                {
+                  "levelType": "CAGE",
+                  "levelValue": "495",
+                  "label": "XY3:03:021720",
+                  "children": [
+                    {
+                      "levelType": "CABINET",
+                      "levelValue": "105734",
+                      "label": "XY3:03:021720:V0101:0199",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "levelType": "CAGE",
+                  "levelValue": "506",
+                  "label": "XY3:03:020900",
+                  "children": [
+                    {
+                      "levelType": "CABINET",
+                      "levelValue": "13781",
+                      "label": "XY3:03:020900:1010",
+                      "children": []
+                    },
+                    {
+                      "levelType": "CABINET",
+                      "levelValue": "13782",
+                      "label": "XY3:03:020900:1012",
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "levelType": "ZONE",
+              "levelValue": "XY3:1:03:Select Room:1",
+              "label": "XY3:1:03:Select Room:1",
+              "children": [
+                {
+                  "levelType": "CAGE",
+                  "levelValue": "61274",
+                  "label": "XY3:03:FE21720",
+                  "children": [
+                    {
+                      "levelType": "CABINET",
+                      "levelValue": "105901",
+                      "label": "XY3:03:FE21720:9999",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "levelType": "CAGE",
+                  "levelValue": "61275",
+                  "label": "XY3:03:FE50010",
+                  "children": [
+                    {
+                      "levelType": "CABINET",
+                      "levelValue": "105958",
+                      "label": "XY3:03:FE50010:9999",
+                      "children": []
+                    },
+                    {
+                      "levelType": "CABINET",
+                      "levelValue": "139905",
+                      "label": "XY3:03:FE50010:0000",
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "levelType": "ZONE",
+              "levelValue": "XY3:2:03:LocoArea:1",
+              "label": "XY3:2:03:LocoArea:1",
+              "children": [
+                {
+                  "levelType": "CAGE",
+                  "levelValue": "5902",
+                  "label": "XY3:03:021200",
+                  "children": [
+                    {
+                      "levelType": "CABINET",
+                      "levelValue": "102563",
+                      "label": "XY3:03:021200:0101",
+                      "children": []
+                    },
+                    {
+                      "levelType": "CABINET",
+                      "levelValue": "102564",
+                      "label": "XY3:03:021200:0102",
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "items": {
+            "$ref": "#/definitions/HierarchyNode"
+          }
+        }
+      }
+    },
+    "PowerHierarchyNode": {
+      "type": "object",
+      "properties": {
+        "levelType": {
+          "type": "string",
+          "description": "levelType indicates which level in the power hierarchy \ndoes the node belong to.\n",
+          "enum": [
+            "ibx",
+            "cage",
+            "cabinet",
+            "circuit"
+          ],
+          "example": "IBX"
+        },
+        "levelValue": {
+          "type": "string",
+          "description": "ibx code, cage us id, cabinet us id, circuit number for \nlevelType ibx, cage, cabinet, circuit resp.\n",
+          "example": "XY1"
+        },
+        "label": {
+          "type": "string",
+          "description": "ibx code, cage unique space id, cabinet unique space id, circuit label\nfor levelType ibx, cage, cabinet, circuit resp.\n",
+          "example": "XY1"
+        },
+        "children": {
+          "type": "array",
+          "description": "ibx, cage, cabinet nodes can have cage, cabinet and circuit, \ncircuit nodes as children respectively.\n",
+          "example": [
+            {
+              "levelType": "CAGE",
+              "levelValue": "5902",
+              "label": "XY1:06:061600",
+              "children": [
+                {
+                  "levelType": "CABINET",
+                  "levelValue": "102563",
+                  "label": "XY1:06:061600:0101",
+                  "children": [
+                    {
+                      "levelType": "CIRCUIT",
+                      "levelValue": "XYZA3693",
+                      "label": "208V 20A 1Ph Red (3693)",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "levelType": "CABINET",
+                  "levelValue": "102564",
+                  "label": "XY1:06:061600:0102",
+                  "children": [
+                    {
+                      "levelType": "CIRCUIT",
+                      "levelValue": "XYZA3694",
+                      "label": "208V 20A 1Ph Red (3694)",
+                      "children": []
+                    },
+                    {
+                      "levelType": "CIRCUIT",
+                      "levelValue": "XYZA3692",
+                      "label": "208V 20A 1Ph Pri (3692)",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "levelType": "CABINET",
+                  "levelValue": "102582",
+                  "label": "XY1:06:061600:0302",
+                  "children": [
+                    {
+                      "levelType": "CIRCUIT",
+                      "levelValue": "XYZE7863",
+                      "label": "120V 30A 1Ph Red (7863)",
+                      "children": []
+                    },
+                    {
+                      "levelType": "CIRCUIT",
+                      "levelValue": "XYZE7862",
+                      "label": "120V 30A 1Ph Pri (7862)",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "levelType": "CABINET",
+                  "levelValue": "102587",
+                  "label": "XY1:06:061600:0307",
+                  "children": [
+                    {
+                      "levelType": "CIRCUIT",
+                      "levelValue": "XYZG4836",
+                      "label": "208V 20A 1Ph Red (4836)",
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "levelType": "CAGE",
+              "levelValue": "60442",
+              "label": "XY1:06:063000",
+              "children": [
+                {
+                  "levelType": "CABINET",
+                  "levelValue": "100798",
+                  "label": "XY1:06:063000:0101",
+                  "children": [
+                    {
+                      "levelType": "CIRCUIT",
+                      "levelValue": "XYZH2630",
+                      "label": "120V 20A 1Ph Red (2630)",
+                      "children": []
+                    },
+                    {
+                      "levelType": "CIRCUIT",
+                      "levelValue": "XYZH2629",
+                      "label": "120V 20A 1Ph Pri (2629)",
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "items": {
+            "$ref": "#/definitions/PowerHierarchyNode"
+          }
+        }
+      }
+    },
+    "Error": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "fields": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "parameters": {
+    "authorizationHeader": {
+      "name": "Authorization",
+      "in": "header",
+      "description": "Specify the Access token with prefix 'Bearer'.",
+      "type": "string",
+      "required": true
+    }
+  }
+}
