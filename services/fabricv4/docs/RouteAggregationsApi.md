@@ -753,7 +753,7 @@ import (
 
 func main() {
 	routeAggregationId := "routeAggregationId_example" // string | Route Aggregations Id
-	routeAggregationsPatchRequestItem := []openapiclient.RouteAggregationsPatchRequestItem{*openapiclient.NewRouteAggregationsPatchRequestItem("replace", "/name", map[string]interface{}(123))} // []RouteAggregationsPatchRequestItem | 
+	routeAggregationsPatchRequestItem := []openapiclient.RouteAggregationsPatchRequestItem{*openapiclient.NewRouteAggregationsPatchRequestItem("replace", "/name", interface{}(123))} // []RouteAggregationsPatchRequestItem | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

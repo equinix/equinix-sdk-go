@@ -17762,7 +17762,6 @@ components:
           description: path to change
           example: /name
         value:
-          type: object
           description: new value for updated parameter
       description: Route Aggregation change operation data
     RouteAggregationsChangeOperation:
@@ -17852,7 +17851,6 @@ components:
           description: path to change
           example: /prefix
         value:
-          type: object
           description: new value for updated parameter
       description: Route Aggregation Rule change operation data
     RouteAggregationRulesChangeOperation:

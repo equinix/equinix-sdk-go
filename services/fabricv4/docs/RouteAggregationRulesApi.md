@@ -556,7 +556,7 @@ import (
 func main() {
 	routeAggregationId := "routeAggregationId_example" // string | Route Aggregations Id
 	routeAggregationRuleId := "routeAggregationRuleId_example" // string | Route Aggregation Rules Id
-	routeAggregationRulesPatchRequestItem := []openapiclient.RouteAggregationRulesPatchRequestItem{*openapiclient.NewRouteAggregationRulesPatchRequestItem("replace", "/prefix", map[string]interface{}(123))} // []RouteAggregationRulesPatchRequestItem | 
+	routeAggregationRulesPatchRequestItem := []openapiclient.RouteAggregationRulesPatchRequestItem{*openapiclient.NewRouteAggregationRulesPatchRequestItem("replace", "/prefix", interface{}(123))} // []RouteAggregationRulesPatchRequestItem | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
