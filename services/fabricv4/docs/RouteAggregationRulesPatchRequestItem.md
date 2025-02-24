@@ -6,13 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Op** | **string** | Handy shortcut for operation name | 
 **Path** | **string** | path to change | 
-**Value** | **map[string]interface{}** | new value for updated parameter | 
+**Value** | **interface{}** | new value for updated parameter | 
 
 ## Methods
 
 ### NewRouteAggregationRulesPatchRequestItem
 
-`func NewRouteAggregationRulesPatchRequestItem(op string, path string, value map[string]interface{}, ) *RouteAggregationRulesPatchRequestItem`
+`func NewRouteAggregationRulesPatchRequestItem(op string, path string, value interface{}, ) *RouteAggregationRulesPatchRequestItem`
 
 NewRouteAggregationRulesPatchRequestItem instantiates a new RouteAggregationRulesPatchRequestItem object
 This constructor will assign default values to properties that have it defined,
@@ -69,24 +69,34 @@ SetPath sets Path field to given value.
 
 ### GetValue
 
-`func (o *RouteAggregationRulesPatchRequestItem) GetValue() map[string]interface{}`
+`func (o *RouteAggregationRulesPatchRequestItem) GetValue() interface{}`
 
 GetValue returns the Value field if non-nil, zero value otherwise.
 
 ### GetValueOk
 
-`func (o *RouteAggregationRulesPatchRequestItem) GetValueOk() (*map[string]interface{}, bool)`
+`func (o *RouteAggregationRulesPatchRequestItem) GetValueOk() (*interface{}, bool)`
 
 GetValueOk returns a tuple with the Value field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetValue
 
-`func (o *RouteAggregationRulesPatchRequestItem) SetValue(v map[string]interface{})`
+`func (o *RouteAggregationRulesPatchRequestItem) SetValue(v interface{})`
 
 SetValue sets Value field to given value.
 
 
+### SetValueNil
+
+`func (o *RouteAggregationRulesPatchRequestItem) SetValueNil(b bool)`
+
+ SetValueNil sets the value for Value to be an explicit nil
+
+### UnsetValue
+`func (o *RouteAggregationRulesPatchRequestItem) UnsetValue()`
+
+UnsetValue ensures that no value is present for Value, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
