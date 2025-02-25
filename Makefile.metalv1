@@ -46,7 +46,7 @@ codegen:
 	# to use v7.4.0 of openapi-generator to merge the
 	# spec in order to avoid introducing duplicate models
 	${CRI} run --rm -u ${CURRENT_UID}:${CURRENT_GID} \
-	    -v $(CURDIR):/local -w /local \
+	    -v $(CURDIR):/workdir -w /workdir \
 		openapitools/openapi-generator-cli:v7.4.0 \
 		generate \
 		-i ${SPEC_PATCHED_DIR}/${SPEC_ROOT_FILE} \

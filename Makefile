@@ -12,7 +12,7 @@ OPENAPI_IMAGE_TAG=v7.10.0
 OPENAPI_IMAGE=openapitools/openapi-generator-cli:${OPENAPI_IMAGE_TAG}
 CRI=docker # nerdctl
 CRI_COMMAND_BASE=${CRI} run --rm -u ${CURRENT_UID}:${CURRENT_GID} $(DOCKER_EXTRA_ARGS)
-OPENAPI_GENERATOR=${CRI_COMMAND_BASE} -v $(CURDIR):/local -w /local ${OPENAPI_IMAGE}
+OPENAPI_GENERATOR=${CRI_COMMAND_BASE} -v $(CURDIR):/workdir -w /workdir ${OPENAPI_IMAGE}
 SPEC_FETCHER=${CRI_COMMAND_BASE} -v $(CURDIR):/workdir --entrypoint sh mikefarah/yq:4.30.8 script/download_spec.sh
 MIN_GO_VERSION=1.19
 GO_CMD=${CRI_COMMAND_BASE} -v $(CURDIR):/workdir -w /workdir -e GOCACHE=/tmp/.cache golang:${MIN_GO_VERSION}
