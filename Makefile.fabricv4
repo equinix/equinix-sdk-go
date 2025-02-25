@@ -47,15 +47,15 @@ codegen:
 		-p packageVersion=${PACKAGE_VERSION} \
 		--git-user-id ${GIT_ORG} \
 		--git-repo-id ${GIT_REPO}/services \
-		-c /local/config/openapi-generator.json \
-		-t /local/${TEMPLATE_DIR} \
-		-o /local/${CODE_DIR} \
-		-i /local/${SPEC_PATCHED_DIR}/${SPEC_ROOT_FILE}
+		-c config/openapi-generator.json \
+		-t ${TEMPLATE_DIR} \
+		-o ${CODE_DIR} \
+		-i ${SPEC_PATCHED_DIR}/${SPEC_ROOT_FILE}
 
 validate:
 	${OPENAPI_GENERATOR} validate \
 		--recommend \
-		-i /local/${SPEC_PATCHED_DIR}
+		-i ${SPEC_PATCHED_DIR}
 
 remove-unused:
 	rm -rf ${CODE_DIR}/api \
