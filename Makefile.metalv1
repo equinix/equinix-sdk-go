@@ -66,7 +66,7 @@ codegen:
 		-i /local/${SPEC_BASE_DIR}/${PACKAGE_NAME}/temp_merged_spec/${SPEC_ROOT_FILE}
         # -i /local/${SPEC_PATCHED_DIR}/${SPEC_ROOT_FILE} # switch back to this when the temporary merged spec is removed
 
-	rm -rf /local/${SPEC_BASE_DIR}/${PACKAGE_NAME}/temp_merged_spec
+	rm -rf ${SPEC_BASE_DIR}/${PACKAGE_NAME}/temp_merged_spec
 		
 validate:
 	${OPENAPI_GENERATOR} validate \
