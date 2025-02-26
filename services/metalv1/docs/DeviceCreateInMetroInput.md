@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Metro** | **string** | Metro code or ID of where the device should be provisioned in, or it can be instructed to create the device in the best available metro with &#x60;{ \&quot;metro\&quot;: \&quot;any\&quot; }&#x60;. The special metro value of any means anywhere, any metro. When any is chosen in the request, the metro location is picked per our scheduling algorithms that favor the following factors: hardware reservation location (if requesting reserved hardware), ip reservations, spot instances, etc. The any keyword *does not* optimize for cost, this means that usage costs (instance, transfer, other features dependent on location) will vary. Please check metro value in response to see where the device was created. Either metro or facility must be provided. | 
+**Metro** | [**MetroInputMetro**](MetroInputMetro.md) |  | 
 **AlwaysPxe** | Pointer to **bool** | When true, devices with a &#x60;custom_ipxe&#x60; OS will always boot to iPXE. The default setting of false ensures that iPXE will be used on only the first boot. | [optional] [default to false]
 **BillingCycle** | Pointer to [**DeviceCreateInputBillingCycle**](DeviceCreateInputBillingCycle.md) |  | [optional] 
 **Customdata** | Pointer to **map[string]interface{}** | Customdata is an arbitrary JSON value that can be accessed via the metadata service. | [optional] [default to {}]
@@ -35,7 +35,7 @@ Name | Type | Description | Notes
 
 ### NewDeviceCreateInMetroInput
 
-`func NewDeviceCreateInMetroInput(metro string, operatingSystem string, plan string, ) *DeviceCreateInMetroInput`
+`func NewDeviceCreateInMetroInput(metro MetroInputMetro, operatingSystem string, plan string, ) *DeviceCreateInMetroInput`
 
 NewDeviceCreateInMetroInput instantiates a new DeviceCreateInMetroInput object
 This constructor will assign default values to properties that have it defined,
@@ -52,20 +52,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetMetro
 
-`func (o *DeviceCreateInMetroInput) GetMetro() string`
+`func (o *DeviceCreateInMetroInput) GetMetro() MetroInputMetro`
 
 GetMetro returns the Metro field if non-nil, zero value otherwise.
 
 ### GetMetroOk
 
-`func (o *DeviceCreateInMetroInput) GetMetroOk() (*string, bool)`
+`func (o *DeviceCreateInMetroInput) GetMetroOk() (*MetroInputMetro, bool)`
 
 GetMetroOk returns a tuple with the Metro field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMetro
 
-`func (o *DeviceCreateInMetroInput) SetMetro(v string)`
+`func (o *DeviceCreateInMetroInput) SetMetro(v MetroInputMetro)`
 
 SetMetro sets Metro field to given value.
 

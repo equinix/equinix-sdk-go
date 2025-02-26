@@ -1,0 +1,39 @@
+get:
+  summary: Get details about a specific role
+  tags:
+  - Roles
+  description: Learn what actions are in each role.
+  operationId: getOrganizationRole
+  parameters:
+  - name: id
+    description: Organization UUID
+    in: path
+    required: true
+    schema:
+      type: string
+      format: uuid
+  - name: role_id
+    description: Role ID
+    in: path
+    required: true
+    schema:
+      type: string
+  responses:
+    "200":
+      content:
+        application/json:
+          schema:
+            $ref: '../../../../components/schemas/Role.yaml'
+      description: ok
+    "401":
+      content:
+        application/json:
+          schema:
+            $ref: '../../../../components/schemas/Error.yaml'
+      description: unauthorized
+    "403":
+      content:
+        application/json:
+          schema:
+            $ref: '../../../../components/schemas/Error.yaml'
+      description: forbidden

@@ -15,10 +15,8 @@ properties:
   type:
     type: string
     description: The type of the project. If no type is specified the project type will automatically be `default`
-      Projects of type 'vmce' are part of an in development feature and not available to all customers.
     enum:
       - default
-      - vmce
   tags:
     items:
       type: string

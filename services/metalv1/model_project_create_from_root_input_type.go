@@ -13,19 +13,17 @@ import (
 	"fmt"
 )
 
-// ProjectCreateFromRootInputType The type of the project. If no type is specified the project type will automatically be `default` Projects of type 'vmce' are part of an in development feature and not available to all customers.
+// ProjectCreateFromRootInputType The type of the project. If no type is specified the project type will automatically be `default`
 type ProjectCreateFromRootInputType string
 
 // List of ProjectCreateFromRootInput_type
 const (
 	PROJECTCREATEFROMROOTINPUTTYPE_DEFAULT ProjectCreateFromRootInputType = "default"
-	PROJECTCREATEFROMROOTINPUTTYPE_VMCE    ProjectCreateFromRootInputType = "vmce"
 )
 
 // All allowed values of ProjectCreateFromRootInputType enum
 var AllowedProjectCreateFromRootInputTypeEnumValues = []ProjectCreateFromRootInputType{
 	"default",
-	"vmce",
 }
 
 func (v *ProjectCreateFromRootInputType) UnmarshalJSON(src []byte) error {

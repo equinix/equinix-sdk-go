@@ -7,7 +7,6 @@ Name | Type | Description | Notes
 **BillingAccountName** | Pointer to **string** | The billing account name of the Equinix Fabric account. | [optional] 
 **ContactEmail** | Pointer to **string** | The preferred email used for communication and notifications about the Equinix Fabric interconnection. Optional and defaults to the primary user email address when using a User API key or the organization owner email address when using a Project API key. | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
-**FacilityId** | Pointer to **string** |  | [optional] 
 **Metro** | **string** | A Metro ID or code. For interconnections with Dedicated Ports, this will be the location of the issued Dedicated Ports. | 
 **Mode** | Pointer to [**DedicatedPortCreateInputMode**](DedicatedPortCreateInputMode.md) |  | [optional] 
 **Name** | **string** |  | 
@@ -111,31 +110,6 @@ SetDescription sets Description field to given value.
 `func (o *DedicatedPortCreateInput) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
-
-### GetFacilityId
-
-`func (o *DedicatedPortCreateInput) GetFacilityId() string`
-
-GetFacilityId returns the FacilityId field if non-nil, zero value otherwise.
-
-### GetFacilityIdOk
-
-`func (o *DedicatedPortCreateInput) GetFacilityIdOk() (*string, bool)`
-
-GetFacilityIdOk returns a tuple with the FacilityId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetFacilityId
-
-`func (o *DedicatedPortCreateInput) SetFacilityId(v string)`
-
-SetFacilityId sets FacilityId field to given value.
-
-### HasFacilityId
-
-`func (o *DedicatedPortCreateInput) HasFacilityId() bool`
-
-HasFacilityId returns a boolean if a field has been set.
 
 ### GetMetro
 
