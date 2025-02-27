@@ -1,7 +1,4 @@
 properties:
-  facility:
-    deprecated: true
-    type: string
   metro:
     description: The metro ID or code to check the capacity in.
     type: string

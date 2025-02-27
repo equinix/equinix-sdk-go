@@ -23,6 +23,7 @@ type InvitationInput struct {
 	OrganizationId       *string                `json:"organization_id,omitempty"`
 	ProjectsIds          []string               `json:"projects_ids,omitempty"`
 	Roles                []InvitationRolesInner `json:"roles,omitempty"`
+	BoundRoles           []string               `json:"bound_roles,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -198,6 +199,38 @@ func (o *InvitationInput) SetRoles(v []InvitationRolesInner) {
 	o.Roles = v
 }
 
+// GetBoundRoles returns the BoundRoles field value if set, zero value otherwise.
+func (o *InvitationInput) GetBoundRoles() []string {
+	if o == nil || IsNil(o.BoundRoles) {
+		var ret []string
+		return ret
+	}
+	return o.BoundRoles
+}
+
+// GetBoundRolesOk returns a tuple with the BoundRoles field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *InvitationInput) GetBoundRolesOk() ([]string, bool) {
+	if o == nil || IsNil(o.BoundRoles) {
+		return nil, false
+	}
+	return o.BoundRoles, true
+}
+
+// HasBoundRoles returns a boolean if a field has been set.
+func (o *InvitationInput) HasBoundRoles() bool {
+	if o != nil && !IsNil(o.BoundRoles) {
+		return true
+	}
+
+	return false
+}
+
+// SetBoundRoles gets a reference to the given []string and assigns it to the BoundRoles field.
+func (o *InvitationInput) SetBoundRoles(v []string) {
+	o.BoundRoles = v
+}
+
 func (o InvitationInput) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -220,6 +253,9 @@ func (o InvitationInput) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Roles) {
 		toSerialize["roles"] = o.Roles
+	}
+	if !IsNil(o.BoundRoles) {
+		toSerialize["bound_roles"] = o.BoundRoles
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -269,6 +305,7 @@ func (o *InvitationInput) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "organization_id")
 		delete(additionalProperties, "projects_ids")
 		delete(additionalProperties, "roles")
+		delete(additionalProperties, "bound_roles")
 		o.AdditionalProperties = additionalProperties
 	}
 

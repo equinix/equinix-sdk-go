@@ -1,10 +1,10 @@
 properties:
   build_date:
-    description: The date on which the current OS image was build and released
+    description: The date when Metal's current OS image was built and released.
     type: string
     format: date
   deprecation_date:
-    description: The date when the OS is deprecated
+    description: The date when the OS is deprecated. This is the date set by the upstream operating system maintainer.
     type: string
     format: date
   distro:
@@ -12,43 +12,43 @@ properties:
   distro_label:
     type: string
   end_of_life_date:
-    description: The OS no longer receives any updates and may be disabled at any time
+    description: The date when the Metal OS image no longer receives any updates and may be disabled at any time. Typically the same as the deprecation date set by the upstream OS maintainers.
     type: string
     format: date
   end_of_service_date:
-    description: When the OS is nearing end of life, typically 30 days before end of life
+    description: Metal-set date for when the OS is nearing end of life, typically 30 days before end of life.
     type: string
     format: date
   id:
     format: uuid
     type: string
   licensed:
-    description: Licenced OS is priced according to pricing property
+    description: Indicates if the OS is licensed or not. Licensed operating systems are priced according to pricing property.
     type: boolean
   lifecycle_state:
-    description: Where in the support lifecycle the OS is
+    description: Where in the lifecycle the OS image is. Possible states are - `"testing"`, `"pre_release"`, `"active"`, `"deprecated"`, `"end_of_service"`, or `"end_of_life"`.
     type: string
   name:
     type: string
   preinstallable:
-    description: Servers can be already preinstalled with OS in order to shorten provision
+    description: Indicates whether servers can be preinstalled with OS image in order to shorten provision
       time.
     type: boolean
   pricing:
     description: This object contains price per time unit and optional multiplier
-      value if licence price depends on hardware plan or components (e.g. number of
-      cores)
+      value if license price depends on hardware plan or components (e.g. number of
+      cores).
     type: object
   provisionable_on:
     items:
       type: string
     type: array
   release_date:
-    description: The date when the OS was released
+    description: The date the upstream operating system maintainer released this version of the OS.
     type: string
     format: date
   release_notes:
-    description: The current release notes for this OS image, typically in Markdown format
+    description: The current release notes for this OS image, typically in Markdown format.
     type: string
   slug:
     type: string

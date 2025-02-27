@@ -21,6 +21,12 @@ properties:
         - collaborator
         - limited_collaborator
     type: array
+  bound_roles:
+    type: array
+    items:
+      type: string
+    example:
+      - "permrv2-:id"
 required:
 - invitee
 type: object

@@ -1,0 +1,32 @@
+properties:
+  id:
+    format: uuid
+    type: string
+  roles:
+    type: array
+    items:
+      type: string
+      enum:
+        - admin
+        - billing
+        - collaborator
+        - limited_collaborator
+  projects_count:
+    type: integer
+  bound_roles:
+    type: array
+    items:
+      type: string
+    example:
+      - "permrv2-:id"
+  user:
+    $ref: './Href.yaml'
+  organization:
+    $ref: './Href.yaml'
+  projects:
+    type: array
+    items:
+      type: object
+      $ref: './Href.yaml'
+  href:
+    type: "string"

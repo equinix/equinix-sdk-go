@@ -1,0 +1,33 @@
+get:
+  summary: List available roles
+  tags:
+  - Roles
+  description: This list of roles can be used to update Members or new Invitations with additional permissions.
+  operationId: listOrganizationRoles
+  parameters:
+  - description: Organization UUID
+    name: id
+    in: path
+    required: true
+    schema:
+      type: string
+      format: uuid
+  responses:
+    "200":
+      content:
+        application/json:
+          schema:
+            $ref: '../../../components/schemas/RoleList.yaml'
+      description: ok
+    "401":
+      content:
+        application/json:
+          schema:
+            $ref: '../../../components/schemas/Error.yaml'
+      description: unauthorized
+    "403":
+      content:
+        application/json:
+          schema:
+            $ref: '../../../components/schemas/Error.yaml'
+      description: forbidden
