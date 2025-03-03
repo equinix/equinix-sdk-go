@@ -12648,7 +12648,6 @@ components:
     CustomField:
       required:
         - dataType
-        - description
         - isRequired
         - label
       properties:
