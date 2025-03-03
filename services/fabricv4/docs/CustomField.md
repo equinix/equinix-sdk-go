@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Label** | **string** |  | 
-**Description** | **string** |  | 
+**Description** | Pointer to **string** |  | [optional] 
 **Required** | Pointer to **bool** |  | [optional] 
 **DataType** | [**CustomFieldDataType**](CustomFieldDataType.md) |  | 
 **Options** | Pointer to **[]string** |  | [optional] 
@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 
 ### NewCustomField
 
-`func NewCustomField(label string, description string, dataType CustomFieldDataType, ) *CustomField`
+`func NewCustomField(label string, dataType CustomFieldDataType, ) *CustomField`
 
 NewCustomField instantiates a new CustomField object
 This constructor will assign default values to properties that have it defined,
@@ -69,6 +69,11 @@ and a boolean to check if the value has been set.
 
 SetDescription sets Description field to given value.
 
+### HasDescription
+
+`func (o *CustomField) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
 
 ### GetRequired
 

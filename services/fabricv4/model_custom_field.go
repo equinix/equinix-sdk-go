@@ -18,7 +18,7 @@ var _ MappedNullable = &CustomField{}
 // CustomField Define Custom Attributes
 type CustomField struct {
 	Label       string              `json:"label"`
-	Description string              `json:"description"`
+	Description *string             `json:"description,omitempty"`
 	Required    *bool               `json:"required,omitempty"`
 	DataType    CustomFieldDataType `json:"dataType"`
 	Options     []string            `json:"options,omitempty"`
@@ -33,10 +33,9 @@ type _CustomField CustomField
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCustomField(label string, description string, dataType CustomFieldDataType) *CustomField {
+func NewCustomField(label string, dataType CustomFieldDataType) *CustomField {
 	this := CustomField{}
 	this.Label = label
-	this.Description = description
 	this.DataType = dataType
 	return &this
 }
@@ -73,28 +72,36 @@ func (o *CustomField) SetLabel(v string) {
 	o.Label = v
 }
 
-// GetDescription returns the Description field value
+// GetDescription returns the Description field value if set, zero value otherwise.
 func (o *CustomField) GetDescription() string {
-	if o == nil {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
-
-	return o.Description
+	return *o.Description
 }
 
-// GetDescriptionOk returns a tuple with the Description field value
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomField) GetDescriptionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
-	return &o.Description, true
+	return o.Description, true
 }
 
-// SetDescription sets field value
+// HasDescription returns a boolean if a field has been set.
+func (o *CustomField) HasDescription() bool {
+	if o != nil && !IsNil(o.Description) {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *CustomField) SetDescription(v string) {
-	o.Description = v
+	o.Description = &v
 }
 
 // GetRequired returns the Required field value if set, zero value otherwise.
@@ -228,7 +235,9 @@ func (o CustomField) MarshalJSON() ([]byte, error) {
 func (o CustomField) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["label"] = o.Label
-	toSerialize["description"] = o.Description
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
 	if !IsNil(o.Required) {
 		toSerialize["required"] = o.Required
 	}
@@ -253,7 +262,6 @@ func (o *CustomField) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"label",
-		"description",
 		"dataType",
 	}
 
