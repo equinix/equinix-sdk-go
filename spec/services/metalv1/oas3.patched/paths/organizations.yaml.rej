@@ -1,0 +1,10 @@
+--- spec/services/metalv1/oas3.patched/paths/organizations.yaml
++++ spec/services/metalv1/oas3.patched/paths/organizations.yaml
+@@ -41,6 +41,7 @@ get:
+   summary: Retrieve all organizations
+   tags:
+   - Organizations
++  x-equinix-metal-paginated-property: Organizations
+ post:
+   description: Creates an organization.
+   operationId: createOrganization

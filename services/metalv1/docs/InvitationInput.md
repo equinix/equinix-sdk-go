@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **OrganizationId** | Pointer to **string** |  | [optional] 
 **ProjectsIds** | Pointer to **[]string** |  | [optional] 
 **Roles** | Pointer to [**[]InvitationRolesInner**](InvitationRolesInner.md) |  | [optional] 
+**BoundRoles** | Pointer to **[]string** |  | [optional] 
 
 ## Methods
 
@@ -148,6 +149,31 @@ SetRoles sets Roles field to given value.
 `func (o *InvitationInput) HasRoles() bool`
 
 HasRoles returns a boolean if a field has been set.
+
+### GetBoundRoles
+
+`func (o *InvitationInput) GetBoundRoles() []string`
+
+GetBoundRoles returns the BoundRoles field if non-nil, zero value otherwise.
+
+### GetBoundRolesOk
+
+`func (o *InvitationInput) GetBoundRolesOk() (*[]string, bool)`
+
+GetBoundRolesOk returns a tuple with the BoundRoles field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBoundRoles
+
+`func (o *InvitationInput) SetBoundRoles(v []string)`
+
+SetBoundRoles sets BoundRoles field to given value.
+
+### HasBoundRoles
+
+`func (o *InvitationInput) HasBoundRoles() bool`
+
+HasBoundRoles returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

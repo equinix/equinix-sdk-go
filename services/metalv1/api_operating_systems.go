@@ -155,7 +155,7 @@ func (r ApiFindOperatingSystemsRequest) Execute() (*OperatingSystemList, *http.R
 /*
 FindOperatingSystems Retrieve all operating systems
 
-Provides a listing of available operating systems to provision your new device with.
+Returns a list of available operating systems to provision your new device with.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiFindOperatingSystemsRequest
