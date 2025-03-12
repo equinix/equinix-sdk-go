@@ -51,7 +51,7 @@ func (dst *RouteTableEntryFilter) UnmarshalJSON(data []byte) error {
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON
-func (src *RouteTableEntryFilter) MarshalJSON() ([]byte, error) {
+func (src RouteTableEntryFilter) MarshalJSON() ([]byte, error) {
 	if src.RouteTableEntryOrFilter != nil {
 		return json.Marshal(&src.RouteTableEntryOrFilter)
 	}

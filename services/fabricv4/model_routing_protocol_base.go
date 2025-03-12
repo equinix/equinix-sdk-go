@@ -114,6 +114,20 @@ func (obj *RoutingProtocolBase) GetActualInstance() interface{} {
 	return nil
 }
 
+// Get the actual instance value
+func (obj RoutingProtocolBase) GetActualInstanceValue() interface{} {
+	if obj.RoutingProtocolBGPType != nil {
+		return *obj.RoutingProtocolBGPType
+	}
+
+	if obj.RoutingProtocolDirectType != nil {
+		return *obj.RoutingProtocolDirectType
+	}
+
+	// all schemas are nil
+	return nil
+}
+
 type NullableRoutingProtocolBase struct {
 	value *RoutingProtocolBase
 	isSet bool

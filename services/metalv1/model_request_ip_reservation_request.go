@@ -115,6 +115,20 @@ func (obj *RequestIPReservationRequest) GetActualInstance() interface{} {
 	return nil
 }
 
+// Get the actual instance value
+func (obj RequestIPReservationRequest) GetActualInstanceValue() interface{} {
+	if obj.IPReservationRequestInput != nil {
+		return *obj.IPReservationRequestInput
+	}
+
+	if obj.VrfIpReservationCreateInput != nil {
+		return *obj.VrfIpReservationCreateInput
+	}
+
+	// all schemas are nil
+	return nil
+}
+
 type NullableRequestIPReservationRequest struct {
 	value *RequestIPReservationRequest
 	isSet bool

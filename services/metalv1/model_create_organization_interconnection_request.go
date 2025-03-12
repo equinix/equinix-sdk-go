@@ -217,6 +217,32 @@ func (obj *CreateOrganizationInterconnectionRequest) GetActualInstance() interfa
 	return nil
 }
 
+// Get the actual instance value
+func (obj CreateOrganizationInterconnectionRequest) GetActualInstanceValue() interface{} {
+	if obj.DedicatedPortCreateInput != nil {
+		return *obj.DedicatedPortCreateInput
+	}
+
+	if obj.SharedPortVCVlanCreateInput != nil {
+		return *obj.SharedPortVCVlanCreateInput
+	}
+
+	if obj.VlanCSPConnectionCreateInput != nil {
+		return *obj.VlanCSPConnectionCreateInput
+	}
+
+	if obj.VlanFabricVcCreateInput != nil {
+		return *obj.VlanFabricVcCreateInput
+	}
+
+	if obj.VrfFabricVcCreateInput != nil {
+		return *obj.VrfFabricVcCreateInput
+	}
+
+	// all schemas are nil
+	return nil
+}
+
 type NullableCreateOrganizationInterconnectionRequest struct {
 	value *CreateOrganizationInterconnectionRequest
 	isSet bool

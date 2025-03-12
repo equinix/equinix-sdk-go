@@ -149,6 +149,24 @@ func (obj *FindIPAddressById200Response) GetActualInstance() interface{} {
 	return nil
 }
 
+// Get the actual instance value
+func (obj FindIPAddressById200Response) GetActualInstanceValue() interface{} {
+	if obj.IPAssignment != nil {
+		return *obj.IPAssignment
+	}
+
+	if obj.IPReservation != nil {
+		return *obj.IPReservation
+	}
+
+	if obj.VrfIpReservation != nil {
+		return *obj.VrfIpReservation
+	}
+
+	// all schemas are nil
+	return nil
+}
+
 type NullableFindIPAddressById200Response struct {
 	value *FindIPAddressById200Response
 	isSet bool
