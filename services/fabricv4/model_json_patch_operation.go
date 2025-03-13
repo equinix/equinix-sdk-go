@@ -148,6 +148,24 @@ func (obj *JsonPatchOperation) GetActualInstance() interface{} {
 	return nil
 }
 
+// Get the actual instance value
+func (obj JsonPatchOperation) GetActualInstanceValue() interface{} {
+	if obj.AddOperation != nil {
+		return *obj.AddOperation
+	}
+
+	if obj.RemoveOperation != nil {
+		return *obj.RemoveOperation
+	}
+
+	if obj.ReplaceOperation != nil {
+		return *obj.ReplaceOperation
+	}
+
+	// all schemas are nil
+	return nil
+}
+
 type NullableJsonPatchOperation struct {
 	value *JsonPatchOperation
 	isSet bool

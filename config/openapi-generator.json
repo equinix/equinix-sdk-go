@@ -6,6 +6,7 @@
         "RESOLVE_INLINE_ENUMS": true
     },
     "enumClassPrefix": true,
+    "removeEnumValuePrefix": true,
     "globalProperties": {
         "modelTests": false,
         "apiTests": false

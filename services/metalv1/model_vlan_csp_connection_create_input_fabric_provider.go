@@ -81,6 +81,16 @@ func (obj *VlanCSPConnectionCreateInputFabricProvider) GetActualInstance() inter
 	return nil
 }
 
+// Get the actual instance value
+func (obj VlanCSPConnectionCreateInputFabricProvider) GetActualInstanceValue() interface{} {
+	if obj.AWSFabricProvider != nil {
+		return *obj.AWSFabricProvider
+	}
+
+	// all schemas are nil
+	return nil
+}
+
 type NullableVlanCSPConnectionCreateInputFabricProvider struct {
 	value *VlanCSPConnectionCreateInputFabricProvider
 	isSet bool

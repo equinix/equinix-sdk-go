@@ -51,7 +51,7 @@ func (dst *ConnectionRouteEntryFilter) UnmarshalJSON(data []byte) error {
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON
-func (src *ConnectionRouteEntryFilter) MarshalJSON() ([]byte, error) {
+func (src ConnectionRouteEntryFilter) MarshalJSON() ([]byte, error) {
 	if src.ConnectionRouteEntryOrFilter != nil {
 		return json.Marshal(&src.ConnectionRouteEntryOrFilter)
 	}

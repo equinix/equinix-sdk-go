@@ -81,6 +81,16 @@ func (obj *InterconnectionFabricProvider) GetActualInstance() interface{} {
 	return nil
 }
 
+// Get the actual instance value
+func (obj InterconnectionFabricProvider) GetActualInstanceValue() interface{} {
+	if obj.AWSFabricProvider != nil {
+		return *obj.AWSFabricProvider
+	}
+
+	// all schemas are nil
+	return nil
+}
+
 type NullableInterconnectionFabricProvider struct {
 	value *InterconnectionFabricProvider
 	isSet bool

@@ -51,7 +51,7 @@ func (dst *StreamAssetFilter) UnmarshalJSON(data []byte) error {
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON
-func (src *StreamAssetFilter) MarshalJSON() ([]byte, error) {
+func (src StreamAssetFilter) MarshalJSON() ([]byte, error) {
 	if src.StreamAssetOrFilter != nil {
 		return json.Marshal(&src.StreamAssetOrFilter)
 	}

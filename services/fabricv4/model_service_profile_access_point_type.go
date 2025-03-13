@@ -114,6 +114,20 @@ func (obj *ServiceProfileAccessPointType) GetActualInstance() interface{} {
 	return nil
 }
 
+// Get the actual instance value
+func (obj ServiceProfileAccessPointType) GetActualInstanceValue() interface{} {
+	if obj.ServiceProfileAccessPointTypeCOLO != nil {
+		return *obj.ServiceProfileAccessPointTypeCOLO
+	}
+
+	if obj.ServiceProfileAccessPointTypeVD != nil {
+		return *obj.ServiceProfileAccessPointTypeVD
+	}
+
+	// all schemas are nil
+	return nil
+}
+
 type NullableServiceProfileAccessPointType struct {
 	value *ServiceProfileAccessPointType
 	isSet bool

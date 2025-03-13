@@ -115,6 +115,20 @@ func (obj *FindMetalGatewayById200Response) GetActualInstance() interface{} {
 	return nil
 }
 
+// Get the actual instance value
+func (obj FindMetalGatewayById200Response) GetActualInstanceValue() interface{} {
+	if obj.MetalGateway != nil {
+		return *obj.MetalGateway
+	}
+
+	if obj.VrfMetalGateway != nil {
+		return *obj.VrfMetalGateway
+	}
+
+	// all schemas are nil
+	return nil
+}
+
 type NullableFindMetalGatewayById200Response struct {
 	value *FindMetalGatewayById200Response
 	isSet bool

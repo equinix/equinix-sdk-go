@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Data** | Pointer to [**[]Port**](Port.md) |  | [optional] 
+**Data** | Pointer to [**[]PortRequest**](PortRequest.md) |  | [optional] 
 
 ## Methods
 

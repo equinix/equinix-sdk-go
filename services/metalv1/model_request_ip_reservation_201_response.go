@@ -115,6 +115,20 @@ func (obj *RequestIPReservation201Response) GetActualInstance() interface{} {
 	return nil
 }
 
+// Get the actual instance value
+func (obj RequestIPReservation201Response) GetActualInstanceValue() interface{} {
+	if obj.IPReservation != nil {
+		return *obj.IPReservation
+	}
+
+	if obj.VrfIpReservation != nil {
+		return *obj.VrfIpReservation
+	}
+
+	// all schemas are nil
+	return nil
+}
+
 type NullableRequestIPReservation201Response struct {
 	value *RequestIPReservation201Response
 	isSet bool

@@ -52,7 +52,7 @@ func (dst *MetalGatewayListMetalGatewaysInner) UnmarshalJSON(data []byte) error 
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON
-func (src *MetalGatewayListMetalGatewaysInner) MarshalJSON() ([]byte, error) {
+func (src MetalGatewayListMetalGatewaysInner) MarshalJSON() ([]byte, error) {
 	if src.MetalGateway != nil {
 		return json.Marshal(&src.MetalGateway)
 	}

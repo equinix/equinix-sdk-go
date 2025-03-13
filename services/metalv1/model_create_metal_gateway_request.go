@@ -115,6 +115,20 @@ func (obj *CreateMetalGatewayRequest) GetActualInstance() interface{} {
 	return nil
 }
 
+// Get the actual instance value
+func (obj CreateMetalGatewayRequest) GetActualInstanceValue() interface{} {
+	if obj.MetalGatewayCreateInput != nil {
+		return *obj.MetalGatewayCreateInput
+	}
+
+	if obj.VrfMetalGatewayCreateInput != nil {
+		return *obj.VrfMetalGatewayCreateInput
+	}
+
+	// all schemas are nil
+	return nil
+}
+
 type NullableCreateMetalGatewayRequest struct {
 	value *CreateMetalGatewayRequest
 	isSet bool
