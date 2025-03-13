@@ -5,5 +5,9 @@
     "inlineSchemaOptions": {
         "RESOLVE_INLINE_ENUMS": true
     },
-    "enumClassPrefix": true
+    "enumClassPrefix": true,
+    "globalProperties": {
+        "modelTests": false,
+        "apiTests": false
+    }
 }
