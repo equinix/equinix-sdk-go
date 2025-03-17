@@ -115,6 +115,20 @@ func (obj *CreateDeviceRequest) GetActualInstance() interface{} {
 	return nil
 }
 
+// Get the actual instance value
+func (obj CreateDeviceRequest) GetActualInstanceValue() interface{} {
+	if obj.DeviceCreateInFacilityInput != nil {
+		return *obj.DeviceCreateInFacilityInput
+	}
+
+	if obj.DeviceCreateInMetroInput != nil {
+		return *obj.DeviceCreateInMetroInput
+	}
+
+	// all schemas are nil
+	return nil
+}
+
 type NullableCreateDeviceRequest struct {
 	value *CreateDeviceRequest
 	isSet bool

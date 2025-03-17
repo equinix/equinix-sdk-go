@@ -115,6 +115,20 @@ func (obj *VirtualCircuitUpdateInput) GetActualInstance() interface{} {
 	return nil
 }
 
+// Get the actual instance value
+func (obj VirtualCircuitUpdateInput) GetActualInstanceValue() interface{} {
+	if obj.VlanVirtualCircuitUpdateInput != nil {
+		return *obj.VlanVirtualCircuitUpdateInput
+	}
+
+	if obj.VrfVirtualCircuitUpdateInput != nil {
+		return *obj.VrfVirtualCircuitUpdateInput
+	}
+
+	// all schemas are nil
+	return nil
+}
+
 type NullableVirtualCircuitUpdateInput struct {
 	value *VirtualCircuitUpdateInput
 	isSet bool

@@ -51,7 +51,7 @@ func (dst *CloudRouterActionsSearchFilter) UnmarshalJSON(data []byte) error {
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON
-func (src *CloudRouterActionsSearchFilter) MarshalJSON() ([]byte, error) {
+func (src CloudRouterActionsSearchFilter) MarshalJSON() ([]byte, error) {
 	if src.CloudRouterActionsSearchExpression != nil {
 		return json.Marshal(&src.CloudRouterActionsSearchExpression)
 	}

@@ -52,7 +52,7 @@ func (dst *IPReservationListIpAddressesInner) UnmarshalJSON(data []byte) error {
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON
-func (src *IPReservationListIpAddressesInner) MarshalJSON() ([]byte, error) {
+func (src IPReservationListIpAddressesInner) MarshalJSON() ([]byte, error) {
 	if src.IPReservation != nil {
 		return json.Marshal(&src.IPReservation)
 	}

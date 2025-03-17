@@ -51,7 +51,7 @@ func (dst *TimeServiceFilter) UnmarshalJSON(data []byte) error {
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON
-func (src *TimeServiceFilter) MarshalJSON() ([]byte, error) {
+func (src TimeServiceFilter) MarshalJSON() ([]byte, error) {
 	if src.TimeServiceOrFilter != nil {
 		return json.Marshal(&src.TimeServiceOrFilter)
 	}
