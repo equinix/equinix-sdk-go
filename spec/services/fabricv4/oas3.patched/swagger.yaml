@@ -17478,7 +17478,6 @@ components:
           description: path inside document leading to updated parameter
           example: /name
         value:
-          type: object
           description: new value for updated parameter
       description: Port change operation data
     LinkProtocolResponse:
