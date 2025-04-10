@@ -584,7 +584,7 @@ import (
 
 func main() {
 	portId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Port UUID
-	portChangeOperation := []openapiclient.PortChangeOperation{*openapiclient.NewPortChangeOperation("replace", "/name", map[string]interface{}(123))} // []PortChangeOperation | 
+	portChangeOperation := []openapiclient.PortChangeOperation{*openapiclient.NewPortChangeOperation("replace", "/name", interface{}(123))} // []PortChangeOperation | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
