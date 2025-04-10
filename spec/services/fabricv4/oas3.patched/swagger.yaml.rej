@@ -1,0 +1,10 @@
+--- spec/services/fabricv4/oas3.patched/swagger.yaml
++++ spec/services/fabricv4/oas3.patched/swagger.yaml
+@@ -12648,7 +12648,6 @@ components:
+     CustomField:
+       required:
+         - dataType
+-        - description
+         - isRequired
+         - label
+       properties:

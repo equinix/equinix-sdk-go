@@ -914,10 +914,17 @@ type ApiUpdateServiceTokenByUuidRequest struct {
 	ApiService                  *ServiceTokensApiService
 	serviceTokenId              string
 	serviceTokenChangeOperation *[]ServiceTokenChangeOperation
+	dryRun                      *bool
 }
 
 func (r ApiUpdateServiceTokenByUuidRequest) ServiceTokenChangeOperation(serviceTokenChangeOperation []ServiceTokenChangeOperation) ApiUpdateServiceTokenByUuidRequest {
 	r.serviceTokenChangeOperation = &serviceTokenChangeOperation
+	return r
+}
+
+// option to verify that API calls will succeed
+func (r ApiUpdateServiceTokenByUuidRequest) DryRun(dryRun bool) ApiUpdateServiceTokenByUuidRequest {
+	r.dryRun = &dryRun
 	return r
 }
 
@@ -971,6 +978,12 @@ func (a *ServiceTokensApiService) UpdateServiceTokenByUuidExecute(r ApiUpdateSer
 		return localVarReturnValue, nil, reportError("serviceTokenChangeOperation must have at least 1 elements")
 	}
 
+	if r.dryRun != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "dryRun", r.dryRun, "form", "")
+	} else {
+		var defaultValue bool = false
+		r.dryRun = &defaultValue
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json-patch+json"}
 

@@ -807,10 +807,17 @@ type ApiUpdateConnectionByUuidRequest struct {
 	ApiService                *ConnectionsApiService
 	connectionId              string
 	connectionChangeOperation *[]ConnectionChangeOperation
+	dryRun                    *bool
 }
 
 func (r ApiUpdateConnectionByUuidRequest) ConnectionChangeOperation(connectionChangeOperation []ConnectionChangeOperation) ApiUpdateConnectionByUuidRequest {
 	r.connectionChangeOperation = &connectionChangeOperation
+	return r
+}
+
+// option to verify that API calls will succeed
+func (r ApiUpdateConnectionByUuidRequest) DryRun(dryRun bool) ApiUpdateConnectionByUuidRequest {
+	r.dryRun = &dryRun
 	return r
 }
 
@@ -864,6 +871,12 @@ func (a *ConnectionsApiService) UpdateConnectionByUuidExecute(r ApiUpdateConnect
 		return localVarReturnValue, nil, reportError("connectionChangeOperation must have at least 1 elements")
 	}
 
+	if r.dryRun != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "dryRun", r.dryRun, "form", "")
+	} else {
+		var defaultValue bool = false
+		r.dryRun = &defaultValue
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json-patch+json"}
 
@@ -904,6 +917,17 @@ func (a *ConnectionsApiService) UpdateConnectionByUuidExecute(r ApiUpdateConnect
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v []Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v []Error

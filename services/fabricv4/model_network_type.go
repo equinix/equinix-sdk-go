@@ -17,9 +17,11 @@ type NetworkType string
 
 // List of NetworkType
 const (
-	NETWORKTYPE_EVPLAN NetworkType = "EVPLAN"
-	NETWORKTYPE_EPLAN  NetworkType = "EPLAN"
-	NETWORKTYPE_IPWAN  NetworkType = "IPWAN"
+	NETWORKTYPE_EVPLAN  NetworkType = "EVPLAN"
+	NETWORKTYPE_EPLAN   NetworkType = "EPLAN"
+	NETWORKTYPE_IPWAN   NetworkType = "IPWAN"
+	NETWORKTYPE_EVPTREE NetworkType = "EVPTREE"
+	NETWORKTYPE_EPTREE  NetworkType = "EPTREE"
 )
 
 // All allowed values of NetworkType enum
@@ -27,6 +29,8 @@ var AllowedNetworkTypeEnumValues = []NetworkType{
 	"EVPLAN",
 	"EPLAN",
 	"IPWAN",
+	"EVPTREE",
+	"EPTREE",
 }
 
 func (v *NetworkType) UnmarshalJSON(src []byte) error {
