@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **Order** | Pointer to [**PortOrder**](PortOrder.md) |  | [optional] 
 **Operation** | Pointer to [**PortOperation**](PortOperation.md) |  | [optional] 
 **Account** | [**SimplifiedAccount**](SimplifiedAccount.md) |  | 
+**Change** | Pointer to [**PortChange**](PortChange.md) |  | [optional] 
 **ChangeLog** | Pointer to [**Changelog**](Changelog.md) |  | [optional] 
 **ServiceType** | Pointer to [**PortServiceType**](PortServiceType.md) |  | [optional] 
 **Bandwidth** | Pointer to **int32** | Equinix assigned response attribute for Port bandwidth in Mbps | [optional] 
@@ -464,6 +465,31 @@ and a boolean to check if the value has been set.
 
 SetAccount sets Account field to given value.
 
+
+### GetChange
+
+`func (o *PortRequest) GetChange() PortChange`
+
+GetChange returns the Change field if non-nil, zero value otherwise.
+
+### GetChangeOk
+
+`func (o *PortRequest) GetChangeOk() (*PortChange, bool)`
+
+GetChangeOk returns a tuple with the Change field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetChange
+
+`func (o *PortRequest) SetChange(v PortChange)`
+
+SetChange sets Change field to given value.
+
+### HasChange
+
+`func (o *PortRequest) HasChange() bool`
+
+HasChange returns a boolean if a field has been set.
 
 ### GetChangeLog
 

@@ -25,7 +25,7 @@ type PrecisionTimeServiceResponse struct {
 	// Precision Time Service UUID.
 	Uuid    string                            `json:"uuid"`
 	State   PrecisionTimeServiceResponseState `json:"state"`
-	Package PrecisionTimePackageResponse      `json:"package"`
+	Package PrecisionTimePackagePostResponse  `json:"package"`
 	// Fabric Connections associated with Precision Time Service.
 	Connections []VirtualConnectionTimeServiceResponse `json:"connections,omitempty"`
 	Ipv4        *Ipv4                                  `json:"ipv4,omitempty"`
@@ -46,7 +46,7 @@ type _PrecisionTimeServiceResponse PrecisionTimeServiceResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPrecisionTimeServiceResponse(href string, type_ PrecisionTimeServiceResponseType, uuid string, state PrecisionTimeServiceResponseState, package_ PrecisionTimePackageResponse) *PrecisionTimeServiceResponse {
+func NewPrecisionTimeServiceResponse(href string, type_ PrecisionTimeServiceResponseType, uuid string, state PrecisionTimeServiceResponseState, package_ PrecisionTimePackagePostResponse) *PrecisionTimeServiceResponse {
 	this := PrecisionTimeServiceResponse{}
 	this.Href = href
 	this.Type = type_
@@ -193,9 +193,9 @@ func (o *PrecisionTimeServiceResponse) SetState(v PrecisionTimeServiceResponseSt
 }
 
 // GetPackage returns the Package field value
-func (o *PrecisionTimeServiceResponse) GetPackage() PrecisionTimePackageResponse {
+func (o *PrecisionTimeServiceResponse) GetPackage() PrecisionTimePackagePostResponse {
 	if o == nil {
-		var ret PrecisionTimePackageResponse
+		var ret PrecisionTimePackagePostResponse
 		return ret
 	}
 
@@ -204,7 +204,7 @@ func (o *PrecisionTimeServiceResponse) GetPackage() PrecisionTimePackageResponse
 
 // GetPackageOk returns a tuple with the Package field value
 // and a boolean to check if the value has been set.
-func (o *PrecisionTimeServiceResponse) GetPackageOk() (*PrecisionTimePackageResponse, bool) {
+func (o *PrecisionTimeServiceResponse) GetPackageOk() (*PrecisionTimePackagePostResponse, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -212,7 +212,7 @@ func (o *PrecisionTimeServiceResponse) GetPackageOk() (*PrecisionTimePackageResp
 }
 
 // SetPackage sets field value
-func (o *PrecisionTimeServiceResponse) SetPackage(v PrecisionTimePackageResponse) {
+func (o *PrecisionTimeServiceResponse) SetPackage(v PrecisionTimePackagePostResponse) {
 	o.Package = v
 }
 

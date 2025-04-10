@@ -13,9 +13,9 @@ Name | Type | Description | Notes
 **MarketplaceSubscription** | Pointer to [**MarketplaceSubscription**](MarketplaceSubscription.md) |  | [optional] 
 **ChangeLog** | Pointer to [**Changelog**](Changelog.md) |  | [optional] 
 **Change** | Pointer to [**CloudRouterChange**](CloudRouterChange.md) |  | [optional] 
-**Type** | Pointer to [**CloudRouterPostRequestType**](CloudRouterPostRequestType.md) |  | [optional] 
-**Location** | Pointer to [**SimplifiedLocationWithoutIBX**](SimplifiedLocationWithoutIBX.md) |  | [optional] 
-**Package** | Pointer to [**CloudRouterPostRequestPackage**](CloudRouterPostRequestPackage.md) |  | [optional] 
+**Type** | [**CloudRouterPostRequestType**](CloudRouterPostRequestType.md) |  | 
+**Location** | [**SimplifiedLocationWithoutIBX**](SimplifiedLocationWithoutIBX.md) |  | 
+**Package** | [**CloudRouterPostRequestPackage**](CloudRouterPostRequestPackage.md) |  | 
 **Order** | Pointer to [**Order**](Order.md) |  | [optional] 
 **Project** | Pointer to [**Project**](Project.md) |  | [optional] 
 **Account** | Pointer to [**SimplifiedAccount**](SimplifiedAccount.md) |  | [optional] 
@@ -25,7 +25,7 @@ Name | Type | Description | Notes
 
 ### NewCloudRouter
 
-`func NewCloudRouter() *CloudRouter`
+`func NewCloudRouter(type_ CloudRouterPostRequestType, location SimplifiedLocationWithoutIBX, package_ CloudRouterPostRequestPackage, ) *CloudRouter`
 
 NewCloudRouter instantiates a new CloudRouter object
 This constructor will assign default values to properties that have it defined,
@@ -284,11 +284,6 @@ and a boolean to check if the value has been set.
 
 SetType sets Type field to given value.
 
-### HasType
-
-`func (o *CloudRouter) HasType() bool`
-
-HasType returns a boolean if a field has been set.
 
 ### GetLocation
 
@@ -309,11 +304,6 @@ and a boolean to check if the value has been set.
 
 SetLocation sets Location field to given value.
 
-### HasLocation
-
-`func (o *CloudRouter) HasLocation() bool`
-
-HasLocation returns a boolean if a field has been set.
 
 ### GetPackage
 
@@ -334,11 +324,6 @@ and a boolean to check if the value has been set.
 
 SetPackage sets Package field to given value.
 
-### HasPackage
-
-`func (o *CloudRouter) HasPackage() bool`
-
-HasPackage returns a boolean if a field has been set.
 
 ### GetOrder
 
