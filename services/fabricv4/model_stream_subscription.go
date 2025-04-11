@@ -27,12 +27,13 @@ type StreamSubscription struct {
 	Description *string                  `json:"description,omitempty"`
 	State       *StreamSubscriptionState `json:"state,omitempty"`
 	// Stream subscription enabled status
-	Enabled              *bool                       `json:"enabled,omitempty"`
-	Filters              *StreamSubscriptionFilter   `json:"filters,omitempty"`
-	MetricSelector       *StreamSubscriptionSelector `json:"metricSelector,omitempty"`
-	EventSelector        *StreamSubscriptionSelector `json:"eventSelector,omitempty"`
-	Sink                 *StreamSubscriptionSink     `json:"sink,omitempty"`
-	ChangeLog            *Changelog                  `json:"changeLog,omitempty"`
+	Enabled        *bool                       `json:"enabled,omitempty"`
+	MetricSelector *StreamSubscriptionSelector `json:"metricSelector,omitempty"`
+	EventSelector  *StreamSubscriptionSelector `json:"eventSelector,omitempty"`
+	Sink           *StreamSubscriptionSink     `json:"sink,omitempty"`
+	ChangeLog      *Changelog                  `json:"changeLog,omitempty"`
+	// HTTP response from sink type if error occurred
+	LastErrorMessage     *string `json:"lastErrorMessage,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -279,38 +280,6 @@ func (o *StreamSubscription) SetEnabled(v bool) {
 	o.Enabled = &v
 }
 
-// GetFilters returns the Filters field value if set, zero value otherwise.
-func (o *StreamSubscription) GetFilters() StreamSubscriptionFilter {
-	if o == nil || IsNil(o.Filters) {
-		var ret StreamSubscriptionFilter
-		return ret
-	}
-	return *o.Filters
-}
-
-// GetFiltersOk returns a tuple with the Filters field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *StreamSubscription) GetFiltersOk() (*StreamSubscriptionFilter, bool) {
-	if o == nil || IsNil(o.Filters) {
-		return nil, false
-	}
-	return o.Filters, true
-}
-
-// HasFilters returns a boolean if a field has been set.
-func (o *StreamSubscription) HasFilters() bool {
-	if o != nil && !IsNil(o.Filters) {
-		return true
-	}
-
-	return false
-}
-
-// SetFilters gets a reference to the given StreamSubscriptionFilter and assigns it to the Filters field.
-func (o *StreamSubscription) SetFilters(v StreamSubscriptionFilter) {
-	o.Filters = &v
-}
-
 // GetMetricSelector returns the MetricSelector field value if set, zero value otherwise.
 func (o *StreamSubscription) GetMetricSelector() StreamSubscriptionSelector {
 	if o == nil || IsNil(o.MetricSelector) {
@@ -439,6 +408,38 @@ func (o *StreamSubscription) SetChangeLog(v Changelog) {
 	o.ChangeLog = &v
 }
 
+// GetLastErrorMessage returns the LastErrorMessage field value if set, zero value otherwise.
+func (o *StreamSubscription) GetLastErrorMessage() string {
+	if o == nil || IsNil(o.LastErrorMessage) {
+		var ret string
+		return ret
+	}
+	return *o.LastErrorMessage
+}
+
+// GetLastErrorMessageOk returns a tuple with the LastErrorMessage field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamSubscription) GetLastErrorMessageOk() (*string, bool) {
+	if o == nil || IsNil(o.LastErrorMessage) {
+		return nil, false
+	}
+	return o.LastErrorMessage, true
+}
+
+// HasLastErrorMessage returns a boolean if a field has been set.
+func (o *StreamSubscription) HasLastErrorMessage() bool {
+	if o != nil && !IsNil(o.LastErrorMessage) {
+		return true
+	}
+
+	return false
+}
+
+// SetLastErrorMessage gets a reference to the given string and assigns it to the LastErrorMessage field.
+func (o *StreamSubscription) SetLastErrorMessage(v string) {
+	o.LastErrorMessage = &v
+}
+
 func (o StreamSubscription) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -470,9 +471,6 @@ func (o StreamSubscription) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled
 	}
-	if !IsNil(o.Filters) {
-		toSerialize["filters"] = o.Filters
-	}
 	if !IsNil(o.MetricSelector) {
 		toSerialize["metricSelector"] = o.MetricSelector
 	}
@@ -484,6 +482,9 @@ func (o StreamSubscription) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ChangeLog) {
 		toSerialize["changeLog"] = o.ChangeLog
+	}
+	if !IsNil(o.LastErrorMessage) {
+		toSerialize["lastErrorMessage"] = o.LastErrorMessage
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -514,11 +515,11 @@ func (o *StreamSubscription) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "state")
 		delete(additionalProperties, "enabled")
-		delete(additionalProperties, "filters")
 		delete(additionalProperties, "metricSelector")
 		delete(additionalProperties, "eventSelector")
 		delete(additionalProperties, "sink")
 		delete(additionalProperties, "changeLog")
+		delete(additionalProperties, "lastErrorMessage")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -9,7 +9,6 @@ package fabricv4
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the VirtualConnectionTimeServiceResponse type satisfies the MappedNullable interface at compile time
@@ -18,11 +17,11 @@ var _ MappedNullable = &VirtualConnectionTimeServiceResponse{}
 // VirtualConnectionTimeServiceResponse Fabric Connection Precision Time Service Response Object
 type VirtualConnectionTimeServiceResponse struct {
 	// Connection URI
-	Href string `json:"href"`
+	Href *string `json:"href,omitempty"`
 	// Connection Type.
-	Type string `json:"type"`
+	Type *string `json:"type,omitempty"`
 	// Connection UUID.
-	Uuid                 string                 `json:"uuid"`
+	Uuid                 *string                `json:"uuid,omitempty"`
 	ASide                *VirtualConnectionSide `json:"aSide,omitempty"`
 	ZSide                *VirtualConnectionSide `json:"zSide,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -34,11 +33,8 @@ type _VirtualConnectionTimeServiceResponse VirtualConnectionTimeServiceResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVirtualConnectionTimeServiceResponse(href string, type_ string, uuid string) *VirtualConnectionTimeServiceResponse {
+func NewVirtualConnectionTimeServiceResponse() *VirtualConnectionTimeServiceResponse {
 	this := VirtualConnectionTimeServiceResponse{}
-	this.Href = href
-	this.Type = type_
-	this.Uuid = uuid
 	return &this
 }
 
@@ -50,76 +46,100 @@ func NewVirtualConnectionTimeServiceResponseWithDefaults() *VirtualConnectionTim
 	return &this
 }
 
-// GetHref returns the Href field value
+// GetHref returns the Href field value if set, zero value otherwise.
 func (o *VirtualConnectionTimeServiceResponse) GetHref() string {
-	if o == nil {
+	if o == nil || IsNil(o.Href) {
 		var ret string
 		return ret
 	}
-
-	return o.Href
+	return *o.Href
 }
 
-// GetHrefOk returns a tuple with the Href field value
+// GetHrefOk returns a tuple with the Href field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VirtualConnectionTimeServiceResponse) GetHrefOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Href) {
 		return nil, false
 	}
-	return &o.Href, true
+	return o.Href, true
 }
 
-// SetHref sets field value
+// HasHref returns a boolean if a field has been set.
+func (o *VirtualConnectionTimeServiceResponse) HasHref() bool {
+	if o != nil && !IsNil(o.Href) {
+		return true
+	}
+
+	return false
+}
+
+// SetHref gets a reference to the given string and assigns it to the Href field.
 func (o *VirtualConnectionTimeServiceResponse) SetHref(v string) {
-	o.Href = v
+	o.Href = &v
 }
 
-// GetType returns the Type field value
+// GetType returns the Type field value if set, zero value otherwise.
 func (o *VirtualConnectionTimeServiceResponse) GetType() string {
-	if o == nil {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
-
-	return o.Type
+	return *o.Type
 }
 
-// GetTypeOk returns a tuple with the Type field value
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VirtualConnectionTimeServiceResponse) GetTypeOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
-	return &o.Type, true
+	return o.Type, true
 }
 
-// SetType sets field value
+// HasType returns a boolean if a field has been set.
+func (o *VirtualConnectionTimeServiceResponse) HasType() bool {
+	if o != nil && !IsNil(o.Type) {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given string and assigns it to the Type field.
 func (o *VirtualConnectionTimeServiceResponse) SetType(v string) {
-	o.Type = v
+	o.Type = &v
 }
 
-// GetUuid returns the Uuid field value
+// GetUuid returns the Uuid field value if set, zero value otherwise.
 func (o *VirtualConnectionTimeServiceResponse) GetUuid() string {
-	if o == nil {
+	if o == nil || IsNil(o.Uuid) {
 		var ret string
 		return ret
 	}
-
-	return o.Uuid
+	return *o.Uuid
 }
 
-// GetUuidOk returns a tuple with the Uuid field value
+// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VirtualConnectionTimeServiceResponse) GetUuidOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Uuid) {
 		return nil, false
 	}
-	return &o.Uuid, true
+	return o.Uuid, true
 }
 
-// SetUuid sets field value
+// HasUuid returns a boolean if a field has been set.
+func (o *VirtualConnectionTimeServiceResponse) HasUuid() bool {
+	if o != nil && !IsNil(o.Uuid) {
+		return true
+	}
+
+	return false
+}
+
+// SetUuid gets a reference to the given string and assigns it to the Uuid field.
 func (o *VirtualConnectionTimeServiceResponse) SetUuid(v string) {
-	o.Uuid = v
+	o.Uuid = &v
 }
 
 // GetASide returns the ASide field value if set, zero value otherwise.
@@ -196,9 +216,15 @@ func (o VirtualConnectionTimeServiceResponse) MarshalJSON() ([]byte, error) {
 
 func (o VirtualConnectionTimeServiceResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["href"] = o.Href
-	toSerialize["type"] = o.Type
-	toSerialize["uuid"] = o.Uuid
+	if !IsNil(o.Href) {
+		toSerialize["href"] = o.Href
+	}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
+	if !IsNil(o.Uuid) {
+		toSerialize["uuid"] = o.Uuid
+	}
 	if !IsNil(o.ASide) {
 		toSerialize["aSide"] = o.ASide
 	}
@@ -214,29 +240,6 @@ func (o VirtualConnectionTimeServiceResponse) ToMap() (map[string]interface{}, e
 }
 
 func (o *VirtualConnectionTimeServiceResponse) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"href",
-		"type",
-		"uuid",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
 	varVirtualConnectionTimeServiceResponse := _VirtualConnectionTimeServiceResponse{}
 
 	err = json.Unmarshal(data, &varVirtualConnectionTimeServiceResponse)

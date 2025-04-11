@@ -27,9 +27,7 @@ type StreamSubscriptionSinkSetting struct {
 	// event uri
 	EventUri *string `json:"eventUri,omitempty"`
 	// metric uri
-	MetricUri *string `json:"metricUri,omitempty"`
-	// transform alerts
-	TransformAlerts      *bool `json:"transformAlerts,omitempty"`
+	MetricUri            *string `json:"metricUri,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -244,38 +242,6 @@ func (o *StreamSubscriptionSinkSetting) SetMetricUri(v string) {
 	o.MetricUri = &v
 }
 
-// GetTransformAlerts returns the TransformAlerts field value if set, zero value otherwise.
-func (o *StreamSubscriptionSinkSetting) GetTransformAlerts() bool {
-	if o == nil || IsNil(o.TransformAlerts) {
-		var ret bool
-		return ret
-	}
-	return *o.TransformAlerts
-}
-
-// GetTransformAlertsOk returns a tuple with the TransformAlerts field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *StreamSubscriptionSinkSetting) GetTransformAlertsOk() (*bool, bool) {
-	if o == nil || IsNil(o.TransformAlerts) {
-		return nil, false
-	}
-	return o.TransformAlerts, true
-}
-
-// HasTransformAlerts returns a boolean if a field has been set.
-func (o *StreamSubscriptionSinkSetting) HasTransformAlerts() bool {
-	if o != nil && !IsNil(o.TransformAlerts) {
-		return true
-	}
-
-	return false
-}
-
-// SetTransformAlerts gets a reference to the given bool and assigns it to the TransformAlerts field.
-func (o *StreamSubscriptionSinkSetting) SetTransformAlerts(v bool) {
-	o.TransformAlerts = &v
-}
-
 func (o StreamSubscriptionSinkSetting) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -303,9 +269,6 @@ func (o StreamSubscriptionSinkSetting) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.MetricUri) {
 		toSerialize["metricUri"] = o.MetricUri
-	}
-	if !IsNil(o.TransformAlerts) {
-		toSerialize["transformAlerts"] = o.TransformAlerts
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -335,7 +298,6 @@ func (o *StreamSubscriptionSinkSetting) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "applicationKey")
 		delete(additionalProperties, "eventUri")
 		delete(additionalProperties, "metricUri")
-		delete(additionalProperties, "transformAlerts")
 		o.AdditionalProperties = additionalProperties
 	}
 

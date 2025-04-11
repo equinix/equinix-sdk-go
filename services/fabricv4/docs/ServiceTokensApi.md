@@ -434,7 +434,7 @@ Name | Type | Description  | Notes
 
 ## UpdateServiceTokenByUuid
 
-> ServiceToken UpdateServiceTokenByUuid(ctx, serviceTokenId).ServiceTokenChangeOperation(serviceTokenChangeOperation).Execute()
+> ServiceToken UpdateServiceTokenByUuid(ctx, serviceTokenId).ServiceTokenChangeOperation(serviceTokenChangeOperation).DryRun(dryRun).Execute()
 
 Update Token By ID
 
@@ -455,10 +455,11 @@ import (
 func main() {
 	serviceTokenId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Service Token UUID
 	serviceTokenChangeOperation := []openapiclient.ServiceTokenChangeOperation{*openapiclient.NewServiceTokenChangeOperation(openapiclient.precisionTimeChangeOperation_op("replace"), "/expirationDateTime", interface{}(123))} // []ServiceTokenChangeOperation | 
+	dryRun := true // bool | option to verify that API calls will succeed (optional) (default to false)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ServiceTokensApi.UpdateServiceTokenByUuid(context.Background(), serviceTokenId).ServiceTokenChangeOperation(serviceTokenChangeOperation).Execute()
+	resp, r, err := apiClient.ServiceTokensApi.UpdateServiceTokenByUuid(context.Background(), serviceTokenId).ServiceTokenChangeOperation(serviceTokenChangeOperation).DryRun(dryRun).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ServiceTokensApi.UpdateServiceTokenByUuid``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -485,6 +486,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **serviceTokenChangeOperation** | [**[]ServiceTokenChangeOperation**](ServiceTokenChangeOperation.md) |  | 
+ **dryRun** | **bool** | option to verify that API calls will succeed | [default to false]
 
 ### Return type
 

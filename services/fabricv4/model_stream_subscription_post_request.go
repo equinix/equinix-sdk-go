@@ -23,7 +23,6 @@ type StreamSubscriptionPostRequest struct {
 	Description *string `json:"description,omitempty"`
 	// Stream subscription enabled status
 	Enabled              *bool                       `json:"enabled,omitempty"`
-	Filters              *StreamSubscriptionFilter   `json:"filters,omitempty"`
 	MetricSelector       *StreamSubscriptionSelector `json:"metricSelector,omitempty"`
 	EventSelector        *StreamSubscriptionSelector `json:"eventSelector,omitempty"`
 	Sink                 *StreamSubscriptionSink     `json:"sink,omitempty"`
@@ -177,38 +176,6 @@ func (o *StreamSubscriptionPostRequest) SetEnabled(v bool) {
 	o.Enabled = &v
 }
 
-// GetFilters returns the Filters field value if set, zero value otherwise.
-func (o *StreamSubscriptionPostRequest) GetFilters() StreamSubscriptionFilter {
-	if o == nil || IsNil(o.Filters) {
-		var ret StreamSubscriptionFilter
-		return ret
-	}
-	return *o.Filters
-}
-
-// GetFiltersOk returns a tuple with the Filters field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *StreamSubscriptionPostRequest) GetFiltersOk() (*StreamSubscriptionFilter, bool) {
-	if o == nil || IsNil(o.Filters) {
-		return nil, false
-	}
-	return o.Filters, true
-}
-
-// HasFilters returns a boolean if a field has been set.
-func (o *StreamSubscriptionPostRequest) HasFilters() bool {
-	if o != nil && !IsNil(o.Filters) {
-		return true
-	}
-
-	return false
-}
-
-// SetFilters gets a reference to the given StreamSubscriptionFilter and assigns it to the Filters field.
-func (o *StreamSubscriptionPostRequest) SetFilters(v StreamSubscriptionFilter) {
-	o.Filters = &v
-}
-
 // GetMetricSelector returns the MetricSelector field value if set, zero value otherwise.
 func (o *StreamSubscriptionPostRequest) GetMetricSelector() StreamSubscriptionSelector {
 	if o == nil || IsNil(o.MetricSelector) {
@@ -327,9 +294,6 @@ func (o StreamSubscriptionPostRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled
 	}
-	if !IsNil(o.Filters) {
-		toSerialize["filters"] = o.Filters
-	}
 	if !IsNil(o.MetricSelector) {
 		toSerialize["metricSelector"] = o.MetricSelector
 	}
@@ -365,7 +329,6 @@ func (o *StreamSubscriptionPostRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "enabled")
-		delete(additionalProperties, "filters")
 		delete(additionalProperties, "metricSelector")
 		delete(additionalProperties, "eventSelector")
 		delete(additionalProperties, "sink")
