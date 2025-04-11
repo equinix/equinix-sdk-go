@@ -6,16 +6,16 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Href** | Pointer to **string** | Cloud Routers URI | [optional] [readonly] 
 **Uuid** | Pointer to **string** | Equinix-assigned access point identifier | [optional] 
-**Name** | Pointer to **string** | Customer-provided Cloud Router name | [optional] 
 **State** | Pointer to [**CloudRouterAccessPointState**](CloudRouterAccessPointState.md) |  | [optional] 
 **EquinixAsn** | Pointer to **int64** | Equinix ASN | [optional] 
 **ConnectionsCount** | Pointer to **int32** | Number of connections associated with this Access point | [optional] 
 **MarketplaceSubscription** | Pointer to [**MarketplaceSubscription**](MarketplaceSubscription.md) |  | [optional] 
 **ChangeLog** | Pointer to [**Changelog**](Changelog.md) |  | [optional] 
 **Change** | Pointer to [**CloudRouterChange**](CloudRouterChange.md) |  | [optional] 
-**Type** | Pointer to [**CloudRouterPostRequestType**](CloudRouterPostRequestType.md) |  | [optional] 
-**Location** | Pointer to [**SimplifiedLocationWithoutIBX**](SimplifiedLocationWithoutIBX.md) |  | [optional] 
-**Package** | Pointer to [**CloudRouterPostRequestPackage**](CloudRouterPostRequestPackage.md) |  | [optional] 
+**Type** | [**CloudRouterPostRequestType**](CloudRouterPostRequestType.md) |  | 
+**Name** | **string** | Customer-provided Cloud Router name | 
+**Location** | [**SimplifiedLocationWithoutIBX**](SimplifiedLocationWithoutIBX.md) |  | 
+**Package** | [**CloudRouterPostRequestPackage**](CloudRouterPostRequestPackage.md) |  | 
 **Order** | Pointer to [**Order**](Order.md) |  | [optional] 
 **Project** | Pointer to [**Project**](Project.md) |  | [optional] 
 **Account** | Pointer to [**SimplifiedAccount**](SimplifiedAccount.md) |  | [optional] 
@@ -25,7 +25,7 @@ Name | Type | Description | Notes
 
 ### NewCloudRouter
 
-`func NewCloudRouter() *CloudRouter`
+`func NewCloudRouter(type_ CloudRouterPostRequestType, name string, location SimplifiedLocationWithoutIBX, package_ CloudRouterPostRequestPackage, ) *CloudRouter`
 
 NewCloudRouter instantiates a new CloudRouter object
 This constructor will assign default values to properties that have it defined,
@@ -89,31 +89,6 @@ SetUuid sets Uuid field to given value.
 `func (o *CloudRouter) HasUuid() bool`
 
 HasUuid returns a boolean if a field has been set.
-
-### GetName
-
-`func (o *CloudRouter) GetName() string`
-
-GetName returns the Name field if non-nil, zero value otherwise.
-
-### GetNameOk
-
-`func (o *CloudRouter) GetNameOk() (*string, bool)`
-
-GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetName
-
-`func (o *CloudRouter) SetName(v string)`
-
-SetName sets Name field to given value.
-
-### HasName
-
-`func (o *CloudRouter) HasName() bool`
-
-HasName returns a boolean if a field has been set.
 
 ### GetState
 
@@ -284,11 +259,26 @@ and a boolean to check if the value has been set.
 
 SetType sets Type field to given value.
 
-### HasType
 
-`func (o *CloudRouter) HasType() bool`
+### GetName
 
-HasType returns a boolean if a field has been set.
+`func (o *CloudRouter) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *CloudRouter) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *CloudRouter) SetName(v string)`
+
+SetName sets Name field to given value.
+
 
 ### GetLocation
 
@@ -309,11 +299,6 @@ and a boolean to check if the value has been set.
 
 SetLocation sets Location field to given value.
 
-### HasLocation
-
-`func (o *CloudRouter) HasLocation() bool`
-
-HasLocation returns a boolean if a field has been set.
 
 ### GetPackage
 
@@ -334,11 +319,6 @@ and a boolean to check if the value has been set.
 
 SetPackage sets Package field to given value.
 
-### HasPackage
-
-`func (o *CloudRouter) HasPackage() bool`
-
-HasPackage returns a boolean if a field has been set.
 
 ### GetOrder
 

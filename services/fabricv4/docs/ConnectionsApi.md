@@ -364,7 +364,7 @@ Name | Type | Description  | Notes
 
 ## UpdateConnectionByUuid
 
-> Connection UpdateConnectionByUuid(ctx, connectionId).ConnectionChangeOperation(connectionChangeOperation).Execute()
+> Connection UpdateConnectionByUuid(ctx, connectionId).ConnectionChangeOperation(connectionChangeOperation).DryRun(dryRun).Execute()
 
 Update by ID
 
@@ -385,10 +385,11 @@ import (
 func main() {
 	connectionId := "connectionId_example" // string | Connection Id
 	connectionChangeOperation := []openapiclient.ConnectionChangeOperation{*openapiclient.NewConnectionChangeOperation("add", "/ipv6", interface{}(123))} // []ConnectionChangeOperation | 
+	dryRun := true // bool | option to verify that API calls will succeed (optional) (default to false)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ConnectionsApi.UpdateConnectionByUuid(context.Background(), connectionId).ConnectionChangeOperation(connectionChangeOperation).Execute()
+	resp, r, err := apiClient.ConnectionsApi.UpdateConnectionByUuid(context.Background(), connectionId).ConnectionChangeOperation(connectionChangeOperation).DryRun(dryRun).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ConnectionsApi.UpdateConnectionByUuid``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -415,6 +416,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **connectionChangeOperation** | [**[]ConnectionChangeOperation**](ConnectionChangeOperation.md) |  | 
+ **dryRun** | **bool** | option to verify that API calls will succeed | [default to false]
 
 ### Return type
 

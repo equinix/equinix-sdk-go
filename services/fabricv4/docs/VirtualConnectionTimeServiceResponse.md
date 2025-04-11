@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Href** | **string** | Connection URI | [readonly] 
-**Type** | **string** | Connection Type. | 
-**Uuid** | **string** | Connection UUID. | 
+**Href** | Pointer to **string** | Connection URI | [optional] [readonly] 
+**Type** | Pointer to **string** | Connection Type. | [optional] 
+**Uuid** | Pointer to **string** | Connection UUID. | [optional] 
 **ASide** | Pointer to [**VirtualConnectionSide**](VirtualConnectionSide.md) |  | [optional] 
 **ZSide** | Pointer to [**VirtualConnectionSide**](VirtualConnectionSide.md) |  | [optional] 
 
@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 ### NewVirtualConnectionTimeServiceResponse
 
-`func NewVirtualConnectionTimeServiceResponse(href string, type_ string, uuid string, ) *VirtualConnectionTimeServiceResponse`
+`func NewVirtualConnectionTimeServiceResponse() *VirtualConnectionTimeServiceResponse`
 
 NewVirtualConnectionTimeServiceResponse instantiates a new VirtualConnectionTimeServiceResponse object
 This constructor will assign default values to properties that have it defined,
@@ -48,6 +48,11 @@ and a boolean to check if the value has been set.
 
 SetHref sets Href field to given value.
 
+### HasHref
+
+`func (o *VirtualConnectionTimeServiceResponse) HasHref() bool`
+
+HasHref returns a boolean if a field has been set.
 
 ### GetType
 
@@ -68,6 +73,11 @@ and a boolean to check if the value has been set.
 
 SetType sets Type field to given value.
 
+### HasType
+
+`func (o *VirtualConnectionTimeServiceResponse) HasType() bool`
+
+HasType returns a boolean if a field has been set.
 
 ### GetUuid
 
@@ -88,6 +98,11 @@ and a boolean to check if the value has been set.
 
 SetUuid sets Uuid field to given value.
 
+### HasUuid
+
+`func (o *VirtualConnectionTimeServiceResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetASide
 

@@ -8,7 +8,6 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** | Customer-provided stream subscription name | [optional] 
 **Description** | Pointer to **string** | Customer-provided stream subscription description | [optional] 
 **Enabled** | Pointer to **bool** | Stream subscription enabled status | [optional] 
-**Filters** | Pointer to [**StreamSubscriptionFilter**](StreamSubscriptionFilter.md) |  | [optional] 
 **MetricSelector** | Pointer to [**StreamSubscriptionSelector**](StreamSubscriptionSelector.md) |  | [optional] 
 **EventSelector** | Pointer to [**StreamSubscriptionSelector**](StreamSubscriptionSelector.md) |  | [optional] 
 **Sink** | Pointer to [**StreamSubscriptionSink**](StreamSubscriptionSink.md) |  | [optional] 
@@ -131,31 +130,6 @@ SetEnabled sets Enabled field to given value.
 `func (o *StreamSubscriptionPostRequest) HasEnabled() bool`
 
 HasEnabled returns a boolean if a field has been set.
-
-### GetFilters
-
-`func (o *StreamSubscriptionPostRequest) GetFilters() StreamSubscriptionFilter`
-
-GetFilters returns the Filters field if non-nil, zero value otherwise.
-
-### GetFiltersOk
-
-`func (o *StreamSubscriptionPostRequest) GetFiltersOk() (*StreamSubscriptionFilter, bool)`
-
-GetFiltersOk returns a tuple with the Filters field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetFilters
-
-`func (o *StreamSubscriptionPostRequest) SetFilters(v StreamSubscriptionFilter)`
-
-SetFilters sets Filters field to given value.
-
-### HasFilters
-
-`func (o *StreamSubscriptionPostRequest) HasFilters() bool`
-
-HasFilters returns a boolean if a field has been set.
 
 ### GetMetricSelector
 
