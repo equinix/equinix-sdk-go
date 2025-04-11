@@ -40,6 +40,7 @@ type Port struct {
 	Order                  *PortOrder                  `json:"order,omitempty"`
 	Operation              *PortOperation              `json:"operation,omitempty"`
 	Account                *SimplifiedAccount          `json:"account,omitempty"`
+	Change                 *PortChange                 `json:"change,omitempty"`
 	ChangeLog              *Changelog                  `json:"changeLog,omitempty"`
 	// Deprecated
 	ServiceType *PortServiceType `json:"serviceType,omitempty"`
@@ -642,6 +643,38 @@ func (o *Port) HasAccount() bool {
 // SetAccount gets a reference to the given SimplifiedAccount and assigns it to the Account field.
 func (o *Port) SetAccount(v SimplifiedAccount) {
 	o.Account = &v
+}
+
+// GetChange returns the Change field value if set, zero value otherwise.
+func (o *Port) GetChange() PortChange {
+	if o == nil || IsNil(o.Change) {
+		var ret PortChange
+		return ret
+	}
+	return *o.Change
+}
+
+// GetChangeOk returns a tuple with the Change field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Port) GetChangeOk() (*PortChange, bool) {
+	if o == nil || IsNil(o.Change) {
+		return nil, false
+	}
+	return o.Change, true
+}
+
+// HasChange returns a boolean if a field has been set.
+func (o *Port) HasChange() bool {
+	if o != nil && !IsNil(o.Change) {
+		return true
+	}
+
+	return false
+}
+
+// SetChange gets a reference to the given PortChange and assigns it to the Change field.
+func (o *Port) SetChange(v PortChange) {
+	o.Change = &v
 }
 
 // GetChangeLog returns the ChangeLog field value if set, zero value otherwise.
@@ -1479,6 +1512,9 @@ func (o Port) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Account) {
 		toSerialize["account"] = o.Account
 	}
+	if !IsNil(o.Change) {
+		toSerialize["change"] = o.Change
+	}
 	if !IsNil(o.ChangeLog) {
 		toSerialize["changeLog"] = o.ChangeLog
 	}
@@ -1590,6 +1626,7 @@ func (o *Port) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "order")
 		delete(additionalProperties, "operation")
 		delete(additionalProperties, "account")
+		delete(additionalProperties, "change")
 		delete(additionalProperties, "changeLog")
 		delete(additionalProperties, "serviceType")
 		delete(additionalProperties, "bandwidth")

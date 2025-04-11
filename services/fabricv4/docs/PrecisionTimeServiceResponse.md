@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** | Precision Time Service Name. | [optional] 
 **Uuid** | **string** | Precision Time Service UUID. | 
 **State** | [**PrecisionTimeServiceResponseState**](PrecisionTimeServiceResponseState.md) |  | 
-**Package** | [**PrecisionTimePackageResponse**](PrecisionTimePackageResponse.md) |  | 
+**Package** | [**PrecisionTimePackagePostResponse**](PrecisionTimePackagePostResponse.md) |  | 
 **Connections** | Pointer to [**[]VirtualConnectionTimeServiceResponse**](VirtualConnectionTimeServiceResponse.md) | Fabric Connections associated with Precision Time Service. | [optional] 
 **Ipv4** | Pointer to [**Ipv4**](Ipv4.md) |  | [optional] 
 **NtpAdvancedConfiguration** | Pointer to [**[]Md5**](Md5.md) | NTP Advanced configuration - MD5 Authentication. | [optional] 
@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 
 ### NewPrecisionTimeServiceResponse
 
-`func NewPrecisionTimeServiceResponse(href string, type_ PrecisionTimeServiceResponseType, uuid string, state PrecisionTimeServiceResponseState, package_ PrecisionTimePackageResponse, ) *PrecisionTimeServiceResponse`
+`func NewPrecisionTimeServiceResponse(href string, type_ PrecisionTimeServiceResponseType, uuid string, state PrecisionTimeServiceResponseState, package_ PrecisionTimePackagePostResponse, ) *PrecisionTimeServiceResponse`
 
 NewPrecisionTimeServiceResponse instantiates a new PrecisionTimeServiceResponse object
 This constructor will assign default values to properties that have it defined,
@@ -146,20 +146,20 @@ SetState sets State field to given value.
 
 ### GetPackage
 
-`func (o *PrecisionTimeServiceResponse) GetPackage() PrecisionTimePackageResponse`
+`func (o *PrecisionTimeServiceResponse) GetPackage() PrecisionTimePackagePostResponse`
 
 GetPackage returns the Package field if non-nil, zero value otherwise.
 
 ### GetPackageOk
 
-`func (o *PrecisionTimeServiceResponse) GetPackageOk() (*PrecisionTimePackageResponse, bool)`
+`func (o *PrecisionTimeServiceResponse) GetPackageOk() (*PrecisionTimePackagePostResponse, bool)`
 
 GetPackageOk returns a tuple with the Package field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPackage
 
-`func (o *PrecisionTimeServiceResponse) SetPackage(v PrecisionTimePackageResponse)`
+`func (o *PrecisionTimeServiceResponse) SetPackage(v PrecisionTimePackagePostResponse)`
 
 SetPackage sets Package field to given value.
 

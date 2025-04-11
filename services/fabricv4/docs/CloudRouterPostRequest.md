@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to [**CloudRouterPostRequestType**](CloudRouterPostRequestType.md) |  | [optional] 
-**Name** | Pointer to **string** | Customer-provided Cloud Router name | [optional] 
-**Location** | Pointer to [**SimplifiedLocationWithoutIBX**](SimplifiedLocationWithoutIBX.md) |  | [optional] 
-**Package** | Pointer to [**CloudRouterPostRequestPackage**](CloudRouterPostRequestPackage.md) |  | [optional] 
+**Type** | [**CloudRouterPostRequestType**](CloudRouterPostRequestType.md) |  | 
+**Name** | **string** | Customer-provided Cloud Router name | 
+**Location** | [**SimplifiedLocationWithoutIBX**](SimplifiedLocationWithoutIBX.md) |  | 
+**Package** | [**CloudRouterPostRequestPackage**](CloudRouterPostRequestPackage.md) |  | 
 **Order** | Pointer to [**Order**](Order.md) |  | [optional] 
 **Project** | Pointer to [**Project**](Project.md) |  | [optional] 
 **Account** | Pointer to [**SimplifiedAccount**](SimplifiedAccount.md) |  | [optional] 
@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 
 ### NewCloudRouterPostRequest
 
-`func NewCloudRouterPostRequest() *CloudRouterPostRequest`
+`func NewCloudRouterPostRequest(type_ CloudRouterPostRequestType, name string, location SimplifiedLocationWithoutIBX, package_ CloudRouterPostRequestPackage, ) *CloudRouterPostRequest`
 
 NewCloudRouterPostRequest instantiates a new CloudRouterPostRequest object
 This constructor will assign default values to properties that have it defined,
@@ -52,11 +52,6 @@ and a boolean to check if the value has been set.
 
 SetType sets Type field to given value.
 
-### HasType
-
-`func (o *CloudRouterPostRequest) HasType() bool`
-
-HasType returns a boolean if a field has been set.
 
 ### GetName
 
@@ -77,11 +72,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-### HasName
-
-`func (o *CloudRouterPostRequest) HasName() bool`
-
-HasName returns a boolean if a field has been set.
 
 ### GetLocation
 
@@ -102,11 +92,6 @@ and a boolean to check if the value has been set.
 
 SetLocation sets Location field to given value.
 
-### HasLocation
-
-`func (o *CloudRouterPostRequest) HasLocation() bool`
-
-HasLocation returns a boolean if a field has been set.
 
 ### GetPackage
 
@@ -127,11 +112,6 @@ and a boolean to check if the value has been set.
 
 SetPackage sets Package field to given value.
 
-### HasPackage
-
-`func (o *CloudRouterPostRequest) HasPackage() bool`
-
-HasPackage returns a boolean if a field has been set.
 
 ### GetOrder
 
