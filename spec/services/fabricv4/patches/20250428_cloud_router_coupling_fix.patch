@@ -1,8 +1,21 @@
 diff --git a/spec/services/fabricv4/oas3.patched/swagger.yaml b/spec/services/fabricv4/oas3.patched/swagger.yaml
-index 397ed50..4e317d1 100644
+index 8f2089e..616cc13 100644
 --- a/spec/services/fabricv4/oas3.patched/swagger.yaml
 +++ b/spec/services/fabricv4/oas3.patched/swagger.yaml
-@@ -14251,6 +14251,8 @@ components:
+@@ -15087,12 +15087,6 @@ components:
+             $ref: "#/components/schemas/RouteAggregationRulesBase"
+       description: Create Route Aggregation Rule POST request
+     CloudRouterPostRequest:
+-      required:
+-        - location
+-        - name
+-        - notification
+-        - package
+-        - type
+       type: object
+       properties:
+         type:
+@@ -15102,6 +15096,8 @@ components:
          name:
            type: string
            description: Customer-provided Cloud Router name
@@ -11,7 +24,7 @@ index 397ed50..4e317d1 100644
          location:
            $ref: "#/components/schemas/SimplifiedLocationWithoutIBX"
          package:
-@@ -14283,11 +14285,6 @@ components:
+@@ -15134,11 +15130,6 @@ components:
            description: Equinix-assigned access point identifier
            format: uuid
            example: c9b8e7a2-f3b1-4576-a4a9-1366a63df170
