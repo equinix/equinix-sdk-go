@@ -9,7 +9,6 @@ package fabricv4
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the CloudRouterPostRequest type satisfies the MappedNullable interface at compile time
@@ -17,14 +16,14 @@ var _ MappedNullable = &CloudRouterPostRequest{}
 
 // CloudRouterPostRequest Create Cloud Router
 type CloudRouterPostRequest struct {
-	Type CloudRouterPostRequestType `json:"type"`
+	Type *CloudRouterPostRequestType `json:"type,omitempty"`
 	// Customer-provided Cloud Router name
-	Name     string                        `json:"name"`
-	Location SimplifiedLocationWithoutIBX  `json:"location"`
-	Package  CloudRouterPostRequestPackage `json:"package"`
-	Order    *Order                        `json:"order,omitempty"`
-	Project  *Project                      `json:"project,omitempty"`
-	Account  *SimplifiedAccount            `json:"account,omitempty"`
+	Name     *string                        `json:"name,omitempty"`
+	Location *SimplifiedLocationWithoutIBX  `json:"location,omitempty"`
+	Package  *CloudRouterPostRequestPackage `json:"package,omitempty"`
+	Order    *Order                         `json:"order,omitempty"`
+	Project  *Project                       `json:"project,omitempty"`
+	Account  *SimplifiedAccount             `json:"account,omitempty"`
 	// Preferences for notifications on connection configuration or status changes
 	Notifications           []SimplifiedNotification `json:"notifications,omitempty"`
 	MarketplaceSubscription *MarketplaceSubscription `json:"marketplaceSubscription,omitempty"`
@@ -37,12 +36,8 @@ type _CloudRouterPostRequest CloudRouterPostRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCloudRouterPostRequest(type_ CloudRouterPostRequestType, name string, location SimplifiedLocationWithoutIBX, package_ CloudRouterPostRequestPackage) *CloudRouterPostRequest {
+func NewCloudRouterPostRequest() *CloudRouterPostRequest {
 	this := CloudRouterPostRequest{}
-	this.Type = type_
-	this.Name = name
-	this.Location = location
-	this.Package = package_
 	return &this
 }
 
@@ -54,100 +49,132 @@ func NewCloudRouterPostRequestWithDefaults() *CloudRouterPostRequest {
 	return &this
 }
 
-// GetType returns the Type field value
+// GetType returns the Type field value if set, zero value otherwise.
 func (o *CloudRouterPostRequest) GetType() CloudRouterPostRequestType {
-	if o == nil {
+	if o == nil || IsNil(o.Type) {
 		var ret CloudRouterPostRequestType
 		return ret
 	}
-
-	return o.Type
+	return *o.Type
 }
 
-// GetTypeOk returns a tuple with the Type field value
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CloudRouterPostRequest) GetTypeOk() (*CloudRouterPostRequestType, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
-	return &o.Type, true
+	return o.Type, true
 }
 
-// SetType sets field value
+// HasType returns a boolean if a field has been set.
+func (o *CloudRouterPostRequest) HasType() bool {
+	if o != nil && !IsNil(o.Type) {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given CloudRouterPostRequestType and assigns it to the Type field.
 func (o *CloudRouterPostRequest) SetType(v CloudRouterPostRequestType) {
-	o.Type = v
+	o.Type = &v
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *CloudRouterPostRequest) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CloudRouterPostRequest) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *CloudRouterPostRequest) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *CloudRouterPostRequest) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
-// GetLocation returns the Location field value
+// GetLocation returns the Location field value if set, zero value otherwise.
 func (o *CloudRouterPostRequest) GetLocation() SimplifiedLocationWithoutIBX {
-	if o == nil {
+	if o == nil || IsNil(o.Location) {
 		var ret SimplifiedLocationWithoutIBX
 		return ret
 	}
-
-	return o.Location
+	return *o.Location
 }
 
-// GetLocationOk returns a tuple with the Location field value
+// GetLocationOk returns a tuple with the Location field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CloudRouterPostRequest) GetLocationOk() (*SimplifiedLocationWithoutIBX, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Location) {
 		return nil, false
 	}
-	return &o.Location, true
+	return o.Location, true
 }
 
-// SetLocation sets field value
+// HasLocation returns a boolean if a field has been set.
+func (o *CloudRouterPostRequest) HasLocation() bool {
+	if o != nil && !IsNil(o.Location) {
+		return true
+	}
+
+	return false
+}
+
+// SetLocation gets a reference to the given SimplifiedLocationWithoutIBX and assigns it to the Location field.
 func (o *CloudRouterPostRequest) SetLocation(v SimplifiedLocationWithoutIBX) {
-	o.Location = v
+	o.Location = &v
 }
 
-// GetPackage returns the Package field value
+// GetPackage returns the Package field value if set, zero value otherwise.
 func (o *CloudRouterPostRequest) GetPackage() CloudRouterPostRequestPackage {
-	if o == nil {
+	if o == nil || IsNil(o.Package) {
 		var ret CloudRouterPostRequestPackage
 		return ret
 	}
-
-	return o.Package
+	return *o.Package
 }
 
-// GetPackageOk returns a tuple with the Package field value
+// GetPackageOk returns a tuple with the Package field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CloudRouterPostRequest) GetPackageOk() (*CloudRouterPostRequestPackage, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Package) {
 		return nil, false
 	}
-	return &o.Package, true
+	return o.Package, true
 }
 
-// SetPackage sets field value
+// HasPackage returns a boolean if a field has been set.
+func (o *CloudRouterPostRequest) HasPackage() bool {
+	if o != nil && !IsNil(o.Package) {
+		return true
+	}
+
+	return false
+}
+
+// SetPackage gets a reference to the given CloudRouterPostRequestPackage and assigns it to the Package field.
 func (o *CloudRouterPostRequest) SetPackage(v CloudRouterPostRequestPackage) {
-	o.Package = v
+	o.Package = &v
 }
 
 // GetOrder returns the Order field value if set, zero value otherwise.
@@ -320,10 +347,18 @@ func (o CloudRouterPostRequest) MarshalJSON() ([]byte, error) {
 
 func (o CloudRouterPostRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["type"] = o.Type
-	toSerialize["name"] = o.Name
-	toSerialize["location"] = o.Location
-	toSerialize["package"] = o.Package
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Location) {
+		toSerialize["location"] = o.Location
+	}
+	if !IsNil(o.Package) {
+		toSerialize["package"] = o.Package
+	}
 	if !IsNil(o.Order) {
 		toSerialize["order"] = o.Order
 	}
@@ -348,30 +383,6 @@ func (o CloudRouterPostRequest) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *CloudRouterPostRequest) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"type",
-		"name",
-		"location",
-		"package",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
 	varCloudRouterPostRequest := _CloudRouterPostRequest{}
 
 	err = json.Unmarshal(data, &varCloudRouterPostRequest)
