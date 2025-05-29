@@ -28,7 +28,9 @@ patch:
 
 	for diff in $(shell set -x; find ${SPEC_PATCH_DIR} -name '*.patch' | sort -n); do \
 		patch --no-backup-if-mismatch -N -t -p1 -i $$diff; \
-	done
+		RESULT=$$(($${RESULT} + $$?)); \
+	done; \
+	exit $$RESULT;
 
 patch-post:
 	# patch is idempotent, always starting with the generated files
