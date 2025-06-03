@@ -11913,11 +11913,11 @@ paths:
           example: 10
       responses:
         "200":
-          description: Stream Alert Rules object
+          description: Successful operation
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/StreamAlertRule"
+                $ref: "#/components/schemas/GetAllStreamAlertRuleResponse"
               examples:
                 GetAllStreamAlertRuleResponse:
                   $ref: "#/components/examples/stream-alert-rules-get-all-example"
@@ -16542,6 +16542,16 @@ components:
           description: Data returned from the API call.
           items:
             $ref: "#/components/schemas/Stream"
+    GetAllStreamAlertRuleResponse:
+      type: object
+      properties:
+        pagination:
+          $ref: "#/components/schemas/Pagination"
+        data:
+          type: array
+          description: Data returned from the API call.
+          items:
+            $ref: "#/components/schemas/StreamAlertRule"
     StreamPostRequest:
       type: object
       properties:
