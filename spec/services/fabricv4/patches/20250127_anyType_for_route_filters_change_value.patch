@@ -1,7 +1,7 @@
-diff --git a/spec/services/fabricv4/oas3.patched/swagger.yaml b/spec/services/fabricv4/oas3.patched/swagger.yaml
+diff --git a/spec/services/fabricv4/oas3.patched/openapi.yaml b/spec/services/fabricv4/oas3.patched/openapi.yaml
 index efdd526..69d4ccc 100644
---- a/spec/services/fabricv4/oas3.patched/swagger.yaml
-+++ b/spec/services/fabricv4/oas3.patched/swagger.yaml
+--- a/spec/services/fabricv4/oas3.patched/openapi.yaml
++++ b/spec/services/fabricv4/oas3.patched/openapi.yaml
 @@ -17100,7 +17100,6 @@ components:
            description: path to change
            example: /name

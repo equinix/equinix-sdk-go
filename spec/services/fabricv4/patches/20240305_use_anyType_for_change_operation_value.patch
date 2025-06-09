@@ -1,7 +1,7 @@
-diff --git a/spec/services/fabricv4/oas3.patched/swagger.yaml b/spec/services/fabricv4/oas3.patched/swagger.yaml
+diff --git a/spec/services/fabricv4/oas3.patched/openapi.yaml b/spec/services/fabricv4/oas3.patched/openapi.yaml
 index d552403..761c5fa 100644
---- a/spec/services/fabricv4/oas3.patched/swagger.yaml
-+++ b/spec/services/fabricv4/oas3.patched/swagger.yaml
+--- a/spec/services/fabricv4/oas3.patched/openapi.yaml
++++ b/spec/services/fabricv4/oas3.patched/openapi.yaml
 @@ -10304,7 +10304,6 @@ components:
              - /advanceConfiguration/ptp
              - /package
@@ -42,10 +42,3 @@ index d552403..761c5fa 100644
            description: new value for updated parameter
        description: Network change operation data
      NetworkSortCriteriaResponse:
-@@ -23856,4 +23851,4 @@ components:
-     BearerAuth:
-       type: http
-       scheme: bearer
--      bearerFormat: JWT
-\ No newline at end of file
-+      bearerFormat: JWT
