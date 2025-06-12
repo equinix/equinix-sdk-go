@@ -232,7 +232,7 @@ Name | Type | Description  | Notes
 
 ## GetStreamAlertRules
 
-> GetAllStreamAlertRuleResponse GetStreamAlertRules(ctx, streamId).Offset(offset).Limit(limit).Execute()
+> StreamAlertRule GetStreamAlertRules(ctx, streamId).Offset(offset).Limit(limit).Execute()
 
 Get Stream Alert Rules
 
@@ -262,7 +262,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `StreamAlertRulesApi.GetStreamAlertRules``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetStreamAlertRules`: GetAllStreamAlertRuleResponse
+	// response from `GetStreamAlertRules`: StreamAlertRule
 	fmt.Fprintf(os.Stdout, "Response from `StreamAlertRulesApi.GetStreamAlertRules`: %v\n", resp)
 }
 ```
@@ -288,7 +288,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetAllStreamAlertRuleResponse**](GetAllStreamAlertRuleResponse.md)
+[**StreamAlertRule**](StreamAlertRule.md)
 
 ### Authorization
 
