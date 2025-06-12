@@ -390,7 +390,6 @@ Class | Method | HTTP request | Description
  - [GetAllCloudRouterCommands](docs/GetAllCloudRouterCommands.md)
  - [GetAllConnectionRouteAggregationsResponse](docs/GetAllConnectionRouteAggregationsResponse.md)
  - [GetAllConnectionRouteFiltersResponse](docs/GetAllConnectionRouteFiltersResponse.md)
- - [GetAllStreamAlertRuleResponse](docs/GetAllStreamAlertRuleResponse.md)
  - [GetAllStreamAssetResponse](docs/GetAllStreamAssetResponse.md)
  - [GetAllStreamResponse](docs/GetAllStreamResponse.md)
  - [GetAllStreamSubscriptionResponse](docs/GetAllStreamSubscriptionResponse.md)
