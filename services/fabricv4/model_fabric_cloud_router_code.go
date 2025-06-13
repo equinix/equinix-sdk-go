@@ -18,16 +18,18 @@ type FabricCloudRouterCode string
 // List of FabricCloudRouterCode
 const (
 	FABRICCLOUDROUTERCODE_LAB      FabricCloudRouterCode = "LAB"
-	FABRICCLOUDROUTERCODE_ADVANCED FabricCloudRouterCode = "ADVANCED"
+	FABRICCLOUDROUTERCODE_BASIC    FabricCloudRouterCode = "BASIC"
 	FABRICCLOUDROUTERCODE_STANDARD FabricCloudRouterCode = "STANDARD"
+	FABRICCLOUDROUTERCODE_ADVANCED FabricCloudRouterCode = "ADVANCED"
 	FABRICCLOUDROUTERCODE_PREMIUM  FabricCloudRouterCode = "PREMIUM"
 )
 
 // All allowed values of FabricCloudRouterCode enum
 var AllowedFabricCloudRouterCodeEnumValues = []FabricCloudRouterCode{
 	"LAB",
-	"ADVANCED",
+	"BASIC",
 	"STANDARD",
+	"ADVANCED",
 	"PREMIUM",
 }
 

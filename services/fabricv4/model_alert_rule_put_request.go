@@ -21,10 +21,10 @@ type AlertRulePutRequest struct {
 	// Customer-provided stream description
 	Description *string `json:"description,omitempty"`
 	// Stream alert rule enabled status
-	Enabled          *bool                      `json:"enabled,omitempty"`
-	MetricName       *StreamAlertRuleMetricName `json:"metricName,omitempty"`
-	ResourceSelector *ResourceSelector          `json:"resourceSelector,omitempty"`
-	Operand          *StreamAlertRuleOperand    `json:"operand,omitempty"`
+	Enabled          *bool                           `json:"enabled,omitempty"`
+	MetricName       *AlertRulePostRequestMetricName `json:"metricName,omitempty"`
+	ResourceSelector *ResourceSelector               `json:"resourceSelector,omitempty"`
+	Operand          *AlertRulePostRequestOperand    `json:"operand,omitempty"`
 	// Stream alert rule metric window size
 	WindowSize *string `json:"windowSize,omitempty"`
 	// Stream alert rule metric warning threshold
@@ -154,9 +154,9 @@ func (o *AlertRulePutRequest) SetEnabled(v bool) {
 }
 
 // GetMetricName returns the MetricName field value if set, zero value otherwise.
-func (o *AlertRulePutRequest) GetMetricName() StreamAlertRuleMetricName {
+func (o *AlertRulePutRequest) GetMetricName() AlertRulePostRequestMetricName {
 	if o == nil || IsNil(o.MetricName) {
-		var ret StreamAlertRuleMetricName
+		var ret AlertRulePostRequestMetricName
 		return ret
 	}
 	return *o.MetricName
@@ -164,7 +164,7 @@ func (o *AlertRulePutRequest) GetMetricName() StreamAlertRuleMetricName {
 
 // GetMetricNameOk returns a tuple with the MetricName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AlertRulePutRequest) GetMetricNameOk() (*StreamAlertRuleMetricName, bool) {
+func (o *AlertRulePutRequest) GetMetricNameOk() (*AlertRulePostRequestMetricName, bool) {
 	if o == nil || IsNil(o.MetricName) {
 		return nil, false
 	}
@@ -180,8 +180,8 @@ func (o *AlertRulePutRequest) HasMetricName() bool {
 	return false
 }
 
-// SetMetricName gets a reference to the given StreamAlertRuleMetricName and assigns it to the MetricName field.
-func (o *AlertRulePutRequest) SetMetricName(v StreamAlertRuleMetricName) {
+// SetMetricName gets a reference to the given AlertRulePostRequestMetricName and assigns it to the MetricName field.
+func (o *AlertRulePutRequest) SetMetricName(v AlertRulePostRequestMetricName) {
 	o.MetricName = &v
 }
 
@@ -218,9 +218,9 @@ func (o *AlertRulePutRequest) SetResourceSelector(v ResourceSelector) {
 }
 
 // GetOperand returns the Operand field value if set, zero value otherwise.
-func (o *AlertRulePutRequest) GetOperand() StreamAlertRuleOperand {
+func (o *AlertRulePutRequest) GetOperand() AlertRulePostRequestOperand {
 	if o == nil || IsNil(o.Operand) {
-		var ret StreamAlertRuleOperand
+		var ret AlertRulePostRequestOperand
 		return ret
 	}
 	return *o.Operand
@@ -228,7 +228,7 @@ func (o *AlertRulePutRequest) GetOperand() StreamAlertRuleOperand {
 
 // GetOperandOk returns a tuple with the Operand field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AlertRulePutRequest) GetOperandOk() (*StreamAlertRuleOperand, bool) {
+func (o *AlertRulePutRequest) GetOperandOk() (*AlertRulePostRequestOperand, bool) {
 	if o == nil || IsNil(o.Operand) {
 		return nil, false
 	}
@@ -244,8 +244,8 @@ func (o *AlertRulePutRequest) HasOperand() bool {
 	return false
 }
 
-// SetOperand gets a reference to the given StreamAlertRuleOperand and assigns it to the Operand field.
-func (o *AlertRulePutRequest) SetOperand(v StreamAlertRuleOperand) {
+// SetOperand gets a reference to the given AlertRulePostRequestOperand and assigns it to the Operand field.
+func (o *AlertRulePutRequest) SetOperand(v AlertRulePostRequestOperand) {
 	o.Operand = &v
 }
 

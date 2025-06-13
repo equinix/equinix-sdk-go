@@ -18,16 +18,18 @@ type CloudRouterPostRequestPackageCode string
 // List of CloudRouterPostRequestPackage_code
 const (
 	CLOUDROUTERPOSTREQUESTPACKAGECODE_LAB      CloudRouterPostRequestPackageCode = "LAB"
-	CLOUDROUTERPOSTREQUESTPACKAGECODE_ADVANCED CloudRouterPostRequestPackageCode = "ADVANCED"
+	CLOUDROUTERPOSTREQUESTPACKAGECODE_BASIC    CloudRouterPostRequestPackageCode = "BASIC"
 	CLOUDROUTERPOSTREQUESTPACKAGECODE_STANDARD CloudRouterPostRequestPackageCode = "STANDARD"
+	CLOUDROUTERPOSTREQUESTPACKAGECODE_ADVANCED CloudRouterPostRequestPackageCode = "ADVANCED"
 	CLOUDROUTERPOSTREQUESTPACKAGECODE_PREMIUM  CloudRouterPostRequestPackageCode = "PREMIUM"
 )
 
 // All allowed values of CloudRouterPostRequestPackageCode enum
 var AllowedCloudRouterPostRequestPackageCodeEnumValues = []CloudRouterPostRequestPackageCode{
 	"LAB",
-	"ADVANCED",
+	"BASIC",
 	"STANDARD",
+	"ADVANCED",
 	"PREMIUM",
 }
 

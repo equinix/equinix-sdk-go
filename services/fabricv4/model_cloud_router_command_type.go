@@ -17,12 +17,14 @@ type CloudRouterCommandType string
 
 // List of CloudRouterCommandType
 const (
-	CLOUDROUTERCOMMANDTYPE_PING_COMMAND CloudRouterCommandType = "PING_COMMAND"
+	CLOUDROUTERCOMMANDTYPE_PING_COMMAND       CloudRouterCommandType = "PING_COMMAND"
+	CLOUDROUTERCOMMANDTYPE_TRACEROUTE_COMMAND CloudRouterCommandType = "TRACEROUTE_COMMAND"
 )
 
 // All allowed values of CloudRouterCommandType enum
 var AllowedCloudRouterCommandTypeEnumValues = []CloudRouterCommandType{
 	"PING_COMMAND",
+	"TRACEROUTE_COMMAND",
 }
 
 func (v *CloudRouterCommandType) UnmarshalJSON(src []byte) error {

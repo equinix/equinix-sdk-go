@@ -21,9 +21,11 @@ type VirtualDevice struct {
 	// Equinix-assigned Virtual Device identifier
 	Uuid *string `json:"uuid,omitempty"`
 	// Customer-assigned Virtual Device name
-	Name                 *string            `json:"name,omitempty"`
-	Type                 *VirtualDeviceType `json:"type,omitempty"`
-	Account              *SimplifiedAccount `json:"account,omitempty"`
+	Name    *string            `json:"name,omitempty"`
+	Type    *VirtualDeviceType `json:"type,omitempty"`
+	Account *SimplifiedAccount `json:"account,omitempty"`
+	// Virtual Device Cluster Information
+	Cluster              *string `json:"cluster,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -206,6 +208,38 @@ func (o *VirtualDevice) SetAccount(v SimplifiedAccount) {
 	o.Account = &v
 }
 
+// GetCluster returns the Cluster field value if set, zero value otherwise.
+func (o *VirtualDevice) GetCluster() string {
+	if o == nil || IsNil(o.Cluster) {
+		var ret string
+		return ret
+	}
+	return *o.Cluster
+}
+
+// GetClusterOk returns a tuple with the Cluster field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *VirtualDevice) GetClusterOk() (*string, bool) {
+	if o == nil || IsNil(o.Cluster) {
+		return nil, false
+	}
+	return o.Cluster, true
+}
+
+// HasCluster returns a boolean if a field has been set.
+func (o *VirtualDevice) HasCluster() bool {
+	if o != nil && !IsNil(o.Cluster) {
+		return true
+	}
+
+	return false
+}
+
+// SetCluster gets a reference to the given string and assigns it to the Cluster field.
+func (o *VirtualDevice) SetCluster(v string) {
+	o.Cluster = &v
+}
+
 func (o VirtualDevice) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -230,6 +264,9 @@ func (o VirtualDevice) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Account) {
 		toSerialize["account"] = o.Account
+	}
+	if !IsNil(o.Cluster) {
+		toSerialize["cluster"] = o.Cluster
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -258,6 +295,7 @@ func (o *VirtualDevice) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "account")
+		delete(additionalProperties, "cluster")
 		o.AdditionalProperties = additionalProperties
 	}
 

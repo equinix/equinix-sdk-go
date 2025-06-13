@@ -19,8 +19,8 @@ type Md5 struct {
 	Type *Md5Type `json:"type,omitempty"`
 	// The authentication Key ID.
 	KeyNumber *int32 `json:"keyNumber,omitempty"`
-	// The plaintext authentication key. For ASCII type, the key must contain printable ASCII characters, range 10-20 characters. For HEX type, range should be 10-40 characters.
-	Key                  *string `json:"key,omitempty"`
+	// The plaintext authentication key. Must be Base64 encoded. For ASCII type, the key must contain printable ASCII characters, range 10-20 characters. For HEX type, range should be 10-40 characters.
+	Key                  *string `json:"key,omitempty" validate:"regexp=^(?:[A-Za-z0-9+\\/]{4})*(?:[A-Za-z0-9+\\/]{2}==|[A-Za-z0-9+\\/]{3}=)?$"`
 	AdditionalProperties map[string]interface{}
 }
 

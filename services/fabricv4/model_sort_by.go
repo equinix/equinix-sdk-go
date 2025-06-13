@@ -28,6 +28,7 @@ const (
 	SORTBY_A_SIDE_ACCESS_POINT_LINK_PROTOCOL_VLAN_S_TAG SortBy = "/aSide/accessPoint/linkProtocol/vlanSTag"
 	SORTBY_Z_SIDE_ACCESS_POINT_NAME                     SortBy = "/zSide/accessPoint/name"
 	SORTBY_Z_SIDE_ACCESS_POINT_TYPE                     SortBy = "/zSide/accessPoint/type"
+	SORTBY_Z_SIDE_ACCESS_POINT_ROLE                     SortBy = "/zSide/accessPoint/role"
 	SORTBY_Z_SIDE_ACCESS_POINT_ACCOUNT_ACCOUNT_NAME     SortBy = "/zSide/accessPoint/account/accountName"
 	SORTBY_Z_SIDE_ACCESS_POINT_LOCATION_METRO_NAME      SortBy = "/zSide/accessPoint/location/metroName"
 	SORTBY_Z_SIDE_ACCESS_POINT_LOCATION_METRO_CODE      SortBy = "/zSide/accessPoint/location/metroCode"
@@ -57,6 +58,7 @@ var AllowedSortByEnumValues = []SortBy{
 	"/aSide/accessPoint/linkProtocol/vlanSTag",
 	"/zSide/accessPoint/name",
 	"/zSide/accessPoint/type",
+	"/zSide/accessPoint/role",
 	"/zSide/accessPoint/account/accountName",
 	"/zSide/accessPoint/location/metroName",
 	"/zSide/accessPoint/location/metroCode",

@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **LocalVCBandwidthMax** | Pointer to **int64** | This field holds Max Connection speed with in the metro | [optional] 
 **GeoCoordinates** | Pointer to [**GeoCoordinates**](GeoCoordinates.md) |  | [optional] 
 **ConnectedMetros** | Pointer to [**[]ConnectedMetro**](ConnectedMetro.md) |  | [optional] 
+**Services** | Pointer to [**[]Services**](Services.md) |  | [optional] 
 **GeoScopes** | Pointer to [**[]GeoScopeType**](GeoScopeType.md) | List of supported geographic boundaries of a Fabric Metro. | [optional] 
 
 ## Methods
@@ -258,6 +259,31 @@ SetConnectedMetros sets ConnectedMetros field to given value.
 `func (o *Metro) HasConnectedMetros() bool`
 
 HasConnectedMetros returns a boolean if a field has been set.
+
+### GetServices
+
+`func (o *Metro) GetServices() []Services`
+
+GetServices returns the Services field if non-nil, zero value otherwise.
+
+### GetServicesOk
+
+`func (o *Metro) GetServicesOk() (*[]Services, bool)`
+
+GetServicesOk returns a tuple with the Services field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetServices
+
+`func (o *Metro) SetServices(v []Services)`
+
+SetServices sets Services field to given value.
+
+### HasServices
+
+`func (o *Metro) HasServices() bool`
+
+HasServices returns a boolean if a field has been set.
 
 ### GetGeoScopes
 

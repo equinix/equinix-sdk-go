@@ -1,4 +1,4 @@
-# StreamAlertRuleMetricName
+# AlertRulePostRequestMetricName
 
 ## Enum
 

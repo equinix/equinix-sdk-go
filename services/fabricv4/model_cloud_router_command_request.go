@@ -18,16 +18,20 @@ var _ MappedNullable = &CloudRouterCommandRequest{}
 // CloudRouterCommandRequest Fabric Cloud Router Command Request
 type CloudRouterCommandRequest struct {
 	// Fabric Cloud Router Ping Command Destination
-	Destination      string                               `json:"destination"`
-	SourceConnection *CloudRouterCommandRequestConnection `json:"sourceConnection,omitempty"`
-	// Fabric Cloud Router Ping Command Timeout
+	Destination      string                              `json:"destination"`
+	SourceConnection CloudRouterCommandRequestConnection `json:"sourceConnection"`
+	// Timeout in seconds for Fabric Cloud Router Ping or Traceroute Command
 	Timeout *int32 `json:"timeout,omitempty"`
 	// Fabric Cloud Router Ping Command DataBytes
 	DataBytes *int32 `json:"dataBytes,omitempty"`
-	// Time in milliseconds between sending each packet
+	// Time in milliseconds between sending each packet for Fabric Cloud Router Ping Command
 	Interval *int32 `json:"interval,omitempty"`
-	// Total number of ping requests
-	Count                *int32 `json:"count,omitempty"`
+	// Total number of ping requests for Fabric Cloud Router Ping Command
+	Count *int32 `json:"count,omitempty"`
+	// Number of probes to send for Fabric Cloud Router Traceroute Command
+	Probes *int32 `json:"probes,omitempty"`
+	// Maximum number of hops for Fabric Cloud Router Traceroute Command
+	HopsMax              *int32 `json:"hopsMax,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -37,11 +41,16 @@ type _CloudRouterCommandRequest CloudRouterCommandRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCloudRouterCommandRequest(destination string) *CloudRouterCommandRequest {
+func NewCloudRouterCommandRequest(destination string, sourceConnection CloudRouterCommandRequestConnection) *CloudRouterCommandRequest {
 	this := CloudRouterCommandRequest{}
 	this.Destination = destination
+	this.SourceConnection = sourceConnection
 	var dataBytes int32 = 64
 	this.DataBytes = &dataBytes
+	var probes int32 = 3
+	this.Probes = &probes
+	var hopsMax int32 = 20
+	this.HopsMax = &hopsMax
 	return &this
 }
 
@@ -52,6 +61,10 @@ func NewCloudRouterCommandRequestWithDefaults() *CloudRouterCommandRequest {
 	this := CloudRouterCommandRequest{}
 	var dataBytes int32 = 64
 	this.DataBytes = &dataBytes
+	var probes int32 = 3
+	this.Probes = &probes
+	var hopsMax int32 = 20
+	this.HopsMax = &hopsMax
 	return &this
 }
 
@@ -79,36 +92,28 @@ func (o *CloudRouterCommandRequest) SetDestination(v string) {
 	o.Destination = v
 }
 
-// GetSourceConnection returns the SourceConnection field value if set, zero value otherwise.
+// GetSourceConnection returns the SourceConnection field value
 func (o *CloudRouterCommandRequest) GetSourceConnection() CloudRouterCommandRequestConnection {
-	if o == nil || IsNil(o.SourceConnection) {
+	if o == nil {
 		var ret CloudRouterCommandRequestConnection
 		return ret
 	}
-	return *o.SourceConnection
+
+	return o.SourceConnection
 }
 
-// GetSourceConnectionOk returns a tuple with the SourceConnection field value if set, nil otherwise
+// GetSourceConnectionOk returns a tuple with the SourceConnection field value
 // and a boolean to check if the value has been set.
 func (o *CloudRouterCommandRequest) GetSourceConnectionOk() (*CloudRouterCommandRequestConnection, bool) {
-	if o == nil || IsNil(o.SourceConnection) {
+	if o == nil {
 		return nil, false
 	}
-	return o.SourceConnection, true
+	return &o.SourceConnection, true
 }
 
-// HasSourceConnection returns a boolean if a field has been set.
-func (o *CloudRouterCommandRequest) HasSourceConnection() bool {
-	if o != nil && !IsNil(o.SourceConnection) {
-		return true
-	}
-
-	return false
-}
-
-// SetSourceConnection gets a reference to the given CloudRouterCommandRequestConnection and assigns it to the SourceConnection field.
+// SetSourceConnection sets field value
 func (o *CloudRouterCommandRequest) SetSourceConnection(v CloudRouterCommandRequestConnection) {
-	o.SourceConnection = &v
+	o.SourceConnection = v
 }
 
 // GetTimeout returns the Timeout field value if set, zero value otherwise.
@@ -239,6 +244,70 @@ func (o *CloudRouterCommandRequest) SetCount(v int32) {
 	o.Count = &v
 }
 
+// GetProbes returns the Probes field value if set, zero value otherwise.
+func (o *CloudRouterCommandRequest) GetProbes() int32 {
+	if o == nil || IsNil(o.Probes) {
+		var ret int32
+		return ret
+	}
+	return *o.Probes
+}
+
+// GetProbesOk returns a tuple with the Probes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CloudRouterCommandRequest) GetProbesOk() (*int32, bool) {
+	if o == nil || IsNil(o.Probes) {
+		return nil, false
+	}
+	return o.Probes, true
+}
+
+// HasProbes returns a boolean if a field has been set.
+func (o *CloudRouterCommandRequest) HasProbes() bool {
+	if o != nil && !IsNil(o.Probes) {
+		return true
+	}
+
+	return false
+}
+
+// SetProbes gets a reference to the given int32 and assigns it to the Probes field.
+func (o *CloudRouterCommandRequest) SetProbes(v int32) {
+	o.Probes = &v
+}
+
+// GetHopsMax returns the HopsMax field value if set, zero value otherwise.
+func (o *CloudRouterCommandRequest) GetHopsMax() int32 {
+	if o == nil || IsNil(o.HopsMax) {
+		var ret int32
+		return ret
+	}
+	return *o.HopsMax
+}
+
+// GetHopsMaxOk returns a tuple with the HopsMax field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CloudRouterCommandRequest) GetHopsMaxOk() (*int32, bool) {
+	if o == nil || IsNil(o.HopsMax) {
+		return nil, false
+	}
+	return o.HopsMax, true
+}
+
+// HasHopsMax returns a boolean if a field has been set.
+func (o *CloudRouterCommandRequest) HasHopsMax() bool {
+	if o != nil && !IsNil(o.HopsMax) {
+		return true
+	}
+
+	return false
+}
+
+// SetHopsMax gets a reference to the given int32 and assigns it to the HopsMax field.
+func (o *CloudRouterCommandRequest) SetHopsMax(v int32) {
+	o.HopsMax = &v
+}
+
 func (o CloudRouterCommandRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -250,9 +319,7 @@ func (o CloudRouterCommandRequest) MarshalJSON() ([]byte, error) {
 func (o CloudRouterCommandRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["destination"] = o.Destination
-	if !IsNil(o.SourceConnection) {
-		toSerialize["sourceConnection"] = o.SourceConnection
-	}
+	toSerialize["sourceConnection"] = o.SourceConnection
 	if !IsNil(o.Timeout) {
 		toSerialize["timeout"] = o.Timeout
 	}
@@ -264,6 +331,12 @@ func (o CloudRouterCommandRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Count) {
 		toSerialize["count"] = o.Count
+	}
+	if !IsNil(o.Probes) {
+		toSerialize["probes"] = o.Probes
+	}
+	if !IsNil(o.HopsMax) {
+		toSerialize["hopsMax"] = o.HopsMax
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -279,6 +352,7 @@ func (o *CloudRouterCommandRequest) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"destination",
+		"sourceConnection",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -314,6 +388,8 @@ func (o *CloudRouterCommandRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "dataBytes")
 		delete(additionalProperties, "interval")
 		delete(additionalProperties, "count")
+		delete(additionalProperties, "probes")
+		delete(additionalProperties, "hopsMax")
 		o.AdditionalProperties = additionalProperties
 	}
 

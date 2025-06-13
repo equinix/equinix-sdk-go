@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | Pointer to [**Md5Type**](Md5Type.md) |  | [optional] 
 **KeyNumber** | Pointer to **int32** | The authentication Key ID. | [optional] 
-**Key** | Pointer to **string** | The plaintext authentication key. For ASCII type, the key must contain printable ASCII characters, range 10-20 characters. For HEX type, range should be 10-40 characters. | [optional] 
+**Key** | Pointer to **string** | The plaintext authentication key. Must be Base64 encoded. For ASCII type, the key must contain printable ASCII characters, range 10-20 characters. For HEX type, range should be 10-40 characters. | [optional] 
 
 ## Methods
 

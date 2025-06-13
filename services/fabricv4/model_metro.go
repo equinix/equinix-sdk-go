@@ -32,6 +32,7 @@ type Metro struct {
 	LocalVCBandwidthMax *int64           `json:"localVCBandwidthMax,omitempty"`
 	GeoCoordinates      *GeoCoordinates  `json:"geoCoordinates,omitempty"`
 	ConnectedMetros     []ConnectedMetro `json:"connectedMetros,omitempty"`
+	Services            []Services       `json:"services,omitempty"`
 	// List of supported geographic boundaries of a Fabric Metro.
 	GeoScopes            []GeoScopeType `json:"geoScopes,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -344,6 +345,38 @@ func (o *Metro) SetConnectedMetros(v []ConnectedMetro) {
 	o.ConnectedMetros = v
 }
 
+// GetServices returns the Services field value if set, zero value otherwise.
+func (o *Metro) GetServices() []Services {
+	if o == nil || IsNil(o.Services) {
+		var ret []Services
+		return ret
+	}
+	return o.Services
+}
+
+// GetServicesOk returns a tuple with the Services field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Metro) GetServicesOk() ([]Services, bool) {
+	if o == nil || IsNil(o.Services) {
+		return nil, false
+	}
+	return o.Services, true
+}
+
+// HasServices returns a boolean if a field has been set.
+func (o *Metro) HasServices() bool {
+	if o != nil && !IsNil(o.Services) {
+		return true
+	}
+
+	return false
+}
+
+// SetServices gets a reference to the given []Services and assigns it to the Services field.
+func (o *Metro) SetServices(v []Services) {
+	o.Services = v
+}
+
 // GetGeoScopes returns the GeoScopes field value if set, zero value otherwise.
 func (o *Metro) GetGeoScopes() []GeoScopeType {
 	if o == nil || IsNil(o.GeoScopes) {
@@ -413,6 +446,9 @@ func (o Metro) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ConnectedMetros) {
 		toSerialize["connectedMetros"] = o.ConnectedMetros
 	}
+	if !IsNil(o.Services) {
+		toSerialize["services"] = o.Services
+	}
 	if !IsNil(o.GeoScopes) {
 		toSerialize["geoScopes"] = o.GeoScopes
 	}
@@ -447,6 +483,7 @@ func (o *Metro) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "localVCBandwidthMax")
 		delete(additionalProperties, "geoCoordinates")
 		delete(additionalProperties, "connectedMetros")
+		delete(additionalProperties, "services")
 		delete(additionalProperties, "geoScopes")
 		o.AdditionalProperties = additionalProperties
 	}

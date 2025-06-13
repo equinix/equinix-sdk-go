@@ -17,9 +17,11 @@ type SimplifiedTokenNetworkType string
 
 // List of SimplifiedTokenNetwork_type
 const (
-	SIMPLIFIEDTOKENNETWORKTYPE_EVPLAN SimplifiedTokenNetworkType = "EVPLAN"
-	SIMPLIFIEDTOKENNETWORKTYPE_EPLAN  SimplifiedTokenNetworkType = "EPLAN"
-	SIMPLIFIEDTOKENNETWORKTYPE_IPWAN  SimplifiedTokenNetworkType = "IPWAN"
+	SIMPLIFIEDTOKENNETWORKTYPE_EVPLAN  SimplifiedTokenNetworkType = "EVPLAN"
+	SIMPLIFIEDTOKENNETWORKTYPE_EPLAN   SimplifiedTokenNetworkType = "EPLAN"
+	SIMPLIFIEDTOKENNETWORKTYPE_IPWAN   SimplifiedTokenNetworkType = "IPWAN"
+	SIMPLIFIEDTOKENNETWORKTYPE_EVPTREE SimplifiedTokenNetworkType = "EVPTREE"
+	SIMPLIFIEDTOKENNETWORKTYPE_EPTREE  SimplifiedTokenNetworkType = "EPTREE"
 )
 
 // All allowed values of SimplifiedTokenNetworkType enum
@@ -27,6 +29,8 @@ var AllowedSimplifiedTokenNetworkTypeEnumValues = []SimplifiedTokenNetworkType{
 	"EVPLAN",
 	"EPLAN",
 	"IPWAN",
+	"EVPTREE",
+	"EPTREE",
 }
 
 func (v *SimplifiedTokenNetworkType) UnmarshalJSON(src []byte) error {

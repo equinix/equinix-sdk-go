@@ -59,6 +59,7 @@ const (
 	SEARCHFIELDNAME_Z_SIDE_ACCESS_POINT_PORT_NAME                  SearchFieldName = "/zSide/accessPoint/port/name"
 	SEARCHFIELDNAME_Z_SIDE_ACCESS_POINT_PROFILE_UUID               SearchFieldName = "/zSide/accessPoint/profile/uuid"
 	SEARCHFIELDNAME_Z_SIDE_ACCESS_POINT_TYPE                       SearchFieldName = "/zSide/accessPoint/type"
+	SEARCHFIELDNAME_Z_SIDE_ACCESS_POINT_ROLE                       SearchFieldName = "/zSide/accessPoint/role"
 	SEARCHFIELDNAME_Z_SIDE_ACCESS_POINT_VIRTUAL_DEVICE_NAME        SearchFieldName = "/zSide/accessPoint/virtualDevice/name"
 	SEARCHFIELDNAME_Z_SIDE_ACCESS_POINT_VIRTUAL_DEVICE_UUID        SearchFieldName = "/zSide/accessPoint/virtualDevice/uuid"
 	SEARCHFIELDNAME_Z_SIDE_SERVICE_TOKEN_UUID                      SearchFieldName = "/zSide/serviceToken/uuid"
@@ -110,6 +111,7 @@ var AllowedSearchFieldNameEnumValues = []SearchFieldName{
 	"/zSide/accessPoint/port/name",
 	"/zSide/accessPoint/profile/uuid",
 	"/zSide/accessPoint/type",
+	"/zSide/accessPoint/role",
 	"/zSide/accessPoint/virtualDevice/name",
 	"/zSide/accessPoint/virtualDevice/uuid",
 	"/zSide/serviceToken/uuid",

@@ -532,7 +532,7 @@ func (r ApiGetStreamAlertRulesRequest) Limit(limit int32) ApiGetStreamAlertRules
 	return r
 }
 
-func (r ApiGetStreamAlertRulesRequest) Execute() (*StreamAlertRule, *http.Response, error) {
+func (r ApiGetStreamAlertRulesRequest) Execute() (*GetAllStreamAlertRuleResponse, *http.Response, error) {
 	return r.ApiService.GetStreamAlertRulesExecute(r)
 }
 
@@ -555,13 +555,13 @@ func (a *StreamAlertRulesApiService) GetStreamAlertRules(ctx context.Context, st
 
 // Execute executes the request
 //
-//	@return StreamAlertRule
-func (a *StreamAlertRulesApiService) GetStreamAlertRulesExecute(r ApiGetStreamAlertRulesRequest) (*StreamAlertRule, *http.Response, error) {
+//	@return GetAllStreamAlertRuleResponse
+func (a *StreamAlertRulesApiService) GetStreamAlertRulesExecute(r ApiGetStreamAlertRulesRequest) (*GetAllStreamAlertRuleResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *StreamAlertRule
+		localVarReturnValue *GetAllStreamAlertRuleResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamAlertRulesApiService.GetStreamAlertRules")

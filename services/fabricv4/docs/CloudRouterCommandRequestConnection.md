@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Uuid** | Pointer to **string** | Connection UUID | [optional] 
+**Uuid** | **string** | Connection UUID | 
 
 ## Methods
 
 ### NewCloudRouterCommandRequestConnection
 
-`func NewCloudRouterCommandRequestConnection() *CloudRouterCommandRequestConnection`
+`func NewCloudRouterCommandRequestConnection(uuid string, ) *CloudRouterCommandRequestConnection`
 
 NewCloudRouterCommandRequestConnection instantiates a new CloudRouterCommandRequestConnection object
 This constructor will assign default values to properties that have it defined,
@@ -44,11 +44,6 @@ and a boolean to check if the value has been set.
 
 SetUuid sets Uuid field to given value.
 
-### HasUuid
-
-`func (o *CloudRouterCommandRequestConnection) HasUuid() bool`
-
-HasUuid returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -7,9 +7,9 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** | Customer-provided stream name | [optional] 
 **Description** | Pointer to **string** | Customer-provided stream description | [optional] 
 **Enabled** | Pointer to **bool** | Stream alert rule enabled status | [optional] [default to true]
-**MetricName** | Pointer to [**StreamAlertRuleMetricName**](StreamAlertRuleMetricName.md) |  | [optional] 
+**MetricName** | Pointer to [**AlertRulePostRequestMetricName**](AlertRulePostRequestMetricName.md) |  | [optional] 
 **ResourceSelector** | Pointer to [**ResourceSelector**](ResourceSelector.md) |  | [optional] 
-**Operand** | Pointer to [**StreamAlertRuleOperand**](StreamAlertRuleOperand.md) |  | [optional] 
+**Operand** | Pointer to [**AlertRulePostRequestOperand**](AlertRulePostRequestOperand.md) |  | [optional] 
 **WindowSize** | Pointer to **string** | Stream alert rule metric window size | [optional] 
 **WarningThreshold** | Pointer to **string** | Stream alert rule metric warning threshold | [optional] 
 **CriticalThreshold** | Pointer to **string** | Stream alert rule metric critical threshold | [optional] 
@@ -110,20 +110,20 @@ HasEnabled returns a boolean if a field has been set.
 
 ### GetMetricName
 
-`func (o *AlertRulePutRequest) GetMetricName() StreamAlertRuleMetricName`
+`func (o *AlertRulePutRequest) GetMetricName() AlertRulePostRequestMetricName`
 
 GetMetricName returns the MetricName field if non-nil, zero value otherwise.
 
 ### GetMetricNameOk
 
-`func (o *AlertRulePutRequest) GetMetricNameOk() (*StreamAlertRuleMetricName, bool)`
+`func (o *AlertRulePutRequest) GetMetricNameOk() (*AlertRulePostRequestMetricName, bool)`
 
 GetMetricNameOk returns a tuple with the MetricName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMetricName
 
-`func (o *AlertRulePutRequest) SetMetricName(v StreamAlertRuleMetricName)`
+`func (o *AlertRulePutRequest) SetMetricName(v AlertRulePostRequestMetricName)`
 
 SetMetricName sets MetricName field to given value.
 
@@ -160,20 +160,20 @@ HasResourceSelector returns a boolean if a field has been set.
 
 ### GetOperand
 
-`func (o *AlertRulePutRequest) GetOperand() StreamAlertRuleOperand`
+`func (o *AlertRulePutRequest) GetOperand() AlertRulePostRequestOperand`
 
 GetOperand returns the Operand field if non-nil, zero value otherwise.
 
 ### GetOperandOk
 
-`func (o *AlertRulePutRequest) GetOperandOk() (*StreamAlertRuleOperand, bool)`
+`func (o *AlertRulePutRequest) GetOperandOk() (*AlertRulePostRequestOperand, bool)`
 
 GetOperandOk returns a tuple with the Operand field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOperand
 
-`func (o *AlertRulePutRequest) SetOperand(v StreamAlertRuleOperand)`
+`func (o *AlertRulePutRequest) SetOperand(v AlertRulePostRequestOperand)`
 
 SetOperand sets Operand field to given value.
 

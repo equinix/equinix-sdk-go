@@ -9,145 +9,123 @@ package fabricv4
 
 import (
 	"encoding/json"
+	"fmt"
+	"gopkg.in/validator.v2"
 )
 
-// checks if the CloudRouterCommandResponse type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CloudRouterCommandResponse{}
-
-// CloudRouterCommandResponse struct for CloudRouterCommandResponse
+// CloudRouterCommandResponse - struct for CloudRouterCommandResponse
 type CloudRouterCommandResponse struct {
-	Output               *string               `json:"output,omitempty"`
-	OutputStructuredPing *OutputStructuredPing `json:"outputStructuredPing,omitempty"`
-	AdditionalProperties map[string]interface{}
+	CloudRouterCommandPingResponse       *CloudRouterCommandPingResponse
+	CloudRouterCommandTracerouteResponse *CloudRouterCommandTracerouteResponse
 }
 
-type _CloudRouterCommandResponse CloudRouterCommandResponse
-
-// NewCloudRouterCommandResponse instantiates a new CloudRouterCommandResponse object
-// This constructor will assign default values to properties that have it defined,
-// and makes sure properties required by API are set, but the set of arguments
-// will change when the set of required properties is changed
-func NewCloudRouterCommandResponse() *CloudRouterCommandResponse {
-	this := CloudRouterCommandResponse{}
-	return &this
-}
-
-// NewCloudRouterCommandResponseWithDefaults instantiates a new CloudRouterCommandResponse object
-// This constructor will only assign default values to properties that have it defined,
-// but it doesn't guarantee that properties required by API are set
-func NewCloudRouterCommandResponseWithDefaults() *CloudRouterCommandResponse {
-	this := CloudRouterCommandResponse{}
-	return &this
-}
-
-// GetOutput returns the Output field value if set, zero value otherwise.
-func (o *CloudRouterCommandResponse) GetOutput() string {
-	if o == nil || IsNil(o.Output) {
-		var ret string
-		return ret
+// CloudRouterCommandPingResponseAsCloudRouterCommandResponse is a convenience function that returns CloudRouterCommandPingResponse wrapped in CloudRouterCommandResponse
+func CloudRouterCommandPingResponseAsCloudRouterCommandResponse(v *CloudRouterCommandPingResponse) CloudRouterCommandResponse {
+	return CloudRouterCommandResponse{
+		CloudRouterCommandPingResponse: v,
 	}
-	return *o.Output
 }
 
-// GetOutputOk returns a tuple with the Output field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CloudRouterCommandResponse) GetOutputOk() (*string, bool) {
-	if o == nil || IsNil(o.Output) {
-		return nil, false
+// CloudRouterCommandTracerouteResponseAsCloudRouterCommandResponse is a convenience function that returns CloudRouterCommandTracerouteResponse wrapped in CloudRouterCommandResponse
+func CloudRouterCommandTracerouteResponseAsCloudRouterCommandResponse(v *CloudRouterCommandTracerouteResponse) CloudRouterCommandResponse {
+	return CloudRouterCommandResponse{
+		CloudRouterCommandTracerouteResponse: v,
 	}
-	return o.Output, true
 }
 
-// HasOutput returns a boolean if a field has been set.
-func (o *CloudRouterCommandResponse) HasOutput() bool {
-	if o != nil && !IsNil(o.Output) {
-		return true
+// Unmarshal JSON data into one of the pointers in the struct
+func (dst *CloudRouterCommandResponse) UnmarshalJSON(data []byte) error {
+	var err error
+	match := 0
+	// try to unmarshal data into CloudRouterCommandPingResponse
+	err = newStrictDecoder(data).Decode(&dst.CloudRouterCommandPingResponse)
+	if err == nil {
+		jsonCloudRouterCommandPingResponse, _ := json.Marshal(dst.CloudRouterCommandPingResponse)
+		if string(jsonCloudRouterCommandPingResponse) == "{}" { // empty struct
+			dst.CloudRouterCommandPingResponse = nil
+		} else {
+			if err = validator.Validate(dst.CloudRouterCommandPingResponse); err != nil {
+				dst.CloudRouterCommandPingResponse = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.CloudRouterCommandPingResponse = nil
 	}
 
-	return false
+	// try to unmarshal data into CloudRouterCommandTracerouteResponse
+	err = newStrictDecoder(data).Decode(&dst.CloudRouterCommandTracerouteResponse)
+	if err == nil {
+		jsonCloudRouterCommandTracerouteResponse, _ := json.Marshal(dst.CloudRouterCommandTracerouteResponse)
+		if string(jsonCloudRouterCommandTracerouteResponse) == "{}" { // empty struct
+			dst.CloudRouterCommandTracerouteResponse = nil
+		} else {
+			if err = validator.Validate(dst.CloudRouterCommandTracerouteResponse); err != nil {
+				dst.CloudRouterCommandTracerouteResponse = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.CloudRouterCommandTracerouteResponse = nil
+	}
+
+	if match > 1 { // more than 1 match
+		// reset to nil
+		dst.CloudRouterCommandPingResponse = nil
+		dst.CloudRouterCommandTracerouteResponse = nil
+
+		return fmt.Errorf("data matches more than one schema in oneOf(CloudRouterCommandResponse)")
+	} else if match == 1 {
+		return nil // exactly one match
+	} else { // no match
+		return fmt.Errorf("data failed to match schemas in oneOf(CloudRouterCommandResponse)")
+	}
 }
 
-// SetOutput gets a reference to the given string and assigns it to the Output field.
-func (o *CloudRouterCommandResponse) SetOutput(v string) {
-	o.Output = &v
+// Marshal data from the first non-nil pointers in the struct to JSON
+func (src CloudRouterCommandResponse) MarshalJSON() ([]byte, error) {
+	if src.CloudRouterCommandPingResponse != nil {
+		return json.Marshal(&src.CloudRouterCommandPingResponse)
+	}
+
+	if src.CloudRouterCommandTracerouteResponse != nil {
+		return json.Marshal(&src.CloudRouterCommandTracerouteResponse)
+	}
+
+	return nil, nil // no data in oneOf schemas
 }
 
-// GetOutputStructuredPing returns the OutputStructuredPing field value if set, zero value otherwise.
-func (o *CloudRouterCommandResponse) GetOutputStructuredPing() OutputStructuredPing {
-	if o == nil || IsNil(o.OutputStructuredPing) {
-		var ret OutputStructuredPing
-		return ret
+// Get the actual instance
+func (obj *CloudRouterCommandResponse) GetActualInstance() interface{} {
+	if obj == nil {
+		return nil
 	}
-	return *o.OutputStructuredPing
+	if obj.CloudRouterCommandPingResponse != nil {
+		return obj.CloudRouterCommandPingResponse
+	}
+
+	if obj.CloudRouterCommandTracerouteResponse != nil {
+		return obj.CloudRouterCommandTracerouteResponse
+	}
+
+	// all schemas are nil
+	return nil
 }
 
-// GetOutputStructuredPingOk returns a tuple with the OutputStructuredPing field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CloudRouterCommandResponse) GetOutputStructuredPingOk() (*OutputStructuredPing, bool) {
-	if o == nil || IsNil(o.OutputStructuredPing) {
-		return nil, false
-	}
-	return o.OutputStructuredPing, true
-}
-
-// HasOutputStructuredPing returns a boolean if a field has been set.
-func (o *CloudRouterCommandResponse) HasOutputStructuredPing() bool {
-	if o != nil && !IsNil(o.OutputStructuredPing) {
-		return true
+// Get the actual instance value
+func (obj CloudRouterCommandResponse) GetActualInstanceValue() interface{} {
+	if obj.CloudRouterCommandPingResponse != nil {
+		return *obj.CloudRouterCommandPingResponse
 	}
 
-	return false
-}
-
-// SetOutputStructuredPing gets a reference to the given OutputStructuredPing and assigns it to the OutputStructuredPing field.
-func (o *CloudRouterCommandResponse) SetOutputStructuredPing(v OutputStructuredPing) {
-	o.OutputStructuredPing = &v
-}
-
-func (o CloudRouterCommandResponse) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o CloudRouterCommandResponse) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Output) {
-		toSerialize["output"] = o.Output
-	}
-	if !IsNil(o.OutputStructuredPing) {
-		toSerialize["outputStructuredPing"] = o.OutputStructuredPing
+	if obj.CloudRouterCommandTracerouteResponse != nil {
+		return *obj.CloudRouterCommandTracerouteResponse
 	}
 
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
-	return toSerialize, nil
-}
-
-func (o *CloudRouterCommandResponse) UnmarshalJSON(data []byte) (err error) {
-	varCloudRouterCommandResponse := _CloudRouterCommandResponse{}
-
-	err = json.Unmarshal(data, &varCloudRouterCommandResponse)
-
-	if err != nil {
-		return err
-	}
-
-	*o = CloudRouterCommandResponse(varCloudRouterCommandResponse)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "output")
-		delete(additionalProperties, "outputStructuredPing")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
+	// all schemas are nil
+	return nil
 }
 
 type NullableCloudRouterCommandResponse struct {

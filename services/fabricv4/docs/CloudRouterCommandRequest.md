@@ -5,17 +5,19 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Destination** | **string** | Fabric Cloud Router Ping Command Destination | 
-**SourceConnection** | Pointer to [**CloudRouterCommandRequestConnection**](CloudRouterCommandRequestConnection.md) |  | [optional] 
-**Timeout** | Pointer to **int32** | Fabric Cloud Router Ping Command Timeout | [optional] 
+**SourceConnection** | [**CloudRouterCommandRequestConnection**](CloudRouterCommandRequestConnection.md) |  | 
+**Timeout** | Pointer to **int32** | Timeout in seconds for Fabric Cloud Router Ping or Traceroute Command | [optional] 
 **DataBytes** | Pointer to **int32** | Fabric Cloud Router Ping Command DataBytes | [optional] [default to 64]
-**Interval** | Pointer to **int32** | Time in milliseconds between sending each packet | [optional] [readonly] [default to 1000]
-**Count** | Pointer to **int32** | Total number of ping requests | [optional] [readonly] [default to 5]
+**Interval** | Pointer to **int32** | Time in milliseconds between sending each packet for Fabric Cloud Router Ping Command | [optional] [readonly] [default to 1000]
+**Count** | Pointer to **int32** | Total number of ping requests for Fabric Cloud Router Ping Command | [optional] [readonly] [default to 5]
+**Probes** | Pointer to **int32** | Number of probes to send for Fabric Cloud Router Traceroute Command | [optional] [default to 3]
+**HopsMax** | Pointer to **int32** | Maximum number of hops for Fabric Cloud Router Traceroute Command | [optional] [default to 20]
 
 ## Methods
 
 ### NewCloudRouterCommandRequest
 
-`func NewCloudRouterCommandRequest(destination string, ) *CloudRouterCommandRequest`
+`func NewCloudRouterCommandRequest(destination string, sourceConnection CloudRouterCommandRequestConnection, ) *CloudRouterCommandRequest`
 
 NewCloudRouterCommandRequest instantiates a new CloudRouterCommandRequest object
 This constructor will assign default values to properties that have it defined,
@@ -69,11 +71,6 @@ and a boolean to check if the value has been set.
 
 SetSourceConnection sets SourceConnection field to given value.
 
-### HasSourceConnection
-
-`func (o *CloudRouterCommandRequest) HasSourceConnection() bool`
-
-HasSourceConnection returns a boolean if a field has been set.
 
 ### GetTimeout
 
@@ -174,6 +171,56 @@ SetCount sets Count field to given value.
 `func (o *CloudRouterCommandRequest) HasCount() bool`
 
 HasCount returns a boolean if a field has been set.
+
+### GetProbes
+
+`func (o *CloudRouterCommandRequest) GetProbes() int32`
+
+GetProbes returns the Probes field if non-nil, zero value otherwise.
+
+### GetProbesOk
+
+`func (o *CloudRouterCommandRequest) GetProbesOk() (*int32, bool)`
+
+GetProbesOk returns a tuple with the Probes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProbes
+
+`func (o *CloudRouterCommandRequest) SetProbes(v int32)`
+
+SetProbes sets Probes field to given value.
+
+### HasProbes
+
+`func (o *CloudRouterCommandRequest) HasProbes() bool`
+
+HasProbes returns a boolean if a field has been set.
+
+### GetHopsMax
+
+`func (o *CloudRouterCommandRequest) GetHopsMax() int32`
+
+GetHopsMax returns the HopsMax field if non-nil, zero value otherwise.
+
+### GetHopsMaxOk
+
+`func (o *CloudRouterCommandRequest) GetHopsMaxOk() (*int32, bool)`
+
+GetHopsMaxOk returns a tuple with the HopsMax field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHopsMax
+
+`func (o *CloudRouterCommandRequest) SetHopsMax(v int32)`
+
+SetHopsMax sets HopsMax field to given value.
+
+### HasHopsMax
+
+`func (o *CloudRouterCommandRequest) HasHopsMax() bool`
+
+HasHopsMax returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

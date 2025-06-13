@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** | Device name | [optional] 
 **Redundancy** | Pointer to [**PortDeviceRedundancy**](PortDeviceRedundancy.md) |  | [optional] 
+**VcBandwidthMax** | Pointer to **int64** | Maximum bandwidth allowed for connection. | [optional] 
 
 ## Methods
 
@@ -75,6 +76,31 @@ SetRedundancy sets Redundancy field to given value.
 `func (o *PortDevice) HasRedundancy() bool`
 
 HasRedundancy returns a boolean if a field has been set.
+
+### GetVcBandwidthMax
+
+`func (o *PortDevice) GetVcBandwidthMax() int64`
+
+GetVcBandwidthMax returns the VcBandwidthMax field if non-nil, zero value otherwise.
+
+### GetVcBandwidthMaxOk
+
+`func (o *PortDevice) GetVcBandwidthMaxOk() (*int64, bool)`
+
+GetVcBandwidthMaxOk returns a tuple with the VcBandwidthMax field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVcBandwidthMax
+
+`func (o *PortDevice) SetVcBandwidthMax(v int64)`
+
+SetVcBandwidthMax sets VcBandwidthMax field to given value.
+
+### HasVcBandwidthMax
+
+`func (o *PortDevice) HasVcBandwidthMax() bool`
+
+HasVcBandwidthMax returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
