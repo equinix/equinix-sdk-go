@@ -36,6 +36,7 @@ type AccessPoint struct {
 	VirtualNetwork       *VirtualNetwork       `json:"virtualNetwork,omitempty"`
 	Interconnection      *MetalInterconnection `json:"interconnection,omitempty"`
 	VpicInterface        *VpicInterface        `json:"vpic_interface,omitempty"`
+	Role                 *AccessPointRole      `json:"role,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -602,6 +603,38 @@ func (o *AccessPoint) SetVpicInterface(v VpicInterface) {
 	o.VpicInterface = &v
 }
 
+// GetRole returns the Role field value if set, zero value otherwise.
+func (o *AccessPoint) GetRole() AccessPointRole {
+	if o == nil || IsNil(o.Role) {
+		var ret AccessPointRole
+		return ret
+	}
+	return *o.Role
+}
+
+// GetRoleOk returns a tuple with the Role field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccessPoint) GetRoleOk() (*AccessPointRole, bool) {
+	if o == nil || IsNil(o.Role) {
+		return nil, false
+	}
+	return o.Role, true
+}
+
+// HasRole returns a boolean if a field has been set.
+func (o *AccessPoint) HasRole() bool {
+	if o != nil && !IsNil(o.Role) {
+		return true
+	}
+
+	return false
+}
+
+// SetRole gets a reference to the given AccessPointRole and assigns it to the Role field.
+func (o *AccessPoint) SetRole(v AccessPointRole) {
+	o.Role = &v
+}
+
 func (o AccessPoint) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -663,6 +696,9 @@ func (o AccessPoint) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.VpicInterface) {
 		toSerialize["vpic_interface"] = o.VpicInterface
 	}
+	if !IsNil(o.Role) {
+		toSerialize["role"] = o.Role
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -702,6 +738,7 @@ func (o *AccessPoint) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "virtualNetwork")
 		delete(additionalProperties, "interconnection")
 		delete(additionalProperties, "vpic_interface")
+		delete(additionalProperties, "role")
 		o.AdditionalProperties = additionalProperties
 	}
 

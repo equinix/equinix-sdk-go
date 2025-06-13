@@ -27,7 +27,8 @@ type StreamSubscriptionSinkSetting struct {
 	// event uri
 	EventUri *string `json:"eventUri,omitempty"`
 	// metric uri
-	MetricUri            *string `json:"metricUri,omitempty"`
+	MetricUri            *string                              `json:"metricUri,omitempty"`
+	Format               *StreamSubscriptionSinkSettingFormat `json:"format,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -39,6 +40,8 @@ type _StreamSubscriptionSinkSetting StreamSubscriptionSinkSetting
 // will change when the set of required properties is changed
 func NewStreamSubscriptionSinkSetting() *StreamSubscriptionSinkSetting {
 	this := StreamSubscriptionSinkSetting{}
+	var format StreamSubscriptionSinkSettingFormat = STREAMSUBSCRIPTIONSINKSETTINGFORMAT_CLOUDEVENT
+	this.Format = &format
 	return &this
 }
 
@@ -47,6 +50,8 @@ func NewStreamSubscriptionSinkSetting() *StreamSubscriptionSinkSetting {
 // but it doesn't guarantee that properties required by API are set
 func NewStreamSubscriptionSinkSettingWithDefaults() *StreamSubscriptionSinkSetting {
 	this := StreamSubscriptionSinkSetting{}
+	var format StreamSubscriptionSinkSettingFormat = STREAMSUBSCRIPTIONSINKSETTINGFORMAT_CLOUDEVENT
+	this.Format = &format
 	return &this
 }
 
@@ -242,6 +247,38 @@ func (o *StreamSubscriptionSinkSetting) SetMetricUri(v string) {
 	o.MetricUri = &v
 }
 
+// GetFormat returns the Format field value if set, zero value otherwise.
+func (o *StreamSubscriptionSinkSetting) GetFormat() StreamSubscriptionSinkSettingFormat {
+	if o == nil || IsNil(o.Format) {
+		var ret StreamSubscriptionSinkSettingFormat
+		return ret
+	}
+	return *o.Format
+}
+
+// GetFormatOk returns a tuple with the Format field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamSubscriptionSinkSetting) GetFormatOk() (*StreamSubscriptionSinkSettingFormat, bool) {
+	if o == nil || IsNil(o.Format) {
+		return nil, false
+	}
+	return o.Format, true
+}
+
+// HasFormat returns a boolean if a field has been set.
+func (o *StreamSubscriptionSinkSetting) HasFormat() bool {
+	if o != nil && !IsNil(o.Format) {
+		return true
+	}
+
+	return false
+}
+
+// SetFormat gets a reference to the given StreamSubscriptionSinkSettingFormat and assigns it to the Format field.
+func (o *StreamSubscriptionSinkSetting) SetFormat(v StreamSubscriptionSinkSettingFormat) {
+	o.Format = &v
+}
+
 func (o StreamSubscriptionSinkSetting) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -269,6 +306,9 @@ func (o StreamSubscriptionSinkSetting) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.MetricUri) {
 		toSerialize["metricUri"] = o.MetricUri
+	}
+	if !IsNil(o.Format) {
+		toSerialize["format"] = o.Format
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -298,6 +338,7 @@ func (o *StreamSubscriptionSinkSetting) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "applicationKey")
 		delete(additionalProperties, "eventUri")
 		delete(additionalProperties, "metricUri")
+		delete(additionalProperties, "format")
 		o.AdditionalProperties = additionalProperties
 	}
 

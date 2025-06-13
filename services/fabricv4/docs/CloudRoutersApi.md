@@ -188,7 +188,7 @@ import (
 
 func main() {
 	routerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Router UUID
-	cloudRouterCommandPostRequest := *openapiclient.NewCloudRouterCommandPostRequest(openapiclient.CloudRouterCommandType("PING_COMMAND"), *openapiclient.NewProject("44f4c4f8-2f39-494e-838c-d8e640591be5"), *openapiclient.NewCloudRouterCommandRequest("8.8.8.8")) // CloudRouterCommandPostRequest | 
+	cloudRouterCommandPostRequest := *openapiclient.NewCloudRouterCommandPostRequest(openapiclient.CloudRouterCommandType("PING_COMMAND"), *openapiclient.NewProject("44f4c4f8-2f39-494e-838c-d8e640591be5"), *openapiclient.NewCloudRouterCommandRequest("8.8.8.8", *openapiclient.NewCloudRouterCommandRequestConnection("557400f8-d360-11e9-bb65-2a2ae2dbcce4"))) // CloudRouterCommandPostRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

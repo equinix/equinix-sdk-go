@@ -17,22 +17,26 @@ type StreamSubscriptionSinkType string
 
 // List of StreamSubscriptionSink_type
 const (
-	STREAMSUBSCRIPTIONSINKTYPE_DATADOG    StreamSubscriptionSinkType = "DATADOG"
-	STREAMSUBSCRIPTIONSINKTYPE_PAGERDUTY  StreamSubscriptionSinkType = "PAGERDUTY"
-	STREAMSUBSCRIPTIONSINKTYPE_SPLUNK_HEC StreamSubscriptionSinkType = "SPLUNK_HEC"
-	STREAMSUBSCRIPTIONSINKTYPE_SLACK      StreamSubscriptionSinkType = "SLACK"
-	STREAMSUBSCRIPTIONSINKTYPE_TEAMS      StreamSubscriptionSinkType = "TEAMS"
-	STREAMSUBSCRIPTIONSINKTYPE_CUSTOM     StreamSubscriptionSinkType = "CUSTOM"
+	STREAMSUBSCRIPTIONSINKTYPE_DATADOG       StreamSubscriptionSinkType = "DATADOG"
+	STREAMSUBSCRIPTIONSINKTYPE_GOOGLE_PUBSUB StreamSubscriptionSinkType = "GOOGLE_PUBSUB"
+	STREAMSUBSCRIPTIONSINKTYPE_PAGERDUTY     StreamSubscriptionSinkType = "PAGERDUTY"
+	STREAMSUBSCRIPTIONSINKTYPE_SERVICENOW    StreamSubscriptionSinkType = "SERVICENOW"
+	STREAMSUBSCRIPTIONSINKTYPE_SLACK         StreamSubscriptionSinkType = "SLACK"
+	STREAMSUBSCRIPTIONSINKTYPE_SPLUNK_HEC    StreamSubscriptionSinkType = "SPLUNK_HEC"
+	STREAMSUBSCRIPTIONSINKTYPE_TEAMS         StreamSubscriptionSinkType = "TEAMS"
+	STREAMSUBSCRIPTIONSINKTYPE_WEBHOOK       StreamSubscriptionSinkType = "WEBHOOK"
 )
 
 // All allowed values of StreamSubscriptionSinkType enum
 var AllowedStreamSubscriptionSinkTypeEnumValues = []StreamSubscriptionSinkType{
 	"DATADOG",
+	"GOOGLE_PUBSUB",
 	"PAGERDUTY",
-	"SPLUNK_HEC",
+	"SERVICENOW",
 	"SLACK",
+	"SPLUNK_HEC",
 	"TEAMS",
-	"CUSTOM",
+	"WEBHOOK",
 }
 
 func (v *StreamSubscriptionSinkType) UnmarshalJSON(src []byte) error {

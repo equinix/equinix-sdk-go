@@ -24,6 +24,7 @@ type PortOrder struct {
 	// Order Reference Number
 	OrderNumber *string `json:"orderNumber,omitempty"`
 	// Equinix-assigned order identifier, this is a derived response atrribute
+	// Deprecated
 	Uuid                 *string             `json:"uuid,omitempty"`
 	Signature            *PortOrderSignature `json:"signature,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -177,6 +178,7 @@ func (o *PortOrder) SetOrderNumber(v string) {
 }
 
 // GetUuid returns the Uuid field value if set, zero value otherwise.
+// Deprecated
 func (o *PortOrder) GetUuid() string {
 	if o == nil || IsNil(o.Uuid) {
 		var ret string
@@ -187,6 +189,7 @@ func (o *PortOrder) GetUuid() string {
 
 // GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *PortOrder) GetUuidOk() (*string, bool) {
 	if o == nil || IsNil(o.Uuid) {
 		return nil, false
@@ -204,6 +207,7 @@ func (o *PortOrder) HasUuid() bool {
 }
 
 // SetUuid gets a reference to the given string and assigns it to the Uuid field.
+// Deprecated
 func (o *PortOrder) SetUuid(v string) {
 	o.Uuid = &v
 }

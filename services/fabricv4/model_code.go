@@ -18,16 +18,18 @@ type Code string
 // List of code
 const (
 	CODE_LAB      Code = "LAB"
-	CODE_ADVANCED Code = "ADVANCED"
+	CODE_BASIC    Code = "BASIC"
 	CODE_STANDARD Code = "STANDARD"
+	CODE_ADVANCED Code = "ADVANCED"
 	CODE_PREMIUM  Code = "PREMIUM"
 )
 
 // All allowed values of Code enum
 var AllowedCodeEnumValues = []Code{
 	"LAB",
-	"ADVANCED",
+	"BASIC",
 	"STANDARD",
+	"ADVANCED",
 	"PREMIUM",
 }
 
