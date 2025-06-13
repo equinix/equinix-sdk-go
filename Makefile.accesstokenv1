@@ -2,9 +2,9 @@
 
 include Makefile
 
-PACKAGE_NAME=__PACKAGE_NAME__
-SPEC_BASE_URL:=__SPEC_BASE_URL__
-SPEC_ROOT_FILE:=__SPEC_ROOT_FILE__
+PACKAGE_NAME=accesstokenv1
+SPEC_BASE_URL:=https://docs.equinix.com/api-catalog/accesstokenv1
+SPEC_ROOT_FILE:=openapi.yaml
 
 CODE_DIR=${CODE_BASE_DIR}/${PACKAGE_NAME}
 TEMPLATE_DIR=${TEMPLATE_BASE_DIR}/${PACKAGE_NAME}
