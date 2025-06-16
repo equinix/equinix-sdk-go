@@ -43,6 +43,7 @@ func (t *ContextAwareTransport) RoundTrip(req *http.Request) (*http.Response, er
 	if req.Body != nil {
 		defer func() {
 			if !reqBodyClosed {
+				//nolint:errcheck // Inherited from upstream; disabling lint to avoid a larger refactor
 				req.Body.Close()
 			}
 		}()
