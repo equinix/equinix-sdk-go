@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **VirtualNetwork** | Pointer to [**VirtualNetwork**](VirtualNetwork.md) |  | [optional] 
 **Interconnection** | Pointer to [**MetalInterconnection**](MetalInterconnection.md) |  | [optional] 
 **VpicInterface** | Pointer to [**VpicInterface**](VpicInterface.md) |  | [optional] 
+**Role** | Pointer to [**AccessPointRole**](AccessPointRole.md) |  | [optional] 
 
 ## Methods
 
@@ -465,6 +466,31 @@ SetVpicInterface sets VpicInterface field to given value.
 `func (o *AccessPoint) HasVpicInterface() bool`
 
 HasVpicInterface returns a boolean if a field has been set.
+
+### GetRole
+
+`func (o *AccessPoint) GetRole() AccessPointRole`
+
+GetRole returns the Role field if non-nil, zero value otherwise.
+
+### GetRoleOk
+
+`func (o *AccessPoint) GetRoleOk() (*AccessPointRole, bool)`
+
+GetRoleOk returns a tuple with the Role field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRole
+
+`func (o *AccessPoint) SetRole(v AccessPointRole)`
+
+SetRole sets Role field to given value.
+
+### HasRole
+
+`func (o *AccessPoint) HasRole() bool`
+
+HasRole returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

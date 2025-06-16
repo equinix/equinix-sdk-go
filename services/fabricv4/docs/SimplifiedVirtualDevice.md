@@ -6,8 +6,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Href** | Pointer to **string** | url to entity | [optional] 
 **Uuid** | Pointer to **string** | Network Edge assigned Virtual Device Identifier | [optional] 
-**Type** | Pointer to [**SimplifiedVirtualDeviceType**](SimplifiedVirtualDeviceType.md) |  | [optional] 
 **Name** | Pointer to **string** | Customer-assigned Virtual Device name | [optional] 
+**Type** | Pointer to [**SimplifiedVirtualDeviceType**](SimplifiedVirtualDeviceType.md) |  | [optional] 
+**Account** | Pointer to [**SimplifiedAccount**](SimplifiedAccount.md) |  | [optional] 
 **Cluster** | Pointer to **string** | Virtual Device Cluster Information | [optional] 
 
 ## Methods
@@ -79,6 +80,31 @@ SetUuid sets Uuid field to given value.
 
 HasUuid returns a boolean if a field has been set.
 
+### GetName
+
+`func (o *SimplifiedVirtualDevice) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *SimplifiedVirtualDevice) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *SimplifiedVirtualDevice) SetName(v string)`
+
+SetName sets Name field to given value.
+
+### HasName
+
+`func (o *SimplifiedVirtualDevice) HasName() bool`
+
+HasName returns a boolean if a field has been set.
+
 ### GetType
 
 `func (o *SimplifiedVirtualDevice) GetType() SimplifiedVirtualDeviceType`
@@ -104,30 +130,30 @@ SetType sets Type field to given value.
 
 HasType returns a boolean if a field has been set.
 
-### GetName
+### GetAccount
 
-`func (o *SimplifiedVirtualDevice) GetName() string`
+`func (o *SimplifiedVirtualDevice) GetAccount() SimplifiedAccount`
 
-GetName returns the Name field if non-nil, zero value otherwise.
+GetAccount returns the Account field if non-nil, zero value otherwise.
 
-### GetNameOk
+### GetAccountOk
 
-`func (o *SimplifiedVirtualDevice) GetNameOk() (*string, bool)`
+`func (o *SimplifiedVirtualDevice) GetAccountOk() (*SimplifiedAccount, bool)`
 
-GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+GetAccountOk returns a tuple with the Account field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetName
+### SetAccount
 
-`func (o *SimplifiedVirtualDevice) SetName(v string)`
+`func (o *SimplifiedVirtualDevice) SetAccount(v SimplifiedAccount)`
 
-SetName sets Name field to given value.
+SetAccount sets Account field to given value.
 
-### HasName
+### HasAccount
 
-`func (o *SimplifiedVirtualDevice) HasName() bool`
+`func (o *SimplifiedVirtualDevice) HasAccount() bool`
 
-HasName returns a boolean if a field has been set.
+HasAccount returns a boolean if a field has been set.
 
 ### GetCluster
 

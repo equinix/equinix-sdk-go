@@ -9,6 +9,7 @@ package fabricv4
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the CloudRouterCommandRequestConnection type satisfies the MappedNullable interface at compile time
@@ -17,7 +18,7 @@ var _ MappedNullable = &CloudRouterCommandRequestConnection{}
 // CloudRouterCommandRequestConnection Connection object for Cloud Router Command
 type CloudRouterCommandRequestConnection struct {
 	// Connection UUID
-	Uuid                 *string `json:"uuid,omitempty"`
+	Uuid                 string `json:"uuid"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -27,8 +28,9 @@ type _CloudRouterCommandRequestConnection CloudRouterCommandRequestConnection
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCloudRouterCommandRequestConnection() *CloudRouterCommandRequestConnection {
+func NewCloudRouterCommandRequestConnection(uuid string) *CloudRouterCommandRequestConnection {
 	this := CloudRouterCommandRequestConnection{}
+	this.Uuid = uuid
 	return &this
 }
 
@@ -40,36 +42,28 @@ func NewCloudRouterCommandRequestConnectionWithDefaults() *CloudRouterCommandReq
 	return &this
 }
 
-// GetUuid returns the Uuid field value if set, zero value otherwise.
+// GetUuid returns the Uuid field value
 func (o *CloudRouterCommandRequestConnection) GetUuid() string {
-	if o == nil || IsNil(o.Uuid) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Uuid
+
+	return o.Uuid
 }
 
-// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
+// GetUuidOk returns a tuple with the Uuid field value
 // and a boolean to check if the value has been set.
 func (o *CloudRouterCommandRequestConnection) GetUuidOk() (*string, bool) {
-	if o == nil || IsNil(o.Uuid) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Uuid, true
+	return &o.Uuid, true
 }
 
-// HasUuid returns a boolean if a field has been set.
-func (o *CloudRouterCommandRequestConnection) HasUuid() bool {
-	if o != nil && !IsNil(o.Uuid) {
-		return true
-	}
-
-	return false
-}
-
-// SetUuid gets a reference to the given string and assigns it to the Uuid field.
+// SetUuid sets field value
 func (o *CloudRouterCommandRequestConnection) SetUuid(v string) {
-	o.Uuid = &v
+	o.Uuid = v
 }
 
 func (o CloudRouterCommandRequestConnection) MarshalJSON() ([]byte, error) {
@@ -82,9 +76,7 @@ func (o CloudRouterCommandRequestConnection) MarshalJSON() ([]byte, error) {
 
 func (o CloudRouterCommandRequestConnection) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Uuid) {
-		toSerialize["uuid"] = o.Uuid
-	}
+	toSerialize["uuid"] = o.Uuid
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -94,6 +86,27 @@ func (o CloudRouterCommandRequestConnection) ToMap() (map[string]interface{}, er
 }
 
 func (o *CloudRouterCommandRequestConnection) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"uuid",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
 	varCloudRouterCommandRequestConnection := _CloudRouterCommandRequestConnection{}
 
 	err = json.Unmarshal(data, &varCloudRouterCommandRequestConnection)

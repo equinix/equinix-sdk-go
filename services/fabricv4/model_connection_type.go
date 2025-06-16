@@ -25,6 +25,8 @@ const (
 	CONNECTIONTYPE_EIA_VC        ConnectionType = "EIA_VC"
 	CONNECTIONTYPE_EVPLAN_VC     ConnectionType = "EVPLAN_VC"
 	CONNECTIONTYPE_EPLAN_VC      ConnectionType = "EPLAN_VC"
+	CONNECTIONTYPE_EVPTREE_VC    ConnectionType = "EVPTREE_VC"
+	CONNECTIONTYPE_EPTREE_VC     ConnectionType = "EPTREE_VC"
 	CONNECTIONTYPE_IPWAN_VC      ConnectionType = "IPWAN_VC"
 	CONNECTIONTYPE_IA_VC         ConnectionType = "IA_VC"
 )
@@ -39,6 +41,8 @@ var AllowedConnectionTypeEnumValues = []ConnectionType{
 	"EIA_VC",
 	"EVPLAN_VC",
 	"EPLAN_VC",
+	"EVPTREE_VC",
+	"EPTREE_VC",
 	"IPWAN_VC",
 	"IA_VC",
 }

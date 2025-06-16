@@ -18,16 +18,18 @@ type RouterPackageCode string
 // List of RouterPackageCode
 const (
 	ROUTERPACKAGECODE_LAB      RouterPackageCode = "LAB"
-	ROUTERPACKAGECODE_ADVANCED RouterPackageCode = "ADVANCED"
+	ROUTERPACKAGECODE_BASIC    RouterPackageCode = "BASIC"
 	ROUTERPACKAGECODE_STANDARD RouterPackageCode = "STANDARD"
+	ROUTERPACKAGECODE_ADVANCED RouterPackageCode = "ADVANCED"
 	ROUTERPACKAGECODE_PREMIUM  RouterPackageCode = "PREMIUM"
 )
 
 // All allowed values of RouterPackageCode enum
 var AllowedRouterPackageCodeEnumValues = []RouterPackageCode{
 	"LAB",
-	"ADVANCED",
+	"BASIC",
 	"STANDARD",
+	"ADVANCED",
 	"PREMIUM",
 }
 

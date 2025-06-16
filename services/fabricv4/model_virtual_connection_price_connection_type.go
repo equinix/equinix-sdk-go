@@ -26,6 +26,8 @@ const (
 	VIRTUALCONNECTIONPRICECONNECTIONTYPE_EVPLAN_VC     VirtualConnectionPriceConnectionType = "EVPLAN_VC"
 	VIRTUALCONNECTIONPRICECONNECTIONTYPE_EPLAN_VC      VirtualConnectionPriceConnectionType = "EPLAN_VC"
 	VIRTUALCONNECTIONPRICECONNECTIONTYPE_IPWAN_VC      VirtualConnectionPriceConnectionType = "IPWAN_VC"
+	VIRTUALCONNECTIONPRICECONNECTIONTYPE_EVPTREE_VC    VirtualConnectionPriceConnectionType = "EVPTREE_VC"
+	VIRTUALCONNECTIONPRICECONNECTIONTYPE_EPTREE_VC     VirtualConnectionPriceConnectionType = "EPTREE_VC"
 	VIRTUALCONNECTIONPRICECONNECTIONTYPE_IA_VC         VirtualConnectionPriceConnectionType = "IA_VC"
 )
 
@@ -40,6 +42,8 @@ var AllowedVirtualConnectionPriceConnectionTypeEnumValues = []VirtualConnectionP
 	"EVPLAN_VC",
 	"EPLAN_VC",
 	"IPWAN_VC",
+	"EVPTREE_VC",
+	"EPTREE_VC",
 	"IA_VC",
 }
 

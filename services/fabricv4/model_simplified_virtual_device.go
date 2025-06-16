@@ -19,10 +19,11 @@ type SimplifiedVirtualDevice struct {
 	// url to entity
 	Href *string `json:"href,omitempty"`
 	// Network Edge assigned Virtual Device Identifier
-	Uuid *string                      `json:"uuid,omitempty"`
-	Type *SimplifiedVirtualDeviceType `json:"type,omitempty"`
+	Uuid *string `json:"uuid,omitempty"`
 	// Customer-assigned Virtual Device name
-	Name *string `json:"name,omitempty"`
+	Name    *string                      `json:"name,omitempty"`
+	Type    *SimplifiedVirtualDeviceType `json:"type,omitempty"`
+	Account *SimplifiedAccount           `json:"account,omitempty"`
 	// Virtual Device Cluster Information
 	Cluster              *string `json:"cluster,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -111,6 +112,38 @@ func (o *SimplifiedVirtualDevice) SetUuid(v string) {
 	o.Uuid = &v
 }
 
+// GetName returns the Name field value if set, zero value otherwise.
+func (o *SimplifiedVirtualDevice) GetName() string {
+	if o == nil || IsNil(o.Name) {
+		var ret string
+		return ret
+	}
+	return *o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SimplifiedVirtualDevice) GetNameOk() (*string, bool) {
+	if o == nil || IsNil(o.Name) {
+		return nil, false
+	}
+	return o.Name, true
+}
+
+// HasName returns a boolean if a field has been set.
+func (o *SimplifiedVirtualDevice) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
+func (o *SimplifiedVirtualDevice) SetName(v string) {
+	o.Name = &v
+}
+
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *SimplifiedVirtualDevice) GetType() SimplifiedVirtualDeviceType {
 	if o == nil || IsNil(o.Type) {
@@ -143,36 +176,36 @@ func (o *SimplifiedVirtualDevice) SetType(v SimplifiedVirtualDeviceType) {
 	o.Type = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
-func (o *SimplifiedVirtualDevice) GetName() string {
-	if o == nil || IsNil(o.Name) {
-		var ret string
+// GetAccount returns the Account field value if set, zero value otherwise.
+func (o *SimplifiedVirtualDevice) GetAccount() SimplifiedAccount {
+	if o == nil || IsNil(o.Account) {
+		var ret SimplifiedAccount
 		return ret
 	}
-	return *o.Name
+	return *o.Account
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetAccountOk returns a tuple with the Account field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SimplifiedVirtualDevice) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+func (o *SimplifiedVirtualDevice) GetAccountOk() (*SimplifiedAccount, bool) {
+	if o == nil || IsNil(o.Account) {
 		return nil, false
 	}
-	return o.Name, true
+	return o.Account, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *SimplifiedVirtualDevice) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
+// HasAccount returns a boolean if a field has been set.
+func (o *SimplifiedVirtualDevice) HasAccount() bool {
+	if o != nil && !IsNil(o.Account) {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given string and assigns it to the Name field.
-func (o *SimplifiedVirtualDevice) SetName(v string) {
-	o.Name = &v
+// SetAccount gets a reference to the given SimplifiedAccount and assigns it to the Account field.
+func (o *SimplifiedVirtualDevice) SetAccount(v SimplifiedAccount) {
+	o.Account = &v
 }
 
 // GetCluster returns the Cluster field value if set, zero value otherwise.
@@ -223,11 +256,14 @@ func (o SimplifiedVirtualDevice) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Uuid) {
 		toSerialize["uuid"] = o.Uuid
 	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
+	if !IsNil(o.Account) {
+		toSerialize["account"] = o.Account
 	}
 	if !IsNil(o.Cluster) {
 		toSerialize["cluster"] = o.Cluster
@@ -256,8 +292,9 @@ func (o *SimplifiedVirtualDevice) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "href")
 		delete(additionalProperties, "uuid")
-		delete(additionalProperties, "type")
 		delete(additionalProperties, "name")
+		delete(additionalProperties, "type")
+		delete(additionalProperties, "account")
 		delete(additionalProperties, "cluster")
 		o.AdditionalProperties = additionalProperties
 	}

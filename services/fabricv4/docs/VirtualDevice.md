@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** | Customer-assigned Virtual Device name | [optional] 
 **Type** | Pointer to [**VirtualDeviceType**](VirtualDeviceType.md) |  | [optional] 
 **Account** | Pointer to [**SimplifiedAccount**](SimplifiedAccount.md) |  | [optional] 
+**Cluster** | Pointer to **string** | Virtual Device Cluster Information | [optional] 
 
 ## Methods
 
@@ -153,6 +154,31 @@ SetAccount sets Account field to given value.
 `func (o *VirtualDevice) HasAccount() bool`
 
 HasAccount returns a boolean if a field has been set.
+
+### GetCluster
+
+`func (o *VirtualDevice) GetCluster() string`
+
+GetCluster returns the Cluster field if non-nil, zero value otherwise.
+
+### GetClusterOk
+
+`func (o *VirtualDevice) GetClusterOk() (*string, bool)`
+
+GetClusterOk returns a tuple with the Cluster field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCluster
+
+`func (o *VirtualDevice) SetCluster(v string)`
+
+SetCluster sets Cluster field to given value.
+
+### HasCluster
+
+`func (o *VirtualDevice) HasCluster() bool`
+
+HasCluster returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

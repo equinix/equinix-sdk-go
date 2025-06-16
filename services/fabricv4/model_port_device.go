@@ -17,8 +17,10 @@ var _ MappedNullable = &PortDevice{}
 // PortDevice Port device
 type PortDevice struct {
 	// Device name
-	Name                 *string               `json:"name,omitempty"`
-	Redundancy           *PortDeviceRedundancy `json:"redundancy,omitempty"`
+	Name       *string               `json:"name,omitempty"`
+	Redundancy *PortDeviceRedundancy `json:"redundancy,omitempty"`
+	// Maximum bandwidth allowed for connection.
+	VcBandwidthMax       *int64 `json:"vcBandwidthMax,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -105,6 +107,38 @@ func (o *PortDevice) SetRedundancy(v PortDeviceRedundancy) {
 	o.Redundancy = &v
 }
 
+// GetVcBandwidthMax returns the VcBandwidthMax field value if set, zero value otherwise.
+func (o *PortDevice) GetVcBandwidthMax() int64 {
+	if o == nil || IsNil(o.VcBandwidthMax) {
+		var ret int64
+		return ret
+	}
+	return *o.VcBandwidthMax
+}
+
+// GetVcBandwidthMaxOk returns a tuple with the VcBandwidthMax field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PortDevice) GetVcBandwidthMaxOk() (*int64, bool) {
+	if o == nil || IsNil(o.VcBandwidthMax) {
+		return nil, false
+	}
+	return o.VcBandwidthMax, true
+}
+
+// HasVcBandwidthMax returns a boolean if a field has been set.
+func (o *PortDevice) HasVcBandwidthMax() bool {
+	if o != nil && !IsNil(o.VcBandwidthMax) {
+		return true
+	}
+
+	return false
+}
+
+// SetVcBandwidthMax gets a reference to the given int64 and assigns it to the VcBandwidthMax field.
+func (o *PortDevice) SetVcBandwidthMax(v int64) {
+	o.VcBandwidthMax = &v
+}
+
 func (o PortDevice) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -120,6 +154,9 @@ func (o PortDevice) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Redundancy) {
 		toSerialize["redundancy"] = o.Redundancy
+	}
+	if !IsNil(o.VcBandwidthMax) {
+		toSerialize["vcBandwidthMax"] = o.VcBandwidthMax
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -145,6 +182,7 @@ func (o *PortDevice) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "redundancy")
+		delete(additionalProperties, "vcBandwidthMax")
 		o.AdditionalProperties = additionalProperties
 	}
 
