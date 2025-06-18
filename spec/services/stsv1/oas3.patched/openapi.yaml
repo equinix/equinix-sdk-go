@@ -1,0 +1,104 @@
+openapi: 3.0.1
+info:
+  title: Equinix Security Token Service
+  description: Exchange ID tokens for Equinix access tokens according to managed trust relationships.
+  version: "1.0.0"
+  termsOfService: https://www.equinix.com/about/legal/terms
+  contact:
+    name: Equinix API Support
+    url: https://docs.equinix.com/api-support.html
+servers:
+  - url: https://sts.eqix.equinix.com
+tags:
+  - name: use
+    description: Operations for normal users of this service
+x-tagGroups:
+  - name: Aspect
+    tags:
+      - use
+paths:
+  /use/token:
+    post:
+      summary: OAuth 2.0 Token Endpoint
+      description: An OAuth 2.0 token endpoint supporting RFC 8693 token exchange, used to exchange an OIDC ID token issued by a trusted OIDC provider to a trusted client for an access token that can be used access other Equinix product APIs.
+      tags:
+        - use
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              description: "An OAuth 2.0 token exchange request body.\n* `resource` must be the ERN of an access policy granted to the caller.\n"
+              properties:
+                grant_type:
+                  type: string
+                  enum:
+                    - client_credentials
+                    - urn:ietf:params:oauth:grant-type:token-exchange
+                scope:
+                  type: string
+                  description: "The scope of the access token to be issued. Scope must be an access policy ERN or a string of the form roleassignments:{org_id}"
+                subject_token:
+                  description: "An OIDC ID token issued by a trusted OIDC provider to a trusted client."
+                  type: string
+                subject_token_type:
+                  type: string
+                  enum:
+                    - urn:ietf:params:oauth:token-type:id_token
+              required:
+                - grant_type
+      responses:
+        '200':
+          description: Successful token exchange
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  access_token:
+                    type: string
+                  issued_token_type:
+                    type: string
+                    enum:
+                      - urn:ietf:params:oauth:token-type:access_token
+                  token_type:
+                    type: string
+                    enum:
+                      - Bearer
+                      - DPoP
+                  expires_in:
+                    type: number
+                required:
+                  - access_token
+                  - issued_token_type
+                  - token_type
+                  - expires_in
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                  error_description:
+                    type: string
+                required:
+                  - error
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+    dpopAuth:
+      type: http
+      scheme: dpop
+    basicAuth:
+      type: http
+      scheme: basic
+
+  
