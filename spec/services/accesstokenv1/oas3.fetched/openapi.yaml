@@ -1,0 +1,191 @@
+openapi: 3.0.1
+x-eqx-api-linter-skip-rules:
+  - 3
+  - 38
+info:
+  title: Equinix API Authentication
+  description: |-
+    Equinix APIs use the OAuth 2.0 for authentication and authorization. Equinix supports the resource owner password and the client credentials flow.
+    To begin, obtain OAuth 2.0 client credentials from the Equinix Developer Console under "My Apps". Then your client application  requests an access token from the Equinix API Authorization endpoint, extracts the access_token from the response, and sends the Bearer token to the API that you want to access
+  termsOfService: https://www.equinix.com/about/legal/terms
+  contact:
+    name: Equinix API Support
+    url: https://docs.equinix.com/api-support.htm
+  version: "1.2"
+servers:
+- url: https://api.equinix.com
+tags: []
+paths:
+  /oauth2/v1/refreshaccesstoken:
+    post:
+      tags:
+      - OAuth2 Token
+      summary: Renew Access Tokens
+      description: |
+        Use this API to refresh an access token using its refresh token. A valid refresh token is needed to retrieve a new access_token.
+      operationId: RefreshOAuth2AccessToken
+      requestBody:
+        description: Refresh token json payload.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Oauth2RefreshTokenRequest'
+        required: true
+      responses:
+        "200":
+          description: Successful refresh Oauth2 token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Oauth2TokenResponse'
+        "400":
+          description: Please enter valid client id/client secrent/refresh token and
+            try again.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Oauth2TokenErrorResponse'
+      x-codegen-request-body-name: Payload
+  /oauth2/v1/token:
+    post:
+      tags:
+      - OAuth2 Token
+      summary: Generate New Access Token
+      description: |
+        This API handles authentication and authorization of the API developer. It returns an access_token which would be valid for 60 minutes. The user account will get locked after 5 successive invalid attempts.
+      operationId: GetOAuth2AccessToken
+      requestBody:
+        description: Request token json payload
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Oauth2TokenRequest'
+        required: true
+      responses:
+        "200":
+          description: Successful Oauth2 token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Oauth2TokenResponse'
+        "400":
+          description: Please enter a valid client id/client secret/username/password
+            and try again.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Oauth2TokenErrorResponse'
+      x-codegen-request-body-name: Payload
+components:
+  schemas:
+    Oauth2TokenRequest:
+      required:
+      - client_id
+      - client_secret
+      type: object
+      properties:
+        user_name:
+          type: string
+          description: Deprecated - The Equinix username used to access portals
+        user_password:
+          type: string
+          description: Deprecated - The Equinix user password used to access portals
+        client_id:
+          type: string
+          description: API Consumer Key available under "My Apps" in developer portal
+        client_secret:
+          type: string
+          description: API Consumer secret available under "My Apps" in developer
+            portal
+        grant_type:
+          type: string
+          description: "The OAuth2 grant type used for authorization. Supported values\
+            \ are \"password\" & \"client_credentials\". user_name and password is\
+            \ not considered in case this value is \"client_credentials\". If the\
+            \ grant_type is not passed, by default it would consider \"password\"\
+            \ type in which user_name and password is required. Note that the password\
+            \ grant type is deprecated. Recommended to use grant_type of 'client_credentials'\
+            \ instead."
+        password_encoding:
+          type: string
+          description: "For enhanced security, you may encrypt the password value\
+            \ while requesting for an access_token. Currently only \"md5-b64\" hashing\
+            \ is supported. Any other value would treat password value as raw string"
+          default: none
+    Oauth2TokenErrorResponse:
+      required:
+      - developer_message
+      - error_code
+      - error_domain
+      - error_message
+      - error_title
+      type: object
+      properties:
+        error_domain:
+          type: string
+          description: The module associated with this error
+        error_title:
+          type: string
+          description: The error title
+        error_code:
+          type: string
+          description: The code used to identify the error category
+        developer_message:
+          type: string
+          description: The error message to be used for auditing purpose by the consuming
+            application
+        error_message:
+          type: string
+          description: The error message which could be displayed to the end user
+    Oauth2RefreshTokenRequest:
+      required:
+      - client_id
+      - client_secret
+      - refresh_token
+      type: object
+      properties:
+        client_id:
+          type: string
+          description: API Consumer Key available under "My Apps" in developer portal
+        client_secret:
+          type: string
+          description: API Consumer secret available under "My Apps" in developer
+            portal
+        refresh_token:
+          type: string
+          description: The OAuth2 refresh_token retrieved from the previous successful
+            Access Token API call
+    Oauth2TokenResponse:
+      required:
+      - access_token
+      - token_timeout
+      - token_type
+      - user_name
+      type: object
+      properties:
+        access_token:
+          type: string
+          description: the OAuth2 Bearer token required to access Equinix API's
+        token_timeout:
+          type: string
+          description: The max validity in seconds for this access_token
+          default: 3599 (60 minutes)
+        user_name:
+          type: string
+          description: The Equinix user account to which this token is associated
+            with
+        token_type:
+          type: string
+          description: The type of access_token returned in this response
+          default: Bearer
+        refresh_token:
+          type: string
+          description: The OAuth2 refresh token which could be used to retrieve a
+            new access_token without user credentials. The refresh_token has a max
+            validity of 60 days after which a new Access Token request must be made.
+            Refresh token is Not returned for "client_credentials" grant type
+        refresh_token_timeout:
+          type: string
+          description: The max validity in seconds for the refresh_token. This field
+            is not retruned for the "client_credentials" grant type
+          default: 5182560 (60 days)
