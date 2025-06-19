@@ -106,4 +106,3 @@ func (v *NullableUseTokenPost200ResponseIssuedTokenType) UnmarshalJSON(src []byt
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

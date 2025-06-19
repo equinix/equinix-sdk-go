@@ -18,16 +18,15 @@ import (
 	"net/url"
 )
 
-
 // UseApiService UseApi service
 type UseApiService service
 
 type ApiUseTokenPostRequest struct {
-	ctx context.Context
-	ApiService *UseApiService
-	grantType *UseTokenPostRequestGrantType
-	scope *string
-	subjectToken *string
+	ctx              context.Context
+	ApiService       *UseApiService
+	grantType        *UseTokenPostRequestGrantType
+	scope            *string
+	subjectToken     *string
 	subjectTokenType *UseTokenPostRequestSubjectTokenType
 }
 
@@ -62,24 +61,25 @@ UseTokenPost OAuth 2.0 Token Endpoint
 
 An OAuth 2.0 token endpoint supporting RFC 8693 token exchange, used to exchange an OIDC ID token issued by a trusted OIDC provider to a trusted client for an access token that can be used access other Equinix product APIs.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiUseTokenPostRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiUseTokenPostRequest
 */
 func (a *UseApiService) UseTokenPost(ctx context.Context) ApiUseTokenPostRequest {
 	return ApiUseTokenPostRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return UseTokenPost200Response
+//
+//	@return UseTokenPost200Response
 func (a *UseApiService) UseTokenPostExecute(r ApiUseTokenPostRequest) (*UseTokenPost200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *UseTokenPost200Response
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *UseTokenPost200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UseApiService.UseTokenPost")
@@ -152,8 +152,8 @@ func (a *UseApiService) UseTokenPostExecute(r ApiUseTokenPostRequest) (*UseToken
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

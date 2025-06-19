@@ -21,7 +21,7 @@ type UseTokenPost200ResponseTokenType string
 // List of _use_token_post_200_response_token_type
 const (
 	USETOKENPOST200RESPONSETOKENTYPE_BEARER UseTokenPost200ResponseTokenType = "Bearer"
-	USETOKENPOST200RESPONSETOKENTYPE_DPO_P UseTokenPost200ResponseTokenType = "DPoP"
+	USETOKENPOST200RESPONSETOKENTYPE_DPO_P  UseTokenPost200ResponseTokenType = "DPoP"
 )
 
 // All allowed values of UseTokenPost200ResponseTokenType enum
@@ -108,4 +108,3 @@ func (v *NullableUseTokenPost200ResponseTokenType) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
