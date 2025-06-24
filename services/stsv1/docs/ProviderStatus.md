@@ -1,9 +1,11 @@
-# UseTokenPost200ResponseTokenType
+# ProviderStatus
 
 ## Enum
 
 
-* `BEARER` (value: `"Bearer"`)
+* `ENABLED` (value: `"ENABLED"`)
+
+* `SUSPENDED` (value: `"SUSPENDED"`)
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -20,7 +20,7 @@ type UseTokenPostRequestGrantType string
 
 // List of _use_token_post_request_grant_type
 const (
-	USETOKENPOSTREQUESTGRANTTYPE_CLIENT_CREDENTIALS                              UseTokenPostRequestGrantType = "client_credentials"
+	USETOKENPOSTREQUESTGRANTTYPE_CLIENT_CREDENTIALS UseTokenPostRequestGrantType = "client_credentials"
 	USETOKENPOSTREQUESTGRANTTYPE_URN_IETF_PARAMS_OAUTH_GRANT_TYPE_TOKEN_EXCHANGE UseTokenPostRequestGrantType = "urn:ietf:params:oauth:grant-type:token-exchange"
 )
 
@@ -108,3 +108,4 @@ func (v *NullableUseTokenPostRequestGrantType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
