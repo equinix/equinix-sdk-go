@@ -4,7 +4,7 @@ info:
   description: >-
     Exchange ID tokens for Equinix access tokens according to managed trust
     relationships. STS is an alpha service and is not generally available to customers.
-  version: 1.0.0
+  version: 1.0.0-alpha
   termsOfService: 'https://www.equinix.com/about/legal/terms'
   contact:
     name: Equinix API Support

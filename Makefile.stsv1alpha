@@ -21,7 +21,8 @@ pull:
 
 fetch:
 	mkdir -p ${SPEC_FETCHED_DIR}
-	curl -o ${SPEC_FETCHED_DIR}/${SPEC_ROOT_FILE} ${SPEC_BASE_URL}/${SPEC_ROOT_FILE}
+	// Will not work as the spec has not been published to the API catalog yet
+	// curl -o ${SPEC_FETCHED_DIR}/${SPEC_ROOT_FILE} ${SPEC_BASE_URL}/${SPEC_ROOT_FILE}
 
 patch:
 	rm -rf ${SPEC_PATCHED_DIR}
