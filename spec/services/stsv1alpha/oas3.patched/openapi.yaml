@@ -1,0 +1,114 @@
+openapi: 3.1.0
+info:
+  title: Equinix Security Token Service
+  description: >-
+    Exchange ID tokens for Equinix access tokens according to managed trust
+    relationships. STS is an alpha service and is not generally available to customers.
+  version: 1.0.0
+  termsOfService: 'https://www.equinix.com/about/legal/terms'
+  contact:
+    name: Equinix API Support
+    url: 'https://docs.equinix.com/api-support.htm'
+  license:
+    name: Equinix Inc
+    url: 'https://developer.equinix.com/agreement'
+servers:
+  - url: 'https://sts.eqix.equinix.com'
+tags:
+  - name: use
+    description: Operations for normal users of this service
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    TokenExchangeResponse:
+      type: object
+      properties:
+        access_token:
+          type: string
+        issued_token_type:
+          type: string
+          enum:
+            - 'urn:ietf:params:oauth:token-type:access_token'
+        token_type:
+          type: string
+          enum:
+            - Bearer
+        expires_in:
+          type: number
+      required:
+        - access_token
+        - issued_token_type
+        - token_type
+        - expires_in
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: A short, machine-readable error code.
+        error_description:
+          type: string
+          description: A human-readable description of the error.
+      required:
+        - error
+security:
+  - bearerAuth: []
+paths:
+  /use/token:
+    post:
+      tags:
+        - use
+      description: >-
+        An OAuth 2.0 token endpoint supporting RFC 8693 token exchange, used to
+        exchange an OIDC ID token issued by a trusted OIDC provider to a trusted
+        client for an access token that can be used access other Equinix product
+        APIs.
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              description: >
+                An OAuth 2.0 token exchange request body. 
+
+                * `resource` must be the ERN of an access policy granted to the
+                caller.
+              properties:
+                grant_type:
+                  type: string
+                  enum:
+                    - client_credentials
+                    - 'urn:ietf:params:oauth:grant-type:token-exchange'
+                scope:
+                  type: string
+                subject_token:
+                  type: string
+                subject_token_type:
+                  type: string
+                  enum:
+                    - 'urn:ietf:params:oauth:token-type:id_token'
+              required:
+                - grant_type
+      responses:
+        '200':
+          description: >-
+            Returns an access token that can be used to access other Equinix
+            product APIs. The `access_token` field contains the token, and the
+            `token_type` field indicates the type of token returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenExchangeResponse'
+        '400':
+          description: >-
+            The request was invalid. This could be due to a missing required
+            parameter, an invalid value, or a conflict with an existing
+            resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
