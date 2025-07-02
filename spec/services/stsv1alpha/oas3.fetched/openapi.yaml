@@ -23,6 +23,38 @@ components:
       type: http
       scheme: bearer
       bearerFormat: JWT
+  schemas:
+    TokenExchangeResponse:
+      type: object
+      properties:
+        access_token:
+          type: string
+        issued_token_type:
+          type: string
+          enum:
+            - 'urn:ietf:params:oauth:token-type:access_token'
+        token_type:
+          type: string
+          enum:
+            - Bearer
+        expires_in:
+          type: number
+      required:
+        - access_token
+        - issued_token_type
+        - token_type
+        - expires_in
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: A short, machine-readable error code.
+        error_description:
+          type: string
+          description: A human-readable description of the error.
+      required:
+        - error
 security:
   - bearerAuth: []
 paths:
@@ -70,25 +102,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  access_token:
-                    type: string
-                  issued_token_type:
-                    type: string
-                    enum:
-                      - 'urn:ietf:params:oauth:token-type:access_token'
-                  token_type:
-                    type: string
-                    enum:
-                      - Bearer
-                  expires_in:
-                    type: number
-                required:
-                  - access_token
-                  - issued_token_type
-                  - token_type
-                  - expires_in
+                $ref: '#/components/schemas/TokenExchangeResponse'
         '400':
           description: >-
             The request was invalid. This could be due to a missing required
@@ -97,11 +111,4 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  error:
-                    type: string
-                  error_description:
-                    type: string
-                required:
-                  - error
+                $ref: '#/components/schemas/ErrorResponse'
