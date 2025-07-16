@@ -14,11 +14,11 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
     - name: Install Go
-      uses: actions/setup-go@v5
+      uses: actions/setup-go@d35c59abb061a4a6fb18e82ac0862c26744d6ab5 # v5
       with:
         go-version: ${{ matrix.go-version }}
     - name: Checkout code
-      uses: actions/checkout@v4
+      uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
     - name: Verify Patches
       run: make patch-all
     - name: Generate
@@ -33,7 +33,7 @@ jobs:
         version=$(echo ${line} | cut -d = -f2)
         echo "version=$version" >> "$GITHUB_OUTPUT"
     - name: Lint
-      uses: golangci/golangci-lint-action@v7
+      uses: golangci/golangci-lint-action@9fae48acfc02a90574d7c304a1758ef9895495fa # v7
       with:
         version: ${{ steps.golangcilint.outputs.version }}
         skip-cache: true
