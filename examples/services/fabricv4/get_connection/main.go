@@ -9,7 +9,7 @@ import (
 
 	"github.com/equinix/equinix-sdk-go/services/fabricv4"
 
-	"github.com/equinix/oauth2-go"
+	"github.com/equinix/equinix-sdk-go/extensions/equinixoauth2"
 	"github.com/hashicorp/go-retryablehttp"
 )
 
@@ -26,12 +26,12 @@ func main() {
 	clientId := os.Getenv("EQUINIX_API_CLIENTID")
 	clientSecret := os.Getenv("EQUINIX_API_CLIENTSECRET")
 	baseURL := "https://api.equinix.com"
-	authConfig := oauth2.Config{
+	authConfig := equinixoauth2.Config{
 		ClientID:     clientId,
 		ClientSecret: clientSecret,
 		BaseURL:      baseURL,
 	}
-	authClient := authConfig.New(ctx)
+	authTransport := authConfig.New()
 
 	/*
 		The following code is setting up configuration of the
@@ -46,7 +46,7 @@ func main() {
 			config details
 	*/
 	retryClient := retryablehttp.NewClient()
-	retryClient.HTTPClient.Transport = authClient.Transport
+	retryClient.HTTPClient.Transport = authTransport
 	retryClient.RetryWaitMin = time.Second
 	retryClient.RetryWaitMax = time.Second * 60
 	standardClient := retryClient.StandardClient()
@@ -66,6 +66,6 @@ func main() {
 		log.Printf("Error getting Fabric Connection: %v", err)
 	}
 
-	log.Printf("Response API body from create call: %s", resp.Body)
-	log.Printf("Response struct from create API call: %v", conn)
+	log.Printf("Response API body from get call: %s", resp.Body)
+	log.Printf("Response struct from get API call: %v", conn)
 }
