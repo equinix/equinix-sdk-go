@@ -1,0 +1,537 @@
+---
+openapi: 3.0.0
+info:
+  title: Secure Cabinet API
+  description: Secure Cabinet API
+  termsOfService: https://www.equinix.com/about/legal/terms
+  contact:
+    name: Equinix API Support
+    url: https://docs.equinix.com/api-support.htm
+  version: 1.0.0
+servers:
+  - url: https://virtserver.swaggerhub.com/equinix-api/secure-cab-express-external-api/1.0.0
+    description: SwaggerHub API Auto Mocking
+  - url: https://api.equinix.com
+    description: Equinix API
+tags:
+  - name: orders
+    description: Order Secure Cabinets
+  - name: availability
+    description: Secure Cabinet availability
+security:
+  - BearerAuth: [ ]
+paths:
+  /securecabinet/v1/orders:
+    post:
+      tags:
+        - orders
+      summary: Order a new Secure Cabinet deployment
+      description: |
+        Order a new Secure Cabinet deployment and recommended additional products at IBX data centers worldwide.
+      operationId: createOrder
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderCreateRequest'
+        required: true
+      responses:
+        "202":
+          description: Generated Order Number
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderCreateResponse'
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+              example:
+                - errorCode: EQ-7000401
+                  errorMessage: Unauthorized
+                  correlationId: dd270016-e866-4146-9a53-84e5ea65ec06
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+              example:
+                - errorCode: EQ-7000403
+                  errorMessage: Forbidden
+                  correlationId: dd270016-e866-4146-9a53-84e5ea65ec06
+        "422":
+          description: Input validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationErrors'
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+  /securecabinet/v1/availability/{accountNumber}:
+    get:
+      tags:
+        - availability
+      summary: Secure Cabinet availability.
+      description: |
+        Returns the availability of Secure Cabinets and recommended additional products for provided billing account.
+      operationId: getProductsAvailability
+      parameters:
+        - name: accountNumber
+          in: path
+          description: Billing Account Number.
+          required: true
+          style: simple
+          explode: false
+          schema:
+            $ref: '#/components/schemas/AccountNumber'
+      responses:
+        "200":
+          description: Products availability details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductsAvailabilities'
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+              example:
+                - errorCode: EQ-7000401
+                  errorMessage: Unauthorized
+                  correlationId: dd270016-e866-4146-9a53-84e5ea65ec06
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+              example:
+                - errorCode: EQ-7000400
+                  errorMessage: "Account has following failed rules: [SCX_ACCOUNT_NO_MAIN_ADDRESS]"
+                  correlationId: dd270016-e866-4146-9a53-84e5ea65ec06
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+              example:
+                - errorCode: EQ-7000403
+                  errorMessage: Forbidden
+                  correlationId: dd270016-e866-4146-9a53-84e5ea65ec06
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+              example:
+                - errorCode: EQ-7000404
+                  errorMessage: Not Found
+                  correlationId: dd270016-e866-4146-9a53-84e5ea65ec06
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    ContractTerm:
+      type: string
+      description: Contract term length.
+      example: TERM_24_MONTHS
+      enum:
+        - TERM_24_MONTHS
+        - TERM_36_MONTHS
+        - TERM_48_MONTHS
+        - TERM_60_MONTHS
+    OrderCreateRequest:
+      required:
+        - accountNumber
+        - ibxCode
+        - contractTerm
+        - orderItem
+      type: object
+      properties:
+        accountNumber:
+          $ref: '#/components/schemas/AccountNumber'
+        customerReference:
+          maxLength: 100
+          type: string
+          description: Supplementary identifier for your discretionary use. For example, your internal identifier.
+          example: My Reference
+        endCustomerName:
+          type: string
+          description: End customer name. Applicable and required if a reseller billing account is used.
+          example: Michael Scott
+        ibxCode:
+          $ref: '#/components/schemas/IbxCode'
+        contractTerm:
+          $ref: '#/components/schemas/ContractTerm'
+        orderItem:
+          $ref: '#/components/schemas/OrderItem'
+        purchaseOrderNumber:
+          $ref: '#/components/schemas/PurchaseOrderNumber'
+        technicalContact:
+          $ref: '#/components/schemas/ContactDetails'
+    OrderItem:
+      required:
+        - drawCapacity
+        - fabricPort
+        - numberOfCabinets
+        - cabinetDimensions
+        - pdus
+      type: object
+      properties:
+        drawCapacity:
+          $ref: '#/components/schemas/Rating'
+        fabricPort:
+          type: boolean
+          description: Indicates if a single, primary Fabric port should be included and delivered to one of the ordered cabinets.
+          example: true
+        numberOfCabinets:
+          minimum: 1
+          maximum: 2147483647
+          type: integer
+          description: The number of ordered cabinets.
+          example: 1
+        cabinetDimensions:
+          $ref: '#/components/schemas/Dimensions'
+        pdus:
+          type: boolean
+          description: Indicates if an Equinix-recommended set of two PDUs, for single-phase circuit, per cabinet should be installed.
+          example: true
+      description: Order details.
+    OrderCreateResponse:
+      required:
+        - orderNumber
+      type: object
+      properties:
+        orderNumber:
+          $ref: '#/components/schemas/OrderNumber'
+    OrderNumber:
+      minLength: 1
+      type: string
+      description: Order Number
+      example: 1-126546546546
+    Rating:
+      type: number
+      description: Maximum, combined power draw of all cabinets in your order, measured in kVA. Applicable values, in 0.5 increments, depend on the IBX data center.
+      format: double
+      example: 5
+    ErrorAdditionalInfo:
+      properties:
+        property:
+          type: string
+          description: Property at which the error occurs. Can be empty.
+          example: $.info
+        reason:
+          type: string
+          description: Fallback error message in plain English.
+          example: must not be blank
+    ValidationErrorAdditionalInfo:
+      required:
+        - reason
+        - validationRuleTag
+      properties:
+        property:
+          type: string
+          description: Property at which the validation violation occurs. Can be empty when validation happens at the object top level.
+          example: $.info
+        reason:
+          type: string
+          description: Fallback error message in plain English.
+          example: Account does not exist
+        validationRuleTag:
+          type: string
+          description: Violated validation rule tag.
+          example: AccountExists
+        validationRoot:
+          type: string
+          description: Name of the object at which the validation violation occurs. Can be empty when validation happens inline at the request params.
+          example: AccountExists
+        validationParameters:
+          type: object
+          additionalProperties:
+            type: string
+          description: A map containing additional violation parameters, these can be used to render localized error messages. The list of available parameters is different for each validationRuleTag.
+    Errors:
+      type: array
+      items:
+        $ref: '#/components/schemas/Error'
+    ValidationErrors:
+      type: array
+      items:
+        $ref: '#/components/schemas/ValidationError'
+    Error:
+      required:
+        - errorCode
+        - errorMessage
+      properties:
+        errorCode:
+          maxLength: 10
+          minLength: 10
+          pattern: "^EQ-70[0-9]{5}$"
+          type: string
+          description: Application error code. Format :EQ-<error code>
+          example: EQ-7000500
+        errorMessage:
+          type: string
+          description: Application error message
+          example: Internal Server Error
+        correlationId:
+          type: string
+          description: Correlation ID without any sensitive or meaningful information.
+          example: dd270016-e866-4146-9a53-84e5ea65ec06
+        details:
+          type: string
+          description: More information on errors.
+          example: Could not connect to database
+        help:
+          type: string
+          description: Help message or URL to a help page for the corresponding errorCode.
+          example: Please check system logs.
+        additionalInfo:
+          $ref: '#/components/schemas/ErrorAdditionalInfoList'
+      description: Error responses are included with 4xx and 5xx HTTP responses from the API service. Either "error" or "errors" will be set.
+    ValidationError:
+      required:
+        - errorCode
+        - errorMessage
+      properties:
+        errorCode:
+          maxLength: 10
+          minLength: 10
+          type: string
+          description: Application error code. Format :EQ-<error code>
+          example: EQ-7000422
+        errorMessage:
+          type: string
+          description: Application error message
+          example: Unprocessable Entity
+        correlationId:
+          type: string
+          description: Correlation ID without any sensitive or meaningful information.
+          example: dd270016-e866-4146-9a53-84e5ea65ec06
+        details:
+          type: string
+          description: More information on errors.
+          example: The submitted payload does not meet validation criteria
+        help:
+          type: string
+          description: Help message or URL to a help page for the corresponding errorCode.
+          example: Please fix submitted payload according to additionalInfo
+        additionalInfo:
+          $ref: '#/components/schemas/ValidationErrorAdditionalInfoList'
+      description: Error responses are included with 4xx and 5xx HTTP responses from the API service. Either "error" or "errors" will be set.
+    ErrorAdditionalInfoList:
+      type: array
+      description: Contains application specific information for this error. The object inside this array can have any number of application specific properties.
+      items:
+        $ref: '#/components/schemas/ErrorAdditionalInfo'
+    ValidationErrorAdditionalInfoList:
+      minItems: 1
+      type: array
+      description: Contains application specific information for this error. The object inside this array can have any number of application specific properties.
+      items:
+        $ref: '#/components/schemas/ValidationErrorAdditionalInfo'
+    AccountNumber:
+      minLength: 1
+      type: string
+      description: Identifier of a billing account, with permission to order colocation products.
+      example: "132028"
+    IbxCode:
+      pattern: "^[A-Z]{2}[0-9]+x?$"
+      type: string
+      description: IBX data center identifier.
+      example: CH1
+    ContactAvailability:
+      type: string
+      description: When is the best time to call.
+      example: WORK_HOURS
+      enum:
+        - WORK_HOURS
+        - ANYTIME
+        - CUSTOMER_BUSINESS_HOURS
+        - NOT_AVAILABLE
+    ContactDetails:
+      required:
+        - email
+        - firstName
+        - lastName
+      type: object
+      properties:
+        firstName:
+          maxLength: 50
+          type: string
+          description: First name.
+          example: John
+        lastName:
+          maxLength: 50
+          type: string
+          description: Last name.
+          example: Smith
+        email:
+          maxLength: 100
+          type: string
+          description: Email address.
+          example: john@smith.com
+        phone:
+          $ref: '#/components/schemas/Phone'
+      description: Contact person details for technical inquiries.
+    Phone:
+      required:
+        - number
+        - availability
+      type: object
+      properties:
+        number:
+          maxLength: 40
+          type: string
+          description: A phone number in full international format.
+          example: "4915126449706"
+        availability:
+          $ref: '#/components/schemas/ContactAvailability'
+      description: Phone number details.
+    PurchaseOrderNumber:
+      minLength: 1
+      type: string
+      description: Purchase order number. Optional, unless the billing account requires it.
+      example: 8-132028
+    ProductsAvailabilities:
+      type: array
+      description: A list of ibxs with information about product availabilities
+      items:
+        $ref: "#/components/schemas/ProductsAvailability"
+    ProductsAvailability:
+      required:
+        - ibx
+        - maximumNumberOfCabinetsToOrder
+        - minimumDrawCapacityPerCabinet
+        - maximumDrawCapacityPerCabinet
+        - cabinetDimensions
+        - acCircuitConfiguration
+      type: object
+      description: |
+        Information about availability of products in one ibx. Missing pdu configuration means that we don't offer pdu
+        there. Missing fabric port speed means that fabric port is not available there.
+      properties:
+        ibx:
+          $ref: "#/components/schemas/IbxCode"
+        maximumNumberOfCabinetsToOrder:
+          type: integer
+          description: Maximum number of cabinets that can be ordered in one order in this ibx.
+          example: 2
+        minimumDrawCapacityPerCabinet:
+          type: number
+          description: The minimum power draw capacity per ordered cabinet.
+          format: double
+          example: 5
+        maximumDrawCapacityPerCabinet:
+          type: number
+          description: The maximum power draw capacity per ordered cabinet.
+          format: double
+          example: 5
+        cabinetDimensions:
+          $ref: '#/components/schemas/Dimensions'
+        acCircuitConfiguration:
+          $ref: '#/components/schemas/AcCircuitConfig'
+        pduConfiguration:
+          $ref: '#/components/schemas/PduConfig'
+        fabricPortSpeed:
+          $ref: '#/components/schemas/FabricPortSpeed'
+    Dimensions:
+      type: object
+      required:
+        - width
+        - depth
+        - height
+      properties:
+        width:
+          $ref: '#/components/schemas/Dimension'
+        depth:
+          $ref: '#/components/schemas/Dimension'
+        height:
+          $ref: '#/components/schemas/Dimension'
+    Dimension:
+      required:
+        - unit
+        - value
+      type: object
+      properties:
+        value:
+          type: integer
+          description: Dimension Value
+          example: 482
+        unit:
+          type: string
+          description: Unit of measure of the product
+          example: MILLIMETER
+          enum:
+            - MILLIMETER
+            - CENTIMETER
+            - METER
+    AcCircuitConfig:
+      type: object
+      required:
+        - phase
+        - receptacle
+        - soldAmperage
+        - voltage
+      properties:
+        voltage:
+          $ref: '#/components/schemas/Voltage'
+        soldAmperage:
+          $ref: '#/components/schemas/Amperage'
+        phase:
+          $ref: '#/components/schemas/Phase'
+        receptacle:
+          type: string
+          description: Receptacle type
+          example: IEC 60309 1P+N+E
+    Voltage:
+      type: integer
+      description: Voltage numerical value
+      example: 220
+    Amperage:
+      type: number
+      description: Amperage Numerical Value
+      format: double
+      example: 8.9
+    Phase:
+      type: string
+      description: Circuit phase
+      example: SINGLE
+      enum:
+        - SINGLE
+    PduConfig:
+      type: object
+      required:
+        - model
+      properties:
+        model:
+          type: string
+          description: Model Code
+          example: UU30009L
+    FabricPortSpeed:
+      type: string
+      description: Port speed
+      example: SPEED_1_GBPS
+      enum:
+        - SPEED_1_GBPS
+        - SPEED_10_GBPS
