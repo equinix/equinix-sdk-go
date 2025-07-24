@@ -1,0 +1,13 @@
+diff --git a/spec/services/securecabinetv1/oas3.patched/openapi.yaml b/spec/services/securecabinetv1/oas3.patched/openapi.yaml
+index 7170fe9e..49df198b 100644
+--- a/spec/services/securecabinetv1/oas3.patched/openapi.yaml
++++ b/spec/services/securecabinetv1/oas3.patched/openapi.yaml
+@@ -9,8 +9,6 @@ info:
+     url: https://docs.equinix.com/api-support.htm
+   version: 1.0.0
+ servers:
+-  - url: https://virtserver.swaggerhub.com/equinix-api/secure-cab-express-external-api/1.0.0
+-    description: SwaggerHub API Auto Mocking
+   - url: https://api.equinix.com
+     description: Equinix API
+ tags:

@@ -93,10 +93,6 @@ func NewConfiguration() *Configuration {
 		Debug:         false,
 		Servers: ServerConfigurations{
 			{
-				URL:         "https://virtserver.swaggerhub.com/equinix-api/secure-cab-express-external-api/1.0.0",
-				Description: "SwaggerHub API Auto Mocking",
-			},
-			{
 				URL:         "https://api.equinix.com",
 				Description: "Equinix API",
 			},

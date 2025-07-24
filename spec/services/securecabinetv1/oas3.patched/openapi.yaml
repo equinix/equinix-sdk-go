@@ -9,8 +9,6 @@ info:
     url: https://docs.equinix.com/api-support.htm
   version: 1.0.0
 servers:
-  - url: https://virtserver.swaggerhub.com/equinix-api/secure-cab-express-external-api/1.0.0
-    description: SwaggerHub API Auto Mocking
   - url: https://api.equinix.com
     description: Equinix API
 tags:

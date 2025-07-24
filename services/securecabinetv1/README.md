@@ -75,7 +75,7 @@ ctx = context.WithValue(context.Background(), securecabinetv1.ContextOperationSe
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://virtserver.swaggerhub.com/equinix-api/secure-cab-express-external-api/1.0.0*
+All URIs are relative to *https://api.equinix.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
