@@ -63,12 +63,6 @@ func main() {
 	configuration.HTTPClient = standardClient
 	configuration.AddDefaultHeader("X-SOURCE", "API")
 	configuration.AddDefaultHeader("X-CORRELATION-ID", CORRELATION_ID)
-	configuration.Servers = securecabinetv1.ServerConfigurations{
-		{
-			URL:         "https://api.equinix.com",
-			Description: "Equinix API",
-		},
-	}
 	client := securecabinetv1.NewAPIClient(configuration)
 
 	// Call the availability endpoint
