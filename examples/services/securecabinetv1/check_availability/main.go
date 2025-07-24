@@ -1,3 +1,19 @@
+// Package main demonstrates how to use the Equinix Secure Cabinet API to check
+// availability of secure cabinets across different IBX locations.
+//
+// This example shows how to:
+//   - Configure OAuth2 authentication for the Equinix API
+//   - Create a Secure Cabinet API client
+//   - Query the availability endpoint for a specific billing account
+//   - Display the results including power capacity, cabinet dimensions, and fabric port availability
+//
+// Prerequisites:
+//   - Set EQUINIX_API_CLIENTID and EQUINIX_API_CLIENTSECRET environment variables
+//   - Have a valid Equinix billing account number
+//
+// Usage:
+//
+//	go run main.go -account="<your_account_number>"
 package main
 
 import (
