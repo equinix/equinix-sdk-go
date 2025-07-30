@@ -57,10 +57,4 @@ codegen:
 validate:
 	${OPENAPI_GENERATOR} validate \
 		--recommend \
-		-i ${SPEC_PATCHED_DIR}
-
-remove-unused:
-	rm -rf ${CODE_DIR}/api \
-		${CODE_DIR}/.travis.yml \
-		${CODE_DIR}/git_push.sh \
-		${CODE_DIR}/.openapi-generator
+		-i ${SPEC_PATCHED_DIR}/${SPEC_ROOT_FILE}
