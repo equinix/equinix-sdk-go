@@ -15,7 +15,7 @@ SPEC_FETCHER=curl
 
 all: pull fetch patch generate stage
 
-generate: clean codegen patch-post fmt test
+generate: clean codegen patch-post mod fmt test
 
 pull:
 	${CRI} pull ${OPENAPI_IMAGE}
