@@ -15,7 +15,7 @@ SPEC_FETCHER=curl
 
 all: pull fetch patch generate stage
 
-generate: clean codegen remove-unused patch-post mod fmt test
+generate: clean codegen patch-post fmt test
 
 pull:
 	${CRI} pull ${OPENAPI_IMAGE}
@@ -57,10 +57,4 @@ codegen:
 validate:
 	${OPENAPI_GENERATOR} validate \
 		--recommend \
-		-i ${SPEC_PATCHED_DIR}
-
-remove-unused:
-	rm -rf ${CODE_DIR}/api \
-		${CODE_DIR}/.travis.yml \
-		${CODE_DIR}/git_push.sh \
-		${CODE_DIR}/.openapi-generator
+		-i ${SPEC_PATCHED_DIR}/${SPEC_ROOT_FILE}

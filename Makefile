@@ -39,14 +39,6 @@ generate-all:
 		make -f $$makefile generate;\
 	done
 
-mod:
-	for goModOrSum in $(shell set -x; find . -not \( -path ./examples -prune \) -name go.mod -o -name go.sum | sort -n); do \
-		rm -f $$goModOrSum;\
-	done
-	${GO_CMD} go mod init github.com/${GIT_ORG}/${GIT_REPO}
-	${GO_CMD} go get golang.org/x/oauth2@v0.26.0 # TEMP: ensure we install an oauth2 version compatible with MIN_GO_VERSION
-	${GO_CMD} go mod tidy
-
 test:
 	${GO_CMD} go test -v ./...
 
