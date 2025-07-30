@@ -1,10 +1,10 @@
 **/api/openapi.yaml
 **/git_push.sh
-# **/.gitignore # TODO: we don't need this but will clean it up in a follow-up
+**/.gitignore
 **/go.mod
 **/go.sum
 **/.travis.yml
-# **/.openapi-generator-ignore # TODO: we don't need this but will clean it up in a follow-up
+**/.openapi-generator-ignore
 **/.openapi-generator/VERSION
 **/.openapi-generator/FILES
 **/test/
