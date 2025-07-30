@@ -1,0 +1,13 @@
+./api/openapi.yaml
+./README.md
+./git_push.sh
+./.gitignore
+./configuration.go
+./client.go
+./response.go
+./go.mod
+./go.sum
+/workdir/./.travis.yml
+/workdir/./.openapi-generator-ignore
+./.openapi-generator/VERSION
+./.openapi-generator/FILES

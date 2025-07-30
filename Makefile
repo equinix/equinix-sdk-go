@@ -34,18 +34,26 @@ patch-all:
 	done; \
 	exit $$RESULT;
 
-generate-all:
+generate-all: generate-shared
 	for makefile in $(shell set -x; ls -1 Makefile.* | sort -n); do \
 		make -f $$makefile generate;\
 	done
 
-mod:
-	for goModOrSum in $(shell set -x; find . -not \( -path ./examples -prune \) -name go.mod -o -name go.sum | sort -n); do \
-		rm -f $$goModOrSum;\
-	done
-	${GO_CMD} go mod init github.com/${GIT_ORG}/${GIT_REPO}
-	${GO_CMD} go get golang.org/x/oauth2@v0.26.0 # TEMP: ensure we install an oauth2 version compatible with MIN_GO_VERSION
-	${GO_CMD} go mod tidy
+# NOTE: the generator does not behave as I would expect with the
+# --ignore-file-override flag.  For some reason, moving the ignore
+# file to a different path causes the rules to no longer match the
+# generated files, even if I specify absolute paths in the ignore
+# file
+generate-shared:
+	${OPENAPI_GENERATOR} generate -g go \
+		--package-name equinix \
+		--http-user-agent "${USER_AGENT}" \
+		-p packageVersion=${PACKAGE_VERSION} \
+		--git-user-id ${GIT_ORG} \
+		--git-repo-id ${GIT_REPO} \
+        `#--ignore-file-override .cross-service-codegen/openapi-generator-ignore` \
+		-v \
+		-i .cross-service-codegen/openapi.yaml
 
 test:
 	${GO_CMD} go test -v ./...
