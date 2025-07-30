@@ -5,6 +5,4 @@
 **/go.sum
 **/.travis.yml
 **/.openapi-generator-ignore
-**/.openapi-generator/VERSION
-**/.openapi-generator/FILES
 **/test/
