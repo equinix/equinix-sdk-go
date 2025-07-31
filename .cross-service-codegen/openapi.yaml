@@ -1,0 +1,6 @@
+openapi: 3.0.3
+info:
+  title: Stub spec for generating supporting code
+  description: 'In order to generate reusable supporting code we have to provide an input spec.  Rather than pick a random service spec to use, we provide this stub spec.'
+  version: "N/A"
+paths: {}

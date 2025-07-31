@@ -1,4 +1,5 @@
 {
+    "ignoreFileOverride": "services/.openapi-generator-ignore",
     "apiNameSuffix": "Api",
     "isGoSubmodule": true,
     "disallowAdditionalPropertiesIfNotPresent": false,
@@ -6,9 +7,5 @@
         "RESOLVE_INLINE_ENUMS": true
     },
     "enumClassPrefix": true,
-    "removeEnumValuePrefix": true,
-    "globalProperties": {
-        "modelTests": false,
-        "apiTests": false
-    }
+    "removeEnumValuePrefix": true
 }
