@@ -1,11 +1,6 @@
-equinix-metal.swagger.json.orig
 .vscode
 .DS_Store
 .openapi-generator
-.travis.yml
-git_push.sh
-services/*/api/
-pkg
 .certs
 .idea/
 spec/services/metalv1/temp_merged_spec/
