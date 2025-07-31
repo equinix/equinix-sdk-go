@@ -14,7 +14,7 @@ CRI=docker # nerdctl
 CRI_COMMAND_BASE=${CRI} run --rm -u ${CURRENT_UID}:${CURRENT_GID} $(DOCKER_EXTRA_ARGS)
 OPENAPI_GENERATOR=${CRI_COMMAND_BASE} -v $(CURDIR):/workdir -w /workdir ${OPENAPI_IMAGE}
 SPEC_FETCHER=${CRI_COMMAND_BASE} -v $(CURDIR):/workdir --entrypoint sh mikefarah/yq:4.30.8 script/download_spec.sh
-MIN_GO_VERSION=1.23
+MIN_GO_VERSION=1.23.0
 GO_CMD=${CRI_COMMAND_BASE} -v $(CURDIR):/workdir -w /workdir -e GOCACHE=/tmp/.cache golang:${MIN_GO_VERSION}
 GOLANGCI_LINT_VERSION=v2.3.0
 GOLANGCI_LINT_IMAGE=golangci/golangci-lint:${GOLANGCI_LINT_VERSION}
