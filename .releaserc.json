@@ -34,7 +34,12 @@
         "@semantic-release/git",
         {
           "message": "ci: regenerate code for version ${nextRelease.version} triggered by ${process.env.RELEASE_REQUESTER}",
-          "assets": ["."]
+          "assets": [
+            [
+              ".",
+              "!.openapi-generator"
+            ]
+          ]
         }
       ]
     ]
