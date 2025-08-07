@@ -20,6 +20,15 @@ jobs:
     - name: Generate
       run: |
         make generate-all
+        # Debug: Show what changed
+        echo "=== Git Status ==="
+        git status
+        echo "=== Git Status Porcelain ==="
+        git status --porcelain
+        echo "=== Git Diff Stats ==="
+        git diff --stat
+        echo "=== Git Diff for ordersv2 ==="
+        git diff services/ordersv2 | head -100
         # Expect all changes to be accounted for
         ! git status --porcelain | grep .
     - name: Determine golangci-lint version
