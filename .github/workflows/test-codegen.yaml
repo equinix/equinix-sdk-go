@@ -20,8 +20,15 @@ jobs:
     - name: Generate
       run: |
         make generate-all
-        # Expect all changes to be accounted for
-        ! git status --porcelain | grep .
+        # Check for uncommitted changes
+        if git status --porcelain | grep .; then
+          echo "::error::Uncommitted changes detected after code generation"
+          echo "=== Files Changed ==="
+          git status --porcelain
+          echo "=== Sample Diff (first 200 lines) ==="
+          git diff | head -200
+          exit 1
+        fi
     - name: Determine golangci-lint version
       id: golangcilint
       run: |
