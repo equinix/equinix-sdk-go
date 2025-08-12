@@ -18,10 +18,9 @@ jobs:
     - name: Verify Patches
       run: make patch-all
     - name: Generate
-      run: |
-        make generate-all
+      run: make generate-all
     - name: Check for uncommitted changes
-       run: |
+      run: |
         if git status --porcelain | grep .; then
           echo "::error::Uncommitted changes detected after code generation"
           echo "=== Files Changed ==="
