@@ -20,7 +20,8 @@ jobs:
     - name: Generate
       run: |
         make generate-all
-        # Check for uncommitted changes
+    - name: Check for uncommitted changes
+       run: |
         if git status --porcelain | grep .; then
           echo "::error::Uncommitted changes detected after code generation"
           echo "=== Files Changed ==="
