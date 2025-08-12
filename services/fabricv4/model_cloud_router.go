@@ -19,7 +19,9 @@ type CloudRouter struct {
 	// Cloud Routers URI
 	Href *string `json:"href,omitempty"`
 	// Equinix-assigned access point identifier
-	Uuid  *string                      `json:"uuid,omitempty"`
+	Uuid *string `json:"uuid,omitempty"`
+	// Customer-provided Cloud Router name
+	Name  *string                      `json:"name,omitempty"`
 	State *CloudRouterAccessPointState `json:"state,omitempty"`
 	// Equinix ASN
 	EquinixAsn *int64 `json:"equinixAsn,omitempty"`
@@ -29,13 +31,11 @@ type CloudRouter struct {
 	ChangeLog               *Changelog                      `json:"changeLog,omitempty"`
 	Change                  *CloudRouterChange              `json:"change,omitempty"`
 	Type                    *CloudRouterPostRequestBaseType `json:"type,omitempty"`
-	// Customer-provided Cloud Router name
-	Name     *string                        `json:"name,omitempty"`
-	Location *SimplifiedLocationWithoutIBX  `json:"location,omitempty"`
-	Package  *CloudRouterPostRequestPackage `json:"package,omitempty"`
-	Order    *Order                         `json:"order,omitempty"`
-	Project  *Project                       `json:"project,omitempty"`
-	Account  *SimplifiedAccount             `json:"account,omitempty"`
+	Location                *SimplifiedLocationWithoutIBX   `json:"location,omitempty"`
+	Package                 *CloudRouterPostRequestPackage  `json:"package,omitempty"`
+	Order                   *Order                          `json:"order,omitempty"`
+	Project                 *Project                        `json:"project,omitempty"`
+	Account                 *SimplifiedAccount              `json:"account,omitempty"`
 	// Preferences for notifications on connection configuration or status changes
 	Notifications        []SimplifiedNotification `json:"notifications,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -122,6 +122,38 @@ func (o *CloudRouter) HasUuid() bool {
 // SetUuid gets a reference to the given string and assigns it to the Uuid field.
 func (o *CloudRouter) SetUuid(v string) {
 	o.Uuid = &v
+}
+
+// GetName returns the Name field value if set, zero value otherwise.
+func (o *CloudRouter) GetName() string {
+	if o == nil || IsNil(o.Name) {
+		var ret string
+		return ret
+	}
+	return *o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CloudRouter) GetNameOk() (*string, bool) {
+	if o == nil || IsNil(o.Name) {
+		return nil, false
+	}
+	return o.Name, true
+}
+
+// HasName returns a boolean if a field has been set.
+func (o *CloudRouter) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
+func (o *CloudRouter) SetName(v string) {
+	o.Name = &v
 }
 
 // GetState returns the State field value if set, zero value otherwise.
@@ -348,38 +380,6 @@ func (o *CloudRouter) SetType(v CloudRouterPostRequestBaseType) {
 	o.Type = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
-func (o *CloudRouter) GetName() string {
-	if o == nil || IsNil(o.Name) {
-		var ret string
-		return ret
-	}
-	return *o.Name
-}
-
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CloudRouter) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
-		return nil, false
-	}
-	return o.Name, true
-}
-
-// HasName returns a boolean if a field has been set.
-func (o *CloudRouter) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given string and assigns it to the Name field.
-func (o *CloudRouter) SetName(v string) {
-	o.Name = &v
-}
-
 // GetLocation returns the Location field value if set, zero value otherwise.
 func (o *CloudRouter) GetLocation() SimplifiedLocationWithoutIBX {
 	if o == nil || IsNil(o.Location) {
@@ -588,6 +588,9 @@ func (o CloudRouter) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Uuid) {
 		toSerialize["uuid"] = o.Uuid
 	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
 	if !IsNil(o.State) {
 		toSerialize["state"] = o.State
 	}
@@ -608,9 +611,6 @@ func (o CloudRouter) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
-	}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.Location) {
 		toSerialize["location"] = o.Location
@@ -654,6 +654,7 @@ func (o *CloudRouter) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "href")
 		delete(additionalProperties, "uuid")
+		delete(additionalProperties, "name")
 		delete(additionalProperties, "state")
 		delete(additionalProperties, "equinixAsn")
 		delete(additionalProperties, "connectionsCount")
@@ -661,7 +662,6 @@ func (o *CloudRouter) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "changeLog")
 		delete(additionalProperties, "change")
 		delete(additionalProperties, "type")
-		delete(additionalProperties, "name")
 		delete(additionalProperties, "location")
 		delete(additionalProperties, "package")
 		delete(additionalProperties, "order")

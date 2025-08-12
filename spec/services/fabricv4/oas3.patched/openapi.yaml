@@ -15946,8 +15946,6 @@ components:
         name:
           type: string
           description: Customer-provided Cloud Router name
-          format: string
-          example: test-fg-1
         location:
           $ref: "#/components/schemas/SimplifiedLocationWithoutIBX"
         package:
@@ -15980,6 +15978,11 @@ components:
           description: Equinix-assigned access point identifier
           format: uuid
           example: c9b8e7a2-f3b1-4576-a4a9-1366a63df170
+        name:
+          type: string
+          description: Customer-provided Cloud Router name
+          format: string
+          example: test-fg-1
         state:
           $ref: "#/components/schemas/CloudRouterAccessPointState"
         equinixAsn:

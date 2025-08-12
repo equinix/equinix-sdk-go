@@ -47,7 +47,7 @@ import (
 )
 
 func main() {
-	cloudRouterPostRequest := *openapiclient.NewCloudRouterPostRequest(openapiclient.CloudRouterPostRequestBase_type("XF_ROUTER"), "test-fg-1", *openapiclient.NewSimplifiedLocationWithoutIBX("AM"), *openapiclient.NewCloudRouterPostRequestPackage(openapiclient.CloudRouterPostRequestPackage_code("LAB"))) // CloudRouterPostRequest | 
+	cloudRouterPostRequest := *openapiclient.NewCloudRouterPostRequest(openapiclient.CloudRouterPostRequestBase_type("XF_ROUTER"), "Name_example", *openapiclient.NewSimplifiedLocationWithoutIBX("AM"), *openapiclient.NewCloudRouterPostRequestPackage(openapiclient.CloudRouterPostRequestPackage_code("LAB"))) // CloudRouterPostRequest | 
 	dryRun := true // bool | option to verify that API calls will succeed (optional) (default to false)
 
 	configuration := openapiclient.NewConfiguration()
