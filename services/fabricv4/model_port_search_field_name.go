@@ -17,16 +17,30 @@ type PortSearchFieldName string
 
 // List of PortSearchFieldName
 const (
-	PORTSEARCHFIELDNAME_PROJECT_PROJECT_ID    PortSearchFieldName = "/project/projectId"
-	PORTSEARCHFIELDNAME_SETTINGS_PRODUCT_CODE PortSearchFieldName = "/settings/productCode"
-	PORTSEARCHFIELDNAME_STATE                 PortSearchFieldName = "/state"
+	PORTSEARCHFIELDNAME_DEVICE_NAME                            PortSearchFieldName = "/device/name"
+	PORTSEARCHFIELDNAME_PHYSICAL_PORTS_TETHER_CROSS_CONNECT_ID PortSearchFieldName = "/physicalPorts/tether/crossConnectId"
+	PORTSEARCHFIELDNAME_PHYSICAL_PORTS_INTERFACE_NAME          PortSearchFieldName = "/physicalPorts/interface/name"
+	PORTSEARCHFIELDNAME_STATE                                  PortSearchFieldName = "/state"
+	PORTSEARCHFIELDNAME_PROJECT_PROJECT_ID                     PortSearchFieldName = "/project/projectId"
+	PORTSEARCHFIELDNAME_UUID                                   PortSearchFieldName = "/uuid"
+	PORTSEARCHFIELDNAME_NAME                                   PortSearchFieldName = "/name"
+	PORTSEARCHFIELDNAME_ACCOUNT_ORG_ID                         PortSearchFieldName = "/account/orgId"
+	PORTSEARCHFIELDNAME_ACCOUNT_ACCOUNT_NUMBER                 PortSearchFieldName = "/account/accountNumber"
+	PORTSEARCHFIELDNAME_LOCATION_METRO_CODE                    PortSearchFieldName = "/location/metroCode"
 )
 
 // All allowed values of PortSearchFieldName enum
 var AllowedPortSearchFieldNameEnumValues = []PortSearchFieldName{
-	"/project/projectId",
-	"/settings/productCode",
+	"/device/name",
+	"/physicalPorts/tether/crossConnectId",
+	"/physicalPorts/interface/name",
 	"/state",
+	"/project/projectId",
+	"/uuid",
+	"/name",
+	"/account/orgId",
+	"/account/accountNumber",
+	"/location/metroCode",
 }
 
 func (v *PortSearchFieldName) UnmarshalJSON(src []byte) error {

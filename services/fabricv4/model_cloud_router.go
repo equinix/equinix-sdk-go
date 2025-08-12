@@ -24,11 +24,11 @@ type CloudRouter struct {
 	// Equinix ASN
 	EquinixAsn *int64 `json:"equinixAsn,omitempty"`
 	// Number of connections associated with this Access point
-	ConnectionsCount        *int32                      `json:"connectionsCount,omitempty"`
-	MarketplaceSubscription *MarketplaceSubscription    `json:"marketplaceSubscription,omitempty"`
-	ChangeLog               *Changelog                  `json:"changeLog,omitempty"`
-	Change                  *CloudRouterChange          `json:"change,omitempty"`
-	Type                    *CloudRouterPostRequestType `json:"type,omitempty"`
+	ConnectionsCount        *int32                          `json:"connectionsCount,omitempty"`
+	MarketplaceSubscription *MarketplaceSubscription        `json:"marketplaceSubscription,omitempty"`
+	ChangeLog               *Changelog                      `json:"changeLog,omitempty"`
+	Change                  *CloudRouterChange              `json:"change,omitempty"`
+	Type                    *CloudRouterPostRequestBaseType `json:"type,omitempty"`
 	// Customer-provided Cloud Router name
 	Name     *string                        `json:"name,omitempty"`
 	Location *SimplifiedLocationWithoutIBX  `json:"location,omitempty"`
@@ -317,9 +317,9 @@ func (o *CloudRouter) SetChange(v CloudRouterChange) {
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
-func (o *CloudRouter) GetType() CloudRouterPostRequestType {
+func (o *CloudRouter) GetType() CloudRouterPostRequestBaseType {
 	if o == nil || IsNil(o.Type) {
-		var ret CloudRouterPostRequestType
+		var ret CloudRouterPostRequestBaseType
 		return ret
 	}
 	return *o.Type
@@ -327,7 +327,7 @@ func (o *CloudRouter) GetType() CloudRouterPostRequestType {
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CloudRouter) GetTypeOk() (*CloudRouterPostRequestType, bool) {
+func (o *CloudRouter) GetTypeOk() (*CloudRouterPostRequestBaseType, bool) {
 	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
@@ -343,8 +343,8 @@ func (o *CloudRouter) HasType() bool {
 	return false
 }
 
-// SetType gets a reference to the given CloudRouterPostRequestType and assigns it to the Type field.
-func (o *CloudRouter) SetType(v CloudRouterPostRequestType) {
+// SetType gets a reference to the given CloudRouterPostRequestBaseType and assigns it to the Type field.
+func (o *CloudRouter) SetType(v CloudRouterPostRequestBaseType) {
 	o.Type = &v
 }
 

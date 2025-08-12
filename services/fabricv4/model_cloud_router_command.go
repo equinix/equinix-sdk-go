@@ -20,13 +20,13 @@ type CloudRouterCommand struct {
 	Type *CloudRouterCommandType `json:"type,omitempty"`
 	Uuid *string                 `json:"uuid,omitempty"`
 	// Customer-provided Cloud Router name
-	Name                 *string                     `json:"name,omitempty"`
-	Description          *string                     `json:"description,omitempty"`
-	State                *CloudRouterCommandState    `json:"state,omitempty"`
-	Project              *Project                    `json:"project,omitempty"`
-	Request              *CloudRouterCommandRequest  `json:"request,omitempty"`
-	Response             *CloudRouterCommandResponse `json:"response,omitempty"`
-	ChangeLog            *Changelog                  `json:"changeLog,omitempty"`
+	Name                 *string                            `json:"name,omitempty"`
+	Description          *string                            `json:"description,omitempty"`
+	State                *CloudRouterCommandState           `json:"state,omitempty"`
+	Project              *Project                           `json:"project,omitempty"`
+	Request              *CloudRouterCommandRequestResponse `json:"request,omitempty"`
+	Response             *CloudRouterCommandResponse        `json:"response,omitempty"`
+	ChangeLog            *Changelog                         `json:"changeLog,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -274,9 +274,9 @@ func (o *CloudRouterCommand) SetProject(v Project) {
 }
 
 // GetRequest returns the Request field value if set, zero value otherwise.
-func (o *CloudRouterCommand) GetRequest() CloudRouterCommandRequest {
+func (o *CloudRouterCommand) GetRequest() CloudRouterCommandRequestResponse {
 	if o == nil || IsNil(o.Request) {
-		var ret CloudRouterCommandRequest
+		var ret CloudRouterCommandRequestResponse
 		return ret
 	}
 	return *o.Request
@@ -284,7 +284,7 @@ func (o *CloudRouterCommand) GetRequest() CloudRouterCommandRequest {
 
 // GetRequestOk returns a tuple with the Request field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CloudRouterCommand) GetRequestOk() (*CloudRouterCommandRequest, bool) {
+func (o *CloudRouterCommand) GetRequestOk() (*CloudRouterCommandRequestResponse, bool) {
 	if o == nil || IsNil(o.Request) {
 		return nil, false
 	}
@@ -300,8 +300,8 @@ func (o *CloudRouterCommand) HasRequest() bool {
 	return false
 }
 
-// SetRequest gets a reference to the given CloudRouterCommandRequest and assigns it to the Request field.
-func (o *CloudRouterCommand) SetRequest(v CloudRouterCommandRequest) {
+// SetRequest gets a reference to the given CloudRouterCommandRequestResponse and assigns it to the Request field.
+func (o *CloudRouterCommand) SetRequest(v CloudRouterCommandRequestResponse) {
 	o.Request = &v
 }
 

@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **MarketplaceSubscription** | Pointer to [**MarketplaceSubscription**](MarketplaceSubscription.md) |  | [optional] 
 **ChangeLog** | Pointer to [**Changelog**](Changelog.md) |  | [optional] 
 **Change** | Pointer to [**CloudRouterChange**](CloudRouterChange.md) |  | [optional] 
-**Type** | Pointer to [**CloudRouterPostRequestType**](CloudRouterPostRequestType.md) |  | [optional] 
+**Type** | Pointer to [**CloudRouterPostRequestBaseType**](CloudRouterPostRequestBaseType.md) |  | [optional] 
 **Name** | Pointer to **string** | Customer-provided Cloud Router name | [optional] 
 **Location** | Pointer to [**SimplifiedLocationWithoutIBX**](SimplifiedLocationWithoutIBX.md) |  | [optional] 
 **Package** | Pointer to [**CloudRouterPostRequestPackage**](CloudRouterPostRequestPackage.md) |  | [optional] 
@@ -242,20 +242,20 @@ HasChange returns a boolean if a field has been set.
 
 ### GetType
 
-`func (o *CloudRouter) GetType() CloudRouterPostRequestType`
+`func (o *CloudRouter) GetType() CloudRouterPostRequestBaseType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *CloudRouter) GetTypeOk() (*CloudRouterPostRequestType, bool)`
+`func (o *CloudRouter) GetTypeOk() (*CloudRouterPostRequestBaseType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *CloudRouter) SetType(v CloudRouterPostRequestType)`
+`func (o *CloudRouter) SetType(v CloudRouterPostRequestBaseType)`
 
 SetType sets Type field to given value.
 

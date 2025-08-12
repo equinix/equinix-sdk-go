@@ -119,6 +119,17 @@ func (a *PortsApiService) AddToLagExecute(r ApiAddToLagRequest) (*AllPhysicalPor
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v []Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v []Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
@@ -166,125 +177,21 @@ func (a *PortsApiService) AddToLagExecute(r ApiAddToLagRequest) (*AllPhysicalPor
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCreateBulkPortRequest struct {
-	ctx             context.Context
-	ApiService      *PortsApiService
-	bulkPortRequest *BulkPortRequest
-}
-
-func (r ApiCreateBulkPortRequest) BulkPortRequest(bulkPortRequest BulkPortRequest) ApiCreateBulkPortRequest {
-	r.bulkPortRequest = &bulkPortRequest
-	return r
-}
-
-func (r ApiCreateBulkPortRequest) Execute() (*BulkPort, *http.Response, error) {
-	return r.ApiService.CreateBulkPortExecute(r)
-}
-
-/*
-CreateBulkPort Create Port
-
-Create Port creates Equinix Fabric? Port.<font color="red"> <sup color='red'>Preview</sup></font>
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCreateBulkPortRequest
-*/
-func (a *PortsApiService) CreateBulkPort(ctx context.Context) ApiCreateBulkPortRequest {
-	return ApiCreateBulkPortRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return BulkPort
-func (a *PortsApiService) CreateBulkPortExecute(r ApiCreateBulkPortRequest) (*BulkPort, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *BulkPort
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PortsApiService.CreateBulkPort")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/fabric/v4/ports/bulk"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.bulkPortRequest == nil {
-		return localVarReturnValue, nil, reportError("bulkPortRequest is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.bulkPortRequest
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
 type ApiCreatePortRequest struct {
 	ctx         context.Context
 	ApiService  *PortsApiService
 	portRequest *PortRequest
+	dryRun      *bool
 }
 
 func (r ApiCreatePortRequest) PortRequest(portRequest PortRequest) ApiCreatePortRequest {
 	r.portRequest = &portRequest
+	return r
+}
+
+// option to verify that API calls will succeed
+func (r ApiCreatePortRequest) DryRun(dryRun bool) ApiCreatePortRequest {
+	r.dryRun = &dryRun
 	return r
 }
 
@@ -295,7 +202,7 @@ func (r ApiCreatePortRequest) Execute() (*Port, *http.Response, error) {
 /*
 CreatePort Create Port
 
-Creates Equinix Fabric? Port.
+Creates Equinix Fabric™ Port.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiCreatePortRequest
@@ -332,6 +239,12 @@ func (a *PortsApiService) CreatePortExecute(r ApiCreatePortRequest) (*Port, *htt
 		return localVarReturnValue, nil, reportError("portRequest is required and must be specified")
 	}
 
+	if r.dryRun != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "dryRun", r.dryRun, "form", "")
+	} else {
+		var defaultValue bool = false
+		r.dryRun = &defaultValue
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
 
@@ -384,6 +297,17 @@ func (a *PortsApiService) CreatePortExecute(r ApiCreatePortRequest) (*Port, *htt
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v []Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
 		if localVarHTTPResponse.StatusCode == 500 {
 			var v []Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
@@ -413,6 +337,13 @@ type ApiDeletePortRequest struct {
 	ctx        context.Context
 	ApiService *PortsApiService
 	portId     string
+	dryRun     *bool
+}
+
+// option to verify that API calls will succeed
+func (r ApiDeletePortRequest) DryRun(dryRun bool) ApiDeletePortRequest {
+	r.dryRun = &dryRun
+	return r
 }
 
 func (r ApiDeletePortRequest) Execute() (*Port, *http.Response, error) {
@@ -459,6 +390,12 @@ func (a *PortsApiService) DeletePortExecute(r ApiDeletePortRequest) (*Port, *htt
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.dryRun != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "dryRun", r.dryRun, "form", "")
+	} else {
+		var defaultValue bool = false
+		r.dryRun = &defaultValue
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -776,7 +713,40 @@ func (a *PortsApiService) GetPortsExecute(r ApiGetPortsRequest) (*AllPortsRespon
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v []Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v []Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
 		if localVarHTTPResponse.StatusCode == 403 {
+			var v []Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
 			var v []Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -1053,6 +1023,17 @@ func (a *PortsApiService) SearchPortsExecute(r ApiSearchPortsRequest) (*AllPorts
 			}
 			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v []Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1074,10 +1055,17 @@ type ApiUpdatePortByUuidRequest struct {
 	ApiService          *PortsApiService
 	portId              string
 	portChangeOperation *[]PortChangeOperation
+	dryRun              *bool
 }
 
 func (r ApiUpdatePortByUuidRequest) PortChangeOperation(portChangeOperation []PortChangeOperation) ApiUpdatePortByUuidRequest {
 	r.portChangeOperation = &portChangeOperation
+	return r
+}
+
+// option to verify that API calls will succeed
+func (r ApiUpdatePortByUuidRequest) DryRun(dryRun bool) ApiUpdatePortByUuidRequest {
+	r.dryRun = &dryRun
 	return r
 }
 
@@ -1131,6 +1119,12 @@ func (a *PortsApiService) UpdatePortByUuidExecute(r ApiUpdatePortByUuidRequest) 
 		return localVarReturnValue, nil, reportError("portChangeOperation must have at least 1 elements")
 	}
 
+	if r.dryRun != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "dryRun", r.dryRun, "form", "")
+	} else {
+		var defaultValue bool = false
+		r.dryRun = &defaultValue
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json-patch+json"}
 
@@ -1195,7 +1189,7 @@ func (a *PortsApiService) UpdatePortByUuidExecute(r ApiUpdatePortByUuidRequest) 
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v []Error
+			var v Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

@@ -34,12 +34,18 @@ type CloudEvent struct {
 	Severitynumber *string `json:"severitynumber,omitempty"`
 	// Cloud Event severity text
 	Severitytext *string `json:"severitytext,omitempty"`
+	// Equinix organization identifier
+	Equinixorganization *string `json:"equinixorganization,omitempty"`
 	// Equinix project identifier
 	Equinixproject *string `json:"equinixproject,omitempty"`
 	// Cloud Event auth type
 	Authtype *string `json:"authtype,omitempty"`
 	// Cloud Event user identifier
-	Authid               *string         `json:"authid,omitempty"`
+	Authid *string `json:"authid,omitempty"`
+	// Cloud Event traceparent
+	Traceparent *string `json:"traceparent,omitempty"`
+	// Cloud Event tracestate
+	Tracestate           *string         `json:"tracestate,omitempty"`
 	Data                 *CloudEventData `json:"data,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -351,6 +357,38 @@ func (o *CloudEvent) SetSeveritytext(v string) {
 	o.Severitytext = &v
 }
 
+// GetEquinixorganization returns the Equinixorganization field value if set, zero value otherwise.
+func (o *CloudEvent) GetEquinixorganization() string {
+	if o == nil || IsNil(o.Equinixorganization) {
+		var ret string
+		return ret
+	}
+	return *o.Equinixorganization
+}
+
+// GetEquinixorganizationOk returns a tuple with the Equinixorganization field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CloudEvent) GetEquinixorganizationOk() (*string, bool) {
+	if o == nil || IsNil(o.Equinixorganization) {
+		return nil, false
+	}
+	return o.Equinixorganization, true
+}
+
+// HasEquinixorganization returns a boolean if a field has been set.
+func (o *CloudEvent) HasEquinixorganization() bool {
+	if o != nil && !IsNil(o.Equinixorganization) {
+		return true
+	}
+
+	return false
+}
+
+// SetEquinixorganization gets a reference to the given string and assigns it to the Equinixorganization field.
+func (o *CloudEvent) SetEquinixorganization(v string) {
+	o.Equinixorganization = &v
+}
+
 // GetEquinixproject returns the Equinixproject field value if set, zero value otherwise.
 func (o *CloudEvent) GetEquinixproject() string {
 	if o == nil || IsNil(o.Equinixproject) {
@@ -447,6 +485,70 @@ func (o *CloudEvent) SetAuthid(v string) {
 	o.Authid = &v
 }
 
+// GetTraceparent returns the Traceparent field value if set, zero value otherwise.
+func (o *CloudEvent) GetTraceparent() string {
+	if o == nil || IsNil(o.Traceparent) {
+		var ret string
+		return ret
+	}
+	return *o.Traceparent
+}
+
+// GetTraceparentOk returns a tuple with the Traceparent field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CloudEvent) GetTraceparentOk() (*string, bool) {
+	if o == nil || IsNil(o.Traceparent) {
+		return nil, false
+	}
+	return o.Traceparent, true
+}
+
+// HasTraceparent returns a boolean if a field has been set.
+func (o *CloudEvent) HasTraceparent() bool {
+	if o != nil && !IsNil(o.Traceparent) {
+		return true
+	}
+
+	return false
+}
+
+// SetTraceparent gets a reference to the given string and assigns it to the Traceparent field.
+func (o *CloudEvent) SetTraceparent(v string) {
+	o.Traceparent = &v
+}
+
+// GetTracestate returns the Tracestate field value if set, zero value otherwise.
+func (o *CloudEvent) GetTracestate() string {
+	if o == nil || IsNil(o.Tracestate) {
+		var ret string
+		return ret
+	}
+	return *o.Tracestate
+}
+
+// GetTracestateOk returns a tuple with the Tracestate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CloudEvent) GetTracestateOk() (*string, bool) {
+	if o == nil || IsNil(o.Tracestate) {
+		return nil, false
+	}
+	return o.Tracestate, true
+}
+
+// HasTracestate returns a boolean if a field has been set.
+func (o *CloudEvent) HasTracestate() bool {
+	if o != nil && !IsNil(o.Tracestate) {
+		return true
+	}
+
+	return false
+}
+
+// SetTracestate gets a reference to the given string and assigns it to the Tracestate field.
+func (o *CloudEvent) SetTracestate(v string) {
+	o.Tracestate = &v
+}
+
 // GetData returns the Data field value if set, zero value otherwise.
 func (o *CloudEvent) GetData() CloudEventData {
 	if o == nil || IsNil(o.Data) {
@@ -516,6 +618,9 @@ func (o CloudEvent) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Severitytext) {
 		toSerialize["severitytext"] = o.Severitytext
 	}
+	if !IsNil(o.Equinixorganization) {
+		toSerialize["equinixorganization"] = o.Equinixorganization
+	}
 	if !IsNil(o.Equinixproject) {
 		toSerialize["equinixproject"] = o.Equinixproject
 	}
@@ -524,6 +629,12 @@ func (o CloudEvent) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Authid) {
 		toSerialize["authid"] = o.Authid
+	}
+	if !IsNil(o.Traceparent) {
+		toSerialize["traceparent"] = o.Traceparent
+	}
+	if !IsNil(o.Tracestate) {
+		toSerialize["tracestate"] = o.Tracestate
 	}
 	if !IsNil(o.Data) {
 		toSerialize["data"] = o.Data
@@ -559,9 +670,12 @@ func (o *CloudEvent) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "datacontenttype")
 		delete(additionalProperties, "severitynumber")
 		delete(additionalProperties, "severitytext")
+		delete(additionalProperties, "equinixorganization")
 		delete(additionalProperties, "equinixproject")
 		delete(additionalProperties, "authtype")
 		delete(additionalProperties, "authid")
+		delete(additionalProperties, "traceparent")
+		delete(additionalProperties, "tracestate")
 		delete(additionalProperties, "data")
 		o.AdditionalProperties = additionalProperties
 	}

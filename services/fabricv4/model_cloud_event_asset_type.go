@@ -24,6 +24,7 @@ const (
 	CLOUDEVENTASSETTYPE_NETWORKS       CloudEventAssetType = "networks"
 	CLOUDEVENTASSETTYPE_PROJECTS       CloudEventAssetType = "projects"
 	CLOUDEVENTASSETTYPE_ORGANIZATIONS  CloudEventAssetType = "organizations"
+	CLOUDEVENTASSETTYPE_TIME_SERVICES  CloudEventAssetType = "timeServices"
 )
 
 // All allowed values of CloudEventAssetType enum
@@ -35,6 +36,7 @@ var AllowedCloudEventAssetTypeEnumValues = []CloudEventAssetType{
 	"networks",
 	"projects",
 	"organizations",
+	"timeServices",
 }
 
 func (v *CloudEventAssetType) UnmarshalJSON(src []byte) error {

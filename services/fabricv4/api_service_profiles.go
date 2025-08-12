@@ -37,7 +37,7 @@ func (r ApiCreateServiceProfileRequest) Execute() (*ServiceProfile, *http.Respon
 /*
 CreateServiceProfile Create Profile
 
-Create Service Profile creates Equinix Fabric? Service Profile.
+Create Service Profile creates Equinix Fabric™ Service Profile.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiCreateServiceProfileRequest

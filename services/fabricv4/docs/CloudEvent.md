@@ -13,9 +13,12 @@ Name | Type | Description | Notes
 **Datacontenttype** | Pointer to **string** | Cloud Event data content type | [optional] 
 **Severitynumber** | Pointer to **string** | Cloud Event severity number | [optional] 
 **Severitytext** | Pointer to **string** | Cloud Event severity text | [optional] 
+**Equinixorganization** | Pointer to **string** | Equinix organization identifier | [optional] 
 **Equinixproject** | Pointer to **string** | Equinix project identifier | [optional] 
 **Authtype** | Pointer to **string** | Cloud Event auth type | [optional] 
 **Authid** | Pointer to **string** | Cloud Event user identifier | [optional] 
+**Traceparent** | Pointer to **string** | Cloud Event traceparent | [optional] 
+**Tracestate** | Pointer to **string** | Cloud Event tracestate | [optional] 
 **Data** | Pointer to [**CloudEventData**](CloudEventData.md) |  | [optional] 
 
 ## Methods
@@ -262,6 +265,31 @@ SetSeveritytext sets Severitytext field to given value.
 
 HasSeveritytext returns a boolean if a field has been set.
 
+### GetEquinixorganization
+
+`func (o *CloudEvent) GetEquinixorganization() string`
+
+GetEquinixorganization returns the Equinixorganization field if non-nil, zero value otherwise.
+
+### GetEquinixorganizationOk
+
+`func (o *CloudEvent) GetEquinixorganizationOk() (*string, bool)`
+
+GetEquinixorganizationOk returns a tuple with the Equinixorganization field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEquinixorganization
+
+`func (o *CloudEvent) SetEquinixorganization(v string)`
+
+SetEquinixorganization sets Equinixorganization field to given value.
+
+### HasEquinixorganization
+
+`func (o *CloudEvent) HasEquinixorganization() bool`
+
+HasEquinixorganization returns a boolean if a field has been set.
+
 ### GetEquinixproject
 
 `func (o *CloudEvent) GetEquinixproject() string`
@@ -336,6 +364,56 @@ SetAuthid sets Authid field to given value.
 `func (o *CloudEvent) HasAuthid() bool`
 
 HasAuthid returns a boolean if a field has been set.
+
+### GetTraceparent
+
+`func (o *CloudEvent) GetTraceparent() string`
+
+GetTraceparent returns the Traceparent field if non-nil, zero value otherwise.
+
+### GetTraceparentOk
+
+`func (o *CloudEvent) GetTraceparentOk() (*string, bool)`
+
+GetTraceparentOk returns a tuple with the Traceparent field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTraceparent
+
+`func (o *CloudEvent) SetTraceparent(v string)`
+
+SetTraceparent sets Traceparent field to given value.
+
+### HasTraceparent
+
+`func (o *CloudEvent) HasTraceparent() bool`
+
+HasTraceparent returns a boolean if a field has been set.
+
+### GetTracestate
+
+`func (o *CloudEvent) GetTracestate() string`
+
+GetTracestate returns the Tracestate field if non-nil, zero value otherwise.
+
+### GetTracestateOk
+
+`func (o *CloudEvent) GetTracestateOk() (*string, bool)`
+
+GetTracestateOk returns a tuple with the Tracestate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTracestate
+
+`func (o *CloudEvent) SetTracestate(v string)`
+
+SetTracestate sets Tracestate field to given value.
+
+### HasTracestate
+
+`func (o *CloudEvent) HasTracestate() bool`
+
+HasTracestate returns a boolean if a field has been set.
 
 ### GetData
 

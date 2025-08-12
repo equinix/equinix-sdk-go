@@ -19,14 +19,14 @@ type MetricAssetType string
 const (
 	METRICASSETTYPE_PORTS       MetricAssetType = "ports"
 	METRICASSETTYPE_CONNECTIONS MetricAssetType = "connections"
-	METRICASSETTYPE_ROUTERS     MetricAssetType = "routers"
+	METRICASSETTYPE_METROS      MetricAssetType = "metros"
 )
 
 // All allowed values of MetricAssetType enum
 var AllowedMetricAssetTypeEnumValues = []MetricAssetType{
 	"ports",
 	"connections",
-	"routers",
+	"metros",
 }
 
 func (v *MetricAssetType) UnmarshalJSON(src []byte) error {

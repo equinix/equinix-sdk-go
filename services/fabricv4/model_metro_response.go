@@ -14,7 +14,7 @@ import (
 // checks if the MetroResponse type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &MetroResponse{}
 
-// MetroResponse GET Metros retrieves all Equinix? Fabric? metros, as well as latency data for each location.This performance data helps network planning engineers and administrators make strategic decisions about port locations and traffic routes.
+// MetroResponse GET Metros retrieves all Equinix® Fabric™ metros, as well as latency data for each location.This performance data helps network planning engineers and administrators make strategic decisions about port locations and traffic routes.
 type MetroResponse struct {
 	Pagination *Pagination `json:"pagination,omitempty"`
 	// List of Fabric Metros.

@@ -12,37 +12,33 @@ import (
 	"fmt"
 )
 
-// checks if the CloudRouterCommandRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CloudRouterCommandRequest{}
+// checks if the CloudRouterCommandRequestPayload type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CloudRouterCommandRequestPayload{}
 
-// CloudRouterCommandRequest Fabric Cloud Router Command Request
-type CloudRouterCommandRequest struct {
-	// Fabric Cloud Router Ping Command Destination
+// CloudRouterCommandRequestPayload Fabric Cloud Router Command Request
+type CloudRouterCommandRequestPayload struct {
+	// Fabric Cloud Router Ping or Traceroute Command Destination
 	Destination      string                              `json:"destination"`
 	SourceConnection CloudRouterCommandRequestConnection `json:"sourceConnection"`
-	// Timeout in seconds for Fabric Cloud Router Ping or Traceroute Command
+	// Timeout in seconds for Fabric Cloud Router Command:   - For `PING_COMMAND`: Packet timeout duration. The default value is 5.   - For `TRACEROUTE_COMMAND`: Probe timeout duration.     The default value is 2 and it is not configurable.
 	Timeout *int32 `json:"timeout,omitempty"`
-	// Fabric Cloud Router Ping Command DataBytes
+	// Ping Command DataBytes.  This field is only applicable for commands of type `PING_COMMAND`.
 	DataBytes *int32 `json:"dataBytes,omitempty"`
-	// Time in milliseconds between sending each packet for Fabric Cloud Router Ping Command
-	Interval *int32 `json:"interval,omitempty"`
-	// Total number of ping requests for Fabric Cloud Router Ping Command
-	Count *int32 `json:"count,omitempty"`
-	// Number of probes to send for Fabric Cloud Router Traceroute Command
+	// Number of probes for Fabric Cloud Router Traceroute Command. This field is only applicable for commands of type `TRACEROUTE_COMMAND` and is not configurable.
 	Probes *int32 `json:"probes,omitempty"`
-	// Maximum number of hops for Fabric Cloud Router Traceroute Command
+	// Maximum number of hops for the traceroute command. This field is only applicable for commands of type `TRACEROUTE_COMMAND`.
 	HopsMax              *int32 `json:"hopsMax,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _CloudRouterCommandRequest CloudRouterCommandRequest
+type _CloudRouterCommandRequestPayload CloudRouterCommandRequestPayload
 
-// NewCloudRouterCommandRequest instantiates a new CloudRouterCommandRequest object
+// NewCloudRouterCommandRequestPayload instantiates a new CloudRouterCommandRequestPayload object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCloudRouterCommandRequest(destination string, sourceConnection CloudRouterCommandRequestConnection) *CloudRouterCommandRequest {
-	this := CloudRouterCommandRequest{}
+func NewCloudRouterCommandRequestPayload(destination string, sourceConnection CloudRouterCommandRequestConnection) *CloudRouterCommandRequestPayload {
+	this := CloudRouterCommandRequestPayload{}
 	this.Destination = destination
 	this.SourceConnection = sourceConnection
 	var dataBytes int32 = 64
@@ -54,11 +50,11 @@ func NewCloudRouterCommandRequest(destination string, sourceConnection CloudRout
 	return &this
 }
 
-// NewCloudRouterCommandRequestWithDefaults instantiates a new CloudRouterCommandRequest object
+// NewCloudRouterCommandRequestPayloadWithDefaults instantiates a new CloudRouterCommandRequestPayload object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewCloudRouterCommandRequestWithDefaults() *CloudRouterCommandRequest {
-	this := CloudRouterCommandRequest{}
+func NewCloudRouterCommandRequestPayloadWithDefaults() *CloudRouterCommandRequestPayload {
+	this := CloudRouterCommandRequestPayload{}
 	var dataBytes int32 = 64
 	this.DataBytes = &dataBytes
 	var probes int32 = 3
@@ -69,7 +65,7 @@ func NewCloudRouterCommandRequestWithDefaults() *CloudRouterCommandRequest {
 }
 
 // GetDestination returns the Destination field value
-func (o *CloudRouterCommandRequest) GetDestination() string {
+func (o *CloudRouterCommandRequestPayload) GetDestination() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -80,7 +76,7 @@ func (o *CloudRouterCommandRequest) GetDestination() string {
 
 // GetDestinationOk returns a tuple with the Destination field value
 // and a boolean to check if the value has been set.
-func (o *CloudRouterCommandRequest) GetDestinationOk() (*string, bool) {
+func (o *CloudRouterCommandRequestPayload) GetDestinationOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -88,12 +84,12 @@ func (o *CloudRouterCommandRequest) GetDestinationOk() (*string, bool) {
 }
 
 // SetDestination sets field value
-func (o *CloudRouterCommandRequest) SetDestination(v string) {
+func (o *CloudRouterCommandRequestPayload) SetDestination(v string) {
 	o.Destination = v
 }
 
 // GetSourceConnection returns the SourceConnection field value
-func (o *CloudRouterCommandRequest) GetSourceConnection() CloudRouterCommandRequestConnection {
+func (o *CloudRouterCommandRequestPayload) GetSourceConnection() CloudRouterCommandRequestConnection {
 	if o == nil {
 		var ret CloudRouterCommandRequestConnection
 		return ret
@@ -104,7 +100,7 @@ func (o *CloudRouterCommandRequest) GetSourceConnection() CloudRouterCommandRequ
 
 // GetSourceConnectionOk returns a tuple with the SourceConnection field value
 // and a boolean to check if the value has been set.
-func (o *CloudRouterCommandRequest) GetSourceConnectionOk() (*CloudRouterCommandRequestConnection, bool) {
+func (o *CloudRouterCommandRequestPayload) GetSourceConnectionOk() (*CloudRouterCommandRequestConnection, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -112,12 +108,12 @@ func (o *CloudRouterCommandRequest) GetSourceConnectionOk() (*CloudRouterCommand
 }
 
 // SetSourceConnection sets field value
-func (o *CloudRouterCommandRequest) SetSourceConnection(v CloudRouterCommandRequestConnection) {
+func (o *CloudRouterCommandRequestPayload) SetSourceConnection(v CloudRouterCommandRequestConnection) {
 	o.SourceConnection = v
 }
 
 // GetTimeout returns the Timeout field value if set, zero value otherwise.
-func (o *CloudRouterCommandRequest) GetTimeout() int32 {
+func (o *CloudRouterCommandRequestPayload) GetTimeout() int32 {
 	if o == nil || IsNil(o.Timeout) {
 		var ret int32
 		return ret
@@ -127,7 +123,7 @@ func (o *CloudRouterCommandRequest) GetTimeout() int32 {
 
 // GetTimeoutOk returns a tuple with the Timeout field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CloudRouterCommandRequest) GetTimeoutOk() (*int32, bool) {
+func (o *CloudRouterCommandRequestPayload) GetTimeoutOk() (*int32, bool) {
 	if o == nil || IsNil(o.Timeout) {
 		return nil, false
 	}
@@ -135,7 +131,7 @@ func (o *CloudRouterCommandRequest) GetTimeoutOk() (*int32, bool) {
 }
 
 // HasTimeout returns a boolean if a field has been set.
-func (o *CloudRouterCommandRequest) HasTimeout() bool {
+func (o *CloudRouterCommandRequestPayload) HasTimeout() bool {
 	if o != nil && !IsNil(o.Timeout) {
 		return true
 	}
@@ -144,12 +140,12 @@ func (o *CloudRouterCommandRequest) HasTimeout() bool {
 }
 
 // SetTimeout gets a reference to the given int32 and assigns it to the Timeout field.
-func (o *CloudRouterCommandRequest) SetTimeout(v int32) {
+func (o *CloudRouterCommandRequestPayload) SetTimeout(v int32) {
 	o.Timeout = &v
 }
 
 // GetDataBytes returns the DataBytes field value if set, zero value otherwise.
-func (o *CloudRouterCommandRequest) GetDataBytes() int32 {
+func (o *CloudRouterCommandRequestPayload) GetDataBytes() int32 {
 	if o == nil || IsNil(o.DataBytes) {
 		var ret int32
 		return ret
@@ -159,7 +155,7 @@ func (o *CloudRouterCommandRequest) GetDataBytes() int32 {
 
 // GetDataBytesOk returns a tuple with the DataBytes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CloudRouterCommandRequest) GetDataBytesOk() (*int32, bool) {
+func (o *CloudRouterCommandRequestPayload) GetDataBytesOk() (*int32, bool) {
 	if o == nil || IsNil(o.DataBytes) {
 		return nil, false
 	}
@@ -167,7 +163,7 @@ func (o *CloudRouterCommandRequest) GetDataBytesOk() (*int32, bool) {
 }
 
 // HasDataBytes returns a boolean if a field has been set.
-func (o *CloudRouterCommandRequest) HasDataBytes() bool {
+func (o *CloudRouterCommandRequestPayload) HasDataBytes() bool {
 	if o != nil && !IsNil(o.DataBytes) {
 		return true
 	}
@@ -176,76 +172,12 @@ func (o *CloudRouterCommandRequest) HasDataBytes() bool {
 }
 
 // SetDataBytes gets a reference to the given int32 and assigns it to the DataBytes field.
-func (o *CloudRouterCommandRequest) SetDataBytes(v int32) {
+func (o *CloudRouterCommandRequestPayload) SetDataBytes(v int32) {
 	o.DataBytes = &v
 }
 
-// GetInterval returns the Interval field value if set, zero value otherwise.
-func (o *CloudRouterCommandRequest) GetInterval() int32 {
-	if o == nil || IsNil(o.Interval) {
-		var ret int32
-		return ret
-	}
-	return *o.Interval
-}
-
-// GetIntervalOk returns a tuple with the Interval field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CloudRouterCommandRequest) GetIntervalOk() (*int32, bool) {
-	if o == nil || IsNil(o.Interval) {
-		return nil, false
-	}
-	return o.Interval, true
-}
-
-// HasInterval returns a boolean if a field has been set.
-func (o *CloudRouterCommandRequest) HasInterval() bool {
-	if o != nil && !IsNil(o.Interval) {
-		return true
-	}
-
-	return false
-}
-
-// SetInterval gets a reference to the given int32 and assigns it to the Interval field.
-func (o *CloudRouterCommandRequest) SetInterval(v int32) {
-	o.Interval = &v
-}
-
-// GetCount returns the Count field value if set, zero value otherwise.
-func (o *CloudRouterCommandRequest) GetCount() int32 {
-	if o == nil || IsNil(o.Count) {
-		var ret int32
-		return ret
-	}
-	return *o.Count
-}
-
-// GetCountOk returns a tuple with the Count field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CloudRouterCommandRequest) GetCountOk() (*int32, bool) {
-	if o == nil || IsNil(o.Count) {
-		return nil, false
-	}
-	return o.Count, true
-}
-
-// HasCount returns a boolean if a field has been set.
-func (o *CloudRouterCommandRequest) HasCount() bool {
-	if o != nil && !IsNil(o.Count) {
-		return true
-	}
-
-	return false
-}
-
-// SetCount gets a reference to the given int32 and assigns it to the Count field.
-func (o *CloudRouterCommandRequest) SetCount(v int32) {
-	o.Count = &v
-}
-
 // GetProbes returns the Probes field value if set, zero value otherwise.
-func (o *CloudRouterCommandRequest) GetProbes() int32 {
+func (o *CloudRouterCommandRequestPayload) GetProbes() int32 {
 	if o == nil || IsNil(o.Probes) {
 		var ret int32
 		return ret
@@ -255,7 +187,7 @@ func (o *CloudRouterCommandRequest) GetProbes() int32 {
 
 // GetProbesOk returns a tuple with the Probes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CloudRouterCommandRequest) GetProbesOk() (*int32, bool) {
+func (o *CloudRouterCommandRequestPayload) GetProbesOk() (*int32, bool) {
 	if o == nil || IsNil(o.Probes) {
 		return nil, false
 	}
@@ -263,7 +195,7 @@ func (o *CloudRouterCommandRequest) GetProbesOk() (*int32, bool) {
 }
 
 // HasProbes returns a boolean if a field has been set.
-func (o *CloudRouterCommandRequest) HasProbes() bool {
+func (o *CloudRouterCommandRequestPayload) HasProbes() bool {
 	if o != nil && !IsNil(o.Probes) {
 		return true
 	}
@@ -272,12 +204,12 @@ func (o *CloudRouterCommandRequest) HasProbes() bool {
 }
 
 // SetProbes gets a reference to the given int32 and assigns it to the Probes field.
-func (o *CloudRouterCommandRequest) SetProbes(v int32) {
+func (o *CloudRouterCommandRequestPayload) SetProbes(v int32) {
 	o.Probes = &v
 }
 
 // GetHopsMax returns the HopsMax field value if set, zero value otherwise.
-func (o *CloudRouterCommandRequest) GetHopsMax() int32 {
+func (o *CloudRouterCommandRequestPayload) GetHopsMax() int32 {
 	if o == nil || IsNil(o.HopsMax) {
 		var ret int32
 		return ret
@@ -287,7 +219,7 @@ func (o *CloudRouterCommandRequest) GetHopsMax() int32 {
 
 // GetHopsMaxOk returns a tuple with the HopsMax field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CloudRouterCommandRequest) GetHopsMaxOk() (*int32, bool) {
+func (o *CloudRouterCommandRequestPayload) GetHopsMaxOk() (*int32, bool) {
 	if o == nil || IsNil(o.HopsMax) {
 		return nil, false
 	}
@@ -295,7 +227,7 @@ func (o *CloudRouterCommandRequest) GetHopsMaxOk() (*int32, bool) {
 }
 
 // HasHopsMax returns a boolean if a field has been set.
-func (o *CloudRouterCommandRequest) HasHopsMax() bool {
+func (o *CloudRouterCommandRequestPayload) HasHopsMax() bool {
 	if o != nil && !IsNil(o.HopsMax) {
 		return true
 	}
@@ -304,11 +236,11 @@ func (o *CloudRouterCommandRequest) HasHopsMax() bool {
 }
 
 // SetHopsMax gets a reference to the given int32 and assigns it to the HopsMax field.
-func (o *CloudRouterCommandRequest) SetHopsMax(v int32) {
+func (o *CloudRouterCommandRequestPayload) SetHopsMax(v int32) {
 	o.HopsMax = &v
 }
 
-func (o CloudRouterCommandRequest) MarshalJSON() ([]byte, error) {
+func (o CloudRouterCommandRequestPayload) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -316,7 +248,7 @@ func (o CloudRouterCommandRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o CloudRouterCommandRequest) ToMap() (map[string]interface{}, error) {
+func (o CloudRouterCommandRequestPayload) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["destination"] = o.Destination
 	toSerialize["sourceConnection"] = o.SourceConnection
@@ -325,12 +257,6 @@ func (o CloudRouterCommandRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.DataBytes) {
 		toSerialize["dataBytes"] = o.DataBytes
-	}
-	if !IsNil(o.Interval) {
-		toSerialize["interval"] = o.Interval
-	}
-	if !IsNil(o.Count) {
-		toSerialize["count"] = o.Count
 	}
 	if !IsNil(o.Probes) {
 		toSerialize["probes"] = o.Probes
@@ -346,7 +272,7 @@ func (o CloudRouterCommandRequest) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *CloudRouterCommandRequest) UnmarshalJSON(data []byte) (err error) {
+func (o *CloudRouterCommandRequestPayload) UnmarshalJSON(data []byte) (err error) {
 	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
@@ -369,15 +295,15 @@ func (o *CloudRouterCommandRequest) UnmarshalJSON(data []byte) (err error) {
 		}
 	}
 
-	varCloudRouterCommandRequest := _CloudRouterCommandRequest{}
+	varCloudRouterCommandRequestPayload := _CloudRouterCommandRequestPayload{}
 
-	err = json.Unmarshal(data, &varCloudRouterCommandRequest)
+	err = json.Unmarshal(data, &varCloudRouterCommandRequestPayload)
 
 	if err != nil {
 		return err
 	}
 
-	*o = CloudRouterCommandRequest(varCloudRouterCommandRequest)
+	*o = CloudRouterCommandRequestPayload(varCloudRouterCommandRequestPayload)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -386,8 +312,6 @@ func (o *CloudRouterCommandRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "sourceConnection")
 		delete(additionalProperties, "timeout")
 		delete(additionalProperties, "dataBytes")
-		delete(additionalProperties, "interval")
-		delete(additionalProperties, "count")
 		delete(additionalProperties, "probes")
 		delete(additionalProperties, "hopsMax")
 		o.AdditionalProperties = additionalProperties
@@ -396,38 +320,38 @@ func (o *CloudRouterCommandRequest) UnmarshalJSON(data []byte) (err error) {
 	return err
 }
 
-type NullableCloudRouterCommandRequest struct {
-	value *CloudRouterCommandRequest
+type NullableCloudRouterCommandRequestPayload struct {
+	value *CloudRouterCommandRequestPayload
 	isSet bool
 }
 
-func (v NullableCloudRouterCommandRequest) Get() *CloudRouterCommandRequest {
+func (v NullableCloudRouterCommandRequestPayload) Get() *CloudRouterCommandRequestPayload {
 	return v.value
 }
 
-func (v *NullableCloudRouterCommandRequest) Set(val *CloudRouterCommandRequest) {
+func (v *NullableCloudRouterCommandRequestPayload) Set(val *CloudRouterCommandRequestPayload) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableCloudRouterCommandRequest) IsSet() bool {
+func (v NullableCloudRouterCommandRequestPayload) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableCloudRouterCommandRequest) Unset() {
+func (v *NullableCloudRouterCommandRequestPayload) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableCloudRouterCommandRequest(val *CloudRouterCommandRequest) *NullableCloudRouterCommandRequest {
-	return &NullableCloudRouterCommandRequest{value: val, isSet: true}
+func NewNullableCloudRouterCommandRequestPayload(val *CloudRouterCommandRequestPayload) *NullableCloudRouterCommandRequestPayload {
+	return &NullableCloudRouterCommandRequestPayload{value: val, isSet: true}
 }
 
-func (v NullableCloudRouterCommandRequest) MarshalJSON() ([]byte, error) {
+func (v NullableCloudRouterCommandRequestPayload) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableCloudRouterCommandRequest) UnmarshalJSON(src []byte) error {
+func (v *NullableCloudRouterCommandRequestPayload) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

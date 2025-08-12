@@ -8,13 +8,13 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** | Customer-provided Cloud Router Command name | [optional] 
 **Description** | Pointer to **string** | Customer-provided Cloud Router Command description | [optional] 
 **Project** | [**Project**](Project.md) |  | 
-**Request** | [**CloudRouterCommandRequest**](CloudRouterCommandRequest.md) |  | 
+**Request** | [**CloudRouterCommandRequestPayload**](CloudRouterCommandRequestPayload.md) |  | 
 
 ## Methods
 
 ### NewCloudRouterCommandPostRequest
 
-`func NewCloudRouterCommandPostRequest(type_ CloudRouterCommandType, project Project, request CloudRouterCommandRequest, ) *CloudRouterCommandPostRequest`
+`func NewCloudRouterCommandPostRequest(type_ CloudRouterCommandType, project Project, request CloudRouterCommandRequestPayload, ) *CloudRouterCommandPostRequest`
 
 NewCloudRouterCommandPostRequest instantiates a new CloudRouterCommandPostRequest object
 This constructor will assign default values to properties that have it defined,
@@ -121,20 +121,20 @@ SetProject sets Project field to given value.
 
 ### GetRequest
 
-`func (o *CloudRouterCommandPostRequest) GetRequest() CloudRouterCommandRequest`
+`func (o *CloudRouterCommandPostRequest) GetRequest() CloudRouterCommandRequestPayload`
 
 GetRequest returns the Request field if non-nil, zero value otherwise.
 
 ### GetRequestOk
 
-`func (o *CloudRouterCommandPostRequest) GetRequestOk() (*CloudRouterCommandRequest, bool)`
+`func (o *CloudRouterCommandPostRequest) GetRequestOk() (*CloudRouterCommandRequestPayload, bool)`
 
 GetRequestOk returns a tuple with the Request field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRequest
 
-`func (o *CloudRouterCommandPostRequest) SetRequest(v CloudRouterCommandRequest)`
+`func (o *CloudRouterCommandPostRequest) SetRequest(v CloudRouterCommandRequestPayload)`
 
 SetRequest sets Request field to given value.
 

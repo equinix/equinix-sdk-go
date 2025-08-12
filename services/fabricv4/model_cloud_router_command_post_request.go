@@ -21,9 +21,9 @@ type CloudRouterCommandPostRequest struct {
 	// Customer-provided Cloud Router Command name
 	Name *string `json:"name,omitempty"`
 	// Customer-provided Cloud Router Command description
-	Description          *string                   `json:"description,omitempty"`
-	Project              Project                   `json:"project"`
-	Request              CloudRouterCommandRequest `json:"request"`
+	Description          *string                          `json:"description,omitempty"`
+	Project              Project                          `json:"project"`
+	Request              CloudRouterCommandRequestPayload `json:"request"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -33,7 +33,7 @@ type _CloudRouterCommandPostRequest CloudRouterCommandPostRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCloudRouterCommandPostRequest(type_ CloudRouterCommandType, project Project, request CloudRouterCommandRequest) *CloudRouterCommandPostRequest {
+func NewCloudRouterCommandPostRequest(type_ CloudRouterCommandType, project Project, request CloudRouterCommandRequestPayload) *CloudRouterCommandPostRequest {
 	this := CloudRouterCommandPostRequest{}
 	this.Type = type_
 	this.Project = project
@@ -162,9 +162,9 @@ func (o *CloudRouterCommandPostRequest) SetProject(v Project) {
 }
 
 // GetRequest returns the Request field value
-func (o *CloudRouterCommandPostRequest) GetRequest() CloudRouterCommandRequest {
+func (o *CloudRouterCommandPostRequest) GetRequest() CloudRouterCommandRequestPayload {
 	if o == nil {
-		var ret CloudRouterCommandRequest
+		var ret CloudRouterCommandRequestPayload
 		return ret
 	}
 
@@ -173,7 +173,7 @@ func (o *CloudRouterCommandPostRequest) GetRequest() CloudRouterCommandRequest {
 
 // GetRequestOk returns a tuple with the Request field value
 // and a boolean to check if the value has been set.
-func (o *CloudRouterCommandPostRequest) GetRequestOk() (*CloudRouterCommandRequest, bool) {
+func (o *CloudRouterCommandPostRequest) GetRequestOk() (*CloudRouterCommandRequestPayload, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -181,7 +181,7 @@ func (o *CloudRouterCommandPostRequest) GetRequestOk() (*CloudRouterCommandReque
 }
 
 // SetRequest sets field value
-func (o *CloudRouterCommandPostRequest) SetRequest(v CloudRouterCommandRequest) {
+func (o *CloudRouterCommandPostRequest) SetRequest(v CloudRouterCommandRequestPayload) {
 	o.Request = v
 }
 

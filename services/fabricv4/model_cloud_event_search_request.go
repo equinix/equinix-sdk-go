@@ -16,9 +16,8 @@ var _ MappedNullable = &CloudEventSearchRequest{}
 
 // CloudEventSearchRequest Search requests containing criteria
 type CloudEventSearchRequest struct {
-	Filter               *CloudEventFilters  `json:"filter,omitempty"`
-	Pagination           *PaginationRequest  `json:"pagination,omitempty"`
-	Sort                 []CloudEventFilters `json:"sort,omitempty"`
+	Filter               *CloudEventFilters `json:"filter,omitempty"`
+	Pagination           *PaginationRequest `json:"pagination,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -105,38 +104,6 @@ func (o *CloudEventSearchRequest) SetPagination(v PaginationRequest) {
 	o.Pagination = &v
 }
 
-// GetSort returns the Sort field value if set, zero value otherwise.
-func (o *CloudEventSearchRequest) GetSort() []CloudEventFilters {
-	if o == nil || IsNil(o.Sort) {
-		var ret []CloudEventFilters
-		return ret
-	}
-	return o.Sort
-}
-
-// GetSortOk returns a tuple with the Sort field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CloudEventSearchRequest) GetSortOk() ([]CloudEventFilters, bool) {
-	if o == nil || IsNil(o.Sort) {
-		return nil, false
-	}
-	return o.Sort, true
-}
-
-// HasSort returns a boolean if a field has been set.
-func (o *CloudEventSearchRequest) HasSort() bool {
-	if o != nil && !IsNil(o.Sort) {
-		return true
-	}
-
-	return false
-}
-
-// SetSort gets a reference to the given []CloudEventFilters and assigns it to the Sort field.
-func (o *CloudEventSearchRequest) SetSort(v []CloudEventFilters) {
-	o.Sort = v
-}
-
 func (o CloudEventSearchRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -152,9 +119,6 @@ func (o CloudEventSearchRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Pagination) {
 		toSerialize["pagination"] = o.Pagination
-	}
-	if !IsNil(o.Sort) {
-		toSerialize["sort"] = o.Sort
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -180,7 +144,6 @@ func (o *CloudEventSearchRequest) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "filter")
 		delete(additionalProperties, "pagination")
-		delete(additionalProperties, "sort")
 		o.AdditionalProperties = additionalProperties
 	}
 

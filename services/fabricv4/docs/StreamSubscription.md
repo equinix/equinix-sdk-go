@@ -14,8 +14,8 @@ Name | Type | Description | Notes
 **MetricSelector** | Pointer to [**StreamSubscriptionSelector**](StreamSubscriptionSelector.md) |  | [optional] 
 **EventSelector** | Pointer to [**StreamSubscriptionSelector**](StreamSubscriptionSelector.md) |  | [optional] 
 **Sink** | Pointer to [**StreamSubscriptionSink**](StreamSubscriptionSink.md) |  | [optional] 
+**Operation** | Pointer to [**StreamSubscriptionOperation**](StreamSubscriptionOperation.md) |  | [optional] 
 **ChangeLog** | Pointer to [**Changelog**](Changelog.md) |  | [optional] 
-**LastErrorMessage** | Pointer to **string** | HTTP response from sink type if error occurred | [optional] 
 
 ## Methods
 
@@ -286,6 +286,31 @@ SetSink sets Sink field to given value.
 
 HasSink returns a boolean if a field has been set.
 
+### GetOperation
+
+`func (o *StreamSubscription) GetOperation() StreamSubscriptionOperation`
+
+GetOperation returns the Operation field if non-nil, zero value otherwise.
+
+### GetOperationOk
+
+`func (o *StreamSubscription) GetOperationOk() (*StreamSubscriptionOperation, bool)`
+
+GetOperationOk returns a tuple with the Operation field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOperation
+
+`func (o *StreamSubscription) SetOperation(v StreamSubscriptionOperation)`
+
+SetOperation sets Operation field to given value.
+
+### HasOperation
+
+`func (o *StreamSubscription) HasOperation() bool`
+
+HasOperation returns a boolean if a field has been set.
+
 ### GetChangeLog
 
 `func (o *StreamSubscription) GetChangeLog() Changelog`
@@ -310,31 +335,6 @@ SetChangeLog sets ChangeLog field to given value.
 `func (o *StreamSubscription) HasChangeLog() bool`
 
 HasChangeLog returns a boolean if a field has been set.
-
-### GetLastErrorMessage
-
-`func (o *StreamSubscription) GetLastErrorMessage() string`
-
-GetLastErrorMessage returns the LastErrorMessage field if non-nil, zero value otherwise.
-
-### GetLastErrorMessageOk
-
-`func (o *StreamSubscription) GetLastErrorMessageOk() (*string, bool)`
-
-GetLastErrorMessageOk returns a tuple with the LastErrorMessage field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLastErrorMessage
-
-`func (o *StreamSubscription) SetLastErrorMessage(v string)`
-
-SetLastErrorMessage sets LastErrorMessage field to given value.
-
-### HasLastErrorMessage
-
-`func (o *StreamSubscription) HasLastErrorMessage() bool`
-
-HasLastErrorMessage returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
