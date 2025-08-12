@@ -1,0 +1,15 @@
+--- spec/services/fabricv4/oas3.patched/openapi.yaml
++++ spec/services/fabricv4/oas3.patched/openapi.yaml
+@@ -15087,12 +15087,6 @@ components:
+             $ref: "#/components/schemas/RouteAggregationRulesBase"
+       description: Create Route Aggregation Rule POST request
+     CloudRouterPostRequest:
+-      required:
+-        - location
+-        - name
+-        - notification
+-        - package
+-        - type
+       type: object
+       properties:
+         type:
