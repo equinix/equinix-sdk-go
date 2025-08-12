@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** |  | [optional] 
 **State** | Pointer to [**CloudRouterCommandState**](CloudRouterCommandState.md) |  | [optional] 
 **Project** | Pointer to [**Project**](Project.md) |  | [optional] 
-**Request** | Pointer to [**CloudRouterCommandRequest**](CloudRouterCommandRequest.md) |  | [optional] 
+**Request** | Pointer to [**CloudRouterCommandRequestResponse**](CloudRouterCommandRequestResponse.md) |  | [optional] 
 **Response** | Pointer to [**CloudRouterCommandResponse**](CloudRouterCommandResponse.md) |  | [optional] 
 **ChangeLog** | Pointer to [**Changelog**](Changelog.md) |  | [optional] 
 
@@ -211,20 +211,20 @@ HasProject returns a boolean if a field has been set.
 
 ### GetRequest
 
-`func (o *CloudRouterCommand) GetRequest() CloudRouterCommandRequest`
+`func (o *CloudRouterCommand) GetRequest() CloudRouterCommandRequestResponse`
 
 GetRequest returns the Request field if non-nil, zero value otherwise.
 
 ### GetRequestOk
 
-`func (o *CloudRouterCommand) GetRequestOk() (*CloudRouterCommandRequest, bool)`
+`func (o *CloudRouterCommand) GetRequestOk() (*CloudRouterCommandRequestResponse, bool)`
 
 GetRequestOk returns a tuple with the Request field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRequest
 
-`func (o *CloudRouterCommand) SetRequest(v CloudRouterCommandRequest)`
+`func (o *CloudRouterCommand) SetRequest(v CloudRouterCommandRequestResponse)`
 
 SetRequest sets Request field to given value.
 

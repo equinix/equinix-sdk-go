@@ -25,10 +25,17 @@ type ApiGetMetricByAssetIdRequest struct {
 	ApiService   *MetricsApiService
 	asset        MetricAssetType
 	assetId      string
+	name         *string
 	fromDateTime *time.Time
 	toDateTime   *time.Time
 	offset       *int32
 	limit        *int32
+}
+
+// Name of the metric types: - equinix.fabric.connection.bandwidth_rx.usage - equinix.fabric.connection.bandwidth_tx.usage - equinix.fabric.connection.packets_dropped_rx_aside_rateexceeded.count - equinix.fabric.connection.packets_dropped_tx_aside_rateexceeded.count - equinix.fabric.connection.packets_dropped_rx_zside_rateexceeded.count - equinix.fabric.connection.packets_dropped_tx_zside_rateexceeded.count - equinix.fabric.port.bandwidth_rx.usage - equinix.fabric.port.bandwidth_tx.usage - equinix.fabric.port.packets_dropped_rx.count - equinix.fabric.port.packets_dropped_tx.count - equinix.fabric.port.packets_erred_rx.count - equinix.fabric.port.packets_erred_tx.count - equinix.fabric.metro.{source_metro_code}_{destination_metro_code}.latency - equinix.fabric.metro.{source_metro_code}_{destination_metro_code}.jitter_avg
+func (r ApiGetMetricByAssetIdRequest) Name(name string) ApiGetMetricByAssetIdRequest {
+	r.name = &name
+	return r
 }
 
 // Start date and time
@@ -101,7 +108,11 @@ func (a *MetricsApiService) GetMetricByAssetIdExecute(r ApiGetMetricByAssetIdReq
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.name == nil {
+		return localVarReturnValue, nil, reportError("name is required and must be specified")
+	}
 
+	parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
 	if r.fromDateTime != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "fromDateTime", r.fromDateTime, "form", "")
 	}

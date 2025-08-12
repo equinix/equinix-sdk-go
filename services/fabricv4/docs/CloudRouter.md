@@ -6,14 +6,14 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Href** | Pointer to **string** | Cloud Routers URI | [optional] [readonly] 
 **Uuid** | Pointer to **string** | Equinix-assigned access point identifier | [optional] 
+**Name** | Pointer to **string** | Customer-provided Cloud Router name | [optional] 
 **State** | Pointer to [**CloudRouterAccessPointState**](CloudRouterAccessPointState.md) |  | [optional] 
 **EquinixAsn** | Pointer to **int64** | Equinix ASN | [optional] 
 **ConnectionsCount** | Pointer to **int32** | Number of connections associated with this Access point | [optional] 
 **MarketplaceSubscription** | Pointer to [**MarketplaceSubscription**](MarketplaceSubscription.md) |  | [optional] 
 **ChangeLog** | Pointer to [**Changelog**](Changelog.md) |  | [optional] 
 **Change** | Pointer to [**CloudRouterChange**](CloudRouterChange.md) |  | [optional] 
-**Type** | Pointer to [**CloudRouterPostRequestType**](CloudRouterPostRequestType.md) |  | [optional] 
-**Name** | Pointer to **string** | Customer-provided Cloud Router name | [optional] 
+**Type** | Pointer to [**CloudRouterPostRequestBaseType**](CloudRouterPostRequestBaseType.md) |  | [optional] 
 **Location** | Pointer to [**SimplifiedLocationWithoutIBX**](SimplifiedLocationWithoutIBX.md) |  | [optional] 
 **Package** | Pointer to [**CloudRouterPostRequestPackage**](CloudRouterPostRequestPackage.md) |  | [optional] 
 **Order** | Pointer to [**Order**](Order.md) |  | [optional] 
@@ -89,6 +89,31 @@ SetUuid sets Uuid field to given value.
 `func (o *CloudRouter) HasUuid() bool`
 
 HasUuid returns a boolean if a field has been set.
+
+### GetName
+
+`func (o *CloudRouter) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *CloudRouter) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *CloudRouter) SetName(v string)`
+
+SetName sets Name field to given value.
+
+### HasName
+
+`func (o *CloudRouter) HasName() bool`
+
+HasName returns a boolean if a field has been set.
 
 ### GetState
 
@@ -242,20 +267,20 @@ HasChange returns a boolean if a field has been set.
 
 ### GetType
 
-`func (o *CloudRouter) GetType() CloudRouterPostRequestType`
+`func (o *CloudRouter) GetType() CloudRouterPostRequestBaseType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *CloudRouter) GetTypeOk() (*CloudRouterPostRequestType, bool)`
+`func (o *CloudRouter) GetTypeOk() (*CloudRouterPostRequestBaseType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *CloudRouter) SetType(v CloudRouterPostRequestType)`
+`func (o *CloudRouter) SetType(v CloudRouterPostRequestBaseType)`
 
 SetType sets Type field to given value.
 
@@ -264,31 +289,6 @@ SetType sets Type field to given value.
 `func (o *CloudRouter) HasType() bool`
 
 HasType returns a boolean if a field has been set.
-
-### GetName
-
-`func (o *CloudRouter) GetName() string`
-
-GetName returns the Name field if non-nil, zero value otherwise.
-
-### GetNameOk
-
-`func (o *CloudRouter) GetNameOk() (*string, bool)`
-
-GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetName
-
-`func (o *CloudRouter) SetName(v string)`
-
-SetName sets Name field to given value.
-
-### HasName
-
-`func (o *CloudRouter) HasName() bool`
-
-HasName returns a boolean if a field has been set.
 
 ### GetLocation
 

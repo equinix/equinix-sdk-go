@@ -6,7 +6,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Filter** | Pointer to [**CloudEventFilters**](CloudEventFilters.md) |  | [optional] 
 **Pagination** | Pointer to [**PaginationRequest**](PaginationRequest.md) |  | [optional] 
-**Sort** | Pointer to [**[]CloudEventFilters**](CloudEventFilters.md) |  | [optional] 
 
 ## Methods
 
@@ -76,31 +75,6 @@ SetPagination sets Pagination field to given value.
 `func (o *CloudEventSearchRequest) HasPagination() bool`
 
 HasPagination returns a boolean if a field has been set.
-
-### GetSort
-
-`func (o *CloudEventSearchRequest) GetSort() []CloudEventFilters`
-
-GetSort returns the Sort field if non-nil, zero value otherwise.
-
-### GetSortOk
-
-`func (o *CloudEventSearchRequest) GetSortOk() (*[]CloudEventFilters, bool)`
-
-GetSortOk returns a tuple with the Sort field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSort
-
-`func (o *CloudEventSearchRequest) SetSort(v []CloudEventFilters)`
-
-SetSort sets Sort field to given value.
-
-### HasSort
-
-`func (o *CloudEventSearchRequest) HasSort() bool`
-
-HasSort returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

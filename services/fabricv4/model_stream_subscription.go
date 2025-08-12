@@ -27,13 +27,12 @@ type StreamSubscription struct {
 	Description *string                  `json:"description,omitempty"`
 	State       *StreamSubscriptionState `json:"state,omitempty"`
 	// Stream subscription enabled status
-	Enabled        *bool                       `json:"enabled,omitempty"`
-	MetricSelector *StreamSubscriptionSelector `json:"metricSelector,omitempty"`
-	EventSelector  *StreamSubscriptionSelector `json:"eventSelector,omitempty"`
-	Sink           *StreamSubscriptionSink     `json:"sink,omitempty"`
-	ChangeLog      *Changelog                  `json:"changeLog,omitempty"`
-	// HTTP response from sink type if error occurred
-	LastErrorMessage     *string `json:"lastErrorMessage,omitempty"`
+	Enabled              *bool                        `json:"enabled,omitempty"`
+	MetricSelector       *StreamSubscriptionSelector  `json:"metricSelector,omitempty"`
+	EventSelector        *StreamSubscriptionSelector  `json:"eventSelector,omitempty"`
+	Sink                 *StreamSubscriptionSink      `json:"sink,omitempty"`
+	Operation            *StreamSubscriptionOperation `json:"operation,omitempty"`
+	ChangeLog            *Changelog                   `json:"changeLog,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -376,6 +375,38 @@ func (o *StreamSubscription) SetSink(v StreamSubscriptionSink) {
 	o.Sink = &v
 }
 
+// GetOperation returns the Operation field value if set, zero value otherwise.
+func (o *StreamSubscription) GetOperation() StreamSubscriptionOperation {
+	if o == nil || IsNil(o.Operation) {
+		var ret StreamSubscriptionOperation
+		return ret
+	}
+	return *o.Operation
+}
+
+// GetOperationOk returns a tuple with the Operation field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamSubscription) GetOperationOk() (*StreamSubscriptionOperation, bool) {
+	if o == nil || IsNil(o.Operation) {
+		return nil, false
+	}
+	return o.Operation, true
+}
+
+// HasOperation returns a boolean if a field has been set.
+func (o *StreamSubscription) HasOperation() bool {
+	if o != nil && !IsNil(o.Operation) {
+		return true
+	}
+
+	return false
+}
+
+// SetOperation gets a reference to the given StreamSubscriptionOperation and assigns it to the Operation field.
+func (o *StreamSubscription) SetOperation(v StreamSubscriptionOperation) {
+	o.Operation = &v
+}
+
 // GetChangeLog returns the ChangeLog field value if set, zero value otherwise.
 func (o *StreamSubscription) GetChangeLog() Changelog {
 	if o == nil || IsNil(o.ChangeLog) {
@@ -406,38 +437,6 @@ func (o *StreamSubscription) HasChangeLog() bool {
 // SetChangeLog gets a reference to the given Changelog and assigns it to the ChangeLog field.
 func (o *StreamSubscription) SetChangeLog(v Changelog) {
 	o.ChangeLog = &v
-}
-
-// GetLastErrorMessage returns the LastErrorMessage field value if set, zero value otherwise.
-func (o *StreamSubscription) GetLastErrorMessage() string {
-	if o == nil || IsNil(o.LastErrorMessage) {
-		var ret string
-		return ret
-	}
-	return *o.LastErrorMessage
-}
-
-// GetLastErrorMessageOk returns a tuple with the LastErrorMessage field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *StreamSubscription) GetLastErrorMessageOk() (*string, bool) {
-	if o == nil || IsNil(o.LastErrorMessage) {
-		return nil, false
-	}
-	return o.LastErrorMessage, true
-}
-
-// HasLastErrorMessage returns a boolean if a field has been set.
-func (o *StreamSubscription) HasLastErrorMessage() bool {
-	if o != nil && !IsNil(o.LastErrorMessage) {
-		return true
-	}
-
-	return false
-}
-
-// SetLastErrorMessage gets a reference to the given string and assigns it to the LastErrorMessage field.
-func (o *StreamSubscription) SetLastErrorMessage(v string) {
-	o.LastErrorMessage = &v
 }
 
 func (o StreamSubscription) MarshalJSON() ([]byte, error) {
@@ -480,11 +479,11 @@ func (o StreamSubscription) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Sink) {
 		toSerialize["sink"] = o.Sink
 	}
+	if !IsNil(o.Operation) {
+		toSerialize["operation"] = o.Operation
+	}
 	if !IsNil(o.ChangeLog) {
 		toSerialize["changeLog"] = o.ChangeLog
-	}
-	if !IsNil(o.LastErrorMessage) {
-		toSerialize["lastErrorMessage"] = o.LastErrorMessage
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -518,8 +517,8 @@ func (o *StreamSubscription) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "metricSelector")
 		delete(additionalProperties, "eventSelector")
 		delete(additionalProperties, "sink")
+		delete(additionalProperties, "operation")
 		delete(additionalProperties, "changeLog")
-		delete(additionalProperties, "lastErrorMessage")
 		o.AdditionalProperties = additionalProperties
 	}
 

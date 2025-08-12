@@ -4,8 +4,8 @@ All URIs are relative to *https://api.equinix.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetConnectionStatsByPortUuid**](StatisticsApi.md#GetConnectionStatsByPortUuid) | **Get** /fabric/v4/connections/{connectionId}/stats | Get Stats by uuid
-[**GetPortStatsByPortUuid**](StatisticsApi.md#GetPortStatsByPortUuid) | **Get** /fabric/v4/ports/{portId}/stats | Get Stats by uuid
+[**GetConnectionStatsByPortUuid**](StatisticsApi.md#GetConnectionStatsByPortUuid) | **Get** /fabric/v4/connections/{connectionId}/stats | Get Stats by uuid **(DEPRECATED)**
+[**GetPortStatsByPortUuid**](StatisticsApi.md#GetPortStatsByPortUuid) | **Get** /fabric/v4/ports/{portId}/stats | Get Stats by uuid **(DEPRECATED)**
 
 
 
@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 > Statistics GetConnectionStatsByPortUuid(ctx, connectionId).StartDateTime(startDateTime).EndDateTime(endDateTime).ViewPoint(viewPoint).Execute()
 
-Get Stats by uuid
+Get Stats by uuid **(DEPRECATED)**
 
 
 
@@ -90,7 +90,7 @@ Name | Type | Description  | Notes
 
 > Statistics GetPortStatsByPortUuid(ctx, portId).StartDateTime(startDateTime).EndDateTime(endDateTime).Execute()
 
-Get Stats by uuid
+Get Stats by uuid **(DEPRECATED)**
 
 
 

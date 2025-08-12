@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** | Customer-provided stream alert rule description | [optional] 
 **State** | Pointer to [**StreamAlertRuleState**](StreamAlertRuleState.md) |  | [optional] 
 **Enabled** | Pointer to **bool** | Stream alert rule enabled status | [optional] [default to true]
-**MetricName** | Pointer to [**AlertRulePostRequestMetricName**](AlertRulePostRequestMetricName.md) |  | [optional] 
+**MetricName** | Pointer to **string** | Stream alert rule metric name | [optional] 
 **ResourceSelector** | Pointer to [**ResourceSelector**](ResourceSelector.md) |  | [optional] 
 **WindowSize** | Pointer to **string** | Stream alert rule metric window size | [optional] 
 **Operand** | Pointer to [**AlertRulePostRequestOperand**](AlertRulePostRequestOperand.md) |  | [optional] 
@@ -215,20 +215,20 @@ HasEnabled returns a boolean if a field has been set.
 
 ### GetMetricName
 
-`func (o *StreamAlertRule) GetMetricName() AlertRulePostRequestMetricName`
+`func (o *StreamAlertRule) GetMetricName() string`
 
 GetMetricName returns the MetricName field if non-nil, zero value otherwise.
 
 ### GetMetricNameOk
 
-`func (o *StreamAlertRule) GetMetricNameOk() (*AlertRulePostRequestMetricName, bool)`
+`func (o *StreamAlertRule) GetMetricNameOk() (*string, bool)`
 
 GetMetricNameOk returns a tuple with the MetricName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMetricName
 
-`func (o *StreamAlertRule) SetMetricName(v AlertRulePostRequestMetricName)`
+`func (o *StreamAlertRule) SetMetricName(v string)`
 
 SetMetricName sets MetricName field to given value.
 

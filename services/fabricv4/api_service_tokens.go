@@ -44,7 +44,7 @@ func (r ApiCreateServiceTokenRequest) Execute() (*ServiceToken, *http.Response, 
 /*
 CreateServiceToken Create Service Token
 
-Create Service Tokens generates Equinix Fabric? service tokens. These tokens authorize users to access protected resources and services.
+Create Service Tokens generates Equinix Fabric™ service tokens. These tokens authorize users to access protected resources and services.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiCreateServiceTokenRequest

@@ -21,10 +21,11 @@ type AlertRulePutRequest struct {
 	// Customer-provided stream description
 	Description *string `json:"description,omitempty"`
 	// Stream alert rule enabled status
-	Enabled          *bool                           `json:"enabled,omitempty"`
-	MetricName       *AlertRulePostRequestMetricName `json:"metricName,omitempty"`
-	ResourceSelector *ResourceSelector               `json:"resourceSelector,omitempty"`
-	Operand          *AlertRulePostRequestOperand    `json:"operand,omitempty"`
+	Enabled *bool `json:"enabled,omitempty"`
+	// Stream alert rule metric name
+	MetricName       *string                      `json:"metricName,omitempty"`
+	ResourceSelector *ResourceSelector            `json:"resourceSelector,omitempty"`
+	Operand          *AlertRulePostRequestOperand `json:"operand,omitempty"`
 	// Stream alert rule metric window size
 	WindowSize *string `json:"windowSize,omitempty"`
 	// Stream alert rule metric warning threshold
@@ -154,9 +155,9 @@ func (o *AlertRulePutRequest) SetEnabled(v bool) {
 }
 
 // GetMetricName returns the MetricName field value if set, zero value otherwise.
-func (o *AlertRulePutRequest) GetMetricName() AlertRulePostRequestMetricName {
+func (o *AlertRulePutRequest) GetMetricName() string {
 	if o == nil || IsNil(o.MetricName) {
-		var ret AlertRulePostRequestMetricName
+		var ret string
 		return ret
 	}
 	return *o.MetricName
@@ -164,7 +165,7 @@ func (o *AlertRulePutRequest) GetMetricName() AlertRulePostRequestMetricName {
 
 // GetMetricNameOk returns a tuple with the MetricName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AlertRulePutRequest) GetMetricNameOk() (*AlertRulePostRequestMetricName, bool) {
+func (o *AlertRulePutRequest) GetMetricNameOk() (*string, bool) {
 	if o == nil || IsNil(o.MetricName) {
 		return nil, false
 	}
@@ -180,8 +181,8 @@ func (o *AlertRulePutRequest) HasMetricName() bool {
 	return false
 }
 
-// SetMetricName gets a reference to the given AlertRulePostRequestMetricName and assigns it to the MetricName field.
-func (o *AlertRulePutRequest) SetMetricName(v AlertRulePostRequestMetricName) {
+// SetMetricName gets a reference to the given string and assigns it to the MetricName field.
+func (o *AlertRulePutRequest) SetMetricName(v string) {
 	o.MetricName = &v
 }
 

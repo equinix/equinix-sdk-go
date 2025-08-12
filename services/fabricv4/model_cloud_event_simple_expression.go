@@ -16,7 +16,7 @@ var _ MappedNullable = &CloudEventSimpleExpression{}
 
 // CloudEventSimpleExpression struct for CloudEventSimpleExpression
 type CloudEventSimpleExpression struct {
-	// Possible field names to use on filters:  * `/subject` - Cloud Event subject description  * `/type` - Cloud Event type  * `/time` - Time of Cloud Events
+	// Possible field names to use on filters:  * `/subject` - Cloud Event subject description  * `/type` - Cloud Event type  * `/time` - Time of Cloud Events  * `/equinixproject` - Equinix Project of Cloud Events  * `/equinixorganization` - Equinix Organization of Cloud Events
 	Property *string `json:"property,omitempty"`
 	// Possible operators to use on filters:  * `=` - equal  * `>` - greater than  * `>=` - greater than or equal to  * `<` - less than  * `<=` - less than or equal to  * `BETWEEN` - between  * `IN` - in
 	Operator             *string  `json:"operator,omitempty"`

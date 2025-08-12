@@ -18,9 +18,8 @@ var _ MappedNullable = &PortLoa{}
 type PortLoa struct {
 	// uuid
 	Uuid *string `json:"uuid,omitempty"`
-	// Loa uri.
-	Href                 *string      `json:"href,omitempty"`
-	Type                 *PortLoaType `json:"type,omitempty"`
+	// Loa type
+	Type                 *string `json:"type,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -75,42 +74,10 @@ func (o *PortLoa) SetUuid(v string) {
 	o.Uuid = &v
 }
 
-// GetHref returns the Href field value if set, zero value otherwise.
-func (o *PortLoa) GetHref() string {
-	if o == nil || IsNil(o.Href) {
-		var ret string
-		return ret
-	}
-	return *o.Href
-}
-
-// GetHrefOk returns a tuple with the Href field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PortLoa) GetHrefOk() (*string, bool) {
-	if o == nil || IsNil(o.Href) {
-		return nil, false
-	}
-	return o.Href, true
-}
-
-// HasHref returns a boolean if a field has been set.
-func (o *PortLoa) HasHref() bool {
-	if o != nil && !IsNil(o.Href) {
-		return true
-	}
-
-	return false
-}
-
-// SetHref gets a reference to the given string and assigns it to the Href field.
-func (o *PortLoa) SetHref(v string) {
-	o.Href = &v
-}
-
 // GetType returns the Type field value if set, zero value otherwise.
-func (o *PortLoa) GetType() PortLoaType {
+func (o *PortLoa) GetType() string {
 	if o == nil || IsNil(o.Type) {
-		var ret PortLoaType
+		var ret string
 		return ret
 	}
 	return *o.Type
@@ -118,7 +85,7 @@ func (o *PortLoa) GetType() PortLoaType {
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PortLoa) GetTypeOk() (*PortLoaType, bool) {
+func (o *PortLoa) GetTypeOk() (*string, bool) {
 	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
@@ -134,8 +101,8 @@ func (o *PortLoa) HasType() bool {
 	return false
 }
 
-// SetType gets a reference to the given PortLoaType and assigns it to the Type field.
-func (o *PortLoa) SetType(v PortLoaType) {
+// SetType gets a reference to the given string and assigns it to the Type field.
+func (o *PortLoa) SetType(v string) {
 	o.Type = &v
 }
 
@@ -151,9 +118,6 @@ func (o PortLoa) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Uuid) {
 		toSerialize["uuid"] = o.Uuid
-	}
-	if !IsNil(o.Href) {
-		toSerialize["href"] = o.Href
 	}
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
@@ -181,7 +145,6 @@ func (o *PortLoa) UnmarshalJSON(data []byte) (err error) {
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "uuid")
-		delete(additionalProperties, "href")
 		delete(additionalProperties, "type")
 		o.AdditionalProperties = additionalProperties
 	}

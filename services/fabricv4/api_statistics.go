@@ -52,13 +52,15 @@ func (r ApiGetConnectionStatsByPortUuidRequest) Execute() (*Statistics, *http.Re
 }
 
 /*
-GetConnectionStatsByPortUuid Get Stats by uuid
+GetConnectionStatsByPortUuid Get Stats by uuid **(DEPRECATED)**
 
-This API provides service-level metrics so that you can view access and gather key information required to manage service subscription sizing and capacity
+This API provides service-level metrics so that you can view access and gather key information required to manage service subscription sizing and capacity **(DEPRECATED)**
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param connectionId Connection UUID
 	@return ApiGetConnectionStatsByPortUuidRequest
+
+Deprecated
 */
 func (a *StatisticsApiService) GetConnectionStatsByPortUuid(ctx context.Context, connectionId string) ApiGetConnectionStatsByPortUuidRequest {
 	return ApiGetConnectionStatsByPortUuidRequest{
@@ -71,6 +73,8 @@ func (a *StatisticsApiService) GetConnectionStatsByPortUuid(ctx context.Context,
 // Execute executes the request
 //
 //	@return Statistics
+//
+// Deprecated
 func (a *StatisticsApiService) GetConnectionStatsByPortUuidExecute(r ApiGetConnectionStatsByPortUuidRequest) (*Statistics, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -203,13 +207,15 @@ func (r ApiGetPortStatsByPortUuidRequest) Execute() (*Statistics, *http.Response
 }
 
 /*
-GetPortStatsByPortUuid Get Stats by uuid
+GetPortStatsByPortUuid Get Stats by uuid **(DEPRECATED)**
 
-This API provides service-level traffic metrics so that you can view access and gather key information required to manage service subscription sizing and capacity.
+This API provides service-level traffic metrics so that you can view access and gather key information required to manage service subscription sizing and capacity.**(DEPRECATED)**
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param portId Port UUID
 	@return ApiGetPortStatsByPortUuidRequest
+
+Deprecated
 */
 func (a *StatisticsApiService) GetPortStatsByPortUuid(ctx context.Context, portId string) ApiGetPortStatsByPortUuidRequest {
 	return ApiGetPortStatsByPortUuidRequest{
@@ -222,6 +228,8 @@ func (a *StatisticsApiService) GetPortStatsByPortUuid(ctx context.Context, portI
 // Execute executes the request
 //
 //	@return Statistics
+//
+// Deprecated
 func (a *StatisticsApiService) GetPortStatsByPortUuidExecute(r ApiGetPortStatsByPortUuidRequest) (*Statistics, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

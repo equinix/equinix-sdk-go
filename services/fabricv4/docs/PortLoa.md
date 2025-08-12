@@ -5,8 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Uuid** | Pointer to **string** | uuid | [optional] 
-**Href** | Pointer to **string** | Loa uri. | [optional] [readonly] 
-**Type** | Pointer to [**PortLoaType**](PortLoaType.md) |  | [optional] 
+**Type** | Pointer to **string** | Loa type | [optional] 
 
 ## Methods
 
@@ -52,47 +51,22 @@ SetUuid sets Uuid field to given value.
 
 HasUuid returns a boolean if a field has been set.
 
-### GetHref
-
-`func (o *PortLoa) GetHref() string`
-
-GetHref returns the Href field if non-nil, zero value otherwise.
-
-### GetHrefOk
-
-`func (o *PortLoa) GetHrefOk() (*string, bool)`
-
-GetHrefOk returns a tuple with the Href field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetHref
-
-`func (o *PortLoa) SetHref(v string)`
-
-SetHref sets Href field to given value.
-
-### HasHref
-
-`func (o *PortLoa) HasHref() bool`
-
-HasHref returns a boolean if a field has been set.
-
 ### GetType
 
-`func (o *PortLoa) GetType() PortLoaType`
+`func (o *PortLoa) GetType() string`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *PortLoa) GetTypeOk() (*PortLoaType, bool)`
+`func (o *PortLoa) GetTypeOk() (*string, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *PortLoa) SetType(v PortLoaType)`
+`func (o *PortLoa) SetType(v string)`
 
 SetType sets Type field to given value.
 

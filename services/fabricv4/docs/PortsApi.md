@@ -5,7 +5,6 @@ All URIs are relative to *https://api.equinix.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**AddToLag**](PortsApi.md#AddToLag) | **Post** /fabric/v4/ports/{portId}/physicalPorts/bulk | Add to Lag
-[**CreateBulkPort**](PortsApi.md#CreateBulkPort) | **Post** /fabric/v4/ports/bulk | Create Port
 [**CreatePort**](PortsApi.md#CreatePort) | **Post** /fabric/v4/ports | Create Port
 [**DeletePort**](PortsApi.md#DeletePort) | **Delete** /fabric/v4/ports/{portId} | Delete a single port
 [**GetPortByUuid**](PortsApi.md#GetPortByUuid) | **Get** /fabric/v4/ports/{portId} | Get Port by uuid
@@ -88,75 +87,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## CreateBulkPort
-
-> BulkPort CreateBulkPort(ctx).BulkPortRequest(bulkPortRequest).Execute()
-
-Create Port
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/equinix/equinix-sdk-go/services/fabricv4"
-)
-
-func main() {
-	bulkPortRequest := *openapiclient.NewBulkPortRequest() // BulkPortRequest | 
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PortsApi.CreateBulkPort(context.Background()).BulkPortRequest(bulkPortRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `PortsApi.CreateBulkPort``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `CreateBulkPort`: BulkPort
-	fmt.Fprintf(os.Stdout, "Response from `PortsApi.CreateBulkPort`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCreateBulkPortRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **bulkPortRequest** | [**BulkPortRequest**](BulkPortRequest.md) |  | 
-
-### Return type
-
-[**BulkPort**](BulkPort.md)
-
-### Authorization
-
-[BearerAuth](../README.md#BearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## CreatePort
 
-> Port CreatePort(ctx).PortRequest(portRequest).Execute()
+> Port CreatePort(ctx).PortRequest(portRequest).DryRun(dryRun).Execute()
 
 Create Port
 
@@ -176,10 +109,11 @@ import (
 
 func main() {
 	portRequest := *openapiclient.NewPortRequest(openapiclient.PortType("XF_PORT"), int32(123), openapiclient.Port_physicalPortsType("1000BASE_LX"), openapiclient.Port_connectivitySourceType("COLO"), *openapiclient.NewSimplifiedAccount(), *openapiclient.NewSimplifiedLocation(), *openapiclient.NewPortEncapsulation(), *openapiclient.NewPortSettings()) // PortRequest | 
+	dryRun := true // bool | option to verify that API calls will succeed (optional) (default to false)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PortsApi.CreatePort(context.Background()).PortRequest(portRequest).Execute()
+	resp, r, err := apiClient.PortsApi.CreatePort(context.Background()).PortRequest(portRequest).DryRun(dryRun).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `PortsApi.CreatePort``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -201,6 +135,7 @@ Other parameters are passed through a pointer to a apiCreatePortRequest struct v
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **portRequest** | [**PortRequest**](PortRequest.md) |  | 
+ **dryRun** | **bool** | option to verify that API calls will succeed | [default to false]
 
 ### Return type
 
@@ -222,7 +157,7 @@ Name | Type | Description  | Notes
 
 ## DeletePort
 
-> Port DeletePort(ctx, portId).Execute()
+> Port DeletePort(ctx, portId).DryRun(dryRun).Execute()
 
 Delete a single port
 
@@ -242,10 +177,11 @@ import (
 
 func main() {
 	portId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Port UUID
+	dryRun := true // bool | option to verify that API calls will succeed (optional) (default to false)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PortsApi.DeletePort(context.Background(), portId).Execute()
+	resp, r, err := apiClient.PortsApi.DeletePort(context.Background(), portId).DryRun(dryRun).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `PortsApi.DeletePort``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -271,6 +207,7 @@ Other parameters are passed through a pointer to a apiDeletePortRequest struct v
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **dryRun** | **bool** | option to verify that API calls will succeed | [default to false]
 
 ### Return type
 
@@ -564,7 +501,7 @@ Name | Type | Description  | Notes
 
 ## UpdatePortByUuid
 
-> AllPortsResponse UpdatePortByUuid(ctx, portId).PortChangeOperation(portChangeOperation).Execute()
+> AllPortsResponse UpdatePortByUuid(ctx, portId).PortChangeOperation(portChangeOperation).DryRun(dryRun).Execute()
 
 Update by UUID
 
@@ -585,10 +522,11 @@ import (
 func main() {
 	portId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Port UUID
 	portChangeOperation := []openapiclient.PortChangeOperation{*openapiclient.NewPortChangeOperation("replace", "/name", interface{}(123))} // []PortChangeOperation | 
+	dryRun := true // bool | option to verify that API calls will succeed (optional) (default to false)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PortsApi.UpdatePortByUuid(context.Background(), portId).PortChangeOperation(portChangeOperation).Execute()
+	resp, r, err := apiClient.PortsApi.UpdatePortByUuid(context.Background(), portId).PortChangeOperation(portChangeOperation).DryRun(dryRun).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `PortsApi.UpdatePortByUuid``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -615,6 +553,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **portChangeOperation** | [**[]PortChangeOperation**](PortChangeOperation.md) |  | 
+ **dryRun** | **bool** | option to verify that API calls will succeed | [default to false]
 
 ### Return type
 

@@ -14,7 +14,7 @@ import (
 // checks if the Metro type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &Metro{}
 
-// Metro GET Metros retrieves all Equinix? Fabric? metros, as well as latency data for each location.This performance data helps network planning engineers and administrators make strategic decisions about port locations and traffic routes.
+// Metro GET Metros retrieves all Equinix® Fabric™ metros, as well as latency data for each location.This performance data helps network planning engineers and administrators make strategic decisions about port locations and traffic routes.
 type Metro struct {
 	// The Canonical URL at which the resource resides.
 	Href *string `json:"href,omitempty"`

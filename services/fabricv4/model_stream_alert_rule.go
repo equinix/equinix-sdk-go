@@ -27,9 +27,10 @@ type StreamAlertRule struct {
 	Description *string               `json:"description,omitempty"`
 	State       *StreamAlertRuleState `json:"state,omitempty"`
 	// Stream alert rule enabled status
-	Enabled          *bool                           `json:"enabled,omitempty"`
-	MetricName       *AlertRulePostRequestMetricName `json:"metricName,omitempty"`
-	ResourceSelector *ResourceSelector               `json:"resourceSelector,omitempty"`
+	Enabled *bool `json:"enabled,omitempty"`
+	// Stream alert rule metric name
+	MetricName       *string           `json:"metricName,omitempty"`
+	ResourceSelector *ResourceSelector `json:"resourceSelector,omitempty"`
 	// Stream alert rule metric window size
 	WindowSize *string                      `json:"windowSize,omitempty"`
 	Operand    *AlertRulePostRequestOperand `json:"operand,omitempty"`
@@ -289,9 +290,9 @@ func (o *StreamAlertRule) SetEnabled(v bool) {
 }
 
 // GetMetricName returns the MetricName field value if set, zero value otherwise.
-func (o *StreamAlertRule) GetMetricName() AlertRulePostRequestMetricName {
+func (o *StreamAlertRule) GetMetricName() string {
 	if o == nil || IsNil(o.MetricName) {
-		var ret AlertRulePostRequestMetricName
+		var ret string
 		return ret
 	}
 	return *o.MetricName
@@ -299,7 +300,7 @@ func (o *StreamAlertRule) GetMetricName() AlertRulePostRequestMetricName {
 
 // GetMetricNameOk returns a tuple with the MetricName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *StreamAlertRule) GetMetricNameOk() (*AlertRulePostRequestMetricName, bool) {
+func (o *StreamAlertRule) GetMetricNameOk() (*string, bool) {
 	if o == nil || IsNil(o.MetricName) {
 		return nil, false
 	}
@@ -315,8 +316,8 @@ func (o *StreamAlertRule) HasMetricName() bool {
 	return false
 }
 
-// SetMetricName gets a reference to the given AlertRulePostRequestMetricName and assigns it to the MetricName field.
-func (o *StreamAlertRule) SetMetricName(v AlertRulePostRequestMetricName) {
+// SetMetricName gets a reference to the given string and assigns it to the MetricName field.
+func (o *StreamAlertRule) SetMetricName(v string) {
 	o.MetricName = &v
 }
 
