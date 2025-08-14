@@ -32,7 +32,7 @@ import (
 )
 
 const (
-	CORRELATION_ID = "ordersv2-example-8e5b9c6f"
+	CORRELATION_ID              = "ordersv2-example-8e5b9c6f"
 	MAX_RESPONSE_DISPLAY_LENGTH = 500
 )
 
@@ -100,14 +100,14 @@ func main() {
 	log.Printf("Successfully retrieved order details")
 	log.Printf("Response Status: %s", resp.Status)
 	log.Printf("Response Code: %d", resp.StatusCode)
-	
+
 	// Print basic order information
 	log.Printf("Order ID: %s", order.GetOrderId())
 	log.Printf("Status: %s", order.GetStatus())
 	if accountNumber, ok := order.GetAccountNumberOk(); ok && accountNumber != nil {
 		log.Printf("Account Number: %s", *accountNumber)
 	}
-	
+
 	// For debugging, show the raw response body
 	if respBody, err := io.ReadAll(resp.Body); err == nil {
 		// Limit output to avoid flooding console
