@@ -1710,13 +1710,7 @@
                     },
                     "type": {
                         "type": "string",
-                        "description": "To indicate the type of `value` and `valueType`.  ",
-                        "enum": [
-                            "ONE_TIME_CHARGE",
-                            "MONTHLY_CHARGE",
-                            "MONTHLY_DISCOUNT",
-                            "ONE_TIME_DISCOUNT"
-                        ]
+                        "description": "To indicate the type of `value` and `valueType`. Known values include: ONE_TIME_CHARGE, MONTHLY_CHARGE, MONTHLY_DISCOUNT, ONE_TIME_DISCOUNT, NET_MONTHLY_CHARGE, NET_ONE_TIME_CHARGE"
                     }
                 }
             },

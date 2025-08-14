@@ -20,9 +20,10 @@ var _ MappedNullable = &Price{}
 // Price Pricing details for a particular service or order, This can be one time charge or recurring charge
 type Price struct {
 	// To be used with `valueType` and `type`. Can be used to denote price or discount for an order or service
-	Value                *float32        `json:"value,omitempty"`
-	ValueType            *PriceValueType `json:"valueType,omitempty"`
-	Type                 *PriceType      `json:"type,omitempty"`
+	Value     *float32        `json:"value,omitempty"`
+	ValueType *PriceValueType `json:"valueType,omitempty"`
+	// To indicate the type of `value` and `valueType`. Known values include: ONE_TIME_CHARGE, MONTHLY_CHARGE, MONTHLY_DISCOUNT, ONE_TIME_DISCOUNT, NET_MONTHLY_CHARGE, NET_ONE_TIME_CHARGE
+	Type                 *string `json:"type,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -110,9 +111,9 @@ func (o *Price) SetValueType(v PriceValueType) {
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
-func (o *Price) GetType() PriceType {
+func (o *Price) GetType() string {
 	if o == nil || IsNil(o.Type) {
-		var ret PriceType
+		var ret string
 		return ret
 	}
 	return *o.Type
@@ -120,7 +121,7 @@ func (o *Price) GetType() PriceType {
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Price) GetTypeOk() (*PriceType, bool) {
+func (o *Price) GetTypeOk() (*string, bool) {
 	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
@@ -136,8 +137,8 @@ func (o *Price) HasType() bool {
 	return false
 }
 
-// SetType gets a reference to the given PriceType and assigns it to the Type field.
-func (o *Price) SetType(v PriceType) {
+// SetType gets a reference to the given string and assigns it to the Type field.
+func (o *Price) SetType(v string) {
 	o.Type = &v
 }
 

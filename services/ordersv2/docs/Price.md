@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Value** | Pointer to **float32** | To be used with &#x60;valueType&#x60; and &#x60;type&#x60;. Can be used to denote price or discount for an order or service | [optional] 
 **ValueType** | Pointer to [**PriceValueType**](PriceValueType.md) |  | [optional] 
-**Type** | Pointer to [**PriceType**](PriceType.md) |  | [optional] 
+**Type** | Pointer to **string** | To indicate the type of &#x60;value&#x60; and &#x60;valueType&#x60;. Known values include: ONE_TIME_CHARGE, MONTHLY_CHARGE, MONTHLY_DISCOUNT, ONE_TIME_DISCOUNT, NET_MONTHLY_CHARGE, NET_ONE_TIME_CHARGE | [optional] 
 
 ## Methods
 
@@ -79,20 +79,20 @@ HasValueType returns a boolean if a field has been set.
 
 ### GetType
 
-`func (o *Price) GetType() PriceType`
+`func (o *Price) GetType() string`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *Price) GetTypeOk() (*PriceType, bool)`
+`func (o *Price) GetTypeOk() (*string, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *Price) SetType(v PriceType)`
+`func (o *Price) SetType(v string)`
 
 SetType sets Type field to given value.
 

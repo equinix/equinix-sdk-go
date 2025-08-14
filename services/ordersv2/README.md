@@ -113,7 +113,6 @@ Class | Method | HTTP request | Description
  - [OrdersLine](docs/OrdersLine.md)
  - [OrdersLineRequestType](docs/OrdersLineRequestType.md)
  - [Price](docs/Price.md)
- - [PriceType](docs/PriceType.md)
  - [PriceValueType](docs/PriceValueType.md)
  - [ProductAdditionalInfoInner](docs/ProductAdditionalInfoInner.md)
  - [PurchaseOrder](docs/PurchaseOrder.md)
