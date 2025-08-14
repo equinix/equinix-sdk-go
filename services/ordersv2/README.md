@@ -111,7 +111,6 @@ Class | Method | HTTP request | Description
  - [OrdersBaseStatus](docs/OrdersBaseStatus.md)
  - [OrdersBaseSubChannel](docs/OrdersBaseSubChannel.md)
  - [OrdersLine](docs/OrdersLine.md)
- - [OrdersLineProductType](docs/OrdersLineProductType.md)
  - [OrdersLineRequestType](docs/OrdersLineRequestType.md)
  - [Price](docs/Price.md)
  - [PriceType](docs/PriceType.md)

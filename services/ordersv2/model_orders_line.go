@@ -37,8 +37,9 @@ type OrdersLine struct {
 	// Unit Pricing details
 	UnitPricing []Price `json:"unitPricing,omitempty"`
 	// Total Pricing details
-	TotalPricing []Price                `json:"totalPricing,omitempty"`
-	ProductType  *OrdersLineProductType `json:"productType,omitempty"`
+	TotalPricing []Price `json:"totalPricing,omitempty"`
+	// Type of product. Known values include: CROSS_CONNECT, SMART_HANDS, WORK_VISIT, SECURITY_ACCESS, CONFERENCE_ROOM, TROUBLE_TICKET, SHIPMENTS, NETWORK_PORTS, DEINSTALL_CROSS_CONNECT, Equinix Fabric Port/Connection, OTHER
+	ProductType *string `json:"productType,omitempty"`
 	// Product code associated with a particular product
 	ProductCode *string `json:"productCode,omitempty"`
 	// Product name
@@ -374,9 +375,9 @@ func (o *OrdersLine) SetTotalPricing(v []Price) {
 }
 
 // GetProductType returns the ProductType field value if set, zero value otherwise.
-func (o *OrdersLine) GetProductType() OrdersLineProductType {
+func (o *OrdersLine) GetProductType() string {
 	if o == nil || IsNil(o.ProductType) {
-		var ret OrdersLineProductType
+		var ret string
 		return ret
 	}
 	return *o.ProductType
@@ -384,7 +385,7 @@ func (o *OrdersLine) GetProductType() OrdersLineProductType {
 
 // GetProductTypeOk returns a tuple with the ProductType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OrdersLine) GetProductTypeOk() (*OrdersLineProductType, bool) {
+func (o *OrdersLine) GetProductTypeOk() (*string, bool) {
 	if o == nil || IsNil(o.ProductType) {
 		return nil, false
 	}
@@ -400,8 +401,8 @@ func (o *OrdersLine) HasProductType() bool {
 	return false
 }
 
-// SetProductType gets a reference to the given OrdersLineProductType and assigns it to the ProductType field.
-func (o *OrdersLine) SetProductType(v OrdersLineProductType) {
+// SetProductType gets a reference to the given string and assigns it to the ProductType field.
+func (o *OrdersLine) SetProductType(v string) {
 	o.ProductType = &v
 }
 

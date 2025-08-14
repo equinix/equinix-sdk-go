@@ -1244,19 +1244,7 @@
                     },
                     "productType": {
                         "type": "string",
-                        "description": "Type of product",
-                        "enum": [
-                            "CROSS_CONNECT",
-                            "SMART_HANDS",
-                            "WORK_VISIT",
-                            "SECURITY_ACCESS",
-                            "CONFERENCE_ROOM",
-                            "TROUBLE_TICKET",
-                            "SHIPMENTS",
-                            "NETWORK_PORTS",
-                            "DEINSTALL_CROSS_CONNECT",
-                            "OTHER"
-                        ]
+                        "description": "Type of product. Known values include: CROSS_CONNECT, SMART_HANDS, WORK_VISIT, SECURITY_ACCESS, CONFERENCE_ROOM, TROUBLE_TICKET, SHIPMENTS, NETWORK_PORTS, DEINSTALL_CROSS_CONNECT, Equinix Fabric Port/Connection, OTHER"
                     },
                     "productCode": {
                         "type": "string",

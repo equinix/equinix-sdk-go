@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **EstimatedCompletionDateTime** | Pointer to **time.Time** | The estimated completion date and time in UTC timezone | [optional] 
 **UnitPricing** | Pointer to [**[]Price**](Price.md) | Unit Pricing details | [optional] 
 **TotalPricing** | Pointer to [**[]Price**](Price.md) | Total Pricing details | [optional] 
-**ProductType** | Pointer to [**OrdersLineProductType**](OrdersLineProductType.md) |  | [optional] 
+**ProductType** | Pointer to **string** | Type of product. Known values include: CROSS_CONNECT, SMART_HANDS, WORK_VISIT, SECURITY_ACCESS, CONFERENCE_ROOM, TROUBLE_TICKET, SHIPMENTS, NETWORK_PORTS, DEINSTALL_CROSS_CONNECT, Equinix Fabric Port/Connection, OTHER | [optional] 
 **ProductCode** | Pointer to **string** | Product code associated with a particular product | [optional] 
 **ProductName** | Pointer to **string** | Product name | [optional] 
 **Ibx** | Pointer to **string** | Location code of Equinix datacenter | [optional] 
@@ -272,20 +272,20 @@ HasTotalPricing returns a boolean if a field has been set.
 
 ### GetProductType
 
-`func (o *OrdersLine) GetProductType() OrdersLineProductType`
+`func (o *OrdersLine) GetProductType() string`
 
 GetProductType returns the ProductType field if non-nil, zero value otherwise.
 
 ### GetProductTypeOk
 
-`func (o *OrdersLine) GetProductTypeOk() (*OrdersLineProductType, bool)`
+`func (o *OrdersLine) GetProductTypeOk() (*string, bool)`
 
 GetProductTypeOk returns a tuple with the ProductType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetProductType
 
-`func (o *OrdersLine) SetProductType(v OrdersLineProductType)`
+`func (o *OrdersLine) SetProductType(v string)`
 
 SetProductType sets ProductType field to given value.
 

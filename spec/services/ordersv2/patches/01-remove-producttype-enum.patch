@@ -1,0 +1,25 @@
+diff --git a/spec/services/ordersv2/oas3.patched/openapi.yaml b/spec/services/ordersv2/oas3.patched/openapi.yaml
+index 57711d10..1adfd672 100644
+--- a/spec/services/ordersv2/oas3.patched/openapi.yaml
++++ b/spec/services/ordersv2/oas3.patched/openapi.yaml
+@@ -1244,19 +1244,7 @@
+                     },
+                     "productType": {
+                         "type": "string",
+-                        "description": "Type of product",
+-                        "enum": [
+-                            "CROSS_CONNECT",
+-                            "SMART_HANDS",
+-                            "WORK_VISIT",
+-                            "SECURITY_ACCESS",
+-                            "CONFERENCE_ROOM",
+-                            "TROUBLE_TICKET",
+-                            "SHIPMENTS",
+-                            "NETWORK_PORTS",
+-                            "DEINSTALL_CROSS_CONNECT",
+-                            "OTHER"
+-                        ]
++                        "description": "Type of product. Known values include: CROSS_CONNECT, SMART_HANDS, WORK_VISIT, SECURITY_ACCESS, CONFERENCE_ROOM, TROUBLE_TICKET, SHIPMENTS, NETWORK_PORTS, DEINSTALL_CROSS_CONNECT, Equinix Fabric Port/Connection, OTHER"
+                     },
+                     "productCode": {
+                         "type": "string",
