@@ -32,8 +32,7 @@ import (
 )
 
 const (
-	CORRELATION_ID              = "ordersv2-example-8e5b9c6f"
-	MAX_RESPONSE_DISPLAY_LENGTH = 500
+	CORRELATION_ID = "ordersv2-example-8e5b9c6f"
 )
 
 func main() {
@@ -108,14 +107,8 @@ func main() {
 		log.Printf("Account Number: %s", *accountNumber)
 	}
 
-	// For debugging, show the raw response body
+	// For debugging, show the full raw response body
 	if respBody, err := io.ReadAll(resp.Body); err == nil {
-		// Limit output to avoid flooding console
-		bodyStr := string(respBody)
-		if len(bodyStr) > MAX_RESPONSE_DISPLAY_LENGTH {
-			log.Printf("Response Body (first %d chars):\n%s...", MAX_RESPONSE_DISPLAY_LENGTH, bodyStr[:MAX_RESPONSE_DISPLAY_LENGTH])
-		} else {
-			log.Printf("Response Body:\n%s", bodyStr)
-		}
+		log.Printf("Response Body:\n%s", string(respBody))
 	}
 }
