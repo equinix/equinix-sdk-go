@@ -1,0 +1,1954 @@
+{
+    "openapi": "3.0.0",
+    "x-eqx-api-linter-skip-rules": [
+        3,
+        24
+    ],
+    "info": {
+        "title": "Orders",
+        "description": "Based on a user's permission, a user may be able to view their own orders or also the orders from all of the users in their organization. These orders can be filtered by product type, order status, location, or date range. Only orders from the past 12 months will be returned.",
+        "version": "2.0-beta",
+        "termsOfService": "https://www.equinix.com/about/legal/terms",
+        "contact": {
+            "name": "Equinix API Support",
+            "url": "https://docs.equinix.com/api-support.htm"
+        }
+    },
+    "servers": [
+        {
+        "url": "https://api.equinix.com"
+        },
+        {
+            "url": "https://sandboxapi.equinix.com"
+        }
+    ],
+    "tags": [
+        {
+            "name": "Orders",
+            "description": "Orders"
+        }
+    ],
+    "paths": {
+        "/colocations/v2/orders/{orderId}": {
+            "get": {
+                "tags": [
+                    "Orders"
+                ],
+                "operationId": "GET Order details",
+                "summary": "Retrieve an order",
+                "description": "This method retrieves an order by its ID for a user with permission to view this request.",
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "orderId",
+                        "in": "path",
+                        "description": "Identifier of the Order",
+                        "required": true,
+                        "style": "simple",
+                        "explode": false,
+                        "schema": {
+                            "maxLength": 100,
+                            "minLength": 1,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "ibxs",
+                        "in": "query",
+                        "description": "List of IBXs to be filtered",
+                        "required": false,
+                        "style": "form",
+                        "explode": false,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        "example": "SG1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Orders"
+                                },
+                                "example": [
+                                    {
+                                        "orderId": "1-100000000001",
+                                        "accountName": "EQUNIX",
+                                        "accountNumber": "100001",
+                                        "quoteRequestType": "NEW",
+                                        "contacts": [
+                                            {
+                                                "firstName": "John",
+                                                "lastName": "Doe",
+                                                "details": [
+                                                    {
+                                                        "value": "johndoe@acme.com",
+                                                        "type": "EMAIL"
+                                                    }
+                                                ],
+                                                "type": "ORDERING"
+                                            },
+                                            {
+                                                "firstName": "Contact",
+                                                "lastName": "User 2",
+                                                "details": [
+                                                    {
+                                                        "value": "contact1@mail.com",
+                                                        "type": "EMAIL"
+                                                    }
+                                                ],
+                                                "type": "NOTIFICATION"
+                                            },
+                                            {
+                                                "firstName": "Contact",
+                                                "lastName": "User 1",
+                                                "details": [
+                                                    {
+                                                        "value": "contact1@mail.com",
+                                                        "type": "EMAIL"
+                                                    }
+                                                ],
+                                                "type": "NOTIFICATION"
+                                            }
+                                        ],
+                                        "status": "CLOSED",
+                                        "createdDateTime": "2020-07-31T11:23:06.000Z",
+                                        "updatedDateTime": "2020-08-06T05:29:26.000Z",
+                                        "channel": "API",
+                                        "details": [
+                                            {
+                                                "lineId": "1-ABCDNPE",
+                                                "description": "Cross Connect",
+                                                "ibx": "IB1",
+                                                "status": "Completed",
+                                                "cage": "IB1:04:B00010-62",
+                                                "productType": "CROSS_CONNECT",
+                                                "productCode": "CC00001",
+                                                "unitPricing": [
+                                                    {
+                                                        "value": "0.0",
+                                                        "type": "ONE_TIME_CHARGE",
+                                                        "valueType": "ABSOLUTE"
+                                                    }
+                                                ],
+                                                "productName": "Cross Connect",
+                                                "requestType": "Add",
+                                                "purchaseOrder": {}
+                                            },
+                                            {
+                                                "lineId": "1-ABDESNPE",
+                                                "parentLineId": "1-ABCDNPE",
+                                                "description": "Cross Connect - Installation Fee",
+                                                "ibx": "IB1",
+                                                "status": "Completed",
+                                                "cage": "IB1:04:B00010-62",
+                                                "productType": "CROSS_CONNECT",
+                                                "productCode": "CC00001",
+                                                "pricingDetails": [
+                                                    {
+                                                        "value": "60000.0",
+                                                        "type": "ONE_TIME_CHARGE",
+                                                        "valueType": "ABSOLUTE"
+                                                    }
+                                                ],
+                                                "productName": "Cross Connect - Installation Fee",
+                                                "requestType": "Add",
+                                                "purchaseOrder": {}
+                                            },
+                                            {
+                                                "lineId": "1-2DESJJNQ8",
+                                                "parentLineId": "1-ABCDNPE",
+                                                "description": "Network Cable Connection",
+                                                "ibx": "IB1",
+                                                "status": "Completed",
+                                                "cage": "IB1:04:B00010-62",
+                                                "productType": "CROSS_CONNECT",
+                                                "productCode": "CC00001",
+                                                "unitPricing": [
+                                                    {
+                                                        "value": "0.0",
+                                                        "type": "ONE_TIME_CHARGE",
+                                                        "valueType": "ABSOLUTE"
+                                                    }
+                                                ],
+                                                "productName": "Network Cable Connection",
+                                                "requestType": "Add",
+                                                "additionalInfo": [
+                                                    {
+                                                        "key": "CIRCUIT_ID",
+                                                        "value": "-"
+                                                    }
+                                                ],
+                                                "purchaseOrder": {}
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "405": {
+                        "description": "Method Not allowed",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/colocations/v2/orders/{orderId}/negotiations": {
+            "get": {
+                "tags": [
+                    "Orders"
+                ],
+                "operationId": "Retrieve order negotiations",
+                "summary": "Retrieve order negotiations",
+                "description": "This method retrieves order negotiations by its ID for a user with permission to view this request.",
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "orderId",
+                        "in": "path",
+                        "description": "Identifier of the order",
+                        "example": "{orderId}",
+                        "required": true,
+                        "style": "simple",
+                        "explode": false,
+                        "schema": {
+                            "maxLength": 100,
+                            "minLength": 1,
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "List of negotiations messages",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NegotiationsMessages"
+                                },
+                                "examples": {
+                                    "single_line": {
+                                        "value": [
+                                            {
+                                                "referenceId": "4-12312312132",
+                                                "orderRequestedDateTime": "2020-08-25T10:24:10.282Z",
+                                                "proposedDateTime": "2020-08-25T11:24:10.282Z",
+                                                "expirationDateTime": "2020-08-25T09:24:10.282Z",
+                                                "expedited": false,
+                                                "createdDateTime": "2020-08-25T06:24:10.282Z",
+                                                "message": "Due to multiple request, unable to process with requested time"
+                                            }
+                                        ]
+                                    },
+                                    "expedite_line": {
+                                        "value": [
+                                            {
+                                                "referenceId": "4-12312312123",
+                                                "orderRequestedDateTime": "2020-08-25T10:24:10.282Z",
+                                                "proposedDateTime": "2020-08-25T11:24:10.282Z",
+                                                "expirationDateTime": "2020-08-25T09:24:10.282Z",
+                                                "expedited": true,
+                                                "createdDateTime": "2020-08-25T06:24:10.282Z",
+                                                "message": "Due to multiple request, unable to process with requested time"
+                                            }
+                                        ]
+                                    },
+                                    "multi_line": {
+                                        "value": [
+                                            {
+                                                "referenceId": "4-12312312123",
+                                                "orderRequestedDateTime": "2020-08-25T10:24:10.282Z",
+                                                "proposedDateTime": "2020-08-25T11:24:10.282Z",
+                                                "expirationDateTime": "2020-08-25T09:24:10.282Z",
+                                                "createdDateTime": "2020-08-25T06:24:10.282Z",
+                                                "message": "Due to multiple request, unable to process with requested time"
+                                            },
+                                            {
+                                                "referenceId": "4-9881236786",
+                                                "orderRequestedDateTime": "2020-08-24T10:24:10.282Z",
+                                                "proposedDateTime": "2020-08-24T11:24:10.282Z",
+                                                "expirationDateTime": "2020-08-24T09:24:10.282Z",
+                                                "expedited": true,
+                                                "createdDateTime": "2020-08-24T06:24:10.282Z",
+                                                "message": "Due to multiple request, unable to process with requested time"
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                },
+                                "example": [
+                                    {
+                                        "errorCode": "EQ-2042006",
+                                        "errorMessage": "Permission denied",
+                                        "correlationId": "99740129126918"
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                },
+                                "example": [
+                                    {
+                                        "errorCode": "EQ-2042006",
+                                        "errorMessage": "Permission denied",
+                                        "correlationId": "99740129126918"
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                },
+                                "example": [
+                                    {
+                                        "errorCode": "EQ-2042009",
+                                        "errorMessage": "Request is conflicting",
+                                        "correlationId": "99740129126918"
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                },
+                                "example": [
+                                    {
+                                        "errorCode": "EQ-2042101",
+                                        "errorMessage": "The server has encountered an unexpected error. We apologize for the inconvenience. Please try again later.",
+                                        "correlationId": "99740129126918"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Orders"
+                ],
+                "operationId": "Reply to an order negotiation",
+                "summary": "Reply to an order negotiation",
+                "description": "This method approves or rejects an order negotiation for a user with permission to view this request.",
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "orderId",
+                        "in": "path",
+                        "description": "Identifier of the order",
+                        "required": true,
+                        "style": "simple",
+                        "explode": false,
+                        "schema": {
+                            "maxLength": 100,
+                            "minLength": 1,
+                            "type": "string",
+                            "example": "{orderId}"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "The action to be taken for an order negotiation",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Negotiations_request"
+                            },
+                            "examples": {
+                                "approve_payload": {
+                                    "value": {
+                                        "referenceId": "4-9091830",
+                                        "action": "APPROVE"
+                                    }
+                                },
+                                "approve_without_expedite_payload": {
+                                    "value": {
+                                        "referenceId": "4-9091830",
+                                        "action": "APPROVE_NON_EXPEDITE"
+                                    }
+                                },
+                                "approve_withLineId_payload": {
+                                    "value": {
+                                        "referenceId": "4-12312312",
+                                        "action": "APPROVE"
+                                    }
+                                },
+                                "cancelation_payload": {
+                                    "value": {
+                                        "referenceId": "4-9091830",
+                                        "action": "CANCEL",
+                                        "reason": "Cancelling the new time"
+                                    }
+                                },
+                                "cancelation_byLineID_payload": {
+                                    "value": {
+                                        "referenceId": "4-12312312",
+                                        "action": "CANCEL",
+                                        "reason": "Approving the new time"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Accepted",
+                        "headers": {
+                            "Location": {
+                                "description": "Location of an order \"/orders/1-23232322\"",
+                                "schema": {
+                                    "type": "string"
+                                },
+                                "example": "/orders/1-23232322"
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "No content",
+                        "headers": {
+                            "Location": {
+                                "description": "Location of an order \"/orders/1-23232322\"",
+                                "schema": {
+                                    "type": "string"
+                                },
+                                "example": "/orders/1-23232322"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                },
+                                "examples": {
+                                    "single_field_error": {
+                                        "value": [
+                                            {
+                                                "errorCode": "EQ-2042025",
+                                                "errorMessage": "Selected value is not in allowed list of values",
+                                                "correlationId": "99740113403329",
+                                                "additionalInfo": [
+                                                    {
+                                                        "property": "action",
+                                                        "reason": "Selected code is invalid. Allowed list are APPROVE, APPROVE_NON_EXPIDATE and CANCEL",
+                                                        "value": "CANCELD"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    "multiple_field_error": {
+                                        "value": [
+                                            {
+                                                "errorCode": "EQ-2042010",
+                                                "errorMessage": "One or more property is having miss leading input fields/properties",
+                                                "correlationId": "99740129126918",
+                                                "additionalInfo": [
+                                                    {
+                                                        "property": "action",
+                                                        "reason": "Selected code is invalid. Allowed list are APPROVE, APPROVE_NON_EXPIDATE and CANCEL",
+                                                        "value": "CANCELD"
+                                                    },
+                                                    {
+                                                        "property": "reasons",
+                                                        "reason": "reason is not meeting minimum length",
+                                                        "value": "abc"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    "multiple_negotionation_error": {
+                                        "value": [
+                                            {
+                                                "errorCode": "EQ-2042262",
+                                                "errorMessage": "More than one pending negotiation found for the given order number %.",
+                                                "correlationId": "99740129126918",
+                                                "additionalInfo": [
+                                                    {
+                                                        "property": "referenceId",
+                                                        "reason": "More than one pending negotiation found for the given order number %.",
+                                                        "value": "1-1783168236"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    "negotionation_nofound_error": {
+                                        "value": [
+                                            {
+                                                "errorCode": "EQ-2042252",
+                                                "errorMessage": "No pending negotiation found for the given parameters.",
+                                                "correlationId": "99740129126918"
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                },
+                                "example": [
+                                    {
+                                        "errorCode": "EQ-2042006",
+                                        "errorMessage": "Permission denied",
+                                        "correlationId": "99740129126918"
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                },
+                                "example": [
+                                    {
+                                        "errorCode": "EQ-2042006",
+                                        "errorMessage": "Permission denied",
+                                        "correlationId": "99740129126918"
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                },
+                                "example": [
+                                    {
+                                        "errorCode": "EQ-2042009",
+                                        "errorMessage": "Request is conflicting",
+                                        "correlationId": "99740129126918"
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                },
+                                "example": [
+                                    {
+                                        "errorCode": "EQ-2042101",
+                                        "errorMessage": "The server has encountered an unexpected error. We apologize for the inconvenience. Please try again later.",
+                                        "correlationId": "99740129126918"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/colocations/v2/orders/{orderId}/notes": {
+            "post": {
+                "tags": [
+                    "Orders"
+                ],
+                "operationId": "Add notes to an order",
+                "summary": "Add notes to an order",
+                "description": "This method adds notes to an order by its ID for a user with permission to view this request.",
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "orderId",
+                        "in": "path",
+                        "description": "Identifier of the order",
+                        "required": true,
+                        "style": "simple",
+                        "explode": false,
+                        "schema": {
+                            "maxLength": 100,
+                            "minLength": 1,
+                            "type": "string",
+                            "example": "{orderId}"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "The Order Id to be updated",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/NoteRequest"
+                            },
+                            "examples": {
+                                "one_way_notes": {
+                                    "value": {
+                                        "text": "problem description",
+                                        "attachments": [
+                                            {
+                                                "id": "abae6f8c-e168-11ea-87d0-0242ac130003",
+                                                "name": "problem_attachments"
+                                            }
+                                        ]
+                                    }
+                                },
+                                "two_way_notes": {
+                                    "value": {
+                                        "text": "two way query",
+                                        "referenceId": "5-123123433",
+                                        "attachments": [
+                                            {
+                                                "id": "5fa55655-0031-4cc3-baa0-733daab0b1c4",
+                                                "name": "query_attachments"
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Accepted",
+                        "headers": {
+                            "Location": {
+                                "description": "Location of an order \"/orders/1-23232322\"",
+                                "schema": {
+                                    "type": "string"
+                                },
+                                "example": "/orders/1-23232322"
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "No content",
+                        "headers": {
+                            "Location": {
+                                "description": "Location of an order \"/orders/1-23232322\"",
+                                "schema": {
+                                    "type": "string"
+                                },
+                                "example": "/orders/1-23232322"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "405": {
+                        "description": "Method Not allowed",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/colocations/v2/orders/{orderId}/cancel": {
+            "post": {
+                "tags": [
+                    "Orders"
+                ],
+                "operationId": "Cancel an order",
+                "summary": "Cancel an order",
+                "description": "This method cancels an order by its ID for a user with permission to view this request.",
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "orderId",
+                        "in": "path",
+                        "description": "Identifier of the order",
+                        "required": true,
+                        "style": "simple",
+                        "explode": false,
+                        "schema": {
+                            "maxLength": 100,
+                            "minLength": 1,
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "The Orders to be cancelled",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Cancel_Request"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "202": {
+                        "description": "Accepted",
+                        "headers": {
+                            "Location": {
+                                "description": "Location of an order \"/orders/1-23232322\"",
+                                "schema": {
+                                    "type": "string"
+                                },
+                                "example": "/orders/1-23232322"
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "No content",
+                        "headers": {
+                            "Location": {
+                                "description": "Location of an order \"/orders/1-23232322\"",
+                                "schema": {
+                                    "type": "string"
+                                },
+                                "example": "/orders/1-23232322"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "405": {
+                        "description": "Method Not allowed",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "BearerAuth": {
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
+            }
+        },
+        "schemas": {
+            "ordersBase": {
+                "description": "Orders Base is the properties or attributes which common for every order details",
+                "type": "object",
+                "properties": {
+                    "orderId": {
+                        "maxLength": 100,
+                        "minLength": 1,
+                        "type": "string",
+                        "description": "Unique identifier of the order."
+                    },
+                    "accountName": {
+                        "type": "string",
+                        "description": "Customer account name"
+                    },
+                    "accountNumber": {
+                        "type": "string",
+                        "description": "Customer account number"
+                    },
+                    "quoteRequestType": {
+                        "type": "string",
+                        "description": "The request type of the quote",
+                        "enum": [
+                            "NEW",
+                            "AMENDMENT",
+                            "PAPERWORK",
+                            "REPLACEMENT_RENEWAL",
+                            "TERMINATION",
+                            "MIGRATION"
+                        ]
+                    },
+                    "contacts": {
+                        "type": "array",
+                        "description": "The related party associated with the ticket.",
+                        "items": {
+                            "$ref": "#/components/schemas/Contacts"
+                        }
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "The current status of the order or service",
+                        "enum": [
+                            "RECEIVED",
+                            "IN_PROGRESS",
+                            "ON_HOLD",
+                            "CLOSED",
+                            "CANCELLED"
+                        ]
+                    },
+                    "createdDateTime": {
+                        "type": "string",
+                        "description": "The order created date and time in UTC timezone.",
+                        "format": "date-time"
+                    },
+                    "updatedDateTime": {
+                        "type": "string",
+                        "description": "The order updated date and time in UTC timezone.",
+                        "format": "date-time"
+                    },
+                    "closedDateTime": {
+                        "type": "string",
+                        "description": "The order closed date and time in UTC timezone.",
+                        "format": "date-time"
+                    },
+                    "estimatedCompletionDateTime": {
+                        "type": "string",
+                        "description": "The estimated completion date and time in UTC timezone",
+                        "format": "date-time"
+                    },
+                    "currencyCode": {
+                        "$ref": "#/components/schemas/currencyCode"
+                    },
+                    "channel": {
+                        "type": "string",
+                        "description": "Type of channel used to place the order",
+                        "enum": [
+                            "API",
+                            "PORTAL",
+                            "MOBILE",
+                            "OFFLINE"
+                        ]
+                    },
+                    "subChannel": {
+                        "type": "string",
+                        "description": "Type of sub-channel used to place the order",
+                        "enum": [
+                            "ECP",
+                            "ECX",
+                            "IX",
+                            "NE",
+                            "EMG",
+                            "QUOTE"
+                        ]
+                    },
+                    "notes": {
+                        "type": "array",
+                        "description": "The notes that are associated to the orders.",
+                        "items": {
+                            "$ref": "#/components/schemas/Note"
+                        }
+                    },
+                    "additionalInfo": {
+                        "$ref": "#/components/schemas/productAdditionalInfo"
+                    },
+                    "customerReferenceId": {
+                        "maxLength": 100,
+                        "minLength": 5,
+                        "type": "string",
+                        "description": "Customer Reference Number / External Reference Number"
+                    },
+                    "cancellable": {
+                        "type": "boolean",
+                        "description": "When `true`, order can be cancelled.",
+                        "default": false
+                    },
+                    "modifiable": {
+                        "type": "boolean",
+                        "description": "When `true`, order can be modified.",
+                        "default": false
+                    }
+                }
+            },
+            "NegotiationsMessages": {
+                "title": "Messages",
+                "type": "array",
+                "items": {
+                    "$ref": "#/components/schemas/Negotiations"
+                }
+            },
+            "Negotiations": {
+                "title": "Negotiations messages",
+                "description": "Negotiations message with alternative date and time",
+                "type": "object",
+                "properties": {
+                    "referenceId": {
+                        "type": "string",
+                        "description": "Reference id / internal id for customer to identify the actionable order line"
+                    },
+                    "orderRequestedDateTime": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Customer requested order date and time at point of order."
+                    },
+                    "proposedDateTime": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Alternative / revised date and time proposed by Equinix for fulfilling the order request."
+                    },
+                    "expirationDateTime": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Validity date and time of the negotiation. Negotiations request after this date will no longer be valid."
+                    },
+                    "createdDateTime": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Negotiations message created date and time by operations team"
+                    },
+                    "expedited": {
+                        "type": "boolean",
+                        "description": "When `true,` requested order is an expedite order"
+                    },
+                    "message": {
+                        "type": "string",
+                        "description": "Negotiations message",
+                        "minLength": 5,
+                        "maxLength": 4000
+                    }
+                }
+            },
+            "Negotiations_request": {
+                "type": "object",
+                "required": [
+                    "action",
+                    "referenceId"
+                ],
+                "properties": {
+                    "referenceId": {
+                        "type": "string",
+                        "description": "Unique identifier to reference specific activity or order line id. ",
+                        "example": "4-9091830"
+                    },
+                    "action": {
+                        "type": "string",
+                        "description": "Type of actions to be carried out with negotiation. Use `APPROVE` to accept order with new proposed date, `APPROVE_NON_EXPEDITE` to accept order without expedite and `CANCEL` to cancel order",
+                        "enum": [
+                            "APPROVE",
+                            "APPROVE_NON_EXPEDITE",
+                            "CANCEL"
+                        ]
+                    },
+                    "reason": {
+                        "type": "string",
+                        "description": "Reason for cancelling the negotiation",
+                        "minLength": 5,
+                        "maxLength": 4000,
+                        "example": "Cancelling the new time"
+                    }
+                }
+            },
+            "ordersLine": {
+                "description": "Orders Line contains information appplicable for all the orders type i.e smart hands, work visit and cross connect",
+                "type": "object",
+                "properties": {
+                    "lineId": {
+                        "type": "string",
+                        "example": "1-NEYSNX123",
+                        "description": "Unique identifier associated with line item. "
+                    },
+                    "parentlineId": {
+                        "type": "string",
+                        "description": "Unique identifier associated with `lineId`to denote hierarchy of the product. When this field is null, item considered to be at root level.",
+                        "example": "1-NEYSNX124"
+                    },
+                    "rootlineId": {
+                        "type": "string",
+                        "description": "Unique identifier to specify root item. Useful when product order hierarchy exceeds 2.",
+                        "example": "1-NEYSNX120"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "The current status of the order or service"
+                    },
+                    "description": {
+                        "maxLength": 4000,
+                        "minLength": 5,
+                        "type": "string",
+                        "description": "Description of the orders."
+                    },
+                    "billingStartDateTime": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Billing commencement date and time in UTC timezone"
+                    },
+                    "estimatedCompletionDateTime": {
+                        "type": "string",
+                        "description": "The estimated completion date and time in UTC timezone",
+                        "format": "date-time"
+                    },
+                    "unitPricing": {
+                        "type": "array",
+                        "description": "Unit Pricing details",
+                        "items": {
+                            "$ref": "#/components/schemas/price"
+                        }
+                    },
+                    "totalPricing": {
+                        "type": "array",
+                        "description": "Total Pricing details",
+                        "items": {
+                            "$ref": "#/components/schemas/price"
+                        }
+                    },
+                    "productType": {
+                        "type": "string",
+                        "description": "Type of product. Known values include: CROSS_CONNECT, SMART_HANDS, WORK_VISIT, SECURITY_ACCESS, CONFERENCE_ROOM, TROUBLE_TICKET, SHIPMENTS, NETWORK_PORTS, DEINSTALL_CROSS_CONNECT, Equinix Fabric Port/Connection, OTHER"
+                    },
+                    "productCode": {
+                        "type": "string",
+                        "description": "Product code associated with a particular product",
+                        "example": "CC00001"
+                    },
+                    "productName": {
+                        "type": "string",
+                        "description": "Product name",
+                        "example": "Cage with KVA Power"
+                    },
+                    "ibx": {
+                        "type": "string",
+                        "description": "Location code of Equinix datacenter"
+                    },
+                    "cage": {
+                        "type": "string",
+                        "description": "Cage ID"
+                    },
+                    "cabinets": {
+                        "description": "One or more cabinets ID",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "requestType": {
+                        "type": "string",
+                        "description": "Type of order request. ie `requestType` can be of `ADD` if you are adding new services/product.",
+                        "example": "ADD",
+                        "enum": [
+                            "ADD",
+                            "DELETE",
+                            "NO_CHANGE",
+                            "UPDATE"
+                        ]
+                    },
+                    "attachments": {
+                        "maxItems": 5,
+                        "type": "array",
+                        "description": "File(s) attached to the Orders. To learn about including attachments in your request, see POST Attachments API.",
+                        "items": {
+                            "$ref": "#/components/schemas/Attachment"
+                        }
+                    },
+                    "additionalInfo": {
+                        "$ref": "#/components/schemas/productAdditionalInfo"
+                    },
+                    "purchaseOrder": {
+                        "$ref": "#/components/schemas/purchaseOrder"
+                    },
+                    "cancellable": {
+                        "type": "boolean",
+                        "description": "When `true`, order can be cancelled",
+                        "default": false
+                    },
+                    "modifiable": {
+                        "type": "boolean",
+                        "description": "When `true`, order can be modified"
+                    }
+                }
+            },
+            "Orders": {
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/ordersBase"
+                    },
+                    {
+                        "$ref": "#/components/schemas/OrderDetails"
+                    }
+                ],
+                "description": "An order could be request, service or ticket to performs specified activity on an colo businesss"
+            },
+            "OrderDetails": {
+                "type": "object",
+                "properties": {
+                    "details": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ordersLine"
+                        }
+                    }
+                }
+            },
+            "NoteRequest": {
+                "type": "object",
+                "required": [
+                    "text"
+                ],
+                "properties": {
+                    "referenceId": {
+                        "maxLength": 50,
+                        "minLength": 1,
+                        "type": "string",
+                        "description": "Unique reference ID associated with notes.",
+                        "example": "{orderId}"
+                    },
+                    "text": {
+                        "maxLength": 4000,
+                        "minLength": 5,
+                        "type": "string",
+                        "example": "The text of the note",
+                        "description": "The text of the note"
+                    },
+                    "attachments": {
+                        "maxItems": 5,
+                        "type": "array",
+                        "description": "File(s) attached to the Orders. To learn about including attachments in your request, see POST Attachments API.",
+                        "items": {
+                            "$ref": "#/components/schemas/Attachment"
+                        }
+                    }
+                },
+                "description": "Extra notes about a given entity"
+            },
+            "Note": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Unique identifier of the note"
+                    },
+                    "referenceId": {
+                        "type": "string",
+                        "description": "Unique identifier for referencing notes."
+                    },
+                    "createdDateTime": {
+                        "type": "string",
+                        "description": "Date and time of the note creation in UTC timezone",
+                        "format": "date-time"
+                    },
+                    "text": {
+                        "maxLength": 4000,
+                        "minLength": 5,
+                        "type": "string",
+                        "description": "The content of the note",
+                        "example": "Please refer to the attachment for patch panel image"
+                    },
+                    "author": {
+                        "minLength": 5,
+                        "type": "string",
+                        "description": "Author of the notes",
+                        "example": "johndoe@acme.com"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "Type of notes",
+                        "example": "CUSTOMER_NOTES",
+                        "enum": [
+                            "CUSTOMER_QUERY",
+                            "CUSTOMER_NOTES",
+                            "TECHNICIAN_QUERY",
+                            "TECHNICIAN_NOTES"
+                        ]
+                    },
+                    "attachments": {
+                        "type": "array",
+                        "description": "File(s) attached to the orders. To learn about including attachments in your request, refer to Attachments API.",
+                        "items": {
+                            "$ref": "#/components/schemas/Attachment"
+                        }
+                    }
+                },
+                "description": "Extra information about a given entity"
+            },
+            "Contacts": {
+                "type": "object",
+                "properties": {
+                    "registeredUser": {
+                        "type": "string",
+                        "description": "Username of a registered user.",
+                        "example": "john_doe"
+                    },
+                    "firstName": {
+                        "type": "string",
+                        "description": "First name of the contact.",
+                        "example": "John"
+                    },
+                    "lastName": {
+                        "type": "string",
+                        "description": "Last name of the contact.",
+                        "example": "Doe"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "Communications type",
+                        "enum": [
+                            "ORDERING",
+                            "NOTIFICATION",
+                            "TECHNICAL",
+                            "RESELLER"
+                        ]
+                    },
+                    "availability": {
+                        "type": "string",
+                        "description": "Contact's availability to receive calls.",
+                        "default": "ANYTIME",
+                        "enum": [
+                            "WORK_HOURS",
+                            "ANYTIME"
+                        ]
+                    },
+                    "timezone": {
+                        "$ref": "#/components/schemas/TIME_ZONE_LIST"
+                    },
+                    "details": {
+                        "type": "array",
+                        "description": "Reference of the related party, could be a party reference or a party role reference",
+                        "items": {
+                            "$ref": "#/components/schemas/ContactsDetails"
+                        }
+                    }
+                },
+                "description": "Contact information."
+            },
+            "ContactsDetails": {
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "description": "Communications Type ",
+                        "example": "PHONE",
+                        "enum": [
+                            "PHONE",
+                            "EMAIL",
+                            "MOBILE"
+                        ]
+                    },
+                    "value": {
+                        "type": "string",
+                        "description": "Value of contact details `type`",
+                        "example": "+1-4601231122"
+                    }
+                },
+                "description": "Contact information."
+            },
+            "Attachment": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "maxLength": 36,
+                        "minLength": 36,
+                        "type": "string",
+                        "description": "Identifier of the binary attachment UUID.",
+                        "example": "c77c5f58-a7ea-4e88-9fc4-1a2900027425"
+                    },
+                    "name": {
+                        "maxLength": 100,
+                        "minLength": 5,
+                        "type": "string",
+                        "description": "Name of the binary attachment.",
+                        "example": "error-log"
+                    }
+                },
+                "description": "Attachments"
+            },
+            "Error": {
+                "title": "Error Info",
+                "type": "array",
+                "items": {
+                  "title": "Error details",
+                  "type": "object",
+                  "properties": {
+                    "errorCode": {
+                      "type": "string",
+                      "example": "EQ-20YYXXX"
+                    },
+                    "errorMessage": {
+                      "type": "string",
+                      "example": "Error message"
+                    },
+                    "details": {
+                      "type": "string",
+                      "example": "Error details"
+                    },
+                    "correlationId": {
+                      "type": "string",
+                      "example": "Correlation ID to trace the error back"
+                    },
+                    "help": {
+                      "type": "string",
+                      "example": "URL to a help page for the corresponding errorCode"
+                    },
+                    "additionalInfo": {
+                      "title": "Error details",
+                      "type": "object",
+                      "properties": {
+                        "property": {
+                          "type": "string",
+                          "example": "id"
+                        },
+                        "reason": {
+                          "type": "string",
+                          "example": "missing id"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+            "TIME_ZONE_LIST": {
+                "type": "string",
+                "description": "Contact's timezone",
+                "example": "America/Los_Angeles",
+                "enum": [
+                    "Atlantic/Canary",
+                    "Europe/Dublin",
+                    "Europe/London",
+                    "Europe/Lisbon",
+                    "Africa/Algiers",
+                    "Europe/Berlin",
+                    "Europe/Amsterdam",
+                    "Europe/Copenhagen",
+                    "Europe/Madrid",
+                    "Europe/Paris",
+                    "Europe/Stockholm",
+                    "Europe/Zurich",
+                    "Europe/Warsaw",
+                    "Africa/Cairo",
+                    "Africa/Johannesburg",
+                    "Africa/Lagos",
+                    "Europe/Sofia",
+                    "Africa/Nairobi",
+                    "Asia/Jerusalem",
+                    "Europe/Istanbul",
+                    "Europe/Moscow",
+                    "Asia/Riyadh",
+                    "Asia/Dubai",
+                    "Asia/Kabul",
+                    "Asia/Tehran",
+                    "Asia/Karachi",
+                    "Indian/Maldives",
+                    "Asia/Kolkata",
+                    "Asia/Kathmandu",
+                    "Asia/Omsk",
+                    "Asia/Rangoon",
+                    "Asia/Jakarta",
+                    "Asia/Ho_Chi_Minh",
+                    "Asia/Brunei",
+                    "Asia/Hong_Kong",
+                    "Asia/Kuala_Lumpur",
+                    "Asia/Manila",
+                    "Asia/Shanghai",
+                    "Asia/Singapore",
+                    "Asia/Taipei",
+                    "Australia/Perth",
+                    "Asia/Seoul",
+                    "Asia/Tokyo",
+                    "Australia/Darwin",
+                    "Australia/Brisbane",
+                    "Pacific/Guam",
+                    "Australia/Adelaide",
+                    "Australia/Sydney",
+                    "Pacific/Auckland",
+                    "Pacific/Chatham",
+                    "Indian/Christmas",
+                    "America/Scoresbysund",
+                    "Atlantic/South_Georgia",
+                    "America/Sao_Paulo",
+                    "America/Detroit",
+                    "America/New_York",
+                    "America/Puerto_Rico",
+                    "America/Toronto",
+                    "America/Bogota",
+                    "America/Chicago",
+                    "America/Winnipeg",
+                    "America/Denver",
+                    "America/Edmonton",
+                    "America/Mexico_City",
+                    "America/Los_Angeles",
+                    "America/Vancouver",
+                    "America/Phoenix",
+                    "America/Anchorage",
+                    "America/Halifax",
+                    "America/Lima",
+                    "America/Monterrey",
+                    "Pacific/Gambier",
+                    "Pacific/Marquesas",
+                    "Pacific/Honolulu",
+                    "Pacific/Fiji",
+                    "Asia/Muscat",
+                    "America/Argentina/Buenos_Aires",
+                    "America/Caracas",
+                    "Etc/GMT+12",
+                    "UTC",
+                    "GMT",
+                    "America/Santiago",
+                    "America/St_Johns",
+                    "Asia/Almaty",
+                    "Asia/Bangkok",
+                    "Asia/Calcutta",
+                    "Asia/Magadan",
+                    "Asia/Yekaterinburg",
+                    "Australia/Eucla",
+                    "Australia/Lord_Howe",
+                    "Europe/Bratislava",
+                    "Europe/Brussels",
+                    "Europe/Prague",
+                    "Europe/Rome",
+                    "Europe/Helsinki",
+                    "Pacific/Kiritimati",
+                    "Pacific/Midway",
+                    "Pacific/Tongatapu",
+                    "Australia/Melbourne",
+                    "Australia/NSW",
+                    "Australia/Queensland",
+                    "Australia/South",
+                    "Australia/Victoria",
+                    "Australia/West",
+                    "Australia/Canberra"
+                ]
+            },
+            "Cancel_Request": {
+                "type": "object",
+                "required": [
+                    "reason"
+                ],
+                "properties": {
+                    "reason": {
+                        "type": "string",
+                        "description": "Reason for cancellation",
+                        "minLength": 5,
+                        "maxLength": 4000
+                    },
+                    "attachments": {
+                        "type": "array",
+                        "description": "File(s) attached",
+                        "maxItems": 5,
+                        "items": {
+                            "$ref": "#/components/schemas/Attachment"
+                        }
+                    },
+                    "lineIds": {
+                        "type": "array",
+                        "minItems": 0,
+                        "maxItems": 1,
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Refers to the `lineId` of product/service.",
+                        "example": [
+                            "1-D89731S"
+                        ]
+                    }
+                },
+                "description": "Cancelling the Order"
+            },
+            "price": {
+                "description": "Pricing details for a particular service or order, This can be one time charge or recurring charge",
+                "type": "object",
+                "properties": {
+                    "value": {
+                        "type": "number",
+                        "description": "To be used with `valueType` and `type`. Can be used to denote price or discount for an order or service"
+                    },
+                    "valueType": {
+                        "type": "string",
+                        "description": "To indicate if `value` is of absolute or percentage value. i.e Use ABSOLUTE for $50 or PERCENTAGE for 50%",
+                        "enum": [
+                            "ABSOLUTE",
+                            "PERCENTAGE"
+                        ]
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "To indicate the type of `value` and `valueType`. Known values include: ONE_TIME_CHARGE, MONTHLY_CHARGE, MONTHLY_DISCOUNT, ONE_TIME_DISCOUNT, NET_MONTHLY_CHARGE, NET_ONE_TIME_CHARGE"
+                    }
+                }
+            },
+            "currencyCode": {
+                "description": "ISO-4217 currency code",
+                "type": "string",
+                "enum": [
+                    "AED",
+                    "AFN",
+                    "ALL",
+                    "AMD",
+                    "ANG",
+                    "AOA",
+                    "ARS",
+                    "AUD",
+                    "AWG",
+                    "AZN",
+                    "BAM",
+                    "BBD",
+                    "BDT",
+                    "BGN",
+                    "BHD",
+                    "BIF",
+                    "BMD",
+                    "BND",
+                    "BOB",
+                    "BOV",
+                    "BRL",
+                    "BSD",
+                    "BTN",
+                    "BWP",
+                    "BYN",
+                    "BZD",
+                    "CAD",
+                    "CDF",
+                    "CHE",
+                    "CHF",
+                    "CHW",
+                    "CLF",
+                    "CLP",
+                    "CNY",
+                    "COP",
+                    "COU",
+                    "CRC",
+                    "CUC",
+                    "CUP",
+                    "CVE",
+                    "CZK",
+                    "DJF",
+                    "DKK",
+                    "DOP",
+                    "DZD",
+                    "EGP",
+                    "ERN",
+                    "ETB",
+                    "EUR",
+                    "FJD",
+                    "FKP",
+                    "GBP",
+                    "GEL",
+                    "GHS",
+                    "GIP",
+                    "GMD",
+                    "GNF",
+                    "GTQ",
+                    "GYD",
+                    "HKD",
+                    "HNL",
+                    "HRK",
+                    "HTG",
+                    "HUF",
+                    "IDR",
+                    "ILS",
+                    "INR",
+                    "IQD",
+                    "IRR",
+                    "ISK",
+                    "JMD",
+                    "JOD",
+                    "JPY",
+                    "KES",
+                    "KGS",
+                    "KHR",
+                    "KMF",
+                    "KPW",
+                    "KRW",
+                    "KWD",
+                    "KYD",
+                    "KZT",
+                    "LAK",
+                    "LBP",
+                    "LKR",
+                    "LRD",
+                    "LSL",
+                    "LYD",
+                    "MAD",
+                    "MDL",
+                    "MGA",
+                    "MKD",
+                    "MMK",
+                    "MNT",
+                    "MOP",
+                    "MRU",
+                    "MUR",
+                    "MVR",
+                    "MWK",
+                    "MXN",
+                    "MXV",
+                    "MYR",
+                    "MZN",
+                    "NAD",
+                    "NGN",
+                    "NIO",
+                    "NOK",
+                    "NPR",
+                    "NZD",
+                    "OMR",
+                    "PAB",
+                    "PEN",
+                    "PGK",
+                    "PHP",
+                    "PKR",
+                    "PLN",
+                    "PYG",
+                    "QAR",
+                    "RON",
+                    "RSD",
+                    "RUB",
+                    "RWF",
+                    "SAR",
+                    "SBD",
+                    "SCR",
+                    "SDG",
+                    "SEK",
+                    "SGD",
+                    "SHP",
+                    "SLL",
+                    "SOS",
+                    "SRD",
+                    "SSP",
+                    "STN",
+                    "SVC",
+                    "SYP",
+                    "SZL",
+                    "THB",
+                    "TJS",
+                    "TMT",
+                    "TND",
+                    "TOP",
+                    "TRY",
+                    "TTD",
+                    "TWD",
+                    "TZS",
+                    "UAH",
+                    "UGX",
+                    "USD",
+                    "USN",
+                    "UYI",
+                    "UYU",
+                    "UYW",
+                    "UZS",
+                    "VES",
+                    "VND",
+                    "VUV",
+                    "WST",
+                    "XAF",
+                    "XAG",
+                    "XAU",
+                    "XBA",
+                    "XBB",
+                    "XBC",
+                    "XBD",
+                    "XCD",
+                    "XDR",
+                    "XOF",
+                    "XPD",
+                    "XPF",
+                    "XPT",
+                    "XSU",
+                    "XTS",
+                    "XUA",
+                    "XXX",
+                    "YER",
+                    "ZAR",
+                    "ZMW",
+                    "ZWL"
+                ]
+            },
+            "purchaseOrder": {
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "enum": [
+                            "EXEMPTED",
+                            "NEW",
+                            "EXISTING"
+                        ],
+                        "description": "Type of the purchase order"
+                    },
+                    "number": {
+                        "type": "string",
+                        "description": "Purchase order number"
+                    },
+                    "closingDate": {
+                        "type": "string",
+                        "description": "Closing date of purchase order.",
+                        "format": "date",
+                        "example": "2020-08-25T00:00:00.000Z"
+                    }
+                },
+                "description": "Purchase Order"
+            },
+            "productAdditionalInfo": {
+                "title": "Additional product details",
+                "description": "This section is reserved to display product specific information",
+                "type": "array",
+                "items": {
+                    "properties": {
+                        "key": {
+                            "type": "string"
+                        },
+                        "value": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "example": [
+                    {
+                        "key": "ASSET_ID",
+                        "value": "4-89137987923"
+                    },
+                    {
+                        "key": "SERIAL_NUMBER",
+                        "value": "232891719"
+                    }
+                ]
+            }
+        }
+    }
+}
