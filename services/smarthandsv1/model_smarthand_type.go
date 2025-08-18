@@ -20,7 +20,8 @@ var _ MappedNullable = &SmarthandType{}
 
 // SmarthandType struct for SmarthandType
 type SmarthandType struct {
-	Type SmarthandTypeType `json:"type"`
+	// Smarthand Type
+	Type string `json:"type"`
 	// Description of Smarthand Type
 	TypeDescription      string `json:"typeDescription"`
 	AdditionalProperties map[string]interface{}
@@ -32,7 +33,7 @@ type _SmarthandType SmarthandType
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSmarthandType(type_ SmarthandTypeType, typeDescription string) *SmarthandType {
+func NewSmarthandType(type_ string, typeDescription string) *SmarthandType {
 	this := SmarthandType{}
 	this.Type = type_
 	this.TypeDescription = typeDescription
@@ -48,9 +49,9 @@ func NewSmarthandTypeWithDefaults() *SmarthandType {
 }
 
 // GetType returns the Type field value
-func (o *SmarthandType) GetType() SmarthandTypeType {
+func (o *SmarthandType) GetType() string {
 	if o == nil {
-		var ret SmarthandTypeType
+		var ret string
 		return ret
 	}
 
@@ -59,7 +60,7 @@ func (o *SmarthandType) GetType() SmarthandTypeType {
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *SmarthandType) GetTypeOk() (*SmarthandTypeType, bool) {
+func (o *SmarthandType) GetTypeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -67,7 +68,7 @@ func (o *SmarthandType) GetTypeOk() (*SmarthandTypeType, bool) {
 }
 
 // SetType sets field value
-func (o *SmarthandType) SetType(v SmarthandTypeType) {
+func (o *SmarthandType) SetType(v string) {
 	o.Type = v
 }
 

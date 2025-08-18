@@ -1,0 +1,18 @@
+diff --git a/spec/services/smarthandsv1/oas3.patched/openapi.yaml b/spec/services/smarthandsv1/oas3.patched/openapi.yaml
+index 43bbd73c..7c14c6a3 100644
+--- a/spec/services/smarthandsv1/oas3.patched/openapi.yaml
++++ b/spec/services/smarthandsv1/oas3.patched/openapi.yaml
+@@ -2505,13 +2505,6 @@
+       "properties": {
+         "type": {
+           "type": "string",
+-          "enum": [
+-            "EQUIPMENT_INSTALL",
+-            "CAGE_CLEANUP",
+-            "CAGE_ESCORT_OPEN_CABINET",
+-            "SHIPMENT_UNPACKING",
+-            "OTHER"
+-          ],
+           "description": "Smarthand Type",
+           "example": "EQUIPMENT_INSTALL"
+         },

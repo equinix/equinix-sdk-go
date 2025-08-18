@@ -152,7 +152,6 @@ Class | Method | HTTP request | Description
  - [SmartHandTypes200Response](docs/SmartHandTypes200Response.md)
  - [SmarthandResponse](docs/SmarthandResponse.md)
  - [SmarthandType](docs/SmarthandType.md)
- - [SmarthandTypeType](docs/SmarthandTypeType.md)
 
 
 ## Documentation For Authorization
