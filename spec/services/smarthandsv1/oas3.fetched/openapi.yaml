@@ -1,0 +1,2686 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Request cage assistance, custom installation and equipment troubleshooting.",
+    "version": "1.0",
+    "title": "Smart Hands",
+    "termsOfService": "https://www.equinix.com/about/legal/terms",
+    "contact": {
+      "name": "Equinix Api Support",
+      "url": "https://docs.equinix.com/api-support.htm"
+    }
+  },
+  "host": "api.equinix.com",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/v1/orders/smarthands/equipmentInstall": {
+      "post": {
+        "operationId": "handleSmartHandOrder",
+        "summary": "Request equipment installation per your specifications by an IBX Technician",
+        "tags": [
+          "Smarthands"
+        ],
+        "description": "Request equipment installation per your specifications by an IBX Technician",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/equipmentInstallRequest"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "$ref": "#/definitions/smarthandResponse"
+          },
+          "400": {
+            "description": "Http Bad Request",
+            "schema": {
+              "$ref": "#/definitions/genericError"
+            },
+            "examples": {
+              "application/json": {
+                "errors": [
+                  {
+                    "code": "EQX-123-1234",
+                    "fields": [
+                      "xpath"
+                    ],
+                    "message": "Error message.",
+                    "messageParams": [
+                      "Message place holder params"
+                    ]
+                  }
+                ],
+                "ticketId": "190619221547671"
+              }
+            }
+          },
+          "403": {
+            "description": "Http Authorization Error",
+            "schema": {
+              "$ref": "#/definitions/genericError"
+            },
+            "examples": {
+              "application/json": {
+                "errors": [
+                  {
+                    "code": "EQX-123-403",
+                    "message": "Insufficient permission to access the resource or invoke the request."
+                  }
+                ],
+                "ticketId": "190619221547672"
+              }
+            }
+          },
+          "500": {
+            "description": "Http Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/genericError"
+            },
+            "examples": {
+              "application/json": {
+                "errors": [
+                  {
+                    "code": "EQX-123-500",
+                    "message": "The system had encountered an unexpected problem and we are tracking it with error code."
+                  }
+                ],
+                "ticketId": "190619221547673"
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/parameters/authorizationHeader"
+        }
+      ]
+    },
+    "/v1/orders/smarthands/shipmentUnpack": {
+      "post": {
+        "operationId": "handleSmartHandShipmentUnpackOrder",
+        "summary": "Request inbound shipment unpacking and packaging disposal.",
+        "tags": [
+          "Smarthands"
+        ],
+        "description": "This API is used to request inbound shipment unpacking and packaging disposal.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/shipmentUnpackRequest"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "$ref": "#/definitions/smarthandResponse"
+          },
+          "400": {
+            "description": "Http Bad Request",
+            "schema": {
+              "$ref": "#/definitions/genericError"
+            },
+            "examples": {
+              "application/json": {
+                "errors": [
+                  {
+                    "code": "EQX-123-1234",
+                    "fields": [
+                      "xpath"
+                    ],
+                    "message": "Error message.",
+                    "messageParams": [
+                      "Message place holder params"
+                    ]
+                  }
+                ],
+                "ticketId": "190619221547671"
+              }
+            }
+          },
+          "403": {
+            "description": "Http Authorization Error",
+            "schema": {
+              "$ref": "#/definitions/genericError"
+            },
+            "examples": {
+              "application/json": {
+                "errors": [
+                  {
+                    "code": "EQX-123-403",
+                    "message": "Insufficient permission to access the resource or invoke the request."
+                  }
+                ],
+                "ticketId": "190619221547672"
+              }
+            }
+          },
+          "500": {
+            "description": "Http Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/genericError"
+            },
+            "examples": {
+              "application/json": {
+                "errors": [
+                  {
+                    "code": "EQX-123-500",
+                    "message": "The system had encountered an unexpected problem and we are tracking it with error code."
+                  }
+                ],
+                "ticketId": "190619221547673"
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/parameters/authorizationHeader"
+        }
+      ]
+    },
+    "/v1/orders/smarthands/moveJumperCable": {
+      "post": {
+        "operationId": "handleSmartHandMoveJumperCableOrder",
+        "summary": "This API is used to request a patch cable to be moved between devices.",
+        "tags": [
+          "Smarthands"
+        ],
+        "description": "This API is used to request a patch cable to be moved between devices.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/moveJumperCableRequest"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "$ref": "#/definitions/smarthandResponse"
+          },
+          "400": {
+            "description": "Http Bad Request",
+            "schema": {
+              "$ref": "#/definitions/genericError"
+            },
+            "examples": {
+              "application/json": {
+                "errors": [
+                  {
+                    "code": "EQX-123-1234",
+                    "fields": [
+                      "xpath"
+                    ],
+                    "message": "Error message.",
+                    "messageParams": [
+                      "Message place holder params"
+                    ]
+                  }
+                ],
+                "ticketId": "190619221547671"
+              }
+            }
+          },
+          "403": {
+            "description": "Http Authorization Error",
+            "schema": {
+              "$ref": "#/definitions/genericError"
+            },
+            "examples": {
+              "application/json": {
+                "errors": [
+                  {
+                    "code": "EQX-123-403",
+                    "message": "Insufficient permission to access the resource or invoke the request."
+                  }
+                ],
+                "ticketId": "190619221547672"
+              }
+            }
+          },
+          "500": {
+            "description": "Http Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/genericError"
+            },
+            "examples": {
+              "application/json": {
+                "errors": [
+                  {
+                    "code": "EQX-123-500",
+                    "message": "The system had encountered an unexpected problem and we are tracking it with error code."
+                  }
+                ],
+                "ticketId": "190619221547673"
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/parameters/authorizationHeader"
+        }
+      ]
+    },
+    "/v1/orders/smarthands/cageEscort": {
+      "post": {
+        "operationId": "handleSmartHandCageEscortOrder",
+        "summary": "Request a patch cable to be moved between devices",
+        "tags": [
+          "Smarthands"
+        ],
+        "description": "This API is used to request a patch cable to be moved between devices",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/cageEscortRequest"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "$ref": "#/definitions/smarthandResponse"
+          },
+          "400": {
+            "description": "Http Bad Request",
+            "schema": {
+              "$ref": "#/definitions/genericError"
+            },
+            "examples": {
+              "application/json": {
+                "errors": [
+                  {
+                    "code": "EQX-123-1234",
+                    "fields": [
+                      "xpath"
+                    ],
+                    "message": "Error message.",
+                    "messageParams": [
+                      "Message place holder params"
+                    ]
+                  }
+                ],
+                "ticketId": "190619221547671"
+              }
+            }
+          },
+          "403": {
+            "description": "Http Authorization Error",
+            "schema": {
+              "$ref": "#/definitions/genericError"
+            },
+            "examples": {
+              "application/json": {
+                "errors": [
+                  {
+                    "code": "EQX-123-403",
+                    "message": "Insufficient permission to access the resource or invoke the request."
+                  }
+                ],
+                "ticketId": "190619221547672"
+              }
+            }
+          },
+          "500": {
+            "description": "Http Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/genericError"
+            },
+            "examples": {
+              "application/json": {
+                "errors": [
+                  {
+                    "code": "EQX-123-500",
+                    "message": "The system had encountered an unexpected problem and we are tracking it with error code."
+                  }
+                ],
+                "ticketId": "190619221547673"
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/parameters/authorizationHeader"
+        }
+      ]
+    },
+    "/v1/orders/smarthands/locatePackage": {
+      "post": {
+        "operationId": "handleSmartHandLocatePackageOrder",
+        "summary": "Get the location of your package(s) at an IBX.",
+        "tags": [
+          "Smarthands"
+        ],
+        "description": "This API is used to get the location of your package(s) at an IBX.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/locatePackageRequest"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "$ref": "#/definitions/smarthandResponse"
+          },
+          "400": {
+            "description": "Http Bad Request",
+            "schema": {
+              "$ref": "#/definitions/genericError"
+            },
+            "examples": {
+              "application/json": {
+                "errors": [
+                  {
+                    "code": "EQX-123-1234",
+                    "fields": [
+                      "xpath"
+                    ],
+                    "message": "Error message.",
+                    "messageParams": [
+                      "Message place holder params"
+                    ]
+                  }
+                ],
+                "ticketId": "190619221547671"
+              }
+            }
+          },
+          "403": {
+            "description": "Http Authorization Error",
+            "schema": {
+              "$ref": "#/definitions/genericError"
+            },
+            "examples": {
+              "application/json": {
+                "errors": [
+                  {
+                    "code": "EQX-123-403",
+                    "message": "Insufficient permission to access the resource or invoke the request."
+                  }
+                ],
+                "ticketId": "190619221547672"
+              }
+            }
+          },
+          "500": {
+            "description": "Http Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/genericError"
+            },
+            "examples": {
+              "application/json": {
+                "errors": [
+                  {
+                    "code": "EQX-123-500",
+                    "message": "The system had encountered an unexpected problem and we are tracking it with error code."
+                  }
+                ],
+                "ticketId": "190619221547673"
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/parameters/authorizationHeader"
+        }
+      ]
+    },
+    "/v1/orders/smarthands/picturesDocument": {
+      "post": {
+        "operationId": "handleSmartHandPicturesDocumentOrder",
+        "summary": "Request an IBX Technician to provide cage-related pictures or documentation.",
+        "tags": [
+          "Smarthands"
+        ],
+        "description": "Request an IBX Technician to provide cage-related pictures or documentation.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/picturesDocumentRequest"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "$ref": "#/definitions/smarthandResponse"
+          },
+          "400": {
+            "description": "Http Bad Request",
+            "schema": {
+              "$ref": "#/definitions/genericError"
+            },
+            "examples": {
+              "application/json": {
+                "errors": [
+                  {
+                    "code": "EQX-123-1234",
+                    "fields": [
+                      "xpath"
+                    ],
+                    "message": "Error message.",
+                    "messageParams": [
+                      "Message place holder params"
+                    ]
+                  }
+                ],
+                "ticketId": "190619221547671"
+              }
+            }
+          },
+          "403": {
+            "description": "Http Authorization Error",
+            "schema": {
+              "$ref": "#/definitions/genericError"
+            },
+            "examples": {
+              "application/json": {
+                "errors": [
+                  {
+                    "code": "EQX-123-403",
+                    "message": "Insufficient permission to access the resource or invoke the request."
+                  }
+                ],
+                "ticketId": "190619221547672"
+              }
+            }
+          },
+          "500": {
+            "description": "Http Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/genericError"
+            },
+            "examples": {
+              "application/json": {
+                "errors": [
+                  {
+                    "code": "EQX-123-500",
+                    "message": "The system had encountered an unexpected problem and we are tracking it with error code."
+                  }
+                ],
+                "ticketId": "190619221547673"
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/parameters/authorizationHeader"
+        }
+      ]
+    },
+    "/v1/orders/smarthands/patchCableInstall": {
+      "post": {
+        "operationId": "handleSmartHandPatchCableInstallOrder",
+        "summary": "Request installation of a cross connect patch cable by an IBX Technician.",
+        "tags": [
+          "Smarthands"
+        ],
+        "description": "Request installation of a cross connect patch cable by an IBX Technician.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/patchCableInstallRequest"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "$ref": "#/definitions/smarthandResponse"
+          },
+          "400": {
+            "description": "Http Bad Request",
+            "schema": {
+              "$ref": "#/definitions/genericError"
+            },
+            "examples": {
+              "application/json": {
+                "errors": [
+                  {
+                    "code": "EQX-123-1234",
+                    "fields": [
+                      "xpath"
+                    ],
+                    "message": "Error message.",
+                    "messageParams": [
+                      "Message place holder params"
+                    ]
+                  }
+                ],
+                "ticketId": "190619221547671"
+              }
+            }
+          },
+          "403": {
+            "description": "Http Authorization Error",
+            "schema": {
+              "$ref": "#/definitions/genericError"
+            },
+            "examples": {
+              "application/json": {
+                "errors": [
+                  {
+                    "code": "EQX-123-403",
+                    "message": "Insufficient permission to access the resource or invoke the request."
+                  }
+                ],
+                "ticketId": "190619221547672"
+              }
+            }
+          },
+          "500": {
+            "description": "Http Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/genericError"
+            },
+            "examples": {
+              "application/json": {
+                "errors": [
+                  {
+                    "code": "EQX-123-500",
+                    "message": "The system had encountered an unexpected problem and we are tracking it with error code."
+                  }
+                ],
+                "ticketId": "190619221547673"
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/parameters/authorizationHeader"
+        }
+      ]
+    },
+    "/v1/orders/smarthands/patchCableRemoval": {
+      "post": {
+        "operationId": "handleSmartHandPatchCableRemovalOrder",
+        "summary": "Request removal of a cross connect cable by an IBX Technician.",
+        "tags": [
+          "Smarthands"
+        ],
+        "description": "Request removal of a cross connect cable by an IBX Technician.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/patchCableRemovalRequest"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "$ref": "#/definitions/smarthandResponse"
+          },
+          "400": {
+            "description": "Http Bad Request",
+            "schema": {
+              "$ref": "#/definitions/genericError"
+            },
+            "examples": {
+              "application/json": {
+                "errors": [
+                  {
+                    "code": "EQX-123-1234",
+                    "fields": [
+                      "xpath"
+                    ],
+                    "message": "Error message.",
+                    "messageParams": [
+                      "Message place holder params"
+                    ]
+                  }
+                ],
+                "ticketId": "190619221547671"
+              }
+            }
+          },
+          "403": {
+            "description": "Http Authorization Error",
+            "schema": {
+              "$ref": "#/definitions/genericError"
+            },
+            "examples": {
+              "application/json": {
+                "errors": [
+                  {
+                    "code": "EQX-123-403",
+                    "message": "Insufficient permission to access the resource or invoke the request."
+                  }
+                ],
+                "ticketId": "190619221547672"
+              }
+            }
+          },
+          "500": {
+            "description": "Http Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/genericError"
+            },
+            "examples": {
+              "application/json": {
+                "errors": [
+                  {
+                    "code": "EQX-123-500",
+                    "message": "The system had encountered an unexpected problem and we are tracking it with error code."
+                  }
+                ],
+                "ticketId": "190619221547673"
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/parameters/authorizationHeader"
+        }
+      ]
+    },
+    "/v1/orders/smarthands/cageCleanup": {
+      "post": {
+        "operationId": "handleSmartHandCageCleanupOrder",
+        "summary": "Request trash removal or cage cleanup",
+        "tags": [
+          "Smarthands"
+        ],
+        "description": "This API is used to request trash removal or cage cleanup",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/cageCleanupRequest"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "$ref": "#/definitions/smarthandResponse"
+          },
+          "400": {
+            "description": "Http Bad Request",
+            "schema": {
+              "$ref": "#/definitions/genericError"
+            },
+            "examples": {
+              "application/json": {
+                "errors": [
+                  {
+                    "code": "EQX-123-1234",
+                    "fields": [
+                      "xpath"
+                    ],
+                    "message": "Error message.",
+                    "messageParams": [
+                      "Message place holder params"
+                    ]
+                  }
+                ],
+                "ticketId": "190619221547671"
+              }
+            }
+          },
+          "403": {
+            "description": "Http Authorization Error",
+            "schema": {
+              "$ref": "#/definitions/genericError"
+            },
+            "examples": {
+              "application/json": {
+                "errors": [
+                  {
+                    "code": "EQX-123-403",
+                    "message": "Insufficient permission to access the resource or invoke the request."
+                  }
+                ],
+                "ticketId": "190619221547672"
+              }
+            }
+          },
+          "500": {
+            "description": "Http Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/genericError"
+            },
+            "examples": {
+              "application/json": {
+                "errors": [
+                  {
+                    "code": "EQX-123-500",
+                    "message": "The system had encountered an unexpected problem and we are tracking it with error code."
+                  }
+                ],
+                "ticketId": "190619221547673"
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/parameters/authorizationHeader"
+        }
+      ]
+    },
+    "/v1/orders/smarthands/cableRequest": {
+      "post": {
+        "operationId": "handleSmartHandCableRequestOrder",
+        "summary": "This API is used to request cables per your specifications for your equipment.",
+        "tags": [
+          "Smarthands"
+        ],
+        "description": "This API is used to request cables per your specifications for your equipment.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/cableRequestRequest"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "$ref": "#/definitions/smarthandResponse"
+          },
+          "400": {
+            "description": "Http Bad Request",
+            "schema": {
+              "$ref": "#/definitions/genericError"
+            },
+            "examples": {
+              "application/json": {
+                "errors": [
+                  {
+                    "code": "EQX-123-1234",
+                    "fields": [
+                      "xpath"
+                    ],
+                    "message": "Error message.",
+                    "messageParams": [
+                      "Message place holder params"
+                    ]
+                  }
+                ],
+                "ticketId": "190619221547671"
+              }
+            }
+          },
+          "403": {
+            "description": "Http Authorization Error",
+            "schema": {
+              "$ref": "#/definitions/genericError"
+            },
+            "examples": {
+              "application/json": {
+                "errors": [
+                  {
+                    "code": "EQX-123-403",
+                    "message": "Insufficient permission to access the resource or invoke the request."
+                  }
+                ],
+                "ticketId": "190619221547672"
+              }
+            }
+          },
+          "500": {
+            "description": "Http Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/genericError"
+            },
+            "examples": {
+              "application/json": {
+                "errors": [
+                  {
+                    "code": "EQX-123-500",
+                    "message": "The system had encountered an unexpected problem and we are tracking it with error code."
+                  }
+                ],
+                "ticketId": "190619221547673"
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/parameters/authorizationHeader"
+        }
+      ]
+    },
+    "/v1/orders/smarthands/runJumperCable": {
+      "post": {
+        "operationId": "handleSmartHandRunJumperCableOrder",
+        "summary": "This API is used to request a jumper cable to be ran between devices.",
+        "tags": [
+          "Smarthands"
+        ],
+        "description": "This API is used to request a jumper cable to be ran between devices.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/runJumperCableRequest"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "$ref": "#/definitions/smarthandResponse"
+          },
+          "400": {
+            "description": "Http Bad Request",
+            "schema": {
+              "$ref": "#/definitions/genericError"
+            },
+            "examples": {
+              "application/json": {
+                "errors": [
+                  {
+                    "code": "EQX-123-1234",
+                    "fields": [
+                      "xpath"
+                    ],
+                    "message": "Error message.",
+                    "messageParams": [
+                      "Message place holder params"
+                    ]
+                  }
+                ],
+                "ticketId": "190619221547671"
+              }
+            }
+          },
+          "403": {
+            "description": "Http Authorization Error",
+            "schema": {
+              "$ref": "#/definitions/genericError"
+            },
+            "examples": {
+              "application/json": {
+                "errors": [
+                  {
+                    "code": "EQX-123-403",
+                    "message": "Insufficient permission to access the resource or invoke the request."
+                  }
+                ],
+                "ticketId": "190619221547672"
+              }
+            }
+          },
+          "500": {
+            "description": "Http Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/genericError"
+            },
+            "examples": {
+              "application/json": {
+                "errors": [
+                  {
+                    "code": "EQX-123-500",
+                    "message": "The system had encountered an unexpected problem and we are tracking it with error code."
+                  }
+                ],
+                "ticketId": "190619221547673"
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/parameters/authorizationHeader"
+        }
+      ]
+    },
+    "/v1/orders/smarthands/other": {
+      "post": {
+        "operationId": "handleSmartHandOthersOrder",
+        "summary": "Request a Smart Hands order not listed in catalogue",
+        "tags": [
+          "Smarthands"
+        ],
+        "description": "This API is used to request a Smart Hands order not listed in catalogue",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/otherRequest"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "$ref": "#/definitions/smarthandResponse"
+          },
+          "400": {
+            "description": "Http Bad Request",
+            "schema": {
+              "$ref": "#/definitions/genericError"
+            },
+            "examples": {
+              "application/json": {
+                "errors": [
+                  {
+                    "code": "EQX-123-1234",
+                    "fields": [
+                      "xpath"
+                    ],
+                    "message": "Error message.",
+                    "messageParams": [
+                      "Message place holder params"
+                    ]
+                  }
+                ],
+                "ticketId": "190619221547671"
+              }
+            }
+          },
+          "403": {
+            "description": "Http Authorization Error",
+            "schema": {
+              "$ref": "#/definitions/genericError"
+            },
+            "examples": {
+              "application/json": {
+                "errors": [
+                  {
+                    "code": "EQX-123-403",
+                    "message": "Insufficient permission to access the resource or invoke the request."
+                  }
+                ],
+                "ticketId": "190619221547672"
+              }
+            }
+          },
+          "500": {
+            "description": "Http Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/genericError"
+            },
+            "examples": {
+              "application/json": {
+                "errors": [
+                  {
+                    "code": "EQX-123-500",
+                    "message": "The system had encountered an unexpected problem and we are tracking it with error code."
+                  }
+                ],
+                "ticketId": "190619221547673"
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/parameters/authorizationHeader"
+        }
+      ]
+    },
+    "/v1/orders/smarthands/locations": {
+      "get": {
+        "operationId": "getLocation",
+        "summary": "Get locations(ibx, cage) details for placing smart hands based on smart hands permission for user",
+        "tags": [
+          "Smarthands"
+        ],
+        "description": "Get locations(ibx, cage) details for placing smart hands based on smart hands permission for user",
+        "parameters": [
+          {
+            "name": "detail",
+            "in": "query",
+            "description": "When enable this flag returns detailed permission with Cage & Cabinets.",
+            "required": false,
+            "type": "boolean",
+            "default": false
+          },
+          {
+            "name": "ibxs",
+            "in": "query",
+            "description": "Example: AM1,AM2",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "cages",
+            "in": "query",
+            "description": "Example: AM1:02:002MC1",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return list of Ibx, Cage, Cabinets where user has access",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "locations": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/location"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Http Bad Request",
+            "schema": {
+              "$ref": "#/definitions/genericError"
+            },
+            "examples": {
+              "application/json": {
+                "errors": [
+                  {
+                    "code": "EQX-123-1234",
+                    "fields": [
+                      "xpath"
+                    ],
+                    "message": "Error message.",
+                    "messageParams": [
+                      "Message place holder params"
+                    ]
+                  }
+                ],
+                "ticketId": "190619221547671"
+              }
+            }
+          },
+          "403": {
+            "description": "Http Authorization Error",
+            "schema": {
+              "$ref": "#/definitions/genericError"
+            },
+            "examples": {
+              "application/json": {
+                "errors": [
+                  {
+                    "code": "EQX-123-403",
+                    "message": "Insufficient permission to access the resource or invoke the request."
+                  }
+                ],
+                "ticketId": "190619221547672"
+              }
+            }
+          },
+          "500": {
+            "description": "Http Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/genericError"
+            },
+            "examples": {
+              "application/json": {
+                "errors": [
+                  {
+                    "code": "EQX-123-500",
+                    "message": "The system had encountered an unexpected problem and we are tracking it with error code."
+                  }
+                ],
+                "ticketId": "190619221547673"
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/parameters/authorizationHeader"
+        }
+      ]
+    },
+    "/v1/orders/smarthands/types": {
+      "get": {
+        "operationId": "smartHandTypes",
+        "summary": "All supported smart hands types API.",
+        "tags": [
+          "Smarthands"
+        ],
+        "description": "Smart Hands Types API provides all types of supported smart hands.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "smarthands": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/smarthandType"
+                  }
+                }
+              }
+            },
+            "examples": {
+              "application/json": {
+                "smarthands": [
+                  {
+                    "type": "EQUIPMENT_INSTALL",
+                    "typeDescription": "Equipment Install"
+                  }
+                ]
+              }
+            }
+          },
+          "400": {
+            "description": "Http Bad Request",
+            "schema": {
+              "$ref": "#/definitions/genericError"
+            },
+            "examples": {
+              "application/json": {
+                "errors": [
+                  {
+                    "code": "EQX-123-1234",
+                    "fields": [
+                      "xpath"
+                    ],
+                    "message": "Error message.",
+                    "messageParams": [
+                      "Message place holder params"
+                    ]
+                  }
+                ],
+                "ticketId": "190619221547671"
+              }
+            }
+          },
+          "403": {
+            "description": "Http Authorization Error",
+            "schema": {
+              "$ref": "#/definitions/genericError"
+            },
+            "examples": {
+              "application/json": {
+                "errors": [
+                  {
+                    "code": "EQX-123-403",
+                    "message": "Insufficient permission to access the resource or invoke the request."
+                  }
+                ],
+                "ticketId": "190619221547672"
+              }
+            }
+          },
+          "500": {
+            "description": "Http Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/genericError"
+            },
+            "examples": {
+              "application/json": {
+                "errors": [
+                  {
+                    "code": "EQX-123-500",
+                    "message": "The system had encountered an unexpected problem and we are tracking it with error code."
+                  }
+                ],
+                "ticketId": "190619221547673"
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/parameters/authorizationHeader"
+        }
+      ]
+    }
+  },
+  "definitions": {
+    "equipmentInstallRequest": {
+      "title": "Equipment Install Request",
+      "type": "object",
+      "properties": {
+        "customerReferenceNumber": {
+          "$ref": "#/definitions/customerReferenceNumber"
+        },
+        "purchaseOrder": {
+          "$ref": "#/definitions/purchaseOrder"
+        },
+        "ibxLocation": {
+          "$ref": "#/definitions/ibxLocation"
+        },
+        "contacts": {
+          "$ref": "#/definitions/order-contacts"
+        },
+        "schedule": {
+          "$ref": "#/definitions/scheduleInfo"
+        },
+        "attachments": {
+          "$ref": "#/definitions/attachmentArray"
+        },
+        "serviceDetails": {
+          "type": "object",
+          "properties": {
+            "deviceLocation": {
+              "type": "string",
+              "description": "Device Location",
+              "example": "abc location"
+            },
+            "elevationDrawingAttached": {
+              "type": "boolean",
+              "description": "Elevation drawing attached?",
+              "example": false
+            },
+            "installationPoint": {
+              "type": "string",
+              "description": "Installation Point",
+              "example": "abc"
+            },
+            "installedEquipmentPhotoRequired": {
+              "type": "boolean",
+              "description": "Installed Equipment Photo Required?",
+              "example": false
+            },
+            "mountHardwareIncluded": {
+              "type": "boolean",
+              "description": "Mount hardware included?",
+              "example": true
+            },
+            "patchDevices": {
+              "type": "boolean",
+              "description": "Patch Devices?",
+              "example": true
+            },
+            "patchingInfo": {
+              "type": "string",
+              "description": "Patching info",
+              "example": "Patch my equipment"
+            },
+            "powerItOn": {
+              "type": "boolean",
+              "description": "Power it on?",
+              "example": true
+            },
+            "needSupportFromASubmarineCableStationEngineer": {
+              "$ref": "#/definitions/needSupportFromASubmarineCableStationEngineer"
+            },
+            "scopeOfWork": {
+              "$ref": "#/definitions/scopeOfWork"
+            }
+          },
+          "required": [
+            "deviceLocation",
+            "elevationDrawingAttached",
+            "installationPoint",
+            "installedEquipmentPhotoRequired",
+            "mountHardwareIncluded",
+            "patchDevices",
+            "powerItOn",
+            "scopeOfWork"
+          ]
+        }
+      },
+      "required": [
+        "ibxLocation",
+        "contacts",
+        "schedule",
+        "serviceDetails"
+      ]
+    },
+    "shipmentUnpackRequest": {
+      "title": "Shipment Unpack Request",
+      "type": "object",
+      "required": [
+        "serviceDetails",
+        "ibxLocation",
+        "contacts",
+        "schedule"
+      ],
+      "properties": {
+        "customerReferenceNumber": {
+          "$ref": "#/definitions/customerReferenceNumber"
+        },
+        "purchaseOrder": {
+          "$ref": "#/definitions/purchaseOrder"
+        },
+        "ibxLocation": {
+          "$ref": "#/definitions/ibxLocation"
+        },
+        "contacts": {
+          "$ref": "#/definitions/order-contacts"
+        },
+        "schedule": {
+          "$ref": "#/definitions/scheduleInfo"
+        },
+        "attachments": {
+          "$ref": "#/definitions/attachmentArray"
+        },
+        "serviceDetails": {
+          "type": "object",
+          "description": "Shipment Unpacking",
+          "properties": {
+            "inboundShipmentOrderNumber": {
+              "type": "string",
+              "description": "Inbound Shipment Order Number",
+              "pattern": "^[ A-Za-z0-9~!|\\[\\]@#$%^&*()_+:\"<>?\\/.,;'=\\-\\{\\}`]{1,50}$",
+              "example": "1-12122121"
+            },
+            "copyOfPackingSlipNeeded": {
+              "type": "boolean",
+              "description": "Copy of Packaging Slip Needed?",
+              "example": false
+            },
+            "scopeOfWork": {
+              "$ref": "#/definitions/scopeOfWork"
+            },
+            "discardShipmentMaterial": {
+              "type": "boolean",
+              "description": "Discard Shipment Material?",
+              "example": false
+            }
+          },
+          "required": [
+            "inboundShipmentOrderNumber",
+            "discardShipmentMaterial",
+            "copyOfPackingSlipNeeded",
+            "scopeOfWork"
+          ]
+        }
+      }
+    },
+    "moveJumperCableRequest": {
+      "title": "Move Jumper Cable Request",
+      "type": "object",
+      "properties": {
+        "customerReferenceNumber": {
+          "$ref": "#/definitions/customerReferenceNumber"
+        },
+        "purchaseOrder": {
+          "$ref": "#/definitions/purchaseOrder"
+        },
+        "ibxLocation": {
+          "$ref": "#/definitions/ibxLocation"
+        },
+        "contacts": {
+          "$ref": "#/definitions/order-contacts"
+        },
+        "schedule": {
+          "$ref": "#/definitions/scheduleInfo"
+        },
+        "attachments": {
+          "$ref": "#/definitions/attachmentArray"
+        },
+        "serviceDetails": {
+          "type": "object",
+          "description": "Move Jumper Cable Service Details Object. Please fill out the Cable ID, Current Device (Name, Slot, Port) and New Device (Name, Slot, Port) details for each jumper cable and attach it to the form or complete scope of work text box when 'Quantity' is greater than 1. You may mix jumper types but if you require more than 12 jumpers ran, the site will contact you for scheduling of your request based on parts and availability. Please select the best option for your scheduling needs. If 'Quantity' is 1, then below 'currentDeviceDetails' and 'newDeviceDetails' objects are mandatory.",
+          "properties": {
+            "quantity": {
+              "type": "string",
+              "description": "Quantity.",
+              "enum": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "11",
+                "12",
+                "12+"
+              ]
+            },
+            "cableId": {
+              "type": "string",
+              "description": "Enter Cable ID or ‘None’ if not applicable. This field is mandatory if 'Quantity' is 1.",
+              "example": "A01-5-10"
+            },
+            "currentDeviceDetails": {
+              "$ref": "#/definitions/device"
+            },
+            "newDeviceDetails": {
+              "$ref": "#/definitions/device"
+            },
+            "scopeOfWork": {
+              "$ref": "#/definitions/scopeOfWork"
+            }
+          },
+          "required": [
+            "quantity",
+            "scopeOfWork"
+          ]
+        }
+      },
+      "required": [
+        "ibxLocation",
+        "contacts",
+        "schedule",
+        "serviceDetails"
+      ]
+    },
+    "cageEscortRequest": {
+      "title": "Cage Escort Request",
+      "type": "object",
+      "required": [
+        "ibxLocation",
+        "contacts",
+        "schedule",
+        "serviceDetails"
+      ],
+      "properties": {
+        "customerReferenceNumber": {
+          "$ref": "#/definitions/customerReferenceNumber"
+        },
+        "purchaseOrder": {
+          "$ref": "#/definitions/purchaseOrder"
+        },
+        "ibxLocation": {
+          "$ref": "#/definitions/ibxLocation"
+        },
+        "contacts": {
+          "$ref": "#/definitions/order-contacts"
+        },
+        "schedule": {
+          "$ref": "#/definitions/scheduleInfo"
+        },
+        "attachments": {
+          "$ref": "#/definitions/attachmentArray"
+        },
+        "serviceDetails": {
+          "type": "object",
+          "description": "Escort to Open Cage/Open Cabinet",
+          "properties": {
+            "durationVisit": {
+              "type": "string",
+              "description": "Duration of the visit for the Visitor",
+              "enum": [
+                "30 Minutes",
+                "60 Minutes",
+                "90 Minutes",
+                "2 Hours",
+                "2 Hours 30 Minutes",
+                "3 Hours",
+                "3 Hours 30 Minutes",
+                "4 Hours"
+              ]
+            },
+            "openCabinetForVisitor": {
+              "type": "boolean",
+              "description": "Open the Cabinet for the Visitor?",
+              "example": false
+            },
+            "scopeOfWork": {
+              "$ref": "#/definitions/scopeOfWork"
+            },
+            "supervisionReqForVisitor": {
+              "type": "boolean",
+              "description": "Supervision Required For the Visitor?",
+              "example": false
+            },
+            "workVisitOrderNumber": {
+              "type": "string",
+              "description": "Work Visit Order Number",
+              "pattern": "^[ A-Za-z0-9~!|\\[\\]@#$%^&*()_+:\"<>?\\/.,;'=\\-\\{\\}`]{1,200}$",
+              "example": "1-108050984499"
+            }
+          },
+          "required": [
+            "durationVisit",
+            "openCabinetForVisitor",
+            "scopeOfWork",
+            "supervisionReqForVisitor",
+            "workVisitOrderNumber"
+          ]
+        }
+      }
+    },
+    "locatePackageRequest": {
+      "title": "Locate Package Request",
+      "type": "object",
+      "required": [
+        "serviceDetails",
+        "ibxLocation",
+        "contacts",
+        "schedule"
+      ],
+      "properties": {
+        "customerReferenceNumber": {
+          "$ref": "#/definitions/customerReferenceNumber"
+        },
+        "purchaseOrder": {
+          "$ref": "#/definitions/purchaseOrder"
+        },
+        "ibxLocation": {
+          "$ref": "#/definitions/ibxLocation"
+        },
+        "contacts": {
+          "$ref": "#/definitions/order-contacts"
+        },
+        "schedule": {
+          "$ref": "#/definitions/scheduleInfo"
+        },
+        "attachments": {
+          "$ref": "#/definitions/attachmentArray"
+        },
+        "serviceDetails": {
+          "type": "object",
+          "description": "Shipment Unpacking",
+          "properties": {
+            "shipmentOrderNumber": {
+              "type": "string",
+              "description": "Inbound Shipment Order Number",
+              "pattern": "^[ A-Za-z0-9~!|\\[\\]@#$%^&*()_+:\"<>?\\/.,;'=\\-\\{\\}`]{1,50}$",
+              "example": "1-1111111111"
+            },
+            "trackingNumber": {
+              "type": "string",
+              "description": "Tracking Number",
+              "pattern": "^[ A-Za-z0-9~!|\\[\\]@#$%^&*()_+:\"<>?\\/.,;'=\\-\\{\\}`]{1,200}$",
+              "example": "323-12121"
+            },
+            "possibleLocation": {
+              "type": "string",
+              "description": "Possible Location",
+              "pattern": "^[ A-Za-z0-9~!|\\[\\]@#$%^&*()_+:\"<>?\\/.,;'=\\-\\{\\}`]{1,200}$",
+              "example": "Near cabinet 1010"
+            },
+            "packageDescription": {
+              "type": "string",
+              "description": "Package Description",
+              "pattern": "^[ A-Za-z0-9~!|\\[\\]@#$%^&*()_+:\"<>?\\/.,;'=\\-\\{\\}`]{1,200}$",
+              "example": "It's small box with 1kg weight."
+            },
+            "scopeOfWork": {
+              "$ref": "#/definitions/scopeOfWork"
+            }
+          },
+          "required": [
+            "shipmentOrderNumber",
+            "trackingNumber",
+            "possibleLocation",
+            "packageDescription",
+            "scopeOfWork"
+          ]
+        }
+      }
+    },
+    "picturesDocumentRequest": {
+      "title": "Pictures Document Request",
+      "type": "object",
+      "properties": {
+        "customerReferenceNumber": {
+          "$ref": "#/definitions/customerReferenceNumber"
+        },
+        "purchaseOrder": {
+          "$ref": "#/definitions/purchaseOrder"
+        },
+        "ibxLocation": {
+          "$ref": "#/definitions/ibxLocation"
+        },
+        "contacts": {
+          "$ref": "#/definitions/order-contacts"
+        },
+        "schedule": {
+          "$ref": "#/definitions/scheduleInfo"
+        },
+        "attachments": {
+          "$ref": "#/definitions/attachmentArray"
+        },
+        "serviceDetails": {
+          "type": "object",
+          "properties": {
+            "cameraProvidedBy": {
+              "type": "string",
+              "description": "Who is providing the camera? If documentOnly is false, this field is mandatory.",
+              "enum": [
+                "Equinix",
+                "Customer"
+              ]
+            },
+            "specificDateAndTime": {
+              "type": "boolean",
+              "description": "Would you like to request a specific date and time? If true, Scheduling should not be STANDARD. If documentOnly is false, this field is mandatory.",
+              "example": false
+            },
+            "documentOnly": {
+              "type": "boolean",
+              "description": "Do you need documents or pictures? Set true if you need documents.",
+              "example": true
+            },
+            "description": {
+              "type": "string",
+              "description": "Descrption of the Photo/Document. If documentOnly is false, this field is mandatory.",
+              "example": "Cage Photo"
+            },
+            "scopeOfWork": {
+              "$ref": "#/definitions/scopeOfWork"
+            }
+          },
+          "required": [
+            "documentOnly",
+            "scopeOfWork"
+          ]
+        }
+      },
+      "required": [
+        "ibxLocation",
+        "contacts",
+        "schedule",
+        "serviceDetails"
+      ]
+    },
+    "patchCableInstallRequest": {
+      "title": "Patch Cable Install Request",
+      "type": "object",
+      "properties": {
+        "customerReferenceNumber": {
+          "$ref": "#/definitions/customerReferenceNumber"
+        },
+        "purchaseOrder": {
+          "$ref": "#/definitions/purchaseOrder"
+        },
+        "ibxLocation": {
+          "$ref": "#/definitions/ibxLocation"
+        },
+        "contacts": {
+          "$ref": "#/definitions/order-contacts"
+        },
+        "schedule": {
+          "$ref": "#/definitions/scheduleInfo"
+        },
+        "attachments": {
+          "$ref": "#/definitions/attachmentArray"
+        },
+        "serviceDetails": {
+          "type": "object",
+          "properties": {
+            "crossConnects": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/cross-connect-install"
+              }
+            }
+          },
+          "required": [
+            "crossConnects",
+            "scopeOfWork"
+          ]
+        }
+      },
+      "required": [
+        "ibxLocation",
+        "contacts",
+        "schedule",
+        "serviceDetails"
+      ]
+    },
+    "patchCableRemovalRequest": {
+      "title": "Patch Cable Removal Request",
+      "type": "object",
+      "properties": {
+        "customerReferenceNumber": {
+          "$ref": "#/definitions/customerReferenceNumber"
+        },
+        "purchaseOrder": {
+          "$ref": "#/definitions/purchaseOrder"
+        },
+        "ibxLocation": {
+          "$ref": "#/definitions/ibxLocation"
+        },
+        "contacts": {
+          "$ref": "#/definitions/order-contacts"
+        },
+        "schedule": {
+          "$ref": "#/definitions/scheduleInfo"
+        },
+        "attachments": {
+          "$ref": "#/definitions/attachmentArray"
+        },
+        "serviceDetails": {
+          "type": "object",
+          "properties": {
+            "crossConnects": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/cross-connect-removal"
+              }
+            }
+          },
+          "required": [
+            "crossConnects",
+            "scopeOfWork"
+          ]
+        }
+      },
+      "required": [
+        "ibxLocation",
+        "contacts",
+        "schedule",
+        "serviceDetails"
+      ]
+    },
+    "cageCleanupRequest": {
+      "title": "Cage Cleanup Request",
+      "type": "object",
+      "properties": {
+        "customerReferenceNumber": {
+          "$ref": "#/definitions/customerReferenceNumber"
+        },
+        "purchaseOrder": {
+          "$ref": "#/definitions/purchaseOrder"
+        },
+        "ibxLocation": {
+          "$ref": "#/definitions/ibxLocation"
+        },
+        "contacts": {
+          "type": "array",
+          "description": "Use this array to pass ordering contact, notification contacts and technical contact. Only one ordering contact, technical contact is allowed. One or more notification contacts are allowed. Ordering and notification contacts are always registered customers with the customer portal.",
+          "minItems": 3,
+          "items": {
+            "$ref": "#/definitions/contactInfo"
+          }
+        },
+        "schedule": {
+          "$ref": "#/definitions/scheduleInfo"
+        },
+        "attachments": {
+          "$ref": "#/definitions/attachmentArray"
+        },
+        "serviceDetails": {
+          "type": "object",
+          "description": "Cage Cleanup",
+          "required": [
+            "permissionToDiscardBoxes",
+            "dampMoistMopRequired",
+            "scopeOfWork"
+          ],
+          "properties": {
+            "permissionToDiscardBoxes": {
+              "type": "boolean",
+              "description": "Permission To Discard Boxes?",
+              "example": false
+            },
+            "dampMoistMopRequired": {
+              "description": "Is Damp Moist Mop Requested?",
+              "example": true,
+              "type": "boolean"
+            },
+            "scopeOfWork": {
+              "$ref": "#/definitions/scopeOfWork"
+            }
+          }
+        }
+      },
+      "required": [
+        "ibxLocation",
+        "contacts",
+        "serviceDetails"
+      ]
+    },
+    "cableRequestRequest": {
+      "title": "Request Cables - Request",
+      "type": "object",
+      "properties": {
+        "customerReferenceNumber": {
+          "$ref": "#/definitions/customerReferenceNumber"
+        },
+        "purchaseOrder": {
+          "$ref": "#/definitions/purchaseOrder"
+        },
+        "ibxLocation": {
+          "$ref": "#/definitions/ibxLocation"
+        },
+        "contacts": {
+          "$ref": "#/definitions/order-contacts"
+        },
+        "schedule": {
+          "$ref": "#/definitions/scheduleInfo"
+        },
+        "attachments": {
+          "$ref": "#/definitions/attachmentArray"
+        },
+        "serviceDetails": {
+          "type": "object",
+          "description": "Please fill out the Media Type, Connector Type and Length (Specify in cm or ft) for each jumper cable and attach it to the form or complete scope of work text box when 'Quantity' is greater than 1. You may mix jumper types but if you require more than 10 cables, the site will contact you for scheduling of your request based on parts and availability. Please select the best option for your scheduling needs. If 'Quantity' is 1, then below 'Media Type', 'Connector Type' and 'Length (feet/cm)' objects are mandatory.",
+          "properties": {
+            "mediaType": {
+              "type": "string",
+              "description": "Media Type.",
+              "enum": [
+                "Multi-mode 62.5mic",
+                "Multi-mode 50mic",
+                "Single-mode",
+                "Cat-5",
+                "Cat-6",
+                "Coax",
+                "POTS",
+                "T1",
+                "E1"
+              ]
+            },
+            "connectorType": {
+              "type": "string",
+              "description": "Connector Type.",
+              "enum": [
+                "RJ45",
+                "SC",
+                "LC",
+                "BNC",
+                "Other"
+              ]
+            },
+            "length": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 50,
+              "description": "Length (feet/cm).",
+              "example": "20 ft"
+            },
+            "quantity": {
+              "type": "string",
+              "description": "Quantity",
+              "enum": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                ">10"
+              ]
+            },
+            "scopeOfWork": {
+              "$ref": "#/definitions/scopeOfWork"
+            }
+          },
+          "required": [
+            "quantity",
+            "scopeOfWork"
+          ]
+        }
+      },
+      "required": [
+        "ibxLocation",
+        "contacts",
+        "schedule",
+        "serviceDetails"
+      ]
+    },
+    "runJumperCableRequest": {
+      "title": "Move Jumper Cable Request",
+      "type": "object",
+      "properties": {
+        "customerReferenceNumber": {
+          "$ref": "#/definitions/customerReferenceNumber"
+        },
+        "purchaseOrder": {
+          "$ref": "#/definitions/purchaseOrder"
+        },
+        "ibxLocation": {
+          "$ref": "#/definitions/ibxLocation"
+        },
+        "contacts": {
+          "$ref": "#/definitions/order-contacts"
+        },
+        "schedule": {
+          "$ref": "#/definitions/scheduleInfo"
+        },
+        "attachments": {
+          "$ref": "#/definitions/attachmentArray"
+        },
+        "serviceDetails": {
+          "type": "object",
+          "description": "Move Jumper Cable Service Details Object. Please fill out the Media Type, Connector Type, Cable ID(optional), 'Should Equinix provide you Tx/Rx light levels, Yes Or No?', Devices to Connect details for Device#1 (Name/Panel, Device Slot, Device Ports) and Device#2(Optional) (Name/Panel, Device Slot, Device Ports) details for each jumper cable and attach it to the form or complete scope of work text box when 'Quantity' is greater than 1. If any device is being shipped to Equinix, please include the shipment number. You may mix jumper types but if you require more than 12 jumpers ran, the site will contact you for scheduling of your request based on parts and availability. Please select the best option for your scheduling needs. If ‘Quantity’ is 1, then ‘Jumper Type’, Media Type, Connector Type, 'Should Equinix provide you Tx/Rx light levels?' and Device details are mandatory.",
+          "properties": {
+            "quantity": {
+              "type": "string",
+              "description": "Quantity.",
+              "enum": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "11",
+                "12",
+                "12+"
+              ]
+            },
+            "jumperType": {
+              "type": "string",
+              "description": "Jumper Type",
+              "enum": [
+                "Jumper",
+                "Pre-Wiring",
+                "Patch Cable",
+                "Other"
+              ]
+            },
+            "mediaType": {
+              "type": "string",
+              "description": "Media Type",
+              "enum": [
+                "Multi-mode 62.5mic",
+                "Multi-mode 50mic",
+                "Single-mode",
+                "Cat-5",
+                "Cat-6",
+                "Coax",
+                "POTS",
+                "T1",
+                "E1"
+              ]
+            },
+            "connector": {
+              "type": "string",
+              "description": "Connector Type",
+              "enum": [
+                "RJ45",
+                "SC",
+                "LC",
+                "BNC",
+                "Other"
+              ]
+            },
+            "cableId": {
+              "type": "string",
+              "description": "Cable ID",
+              "example": "A01-5-10"
+            },
+            "provideTxRxLightLevels": {
+              "type": "boolean",
+              "description": "Provide Tx/Rx Light Levels",
+              "example": true
+            },
+            "deviceDetails": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/device"
+              }
+            },
+            "scopeOfWork": {
+              "$ref": "#/definitions/scopeOfWork"
+            }
+          },
+          "required": [
+            "quantity",
+            "scopeOfWork"
+          ]
+        }
+      },
+      "required": [
+        "ibxLocation",
+        "contacts",
+        "schedule",
+        "serviceDetails"
+      ]
+    },
+    "otherRequest": {
+      "title": "Other Request",
+      "type": "object",
+      "properties": {
+        "customerReferenceNumber": {
+          "$ref": "#/definitions/customerReferenceNumber"
+        },
+        "purchaseOrder": {
+          "$ref": "#/definitions/purchaseOrder"
+        },
+        "ibxLocation": {
+          "$ref": "#/definitions/ibxLocation"
+        },
+        "contacts": {
+          "$ref": "#/definitions/order-contacts"
+        },
+        "schedule": {
+          "$ref": "#/definitions/scheduleInfo"
+        },
+        "attachments": {
+          "$ref": "#/definitions/attachmentArray"
+        },
+        "serviceDetails": {
+          "type": "object",
+          "description": "Other",
+          "required": [
+            "scopeOfWork"
+          ],
+          "properties": {
+            "scopeOfWork": {
+              "$ref": "#/definitions/scopeOfWork"
+            }
+          }
+        }
+      },
+      "required": [
+        "serviceDetails",
+        "schedule",
+        "contacts",
+        "ibxLocation"
+      ]
+    },
+    "ibxLocation": {
+      "title": "IBX Location",
+      "type": "object",
+      "description": "IBX, Cage, Accounts and Cabinet  information",
+      "properties": {
+        "ibx": {
+          "type": "string",
+          "example": "AM1",
+          "minLength": 1,
+          "maxLength": 10
+        },
+        "cages": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "properties": {
+              "cage": {
+                "type": "string",
+                "example": "AM1:01:001MC3",
+                "minLength": 1
+              },
+              "accountNumber": {
+                "type": "string",
+                "example": "12345",
+                "minLength": 1
+              },
+              "cabinets": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "example": "AM1:01:001MC3:0102"
+                }
+              }
+            },
+            "required": [
+              "cage",
+              "accountNumber"
+            ]
+          }
+        }
+      },
+      "required": [
+        "ibx",
+        "cages"
+      ]
+    },
+    "contactInfo": {
+      "title": "Contact Info",
+      "type": "object",
+      "description": "Use this model to build contact object. Ordering and notification contacts are are always equinix registered contacts and we only expect username and rest of the details will be looked up. It is important to know that when username is provided all other attributes apart from contactType will be ignored ",
+      "example": {
+        "contactType": "TECHNICAL",
+        "name": "Jane Smith",
+        "email": "jane_smith@test.com",
+        "workPhoneCountryCode": "+1",
+        "workPhone": "408123456",
+        "workPhonePrefToCall": "ANYTIME",
+        "mobilePhoneCountryCode": "+1",
+        "mobilePhone": "408123456",
+        "mobilePhonePrefToCall": "ANYTIME"
+      },
+      "properties": {
+        "contactType": {
+          "type": "string",
+          "description": "Contact Type, possible values are ORDERING, NOTIFICATION, TECHNICAL",
+          "enum": [
+            "TECHNICAL",
+            "ORDERING",
+            "NOTIFICATION"
+          ],
+          "example": "TECHNICAL"
+        },
+        "userName": {
+          "type": "string",
+          "description": "User Name",
+          "example": "kmo00re@abc.com"
+        },
+        "name": {
+          "type": "string",
+          "pattern": "^[\\s.]*([^\\s.][\\s.]*){0,100}$",
+          "description": "Full Name of the Contact, Eg. 'First_Name' + 'Last_Name'",
+          "example": "Jane Smith"
+        },
+        "email": {
+          "type": "string",
+          "description": "Valid email address of the contact",
+          "maxLength": 100,
+          "pattern": "^(([^<>()\\[\\]\\.,;:\\s@\"]+(\\.[^<>()\\[\\]\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$"
+        },
+        "workPhoneCountryCode": {
+          "type": "string",
+          "description": "Country Code of Primary Phone of the contact",
+          "minLength": 1,
+          "maxLength": 6,
+          "pattern": "^\\+[0-9]{1,6}$"
+        },
+        "workPhone": {
+          "type": "string",
+          "description": "Primary Phone of the contact",
+          "minLength": 1,
+          "maxLength": 40,
+          "pattern": "^[0-9\\.\\-() ]{2,40}(?:(x|ext)[0-9\\.\\-() ]{1,10})?$"
+        },
+        "workPhonePrefToCall": {
+          "type": "string",
+          "description": "Possible values are NEVER, ANYTIME, BUSINESS_HOURS, MY_BUSINESS_HOURS,IBX_BUSINESS_HOURS. But BUSINESS_HOURS is deprecated and will be removed in future release",
+          "enum": [
+            "NEVER",
+            "ANYTIME",
+            "MY_BUSINESS_HOURS",
+            "IBX_BUSINESS_HOURS",
+            "BUSINESS_HOURS"
+          ],
+          "example": "ANYTIME"
+        },
+        "mobilePhoneCountryCode": {
+          "type": "string",
+          "description": "Country Code of Mobile Phone of the contact",
+          "minLength": 1,
+          "maxLength": 6,
+          "pattern": "^\\+[0-9]{1,6}$"
+        },
+        "mobilePhone": {
+          "type": "string",
+          "description": "Mobile Phone of the contact",
+          "minLength": 1,
+          "maxLength": 40,
+          "pattern": "^[0-9\\.\\-() ]{2,40}(?:(x|ext)[0-9\\.\\-() ]{1,10})?$"
+        },
+        "mobilePhonePrefToCall": {
+          "type": "string",
+          "description": "Possible values are NEVER, ANYTIME, BUSINESS_HOURS, MY_BUSINESS_HOURS,IBX_BUSINESS_HOURS. But BUSINESS_HOURS is deprecated and will be removed in future release",
+          "enum": [
+            "NEVER",
+            "ANYTIME",
+            "MY_BUSINESS_HOURS",
+            "IBX_BUSINESS_HOURS",
+            "BUSINESS_HOURS"
+          ],
+          "example": "ANYTIME"
+        },
+        "workPhoneTimeZone": {
+          "type": "string",
+          "description": "Work Phone TimeZone",
+          "maxLength": 40,
+          "example": "America/LosAngeles"
+        },
+        "mobilePhoneTimeZone": {
+          "type": "string",
+          "description": "Mobile Phone TimeZone",
+          "maxLength": 40,
+          "example": "America/LosAngeles"
+        }
+      },
+      "required": [
+        "contactType"
+      ]
+    },
+    "order-contacts": {
+      "type": "array",
+      "title": "Order Contacts Array",
+      "description": "Use this array to pass ordering contact, notification contacts and technical contact. Only one ordering contact, technical contact is allowed. One or more notification contacts are allowed. Ordering and notification contacts are always registered customers with the customer portal.",
+      "minItems": 3,
+      "example": [
+        {
+          "contactType": "ORDERING",
+          "userName": "jondoe@test.com"
+        },
+        {
+          "contactType": "NOTIFICATION",
+          "userName": "jondoe@test.com"
+        },
+        {
+          "contactType": "TECHNICAL",
+          "name": "John Doe",
+          "workPhone": "1111111",
+          "workPhonePrefToCall": "ANYTIME",
+          "mobilePhone": "1111111",
+          "mobilePhonePrefToCall": "ANYTIME"
+        }
+      ],
+      "items": {
+        "$ref": "#/definitions/contactInfo"
+      }
+    },
+    "scheduleInfo": {
+      "title": "Schedule Info",
+      "type": "object",
+      "description": "Use this model to pass the scheduling option that best meets your needs. Please remember that additional approvals or fees may be required for expedited requests.",
+      "properties": {
+        "scheduleType": {
+          "type": "string",
+          "description": "<u>STANDARD:</u> <br>Choose this option and we will complete your request in the standard turnaround time pending install base readiness. Most requests are processed within 24 to 72 hours. Requests will be processed on a first come, first served basis unless they are expedited. RequestedStartDate and requestedCompletionDate ignored for standard scheduling <br><br> <u>EXPEDITED:</u> Choose this option and Equinix will prioritize your request and attempt to fulfill it as soon as reasonably possible. Additional fees may apply. RequestedCompletionDate is mandatory for expedite scheduling. RequestedStartDate is ignored for expedite scheduling. <br><br> <u>SCHEDULED_MAINTENANCE:</u> Choose this option to schedule a request for a specific date and time, including today. RequestedStartDate and requestedCompletionDate are mandatory for schedule maintenance",
+          "enum": [
+            "STANDARD",
+            "EXPEDITED",
+            "SCHEDULED_MAINTENANCE"
+          ]
+        },
+        "requestedStartDate": {
+          "description": "Requested Start Date Time (ISO Date)<br> Cannot Past Date.",
+          "type": "string",
+          "format": "date-time",
+          "example": "2017-04-05T12:00:00Z"
+        },
+        "requestedCompletionDate": {
+          "description": "Requested Completion Date Time (ISO Date)<br>Cannot Past Date.",
+          "type": "string",
+          "format": "date-time",
+          "example": "2017-04-05T12:00:00Z"
+        }
+      },
+      "required": [
+        "scheduleType"
+      ]
+    },
+    "attachmentArray": {
+      "type": "array",
+      "title": "Attachments Array",
+      "description": "Use this to pass uploaded attachments. Attachments need to be uploaded using the attachments API. Maximum size of an attachment is 2MB with the following formats - bmp, jpg, jpeg, gif, png, tif, tiff, txt, doc, docx, xls, xlsx, ppt, pps, ppsx, pdf, and vsd.",
+      "maxItems": 5,
+      "items": {
+        "$ref": "#/definitions/attachment"
+      }
+    },
+    "attachment": {
+      "title": "Attachment",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Attachement Id generated from Attachment Api",
+          "minLength": 1,
+          "example": "eb9ab7e9-3785-41e4-af24-112dff"
+        },
+        "name": {
+          "type": "string",
+          "description": "Attachment file name, Please make sure attachment name which is used while uploading via Attachment Api",
+          "minLength": 1,
+          "example": "eb9ab7e9-3785-41e4-af24-asfsa5424"
+        }
+      },
+      "required": [
+        "id",
+        "name"
+      ]
+    },
+    "purchaseOrder": {
+      "title": "Purchase Order",
+      "type": "object",
+      "description": "Use this model to pass purchase order reference information. When purchase order selection type is EXEMTED, number is not required",
+      "properties": {
+        "number": {
+          "type": "string",
+          "maxLength": 20,
+          "description": "Purchase Order Number",
+          "example": "123455"
+        },
+        "purchaseOrderType": {
+          "type": "string",
+          "enum": [
+            "EXISTING",
+            "EXEMPTED"
+          ],
+          "description": "Purchase Order Selection Type"
+        }
+      },
+      "required": [
+        "purchaseOrderType"
+      ]
+    },
+    "customerReferenceNumber": {
+      "type": "string",
+      "title": "Customer Reference Number",
+      "description": "You may use numbers and text in this field to enter reference information for your records. This will also appear in your reports and details. You may use this information to search for this content on the submitted requests page.",
+      "minLength": 1,
+      "maxLength": 50,
+      "example": "RSS41244"
+    },
+    "scopeOfWork": {
+      "type": "string",
+      "title": "Scope Of Work",
+      "description": "Enter any additional details that will help our technicians execute your request. You may also attach your scope of work as a document if you exceed the character limit in this field.",
+      "minLength": 1,
+      "maxLength": 4000,
+      "example": "Scope of work"
+    },
+    "needSupportFromASubmarineCableStationEngineer": {
+      "type": "boolean",
+      "title": "Need Support From Submarine Cable Station Engineer",
+      "description": "This flag is only applicable to Submarine Cable IBXs",
+      "example": false
+    },
+    "smarthandResponse": {
+      "title": "Smart hands Order Response",
+      "description": "Order has been submitted successfully",
+      "type": "object",
+      "properties": {
+        "orderNumber": {
+          "type": "string",
+          "description": "Order Number",
+          "example": "1-108124419634"
+        }
+      },
+      "required": [
+        "orderNumber"
+      ],
+      "example": {
+        "orderNumber": "1-128726682521"
+      }
+    },
+    "location": {
+      "title": "Location",
+      "type": "object",
+      "properties": {
+        "ibx": {
+          "type": "string",
+          "description": "Ibx Name",
+          "example": "AM1"
+        },
+        "cages": {
+          "type": "array",
+          "description": "List of cage",
+          "items": {
+            "$ref": "#/definitions/cage"
+          }
+        }
+      },
+      "required": [
+        "ibx",
+        "cages"
+      ]
+    },
+    "cage": {
+      "title": "Cage",
+      "type": "object",
+      "properties": {
+        "cage": {
+          "type": "string",
+          "description": "Cage or Suite",
+          "example": "LD5:01:001MC3"
+        },
+        "cageTypes": {
+          "type": "array",
+          "description": "Cage Types",
+          "example": "Shared",
+          "items": {
+            "type": "string"
+          }
+        },
+        "accounts": {
+          "type": "array",
+          "description": "List of Accounts",
+          "items": {
+            "$ref": "#/definitions/account"
+          }
+        }
+      },
+      "required": [
+        "cage"
+      ]
+    },
+    "account": {
+      "title": "Account",
+      "type": "object",
+      "properties": {
+        "number": {
+          "type": "string",
+          "description": "Account Number",
+          "example": "136008"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of Account",
+          "example": "Service Corporation"
+        },
+        "isCreditHold": {
+          "type": "boolean",
+          "description": "Is credit Hold account",
+          "example": "false"
+        },
+        "isPOBearing": {
+          "type": "boolean",
+          "description": "Is PO Bearing account",
+          "example": "false"
+        },
+        "cabinets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/cabinets"
+          },
+          "description": "List of Cabinets"
+        }
+      },
+      "required": [
+        "number",
+        "name"
+      ]
+    },
+    "smarthandType": {
+      "title": "Smart hands Type",
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "EQUIPMENT_INSTALL",
+            "CAGE_CLEANUP",
+            "CAGE_ESCORT_OPEN_CABINET",
+            "SHIPMENT_UNPACKING",
+            "OTHER"
+          ],
+          "description": "Smarthand Type",
+          "example": "EQUIPMENT_INSTALL"
+        },
+        "typeDescription": {
+          "type": "string",
+          "description": "Description of Smarthand Type",
+          "example": "EQUIPMENT_INSTALL"
+        }
+      },
+      "required": [
+        "type",
+        "typeDescription"
+      ]
+    },
+    "cabinets": {
+      "title": "Cabinets",
+      "type": "object",
+      "properties": {
+        "cabinet": {
+          "type": "string",
+          "description": "Cabinet Number",
+          "example": "LD5:01:001MC3:0718"
+        },
+        "cabinetType": {
+          "type": "string",
+          "description": "Cabinet Type, Eg. Regular, Demarc"
+        }
+      }
+    },
+    "device": {
+      "title": "Device",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Device name",
+          "maxLength": 200,
+          "example": "Device Name"
+        },
+        "slot": {
+          "type": "string",
+          "description": "Device slot",
+          "maxLength": 50,
+          "example": "50"
+        },
+        "port": {
+          "type": "string",
+          "description": "Device port",
+          "maxLength": 50,
+          "example": "50"
+        }
+      },
+      "required": [
+        "name",
+        "slot",
+        "port"
+      ]
+    },
+    "cross-connect-install": {
+      "title": "Cross Connect for Install",
+      "type": "object",
+      "properties": {
+        "serialNumber": {
+          "type": "string",
+          "description": "Cross Connect serialNumber"
+        },
+        "deviceCabinet": {
+          "type": "string",
+          "description": "Cross Connect Cabinet"
+        },
+        "deviceConnectorType": {
+          "type": "string",
+          "description": "Cross Connect Device Connector Type"
+        },
+        "deviceDetails": {
+          "type": "string",
+          "description": "Cross Connect Device Details"
+        },
+        "devicePort": {
+          "type": "string",
+          "description": "Cross Connect Device Port"
+        },
+        "lightLinkVerification": {
+          "type": "boolean",
+          "example": true,
+          "description": "Cross Connect Light Link Verification (Optional). Select this option if you would like a light reading provided and tx/rx verification after the cross connect is completed. In order to verify the correct transmit/receive alignment, please ensure your Z-Side Cross Connect Partner has their end fully extended to their equipment and their port is enabled. A separate billable activity will be created."
+        },
+        "scopeOfWork": {
+          "type": "string",
+          "description": "Scope of work",
+          "minLength": 1,
+          "maxLength": 4000
+        }
+      },
+      "required": [
+        "serialNumber",
+        "deviceCabinet",
+        "deviceConnectorType",
+        "deviceDetails",
+        "devicePort"
+      ]
+    },
+    "cross-connect-removal": {
+      "title": "Cross Connect for Removal",
+      "type": "object",
+      "properties": {
+        "serialNumber": {
+          "type": "string",
+          "description": "Cross Connect serialNumber"
+        },
+        "deviceCabinet": {
+          "type": "string",
+          "description": "Cross Connect Cabinet"
+        },
+        "deviceConnectorType": {
+          "type": "string",
+          "description": "Cross Connect Device Connector Type"
+        },
+        "deviceDetails": {
+          "type": "string",
+          "description": "Cross Connect Device Details"
+        },
+        "devicePort": {
+          "type": "string",
+          "description": "Cross Connect Device Port"
+        },
+        "removePatchCableWithLiveTraffic": {
+          "type": "boolean",
+          "example": true,
+          "description": "Proceed with the de-install if live traffic is detected (Optional). By selecting this option, I agree to the terms of removal with live traffic. Please be advised that Equinix will complete the requested removal based on your instruction and will not be responsible for any service outages resulting from this removal."
+        },
+        "scopeOfWork": {
+          "type": "string",
+          "description": "Scope of work",
+          "minLength": 1,
+          "maxLength": 4000
+        }
+      },
+      "required": [
+        "serialNumber",
+        "deviceCabinet",
+        "deviceConnectorType",
+        "deviceDetails",
+        "devicePort"
+      ]
+    },
+    "genericError": {
+      "type": "object",
+      "title": "Application Errors",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "ticketId": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "parameters": {
+    "authorizationHeader": {
+      "name": "Authorization",
+      "in": "header",
+      "description": "Specify the Access token with prefix 'Bearer'.",
+      "type": "string",
+      "required": true
+    }
+  }
+}
