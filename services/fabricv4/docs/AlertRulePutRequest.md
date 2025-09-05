@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Type** | Pointer to [**AlertRulePostRequestType**](AlertRulePostRequestType.md) |  | [optional] 
 **Name** | Pointer to **string** | Customer-provided stream name | [optional] 
 **Description** | Pointer to **string** | Customer-provided stream description | [optional] 
 **Enabled** | Pointer to **bool** | Stream alert rule enabled status | [optional] [default to true]
@@ -32,6 +33,31 @@ will change when the set of required properties is changed
 NewAlertRulePutRequestWithDefaults instantiates a new AlertRulePutRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetType
+
+`func (o *AlertRulePutRequest) GetType() AlertRulePostRequestType`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *AlertRulePutRequest) GetTypeOk() (*AlertRulePostRequestType, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *AlertRulePutRequest) SetType(v AlertRulePostRequestType)`
+
+SetType sets Type field to given value.
+
+### HasType
+
+`func (o *AlertRulePutRequest) HasType() bool`
+
+HasType returns a boolean if a field has been set.
 
 ### GetName
 

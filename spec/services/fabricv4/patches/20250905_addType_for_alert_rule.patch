@@ -1,0 +1,23 @@
+diff --git a/spec/services/fabricv4/oas3.patched/openapi.yaml b/spec/services/fabricv4/oas3.patched/openapi.yaml
+index 806e587d..7411e5d2 100644
+--- a/spec/services/fabricv4/oas3.patched/openapi.yaml
++++ b/spec/services/fabricv4/oas3.patched/openapi.yaml
+@@ -17982,6 +17982,10 @@ components:
+     AlertRulePutRequest:
+       type: object
+       properties:
++        type:
++          type: string
++          enum:
++            - METRIC_ALERT
+         name:
+           type: string
+           description: Customer-provided stream name
+@@ -41723,6 +41727,7 @@ components:
+           updatedDateTime: 2025-02-04T00:20:54.511118575Z
+     StreamAlertRulePutRequestExample:
+       value:
++        type: METRIC_ALERT
+         name: metric-alert-1
+         description: metric-alert-1
+         enabled: true
