@@ -21,9 +21,9 @@ var _ MappedNullable = &Account{}
 // Account struct for Account
 type Account struct {
 	// Account Number
-	Number string `json:"number"`
+	AccountNumber string `json:"accountNumber"`
 	// Name of Account
-	Name                 string `json:"name"`
+	AccountName          string `json:"accountName"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -33,10 +33,10 @@ type _Account Account
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAccount(number string, name string) *Account {
+func NewAccount(accountNumber string, accountName string) *Account {
 	this := Account{}
-	this.Number = number
-	this.Name = name
+	this.AccountNumber = accountNumber
+	this.AccountName = accountName
 	return &this
 }
 
@@ -48,52 +48,52 @@ func NewAccountWithDefaults() *Account {
 	return &this
 }
 
-// GetNumber returns the Number field value
-func (o *Account) GetNumber() string {
+// GetAccountNumber returns the AccountNumber field value
+func (o *Account) GetAccountNumber() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.Number
+	return o.AccountNumber
 }
 
-// GetNumberOk returns a tuple with the Number field value
+// GetAccountNumberOk returns a tuple with the AccountNumber field value
 // and a boolean to check if the value has been set.
-func (o *Account) GetNumberOk() (*string, bool) {
+func (o *Account) GetAccountNumberOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Number, true
+	return &o.AccountNumber, true
 }
 
-// SetNumber sets field value
-func (o *Account) SetNumber(v string) {
-	o.Number = v
+// SetAccountNumber sets field value
+func (o *Account) SetAccountNumber(v string) {
+	o.AccountNumber = v
 }
 
-// GetName returns the Name field value
-func (o *Account) GetName() string {
+// GetAccountName returns the AccountName field value
+func (o *Account) GetAccountName() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.Name
+	return o.AccountName
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetAccountNameOk returns a tuple with the AccountName field value
 // and a boolean to check if the value has been set.
-func (o *Account) GetNameOk() (*string, bool) {
+func (o *Account) GetAccountNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Name, true
+	return &o.AccountName, true
 }
 
-// SetName sets field value
-func (o *Account) SetName(v string) {
-	o.Name = v
+// SetAccountName sets field value
+func (o *Account) SetAccountName(v string) {
+	o.AccountName = v
 }
 
 func (o Account) MarshalJSON() ([]byte, error) {
@@ -106,8 +106,8 @@ func (o Account) MarshalJSON() ([]byte, error) {
 
 func (o Account) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["number"] = o.Number
-	toSerialize["name"] = o.Name
+	toSerialize["accountNumber"] = o.AccountNumber
+	toSerialize["accountName"] = o.AccountName
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -121,8 +121,8 @@ func (o *Account) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"number",
-		"name",
+		"accountNumber",
+		"accountName",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -152,8 +152,8 @@ func (o *Account) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "number")
-		delete(additionalProperties, "name")
+		delete(additionalProperties, "accountNumber")
+		delete(additionalProperties, "accountName")
 		o.AdditionalProperties = additionalProperties
 	}
 

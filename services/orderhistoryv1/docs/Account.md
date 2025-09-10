@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Number** | **string** | Account Number | 
-**Name** | **string** | Name of Account | 
+**AccountNumber** | **string** | Account Number | 
+**AccountName** | **string** | Name of Account | 
 
 ## Methods
 
 ### NewAccount
 
-`func NewAccount(number string, name string, ) *Account`
+`func NewAccount(accountNumber string, accountName string, ) *Account`
 
 NewAccount instantiates a new Account object
 This constructor will assign default values to properties that have it defined,
@@ -26,44 +26,44 @@ NewAccountWithDefaults instantiates a new Account object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetNumber
+### GetAccountNumber
 
-`func (o *Account) GetNumber() string`
+`func (o *Account) GetAccountNumber() string`
 
-GetNumber returns the Number field if non-nil, zero value otherwise.
+GetAccountNumber returns the AccountNumber field if non-nil, zero value otherwise.
 
-### GetNumberOk
+### GetAccountNumberOk
 
-`func (o *Account) GetNumberOk() (*string, bool)`
+`func (o *Account) GetAccountNumberOk() (*string, bool)`
 
-GetNumberOk returns a tuple with the Number field if it's non-nil, zero value otherwise
+GetAccountNumberOk returns a tuple with the AccountNumber field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetNumber
+### SetAccountNumber
 
-`func (o *Account) SetNumber(v string)`
+`func (o *Account) SetAccountNumber(v string)`
 
-SetNumber sets Number field to given value.
+SetAccountNumber sets AccountNumber field to given value.
 
 
-### GetName
+### GetAccountName
 
-`func (o *Account) GetName() string`
+`func (o *Account) GetAccountName() string`
 
-GetName returns the Name field if non-nil, zero value otherwise.
+GetAccountName returns the AccountName field if non-nil, zero value otherwise.
 
-### GetNameOk
+### GetAccountNameOk
 
-`func (o *Account) GetNameOk() (*string, bool)`
+`func (o *Account) GetAccountNameOk() (*string, bool)`
 
-GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+GetAccountNameOk returns a tuple with the AccountName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetName
+### SetAccountName
 
-`func (o *Account) SetName(v string)`
+`func (o *Account) SetAccountName(v string)`
 
-SetName sets Name field to given value.
+SetAccountName sets AccountName field to given value.
 
 
 
