@@ -25,4 +25,7 @@ go get github.com/equinix/equinix-sdk-go
 
 You can see usage of the generated code in the [`examples` directory](https://github.com/equinix/equinix-sdk-go/tree/main/examples).
 
+After reading the code, you can build all examples with the command `make build-examples-all` or a specific example using `make -f Makefile.<service> build-examples`.
+Most examples require some environment variables or flags to be provided on the command line.
+
 Full package documentation is available at <https://pkg.go.dev/github.com/equinix/equinix-sdk-go>.

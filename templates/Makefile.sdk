@@ -5,6 +5,7 @@ include Makefile
 PACKAGE_NAME=__PACKAGE_NAME__
 SPEC_BASE_URL:=__SPEC_BASE_URL__
 SPEC_ROOT_FILE:=__SPEC_ROOT_FILE__
+EXAMPLE_FOLDERS:=
 
 CODE_DIR=${CODE_BASE_DIR}/${PACKAGE_NAME}
 TEMPLATE_DIR=${TEMPLATE_BASE_DIR}/${PACKAGE_NAME}
@@ -58,3 +59,9 @@ validate:
 	${OPENAPI_GENERATOR} validate \
 		--recommend \
 		-i ${SPEC_PATCHED_DIR}/${SPEC_ROOT_FILE}
+
+build-examples:
+	@for dir in $(EXAMPLE_FOLDERS); do \
+		echo "-- Building binary in example directory [examples/services/$(PACKAGE_NAME)/$$dir]" ; \
+		cd examples/services/$(PACKAGE_NAME)/$$dir && go build . ; \
+	done
