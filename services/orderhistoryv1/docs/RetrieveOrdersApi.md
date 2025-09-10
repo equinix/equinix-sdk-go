@@ -30,7 +30,7 @@ import (
 )
 
 func main() {
-	authorization := "authorization_example" // string | Specify the Access token with prefix 'Bearer'.
+	authorization := "authorization_example" // string | Specify the Access token with prefix 'Bearer'. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -96,7 +96,7 @@ import (
 )
 
 func main() {
-	authorization := "authorization_example" // string | Specify the Access token with prefix 'Bearer'.
+	authorization := "authorization_example" // string | Specify the Access token with prefix 'Bearer'. (optional)
 	body := *openapiclient.NewOrderhistoryapirequest() // Orderhistoryapirequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()

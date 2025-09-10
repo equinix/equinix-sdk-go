@@ -71,28 +71,25 @@ func main() {
 	// Call the GET order details endpoint
 	log.Printf("Retrieving all orders for the account associated with EQUINIX_API_CLIENTID")
 
-	// FIXME: note that the
-	//    Authorization("Bearer XYZ")
-	// is a workaround for a swagger-codegen issue where the Authorization header is requested,
-	// even if we use OAuth2
-	emptyString := ""
+	// Configuration of pagination:
 	pageMod := orderhistoryv1.PageRequestModel{}
 	pageMod.SetNumber(0)
 	pageMod.SetSize(25)
+
+	// Create the API request
 	req := orderhistoryv1.ApiPOSTOrdersHistoryRequest{
 		ApiService: client.RetrieveOrdersApi,
-	}.Authorization("Bearer XYZ").Body(
+	}.Body(
 		orderhistoryv1.Orderhistoryapirequest{
 			// You can filter orders by date range, status, order ID, etc.
 			// For this example, we're retrieving all orders without filters.
 			// See https://docs.equinix.com/api-catalog/orderhistoryv1 for details.
 			Filters: orderhistoryv1.NewFilters(),
-			Source:  []orderhistoryv1.OrderhistoryapirequestSourceInner{orderhistoryv1.ORDERHISTORYAPIREQUESTSOURCEINNER_ORDER_NUMBER},
-			Q:       &emptyString,
 			Page:    &pageMod,
 		},
 	)
 
+	// Execute the API call
 	order, resp, err := client.RetrieveOrdersApi.POSTOrdersHistoryExecute(req)
 	if err != nil {
 		log.Printf("Error retrieving order: %v", err)
