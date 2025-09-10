@@ -4,6 +4,9 @@ include Makefile
 
 PACKAGE_NAME=orderhistoryv1
 SPEC_BASE_URL:=https://docs.equinix.com/api-catalog/orderhistoryv1
+
+# FIXME: the weird thing of orderhistoryv1 is that even if the OpenAPI file ends with .yaml, it's actually a JSON file
+# (strictly speaking YAML is a superset of JSON but still the JSON syntax inside a .yaml file may sound confusing)
 SPEC_ROOT_FILE:=openapi.yaml
 EXAMPLE_FOLDERS:=get_all_orders
 
