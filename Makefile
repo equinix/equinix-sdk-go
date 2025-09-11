@@ -24,19 +24,26 @@ SPEC_BASE_DIR=spec/services
 TEMPLATE_BASE_DIR=templates/services
 CODE_BASE_DIR=services
 
+MAKEFILE_LIST:=$(shell ls -1 Makefile.* | sort -n)
+
 onboard-service:
 	script/onboard_service.sh
 
 patch-all:
-	for makefile in $(shell set -x; ls -1 Makefile.* | sort -n); do \
+	for makefile in $(MAKEFILE_LIST); do \
 		make -f $$makefile patch;\
 		RESULT=$$(($${RESULT} + $$?)); \
 	done; \
 	exit $$RESULT;
 
 generate-all:
-	for makefile in $(shell set -x; ls -1 Makefile.* | sort -n); do \
+	for makefile in $(MAKEFILE_LIST); do \
 		make -f $$makefile generate;\
+	done
+
+build-examples-all:
+	for makefile in $(MAKEFILE_LIST); do \
+		make -f $$makefile build-examples;\
 	done
 
 mod:
@@ -53,3 +60,4 @@ fmt:
 
 stage:
 	test -d .git && git add --intent-to-add .
+

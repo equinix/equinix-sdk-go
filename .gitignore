@@ -4,3 +4,7 @@
 .certs
 .idea/
 spec/services/metalv1/temp_merged_spec/
+examples/services/eiav2/create_eia_service/create_eia_service
+examples/services/fabricv4/get_connection/get_connection
+examples/services/orderhistoryv1/get_all_orders/get_all_orders
+examples/services/securecabinetv1/check_availability/check_availability

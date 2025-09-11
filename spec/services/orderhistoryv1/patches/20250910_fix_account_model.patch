@@ -1,0 +1,29 @@
+diff --git a/spec/services/orderhistoryv1/oas3.patched/openapi.yaml b/spec/services/orderhistoryv1/oas3.patched/openapi.yaml
+index 0f44cecc..e3fd638b 100644
+--- a/spec/services/orderhistoryv1/oas3.patched/openapi.yaml
++++ b/spec/services/orderhistoryv1/oas3.patched/openapi.yaml
+@@ -520,20 +520,20 @@
+       "title": "Account",
+       "type": "object",
+       "properties": {
+-        "number": {
++        "accountNumber": {
+           "type": "string",
+           "description": "Account Number",
+           "example": 136008
+         },
+-        "name": {
++        "accountName": {
+           "type": "string",
+           "description": "Name of Account",
+           "example": "Service Corporation"
+         }
+       },
+       "required": [
+-        "number",
+-        "name"
++        "accountNumber",
++        "accountName"
+       ]
+     },
+     "ibx-detail-for-locations-endpoint": {

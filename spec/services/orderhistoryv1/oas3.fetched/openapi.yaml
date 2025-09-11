@@ -1,0 +1,675 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Retrieve Orders API",
+    "description": "Based on a user's permission, a user may be able to view their own orders or also the orders from all of the users in their organization. These orders can be filtered by product type, order status, location, or date range. Only orders from the past 12 months will be returned.",
+    "termsOfService": "https://www.equinix.com/about/legal/terms",
+    "contact": {
+      "name": "Equinix API Support",
+      "url": "https://docs.equinix.com/api-support.htm"
+    }
+  },
+  "host": "api.equinix.com",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/v1/retrieve-orders/locations": {
+      "get": {
+        "operationId": "GET_retrieve-orders-locations ",
+        "summary": "Retrieve order permissible IBX locations",
+        "tags": [
+          "Retrieve Orders"
+        ],
+        "description": "The API returns locations (IBXs and Cages) where the user's organization has a presence. The user may be able to view orders related to these locations, depending on their permissions.",
+        "responses": {
+          "200": {
+            "description": "IBX and cage location details where  customer has access to view service history of organization. ",
+            "schema": {
+              "$ref": "#/definitions/order-history-location-response"
+            }
+          },
+          "400": {
+            "description": "Http Bad Request",
+            "schema": {
+              "$ref": "#/definitions/genericError"
+            },
+            "examples": {
+              "application/json": {
+                "errors": [
+                  {
+                    "code": "EQX-123-1234",
+                    "fields": [
+                      "xpath"
+                    ],
+                    "message": "Error message.",
+                    "messageParams": [
+                      "Message place holder params"
+                    ]
+                  }
+                ],
+                "ticketId": "190619221547671"
+              }
+            }
+          },
+          "403": {
+            "description": "Http Authorization Error",
+            "schema": {
+              "$ref": "#/definitions/genericError"
+            },
+            "examples": {
+              "application/json": {
+                "errors": [
+                  {
+                    "code": "EQX-123-403",
+                    "message": "Insufficient permission to access the resource or invoke the request."
+                  }
+                ],
+                "ticketId": "190619221547672"
+              }
+            }
+          },
+          "500": {
+            "description": "Http Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/genericError"
+            },
+            "examples": {
+              "application/json": {
+                "errors": [
+                  {
+                    "code": "EQX-123-500",
+                    "message": "The system had encountered an unexpected problem and we are tracking it with error code."
+                  }
+                ],
+                "ticketId": "190619221547673"
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/parameters/authorizationHeader"
+        }
+      ]
+    },
+    "/v1/retrieve-orders": {
+      "post": {
+        "operationId": "POST_orders-history",
+        "summary": "Search Orders History",
+        "tags": [
+          "Retrieve Orders"
+        ],
+        "description": "Based on filtering criteria, this method returns a list of orders from the last 12 months for IBX locations where the user has permissions.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/orderhistoryapirequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/order-history-response"
+            }
+          },
+          "400": {
+            "description": "Http Bad Request",
+            "schema": {
+              "$ref": "#/definitions/genericError"
+            },
+            "examples": {
+              "application/json": {
+                "errors": [
+                  {
+                    "code": "EQX-123-1234",
+                    "fields": [
+                      "xpath"
+                    ],
+                    "message": "Error message.",
+                    "messageParams": [
+                      "Message place holder params"
+                    ]
+                  }
+                ],
+                "ticketId": "190619221547671"
+              }
+            }
+          },
+          "403": {
+            "description": "Http Authorization Error",
+            "schema": {
+              "$ref": "#/definitions/genericError"
+            },
+            "examples": {
+              "application/json": {
+                "errors": [
+                  {
+                    "code": "EQX-123-403",
+                    "message": "Insufficient permission to access the resource or invoke the request."
+                  }
+                ],
+                "ticketId": "190619221547672"
+              }
+            }
+          },
+          "500": {
+            "description": "Http Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/genericError"
+            },
+            "examples": {
+              "application/json": {
+                "errors": [
+                  {
+                    "code": "EQX-123-500",
+                    "message": "The system had encountered an unexpected problem and we are tracking it with error code."
+                  }
+                ],
+                "ticketId": "190619221547673"
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/parameters/authorizationHeader"
+        }
+      ]
+    }
+  },
+  "definitions": {
+    "orderhistoryapirequest": {
+      "title": "OrderHistoryAPIRequest",
+      "type": "object",
+      "properties": {
+        "filters": {
+          "$ref": "#/definitions/filters"
+        },
+        "source": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "ORDER_NUMBER",
+              "PO_NUMBER",
+              "CUSTOMER_REFERENCE_NUMBER",
+              "CONTACT_LAST_NAME",
+              "SR_NUMBER",
+              "TROUBLE_TICKET_NUMBER",
+              "WORK_ACTIVITY_NUMBER"
+            ]
+          },
+          "description": "<b>ORDER_NUMBER:</b> Search by order number(1-123456789).<br><b>CUSTOMER_REFERENCE_NUMBER:</b> Search by customer reference number which was entered as part place order.<br><b>TROUBLE_TICKET_NUMBER:</b> Search by trouble ticket numnber(5-123456).<br><b>WORK_ACTIVITY_NUMBER:</b> Search by work order activity number(3-123456). "
+        },
+        "q": {
+          "type": "string",
+          "description": "Query value to be queried against source values(Or operation against all sources).<br/>Supports partial text search",
+          "example": "1-123456789"
+        },
+        "sorts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/sort"
+          }
+        },
+        "page": {
+          "$ref": "#/definitions/page-request-model"
+        }
+      }
+    },
+    "filters": {
+      "title": "Retrieve Order filters",
+      "type": "object",
+      "properties": {
+        "ibxs": {
+          "type": "array",
+          "description": "ibxs filter",
+          "items": {
+            "type": "string",
+            "example": "SV1"
+          }
+        },
+        "productTypes": {
+          "type": "array",
+          "description": "Product(order type) filter",
+          "items": {
+            "$ref": "#/definitions/product-types-enum"
+          }
+        },
+        "orderStatus": {
+          "type": "array",
+          "description": "order status filter",
+          "items": {
+            "$ref": "#/definitions/order-header-status-enum"
+          }
+        },
+        "dateRange": {
+          "type": "string",
+          "description": "Date range filter",
+          "example": "PAST_30_DAYS",
+          "enum": [
+            "PAST_7_DAYS",
+            "PAST_14_DAYS",
+            "PAST_30_DAYS",
+            "PAST_3_MONTHS",
+            "PAST_6_MONTHS",
+            "PAST_YEAR"
+          ]
+        },
+        "fromDate": {
+          "type": "string",
+          "format": "date",
+          "description": "Date Format Should be mm/dd/yyyy.<br/> Not applicable when dateRange is provided.",
+          "example": "01/01/2019"
+        },
+        "toDate": {
+          "type": "string",
+          "format": "date",
+          "description": "Date Format Should be mm/dd/yyyy.<br/> Not applicable when dateRange is provided",
+          "example": "01/30/2019"
+        }
+      },
+      "example": {
+        "orderStatus": [
+          "PENDING_QA",
+          "IN_PROGRESS",
+          "PARTIAL_SUBMISSION"
+        ],
+        "productTypes": [
+          "SMART_HANDS"
+        ],
+        "ibxs": [
+          "SV1"
+        ],
+        "fromDate": "05/01/2018",
+        "toDate": "05/02/2018"
+      }
+    },
+    "order-header-status-enum": {
+      "title": "Order Header Status Enum",
+      "description": "<b>ENTERED: </b> Order Created. <br><b>SUBMITTED: </b> When the order is assigned to the Equinix OPS team.<br/><b>IN_PROGRESS: </b> When the order fulfillment is in progress <br/><b>PENDING_QA: </b>The order couldn't be submitted. This order required manual intervention from Equinix end.<br/><b>CANCELLED: </b> The order is canceled.<br/><b>CLOSED: </b>Order is closed.",
+      "type": "string",
+      "example": "SUBMITTED",
+      "enum": [
+        "ENTERED",
+        "SUBMITTED",
+        "IN_PROGRESS",
+        "PENDING_QA",
+        "CANCELLED",
+        "CLOSED"
+      ]
+    },
+    "product-types-enum": {
+      "title": "Product Types(Order Types) Enum",
+      "type": "string",
+      "example": "CROSS_CONNECT",
+      "enum": [
+        "SMART_HANDS",
+        "TROUBLE",
+        "SHIPMENT",
+        "WORK_VISIT",
+        "SECURITY_ACCESS",
+        "CONFERENCE_ROOM",
+        "TOUR_REQUESTS",
+        "CROSS_CONNECT",
+        "CLOUD_EXCHANGE_PORT",
+        "INTERNET_EXCHANGE_PORT",
+        "METRO_CONNECT",
+        "POWER",
+        "IBX_SMARTVIEW_SENSOR",
+        "ACCESSORY",
+        "CAGE",
+        "CABINET",
+        "IBX_SMART_VIEW"
+      ]
+    },
+    "order-source-enum": {
+      "title": "Order Source Enum",
+      "type": "string",
+      "enum": [
+        "Portal",
+        "Mobile",
+        "Quote",
+        "Offline"
+      ]
+    },
+    "page-request-model": {
+      "title": "Page Request",
+      "type": "object",
+      "properties": {
+        "number": {
+          "type": "integer",
+          "description": "Page number indexed from 0.",
+          "default": 0,
+          "example": 0
+        },
+        "size": {
+          "type": "integer",
+          "description": "Page Size.",
+          "maximum": 200,
+          "default": 10,
+          "example": 25
+        }
+      }
+    },
+    "order-history-response": {
+      "title": "Order History Response",
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/order-header"
+          }
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/link"
+          }
+        },
+        "page": {
+          "$ref": "#/definitions/page-details-for-response"
+        }
+      }
+    },
+    "order-header": {
+      "title": "Order Header",
+      "type": "object",
+      "properties": {
+        "orderNumber": {
+          "type": "string",
+          "description": "Order number",
+          "example": "1-12345678"
+        },
+        "type": {
+          "type": "array",
+          "description": "List Of Proudcts Ordered in the Order.",
+          "items": {
+            "type": "string",
+            "example": "Cross Connect, Smart Hands"
+          }
+        },
+        "orderStatus": {
+          "$ref": "#/definitions/order-header-status-enum"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Order Created DateTime in ISO Date Format",
+          "example": "2019-07-02T22:01:50Z"
+        },
+        "account": {
+          "$ref": "#/definitions/account"
+        },
+        "orderingContact": {
+          "$ref": "#/definitions/ordering-contact"
+        },
+        "notificationContact": {
+          "$ref": "#/definitions/notification-contact"
+        },
+        "ibx": {
+          "type": "array",
+          "description": "List of ibxs for the order lines.",
+          "items": {
+            "type": "string",
+            "example": "SV1"
+          }
+        },
+        "customerReferenceNumbers": {
+          "type": "array",
+          "description": "List of customer reference numbers for the order lines.",
+          "items": {
+            "type": "string",
+            "example": "cust-100"
+          }
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/link"
+          }
+        }
+      },
+      "required": [
+        "submittedDate"
+      ]
+    },
+    "ordering-contact": {
+      "title": "Ordering Contact",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Ordering Contact name",
+          "example": "John Doe"
+        },
+        "email": {
+          "type": "string",
+          "description": "Ordering Contact email",
+          "example": "johnDoe@test.com"
+        },
+        "phone": {
+          "type": "string",
+          "description": "Ordering Contact phone",
+          "example": "+1 408 123 1234"
+        }
+      }
+    },
+    "page-details-for-response": {
+      "title": "Orders Response Page Details",
+      "type": "object",
+      "properties": {
+        "size": {
+          "type": "integer",
+          "description": "Page Size",
+          "example": "25"
+        },
+        "totalElements": {
+          "type": "number",
+          "description": "Total number of records",
+          "example": "160"
+        },
+        "totalPages": {
+          "type": "integer",
+          "description": "Total number of pages",
+          "example": "7"
+        },
+        "number": {
+          "type": "integer",
+          "description": "Current page number",
+          "example": "0"
+        }
+      }
+    },
+    "notification-contact": {
+      "title": "Notification Contact",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Notification Contact name",
+          "example": "John Doe"
+        },
+        "email": {
+          "type": "string",
+          "description": "Notification Contact email",
+          "example": "johnDoe@test.com"
+        },
+        "phone": {
+          "type": "string",
+          "description": "Notification Contact phone",
+          "example": "+1 408 123 1234"
+        }
+      }
+    },
+    "account": {
+      "title": "Account",
+      "type": "object",
+      "properties": {
+        "number": {
+          "type": "string",
+          "description": "Account Number",
+          "example": 136008
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of Account",
+          "example": "Service Corporation"
+        }
+      },
+      "required": [
+        "number",
+        "name"
+      ]
+    },
+    "ibx-detail-for-locations-endpoint": {
+      "title": "IBX Detail (Locations Endpoint)",
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "Ibx Code",
+          "example": "AT1"
+        },
+        "metro": {
+          "type": "string",
+          "description": "Metro code where ibx is located",
+          "example": "AT"
+        },
+        "region": {
+          "type": "string",
+          "description": "Region where ibx is located",
+          "example": "AMER"
+        },
+        "country": {
+          "type": "string",
+          "description": "Country where ibx is located",
+          "example": "United States of America"
+        },
+        "city": {
+          "type": "string",
+          "description": "City where ibx is located",
+          "example": "Atlanta"
+        },
+        "state": {
+          "type": "string",
+          "description": "State where ibx is located",
+          "example": "GA"
+        },
+        "address": {
+          "type": "string",
+          "description": "Address of the ibx",
+          "example": "180 Peachtree Street NW, 2nd, 3rd and 6th Floors"
+        },
+        "postalCode": {
+          "type": "string",
+          "description": "Postal code of ibx location",
+          "example": "30303"
+        }
+      }
+    },
+    "permissible-location": {
+      "title": "PermissibleLocation",
+      "type": "object",
+      "properties": {
+        "ibx": {
+          "$ref": "#/definitions/ibx-detail-for-locations-endpoint"
+        },
+        "cages": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "description": "Cage in ibx",
+            "example": "SV1:01:0101"
+          }
+        }
+      }
+    },
+    "sort": {
+      "title": "Sort",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "ORDERING_CONTACT sort is applicable on ordering contact last name.",
+          "enum": [
+            "ORDERING_CONTACT",
+            "ACCOUNT_NUMBER",
+            "CREATED_ON"
+          ]
+        },
+        "direction": {
+          "type": "string",
+          "enum": [
+            "ASC",
+            "DESC"
+          ]
+        }
+      }
+    },
+    "link": {
+      "title": "Link",
+      "type": "object",
+      "properties": {
+        "rel": {
+          "type": "string",
+          "enum": [
+            "self",
+            "prev",
+            "next",
+            "orderFullDetails"
+          ]
+        },
+        "href": {
+          "type": "string",
+          "example": "https://api.equinix.com/v1/retrieve-orders"
+        }
+      }
+    },
+    "order-history-location-response": {
+      "title": "Order-History-Location-Response",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/permissible-location"
+      }
+    },
+    "genericError": {
+      "type": "object",
+      "title": "Application Errors",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "ticketId": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "parameters": {
+    "authorizationHeader": {
+      "name": "Authorization",
+      "in": "header",
+      "description": "Specify the Access token with prefix 'Bearer'.",
+      "type": "string",
+      "required": true
+    }
+  }
+}
