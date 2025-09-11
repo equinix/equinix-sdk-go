@@ -38,13 +38,16 @@ patch-all:
 
 generate-all:
 	for makefile in $(MAKEFILE_LIST); do \
-		make -f $$makefile generate;\
+		make -f $$makefile generate; \
 	done
 
 build-examples-all:
 	for makefile in $(MAKEFILE_LIST); do \
-		make -f $$makefile build-examples;\
+		make -f $$makefile build-examples || exit 1; \
 	done
+	@echo
+	@echo "All example binaries built successfully."
+	@echo
 
 mod:
 	${GO_CMD} go mod tidy
