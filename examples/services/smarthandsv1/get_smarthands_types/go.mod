@@ -1,6 +1,6 @@
 module github.com/equinix/equinix-sdk-go/examples/services/smarthandsv1/get_smarthands_types
 
-go 1.24
+go 1.23
 
 replace github.com/equinix/equinix-sdk-go => ../../../..
 
