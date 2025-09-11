@@ -1,6 +1,6 @@
 module github.com/equinix/equinix-sdk-go/examples/services/ordersv2/get_order_details
 
-go 1.24.4
+go 1.24
 
 replace github.com/equinix/equinix-sdk-go => ../../../..
 

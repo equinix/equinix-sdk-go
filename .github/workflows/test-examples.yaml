@@ -15,5 +15,5 @@ jobs:
       uses: actions/setup-go@d35c59abb061a4a6fb18e82ac0862c26744d6ab5 # v5
       with:
         go-version-file: go.mod
-    - name: Generate
+    - name: Build all examples
       run: make build-examples-all
