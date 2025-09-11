@@ -5,6 +5,7 @@ include Makefile
 PACKAGE_NAME=securecabinetv1
 SPEC_BASE_URL:=https://docs.equinix.com/api-catalog/securecabinetv1
 SPEC_ROOT_FILE:=openapi.yaml
+EXAMPLE_FOLDERS:=check_availability
 
 CODE_DIR=${CODE_BASE_DIR}/${PACKAGE_NAME}
 TEMPLATE_DIR=${TEMPLATE_BASE_DIR}/${PACKAGE_NAME}
@@ -58,3 +59,9 @@ validate:
 	${OPENAPI_GENERATOR} validate \
 		--recommend \
 		-i ${SPEC_PATCHED_DIR}/${SPEC_ROOT_FILE}
+
+build-examples:
+	@for dir in $(EXAMPLE_FOLDERS); do \
+		echo "-- Building binary in example directory [examples/services/$(PACKAGE_NAME)/$$dir]" ; \
+		( cd examples/services/$(PACKAGE_NAME)/$$dir && go build . ); \
+	done

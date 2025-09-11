@@ -66,5 +66,5 @@ validate:
 build-examples:
 	@for dir in $(EXAMPLE_FOLDERS); do \
 		echo "-- Building binary in example directory [examples/services/$(PACKAGE_NAME)/$$dir]" ; \
-		cd examples/services/$(PACKAGE_NAME)/$$dir && go build . ; \
+		( cd examples/services/$(PACKAGE_NAME)/$$dir && go build . ); \
 	done

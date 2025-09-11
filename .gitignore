@@ -8,3 +8,8 @@ examples/services/eiav2/create_eia_service/create_eia_service
 examples/services/fabricv4/get_connection/get_connection
 examples/services/orderhistoryv1/get_all_orders/get_all_orders
 examples/services/securecabinetv1/check_availability/check_availability
+examples/services/metalv1/create_device_in_facility/create_device_in_facility
+examples/services/metalv1/create_device_in_metro/create_device_in_metro
+examples/services/metalv1/plans/plans
+examples/services/ordersv2/get_order_details/get_order_details
+examples/services/smarthandsv1/get_smarthands_types/get_smarthands_types
