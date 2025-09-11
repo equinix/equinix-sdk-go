@@ -5,6 +5,7 @@ include Makefile
 PACKAGE_NAME=eiav2
 SPEC_BASE_URL:=https://api.swaggerhub.com/apis/equinix-api/Equinix_Internet_Access_API_v2/2.0
 SPEC_ROOT_FILE:=swagger.yaml
+EXAMPLE_FOLDERS:=create_eia_service
 
 CODE_DIR=${CODE_BASE_DIR}/${PACKAGE_NAME}
 TEMPLATE_DIR=${TEMPLATE_BASE_DIR}/${PACKAGE_NAME}
@@ -59,3 +60,9 @@ validate:
 	${OPENAPI_GENERATOR} validate \
 		--recommend \
 		-i ${SPEC_PATCHED_DIR}/${SPEC_ROOT_FILE}
+
+build-examples:
+	@for dir in $(EXAMPLE_FOLDERS); do \
+		echo "-- Building binary in example directory [examples/services/$(PACKAGE_NAME)/$$dir]" ; \
+		( cd examples/services/$(PACKAGE_NAME)/$$dir && go build . ); \
+	done
