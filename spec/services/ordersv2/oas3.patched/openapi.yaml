@@ -1220,7 +1220,6 @@
                     },
                     "billingStartDateTime": {
                         "type": "string",
-                        "format": "date-time",
                         "description": "Billing commencement date and time in UTC timezone"
                     },
                     "estimatedCompletionDateTime": {

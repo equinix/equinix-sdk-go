@@ -31,7 +31,7 @@ type OrdersLine struct {
 	// Description of the orders.
 	Description *string `json:"description,omitempty"`
 	// Billing commencement date and time in UTC timezone
-	BillingStartDateTime *time.Time `json:"billingStartDateTime,omitempty"`
+	BillingStartDateTime *string `json:"billingStartDateTime,omitempty"`
 	// The estimated completion date and time in UTC timezone
 	EstimatedCompletionDateTime *time.Time `json:"estimatedCompletionDateTime,omitempty"`
 	// Unit Pricing details
@@ -247,9 +247,9 @@ func (o *OrdersLine) SetDescription(v string) {
 }
 
 // GetBillingStartDateTime returns the BillingStartDateTime field value if set, zero value otherwise.
-func (o *OrdersLine) GetBillingStartDateTime() time.Time {
+func (o *OrdersLine) GetBillingStartDateTime() string {
 	if o == nil || IsNil(o.BillingStartDateTime) {
-		var ret time.Time
+		var ret string
 		return ret
 	}
 	return *o.BillingStartDateTime
@@ -257,7 +257,7 @@ func (o *OrdersLine) GetBillingStartDateTime() time.Time {
 
 // GetBillingStartDateTimeOk returns a tuple with the BillingStartDateTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OrdersLine) GetBillingStartDateTimeOk() (*time.Time, bool) {
+func (o *OrdersLine) GetBillingStartDateTimeOk() (*string, bool) {
 	if o == nil || IsNil(o.BillingStartDateTime) {
 		return nil, false
 	}
@@ -273,8 +273,8 @@ func (o *OrdersLine) HasBillingStartDateTime() bool {
 	return false
 }
 
-// SetBillingStartDateTime gets a reference to the given time.Time and assigns it to the BillingStartDateTime field.
-func (o *OrdersLine) SetBillingStartDateTime(v time.Time) {
+// SetBillingStartDateTime gets a reference to the given string and assigns it to the BillingStartDateTime field.
+func (o *OrdersLine) SetBillingStartDateTime(v string) {
 	o.BillingStartDateTime = &v
 }
 
