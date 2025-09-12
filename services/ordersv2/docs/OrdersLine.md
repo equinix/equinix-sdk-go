@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **RootlineId** | Pointer to **string** | Unique identifier to specify root item. Useful when product order hierarchy exceeds 2. | [optional] 
 **Status** | Pointer to **string** | The current status of the order or service | [optional] 
 **Description** | Pointer to **string** | Description of the orders. | [optional] 
-**BillingStartDateTime** | Pointer to **string** | Billing commencement date and time in UTC timezone | [optional] 
+**BillingStartDateTime** | Pointer to **string** | Billing commencement date and time in UTC provided in the RFC3339 format with timezone markers omitted, delimitting date and time with a space, e.g. 2024-12-31 23:59:59 | [optional] 
 **EstimatedCompletionDateTime** | Pointer to **time.Time** | The estimated completion date and time in UTC timezone | [optional] 
 **UnitPricing** | Pointer to [**[]Price**](Price.md) | Unit Pricing details | [optional] 
 **TotalPricing** | Pointer to [**[]Price**](Price.md) | Total Pricing details | [optional] 
