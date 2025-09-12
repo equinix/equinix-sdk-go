@@ -30,7 +30,7 @@ type OrdersLine struct {
 	Status *string `json:"status,omitempty"`
 	// Description of the orders.
 	Description *string `json:"description,omitempty"`
-	// Billing commencement date and time in UTC timezone
+	// Billing commencement date and time in UTC provided in the RFC3339 format with timezone markers omitted, delimitting date and time with a space, e.g. 2024-12-31 23:59:59
 	BillingStartDateTime *string `json:"billingStartDateTime,omitempty"`
 	// The estimated completion date and time in UTC timezone
 	EstimatedCompletionDateTime *time.Time `json:"estimatedCompletionDateTime,omitempty"`
