@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **RootlineId** | Pointer to **string** | Unique identifier to specify root item. Useful when product order hierarchy exceeds 2. | [optional] 
 **Status** | Pointer to **string** | The current status of the order or service | [optional] 
 **Description** | Pointer to **string** | Description of the orders. | [optional] 
-**BillingStartDateTime** | Pointer to **time.Time** | Billing commencement date and time in UTC timezone | [optional] 
+**BillingStartDateTime** | Pointer to **string** | Billing commencement date and time in UTC timezone | [optional] 
 **EstimatedCompletionDateTime** | Pointer to **time.Time** | The estimated completion date and time in UTC timezone | [optional] 
 **UnitPricing** | Pointer to [**[]Price**](Price.md) | Unit Pricing details | [optional] 
 **TotalPricing** | Pointer to [**[]Price**](Price.md) | Total Pricing details | [optional] 
@@ -172,20 +172,20 @@ HasDescription returns a boolean if a field has been set.
 
 ### GetBillingStartDateTime
 
-`func (o *OrdersLine) GetBillingStartDateTime() time.Time`
+`func (o *OrdersLine) GetBillingStartDateTime() string`
 
 GetBillingStartDateTime returns the BillingStartDateTime field if non-nil, zero value otherwise.
 
 ### GetBillingStartDateTimeOk
 
-`func (o *OrdersLine) GetBillingStartDateTimeOk() (*time.Time, bool)`
+`func (o *OrdersLine) GetBillingStartDateTimeOk() (*string, bool)`
 
 GetBillingStartDateTimeOk returns a tuple with the BillingStartDateTime field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBillingStartDateTime
 
-`func (o *OrdersLine) SetBillingStartDateTime(v time.Time)`
+`func (o *OrdersLine) SetBillingStartDateTime(v string)`
 
 SetBillingStartDateTime sets BillingStartDateTime field to given value.
 
