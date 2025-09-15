@@ -71,22 +71,10 @@ func main() {
 	configuration.AddDefaultHeader("X-CORRELATION-ID", CORRELATION_ID)
 	client := smarthandsv1.NewAPIClient(configuration)
 
-	// Note: The Smart Hands API requires an explicit Authorization parameter
-	// in its API methods, unlike other Equinix APIs that rely solely on the
-	// OAuth2 transport. This is can be seen in Smart Hands v1 API spec.
-	// We need to get the token from the source and format it with "Bearer" prefix.
-	token, err := authTransport.Source.TokenWithContext(ctx)
-	if err != nil {
-		log.Fatalf("Failed to get authentication token: %v", err)
-	}
-	authToken := "Bearer " + token.AccessToken
-
 	// Get available Smart Hands service types
 	log.Println("Retrieving available Smart Hands service types...")
 
-	typesResp, resp, err := client.SmarthandsApi.SmartHandTypes(ctx).
-		Authorization(authToken).
-		Execute()
+	typesResp, resp, err := client.SmarthandsApi.SmartHandTypes(ctx).Execute()
 	if err != nil {
 		log.Printf("Error retrieving Smart Hands types: %v", err)
 		if resp != nil {
