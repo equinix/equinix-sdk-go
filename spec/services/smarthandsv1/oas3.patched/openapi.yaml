@@ -2673,7 +2673,7 @@
       "in": "header",
       "description": "Specify the Access token with prefix 'Bearer'.",
       "type": "string",
-      "required": true
+      "required": false
     }
   }
 }
