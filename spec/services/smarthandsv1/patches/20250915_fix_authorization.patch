@@ -1,0 +1,14 @@
+diff --git a/spec/services/smarthandsv1/oas3.patched/openapi.yaml b/spec/services/smarthandsv1/oas3.patched/openapi.yaml
+index 7c14c6a3..af5d633f 100644
+--- a/spec/services/smarthandsv1/oas3.patched/openapi.yaml
++++ b/spec/services/smarthandsv1/oas3.patched/openapi.yaml
+@@ -2673,7 +2673,7 @@
+       "in": "header",
+       "description": "Specify the Access token with prefix 'Bearer'.",
+       "type": "string",
+-      "required": true
++      "required": false
+     }
+   }
+ }
+\ No newline at end of file
