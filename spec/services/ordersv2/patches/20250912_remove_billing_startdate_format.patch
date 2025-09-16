@@ -1,0 +1,14 @@
+diff --git a/spec/services/ordersv2/oas3.patched/openapi.yaml b/spec/services/ordersv2/oas3.patched/openapi.yaml
+index f5860251..77614278 100644
+--- a/spec/services/ordersv2/oas3.patched/openapi.yaml
++++ b/spec/services/ordersv2/oas3.patched/openapi.yaml
+@@ -1220,8 +1220,7 @@
+                     },
+                     "billingStartDateTime": {
+                         "type": "string",
+-                        "format": "date-time",
+-                        "description": "Billing commencement date and time in UTC timezone"
++                        "description": "Billing commencement date and time in UTC provided in the RFC3339 format with timezone markers omitted, delimitting date and time with a space, e.g. 2024-12-31 23:59:59"
+                     },
+                     "estimatedCompletionDateTime": {
+                         "type": "string",
