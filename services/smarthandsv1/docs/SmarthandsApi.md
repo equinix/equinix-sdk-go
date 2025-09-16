@@ -42,7 +42,7 @@ import (
 )
 
 func main() {
-	authorization := "authorization_example" // string | Specify the Access token with prefix 'Bearer'.
+	authorization := "authorization_example" // string | Specify the Access token with prefix 'Bearer'. (optional)
 	detail := true // bool | When enable this flag returns detailed permission with Cage & Cabinets. (optional) (default to false)
 	ibxs := "ibxs_example" // string | Example: AM1,AM2 (optional)
 	cages := "cages_example" // string | Example: AM1:02:002MC1 (optional)
@@ -114,7 +114,7 @@ import (
 )
 
 func main() {
-	authorization := "authorization_example" // string | Specify the Access token with prefix 'Bearer'.
+	authorization := "authorization_example" // string | Specify the Access token with prefix 'Bearer'. (optional)
 	body := *openapiclient.NewCableRequestRequest(*openapiclient.NewIbxLocation("AM1", []openapiclient.IbxLocationCagesInner{*openapiclient.NewIbxLocationCagesInner("AM1:01:001MC3", "12345")}), []openapiclient.ContactInfo{*openapiclient.NewContactInfo(openapiclient.contactInfo_contactType("TECHNICAL"))}, *openapiclient.NewScheduleInfo(openapiclient.scheduleInfo_scheduleType("STANDARD")), *openapiclient.NewCableRequestRequestServiceDetails(openapiclient.cableRequestRequest_serviceDetails_quantity("1"), "Scope of work")) // CableRequestRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -180,7 +180,7 @@ import (
 )
 
 func main() {
-	authorization := "authorization_example" // string | Specify the Access token with prefix 'Bearer'.
+	authorization := "authorization_example" // string | Specify the Access token with prefix 'Bearer'. (optional)
 	body := *openapiclient.NewCageCleanupRequest(*openapiclient.NewIbxLocation("AM1", []openapiclient.IbxLocationCagesInner{*openapiclient.NewIbxLocationCagesInner("AM1:01:001MC3", "12345")}), []openapiclient.ContactInfo{*openapiclient.NewContactInfo(openapiclient.contactInfo_contactType("TECHNICAL"))}, *openapiclient.NewCageCleanupRequestServiceDetails(false, true, "Scope of work")) // CageCleanupRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -246,7 +246,7 @@ import (
 )
 
 func main() {
-	authorization := "authorization_example" // string | Specify the Access token with prefix 'Bearer'.
+	authorization := "authorization_example" // string | Specify the Access token with prefix 'Bearer'. (optional)
 	body := *openapiclient.NewCageEscortRequest(*openapiclient.NewIbxLocation("AM1", []openapiclient.IbxLocationCagesInner{*openapiclient.NewIbxLocationCagesInner("AM1:01:001MC3", "12345")}), []openapiclient.ContactInfo{*openapiclient.NewContactInfo(openapiclient.contactInfo_contactType("TECHNICAL"))}, *openapiclient.NewScheduleInfo(openapiclient.scheduleInfo_scheduleType("STANDARD")), *openapiclient.NewCageEscortRequestServiceDetails(openapiclient.cageEscortRequest_serviceDetails_durationVisit("30 Minutes"), false, "Scope of work", false, "1-108050984499")) // CageEscortRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -312,7 +312,7 @@ import (
 )
 
 func main() {
-	authorization := "authorization_example" // string | Specify the Access token with prefix 'Bearer'.
+	authorization := "authorization_example" // string | Specify the Access token with prefix 'Bearer'. (optional)
 	body := *openapiclient.NewLocatePackageRequest(*openapiclient.NewIbxLocation("AM1", []openapiclient.IbxLocationCagesInner{*openapiclient.NewIbxLocationCagesInner("AM1:01:001MC3", "12345")}), []openapiclient.ContactInfo{*openapiclient.NewContactInfo(openapiclient.contactInfo_contactType("TECHNICAL"))}, *openapiclient.NewScheduleInfo(openapiclient.scheduleInfo_scheduleType("STANDARD")), *openapiclient.NewLocatePackageRequestServiceDetails("1-1111111111", "323-12121", "Near cabinet 1010", "It's small box with 1kg weight.", "Scope of work")) // LocatePackageRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -378,7 +378,7 @@ import (
 )
 
 func main() {
-	authorization := "authorization_example" // string | Specify the Access token with prefix 'Bearer'.
+	authorization := "authorization_example" // string | Specify the Access token with prefix 'Bearer'. (optional)
 	body := *openapiclient.NewMoveJumperCableRequest(*openapiclient.NewIbxLocation("AM1", []openapiclient.IbxLocationCagesInner{*openapiclient.NewIbxLocationCagesInner("AM1:01:001MC3", "12345")}), []openapiclient.ContactInfo{*openapiclient.NewContactInfo(openapiclient.contactInfo_contactType("TECHNICAL"))}, *openapiclient.NewScheduleInfo(openapiclient.scheduleInfo_scheduleType("STANDARD")), *openapiclient.NewMoveJumperCableRequestServiceDetails(openapiclient.moveJumperCableRequest_serviceDetails_quantity("1"), "Scope of work")) // MoveJumperCableRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -444,7 +444,7 @@ import (
 )
 
 func main() {
-	authorization := "authorization_example" // string | Specify the Access token with prefix 'Bearer'.
+	authorization := "authorization_example" // string | Specify the Access token with prefix 'Bearer'. (optional)
 	body := *openapiclient.NewEquipmentInstallRequest(*openapiclient.NewIbxLocation("AM1", []openapiclient.IbxLocationCagesInner{*openapiclient.NewIbxLocationCagesInner("AM1:01:001MC3", "12345")}), []openapiclient.ContactInfo{*openapiclient.NewContactInfo(openapiclient.contactInfo_contactType("TECHNICAL"))}, *openapiclient.NewScheduleInfo(openapiclient.scheduleInfo_scheduleType("STANDARD")), *openapiclient.NewEquipmentInstallRequestServiceDetails("abc location", false, "abc", false, true, true, true, "Scope of work")) // EquipmentInstallRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -510,7 +510,7 @@ import (
 )
 
 func main() {
-	authorization := "authorization_example" // string | Specify the Access token with prefix 'Bearer'.
+	authorization := "authorization_example" // string | Specify the Access token with prefix 'Bearer'. (optional)
 	body := *openapiclient.NewOtherRequest(*openapiclient.NewIbxLocation("AM1", []openapiclient.IbxLocationCagesInner{*openapiclient.NewIbxLocationCagesInner("AM1:01:001MC3", "12345")}), []openapiclient.ContactInfo{*openapiclient.NewContactInfo(openapiclient.contactInfo_contactType("TECHNICAL"))}, *openapiclient.NewScheduleInfo(openapiclient.scheduleInfo_scheduleType("STANDARD")), *openapiclient.NewOtherRequestServiceDetails("Scope of work")) // OtherRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -576,7 +576,7 @@ import (
 )
 
 func main() {
-	authorization := "authorization_example" // string | Specify the Access token with prefix 'Bearer'.
+	authorization := "authorization_example" // string | Specify the Access token with prefix 'Bearer'. (optional)
 	body := *openapiclient.NewPatchCableInstallRequest(*openapiclient.NewIbxLocation("AM1", []openapiclient.IbxLocationCagesInner{*openapiclient.NewIbxLocationCagesInner("AM1:01:001MC3", "12345")}), []openapiclient.ContactInfo{*openapiclient.NewContactInfo(openapiclient.contactInfo_contactType("TECHNICAL"))}, *openapiclient.NewScheduleInfo(openapiclient.scheduleInfo_scheduleType("STANDARD")), *openapiclient.NewPatchCableInstallRequestServiceDetails([]openapiclient.CrossConnectInstall{*openapiclient.NewCrossConnectInstall("SerialNumber_example", "DeviceCabinet_example", "DeviceConnectorType_example", "DeviceDetails_example", "DevicePort_example")})) // PatchCableInstallRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -642,7 +642,7 @@ import (
 )
 
 func main() {
-	authorization := "authorization_example" // string | Specify the Access token with prefix 'Bearer'.
+	authorization := "authorization_example" // string | Specify the Access token with prefix 'Bearer'. (optional)
 	body := *openapiclient.NewPatchCableRemovalRequest(*openapiclient.NewIbxLocation("AM1", []openapiclient.IbxLocationCagesInner{*openapiclient.NewIbxLocationCagesInner("AM1:01:001MC3", "12345")}), []openapiclient.ContactInfo{*openapiclient.NewContactInfo(openapiclient.contactInfo_contactType("TECHNICAL"))}, *openapiclient.NewScheduleInfo(openapiclient.scheduleInfo_scheduleType("STANDARD")), *openapiclient.NewPatchCableRemovalRequestServiceDetails([]openapiclient.CrossConnectRemoval{*openapiclient.NewCrossConnectRemoval("SerialNumber_example", "DeviceCabinet_example", "DeviceConnectorType_example", "DeviceDetails_example", "DevicePort_example")})) // PatchCableRemovalRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -708,7 +708,7 @@ import (
 )
 
 func main() {
-	authorization := "authorization_example" // string | Specify the Access token with prefix 'Bearer'.
+	authorization := "authorization_example" // string | Specify the Access token with prefix 'Bearer'. (optional)
 	body := *openapiclient.NewPicturesDocumentRequest(*openapiclient.NewIbxLocation("AM1", []openapiclient.IbxLocationCagesInner{*openapiclient.NewIbxLocationCagesInner("AM1:01:001MC3", "12345")}), []openapiclient.ContactInfo{*openapiclient.NewContactInfo(openapiclient.contactInfo_contactType("TECHNICAL"))}, *openapiclient.NewScheduleInfo(openapiclient.scheduleInfo_scheduleType("STANDARD")), *openapiclient.NewPicturesDocumentRequestServiceDetails(true, "Scope of work")) // PicturesDocumentRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -774,7 +774,7 @@ import (
 )
 
 func main() {
-	authorization := "authorization_example" // string | Specify the Access token with prefix 'Bearer'.
+	authorization := "authorization_example" // string | Specify the Access token with prefix 'Bearer'. (optional)
 	body := *openapiclient.NewRunJumperCableRequest(*openapiclient.NewIbxLocation("AM1", []openapiclient.IbxLocationCagesInner{*openapiclient.NewIbxLocationCagesInner("AM1:01:001MC3", "12345")}), []openapiclient.ContactInfo{*openapiclient.NewContactInfo(openapiclient.contactInfo_contactType("TECHNICAL"))}, *openapiclient.NewScheduleInfo(openapiclient.scheduleInfo_scheduleType("STANDARD")), *openapiclient.NewRunJumperCableRequestServiceDetails(openapiclient.moveJumperCableRequest_serviceDetails_quantity("1"), "Scope of work")) // RunJumperCableRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -840,7 +840,7 @@ import (
 )
 
 func main() {
-	authorization := "authorization_example" // string | Specify the Access token with prefix 'Bearer'.
+	authorization := "authorization_example" // string | Specify the Access token with prefix 'Bearer'. (optional)
 	body := *openapiclient.NewShipmentUnpackRequest(*openapiclient.NewIbxLocation("AM1", []openapiclient.IbxLocationCagesInner{*openapiclient.NewIbxLocationCagesInner("AM1:01:001MC3", "12345")}), []openapiclient.ContactInfo{*openapiclient.NewContactInfo(openapiclient.contactInfo_contactType("TECHNICAL"))}, *openapiclient.NewScheduleInfo(openapiclient.scheduleInfo_scheduleType("STANDARD")), *openapiclient.NewShipmentUnpackRequestServiceDetails("1-12122121", false, "Scope of work", false)) // ShipmentUnpackRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -906,7 +906,7 @@ import (
 )
 
 func main() {
-	authorization := "authorization_example" // string | Specify the Access token with prefix 'Bearer'.
+	authorization := "authorization_example" // string | Specify the Access token with prefix 'Bearer'. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
