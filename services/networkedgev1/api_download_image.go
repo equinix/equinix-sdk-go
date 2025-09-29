@@ -23,16 +23,9 @@ import (
 type DownloadImageApiService service
 
 type ApiGetDownloadableImagesUsingGETRequest struct {
-	ctx           context.Context
-	ApiService    *DownloadImageApiService
-	deviceType    string
-	authorization *string
-}
-
-// The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token.
-func (r ApiGetDownloadableImagesUsingGETRequest) Authorization(authorization string) ApiGetDownloadableImagesUsingGETRequest {
-	r.authorization = &authorization
-	return r
+	ctx        context.Context
+	ApiService *DownloadImageApiService
+	deviceType string
 }
 
 func (r ApiGetDownloadableImagesUsingGETRequest) Execute() ([]ListOfDownloadableImages, *http.Response, error) {
@@ -78,9 +71,6 @@ func (a *DownloadImageApiService) GetDownloadableImagesUsingGETExecute(r ApiGetD
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.authorization == nil {
-		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -99,7 +89,20 @@ func (a *DownloadImageApiService) GetDownloadableImagesUsingGETExecute(r ApiGetD
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "")
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Bearer"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -159,17 +162,10 @@ func (a *DownloadImageApiService) GetDownloadableImagesUsingGETExecute(r ApiGetD
 }
 
 type ApiPostDownloadImageRequest struct {
-	ctx           context.Context
-	ApiService    *DownloadImageApiService
-	deviceType    string
-	version       string
-	authorization *string
-}
-
-// The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token.
-func (r ApiPostDownloadImageRequest) Authorization(authorization string) ApiPostDownloadImageRequest {
-	r.authorization = &authorization
-	return r
+	ctx        context.Context
+	ApiService *DownloadImageApiService
+	deviceType string
+	version    string
 }
 
 func (r ApiPostDownloadImageRequest) Execute() (*PostDownloadImageResponse, *http.Response, error) {
@@ -218,9 +214,6 @@ func (a *DownloadImageApiService) PostDownloadImageExecute(r ApiPostDownloadImag
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.authorization == nil {
-		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -239,7 +232,20 @@ func (a *DownloadImageApiService) PostDownloadImageExecute(r ApiPostDownloadImag
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "")
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Bearer"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

@@ -23,22 +23,15 @@ import (
 type DeviceBackupRestoreApiService service
 
 type ApiCheckDetailsOfBackupsUsingGETRequest struct {
-	ctx           context.Context
-	ApiService    *DeviceBackupRestoreApiService
-	uuid          string
-	backupUuid    *string
-	authorization *string
+	ctx        context.Context
+	ApiService *DeviceBackupRestoreApiService
+	uuid       string
+	backupUuid *string
 }
 
 // Unique ID of a backup
 func (r ApiCheckDetailsOfBackupsUsingGETRequest) BackupUuid(backupUuid string) ApiCheckDetailsOfBackupsUsingGETRequest {
 	r.backupUuid = &backupUuid
-	return r
-}
-
-// The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token.
-func (r ApiCheckDetailsOfBackupsUsingGETRequest) Authorization(authorization string) ApiCheckDetailsOfBackupsUsingGETRequest {
-	r.authorization = &authorization
 	return r
 }
 
@@ -88,11 +81,8 @@ func (a *DeviceBackupRestoreApiService) CheckDetailsOfBackupsUsingGETExecute(r A
 	if r.backupUuid == nil {
 		return localVarReturnValue, nil, reportError("backupUuid is required and must be specified")
 	}
-	if r.authorization == nil {
-		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
-	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "backupUuid", r.backupUuid, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "backupUuid", r.backupUuid, "", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -110,7 +100,20 @@ func (a *DeviceBackupRestoreApiService) CheckDetailsOfBackupsUsingGETExecute(r A
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "")
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Bearer"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -170,16 +173,9 @@ func (a *DeviceBackupRestoreApiService) CheckDetailsOfBackupsUsingGETExecute(r A
 }
 
 type ApiCreateDeviceBackupUsingPOSTRequest struct {
-	ctx           context.Context
-	ApiService    *DeviceBackupRestoreApiService
-	authorization *string
-	request       *DeviceBackupCreateRequest
-}
-
-// The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token.
-func (r ApiCreateDeviceBackupUsingPOSTRequest) Authorization(authorization string) ApiCreateDeviceBackupUsingPOSTRequest {
-	r.authorization = &authorization
-	return r
+	ctx        context.Context
+	ApiService *DeviceBackupRestoreApiService
+	request    *DeviceBackupCreateRequest
 }
 
 // Device backup info
@@ -228,9 +224,6 @@ func (a *DeviceBackupRestoreApiService) CreateDeviceBackupUsingPOSTExecute(r Api
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.authorization == nil {
-		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
-	}
 	if r.request == nil {
 		return localVarReturnValue, nil, reportError("request is required and must be specified")
 	}
@@ -252,9 +245,22 @@ func (a *DeviceBackupRestoreApiService) CreateDeviceBackupUsingPOSTExecute(r Api
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "")
 	// body params
 	localVarPostBody = r.request
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Bearer"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -325,16 +331,9 @@ func (a *DeviceBackupRestoreApiService) CreateDeviceBackupUsingPOSTExecute(r Api
 }
 
 type ApiDeleteDeviceBackupUsingDELETERequest struct {
-	ctx           context.Context
-	ApiService    *DeviceBackupRestoreApiService
-	uuid          string
-	authorization *string
-}
-
-// The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token.
-func (r ApiDeleteDeviceBackupUsingDELETERequest) Authorization(authorization string) ApiDeleteDeviceBackupUsingDELETERequest {
-	r.authorization = &authorization
-	return r
+	ctx        context.Context
+	ApiService *DeviceBackupRestoreApiService
+	uuid       string
 }
 
 func (r ApiDeleteDeviceBackupUsingDELETERequest) Execute() (*http.Response, error) {
@@ -377,9 +376,6 @@ func (a *DeviceBackupRestoreApiService) DeleteDeviceBackupUsingDELETEExecute(r A
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.authorization == nil {
-		return nil, reportError("authorization is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -398,7 +394,20 @@ func (a *DeviceBackupRestoreApiService) DeleteDeviceBackupUsingDELETEExecute(r A
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "")
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Bearer"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -471,16 +480,9 @@ func (a *DeviceBackupRestoreApiService) DeleteDeviceBackupUsingDELETEExecute(r A
 }
 
 type ApiDownloadDetailsOfBackupsUsingGETRequest struct {
-	ctx           context.Context
-	ApiService    *DeviceBackupRestoreApiService
-	uuid          string
-	authorization *string
-}
-
-// The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token.
-func (r ApiDownloadDetailsOfBackupsUsingGETRequest) Authorization(authorization string) ApiDownloadDetailsOfBackupsUsingGETRequest {
-	r.authorization = &authorization
-	return r
+	ctx        context.Context
+	ApiService *DeviceBackupRestoreApiService
+	uuid       string
 }
 
 func (r ApiDownloadDetailsOfBackupsUsingGETRequest) Execute() (string, *http.Response, error) {
@@ -526,9 +528,6 @@ func (a *DeviceBackupRestoreApiService) DownloadDetailsOfBackupsUsingGETExecute(
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.authorization == nil {
-		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -547,7 +546,20 @@ func (a *DeviceBackupRestoreApiService) DownloadDetailsOfBackupsUsingGETExecute(
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "")
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Bearer"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -607,16 +619,9 @@ func (a *DeviceBackupRestoreApiService) DownloadDetailsOfBackupsUsingGETExecute(
 }
 
 type ApiGetDetailsOfBackupsUsingGETRequest struct {
-	ctx           context.Context
-	ApiService    *DeviceBackupRestoreApiService
-	uuid          string
-	authorization *string
-}
-
-// The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token.
-func (r ApiGetDetailsOfBackupsUsingGETRequest) Authorization(authorization string) ApiGetDetailsOfBackupsUsingGETRequest {
-	r.authorization = &authorization
-	return r
+	ctx        context.Context
+	ApiService *DeviceBackupRestoreApiService
+	uuid       string
 }
 
 func (r ApiGetDetailsOfBackupsUsingGETRequest) Execute() (*DeviceBackupInfoVerbose, *http.Response, error) {
@@ -662,9 +667,6 @@ func (a *DeviceBackupRestoreApiService) GetDetailsOfBackupsUsingGETExecute(r Api
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.authorization == nil {
-		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -683,7 +685,20 @@ func (a *DeviceBackupRestoreApiService) GetDetailsOfBackupsUsingGETExecute(r Api
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "")
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Bearer"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -746,7 +761,6 @@ type ApiGetDeviceBackupsUsingGETRequest struct {
 	ctx               context.Context
 	ApiService        *DeviceBackupRestoreApiService
 	virtualDeviceUuid *string
-	authorization     *string
 	status            *[]string
 	offset            *string
 	limit             *string
@@ -755,12 +769,6 @@ type ApiGetDeviceBackupsUsingGETRequest struct {
 // Unique ID of a virtual device
 func (r ApiGetDeviceBackupsUsingGETRequest) VirtualDeviceUuid(virtualDeviceUuid string) ApiGetDeviceBackupsUsingGETRequest {
 	r.virtualDeviceUuid = &virtualDeviceUuid
-	return r
-}
-
-// The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token.
-func (r ApiGetDeviceBackupsUsingGETRequest) Authorization(authorization string) ApiGetDeviceBackupsUsingGETRequest {
-	r.authorization = &authorization
 	return r
 }
 
@@ -825,22 +833,19 @@ func (a *DeviceBackupRestoreApiService) GetDeviceBackupsUsingGETExecute(r ApiGet
 	if r.virtualDeviceUuid == nil {
 		return localVarReturnValue, nil, reportError("virtualDeviceUuid is required and must be specified")
 	}
-	if r.authorization == nil {
-		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
-	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "virtualDeviceUuid", r.virtualDeviceUuid, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "virtualDeviceUuid", r.virtualDeviceUuid, "", "")
 	if r.status != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "form", "csv")
 	}
 	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
 	} else {
 		var defaultValue string = "0"
 		r.offset = &defaultValue
 	}
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
 	} else {
 		var defaultValue string = "20"
 		r.limit = &defaultValue
@@ -862,7 +867,20 @@ func (a *DeviceBackupRestoreApiService) GetDeviceBackupsUsingGETExecute(r ApiGet
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "")
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Bearer"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -922,17 +940,10 @@ func (a *DeviceBackupRestoreApiService) GetDeviceBackupsUsingGETExecute(r ApiGet
 }
 
 type ApiRestoreDeviceBackupUsingPATCHRequest struct {
-	ctx           context.Context
-	ApiService    *DeviceBackupRestoreApiService
-	uuid          string
-	authorization *string
-	request       *DeviceBackupUpdateRequest
-}
-
-// The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token.
-func (r ApiRestoreDeviceBackupUsingPATCHRequest) Authorization(authorization string) ApiRestoreDeviceBackupUsingPATCHRequest {
-	r.authorization = &authorization
-	return r
+	ctx        context.Context
+	ApiService *DeviceBackupRestoreApiService
+	uuid       string
+	request    *DeviceBackupUpdateRequest
 }
 
 // Update device backup
@@ -981,9 +992,6 @@ func (a *DeviceBackupRestoreApiService) RestoreDeviceBackupUsingPATCHExecute(r A
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.authorization == nil {
-		return nil, reportError("authorization is required and must be specified")
-	}
 	if r.request == nil {
 		return nil, reportError("request is required and must be specified")
 	}
@@ -1005,9 +1013,22 @@ func (a *DeviceBackupRestoreApiService) RestoreDeviceBackupUsingPATCHExecute(r A
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "")
 	// body params
 	localVarPostBody = r.request
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Bearer"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -1069,17 +1090,10 @@ func (a *DeviceBackupRestoreApiService) RestoreDeviceBackupUsingPATCHExecute(r A
 }
 
 type ApiUpdateDeviceBackupUsingPATCHRequest struct {
-	ctx           context.Context
-	ApiService    *DeviceBackupRestoreApiService
-	uuid          string
-	authorization *string
-	request       *DeviceBackupUpdateRequest
-}
-
-// The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token.
-func (r ApiUpdateDeviceBackupUsingPATCHRequest) Authorization(authorization string) ApiUpdateDeviceBackupUsingPATCHRequest {
-	r.authorization = &authorization
-	return r
+	ctx        context.Context
+	ApiService *DeviceBackupRestoreApiService
+	uuid       string
+	request    *DeviceBackupUpdateRequest
 }
 
 // Update device backup
@@ -1128,9 +1142,6 @@ func (a *DeviceBackupRestoreApiService) UpdateDeviceBackupUsingPATCHExecute(r Ap
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.authorization == nil {
-		return nil, reportError("authorization is required and must be specified")
-	}
 	if r.request == nil {
 		return nil, reportError("request is required and must be specified")
 	}
@@ -1152,9 +1163,22 @@ func (a *DeviceBackupRestoreApiService) UpdateDeviceBackupUsingPATCHExecute(r Ap
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "")
 	// body params
 	localVarPostBody = r.request
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Bearer"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err

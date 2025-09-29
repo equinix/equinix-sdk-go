@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## UpdateLicenseUsingPOST
 
-> LicenseUploadResponse UpdateLicenseUsingPOST(ctx, uuid).Authorization(authorization).Request(request).Execute()
+> LicenseUploadResponse UpdateLicenseUsingPOST(ctx, uuid).Request(request).Execute()
 
 Update License Token/ID/Code
 
@@ -32,12 +32,11 @@ import (
 
 func main() {
 	uuid := "uuid_example" // string | Unique Id of a virtual device
-	authorization := "authorization_example" // string | The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
 	request := *openapiclient.NewLicenseUpdateRequest() // LicenseUpdateRequest | License token
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.LicensingApi.UpdateLicenseUsingPOST(context.Background(), uuid).Authorization(authorization).Request(request).Execute()
+	resp, r, err := apiClient.LicensingApi.UpdateLicenseUsingPOST(context.Background(), uuid).Request(request).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `LicensingApi.UpdateLicenseUsingPOST``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -63,7 +62,6 @@ Other parameters are passed through a pointer to a apiUpdateLicenseUsingPOSTRequ
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **authorization** | **string** | The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token. | 
  **request** | [**LicenseUpdateRequest**](LicenseUpdateRequest.md) | License token | 
 
 ### Return type
@@ -72,7 +70,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -86,7 +84,7 @@ No authorization required
 
 ## UploadLicenseForDeviceUsingPOST
 
-> LicenseUploadResponse UploadLicenseForDeviceUsingPOST(ctx, uuid).Authorization(authorization).File(file).Execute()
+> LicenseUploadResponse UploadLicenseForDeviceUsingPOST(ctx, uuid).File(file).Execute()
 
 Post License {uuid}
 
@@ -106,12 +104,11 @@ import (
 
 func main() {
 	uuid := "uuid_example" // string | Unique Id of a virtual device
-	authorization := "authorization_example" // string | The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
 	file := os.NewFile(1234, "some_file") // *os.File | License file
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.LicensingApi.UploadLicenseForDeviceUsingPOST(context.Background(), uuid).Authorization(authorization).File(file).Execute()
+	resp, r, err := apiClient.LicensingApi.UploadLicenseForDeviceUsingPOST(context.Background(), uuid).File(file).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `LicensingApi.UploadLicenseForDeviceUsingPOST``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -137,7 +134,6 @@ Other parameters are passed through a pointer to a apiUploadLicenseForDeviceUsin
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **authorization** | **string** | The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token. | 
  **file** | ***os.File** | License file | 
 
 ### Return type
@@ -146,7 +142,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -160,7 +156,7 @@ No authorization required
 
 ## UploadLicenseUsingPOST
 
-> LicenseUploadResponse UploadLicenseUsingPOST(ctx).MetroCode(metroCode).DeviceTypeCode(deviceTypeCode).LicenseType(licenseType).Authorization(authorization).File(file).Execute()
+> LicenseUploadResponse UploadLicenseUsingPOST(ctx).MetroCode(metroCode).DeviceTypeCode(deviceTypeCode).LicenseType(licenseType).File(file).Execute()
 
 Post License File
 
@@ -182,12 +178,11 @@ func main() {
 	metroCode := "metroCode_example" // string | metroCode
 	deviceTypeCode := "deviceTypeCode_example" // string | deviceTypeCode
 	licenseType := "licenseType_example" // string | licenseType
-	authorization := "authorization_example" // string | The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
 	file := os.NewFile(1234, "some_file") // *os.File | file
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.LicensingApi.UploadLicenseUsingPOST(context.Background()).MetroCode(metroCode).DeviceTypeCode(deviceTypeCode).LicenseType(licenseType).Authorization(authorization).File(file).Execute()
+	resp, r, err := apiClient.LicensingApi.UploadLicenseUsingPOST(context.Background()).MetroCode(metroCode).DeviceTypeCode(deviceTypeCode).LicenseType(licenseType).File(file).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `LicensingApi.UploadLicenseUsingPOST``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -211,7 +206,6 @@ Name | Type | Description  | Notes
  **metroCode** | **string** | metroCode | 
  **deviceTypeCode** | **string** | deviceTypeCode | 
  **licenseType** | **string** | licenseType | 
- **authorization** | **string** | The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token. | 
  **file** | ***os.File** | file | 
 
 ### Return type
@@ -220,7 +214,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 

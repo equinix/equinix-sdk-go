@@ -25,16 +25,9 @@ type VirtualDeviceApiService service
 type ApiCreateVirtualDeviceUsingPOSTRequest struct {
 	ctx           context.Context
 	ApiService    *VirtualDeviceApiService
-	authorization *string
 	virtualDevice *VirtualDeviceRequest
 	draft         *bool
 	draftUuid     *string
-}
-
-// The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token.
-func (r ApiCreateVirtualDeviceUsingPOSTRequest) Authorization(authorization string) ApiCreateVirtualDeviceUsingPOSTRequest {
-	r.authorization = &authorization
-	return r
 }
 
 // Create a virtual device (e.g., a router or a firewall)
@@ -95,21 +88,18 @@ func (a *VirtualDeviceApiService) CreateVirtualDeviceUsingPOSTExecute(r ApiCreat
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.authorization == nil {
-		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
-	}
 	if r.virtualDevice == nil {
 		return localVarReturnValue, nil, reportError("virtualDevice is required and must be specified")
 	}
 
 	if r.draft != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "draft", r.draft, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "draft", r.draft, "", "")
 	} else {
 		var defaultValue bool = false
 		r.draft = &defaultValue
 	}
 	if r.draftUuid != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "draftUuid", r.draftUuid, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "draftUuid", r.draftUuid, "", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -128,9 +118,22 @@ func (a *VirtualDeviceApiService) CreateVirtualDeviceUsingPOSTExecute(r ApiCreat
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "")
 	// body params
 	localVarPostBody = r.virtualDevice
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Bearer"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -204,15 +207,8 @@ type ApiDeleteVRouterUsingDELETERequest struct {
 	ctx                   context.Context
 	ApiService            *VirtualDeviceApiService
 	uuid                  string
-	authorization         *string
 	deleteRedundantDevice *bool
 	deletionInfo          *VirtualDeviceDeleteRequest
-}
-
-// The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token.
-func (r ApiDeleteVRouterUsingDELETERequest) Authorization(authorization string) ApiDeleteVRouterUsingDELETERequest {
-	r.authorization = &authorization
-	return r
 }
 
 // Optional parameter in case you have a secondary device. As both primary and secondary devices are deleted simultaneously, this field must be marked True so we delete both the devices simultaneously.
@@ -267,12 +263,9 @@ func (a *VirtualDeviceApiService) DeleteVRouterUsingDELETEExecute(r ApiDeleteVRo
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.authorization == nil {
-		return nil, reportError("authorization is required and must be specified")
-	}
 
 	if r.deleteRedundantDevice != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "deleteRedundantDevice", r.deleteRedundantDevice, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "deleteRedundantDevice", r.deleteRedundantDevice, "", "")
 	} else {
 		var defaultValue bool = false
 		r.deleteRedundantDevice = &defaultValue
@@ -294,9 +287,22 @@ func (a *VirtualDeviceApiService) DeleteVRouterUsingDELETEExecute(r ApiDeleteVRo
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "")
 	// body params
 	localVarPostBody = r.deletionInfo
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Bearer"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -361,15 +367,8 @@ type ApiGetDeviceReloadUsingGET1Request struct {
 	ctx               context.Context
 	ApiService        *VirtualDeviceApiService
 	virtualDeviceUUID string
-	authorization     *string
 	offset            *string
 	limit             *string
-}
-
-// The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token.
-func (r ApiGetDeviceReloadUsingGET1Request) Authorization(authorization string) ApiGetDeviceReloadUsingGET1Request {
-	r.authorization = &authorization
-	return r
 }
 
 // Specifies where to start a page. It is the starting point of the collection returned from the server.
@@ -427,18 +426,15 @@ func (a *VirtualDeviceApiService) GetDeviceReloadUsingGET1Execute(r ApiGetDevice
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.authorization == nil {
-		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
-	}
 
 	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
 	} else {
 		var defaultValue string = "0"
 		r.offset = &defaultValue
 	}
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
 	} else {
 		var defaultValue string = "20"
 		r.limit = &defaultValue
@@ -460,7 +456,20 @@ func (a *VirtualDeviceApiService) GetDeviceReloadUsingGET1Execute(r ApiGetDevice
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "")
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Bearer"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -512,15 +521,8 @@ type ApiGetDeviceUpgradeUsingGET1Request struct {
 	ctx               context.Context
 	ApiService        *VirtualDeviceApiService
 	virtualDeviceUuid string
-	authorization     *string
 	offset            *string
 	limit             *string
-}
-
-// The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token.
-func (r ApiGetDeviceUpgradeUsingGET1Request) Authorization(authorization string) ApiGetDeviceUpgradeUsingGET1Request {
-	r.authorization = &authorization
-	return r
 }
 
 // Specifies where to start a page. It is the starting point of the collection returned from the server.
@@ -578,18 +580,15 @@ func (a *VirtualDeviceApiService) GetDeviceUpgradeUsingGET1Execute(r ApiGetDevic
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.authorization == nil {
-		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
-	}
 
 	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
 	} else {
 		var defaultValue string = "0"
 		r.offset = &defaultValue
 	}
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
 	} else {
 		var defaultValue string = "20"
 		r.limit = &defaultValue
@@ -611,7 +610,20 @@ func (a *VirtualDeviceApiService) GetDeviceUpgradeUsingGET1Execute(r ApiGetDevic
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "")
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Bearer"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -666,7 +678,6 @@ type ApiGetInterfaceStatisticsUsingGETRequest struct {
 	interfaceId       string
 	startDateTime     *string
 	endDateTime       *string
-	authorization     *string
 }
 
 // Start time of the duration for which you want stats. (YYYY-MM-DDThh:mm:ssZ)
@@ -678,12 +689,6 @@ func (r ApiGetInterfaceStatisticsUsingGETRequest) StartDateTime(startDateTime st
 // End time of the duration for which you want stats. (YYYY-MM-DDThh:mm:ssZ)
 func (r ApiGetInterfaceStatisticsUsingGETRequest) EndDateTime(endDateTime string) ApiGetInterfaceStatisticsUsingGETRequest {
 	r.endDateTime = &endDateTime
-	return r
-}
-
-// The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token.
-func (r ApiGetInterfaceStatisticsUsingGETRequest) Authorization(authorization string) ApiGetInterfaceStatisticsUsingGETRequest {
-	r.authorization = &authorization
 	return r
 }
 
@@ -739,12 +744,9 @@ func (a *VirtualDeviceApiService) GetInterfaceStatisticsUsingGETExecute(r ApiGet
 	if r.endDateTime == nil {
 		return localVarReturnValue, nil, reportError("endDateTime is required and must be specified")
 	}
-	if r.authorization == nil {
-		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
-	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "startDateTime", r.startDateTime, "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "endDateTime", r.endDateTime, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "startDateTime", r.startDateTime, "", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "endDateTime", r.endDateTime, "", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -762,7 +764,20 @@ func (a *VirtualDeviceApiService) GetInterfaceStatisticsUsingGETExecute(r ApiGet
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "")
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Bearer"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -822,16 +837,9 @@ func (a *VirtualDeviceApiService) GetInterfaceStatisticsUsingGETExecute(r ApiGet
 }
 
 type ApiGetVirtualDeviceInterfacesUsingGETRequest struct {
-	ctx           context.Context
-	ApiService    *VirtualDeviceApiService
-	uuid          string
-	authorization *string
-}
-
-// The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token.
-func (r ApiGetVirtualDeviceInterfacesUsingGETRequest) Authorization(authorization string) ApiGetVirtualDeviceInterfacesUsingGETRequest {
-	r.authorization = &authorization
-	return r
+	ctx        context.Context
+	ApiService *VirtualDeviceApiService
+	uuid       string
 }
 
 func (r ApiGetVirtualDeviceInterfacesUsingGETRequest) Execute() ([]InterfaceBasicInfoResponse, *http.Response, error) {
@@ -877,9 +885,6 @@ func (a *VirtualDeviceApiService) GetVirtualDeviceInterfacesUsingGETExecute(r Ap
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.authorization == nil {
-		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -898,7 +903,20 @@ func (a *VirtualDeviceApiService) GetVirtualDeviceInterfacesUsingGETExecute(r Ap
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "")
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Bearer"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -958,16 +976,9 @@ func (a *VirtualDeviceApiService) GetVirtualDeviceInterfacesUsingGETExecute(r Ap
 }
 
 type ApiGetVirtualDeviceUsingGETRequest struct {
-	ctx           context.Context
-	ApiService    *VirtualDeviceApiService
-	uuid          string
-	authorization *string
-}
-
-// The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token.
-func (r ApiGetVirtualDeviceUsingGETRequest) Authorization(authorization string) ApiGetVirtualDeviceUsingGETRequest {
-	r.authorization = &authorization
-	return r
+	ctx        context.Context
+	ApiService *VirtualDeviceApiService
+	uuid       string
 }
 
 func (r ApiGetVirtualDeviceUsingGETRequest) Execute() (*VirtualDeviceDetailsResponse, *http.Response, error) {
@@ -1013,9 +1024,6 @@ func (a *VirtualDeviceApiService) GetVirtualDeviceUsingGETExecute(r ApiGetVirtua
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.authorization == nil {
-		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1034,7 +1042,20 @@ func (a *VirtualDeviceApiService) GetVirtualDeviceUsingGETExecute(r ApiGetVirtua
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "")
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Bearer"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1096,7 +1117,6 @@ func (a *VirtualDeviceApiService) GetVirtualDeviceUsingGETExecute(r ApiGetVirtua
 type ApiGetVirtualDevicesUsingGET1Request struct {
 	ctx                        context.Context
 	ApiService                 *VirtualDeviceApiService
-	authorization              *string
 	offset                     *string
 	limit                      *string
 	metroCode                  *string
@@ -1105,12 +1125,6 @@ type ApiGetVirtualDevicesUsingGET1Request struct {
 	accountUcmId               *string
 	searchText                 *string
 	sort                       *[]string
-}
-
-// The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token.
-func (r ApiGetVirtualDevicesUsingGET1Request) Authorization(authorization string) ApiGetVirtualDevicesUsingGET1Request {
-	r.authorization = &authorization
-	return r
 }
 
 // Specifies where to start a page. It is the starting point of the collection returned from the server.
@@ -1201,39 +1215,36 @@ func (a *VirtualDeviceApiService) GetVirtualDevicesUsingGET1Execute(r ApiGetVirt
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.authorization == nil {
-		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
-	}
 
 	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
 	} else {
 		var defaultValue string = "0"
 		r.offset = &defaultValue
 	}
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
 	} else {
 		var defaultValue string = "20"
 		r.limit = &defaultValue
 	}
 	if r.metroCode != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "metroCode", r.metroCode, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "metroCode", r.metroCode, "", "")
 	}
 	if r.status != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "", "")
 	}
 	if r.showOnlySubCustomerDevices != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "showOnlySubCustomerDevices", r.showOnlySubCustomerDevices, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "showOnlySubCustomerDevices", r.showOnlySubCustomerDevices, "", "")
 	}
 	if r.accountUcmId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "accountUcmId", r.accountUcmId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "accountUcmId", r.accountUcmId, "", "")
 	}
 	if r.searchText != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "searchText", r.searchText, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "searchText", r.searchText, "", "")
 	}
 	if r.sort != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", r.sort, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", r.sort, "form", "csv")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1252,7 +1263,20 @@ func (a *VirtualDeviceApiService) GetVirtualDevicesUsingGET1Execute(r ApiGetVirt
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "")
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Bearer"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1301,16 +1325,9 @@ func (a *VirtualDeviceApiService) GetVirtualDevicesUsingGET1Execute(r ApiGetVirt
 }
 
 type ApiPingDeviceUsingGETRequest struct {
-	ctx           context.Context
-	ApiService    *VirtualDeviceApiService
-	uuid          string
-	authorization *string
-}
-
-// The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token.
-func (r ApiPingDeviceUsingGETRequest) Authorization(authorization string) ApiPingDeviceUsingGETRequest {
-	r.authorization = &authorization
-	return r
+	ctx        context.Context
+	ApiService *VirtualDeviceApiService
+	uuid       string
 }
 
 func (r ApiPingDeviceUsingGETRequest) Execute() (*http.Response, error) {
@@ -1353,9 +1370,6 @@ func (a *VirtualDeviceApiService) PingDeviceUsingGETExecute(r ApiPingDeviceUsing
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.authorization == nil {
-		return nil, reportError("authorization is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1374,7 +1388,20 @@ func (a *VirtualDeviceApiService) PingDeviceUsingGETExecute(r ApiPingDeviceUsing
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "")
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Bearer"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -1439,13 +1466,6 @@ type ApiPostDeviceReloadUsingPOST1Request struct {
 	ctx               context.Context
 	ApiService        *VirtualDeviceApiService
 	virtualDeviceUUID string
-	authorization     *string
-}
-
-// The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token.
-func (r ApiPostDeviceReloadUsingPOST1Request) Authorization(authorization string) ApiPostDeviceReloadUsingPOST1Request {
-	r.authorization = &authorization
-	return r
 }
 
 func (r ApiPostDeviceReloadUsingPOST1Request) Execute() (*http.Response, error) {
@@ -1488,9 +1508,6 @@ func (a *VirtualDeviceApiService) PostDeviceReloadUsingPOST1Execute(r ApiPostDev
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.authorization == nil {
-		return nil, reportError("authorization is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1509,7 +1526,20 @@ func (a *VirtualDeviceApiService) PostDeviceReloadUsingPOST1Execute(r ApiPostDev
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "")
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Bearer"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -1549,17 +1579,10 @@ func (a *VirtualDeviceApiService) PostDeviceReloadUsingPOST1Execute(r ApiPostDev
 }
 
 type ApiUpdateAdditionalBandwidthRequest struct {
-	ctx           context.Context
-	ApiService    *VirtualDeviceApiService
-	uuid          string
-	authorization *string
-	request       *AdditionalBandwidthRequest
-}
-
-// The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token.
-func (r ApiUpdateAdditionalBandwidthRequest) Authorization(authorization string) ApiUpdateAdditionalBandwidthRequest {
-	r.authorization = &authorization
-	return r
+	ctx        context.Context
+	ApiService *VirtualDeviceApiService
+	uuid       string
+	request    *AdditionalBandwidthRequest
 }
 
 // Additional Bandwidth
@@ -1608,9 +1631,6 @@ func (a *VirtualDeviceApiService) UpdateAdditionalBandwidthExecute(r ApiUpdateAd
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.authorization == nil {
-		return nil, reportError("authorization is required and must be specified")
-	}
 	if r.request == nil {
 		return nil, reportError("request is required and must be specified")
 	}
@@ -1632,9 +1652,22 @@ func (a *VirtualDeviceApiService) UpdateAdditionalBandwidthExecute(r ApiUpdateAd
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "")
 	// body params
 	localVarPostBody = r.request
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Bearer"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -1699,14 +1732,7 @@ type ApiUpdateVirtualDeviceUsingPATCH1Request struct {
 	ctx                           context.Context
 	ApiService                    *VirtualDeviceApiService
 	uuid                          string
-	authorization                 *string
 	virtualDeviceUpdateRequestDto *VirtualDeviceInternalPatchRequestDto
-}
-
-// The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token.
-func (r ApiUpdateVirtualDeviceUsingPATCH1Request) Authorization(authorization string) ApiUpdateVirtualDeviceUsingPATCH1Request {
-	r.authorization = &authorization
-	return r
 }
 
 func (r ApiUpdateVirtualDeviceUsingPATCH1Request) VirtualDeviceUpdateRequestDto(virtualDeviceUpdateRequestDto VirtualDeviceInternalPatchRequestDto) ApiUpdateVirtualDeviceUsingPATCH1Request {
@@ -1754,9 +1780,6 @@ func (a *VirtualDeviceApiService) UpdateVirtualDeviceUsingPATCH1Execute(r ApiUpd
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.authorization == nil {
-		return nil, reportError("authorization is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1775,9 +1798,22 @@ func (a *VirtualDeviceApiService) UpdateVirtualDeviceUsingPATCH1Execute(r ApiUpd
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "")
 	// body params
 	localVarPostBody = r.virtualDeviceUpdateRequestDto
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Bearer"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -1832,19 +1868,12 @@ type ApiUpdateVirtualDeviceUsingPUTRequest struct {
 	ApiService    *VirtualDeviceApiService
 	draft         *bool
 	uuid          string
-	authorization *string
 	virtualDevice *VirtualDeviceRequest
 }
 
 // draft
 func (r ApiUpdateVirtualDeviceUsingPUTRequest) Draft(draft bool) ApiUpdateVirtualDeviceUsingPUTRequest {
 	r.draft = &draft
-	return r
-}
-
-// The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token.
-func (r ApiUpdateVirtualDeviceUsingPUTRequest) Authorization(authorization string) ApiUpdateVirtualDeviceUsingPUTRequest {
-	r.authorization = &authorization
 	return r
 }
 
@@ -1897,14 +1926,11 @@ func (a *VirtualDeviceApiService) UpdateVirtualDeviceUsingPUTExecute(r ApiUpdate
 	if r.draft == nil {
 		return nil, reportError("draft is required and must be specified")
 	}
-	if r.authorization == nil {
-		return nil, reportError("authorization is required and must be specified")
-	}
 	if r.virtualDevice == nil {
 		return nil, reportError("virtualDevice is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "draft", r.draft, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "draft", r.draft, "", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
 
@@ -1922,9 +1948,22 @@ func (a *VirtualDeviceApiService) UpdateVirtualDeviceUsingPUTExecute(r ApiUpdate
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "")
 	// body params
 	localVarPostBody = r.virtualDevice
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Bearer"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err

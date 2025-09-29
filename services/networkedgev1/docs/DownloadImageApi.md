@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## GetDownloadableImagesUsingGET
 
-> []ListOfDownloadableImages GetDownloadableImagesUsingGET(ctx, deviceType).Authorization(authorization).Execute()
+> []ListOfDownloadableImages GetDownloadableImagesUsingGET(ctx, deviceType).Execute()
 
 Get Downloadable Images
 
@@ -31,11 +31,10 @@ import (
 
 func main() {
 	deviceType := "deviceType_example" // string | Device type
-	authorization := "authorization_example" // string | The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DownloadImageApi.GetDownloadableImagesUsingGET(context.Background(), deviceType).Authorization(authorization).Execute()
+	resp, r, err := apiClient.DownloadImageApi.GetDownloadableImagesUsingGET(context.Background(), deviceType).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DownloadImageApi.GetDownloadableImagesUsingGET``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -61,7 +60,6 @@ Other parameters are passed through a pointer to a apiGetDownloadableImagesUsing
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **authorization** | **string** | The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token. | 
 
 ### Return type
 
@@ -69,7 +67,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -83,7 +81,7 @@ No authorization required
 
 ## PostDownloadImage
 
-> PostDownloadImageResponse PostDownloadImage(ctx, deviceType, version).Authorization(authorization).Execute()
+> PostDownloadImageResponse PostDownloadImage(ctx, deviceType, version).Execute()
 
 Download an Image
 
@@ -104,11 +102,10 @@ import (
 func main() {
 	deviceType := "deviceType_example" // string | Device type
 	version := "version_example" // string | Version
-	authorization := "authorization_example" // string | The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DownloadImageApi.PostDownloadImage(context.Background(), deviceType, version).Authorization(authorization).Execute()
+	resp, r, err := apiClient.DownloadImageApi.PostDownloadImage(context.Background(), deviceType, version).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DownloadImageApi.PostDownloadImage``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -136,7 +133,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **authorization** | **string** | The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token. | 
 
 ### Return type
 
@@ -144,7 +140,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 

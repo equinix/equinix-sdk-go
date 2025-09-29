@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## PostDeviceRMAUsingPOST
 
-> PostDeviceRMAUsingPOST(ctx, virtualDeviceUuid).Authorization(authorization).Request(request).Execute()
+> PostDeviceRMAUsingPOST(ctx, virtualDeviceUuid).Request(request).Execute()
 
 Trigger Device RMA
 
@@ -30,12 +30,11 @@ import (
 
 func main() {
 	virtualDeviceUuid := "virtualDeviceUuid_example" // string | Unique ID of a device
-	authorization := "authorization_example" // string | The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
 	request := *openapiclient.NewDeviceRMAPostRequest("17.09.01a") // DeviceRMAPostRequest | Post RMA request
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.DeviceRMAApi.PostDeviceRMAUsingPOST(context.Background(), virtualDeviceUuid).Authorization(authorization).Request(request).Execute()
+	r, err := apiClient.DeviceRMAApi.PostDeviceRMAUsingPOST(context.Background(), virtualDeviceUuid).Request(request).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DeviceRMAApi.PostDeviceRMAUsingPOST``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -59,7 +58,6 @@ Other parameters are passed through a pointer to a apiPostDeviceRMAUsingPOSTRequ
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **authorization** | **string** | The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token. | 
  **request** | [**DeviceRMAPostRequest**](DeviceRMAPostRequest.md) | Post RMA request | 
 
 ### Return type
@@ -68,7 +66,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 

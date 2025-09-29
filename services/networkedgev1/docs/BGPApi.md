@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## AddBgpConfigurationUsingPOST
 
-> BgpAsyncResponse AddBgpConfigurationUsingPOST(ctx).Authorization(authorization).Request(request).Execute()
+> BgpAsyncResponse AddBgpConfigurationUsingPOST(ctx).Request(request).Execute()
 
 Create BGP Peering
 
@@ -32,12 +32,11 @@ import (
 )
 
 func main() {
-	authorization := "authorization_example" // string | The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
 	request := *openapiclient.NewBgpConfigAddRequest() // BgpConfigAddRequest | BGP configuration details (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.BGPApi.AddBgpConfigurationUsingPOST(context.Background()).Authorization(authorization).Request(request).Execute()
+	resp, r, err := apiClient.BGPApi.AddBgpConfigurationUsingPOST(context.Background()).Request(request).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `BGPApi.AddBgpConfigurationUsingPOST``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -58,7 +57,6 @@ Other parameters are passed through a pointer to a apiAddBgpConfigurationUsingPO
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authorization** | **string** | The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token. | 
  **request** | [**BgpConfigAddRequest**](BgpConfigAddRequest.md) | BGP configuration details | 
 
 ### Return type
@@ -67,7 +65,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -81,7 +79,7 @@ No authorization required
 
 ## GetBgpConfigurationUsingGET
 
-> BgpInfo GetBgpConfigurationUsingGET(ctx, uuid).Authorization(authorization).Execute()
+> BgpInfo GetBgpConfigurationUsingGET(ctx, uuid).Execute()
 
 Get BGP Peering {uuid}
 
@@ -101,11 +99,10 @@ import (
 
 func main() {
 	uuid := "uuid_example" // string | uuid
-	authorization := "authorization_example" // string | The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.BGPApi.GetBgpConfigurationUsingGET(context.Background(), uuid).Authorization(authorization).Execute()
+	resp, r, err := apiClient.BGPApi.GetBgpConfigurationUsingGET(context.Background(), uuid).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `BGPApi.GetBgpConfigurationUsingGET``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -131,7 +128,6 @@ Other parameters are passed through a pointer to a apiGetBgpConfigurationUsingGE
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **authorization** | **string** | The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token. | 
 
 ### Return type
 
@@ -139,7 +135,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -153,7 +149,7 @@ No authorization required
 
 ## GetBgpConfigurationsUsingGET
 
-> BgpInfo GetBgpConfigurationsUsingGET(ctx).Authorization(authorization).VirtualDeviceUuid(virtualDeviceUuid).ConnectionUuid(connectionUuid).Status(status).AccountUcmId(accountUcmId).Offset(offset).Limit(limit).Execute()
+> BgpInfo GetBgpConfigurationsUsingGET(ctx).VirtualDeviceUuid(virtualDeviceUuid).ConnectionUuid(connectionUuid).Status(status).AccountUcmId(accountUcmId).Offset(offset).Limit(limit).Execute()
 
 Get BGP Peering
 
@@ -172,7 +168,6 @@ import (
 )
 
 func main() {
-	authorization := "authorization_example" // string | The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
 	virtualDeviceUuid := "virtualDeviceUuid_example" // string | Unique Id of a virtual device (optional)
 	connectionUuid := "connectionUuid_example" // string | Unique Id of a connection (optional)
 	status := "status_example" // string | Provisioning status of BGP Peering (optional)
@@ -182,7 +177,7 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.BGPApi.GetBgpConfigurationsUsingGET(context.Background()).Authorization(authorization).VirtualDeviceUuid(virtualDeviceUuid).ConnectionUuid(connectionUuid).Status(status).AccountUcmId(accountUcmId).Offset(offset).Limit(limit).Execute()
+	resp, r, err := apiClient.BGPApi.GetBgpConfigurationsUsingGET(context.Background()).VirtualDeviceUuid(virtualDeviceUuid).ConnectionUuid(connectionUuid).Status(status).AccountUcmId(accountUcmId).Offset(offset).Limit(limit).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `BGPApi.GetBgpConfigurationsUsingGET``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -203,7 +198,6 @@ Other parameters are passed through a pointer to a apiGetBgpConfigurationsUsingG
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authorization** | **string** | The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token. | 
  **virtualDeviceUuid** | **string** | Unique Id of a virtual device | 
  **connectionUuid** | **string** | Unique Id of a connection | 
  **status** | **string** | Provisioning status of BGP Peering | 
@@ -217,7 +211,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -231,7 +225,7 @@ No authorization required
 
 ## UpdateBgpConfigurationUsingPUT
 
-> BgpAsyncResponse UpdateBgpConfigurationUsingPUT(ctx, uuid).Authorization(authorization).Request(request).Execute()
+> BgpAsyncResponse UpdateBgpConfigurationUsingPUT(ctx, uuid).Request(request).Execute()
 
 Update BGP Peering
 
@@ -251,12 +245,11 @@ import (
 
 func main() {
 	uuid := "uuid_example" // string | uuid
-	authorization := "authorization_example" // string | The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
 	request := *openapiclient.NewBgpUpdateRequest() // BgpUpdateRequest | BGP config (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.BGPApi.UpdateBgpConfigurationUsingPUT(context.Background(), uuid).Authorization(authorization).Request(request).Execute()
+	resp, r, err := apiClient.BGPApi.UpdateBgpConfigurationUsingPUT(context.Background(), uuid).Request(request).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `BGPApi.UpdateBgpConfigurationUsingPUT``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -282,7 +275,6 @@ Other parameters are passed through a pointer to a apiUpdateBgpConfigurationUsin
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **authorization** | **string** | The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token. | 
  **request** | [**BgpUpdateRequest**](BgpUpdateRequest.md) | BGP config | 
 
 ### Return type
@@ -291,7 +283,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 

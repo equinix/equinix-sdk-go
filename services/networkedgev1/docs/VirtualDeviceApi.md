@@ -22,7 +22,7 @@ Method | HTTP request | Description
 
 ## CreateVirtualDeviceUsingPOST
 
-> VirtualDeviceCreateResponse CreateVirtualDeviceUsingPOST(ctx).Authorization(authorization).VirtualDevice(virtualDevice).Draft(draft).DraftUuid(draftUuid).Execute()
+> VirtualDeviceCreateResponse CreateVirtualDeviceUsingPOST(ctx).VirtualDevice(virtualDevice).Draft(draft).DraftUuid(draftUuid).Execute()
 
 Create Virtual Device
 
@@ -41,14 +41,13 @@ import (
 )
 
 func main() {
-	authorization := "authorization_example" // string | The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
 	virtualDevice := *openapiclient.NewVirtualDeviceRequest("16.09.03", "C8000V", true, "SUB", "SV", "Router1-c8000v", []string{"Notifications_example"}, "EQUINIX-CONFIGURED", int32(123)) // VirtualDeviceRequest | Create a virtual device (e.g., a router or a firewall)
 	draft := true // bool | draft (optional) (default to false)
 	draftUuid := "draftUuid_example" // string | draftUuid (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.VirtualDeviceApi.CreateVirtualDeviceUsingPOST(context.Background()).Authorization(authorization).VirtualDevice(virtualDevice).Draft(draft).DraftUuid(draftUuid).Execute()
+	resp, r, err := apiClient.VirtualDeviceApi.CreateVirtualDeviceUsingPOST(context.Background()).VirtualDevice(virtualDevice).Draft(draft).DraftUuid(draftUuid).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `VirtualDeviceApi.CreateVirtualDeviceUsingPOST``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -69,7 +68,6 @@ Other parameters are passed through a pointer to a apiCreateVirtualDeviceUsingPO
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authorization** | **string** | The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token. | 
  **virtualDevice** | [**VirtualDeviceRequest**](VirtualDeviceRequest.md) | Create a virtual device (e.g., a router or a firewall) | 
  **draft** | **bool** | draft | [default to false]
  **draftUuid** | **string** | draftUuid | 
@@ -80,7 +78,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -94,7 +92,7 @@ No authorization required
 
 ## DeleteVRouterUsingDELETE
 
-> DeleteVRouterUsingDELETE(ctx, uuid).Authorization(authorization).DeleteRedundantDevice(deleteRedundantDevice).DeletionInfo(deletionInfo).Execute()
+> DeleteVRouterUsingDELETE(ctx, uuid).DeleteRedundantDevice(deleteRedundantDevice).DeletionInfo(deletionInfo).Execute()
 
 Delete Virtual Devices
 
@@ -114,13 +112,12 @@ import (
 
 func main() {
 	uuid := "uuid_example" // string | Unique Id of the virtual device.
-	authorization := "authorization_example" // string | The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
 	deleteRedundantDevice := true // bool | Optional parameter in case you have a secondary device. As both primary and secondary devices are deleted simultaneously, this field must be marked True so we delete both the devices simultaneously. (optional) (default to false)
 	deletionInfo := *openapiclient.NewVirtualDeviceDeleteRequest() // VirtualDeviceDeleteRequest | deletionInfo (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.VirtualDeviceApi.DeleteVRouterUsingDELETE(context.Background(), uuid).Authorization(authorization).DeleteRedundantDevice(deleteRedundantDevice).DeletionInfo(deletionInfo).Execute()
+	r, err := apiClient.VirtualDeviceApi.DeleteVRouterUsingDELETE(context.Background(), uuid).DeleteRedundantDevice(deleteRedundantDevice).DeletionInfo(deletionInfo).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `VirtualDeviceApi.DeleteVRouterUsingDELETE``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -144,7 +141,6 @@ Other parameters are passed through a pointer to a apiDeleteVRouterUsingDELETERe
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **authorization** | **string** | The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token. | 
  **deleteRedundantDevice** | **bool** | Optional parameter in case you have a secondary device. As both primary and secondary devices are deleted simultaneously, this field must be marked True so we delete both the devices simultaneously. | [default to false]
  **deletionInfo** | [**VirtualDeviceDeleteRequest**](VirtualDeviceDeleteRequest.md) | deletionInfo | 
 
@@ -154,7 +150,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -168,7 +164,7 @@ No authorization required
 
 ## GetDeviceReloadUsingGET1
 
-> DeviceRebootPageResponse GetDeviceReloadUsingGET1(ctx, virtualDeviceUUID).Authorization(authorization).Offset(offset).Limit(limit).Execute()
+> DeviceRebootPageResponse GetDeviceReloadUsingGET1(ctx, virtualDeviceUUID).Offset(offset).Limit(limit).Execute()
 
 Device Reload History
 
@@ -188,13 +184,12 @@ import (
 
 func main() {
 	virtualDeviceUUID := "virtualDeviceUUID_example" // string | Unique ID of a virtual device.
-	authorization := "authorization_example" // string | The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
 	offset := "offset_example" // string | Specifies where to start a page. It is the starting point of the collection returned from the server. (optional) (default to "0")
 	limit := "limit_example" // string | Specifies the page size. (optional) (default to "20")
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.VirtualDeviceApi.GetDeviceReloadUsingGET1(context.Background(), virtualDeviceUUID).Authorization(authorization).Offset(offset).Limit(limit).Execute()
+	resp, r, err := apiClient.VirtualDeviceApi.GetDeviceReloadUsingGET1(context.Background(), virtualDeviceUUID).Offset(offset).Limit(limit).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `VirtualDeviceApi.GetDeviceReloadUsingGET1``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -220,7 +215,6 @@ Other parameters are passed through a pointer to a apiGetDeviceReloadUsingGET1Re
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **authorization** | **string** | The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token. | 
  **offset** | **string** | Specifies where to start a page. It is the starting point of the collection returned from the server. | [default to &quot;0&quot;]
  **limit** | **string** | Specifies the page size. | [default to &quot;20&quot;]
 
@@ -230,7 +224,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -244,7 +238,7 @@ No authorization required
 
 ## GetDeviceUpgradeUsingGET1
 
-> DeviceUpgradePageResponse GetDeviceUpgradeUsingGET1(ctx, virtualDeviceUuid).Authorization(authorization).Offset(offset).Limit(limit).Execute()
+> DeviceUpgradePageResponse GetDeviceUpgradeUsingGET1(ctx, virtualDeviceUuid).Offset(offset).Limit(limit).Execute()
 
 Get Device Upgrade History
 
@@ -264,13 +258,12 @@ import (
 
 func main() {
 	virtualDeviceUuid := "virtualDeviceUuid_example" // string | Unique ID of a virtual device.
-	authorization := "authorization_example" // string | The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
 	offset := "offset_example" // string | Specifies where to start a page. It is the starting point of the collection returned from the server. (optional) (default to "0")
 	limit := "limit_example" // string | Specifies the page size. (optional) (default to "20")
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.VirtualDeviceApi.GetDeviceUpgradeUsingGET1(context.Background(), virtualDeviceUuid).Authorization(authorization).Offset(offset).Limit(limit).Execute()
+	resp, r, err := apiClient.VirtualDeviceApi.GetDeviceUpgradeUsingGET1(context.Background(), virtualDeviceUuid).Offset(offset).Limit(limit).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `VirtualDeviceApi.GetDeviceUpgradeUsingGET1``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -296,7 +289,6 @@ Other parameters are passed through a pointer to a apiGetDeviceUpgradeUsingGET1R
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **authorization** | **string** | The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token. | 
  **offset** | **string** | Specifies where to start a page. It is the starting point of the collection returned from the server. | [default to &quot;0&quot;]
  **limit** | **string** | Specifies the page size. | [default to &quot;20&quot;]
 
@@ -306,7 +298,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -320,7 +312,7 @@ No authorization required
 
 ## GetInterfaceStatisticsUsingGET
 
-> InterfaceStatsObject GetInterfaceStatisticsUsingGET(ctx, virtualDeviceUuid, interfaceId).StartDateTime(startDateTime).EndDateTime(endDateTime).Authorization(authorization).Execute()
+> InterfaceStatsObject GetInterfaceStatisticsUsingGET(ctx, virtualDeviceUuid, interfaceId).StartDateTime(startDateTime).EndDateTime(endDateTime).Execute()
 
 Get Interface Statistics
 
@@ -343,11 +335,10 @@ func main() {
 	interfaceId := "interfaceId_example" // string | Interface Id
 	startDateTime := "startDateTime_example" // string | Start time of the duration for which you want stats. (YYYY-MM-DDThh:mm:ssZ)
 	endDateTime := "endDateTime_example" // string | End time of the duration for which you want stats. (YYYY-MM-DDThh:mm:ssZ)
-	authorization := "authorization_example" // string | The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.VirtualDeviceApi.GetInterfaceStatisticsUsingGET(context.Background(), virtualDeviceUuid, interfaceId).StartDateTime(startDateTime).EndDateTime(endDateTime).Authorization(authorization).Execute()
+	resp, r, err := apiClient.VirtualDeviceApi.GetInterfaceStatisticsUsingGET(context.Background(), virtualDeviceUuid, interfaceId).StartDateTime(startDateTime).EndDateTime(endDateTime).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `VirtualDeviceApi.GetInterfaceStatisticsUsingGET``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -377,7 +368,6 @@ Name | Type | Description  | Notes
 
  **startDateTime** | **string** | Start time of the duration for which you want stats. (YYYY-MM-DDThh:mm:ssZ) | 
  **endDateTime** | **string** | End time of the duration for which you want stats. (YYYY-MM-DDThh:mm:ssZ) | 
- **authorization** | **string** | The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token. | 
 
 ### Return type
 
@@ -385,7 +375,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -399,7 +389,7 @@ No authorization required
 
 ## GetVirtualDeviceInterfacesUsingGET
 
-> []InterfaceBasicInfoResponse GetVirtualDeviceInterfacesUsingGET(ctx, uuid).Authorization(authorization).Execute()
+> []InterfaceBasicInfoResponse GetVirtualDeviceInterfacesUsingGET(ctx, uuid).Execute()
 
 Get Device Interfaces
 
@@ -419,11 +409,10 @@ import (
 
 func main() {
 	uuid := "uuid_example" // string | uuid
-	authorization := "authorization_example" // string | The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.VirtualDeviceApi.GetVirtualDeviceInterfacesUsingGET(context.Background(), uuid).Authorization(authorization).Execute()
+	resp, r, err := apiClient.VirtualDeviceApi.GetVirtualDeviceInterfacesUsingGET(context.Background(), uuid).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `VirtualDeviceApi.GetVirtualDeviceInterfacesUsingGET``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -449,7 +438,6 @@ Other parameters are passed through a pointer to a apiGetVirtualDeviceInterfaces
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **authorization** | **string** | The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token. | 
 
 ### Return type
 
@@ -457,7 +445,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -471,7 +459,7 @@ No authorization required
 
 ## GetVirtualDeviceUsingGET
 
-> VirtualDeviceDetailsResponse GetVirtualDeviceUsingGET(ctx, uuid).Authorization(authorization).Execute()
+> VirtualDeviceDetailsResponse GetVirtualDeviceUsingGET(ctx, uuid).Execute()
 
 Get Virtual Device {uuid}
 
@@ -491,11 +479,10 @@ import (
 
 func main() {
 	uuid := "uuid_example" // string | uuid
-	authorization := "authorization_example" // string | The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.VirtualDeviceApi.GetVirtualDeviceUsingGET(context.Background(), uuid).Authorization(authorization).Execute()
+	resp, r, err := apiClient.VirtualDeviceApi.GetVirtualDeviceUsingGET(context.Background(), uuid).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `VirtualDeviceApi.GetVirtualDeviceUsingGET``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -521,7 +508,6 @@ Other parameters are passed through a pointer to a apiGetVirtualDeviceUsingGETRe
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **authorization** | **string** | The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token. | 
 
 ### Return type
 
@@ -529,7 +515,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -543,7 +529,7 @@ No authorization required
 
 ## GetVirtualDevicesUsingGET1
 
-> VirtualDevicePageResponse GetVirtualDevicesUsingGET1(ctx).Authorization(authorization).Offset(offset).Limit(limit).MetroCode(metroCode).Status(status).ShowOnlySubCustomerDevices(showOnlySubCustomerDevices).AccountUcmId(accountUcmId).SearchText(searchText).Sort(sort).Execute()
+> VirtualDevicePageResponse GetVirtualDevicesUsingGET1(ctx).Offset(offset).Limit(limit).MetroCode(metroCode).Status(status).ShowOnlySubCustomerDevices(showOnlySubCustomerDevices).AccountUcmId(accountUcmId).SearchText(searchText).Sort(sort).Execute()
 
 Get Virtual Devices
 
@@ -562,7 +548,6 @@ import (
 )
 
 func main() {
-	authorization := "authorization_example" // string | The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
 	offset := "offset_example" // string | Specifies where to start a page. It is the starting point of the collection returned from the server. (optional) (default to "0")
 	limit := "limit_example" // string | Specifies the page size. (optional) (default to "20")
 	metroCode := "metroCode_example" // string | metroCode (optional)
@@ -574,7 +559,7 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.VirtualDeviceApi.GetVirtualDevicesUsingGET1(context.Background()).Authorization(authorization).Offset(offset).Limit(limit).MetroCode(metroCode).Status(status).ShowOnlySubCustomerDevices(showOnlySubCustomerDevices).AccountUcmId(accountUcmId).SearchText(searchText).Sort(sort).Execute()
+	resp, r, err := apiClient.VirtualDeviceApi.GetVirtualDevicesUsingGET1(context.Background()).Offset(offset).Limit(limit).MetroCode(metroCode).Status(status).ShowOnlySubCustomerDevices(showOnlySubCustomerDevices).AccountUcmId(accountUcmId).SearchText(searchText).Sort(sort).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `VirtualDeviceApi.GetVirtualDevicesUsingGET1``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -595,7 +580,6 @@ Other parameters are passed through a pointer to a apiGetVirtualDevicesUsingGET1
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authorization** | **string** | The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token. | 
  **offset** | **string** | Specifies where to start a page. It is the starting point of the collection returned from the server. | [default to &quot;0&quot;]
  **limit** | **string** | Specifies the page size. | [default to &quot;20&quot;]
  **metroCode** | **string** | metroCode | 
@@ -611,7 +595,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -625,7 +609,7 @@ No authorization required
 
 ## PingDeviceUsingGET
 
-> PingDeviceUsingGET(ctx, uuid).Authorization(authorization).Execute()
+> PingDeviceUsingGET(ctx, uuid).Execute()
 
 Ping Virtual Device
 
@@ -645,11 +629,10 @@ import (
 
 func main() {
 	uuid := "uuid_example" // string | Virtual Device unique Id
-	authorization := "authorization_example" // string | The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.VirtualDeviceApi.PingDeviceUsingGET(context.Background(), uuid).Authorization(authorization).Execute()
+	r, err := apiClient.VirtualDeviceApi.PingDeviceUsingGET(context.Background(), uuid).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `VirtualDeviceApi.PingDeviceUsingGET``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -673,7 +656,6 @@ Other parameters are passed through a pointer to a apiPingDeviceUsingGETRequest 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **authorization** | **string** | The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token. | 
 
 ### Return type
 
@@ -681,7 +663,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -695,7 +677,7 @@ No authorization required
 
 ## PostDeviceReloadUsingPOST1
 
-> PostDeviceReloadUsingPOST1(ctx, virtualDeviceUUID).Authorization(authorization).Execute()
+> PostDeviceReloadUsingPOST1(ctx, virtualDeviceUUID).Execute()
 
 Trigger Soft Reboot
 
@@ -715,11 +697,10 @@ import (
 
 func main() {
 	virtualDeviceUUID := "virtualDeviceUUID_example" // string | Unique ID of a virtual device.
-	authorization := "authorization_example" // string | The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.VirtualDeviceApi.PostDeviceReloadUsingPOST1(context.Background(), virtualDeviceUUID).Authorization(authorization).Execute()
+	r, err := apiClient.VirtualDeviceApi.PostDeviceReloadUsingPOST1(context.Background(), virtualDeviceUUID).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `VirtualDeviceApi.PostDeviceReloadUsingPOST1``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -743,7 +724,6 @@ Other parameters are passed through a pointer to a apiPostDeviceReloadUsingPOST1
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **authorization** | **string** | The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token. | 
 
 ### Return type
 
@@ -751,7 +731,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -765,7 +745,7 @@ No authorization required
 
 ## UpdateAdditionalBandwidth
 
-> UpdateAdditionalBandwidth(ctx, uuid).Authorization(authorization).Request(request).Execute()
+> UpdateAdditionalBandwidth(ctx, uuid).Request(request).Execute()
 
 Update Additional Bandwidth
 
@@ -785,12 +765,11 @@ import (
 
 func main() {
 	uuid := "uuid_example" // string | The unique Id of a virtual device
-	authorization := "authorization_example" // string | The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
 	request := *openapiclient.NewAdditionalBandwidthRequest() // AdditionalBandwidthRequest | Additional Bandwidth
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.VirtualDeviceApi.UpdateAdditionalBandwidth(context.Background(), uuid).Authorization(authorization).Request(request).Execute()
+	r, err := apiClient.VirtualDeviceApi.UpdateAdditionalBandwidth(context.Background(), uuid).Request(request).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `VirtualDeviceApi.UpdateAdditionalBandwidth``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -814,7 +793,6 @@ Other parameters are passed through a pointer to a apiUpdateAdditionalBandwidthR
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **authorization** | **string** | The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token. | 
  **request** | [**AdditionalBandwidthRequest**](AdditionalBandwidthRequest.md) | Additional Bandwidth | 
 
 ### Return type
@@ -823,7 +801,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -837,7 +815,7 @@ No authorization required
 
 ## UpdateVirtualDeviceUsingPATCH1
 
-> UpdateVirtualDeviceUsingPATCH1(ctx, uuid).Authorization(authorization).VirtualDeviceUpdateRequestDto(virtualDeviceUpdateRequestDto).Execute()
+> UpdateVirtualDeviceUsingPATCH1(ctx, uuid).VirtualDeviceUpdateRequestDto(virtualDeviceUpdateRequestDto).Execute()
 
 Update Virtual Device
 
@@ -857,12 +835,11 @@ import (
 
 func main() {
 	uuid := "uuid_example" // string | The unique Id of the device.
-	authorization := "authorization_example" // string | The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
 	virtualDeviceUpdateRequestDto := *openapiclient.NewVirtualDeviceInternalPatchRequestDto() // VirtualDeviceInternalPatchRequestDto |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.VirtualDeviceApi.UpdateVirtualDeviceUsingPATCH1(context.Background(), uuid).Authorization(authorization).VirtualDeviceUpdateRequestDto(virtualDeviceUpdateRequestDto).Execute()
+	r, err := apiClient.VirtualDeviceApi.UpdateVirtualDeviceUsingPATCH1(context.Background(), uuid).VirtualDeviceUpdateRequestDto(virtualDeviceUpdateRequestDto).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `VirtualDeviceApi.UpdateVirtualDeviceUsingPATCH1``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -886,7 +863,6 @@ Other parameters are passed through a pointer to a apiUpdateVirtualDeviceUsingPA
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **authorization** | **string** | The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token. | 
  **virtualDeviceUpdateRequestDto** | [**VirtualDeviceInternalPatchRequestDto**](VirtualDeviceInternalPatchRequestDto.md) |  | 
 
 ### Return type
@@ -895,7 +871,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -909,7 +885,7 @@ No authorization required
 
 ## UpdateVirtualDeviceUsingPUT
 
-> UpdateVirtualDeviceUsingPUT(ctx, uuid).Draft(draft).Authorization(authorization).VirtualDevice(virtualDevice).Execute()
+> UpdateVirtualDeviceUsingPUT(ctx, uuid).Draft(draft).VirtualDevice(virtualDevice).Execute()
 
 Update Device Draft
 
@@ -930,12 +906,11 @@ import (
 func main() {
 	draft := true // bool | draft (default to true)
 	uuid := "uuid_example" // string | Unique Id of a Virtual Device
-	authorization := "authorization_example" // string | The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
 	virtualDevice := *openapiclient.NewVirtualDeviceRequest("16.09.03", "C8000V", true, "SUB", "SV", "Router1-c8000v", []string{"Notifications_example"}, "EQUINIX-CONFIGURED", int32(123)) // VirtualDeviceRequest | Update virtual device details
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.VirtualDeviceApi.UpdateVirtualDeviceUsingPUT(context.Background(), uuid).Draft(draft).Authorization(authorization).VirtualDevice(virtualDevice).Execute()
+	r, err := apiClient.VirtualDeviceApi.UpdateVirtualDeviceUsingPUT(context.Background(), uuid).Draft(draft).VirtualDevice(virtualDevice).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `VirtualDeviceApi.UpdateVirtualDeviceUsingPUT``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -960,7 +935,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **draft** | **bool** | draft | [default to true]
 
- **authorization** | **string** | The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token. | 
  **virtualDevice** | [**VirtualDeviceRequest**](VirtualDeviceRequest.md) | Update virtual device details | 
 
 ### Return type
@@ -969,7 +943,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 

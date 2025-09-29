@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** | The ACL template name. | 
 **Description** | **string** | The ACL template description. | 
+**ProjectId** | Pointer to **string** | Customer project Id. Check your projectId under Resource Management on Equinix Portal. You should have access to a project to see or create assets under it. Equinix will assign a projectId if you do not provide one. | [optional] 
 **InboundRules** | [**[]InboundRules**](InboundRules.md) | An array of inbound rules. | 
 
 ## Methods
@@ -66,6 +67,31 @@ and a boolean to check if the value has been set.
 
 SetDescription sets Description field to given value.
 
+
+### GetProjectId
+
+`func (o *DeviceACLTemplateRequest) GetProjectId() string`
+
+GetProjectId returns the ProjectId field if non-nil, zero value otherwise.
+
+### GetProjectIdOk
+
+`func (o *DeviceACLTemplateRequest) GetProjectIdOk() (*string, bool)`
+
+GetProjectIdOk returns a tuple with the ProjectId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProjectId
+
+`func (o *DeviceACLTemplateRequest) SetProjectId(v string)`
+
+SetProjectId sets ProjectId field to given value.
+
+### HasProjectId
+
+`func (o *DeviceACLTemplateRequest) HasProjectId() bool`
+
+HasProjectId returns a boolean if a field has been set.
 
 ### GetInboundRules
 

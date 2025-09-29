@@ -23,7 +23,7 @@ Method | HTTP request | Description
 
 ## GetAccountsWithStatusUsingGET
 
-> PageResponseDtoMetroAccountResponse GetAccountsWithStatusUsingGET(ctx, metro).Authorization(authorization).AccountUcmId(accountUcmId).Execute()
+> PageResponseDtoMetroAccountResponse GetAccountsWithStatusUsingGET(ctx, metro).AccountUcmId(accountUcmId).Execute()
 
 Get Accounts {metro}
 
@@ -43,12 +43,11 @@ import (
 
 func main() {
 	metro := "metro_example" // string | Metro region for which you want to check your account status
-	authorization := "authorization_example" // string | The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
 	accountUcmId := "accountUcmId_example" // string | Unique ID of an account (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SetupApi.GetAccountsWithStatusUsingGET(context.Background(), metro).Authorization(authorization).AccountUcmId(accountUcmId).Execute()
+	resp, r, err := apiClient.SetupApi.GetAccountsWithStatusUsingGET(context.Background(), metro).AccountUcmId(accountUcmId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SetupApi.GetAccountsWithStatusUsingGET``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -74,7 +73,6 @@ Other parameters are passed through a pointer to a apiGetAccountsWithStatusUsing
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **authorization** | **string** | The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token. | 
  **accountUcmId** | **string** | Unique ID of an account | 
 
 ### Return type
@@ -83,7 +81,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -97,7 +95,7 @@ No authorization required
 
 ## GetAgreementStatusUsingGET
 
-> AgreementStatusResponse GetAgreementStatusUsingGET(ctx).AccountNumber(accountNumber).Authorization(authorization).Execute()
+> AgreementStatusResponse GetAgreementStatusUsingGET(ctx).AccountNumber(accountNumber).Execute()
 
 Get Agreement Status.
 
@@ -117,11 +115,10 @@ import (
 
 func main() {
 	accountNumber := "accountNumber_example" // string | account_number
-	authorization := "authorization_example" // string | The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SetupApi.GetAgreementStatusUsingGET(context.Background()).AccountNumber(accountNumber).Authorization(authorization).Execute()
+	resp, r, err := apiClient.SetupApi.GetAgreementStatusUsingGET(context.Background()).AccountNumber(accountNumber).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SetupApi.GetAgreementStatusUsingGET``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -143,7 +140,6 @@ Other parameters are passed through a pointer to a apiGetAgreementStatusUsingGET
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **accountNumber** | **string** | account_number | 
- **authorization** | **string** | The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token. | 
 
 ### Return type
 
@@ -151,7 +147,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -165,7 +161,7 @@ No authorization required
 
 ## GetAllowedInterfacesUsingGET
 
-> AllowedInterfaceResponse GetAllowedInterfacesUsingGET(ctx, deviceType).DeviceManagementType(deviceManagementType).Core(core).Authorization(authorization).Mode(mode).Cluster(cluster).Sdwan(sdwan).Connectivity(connectivity).Memory(memory).Unit(unit).Flavor(flavor).Version(version).SoftwarePkg(softwarePkg).Execute()
+> AllowedInterfaceResponse GetAllowedInterfacesUsingGET(ctx, deviceType).DeviceManagementType(deviceManagementType).Core(core).Mode(mode).Cluster(cluster).Sdwan(sdwan).Connectivity(connectivity).Memory(memory).Unit(unit).Flavor(flavor).Version(version).SoftwarePkg(softwarePkg).Execute()
 
 Get Allowed Interfaces
 
@@ -187,7 +183,6 @@ func main() {
 	deviceType := "deviceType_example" // string | Device type code. PA-VM.
 	deviceManagementType := "deviceManagementType_example" // string | Device management type. SELF-CONFIGURED
 	core := int32(56) // int32 | The desired number of cores.
-	authorization := "authorization_example" // string | The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
 	mode := "mode_example" // string | License mode, either Subscription or BYOL. (optional)
 	cluster := true // bool | Whether you want a cluster device. (optional)
 	sdwan := true // bool | Whether you want an SD-WAN device. (optional)
@@ -200,7 +195,7 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SetupApi.GetAllowedInterfacesUsingGET(context.Background(), deviceType).DeviceManagementType(deviceManagementType).Core(core).Authorization(authorization).Mode(mode).Cluster(cluster).Sdwan(sdwan).Connectivity(connectivity).Memory(memory).Unit(unit).Flavor(flavor).Version(version).SoftwarePkg(softwarePkg).Execute()
+	resp, r, err := apiClient.SetupApi.GetAllowedInterfacesUsingGET(context.Background(), deviceType).DeviceManagementType(deviceManagementType).Core(core).Mode(mode).Cluster(cluster).Sdwan(sdwan).Connectivity(connectivity).Memory(memory).Unit(unit).Flavor(flavor).Version(version).SoftwarePkg(softwarePkg).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SetupApi.GetAllowedInterfacesUsingGET``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -228,7 +223,6 @@ Name | Type | Description  | Notes
 
  **deviceManagementType** | **string** | Device management type. SELF-CONFIGURED | 
  **core** | **int32** | The desired number of cores. | 
- **authorization** | **string** | The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token. | 
  **mode** | **string** | License mode, either Subscription or BYOL. | 
  **cluster** | **bool** | Whether you want a cluster device. | 
  **sdwan** | **bool** | Whether you want an SD-WAN device. | 
@@ -245,7 +239,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -259,7 +253,7 @@ No authorization required
 
 ## GetMetrosUsingGET
 
-> PageResponseDtoMetroResponse GetMetrosUsingGET(ctx).Authorization(authorization).Region(region).Offset(offset).Limit(limit).Execute()
+> PageResponseDtoMetroResponse GetMetrosUsingGET(ctx).Region(region).Offset(offset).Limit(limit).Execute()
 
 Get Available Metros
 
@@ -278,14 +272,13 @@ import (
 )
 
 func main() {
-	authorization := "authorization_example" // string | The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
 	region := "region_example" // string | Name of the region for which you want metros (e.g., AMER) (optional)
 	offset := "offset_example" // string | Specifies where to start a page. It is the starting point of the collection returned from the server. (optional) (default to "0")
 	limit := "limit_example" // string | Specifies the page size. (optional) (default to "20")
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SetupApi.GetMetrosUsingGET(context.Background()).Authorization(authorization).Region(region).Offset(offset).Limit(limit).Execute()
+	resp, r, err := apiClient.SetupApi.GetMetrosUsingGET(context.Background()).Region(region).Offset(offset).Limit(limit).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SetupApi.GetMetrosUsingGET``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -306,7 +299,6 @@ Other parameters are passed through a pointer to a apiGetMetrosUsingGETRequest s
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authorization** | **string** | The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token. | 
  **region** | **string** | Name of the region for which you want metros (e.g., AMER) | 
  **offset** | **string** | Specifies where to start a page. It is the starting point of the collection returned from the server. | [default to &quot;0&quot;]
  **limit** | **string** | Specifies the page size. | [default to &quot;20&quot;]
@@ -317,7 +309,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -331,7 +323,7 @@ No authorization required
 
 ## GetNotificationsUsingGET
 
-> DowntimeNotification GetNotificationsUsingGET(ctx).Authorization(authorization).Execute()
+> DowntimeNotification GetNotificationsUsingGET(ctx).Execute()
 
 Get Downtime Notifications
 
@@ -350,11 +342,10 @@ import (
 )
 
 func main() {
-	authorization := "authorization_example" // string | The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SetupApi.GetNotificationsUsingGET(context.Background()).Authorization(authorization).Execute()
+	resp, r, err := apiClient.SetupApi.GetNotificationsUsingGET(context.Background()).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SetupApi.GetNotificationsUsingGET``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -366,16 +357,12 @@ func main() {
 
 ### Path Parameters
 
-
+This endpoint does not need any parameter.
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiGetNotificationsUsingGETRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **authorization** | **string** | The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token. | 
 
 ### Return type
 
@@ -383,7 +370,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -397,7 +384,7 @@ No authorization required
 
 ## GetOrderSummaryUsingGET
 
-> GetOrderSummaryUsingGET(ctx).Authorization(authorization).AccountNumber(accountNumber).Metro(metro).VendorPackage(vendorPackage).LicenseType(licenseType).SoftwarePackage(softwarePackage).Throughput(throughput).ThroughputUnit(throughputUnit).TermLength(termLength).AdditionalBandwidth(additionalBandwidth).VirtualDeviceUuid(virtualDeviceUuid).DeviceManagementType(deviceManagementType).Core(core).SecondaryAccountNumber(secondaryAccountNumber).SecondaryMetro(secondaryMetro).SecondaryAdditionalBandwidth(secondaryAdditionalBandwidth).AccountUcmId(accountUcmId).OrderingContact(orderingContact).Execute()
+> GetOrderSummaryUsingGET(ctx).AccountNumber(accountNumber).Metro(metro).VendorPackage(vendorPackage).LicenseType(licenseType).SoftwarePackage(softwarePackage).Throughput(throughput).ThroughputUnit(throughputUnit).TermLength(termLength).AdditionalBandwidth(additionalBandwidth).VirtualDeviceUuid(virtualDeviceUuid).DeviceManagementType(deviceManagementType).Core(core).SecondaryAccountNumber(secondaryAccountNumber).SecondaryMetro(secondaryMetro).SecondaryAdditionalBandwidth(secondaryAdditionalBandwidth).AccountUcmId(accountUcmId).OrderingContact(orderingContact).Execute()
 
 Get Order Summary
 
@@ -416,7 +403,6 @@ import (
 )
 
 func main() {
-	authorization := "authorization_example" // string | The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
 	accountNumber := int32(56) // int32 | Account number (optional)
 	metro := "metro_example" // string | Metro (optional)
 	vendorPackage := "vendorPackage_example" // string | Vendor package (optional)
@@ -437,7 +423,7 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.SetupApi.GetOrderSummaryUsingGET(context.Background()).Authorization(authorization).AccountNumber(accountNumber).Metro(metro).VendorPackage(vendorPackage).LicenseType(licenseType).SoftwarePackage(softwarePackage).Throughput(throughput).ThroughputUnit(throughputUnit).TermLength(termLength).AdditionalBandwidth(additionalBandwidth).VirtualDeviceUuid(virtualDeviceUuid).DeviceManagementType(deviceManagementType).Core(core).SecondaryAccountNumber(secondaryAccountNumber).SecondaryMetro(secondaryMetro).SecondaryAdditionalBandwidth(secondaryAdditionalBandwidth).AccountUcmId(accountUcmId).OrderingContact(orderingContact).Execute()
+	r, err := apiClient.SetupApi.GetOrderSummaryUsingGET(context.Background()).AccountNumber(accountNumber).Metro(metro).VendorPackage(vendorPackage).LicenseType(licenseType).SoftwarePackage(softwarePackage).Throughput(throughput).ThroughputUnit(throughputUnit).TermLength(termLength).AdditionalBandwidth(additionalBandwidth).VirtualDeviceUuid(virtualDeviceUuid).DeviceManagementType(deviceManagementType).Core(core).SecondaryAccountNumber(secondaryAccountNumber).SecondaryMetro(secondaryMetro).SecondaryAdditionalBandwidth(secondaryAdditionalBandwidth).AccountUcmId(accountUcmId).OrderingContact(orderingContact).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SetupApi.GetOrderSummaryUsingGET``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -456,7 +442,6 @@ Other parameters are passed through a pointer to a apiGetOrderSummaryUsingGETReq
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authorization** | **string** | The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token. | 
  **accountNumber** | **int32** | Account number | 
  **metro** | **string** | Metro | 
  **vendorPackage** | **string** | Vendor package | 
@@ -481,7 +466,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -495,7 +480,7 @@ No authorization required
 
 ## GetOrderTermsUsingGET
 
-> OrderTermsResponse GetOrderTermsUsingGET(ctx).Authorization(authorization).Execute()
+> OrderTermsResponse GetOrderTermsUsingGET(ctx).Execute()
 
 Get Order Terms
 
@@ -514,11 +499,10 @@ import (
 )
 
 func main() {
-	authorization := "authorization_example" // string | The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SetupApi.GetOrderTermsUsingGET(context.Background()).Authorization(authorization).Execute()
+	resp, r, err := apiClient.SetupApi.GetOrderTermsUsingGET(context.Background()).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SetupApi.GetOrderTermsUsingGET``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -530,16 +514,12 @@ func main() {
 
 ### Path Parameters
 
-
+This endpoint does not need any parameter.
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiGetOrderTermsUsingGETRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **authorization** | **string** | The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token. | 
 
 ### Return type
 
@@ -547,7 +527,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -561,7 +541,7 @@ No authorization required
 
 ## GetPublicKeysUsingGET
 
-> []PageResponsePublicKeys GetPublicKeysUsingGET(ctx).Authorization(authorization).AccountUcmId(accountUcmId).Execute()
+> []PageResponsePublicKeys GetPublicKeysUsingGET(ctx).AccountUcmId(accountUcmId).Execute()
 
 Get Public Keys
 
@@ -580,12 +560,11 @@ import (
 )
 
 func main() {
-	authorization := "authorization_example" // string | The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
 	accountUcmId := "accountUcmId_example" // string | This field is for resellers. Please pass the accountUcmId of your customer to get the public keys. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SetupApi.GetPublicKeysUsingGET(context.Background()).Authorization(authorization).AccountUcmId(accountUcmId).Execute()
+	resp, r, err := apiClient.SetupApi.GetPublicKeysUsingGET(context.Background()).AccountUcmId(accountUcmId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SetupApi.GetPublicKeysUsingGET``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -606,7 +585,6 @@ Other parameters are passed through a pointer to a apiGetPublicKeysUsingGETReque
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authorization** | **string** | The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token. | 
  **accountUcmId** | **string** | This field is for resellers. Please pass the accountUcmId of your customer to get the public keys. | 
 
 ### Return type
@@ -615,7 +593,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -629,7 +607,7 @@ No authorization required
 
 ## GetVendorTermsUsingGET
 
-> VendorTermsResponse GetVendorTermsUsingGET(ctx).VendorPackage(vendorPackage).LicenseType(licenseType).Authorization(authorization).Execute()
+> VendorTermsResponse GetVendorTermsUsingGET(ctx).VendorPackage(vendorPackage).LicenseType(licenseType).Execute()
 
 Get Vendor Terms
 
@@ -650,11 +628,10 @@ import (
 func main() {
 	vendorPackage := "vendorPackage_example" // string | vendorPackage
 	licenseType := "licenseType_example" // string | licenseType
-	authorization := "authorization_example" // string | The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SetupApi.GetVendorTermsUsingGET(context.Background()).VendorPackage(vendorPackage).LicenseType(licenseType).Authorization(authorization).Execute()
+	resp, r, err := apiClient.SetupApi.GetVendorTermsUsingGET(context.Background()).VendorPackage(vendorPackage).LicenseType(licenseType).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SetupApi.GetVendorTermsUsingGET``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -677,7 +654,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **vendorPackage** | **string** | vendorPackage | 
  **licenseType** | **string** | licenseType | 
- **authorization** | **string** | The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token. | 
 
 ### Return type
 
@@ -685,7 +661,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -699,7 +675,7 @@ No authorization required
 
 ## GetVirtualDevicesUsingGET
 
-> PageResponseDtoVirtualDeviceType GetVirtualDevicesUsingGET(ctx).Authorization(authorization).DeviceTypeCode(deviceTypeCode).Category(category).Offset(offset).Limit(limit).Execute()
+> PageResponseDtoVirtualDeviceType GetVirtualDevicesUsingGET(ctx).DeviceTypeCode(deviceTypeCode).Category(category).Offset(offset).Limit(limit).Execute()
 
 Get Device Types
 
@@ -718,7 +694,6 @@ import (
 )
 
 func main() {
-	authorization := "authorization_example" // string | The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
 	deviceTypeCode := "deviceTypeCode_example" // string | Device type code (e.g., C8000V) (optional)
 	category := "category_example" // string | Category. One of FIREWALL, ROUTER or SD-WAN (optional)
 	offset := "offset_example" // string | Specifies where to start a page. It is the starting point of the collection returned from the server. (optional) (default to "0")
@@ -726,7 +701,7 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SetupApi.GetVirtualDevicesUsingGET(context.Background()).Authorization(authorization).DeviceTypeCode(deviceTypeCode).Category(category).Offset(offset).Limit(limit).Execute()
+	resp, r, err := apiClient.SetupApi.GetVirtualDevicesUsingGET(context.Background()).DeviceTypeCode(deviceTypeCode).Category(category).Offset(offset).Limit(limit).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SetupApi.GetVirtualDevicesUsingGET``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -747,7 +722,6 @@ Other parameters are passed through a pointer to a apiGetVirtualDevicesUsingGETR
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authorization** | **string** | The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token. | 
  **deviceTypeCode** | **string** | Device type code (e.g., C8000V) | 
  **category** | **string** | Category. One of FIREWALL, ROUTER or SD-WAN | 
  **offset** | **string** | Specifies where to start a page. It is the starting point of the collection returned from the server. | [default to &quot;0&quot;]
@@ -759,7 +733,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -773,7 +747,7 @@ No authorization required
 
 ## PostPublicKeyUsingPOST
 
-> PostPublicKeyUsingPOST(ctx).Authorization(authorization).PublicKeyRequest(publicKeyRequest).Execute()
+> PostPublicKeyUsingPOST(ctx).PublicKeyRequest(publicKeyRequest).Execute()
 
 Create Public Key
 
@@ -792,12 +766,11 @@ import (
 )
 
 func main() {
-	authorization := "authorization_example" // string | The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
 	publicKeyRequest := *openapiclient.NewPublicKeyRequest("myKeyName", "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAgQC5kHcagDZ7utPan4DHWUvoJxwz/DISRFwZdpMhslhZRI+6dGOC8mJn42SlSUAUtkt8Qyl4HipPK7Xh6oGj70Iba1a9pDcURYTYcqWFBEhcdDsMnH1CICmvVdsILehFtiS3X0J1JhwmWQI/7ll3QOk8fLgWCz3idlYJqtMs8Gz/6Q== noname") // PublicKeyRequest | keyName, keyValue, and keyType
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.SetupApi.PostPublicKeyUsingPOST(context.Background()).Authorization(authorization).PublicKeyRequest(publicKeyRequest).Execute()
+	r, err := apiClient.SetupApi.PostPublicKeyUsingPOST(context.Background()).PublicKeyRequest(publicKeyRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SetupApi.PostPublicKeyUsingPOST``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -816,7 +789,6 @@ Other parameters are passed through a pointer to a apiPostPublicKeyUsingPOSTRequ
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authorization** | **string** | The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token. | 
  **publicKeyRequest** | [**PublicKeyRequest**](PublicKeyRequest.md) | keyName, keyValue, and keyType | 
 
 ### Return type
@@ -825,7 +797,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -839,7 +811,7 @@ No authorization required
 
 ## RetrievePriceUsingGET
 
-> CompositePriceResponse RetrievePriceUsingGET(ctx).Authorization(authorization).AccountNumber(accountNumber).Metro(metro).VendorPackage(vendorPackage).LicenseType(licenseType).SoftwarePackage(softwarePackage).Throughput(throughput).ThroughputUnit(throughputUnit).TermLength(termLength).AdditionalBandwidth(additionalBandwidth).VirtualDeviceUuid(virtualDeviceUuid).DeviceManagementType(deviceManagementType).Core(core).SecondaryAccountNumber(secondaryAccountNumber).SecondaryMetro(secondaryMetro).SecondaryAdditionalBandwidth(secondaryAdditionalBandwidth).AccountUcmId(accountUcmId).OrderingContact(orderingContact).Execute()
+> CompositePriceResponse RetrievePriceUsingGET(ctx).AccountNumber(accountNumber).Metro(metro).VendorPackage(vendorPackage).LicenseType(licenseType).SoftwarePackage(softwarePackage).Throughput(throughput).ThroughputUnit(throughputUnit).TermLength(termLength).AdditionalBandwidth(additionalBandwidth).VirtualDeviceUuid(virtualDeviceUuid).DeviceManagementType(deviceManagementType).Core(core).SecondaryAccountNumber(secondaryAccountNumber).SecondaryMetro(secondaryMetro).SecondaryAdditionalBandwidth(secondaryAdditionalBandwidth).AccountUcmId(accountUcmId).OrderingContact(orderingContact).Execute()
 
 Get the Price
 
@@ -858,7 +830,6 @@ import (
 )
 
 func main() {
-	authorization := "authorization_example" // string | The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
 	accountNumber := int32(56) // int32 | Account number (optional)
 	metro := "metro_example" // string | Metro (optional)
 	vendorPackage := "vendorPackage_example" // string | Vendor package (optional)
@@ -879,7 +850,7 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SetupApi.RetrievePriceUsingGET(context.Background()).Authorization(authorization).AccountNumber(accountNumber).Metro(metro).VendorPackage(vendorPackage).LicenseType(licenseType).SoftwarePackage(softwarePackage).Throughput(throughput).ThroughputUnit(throughputUnit).TermLength(termLength).AdditionalBandwidth(additionalBandwidth).VirtualDeviceUuid(virtualDeviceUuid).DeviceManagementType(deviceManagementType).Core(core).SecondaryAccountNumber(secondaryAccountNumber).SecondaryMetro(secondaryMetro).SecondaryAdditionalBandwidth(secondaryAdditionalBandwidth).AccountUcmId(accountUcmId).OrderingContact(orderingContact).Execute()
+	resp, r, err := apiClient.SetupApi.RetrievePriceUsingGET(context.Background()).AccountNumber(accountNumber).Metro(metro).VendorPackage(vendorPackage).LicenseType(licenseType).SoftwarePackage(softwarePackage).Throughput(throughput).ThroughputUnit(throughputUnit).TermLength(termLength).AdditionalBandwidth(additionalBandwidth).VirtualDeviceUuid(virtualDeviceUuid).DeviceManagementType(deviceManagementType).Core(core).SecondaryAccountNumber(secondaryAccountNumber).SecondaryMetro(secondaryMetro).SecondaryAdditionalBandwidth(secondaryAdditionalBandwidth).AccountUcmId(accountUcmId).OrderingContact(orderingContact).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SetupApi.RetrievePriceUsingGET``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -900,7 +871,6 @@ Other parameters are passed through a pointer to a apiRetrievePriceUsingGETReque
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authorization** | **string** | The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token. | 
  **accountNumber** | **int32** | Account number | 
  **metro** | **string** | Metro | 
  **vendorPackage** | **string** | Vendor package | 
@@ -925,7 +895,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -939,7 +909,7 @@ No authorization required
 
 ## SendAgreementUsingPOST1
 
-> AgreementAcceptResponse SendAgreementUsingPOST1(ctx).Authorization(authorization).AgreementAcceptRequest(agreementAcceptRequest).Execute()
+> AgreementAcceptResponse SendAgreementUsingPOST1(ctx).AgreementAcceptRequest(agreementAcceptRequest).Execute()
 
 Create an agreement
 
@@ -958,12 +928,11 @@ import (
 )
 
 func main() {
-	authorization := "authorization_example" // string | The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
 	agreementAcceptRequest := *openapiclient.NewAgreementAcceptRequest() // AgreementAcceptRequest | agreementAcceptRequest
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SetupApi.SendAgreementUsingPOST1(context.Background()).Authorization(authorization).AgreementAcceptRequest(agreementAcceptRequest).Execute()
+	resp, r, err := apiClient.SetupApi.SendAgreementUsingPOST1(context.Background()).AgreementAcceptRequest(agreementAcceptRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SetupApi.SendAgreementUsingPOST1``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -984,7 +953,6 @@ Other parameters are passed through a pointer to a apiSendAgreementUsingPOST1Req
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authorization** | **string** | The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token. | 
  **agreementAcceptRequest** | [**AgreementAcceptRequest**](AgreementAcceptRequest.md) | agreementAcceptRequest | 
 
 ### Return type
@@ -993,7 +961,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -1007,7 +975,7 @@ No authorization required
 
 ## UploadFileUsingPOST
 
-> FileUploadResponse UploadFileUsingPOST(ctx).Authorization(authorization).File(file).MetroCode(metroCode).DeviceTypeCode(deviceTypeCode).ProcessType(processType).DeviceManagementType(deviceManagementType).LicenseType(licenseType).Execute()
+> FileUploadResponse UploadFileUsingPOST(ctx).File(file).MetroCode(metroCode).DeviceTypeCode(deviceTypeCode).ProcessType(processType).DeviceManagementType(deviceManagementType).LicenseType(licenseType).Execute()
 
 Upload File (Post)
 
@@ -1026,7 +994,6 @@ import (
 )
 
 func main() {
-	authorization := "authorization_example" // string | The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
 	file := os.NewFile(1234, "some_file") // *os.File | A license or a cloud_init file. For example, for Aviatrix, this is your bootsrap config file generated from the Aviatrix Controller portal.
 	metroCode := "metroCode_example" // string | Two-letter metro code.
 	deviceTypeCode := "deviceTypeCode_example" // string | Device type code, e.g., AVIATRIX_EDGE
@@ -1036,7 +1003,7 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SetupApi.UploadFileUsingPOST(context.Background()).Authorization(authorization).File(file).MetroCode(metroCode).DeviceTypeCode(deviceTypeCode).ProcessType(processType).DeviceManagementType(deviceManagementType).LicenseType(licenseType).Execute()
+	resp, r, err := apiClient.SetupApi.UploadFileUsingPOST(context.Background()).File(file).MetroCode(metroCode).DeviceTypeCode(deviceTypeCode).ProcessType(processType).DeviceManagementType(deviceManagementType).LicenseType(licenseType).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SetupApi.UploadFileUsingPOST``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1057,7 +1024,6 @@ Other parameters are passed through a pointer to a apiUploadFileUsingPOSTRequest
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authorization** | **string** | The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token. | 
  **file** | ***os.File** | A license or a cloud_init file. For example, for Aviatrix, this is your bootsrap config file generated from the Aviatrix Controller portal. | 
  **metroCode** | **string** | Two-letter metro code. | 
  **deviceTypeCode** | **string** | Device type code, e.g., AVIATRIX_EDGE | 
@@ -1071,7 +1037,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 

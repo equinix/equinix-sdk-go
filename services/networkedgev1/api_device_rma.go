@@ -26,14 +26,7 @@ type ApiPostDeviceRMAUsingPOSTRequest struct {
 	ctx               context.Context
 	ApiService        *DeviceRMAApiService
 	virtualDeviceUuid string
-	authorization     *string
 	request           *DeviceRMAPostRequest
-}
-
-// The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token.
-func (r ApiPostDeviceRMAUsingPOSTRequest) Authorization(authorization string) ApiPostDeviceRMAUsingPOSTRequest {
-	r.authorization = &authorization
-	return r
 }
 
 // Post RMA request
@@ -82,9 +75,6 @@ func (a *DeviceRMAApiService) PostDeviceRMAUsingPOSTExecute(r ApiPostDeviceRMAUs
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.authorization == nil {
-		return nil, reportError("authorization is required and must be specified")
-	}
 	if r.request == nil {
 		return nil, reportError("request is required and must be specified")
 	}
@@ -106,9 +96,22 @@ func (a *DeviceRMAApiService) PostDeviceRMAUsingPOSTExecute(r ApiPostDeviceRMAUs
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "")
 	// body params
 	localVarPostBody = r.request
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Bearer"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err

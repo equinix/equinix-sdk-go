@@ -25,14 +25,7 @@ type DeviceLinkApiService service
 type ApiCreateLinkGroupUsingPOSTRequest struct {
 	ctx             context.Context
 	ApiService      *DeviceLinkApiService
-	authorization   *string
 	deviceLinkGroup *DeviceLinkRequest
-}
-
-// The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token.
-func (r ApiCreateLinkGroupUsingPOSTRequest) Authorization(authorization string) ApiCreateLinkGroupUsingPOSTRequest {
-	r.authorization = &authorization
-	return r
 }
 
 // New Device Link Group
@@ -81,9 +74,6 @@ func (a *DeviceLinkApiService) CreateLinkGroupUsingPOSTExecute(r ApiCreateLinkGr
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.authorization == nil {
-		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
-	}
 	if r.deviceLinkGroup == nil {
 		return localVarReturnValue, nil, reportError("deviceLinkGroup is required and must be specified")
 	}
@@ -105,9 +95,22 @@ func (a *DeviceLinkApiService) CreateLinkGroupUsingPOSTExecute(r ApiCreateLinkGr
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "")
 	// body params
 	localVarPostBody = r.deviceLinkGroup
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Bearer"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -178,16 +181,9 @@ func (a *DeviceLinkApiService) CreateLinkGroupUsingPOSTExecute(r ApiCreateLinkGr
 }
 
 type ApiDeleteLinkGroupUsingDELETERequest struct {
-	ctx           context.Context
-	ApiService    *DeviceLinkApiService
-	uuid          string
-	authorization *string
-}
-
-// The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token.
-func (r ApiDeleteLinkGroupUsingDELETERequest) Authorization(authorization string) ApiDeleteLinkGroupUsingDELETERequest {
-	r.authorization = &authorization
-	return r
+	ctx        context.Context
+	ApiService *DeviceLinkApiService
+	uuid       string
 }
 
 func (r ApiDeleteLinkGroupUsingDELETERequest) Execute() (*http.Response, error) {
@@ -230,9 +226,6 @@ func (a *DeviceLinkApiService) DeleteLinkGroupUsingDELETEExecute(r ApiDeleteLink
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.authorization == nil {
-		return nil, reportError("authorization is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -251,7 +244,20 @@ func (a *DeviceLinkApiService) DeleteLinkGroupUsingDELETEExecute(r ApiDeleteLink
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "")
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Bearer"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -313,16 +319,9 @@ func (a *DeviceLinkApiService) DeleteLinkGroupUsingDELETEExecute(r ApiDeleteLink
 }
 
 type ApiGetLinkGroupByUUIDUsingGETRequest struct {
-	ctx           context.Context
-	ApiService    *DeviceLinkApiService
-	uuid          string
-	authorization *string
-}
-
-// The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token.
-func (r ApiGetLinkGroupByUUIDUsingGETRequest) Authorization(authorization string) ApiGetLinkGroupByUUIDUsingGETRequest {
-	r.authorization = &authorization
-	return r
+	ctx        context.Context
+	ApiService *DeviceLinkApiService
+	uuid       string
 }
 
 func (r ApiGetLinkGroupByUUIDUsingGETRequest) Execute() (*DeviceLinkGroupDto, *http.Response, error) {
@@ -368,9 +367,6 @@ func (a *DeviceLinkApiService) GetLinkGroupByUUIDUsingGETExecute(r ApiGetLinkGro
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.authorization == nil {
-		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -389,7 +385,20 @@ func (a *DeviceLinkApiService) GetLinkGroupByUUIDUsingGETExecute(r ApiGetLinkGro
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "")
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Bearer"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -451,7 +460,6 @@ func (a *DeviceLinkApiService) GetLinkGroupByUUIDUsingGETExecute(r ApiGetLinkGro
 type ApiGetLinkGroupsUsingGET1Request struct {
 	ctx               context.Context
 	ApiService        *DeviceLinkApiService
-	authorization     *string
 	metro             *string
 	virtualDeviceUuid *string
 	accountUcmId      *string
@@ -459,12 +467,6 @@ type ApiGetLinkGroupsUsingGET1Request struct {
 	groupName         *string
 	offset            *string
 	limit             *string
-}
-
-// The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token.
-func (r ApiGetLinkGroupsUsingGET1Request) Authorization(authorization string) ApiGetLinkGroupsUsingGET1Request {
-	r.authorization = &authorization
-	return r
 }
 
 // Metro Code
@@ -549,33 +551,30 @@ func (a *DeviceLinkApiService) GetLinkGroupsUsingGET1Execute(r ApiGetLinkGroupsU
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.authorization == nil {
-		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
-	}
 
 	if r.metro != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "metro", r.metro, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "metro", r.metro, "", "")
 	}
 	if r.virtualDeviceUuid != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "virtualDeviceUuid", r.virtualDeviceUuid, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "virtualDeviceUuid", r.virtualDeviceUuid, "", "")
 	}
 	if r.accountUcmId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "accountUcmId", r.accountUcmId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "accountUcmId", r.accountUcmId, "", "")
 	}
 	if r.groupUuid != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "groupUuid", r.groupUuid, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "groupUuid", r.groupUuid, "", "")
 	}
 	if r.groupName != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "groupName", r.groupName, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "groupName", r.groupName, "", "")
 	}
 	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
 	} else {
 		var defaultValue string = "0"
 		r.offset = &defaultValue
 	}
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
 	} else {
 		var defaultValue string = "20"
 		r.limit = &defaultValue
@@ -597,7 +596,20 @@ func (a *DeviceLinkApiService) GetLinkGroupsUsingGET1Execute(r ApiGetLinkGroupsU
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "")
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Bearer"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -649,14 +661,7 @@ type ApiUpdateLinkGroupUsingPATCHRequest struct {
 	ctx             context.Context
 	ApiService      *DeviceLinkApiService
 	uuid            string
-	authorization   *string
 	deviceLinkGroup *DeviceLinkRequest
-}
-
-// The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token.
-func (r ApiUpdateLinkGroupUsingPATCHRequest) Authorization(authorization string) ApiUpdateLinkGroupUsingPATCHRequest {
-	r.authorization = &authorization
-	return r
 }
 
 // Device Link Group
@@ -705,9 +710,6 @@ func (a *DeviceLinkApiService) UpdateLinkGroupUsingPATCHExecute(r ApiUpdateLinkG
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.authorization == nil {
-		return nil, reportError("authorization is required and must be specified")
-	}
 	if r.deviceLinkGroup == nil {
 		return nil, reportError("deviceLinkGroup is required and must be specified")
 	}
@@ -729,9 +731,22 @@ func (a *DeviceLinkApiService) UpdateLinkGroupUsingPATCHExecute(r ApiUpdateLinkG
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "")
 	// body params
 	localVarPostBody = r.deviceLinkGroup
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Bearer"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err

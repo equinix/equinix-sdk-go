@@ -24,6 +24,8 @@ type DeviceACLTemplateRequest struct {
 	Name string `json:"name"`
 	// The ACL template description.
 	Description string `json:"description"`
+	// Customer project Id. Check your projectId under Resource Management on Equinix Portal. You should have access to a project to see or create assets under it. Equinix will assign a projectId if you do not provide one.
+	ProjectId *string `json:"projectId,omitempty"`
 	// An array of inbound rules.
 	InboundRules         []InboundRules `json:"inboundRules"`
 	AdditionalProperties map[string]interface{}
@@ -99,6 +101,38 @@ func (o *DeviceACLTemplateRequest) SetDescription(v string) {
 	o.Description = v
 }
 
+// GetProjectId returns the ProjectId field value if set, zero value otherwise.
+func (o *DeviceACLTemplateRequest) GetProjectId() string {
+	if o == nil || IsNil(o.ProjectId) {
+		var ret string
+		return ret
+	}
+	return *o.ProjectId
+}
+
+// GetProjectIdOk returns a tuple with the ProjectId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeviceACLTemplateRequest) GetProjectIdOk() (*string, bool) {
+	if o == nil || IsNil(o.ProjectId) {
+		return nil, false
+	}
+	return o.ProjectId, true
+}
+
+// HasProjectId returns a boolean if a field has been set.
+func (o *DeviceACLTemplateRequest) HasProjectId() bool {
+	if o != nil && !IsNil(o.ProjectId) {
+		return true
+	}
+
+	return false
+}
+
+// SetProjectId gets a reference to the given string and assigns it to the ProjectId field.
+func (o *DeviceACLTemplateRequest) SetProjectId(v string) {
+	o.ProjectId = &v
+}
+
 // GetInboundRules returns the InboundRules field value
 func (o *DeviceACLTemplateRequest) GetInboundRules() []InboundRules {
 	if o == nil {
@@ -135,6 +169,9 @@ func (o DeviceACLTemplateRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
 	toSerialize["description"] = o.Description
+	if !IsNil(o.ProjectId) {
+		toSerialize["projectId"] = o.ProjectId
+	}
 	toSerialize["inboundRules"] = o.InboundRules
 
 	for key, value := range o.AdditionalProperties {
@@ -183,6 +220,7 @@ func (o *DeviceACLTemplateRequest) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")
+		delete(additionalProperties, "projectId")
 		delete(additionalProperties, "inboundRules")
 		o.AdditionalProperties = additionalProperties
 	}

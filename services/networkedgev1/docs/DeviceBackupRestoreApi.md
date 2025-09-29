@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 ## CheckDetailsOfBackupsUsingGET
 
-> RestoreBackupInfoVerbose CheckDetailsOfBackupsUsingGET(ctx, uuid).BackupUuid(backupUuid).Authorization(authorization).Execute()
+> RestoreBackupInfoVerbose CheckDetailsOfBackupsUsingGET(ctx, uuid).BackupUuid(backupUuid).Execute()
 
 Checks Feasibility of Restore
 
@@ -38,11 +38,10 @@ import (
 func main() {
 	uuid := "uuid_example" // string | Unique ID of a device
 	backupUuid := "backupUuid_example" // string | Unique ID of a backup
-	authorization := "authorization_example" // string | The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DeviceBackupRestoreApi.CheckDetailsOfBackupsUsingGET(context.Background(), uuid).BackupUuid(backupUuid).Authorization(authorization).Execute()
+	resp, r, err := apiClient.DeviceBackupRestoreApi.CheckDetailsOfBackupsUsingGET(context.Background(), uuid).BackupUuid(backupUuid).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DeviceBackupRestoreApi.CheckDetailsOfBackupsUsingGET``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -69,7 +68,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **backupUuid** | **string** | Unique ID of a backup | 
- **authorization** | **string** | The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token. | 
 
 ### Return type
 
@@ -77,7 +75,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -91,7 +89,7 @@ No authorization required
 
 ## CreateDeviceBackupUsingPOST
 
-> SshUserCreateResponse CreateDeviceBackupUsingPOST(ctx).Authorization(authorization).Request(request).Execute()
+> SshUserCreateResponse CreateDeviceBackupUsingPOST(ctx).Request(request).Execute()
 
 Creates Device Backup
 
@@ -110,12 +108,11 @@ import (
 )
 
 func main() {
-	authorization := "authorization_example" // string | The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
 	request := *openapiclient.NewDeviceBackupCreateRequest("3da0a663-20d9-4b8f-8c5d-d5cf706840c8", "My New Backup") // DeviceBackupCreateRequest | Device backup info
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DeviceBackupRestoreApi.CreateDeviceBackupUsingPOST(context.Background()).Authorization(authorization).Request(request).Execute()
+	resp, r, err := apiClient.DeviceBackupRestoreApi.CreateDeviceBackupUsingPOST(context.Background()).Request(request).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DeviceBackupRestoreApi.CreateDeviceBackupUsingPOST``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -136,7 +133,6 @@ Other parameters are passed through a pointer to a apiCreateDeviceBackupUsingPOS
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authorization** | **string** | The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token. | 
  **request** | [**DeviceBackupCreateRequest**](DeviceBackupCreateRequest.md) | Device backup info | 
 
 ### Return type
@@ -145,7 +141,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -159,7 +155,7 @@ No authorization required
 
 ## DeleteDeviceBackupUsingDELETE
 
-> DeleteDeviceBackupUsingDELETE(ctx, uuid).Authorization(authorization).Execute()
+> DeleteDeviceBackupUsingDELETE(ctx, uuid).Execute()
 
 Delete Backup of Device
 
@@ -179,11 +175,10 @@ import (
 
 func main() {
 	uuid := "uuid_example" // string | Unique Id a backup
-	authorization := "authorization_example" // string | The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.DeviceBackupRestoreApi.DeleteDeviceBackupUsingDELETE(context.Background(), uuid).Authorization(authorization).Execute()
+	r, err := apiClient.DeviceBackupRestoreApi.DeleteDeviceBackupUsingDELETE(context.Background(), uuid).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DeviceBackupRestoreApi.DeleteDeviceBackupUsingDELETE``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -207,7 +202,6 @@ Other parameters are passed through a pointer to a apiDeleteDeviceBackupUsingDEL
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **authorization** | **string** | The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token. | 
 
 ### Return type
 
@@ -215,7 +209,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -229,7 +223,7 @@ No authorization required
 
 ## DownloadDetailsOfBackupsUsingGET
 
-> string DownloadDetailsOfBackupsUsingGET(ctx, uuid).Authorization(authorization).Execute()
+> string DownloadDetailsOfBackupsUsingGET(ctx, uuid).Execute()
 
 Download a Backup
 
@@ -249,11 +243,10 @@ import (
 
 func main() {
 	uuid := "uuid_example" // string | Unique ID of a backup
-	authorization := "authorization_example" // string | The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DeviceBackupRestoreApi.DownloadDetailsOfBackupsUsingGET(context.Background(), uuid).Authorization(authorization).Execute()
+	resp, r, err := apiClient.DeviceBackupRestoreApi.DownloadDetailsOfBackupsUsingGET(context.Background(), uuid).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DeviceBackupRestoreApi.DownloadDetailsOfBackupsUsingGET``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -279,7 +272,6 @@ Other parameters are passed through a pointer to a apiDownloadDetailsOfBackupsUs
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **authorization** | **string** | The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token. | 
 
 ### Return type
 
@@ -287,7 +279,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -301,7 +293,7 @@ No authorization required
 
 ## GetDetailsOfBackupsUsingGET
 
-> DeviceBackupInfoVerbose GetDetailsOfBackupsUsingGET(ctx, uuid).Authorization(authorization).Execute()
+> DeviceBackupInfoVerbose GetDetailsOfBackupsUsingGET(ctx, uuid).Execute()
 
 Get Backups of Device {uuid}
 
@@ -321,11 +313,10 @@ import (
 
 func main() {
 	uuid := "uuid_example" // string | Unique ID of a backup
-	authorization := "authorization_example" // string | The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DeviceBackupRestoreApi.GetDetailsOfBackupsUsingGET(context.Background(), uuid).Authorization(authorization).Execute()
+	resp, r, err := apiClient.DeviceBackupRestoreApi.GetDetailsOfBackupsUsingGET(context.Background(), uuid).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DeviceBackupRestoreApi.GetDetailsOfBackupsUsingGET``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -351,7 +342,6 @@ Other parameters are passed through a pointer to a apiGetDetailsOfBackupsUsingGE
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **authorization** | **string** | The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token. | 
 
 ### Return type
 
@@ -359,7 +349,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -373,7 +363,7 @@ No authorization required
 
 ## GetDeviceBackupsUsingGET
 
-> DeviceBackupPageResponse GetDeviceBackupsUsingGET(ctx).VirtualDeviceUuid(virtualDeviceUuid).Authorization(authorization).Status(status).Offset(offset).Limit(limit).Execute()
+> DeviceBackupPageResponse GetDeviceBackupsUsingGET(ctx).VirtualDeviceUuid(virtualDeviceUuid).Status(status).Offset(offset).Limit(limit).Execute()
 
 Get Backups of Device
 
@@ -393,14 +383,13 @@ import (
 
 func main() {
 	virtualDeviceUuid := "virtualDeviceUuid_example" // string | Unique ID of a virtual device
-	authorization := "authorization_example" // string | The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
 	status := []string{"Inner_example"} // []string | An array of status values (optional)
 	offset := "offset_example" // string | Specifies where to start a page. It is the starting point of the collection returned from the server. (optional) (default to "0")
 	limit := "limit_example" // string | Specifies the page size. (optional) (default to "20")
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DeviceBackupRestoreApi.GetDeviceBackupsUsingGET(context.Background()).VirtualDeviceUuid(virtualDeviceUuid).Authorization(authorization).Status(status).Offset(offset).Limit(limit).Execute()
+	resp, r, err := apiClient.DeviceBackupRestoreApi.GetDeviceBackupsUsingGET(context.Background()).VirtualDeviceUuid(virtualDeviceUuid).Status(status).Offset(offset).Limit(limit).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DeviceBackupRestoreApi.GetDeviceBackupsUsingGET``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -422,7 +411,6 @@ Other parameters are passed through a pointer to a apiGetDeviceBackupsUsingGETRe
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **virtualDeviceUuid** | **string** | Unique ID of a virtual device | 
- **authorization** | **string** | The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token. | 
  **status** | **[]string** | An array of status values | 
  **offset** | **string** | Specifies where to start a page. It is the starting point of the collection returned from the server. | [default to &quot;0&quot;]
  **limit** | **string** | Specifies the page size. | [default to &quot;20&quot;]
@@ -433,7 +421,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -447,7 +435,7 @@ No authorization required
 
 ## RestoreDeviceBackupUsingPATCH
 
-> RestoreDeviceBackupUsingPATCH(ctx, uuid).Authorization(authorization).Request(request).Execute()
+> RestoreDeviceBackupUsingPATCH(ctx, uuid).Request(request).Execute()
 
 Restores a backup
 
@@ -467,12 +455,11 @@ import (
 
 func main() {
 	uuid := "uuid_example" // string | Unique ID of a backup
-	authorization := "authorization_example" // string | The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
 	request := *openapiclient.NewDeviceBackupUpdateRequest("My New Backup") // DeviceBackupUpdateRequest | Update device backup
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.DeviceBackupRestoreApi.RestoreDeviceBackupUsingPATCH(context.Background(), uuid).Authorization(authorization).Request(request).Execute()
+	r, err := apiClient.DeviceBackupRestoreApi.RestoreDeviceBackupUsingPATCH(context.Background(), uuid).Request(request).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DeviceBackupRestoreApi.RestoreDeviceBackupUsingPATCH``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -496,7 +483,6 @@ Other parameters are passed through a pointer to a apiRestoreDeviceBackupUsingPA
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **authorization** | **string** | The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token. | 
  **request** | [**DeviceBackupUpdateRequest**](DeviceBackupUpdateRequest.md) | Update device backup | 
 
 ### Return type
@@ -505,7 +491,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -519,7 +505,7 @@ No authorization required
 
 ## UpdateDeviceBackupUsingPATCH
 
-> UpdateDeviceBackupUsingPATCH(ctx, uuid).Authorization(authorization).Request(request).Execute()
+> UpdateDeviceBackupUsingPATCH(ctx, uuid).Request(request).Execute()
 
 Update Device Backup
 
@@ -539,12 +525,11 @@ import (
 
 func main() {
 	uuid := "uuid_example" // string | Unique ID of a backup
-	authorization := "authorization_example" // string | The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
 	request := *openapiclient.NewDeviceBackupUpdateRequest("My New Backup") // DeviceBackupUpdateRequest | Update device backup
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.DeviceBackupRestoreApi.UpdateDeviceBackupUsingPATCH(context.Background(), uuid).Authorization(authorization).Request(request).Execute()
+	r, err := apiClient.DeviceBackupRestoreApi.UpdateDeviceBackupUsingPATCH(context.Background(), uuid).Request(request).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DeviceBackupRestoreApi.UpdateDeviceBackupUsingPATCH``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -568,7 +553,6 @@ Other parameters are passed through a pointer to a apiUpdateDeviceBackupUsingPAT
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **authorization** | **string** | The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token. | 
  **request** | [**DeviceBackupUpdateRequest**](DeviceBackupUpdateRequest.md) | Update device backup | 
 
 ### Return type
@@ -577,7 +561,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 

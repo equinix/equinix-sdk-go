@@ -24,7 +24,7 @@ type VirtualDeviceRequest struct {
 	AccountNumber *string `json:"accountNumber,omitempty"`
 	// AccountReferenceId. This is a temporary ID that can be used to create a device when the account status is still pending, not active. Either an account number or accountReferenceId is required.
 	AccountReferenceId *string `json:"accountReferenceId,omitempty"`
-	// Customer project Id. Required for CRH-enabled customers.
+	// Customer project Id. Check your projectId under Resource Management on Equinix Portal. You should have access to a project to see or create assets under it. Equinix will assign a projectId if you do not provide one.
 	ProjectId *string `json:"projectId,omitempty"`
 	// Version.
 	Version string `json:"version"`
@@ -75,7 +75,7 @@ type VirtualDeviceRequest struct {
 	SystemIpAddress      *string               `json:"systemIpAddress,omitempty"`
 	VendorConfig         *VendorConfig         `json:"vendorConfig,omitempty"`
 	UserPublicKey        *UserPublicKeyRequest `json:"userPublicKey,omitempty"`
-	// If you are creating a CSRSDWAN, you may specify the ipType, either DHCP or Static. If you do not specify a value, Equinix will default to Static.
+	// This field is deprecated. The ipType value always defaults to STATIC.
 	IpType *string `json:"ipType,omitempty"`
 	// You may specify any available interface on the device as the sshInterfaceId. This field is only applicable to self-configured devices.
 	SshInterfaceId *string `json:"sshInterfaceId,omitempty"`

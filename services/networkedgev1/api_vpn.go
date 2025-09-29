@@ -24,16 +24,9 @@ import (
 type VPNApiService service
 
 type ApiCreateVpnUsingPOSTRequest struct {
-	ctx           context.Context
-	ApiService    *VPNApiService
-	authorization *string
-	request       *Vpn
-}
-
-// The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token.
-func (r ApiCreateVpnUsingPOSTRequest) Authorization(authorization string) ApiCreateVpnUsingPOSTRequest {
-	r.authorization = &authorization
-	return r
+	ctx        context.Context
+	ApiService *VPNApiService
+	request    *Vpn
 }
 
 // VPN info
@@ -79,9 +72,6 @@ func (a *VPNApiService) CreateVpnUsingPOSTExecute(r ApiCreateVpnUsingPOSTRequest
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.authorization == nil {
-		return nil, reportError("authorization is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -100,9 +90,22 @@ func (a *VPNApiService) CreateVpnUsingPOSTExecute(r ApiCreateVpnUsingPOSTRequest
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "")
 	// body params
 	localVarPostBody = r.request
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Bearer"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -175,16 +178,9 @@ func (a *VPNApiService) CreateVpnUsingPOSTExecute(r ApiCreateVpnUsingPOSTRequest
 }
 
 type ApiGetVpnByUuidUsingGETRequest struct {
-	ctx           context.Context
-	ApiService    *VPNApiService
-	uuid          string
-	authorization *string
-}
-
-// The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token.
-func (r ApiGetVpnByUuidUsingGETRequest) Authorization(authorization string) ApiGetVpnByUuidUsingGETRequest {
-	r.authorization = &authorization
-	return r
+	ctx        context.Context
+	ApiService *VPNApiService
+	uuid       string
 }
 
 func (r ApiGetVpnByUuidUsingGETRequest) Execute() (*VpnResponse, *http.Response, error) {
@@ -230,9 +226,6 @@ func (a *VPNApiService) GetVpnByUuidUsingGETExecute(r ApiGetVpnByUuidUsingGETReq
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.authorization == nil {
-		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -251,7 +244,20 @@ func (a *VPNApiService) GetVpnByUuidUsingGETExecute(r ApiGetVpnByUuidUsingGETReq
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "")
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Bearer"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -324,17 +330,10 @@ func (a *VPNApiService) GetVpnByUuidUsingGETExecute(r ApiGetVpnByUuidUsingGETReq
 type ApiGetVpnsUsingGETRequest struct {
 	ctx               context.Context
 	ApiService        *VPNApiService
-	authorization     *string
 	statusList        *[]GetVpnsUsingGETStatusListParameterInner
 	virtualDeviceUuid *string
 	offset            *string
 	limit             *string
-}
-
-// The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token.
-func (r ApiGetVpnsUsingGETRequest) Authorization(authorization string) ApiGetVpnsUsingGETRequest {
-	r.authorization = &authorization
-	return r
 }
 
 // One or more desired status
@@ -401,32 +400,29 @@ func (a *VPNApiService) GetVpnsUsingGETExecute(r ApiGetVpnsUsingGETRequest) (*Vp
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.authorization == nil {
-		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
-	}
 
 	if r.statusList != nil {
 		t := *r.statusList
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "statusList", s.Index(i).Interface(), "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "statusList", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "statusList", t, "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "statusList", t, "form", "multi")
 		}
 	}
 	if r.virtualDeviceUuid != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "virtualDeviceUuid", r.virtualDeviceUuid, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "virtualDeviceUuid", r.virtualDeviceUuid, "", "")
 	}
 	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
 	} else {
 		var defaultValue string = "0"
 		r.offset = &defaultValue
 	}
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
 	} else {
 		var defaultValue string = "20"
 		r.limit = &defaultValue
@@ -448,7 +444,20 @@ func (a *VPNApiService) GetVpnsUsingGETExecute(r ApiGetVpnsUsingGETRequest) (*Vp
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "")
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Bearer"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -508,16 +517,9 @@ func (a *VPNApiService) GetVpnsUsingGETExecute(r ApiGetVpnsUsingGETRequest) (*Vp
 }
 
 type ApiRemoveVpnConfigurationUsingDELETERequest struct {
-	ctx           context.Context
-	ApiService    *VPNApiService
-	uuid          string
-	authorization *string
-}
-
-// The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token.
-func (r ApiRemoveVpnConfigurationUsingDELETERequest) Authorization(authorization string) ApiRemoveVpnConfigurationUsingDELETERequest {
-	r.authorization = &authorization
-	return r
+	ctx        context.Context
+	ApiService *VPNApiService
+	uuid       string
 }
 
 func (r ApiRemoveVpnConfigurationUsingDELETERequest) Execute() (*http.Response, error) {
@@ -560,9 +562,6 @@ func (a *VPNApiService) RemoveVpnConfigurationUsingDELETEExecute(r ApiRemoveVpnC
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.authorization == nil {
-		return nil, reportError("authorization is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -581,7 +580,20 @@ func (a *VPNApiService) RemoveVpnConfigurationUsingDELETEExecute(r ApiRemoveVpnC
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "")
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Bearer"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -643,17 +655,10 @@ func (a *VPNApiService) RemoveVpnConfigurationUsingDELETEExecute(r ApiRemoveVpnC
 }
 
 type ApiUpdateVpnConfigurationUsingPutRequest struct {
-	ctx           context.Context
-	ApiService    *VPNApiService
-	uuid          string
-	authorization *string
-	request       *Vpn
-}
-
-// The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token.
-func (r ApiUpdateVpnConfigurationUsingPutRequest) Authorization(authorization string) ApiUpdateVpnConfigurationUsingPutRequest {
-	r.authorization = &authorization
-	return r
+	ctx        context.Context
+	ApiService *VPNApiService
+	uuid       string
+	request    *Vpn
 }
 
 // VPN info
@@ -702,9 +707,6 @@ func (a *VPNApiService) UpdateVpnConfigurationUsingPutExecute(r ApiUpdateVpnConf
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.authorization == nil {
-		return nil, reportError("authorization is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -723,9 +725,22 @@ func (a *VPNApiService) UpdateVpnConfigurationUsingPutExecute(r ApiUpdateVpnConf
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "")
 	// body params
 	localVarPostBody = r.request
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Bearer"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err

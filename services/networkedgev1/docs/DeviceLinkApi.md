@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## CreateLinkGroupUsingPOST
 
-> DeviceLinkGroupResponse CreateLinkGroupUsingPOST(ctx).Authorization(authorization).DeviceLinkGroup(deviceLinkGroup).Execute()
+> DeviceLinkGroupResponse CreateLinkGroupUsingPOST(ctx).DeviceLinkGroup(deviceLinkGroup).Execute()
 
 Create Device Link
 
@@ -33,12 +33,11 @@ import (
 )
 
 func main() {
-	authorization := "authorization_example" // string | The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
 	deviceLinkGroup := *openapiclient.NewDeviceLinkRequest("linkGroup", "192.164.0.0/29") // DeviceLinkRequest | New Device Link Group
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DeviceLinkApi.CreateLinkGroupUsingPOST(context.Background()).Authorization(authorization).DeviceLinkGroup(deviceLinkGroup).Execute()
+	resp, r, err := apiClient.DeviceLinkApi.CreateLinkGroupUsingPOST(context.Background()).DeviceLinkGroup(deviceLinkGroup).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DeviceLinkApi.CreateLinkGroupUsingPOST``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -59,7 +58,6 @@ Other parameters are passed through a pointer to a apiCreateLinkGroupUsingPOSTRe
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authorization** | **string** | The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token. | 
  **deviceLinkGroup** | [**DeviceLinkRequest**](DeviceLinkRequest.md) | New Device Link Group | 
 
 ### Return type
@@ -68,7 +66,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -82,7 +80,7 @@ No authorization required
 
 ## DeleteLinkGroupUsingDELETE
 
-> DeleteLinkGroupUsingDELETE(ctx, uuid).Authorization(authorization).Execute()
+> DeleteLinkGroupUsingDELETE(ctx, uuid).Execute()
 
 Delete Device Link
 
@@ -102,11 +100,10 @@ import (
 
 func main() {
 	uuid := "uuid_example" // string | Unique Id of a device link group.
-	authorization := "authorization_example" // string | The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.DeviceLinkApi.DeleteLinkGroupUsingDELETE(context.Background(), uuid).Authorization(authorization).Execute()
+	r, err := apiClient.DeviceLinkApi.DeleteLinkGroupUsingDELETE(context.Background(), uuid).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DeviceLinkApi.DeleteLinkGroupUsingDELETE``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -130,7 +127,6 @@ Other parameters are passed through a pointer to a apiDeleteLinkGroupUsingDELETE
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **authorization** | **string** | The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token. | 
 
 ### Return type
 
@@ -138,7 +134,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -152,7 +148,7 @@ No authorization required
 
 ## GetLinkGroupByUUIDUsingGET
 
-> DeviceLinkGroupDto GetLinkGroupByUUIDUsingGET(ctx, uuid).Authorization(authorization).Execute()
+> DeviceLinkGroupDto GetLinkGroupByUUIDUsingGET(ctx, uuid).Execute()
 
 Get Device Link {uuid}
 
@@ -172,11 +168,10 @@ import (
 
 func main() {
 	uuid := "uuid_example" // string | Unique Id of a device link group.
-	authorization := "authorization_example" // string | The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DeviceLinkApi.GetLinkGroupByUUIDUsingGET(context.Background(), uuid).Authorization(authorization).Execute()
+	resp, r, err := apiClient.DeviceLinkApi.GetLinkGroupByUUIDUsingGET(context.Background(), uuid).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DeviceLinkApi.GetLinkGroupByUUIDUsingGET``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -202,7 +197,6 @@ Other parameters are passed through a pointer to a apiGetLinkGroupByUUIDUsingGET
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **authorization** | **string** | The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token. | 
 
 ### Return type
 
@@ -210,7 +204,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -224,7 +218,7 @@ No authorization required
 
 ## GetLinkGroupsUsingGET1
 
-> []LinksPageResponse GetLinkGroupsUsingGET1(ctx).Authorization(authorization).Metro(metro).VirtualDeviceUuid(virtualDeviceUuid).AccountUcmId(accountUcmId).GroupUuid(groupUuid).GroupName(groupName).Offset(offset).Limit(limit).Execute()
+> []LinksPageResponse GetLinkGroupsUsingGET1(ctx).Metro(metro).VirtualDeviceUuid(virtualDeviceUuid).AccountUcmId(accountUcmId).GroupUuid(groupUuid).GroupName(groupName).Offset(offset).Limit(limit).Execute()
 
 Get Device Links.
 
@@ -243,7 +237,6 @@ import (
 )
 
 func main() {
-	authorization := "authorization_example" // string | The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
 	metro := "metro_example" // string | Metro Code (optional)
 	virtualDeviceUuid := "virtualDeviceUuid_example" // string | Unique Id of a virtual device. (optional)
 	accountUcmId := "accountUcmId_example" // string | Unique Id of the account. A reseller querying for a customer's link groups can pass the accountUcmId of the customer's account. To get the accountUcmId of your customer's account, please check the Equinix account creation portal (ECP) or call Get account API. (optional)
@@ -254,7 +247,7 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DeviceLinkApi.GetLinkGroupsUsingGET1(context.Background()).Authorization(authorization).Metro(metro).VirtualDeviceUuid(virtualDeviceUuid).AccountUcmId(accountUcmId).GroupUuid(groupUuid).GroupName(groupName).Offset(offset).Limit(limit).Execute()
+	resp, r, err := apiClient.DeviceLinkApi.GetLinkGroupsUsingGET1(context.Background()).Metro(metro).VirtualDeviceUuid(virtualDeviceUuid).AccountUcmId(accountUcmId).GroupUuid(groupUuid).GroupName(groupName).Offset(offset).Limit(limit).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DeviceLinkApi.GetLinkGroupsUsingGET1``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -275,7 +268,6 @@ Other parameters are passed through a pointer to a apiGetLinkGroupsUsingGET1Requ
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authorization** | **string** | The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token. | 
  **metro** | **string** | Metro Code | 
  **virtualDeviceUuid** | **string** | Unique Id of a virtual device. | 
  **accountUcmId** | **string** | Unique Id of the account. A reseller querying for a customer&#39;s link groups can pass the accountUcmId of the customer&#39;s account. To get the accountUcmId of your customer&#39;s account, please check the Equinix account creation portal (ECP) or call Get account API. | 
@@ -290,7 +282,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -304,7 +296,7 @@ No authorization required
 
 ## UpdateLinkGroupUsingPATCH
 
-> UpdateLinkGroupUsingPATCH(ctx, uuid).Authorization(authorization).DeviceLinkGroup(deviceLinkGroup).Execute()
+> UpdateLinkGroupUsingPATCH(ctx, uuid).DeviceLinkGroup(deviceLinkGroup).Execute()
 
 Update Device Link
 
@@ -324,12 +316,11 @@ import (
 
 func main() {
 	uuid := "uuid_example" // string | Unique Id of a device link group.
-	authorization := "authorization_example" // string | The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
 	deviceLinkGroup := *openapiclient.NewDeviceLinkRequest("linkGroup", "192.164.0.0/29") // DeviceLinkRequest | Device Link Group
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.DeviceLinkApi.UpdateLinkGroupUsingPATCH(context.Background(), uuid).Authorization(authorization).DeviceLinkGroup(deviceLinkGroup).Execute()
+	r, err := apiClient.DeviceLinkApi.UpdateLinkGroupUsingPATCH(context.Background(), uuid).DeviceLinkGroup(deviceLinkGroup).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DeviceLinkApi.UpdateLinkGroupUsingPATCH``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -353,7 +344,6 @@ Other parameters are passed through a pointer to a apiUpdateLinkGroupUsingPATCHR
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **authorization** | **string** | The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token. | 
  **deviceLinkGroup** | [**DeviceLinkRequest**](DeviceLinkRequest.md) | Device Link Group | 
 
 ### Return type
@@ -362,7 +352,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 

@@ -25,15 +25,8 @@ type ACLTemplateApiService service
 type ApiCreateDeviceACLTemplateUsingPostRequest struct {
 	ctx                context.Context
 	ApiService         *ACLTemplateApiService
-	authorization      *string
 	aclTemplateRequest *DeviceACLTemplateRequest
 	accountUcmId       *string
-}
-
-// The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token.
-func (r ApiCreateDeviceACLTemplateUsingPostRequest) Authorization(authorization string) ApiCreateDeviceACLTemplateUsingPostRequest {
-	r.authorization = &authorization
-	return r
 }
 
 // Creates an ACL template.
@@ -88,15 +81,12 @@ func (a *ACLTemplateApiService) CreateDeviceACLTemplateUsingPostExecute(r ApiCre
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.authorization == nil {
-		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
-	}
 	if r.aclTemplateRequest == nil {
 		return localVarReturnValue, nil, reportError("aclTemplateRequest is required and must be specified")
 	}
 
 	if r.accountUcmId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "accountUcmId", r.accountUcmId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "accountUcmId", r.accountUcmId, "", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -115,9 +105,22 @@ func (a *ACLTemplateApiService) CreateDeviceACLTemplateUsingPostExecute(r ApiCre
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "")
 	// body params
 	localVarPostBody = r.aclTemplateRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Bearer"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -188,17 +191,10 @@ func (a *ACLTemplateApiService) CreateDeviceACLTemplateUsingPostExecute(r ApiCre
 }
 
 type ApiDeletedeviceACLUsingDELETERequest struct {
-	ctx           context.Context
-	ApiService    *ACLTemplateApiService
-	uuid          string
-	authorization *string
-	accountUcmId  *string
-}
-
-// The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token.
-func (r ApiDeletedeviceACLUsingDELETERequest) Authorization(authorization string) ApiDeletedeviceACLUsingDELETERequest {
-	r.authorization = &authorization
-	return r
+	ctx          context.Context
+	ApiService   *ACLTemplateApiService
+	uuid         string
+	accountUcmId *string
 }
 
 // A reseller deleting an ACL template for a customer must pass the accountUcmId of the customer.
@@ -247,12 +243,9 @@ func (a *ACLTemplateApiService) DeletedeviceACLUsingDELETEExecute(r ApiDeletedev
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.authorization == nil {
-		return nil, reportError("authorization is required and must be specified")
-	}
 
 	if r.accountUcmId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "accountUcmId", r.accountUcmId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "accountUcmId", r.accountUcmId, "", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -271,7 +264,20 @@ func (a *ACLTemplateApiService) DeletedeviceACLUsingDELETEExecute(r ApiDeletedev
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "")
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Bearer"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -333,18 +339,11 @@ func (a *ACLTemplateApiService) DeletedeviceACLUsingDELETEExecute(r ApiDeletedev
 }
 
 type ApiGetDeviceACLTemplateUsingGET1Request struct {
-	ctx           context.Context
-	ApiService    *ACLTemplateApiService
-	authorization *string
-	offset        *string
-	limit         *string
-	accountUcmId  *string
-}
-
-// The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token.
-func (r ApiGetDeviceACLTemplateUsingGET1Request) Authorization(authorization string) ApiGetDeviceACLTemplateUsingGET1Request {
-	r.authorization = &authorization
-	return r
+	ctx          context.Context
+	ApiService   *ACLTemplateApiService
+	offset       *string
+	limit        *string
+	accountUcmId *string
 }
 
 // Specifies where to start a page. It is the starting point of the collection returned from the server.
@@ -405,24 +404,21 @@ func (a *ACLTemplateApiService) GetDeviceACLTemplateUsingGET1Execute(r ApiGetDev
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.authorization == nil {
-		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
-	}
 
 	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
 	} else {
 		var defaultValue string = "0"
 		r.offset = &defaultValue
 	}
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
 	} else {
 		var defaultValue string = "20"
 		r.limit = &defaultValue
 	}
 	if r.accountUcmId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "accountUcmId", r.accountUcmId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "accountUcmId", r.accountUcmId, "", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -441,7 +437,20 @@ func (a *ACLTemplateApiService) GetDeviceACLTemplateUsingGET1Execute(r ApiGetDev
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "")
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Bearer"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -490,16 +499,9 @@ func (a *ACLTemplateApiService) GetDeviceACLTemplateUsingGET1Execute(r ApiGetDev
 }
 
 type ApiGetDeviceTemplatebyUuidRequest struct {
-	ctx           context.Context
-	ApiService    *ACLTemplateApiService
-	uuid          string
-	authorization *string
-}
-
-// The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token.
-func (r ApiGetDeviceTemplatebyUuidRequest) Authorization(authorization string) ApiGetDeviceTemplatebyUuidRequest {
-	r.authorization = &authorization
-	return r
+	ctx        context.Context
+	ApiService *ACLTemplateApiService
+	uuid       string
 }
 
 func (r ApiGetDeviceTemplatebyUuidRequest) Execute() (*ACLTemplateDetailsResponse, *http.Response, error) {
@@ -545,9 +547,6 @@ func (a *ACLTemplateApiService) GetDeviceTemplatebyUuidExecute(r ApiGetDeviceTem
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.authorization == nil {
-		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -566,7 +565,20 @@ func (a *ACLTemplateApiService) GetDeviceTemplatebyUuidExecute(r ApiGetDeviceTem
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "")
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Bearer"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -629,13 +641,6 @@ type ApiGetDeviceTemplatesbyUuidRequest struct {
 	ctx               context.Context
 	ApiService        *ACLTemplateApiService
 	virtualDeviceUuid string
-	authorization     *string
-}
-
-// The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token.
-func (r ApiGetDeviceTemplatesbyUuidRequest) Authorization(authorization string) ApiGetDeviceTemplatesbyUuidRequest {
-	r.authorization = &authorization
-	return r
 }
 
 func (r ApiGetDeviceTemplatesbyUuidRequest) Execute() (*InitialDeviceACLResponse, *http.Response, error) {
@@ -681,9 +686,6 @@ func (a *ACLTemplateApiService) GetDeviceTemplatesbyUuidExecute(r ApiGetDeviceTe
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.authorization == nil {
-		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -702,7 +704,20 @@ func (a *ACLTemplateApiService) GetDeviceTemplatesbyUuidExecute(r ApiGetDeviceTe
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "")
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Bearer"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -765,15 +780,8 @@ type ApiPatchDeviceTemplatesbyUuidRequest struct {
 	ctx                context.Context
 	ApiService         *ACLTemplateApiService
 	virtualDeviceUuid  string
-	authorization      *string
 	aclTemplateRequest *UpdateDeviceACLTemplateRequest
 	accountUcmId       *string
-}
-
-// The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token.
-func (r ApiPatchDeviceTemplatesbyUuidRequest) Authorization(authorization string) ApiPatchDeviceTemplatesbyUuidRequest {
-	r.authorization = &authorization
-	return r
 }
 
 // Update the ACL of a device.
@@ -828,15 +836,12 @@ func (a *ACLTemplateApiService) PatchDeviceTemplatesbyUuidExecute(r ApiPatchDevi
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.authorization == nil {
-		return nil, reportError("authorization is required and must be specified")
-	}
 	if r.aclTemplateRequest == nil {
 		return nil, reportError("aclTemplateRequest is required and must be specified")
 	}
 
 	if r.accountUcmId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "accountUcmId", r.accountUcmId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "accountUcmId", r.accountUcmId, "", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -855,9 +860,22 @@ func (a *ACLTemplateApiService) PatchDeviceTemplatesbyUuidExecute(r ApiPatchDevi
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "")
 	// body params
 	localVarPostBody = r.aclTemplateRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Bearer"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -911,15 +929,8 @@ type ApiPostDeviceTemplatesbyUuidRequest struct {
 	ctx                context.Context
 	ApiService         *ACLTemplateApiService
 	virtualDeviceUuid  string
-	authorization      *string
 	aclTemplateRequest *UpdateDeviceACLTemplateRequest
 	accountUcmId       *string
-}
-
-// The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token.
-func (r ApiPostDeviceTemplatesbyUuidRequest) Authorization(authorization string) ApiPostDeviceTemplatesbyUuidRequest {
-	r.authorization = &authorization
-	return r
 }
 
 // Update the ACL of a device.
@@ -974,15 +985,12 @@ func (a *ACLTemplateApiService) PostDeviceTemplatesbyUuidExecute(r ApiPostDevice
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.authorization == nil {
-		return nil, reportError("authorization is required and must be specified")
-	}
 	if r.aclTemplateRequest == nil {
 		return nil, reportError("aclTemplateRequest is required and must be specified")
 	}
 
 	if r.accountUcmId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "accountUcmId", r.accountUcmId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "accountUcmId", r.accountUcmId, "", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1001,9 +1009,22 @@ func (a *ACLTemplateApiService) PostDeviceTemplatesbyUuidExecute(r ApiPostDevice
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "")
 	// body params
 	localVarPostBody = r.aclTemplateRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Bearer"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -1057,15 +1078,8 @@ type ApiUpdateDeviceACLTemplateUsingPUTRequest struct {
 	ctx                context.Context
 	ApiService         *ACLTemplateApiService
 	uuid               string
-	authorization      *string
 	aclTemplateRequest *DeviceACLTemplateRequest
 	accountUcmId       *string
-}
-
-// The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token.
-func (r ApiUpdateDeviceACLTemplateUsingPUTRequest) Authorization(authorization string) ApiUpdateDeviceACLTemplateUsingPUTRequest {
-	r.authorization = &authorization
-	return r
 }
 
 // Update an ACL template.
@@ -1120,15 +1134,12 @@ func (a *ACLTemplateApiService) UpdateDeviceACLTemplateUsingPUTExecute(r ApiUpda
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.authorization == nil {
-		return nil, reportError("authorization is required and must be specified")
-	}
 	if r.aclTemplateRequest == nil {
 		return nil, reportError("aclTemplateRequest is required and must be specified")
 	}
 
 	if r.accountUcmId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "accountUcmId", r.accountUcmId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "accountUcmId", r.accountUcmId, "", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1147,9 +1158,22 @@ func (a *ACLTemplateApiService) UpdateDeviceACLTemplateUsingPUTExecute(r ApiUpda
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "")
 	// body params
 	localVarPostBody = r.aclTemplateRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Bearer"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err

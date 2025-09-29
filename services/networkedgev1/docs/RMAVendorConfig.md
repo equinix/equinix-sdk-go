@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **SiteId** | Pointer to **string** | Physical location within the Viptela overlay network, such as a branch office, or a campus (relevant only for Cisco SD-WANs) | [optional] 
-**SystemIpAddress** | Pointer to **string** | IP assigned to CSRSDWAN router and vSmart controller (relevant only for Cisco SD-WANs) | [optional] 
+**SystemIpAddress** | Pointer to **string** | IP assigned to the router and vSmart controller (relevant only for Cisco SD-WANs) | [optional] 
 **LicenseKey** | Pointer to **string** | License key. Mandatory for some devices. | [optional] 
 **LicenseSecret** | Pointer to **string** | License secret (Secret key). Mandatory for some devices. | [optional] 
 **Controller1** | Pointer to **string** | For Fortinet devices, this is the System IP address. | [optional] 

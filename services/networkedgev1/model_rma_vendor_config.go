@@ -21,7 +21,7 @@ var _ MappedNullable = &RMAVendorConfig{}
 type RMAVendorConfig struct {
 	// Physical location within the Viptela overlay network, such as a branch office, or a campus (relevant only for Cisco SD-WANs)
 	SiteId *string `json:"siteId,omitempty"`
-	// IP assigned to CSRSDWAN router and vSmart controller (relevant only for Cisco SD-WANs)
+	// IP assigned to the router and vSmart controller (relevant only for Cisco SD-WANs)
 	SystemIpAddress *string `json:"systemIpAddress,omitempty"`
 	// License key. Mandatory for some devices.
 	LicenseKey *string `json:"licenseKey,omitempty"`

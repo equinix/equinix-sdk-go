@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 ## CreateDeviceACLTemplateUsingPost
 
-> VirtualDeviceCreateResponse CreateDeviceACLTemplateUsingPost(ctx).Authorization(authorization).AclTemplateRequest(aclTemplateRequest).AccountUcmId(accountUcmId).Execute()
+> VirtualDeviceCreateResponse CreateDeviceACLTemplateUsingPost(ctx).AclTemplateRequest(aclTemplateRequest).AccountUcmId(accountUcmId).Execute()
 
 Create ACL Template
 
@@ -36,13 +36,12 @@ import (
 )
 
 func main() {
-	authorization := "authorization_example" // string | The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
 	aclTemplateRequest := *openapiclient.NewDeviceACLTemplateRequest("Test Template", "Test Template Description", []openapiclient.InboundRules{*openapiclient.NewInboundRules()}) // DeviceACLTemplateRequest | Creates an ACL template.
 	accountUcmId := "accountUcmId_example" // string | A reseller creating an ACL template for a customer can pass the accountUcmId of the customer. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ACLTemplateApi.CreateDeviceACLTemplateUsingPost(context.Background()).Authorization(authorization).AclTemplateRequest(aclTemplateRequest).AccountUcmId(accountUcmId).Execute()
+	resp, r, err := apiClient.ACLTemplateApi.CreateDeviceACLTemplateUsingPost(context.Background()).AclTemplateRequest(aclTemplateRequest).AccountUcmId(accountUcmId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ACLTemplateApi.CreateDeviceACLTemplateUsingPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -63,7 +62,6 @@ Other parameters are passed through a pointer to a apiCreateDeviceACLTemplateUsi
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authorization** | **string** | The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token. | 
  **aclTemplateRequest** | [**DeviceACLTemplateRequest**](DeviceACLTemplateRequest.md) | Creates an ACL template. | 
  **accountUcmId** | **string** | A reseller creating an ACL template for a customer can pass the accountUcmId of the customer. | 
 
@@ -73,7 +71,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -87,7 +85,7 @@ No authorization required
 
 ## DeletedeviceACLUsingDELETE
 
-> DeletedeviceACLUsingDELETE(ctx, uuid).Authorization(authorization).AccountUcmId(accountUcmId).Execute()
+> DeletedeviceACLUsingDELETE(ctx, uuid).AccountUcmId(accountUcmId).Execute()
 
 Delete ACL template
 
@@ -107,12 +105,11 @@ import (
 
 func main() {
 	uuid := "uuid_example" // string | Unique ID of an ACL template
-	authorization := "authorization_example" // string | The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
 	accountUcmId := "accountUcmId_example" // string | A reseller deleting an ACL template for a customer must pass the accountUcmId of the customer. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.ACLTemplateApi.DeletedeviceACLUsingDELETE(context.Background(), uuid).Authorization(authorization).AccountUcmId(accountUcmId).Execute()
+	r, err := apiClient.ACLTemplateApi.DeletedeviceACLUsingDELETE(context.Background(), uuid).AccountUcmId(accountUcmId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ACLTemplateApi.DeletedeviceACLUsingDELETE``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -136,7 +133,6 @@ Other parameters are passed through a pointer to a apiDeletedeviceACLUsingDELETE
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **authorization** | **string** | The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token. | 
  **accountUcmId** | **string** | A reseller deleting an ACL template for a customer must pass the accountUcmId of the customer. | 
 
 ### Return type
@@ -145,7 +141,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -159,7 +155,7 @@ No authorization required
 
 ## GetDeviceACLTemplateUsingGET1
 
-> DeviceACLPageResponse GetDeviceACLTemplateUsingGET1(ctx).Authorization(authorization).Offset(offset).Limit(limit).AccountUcmId(accountUcmId).Execute()
+> DeviceACLPageResponse GetDeviceACLTemplateUsingGET1(ctx).Offset(offset).Limit(limit).AccountUcmId(accountUcmId).Execute()
 
 Get ACL Templates
 
@@ -178,14 +174,13 @@ import (
 )
 
 func main() {
-	authorization := "authorization_example" // string | The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
 	offset := "offset_example" // string | Specifies where to start a page. It is the starting point of the collection returned from the server. (optional) (default to "0")
 	limit := "limit_example" // string | Specifies the page size. (optional) (default to "20")
 	accountUcmId := "accountUcmId_example" // string | Unique ID of the account. A reseller querying for the ACLs of a customer should input the accountUcmId of the customer. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ACLTemplateApi.GetDeviceACLTemplateUsingGET1(context.Background()).Authorization(authorization).Offset(offset).Limit(limit).AccountUcmId(accountUcmId).Execute()
+	resp, r, err := apiClient.ACLTemplateApi.GetDeviceACLTemplateUsingGET1(context.Background()).Offset(offset).Limit(limit).AccountUcmId(accountUcmId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ACLTemplateApi.GetDeviceACLTemplateUsingGET1``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -206,7 +201,6 @@ Other parameters are passed through a pointer to a apiGetDeviceACLTemplateUsingG
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authorization** | **string** | The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token. | 
  **offset** | **string** | Specifies where to start a page. It is the starting point of the collection returned from the server. | [default to &quot;0&quot;]
  **limit** | **string** | Specifies the page size. | [default to &quot;20&quot;]
  **accountUcmId** | **string** | Unique ID of the account. A reseller querying for the ACLs of a customer should input the accountUcmId of the customer. | 
@@ -217,7 +211,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -231,7 +225,7 @@ No authorization required
 
 ## GetDeviceTemplatebyUuid
 
-> ACLTemplateDetailsResponse GetDeviceTemplatebyUuid(ctx, uuid).Authorization(authorization).Execute()
+> ACLTemplateDetailsResponse GetDeviceTemplatebyUuid(ctx, uuid).Execute()
 
 Get ACL Template {uuid}
 
@@ -251,11 +245,10 @@ import (
 
 func main() {
 	uuid := "uuid_example" // string | Unique Id of an ACL template
-	authorization := "authorization_example" // string | The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ACLTemplateApi.GetDeviceTemplatebyUuid(context.Background(), uuid).Authorization(authorization).Execute()
+	resp, r, err := apiClient.ACLTemplateApi.GetDeviceTemplatebyUuid(context.Background(), uuid).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ACLTemplateApi.GetDeviceTemplatebyUuid``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -281,7 +274,6 @@ Other parameters are passed through a pointer to a apiGetDeviceTemplatebyUuidReq
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **authorization** | **string** | The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token. | 
 
 ### Return type
 
@@ -289,7 +281,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -303,7 +295,7 @@ No authorization required
 
 ## GetDeviceTemplatesbyUuid
 
-> InitialDeviceACLResponse GetDeviceTemplatesbyUuid(ctx, virtualDeviceUuid).Authorization(authorization).Execute()
+> InitialDeviceACLResponse GetDeviceTemplatesbyUuid(ctx, virtualDeviceUuid).Execute()
 
 Get ACL of Virtual Device
 
@@ -323,11 +315,10 @@ import (
 
 func main() {
 	virtualDeviceUuid := "virtualDeviceUuid_example" // string | Unique Id of a virtual device.
-	authorization := "authorization_example" // string | The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ACLTemplateApi.GetDeviceTemplatesbyUuid(context.Background(), virtualDeviceUuid).Authorization(authorization).Execute()
+	resp, r, err := apiClient.ACLTemplateApi.GetDeviceTemplatesbyUuid(context.Background(), virtualDeviceUuid).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ACLTemplateApi.GetDeviceTemplatesbyUuid``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -353,7 +344,6 @@ Other parameters are passed through a pointer to a apiGetDeviceTemplatesbyUuidRe
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **authorization** | **string** | The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token. | 
 
 ### Return type
 
@@ -361,7 +351,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -375,7 +365,7 @@ No authorization required
 
 ## PatchDeviceTemplatesbyUuid
 
-> PatchDeviceTemplatesbyUuid(ctx, virtualDeviceUuid).Authorization(authorization).AclTemplateRequest(aclTemplateRequest).AccountUcmId(accountUcmId).Execute()
+> PatchDeviceTemplatesbyUuid(ctx, virtualDeviceUuid).AclTemplateRequest(aclTemplateRequest).AccountUcmId(accountUcmId).Execute()
 
 Update ACL of Virtual Device
 
@@ -395,13 +385,12 @@ import (
 
 func main() {
 	virtualDeviceUuid := "virtualDeviceUuid_example" // string | Unique Id of a virtual device.
-	authorization := "authorization_example" // string | The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
 	aclTemplateRequest := *openapiclient.NewUpdateDeviceACLTemplateRequest([]openapiclient.ACLDetails{*openapiclient.NewACLDetails()}) // UpdateDeviceACLTemplateRequest | Update the ACL of a device.
 	accountUcmId := "accountUcmId_example" // string | A reseller updating a device ACL template for a customer can pass the accountUcmId of the customer. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.ACLTemplateApi.PatchDeviceTemplatesbyUuid(context.Background(), virtualDeviceUuid).Authorization(authorization).AclTemplateRequest(aclTemplateRequest).AccountUcmId(accountUcmId).Execute()
+	r, err := apiClient.ACLTemplateApi.PatchDeviceTemplatesbyUuid(context.Background(), virtualDeviceUuid).AclTemplateRequest(aclTemplateRequest).AccountUcmId(accountUcmId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ACLTemplateApi.PatchDeviceTemplatesbyUuid``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -425,7 +414,6 @@ Other parameters are passed through a pointer to a apiPatchDeviceTemplatesbyUuid
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **authorization** | **string** | The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token. | 
  **aclTemplateRequest** | [**UpdateDeviceACLTemplateRequest**](UpdateDeviceACLTemplateRequest.md) | Update the ACL of a device. | 
  **accountUcmId** | **string** | A reseller updating a device ACL template for a customer can pass the accountUcmId of the customer. | 
 
@@ -435,7 +423,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -449,7 +437,7 @@ No authorization required
 
 ## PostDeviceTemplatesbyUuid
 
-> PostDeviceTemplatesbyUuid(ctx, virtualDeviceUuid).Authorization(authorization).AclTemplateRequest(aclTemplateRequest).AccountUcmId(accountUcmId).Execute()
+> PostDeviceTemplatesbyUuid(ctx, virtualDeviceUuid).AclTemplateRequest(aclTemplateRequest).AccountUcmId(accountUcmId).Execute()
 
 Add ACL to Virtual Device
 
@@ -469,13 +457,12 @@ import (
 
 func main() {
 	virtualDeviceUuid := "virtualDeviceUuid_example" // string | Unique Id of a virtual device.
-	authorization := "authorization_example" // string | The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
 	aclTemplateRequest := *openapiclient.NewUpdateDeviceACLTemplateRequest([]openapiclient.ACLDetails{*openapiclient.NewACLDetails()}) // UpdateDeviceACLTemplateRequest | Update the ACL of a device.
 	accountUcmId := "accountUcmId_example" // string | A reseller updating a device ACL template for a customer can pass the accountUcmId of the customer. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.ACLTemplateApi.PostDeviceTemplatesbyUuid(context.Background(), virtualDeviceUuid).Authorization(authorization).AclTemplateRequest(aclTemplateRequest).AccountUcmId(accountUcmId).Execute()
+	r, err := apiClient.ACLTemplateApi.PostDeviceTemplatesbyUuid(context.Background(), virtualDeviceUuid).AclTemplateRequest(aclTemplateRequest).AccountUcmId(accountUcmId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ACLTemplateApi.PostDeviceTemplatesbyUuid``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -499,7 +486,6 @@ Other parameters are passed through a pointer to a apiPostDeviceTemplatesbyUuidR
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **authorization** | **string** | The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token. | 
  **aclTemplateRequest** | [**UpdateDeviceACLTemplateRequest**](UpdateDeviceACLTemplateRequest.md) | Update the ACL of a device. | 
  **accountUcmId** | **string** | A reseller updating a device ACL template for a customer can pass the accountUcmId of the customer. | 
 
@@ -509,7 +495,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -523,7 +509,7 @@ No authorization required
 
 ## UpdateDeviceACLTemplateUsingPUT
 
-> UpdateDeviceACLTemplateUsingPUT(ctx, uuid).Authorization(authorization).AclTemplateRequest(aclTemplateRequest).AccountUcmId(accountUcmId).Execute()
+> UpdateDeviceACLTemplateUsingPUT(ctx, uuid).AclTemplateRequest(aclTemplateRequest).AccountUcmId(accountUcmId).Execute()
 
 Update ACL Template
 
@@ -543,13 +529,12 @@ import (
 
 func main() {
 	uuid := "uuid_example" // string | Unique ID of an ACL template
-	authorization := "authorization_example" // string | The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
 	aclTemplateRequest := *openapiclient.NewDeviceACLTemplateRequest("Test Template", "Test Template Description", []openapiclient.InboundRules{*openapiclient.NewInboundRules()}) // DeviceACLTemplateRequest | Update an ACL template.
 	accountUcmId := "accountUcmId_example" // string | A reseller updating an ACL template for a customer must pass the accountUcmId of the customer. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.ACLTemplateApi.UpdateDeviceACLTemplateUsingPUT(context.Background(), uuid).Authorization(authorization).AclTemplateRequest(aclTemplateRequest).AccountUcmId(accountUcmId).Execute()
+	r, err := apiClient.ACLTemplateApi.UpdateDeviceACLTemplateUsingPUT(context.Background(), uuid).AclTemplateRequest(aclTemplateRequest).AccountUcmId(accountUcmId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ACLTemplateApi.UpdateDeviceACLTemplateUsingPUT``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -573,7 +558,6 @@ Other parameters are passed through a pointer to a apiUpdateDeviceACLTemplateUsi
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **authorization** | **string** | The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token. | 
  **aclTemplateRequest** | [**DeviceACLTemplateRequest**](DeviceACLTemplateRequest.md) | Update an ACL template. | 
  **accountUcmId** | **string** | A reseller updating an ACL template for a customer must pass the accountUcmId of the customer. | 
 
@@ -583,7 +567,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 

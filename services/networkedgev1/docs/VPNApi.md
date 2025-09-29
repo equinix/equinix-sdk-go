@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## CreateVpnUsingPOST
 
-> CreateVpnUsingPOST(ctx).Authorization(authorization).Request(request).Execute()
+> CreateVpnUsingPOST(ctx).Request(request).Execute()
 
 Create VPN Configuration
 
@@ -33,12 +33,11 @@ import (
 )
 
 func main() {
-	authorization := "authorization_example" // string | The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
 	request := *openapiclient.NewVpn("Chicago", "f79eead8-b837-41d3-9095-9b15c2c4996d", "110.11.12.222", "5bb2424e888bd", int64(65413), "100.210.1.31", "pass123", "192.168.7.2/30") // Vpn | VPN info (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.VPNApi.CreateVpnUsingPOST(context.Background()).Authorization(authorization).Request(request).Execute()
+	r, err := apiClient.VPNApi.CreateVpnUsingPOST(context.Background()).Request(request).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `VPNApi.CreateVpnUsingPOST``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -57,7 +56,6 @@ Other parameters are passed through a pointer to a apiCreateVpnUsingPOSTRequest 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authorization** | **string** | The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token. | 
  **request** | [**Vpn**](Vpn.md) | VPN info | 
 
 ### Return type
@@ -66,7 +64,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -80,7 +78,7 @@ No authorization required
 
 ## GetVpnByUuidUsingGET
 
-> VpnResponse GetVpnByUuidUsingGET(ctx, uuid).Authorization(authorization).Execute()
+> VpnResponse GetVpnByUuidUsingGET(ctx, uuid).Execute()
 
 Get VPN Configuration {uuid}
 
@@ -100,11 +98,10 @@ import (
 
 func main() {
 	uuid := "uuid_example" // string | uuid
-	authorization := "authorization_example" // string | The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.VPNApi.GetVpnByUuidUsingGET(context.Background(), uuid).Authorization(authorization).Execute()
+	resp, r, err := apiClient.VPNApi.GetVpnByUuidUsingGET(context.Background(), uuid).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `VPNApi.GetVpnByUuidUsingGET``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -130,7 +127,6 @@ Other parameters are passed through a pointer to a apiGetVpnByUuidUsingGETReques
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **authorization** | **string** | The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token. | 
 
 ### Return type
 
@@ -138,7 +134,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -152,7 +148,7 @@ No authorization required
 
 ## GetVpnsUsingGET
 
-> VpnResponseDto GetVpnsUsingGET(ctx).Authorization(authorization).StatusList(statusList).VirtualDeviceUuid(virtualDeviceUuid).Offset(offset).Limit(limit).Execute()
+> VpnResponseDto GetVpnsUsingGET(ctx).StatusList(statusList).VirtualDeviceUuid(virtualDeviceUuid).Offset(offset).Limit(limit).Execute()
 
 Get VPN Configurations
 
@@ -171,7 +167,6 @@ import (
 )
 
 func main() {
-	authorization := "authorization_example" // string | The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
 	statusList := []openapiclient.GetVpnsUsingGETStatusListParameterInner{openapiclient.getVpnsUsingGET_statusList_parameter_inner("PROVISIONED")} // []GetVpnsUsingGETStatusListParameterInner | One or more desired status (optional)
 	virtualDeviceUuid := "virtualDeviceUuid_example" // string | Unique Id of a virtual device (optional)
 	offset := "offset_example" // string | Specifies where to start a page. It is the starting point of the collection returned from the server. (optional) (default to "0")
@@ -179,7 +174,7 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.VPNApi.GetVpnsUsingGET(context.Background()).Authorization(authorization).StatusList(statusList).VirtualDeviceUuid(virtualDeviceUuid).Offset(offset).Limit(limit).Execute()
+	resp, r, err := apiClient.VPNApi.GetVpnsUsingGET(context.Background()).StatusList(statusList).VirtualDeviceUuid(virtualDeviceUuid).Offset(offset).Limit(limit).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `VPNApi.GetVpnsUsingGET``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -200,7 +195,6 @@ Other parameters are passed through a pointer to a apiGetVpnsUsingGETRequest str
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authorization** | **string** | The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token. | 
  **statusList** | [**[]GetVpnsUsingGETStatusListParameterInner**](GetVpnsUsingGETStatusListParameterInner.md) | One or more desired status | 
  **virtualDeviceUuid** | **string** | Unique Id of a virtual device | 
  **offset** | **string** | Specifies where to start a page. It is the starting point of the collection returned from the server. | [default to &quot;0&quot;]
@@ -212,7 +206,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -226,7 +220,7 @@ No authorization required
 
 ## RemoveVpnConfigurationUsingDELETE
 
-> RemoveVpnConfigurationUsingDELETE(ctx, uuid).Authorization(authorization).Execute()
+> RemoveVpnConfigurationUsingDELETE(ctx, uuid).Execute()
 
 Delete VPN Configuration
 
@@ -246,11 +240,10 @@ import (
 
 func main() {
 	uuid := "uuid_example" // string | uuid
-	authorization := "authorization_example" // string | The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.VPNApi.RemoveVpnConfigurationUsingDELETE(context.Background(), uuid).Authorization(authorization).Execute()
+	r, err := apiClient.VPNApi.RemoveVpnConfigurationUsingDELETE(context.Background(), uuid).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `VPNApi.RemoveVpnConfigurationUsingDELETE``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -274,7 +267,6 @@ Other parameters are passed through a pointer to a apiRemoveVpnConfigurationUsin
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **authorization** | **string** | The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token. | 
 
 ### Return type
 
@@ -282,7 +274,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -296,7 +288,7 @@ No authorization required
 
 ## UpdateVpnConfigurationUsingPut
 
-> UpdateVpnConfigurationUsingPut(ctx, uuid).Authorization(authorization).Request(request).Execute()
+> UpdateVpnConfigurationUsingPut(ctx, uuid).Request(request).Execute()
 
 Update VPN Configuration
 
@@ -316,12 +308,11 @@ import (
 
 func main() {
 	uuid := "uuid_example" // string | uuid
-	authorization := "authorization_example" // string | The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
 	request := *openapiclient.NewVpn("Chicago", "f79eead8-b837-41d3-9095-9b15c2c4996d", "110.11.12.222", "5bb2424e888bd", int64(65413), "100.210.1.31", "pass123", "192.168.7.2/30") // Vpn | VPN info (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.VPNApi.UpdateVpnConfigurationUsingPut(context.Background(), uuid).Authorization(authorization).Request(request).Execute()
+	r, err := apiClient.VPNApi.UpdateVpnConfigurationUsingPut(context.Background(), uuid).Request(request).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `VPNApi.UpdateVpnConfigurationUsingPut``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -345,7 +336,6 @@ Other parameters are passed through a pointer to a apiUpdateVpnConfigurationUsin
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **authorization** | **string** | The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token. | 
  **request** | [**Vpn**](Vpn.md) | VPN info | 
 
 ### Return type
@@ -354,7 +344,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 

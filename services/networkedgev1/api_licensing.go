@@ -24,17 +24,10 @@ import (
 type LicensingApiService service
 
 type ApiUpdateLicenseUsingPOSTRequest struct {
-	ctx           context.Context
-	ApiService    *LicensingApiService
-	uuid          string
-	authorization *string
-	request       *LicenseUpdateRequest
-}
-
-// The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token.
-func (r ApiUpdateLicenseUsingPOSTRequest) Authorization(authorization string) ApiUpdateLicenseUsingPOSTRequest {
-	r.authorization = &authorization
-	return r
+	ctx        context.Context
+	ApiService *LicensingApiService
+	uuid       string
+	request    *LicenseUpdateRequest
 }
 
 // License token
@@ -86,9 +79,6 @@ func (a *LicensingApiService) UpdateLicenseUsingPOSTExecute(r ApiUpdateLicenseUs
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.authorization == nil {
-		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
-	}
 	if r.request == nil {
 		return localVarReturnValue, nil, reportError("request is required and must be specified")
 	}
@@ -110,9 +100,22 @@ func (a *LicensingApiService) UpdateLicenseUsingPOSTExecute(r ApiUpdateLicenseUs
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "")
 	// body params
 	localVarPostBody = r.request
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Bearer"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -183,17 +186,10 @@ func (a *LicensingApiService) UpdateLicenseUsingPOSTExecute(r ApiUpdateLicenseUs
 }
 
 type ApiUploadLicenseForDeviceUsingPOSTRequest struct {
-	ctx           context.Context
-	ApiService    *LicensingApiService
-	uuid          string
-	authorization *string
-	file          *os.File
-}
-
-// The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token.
-func (r ApiUploadLicenseForDeviceUsingPOSTRequest) Authorization(authorization string) ApiUploadLicenseForDeviceUsingPOSTRequest {
-	r.authorization = &authorization
-	return r
+	ctx        context.Context
+	ApiService *LicensingApiService
+	uuid       string
+	file       *os.File
 }
 
 // License file
@@ -245,9 +241,6 @@ func (a *LicensingApiService) UploadLicenseForDeviceUsingPOSTExecute(r ApiUpload
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.authorization == nil {
-		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
-	}
 	if r.file == nil {
 		return localVarReturnValue, nil, reportError("file is required and must be specified")
 	}
@@ -269,7 +262,6 @@ func (a *LicensingApiService) UploadLicenseForDeviceUsingPOSTExecute(r ApiUpload
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "")
 	var fileLocalVarFormFileName string
 	var fileLocalVarFileName string
 	var fileLocalVarFileBytes []byte
@@ -284,6 +276,20 @@ func (a *LicensingApiService) UploadLicenseForDeviceUsingPOSTExecute(r ApiUpload
 		fileLocalVarFileName = fileLocalVarFile.Name()
 		fileLocalVarFile.Close()
 		formFiles = append(formFiles, formFile{fileBytes: fileLocalVarFileBytes, fileName: fileLocalVarFileName, formFileName: fileLocalVarFormFileName})
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Bearer"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -360,7 +366,6 @@ type ApiUploadLicenseUsingPOSTRequest struct {
 	metroCode      *string
 	deviceTypeCode *string
 	licenseType    *string
-	authorization  *string
 	file           *os.File
 }
 
@@ -379,12 +384,6 @@ func (r ApiUploadLicenseUsingPOSTRequest) DeviceTypeCode(deviceTypeCode string) 
 // licenseType
 func (r ApiUploadLicenseUsingPOSTRequest) LicenseType(licenseType string) ApiUploadLicenseUsingPOSTRequest {
 	r.licenseType = &licenseType
-	return r
-}
-
-// The OAuth Bearer token. Please add the prefix &#39;Bearer &#39; before the token.
-func (r ApiUploadLicenseUsingPOSTRequest) Authorization(authorization string) ApiUploadLicenseUsingPOSTRequest {
-	r.authorization = &authorization
 	return r
 }
 
@@ -443,16 +442,13 @@ func (a *LicensingApiService) UploadLicenseUsingPOSTExecute(r ApiUploadLicenseUs
 	if r.licenseType == nil {
 		return localVarReturnValue, nil, reportError("licenseType is required and must be specified")
 	}
-	if r.authorization == nil {
-		return localVarReturnValue, nil, reportError("authorization is required and must be specified")
-	}
 	if r.file == nil {
 		return localVarReturnValue, nil, reportError("file is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "metroCode", r.metroCode, "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "deviceTypeCode", r.deviceTypeCode, "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "licenseType", r.licenseType, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "metroCode", r.metroCode, "", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "deviceTypeCode", r.deviceTypeCode, "", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "licenseType", r.licenseType, "", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"multipart/form-data"}
 
@@ -470,7 +466,6 @@ func (a *LicensingApiService) UploadLicenseUsingPOSTExecute(r ApiUploadLicenseUs
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "Authorization", r.authorization, "")
 	var fileLocalVarFormFileName string
 	var fileLocalVarFileName string
 	var fileLocalVarFileBytes []byte
@@ -485,6 +480,20 @@ func (a *LicensingApiService) UploadLicenseUsingPOSTExecute(r ApiUploadLicenseUs
 		fileLocalVarFileName = fileLocalVarFile.Name()
 		fileLocalVarFile.Close()
 		formFiles = append(formFiles, formFile{fileBytes: fileLocalVarFileBytes, fileName: fileLocalVarFileName, formFileName: fileLocalVarFormFileName})
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Bearer"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
