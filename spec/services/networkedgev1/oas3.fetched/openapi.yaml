@@ -1,6 +1,9 @@
 
 
 
+
+
+
 swagger: '2.0' 
 info:
   description: Network Edge (NE) is a platform that allows customers to deploy and run virtual network services and appliances such as routers, load balancers, and firewalls on a generic device instead of additional dedicated hardware, CapEx and colo space. The Network Edge REST APIs allow you to interact with the Equinix Platform to programmatically create a virtual device and add services. Details on specific use cases can be found in the documentation available on the developer portal.
@@ -2963,7 +2966,7 @@ definitions:
         description: Physical location within the Viptela overlay network, such as a branch office, or a campus (relevant only for Cisco SD-WANs)
       systemIpAddress:
         type: string
-        description: IP assigned to CSRSDWAN router and vSmart controller (relevant only for Cisco SD-WANs)
+        description: IP assigned to the router and vSmart controller (relevant only for Cisco SD-WANs)
         example: 192.164.0.0
       licenseKey:
         type: string
@@ -3567,6 +3570,10 @@ definitions:
         type: string
         example: Test Template Description
         description: The ACL template description.
+      projectId:
+        type: string
+        example: XXXXX-XXXXXXXXXXX-XXXXXXXXXXX-XXXXXXXXXXXX
+        description: Customer project Id. Check your projectId under Resource Management on Equinix Portal. You should have access to a project to see or create assets under it. Equinix will assign a projectId if you do not provide one. 
       inboundRules:
         type: array
         description: An array of inbound rules.
@@ -3676,8 +3683,8 @@ definitions:
         description: AccountReferenceId. This is a temporary ID that can be used to create a device when the account status is still pending, not active. Either an account number or accountReferenceId is required.
       projectId:
         type: string
-        example: 11111111
-        description: Customer project Id. Required for CRH-enabled customers.
+        example: XXXX-XXXX-XXXXX-XXXXXXXXXXXXXXXX
+        description: Customer project Id. Check your projectId under Resource Management on Equinix Portal. You should have access to a project to see or create assets under it. Equinix will assign a projectId if you do not provide one. 
       version:
         type: string
         example: "16.09.03"
@@ -3792,8 +3799,8 @@ definitions:
         $ref: '#/definitions/UserPublicKeyRequest'
       ipType:
         type: string
-        example: DHCP
-        description: If you are creating a CSRSDWAN, you may specify the ipType, either DHCP or Static. If you do not specify a value, Equinix will default to Static. 
+        example: STATIC
+        description: This field is deprecated. The ipType value always defaults to STATIC.
       sshInterfaceId:
         type: string
         example: "4"
@@ -5664,10 +5671,10 @@ definitions:
     properties:
       accessKey:
         type: string
-        example: AKIAIOSFODNN7EXAMPLE
+        example: AKIAIXKQARIFBC3QJKYQ
       secretKey:
         type: string
-        example:  wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+        example: ARIFW1lWbqNSOqSkCAOXAhep22UGyLJvkDBAIG
   DeleteConnectionResponse:
     type: object
     properties:
@@ -6473,7 +6480,7 @@ definitions:
         description: Physical location within the Viptela overlay network, such as a branch office, or a campus (relevant only for Cisco SD-WANs)
       systemIpAddress:
         type: string
-        description: IP assigned to CSRSDWAN router and vSmart controller (relevant only for Cisco SD-WANs)
+        description: IP assigned to the router and vSmart controller (relevant only for Cisco SD-WANs)
         example: 192.164.0.0
       licenseKey:
         type: string
