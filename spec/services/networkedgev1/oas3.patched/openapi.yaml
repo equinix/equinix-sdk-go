@@ -54,7 +54,6 @@ paths:
         default: 20
         format: int32
 
-      - $ref: '#/parameters/authorizationHeader'
       responses:
         '200':
           description: OK
@@ -138,7 +137,6 @@ paths:
         required: false
         type: string
         
-      - $ref: '#/parameters/authorizationHeader'
       responses:
         '200':
           description: Success
@@ -185,7 +183,6 @@ paths:
         default: 20
         format: int32
 
-      - $ref: '#/parameters/authorizationHeader'
       responses:
         '200':
           description: OK
@@ -216,7 +213,6 @@ paths:
         in: query
         description: Unique ID of an account
         type: string
-      - $ref: '#/parameters/authorizationHeader'
       responses:
         '200':
           description: Successfully retrieved the account details
@@ -247,7 +243,6 @@ paths:
           description: account_number
           required: true
           type: string
-        - $ref: '#/parameters/authorizationHeader'
       responses:
         '200':
           description: Successfully retrieved Status
@@ -274,7 +269,6 @@ paths:
           required: true
           schema:
             $ref: '#/definitions/AgreementAcceptRequest'
-        - $ref: '#/parameters/authorizationHeader'
       responses:
         '200':
           description: 'The request is fulfilled.'
@@ -305,7 +299,6 @@ paths:
           description: licenseType
           required: true
           type: string
-        - $ref: '#/parameters/authorizationHeader'
       responses:
         '200':
           description: Successfully retrieved the vendor's terms
@@ -327,7 +320,6 @@ paths:
       produces:
         - '*/*'
       parameters:
-        - $ref: '#/parameters/authorizationHeader'
       responses:
         '200':
           description: Successfully retrieved Status
@@ -440,7 +432,6 @@ paths:
         description: Reseller customer username
         required: false
         type: string
-      - $ref: '#/parameters/authorizationHeader'
       responses:
         '200':
           description: OK
@@ -557,7 +548,6 @@ paths:
           description: Reseller customer username
           required: false
           type: string
-        - $ref: '#/parameters/authorizationHeader'
       responses:
         '200':
           description: ContentType- application/pdf, charset UTF-8. The response is a pdf file that you can save or view online. 
@@ -589,7 +579,6 @@ paths:
         required: false
         type: string
 
-      - $ref: '#/parameters/authorizationHeader'
       responses:
         '200':
           description: Success
@@ -620,7 +609,6 @@ paths:
         required: true
         schema:
           $ref: '#/definitions/PublicKeyRequest'
-      - $ref: '#/parameters/authorizationHeader'
       responses:
         '201':
           description: Created. The unique Id of the newly created key is in the location header of the response.
@@ -651,7 +639,6 @@ paths:
       produces:
       - application/json
       parameters:
-      - $ref: '#/parameters/authorizationHeader'
       responses:
         '200':
           description: OK
@@ -706,7 +693,6 @@ paths:
         description: Whether you are uploading a license or a cloud_init file. LICENSE or CLOUD_INIT
         required: true
         type: string
-      - $ref: '#/parameters/authorizationHeader'
       responses:
         '200':
           description: OK
@@ -758,7 +744,6 @@ paths:
         description: licenseType
         required: true
         type: string
-      - $ref: '#/parameters/authorizationHeader'
       responses:
         '200':
           description: OK
@@ -798,7 +783,6 @@ paths:
         description: License file
         required: true
         type: file
-      - $ref: '#/parameters/authorizationHeader'
       responses:
         '200':
           description: OK
@@ -839,7 +823,6 @@ paths:
         required: true
         schema:
           $ref: "#/definitions/LicenseUpdateRequest"
-      - $ref: '#/parameters/authorizationHeader'
       responses:
         '202':
           description: Accepted
@@ -875,7 +858,6 @@ paths:
         required: true
         schema:
           $ref: '#/definitions/VirtualDeviceRequest'
-      - $ref: '#/parameters/authorizationHeader'
       - name: draft
         in: query
         description: draft
@@ -964,7 +946,6 @@ paths:
         items:
           type: string
         
-      - $ref: '#/parameters/authorizationHeader'
       responses:
         '200':
           description: OK
@@ -993,7 +974,6 @@ paths:
         description: uuid
         required: true
         type: string
-      - $ref: '#/parameters/authorizationHeader'
       responses:
         '200':
           description: Success
@@ -1027,7 +1007,6 @@ paths:
         name: virtualDeviceUpdateRequestDto
         schema:
           "$ref": "#/definitions/VirtualDeviceInternalPatchRequestDto"
-      - $ref: '#/parameters/authorizationHeader'
       responses:
         '204':
           description: The request was successfully processed.
@@ -1068,7 +1047,6 @@ paths:
         type: boolean
         default: false
         description: Optional parameter in case you have a secondary device. As both primary and secondary devices are deleted simultaneously, this field must be marked True so we delete both the devices simultaneously.
-      - $ref: '#/parameters/authorizationHeader'
       responses:
         '204':
           description: The deletion is in progress. Call Get virtual device {uuid} API to check the status of your deletion.
@@ -1112,7 +1090,6 @@ paths:
           description: Unique Id of a Virtual Device 
           required: true
           type: string
-        - $ref: '#/parameters/authorizationHeader'
       responses:
         '204':
           description: No Content
@@ -1160,7 +1137,6 @@ paths:
         description: Unique ID of a virtual device. 
         required: true
         type: string
-      - $ref: '#/parameters/authorizationHeader'
       responses:
         '200':
           description: OK
@@ -1186,7 +1162,6 @@ paths:
         description: Unique ID of a virtual device. 
         required: true
         type: string
-      - $ref: '#/parameters/authorizationHeader'
       responses:
         '201':
           description: A request to reboot has been created. 
@@ -1219,7 +1194,6 @@ paths:
         description: A reseller creating an ACL template for a customer can pass the accountUcmId of the customer.
         required: false
         type: string
-      - $ref: '#/parameters/authorizationHeader'
       responses:
         '201':
           description: ACL template created. The response is the unique ID of the ACL template.
@@ -1267,7 +1241,6 @@ paths:
         description: Unique ID of the account. A reseller querying for the ACLs of a customer should input the accountUcmId of the customer.
         required: false
         type: string
-      - $ref: '#/parameters/authorizationHeader'
       responses:
         '200':
           description: OK
@@ -1295,7 +1268,6 @@ paths:
         description: Unique Id of an ACL template
         required: true
         type: string
-      - $ref: '#/parameters/authorizationHeader'
       responses:
         '200':
           description: Success
@@ -1331,7 +1303,6 @@ paths:
         description: A reseller deleting an ACL template for a customer must pass the accountUcmId of the customer.
         required: false
         type: string
-      - $ref: '#/parameters/authorizationHeader'
       responses:
         '204':
           description: The deletion is in progress. 
@@ -1374,7 +1345,6 @@ paths:
           required: true
           schema:
            $ref: '#/definitions/DeviceACLTemplateRequest'
-        - $ref: '#/parameters/authorizationHeader'
       responses:
         '204':
           description: No Content
@@ -1410,7 +1380,6 @@ paths:
         required: true
         type: string
 
-      - $ref: '#/parameters/authorizationHeader'
       responses:
         '200':
           description: Success
@@ -1452,7 +1421,6 @@ paths:
         description: A reseller updating a device ACL template for a customer can pass the accountUcmId of the customer.
         required: false
         type: string
-      - $ref: '#/parameters/authorizationHeader'
       responses:
         '204':
           description: Successfully updated
@@ -1494,7 +1462,6 @@ paths:
         description: A reseller updating a device ACL template for a customer can pass the accountUcmId of the customer.
         required: false
         type: string
-      - $ref: '#/parameters/authorizationHeader'
       responses:
         '204':
           description: Successfully updated
@@ -1531,7 +1498,6 @@ paths:
         required: true
         schema:
           $ref: "#/definitions/AdditionalBandwidthRequest"
-      - $ref: '#/parameters/authorizationHeader'
       responses:
         '204':
           description: No Content
@@ -1565,7 +1531,6 @@ paths:
         description: uuid
         required: true
         type: string
-      - $ref: '#/parameters/authorizationHeader'
       responses:
         '200':
           description: Success
@@ -1598,7 +1563,6 @@ paths:
         description: Virtual Device unique Id
         required: true
         type: string
-      - $ref: '#/parameters/authorizationHeader'
       responses:
         '200':
           description: The device is reachable.
@@ -1649,7 +1613,6 @@ paths:
         description: End time of the duration for which you want stats. (YYYY-MM-DDThh:mm:ssZ)
         required: true
         type: string
-      - $ref: '#/parameters/authorizationHeader'
       responses:
         '200':
           description: Success
@@ -1694,7 +1657,6 @@ paths:
         description: Unique ID of a virtual device. 
         required: true
         type: string
-      - $ref: '#/parameters/authorizationHeader'
       responses:
         '200':
           description: OK
@@ -1724,7 +1686,6 @@ paths:
         required: true
         schema:
           $ref: "#/definitions/DeviceLinkRequest"
-      - $ref: '#/parameters/authorizationHeader'
       responses:
         '202':
           description: Unique ID of the device link group.
@@ -1792,7 +1753,6 @@ paths:
         required: false
         type: string 
         default: 20
-      - $ref: '#/parameters/authorizationHeader'
       responses:
         '200':
           description: OK
@@ -1821,7 +1781,6 @@ paths:
         description: Unique Id of a device link group.
         required: true
         type: string
-      - $ref: '#/parameters/authorizationHeader'
       responses:
         '200':
           description: OK
@@ -1858,7 +1817,6 @@ paths:
         required: true
         schema:
           $ref: "#/definitions/DeviceLinkRequest"
-      - $ref: '#/parameters/authorizationHeader'
       responses:
         '204':
           description: Request fulfilled.
@@ -1891,7 +1849,6 @@ paths:
         description: Unique Id of a device link group.
         required: true
         type: string
-      - $ref: '#/parameters/authorizationHeader'
       responses:
         '204':
           description: Request fulfilled.
@@ -1927,7 +1884,6 @@ paths:
         required: false
         schema:
           $ref: '#/definitions/BgpConfigAddRequest'
-      - $ref: '#/parameters/authorizationHeader'
       responses:
         '202':
           description: Accepted
@@ -1989,7 +1945,6 @@ paths:
         required: false
         type: string 
         default: 20
-      - $ref: '#/parameters/authorizationHeader'
       responses:
         '200':
           description: OK
@@ -2026,7 +1981,6 @@ paths:
         required: false
         schema:
           $ref: '#/definitions/BgpUpdateRequest'
-      - $ref: '#/parameters/authorizationHeader'
       responses:
         '202':
           description: Accepted
@@ -2060,7 +2014,6 @@ paths:
         description: uuid
         required: true
         type: string
-      - $ref: '#/parameters/authorizationHeader'
       responses:
         '200':
           description: OK
@@ -2092,7 +2045,6 @@ paths:
         required: false
         schema:
           $ref: '#/definitions/Vpn'
-      - $ref: '#/parameters/authorizationHeader'
       responses:
         '201':
           description: Created Successfully
@@ -2164,7 +2116,6 @@ paths:
         default: 20
         format: int32
 
-      - $ref: '#/parameters/authorizationHeader'
       responses:
         '200':
           description: OK
@@ -2196,7 +2147,6 @@ paths:
         description: uuid
         required: true
         type: string
-      - $ref: '#/parameters/authorizationHeader'
       responses:
         '200':
           description: Read Successfully
@@ -2329,7 +2279,6 @@ paths:
         required: false
         schema:
           $ref: '#/definitions/Vpn'
-      - $ref: '#/parameters/authorizationHeader'
       responses:
         '200':
           description: OK
@@ -2363,7 +2312,6 @@ paths:
         description: uuid
         required: true
         type: string
-      - $ref: '#/parameters/authorizationHeader'
       responses:
         '200':
           description: OK
@@ -2422,7 +2370,6 @@ paths:
           default: 20
           format: int32
 
-        - $ref: '#/parameters/authorizationHeader'
       responses:
         '200':
           description: OK
@@ -2453,7 +2400,6 @@ paths:
           required: true
           schema:
             $ref: '#/definitions/DeviceBackupCreateRequest'
-        - $ref: '#/parameters/authorizationHeader'
       responses:
         '202':
           description: Accepted
@@ -2488,7 +2434,6 @@ paths:
           description: Unique ID of a backup
           required: true
           type: string
-        - $ref: '#/parameters/authorizationHeader'
       responses:
         '200':
           description: OK
@@ -2524,7 +2469,6 @@ paths:
           required: true
           schema:
             $ref: '#/definitions/DeviceBackupUpdateRequest'
-        - $ref: '#/parameters/authorizationHeader'
       responses:
         '204':
           description: Updated successfully
@@ -2559,7 +2503,6 @@ paths:
           required: true
           type: string
 
-        - $ref: '#/parameters/authorizationHeader'
       responses:
         '204':
           description: Deleted successfully.
@@ -2598,7 +2541,6 @@ paths:
           description: Unique ID of a backup
           required: true
           type: string
-        - $ref: '#/parameters/authorizationHeader'
       responses:
         '200':
           description: OK
@@ -2635,7 +2577,6 @@ paths:
           description: Unique ID of a backup
           type: string
           required: true
-        - $ref: '#/parameters/authorizationHeader'
       responses:
         '200':
           description: OK
@@ -2672,7 +2613,6 @@ paths:
           required: true
           schema:
             $ref: '#/definitions/DeviceBackupUpdateRequest'
-        - $ref: '#/parameters/authorizationHeader'
       responses:
         '204':
           description: The backup was successfully restored
@@ -2714,7 +2654,6 @@ paths:
           required: true
           schema:
             $ref: '#/definitions/DeviceRMAPostRequest'
-        - $ref: '#/parameters/authorizationHeader'
       responses:
         '204':
           description: You successfully triggered an RMA request.
@@ -2749,7 +2688,6 @@ paths:
           description: Device type
           required: true
           type: string
-        - $ref: '#/parameters/authorizationHeader'
       responses:
         '200':
           description: OK
@@ -2786,7 +2724,6 @@ paths:
           description: Version
           required: true
           type: string
-        - $ref: '#/parameters/authorizationHeader'
       responses:
         '202':
           description: Download link of the image
@@ -6652,11 +6589,11 @@ definitions:
       uuid:
         type: string
         example: 877a3aa2-c49a-4af1-98a6-007424e737ae
-parameters:
-  authorizationHeader:
+securityDefinitions:
+  Bearer:
     name: Authorization
     in: header
+    type: apiKey
     description: The OAuth Bearer token. Please add the prefix 'Bearer ' before the token.
-    type: string
-    required: true
-    x-prefix: 'Bearer '
+security:
+ - Bearer: []
