@@ -29,6 +29,8 @@ import (
 	"strings"
 	"time"
 	"unicode/utf8"
+
+	"github.com/equinix/equinix-sdk-go/internal/transport"
 )
 
 var (
@@ -136,6 +138,9 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 		cfg.HTTPClient = http.DefaultClient
 	}
 
+	// Inject deprecation/sunset logging transport to ensure these are reported to end users
+	cfg.HTTPClient.Transport = transport.NewDeprecationLoggingTransport(cfg.HTTPClient.Transport)
+
 	c := &APIClient{}
 	c.cfg = cfg
 	c.common.client = c
@@ -238,6 +243,10 @@ func typeCheckParameter(obj interface{}, expected string, name string) error {
 
 func parameterValueToString(obj interface{}, key string) string {
 	if reflect.TypeOf(obj).Kind() != reflect.Ptr {
+		if actualObj, ok := obj.(interface{ GetActualInstanceValue() interface{} }); ok {
+			return fmt.Sprintf("%v", actualObj.GetActualInstanceValue())
+		}
+
 		return fmt.Sprintf("%v", obj)
 	}
 	var param, ok = obj.(MappedNullable)
@@ -354,30 +363,17 @@ func parameterToJson(obj interface{}) (string, error) {
 // callAPI do the request.
 func (c *APIClient) callAPI(request *http.Request) (*http.Response, error) {
 	if c.cfg.Debug {
-		authToken, hasAuth := request.Header["X-Auth-Token"]
-		if hasAuth {
-			request.Header.Set("X-Auth-Token", "**REDACTED**")
-		}
-
 		dump, err := httputil.DumpRequestOut(request, true)
-
-		if hasAuth {
-			request.Header["X-Auth-Token"] = authToken
-		}
-
 		if err != nil {
 			return nil, err
 		}
 		log.Printf("\n%s\n", string(dump))
-
 	}
 
 	resp, err := c.cfg.HTTPClient.Do(request)
 	if err != nil {
 		return resp, err
 	}
-
-	dumpDeprecation(resp)
 
 	if c.cfg.Debug {
 		dump, err := httputil.DumpResponse(resp, true)
@@ -755,74 +751,22 @@ func (e GenericOpenAPIError) Model() interface{} {
 	return e.model
 }
 
-// format error message using title and detail when model is an instance of
-// the Error component schema or when it implements rfc7807
+// format error message using title and detail when model implements rfc7807
 func formatErrorMessage(status string, v interface{}) string {
 	str := ""
-	errorModel, ok := v.(*Error)
+	metaValue := reflect.ValueOf(v).Elem()
 
-	if ok {
-		errs := []string{}
-		errs = append(errs, errorModel.GetErrors()...)
-		if errorModel.GetError() != "" {
-			errs = append(errs, errorModel.GetError())
+	if metaValue.Kind() == reflect.Struct {
+		field := metaValue.FieldByName("Title")
+		if field != (reflect.Value{}) {
+			str = fmt.Sprintf("%s", field.Interface())
 		}
-		str = strings.Join(errs, ", ")
-	} else {
-		metaValue := reflect.ValueOf(v).Elem()
 
-		if metaValue.Kind() == reflect.Struct {
-			field := metaValue.FieldByName("Title")
-			if field != (reflect.Value{}) {
-				str = fmt.Sprintf("%s", field.Interface())
-			}
-
-			field = metaValue.FieldByName("Detail")
-			if field != (reflect.Value{}) {
-				str = fmt.Sprintf("%s (%s)", str, field.Interface())
-			}
+		field = metaValue.FieldByName("Detail")
+		if field != (reflect.Value{}) {
+			str = fmt.Sprintf("%s (%s)", str, field.Interface())
 		}
 	}
 
 	return strings.TrimSpace(fmt.Sprintf("%s %s", status, str))
-}
-
-// dumpDeprecation logs headers defined by
-// https://tools.ietf.org/html/rfc8594
-// copied from https://github.com/packngo
-// for backwards compatibility
-func dumpDeprecation(resp *http.Response) {
-	uri := ""
-	if resp.Request != nil {
-		uri = resp.Request.Method + " " + resp.Request.URL.Path
-	}
-
-	deprecation := resp.Header.Get("Deprecation")
-	if deprecation != "" {
-		if deprecation == "true" {
-			deprecation = ""
-		} else {
-			deprecation = " on " + deprecation
-		}
-		log.Printf("WARNING: %q reported deprecation%s", uri, deprecation)
-	}
-
-	sunset := resp.Header.Get("Sunset")
-	if sunset != "" {
-		log.Printf("WARNING: %q reported sunsetting on %s", uri, sunset)
-	}
-
-	links := resp.Header.Values("Link")
-
-	for _, s := range links {
-		for _, ss := range strings.Split(s, ",") {
-			if strings.Contains(ss, "rel=\"sunset\"") {
-				link := strings.Split(ss, ";")[0]
-				log.Printf("WARNING: See %s for sunset details", link)
-			} else if strings.Contains(ss, "rel=\"deprecation\"") {
-				link := strings.Split(ss, ";")[0]
-				log.Printf("WARNING: See %s for deprecation details", link)
-			}
-		}
-	}
 }
