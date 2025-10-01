@@ -31,6 +31,8 @@ import (
 	"strings"
 	"time"
 	"unicode/utf8"
+
+	"github.com/equinix/equinix-sdk-go/internal/transport"
 )
 
 var (
@@ -63,6 +65,9 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	if cfg.HTTPClient == nil {
 		cfg.HTTPClient = http.DefaultClient
 	}
+
+	// Inject deprecation/sunset logging transport to ensure these are reported to end users
+	cfg.HTTPClient.Transport = transport.NewDeprecationLoggingTransport(cfg.HTTPClient.Transport)
 
 	c := &APIClient{}
 	c.cfg = cfg
