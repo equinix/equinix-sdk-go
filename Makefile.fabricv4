@@ -9,10 +9,10 @@ EXAMPLE_FOLDERS:=get_connection
 
 CODE_DIR=${CODE_BASE_DIR}/${PACKAGE_NAME}
 TEMPLATE_DIR=${TEMPLATE_BASE_DIR}/${PACKAGE_NAME}
+TEMPLATE_OVERRIDE_DIR=${TEMPLATE_OVERRIDE_BASE_DIR}/${PACKAGE_NAME}
 SPEC_FETCHED_DIR=${SPEC_BASE_DIR}/${PACKAGE_NAME}/oas3.fetched
 SPEC_PATCH_DIR=${SPEC_BASE_DIR}/${PACKAGE_NAME}/patches
 SPEC_PATCHED_DIR=${SPEC_BASE_DIR}/${PACKAGE_NAME}/oas3.patched
-SPEC_FETCHER=curl
 
 all: pull fetch patch generate stage
 
@@ -43,7 +43,17 @@ patch-post:
 clean:
 	rm -rf $(CODE_DIR)
 
-codegen:
+prepare-templates:
+	rm -rf $(TEMPLATE_DIR)
+	mkdir -p $(TEMPLATE_DIR)
+	cp $(TEMPLATE_COMMON_DIR)/* $(TEMPLATE_DIR)
+	if [ $(words $(wildcard $(TEMPLATE_OVERRIDE_DIR)/*)) -gt 0 ]; then \
+		cp -f $(TEMPLATE_OVERRIDE_DIR)/* $(TEMPLATE_DIR); \
+	else \
+		echo "No override templates found in $(TEMPLATE_OVERRIDE_DIR)"; \
+	fi
+
+codegen: prepare-templates
 	${OPENAPI_GENERATOR} generate -g go \
 		--package-name ${PACKAGE_NAME} \
 		--http-user-agent "${USER_AGENT}" \
