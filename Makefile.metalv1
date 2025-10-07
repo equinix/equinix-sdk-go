@@ -9,6 +9,7 @@ EXAMPLE_FOLDERS:=create_device_in_facility create_device_in_metro plans
 
 CODE_DIR=${CODE_BASE_DIR}/${PACKAGE_NAME}
 TEMPLATE_DIR=${TEMPLATE_BASE_DIR}/${PACKAGE_NAME}
+TEMPLATE_OVERRIDE_DIR=${TEMPLATE_OVERRIDE_BASE_DIR}/${PACKAGE_NAME}
 SPEC_FETCHED_DIR=${SPEC_BASE_DIR}/${PACKAGE_NAME}/oas3.fetched
 SPEC_PATCH_DIR=${SPEC_BASE_DIR}/${PACKAGE_NAME}/patches
 SPEC_PATCHED_DIR=${SPEC_BASE_DIR}/${PACKAGE_NAME}/oas3.patched
@@ -35,21 +36,31 @@ patch:
 
 patch-post:
 	# patch is idempotent, always starting with the generated files
-	for diff in $(shell find patches/post -name \*.patch | sort -n); do \
+	for diff in $(shell find patches/services/${PACKAGE_NAME} -name \*.patch | sort -n); do \
 		patch --no-backup-if-mismatch -N -t -p1 -i $$diff; \
 	done
 
 clean:
 	rm -rf $(CODE_DIR)
 
-codegen:
+prepare-templates:
+	rm -rf $(TEMPLATE_DIR)
+	mkdir -p $(TEMPLATE_DIR)
+	cp $(TEMPLATE_COMMON_DIR)/* $(TEMPLATE_DIR)
+	if [ $(words $(wildcard $(TEMPLATE_OVERRIDE_DIR)/*)) -gt 0 ]; then \
+		cp -f $(TEMPLATE_OVERRIDE_DIR)/* $(TEMPLATE_DIR); \
+	else \
+		echo "No override templates found in $(TEMPLATE_OVERRIDE_DIR)"; \
+	fi
+
+codegen: prepare-templates
 	# TODO: fetch the merged (single-file) spec
 	# instead of merging it here
 	# *NOTE*: Due to a bug in swagger-parser, we have
 	# to use v7.4.0 of openapi-generator to merge the
 	# spec in order to avoid introducing duplicate models
 	${CRI} run --rm -u ${CURRENT_UID}:${CURRENT_GID} \
-	    -v $(CURDIR):/workdir -w /workdir \
+		-v $(CURDIR):/workdir -w /workdir \
 		openapitools/openapi-generator-cli:v7.4.0 \
 		generate \
 		-i ${SPEC_PATCHED_DIR}/${SPEC_ROOT_FILE} \

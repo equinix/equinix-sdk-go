@@ -21,7 +21,9 @@ GOLANGCI_LINT_IMAGE=golangci/golangci-lint:${GOLANGCI_LINT_VERSION}
 GOLANGCI_LINT=${CRI_COMMAND_BASE} -v $(CURDIR):/app -w /app -e GOLANGCI_LINT_CACHE=/tmp/.cache -e GOCACHE=/tmp/.cache ${GOLANGCI_LINT_IMAGE} golangci-lint
 
 SPEC_BASE_DIR=spec/services
-TEMPLATE_BASE_DIR=templates/services
+TEMPLATE_BASE_DIR=templates/services/.generated
+TEMPLATE_COMMON_DIR=templates/services/common
+TEMPLATE_OVERRIDE_BASE_DIR=templates/services/override
 CODE_BASE_DIR=services
 
 MAKEFILE_LIST:=$(shell ls -1 Makefile.* | sort -n)
