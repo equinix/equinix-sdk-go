@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** | Precision Time Service Name. | [optional] 
 **Uuid** | **string** | Precision Time Service UUID. | 
 **State** | [**PrecisionTimeServiceResponseState**](PrecisionTimeServiceResponseState.md) |  | 
+**Operation** | Pointer to [**TimeServiceOperation**](TimeServiceOperation.md) |  | [optional] 
 **Package** | [**PrecisionTimePackagePostResponse**](PrecisionTimePackagePostResponse.md) |  | 
 **Connections** | Pointer to [**[]VirtualConnectionTimeServiceResponse**](VirtualConnectionTimeServiceResponse.md) | Fabric Connections associated with Precision Time Service. | [optional] 
 **Ipv4** | Pointer to [**Ipv4**](Ipv4.md) |  | [optional] 
@@ -143,6 +144,31 @@ and a boolean to check if the value has been set.
 
 SetState sets State field to given value.
 
+
+### GetOperation
+
+`func (o *PrecisionTimeServiceResponse) GetOperation() TimeServiceOperation`
+
+GetOperation returns the Operation field if non-nil, zero value otherwise.
+
+### GetOperationOk
+
+`func (o *PrecisionTimeServiceResponse) GetOperationOk() (*TimeServiceOperation, bool)`
+
+GetOperationOk returns a tuple with the Operation field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOperation
+
+`func (o *PrecisionTimeServiceResponse) SetOperation(v TimeServiceOperation)`
+
+SetOperation sets Operation field to given value.
+
+### HasOperation
+
+`func (o *PrecisionTimeServiceResponse) HasOperation() bool`
+
+HasOperation returns a boolean if a field has been set.
 
 ### GetPackage
 

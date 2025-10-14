@@ -18,11 +18,13 @@ type ServiceProfileAccessPointCOLOType string
 // List of ServiceProfileAccessPointCOLO_type
 const (
 	SERVICEPROFILEACCESSPOINTCOLOTYPE_XF_PORT ServiceProfileAccessPointCOLOType = "XF_PORT"
+	SERVICEPROFILEACCESSPOINTCOLOTYPE_IX_PORT ServiceProfileAccessPointCOLOType = "IX_PORT"
 )
 
 // All allowed values of ServiceProfileAccessPointCOLOType enum
 var AllowedServiceProfileAccessPointCOLOTypeEnumValues = []ServiceProfileAccessPointCOLOType{
 	"XF_PORT",
+	"IX_PORT",
 }
 
 func (v *ServiceProfileAccessPointCOLOType) UnmarshalJSON(src []byte) error {

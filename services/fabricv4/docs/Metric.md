@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Type** | Pointer to **string** | Equinix supported metric type | [optional] 
 **Name** | Pointer to **string** | Metric name | [optional] 
 **Unit** | Pointer to **string** | Metric unit | [optional] 
+**Interval** | Pointer to **string** | Metric interval (set automatically based on search range) | [optional] 
 **Resource** | Pointer to [**MetricResource**](MetricResource.md) |  | [optional] 
 **Summary** | Pointer to **string** | Metric summary | [optional] 
 **Datapoints** | Pointer to [**[]MetricDatapoints**](MetricDatapoints.md) | Metric data points | [optional] 
@@ -104,6 +105,31 @@ SetUnit sets Unit field to given value.
 `func (o *Metric) HasUnit() bool`
 
 HasUnit returns a boolean if a field has been set.
+
+### GetInterval
+
+`func (o *Metric) GetInterval() string`
+
+GetInterval returns the Interval field if non-nil, zero value otherwise.
+
+### GetIntervalOk
+
+`func (o *Metric) GetIntervalOk() (*string, bool)`
+
+GetIntervalOk returns a tuple with the Interval field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInterval
+
+`func (o *Metric) SetInterval(v string)`
+
+SetInterval sets Interval field to given value.
+
+### HasInterval
+
+`func (o *Metric) HasInterval() bool`
+
+HasInterval returns a boolean if a field has been set.
 
 ### GetResource
 

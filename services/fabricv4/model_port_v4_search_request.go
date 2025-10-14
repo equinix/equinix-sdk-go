@@ -9,6 +9,7 @@ package fabricv4
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the PortV4SearchRequest type satisfies the MappedNullable interface at compile time
@@ -16,7 +17,7 @@ var _ MappedNullable = &PortV4SearchRequest{}
 
 // PortV4SearchRequest Search requests containing criteria
 type PortV4SearchRequest struct {
-	Filter               *PortExpression    `json:"filter,omitempty"`
+	Filter               PortExpression     `json:"filter"`
 	Pagination           *PaginationRequest `json:"pagination,omitempty"`
 	Sort                 []PortSortCriteria `json:"sort,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -28,8 +29,9 @@ type _PortV4SearchRequest PortV4SearchRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPortV4SearchRequest() *PortV4SearchRequest {
+func NewPortV4SearchRequest(filter PortExpression) *PortV4SearchRequest {
 	this := PortV4SearchRequest{}
+	this.Filter = filter
 	return &this
 }
 
@@ -41,36 +43,28 @@ func NewPortV4SearchRequestWithDefaults() *PortV4SearchRequest {
 	return &this
 }
 
-// GetFilter returns the Filter field value if set, zero value otherwise.
+// GetFilter returns the Filter field value
 func (o *PortV4SearchRequest) GetFilter() PortExpression {
-	if o == nil || IsNil(o.Filter) {
+	if o == nil {
 		var ret PortExpression
 		return ret
 	}
-	return *o.Filter
+
+	return o.Filter
 }
 
-// GetFilterOk returns a tuple with the Filter field value if set, nil otherwise
+// GetFilterOk returns a tuple with the Filter field value
 // and a boolean to check if the value has been set.
 func (o *PortV4SearchRequest) GetFilterOk() (*PortExpression, bool) {
-	if o == nil || IsNil(o.Filter) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Filter, true
+	return &o.Filter, true
 }
 
-// HasFilter returns a boolean if a field has been set.
-func (o *PortV4SearchRequest) HasFilter() bool {
-	if o != nil && !IsNil(o.Filter) {
-		return true
-	}
-
-	return false
-}
-
-// SetFilter gets a reference to the given PortExpression and assigns it to the Filter field.
+// SetFilter sets field value
 func (o *PortV4SearchRequest) SetFilter(v PortExpression) {
-	o.Filter = &v
+	o.Filter = v
 }
 
 // GetPagination returns the Pagination field value if set, zero value otherwise.
@@ -147,9 +141,7 @@ func (o PortV4SearchRequest) MarshalJSON() ([]byte, error) {
 
 func (o PortV4SearchRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Filter) {
-		toSerialize["filter"] = o.Filter
-	}
+	toSerialize["filter"] = o.Filter
 	if !IsNil(o.Pagination) {
 		toSerialize["pagination"] = o.Pagination
 	}
@@ -165,6 +157,27 @@ func (o PortV4SearchRequest) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *PortV4SearchRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"filter",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
 	varPortV4SearchRequest := _PortV4SearchRequest{}
 
 	err = json.Unmarshal(data, &varPortV4SearchRequest)

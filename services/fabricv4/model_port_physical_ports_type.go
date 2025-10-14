@@ -12,7 +12,7 @@ import (
 	"fmt"
 )
 
-// PortPhysicalPortsType Physical Ports Type
+// PortPhysicalPortsType Physical Ports Type. 10GBASE_SMF and 400GBASE_LR4 are only used for IX ports
 type PortPhysicalPortsType string
 
 // List of Port_physicalPortsType
@@ -22,6 +22,8 @@ const (
 	PORTPHYSICALPORTSTYPE__100_GBASE_LR4 PortPhysicalPortsType = "100GBASE_LR4"
 	PORTPHYSICALPORTSTYPE__10_GBASE_ER   PortPhysicalPortsType = "10GBASE_ER"
 	PORTPHYSICALPORTSTYPE__1000_BASE_SX  PortPhysicalPortsType = "1000BASE_SX"
+	PORTPHYSICALPORTSTYPE__10_GBASE_SMF  PortPhysicalPortsType = "10GBASE_SMF"
+	PORTPHYSICALPORTSTYPE__400_GBASE_LR4 PortPhysicalPortsType = "400GBASE_LR4"
 )
 
 // All allowed values of PortPhysicalPortsType enum
@@ -31,6 +33,8 @@ var AllowedPortPhysicalPortsTypeEnumValues = []PortPhysicalPortsType{
 	"100GBASE_LR4",
 	"10GBASE_ER",
 	"1000BASE_SX",
+	"10GBASE_SMF",
+	"400GBASE_LR4",
 }
 
 func (v *PortPhysicalPortsType) UnmarshalJSON(src []byte) error {

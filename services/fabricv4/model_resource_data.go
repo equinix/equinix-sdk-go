@@ -25,7 +25,8 @@ type ResourceData struct {
 	// Cloud Event asset name
 	Name *string `json:"name,omitempty"`
 	// Cloud Event asset state
-	State                *string `json:"state,omitempty"`
+	State                *string            `json:"state,omitempty"`
+	Operation            *OperationalStatus `json:"operation,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -208,6 +209,38 @@ func (o *ResourceData) SetState(v string) {
 	o.State = &v
 }
 
+// GetOperation returns the Operation field value if set, zero value otherwise.
+func (o *ResourceData) GetOperation() OperationalStatus {
+	if o == nil || IsNil(o.Operation) {
+		var ret OperationalStatus
+		return ret
+	}
+	return *o.Operation
+}
+
+// GetOperationOk returns a tuple with the Operation field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResourceData) GetOperationOk() (*OperationalStatus, bool) {
+	if o == nil || IsNil(o.Operation) {
+		return nil, false
+	}
+	return o.Operation, true
+}
+
+// HasOperation returns a boolean if a field has been set.
+func (o *ResourceData) HasOperation() bool {
+	if o != nil && !IsNil(o.Operation) {
+		return true
+	}
+
+	return false
+}
+
+// SetOperation gets a reference to the given OperationalStatus and assigns it to the Operation field.
+func (o *ResourceData) SetOperation(v OperationalStatus) {
+	o.Operation = &v
+}
+
 func (o ResourceData) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -232,6 +265,9 @@ func (o ResourceData) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.State) {
 		toSerialize["state"] = o.State
+	}
+	if !IsNil(o.Operation) {
+		toSerialize["operation"] = o.Operation
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -260,6 +296,7 @@ func (o *ResourceData) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "state")
+		delete(additionalProperties, "operation")
 		o.AdditionalProperties = additionalProperties
 	}
 

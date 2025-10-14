@@ -27,6 +27,10 @@
 
 * `CANCEL_EVPL_VC_DRAFT_ORDERS` (value: `"CANCEL_EVPL_VC_DRAFT_ORDERS"`)
 
+* `CONNECTION_CREATION_RETRY` (value: `"CONNECTION_CREATION_RETRY"`)
+
+* `CONNECTION_DELETION_RETRY` (value: `"CONNECTION_DELETION_RETRY"`)
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
