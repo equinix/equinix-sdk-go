@@ -107,7 +107,7 @@ func main() {
 	fromDateTime := time.Now() // time.Time | Start date and time (optional)
 	toDateTime := time.Now() // time.Time | End date and time (optional)
 	offset := int32(56) // int32 | offset (optional) (default to 0)
-	limit := int32(56) // int32 | limit (optional) (default to 20)
+	limit := int32(56) // int32 | limit (optional) (default to 100)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -142,7 +142,7 @@ Name | Type | Description  | Notes
  **fromDateTime** | **time.Time** | Start date and time | 
  **toDateTime** | **time.Time** | End date and time | 
  **offset** | **int32** | offset | [default to 0]
- **limit** | **int32** | limit | [default to 20]
+ **limit** | **int32** | limit | [default to 100]
 
 ### Return type
 

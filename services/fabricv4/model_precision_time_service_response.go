@@ -23,9 +23,10 @@ type PrecisionTimeServiceResponse struct {
 	// Precision Time Service Name.
 	Name *string `json:"name,omitempty"`
 	// Precision Time Service UUID.
-	Uuid    string                            `json:"uuid"`
-	State   PrecisionTimeServiceResponseState `json:"state"`
-	Package PrecisionTimePackagePostResponse  `json:"package"`
+	Uuid      string                            `json:"uuid"`
+	State     PrecisionTimeServiceResponseState `json:"state"`
+	Operation *TimeServiceOperation             `json:"operation,omitempty"`
+	Package   PrecisionTimePackagePostResponse  `json:"package"`
 	// Fabric Connections associated with Precision Time Service.
 	Connections []VirtualConnectionTimeServiceResponse `json:"connections,omitempty"`
 	Ipv4        *Ipv4                                  `json:"ipv4,omitempty"`
@@ -190,6 +191,38 @@ func (o *PrecisionTimeServiceResponse) GetStateOk() (*PrecisionTimeServiceRespon
 // SetState sets field value
 func (o *PrecisionTimeServiceResponse) SetState(v PrecisionTimeServiceResponseState) {
 	o.State = v
+}
+
+// GetOperation returns the Operation field value if set, zero value otherwise.
+func (o *PrecisionTimeServiceResponse) GetOperation() TimeServiceOperation {
+	if o == nil || IsNil(o.Operation) {
+		var ret TimeServiceOperation
+		return ret
+	}
+	return *o.Operation
+}
+
+// GetOperationOk returns a tuple with the Operation field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PrecisionTimeServiceResponse) GetOperationOk() (*TimeServiceOperation, bool) {
+	if o == nil || IsNil(o.Operation) {
+		return nil, false
+	}
+	return o.Operation, true
+}
+
+// HasOperation returns a boolean if a field has been set.
+func (o *PrecisionTimeServiceResponse) HasOperation() bool {
+	if o != nil && !IsNil(o.Operation) {
+		return true
+	}
+
+	return false
+}
+
+// SetOperation gets a reference to the given TimeServiceOperation and assigns it to the Operation field.
+func (o *PrecisionTimeServiceResponse) SetOperation(v TimeServiceOperation) {
+	o.Operation = &v
 }
 
 // GetPackage returns the Package field value
@@ -521,6 +554,9 @@ func (o PrecisionTimeServiceResponse) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["uuid"] = o.Uuid
 	toSerialize["state"] = o.State
+	if !IsNil(o.Operation) {
+		toSerialize["operation"] = o.Operation
+	}
 	toSerialize["package"] = o.Package
 	if !IsNil(o.Connections) {
 		toSerialize["connections"] = o.Connections
@@ -601,6 +637,7 @@ func (o *PrecisionTimeServiceResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "uuid")
 		delete(additionalProperties, "state")
+		delete(additionalProperties, "operation")
 		delete(additionalProperties, "package")
 		delete(additionalProperties, "connections")
 		delete(additionalProperties, "ipv4")

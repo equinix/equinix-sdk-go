@@ -21,7 +21,9 @@ type Metric struct {
 	// Metric name
 	Name *string `json:"name,omitempty"`
 	// Metric unit
-	Unit     *string         `json:"unit,omitempty"`
+	Unit *string `json:"unit,omitempty"`
+	// Metric interval (set automatically based on search range)
+	Interval *string         `json:"interval,omitempty"`
 	Resource *MetricResource `json:"resource,omitempty"`
 	// Metric summary
 	Summary *string `json:"summary,omitempty"`
@@ -145,6 +147,38 @@ func (o *Metric) SetUnit(v string) {
 	o.Unit = &v
 }
 
+// GetInterval returns the Interval field value if set, zero value otherwise.
+func (o *Metric) GetInterval() string {
+	if o == nil || IsNil(o.Interval) {
+		var ret string
+		return ret
+	}
+	return *o.Interval
+}
+
+// GetIntervalOk returns a tuple with the Interval field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Metric) GetIntervalOk() (*string, bool) {
+	if o == nil || IsNil(o.Interval) {
+		return nil, false
+	}
+	return o.Interval, true
+}
+
+// HasInterval returns a boolean if a field has been set.
+func (o *Metric) HasInterval() bool {
+	if o != nil && !IsNil(o.Interval) {
+		return true
+	}
+
+	return false
+}
+
+// SetInterval gets a reference to the given string and assigns it to the Interval field.
+func (o *Metric) SetInterval(v string) {
+	o.Interval = &v
+}
+
 // GetResource returns the Resource field value if set, zero value otherwise.
 func (o *Metric) GetResource() MetricResource {
 	if o == nil || IsNil(o.Resource) {
@@ -260,6 +294,9 @@ func (o Metric) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Unit) {
 		toSerialize["unit"] = o.Unit
 	}
+	if !IsNil(o.Interval) {
+		toSerialize["interval"] = o.Interval
+	}
 	if !IsNil(o.Resource) {
 		toSerialize["resource"] = o.Resource
 	}
@@ -294,6 +331,7 @@ func (o *Metric) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "unit")
+		delete(additionalProperties, "interval")
 		delete(additionalProperties, "resource")
 		delete(additionalProperties, "summary")
 		delete(additionalProperties, "datapoints")

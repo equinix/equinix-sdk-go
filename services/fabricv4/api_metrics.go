@@ -32,7 +32,7 @@ type ApiGetMetricByAssetIdRequest struct {
 	limit        *int32
 }
 
-// Name of the metric types: - equinix.fabric.connection.bandwidth_rx.usage - equinix.fabric.connection.bandwidth_tx.usage - equinix.fabric.connection.packets_dropped_rx_aside_rateexceeded.count - equinix.fabric.connection.packets_dropped_tx_aside_rateexceeded.count - equinix.fabric.connection.packets_dropped_rx_zside_rateexceeded.count - equinix.fabric.connection.packets_dropped_tx_zside_rateexceeded.count - equinix.fabric.port.bandwidth_rx.usage - equinix.fabric.port.bandwidth_tx.usage - equinix.fabric.port.packets_dropped_rx.count - equinix.fabric.port.packets_dropped_tx.count - equinix.fabric.port.packets_erred_rx.count - equinix.fabric.port.packets_erred_tx.count - equinix.fabric.metro.{source_metro_code}_{destination_metro_code}.latency - equinix.fabric.metro.{source_metro_code}_{destination_metro_code}.jitter_avg
+// Name of the metric types: &lt;br&gt; - equinix.fabric.connection.bandwidth_rx.usage &lt;br&gt; - equinix.fabric.connection.bandwidth_tx.usage &lt;br&gt; - equinix.fabric.connection.packets_dropped_rx_aside_rateexceeded.count &lt;br&gt; - equinix.fabric.connection.packets_dropped_tx_aside_rateexceeded.count &lt;br&gt; - equinix.fabric.connection.packets_dropped_rx_zside_rateexceeded.count &lt;br&gt; - equinix.fabric.connection.packets_dropped_tx_zside_rateexceeded.count &lt;br&gt; - equinix.fabric.port.bandwidth_rx.usage &lt;br&gt; - equinix.fabric.port.bandwidth_tx.usage &lt;br&gt; - equinix.fabric.port.packets_dropped_rx.count &lt;br&gt; - equinix.fabric.port.packets_dropped_tx.count &lt;br&gt; - equinix.fabric.port.packets_erred_rx.count &lt;br&gt; - equinix.fabric.port.packets_erred_tx.count &lt;br&gt; - equinix.fabric.metro.{source_metro_code}_{destination_metro_code}.latency &lt;br&gt; - equinix.fabric.metro.{source_metro_code}_{destination_metro_code}.jitter_avg &lt;br&gt;
 func (r ApiGetMetricByAssetIdRequest) Name(name string) ApiGetMetricByAssetIdRequest {
 	r.name = &name
 	return r
@@ -148,6 +148,160 @@ func (a *MetricsApiService) GetMetricByAssetIdExecute(r ApiGetMetricByAssetIdReq
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v []Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v []Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v []Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v []Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiSearchMetricsRequest struct {
+	ctx                  context.Context
+	ApiService           *MetricsApiService
+	metricsSearchRequest *MetricsSearchRequest
+}
+
+func (r ApiSearchMetricsRequest) MetricsSearchRequest(metricsSearchRequest MetricsSearchRequest) ApiSearchMetricsRequest {
+	r.metricsSearchRequest = &metricsSearchRequest
+	return r
+}
+
+func (r ApiSearchMetricsRequest) Execute() (*GetMetricsByAssetResponse, *http.Response, error) {
+	return r.ApiService.SearchMetricsExecute(r)
+}
+
+/*
+SearchMetrics Search Metrics
+
+This API provides capability to search metrics from a filtered query
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSearchMetricsRequest
+*/
+func (a *MetricsApiService) SearchMetrics(ctx context.Context) ApiSearchMetricsRequest {
+	return ApiSearchMetricsRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return GetMetricsByAssetResponse
+func (a *MetricsApiService) SearchMetricsExecute(r ApiSearchMetricsRequest) (*GetMetricsByAssetResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GetMetricsByAssetResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MetricsApiService.SearchMetrics")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/fabric/v4/metrics/search"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.metricsSearchRequest == nil {
+		return localVarReturnValue, nil, reportError("metricsSearchRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.metricsSearchRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

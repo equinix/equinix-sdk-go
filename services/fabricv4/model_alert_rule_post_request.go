@@ -22,17 +22,10 @@ type AlertRulePostRequest struct {
 	// Customer-provided stream description
 	Description *string `json:"description,omitempty"`
 	// Stream alert rule enabled status
-	Enabled *bool `json:"enabled,omitempty"`
-	// Stream alert rule metric name
-	MetricName       *string           `json:"metricName,omitempty"`
-	ResourceSelector *ResourceSelector `json:"resourceSelector,omitempty"`
-	// Stream alert rule metric window size
-	WindowSize *string                      `json:"windowSize,omitempty"`
-	Operand    *AlertRulePostRequestOperand `json:"operand,omitempty"`
-	// Stream alert rule metric warning threshold
-	WarningThreshold *string `json:"warningThreshold,omitempty"`
-	// Stream alert rule metric critical threshold
-	CriticalThreshold    *string `json:"criticalThreshold,omitempty"`
+	Enabled              *bool             `json:"enabled,omitempty"`
+	MetricSelector       *MetricSelector   `json:"metricSelector,omitempty"`
+	ResourceSelector     *ResourceSelector `json:"resourceSelector,omitempty"`
+	DetectionMethod      *DetectionMethod  `json:"detectionMethod,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -187,36 +180,36 @@ func (o *AlertRulePostRequest) SetEnabled(v bool) {
 	o.Enabled = &v
 }
 
-// GetMetricName returns the MetricName field value if set, zero value otherwise.
-func (o *AlertRulePostRequest) GetMetricName() string {
-	if o == nil || IsNil(o.MetricName) {
-		var ret string
+// GetMetricSelector returns the MetricSelector field value if set, zero value otherwise.
+func (o *AlertRulePostRequest) GetMetricSelector() MetricSelector {
+	if o == nil || IsNil(o.MetricSelector) {
+		var ret MetricSelector
 		return ret
 	}
-	return *o.MetricName
+	return *o.MetricSelector
 }
 
-// GetMetricNameOk returns a tuple with the MetricName field value if set, nil otherwise
+// GetMetricSelectorOk returns a tuple with the MetricSelector field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AlertRulePostRequest) GetMetricNameOk() (*string, bool) {
-	if o == nil || IsNil(o.MetricName) {
+func (o *AlertRulePostRequest) GetMetricSelectorOk() (*MetricSelector, bool) {
+	if o == nil || IsNil(o.MetricSelector) {
 		return nil, false
 	}
-	return o.MetricName, true
+	return o.MetricSelector, true
 }
 
-// HasMetricName returns a boolean if a field has been set.
-func (o *AlertRulePostRequest) HasMetricName() bool {
-	if o != nil && !IsNil(o.MetricName) {
+// HasMetricSelector returns a boolean if a field has been set.
+func (o *AlertRulePostRequest) HasMetricSelector() bool {
+	if o != nil && !IsNil(o.MetricSelector) {
 		return true
 	}
 
 	return false
 }
 
-// SetMetricName gets a reference to the given string and assigns it to the MetricName field.
-func (o *AlertRulePostRequest) SetMetricName(v string) {
-	o.MetricName = &v
+// SetMetricSelector gets a reference to the given MetricSelector and assigns it to the MetricSelector field.
+func (o *AlertRulePostRequest) SetMetricSelector(v MetricSelector) {
+	o.MetricSelector = &v
 }
 
 // GetResourceSelector returns the ResourceSelector field value if set, zero value otherwise.
@@ -251,132 +244,36 @@ func (o *AlertRulePostRequest) SetResourceSelector(v ResourceSelector) {
 	o.ResourceSelector = &v
 }
 
-// GetWindowSize returns the WindowSize field value if set, zero value otherwise.
-func (o *AlertRulePostRequest) GetWindowSize() string {
-	if o == nil || IsNil(o.WindowSize) {
-		var ret string
+// GetDetectionMethod returns the DetectionMethod field value if set, zero value otherwise.
+func (o *AlertRulePostRequest) GetDetectionMethod() DetectionMethod {
+	if o == nil || IsNil(o.DetectionMethod) {
+		var ret DetectionMethod
 		return ret
 	}
-	return *o.WindowSize
+	return *o.DetectionMethod
 }
 
-// GetWindowSizeOk returns a tuple with the WindowSize field value if set, nil otherwise
+// GetDetectionMethodOk returns a tuple with the DetectionMethod field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AlertRulePostRequest) GetWindowSizeOk() (*string, bool) {
-	if o == nil || IsNil(o.WindowSize) {
+func (o *AlertRulePostRequest) GetDetectionMethodOk() (*DetectionMethod, bool) {
+	if o == nil || IsNil(o.DetectionMethod) {
 		return nil, false
 	}
-	return o.WindowSize, true
+	return o.DetectionMethod, true
 }
 
-// HasWindowSize returns a boolean if a field has been set.
-func (o *AlertRulePostRequest) HasWindowSize() bool {
-	if o != nil && !IsNil(o.WindowSize) {
+// HasDetectionMethod returns a boolean if a field has been set.
+func (o *AlertRulePostRequest) HasDetectionMethod() bool {
+	if o != nil && !IsNil(o.DetectionMethod) {
 		return true
 	}
 
 	return false
 }
 
-// SetWindowSize gets a reference to the given string and assigns it to the WindowSize field.
-func (o *AlertRulePostRequest) SetWindowSize(v string) {
-	o.WindowSize = &v
-}
-
-// GetOperand returns the Operand field value if set, zero value otherwise.
-func (o *AlertRulePostRequest) GetOperand() AlertRulePostRequestOperand {
-	if o == nil || IsNil(o.Operand) {
-		var ret AlertRulePostRequestOperand
-		return ret
-	}
-	return *o.Operand
-}
-
-// GetOperandOk returns a tuple with the Operand field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AlertRulePostRequest) GetOperandOk() (*AlertRulePostRequestOperand, bool) {
-	if o == nil || IsNil(o.Operand) {
-		return nil, false
-	}
-	return o.Operand, true
-}
-
-// HasOperand returns a boolean if a field has been set.
-func (o *AlertRulePostRequest) HasOperand() bool {
-	if o != nil && !IsNil(o.Operand) {
-		return true
-	}
-
-	return false
-}
-
-// SetOperand gets a reference to the given AlertRulePostRequestOperand and assigns it to the Operand field.
-func (o *AlertRulePostRequest) SetOperand(v AlertRulePostRequestOperand) {
-	o.Operand = &v
-}
-
-// GetWarningThreshold returns the WarningThreshold field value if set, zero value otherwise.
-func (o *AlertRulePostRequest) GetWarningThreshold() string {
-	if o == nil || IsNil(o.WarningThreshold) {
-		var ret string
-		return ret
-	}
-	return *o.WarningThreshold
-}
-
-// GetWarningThresholdOk returns a tuple with the WarningThreshold field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AlertRulePostRequest) GetWarningThresholdOk() (*string, bool) {
-	if o == nil || IsNil(o.WarningThreshold) {
-		return nil, false
-	}
-	return o.WarningThreshold, true
-}
-
-// HasWarningThreshold returns a boolean if a field has been set.
-func (o *AlertRulePostRequest) HasWarningThreshold() bool {
-	if o != nil && !IsNil(o.WarningThreshold) {
-		return true
-	}
-
-	return false
-}
-
-// SetWarningThreshold gets a reference to the given string and assigns it to the WarningThreshold field.
-func (o *AlertRulePostRequest) SetWarningThreshold(v string) {
-	o.WarningThreshold = &v
-}
-
-// GetCriticalThreshold returns the CriticalThreshold field value if set, zero value otherwise.
-func (o *AlertRulePostRequest) GetCriticalThreshold() string {
-	if o == nil || IsNil(o.CriticalThreshold) {
-		var ret string
-		return ret
-	}
-	return *o.CriticalThreshold
-}
-
-// GetCriticalThresholdOk returns a tuple with the CriticalThreshold field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AlertRulePostRequest) GetCriticalThresholdOk() (*string, bool) {
-	if o == nil || IsNil(o.CriticalThreshold) {
-		return nil, false
-	}
-	return o.CriticalThreshold, true
-}
-
-// HasCriticalThreshold returns a boolean if a field has been set.
-func (o *AlertRulePostRequest) HasCriticalThreshold() bool {
-	if o != nil && !IsNil(o.CriticalThreshold) {
-		return true
-	}
-
-	return false
-}
-
-// SetCriticalThreshold gets a reference to the given string and assigns it to the CriticalThreshold field.
-func (o *AlertRulePostRequest) SetCriticalThreshold(v string) {
-	o.CriticalThreshold = &v
+// SetDetectionMethod gets a reference to the given DetectionMethod and assigns it to the DetectionMethod field.
+func (o *AlertRulePostRequest) SetDetectionMethod(v DetectionMethod) {
+	o.DetectionMethod = &v
 }
 
 func (o AlertRulePostRequest) MarshalJSON() ([]byte, error) {
@@ -401,23 +298,14 @@ func (o AlertRulePostRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled
 	}
-	if !IsNil(o.MetricName) {
-		toSerialize["metricName"] = o.MetricName
+	if !IsNil(o.MetricSelector) {
+		toSerialize["metricSelector"] = o.MetricSelector
 	}
 	if !IsNil(o.ResourceSelector) {
 		toSerialize["resourceSelector"] = o.ResourceSelector
 	}
-	if !IsNil(o.WindowSize) {
-		toSerialize["windowSize"] = o.WindowSize
-	}
-	if !IsNil(o.Operand) {
-		toSerialize["operand"] = o.Operand
-	}
-	if !IsNil(o.WarningThreshold) {
-		toSerialize["warningThreshold"] = o.WarningThreshold
-	}
-	if !IsNil(o.CriticalThreshold) {
-		toSerialize["criticalThreshold"] = o.CriticalThreshold
+	if !IsNil(o.DetectionMethod) {
+		toSerialize["detectionMethod"] = o.DetectionMethod
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -445,12 +333,9 @@ func (o *AlertRulePostRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "enabled")
-		delete(additionalProperties, "metricName")
+		delete(additionalProperties, "metricSelector")
 		delete(additionalProperties, "resourceSelector")
-		delete(additionalProperties, "windowSize")
-		delete(additionalProperties, "operand")
-		delete(additionalProperties, "warningThreshold")
-		delete(additionalProperties, "criticalThreshold")
+		delete(additionalProperties, "detectionMethod")
 		o.AdditionalProperties = additionalProperties
 	}
 

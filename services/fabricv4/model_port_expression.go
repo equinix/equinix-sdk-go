@@ -14,7 +14,7 @@ import (
 // checks if the PortExpression type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &PortExpression{}
 
-// PortExpression struct for PortExpression
+// PortExpression Either use 'and' for AND operations, 'or' for OR operations,  or specify 'property', 'operator', and 'values' for field filtering. Only one of these patterns should be used at a time.
 type PortExpression struct {
 	And                  []PortExpression                      `json:"and,omitempty"`
 	Or                   []PortExpression                      `json:"or,omitempty"`

@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **ConnectivitySource** | Pointer to [**ConnectivitySource**](ConnectivitySource.md) |  | [optional] 
 **ServiceType** | Pointer to [**VirtualPortServiceType**](VirtualPortServiceType.md) |  | [optional] [default to VIRTUALPORTSERVICETYPE_MSP]
 **Settings** | Pointer to [**VirtualPortConfiguration**](VirtualPortConfiguration.md) |  | [optional] 
+**Package** | Pointer to [**VirtualPortPackage**](VirtualPortPackage.md) |  | [optional] 
 
 ## Methods
 
@@ -283,6 +284,31 @@ SetSettings sets Settings field to given value.
 `func (o *VirtualPortPrice) HasSettings() bool`
 
 HasSettings returns a boolean if a field has been set.
+
+### GetPackage
+
+`func (o *VirtualPortPrice) GetPackage() VirtualPortPackage`
+
+GetPackage returns the Package field if non-nil, zero value otherwise.
+
+### GetPackageOk
+
+`func (o *VirtualPortPrice) GetPackageOk() (*VirtualPortPackage, bool)`
+
+GetPackageOk returns a tuple with the Package field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPackage
+
+`func (o *VirtualPortPrice) SetPackage(v VirtualPortPackage)`
+
+SetPackage sets Package field to given value.
+
+### HasPackage
+
+`func (o *VirtualPortPrice) HasPackage() bool`
+
+HasPackage returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

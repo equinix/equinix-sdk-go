@@ -26,7 +26,9 @@ type CloudRouter struct {
 	// Equinix ASN
 	EquinixAsn *int64 `json:"equinixAsn,omitempty"`
 	// Number of connections associated with this Access point
-	ConnectionsCount        *int32                          `json:"connectionsCount,omitempty"`
+	ConnectionsCount *int32 `json:"connectionsCount,omitempty"`
+	// Number of gateway attachments associated with this Access point
+	GatewayAttachmentsCount *int32                          `json:"gatewayAttachmentsCount,omitempty"`
 	MarketplaceSubscription *MarketplaceSubscription        `json:"marketplaceSubscription,omitempty"`
 	ChangeLog               *Changelog                      `json:"changeLog,omitempty"`
 	Change                  *CloudRouterChange              `json:"change,omitempty"`
@@ -250,6 +252,38 @@ func (o *CloudRouter) HasConnectionsCount() bool {
 // SetConnectionsCount gets a reference to the given int32 and assigns it to the ConnectionsCount field.
 func (o *CloudRouter) SetConnectionsCount(v int32) {
 	o.ConnectionsCount = &v
+}
+
+// GetGatewayAttachmentsCount returns the GatewayAttachmentsCount field value if set, zero value otherwise.
+func (o *CloudRouter) GetGatewayAttachmentsCount() int32 {
+	if o == nil || IsNil(o.GatewayAttachmentsCount) {
+		var ret int32
+		return ret
+	}
+	return *o.GatewayAttachmentsCount
+}
+
+// GetGatewayAttachmentsCountOk returns a tuple with the GatewayAttachmentsCount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CloudRouter) GetGatewayAttachmentsCountOk() (*int32, bool) {
+	if o == nil || IsNil(o.GatewayAttachmentsCount) {
+		return nil, false
+	}
+	return o.GatewayAttachmentsCount, true
+}
+
+// HasGatewayAttachmentsCount returns a boolean if a field has been set.
+func (o *CloudRouter) HasGatewayAttachmentsCount() bool {
+	if o != nil && !IsNil(o.GatewayAttachmentsCount) {
+		return true
+	}
+
+	return false
+}
+
+// SetGatewayAttachmentsCount gets a reference to the given int32 and assigns it to the GatewayAttachmentsCount field.
+func (o *CloudRouter) SetGatewayAttachmentsCount(v int32) {
+	o.GatewayAttachmentsCount = &v
 }
 
 // GetMarketplaceSubscription returns the MarketplaceSubscription field value if set, zero value otherwise.
@@ -600,6 +634,9 @@ func (o CloudRouter) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ConnectionsCount) {
 		toSerialize["connectionsCount"] = o.ConnectionsCount
 	}
+	if !IsNil(o.GatewayAttachmentsCount) {
+		toSerialize["gatewayAttachmentsCount"] = o.GatewayAttachmentsCount
+	}
 	if !IsNil(o.MarketplaceSubscription) {
 		toSerialize["marketplaceSubscription"] = o.MarketplaceSubscription
 	}
@@ -658,6 +695,7 @@ func (o *CloudRouter) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "state")
 		delete(additionalProperties, "equinixAsn")
 		delete(additionalProperties, "connectionsCount")
+		delete(additionalProperties, "gatewayAttachmentsCount")
 		delete(additionalProperties, "marketplaceSubscription")
 		delete(additionalProperties, "changeLog")
 		delete(additionalProperties, "change")

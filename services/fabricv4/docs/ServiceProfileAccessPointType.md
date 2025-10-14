@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **LinkProtocolConfig** | Pointer to [**ServiceProfileLinkProtocolConfig**](ServiceProfileLinkProtocolConfig.md) |  | [optional] 
 **EnableAutoGenerateServiceKey** | Pointer to **bool** | for verizon only. | [optional] 
 **ConnectionRedundancyRequired** | Pointer to **bool** | Mandate redundant connections | [optional] [default to false]
+**SelectiveRedundancy** | Pointer to **bool** | Optional redundant connections | [optional] [default to false]
 **ApiConfig** | Pointer to [**ApiConfig**](ApiConfig.md) |  | [optional] 
 **ConnectionLabel** | Pointer to **string** | custom name for \&quot;Connection\&quot; | [optional] 
 **AuthenticationKey** | Pointer to [**AuthenticationKey**](AuthenticationKey.md) |  | [optional] 
@@ -308,6 +309,31 @@ SetConnectionRedundancyRequired sets ConnectionRedundancyRequired field to given
 `func (o *ServiceProfileAccessPointType) HasConnectionRedundancyRequired() bool`
 
 HasConnectionRedundancyRequired returns a boolean if a field has been set.
+
+### GetSelectiveRedundancy
+
+`func (o *ServiceProfileAccessPointType) GetSelectiveRedundancy() bool`
+
+GetSelectiveRedundancy returns the SelectiveRedundancy field if non-nil, zero value otherwise.
+
+### GetSelectiveRedundancyOk
+
+`func (o *ServiceProfileAccessPointType) GetSelectiveRedundancyOk() (*bool, bool)`
+
+GetSelectiveRedundancyOk returns a tuple with the SelectiveRedundancy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSelectiveRedundancy
+
+`func (o *ServiceProfileAccessPointType) SetSelectiveRedundancy(v bool)`
+
+SetSelectiveRedundancy sets SelectiveRedundancy field to given value.
+
+### HasSelectiveRedundancy
+
+`func (o *ServiceProfileAccessPointType) HasSelectiveRedundancy() bool`
+
+HasSelectiveRedundancy returns a boolean if a field has been set.
 
 ### GetApiConfig
 

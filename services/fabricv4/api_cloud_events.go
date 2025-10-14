@@ -264,7 +264,7 @@ func (a *CloudEventsApiService) GetCloudEventByAssetIdExecute(r ApiGetCloudEvent
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	} else {
-		var defaultValue int32 = 20
+		var defaultValue int32 = 100
 		r.limit = &defaultValue
 	}
 	// to determine the Content-Type header

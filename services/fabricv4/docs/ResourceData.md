@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Type** | Pointer to **string** | Cloud Event asset type | [optional] 
 **Name** | Pointer to **string** | Cloud Event asset name | [optional] 
 **State** | Pointer to **string** | Cloud Event asset state | [optional] 
+**Operation** | Pointer to [**OperationalStatus**](OperationalStatus.md) |  | [optional] 
 
 ## Methods
 
@@ -153,6 +154,31 @@ SetState sets State field to given value.
 `func (o *ResourceData) HasState() bool`
 
 HasState returns a boolean if a field has been set.
+
+### GetOperation
+
+`func (o *ResourceData) GetOperation() OperationalStatus`
+
+GetOperation returns the Operation field if non-nil, zero value otherwise.
+
+### GetOperationOk
+
+`func (o *ResourceData) GetOperationOk() (*OperationalStatus, bool)`
+
+GetOperationOk returns a tuple with the Operation field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOperation
+
+`func (o *ResourceData) SetOperation(v OperationalStatus)`
+
+SetOperation sets Operation field to given value.
+
+### HasOperation
+
+`func (o *ResourceData) HasOperation() bool`
+
+HasOperation returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

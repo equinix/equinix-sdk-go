@@ -34,8 +34,10 @@ type ServiceProfileAccessPointTypeCOLO struct {
 	// for verizon only.
 	EnableAutoGenerateServiceKey *bool `json:"enableAutoGenerateServiceKey,omitempty"`
 	// Mandate redundant connections
-	ConnectionRedundancyRequired *bool      `json:"connectionRedundancyRequired,omitempty"`
-	ApiConfig                    *ApiConfig `json:"apiConfig,omitempty"`
+	ConnectionRedundancyRequired *bool `json:"connectionRedundancyRequired,omitempty"`
+	// Optional redundant connections
+	SelectiveRedundancy *bool      `json:"selectiveRedundancy,omitempty"`
+	ApiConfig           *ApiConfig `json:"apiConfig,omitempty"`
 	// custom name for \"Connection\"
 	ConnectionLabel      *string                 `json:"connectionLabel,omitempty"`
 	AuthenticationKey    *AuthenticationKey      `json:"authenticationKey,omitempty"`
@@ -60,6 +62,8 @@ func NewServiceProfileAccessPointTypeCOLO(type_ ServiceProfileAccessPointTypeEnu
 	this.AllowBandwidthAutoApproval = &allowBandwidthAutoApproval
 	var connectionRedundancyRequired bool = false
 	this.ConnectionRedundancyRequired = &connectionRedundancyRequired
+	var selectiveRedundancy bool = false
+	this.SelectiveRedundancy = &selectiveRedundancy
 	return &this
 }
 
@@ -76,6 +80,8 @@ func NewServiceProfileAccessPointTypeCOLOWithDefaults() *ServiceProfileAccessPoi
 	this.AllowBandwidthAutoApproval = &allowBandwidthAutoApproval
 	var connectionRedundancyRequired bool = false
 	this.ConnectionRedundancyRequired = &connectionRedundancyRequired
+	var selectiveRedundancy bool = false
+	this.SelectiveRedundancy = &selectiveRedundancy
 	return &this
 }
 
@@ -423,6 +429,38 @@ func (o *ServiceProfileAccessPointTypeCOLO) SetConnectionRedundancyRequired(v bo
 	o.ConnectionRedundancyRequired = &v
 }
 
+// GetSelectiveRedundancy returns the SelectiveRedundancy field value if set, zero value otherwise.
+func (o *ServiceProfileAccessPointTypeCOLO) GetSelectiveRedundancy() bool {
+	if o == nil || IsNil(o.SelectiveRedundancy) {
+		var ret bool
+		return ret
+	}
+	return *o.SelectiveRedundancy
+}
+
+// GetSelectiveRedundancyOk returns a tuple with the SelectiveRedundancy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ServiceProfileAccessPointTypeCOLO) GetSelectiveRedundancyOk() (*bool, bool) {
+	if o == nil || IsNil(o.SelectiveRedundancy) {
+		return nil, false
+	}
+	return o.SelectiveRedundancy, true
+}
+
+// HasSelectiveRedundancy returns a boolean if a field has been set.
+func (o *ServiceProfileAccessPointTypeCOLO) HasSelectiveRedundancy() bool {
+	if o != nil && !IsNil(o.SelectiveRedundancy) {
+		return true
+	}
+
+	return false
+}
+
+// SetSelectiveRedundancy gets a reference to the given bool and assigns it to the SelectiveRedundancy field.
+func (o *ServiceProfileAccessPointTypeCOLO) SetSelectiveRedundancy(v bool) {
+	o.SelectiveRedundancy = &v
+}
+
 // GetApiConfig returns the ApiConfig field value if set, zero value otherwise.
 func (o *ServiceProfileAccessPointTypeCOLO) GetApiConfig() ApiConfig {
 	if o == nil || IsNil(o.ApiConfig) {
@@ -592,6 +630,9 @@ func (o ServiceProfileAccessPointTypeCOLO) ToMap() (map[string]interface{}, erro
 	if !IsNil(o.ConnectionRedundancyRequired) {
 		toSerialize["connectionRedundancyRequired"] = o.ConnectionRedundancyRequired
 	}
+	if !IsNil(o.SelectiveRedundancy) {
+		toSerialize["selectiveRedundancy"] = o.SelectiveRedundancy
+	}
 	if !IsNil(o.ApiConfig) {
 		toSerialize["apiConfig"] = o.ApiConfig
 	}
@@ -658,6 +699,7 @@ func (o *ServiceProfileAccessPointTypeCOLO) UnmarshalJSON(data []byte) (err erro
 		delete(additionalProperties, "linkProtocolConfig")
 		delete(additionalProperties, "enableAutoGenerateServiceKey")
 		delete(additionalProperties, "connectionRedundancyRequired")
+		delete(additionalProperties, "selectiveRedundancy")
 		delete(additionalProperties, "apiConfig")
 		delete(additionalProperties, "connectionLabel")
 		delete(additionalProperties, "authenticationKey")

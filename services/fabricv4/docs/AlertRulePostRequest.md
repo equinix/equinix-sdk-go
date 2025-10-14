@@ -8,12 +8,9 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** | Customer-provided stream name | [optional] 
 **Description** | Pointer to **string** | Customer-provided stream description | [optional] 
 **Enabled** | Pointer to **bool** | Stream alert rule enabled status | [optional] [default to true]
-**MetricName** | Pointer to **string** | Stream alert rule metric name | [optional] 
+**MetricSelector** | Pointer to [**MetricSelector**](MetricSelector.md) |  | [optional] 
 **ResourceSelector** | Pointer to [**ResourceSelector**](ResourceSelector.md) |  | [optional] 
-**WindowSize** | Pointer to **string** | Stream alert rule metric window size | [optional] 
-**Operand** | Pointer to [**AlertRulePostRequestOperand**](AlertRulePostRequestOperand.md) |  | [optional] 
-**WarningThreshold** | Pointer to **string** | Stream alert rule metric warning threshold | [optional] 
-**CriticalThreshold** | Pointer to **string** | Stream alert rule metric critical threshold | [optional] 
+**DetectionMethod** | Pointer to [**DetectionMethod**](DetectionMethod.md) |  | [optional] 
 
 ## Methods
 
@@ -134,30 +131,30 @@ SetEnabled sets Enabled field to given value.
 
 HasEnabled returns a boolean if a field has been set.
 
-### GetMetricName
+### GetMetricSelector
 
-`func (o *AlertRulePostRequest) GetMetricName() string`
+`func (o *AlertRulePostRequest) GetMetricSelector() MetricSelector`
 
-GetMetricName returns the MetricName field if non-nil, zero value otherwise.
+GetMetricSelector returns the MetricSelector field if non-nil, zero value otherwise.
 
-### GetMetricNameOk
+### GetMetricSelectorOk
 
-`func (o *AlertRulePostRequest) GetMetricNameOk() (*string, bool)`
+`func (o *AlertRulePostRequest) GetMetricSelectorOk() (*MetricSelector, bool)`
 
-GetMetricNameOk returns a tuple with the MetricName field if it's non-nil, zero value otherwise
+GetMetricSelectorOk returns a tuple with the MetricSelector field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetMetricName
+### SetMetricSelector
 
-`func (o *AlertRulePostRequest) SetMetricName(v string)`
+`func (o *AlertRulePostRequest) SetMetricSelector(v MetricSelector)`
 
-SetMetricName sets MetricName field to given value.
+SetMetricSelector sets MetricSelector field to given value.
 
-### HasMetricName
+### HasMetricSelector
 
-`func (o *AlertRulePostRequest) HasMetricName() bool`
+`func (o *AlertRulePostRequest) HasMetricSelector() bool`
 
-HasMetricName returns a boolean if a field has been set.
+HasMetricSelector returns a boolean if a field has been set.
 
 ### GetResourceSelector
 
@@ -184,105 +181,30 @@ SetResourceSelector sets ResourceSelector field to given value.
 
 HasResourceSelector returns a boolean if a field has been set.
 
-### GetWindowSize
+### GetDetectionMethod
 
-`func (o *AlertRulePostRequest) GetWindowSize() string`
+`func (o *AlertRulePostRequest) GetDetectionMethod() DetectionMethod`
 
-GetWindowSize returns the WindowSize field if non-nil, zero value otherwise.
+GetDetectionMethod returns the DetectionMethod field if non-nil, zero value otherwise.
 
-### GetWindowSizeOk
+### GetDetectionMethodOk
 
-`func (o *AlertRulePostRequest) GetWindowSizeOk() (*string, bool)`
+`func (o *AlertRulePostRequest) GetDetectionMethodOk() (*DetectionMethod, bool)`
 
-GetWindowSizeOk returns a tuple with the WindowSize field if it's non-nil, zero value otherwise
+GetDetectionMethodOk returns a tuple with the DetectionMethod field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetWindowSize
+### SetDetectionMethod
 
-`func (o *AlertRulePostRequest) SetWindowSize(v string)`
+`func (o *AlertRulePostRequest) SetDetectionMethod(v DetectionMethod)`
 
-SetWindowSize sets WindowSize field to given value.
+SetDetectionMethod sets DetectionMethod field to given value.
 
-### HasWindowSize
+### HasDetectionMethod
 
-`func (o *AlertRulePostRequest) HasWindowSize() bool`
+`func (o *AlertRulePostRequest) HasDetectionMethod() bool`
 
-HasWindowSize returns a boolean if a field has been set.
-
-### GetOperand
-
-`func (o *AlertRulePostRequest) GetOperand() AlertRulePostRequestOperand`
-
-GetOperand returns the Operand field if non-nil, zero value otherwise.
-
-### GetOperandOk
-
-`func (o *AlertRulePostRequest) GetOperandOk() (*AlertRulePostRequestOperand, bool)`
-
-GetOperandOk returns a tuple with the Operand field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetOperand
-
-`func (o *AlertRulePostRequest) SetOperand(v AlertRulePostRequestOperand)`
-
-SetOperand sets Operand field to given value.
-
-### HasOperand
-
-`func (o *AlertRulePostRequest) HasOperand() bool`
-
-HasOperand returns a boolean if a field has been set.
-
-### GetWarningThreshold
-
-`func (o *AlertRulePostRequest) GetWarningThreshold() string`
-
-GetWarningThreshold returns the WarningThreshold field if non-nil, zero value otherwise.
-
-### GetWarningThresholdOk
-
-`func (o *AlertRulePostRequest) GetWarningThresholdOk() (*string, bool)`
-
-GetWarningThresholdOk returns a tuple with the WarningThreshold field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetWarningThreshold
-
-`func (o *AlertRulePostRequest) SetWarningThreshold(v string)`
-
-SetWarningThreshold sets WarningThreshold field to given value.
-
-### HasWarningThreshold
-
-`func (o *AlertRulePostRequest) HasWarningThreshold() bool`
-
-HasWarningThreshold returns a boolean if a field has been set.
-
-### GetCriticalThreshold
-
-`func (o *AlertRulePostRequest) GetCriticalThreshold() string`
-
-GetCriticalThreshold returns the CriticalThreshold field if non-nil, zero value otherwise.
-
-### GetCriticalThresholdOk
-
-`func (o *AlertRulePostRequest) GetCriticalThresholdOk() (*string, bool)`
-
-GetCriticalThresholdOk returns a tuple with the CriticalThreshold field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCriticalThreshold
-
-`func (o *AlertRulePostRequest) SetCriticalThreshold(v string)`
-
-SetCriticalThreshold sets CriticalThreshold field to given value.
-
-### HasCriticalThreshold
-
-`func (o *AlertRulePostRequest) HasCriticalThreshold() bool`
-
-HasCriticalThreshold returns a boolean if a field has been set.
+HasDetectionMethod returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
