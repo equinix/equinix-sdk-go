@@ -17,7 +17,10 @@ var _ MappedNullable = &RouterActionsConnection{}
 // RouterActionsConnection Connection object for router actions
 type RouterActionsConnection struct {
 	// Connection UUID
-	Uuid                 *string `json:"uuid,omitempty"`
+	Uuid                 *string         `json:"uuid,omitempty"`
+	Href                 *string         `json:"href,omitempty"`
+	Type                 *ConnectionType `json:"type,omitempty"`
+	Operation            *Operation      `json:"operation,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -72,6 +75,102 @@ func (o *RouterActionsConnection) SetUuid(v string) {
 	o.Uuid = &v
 }
 
+// GetHref returns the Href field value if set, zero value otherwise.
+func (o *RouterActionsConnection) GetHref() string {
+	if o == nil || IsNil(o.Href) {
+		var ret string
+		return ret
+	}
+	return *o.Href
+}
+
+// GetHrefOk returns a tuple with the Href field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RouterActionsConnection) GetHrefOk() (*string, bool) {
+	if o == nil || IsNil(o.Href) {
+		return nil, false
+	}
+	return o.Href, true
+}
+
+// HasHref returns a boolean if a field has been set.
+func (o *RouterActionsConnection) HasHref() bool {
+	if o != nil && !IsNil(o.Href) {
+		return true
+	}
+
+	return false
+}
+
+// SetHref gets a reference to the given string and assigns it to the Href field.
+func (o *RouterActionsConnection) SetHref(v string) {
+	o.Href = &v
+}
+
+// GetType returns the Type field value if set, zero value otherwise.
+func (o *RouterActionsConnection) GetType() ConnectionType {
+	if o == nil || IsNil(o.Type) {
+		var ret ConnectionType
+		return ret
+	}
+	return *o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RouterActionsConnection) GetTypeOk() (*ConnectionType, bool) {
+	if o == nil || IsNil(o.Type) {
+		return nil, false
+	}
+	return o.Type, true
+}
+
+// HasType returns a boolean if a field has been set.
+func (o *RouterActionsConnection) HasType() bool {
+	if o != nil && !IsNil(o.Type) {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given ConnectionType and assigns it to the Type field.
+func (o *RouterActionsConnection) SetType(v ConnectionType) {
+	o.Type = &v
+}
+
+// GetOperation returns the Operation field value if set, zero value otherwise.
+func (o *RouterActionsConnection) GetOperation() Operation {
+	if o == nil || IsNil(o.Operation) {
+		var ret Operation
+		return ret
+	}
+	return *o.Operation
+}
+
+// GetOperationOk returns a tuple with the Operation field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RouterActionsConnection) GetOperationOk() (*Operation, bool) {
+	if o == nil || IsNil(o.Operation) {
+		return nil, false
+	}
+	return o.Operation, true
+}
+
+// HasOperation returns a boolean if a field has been set.
+func (o *RouterActionsConnection) HasOperation() bool {
+	if o != nil && !IsNil(o.Operation) {
+		return true
+	}
+
+	return false
+}
+
+// SetOperation gets a reference to the given Operation and assigns it to the Operation field.
+func (o *RouterActionsConnection) SetOperation(v Operation) {
+	o.Operation = &v
+}
+
 func (o RouterActionsConnection) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -84,6 +183,15 @@ func (o RouterActionsConnection) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Uuid) {
 		toSerialize["uuid"] = o.Uuid
+	}
+	if !IsNil(o.Href) {
+		toSerialize["href"] = o.Href
+	}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
+	if !IsNil(o.Operation) {
+		toSerialize["operation"] = o.Operation
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -108,6 +216,9 @@ func (o *RouterActionsConnection) UnmarshalJSON(data []byte) (err error) {
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "uuid")
+		delete(additionalProperties, "href")
+		delete(additionalProperties, "type")
+		delete(additionalProperties, "operation")
 		o.AdditionalProperties = additionalProperties
 	}
 

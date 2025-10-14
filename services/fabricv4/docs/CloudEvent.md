@@ -9,10 +9,12 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** | Cloud Event identifier | [optional] 
 **Type** | Pointer to **string** | Equinix supported event type | [optional] 
 **Subject** | Pointer to **string** | Cloud Event subject | [optional] 
+**Time** | Pointer to **time.Time** | Cloud Event time the event occurred | [optional] 
 **Dataschema** | Pointer to **string** | Cloud Event dataschema reference | [optional] 
 **Datacontenttype** | Pointer to **string** | Cloud Event data content type | [optional] 
 **Severitynumber** | Pointer to **string** | Cloud Event severity number | [optional] 
 **Severitytext** | Pointer to **string** | Cloud Event severity text | [optional] 
+**Equinixalert** | Pointer to **string** | Equinix alert | [optional] 
 **Equinixorganization** | Pointer to **string** | Equinix organization identifier | [optional] 
 **Equinixproject** | Pointer to **string** | Equinix project identifier | [optional] 
 **Authtype** | Pointer to **string** | Cloud Event auth type | [optional] 
@@ -165,6 +167,31 @@ SetSubject sets Subject field to given value.
 
 HasSubject returns a boolean if a field has been set.
 
+### GetTime
+
+`func (o *CloudEvent) GetTime() time.Time`
+
+GetTime returns the Time field if non-nil, zero value otherwise.
+
+### GetTimeOk
+
+`func (o *CloudEvent) GetTimeOk() (*time.Time, bool)`
+
+GetTimeOk returns a tuple with the Time field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTime
+
+`func (o *CloudEvent) SetTime(v time.Time)`
+
+SetTime sets Time field to given value.
+
+### HasTime
+
+`func (o *CloudEvent) HasTime() bool`
+
+HasTime returns a boolean if a field has been set.
+
 ### GetDataschema
 
 `func (o *CloudEvent) GetDataschema() string`
@@ -264,6 +291,31 @@ SetSeveritytext sets Severitytext field to given value.
 `func (o *CloudEvent) HasSeveritytext() bool`
 
 HasSeveritytext returns a boolean if a field has been set.
+
+### GetEquinixalert
+
+`func (o *CloudEvent) GetEquinixalert() string`
+
+GetEquinixalert returns the Equinixalert field if non-nil, zero value otherwise.
+
+### GetEquinixalertOk
+
+`func (o *CloudEvent) GetEquinixalertOk() (*string, bool)`
+
+GetEquinixalertOk returns a tuple with the Equinixalert field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEquinixalert
+
+`func (o *CloudEvent) SetEquinixalert(v string)`
+
+SetEquinixalert sets Equinixalert field to given value.
+
+### HasEquinixalert
+
+`func (o *CloudEvent) HasEquinixalert() bool`
+
+HasEquinixalert returns a boolean if a field has been set.
 
 ### GetEquinixorganization
 

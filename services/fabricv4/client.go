@@ -37,15 +37,13 @@ var (
 	queryDescape    = strings.NewReplacer("%5B", "[", "%5D", "]")
 )
 
-// APIClient manages communication with the Equinix Fabric API v4 API v4.23
+// APIClient manages communication with the Equinix Fabric API v4 API v4.24
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
 	cfg    *Configuration
 	common service // Reuse a single struct instead of allocating one for each service on the heap.
 
 	// API Services
-
-	ClientInterfacesApi *ClientInterfacesApiService
 
 	CloudEventsApi *CloudEventsApiService
 
@@ -64,6 +62,10 @@ type APIClient struct {
 	MetrosApi *MetrosApiService
 
 	NetworksApi *NetworksApiService
+
+	PeeringProtocolsApi *PeeringProtocolsApiService
+
+	PortPackagesApi *PortPackagesApiService
 
 	PortsApi *PortsApiService
 
@@ -110,7 +112,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.common.client = c
 
 	// API Services
-	c.ClientInterfacesApi = (*ClientInterfacesApiService)(&c.common)
 	c.CloudEventsApi = (*CloudEventsApiService)(&c.common)
 	c.CloudRoutersApi = (*CloudRoutersApiService)(&c.common)
 	c.ConnectionsApi = (*ConnectionsApiService)(&c.common)
@@ -120,6 +121,8 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.MetricsApi = (*MetricsApiService)(&c.common)
 	c.MetrosApi = (*MetrosApiService)(&c.common)
 	c.NetworksApi = (*NetworksApiService)(&c.common)
+	c.PeeringProtocolsApi = (*PeeringProtocolsApiService)(&c.common)
+	c.PortPackagesApi = (*PortPackagesApiService)(&c.common)
 	c.PortsApi = (*PortsApiService)(&c.common)
 	c.PrecisionTimeApi = (*PrecisionTimeApiService)(&c.common)
 	c.PricesApi = (*PricesApiService)(&c.common)

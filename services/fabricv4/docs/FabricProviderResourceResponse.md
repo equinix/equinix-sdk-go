@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Href** | Pointer to **string** | Route Protocol URI | [optional] [readonly] 
-**Type** | [**RoutingProtocolBGPTypeType**](RoutingProtocolBGPTypeType.md) |  | 
-**Uuid** | Pointer to **string** | Equinix-assigned route protocol identifier | [optional] 
+**Href** | Pointer to **string** | IPWAN Connection URI | [optional] [readonly] 
+**Type** | **string** |  | 
+**Uuid** | Pointer to **string** | Equinix-assigned ipwan connection identifier | [optional] 
 **State** | [**DeploymentState**](DeploymentState.md) |  | 
 **Name** | **string** |  | 
-**Location** | [**SimplifiedLocationWithoutIBX**](SimplifiedLocationWithoutIBX.md) |  | 
+**Location** | [**SimplifiedLocation**](SimplifiedLocation.md) |  | 
 **Package** | [**CloudRouterPostRequestPackage**](CloudRouterPostRequestPackage.md) |  | 
 **DeploymentProperties** | [**TopologyProperties**](TopologyProperties.md) |  | 
 **Bandwidth** | **int32** |  | 
@@ -20,12 +20,13 @@ Name | Type | Description | Notes
 **CustomerAsn** | **int64** | Customer asn | 
 **BgpAuthKey** | **string** | BGP authorization key | 
 **AsOverrideEnabled** | Pointer to **bool** | Enable AS number override | [optional] 
+**Scope** | Pointer to [**NetworkScope**](NetworkScope.md) |  | [optional] 
 
 ## Methods
 
 ### NewFabricProviderResourceResponse
 
-`func NewFabricProviderResourceResponse(type_ RoutingProtocolBGPTypeType, state DeploymentState, name string, location SimplifiedLocationWithoutIBX, package_ CloudRouterPostRequestPackage, deploymentProperties TopologyProperties, bandwidth int32, redundancy ConnectionRedundancy, aSide ConnectionSide, zSide ConnectionSide, bgpIpv4 FabricBGPConnectionIpv4, customerAsn int64, bgpAuthKey string, ) *FabricProviderResourceResponse`
+`func NewFabricProviderResourceResponse(type_ string, state DeploymentState, name string, location SimplifiedLocation, package_ CloudRouterPostRequestPackage, deploymentProperties TopologyProperties, bandwidth int32, redundancy ConnectionRedundancy, aSide ConnectionSide, zSide ConnectionSide, bgpIpv4 FabricBGPConnectionIpv4, customerAsn int64, bgpAuthKey string, ) *FabricProviderResourceResponse`
 
 NewFabricProviderResourceResponse instantiates a new FabricProviderResourceResponse object
 This constructor will assign default values to properties that have it defined,
@@ -67,20 +68,20 @@ HasHref returns a boolean if a field has been set.
 
 ### GetType
 
-`func (o *FabricProviderResourceResponse) GetType() RoutingProtocolBGPTypeType`
+`func (o *FabricProviderResourceResponse) GetType() string`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *FabricProviderResourceResponse) GetTypeOk() (*RoutingProtocolBGPTypeType, bool)`
+`func (o *FabricProviderResourceResponse) GetTypeOk() (*string, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *FabricProviderResourceResponse) SetType(v RoutingProtocolBGPTypeType)`
+`func (o *FabricProviderResourceResponse) SetType(v string)`
 
 SetType sets Type field to given value.
 
@@ -152,20 +153,20 @@ SetName sets Name field to given value.
 
 ### GetLocation
 
-`func (o *FabricProviderResourceResponse) GetLocation() SimplifiedLocationWithoutIBX`
+`func (o *FabricProviderResourceResponse) GetLocation() SimplifiedLocation`
 
 GetLocation returns the Location field if non-nil, zero value otherwise.
 
 ### GetLocationOk
 
-`func (o *FabricProviderResourceResponse) GetLocationOk() (*SimplifiedLocationWithoutIBX, bool)`
+`func (o *FabricProviderResourceResponse) GetLocationOk() (*SimplifiedLocation, bool)`
 
 GetLocationOk returns a tuple with the Location field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLocation
 
-`func (o *FabricProviderResourceResponse) SetLocation(v SimplifiedLocationWithoutIBX)`
+`func (o *FabricProviderResourceResponse) SetLocation(v SimplifiedLocation)`
 
 SetLocation sets Location field to given value.
 
@@ -374,6 +375,31 @@ SetAsOverrideEnabled sets AsOverrideEnabled field to given value.
 `func (o *FabricProviderResourceResponse) HasAsOverrideEnabled() bool`
 
 HasAsOverrideEnabled returns a boolean if a field has been set.
+
+### GetScope
+
+`func (o *FabricProviderResourceResponse) GetScope() NetworkScope`
+
+GetScope returns the Scope field if non-nil, zero value otherwise.
+
+### GetScopeOk
+
+`func (o *FabricProviderResourceResponse) GetScopeOk() (*NetworkScope, bool)`
+
+GetScopeOk returns a tuple with the Scope field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetScope
+
+`func (o *FabricProviderResourceResponse) SetScope(v NetworkScope)`
+
+SetScope sets Scope field to given value.
+
+### HasScope
+
+`func (o *FabricProviderResourceResponse) HasScope() bool`
+
+HasScope returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

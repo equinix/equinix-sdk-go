@@ -17,6 +17,7 @@ var _ MappedNullable = &PortDevice{}
 // PortDevice Port device
 type PortDevice struct {
 	// Device name
+	// Deprecated
 	Name       *string               `json:"name,omitempty"`
 	Redundancy *PortDeviceRedundancy `json:"redundancy,omitempty"`
 	// Maximum bandwidth allowed for connection.
@@ -44,6 +45,7 @@ func NewPortDeviceWithDefaults() *PortDevice {
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
+// Deprecated
 func (o *PortDevice) GetName() string {
 	if o == nil || IsNil(o.Name) {
 		var ret string
@@ -54,6 +56,7 @@ func (o *PortDevice) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *PortDevice) GetNameOk() (*string, bool) {
 	if o == nil || IsNil(o.Name) {
 		return nil, false
@@ -71,6 +74,7 @@ func (o *PortDevice) HasName() bool {
 }
 
 // SetName gets a reference to the given string and assigns it to the Name field.
+// Deprecated
 func (o *PortDevice) SetName(v string) {
 	o.Name = &v
 }

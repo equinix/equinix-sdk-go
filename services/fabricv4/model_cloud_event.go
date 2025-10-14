@@ -9,6 +9,7 @@ package fabricv4
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // checks if the CloudEvent type satisfies the MappedNullable interface at compile time
@@ -26,6 +27,8 @@ type CloudEvent struct {
 	Type *string `json:"type,omitempty"`
 	// Cloud Event subject
 	Subject *string `json:"subject,omitempty"`
+	// Cloud Event time the event occurred
+	Time *time.Time `json:"time,omitempty"`
 	// Cloud Event dataschema reference
 	Dataschema *string `json:"dataschema,omitempty"`
 	// Cloud Event data content type
@@ -34,6 +37,8 @@ type CloudEvent struct {
 	Severitynumber *string `json:"severitynumber,omitempty"`
 	// Cloud Event severity text
 	Severitytext *string `json:"severitytext,omitempty"`
+	// Equinix alert
+	Equinixalert *string `json:"equinixalert,omitempty"`
 	// Equinix organization identifier
 	Equinixorganization *string `json:"equinixorganization,omitempty"`
 	// Equinix project identifier
@@ -229,6 +234,38 @@ func (o *CloudEvent) SetSubject(v string) {
 	o.Subject = &v
 }
 
+// GetTime returns the Time field value if set, zero value otherwise.
+func (o *CloudEvent) GetTime() time.Time {
+	if o == nil || IsNil(o.Time) {
+		var ret time.Time
+		return ret
+	}
+	return *o.Time
+}
+
+// GetTimeOk returns a tuple with the Time field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CloudEvent) GetTimeOk() (*time.Time, bool) {
+	if o == nil || IsNil(o.Time) {
+		return nil, false
+	}
+	return o.Time, true
+}
+
+// HasTime returns a boolean if a field has been set.
+func (o *CloudEvent) HasTime() bool {
+	if o != nil && !IsNil(o.Time) {
+		return true
+	}
+
+	return false
+}
+
+// SetTime gets a reference to the given time.Time and assigns it to the Time field.
+func (o *CloudEvent) SetTime(v time.Time) {
+	o.Time = &v
+}
+
 // GetDataschema returns the Dataschema field value if set, zero value otherwise.
 func (o *CloudEvent) GetDataschema() string {
 	if o == nil || IsNil(o.Dataschema) {
@@ -355,6 +392,38 @@ func (o *CloudEvent) HasSeveritytext() bool {
 // SetSeveritytext gets a reference to the given string and assigns it to the Severitytext field.
 func (o *CloudEvent) SetSeveritytext(v string) {
 	o.Severitytext = &v
+}
+
+// GetEquinixalert returns the Equinixalert field value if set, zero value otherwise.
+func (o *CloudEvent) GetEquinixalert() string {
+	if o == nil || IsNil(o.Equinixalert) {
+		var ret string
+		return ret
+	}
+	return *o.Equinixalert
+}
+
+// GetEquinixalertOk returns a tuple with the Equinixalert field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CloudEvent) GetEquinixalertOk() (*string, bool) {
+	if o == nil || IsNil(o.Equinixalert) {
+		return nil, false
+	}
+	return o.Equinixalert, true
+}
+
+// HasEquinixalert returns a boolean if a field has been set.
+func (o *CloudEvent) HasEquinixalert() bool {
+	if o != nil && !IsNil(o.Equinixalert) {
+		return true
+	}
+
+	return false
+}
+
+// SetEquinixalert gets a reference to the given string and assigns it to the Equinixalert field.
+func (o *CloudEvent) SetEquinixalert(v string) {
+	o.Equinixalert = &v
 }
 
 // GetEquinixorganization returns the Equinixorganization field value if set, zero value otherwise.
@@ -606,6 +675,9 @@ func (o CloudEvent) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Subject) {
 		toSerialize["subject"] = o.Subject
 	}
+	if !IsNil(o.Time) {
+		toSerialize["time"] = o.Time
+	}
 	if !IsNil(o.Dataschema) {
 		toSerialize["dataschema"] = o.Dataschema
 	}
@@ -617,6 +689,9 @@ func (o CloudEvent) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Severitytext) {
 		toSerialize["severitytext"] = o.Severitytext
+	}
+	if !IsNil(o.Equinixalert) {
+		toSerialize["equinixalert"] = o.Equinixalert
 	}
 	if !IsNil(o.Equinixorganization) {
 		toSerialize["equinixorganization"] = o.Equinixorganization
@@ -666,10 +741,12 @@ func (o *CloudEvent) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "subject")
+		delete(additionalProperties, "time")
 		delete(additionalProperties, "dataschema")
 		delete(additionalProperties, "datacontenttype")
 		delete(additionalProperties, "severitynumber")
 		delete(additionalProperties, "severitytext")
+		delete(additionalProperties, "equinixalert")
 		delete(additionalProperties, "equinixorganization")
 		delete(additionalProperties, "equinixproject")
 		delete(additionalProperties, "authtype")

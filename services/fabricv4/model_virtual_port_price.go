@@ -29,6 +29,7 @@ type VirtualPortPrice struct {
 	ConnectivitySource   *ConnectivitySource       `json:"connectivitySource,omitempty"`
 	ServiceType          *VirtualPortServiceType   `json:"serviceType,omitempty"`
 	Settings             *VirtualPortConfiguration `json:"settings,omitempty"`
+	Package              *VirtualPortPackage       `json:"package,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -379,6 +380,38 @@ func (o *VirtualPortPrice) SetSettings(v VirtualPortConfiguration) {
 	o.Settings = &v
 }
 
+// GetPackage returns the Package field value if set, zero value otherwise.
+func (o *VirtualPortPrice) GetPackage() VirtualPortPackage {
+	if o == nil || IsNil(o.Package) {
+		var ret VirtualPortPackage
+		return ret
+	}
+	return *o.Package
+}
+
+// GetPackageOk returns a tuple with the Package field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *VirtualPortPrice) GetPackageOk() (*VirtualPortPackage, bool) {
+	if o == nil || IsNil(o.Package) {
+		return nil, false
+	}
+	return o.Package, true
+}
+
+// HasPackage returns a boolean if a field has been set.
+func (o *VirtualPortPrice) HasPackage() bool {
+	if o != nil && !IsNil(o.Package) {
+		return true
+	}
+
+	return false
+}
+
+// SetPackage gets a reference to the given VirtualPortPackage and assigns it to the Package field.
+func (o *VirtualPortPrice) SetPackage(v VirtualPortPackage) {
+	o.Package = &v
+}
+
 func (o VirtualPortPrice) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -419,6 +452,9 @@ func (o VirtualPortPrice) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Settings) {
 		toSerialize["settings"] = o.Settings
 	}
+	if !IsNil(o.Package) {
+		toSerialize["package"] = o.Package
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -451,6 +487,7 @@ func (o *VirtualPortPrice) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "connectivitySource")
 		delete(additionalProperties, "serviceType")
 		delete(additionalProperties, "settings")
+		delete(additionalProperties, "package")
 		o.AdditionalProperties = additionalProperties
 	}
 

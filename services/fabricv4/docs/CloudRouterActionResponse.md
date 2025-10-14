@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **ChangeLog** | [**Changelog**](Changelog.md) |  | 
 **Href** | Pointer to **string** |  | [optional] 
 **Connection** | Pointer to [**RouterActionsConnection**](RouterActionsConnection.md) |  | [optional] 
-**Operation** | Pointer to [**Operation**](Operation.md) |  | [optional] 
+**Router** | Pointer to [**RouterActionsRouter**](RouterActionsRouter.md) |  | [optional] 
 
 ## Methods
 
@@ -187,30 +187,30 @@ SetConnection sets Connection field to given value.
 
 HasConnection returns a boolean if a field has been set.
 
-### GetOperation
+### GetRouter
 
-`func (o *CloudRouterActionResponse) GetOperation() Operation`
+`func (o *CloudRouterActionResponse) GetRouter() RouterActionsRouter`
 
-GetOperation returns the Operation field if non-nil, zero value otherwise.
+GetRouter returns the Router field if non-nil, zero value otherwise.
 
-### GetOperationOk
+### GetRouterOk
 
-`func (o *CloudRouterActionResponse) GetOperationOk() (*Operation, bool)`
+`func (o *CloudRouterActionResponse) GetRouterOk() (*RouterActionsRouter, bool)`
 
-GetOperationOk returns a tuple with the Operation field if it's non-nil, zero value otherwise
+GetRouterOk returns a tuple with the Router field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetOperation
+### SetRouter
 
-`func (o *CloudRouterActionResponse) SetOperation(v Operation)`
+`func (o *CloudRouterActionResponse) SetRouter(v RouterActionsRouter)`
 
-SetOperation sets Operation field to given value.
+SetRouter sets Router field to given value.
 
-### HasOperation
+### HasRouter
 
-`func (o *CloudRouterActionResponse) HasOperation() bool`
+`func (o *CloudRouterActionResponse) HasRouter() bool`
 
-HasOperation returns a boolean if a field has been set.
+HasRouter returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
