@@ -17982,10 +17982,6 @@ components:
     AlertRulePutRequest:
       type: object
       properties:
-        type:
-          type: string
-          enum:
-            - METRIC_ALERT
         name:
           type: string
           description: Customer-provided stream name
@@ -41727,7 +41723,6 @@ components:
           updatedDateTime: 2025-02-04T00:20:54.511118575Z
     StreamAlertRulePutRequestExample:
       value:
-        type: METRIC_ALERT
         name: metric-alert-1
         description: metric-alert-1
         enabled: true
