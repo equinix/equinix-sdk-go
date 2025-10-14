@@ -16,7 +16,6 @@ var _ MappedNullable = &AlertRulePutRequest{}
 
 // AlertRulePutRequest Create Stream Alert Rules
 type AlertRulePutRequest struct {
-	Type *AlertRulePostRequestType `json:"type,omitempty"`
 	// Customer-provided stream name
 	Name *string `json:"name,omitempty"`
 	// Customer-provided stream description
@@ -57,38 +56,6 @@ func NewAlertRulePutRequestWithDefaults() *AlertRulePutRequest {
 	var enabled bool = true
 	this.Enabled = &enabled
 	return &this
-}
-
-// GetType returns the Type field value if set, zero value otherwise.
-func (o *AlertRulePutRequest) GetType() AlertRulePostRequestType {
-	if o == nil || IsNil(o.Type) {
-		var ret AlertRulePostRequestType
-		return ret
-	}
-	return *o.Type
-}
-
-// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AlertRulePutRequest) GetTypeOk() (*AlertRulePostRequestType, bool) {
-	if o == nil || IsNil(o.Type) {
-		return nil, false
-	}
-	return o.Type, true
-}
-
-// HasType returns a boolean if a field has been set.
-func (o *AlertRulePutRequest) HasType() bool {
-	if o != nil && !IsNil(o.Type) {
-		return true
-	}
-
-	return false
-}
-
-// SetType gets a reference to the given AlertRulePostRequestType and assigns it to the Type field.
-func (o *AlertRulePutRequest) SetType(v AlertRulePostRequestType) {
-	o.Type = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
@@ -389,9 +356,6 @@ func (o AlertRulePutRequest) MarshalJSON() ([]byte, error) {
 
 func (o AlertRulePutRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Type) {
-		toSerialize["type"] = o.Type
-	}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
@@ -441,7 +405,6 @@ func (o *AlertRulePutRequest) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "type")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "enabled")
