@@ -13,6 +13,10 @@
 
 * `_1000_BASE_SX` (value: `"1000BASE_SX"`)
 
+* `_10_GBASE_SMF` (value: `"10GBASE_SMF"`)
+
+* `_400_GBASE_LR4` (value: `"400GBASE_LR4"`)
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

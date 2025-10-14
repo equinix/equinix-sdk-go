@@ -454,7 +454,7 @@ import (
 )
 
 func main() {
-	portV4SearchRequest := *openapiclient.NewPortV4SearchRequest() // PortV4SearchRequest | 
+	portV4SearchRequest := *openapiclient.NewPortV4SearchRequest(*openapiclient.NewPortExpression()) // PortV4SearchRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

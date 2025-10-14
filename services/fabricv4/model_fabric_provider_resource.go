@@ -15,15 +15,31 @@ import (
 
 // FabricProviderResource - struct for FabricProviderResource
 type FabricProviderResource struct {
-	FabricConnection     *FabricConnection
-	FabricRouteProtocols *FabricRouteProtocols
-	FabricRouter         *FabricRouter
+	FabricConnection      *FabricConnection
+	FabricIPWAN           *FabricIPWAN
+	FabricIPWANConnection *FabricIPWANConnection
+	FabricRouteProtocols  *FabricRouteProtocols
+	FabricRouter          *FabricRouter
 }
 
 // FabricConnectionAsFabricProviderResource is a convenience function that returns FabricConnection wrapped in FabricProviderResource
 func FabricConnectionAsFabricProviderResource(v *FabricConnection) FabricProviderResource {
 	return FabricProviderResource{
 		FabricConnection: v,
+	}
+}
+
+// FabricIPWANAsFabricProviderResource is a convenience function that returns FabricIPWAN wrapped in FabricProviderResource
+func FabricIPWANAsFabricProviderResource(v *FabricIPWAN) FabricProviderResource {
+	return FabricProviderResource{
+		FabricIPWAN: v,
+	}
+}
+
+// FabricIPWANConnectionAsFabricProviderResource is a convenience function that returns FabricIPWANConnection wrapped in FabricProviderResource
+func FabricIPWANConnectionAsFabricProviderResource(v *FabricIPWANConnection) FabricProviderResource {
+	return FabricProviderResource{
+		FabricIPWANConnection: v,
 	}
 }
 
@@ -60,6 +76,40 @@ func (dst *FabricProviderResource) UnmarshalJSON(data []byte) error {
 		}
 	} else {
 		dst.FabricConnection = nil
+	}
+
+	// try to unmarshal data into FabricIPWAN
+	err = newStrictDecoder(data).Decode(&dst.FabricIPWAN)
+	if err == nil {
+		jsonFabricIPWAN, _ := json.Marshal(dst.FabricIPWAN)
+		if string(jsonFabricIPWAN) == "{}" { // empty struct
+			dst.FabricIPWAN = nil
+		} else {
+			if err = validator.Validate(dst.FabricIPWAN); err != nil {
+				dst.FabricIPWAN = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.FabricIPWAN = nil
+	}
+
+	// try to unmarshal data into FabricIPWANConnection
+	err = newStrictDecoder(data).Decode(&dst.FabricIPWANConnection)
+	if err == nil {
+		jsonFabricIPWANConnection, _ := json.Marshal(dst.FabricIPWANConnection)
+		if string(jsonFabricIPWANConnection) == "{}" { // empty struct
+			dst.FabricIPWANConnection = nil
+		} else {
+			if err = validator.Validate(dst.FabricIPWANConnection); err != nil {
+				dst.FabricIPWANConnection = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.FabricIPWANConnection = nil
 	}
 
 	// try to unmarshal data into FabricRouteProtocols
@@ -99,6 +149,8 @@ func (dst *FabricProviderResource) UnmarshalJSON(data []byte) error {
 	if match > 1 { // more than 1 match
 		// reset to nil
 		dst.FabricConnection = nil
+		dst.FabricIPWAN = nil
+		dst.FabricIPWANConnection = nil
 		dst.FabricRouteProtocols = nil
 		dst.FabricRouter = nil
 
@@ -114,6 +166,14 @@ func (dst *FabricProviderResource) UnmarshalJSON(data []byte) error {
 func (src FabricProviderResource) MarshalJSON() ([]byte, error) {
 	if src.FabricConnection != nil {
 		return json.Marshal(&src.FabricConnection)
+	}
+
+	if src.FabricIPWAN != nil {
+		return json.Marshal(&src.FabricIPWAN)
+	}
+
+	if src.FabricIPWANConnection != nil {
+		return json.Marshal(&src.FabricIPWANConnection)
 	}
 
 	if src.FabricRouteProtocols != nil {
@@ -136,6 +196,14 @@ func (obj *FabricProviderResource) GetActualInstance() interface{} {
 		return obj.FabricConnection
 	}
 
+	if obj.FabricIPWAN != nil {
+		return obj.FabricIPWAN
+	}
+
+	if obj.FabricIPWANConnection != nil {
+		return obj.FabricIPWANConnection
+	}
+
 	if obj.FabricRouteProtocols != nil {
 		return obj.FabricRouteProtocols
 	}
@@ -152,6 +220,14 @@ func (obj *FabricProviderResource) GetActualInstance() interface{} {
 func (obj FabricProviderResource) GetActualInstanceValue() interface{} {
 	if obj.FabricConnection != nil {
 		return *obj.FabricConnection
+	}
+
+	if obj.FabricIPWAN != nil {
+		return *obj.FabricIPWAN
+	}
+
+	if obj.FabricIPWANConnection != nil {
+		return *obj.FabricIPWANConnection
 	}
 
 	if obj.FabricRouteProtocols != nil {

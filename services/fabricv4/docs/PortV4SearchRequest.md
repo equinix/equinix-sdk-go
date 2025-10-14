@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Filter** | Pointer to [**PortExpression**](PortExpression.md) |  | [optional] 
+**Filter** | [**PortExpression**](PortExpression.md) |  | 
 **Pagination** | Pointer to [**PaginationRequest**](PaginationRequest.md) |  | [optional] 
 **Sort** | Pointer to [**[]PortSortCriteria**](PortSortCriteria.md) |  | [optional] 
 
@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 ### NewPortV4SearchRequest
 
-`func NewPortV4SearchRequest() *PortV4SearchRequest`
+`func NewPortV4SearchRequest(filter PortExpression, ) *PortV4SearchRequest`
 
 NewPortV4SearchRequest instantiates a new PortV4SearchRequest object
 This constructor will assign default values to properties that have it defined,
@@ -46,11 +46,6 @@ and a boolean to check if the value has been set.
 
 SetFilter sets Filter field to given value.
 
-### HasFilter
-
-`func (o *PortV4SearchRequest) HasFilter() bool`
-
-HasFilter returns a boolean if a field has been set.
 
 ### GetPagination
 

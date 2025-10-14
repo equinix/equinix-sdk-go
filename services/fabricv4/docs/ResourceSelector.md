@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Include** | Pointer to **[]string** | ### Supported metric names to use on filters with property /subject:   * &#x60;*&#x60; - all events or metrics   * &#x60;*_/ports/&lt;uuid&gt;&#x60; - port metrics   * &#x60;*_/connections/&lt;uuid&gt;&#x60; - connection metrics   * &#x60;*_/metros/&lt;metroCode&gt;&#x60; - metro latency metrics  | [optional] 
+**Include** | Pointer to **[]string** | ### Supported metric names to use on filters with property /subject:   * &#x60;/fabric/v4/ports/&lt;uuid&gt;&#x60; - port metrics   * &#x60;/fabric/v4/connections/&lt;uuid&gt;&#x60; - connection metrics   * &#x60;/fabric/v4/metros/&lt;metroCode&gt;&#x60; - metro latency metrics  | [optional] 
 
 ## Methods
 
