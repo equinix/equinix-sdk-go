@@ -83,12 +83,12 @@ func main() {
 	configuration.AddDefaultHeader("X-CORRELATION-ID", CORRELATION_ID)
 	client := lookupv2.NewAPIClient(configuration)
 
-	// Get available Smart Hands service types
-	log.Println("Retrieving available Smart Hands service types...")
+	// Get available patch panel details
+	log.Printf("Retrieving details for patch panel [%s]...\n", patchPanelId)
 
-	typesResp, resp, err := client.LookupApi.RetrievePatchPanelDetails(ctx, patchPanelId).Execute()
+	ppDetail, resp, err := client.LookupApi.RetrievePatchPanelDetails(ctx, patchPanelId).Execute()
 	if err != nil {
-		log.Printf("Error retrieving Smart Hands types: %v", err)
+		log.Printf("Error retrieving patch panel details: %v", err)
 		if resp != nil {
 			log.Printf("Response status: %s", resp.Status)
 			if respBody, err := io.ReadAll(resp.Body); err == nil {
@@ -102,5 +102,8 @@ func main() {
 	log.Printf("Successfully retrieved patch panel information")
 	log.Printf("Response Status: %s", resp.Status)
 	log.Printf("Response Code: %d", resp.StatusCode)
-	log.Printf("Response: %+v", typesResp)
+	log.Printf("Response: %+v", ppDetail)
+
+	log.Printf("Patch panel has %d available ports and %d used ports\n",
+		len(ppDetail.AvailablePorts), len(ppDetail.UsedPortsDetails))
 }
