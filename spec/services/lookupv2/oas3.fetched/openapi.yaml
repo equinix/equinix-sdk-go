@@ -1,0 +1,1680 @@
+{
+    "openapi": "3.0.0",
+    "x-eqx-api-linter-skip-rules": [
+        3,
+        24
+    ],
+    "info": {
+        "title": "Lookup",
+        "description": "Based on a user's permission, a user may view their locations, provider and patch panel in their organization. These locations can be filtered by permission code, account number, cage and cabinet details to get both A Side and Z side IBX locations and patch panel available ports to place an order",
+        "version": "2.0",
+        "termsOfService": "https://www.equinix.com/about/legal/terms",
+        "contact": {
+            "name": "Equinix API Support",
+            "url": "https://docs.equinix.com/api-support.htm"
+        }
+    },
+    "servers": [
+        {
+            "url": "https://api.equinix.com"
+        },
+        {
+            "url": "https://sandboxapi.equinix.com"
+        }
+    ],
+    "tags": [
+        {
+            "name": "Lookup",
+            "description": "Lookup"
+        }
+    ],
+    "paths": {
+        "/colocations/v2/locations": {
+            "get": {
+                "tags": [
+                    "Lookup"
+                ],
+                "operationId": "Get Locations by permission code",
+                "summary": "Get Locations by permission code",
+                "description": "This method retrieves all the user’s IBX locations, accounts, cages and cabinets information according to their ordering permission. This includes A-side and Z-side location information for a cross connect order.",
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "permissionCode",
+                        "in": "query",
+                        "description": "List of Permission code to be filtered",
+                        "required": true,
+                        "style": "form",
+                        "explode": false,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "CROSS_CONNECT",
+                                "WORK_VISIT",
+                                "SHIPMENTS"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "ibxs",
+                        "in": "query",
+                        "description": "List of IBXs to be filtered",
+                        "required": false,
+                        "style": "form",
+                        "explode": false,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    {
+                        "name": "providerAccountNumber",
+                        "in": "query",
+                        "description": "The service provider's account number (Z-side) linked to their cage. Mandatory when used together with `aSideIbx`. This is only applicable when permissionCode is `CROSS_CONNECT`",
+                        "required": false,
+                        "style": "form",
+                        "explode": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "aSideIbx",
+                        "in": "query",
+                        "description": "A-Side IBX details to fetch the (Z-side). This is only applicable when permissionCode is `CROSS_CONNECT`",
+                        "required": false,
+                        "style": "form",
+                        "explode": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "connectionService",
+                        "in": "query",
+                        "description": "Type of connection service to fetch the Z-side details. This is only applicable when permissionCode is `CROSS_CONNECT` and is required when searching for zSide details.",
+                        "required": false,
+                        "style": "form",
+                        "explode": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "details",
+                        "in": "query",
+                        "description": "When `true`, API response returns cage, cabinet and account details",
+                        "required": false,
+                        "style": "form",
+                        "explode": false,
+                        "schema": {
+                            "type": "boolean",
+                            "default": false
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/locations_details_response"
+                                },
+                                "examples": {
+                                    "crossConnects": {
+                                        "value": {
+                                            "crossConnects": [
+                                                {
+                                                    "ibx": "LD5",
+                                                    "accessRestricted": false,
+                                                    "specialPrivilege": false,
+                                                    "accounts": [
+                                                        {
+                                                            "accountNumber": "10000001",
+                                                            "accountName": "Company Limited",
+                                                            "allowOrder": true
+                                                        }
+                                                    ],
+                                                    "cages": [
+                                                        {
+                                                            "id": "LD5:01:00001",
+                                                            "type": "PRIVATE",
+                                                            "accountNumber": "10000001",
+                                                            "cabinetId": "LD5:01:00001:0000",
+                                                            "cabinetType": "PRIVATE"
+                                                        },
+                                                        {
+                                                            "id": "LD5:01:00002",
+                                                            "type": "PRIVATE",
+                                                            "accountNumber": "10000001",
+                                                            "cabinetId": "LD5:01:00002:0101",
+                                                            "cabinetType": "PRIVATE"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    "workVisits": {
+                                        "value": {
+                                            "workVisits": [
+                                                {
+                                                    "ibx": "LD5",
+                                                    "accessRestricted": false,
+                                                    "specialPrivilege": false,
+                                                    "accounts": [
+                                                        {
+                                                            "accountNumber": "10000001",
+                                                            "accountName": "Company Limited",
+                                                            "allowOrder": true
+                                                        }
+                                                    ],
+                                                    "cages": [
+                                                        {
+                                                            "id": "LD5:01:00001",
+                                                            "type": "PRIVATE",
+                                                            "accountNumber": "10000001",
+                                                            "cabinetId": "LD5:01:00001:0000",
+                                                            "cabinetType": "PRIVATE"
+                                                        },
+                                                        {
+                                                            "id": "LD5:01:00002",
+                                                            "type": "PRIVATE",
+                                                            "accountNumber": "10000001",
+                                                            "cabinetId": "LD5:01:00002:0101",
+                                                            "cabinetType": "PRIVATE"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "allOf": [
+                                            {
+                                                "$ref": "#/components/schemas/Error"
+                                            }
+                                        ]
+                                    }
+                                },
+                                "example": [
+                                    {
+                                        "errorCode": "EQ-2061011",
+                                        "errorMessage": "One or more mandatory properties are missing.",
+                                        "correlationId": "210407001942756",
+                                        "additionalInfo": [
+                                            {
+                                                "property": "permissionCode",
+                                                "reason": "permissionCode is required"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "allOf": [
+                                            {
+                                                "$ref": "#/components/schemas/Error"
+                                            }
+                                        ]
+                                    }
+                                },
+                                "example": [
+                                    {
+                                        "errorCode": "EQ-2061005",
+                                        "errorMessage": "Unable to access or locate given parameter. Please ensure you have appropriate permissions.",
+                                        "correlationId": "99740129126918"
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "allOf": [
+                                            {
+                                                "$ref": "#/components/schemas/Error"
+                                            }
+                                        ]
+                                    }
+                                },
+                                "example": [
+                                    {
+                                        "errorCode": "EQ-2061101",
+                                        "errorMessage": "The server has encountered an unexpected error. We apologize for the inconvenience. Please try again later.",
+                                        "correlationId": "99740129126918"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/colocations/v2/patchPanels": {
+            "get": {
+                "tags": [
+                    "Lookup"
+                ],
+                "operationId": "Retrieve all patch panels",
+                "summary": "Retrieve all patch panels",
+                "description": "This method retrieves all available patch panels associated with a cabinet for a user with cross connects ordering permission.",
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "cabinetId",
+                        "in": "query",
+                        "description": "ID of the cabinet",
+                        "required": true,
+                        "explode": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "providerAccountNumber",
+                        "in": "query",
+                        "description": "The service provider's account number (Z-side) linked to their cage. Mandatory when used together with `aSideIbx`",
+                        "required": false,
+                        "style": "form",
+                        "explode": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "aSideIbx",
+                        "in": "query",
+                        "description": "The IBX location code for A-Side. When used together with `providerAccountNumber`, this returns Z-side patch panel details.",
+                        "required": false,
+                        "style": "form",
+                        "explode": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "accountNumber",
+                        "in": "query",
+                        "description": "Account number is only required when cabinet is shared.",
+                        "required": false,
+                        "style": "form",
+                        "explode": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/patchpanel_Response"
+                                },
+                                "example": [
+                                    {
+                                        "patchPanelId": "PP:0000:00000",
+                                        "availablePortCount": 40,
+                                        "patchPanelReferenceId": "CP:0000:09090",
+                                        "ifcEnabled": false,
+                                        "provisioningType": "REGULAR"
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "allOf": [
+                                            {
+                                                "$ref": "#/components/schemas/Error"
+                                            }
+                                        ]
+                                    }
+                                },
+                                "example": [
+                                    {
+                                        "errorCode": "EQ-2061011",
+                                        "errorMessage": "One or more mandatory properties are missing.",
+                                        "correlationId": "210407001942756",
+                                        "additionalInfo": [
+                                            {
+                                                "property": "cabinetId",
+                                                "reason": "cabinetId is required"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "allOf": [
+                                            {
+                                                "$ref": "#/components/schemas/Error"
+                                            }
+                                        ]
+                                    },
+                                    "example": [
+                                        {
+                                            "errorCode": "EQ-2061005",
+                                            "errorMessage": "Unable to access or locate given parameter. Please ensure you have appropriate permissions.",
+                                            "correlationId": "99740129126918"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "allOf": [
+                                            {
+                                                "$ref": "#/components/schemas/Error"
+                                            }
+                                        ]
+                                    }
+                                },
+                                "example": [
+                                    {
+                                        "errorCode": "EQ-2061101",
+                                        "errorMessage": "The server has encountered an unexpected error. We apologize for the inconvenience. Please try again later.",
+                                        "correlationId": "99740129126918"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/colocations/v2/patchPanels/{patchPanelId}": {
+            "get": {
+                "tags": [
+                    "Lookup"
+                ],
+                "operationId": "Retrieve patch panel details",
+                "summary": "Retrieve patch panel details",
+                "description": "This method retrieves details of a patch panel by its ID to a user with cross connects ordering permission.",
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "patchPanelId",
+                        "in": "path",
+                        "description": "ID of patch panel",
+                        "required": true,
+                        "explode": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "providerAccountNumber",
+                        "in": "query",
+                        "description": "The service provider's account number (Z-side) linked to their cage. Mandatory when used together with `aSideIbx`",
+                        "required": false,
+                        "style": "form",
+                        "explode": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "aSideIbx",
+                        "in": "query",
+                        "description": "The IBX location code for A-Side. When used together with `providerAccountNumber` and `accountNumber`, this returns Z-side patch panel details.",
+                        "required": false,
+                        "style": "form",
+                        "explode": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "accountNumber",
+                        "in": "query",
+                        "description": "A-Side cage account number",
+                        "required": false,
+                        "style": "form",
+                        "explode": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/patch_panel_details"
+                                },
+                                "examples": {
+                                    "patch_panel_details": {
+                                        "value": {
+                                            "ibx": "IB1",
+                                            "cageId": "IB1:04:144155",
+                                            "accountName": "COMPANY INC.",
+                                            "accountNumber": "101323",
+                                            "patchPanelId": "PP:0000:31231",
+                                            "cabinetId": "PP:0000:31231:0000",
+                                            "prewired": false,
+                                            "maxPorts": 48,
+                                            "type": "Customer provided",
+                                            "customerReferenceId": "IFC DEMARC",
+                                            "ifcPanel": false,
+                                            "availablePorts": [
+                                                1,
+                                                2
+                                            ],
+                                            "connectionServices": [
+                                                {
+                                                    "name": "COAX",
+                                                    "mediaTypes": [
+                                                        {
+                                                            "name": "COAX",
+                                                            "protocolTypes": [
+                                                                {
+                                                                    "name": "DS_3",
+                                                                    "connectorTypes": [
+                                                                        "BNC",
+                                                                        "LC"
+                                                                    ]
+                                                                }
+                                                            ],
+                                                            "circuitCounts": [
+                                                                3,
+                                                                6
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "name": "MULTI_MODE_FIBER",
+                                                    "mediaTypes": [
+                                                        {
+                                                            "name": "62.5_MICRON_MULTI_MODE_FIBER",
+                                                            "protocolTypes": [
+                                                                {
+                                                                    "name": "FIBRE_CHANNEL",
+                                                                    "connectorTypes": [
+                                                                        "ST",
+                                                                        "LC",
+                                                                        "FC",
+                                                                        "SC"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "name": "FAST_ETHERNET",
+                                                                    "connectorTypes": [
+                                                                        "ST",
+                                                                        "SC",
+                                                                        "LC",
+                                                                        "FC"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "name": "GIGABIT_ETHERNET",
+                                                                    "connectorTypes": [
+                                                                        "ST",
+                                                                        "SC",
+                                                                        "FC",
+                                                                        "LC"
+                                                                    ]
+                                                                }
+                                                            ],
+                                                            "circuitCounts": [
+                                                                3,
+                                                                6,
+                                                                12,
+                                                                24,
+                                                                48
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "allOf": [
+                                            {
+                                                "$ref": "#/components/schemas/Error"
+                                            }
+                                        ]
+                                    }
+                                },
+                                "example": [
+                                    {
+                                        "errorCode": "EQ-2061011",
+                                        "errorMessage": "One or more mandatory properties are missing.",
+                                        "correlationId": "210407001942756",
+                                        "additionalInfo": [
+                                            {
+                                                "property": "patchPanelId",
+                                                "reason": "patchPanelId is required"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "allOf": [
+                                            {
+                                                "$ref": "#/components/schemas/Error"
+                                            }
+                                        ]
+                                    }
+                                },
+                                "example": [
+                                    {
+                                        "errorCode": "EQ-2061005",
+                                        "errorMessage": "Unable to access or locate given parameter. Please ensure you have appropriate permissions.",
+                                        "correlationId": "99740129126918"
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "allOf": [
+                                            {
+                                                "$ref": "#/components/schemas/Error"
+                                            }
+                                        ]
+                                    }
+                                },
+                                "example": [
+                                    {
+                                        "errorCode": "EQ-2061101",
+                                        "errorMessage": "The server has encountered an unexpected error. We apologize for the inconvenience. Please try again later.",
+                                        "correlationId": "99740129126918"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/colocations/v2/providers": {
+            "get": {
+                "tags": [
+                    "Lookup"
+                ],
+                "operationId": "Retrieve list of providers",
+                "summary": "Retrieve list of providers",
+                "description": "This method retrieves all available cross connect service providers to a user with cross connects ordering permission.",
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "cageId",
+                        "in": "query",
+                        "description": "Cage ID",
+                        "required": true,
+                        "explode": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "accountNumber",
+                        "in": "query",
+                        "description": "Account number of A-Side cage",
+                        "required": true,
+                        "style": "form",
+                        "explode": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/provider_details"
+                                },
+                                "example": [
+                                    {
+                                        "providerAccountName": "Equinix",
+                                        "providerAccountNumber": "1"
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "allOf": [
+                                            {
+                                                "$ref": "#/components/schemas/Error"
+                                            }
+                                        ]
+                                    }
+                                },
+                                "example": [
+                                    {
+                                        "errorCode": "EQ-2061011",
+                                        "errorMessage": "One or more mandatory properties are missing.",
+                                        "correlationId": "210407001942756",
+                                        "additionalInfo": [
+                                            {
+                                                "property": "cageId",
+                                                "reason": "cageId is required"
+                                            },
+                                            {
+                                                "property": "accountNumber",
+                                                "reason": "accountNumber is required"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "allOf": [
+                                            {
+                                                "$ref": "#/components/schemas/Error"
+                                            }
+                                        ]
+                                    }
+                                },
+                                "example": [
+                                    {
+                                        "errorCode": "EQ-2061005",
+                                        "errorMessage": "Unable to access or locate given parameter. Please ensure you have appropriate permissions.",
+                                        "correlationId": "99740129126918"
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "allOf": [
+                                            {
+                                                "$ref": "#/components/schemas/Error"
+                                            }
+                                        ]
+                                    }
+                                },
+                                "example": [
+                                    {
+                                        "errorCode": "EQ-2061101",
+                                        "errorMessage": "The server has encountered an unexpected error. We apologize for the inconvenience. Please try again later.",
+                                        "correlationId": "99740129126918"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/colocations/v2/connectionServices": {
+            "get": {
+                "tags": [
+                    "Lookup"
+                ],
+                "operationId": "Retrieve list of connection services",
+                "summary": "Retrieve list of connection services",
+                "description": "This method retrieves a list of supported connection services such as media types, protocol types, connector types and circuit counts.",
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "ibx",
+                        "in": "query",
+                        "description": "IBX",
+                        "required": true,
+                        "explode": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Connection_services_details"
+                                },
+                                "example": [
+                                    {
+                                        "name": "MULTI_MODE_FIBER",
+                                        "mediaTypes": [
+                                            {
+                                                "name": "50_MICRON_MULTI_MODE_FIBER_OM3",
+                                                "protocolTypes": [
+                                                    {
+                                                        "name": "100_GIG_ETHERNET",
+                                                        "connectorTypes": [
+                                                            "SC",
+                                                            "ST"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "10_GIG_ETHERNET",
+                                                        "connectorTypes": [
+                                                            "SC",
+                                                            "ST"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "40_GIG_ETHERNET",
+                                                        "connectorTypes": [
+                                                            "SC",
+                                                            "ST"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "FIBRE_CHANNEL",
+                                                        "connectorTypes": [
+                                                            "SC",
+                                                            "ST"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "GIGABIT_ETHERNET",
+                                                        "connectorTypes": [
+                                                            "SC",
+                                                            "ST"
+                                                        ]
+                                                    }
+                                                ],
+                                                "circuitCounts": []
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "SINGLE_MODE_FIBER",
+                                        "mediaTypes": [
+                                            {
+                                                "name": "SINGLE_MODE_FIBER",
+                                                "protocolTypes": [
+                                                    {
+                                                        "name": "100_GIG_ETHERNET",
+                                                        "connectorTypes": [
+                                                            "FC",
+                                                            "SC",
+                                                            "ST"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "10_GIG_ETHERNET",
+                                                        "connectorTypes": [
+                                                            "FC",
+                                                            "SC",
+                                                            "ST"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "40_GIG_ETHERNET",
+                                                        "connectorTypes": [
+                                                            "FC",
+                                                            "SC",
+                                                            "ST"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "DARK_FIBER",
+                                                        "connectorTypes": [
+                                                            "FC",
+                                                            "SC",
+                                                            "ST"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "DWDM",
+                                                        "connectorTypes": [
+                                                            "FC",
+                                                            "SC",
+                                                            "ST"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "FIBRE_CHANNEL",
+                                                        "connectorTypes": [
+                                                            "FC",
+                                                            "SC",
+                                                            "ST"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "GIGABIT_ETHERNET",
+                                                        "connectorTypes": [
+                                                            "FC",
+                                                            "SC",
+                                                            "ST"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "OC-12",
+                                                        "connectorTypes": [
+                                                            "FC",
+                                                            "SC",
+                                                            "ST"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "OC-192",
+                                                        "connectorTypes": [
+                                                            "FC",
+                                                            "SC",
+                                                            "ST"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "OC-3",
+                                                        "connectorTypes": [
+                                                            "FC",
+                                                            "SC",
+                                                            "ST"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "OC-48",
+                                                        "connectorTypes": [
+                                                            "FC",
+                                                            "SC",
+                                                            "ST"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "STM-1",
+                                                        "connectorTypes": [
+                                                            "FC",
+                                                            "SC",
+                                                            "ST"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "STM-16",
+                                                        "connectorTypes": [
+                                                            "FC",
+                                                            "SC",
+                                                            "ST"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "STM-4",
+                                                        "connectorTypes": [
+                                                            "FC",
+                                                            "SC",
+                                                            "ST"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "STM-64",
+                                                        "connectorTypes": [
+                                                            "FC",
+                                                            "SC",
+                                                            "ST"
+                                                        ]
+                                                    }
+                                                ],
+                                                "circuitCounts": []
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "UTP",
+                                        "mediaTypes": [
+                                            {
+                                                "name": "CAT5E",
+                                                "protocolTypes": [
+                                                    {
+                                                        "name": "56K",
+                                                        "connectorTypes": [
+                                                            "RJ45"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "E1",
+                                                        "connectorTypes": [
+                                                            "RJ45"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "ETHERNET",
+                                                        "connectorTypes": [
+                                                            "RJ45"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "FAST_ETHERNET",
+                                                        "connectorTypes": [
+                                                            "RJ45"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "GIGABIT_ETHERNET",
+                                                        "connectorTypes": [
+                                                            "RJ45"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "ISDN",
+                                                        "connectorTypes": [
+                                                            "RJ45"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "T1",
+                                                        "connectorTypes": [
+                                                            "RJ45"
+                                                        ]
+                                                    }
+                                                ],
+                                                "circuitCounts": []
+                                            },
+                                            {
+                                                "name": "CAT6",
+                                                "protocolTypes": [
+                                                    {
+                                                        "name": "ETHERNET",
+                                                        "connectorTypes": [
+                                                            "RJ45"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "FAST_ETHERNET",
+                                                        "connectorTypes": [
+                                                            "RJ45"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "GIGABIT_ETHERNET",
+                                                        "connectorTypes": [
+                                                            "RJ45"
+                                                        ]
+                                                    }
+                                                ],
+                                                "circuitCounts": []
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "allOf": [
+                                            {
+                                                "$ref": "#/components/schemas/Error"
+                                            }
+                                        ]
+                                    }
+                                },
+                                "example": [
+                                    {
+                                        "errorCode": "EQ-2061011",
+                                        "errorMessage": "One or more mandatory properties are missing.",
+                                        "correlationId": "210407001942756",
+                                        "additionalInfo": [
+                                            {
+                                                "property": "ibx",
+                                                "reason": "ibx is required"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "allOf": [
+                                            {
+                                                "$ref": "#/components/schemas/Error"
+                                            }
+                                        ]
+                                    }
+                                },
+                                "example": [
+                                    {
+                                        "errorCode": "EQ-2061005",
+                                        "errorMessage": "Unable to access or locate given parameter. Please ensure you have appropriate permissions.",
+                                        "correlationId": "99740129126918"
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "allOf": [
+                                            {
+                                                "$ref": "#/components/schemas/Error"
+                                            }
+                                        ]
+                                    }
+                                },
+                                "example": [
+                                    {
+                                        "errorCode": "EQ-2061101",
+                                        "errorMessage": "The server has encountered an unexpected error. We apologize for the inconvenience. Please try again later.",
+                                        "correlationId": "99740129126918"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "BearerAuth": {
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
+            }
+        },
+        "schemas": {
+            "Error": {
+                "title": "Error Info",
+                "type": "array",
+                "items": {
+                    "title": "Error details",
+                    "type": "object",
+                    "properties": {
+                        "errorCode": {
+                            "type": "string",
+                            "example": "EQ-20YYXXX"
+                        },
+                        "errorMessage": {
+                            "type": "string",
+                            "example": "Error message"
+                        },
+                        "details": {
+                            "type": "string",
+                            "example": "Error details"
+                        },
+                        "correlationId": {
+                            "type": "string",
+                            "example": "Correlation ID to trace the error back"
+                        },
+                        "help": {
+                            "type": "string",
+                            "example": "URL to a help page for the corresponding errorCode"
+                        },
+                        "additionalInfo": {
+                            "title": "Error details",
+                            "type": "object",
+                            "properties": {
+                                "property": {
+                                    "type": "string",
+                                    "example": "id"
+                                },
+                                "reason": {
+                                    "type": "string",
+                                    "example": "missing id"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "provider_details": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/components/schemas/provider"
+                }
+            },
+            "provider": {
+                "type": "object",
+                "properties": {
+                    "providerAccountName": {
+                        "type": "string",
+                        "example": "Account NAME",
+                        "description": "Cage account name of service provider"
+                    },
+                    "providerAccountNumber": {
+                        "type": "string",
+                        "example": "1000001",
+                        "description": "Cage account number of service provider"
+                    }
+                }
+            },
+            "patch_panel_details": {
+                "type": "object",
+                "properties": {
+                    "patchPanelId": {
+                        "type": "string",
+                        "example": "PP:0000:0010312312",
+                        "description": "Patch panel ID / serial number"
+                    },
+                    "ibx": {
+                        "type": "string",
+                        "example": "AM1",
+                        "description": "IBX location code"
+                    },
+                    "cageId": {
+                        "type": "string",
+                        "example": "AM1:00:000000",
+                        "description": "Cage ID"
+                    },
+                    "cabinetId": {
+                        "type": "string",
+                        "example": "AM1:00:000000:0000",
+                        "description": "Cabinet ID"
+                    },
+                    "accountNumber": {
+                        "type": "string",
+                        "description": "Customer cage account number"
+                    },
+                    "accountName": {
+                        "type": "string",
+                        "description": "Customer cage account name"
+                    },
+                    "dedicatedMediaType": {
+                        "type": "string",
+                        "description": "Type of dedicated media"
+                    },
+                    "preWired": {
+                        "type": "boolean",
+                        "description": "Prewired status of cross connects. When `true`, cross connects are prewired"
+                    },
+                    "type": {
+                        "type": "string",
+                        "enum": [
+                            "CUSTOMER_PROVIDED",
+                            "EQUINIX_PROVIDED"
+                        ],
+                        "example": "CUSTOMER_PROVIDED",
+                        "description": "Patch panel type"
+                    },
+                    "ifcEnabled": {
+                        "type": "boolean",
+                        "example": false,
+                        "description": "Identifies if intra-facility cable (IFC) connection is required for patch panel. When `true`, IFC connection is required."
+                    },
+                    "rackLocations": {
+                        "type": "string",
+                        "example": "Front",
+                        "description": "Rack location of patch panel"
+                    },
+                    "installLocations": {
+                        "type": "string",
+                        "example": "Standard",
+                        "enum": [
+                            "STANDARD"
+                        ],
+                        "description": "Location of installed patch panel"
+                    },
+                    "installationRequired": {
+                        "type": "boolean",
+                        "default": false,
+                        "description": "If `true`, Equinix will install cross connect from demarcation panel to customer equipment. "
+                    },
+                    "circuitAvailable": {
+                        "type": "boolean",
+                        "default": false,
+                        "description": "if `true`, circuits are available for patch panel"
+                    },
+                    "availablePorts": {
+                        "type": "array",
+                        "items": {
+                            "type": "number",
+                            "example": 1
+                        },
+                        "description": "Individually identified ports that are available out of the total number of ports."
+                    },
+                    "connectionServices": {
+                        "$ref": "#/components/schemas/Connection_services_details"
+                    },
+                    "usedPortsDetails": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/userPortDetails"
+                        }
+                    },
+                    "provisioningType": {
+                        "type": "string",
+                        "enum": [
+                            "REGULAR",
+                            "FAST_PROVISIONING"
+                        ],
+                        "description": "If `REGULAR`, order will be provisioned as per standard lead time. If `FAST_PROVISIONING`, order is typically provisioned in 30min through the support of fast provisioning scheduling. However, service may be delayed due to system maintenance"
+                    }
+                }
+            },
+            "locations_details": {
+                "type": "object",
+                "properties": {
+                    "ibx": {
+                        "type": "string",
+                        "description": "IBX locations code",
+                        "example": "AM1"
+                    },
+                    "accessRestricted": {
+                        "type": "boolean",
+                        "description": "IBX access is restricted when the value is `true`",
+                        "default": false
+                    },
+                    "specialPrivilege": {
+                        "type": "boolean",
+                        "description": "When set to `true`, user will be allowed to access IBXs with restricted access. This only applies for specific partners",
+                        "default": false
+                    },
+                    "accounts": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/accounts"
+                        }
+                    },
+                    "cages": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/cage_details"
+                        }
+                    }
+                }
+            },
+            "cage_details": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Cage Unique space id",
+                        "example": "AM1:00000:0000"
+                    },
+                    "type": {
+                        "type": "string",
+                        "enum": [
+                            "SHARED",
+                            "PRIVATE"
+                        ],
+                        "description": "Type of the cage",
+                        "default": "PRIVATE"
+                    },
+                    "accountNumbers": {
+                        "type": "string",
+                        "description": "Customer account number associated with cage",
+                        "example": "100013200"
+                    },
+                    "cabinetId": {
+                        "type": "string",
+                        "description": "Cabinet Unique space id",
+                        "example": "AM2:0G:012320:0000"
+                    },
+                    "cabinetType": {
+                        "type": "string",
+                        "example": "PRIVATE",
+                        "description": "Type of the cabinet",
+                        "enum": [
+                            "PRIVATE",
+                            "DEMARCATION"
+                        ]
+                    }
+                }
+            },
+            "accounts": {
+                "type": "object",
+                "properties": {
+                    "accountNumber": {
+                        "type": "string",
+                        "description": "Customer account number",
+                        "example": "100013200"
+                    },
+                    "accountName": {
+                        "type": "string",
+                        "description": "Customer account name",
+                        "example": "Legal Account name"
+                    },
+                    "allowOrder": {
+                        "type": "boolean",
+                        "description": "When set to `true`, User is allowed to place an orders on this account",
+                        "default": true
+                    }
+                }
+            },
+            "locations_details_response": {
+                "type": "object",
+                "properties": {
+                    "crossConnects": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/locations_details"
+                        }
+                    }
+                }
+            },
+            "userPortDetails": {
+                "type": "object",
+                "properties": {
+                    "portNumber": {
+                        "type": "number",
+                        "example": 7,
+                        "description": "Port number that is currently in use"
+                    },
+                    "serialNumber": {
+                        "type": "string",
+                        "example": 99910002,
+                        "description": "Serial number or cable id"
+                    },
+                    "connectionServicesName": {
+                        "$ref": "#/components/schemas/Connection_services"
+                    },
+                    "zSideProviderName": {
+                        "type": "string",
+                        "example": "ABC Telecom",
+                        "description": "Name of Z-Side service provider"
+                    },
+                    "circuitId": {
+                        "type": "string",
+                        "example": "/L8YX/999999//ATI/"
+                    }
+                }
+            },
+            "patchpanel_Response": {
+                "title": "Get all the patch panel response data",
+                "required": [
+                    "data"
+                ],
+                "type": "array",
+                "items": {
+                    "$ref": "#/components/schemas/patch_panel_response"
+                }
+            },
+            "patch_panel_response": {
+                "type": "object",
+                "required": [
+                    "id"
+                ],
+                "properties": {
+                    "patchPanelId": {
+                        "type": "string",
+                        "example": "PP:000:01231231",
+                        "description": "Patch panel unique ID / serial number"
+                    },
+                    "availablePortCount": {
+                        "type": "number",
+                        "example": 48,
+                        "description": "Available ports for use"
+                    },
+                    "patchPanelReferenceId": {
+                        "type": "string",
+                        "description": "Unique reference ID associated with patch panel"
+                    },
+                    "ifcEnabled": {
+                        "type": "boolean",
+                        "default": false,
+                        "example": false,
+                        "description": "Patch panel will support only intra facility when `true`"
+                    },
+                    "provisioningType": {
+                        "type": "string",
+                        "enum": [
+                            "REGULAR",
+                            "FAST_PROVISIONING"
+                        ],
+                        "description": "If `REGULAR`, order will be provisioned as per standard lead time. If `FAST_PROVISIONING`, order is typically provisioned in 30min through the support of fast provisioning scheduling. However, service may be delayed due to system maintenance"
+                    }
+                }
+            },
+            "Connection_services": {
+                "type": "string",
+                "description": "The name of the available connection service.",
+                "example": "SINGLE_MODE_FIBER",
+                "enum": [
+                    "COAX",
+                    "MP4_CABLE",
+                    "MULTI_MODE_FIBER",
+                    "POTS",
+                    "SINGLE_MODE_FIBER",
+                    "UTP"
+                ]
+            },
+            "media_types": {
+                "type": "string",
+                "description": "Name of the media type that corresponds with the connection service.",
+                "example": "SINGLE_MODE_FIBER",
+                "enum": [
+                    "COAX",
+                    "MP4_CABLE",
+                    "50_MICRON_MULTI_MODE_FIBER",
+                    "50_MICRON_MULTI_MODE_FIBER_OM2",
+                    "50_MICRON_MULTI_MODE_FIBER_OM3",
+                    "50_MICRON_MULTI_MODE_FIBER_OM4",
+                    "62.5_MICRON_MULTI_MODE_FIBER",
+                    "62.5_MICRON_MULTI_MODE_FIBER_OM1",
+                    "ABAM",
+                    "CAT3",
+                    "CAT5E",
+                    "CAT6",
+                    "CAT6A",
+                    "OS1",
+                    "SINGLE_MODE_FIBER"
+                ]
+            },
+            "protocol_types": {
+                "type": "string",
+                "description": "Name of the protocol type that corresponds with the media type.",
+                "example": "FAST_ETHERNET",
+                "enum": [
+                    "ANTENNA",
+                    "DS-3",
+                    "E1",
+                    "E3",
+                    "ETHERNET",
+                    "FAST_ETHERNET",
+                    "GIGABIT_ETHERNET",
+                    "POTS",
+                    "T1",
+                    "FIBRE_CHANNEL",
+                    "10_GIG_ETHERNET",
+                    "100_GIG_ETHERNET",
+                    "40_GIG_ETHERNET",
+                    "DARK_FIBER",
+                    "DWDM",
+                    "56K",
+                    "ISDN",
+                    "OC-12",
+                    "OC-192",
+                    "OC-3",
+                    "OC-48",
+                    "STM-1",
+                    "STM-16",
+                    "STM-4",
+                    "STM-64",
+                    "NA"
+                ]
+            },
+            "connector_types": {
+                "type": "string",
+                "description": "Name of the connector type that corresponds with the connection service",
+                "example": "LC",
+                "enum": [
+                    "BNC",
+                    "LC",
+                    "FC",
+                    "SC",
+                    "ST",
+                    "WIRE_WRAP",
+                    "RJ45",
+                    "E2000",
+                    "RJ11"
+                ]
+            },
+            "Connection_services_details": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "name": {
+                            "$ref": "#/components/schemas/Connection_services"
+                        },
+                        "mediaTypes": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "$ref": "#/components/schemas/media_types"
+                                    },
+                                    "protocolTypes": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "name": {
+                                                    "$ref": "#/components/schemas/protocol_types"
+                                                },
+                                                "connectorTypes": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "$ref": "#/components/schemas/connector_types"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "circuitCounts": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "integer"
+                                        },
+                                        "description": "Intra-Faciltiy Cable (IFC) circuit count options available for the respective connection service. E.g. If the 'circuitCount' is empty, it means there are no available IFC circuits. If '3,6' appears in the circuit count, it means that the IFC circuits options available are 3 circuits and 6 circuits.",
+                                        "example": [
+                                            1,
+                                            2
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
