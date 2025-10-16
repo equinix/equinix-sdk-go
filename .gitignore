@@ -13,3 +13,4 @@ examples/services/metalv1/create_device_in_metro/create_device_in_metro
 examples/services/metalv1/plans/plans
 examples/services/ordersv2/get_order_details/get_order_details
 examples/services/smarthandsv1/get_smarthands_types/get_smarthands_types
+examples/services/lookupv2/get_patch_panels/get_patch_panels
