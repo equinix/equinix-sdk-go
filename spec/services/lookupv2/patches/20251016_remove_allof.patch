@@ -1,0 +1,196 @@
+diff --git a/spec/services/lookupv2/oas3.patched/openapi.yaml b/spec/services/lookupv2/oas3.patched/openapi.yaml
+index e5468199..09a225db 100644
+--- a/spec/services/lookupv2/oas3.patched/openapi.yaml
++++ b/spec/services/lookupv2/oas3.patched/openapi.yaml
+@@ -207,11 +207,7 @@
+                                 "schema": {
+                                     "type": "array",
+                                     "items": {
+-                                        "allOf": [
+-                                            {
+-                                                "$ref": "#/components/schemas/Error"
+-                                            }
+-                                        ]
++                                        "$ref": "#/components/schemas/Error"
+                                     }
+                                 },
+                                 "example": [
+@@ -237,11 +233,7 @@
+                                 "schema": {
+                                     "type": "array",
+                                     "items": {
+-                                        "allOf": [
+-                                            {
+-                                                "$ref": "#/components/schemas/Error"
+-                                            }
+-                                        ]
++                                        "$ref": "#/components/schemas/Error"
+                                     }
+                                 },
+                                 "example": [
+@@ -261,11 +253,7 @@
+                                 "schema": {
+                                     "type": "array",
+                                     "items": {
+-                                        "allOf": [
+-                                            {
+-                                                "$ref": "#/components/schemas/Error"
+-                                            }
+-                                        ]
++                                        "$ref": "#/components/schemas/Error"
+                                     }
+                                 },
+                                 "example": [
+@@ -366,11 +354,7 @@
+                                 "schema": {
+                                     "type": "array",
+                                     "items": {
+-                                        "allOf": [
+-                                            {
+-                                                "$ref": "#/components/schemas/Error"
+-                                            }
+-                                        ]
++                                        "$ref": "#/components/schemas/Error"
+                                     }
+                                 },
+                                 "example": [
+@@ -396,11 +380,7 @@
+                                 "schema": {
+                                     "type": "array",
+                                     "items": {
+-                                        "allOf": [
+-                                            {
+-                                                "$ref": "#/components/schemas/Error"
+-                                            }
+-                                        ]
++                                        "$ref": "#/components/schemas/Error"
+                                     },
+                                     "example": [
+                                         {
+@@ -420,11 +400,7 @@
+                                 "schema": {
+                                     "type": "array",
+                                     "items": {
+-                                        "allOf": [
+-                                            {
+-                                                "$ref": "#/components/schemas/Error"
+-                                            }
+-                                        ]
++                                        "$ref": "#/components/schemas/Error"
+                                     }
+                                 },
+                                 "example": [
+@@ -604,11 +580,7 @@
+                                 "schema": {
+                                     "type": "array",
+                                     "items": {
+-                                        "allOf": [
+-                                            {
+                                                 "$ref": "#/components/schemas/Error"
+-                                            }
+-                                        ]
+                                     }
+                                 },
+                                 "example": [
+@@ -634,11 +606,7 @@
+                                 "schema": {
+                                     "type": "array",
+                                     "items": {
+-                                        "allOf": [
+-                                            {
+-                                                "$ref": "#/components/schemas/Error"
+-                                            }
+-                                        ]
++                                        "$ref": "#/components/schemas/Error"
+                                     }
+                                 },
+                                 "example": [
+@@ -658,11 +626,7 @@
+                                 "schema": {
+                                     "type": "array",
+                                     "items": {
+-                                        "allOf": [
+-                                            {
+-                                                "$ref": "#/components/schemas/Error"
+-                                            }
+-                                        ]
++                                        "$ref": "#/components/schemas/Error"
+                                     }
+                                 },
+                                 "example": [
+@@ -738,11 +702,7 @@
+                                 "schema": {
+                                     "type": "array",
+                                     "items": {
+-                                        "allOf": [
+-                                            {
+                                                 "$ref": "#/components/schemas/Error"
+-                                            }
+-                                        ]
+                                     }
+                                 },
+                                 "example": [
+@@ -772,11 +732,7 @@
+                                 "schema": {
+                                     "type": "array",
+                                     "items": {
+-                                        "allOf": [
+-                                            {
+-                                                "$ref": "#/components/schemas/Error"
+-                                            }
+-                                        ]
++                                        "$ref": "#/components/schemas/Error"
+                                     }
+                                 },
+                                 "example": [
+@@ -796,11 +752,7 @@
+                                 "schema": {
+                                     "type": "array",
+                                     "items": {
+-                                        "allOf": [
+-                                            {
+-                                                "$ref": "#/components/schemas/Error"
+-                                            }
+-                                        ]
++                                        "$ref": "#/components/schemas/Error"
+                                     }
+                                 },
+                                 "example": [
+@@ -1115,11 +1067,7 @@
+                                 "schema": {
+                                     "type": "array",
+                                     "items": {
+-                                        "allOf": [
+-                                            {
+                                                 "$ref": "#/components/schemas/Error"
+-                                            }
+-                                        ]
+                                     }
+                                 },
+                                 "example": [
+@@ -1145,11 +1093,7 @@
+                                 "schema": {
+                                     "type": "array",
+                                     "items": {
+-                                        "allOf": [
+-                                            {
+-                                                "$ref": "#/components/schemas/Error"
+-                                            }
+-                                        ]
++                                        "$ref": "#/components/schemas/Error"
+                                     }
+                                 },
+                                 "example": [
+@@ -1169,11 +1113,7 @@
+                                 "schema": {
+                                     "type": "array",
+                                     "items": {
+-                                        "allOf": [
+-                                            {
+-                                                "$ref": "#/components/schemas/Error"
+-                                            }
+-                                        ]
++                                        "$ref": "#/components/schemas/Error"
+                                     }
+                                 },
+                                 "example": [
