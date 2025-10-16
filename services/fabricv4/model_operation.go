@@ -19,8 +19,12 @@ type Operation struct {
 	// IPV4 route count
 	BgpIpv4RoutesCount *int32 `json:"bgpIpv4RoutesCount,omitempty"`
 	// IPV6 route count
-	BgpIpv6RoutesCount   *int32 `json:"bgpIpv6RoutesCount,omitempty"`
-	AdditionalProperties map[string]interface{}
+	BgpIpv6RoutesCount *int32 `json:"bgpIpv6RoutesCount,omitempty"`
+	// distinct IPV4 prefixes count
+	DistinctIpv4PrefixesCount *int32 `json:"distinctIpv4PrefixesCount,omitempty"`
+	// distinct IPV6 prefixes count
+	DistinctIpv6PrefixesCount *int32 `json:"distinctIpv6PrefixesCount,omitempty"`
+	AdditionalProperties      map[string]interface{}
 }
 
 type _Operation Operation
@@ -106,6 +110,70 @@ func (o *Operation) SetBgpIpv6RoutesCount(v int32) {
 	o.BgpIpv6RoutesCount = &v
 }
 
+// GetDistinctIpv4PrefixesCount returns the DistinctIpv4PrefixesCount field value if set, zero value otherwise.
+func (o *Operation) GetDistinctIpv4PrefixesCount() int32 {
+	if o == nil || IsNil(o.DistinctIpv4PrefixesCount) {
+		var ret int32
+		return ret
+	}
+	return *o.DistinctIpv4PrefixesCount
+}
+
+// GetDistinctIpv4PrefixesCountOk returns a tuple with the DistinctIpv4PrefixesCount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Operation) GetDistinctIpv4PrefixesCountOk() (*int32, bool) {
+	if o == nil || IsNil(o.DistinctIpv4PrefixesCount) {
+		return nil, false
+	}
+	return o.DistinctIpv4PrefixesCount, true
+}
+
+// HasDistinctIpv4PrefixesCount returns a boolean if a field has been set.
+func (o *Operation) HasDistinctIpv4PrefixesCount() bool {
+	if o != nil && !IsNil(o.DistinctIpv4PrefixesCount) {
+		return true
+	}
+
+	return false
+}
+
+// SetDistinctIpv4PrefixesCount gets a reference to the given int32 and assigns it to the DistinctIpv4PrefixesCount field.
+func (o *Operation) SetDistinctIpv4PrefixesCount(v int32) {
+	o.DistinctIpv4PrefixesCount = &v
+}
+
+// GetDistinctIpv6PrefixesCount returns the DistinctIpv6PrefixesCount field value if set, zero value otherwise.
+func (o *Operation) GetDistinctIpv6PrefixesCount() int32 {
+	if o == nil || IsNil(o.DistinctIpv6PrefixesCount) {
+		var ret int32
+		return ret
+	}
+	return *o.DistinctIpv6PrefixesCount
+}
+
+// GetDistinctIpv6PrefixesCountOk returns a tuple with the DistinctIpv6PrefixesCount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Operation) GetDistinctIpv6PrefixesCountOk() (*int32, bool) {
+	if o == nil || IsNil(o.DistinctIpv6PrefixesCount) {
+		return nil, false
+	}
+	return o.DistinctIpv6PrefixesCount, true
+}
+
+// HasDistinctIpv6PrefixesCount returns a boolean if a field has been set.
+func (o *Operation) HasDistinctIpv6PrefixesCount() bool {
+	if o != nil && !IsNil(o.DistinctIpv6PrefixesCount) {
+		return true
+	}
+
+	return false
+}
+
+// SetDistinctIpv6PrefixesCount gets a reference to the given int32 and assigns it to the DistinctIpv6PrefixesCount field.
+func (o *Operation) SetDistinctIpv6PrefixesCount(v int32) {
+	o.DistinctIpv6PrefixesCount = &v
+}
+
 func (o Operation) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -121,6 +189,12 @@ func (o Operation) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.BgpIpv6RoutesCount) {
 		toSerialize["bgpIpv6RoutesCount"] = o.BgpIpv6RoutesCount
+	}
+	if !IsNil(o.DistinctIpv4PrefixesCount) {
+		toSerialize["distinctIpv4PrefixesCount"] = o.DistinctIpv4PrefixesCount
+	}
+	if !IsNil(o.DistinctIpv6PrefixesCount) {
+		toSerialize["distinctIpv6PrefixesCount"] = o.DistinctIpv6PrefixesCount
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -146,6 +220,8 @@ func (o *Operation) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "bgpIpv4RoutesCount")
 		delete(additionalProperties, "bgpIpv6RoutesCount")
+		delete(additionalProperties, "distinctIpv4PrefixesCount")
+		delete(additionalProperties, "distinctIpv6PrefixesCount")
 		o.AdditionalProperties = additionalProperties
 	}
 

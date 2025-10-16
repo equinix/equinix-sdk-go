@@ -16,7 +16,7 @@ var _ MappedNullable = &ResourceSelector{}
 
 // ResourceSelector struct for ResourceSelector
 type ResourceSelector struct {
-	// ### Supported metric names to use on filters with property /subject:   * `*` - all events or metrics   * `*_/ports/<uuid>` - port metrics   * `*_/connections/<uuid>` - connection metrics   * `*_/metros/<metroCode>` - metro latency metrics
+	// ### Supported metric names to use on filters with property /subject:   * `/fabric/v4/ports/<uuid>` - port metrics   * `/fabric/v4/connections/<uuid>` - connection metrics   * `/fabric/v4/metros/<metroCode>` - metro latency metrics
 	Include              []string `json:"include,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

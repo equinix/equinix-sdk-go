@@ -24,7 +24,7 @@ type CloudRouterActionResponse struct {
 	ChangeLog            Changelog                `json:"changeLog"`
 	Href                 *string                  `json:"href,omitempty"`
 	Connection           *RouterActionsConnection `json:"connection,omitempty"`
-	Operation            *Operation               `json:"operation,omitempty"`
+	Router               *RouterActionsRouter     `json:"router,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -243,36 +243,36 @@ func (o *CloudRouterActionResponse) SetConnection(v RouterActionsConnection) {
 	o.Connection = &v
 }
 
-// GetOperation returns the Operation field value if set, zero value otherwise.
-func (o *CloudRouterActionResponse) GetOperation() Operation {
-	if o == nil || IsNil(o.Operation) {
-		var ret Operation
+// GetRouter returns the Router field value if set, zero value otherwise.
+func (o *CloudRouterActionResponse) GetRouter() RouterActionsRouter {
+	if o == nil || IsNil(o.Router) {
+		var ret RouterActionsRouter
 		return ret
 	}
-	return *o.Operation
+	return *o.Router
 }
 
-// GetOperationOk returns a tuple with the Operation field value if set, nil otherwise
+// GetRouterOk returns a tuple with the Router field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CloudRouterActionResponse) GetOperationOk() (*Operation, bool) {
-	if o == nil || IsNil(o.Operation) {
+func (o *CloudRouterActionResponse) GetRouterOk() (*RouterActionsRouter, bool) {
+	if o == nil || IsNil(o.Router) {
 		return nil, false
 	}
-	return o.Operation, true
+	return o.Router, true
 }
 
-// HasOperation returns a boolean if a field has been set.
-func (o *CloudRouterActionResponse) HasOperation() bool {
-	if o != nil && !IsNil(o.Operation) {
+// HasRouter returns a boolean if a field has been set.
+func (o *CloudRouterActionResponse) HasRouter() bool {
+	if o != nil && !IsNil(o.Router) {
 		return true
 	}
 
 	return false
 }
 
-// SetOperation gets a reference to the given Operation and assigns it to the Operation field.
-func (o *CloudRouterActionResponse) SetOperation(v Operation) {
-	o.Operation = &v
+// SetRouter gets a reference to the given RouterActionsRouter and assigns it to the Router field.
+func (o *CloudRouterActionResponse) SetRouter(v RouterActionsRouter) {
+	o.Router = &v
 }
 
 func (o CloudRouterActionResponse) MarshalJSON() ([]byte, error) {
@@ -298,8 +298,8 @@ func (o CloudRouterActionResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Connection) {
 		toSerialize["connection"] = o.Connection
 	}
-	if !IsNil(o.Operation) {
-		toSerialize["operation"] = o.Operation
+	if !IsNil(o.Router) {
+		toSerialize["router"] = o.Router
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -354,7 +354,7 @@ func (o *CloudRouterActionResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "changeLog")
 		delete(additionalProperties, "href")
 		delete(additionalProperties, "connection")
-		delete(additionalProperties, "operation")
+		delete(additionalProperties, "router")
 		o.AdditionalProperties = additionalProperties
 	}
 

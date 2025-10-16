@@ -15,15 +15,31 @@ import (
 
 // FabricProviderResourceResponse - struct for FabricProviderResourceResponse
 type FabricProviderResourceResponse struct {
-	FabricConnectionResponse     *FabricConnectionResponse
-	FabricRouteProtocolsResponse *FabricRouteProtocolsResponse
-	FabricRouterResponse         *FabricRouterResponse
+	FabricConnectionResponse      *FabricConnectionResponse
+	FabricIPWANConnectionResponse *FabricIPWANConnectionResponse
+	FabricIPWANResponse           *FabricIPWANResponse
+	FabricRouteProtocolsResponse  *FabricRouteProtocolsResponse
+	FabricRouterResponse          *FabricRouterResponse
 }
 
 // FabricConnectionResponseAsFabricProviderResourceResponse is a convenience function that returns FabricConnectionResponse wrapped in FabricProviderResourceResponse
 func FabricConnectionResponseAsFabricProviderResourceResponse(v *FabricConnectionResponse) FabricProviderResourceResponse {
 	return FabricProviderResourceResponse{
 		FabricConnectionResponse: v,
+	}
+}
+
+// FabricIPWANConnectionResponseAsFabricProviderResourceResponse is a convenience function that returns FabricIPWANConnectionResponse wrapped in FabricProviderResourceResponse
+func FabricIPWANConnectionResponseAsFabricProviderResourceResponse(v *FabricIPWANConnectionResponse) FabricProviderResourceResponse {
+	return FabricProviderResourceResponse{
+		FabricIPWANConnectionResponse: v,
+	}
+}
+
+// FabricIPWANResponseAsFabricProviderResourceResponse is a convenience function that returns FabricIPWANResponse wrapped in FabricProviderResourceResponse
+func FabricIPWANResponseAsFabricProviderResourceResponse(v *FabricIPWANResponse) FabricProviderResourceResponse {
+	return FabricProviderResourceResponse{
+		FabricIPWANResponse: v,
 	}
 }
 
@@ -60,6 +76,40 @@ func (dst *FabricProviderResourceResponse) UnmarshalJSON(data []byte) error {
 		}
 	} else {
 		dst.FabricConnectionResponse = nil
+	}
+
+	// try to unmarshal data into FabricIPWANConnectionResponse
+	err = newStrictDecoder(data).Decode(&dst.FabricIPWANConnectionResponse)
+	if err == nil {
+		jsonFabricIPWANConnectionResponse, _ := json.Marshal(dst.FabricIPWANConnectionResponse)
+		if string(jsonFabricIPWANConnectionResponse) == "{}" { // empty struct
+			dst.FabricIPWANConnectionResponse = nil
+		} else {
+			if err = validator.Validate(dst.FabricIPWANConnectionResponse); err != nil {
+				dst.FabricIPWANConnectionResponse = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.FabricIPWANConnectionResponse = nil
+	}
+
+	// try to unmarshal data into FabricIPWANResponse
+	err = newStrictDecoder(data).Decode(&dst.FabricIPWANResponse)
+	if err == nil {
+		jsonFabricIPWANResponse, _ := json.Marshal(dst.FabricIPWANResponse)
+		if string(jsonFabricIPWANResponse) == "{}" { // empty struct
+			dst.FabricIPWANResponse = nil
+		} else {
+			if err = validator.Validate(dst.FabricIPWANResponse); err != nil {
+				dst.FabricIPWANResponse = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.FabricIPWANResponse = nil
 	}
 
 	// try to unmarshal data into FabricRouteProtocolsResponse
@@ -99,6 +149,8 @@ func (dst *FabricProviderResourceResponse) UnmarshalJSON(data []byte) error {
 	if match > 1 { // more than 1 match
 		// reset to nil
 		dst.FabricConnectionResponse = nil
+		dst.FabricIPWANConnectionResponse = nil
+		dst.FabricIPWANResponse = nil
 		dst.FabricRouteProtocolsResponse = nil
 		dst.FabricRouterResponse = nil
 
@@ -114,6 +166,14 @@ func (dst *FabricProviderResourceResponse) UnmarshalJSON(data []byte) error {
 func (src FabricProviderResourceResponse) MarshalJSON() ([]byte, error) {
 	if src.FabricConnectionResponse != nil {
 		return json.Marshal(&src.FabricConnectionResponse)
+	}
+
+	if src.FabricIPWANConnectionResponse != nil {
+		return json.Marshal(&src.FabricIPWANConnectionResponse)
+	}
+
+	if src.FabricIPWANResponse != nil {
+		return json.Marshal(&src.FabricIPWANResponse)
 	}
 
 	if src.FabricRouteProtocolsResponse != nil {
@@ -136,6 +196,14 @@ func (obj *FabricProviderResourceResponse) GetActualInstance() interface{} {
 		return obj.FabricConnectionResponse
 	}
 
+	if obj.FabricIPWANConnectionResponse != nil {
+		return obj.FabricIPWANConnectionResponse
+	}
+
+	if obj.FabricIPWANResponse != nil {
+		return obj.FabricIPWANResponse
+	}
+
 	if obj.FabricRouteProtocolsResponse != nil {
 		return obj.FabricRouteProtocolsResponse
 	}
@@ -152,6 +220,14 @@ func (obj *FabricProviderResourceResponse) GetActualInstance() interface{} {
 func (obj FabricProviderResourceResponse) GetActualInstanceValue() interface{} {
 	if obj.FabricConnectionResponse != nil {
 		return *obj.FabricConnectionResponse
+	}
+
+	if obj.FabricIPWANConnectionResponse != nil {
+		return *obj.FabricIPWANConnectionResponse
+	}
+
+	if obj.FabricIPWANResponse != nil {
+		return *obj.FabricIPWANResponse
 	}
 
 	if obj.FabricRouteProtocolsResponse != nil {
