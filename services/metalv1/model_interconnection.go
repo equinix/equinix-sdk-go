@@ -39,12 +39,12 @@ type Interconnection struct {
 	Status *string  `json:"status,omitempty"`
 	Tags   []string `json:"tags,omitempty"`
 	// This token is used for shared interconnections to be used as the Fabric Token. This field is entirely deprecated.
-	Token                *string                        `json:"token,omitempty"`
-	Type                 *InterconnectionType           `json:"type,omitempty"`
-	FabricProvider       *InterconnectionFabricProvider `json:"fabric_provider,omitempty"`
-	CreatedAt            *time.Time                     `json:"created_at,omitempty"`
-	UpdatedAt            *time.Time                     `json:"updated_at,omitempty"`
-	RequestedBy          *Href                          `json:"requested_by,omitempty"`
+	Token                *string              `json:"token,omitempty"`
+	Type                 *InterconnectionType `json:"type,omitempty"`
+	FabricProvider       *AWSFabricProvider   `json:"fabric_provider,omitempty"`
+	CreatedAt            *time.Time           `json:"created_at,omitempty"`
+	UpdatedAt            *time.Time           `json:"updated_at,omitempty"`
+	RequestedBy          *Href                `json:"requested_by,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -644,9 +644,9 @@ func (o *Interconnection) SetType(v InterconnectionType) {
 }
 
 // GetFabricProvider returns the FabricProvider field value if set, zero value otherwise.
-func (o *Interconnection) GetFabricProvider() InterconnectionFabricProvider {
+func (o *Interconnection) GetFabricProvider() AWSFabricProvider {
 	if o == nil || IsNil(o.FabricProvider) {
-		var ret InterconnectionFabricProvider
+		var ret AWSFabricProvider
 		return ret
 	}
 	return *o.FabricProvider
@@ -654,7 +654,7 @@ func (o *Interconnection) GetFabricProvider() InterconnectionFabricProvider {
 
 // GetFabricProviderOk returns a tuple with the FabricProvider field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Interconnection) GetFabricProviderOk() (*InterconnectionFabricProvider, bool) {
+func (o *Interconnection) GetFabricProviderOk() (*AWSFabricProvider, bool) {
 	if o == nil || IsNil(o.FabricProvider) {
 		return nil, false
 	}
@@ -670,8 +670,8 @@ func (o *Interconnection) HasFabricProvider() bool {
 	return false
 }
 
-// SetFabricProvider gets a reference to the given InterconnectionFabricProvider and assigns it to the FabricProvider field.
-func (o *Interconnection) SetFabricProvider(v InterconnectionFabricProvider) {
+// SetFabricProvider gets a reference to the given AWSFabricProvider and assigns it to the FabricProvider field.
+func (o *Interconnection) SetFabricProvider(v AWSFabricProvider) {
 	o.FabricProvider = &v
 }
 

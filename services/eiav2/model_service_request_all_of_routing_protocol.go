@@ -89,42 +89,6 @@ func (dst *ServiceRequestAllOfRoutingProtocol) UnmarshalJSON(data []byte) error 
 		}
 	}
 
-	// check if the discriminator value is 'BgpRoutingProtocolRequest'
-	if jsonDict["type"] == "BgpRoutingProtocolRequest" {
-		// try to unmarshal JSON data into BgpRoutingProtocolRequest
-		err = json.Unmarshal(data, &dst.BgpRoutingProtocolRequest)
-		if err == nil {
-			return nil // data stored in dst.BgpRoutingProtocolRequest, return on the first match
-		} else {
-			dst.BgpRoutingProtocolRequest = nil
-			return fmt.Errorf("failed to unmarshal ServiceRequestAllOfRoutingProtocol as BgpRoutingProtocolRequest: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'DirectRoutingProtocolRequest'
-	if jsonDict["type"] == "DirectRoutingProtocolRequest" {
-		// try to unmarshal JSON data into DirectRoutingProtocolRequest
-		err = json.Unmarshal(data, &dst.DirectRoutingProtocolRequest)
-		if err == nil {
-			return nil // data stored in dst.DirectRoutingProtocolRequest, return on the first match
-		} else {
-			dst.DirectRoutingProtocolRequest = nil
-			return fmt.Errorf("failed to unmarshal ServiceRequestAllOfRoutingProtocol as DirectRoutingProtocolRequest: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'StaticRoutingProtocolRequest'
-	if jsonDict["type"] == "StaticRoutingProtocolRequest" {
-		// try to unmarshal JSON data into StaticRoutingProtocolRequest
-		err = json.Unmarshal(data, &dst.StaticRoutingProtocolRequest)
-		if err == nil {
-			return nil // data stored in dst.StaticRoutingProtocolRequest, return on the first match
-		} else {
-			dst.StaticRoutingProtocolRequest = nil
-			return fmt.Errorf("failed to unmarshal ServiceRequestAllOfRoutingProtocol as StaticRoutingProtocolRequest: %s", err.Error())
-		}
-	}
-
 	return nil
 }
 

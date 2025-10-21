@@ -229,8 +229,6 @@ docs/FabricProviderResource.md
 docs/FabricProviderResourceResponse.md
 docs/FabricProviderResponse.md
 docs/FabricProviderType.md
-docs/FabricRouteProtocols.md
-docs/FabricRouteProtocolsResponse.md
 docs/FabricRouter.md
 docs/FabricRouterResponse.md
 docs/FabricRouterType.md
@@ -952,8 +950,6 @@ model_fabric_provider_resource.go
 model_fabric_provider_resource_response.go
 model_fabric_provider_response.go
 model_fabric_provider_type.go
-model_fabric_route_protocols.go
-model_fabric_route_protocols_response.go
 model_fabric_router.go
 model_fabric_router_response.go
 model_fabric_router_type.go

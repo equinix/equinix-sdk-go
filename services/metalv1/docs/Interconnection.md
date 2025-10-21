@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 **Tags** | Pointer to **[]string** |  | [optional] 
 **Token** | Pointer to **string** | This token is used for shared interconnections to be used as the Fabric Token. This field is entirely deprecated. | [optional] 
 **Type** | Pointer to [**InterconnectionType**](InterconnectionType.md) |  | [optional] 
-**FabricProvider** | Pointer to [**InterconnectionFabricProvider**](InterconnectionFabricProvider.md) |  | [optional] 
+**FabricProvider** | Pointer to [**AWSFabricProvider**](AWSFabricProvider.md) |  | [optional] 
 **CreatedAt** | Pointer to **time.Time** |  | [optional] 
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] 
 **RequestedBy** | Pointer to [**Href**](Href.md) |  | [optional] 
@@ -498,20 +498,20 @@ HasType returns a boolean if a field has been set.
 
 ### GetFabricProvider
 
-`func (o *Interconnection) GetFabricProvider() InterconnectionFabricProvider`
+`func (o *Interconnection) GetFabricProvider() AWSFabricProvider`
 
 GetFabricProvider returns the FabricProvider field if non-nil, zero value otherwise.
 
 ### GetFabricProviderOk
 
-`func (o *Interconnection) GetFabricProviderOk() (*InterconnectionFabricProvider, bool)`
+`func (o *Interconnection) GetFabricProviderOk() (*AWSFabricProvider, bool)`
 
 GetFabricProviderOk returns a tuple with the FabricProvider field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFabricProvider
 
-`func (o *Interconnection) SetFabricProvider(v InterconnectionFabricProvider)`
+`func (o *Interconnection) SetFabricProvider(v AWSFabricProvider)`
 
 SetFabricProvider sets FabricProvider field to given value.
 
