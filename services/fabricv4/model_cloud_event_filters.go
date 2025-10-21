@@ -16,7 +16,7 @@ var _ MappedNullable = &CloudEventFilters{}
 
 // CloudEventFilters struct for CloudEventFilters
 type CloudEventFilters struct {
-	And                  []CloudEventSimpleExpression `json:"and,omitempty"`
+	And                  []CloudEventFilter `json:"and,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -40,9 +40,9 @@ func NewCloudEventFiltersWithDefaults() *CloudEventFilters {
 }
 
 // GetAnd returns the And field value if set, zero value otherwise.
-func (o *CloudEventFilters) GetAnd() []CloudEventSimpleExpression {
+func (o *CloudEventFilters) GetAnd() []CloudEventFilter {
 	if o == nil || IsNil(o.And) {
-		var ret []CloudEventSimpleExpression
+		var ret []CloudEventFilter
 		return ret
 	}
 	return o.And
@@ -50,7 +50,7 @@ func (o *CloudEventFilters) GetAnd() []CloudEventSimpleExpression {
 
 // GetAndOk returns a tuple with the And field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CloudEventFilters) GetAndOk() ([]CloudEventSimpleExpression, bool) {
+func (o *CloudEventFilters) GetAndOk() ([]CloudEventFilter, bool) {
 	if o == nil || IsNil(o.And) {
 		return nil, false
 	}
@@ -66,8 +66,8 @@ func (o *CloudEventFilters) HasAnd() bool {
 	return false
 }
 
-// SetAnd gets a reference to the given []CloudEventSimpleExpression and assigns it to the And field.
-func (o *CloudEventFilters) SetAnd(v []CloudEventSimpleExpression) {
+// SetAnd gets a reference to the given []CloudEventFilter and assigns it to the And field.
+func (o *CloudEventFilters) SetAnd(v []CloudEventFilter) {
 	o.And = v
 }
 

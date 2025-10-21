@@ -30,8 +30,8 @@ type VlanCSPConnectionCreateInput struct {
 	Tags  []string                         `json:"tags,omitempty"`
 	Type  VlanCSPConnectionCreateInputType `json:"type"`
 	// A list of one or two metro-based VLANs that will be set on the virtual circuits of primary and/or secondary interconnections respectively when creating Fabric VCs. VLANs can also be set after the interconnection is created, but are required to fully activate the virtual circuits.
-	Vlans                []int32           `json:"vlans"`
-	FabricProvider       AWSFabricProvider `json:"fabric_provider"`
+	Vlans                []int32                                    `json:"vlans"`
+	FabricProvider       VlanCSPConnectionCreateInputFabricProvider `json:"fabric_provider"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -41,7 +41,7 @@ type _VlanCSPConnectionCreateInput VlanCSPConnectionCreateInput
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVlanCSPConnectionCreateInput(name string, project string, metro string, type_ VlanCSPConnectionCreateInputType, vlans []int32, fabricProvider AWSFabricProvider) *VlanCSPConnectionCreateInput {
+func NewVlanCSPConnectionCreateInput(name string, project string, metro string, type_ VlanCSPConnectionCreateInputType, vlans []int32, fabricProvider VlanCSPConnectionCreateInputFabricProvider) *VlanCSPConnectionCreateInput {
 	this := VlanCSPConnectionCreateInput{}
 	this.Name = name
 	this.Project = project
@@ -309,9 +309,9 @@ func (o *VlanCSPConnectionCreateInput) SetVlans(v []int32) {
 }
 
 // GetFabricProvider returns the FabricProvider field value
-func (o *VlanCSPConnectionCreateInput) GetFabricProvider() AWSFabricProvider {
+func (o *VlanCSPConnectionCreateInput) GetFabricProvider() VlanCSPConnectionCreateInputFabricProvider {
 	if o == nil {
-		var ret AWSFabricProvider
+		var ret VlanCSPConnectionCreateInputFabricProvider
 		return ret
 	}
 
@@ -320,7 +320,7 @@ func (o *VlanCSPConnectionCreateInput) GetFabricProvider() AWSFabricProvider {
 
 // GetFabricProviderOk returns a tuple with the FabricProvider field value
 // and a boolean to check if the value has been set.
-func (o *VlanCSPConnectionCreateInput) GetFabricProviderOk() (*AWSFabricProvider, bool) {
+func (o *VlanCSPConnectionCreateInput) GetFabricProviderOk() (*VlanCSPConnectionCreateInputFabricProvider, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -328,7 +328,7 @@ func (o *VlanCSPConnectionCreateInput) GetFabricProviderOk() (*AWSFabricProvider
 }
 
 // SetFabricProvider sets field value
-func (o *VlanCSPConnectionCreateInput) SetFabricProvider(v AWSFabricProvider) {
+func (o *VlanCSPConnectionCreateInput) SetFabricProvider(v VlanCSPConnectionCreateInputFabricProvider) {
 	o.FabricProvider = v
 }
 

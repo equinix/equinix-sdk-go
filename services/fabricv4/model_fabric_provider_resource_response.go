@@ -18,8 +18,8 @@ type FabricProviderResourceResponse struct {
 	FabricConnectionResponse      *FabricConnectionResponse
 	FabricIPWANConnectionResponse *FabricIPWANConnectionResponse
 	FabricIPWANResponse           *FabricIPWANResponse
+	FabricRouteProtocolsResponse  *FabricRouteProtocolsResponse
 	FabricRouterResponse          *FabricRouterResponse
-	FabricRoutingProtocolBGPType  *FabricRoutingProtocolBGPType
 }
 
 // FabricConnectionResponseAsFabricProviderResourceResponse is a convenience function that returns FabricConnectionResponse wrapped in FabricProviderResourceResponse
@@ -43,17 +43,17 @@ func FabricIPWANResponseAsFabricProviderResourceResponse(v *FabricIPWANResponse)
 	}
 }
 
+// FabricRouteProtocolsResponseAsFabricProviderResourceResponse is a convenience function that returns FabricRouteProtocolsResponse wrapped in FabricProviderResourceResponse
+func FabricRouteProtocolsResponseAsFabricProviderResourceResponse(v *FabricRouteProtocolsResponse) FabricProviderResourceResponse {
+	return FabricProviderResourceResponse{
+		FabricRouteProtocolsResponse: v,
+	}
+}
+
 // FabricRouterResponseAsFabricProviderResourceResponse is a convenience function that returns FabricRouterResponse wrapped in FabricProviderResourceResponse
 func FabricRouterResponseAsFabricProviderResourceResponse(v *FabricRouterResponse) FabricProviderResourceResponse {
 	return FabricProviderResourceResponse{
 		FabricRouterResponse: v,
-	}
-}
-
-// FabricRoutingProtocolBGPTypeAsFabricProviderResourceResponse is a convenience function that returns FabricRoutingProtocolBGPType wrapped in FabricProviderResourceResponse
-func FabricRoutingProtocolBGPTypeAsFabricProviderResourceResponse(v *FabricRoutingProtocolBGPType) FabricProviderResourceResponse {
-	return FabricProviderResourceResponse{
-		FabricRoutingProtocolBGPType: v,
 	}
 }
 
@@ -112,6 +112,23 @@ func (dst *FabricProviderResourceResponse) UnmarshalJSON(data []byte) error {
 		dst.FabricIPWANResponse = nil
 	}
 
+	// try to unmarshal data into FabricRouteProtocolsResponse
+	err = newStrictDecoder(data).Decode(&dst.FabricRouteProtocolsResponse)
+	if err == nil {
+		jsonFabricRouteProtocolsResponse, _ := json.Marshal(dst.FabricRouteProtocolsResponse)
+		if string(jsonFabricRouteProtocolsResponse) == "{}" { // empty struct
+			dst.FabricRouteProtocolsResponse = nil
+		} else {
+			if err = validator.Validate(dst.FabricRouteProtocolsResponse); err != nil {
+				dst.FabricRouteProtocolsResponse = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.FabricRouteProtocolsResponse = nil
+	}
+
 	// try to unmarshal data into FabricRouterResponse
 	err = newStrictDecoder(data).Decode(&dst.FabricRouterResponse)
 	if err == nil {
@@ -129,30 +146,13 @@ func (dst *FabricProviderResourceResponse) UnmarshalJSON(data []byte) error {
 		dst.FabricRouterResponse = nil
 	}
 
-	// try to unmarshal data into FabricRoutingProtocolBGPType
-	err = newStrictDecoder(data).Decode(&dst.FabricRoutingProtocolBGPType)
-	if err == nil {
-		jsonFabricRoutingProtocolBGPType, _ := json.Marshal(dst.FabricRoutingProtocolBGPType)
-		if string(jsonFabricRoutingProtocolBGPType) == "{}" { // empty struct
-			dst.FabricRoutingProtocolBGPType = nil
-		} else {
-			if err = validator.Validate(dst.FabricRoutingProtocolBGPType); err != nil {
-				dst.FabricRoutingProtocolBGPType = nil
-			} else {
-				match++
-			}
-		}
-	} else {
-		dst.FabricRoutingProtocolBGPType = nil
-	}
-
 	if match > 1 { // more than 1 match
 		// reset to nil
 		dst.FabricConnectionResponse = nil
 		dst.FabricIPWANConnectionResponse = nil
 		dst.FabricIPWANResponse = nil
+		dst.FabricRouteProtocolsResponse = nil
 		dst.FabricRouterResponse = nil
-		dst.FabricRoutingProtocolBGPType = nil
 
 		return fmt.Errorf("data matches more than one schema in oneOf(FabricProviderResourceResponse)")
 	} else if match == 1 {
@@ -176,12 +176,12 @@ func (src FabricProviderResourceResponse) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.FabricIPWANResponse)
 	}
 
-	if src.FabricRouterResponse != nil {
-		return json.Marshal(&src.FabricRouterResponse)
+	if src.FabricRouteProtocolsResponse != nil {
+		return json.Marshal(&src.FabricRouteProtocolsResponse)
 	}
 
-	if src.FabricRoutingProtocolBGPType != nil {
-		return json.Marshal(&src.FabricRoutingProtocolBGPType)
+	if src.FabricRouterResponse != nil {
+		return json.Marshal(&src.FabricRouterResponse)
 	}
 
 	return nil, nil // no data in oneOf schemas
@@ -204,12 +204,12 @@ func (obj *FabricProviderResourceResponse) GetActualInstance() interface{} {
 		return obj.FabricIPWANResponse
 	}
 
-	if obj.FabricRouterResponse != nil {
-		return obj.FabricRouterResponse
+	if obj.FabricRouteProtocolsResponse != nil {
+		return obj.FabricRouteProtocolsResponse
 	}
 
-	if obj.FabricRoutingProtocolBGPType != nil {
-		return obj.FabricRoutingProtocolBGPType
+	if obj.FabricRouterResponse != nil {
+		return obj.FabricRouterResponse
 	}
 
 	// all schemas are nil
@@ -230,12 +230,12 @@ func (obj FabricProviderResourceResponse) GetActualInstanceValue() interface{} {
 		return *obj.FabricIPWANResponse
 	}
 
-	if obj.FabricRouterResponse != nil {
-		return *obj.FabricRouterResponse
+	if obj.FabricRouteProtocolsResponse != nil {
+		return *obj.FabricRouteProtocolsResponse
 	}
 
-	if obj.FabricRoutingProtocolBGPType != nil {
-		return *obj.FabricRoutingProtocolBGPType
+	if obj.FabricRouterResponse != nil {
+		return *obj.FabricRouterResponse
 	}
 
 	// all schemas are nil

@@ -16,7 +16,7 @@ var _ MappedNullable = &MetricFilters{}
 
 // MetricFilters struct for MetricFilters
 type MetricFilters struct {
-	And                  []MetricSimpleExpression `json:"and,omitempty"`
+	And                  []MetricFilter `json:"and,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -40,9 +40,9 @@ func NewMetricFiltersWithDefaults() *MetricFilters {
 }
 
 // GetAnd returns the And field value if set, zero value otherwise.
-func (o *MetricFilters) GetAnd() []MetricSimpleExpression {
+func (o *MetricFilters) GetAnd() []MetricFilter {
 	if o == nil || IsNil(o.And) {
-		var ret []MetricSimpleExpression
+		var ret []MetricFilter
 		return ret
 	}
 	return o.And
@@ -50,7 +50,7 @@ func (o *MetricFilters) GetAnd() []MetricSimpleExpression {
 
 // GetAndOk returns a tuple with the And field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MetricFilters) GetAndOk() ([]MetricSimpleExpression, bool) {
+func (o *MetricFilters) GetAndOk() ([]MetricFilter, bool) {
 	if o == nil || IsNil(o.And) {
 		return nil, false
 	}
@@ -66,8 +66,8 @@ func (o *MetricFilters) HasAnd() bool {
 	return false
 }
 
-// SetAnd gets a reference to the given []MetricSimpleExpression and assigns it to the And field.
-func (o *MetricFilters) SetAnd(v []MetricSimpleExpression) {
+// SetAnd gets a reference to the given []MetricFilter and assigns it to the And field.
+func (o *MetricFilters) SetAnd(v []MetricFilter) {
 	o.And = v
 }
 
