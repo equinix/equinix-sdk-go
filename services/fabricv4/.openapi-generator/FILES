@@ -79,6 +79,7 @@ docs/Changelog.md
 docs/CloudEvent.md
 docs/CloudEventAssetType.md
 docs/CloudEventData.md
+docs/CloudEventFilter.md
 docs/CloudEventFilters.md
 docs/CloudEventSearchRequest.md
 docs/CloudEventSimpleExpression.md
@@ -297,6 +298,7 @@ docs/MetalInterconnection.md
 docs/Metric.md
 docs/MetricAssetType.md
 docs/MetricDatapoints.md
+docs/MetricFilter.md
 docs/MetricFilters.md
 docs/MetricResource.md
 docs/MetricSelector.md
@@ -806,6 +808,7 @@ model_changelog.go
 model_cloud_event.go
 model_cloud_event_asset_type.go
 model_cloud_event_data.go
+model_cloud_event_filter.go
 model_cloud_event_filters.go
 model_cloud_event_search_request.go
 model_cloud_event_simple_expression.go
@@ -1018,6 +1021,7 @@ model_metal_interconnection.go
 model_metric.go
 model_metric_asset_type.go
 model_metric_datapoints.go
+model_metric_filter.go
 model_metric_filters.go
 model_metric_resource.go
 model_metric_selector.go

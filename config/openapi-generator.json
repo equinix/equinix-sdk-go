@@ -6,6 +6,9 @@
     "inlineSchemaOptions": {
         "RESOLVE_INLINE_ENUMS": true
     },
+    "openapiNormalizer": {
+        "SIMPLIFY_ONEOF_ANYOF": false
+    },
     "enumClassPrefix": true,
     "removeEnumValuePrefix": true
 }

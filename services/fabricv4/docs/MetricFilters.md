@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**And** | Pointer to [**[]MetricSimpleExpression**](MetricSimpleExpression.md) |  | [optional] 
+**And** | Pointer to [**[]MetricFilter**](MetricFilter.md) |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetAnd
 
-`func (o *MetricFilters) GetAnd() []MetricSimpleExpression`
+`func (o *MetricFilters) GetAnd() []MetricFilter`
 
 GetAnd returns the And field if non-nil, zero value otherwise.
 
 ### GetAndOk
 
-`func (o *MetricFilters) GetAndOk() (*[]MetricSimpleExpression, bool)`
+`func (o *MetricFilters) GetAndOk() (*[]MetricFilter, bool)`
 
 GetAndOk returns a tuple with the And field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAnd
 
-`func (o *MetricFilters) SetAnd(v []MetricSimpleExpression)`
+`func (o *MetricFilters) SetAnd(v []MetricFilter)`
 
 SetAnd sets And field to given value.
 

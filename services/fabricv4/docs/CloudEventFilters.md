@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**And** | Pointer to [**[]CloudEventSimpleExpression**](CloudEventSimpleExpression.md) |  | [optional] 
+**And** | Pointer to [**[]CloudEventFilter**](CloudEventFilter.md) |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetAnd
 
-`func (o *CloudEventFilters) GetAnd() []CloudEventSimpleExpression`
+`func (o *CloudEventFilters) GetAnd() []CloudEventFilter`
 
 GetAnd returns the And field if non-nil, zero value otherwise.
 
 ### GetAndOk
 
-`func (o *CloudEventFilters) GetAndOk() (*[]CloudEventSimpleExpression, bool)`
+`func (o *CloudEventFilters) GetAndOk() (*[]CloudEventFilter, bool)`
 
 GetAndOk returns a tuple with the And field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAnd
 
-`func (o *CloudEventFilters) SetAnd(v []CloudEventSimpleExpression)`
+`func (o *CloudEventFilters) SetAnd(v []CloudEventFilter)`
 
 SetAnd sets And field to given value.
 
