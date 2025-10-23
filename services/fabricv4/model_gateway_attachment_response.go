@@ -20,6 +20,7 @@ type GatewayAttachmentResponse struct {
 	Type                 *GatewayAttachmentResponseType             `json:"type,omitempty"`
 	Uuid                 *string                                    `json:"uuid,omitempty"`
 	AttachmentStatus     *GatewayAttachmentResponseAttachmentStatus `json:"attachmentStatus,omitempty"`
+	Errors               []Error                                    `json:"errors,omitempty"`
 	ChangeLog            *Changelog                                 `json:"changeLog,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -171,6 +172,38 @@ func (o *GatewayAttachmentResponse) SetAttachmentStatus(v GatewayAttachmentRespo
 	o.AttachmentStatus = &v
 }
 
+// GetErrors returns the Errors field value if set, zero value otherwise.
+func (o *GatewayAttachmentResponse) GetErrors() []Error {
+	if o == nil || IsNil(o.Errors) {
+		var ret []Error
+		return ret
+	}
+	return o.Errors
+}
+
+// GetErrorsOk returns a tuple with the Errors field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayAttachmentResponse) GetErrorsOk() ([]Error, bool) {
+	if o == nil || IsNil(o.Errors) {
+		return nil, false
+	}
+	return o.Errors, true
+}
+
+// HasErrors returns a boolean if a field has been set.
+func (o *GatewayAttachmentResponse) HasErrors() bool {
+	if o != nil && !IsNil(o.Errors) {
+		return true
+	}
+
+	return false
+}
+
+// SetErrors gets a reference to the given []Error and assigns it to the Errors field.
+func (o *GatewayAttachmentResponse) SetErrors(v []Error) {
+	o.Errors = v
+}
+
 // GetChangeLog returns the ChangeLog field value if set, zero value otherwise.
 func (o *GatewayAttachmentResponse) GetChangeLog() Changelog {
 	if o == nil || IsNil(o.ChangeLog) {
@@ -225,6 +258,9 @@ func (o GatewayAttachmentResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AttachmentStatus) {
 		toSerialize["attachmentStatus"] = o.AttachmentStatus
 	}
+	if !IsNil(o.Errors) {
+		toSerialize["errors"] = o.Errors
+	}
 	if !IsNil(o.ChangeLog) {
 		toSerialize["changeLog"] = o.ChangeLog
 	}
@@ -254,6 +290,7 @@ func (o *GatewayAttachmentResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "uuid")
 		delete(additionalProperties, "attachmentStatus")
+		delete(additionalProperties, "errors")
 		delete(additionalProperties, "changeLog")
 		o.AdditionalProperties = additionalProperties
 	}

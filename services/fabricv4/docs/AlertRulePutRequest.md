@@ -4,19 +4,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | Pointer to **string** | Customer-provided stream name | [optional] 
-**Type** | Pointer to [**AlertRulePostRequestType**](AlertRulePostRequestType.md) |  | [optional] 
+**Name** | **string** | Customer-provided stream name | 
+**Type** | [**AlertRulePostRequestType**](AlertRulePostRequestType.md) |  | 
 **Description** | Pointer to **string** | Customer-provided stream description | [optional] 
 **Enabled** | Pointer to **bool** | Stream alert rule enabled status | [optional] [default to true]
-**MetricSelector** | Pointer to [**MetricSelector**](MetricSelector.md) |  | [optional] 
-**ResourceSelector** | Pointer to [**ResourceSelector**](ResourceSelector.md) |  | [optional] 
-**DetectionMethod** | Pointer to [**DetectionMethod**](DetectionMethod.md) |  | [optional] 
+**MetricSelector** | [**MetricSelector**](MetricSelector.md) |  | 
+**ResourceSelector** | [**ResourceSelector**](ResourceSelector.md) |  | 
+**DetectionMethod** | [**DetectionMethod**](DetectionMethod.md) |  | 
 
 ## Methods
 
 ### NewAlertRulePutRequest
 
-`func NewAlertRulePutRequest() *AlertRulePutRequest`
+`func NewAlertRulePutRequest(name string, type_ AlertRulePostRequestType, metricSelector MetricSelector, resourceSelector ResourceSelector, detectionMethod DetectionMethod, ) *AlertRulePutRequest`
 
 NewAlertRulePutRequest instantiates a new AlertRulePutRequest object
 This constructor will assign default values to properties that have it defined,
@@ -50,11 +50,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-### HasName
-
-`func (o *AlertRulePutRequest) HasName() bool`
-
-HasName returns a boolean if a field has been set.
 
 ### GetType
 
@@ -75,11 +70,6 @@ and a boolean to check if the value has been set.
 
 SetType sets Type field to given value.
 
-### HasType
-
-`func (o *AlertRulePutRequest) HasType() bool`
-
-HasType returns a boolean if a field has been set.
 
 ### GetDescription
 
@@ -150,11 +140,6 @@ and a boolean to check if the value has been set.
 
 SetMetricSelector sets MetricSelector field to given value.
 
-### HasMetricSelector
-
-`func (o *AlertRulePutRequest) HasMetricSelector() bool`
-
-HasMetricSelector returns a boolean if a field has been set.
 
 ### GetResourceSelector
 
@@ -175,11 +160,6 @@ and a boolean to check if the value has been set.
 
 SetResourceSelector sets ResourceSelector field to given value.
 
-### HasResourceSelector
-
-`func (o *AlertRulePutRequest) HasResourceSelector() bool`
-
-HasResourceSelector returns a boolean if a field has been set.
 
 ### GetDetectionMethod
 
@@ -200,11 +180,6 @@ and a boolean to check if the value has been set.
 
 SetDetectionMethod sets DetectionMethod field to given value.
 
-### HasDetectionMethod
-
-`func (o *AlertRulePutRequest) HasDetectionMethod() bool`
-
-HasDetectionMethod returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -9,7 +9,6 @@ Name | Type | Description | Notes
 **BgpIpv4** | Pointer to [**BGPConnectionIpv4**](BGPConnectionIpv4.md) |  | [optional] 
 **BgpIpv6** | Pointer to [**BGPConnectionIpv6**](BGPConnectionIpv6.md) |  | [optional] 
 **CustomerAsn** | Pointer to **int64** | Customer asn | [optional] 
-**EquinixAsn** | Pointer to **int64** | Equinix asn | [optional] 
 **BgpAuthKey** | Pointer to **string** | BGP authorization key | [optional] 
 **AsOverrideEnabled** | Pointer to **bool** | Enable AS number override | [optional] 
 **Bfd** | Pointer to [**RoutingProtocolBFD**](RoutingProtocolBFD.md) |  | [optional] 
@@ -152,31 +151,6 @@ SetCustomerAsn sets CustomerAsn field to given value.
 `func (o *RoutingProtocolBGPType) HasCustomerAsn() bool`
 
 HasCustomerAsn returns a boolean if a field has been set.
-
-### GetEquinixAsn
-
-`func (o *RoutingProtocolBGPType) GetEquinixAsn() int64`
-
-GetEquinixAsn returns the EquinixAsn field if non-nil, zero value otherwise.
-
-### GetEquinixAsnOk
-
-`func (o *RoutingProtocolBGPType) GetEquinixAsnOk() (*int64, bool)`
-
-GetEquinixAsnOk returns a tuple with the EquinixAsn field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEquinixAsn
-
-`func (o *RoutingProtocolBGPType) SetEquinixAsn(v int64)`
-
-SetEquinixAsn sets EquinixAsn field to given value.
-
-### HasEquinixAsn
-
-`func (o *RoutingProtocolBGPType) HasEquinixAsn() bool`
-
-HasEquinixAsn returns a boolean if a field has been set.
 
 ### GetBgpAuthKey
 

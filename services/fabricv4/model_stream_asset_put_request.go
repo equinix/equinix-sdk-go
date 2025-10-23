@@ -29,6 +29,8 @@ type _StreamAssetPutRequest StreamAssetPutRequest
 // will change when the set of required properties is changed
 func NewStreamAssetPutRequest() *StreamAssetPutRequest {
 	this := StreamAssetPutRequest{}
+	var metricsEnabled bool = false
+	this.MetricsEnabled = &metricsEnabled
 	return &this
 }
 
@@ -37,6 +39,8 @@ func NewStreamAssetPutRequest() *StreamAssetPutRequest {
 // but it doesn't guarantee that properties required by API are set
 func NewStreamAssetPutRequestWithDefaults() *StreamAssetPutRequest {
 	this := StreamAssetPutRequest{}
+	var metricsEnabled bool = false
+	this.MetricsEnabled = &metricsEnabled
 	return &this
 }
 

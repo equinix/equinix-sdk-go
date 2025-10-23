@@ -7,7 +7,6 @@ Name | Type | Description | Notes
 **Type** | [**RouteTableEntryType**](RouteTableEntryType.md) |  | 
 **ProtocolType** | Pointer to [**RouteTableEntryProtocolType**](RouteTableEntryProtocolType.md) |  | [optional] 
 **State** | [**ConnectionRouteTableEntryState**](ConnectionRouteTableEntryState.md) |  | 
-**Age** | Pointer to **string** |  | [optional] 
 **Prefix** | Pointer to **string** |  | [optional] 
 **NextHop** | Pointer to **string** |  | [optional] 
 **MED** | Pointer to **int32** |  | [optional] 
@@ -99,31 +98,6 @@ and a boolean to check if the value has been set.
 
 SetState sets State field to given value.
 
-
-### GetAge
-
-`func (o *ConnectionRouteTableEntry) GetAge() string`
-
-GetAge returns the Age field if non-nil, zero value otherwise.
-
-### GetAgeOk
-
-`func (o *ConnectionRouteTableEntry) GetAgeOk() (*string, bool)`
-
-GetAgeOk returns a tuple with the Age field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAge
-
-`func (o *ConnectionRouteTableEntry) SetAge(v string)`
-
-SetAge sets Age field to given value.
-
-### HasAge
-
-`func (o *ConnectionRouteTableEntry) HasAge() bool`
-
-HasAge returns a boolean if a field has been set.
 
 ### GetPrefix
 

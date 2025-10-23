@@ -23,6 +23,7 @@ const (
 	ROUTETABLEENTRYSORTBY_NEXT_HOP                     RouteTableEntrySortBy = "/nextHop"
 	ROUTETABLEENTRYSORTBY_CONNECTION_NAME              RouteTableEntrySortBy = "/connection/name"
 	ROUTETABLEENTRYSORTBY_TYPE                         RouteTableEntrySortBy = "/type"
+	ROUTETABLEENTRYSORTBY_MED                          RouteTableEntrySortBy = "/MED"
 )
 
 // All allowed values of RouteTableEntrySortBy enum
@@ -33,6 +34,7 @@ var AllowedRouteTableEntrySortByEnumValues = []RouteTableEntrySortBy{
 	"/nextHop",
 	"/connection/name",
 	"/type",
+	"/MED",
 }
 
 func (v *RouteTableEntrySortBy) UnmarshalJSON(src []byte) error {

@@ -9,6 +9,7 @@ package fabricv4
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the ResourceSelector type satisfies the MappedNullable interface at compile time
@@ -17,7 +18,7 @@ var _ MappedNullable = &ResourceSelector{}
 // ResourceSelector struct for ResourceSelector
 type ResourceSelector struct {
 	// ### Supported metric names to use on filters with property /subject:   * `/fabric/v4/ports/<uuid>` - port metrics   * `/fabric/v4/connections/<uuid>` - connection metrics   * `/fabric/v4/metros/<metroCode>` - metro latency metrics
-	Include              []string `json:"include,omitempty"`
+	Include              []string `json:"include"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -27,8 +28,9 @@ type _ResourceSelector ResourceSelector
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewResourceSelector() *ResourceSelector {
+func NewResourceSelector(include []string) *ResourceSelector {
 	this := ResourceSelector{}
+	this.Include = include
 	return &this
 }
 
@@ -40,34 +42,26 @@ func NewResourceSelectorWithDefaults() *ResourceSelector {
 	return &this
 }
 
-// GetInclude returns the Include field value if set, zero value otherwise.
+// GetInclude returns the Include field value
 func (o *ResourceSelector) GetInclude() []string {
-	if o == nil || IsNil(o.Include) {
+	if o == nil {
 		var ret []string
 		return ret
 	}
+
 	return o.Include
 }
 
-// GetIncludeOk returns a tuple with the Include field value if set, nil otherwise
+// GetIncludeOk returns a tuple with the Include field value
 // and a boolean to check if the value has been set.
 func (o *ResourceSelector) GetIncludeOk() ([]string, bool) {
-	if o == nil || IsNil(o.Include) {
+	if o == nil {
 		return nil, false
 	}
 	return o.Include, true
 }
 
-// HasInclude returns a boolean if a field has been set.
-func (o *ResourceSelector) HasInclude() bool {
-	if o != nil && !IsNil(o.Include) {
-		return true
-	}
-
-	return false
-}
-
-// SetInclude gets a reference to the given []string and assigns it to the Include field.
+// SetInclude sets field value
 func (o *ResourceSelector) SetInclude(v []string) {
 	o.Include = v
 }
@@ -82,9 +76,7 @@ func (o ResourceSelector) MarshalJSON() ([]byte, error) {
 
 func (o ResourceSelector) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Include) {
-		toSerialize["include"] = o.Include
-	}
+	toSerialize["include"] = o.Include
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -94,6 +86,27 @@ func (o ResourceSelector) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *ResourceSelector) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"include",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
 	varResourceSelector := _ResourceSelector{}
 
 	err = json.Unmarshal(data, &varResourceSelector)

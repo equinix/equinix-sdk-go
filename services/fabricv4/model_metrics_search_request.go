@@ -9,6 +9,7 @@ package fabricv4
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the MetricsSearchRequest type satisfies the MappedNullable interface at compile time
@@ -16,7 +17,7 @@ var _ MappedNullable = &MetricsSearchRequest{}
 
 // MetricsSearchRequest Search requests containing criteria
 type MetricsSearchRequest struct {
-	Filter               *MetricFilters     `json:"filter,omitempty"`
+	Filter               MetricFilters      `json:"filter"`
 	Pagination           *PaginationRequest `json:"pagination,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -27,8 +28,9 @@ type _MetricsSearchRequest MetricsSearchRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewMetricsSearchRequest() *MetricsSearchRequest {
+func NewMetricsSearchRequest(filter MetricFilters) *MetricsSearchRequest {
 	this := MetricsSearchRequest{}
+	this.Filter = filter
 	return &this
 }
 
@@ -40,36 +42,28 @@ func NewMetricsSearchRequestWithDefaults() *MetricsSearchRequest {
 	return &this
 }
 
-// GetFilter returns the Filter field value if set, zero value otherwise.
+// GetFilter returns the Filter field value
 func (o *MetricsSearchRequest) GetFilter() MetricFilters {
-	if o == nil || IsNil(o.Filter) {
+	if o == nil {
 		var ret MetricFilters
 		return ret
 	}
-	return *o.Filter
+
+	return o.Filter
 }
 
-// GetFilterOk returns a tuple with the Filter field value if set, nil otherwise
+// GetFilterOk returns a tuple with the Filter field value
 // and a boolean to check if the value has been set.
 func (o *MetricsSearchRequest) GetFilterOk() (*MetricFilters, bool) {
-	if o == nil || IsNil(o.Filter) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Filter, true
+	return &o.Filter, true
 }
 
-// HasFilter returns a boolean if a field has been set.
-func (o *MetricsSearchRequest) HasFilter() bool {
-	if o != nil && !IsNil(o.Filter) {
-		return true
-	}
-
-	return false
-}
-
-// SetFilter gets a reference to the given MetricFilters and assigns it to the Filter field.
+// SetFilter sets field value
 func (o *MetricsSearchRequest) SetFilter(v MetricFilters) {
-	o.Filter = &v
+	o.Filter = v
 }
 
 // GetPagination returns the Pagination field value if set, zero value otherwise.
@@ -114,9 +108,7 @@ func (o MetricsSearchRequest) MarshalJSON() ([]byte, error) {
 
 func (o MetricsSearchRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Filter) {
-		toSerialize["filter"] = o.Filter
-	}
+	toSerialize["filter"] = o.Filter
 	if !IsNil(o.Pagination) {
 		toSerialize["pagination"] = o.Pagination
 	}
@@ -129,6 +121,27 @@ func (o MetricsSearchRequest) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *MetricsSearchRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"filter",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
 	varMetricsSearchRequest := _MetricsSearchRequest{}
 
 	err = json.Unmarshal(data, &varMetricsSearchRequest)

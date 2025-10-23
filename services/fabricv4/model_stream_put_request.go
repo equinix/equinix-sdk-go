@@ -9,6 +9,7 @@ package fabricv4
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the StreamPutRequest type satisfies the MappedNullable interface at compile time
@@ -17,7 +18,7 @@ var _ MappedNullable = &StreamPutRequest{}
 // StreamPutRequest Update Stream
 type StreamPutRequest struct {
 	// Customer-provided stream name
-	Name *string `json:"name,omitempty"`
+	Name string `json:"name"`
 	// Customer-provided stream description
 	Description          *string `json:"description,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -29,8 +30,9 @@ type _StreamPutRequest StreamPutRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStreamPutRequest() *StreamPutRequest {
+func NewStreamPutRequest(name string) *StreamPutRequest {
 	this := StreamPutRequest{}
+	this.Name = name
 	return &this
 }
 
@@ -42,36 +44,28 @@ func NewStreamPutRequestWithDefaults() *StreamPutRequest {
 	return &this
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value
 func (o *StreamPutRequest) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Name
+
+	return o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *StreamPutRequest) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return &o.Name, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *StreamPutRequest) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName sets field value
 func (o *StreamPutRequest) SetName(v string) {
-	o.Name = &v
+	o.Name = v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -116,9 +110,7 @@ func (o StreamPutRequest) MarshalJSON() ([]byte, error) {
 
 func (o StreamPutRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
+	toSerialize["name"] = o.Name
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
@@ -131,6 +123,27 @@ func (o StreamPutRequest) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *StreamPutRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
 	varStreamPutRequest := _StreamPutRequest{}
 
 	err = json.Unmarshal(data, &varStreamPutRequest)

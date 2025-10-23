@@ -27,12 +27,12 @@ type StreamSubscription struct {
 	Description *string                  `json:"description,omitempty"`
 	State       *StreamSubscriptionState `json:"state,omitempty"`
 	// Stream subscription enabled status
-	Enabled              *bool                        `json:"enabled,omitempty"`
-	MetricSelector       *StreamSubscriptionSelector  `json:"metricSelector,omitempty"`
-	EventSelector        *StreamSubscriptionSelector  `json:"eventSelector,omitempty"`
-	Sink                 *StreamSubscriptionSink      `json:"sink,omitempty"`
-	Operation            *StreamSubscriptionOperation `json:"operation,omitempty"`
-	ChangeLog            *Changelog                   `json:"changeLog,omitempty"`
+	Enabled              *bool                           `json:"enabled,omitempty"`
+	MetricSelector       *StreamSubscriptionSelector     `json:"metricSelector,omitempty"`
+	EventSelector        *StreamSubscriptionSelector     `json:"eventSelector,omitempty"`
+	Sink                 *StreamSubscriptionSinkResponse `json:"sink,omitempty"`
+	Operation            *StreamSubscriptionOperation    `json:"operation,omitempty"`
+	ChangeLog            *Changelog                      `json:"changeLog,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -344,9 +344,9 @@ func (o *StreamSubscription) SetEventSelector(v StreamSubscriptionSelector) {
 }
 
 // GetSink returns the Sink field value if set, zero value otherwise.
-func (o *StreamSubscription) GetSink() StreamSubscriptionSink {
+func (o *StreamSubscription) GetSink() StreamSubscriptionSinkResponse {
 	if o == nil || IsNil(o.Sink) {
-		var ret StreamSubscriptionSink
+		var ret StreamSubscriptionSinkResponse
 		return ret
 	}
 	return *o.Sink
@@ -354,7 +354,7 @@ func (o *StreamSubscription) GetSink() StreamSubscriptionSink {
 
 // GetSinkOk returns a tuple with the Sink field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *StreamSubscription) GetSinkOk() (*StreamSubscriptionSink, bool) {
+func (o *StreamSubscription) GetSinkOk() (*StreamSubscriptionSinkResponse, bool) {
 	if o == nil || IsNil(o.Sink) {
 		return nil, false
 	}
@@ -370,8 +370,8 @@ func (o *StreamSubscription) HasSink() bool {
 	return false
 }
 
-// SetSink gets a reference to the given StreamSubscriptionSink and assigns it to the Sink field.
-func (o *StreamSubscription) SetSink(v StreamSubscriptionSink) {
+// SetSink gets a reference to the given StreamSubscriptionSinkResponse and assigns it to the Sink field.
+func (o *StreamSubscription) SetSink(v StreamSubscriptionSinkResponse) {
 	o.Sink = &v
 }
 

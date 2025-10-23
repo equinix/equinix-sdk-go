@@ -9,15 +9,14 @@ package fabricv4
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
-// checks if the DetectionMethod type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &DetectionMethod{}
+// checks if the DetectionMethodResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DetectionMethodResponse{}
 
-// DetectionMethod struct for DetectionMethod
-type DetectionMethod struct {
-	Type DetectionMethodType `json:"type"`
+// DetectionMethodResponse struct for DetectionMethodResponse
+type DetectionMethodResponse struct {
+	Type *DetectionMethodType `json:"type,omitempty"`
 	// Stream alert rule metric window size
 	WindowSize *string                 `json:"windowSize,omitempty"`
 	Operand    *DetectionMethodOperand `json:"operand,omitempty"`
@@ -28,52 +27,59 @@ type DetectionMethod struct {
 	AdditionalProperties map[string]interface{}
 }
 
-type _DetectionMethod DetectionMethod
+type _DetectionMethodResponse DetectionMethodResponse
 
-// NewDetectionMethod instantiates a new DetectionMethod object
+// NewDetectionMethodResponse instantiates a new DetectionMethodResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDetectionMethod(type_ DetectionMethodType) *DetectionMethod {
-	this := DetectionMethod{}
-	this.Type = type_
+func NewDetectionMethodResponse() *DetectionMethodResponse {
+	this := DetectionMethodResponse{}
 	return &this
 }
 
-// NewDetectionMethodWithDefaults instantiates a new DetectionMethod object
+// NewDetectionMethodResponseWithDefaults instantiates a new DetectionMethodResponse object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewDetectionMethodWithDefaults() *DetectionMethod {
-	this := DetectionMethod{}
+func NewDetectionMethodResponseWithDefaults() *DetectionMethodResponse {
+	this := DetectionMethodResponse{}
 	return &this
 }
 
-// GetType returns the Type field value
-func (o *DetectionMethod) GetType() DetectionMethodType {
-	if o == nil {
+// GetType returns the Type field value if set, zero value otherwise.
+func (o *DetectionMethodResponse) GetType() DetectionMethodType {
+	if o == nil || IsNil(o.Type) {
 		var ret DetectionMethodType
 		return ret
 	}
-
-	return o.Type
+	return *o.Type
 }
 
-// GetTypeOk returns a tuple with the Type field value
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DetectionMethod) GetTypeOk() (*DetectionMethodType, bool) {
-	if o == nil {
+func (o *DetectionMethodResponse) GetTypeOk() (*DetectionMethodType, bool) {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
-	return &o.Type, true
+	return o.Type, true
 }
 
-// SetType sets field value
-func (o *DetectionMethod) SetType(v DetectionMethodType) {
-	o.Type = v
+// HasType returns a boolean if a field has been set.
+func (o *DetectionMethodResponse) HasType() bool {
+	if o != nil && !IsNil(o.Type) {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given DetectionMethodType and assigns it to the Type field.
+func (o *DetectionMethodResponse) SetType(v DetectionMethodType) {
+	o.Type = &v
 }
 
 // GetWindowSize returns the WindowSize field value if set, zero value otherwise.
-func (o *DetectionMethod) GetWindowSize() string {
+func (o *DetectionMethodResponse) GetWindowSize() string {
 	if o == nil || IsNil(o.WindowSize) {
 		var ret string
 		return ret
@@ -83,7 +89,7 @@ func (o *DetectionMethod) GetWindowSize() string {
 
 // GetWindowSizeOk returns a tuple with the WindowSize field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DetectionMethod) GetWindowSizeOk() (*string, bool) {
+func (o *DetectionMethodResponse) GetWindowSizeOk() (*string, bool) {
 	if o == nil || IsNil(o.WindowSize) {
 		return nil, false
 	}
@@ -91,7 +97,7 @@ func (o *DetectionMethod) GetWindowSizeOk() (*string, bool) {
 }
 
 // HasWindowSize returns a boolean if a field has been set.
-func (o *DetectionMethod) HasWindowSize() bool {
+func (o *DetectionMethodResponse) HasWindowSize() bool {
 	if o != nil && !IsNil(o.WindowSize) {
 		return true
 	}
@@ -100,12 +106,12 @@ func (o *DetectionMethod) HasWindowSize() bool {
 }
 
 // SetWindowSize gets a reference to the given string and assigns it to the WindowSize field.
-func (o *DetectionMethod) SetWindowSize(v string) {
+func (o *DetectionMethodResponse) SetWindowSize(v string) {
 	o.WindowSize = &v
 }
 
 // GetOperand returns the Operand field value if set, zero value otherwise.
-func (o *DetectionMethod) GetOperand() DetectionMethodOperand {
+func (o *DetectionMethodResponse) GetOperand() DetectionMethodOperand {
 	if o == nil || IsNil(o.Operand) {
 		var ret DetectionMethodOperand
 		return ret
@@ -115,7 +121,7 @@ func (o *DetectionMethod) GetOperand() DetectionMethodOperand {
 
 // GetOperandOk returns a tuple with the Operand field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DetectionMethod) GetOperandOk() (*DetectionMethodOperand, bool) {
+func (o *DetectionMethodResponse) GetOperandOk() (*DetectionMethodOperand, bool) {
 	if o == nil || IsNil(o.Operand) {
 		return nil, false
 	}
@@ -123,7 +129,7 @@ func (o *DetectionMethod) GetOperandOk() (*DetectionMethodOperand, bool) {
 }
 
 // HasOperand returns a boolean if a field has been set.
-func (o *DetectionMethod) HasOperand() bool {
+func (o *DetectionMethodResponse) HasOperand() bool {
 	if o != nil && !IsNil(o.Operand) {
 		return true
 	}
@@ -132,12 +138,12 @@ func (o *DetectionMethod) HasOperand() bool {
 }
 
 // SetOperand gets a reference to the given DetectionMethodOperand and assigns it to the Operand field.
-func (o *DetectionMethod) SetOperand(v DetectionMethodOperand) {
+func (o *DetectionMethodResponse) SetOperand(v DetectionMethodOperand) {
 	o.Operand = &v
 }
 
 // GetWarningThreshold returns the WarningThreshold field value if set, zero value otherwise.
-func (o *DetectionMethod) GetWarningThreshold() string {
+func (o *DetectionMethodResponse) GetWarningThreshold() string {
 	if o == nil || IsNil(o.WarningThreshold) {
 		var ret string
 		return ret
@@ -147,7 +153,7 @@ func (o *DetectionMethod) GetWarningThreshold() string {
 
 // GetWarningThresholdOk returns a tuple with the WarningThreshold field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DetectionMethod) GetWarningThresholdOk() (*string, bool) {
+func (o *DetectionMethodResponse) GetWarningThresholdOk() (*string, bool) {
 	if o == nil || IsNil(o.WarningThreshold) {
 		return nil, false
 	}
@@ -155,7 +161,7 @@ func (o *DetectionMethod) GetWarningThresholdOk() (*string, bool) {
 }
 
 // HasWarningThreshold returns a boolean if a field has been set.
-func (o *DetectionMethod) HasWarningThreshold() bool {
+func (o *DetectionMethodResponse) HasWarningThreshold() bool {
 	if o != nil && !IsNil(o.WarningThreshold) {
 		return true
 	}
@@ -164,12 +170,12 @@ func (o *DetectionMethod) HasWarningThreshold() bool {
 }
 
 // SetWarningThreshold gets a reference to the given string and assigns it to the WarningThreshold field.
-func (o *DetectionMethod) SetWarningThreshold(v string) {
+func (o *DetectionMethodResponse) SetWarningThreshold(v string) {
 	o.WarningThreshold = &v
 }
 
 // GetCriticalThreshold returns the CriticalThreshold field value if set, zero value otherwise.
-func (o *DetectionMethod) GetCriticalThreshold() string {
+func (o *DetectionMethodResponse) GetCriticalThreshold() string {
 	if o == nil || IsNil(o.CriticalThreshold) {
 		var ret string
 		return ret
@@ -179,7 +185,7 @@ func (o *DetectionMethod) GetCriticalThreshold() string {
 
 // GetCriticalThresholdOk returns a tuple with the CriticalThreshold field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DetectionMethod) GetCriticalThresholdOk() (*string, bool) {
+func (o *DetectionMethodResponse) GetCriticalThresholdOk() (*string, bool) {
 	if o == nil || IsNil(o.CriticalThreshold) {
 		return nil, false
 	}
@@ -187,7 +193,7 @@ func (o *DetectionMethod) GetCriticalThresholdOk() (*string, bool) {
 }
 
 // HasCriticalThreshold returns a boolean if a field has been set.
-func (o *DetectionMethod) HasCriticalThreshold() bool {
+func (o *DetectionMethodResponse) HasCriticalThreshold() bool {
 	if o != nil && !IsNil(o.CriticalThreshold) {
 		return true
 	}
@@ -196,11 +202,11 @@ func (o *DetectionMethod) HasCriticalThreshold() bool {
 }
 
 // SetCriticalThreshold gets a reference to the given string and assigns it to the CriticalThreshold field.
-func (o *DetectionMethod) SetCriticalThreshold(v string) {
+func (o *DetectionMethodResponse) SetCriticalThreshold(v string) {
 	o.CriticalThreshold = &v
 }
 
-func (o DetectionMethod) MarshalJSON() ([]byte, error) {
+func (o DetectionMethodResponse) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -208,9 +214,11 @@ func (o DetectionMethod) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o DetectionMethod) ToMap() (map[string]interface{}, error) {
+func (o DetectionMethodResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["type"] = o.Type
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
 	if !IsNil(o.WindowSize) {
 		toSerialize["windowSize"] = o.WindowSize
 	}
@@ -231,37 +239,16 @@ func (o DetectionMethod) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *DetectionMethod) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"type",
-	}
+func (o *DetectionMethodResponse) UnmarshalJSON(data []byte) (err error) {
+	varDetectionMethodResponse := _DetectionMethodResponse{}
 
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
+	err = json.Unmarshal(data, &varDetectionMethodResponse)
 
 	if err != nil {
 		return err
 	}
 
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varDetectionMethod := _DetectionMethod{}
-
-	err = json.Unmarshal(data, &varDetectionMethod)
-
-	if err != nil {
-		return err
-	}
-
-	*o = DetectionMethod(varDetectionMethod)
+	*o = DetectionMethodResponse(varDetectionMethodResponse)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -277,38 +264,38 @@ func (o *DetectionMethod) UnmarshalJSON(data []byte) (err error) {
 	return err
 }
 
-type NullableDetectionMethod struct {
-	value *DetectionMethod
+type NullableDetectionMethodResponse struct {
+	value *DetectionMethodResponse
 	isSet bool
 }
 
-func (v NullableDetectionMethod) Get() *DetectionMethod {
+func (v NullableDetectionMethodResponse) Get() *DetectionMethodResponse {
 	return v.value
 }
 
-func (v *NullableDetectionMethod) Set(val *DetectionMethod) {
+func (v *NullableDetectionMethodResponse) Set(val *DetectionMethodResponse) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableDetectionMethod) IsSet() bool {
+func (v NullableDetectionMethodResponse) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableDetectionMethod) Unset() {
+func (v *NullableDetectionMethodResponse) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableDetectionMethod(val *DetectionMethod) *NullableDetectionMethod {
-	return &NullableDetectionMethod{value: val, isSet: true}
+func NewNullableDetectionMethodResponse(val *DetectionMethodResponse) *NullableDetectionMethodResponse {
+	return &NullableDetectionMethodResponse{value: val, isSet: true}
 }
 
-func (v NullableDetectionMethod) MarshalJSON() ([]byte, error) {
+func (v NullableDetectionMethodResponse) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableDetectionMethod) UnmarshalJSON(src []byte) error {
+func (v *NullableDetectionMethodResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

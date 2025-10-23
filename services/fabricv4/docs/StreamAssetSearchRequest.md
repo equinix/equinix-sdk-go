@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Filter** | Pointer to [**StreamAssetFilters**](StreamAssetFilters.md) |  | [optional] 
+**Filter** | [**StreamAssetFilters**](StreamAssetFilters.md) |  | 
 **Pagination** | Pointer to [**PaginationRequest**](PaginationRequest.md) |  | [optional] 
 **Sort** | Pointer to [**[]StreamAssetSortCriteria**](StreamAssetSortCriteria.md) |  | [optional] 
 
@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 ### NewStreamAssetSearchRequest
 
-`func NewStreamAssetSearchRequest() *StreamAssetSearchRequest`
+`func NewStreamAssetSearchRequest(filter StreamAssetFilters, ) *StreamAssetSearchRequest`
 
 NewStreamAssetSearchRequest instantiates a new StreamAssetSearchRequest object
 This constructor will assign default values to properties that have it defined,
@@ -46,11 +46,6 @@ and a boolean to check if the value has been set.
 
 SetFilter sets Filter field to given value.
 
-### HasFilter
-
-`func (o *StreamAssetSearchRequest) HasFilter() bool`
-
-HasFilter returns a boolean if a field has been set.
 
 ### GetPagination
 

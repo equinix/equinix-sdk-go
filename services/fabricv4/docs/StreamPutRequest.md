@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | Pointer to **string** | Customer-provided stream name | [optional] 
+**Name** | **string** | Customer-provided stream name | 
 **Description** | Pointer to **string** | Customer-provided stream description | [optional] 
 
 ## Methods
 
 ### NewStreamPutRequest
 
-`func NewStreamPutRequest() *StreamPutRequest`
+`func NewStreamPutRequest(name string, ) *StreamPutRequest`
 
 NewStreamPutRequest instantiates a new StreamPutRequest object
 This constructor will assign default values to properties that have it defined,
@@ -45,11 +45,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-### HasName
-
-`func (o *StreamPutRequest) HasName() bool`
-
-HasName returns a boolean if a field has been set.
 
 ### GetDescription
 

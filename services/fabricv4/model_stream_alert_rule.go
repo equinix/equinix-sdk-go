@@ -27,11 +27,11 @@ type StreamAlertRule struct {
 	Description *string               `json:"description,omitempty"`
 	State       *StreamAlertRuleState `json:"state,omitempty"`
 	// Stream alert rule enabled status
-	Enabled              *bool             `json:"enabled,omitempty"`
-	MetricSelector       *MetricSelector   `json:"metricSelector,omitempty"`
-	ResourceSelector     *ResourceSelector `json:"resourceSelector,omitempty"`
-	DetectionMethod      *DetectionMethod  `json:"detectionMethod,omitempty"`
-	ChangeLog            *Changelog        `json:"changeLog,omitempty"`
+	Enabled              *bool                     `json:"enabled,omitempty"`
+	MetricSelector       *MetricSelectorResponse   `json:"metricSelector,omitempty"`
+	ResourceSelector     *ResourceSelectorResponse `json:"resourceSelector,omitempty"`
+	DetectionMethod      *DetectionMethodResponse  `json:"detectionMethod,omitempty"`
+	ChangeLog            *Changelog                `json:"changeLog,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -283,9 +283,9 @@ func (o *StreamAlertRule) SetEnabled(v bool) {
 }
 
 // GetMetricSelector returns the MetricSelector field value if set, zero value otherwise.
-func (o *StreamAlertRule) GetMetricSelector() MetricSelector {
+func (o *StreamAlertRule) GetMetricSelector() MetricSelectorResponse {
 	if o == nil || IsNil(o.MetricSelector) {
-		var ret MetricSelector
+		var ret MetricSelectorResponse
 		return ret
 	}
 	return *o.MetricSelector
@@ -293,7 +293,7 @@ func (o *StreamAlertRule) GetMetricSelector() MetricSelector {
 
 // GetMetricSelectorOk returns a tuple with the MetricSelector field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *StreamAlertRule) GetMetricSelectorOk() (*MetricSelector, bool) {
+func (o *StreamAlertRule) GetMetricSelectorOk() (*MetricSelectorResponse, bool) {
 	if o == nil || IsNil(o.MetricSelector) {
 		return nil, false
 	}
@@ -309,15 +309,15 @@ func (o *StreamAlertRule) HasMetricSelector() bool {
 	return false
 }
 
-// SetMetricSelector gets a reference to the given MetricSelector and assigns it to the MetricSelector field.
-func (o *StreamAlertRule) SetMetricSelector(v MetricSelector) {
+// SetMetricSelector gets a reference to the given MetricSelectorResponse and assigns it to the MetricSelector field.
+func (o *StreamAlertRule) SetMetricSelector(v MetricSelectorResponse) {
 	o.MetricSelector = &v
 }
 
 // GetResourceSelector returns the ResourceSelector field value if set, zero value otherwise.
-func (o *StreamAlertRule) GetResourceSelector() ResourceSelector {
+func (o *StreamAlertRule) GetResourceSelector() ResourceSelectorResponse {
 	if o == nil || IsNil(o.ResourceSelector) {
-		var ret ResourceSelector
+		var ret ResourceSelectorResponse
 		return ret
 	}
 	return *o.ResourceSelector
@@ -325,7 +325,7 @@ func (o *StreamAlertRule) GetResourceSelector() ResourceSelector {
 
 // GetResourceSelectorOk returns a tuple with the ResourceSelector field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *StreamAlertRule) GetResourceSelectorOk() (*ResourceSelector, bool) {
+func (o *StreamAlertRule) GetResourceSelectorOk() (*ResourceSelectorResponse, bool) {
 	if o == nil || IsNil(o.ResourceSelector) {
 		return nil, false
 	}
@@ -341,15 +341,15 @@ func (o *StreamAlertRule) HasResourceSelector() bool {
 	return false
 }
 
-// SetResourceSelector gets a reference to the given ResourceSelector and assigns it to the ResourceSelector field.
-func (o *StreamAlertRule) SetResourceSelector(v ResourceSelector) {
+// SetResourceSelector gets a reference to the given ResourceSelectorResponse and assigns it to the ResourceSelector field.
+func (o *StreamAlertRule) SetResourceSelector(v ResourceSelectorResponse) {
 	o.ResourceSelector = &v
 }
 
 // GetDetectionMethod returns the DetectionMethod field value if set, zero value otherwise.
-func (o *StreamAlertRule) GetDetectionMethod() DetectionMethod {
+func (o *StreamAlertRule) GetDetectionMethod() DetectionMethodResponse {
 	if o == nil || IsNil(o.DetectionMethod) {
-		var ret DetectionMethod
+		var ret DetectionMethodResponse
 		return ret
 	}
 	return *o.DetectionMethod
@@ -357,7 +357,7 @@ func (o *StreamAlertRule) GetDetectionMethod() DetectionMethod {
 
 // GetDetectionMethodOk returns a tuple with the DetectionMethod field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *StreamAlertRule) GetDetectionMethodOk() (*DetectionMethod, bool) {
+func (o *StreamAlertRule) GetDetectionMethodOk() (*DetectionMethodResponse, bool) {
 	if o == nil || IsNil(o.DetectionMethod) {
 		return nil, false
 	}
@@ -373,8 +373,8 @@ func (o *StreamAlertRule) HasDetectionMethod() bool {
 	return false
 }
 
-// SetDetectionMethod gets a reference to the given DetectionMethod and assigns it to the DetectionMethod field.
-func (o *StreamAlertRule) SetDetectionMethod(v DetectionMethod) {
+// SetDetectionMethod gets a reference to the given DetectionMethodResponse and assigns it to the DetectionMethod field.
+func (o *StreamAlertRule) SetDetectionMethod(v DetectionMethodResponse) {
 	o.DetectionMethod = &v
 }
 

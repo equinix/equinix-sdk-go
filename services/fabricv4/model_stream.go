@@ -19,20 +19,21 @@ type Stream struct {
 	// Stream URI
 	Href *string `json:"href,omitempty"`
 	// Equinix-assigned access point identifier
-	Uuid *string `json:"uuid,omitempty"`
-	// Stream provision state
-	State *string `json:"state,omitempty"`
-	// Stream assets count
-	AssetsCount *int32 `json:"assetsCount,omitempty"`
-	// Stream subscriptions count
-	StreamSubscriptionsCount *int32                 `json:"streamSubscriptionsCount,omitempty"`
-	ChangeLog                *Changelog             `json:"changeLog,omitempty"`
-	Type                     *StreamPostRequestType `json:"type,omitempty"`
+	Uuid *string     `json:"uuid,omitempty"`
+	Type *StreamType `json:"type,omitempty"`
 	// Customer-provided stream name
 	Name *string `json:"name,omitempty"`
 	// Customer-provided stream description
-	Description          *string  `json:"description,omitempty"`
-	Project              *Project `json:"project,omitempty"`
+	Description *string      `json:"description,omitempty"`
+	Project     *Project     `json:"project,omitempty"`
+	State       *StreamState `json:"state,omitempty"`
+	// Stream assets count
+	AssetsCount *int32 `json:"assetsCount,omitempty"`
+	// Stream subscriptions count
+	StreamSubscriptionsCount *int32 `json:"streamSubscriptionsCount,omitempty"`
+	// Stream alert rules count
+	AlertRulesCount      *int32     `json:"alertRulesCount,omitempty"`
+	ChangeLog            *Changelog `json:"changeLog,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -119,138 +120,10 @@ func (o *Stream) SetUuid(v string) {
 	o.Uuid = &v
 }
 
-// GetState returns the State field value if set, zero value otherwise.
-func (o *Stream) GetState() string {
-	if o == nil || IsNil(o.State) {
-		var ret string
-		return ret
-	}
-	return *o.State
-}
-
-// GetStateOk returns a tuple with the State field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Stream) GetStateOk() (*string, bool) {
-	if o == nil || IsNil(o.State) {
-		return nil, false
-	}
-	return o.State, true
-}
-
-// HasState returns a boolean if a field has been set.
-func (o *Stream) HasState() bool {
-	if o != nil && !IsNil(o.State) {
-		return true
-	}
-
-	return false
-}
-
-// SetState gets a reference to the given string and assigns it to the State field.
-func (o *Stream) SetState(v string) {
-	o.State = &v
-}
-
-// GetAssetsCount returns the AssetsCount field value if set, zero value otherwise.
-func (o *Stream) GetAssetsCount() int32 {
-	if o == nil || IsNil(o.AssetsCount) {
-		var ret int32
-		return ret
-	}
-	return *o.AssetsCount
-}
-
-// GetAssetsCountOk returns a tuple with the AssetsCount field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Stream) GetAssetsCountOk() (*int32, bool) {
-	if o == nil || IsNil(o.AssetsCount) {
-		return nil, false
-	}
-	return o.AssetsCount, true
-}
-
-// HasAssetsCount returns a boolean if a field has been set.
-func (o *Stream) HasAssetsCount() bool {
-	if o != nil && !IsNil(o.AssetsCount) {
-		return true
-	}
-
-	return false
-}
-
-// SetAssetsCount gets a reference to the given int32 and assigns it to the AssetsCount field.
-func (o *Stream) SetAssetsCount(v int32) {
-	o.AssetsCount = &v
-}
-
-// GetStreamSubscriptionsCount returns the StreamSubscriptionsCount field value if set, zero value otherwise.
-func (o *Stream) GetStreamSubscriptionsCount() int32 {
-	if o == nil || IsNil(o.StreamSubscriptionsCount) {
-		var ret int32
-		return ret
-	}
-	return *o.StreamSubscriptionsCount
-}
-
-// GetStreamSubscriptionsCountOk returns a tuple with the StreamSubscriptionsCount field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Stream) GetStreamSubscriptionsCountOk() (*int32, bool) {
-	if o == nil || IsNil(o.StreamSubscriptionsCount) {
-		return nil, false
-	}
-	return o.StreamSubscriptionsCount, true
-}
-
-// HasStreamSubscriptionsCount returns a boolean if a field has been set.
-func (o *Stream) HasStreamSubscriptionsCount() bool {
-	if o != nil && !IsNil(o.StreamSubscriptionsCount) {
-		return true
-	}
-
-	return false
-}
-
-// SetStreamSubscriptionsCount gets a reference to the given int32 and assigns it to the StreamSubscriptionsCount field.
-func (o *Stream) SetStreamSubscriptionsCount(v int32) {
-	o.StreamSubscriptionsCount = &v
-}
-
-// GetChangeLog returns the ChangeLog field value if set, zero value otherwise.
-func (o *Stream) GetChangeLog() Changelog {
-	if o == nil || IsNil(o.ChangeLog) {
-		var ret Changelog
-		return ret
-	}
-	return *o.ChangeLog
-}
-
-// GetChangeLogOk returns a tuple with the ChangeLog field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Stream) GetChangeLogOk() (*Changelog, bool) {
-	if o == nil || IsNil(o.ChangeLog) {
-		return nil, false
-	}
-	return o.ChangeLog, true
-}
-
-// HasChangeLog returns a boolean if a field has been set.
-func (o *Stream) HasChangeLog() bool {
-	if o != nil && !IsNil(o.ChangeLog) {
-		return true
-	}
-
-	return false
-}
-
-// SetChangeLog gets a reference to the given Changelog and assigns it to the ChangeLog field.
-func (o *Stream) SetChangeLog(v Changelog) {
-	o.ChangeLog = &v
-}
-
 // GetType returns the Type field value if set, zero value otherwise.
-func (o *Stream) GetType() StreamPostRequestType {
+func (o *Stream) GetType() StreamType {
 	if o == nil || IsNil(o.Type) {
-		var ret StreamPostRequestType
+		var ret StreamType
 		return ret
 	}
 	return *o.Type
@@ -258,7 +131,7 @@ func (o *Stream) GetType() StreamPostRequestType {
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Stream) GetTypeOk() (*StreamPostRequestType, bool) {
+func (o *Stream) GetTypeOk() (*StreamType, bool) {
 	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
@@ -274,8 +147,8 @@ func (o *Stream) HasType() bool {
 	return false
 }
 
-// SetType gets a reference to the given StreamPostRequestType and assigns it to the Type field.
-func (o *Stream) SetType(v StreamPostRequestType) {
+// SetType gets a reference to the given StreamType and assigns it to the Type field.
+func (o *Stream) SetType(v StreamType) {
 	o.Type = &v
 }
 
@@ -375,6 +248,166 @@ func (o *Stream) SetProject(v Project) {
 	o.Project = &v
 }
 
+// GetState returns the State field value if set, zero value otherwise.
+func (o *Stream) GetState() StreamState {
+	if o == nil || IsNil(o.State) {
+		var ret StreamState
+		return ret
+	}
+	return *o.State
+}
+
+// GetStateOk returns a tuple with the State field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Stream) GetStateOk() (*StreamState, bool) {
+	if o == nil || IsNil(o.State) {
+		return nil, false
+	}
+	return o.State, true
+}
+
+// HasState returns a boolean if a field has been set.
+func (o *Stream) HasState() bool {
+	if o != nil && !IsNil(o.State) {
+		return true
+	}
+
+	return false
+}
+
+// SetState gets a reference to the given StreamState and assigns it to the State field.
+func (o *Stream) SetState(v StreamState) {
+	o.State = &v
+}
+
+// GetAssetsCount returns the AssetsCount field value if set, zero value otherwise.
+func (o *Stream) GetAssetsCount() int32 {
+	if o == nil || IsNil(o.AssetsCount) {
+		var ret int32
+		return ret
+	}
+	return *o.AssetsCount
+}
+
+// GetAssetsCountOk returns a tuple with the AssetsCount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Stream) GetAssetsCountOk() (*int32, bool) {
+	if o == nil || IsNil(o.AssetsCount) {
+		return nil, false
+	}
+	return o.AssetsCount, true
+}
+
+// HasAssetsCount returns a boolean if a field has been set.
+func (o *Stream) HasAssetsCount() bool {
+	if o != nil && !IsNil(o.AssetsCount) {
+		return true
+	}
+
+	return false
+}
+
+// SetAssetsCount gets a reference to the given int32 and assigns it to the AssetsCount field.
+func (o *Stream) SetAssetsCount(v int32) {
+	o.AssetsCount = &v
+}
+
+// GetStreamSubscriptionsCount returns the StreamSubscriptionsCount field value if set, zero value otherwise.
+func (o *Stream) GetStreamSubscriptionsCount() int32 {
+	if o == nil || IsNil(o.StreamSubscriptionsCount) {
+		var ret int32
+		return ret
+	}
+	return *o.StreamSubscriptionsCount
+}
+
+// GetStreamSubscriptionsCountOk returns a tuple with the StreamSubscriptionsCount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Stream) GetStreamSubscriptionsCountOk() (*int32, bool) {
+	if o == nil || IsNil(o.StreamSubscriptionsCount) {
+		return nil, false
+	}
+	return o.StreamSubscriptionsCount, true
+}
+
+// HasStreamSubscriptionsCount returns a boolean if a field has been set.
+func (o *Stream) HasStreamSubscriptionsCount() bool {
+	if o != nil && !IsNil(o.StreamSubscriptionsCount) {
+		return true
+	}
+
+	return false
+}
+
+// SetStreamSubscriptionsCount gets a reference to the given int32 and assigns it to the StreamSubscriptionsCount field.
+func (o *Stream) SetStreamSubscriptionsCount(v int32) {
+	o.StreamSubscriptionsCount = &v
+}
+
+// GetAlertRulesCount returns the AlertRulesCount field value if set, zero value otherwise.
+func (o *Stream) GetAlertRulesCount() int32 {
+	if o == nil || IsNil(o.AlertRulesCount) {
+		var ret int32
+		return ret
+	}
+	return *o.AlertRulesCount
+}
+
+// GetAlertRulesCountOk returns a tuple with the AlertRulesCount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Stream) GetAlertRulesCountOk() (*int32, bool) {
+	if o == nil || IsNil(o.AlertRulesCount) {
+		return nil, false
+	}
+	return o.AlertRulesCount, true
+}
+
+// HasAlertRulesCount returns a boolean if a field has been set.
+func (o *Stream) HasAlertRulesCount() bool {
+	if o != nil && !IsNil(o.AlertRulesCount) {
+		return true
+	}
+
+	return false
+}
+
+// SetAlertRulesCount gets a reference to the given int32 and assigns it to the AlertRulesCount field.
+func (o *Stream) SetAlertRulesCount(v int32) {
+	o.AlertRulesCount = &v
+}
+
+// GetChangeLog returns the ChangeLog field value if set, zero value otherwise.
+func (o *Stream) GetChangeLog() Changelog {
+	if o == nil || IsNil(o.ChangeLog) {
+		var ret Changelog
+		return ret
+	}
+	return *o.ChangeLog
+}
+
+// GetChangeLogOk returns a tuple with the ChangeLog field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Stream) GetChangeLogOk() (*Changelog, bool) {
+	if o == nil || IsNil(o.ChangeLog) {
+		return nil, false
+	}
+	return o.ChangeLog, true
+}
+
+// HasChangeLog returns a boolean if a field has been set.
+func (o *Stream) HasChangeLog() bool {
+	if o != nil && !IsNil(o.ChangeLog) {
+		return true
+	}
+
+	return false
+}
+
+// SetChangeLog gets a reference to the given Changelog and assigns it to the ChangeLog field.
+func (o *Stream) SetChangeLog(v Changelog) {
+	o.ChangeLog = &v
+}
+
 func (o Stream) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -391,18 +424,6 @@ func (o Stream) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Uuid) {
 		toSerialize["uuid"] = o.Uuid
 	}
-	if !IsNil(o.State) {
-		toSerialize["state"] = o.State
-	}
-	if !IsNil(o.AssetsCount) {
-		toSerialize["assetsCount"] = o.AssetsCount
-	}
-	if !IsNil(o.StreamSubscriptionsCount) {
-		toSerialize["streamSubscriptionsCount"] = o.StreamSubscriptionsCount
-	}
-	if !IsNil(o.ChangeLog) {
-		toSerialize["changeLog"] = o.ChangeLog
-	}
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
@@ -414,6 +435,21 @@ func (o Stream) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Project) {
 		toSerialize["project"] = o.Project
+	}
+	if !IsNil(o.State) {
+		toSerialize["state"] = o.State
+	}
+	if !IsNil(o.AssetsCount) {
+		toSerialize["assetsCount"] = o.AssetsCount
+	}
+	if !IsNil(o.StreamSubscriptionsCount) {
+		toSerialize["streamSubscriptionsCount"] = o.StreamSubscriptionsCount
+	}
+	if !IsNil(o.AlertRulesCount) {
+		toSerialize["alertRulesCount"] = o.AlertRulesCount
+	}
+	if !IsNil(o.ChangeLog) {
+		toSerialize["changeLog"] = o.ChangeLog
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -439,14 +475,15 @@ func (o *Stream) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "href")
 		delete(additionalProperties, "uuid")
-		delete(additionalProperties, "state")
-		delete(additionalProperties, "assetsCount")
-		delete(additionalProperties, "streamSubscriptionsCount")
-		delete(additionalProperties, "changeLog")
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "project")
+		delete(additionalProperties, "state")
+		delete(additionalProperties, "assetsCount")
+		delete(additionalProperties, "streamSubscriptionsCount")
+		delete(additionalProperties, "alertRulesCount")
+		delete(additionalProperties, "changeLog")
 		o.AdditionalProperties = additionalProperties
 	}
 

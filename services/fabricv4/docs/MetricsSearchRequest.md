@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Filter** | Pointer to [**MetricFilters**](MetricFilters.md) |  | [optional] 
+**Filter** | [**MetricFilters**](MetricFilters.md) |  | 
 **Pagination** | Pointer to [**PaginationRequest**](PaginationRequest.md) |  | [optional] 
 
 ## Methods
 
 ### NewMetricsSearchRequest
 
-`func NewMetricsSearchRequest() *MetricsSearchRequest`
+`func NewMetricsSearchRequest(filter MetricFilters, ) *MetricsSearchRequest`
 
 NewMetricsSearchRequest instantiates a new MetricsSearchRequest object
 This constructor will assign default values to properties that have it defined,
@@ -45,11 +45,6 @@ and a boolean to check if the value has been set.
 
 SetFilter sets Filter field to given value.
 
-### HasFilter
-
-`func (o *MetricsSearchRequest) HasFilter() bool`
-
-HasFilter returns a boolean if a field has been set.
 
 ### GetPagination
 

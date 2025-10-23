@@ -23,8 +23,6 @@ type RoutingProtocolBGPType struct {
 	BgpIpv6 *BGPConnectionIpv6         `json:"bgpIpv6,omitempty"`
 	// Customer asn
 	CustomerAsn *int64 `json:"customerAsn,omitempty"`
-	// Equinix asn
-	EquinixAsn *int64 `json:"equinixAsn,omitempty"`
 	// BGP authorization key
 	BgpAuthKey *string `json:"bgpAuthKey,omitempty"`
 	// Enable AS number override
@@ -205,38 +203,6 @@ func (o *RoutingProtocolBGPType) SetCustomerAsn(v int64) {
 	o.CustomerAsn = &v
 }
 
-// GetEquinixAsn returns the EquinixAsn field value if set, zero value otherwise.
-func (o *RoutingProtocolBGPType) GetEquinixAsn() int64 {
-	if o == nil || IsNil(o.EquinixAsn) {
-		var ret int64
-		return ret
-	}
-	return *o.EquinixAsn
-}
-
-// GetEquinixAsnOk returns a tuple with the EquinixAsn field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *RoutingProtocolBGPType) GetEquinixAsnOk() (*int64, bool) {
-	if o == nil || IsNil(o.EquinixAsn) {
-		return nil, false
-	}
-	return o.EquinixAsn, true
-}
-
-// HasEquinixAsn returns a boolean if a field has been set.
-func (o *RoutingProtocolBGPType) HasEquinixAsn() bool {
-	if o != nil && !IsNil(o.EquinixAsn) {
-		return true
-	}
-
-	return false
-}
-
-// SetEquinixAsn gets a reference to the given int64 and assigns it to the EquinixAsn field.
-func (o *RoutingProtocolBGPType) SetEquinixAsn(v int64) {
-	o.EquinixAsn = &v
-}
-
 // GetBgpAuthKey returns the BgpAuthKey field value if set, zero value otherwise.
 func (o *RoutingProtocolBGPType) GetBgpAuthKey() string {
 	if o == nil || IsNil(o.BgpAuthKey) {
@@ -356,9 +322,6 @@ func (o RoutingProtocolBGPType) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.CustomerAsn) {
 		toSerialize["customerAsn"] = o.CustomerAsn
 	}
-	if !IsNil(o.EquinixAsn) {
-		toSerialize["equinixAsn"] = o.EquinixAsn
-	}
 	if !IsNil(o.BgpAuthKey) {
 		toSerialize["bgpAuthKey"] = o.BgpAuthKey
 	}
@@ -416,7 +379,6 @@ func (o *RoutingProtocolBGPType) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "bgpIpv4")
 		delete(additionalProperties, "bgpIpv6")
 		delete(additionalProperties, "customerAsn")
-		delete(additionalProperties, "equinixAsn")
 		delete(additionalProperties, "bgpAuthKey")
 		delete(additionalProperties, "asOverrideEnabled")
 		delete(additionalProperties, "bfd")
