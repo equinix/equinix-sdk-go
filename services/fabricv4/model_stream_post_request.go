@@ -9,6 +9,7 @@ package fabricv4
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the StreamPostRequest type satisfies the MappedNullable interface at compile time
@@ -16,12 +17,12 @@ var _ MappedNullable = &StreamPostRequest{}
 
 // StreamPostRequest Create Stream
 type StreamPostRequest struct {
-	Type *StreamPostRequestType `json:"type,omitempty"`
+	Type StreamPostRequestType `json:"type"`
 	// Customer-provided stream name
-	Name *string `json:"name,omitempty"`
+	Name string `json:"name"`
 	// Customer-provided stream description
-	Description          *string  `json:"description,omitempty"`
-	Project              *Project `json:"project,omitempty"`
+	Description          *string `json:"description,omitempty"`
+	Project              Project `json:"project"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -31,8 +32,11 @@ type _StreamPostRequest StreamPostRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStreamPostRequest() *StreamPostRequest {
+func NewStreamPostRequest(type_ StreamPostRequestType, name string, project Project) *StreamPostRequest {
 	this := StreamPostRequest{}
+	this.Type = type_
+	this.Name = name
+	this.Project = project
 	return &this
 }
 
@@ -44,68 +48,52 @@ func NewStreamPostRequestWithDefaults() *StreamPostRequest {
 	return &this
 }
 
-// GetType returns the Type field value if set, zero value otherwise.
+// GetType returns the Type field value
 func (o *StreamPostRequest) GetType() StreamPostRequestType {
-	if o == nil || IsNil(o.Type) {
+	if o == nil {
 		var ret StreamPostRequestType
 		return ret
 	}
-	return *o.Type
+
+	return o.Type
 }
 
-// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
 func (o *StreamPostRequest) GetTypeOk() (*StreamPostRequestType, bool) {
-	if o == nil || IsNil(o.Type) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Type, true
+	return &o.Type, true
 }
 
-// HasType returns a boolean if a field has been set.
-func (o *StreamPostRequest) HasType() bool {
-	if o != nil && !IsNil(o.Type) {
-		return true
-	}
-
-	return false
-}
-
-// SetType gets a reference to the given StreamPostRequestType and assigns it to the Type field.
+// SetType sets field value
 func (o *StreamPostRequest) SetType(v StreamPostRequestType) {
-	o.Type = &v
+	o.Type = v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value
 func (o *StreamPostRequest) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Name
+
+	return o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *StreamPostRequest) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return &o.Name, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *StreamPostRequest) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName sets field value
 func (o *StreamPostRequest) SetName(v string) {
-	o.Name = &v
+	o.Name = v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -140,36 +128,28 @@ func (o *StreamPostRequest) SetDescription(v string) {
 	o.Description = &v
 }
 
-// GetProject returns the Project field value if set, zero value otherwise.
+// GetProject returns the Project field value
 func (o *StreamPostRequest) GetProject() Project {
-	if o == nil || IsNil(o.Project) {
+	if o == nil {
 		var ret Project
 		return ret
 	}
-	return *o.Project
+
+	return o.Project
 }
 
-// GetProjectOk returns a tuple with the Project field value if set, nil otherwise
+// GetProjectOk returns a tuple with the Project field value
 // and a boolean to check if the value has been set.
 func (o *StreamPostRequest) GetProjectOk() (*Project, bool) {
-	if o == nil || IsNil(o.Project) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Project, true
+	return &o.Project, true
 }
 
-// HasProject returns a boolean if a field has been set.
-func (o *StreamPostRequest) HasProject() bool {
-	if o != nil && !IsNil(o.Project) {
-		return true
-	}
-
-	return false
-}
-
-// SetProject gets a reference to the given Project and assigns it to the Project field.
+// SetProject sets field value
 func (o *StreamPostRequest) SetProject(v Project) {
-	o.Project = &v
+	o.Project = v
 }
 
 func (o StreamPostRequest) MarshalJSON() ([]byte, error) {
@@ -182,18 +162,12 @@ func (o StreamPostRequest) MarshalJSON() ([]byte, error) {
 
 func (o StreamPostRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Type) {
-		toSerialize["type"] = o.Type
-	}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
+	toSerialize["type"] = o.Type
+	toSerialize["name"] = o.Name
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !IsNil(o.Project) {
-		toSerialize["project"] = o.Project
-	}
+	toSerialize["project"] = o.Project
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -203,6 +177,29 @@ func (o StreamPostRequest) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *StreamPostRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"type",
+		"name",
+		"project",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
 	varStreamPostRequest := _StreamPostRequest{}
 
 	err = json.Unmarshal(data, &varStreamPostRequest)

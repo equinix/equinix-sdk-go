@@ -9,6 +9,7 @@ package fabricv4
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the StreamSubscriptionPutRequest type satisfies the MappedNullable interface at compile time
@@ -16,8 +17,9 @@ var _ MappedNullable = &StreamSubscriptionPutRequest{}
 
 // StreamSubscriptionPutRequest Update Stream Subscription
 type StreamSubscriptionPutRequest struct {
+	Type StreamSubscriptionPostRequestType `json:"type"`
 	// Customer-provided stream subscription name
-	Name *string `json:"name,omitempty"`
+	Name string `json:"name"`
 	// Customer-provided stream subscription description
 	Description *string `json:"description,omitempty"`
 	// Stream subscription enabled status
@@ -25,7 +27,7 @@ type StreamSubscriptionPutRequest struct {
 	Filters              *StreamSubscriptionFilter   `json:"filters,omitempty"`
 	MetricSelector       *StreamSubscriptionSelector `json:"metricSelector,omitempty"`
 	EventSelector        *StreamSubscriptionSelector `json:"eventSelector,omitempty"`
-	Sink                 *StreamSubscriptionSink     `json:"sink,omitempty"`
+	Sink                 StreamSubscriptionSink      `json:"sink"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -35,8 +37,11 @@ type _StreamSubscriptionPutRequest StreamSubscriptionPutRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStreamSubscriptionPutRequest() *StreamSubscriptionPutRequest {
+func NewStreamSubscriptionPutRequest(type_ StreamSubscriptionPostRequestType, name string, sink StreamSubscriptionSink) *StreamSubscriptionPutRequest {
 	this := StreamSubscriptionPutRequest{}
+	this.Type = type_
+	this.Name = name
+	this.Sink = sink
 	return &this
 }
 
@@ -48,36 +53,52 @@ func NewStreamSubscriptionPutRequestWithDefaults() *StreamSubscriptionPutRequest
 	return &this
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetType returns the Type field value
+func (o *StreamSubscriptionPutRequest) GetType() StreamSubscriptionPostRequestType {
+	if o == nil {
+		var ret StreamSubscriptionPostRequestType
+		return ret
+	}
+
+	return o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value
+// and a boolean to check if the value has been set.
+func (o *StreamSubscriptionPutRequest) GetTypeOk() (*StreamSubscriptionPostRequestType, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Type, true
+}
+
+// SetType sets field value
+func (o *StreamSubscriptionPutRequest) SetType(v StreamSubscriptionPostRequestType) {
+	o.Type = v
+}
+
+// GetName returns the Name field value
 func (o *StreamSubscriptionPutRequest) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Name
+
+	return o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *StreamSubscriptionPutRequest) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return &o.Name, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *StreamSubscriptionPutRequest) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName sets field value
 func (o *StreamSubscriptionPutRequest) SetName(v string) {
-	o.Name = &v
+	o.Name = v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -240,36 +261,28 @@ func (o *StreamSubscriptionPutRequest) SetEventSelector(v StreamSubscriptionSele
 	o.EventSelector = &v
 }
 
-// GetSink returns the Sink field value if set, zero value otherwise.
+// GetSink returns the Sink field value
 func (o *StreamSubscriptionPutRequest) GetSink() StreamSubscriptionSink {
-	if o == nil || IsNil(o.Sink) {
+	if o == nil {
 		var ret StreamSubscriptionSink
 		return ret
 	}
-	return *o.Sink
+
+	return o.Sink
 }
 
-// GetSinkOk returns a tuple with the Sink field value if set, nil otherwise
+// GetSinkOk returns a tuple with the Sink field value
 // and a boolean to check if the value has been set.
 func (o *StreamSubscriptionPutRequest) GetSinkOk() (*StreamSubscriptionSink, bool) {
-	if o == nil || IsNil(o.Sink) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Sink, true
+	return &o.Sink, true
 }
 
-// HasSink returns a boolean if a field has been set.
-func (o *StreamSubscriptionPutRequest) HasSink() bool {
-	if o != nil && !IsNil(o.Sink) {
-		return true
-	}
-
-	return false
-}
-
-// SetSink gets a reference to the given StreamSubscriptionSink and assigns it to the Sink field.
+// SetSink sets field value
 func (o *StreamSubscriptionPutRequest) SetSink(v StreamSubscriptionSink) {
-	o.Sink = &v
+	o.Sink = v
 }
 
 func (o StreamSubscriptionPutRequest) MarshalJSON() ([]byte, error) {
@@ -282,9 +295,8 @@ func (o StreamSubscriptionPutRequest) MarshalJSON() ([]byte, error) {
 
 func (o StreamSubscriptionPutRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
+	toSerialize["type"] = o.Type
+	toSerialize["name"] = o.Name
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
@@ -300,9 +312,7 @@ func (o StreamSubscriptionPutRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EventSelector) {
 		toSerialize["eventSelector"] = o.EventSelector
 	}
-	if !IsNil(o.Sink) {
-		toSerialize["sink"] = o.Sink
-	}
+	toSerialize["sink"] = o.Sink
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -312,6 +322,29 @@ func (o StreamSubscriptionPutRequest) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *StreamSubscriptionPutRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"type",
+		"name",
+		"sink",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
 	varStreamSubscriptionPutRequest := _StreamSubscriptionPutRequest{}
 
 	err = json.Unmarshal(data, &varStreamSubscriptionPutRequest)
@@ -325,6 +358,7 @@ func (o *StreamSubscriptionPutRequest) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "type")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "enabled")

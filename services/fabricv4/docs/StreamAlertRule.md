@@ -11,9 +11,9 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** | Customer-provided stream alert rule description | [optional] 
 **State** | Pointer to [**StreamAlertRuleState**](StreamAlertRuleState.md) |  | [optional] 
 **Enabled** | Pointer to **bool** | Stream alert rule enabled status | [optional] [default to true]
-**MetricSelector** | Pointer to [**MetricSelector**](MetricSelector.md) |  | [optional] 
-**ResourceSelector** | Pointer to [**ResourceSelector**](ResourceSelector.md) |  | [optional] 
-**DetectionMethod** | Pointer to [**DetectionMethod**](DetectionMethod.md) |  | [optional] 
+**MetricSelector** | Pointer to [**MetricSelectorResponse**](MetricSelectorResponse.md) |  | [optional] 
+**ResourceSelector** | Pointer to [**ResourceSelectorResponse**](ResourceSelectorResponse.md) |  | [optional] 
+**DetectionMethod** | Pointer to [**DetectionMethodResponse**](DetectionMethodResponse.md) |  | [optional] 
 **ChangeLog** | Pointer to [**Changelog**](Changelog.md) |  | [optional] 
 
 ## Methods
@@ -212,20 +212,20 @@ HasEnabled returns a boolean if a field has been set.
 
 ### GetMetricSelector
 
-`func (o *StreamAlertRule) GetMetricSelector() MetricSelector`
+`func (o *StreamAlertRule) GetMetricSelector() MetricSelectorResponse`
 
 GetMetricSelector returns the MetricSelector field if non-nil, zero value otherwise.
 
 ### GetMetricSelectorOk
 
-`func (o *StreamAlertRule) GetMetricSelectorOk() (*MetricSelector, bool)`
+`func (o *StreamAlertRule) GetMetricSelectorOk() (*MetricSelectorResponse, bool)`
 
 GetMetricSelectorOk returns a tuple with the MetricSelector field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMetricSelector
 
-`func (o *StreamAlertRule) SetMetricSelector(v MetricSelector)`
+`func (o *StreamAlertRule) SetMetricSelector(v MetricSelectorResponse)`
 
 SetMetricSelector sets MetricSelector field to given value.
 
@@ -237,20 +237,20 @@ HasMetricSelector returns a boolean if a field has been set.
 
 ### GetResourceSelector
 
-`func (o *StreamAlertRule) GetResourceSelector() ResourceSelector`
+`func (o *StreamAlertRule) GetResourceSelector() ResourceSelectorResponse`
 
 GetResourceSelector returns the ResourceSelector field if non-nil, zero value otherwise.
 
 ### GetResourceSelectorOk
 
-`func (o *StreamAlertRule) GetResourceSelectorOk() (*ResourceSelector, bool)`
+`func (o *StreamAlertRule) GetResourceSelectorOk() (*ResourceSelectorResponse, bool)`
 
 GetResourceSelectorOk returns a tuple with the ResourceSelector field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResourceSelector
 
-`func (o *StreamAlertRule) SetResourceSelector(v ResourceSelector)`
+`func (o *StreamAlertRule) SetResourceSelector(v ResourceSelectorResponse)`
 
 SetResourceSelector sets ResourceSelector field to given value.
 
@@ -262,20 +262,20 @@ HasResourceSelector returns a boolean if a field has been set.
 
 ### GetDetectionMethod
 
-`func (o *StreamAlertRule) GetDetectionMethod() DetectionMethod`
+`func (o *StreamAlertRule) GetDetectionMethod() DetectionMethodResponse`
 
 GetDetectionMethod returns the DetectionMethod field if non-nil, zero value otherwise.
 
 ### GetDetectionMethodOk
 
-`func (o *StreamAlertRule) GetDetectionMethodOk() (*DetectionMethod, bool)`
+`func (o *StreamAlertRule) GetDetectionMethodOk() (*DetectionMethodResponse, bool)`
 
 GetDetectionMethodOk returns a tuple with the DetectionMethod field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDetectionMethod
 
-`func (o *StreamAlertRule) SetDetectionMethod(v DetectionMethod)`
+`func (o *StreamAlertRule) SetDetectionMethod(v DetectionMethodResponse)`
 
 SetDetectionMethod sets DetectionMethod field to given value.
 

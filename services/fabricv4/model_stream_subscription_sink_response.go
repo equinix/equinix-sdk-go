@@ -9,17 +9,16 @@ package fabricv4
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
-// checks if the StreamSubscriptionSink type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &StreamSubscriptionSink{}
+// checks if the StreamSubscriptionSinkResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &StreamSubscriptionSinkResponse{}
 
-// StreamSubscriptionSink Create Stream destination
-type StreamSubscriptionSink struct {
+// StreamSubscriptionSinkResponse Create Stream destination
+type StreamSubscriptionSinkResponse struct {
 	// any publicly reachable http endpoint
-	Uri  *string                    `json:"uri,omitempty"`
-	Type StreamSubscriptionSinkType `json:"type"`
+	Uri  *string                     `json:"uri,omitempty"`
+	Type *StreamSubscriptionSinkType `json:"type,omitempty"`
 	// batch mode on/off
 	BatchEnabled *bool `json:"batchEnabled,omitempty"`
 	// maximum batch size
@@ -33,28 +32,27 @@ type StreamSubscriptionSink struct {
 	AdditionalProperties map[string]interface{}
 }
 
-type _StreamSubscriptionSink StreamSubscriptionSink
+type _StreamSubscriptionSinkResponse StreamSubscriptionSinkResponse
 
-// NewStreamSubscriptionSink instantiates a new StreamSubscriptionSink object
+// NewStreamSubscriptionSinkResponse instantiates a new StreamSubscriptionSinkResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStreamSubscriptionSink(type_ StreamSubscriptionSinkType) *StreamSubscriptionSink {
-	this := StreamSubscriptionSink{}
-	this.Type = type_
+func NewStreamSubscriptionSinkResponse() *StreamSubscriptionSinkResponse {
+	this := StreamSubscriptionSinkResponse{}
 	return &this
 }
 
-// NewStreamSubscriptionSinkWithDefaults instantiates a new StreamSubscriptionSink object
+// NewStreamSubscriptionSinkResponseWithDefaults instantiates a new StreamSubscriptionSinkResponse object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewStreamSubscriptionSinkWithDefaults() *StreamSubscriptionSink {
-	this := StreamSubscriptionSink{}
+func NewStreamSubscriptionSinkResponseWithDefaults() *StreamSubscriptionSinkResponse {
+	this := StreamSubscriptionSinkResponse{}
 	return &this
 }
 
 // GetUri returns the Uri field value if set, zero value otherwise.
-func (o *StreamSubscriptionSink) GetUri() string {
+func (o *StreamSubscriptionSinkResponse) GetUri() string {
 	if o == nil || IsNil(o.Uri) {
 		var ret string
 		return ret
@@ -64,7 +62,7 @@ func (o *StreamSubscriptionSink) GetUri() string {
 
 // GetUriOk returns a tuple with the Uri field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *StreamSubscriptionSink) GetUriOk() (*string, bool) {
+func (o *StreamSubscriptionSinkResponse) GetUriOk() (*string, bool) {
 	if o == nil || IsNil(o.Uri) {
 		return nil, false
 	}
@@ -72,7 +70,7 @@ func (o *StreamSubscriptionSink) GetUriOk() (*string, bool) {
 }
 
 // HasUri returns a boolean if a field has been set.
-func (o *StreamSubscriptionSink) HasUri() bool {
+func (o *StreamSubscriptionSinkResponse) HasUri() bool {
 	if o != nil && !IsNil(o.Uri) {
 		return true
 	}
@@ -81,36 +79,44 @@ func (o *StreamSubscriptionSink) HasUri() bool {
 }
 
 // SetUri gets a reference to the given string and assigns it to the Uri field.
-func (o *StreamSubscriptionSink) SetUri(v string) {
+func (o *StreamSubscriptionSinkResponse) SetUri(v string) {
 	o.Uri = &v
 }
 
-// GetType returns the Type field value
-func (o *StreamSubscriptionSink) GetType() StreamSubscriptionSinkType {
-	if o == nil {
+// GetType returns the Type field value if set, zero value otherwise.
+func (o *StreamSubscriptionSinkResponse) GetType() StreamSubscriptionSinkType {
+	if o == nil || IsNil(o.Type) {
 		var ret StreamSubscriptionSinkType
 		return ret
 	}
-
-	return o.Type
+	return *o.Type
 }
 
-// GetTypeOk returns a tuple with the Type field value
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *StreamSubscriptionSink) GetTypeOk() (*StreamSubscriptionSinkType, bool) {
-	if o == nil {
+func (o *StreamSubscriptionSinkResponse) GetTypeOk() (*StreamSubscriptionSinkType, bool) {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
-	return &o.Type, true
+	return o.Type, true
 }
 
-// SetType sets field value
-func (o *StreamSubscriptionSink) SetType(v StreamSubscriptionSinkType) {
-	o.Type = v
+// HasType returns a boolean if a field has been set.
+func (o *StreamSubscriptionSinkResponse) HasType() bool {
+	if o != nil && !IsNil(o.Type) {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given StreamSubscriptionSinkType and assigns it to the Type field.
+func (o *StreamSubscriptionSinkResponse) SetType(v StreamSubscriptionSinkType) {
+	o.Type = &v
 }
 
 // GetBatchEnabled returns the BatchEnabled field value if set, zero value otherwise.
-func (o *StreamSubscriptionSink) GetBatchEnabled() bool {
+func (o *StreamSubscriptionSinkResponse) GetBatchEnabled() bool {
 	if o == nil || IsNil(o.BatchEnabled) {
 		var ret bool
 		return ret
@@ -120,7 +126,7 @@ func (o *StreamSubscriptionSink) GetBatchEnabled() bool {
 
 // GetBatchEnabledOk returns a tuple with the BatchEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *StreamSubscriptionSink) GetBatchEnabledOk() (*bool, bool) {
+func (o *StreamSubscriptionSinkResponse) GetBatchEnabledOk() (*bool, bool) {
 	if o == nil || IsNil(o.BatchEnabled) {
 		return nil, false
 	}
@@ -128,7 +134,7 @@ func (o *StreamSubscriptionSink) GetBatchEnabledOk() (*bool, bool) {
 }
 
 // HasBatchEnabled returns a boolean if a field has been set.
-func (o *StreamSubscriptionSink) HasBatchEnabled() bool {
+func (o *StreamSubscriptionSinkResponse) HasBatchEnabled() bool {
 	if o != nil && !IsNil(o.BatchEnabled) {
 		return true
 	}
@@ -137,12 +143,12 @@ func (o *StreamSubscriptionSink) HasBatchEnabled() bool {
 }
 
 // SetBatchEnabled gets a reference to the given bool and assigns it to the BatchEnabled field.
-func (o *StreamSubscriptionSink) SetBatchEnabled(v bool) {
+func (o *StreamSubscriptionSinkResponse) SetBatchEnabled(v bool) {
 	o.BatchEnabled = &v
 }
 
 // GetBatchSizeMax returns the BatchSizeMax field value if set, zero value otherwise.
-func (o *StreamSubscriptionSink) GetBatchSizeMax() int32 {
+func (o *StreamSubscriptionSinkResponse) GetBatchSizeMax() int32 {
 	if o == nil || IsNil(o.BatchSizeMax) {
 		var ret int32
 		return ret
@@ -152,7 +158,7 @@ func (o *StreamSubscriptionSink) GetBatchSizeMax() int32 {
 
 // GetBatchSizeMaxOk returns a tuple with the BatchSizeMax field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *StreamSubscriptionSink) GetBatchSizeMaxOk() (*int32, bool) {
+func (o *StreamSubscriptionSinkResponse) GetBatchSizeMaxOk() (*int32, bool) {
 	if o == nil || IsNil(o.BatchSizeMax) {
 		return nil, false
 	}
@@ -160,7 +166,7 @@ func (o *StreamSubscriptionSink) GetBatchSizeMaxOk() (*int32, bool) {
 }
 
 // HasBatchSizeMax returns a boolean if a field has been set.
-func (o *StreamSubscriptionSink) HasBatchSizeMax() bool {
+func (o *StreamSubscriptionSinkResponse) HasBatchSizeMax() bool {
 	if o != nil && !IsNil(o.BatchSizeMax) {
 		return true
 	}
@@ -169,12 +175,12 @@ func (o *StreamSubscriptionSink) HasBatchSizeMax() bool {
 }
 
 // SetBatchSizeMax gets a reference to the given int32 and assigns it to the BatchSizeMax field.
-func (o *StreamSubscriptionSink) SetBatchSizeMax(v int32) {
+func (o *StreamSubscriptionSinkResponse) SetBatchSizeMax(v int32) {
 	o.BatchSizeMax = &v
 }
 
 // GetBatchWaitTimeMax returns the BatchWaitTimeMax field value if set, zero value otherwise.
-func (o *StreamSubscriptionSink) GetBatchWaitTimeMax() int32 {
+func (o *StreamSubscriptionSinkResponse) GetBatchWaitTimeMax() int32 {
 	if o == nil || IsNil(o.BatchWaitTimeMax) {
 		var ret int32
 		return ret
@@ -184,7 +190,7 @@ func (o *StreamSubscriptionSink) GetBatchWaitTimeMax() int32 {
 
 // GetBatchWaitTimeMaxOk returns a tuple with the BatchWaitTimeMax field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *StreamSubscriptionSink) GetBatchWaitTimeMaxOk() (*int32, bool) {
+func (o *StreamSubscriptionSinkResponse) GetBatchWaitTimeMaxOk() (*int32, bool) {
 	if o == nil || IsNil(o.BatchWaitTimeMax) {
 		return nil, false
 	}
@@ -192,7 +198,7 @@ func (o *StreamSubscriptionSink) GetBatchWaitTimeMaxOk() (*int32, bool) {
 }
 
 // HasBatchWaitTimeMax returns a boolean if a field has been set.
-func (o *StreamSubscriptionSink) HasBatchWaitTimeMax() bool {
+func (o *StreamSubscriptionSinkResponse) HasBatchWaitTimeMax() bool {
 	if o != nil && !IsNil(o.BatchWaitTimeMax) {
 		return true
 	}
@@ -201,12 +207,12 @@ func (o *StreamSubscriptionSink) HasBatchWaitTimeMax() bool {
 }
 
 // SetBatchWaitTimeMax gets a reference to the given int32 and assigns it to the BatchWaitTimeMax field.
-func (o *StreamSubscriptionSink) SetBatchWaitTimeMax(v int32) {
+func (o *StreamSubscriptionSinkResponse) SetBatchWaitTimeMax(v int32) {
 	o.BatchWaitTimeMax = &v
 }
 
 // GetCredential returns the Credential field value if set, zero value otherwise.
-func (o *StreamSubscriptionSink) GetCredential() StreamSubscriptionSinkCredential {
+func (o *StreamSubscriptionSinkResponse) GetCredential() StreamSubscriptionSinkCredential {
 	if o == nil || IsNil(o.Credential) {
 		var ret StreamSubscriptionSinkCredential
 		return ret
@@ -216,7 +222,7 @@ func (o *StreamSubscriptionSink) GetCredential() StreamSubscriptionSinkCredentia
 
 // GetCredentialOk returns a tuple with the Credential field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *StreamSubscriptionSink) GetCredentialOk() (*StreamSubscriptionSinkCredential, bool) {
+func (o *StreamSubscriptionSinkResponse) GetCredentialOk() (*StreamSubscriptionSinkCredential, bool) {
 	if o == nil || IsNil(o.Credential) {
 		return nil, false
 	}
@@ -224,7 +230,7 @@ func (o *StreamSubscriptionSink) GetCredentialOk() (*StreamSubscriptionSinkCrede
 }
 
 // HasCredential returns a boolean if a field has been set.
-func (o *StreamSubscriptionSink) HasCredential() bool {
+func (o *StreamSubscriptionSinkResponse) HasCredential() bool {
 	if o != nil && !IsNil(o.Credential) {
 		return true
 	}
@@ -233,12 +239,12 @@ func (o *StreamSubscriptionSink) HasCredential() bool {
 }
 
 // SetCredential gets a reference to the given StreamSubscriptionSinkCredential and assigns it to the Credential field.
-func (o *StreamSubscriptionSink) SetCredential(v StreamSubscriptionSinkCredential) {
+func (o *StreamSubscriptionSinkResponse) SetCredential(v StreamSubscriptionSinkCredential) {
 	o.Credential = &v
 }
 
 // GetSettings returns the Settings field value if set, zero value otherwise.
-func (o *StreamSubscriptionSink) GetSettings() StreamSubscriptionSinkSetting {
+func (o *StreamSubscriptionSinkResponse) GetSettings() StreamSubscriptionSinkSetting {
 	if o == nil || IsNil(o.Settings) {
 		var ret StreamSubscriptionSinkSetting
 		return ret
@@ -248,7 +254,7 @@ func (o *StreamSubscriptionSink) GetSettings() StreamSubscriptionSinkSetting {
 
 // GetSettingsOk returns a tuple with the Settings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *StreamSubscriptionSink) GetSettingsOk() (*StreamSubscriptionSinkSetting, bool) {
+func (o *StreamSubscriptionSinkResponse) GetSettingsOk() (*StreamSubscriptionSinkSetting, bool) {
 	if o == nil || IsNil(o.Settings) {
 		return nil, false
 	}
@@ -256,7 +262,7 @@ func (o *StreamSubscriptionSink) GetSettingsOk() (*StreamSubscriptionSinkSetting
 }
 
 // HasSettings returns a boolean if a field has been set.
-func (o *StreamSubscriptionSink) HasSettings() bool {
+func (o *StreamSubscriptionSinkResponse) HasSettings() bool {
 	if o != nil && !IsNil(o.Settings) {
 		return true
 	}
@@ -265,12 +271,12 @@ func (o *StreamSubscriptionSink) HasSettings() bool {
 }
 
 // SetSettings gets a reference to the given StreamSubscriptionSinkSetting and assigns it to the Settings field.
-func (o *StreamSubscriptionSink) SetSettings(v StreamSubscriptionSinkSetting) {
+func (o *StreamSubscriptionSinkResponse) SetSettings(v StreamSubscriptionSinkSetting) {
 	o.Settings = &v
 }
 
 // GetHost returns the Host field value if set, zero value otherwise.
-func (o *StreamSubscriptionSink) GetHost() string {
+func (o *StreamSubscriptionSinkResponse) GetHost() string {
 	if o == nil || IsNil(o.Host) {
 		var ret string
 		return ret
@@ -280,7 +286,7 @@ func (o *StreamSubscriptionSink) GetHost() string {
 
 // GetHostOk returns a tuple with the Host field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *StreamSubscriptionSink) GetHostOk() (*string, bool) {
+func (o *StreamSubscriptionSinkResponse) GetHostOk() (*string, bool) {
 	if o == nil || IsNil(o.Host) {
 		return nil, false
 	}
@@ -288,7 +294,7 @@ func (o *StreamSubscriptionSink) GetHostOk() (*string, bool) {
 }
 
 // HasHost returns a boolean if a field has been set.
-func (o *StreamSubscriptionSink) HasHost() bool {
+func (o *StreamSubscriptionSinkResponse) HasHost() bool {
 	if o != nil && !IsNil(o.Host) {
 		return true
 	}
@@ -297,11 +303,11 @@ func (o *StreamSubscriptionSink) HasHost() bool {
 }
 
 // SetHost gets a reference to the given string and assigns it to the Host field.
-func (o *StreamSubscriptionSink) SetHost(v string) {
+func (o *StreamSubscriptionSinkResponse) SetHost(v string) {
 	o.Host = &v
 }
 
-func (o StreamSubscriptionSink) MarshalJSON() ([]byte, error) {
+func (o StreamSubscriptionSinkResponse) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -309,12 +315,14 @@ func (o StreamSubscriptionSink) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o StreamSubscriptionSink) ToMap() (map[string]interface{}, error) {
+func (o StreamSubscriptionSinkResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Uri) {
 		toSerialize["uri"] = o.Uri
 	}
-	toSerialize["type"] = o.Type
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
 	if !IsNil(o.BatchEnabled) {
 		toSerialize["batchEnabled"] = o.BatchEnabled
 	}
@@ -341,37 +349,16 @@ func (o StreamSubscriptionSink) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *StreamSubscriptionSink) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"type",
-	}
+func (o *StreamSubscriptionSinkResponse) UnmarshalJSON(data []byte) (err error) {
+	varStreamSubscriptionSinkResponse := _StreamSubscriptionSinkResponse{}
 
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
+	err = json.Unmarshal(data, &varStreamSubscriptionSinkResponse)
 
 	if err != nil {
 		return err
 	}
 
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varStreamSubscriptionSink := _StreamSubscriptionSink{}
-
-	err = json.Unmarshal(data, &varStreamSubscriptionSink)
-
-	if err != nil {
-		return err
-	}
-
-	*o = StreamSubscriptionSink(varStreamSubscriptionSink)
+	*o = StreamSubscriptionSinkResponse(varStreamSubscriptionSinkResponse)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -390,38 +377,38 @@ func (o *StreamSubscriptionSink) UnmarshalJSON(data []byte) (err error) {
 	return err
 }
 
-type NullableStreamSubscriptionSink struct {
-	value *StreamSubscriptionSink
+type NullableStreamSubscriptionSinkResponse struct {
+	value *StreamSubscriptionSinkResponse
 	isSet bool
 }
 
-func (v NullableStreamSubscriptionSink) Get() *StreamSubscriptionSink {
+func (v NullableStreamSubscriptionSinkResponse) Get() *StreamSubscriptionSinkResponse {
 	return v.value
 }
 
-func (v *NullableStreamSubscriptionSink) Set(val *StreamSubscriptionSink) {
+func (v *NullableStreamSubscriptionSinkResponse) Set(val *StreamSubscriptionSinkResponse) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableStreamSubscriptionSink) IsSet() bool {
+func (v NullableStreamSubscriptionSinkResponse) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableStreamSubscriptionSink) Unset() {
+func (v *NullableStreamSubscriptionSinkResponse) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableStreamSubscriptionSink(val *StreamSubscriptionSink) *NullableStreamSubscriptionSink {
-	return &NullableStreamSubscriptionSink{value: val, isSet: true}
+func NewNullableStreamSubscriptionSinkResponse(val *StreamSubscriptionSinkResponse) *NullableStreamSubscriptionSinkResponse {
+	return &NullableStreamSubscriptionSinkResponse{value: val, isSet: true}
 }
 
-func (v NullableStreamSubscriptionSink) MarshalJSON() ([]byte, error) {
+func (v NullableStreamSubscriptionSinkResponse) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableStreamSubscriptionSink) UnmarshalJSON(src []byte) error {
+func (v *NullableStreamSubscriptionSinkResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

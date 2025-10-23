@@ -7,13 +7,12 @@ Name | Type | Description | Notes
 **Type** | [**RouteTableEntryType**](RouteTableEntryType.md) |  | 
 **ProtocolType** | Pointer to [**RouteTableEntryProtocolType**](RouteTableEntryProtocolType.md) |  | [optional] 
 **State** | [**RouteTableEntryState**](RouteTableEntryState.md) |  | 
-**Age** | Pointer to **string** |  | [optional] 
 **Prefix** | Pointer to **string** |  | [optional] 
 **NextHop** | Pointer to **string** |  | [optional] 
 **MED** | Pointer to **int32** |  | [optional] 
 **LocalPreference** | Pointer to **int32** |  | [optional] 
 **AsPath** | Pointer to **[]string** |  | [optional] 
-**Connection** | Pointer to [**ConnectionRouteTableEntryConnection**](ConnectionRouteTableEntryConnection.md) |  | [optional] 
+**Connection** | Pointer to [**RouteTableEntryConnection**](RouteTableEntryConnection.md) |  | [optional] 
 **ChangeLog** | [**Changelog**](Changelog.md) |  | 
 
 ## Methods
@@ -99,31 +98,6 @@ and a boolean to check if the value has been set.
 
 SetState sets State field to given value.
 
-
-### GetAge
-
-`func (o *RouteTableEntry) GetAge() string`
-
-GetAge returns the Age field if non-nil, zero value otherwise.
-
-### GetAgeOk
-
-`func (o *RouteTableEntry) GetAgeOk() (*string, bool)`
-
-GetAgeOk returns a tuple with the Age field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAge
-
-`func (o *RouteTableEntry) SetAge(v string)`
-
-SetAge sets Age field to given value.
-
-### HasAge
-
-`func (o *RouteTableEntry) HasAge() bool`
-
-HasAge returns a boolean if a field has been set.
 
 ### GetPrefix
 
@@ -252,20 +226,20 @@ HasAsPath returns a boolean if a field has been set.
 
 ### GetConnection
 
-`func (o *RouteTableEntry) GetConnection() ConnectionRouteTableEntryConnection`
+`func (o *RouteTableEntry) GetConnection() RouteTableEntryConnection`
 
 GetConnection returns the Connection field if non-nil, zero value otherwise.
 
 ### GetConnectionOk
 
-`func (o *RouteTableEntry) GetConnectionOk() (*ConnectionRouteTableEntryConnection, bool)`
+`func (o *RouteTableEntry) GetConnectionOk() (*RouteTableEntryConnection, bool)`
 
 GetConnectionOk returns a tuple with the Connection field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetConnection
 
-`func (o *RouteTableEntry) SetConnection(v ConnectionRouteTableEntryConnection)`
+`func (o *RouteTableEntry) SetConnection(v RouteTableEntryConnection)`
 
 SetConnection sets Connection field to given value.
 

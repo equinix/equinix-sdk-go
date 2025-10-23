@@ -4,19 +4,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to [**StreamSubscriptionPostRequestType**](StreamSubscriptionPostRequestType.md) |  | [optional] 
-**Name** | Pointer to **string** | Customer-provided stream subscription name | [optional] 
+**Type** | [**StreamSubscriptionPostRequestType**](StreamSubscriptionPostRequestType.md) |  | 
+**Name** | **string** | Customer-provided stream subscription name | 
 **Description** | Pointer to **string** | Customer-provided stream subscription description | [optional] 
-**Enabled** | Pointer to **bool** | Stream subscription enabled status | [optional] 
+**Enabled** | Pointer to **bool** | Stream subscription enabled status | [optional] [default to true]
 **MetricSelector** | Pointer to [**StreamSubscriptionSelector**](StreamSubscriptionSelector.md) |  | [optional] 
 **EventSelector** | Pointer to [**StreamSubscriptionSelector**](StreamSubscriptionSelector.md) |  | [optional] 
-**Sink** | Pointer to [**StreamSubscriptionSink**](StreamSubscriptionSink.md) |  | [optional] 
+**Sink** | [**StreamSubscriptionSink**](StreamSubscriptionSink.md) |  | 
 
 ## Methods
 
 ### NewStreamSubscriptionPostRequest
 
-`func NewStreamSubscriptionPostRequest() *StreamSubscriptionPostRequest`
+`func NewStreamSubscriptionPostRequest(type_ StreamSubscriptionPostRequestType, name string, sink StreamSubscriptionSink, ) *StreamSubscriptionPostRequest`
 
 NewStreamSubscriptionPostRequest instantiates a new StreamSubscriptionPostRequest object
 This constructor will assign default values to properties that have it defined,
@@ -50,11 +50,6 @@ and a boolean to check if the value has been set.
 
 SetType sets Type field to given value.
 
-### HasType
-
-`func (o *StreamSubscriptionPostRequest) HasType() bool`
-
-HasType returns a boolean if a field has been set.
 
 ### GetName
 
@@ -75,11 +70,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-### HasName
-
-`func (o *StreamSubscriptionPostRequest) HasName() bool`
-
-HasName returns a boolean if a field has been set.
 
 ### GetDescription
 
@@ -200,11 +190,6 @@ and a boolean to check if the value has been set.
 
 SetSink sets Sink field to given value.
 
-### HasSink
-
-`func (o *StreamSubscriptionPostRequest) HasSink() bool`
-
-HasSink returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**MetricsEnabled** | Pointer to **bool** | enable metric | [optional] 
+**MetricsEnabled** | Pointer to **bool** | enable metric | [optional] [default to false]
 
 ## Methods
 

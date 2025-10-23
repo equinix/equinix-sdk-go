@@ -1,17 +1,17 @@
-# PeeringProtocolDataState
+# StreamState
 
 ## Enum
 
 
+* `PROVISIONING` (value: `"PROVISIONING"`)
+
 * `PROVISIONED` (value: `"PROVISIONED"`)
 
-* `DEPROVISIONED` (value: `"DEPROVISIONED"`)
-
-* `PROVISIONING` (value: `"PROVISIONING"`)
+* `REPROVISIONING` (value: `"REPROVISIONING"`)
 
 * `DEPROVISIONING` (value: `"DEPROVISIONING"`)
 
-* `REPROVISIONING` (value: `"REPROVISIONING"`)
+* `DEPROVISIONED` (value: `"DEPROVISIONED"`)
 
 * `FAILED` (value: `"FAILED"`)
 

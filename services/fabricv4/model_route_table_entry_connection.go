@@ -11,38 +11,38 @@ import (
 	"encoding/json"
 )
 
-// checks if the ConnectionRouteTableEntryConnection type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ConnectionRouteTableEntryConnection{}
+// checks if the RouteTableEntryConnection type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RouteTableEntryConnection{}
 
-// ConnectionRouteTableEntryConnection struct for ConnectionRouteTableEntryConnection
-type ConnectionRouteTableEntryConnection struct {
+// RouteTableEntryConnection struct for RouteTableEntryConnection
+type RouteTableEntryConnection struct {
 	Uuid                 *string `json:"uuid,omitempty"`
 	Name                 *string `json:"name,omitempty"`
 	Href                 *string `json:"href,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _ConnectionRouteTableEntryConnection ConnectionRouteTableEntryConnection
+type _RouteTableEntryConnection RouteTableEntryConnection
 
-// NewConnectionRouteTableEntryConnection instantiates a new ConnectionRouteTableEntryConnection object
+// NewRouteTableEntryConnection instantiates a new RouteTableEntryConnection object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewConnectionRouteTableEntryConnection() *ConnectionRouteTableEntryConnection {
-	this := ConnectionRouteTableEntryConnection{}
+func NewRouteTableEntryConnection() *RouteTableEntryConnection {
+	this := RouteTableEntryConnection{}
 	return &this
 }
 
-// NewConnectionRouteTableEntryConnectionWithDefaults instantiates a new ConnectionRouteTableEntryConnection object
+// NewRouteTableEntryConnectionWithDefaults instantiates a new RouteTableEntryConnection object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewConnectionRouteTableEntryConnectionWithDefaults() *ConnectionRouteTableEntryConnection {
-	this := ConnectionRouteTableEntryConnection{}
+func NewRouteTableEntryConnectionWithDefaults() *RouteTableEntryConnection {
+	this := RouteTableEntryConnection{}
 	return &this
 }
 
 // GetUuid returns the Uuid field value if set, zero value otherwise.
-func (o *ConnectionRouteTableEntryConnection) GetUuid() string {
+func (o *RouteTableEntryConnection) GetUuid() string {
 	if o == nil || IsNil(o.Uuid) {
 		var ret string
 		return ret
@@ -52,7 +52,7 @@ func (o *ConnectionRouteTableEntryConnection) GetUuid() string {
 
 // GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ConnectionRouteTableEntryConnection) GetUuidOk() (*string, bool) {
+func (o *RouteTableEntryConnection) GetUuidOk() (*string, bool) {
 	if o == nil || IsNil(o.Uuid) {
 		return nil, false
 	}
@@ -60,7 +60,7 @@ func (o *ConnectionRouteTableEntryConnection) GetUuidOk() (*string, bool) {
 }
 
 // HasUuid returns a boolean if a field has been set.
-func (o *ConnectionRouteTableEntryConnection) HasUuid() bool {
+func (o *RouteTableEntryConnection) HasUuid() bool {
 	if o != nil && !IsNil(o.Uuid) {
 		return true
 	}
@@ -69,12 +69,12 @@ func (o *ConnectionRouteTableEntryConnection) HasUuid() bool {
 }
 
 // SetUuid gets a reference to the given string and assigns it to the Uuid field.
-func (o *ConnectionRouteTableEntryConnection) SetUuid(v string) {
+func (o *RouteTableEntryConnection) SetUuid(v string) {
 	o.Uuid = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
-func (o *ConnectionRouteTableEntryConnection) GetName() string {
+func (o *RouteTableEntryConnection) GetName() string {
 	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
@@ -84,7 +84,7 @@ func (o *ConnectionRouteTableEntryConnection) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ConnectionRouteTableEntryConnection) GetNameOk() (*string, bool) {
+func (o *RouteTableEntryConnection) GetNameOk() (*string, bool) {
 	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
@@ -92,7 +92,7 @@ func (o *ConnectionRouteTableEntryConnection) GetNameOk() (*string, bool) {
 }
 
 // HasName returns a boolean if a field has been set.
-func (o *ConnectionRouteTableEntryConnection) HasName() bool {
+func (o *RouteTableEntryConnection) HasName() bool {
 	if o != nil && !IsNil(o.Name) {
 		return true
 	}
@@ -101,12 +101,12 @@ func (o *ConnectionRouteTableEntryConnection) HasName() bool {
 }
 
 // SetName gets a reference to the given string and assigns it to the Name field.
-func (o *ConnectionRouteTableEntryConnection) SetName(v string) {
+func (o *RouteTableEntryConnection) SetName(v string) {
 	o.Name = &v
 }
 
 // GetHref returns the Href field value if set, zero value otherwise.
-func (o *ConnectionRouteTableEntryConnection) GetHref() string {
+func (o *RouteTableEntryConnection) GetHref() string {
 	if o == nil || IsNil(o.Href) {
 		var ret string
 		return ret
@@ -116,7 +116,7 @@ func (o *ConnectionRouteTableEntryConnection) GetHref() string {
 
 // GetHrefOk returns a tuple with the Href field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ConnectionRouteTableEntryConnection) GetHrefOk() (*string, bool) {
+func (o *RouteTableEntryConnection) GetHrefOk() (*string, bool) {
 	if o == nil || IsNil(o.Href) {
 		return nil, false
 	}
@@ -124,7 +124,7 @@ func (o *ConnectionRouteTableEntryConnection) GetHrefOk() (*string, bool) {
 }
 
 // HasHref returns a boolean if a field has been set.
-func (o *ConnectionRouteTableEntryConnection) HasHref() bool {
+func (o *RouteTableEntryConnection) HasHref() bool {
 	if o != nil && !IsNil(o.Href) {
 		return true
 	}
@@ -133,11 +133,11 @@ func (o *ConnectionRouteTableEntryConnection) HasHref() bool {
 }
 
 // SetHref gets a reference to the given string and assigns it to the Href field.
-func (o *ConnectionRouteTableEntryConnection) SetHref(v string) {
+func (o *RouteTableEntryConnection) SetHref(v string) {
 	o.Href = &v
 }
 
-func (o ConnectionRouteTableEntryConnection) MarshalJSON() ([]byte, error) {
+func (o RouteTableEntryConnection) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -145,7 +145,7 @@ func (o ConnectionRouteTableEntryConnection) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o ConnectionRouteTableEntryConnection) ToMap() (map[string]interface{}, error) {
+func (o RouteTableEntryConnection) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Uuid) {
 		toSerialize["uuid"] = o.Uuid
@@ -164,16 +164,16 @@ func (o ConnectionRouteTableEntryConnection) ToMap() (map[string]interface{}, er
 	return toSerialize, nil
 }
 
-func (o *ConnectionRouteTableEntryConnection) UnmarshalJSON(data []byte) (err error) {
-	varConnectionRouteTableEntryConnection := _ConnectionRouteTableEntryConnection{}
+func (o *RouteTableEntryConnection) UnmarshalJSON(data []byte) (err error) {
+	varRouteTableEntryConnection := _RouteTableEntryConnection{}
 
-	err = json.Unmarshal(data, &varConnectionRouteTableEntryConnection)
+	err = json.Unmarshal(data, &varRouteTableEntryConnection)
 
 	if err != nil {
 		return err
 	}
 
-	*o = ConnectionRouteTableEntryConnection(varConnectionRouteTableEntryConnection)
+	*o = RouteTableEntryConnection(varRouteTableEntryConnection)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -187,38 +187,38 @@ func (o *ConnectionRouteTableEntryConnection) UnmarshalJSON(data []byte) (err er
 	return err
 }
 
-type NullableConnectionRouteTableEntryConnection struct {
-	value *ConnectionRouteTableEntryConnection
+type NullableRouteTableEntryConnection struct {
+	value *RouteTableEntryConnection
 	isSet bool
 }
 
-func (v NullableConnectionRouteTableEntryConnection) Get() *ConnectionRouteTableEntryConnection {
+func (v NullableRouteTableEntryConnection) Get() *RouteTableEntryConnection {
 	return v.value
 }
 
-func (v *NullableConnectionRouteTableEntryConnection) Set(val *ConnectionRouteTableEntryConnection) {
+func (v *NullableRouteTableEntryConnection) Set(val *RouteTableEntryConnection) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableConnectionRouteTableEntryConnection) IsSet() bool {
+func (v NullableRouteTableEntryConnection) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableConnectionRouteTableEntryConnection) Unset() {
+func (v *NullableRouteTableEntryConnection) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableConnectionRouteTableEntryConnection(val *ConnectionRouteTableEntryConnection) *NullableConnectionRouteTableEntryConnection {
-	return &NullableConnectionRouteTableEntryConnection{value: val, isSet: true}
+func NewNullableRouteTableEntryConnection(val *RouteTableEntryConnection) *NullableRouteTableEntryConnection {
+	return &NullableRouteTableEntryConnection{value: val, isSet: true}
 }
 
-func (v NullableConnectionRouteTableEntryConnection) MarshalJSON() ([]byte, error) {
+func (v NullableRouteTableEntryConnection) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableConnectionRouteTableEntryConnection) UnmarshalJSON(src []byte) error {
+func (v *NullableRouteTableEntryConnection) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

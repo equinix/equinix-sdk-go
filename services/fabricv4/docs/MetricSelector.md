@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Include** | Pointer to **[]string** | Stream alert rule filtered by metric name | [optional] 
+**Include** | **[]string** | Stream alert rule filtered by metric name | 
 
 ## Methods
 
 ### NewMetricSelector
 
-`func NewMetricSelector() *MetricSelector`
+`func NewMetricSelector(include []string, ) *MetricSelector`
 
 NewMetricSelector instantiates a new MetricSelector object
 This constructor will assign default values to properties that have it defined,
@@ -44,11 +44,6 @@ and a boolean to check if the value has been set.
 
 SetInclude sets Include field to given value.
 
-### HasInclude
-
-`func (o *MetricSelector) HasInclude() bool`
-
-HasInclude returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

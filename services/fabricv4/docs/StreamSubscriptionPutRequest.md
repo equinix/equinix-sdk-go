@@ -4,19 +4,20 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | Pointer to **string** | Customer-provided stream subscription name | [optional] 
+**Type** | [**StreamSubscriptionPostRequestType**](StreamSubscriptionPostRequestType.md) |  | 
+**Name** | **string** | Customer-provided stream subscription name | 
 **Description** | Pointer to **string** | Customer-provided stream subscription description | [optional] 
 **Enabled** | Pointer to **bool** | Stream subscription enabled status | [optional] 
 **Filters** | Pointer to [**StreamSubscriptionFilter**](StreamSubscriptionFilter.md) |  | [optional] 
 **MetricSelector** | Pointer to [**StreamSubscriptionSelector**](StreamSubscriptionSelector.md) |  | [optional] 
 **EventSelector** | Pointer to [**StreamSubscriptionSelector**](StreamSubscriptionSelector.md) |  | [optional] 
-**Sink** | Pointer to [**StreamSubscriptionSink**](StreamSubscriptionSink.md) |  | [optional] 
+**Sink** | [**StreamSubscriptionSink**](StreamSubscriptionSink.md) |  | 
 
 ## Methods
 
 ### NewStreamSubscriptionPutRequest
 
-`func NewStreamSubscriptionPutRequest() *StreamSubscriptionPutRequest`
+`func NewStreamSubscriptionPutRequest(type_ StreamSubscriptionPostRequestType, name string, sink StreamSubscriptionSink, ) *StreamSubscriptionPutRequest`
 
 NewStreamSubscriptionPutRequest instantiates a new StreamSubscriptionPutRequest object
 This constructor will assign default values to properties that have it defined,
@@ -30,6 +31,26 @@ will change when the set of required properties is changed
 NewStreamSubscriptionPutRequestWithDefaults instantiates a new StreamSubscriptionPutRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetType
+
+`func (o *StreamSubscriptionPutRequest) GetType() StreamSubscriptionPostRequestType`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *StreamSubscriptionPutRequest) GetTypeOk() (*StreamSubscriptionPostRequestType, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *StreamSubscriptionPutRequest) SetType(v StreamSubscriptionPostRequestType)`
+
+SetType sets Type field to given value.
+
 
 ### GetName
 
@@ -50,11 +71,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-### HasName
-
-`func (o *StreamSubscriptionPutRequest) HasName() bool`
-
-HasName returns a boolean if a field has been set.
 
 ### GetDescription
 
@@ -200,11 +216,6 @@ and a boolean to check if the value has been set.
 
 SetSink sets Sink field to given value.
 
-### HasSink
-
-`func (o *StreamSubscriptionPutRequest) HasSink() bool`
-
-HasSink returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

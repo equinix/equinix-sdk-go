@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **Enabled** | Pointer to **bool** | Stream subscription enabled status | [optional] 
 **MetricSelector** | Pointer to [**StreamSubscriptionSelector**](StreamSubscriptionSelector.md) |  | [optional] 
 **EventSelector** | Pointer to [**StreamSubscriptionSelector**](StreamSubscriptionSelector.md) |  | [optional] 
-**Sink** | Pointer to [**StreamSubscriptionSink**](StreamSubscriptionSink.md) |  | [optional] 
+**Sink** | Pointer to [**StreamSubscriptionSinkResponse**](StreamSubscriptionSinkResponse.md) |  | [optional] 
 **Operation** | Pointer to [**StreamSubscriptionOperation**](StreamSubscriptionOperation.md) |  | [optional] 
 **ChangeLog** | Pointer to [**Changelog**](Changelog.md) |  | [optional] 
 
@@ -263,20 +263,20 @@ HasEventSelector returns a boolean if a field has been set.
 
 ### GetSink
 
-`func (o *StreamSubscription) GetSink() StreamSubscriptionSink`
+`func (o *StreamSubscription) GetSink() StreamSubscriptionSinkResponse`
 
 GetSink returns the Sink field if non-nil, zero value otherwise.
 
 ### GetSinkOk
 
-`func (o *StreamSubscription) GetSinkOk() (*StreamSubscriptionSink, bool)`
+`func (o *StreamSubscription) GetSinkOk() (*StreamSubscriptionSinkResponse, bool)`
 
 GetSinkOk returns a tuple with the Sink field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSink
 
-`func (o *StreamSubscription) SetSink(v StreamSubscriptionSink)`
+`func (o *StreamSubscription) SetSink(v StreamSubscriptionSinkResponse)`
 
 SetSink sets Sink field to given value.
 

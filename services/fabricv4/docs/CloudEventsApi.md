@@ -183,7 +183,7 @@ import (
 )
 
 func main() {
-	cloudEventSearchRequest := *openapiclient.NewCloudEventSearchRequest() // CloudEventSearchRequest | 
+	cloudEventSearchRequest := *openapiclient.NewCloudEventSearchRequest(*openapiclient.NewCloudEventFilters()) // CloudEventSearchRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

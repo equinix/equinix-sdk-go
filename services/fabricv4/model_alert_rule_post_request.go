@@ -9,6 +9,7 @@ package fabricv4
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the AlertRulePostRequest type satisfies the MappedNullable interface at compile time
@@ -16,16 +17,16 @@ var _ MappedNullable = &AlertRulePostRequest{}
 
 // AlertRulePostRequest Create Stream Alert Rules
 type AlertRulePostRequest struct {
-	Type *AlertRulePostRequestType `json:"type,omitempty"`
+	Type AlertRulePostRequestType `json:"type"`
 	// Customer-provided stream name
-	Name *string `json:"name,omitempty"`
+	Name string `json:"name"`
 	// Customer-provided stream description
 	Description *string `json:"description,omitempty"`
 	// Stream alert rule enabled status
-	Enabled              *bool             `json:"enabled,omitempty"`
-	MetricSelector       *MetricSelector   `json:"metricSelector,omitempty"`
-	ResourceSelector     *ResourceSelector `json:"resourceSelector,omitempty"`
-	DetectionMethod      *DetectionMethod  `json:"detectionMethod,omitempty"`
+	Enabled              *bool            `json:"enabled,omitempty"`
+	MetricSelector       MetricSelector   `json:"metricSelector"`
+	ResourceSelector     ResourceSelector `json:"resourceSelector"`
+	DetectionMethod      DetectionMethod  `json:"detectionMethod"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -35,10 +36,15 @@ type _AlertRulePostRequest AlertRulePostRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAlertRulePostRequest() *AlertRulePostRequest {
+func NewAlertRulePostRequest(type_ AlertRulePostRequestType, name string, metricSelector MetricSelector, resourceSelector ResourceSelector, detectionMethod DetectionMethod) *AlertRulePostRequest {
 	this := AlertRulePostRequest{}
+	this.Type = type_
+	this.Name = name
 	var enabled bool = true
 	this.Enabled = &enabled
+	this.MetricSelector = metricSelector
+	this.ResourceSelector = resourceSelector
+	this.DetectionMethod = detectionMethod
 	return &this
 }
 
@@ -52,68 +58,52 @@ func NewAlertRulePostRequestWithDefaults() *AlertRulePostRequest {
 	return &this
 }
 
-// GetType returns the Type field value if set, zero value otherwise.
+// GetType returns the Type field value
 func (o *AlertRulePostRequest) GetType() AlertRulePostRequestType {
-	if o == nil || IsNil(o.Type) {
+	if o == nil {
 		var ret AlertRulePostRequestType
 		return ret
 	}
-	return *o.Type
+
+	return o.Type
 }
 
-// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
 func (o *AlertRulePostRequest) GetTypeOk() (*AlertRulePostRequestType, bool) {
-	if o == nil || IsNil(o.Type) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Type, true
+	return &o.Type, true
 }
 
-// HasType returns a boolean if a field has been set.
-func (o *AlertRulePostRequest) HasType() bool {
-	if o != nil && !IsNil(o.Type) {
-		return true
-	}
-
-	return false
-}
-
-// SetType gets a reference to the given AlertRulePostRequestType and assigns it to the Type field.
+// SetType sets field value
 func (o *AlertRulePostRequest) SetType(v AlertRulePostRequestType) {
-	o.Type = &v
+	o.Type = v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value
 func (o *AlertRulePostRequest) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Name
+
+	return o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *AlertRulePostRequest) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return &o.Name, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *AlertRulePostRequest) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName sets field value
 func (o *AlertRulePostRequest) SetName(v string) {
-	o.Name = &v
+	o.Name = v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -180,100 +170,76 @@ func (o *AlertRulePostRequest) SetEnabled(v bool) {
 	o.Enabled = &v
 }
 
-// GetMetricSelector returns the MetricSelector field value if set, zero value otherwise.
+// GetMetricSelector returns the MetricSelector field value
 func (o *AlertRulePostRequest) GetMetricSelector() MetricSelector {
-	if o == nil || IsNil(o.MetricSelector) {
+	if o == nil {
 		var ret MetricSelector
 		return ret
 	}
-	return *o.MetricSelector
+
+	return o.MetricSelector
 }
 
-// GetMetricSelectorOk returns a tuple with the MetricSelector field value if set, nil otherwise
+// GetMetricSelectorOk returns a tuple with the MetricSelector field value
 // and a boolean to check if the value has been set.
 func (o *AlertRulePostRequest) GetMetricSelectorOk() (*MetricSelector, bool) {
-	if o == nil || IsNil(o.MetricSelector) {
+	if o == nil {
 		return nil, false
 	}
-	return o.MetricSelector, true
+	return &o.MetricSelector, true
 }
 
-// HasMetricSelector returns a boolean if a field has been set.
-func (o *AlertRulePostRequest) HasMetricSelector() bool {
-	if o != nil && !IsNil(o.MetricSelector) {
-		return true
-	}
-
-	return false
-}
-
-// SetMetricSelector gets a reference to the given MetricSelector and assigns it to the MetricSelector field.
+// SetMetricSelector sets field value
 func (o *AlertRulePostRequest) SetMetricSelector(v MetricSelector) {
-	o.MetricSelector = &v
+	o.MetricSelector = v
 }
 
-// GetResourceSelector returns the ResourceSelector field value if set, zero value otherwise.
+// GetResourceSelector returns the ResourceSelector field value
 func (o *AlertRulePostRequest) GetResourceSelector() ResourceSelector {
-	if o == nil || IsNil(o.ResourceSelector) {
+	if o == nil {
 		var ret ResourceSelector
 		return ret
 	}
-	return *o.ResourceSelector
+
+	return o.ResourceSelector
 }
 
-// GetResourceSelectorOk returns a tuple with the ResourceSelector field value if set, nil otherwise
+// GetResourceSelectorOk returns a tuple with the ResourceSelector field value
 // and a boolean to check if the value has been set.
 func (o *AlertRulePostRequest) GetResourceSelectorOk() (*ResourceSelector, bool) {
-	if o == nil || IsNil(o.ResourceSelector) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ResourceSelector, true
+	return &o.ResourceSelector, true
 }
 
-// HasResourceSelector returns a boolean if a field has been set.
-func (o *AlertRulePostRequest) HasResourceSelector() bool {
-	if o != nil && !IsNil(o.ResourceSelector) {
-		return true
-	}
-
-	return false
-}
-
-// SetResourceSelector gets a reference to the given ResourceSelector and assigns it to the ResourceSelector field.
+// SetResourceSelector sets field value
 func (o *AlertRulePostRequest) SetResourceSelector(v ResourceSelector) {
-	o.ResourceSelector = &v
+	o.ResourceSelector = v
 }
 
-// GetDetectionMethod returns the DetectionMethod field value if set, zero value otherwise.
+// GetDetectionMethod returns the DetectionMethod field value
 func (o *AlertRulePostRequest) GetDetectionMethod() DetectionMethod {
-	if o == nil || IsNil(o.DetectionMethod) {
+	if o == nil {
 		var ret DetectionMethod
 		return ret
 	}
-	return *o.DetectionMethod
+
+	return o.DetectionMethod
 }
 
-// GetDetectionMethodOk returns a tuple with the DetectionMethod field value if set, nil otherwise
+// GetDetectionMethodOk returns a tuple with the DetectionMethod field value
 // and a boolean to check if the value has been set.
 func (o *AlertRulePostRequest) GetDetectionMethodOk() (*DetectionMethod, bool) {
-	if o == nil || IsNil(o.DetectionMethod) {
+	if o == nil {
 		return nil, false
 	}
-	return o.DetectionMethod, true
+	return &o.DetectionMethod, true
 }
 
-// HasDetectionMethod returns a boolean if a field has been set.
-func (o *AlertRulePostRequest) HasDetectionMethod() bool {
-	if o != nil && !IsNil(o.DetectionMethod) {
-		return true
-	}
-
-	return false
-}
-
-// SetDetectionMethod gets a reference to the given DetectionMethod and assigns it to the DetectionMethod field.
+// SetDetectionMethod sets field value
 func (o *AlertRulePostRequest) SetDetectionMethod(v DetectionMethod) {
-	o.DetectionMethod = &v
+	o.DetectionMethod = v
 }
 
 func (o AlertRulePostRequest) MarshalJSON() ([]byte, error) {
@@ -286,27 +252,17 @@ func (o AlertRulePostRequest) MarshalJSON() ([]byte, error) {
 
 func (o AlertRulePostRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Type) {
-		toSerialize["type"] = o.Type
-	}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
+	toSerialize["type"] = o.Type
+	toSerialize["name"] = o.Name
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
 	if !IsNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled
 	}
-	if !IsNil(o.MetricSelector) {
-		toSerialize["metricSelector"] = o.MetricSelector
-	}
-	if !IsNil(o.ResourceSelector) {
-		toSerialize["resourceSelector"] = o.ResourceSelector
-	}
-	if !IsNil(o.DetectionMethod) {
-		toSerialize["detectionMethod"] = o.DetectionMethod
-	}
+	toSerialize["metricSelector"] = o.MetricSelector
+	toSerialize["resourceSelector"] = o.ResourceSelector
+	toSerialize["detectionMethod"] = o.DetectionMethod
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -316,6 +272,31 @@ func (o AlertRulePostRequest) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *AlertRulePostRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"type",
+		"name",
+		"metricSelector",
+		"resourceSelector",
+		"detectionMethod",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
 	varAlertRulePostRequest := _AlertRulePostRequest{}
 
 	err = json.Unmarshal(data, &varAlertRulePostRequest)

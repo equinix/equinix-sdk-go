@@ -20,7 +20,6 @@ type ConnectionRouteTableEntry struct {
 	Type                 RouteTableEntryType                  `json:"type"`
 	ProtocolType         *RouteTableEntryProtocolType         `json:"protocolType,omitempty"`
 	State                ConnectionRouteTableEntryState       `json:"state"`
-	Age                  *string                              `json:"age,omitempty"`
 	Prefix               *string                              `json:"prefix,omitempty"`
 	NextHop              *string                              `json:"nextHop,omitempty"`
 	MED                  *int32                               `json:"MED,omitempty"`
@@ -131,38 +130,6 @@ func (o *ConnectionRouteTableEntry) GetStateOk() (*ConnectionRouteTableEntryStat
 // SetState sets field value
 func (o *ConnectionRouteTableEntry) SetState(v ConnectionRouteTableEntryState) {
 	o.State = v
-}
-
-// GetAge returns the Age field value if set, zero value otherwise.
-func (o *ConnectionRouteTableEntry) GetAge() string {
-	if o == nil || IsNil(o.Age) {
-		var ret string
-		return ret
-	}
-	return *o.Age
-}
-
-// GetAgeOk returns a tuple with the Age field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ConnectionRouteTableEntry) GetAgeOk() (*string, bool) {
-	if o == nil || IsNil(o.Age) {
-		return nil, false
-	}
-	return o.Age, true
-}
-
-// HasAge returns a boolean if a field has been set.
-func (o *ConnectionRouteTableEntry) HasAge() bool {
-	if o != nil && !IsNil(o.Age) {
-		return true
-	}
-
-	return false
-}
-
-// SetAge gets a reference to the given string and assigns it to the Age field.
-func (o *ConnectionRouteTableEntry) SetAge(v string) {
-	o.Age = &v
 }
 
 // GetPrefix returns the Prefix field value if set, zero value otherwise.
@@ -396,9 +363,6 @@ func (o ConnectionRouteTableEntry) ToMap() (map[string]interface{}, error) {
 		toSerialize["protocolType"] = o.ProtocolType
 	}
 	toSerialize["state"] = o.State
-	if !IsNil(o.Age) {
-		toSerialize["age"] = o.Age
-	}
 	if !IsNil(o.Prefix) {
 		toSerialize["prefix"] = o.Prefix
 	}
@@ -466,7 +430,6 @@ func (o *ConnectionRouteTableEntry) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "protocolType")
 		delete(additionalProperties, "state")
-		delete(additionalProperties, "age")
 		delete(additionalProperties, "prefix")
 		delete(additionalProperties, "nextHop")
 		delete(additionalProperties, "MED")

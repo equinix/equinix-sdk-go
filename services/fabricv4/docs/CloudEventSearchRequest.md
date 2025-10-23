@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Filter** | Pointer to [**CloudEventFilters**](CloudEventFilters.md) |  | [optional] 
+**Filter** | [**CloudEventFilters**](CloudEventFilters.md) |  | 
 **Pagination** | Pointer to [**PaginationRequest**](PaginationRequest.md) |  | [optional] 
 
 ## Methods
 
 ### NewCloudEventSearchRequest
 
-`func NewCloudEventSearchRequest() *CloudEventSearchRequest`
+`func NewCloudEventSearchRequest(filter CloudEventFilters, ) *CloudEventSearchRequest`
 
 NewCloudEventSearchRequest instantiates a new CloudEventSearchRequest object
 This constructor will assign default values to properties that have it defined,
@@ -45,11 +45,6 @@ and a boolean to check if the value has been set.
 
 SetFilter sets Filter field to given value.
 
-### HasFilter
-
-`func (o *CloudEventSearchRequest) HasFilter() bool`
-
-HasFilter returns a boolean if a field has been set.
 
 ### GetPagination
 

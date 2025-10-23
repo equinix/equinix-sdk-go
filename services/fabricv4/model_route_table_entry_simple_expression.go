@@ -16,7 +16,7 @@ var _ MappedNullable = &RouteTableEntrySimpleExpression{}
 
 // RouteTableEntrySimpleExpression struct for RouteTableEntrySimpleExpression
 type RouteTableEntrySimpleExpression struct {
-	// Possible field names to use on filters:  * `/type` - Route table entry type  * `/prefix` - Route table entry prefix  * `/nextHop` - Route table entry nextHop  * `/state` - Route table entry state  * `/_*` - all-category search
+	// Possible field names to use on filters:  * `/type` - Route table entry type  * `/prefix` - Route table entry prefix  * `/nextHop` - Route table entry nextHop  * `/state` - Route table entry state  * `/MED` - Route table entry med  * `/_*` - all-category search
 	Property *string `json:"property,omitempty"`
 	// Possible operators to use on filters:  * `=` - equal  * `!=` - not equal  * `>` - greater than  * `>=` - greater than or equal to  * `<` - less than  * `<=` - less than or equal to  * `[NOT] BETWEEN` - (not) between  * `[NOT] LIKE` - (not) like  * `[NOT] IN` - (not) in  * `~*` - case-insensitive like
 	Operator             *string  `json:"operator,omitempty"`

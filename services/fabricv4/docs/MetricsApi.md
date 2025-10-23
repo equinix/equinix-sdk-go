@@ -114,7 +114,7 @@ import (
 )
 
 func main() {
-	metricsSearchRequest := *openapiclient.NewMetricsSearchRequest() // MetricsSearchRequest | 
+	metricsSearchRequest := *openapiclient.NewMetricsSearchRequest(*openapiclient.NewMetricFilters()) // MetricsSearchRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

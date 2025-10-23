@@ -37,7 +37,7 @@ import (
 )
 
 func main() {
-	streamPostRequest := *openapiclient.NewStreamPostRequest() // StreamPostRequest | 
+	streamPostRequest := *openapiclient.NewStreamPostRequest(openapiclient.StreamPostRequest_type("TELEMETRY_STREAM"), "Name_example", *openapiclient.NewProject("44f4c4f8-2f39-494e-838c-d8e640591be5")) // StreamPostRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -463,7 +463,7 @@ import (
 )
 
 func main() {
-	streamAssetSearchRequest := *openapiclient.NewStreamAssetSearchRequest() // StreamAssetSearchRequest | 
+	streamAssetSearchRequest := *openapiclient.NewStreamAssetSearchRequest(*openapiclient.NewStreamAssetFilters()) // StreamAssetSearchRequest | 
 	offset := int32(1) // int32 | offset (optional)
 	limit := int32(10) // int32 | number of records to fetch (optional)
 
@@ -612,7 +612,7 @@ import (
 
 func main() {
 	streamId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Stream UUID
-	streamPutRequest := *openapiclient.NewStreamPutRequest() // StreamPutRequest | 
+	streamPutRequest := *openapiclient.NewStreamPutRequest("Name_example") // StreamPutRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

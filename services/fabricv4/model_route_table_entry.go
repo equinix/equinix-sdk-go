@@ -17,17 +17,16 @@ var _ MappedNullable = &RouteTableEntry{}
 
 // RouteTableEntry Route table entry object
 type RouteTableEntry struct {
-	Type                 RouteTableEntryType                  `json:"type"`
-	ProtocolType         *RouteTableEntryProtocolType         `json:"protocolType,omitempty"`
-	State                RouteTableEntryState                 `json:"state"`
-	Age                  *string                              `json:"age,omitempty"`
-	Prefix               *string                              `json:"prefix,omitempty"`
-	NextHop              *string                              `json:"nextHop,omitempty"`
-	MED                  *int32                               `json:"MED,omitempty"`
-	LocalPreference      *int32                               `json:"localPreference,omitempty"`
-	AsPath               []string                             `json:"asPath,omitempty"`
-	Connection           *ConnectionRouteTableEntryConnection `json:"connection,omitempty"`
-	ChangeLog            Changelog                            `json:"changeLog"`
+	Type                 RouteTableEntryType          `json:"type"`
+	ProtocolType         *RouteTableEntryProtocolType `json:"protocolType,omitempty"`
+	State                RouteTableEntryState         `json:"state"`
+	Prefix               *string                      `json:"prefix,omitempty"`
+	NextHop              *string                      `json:"nextHop,omitempty"`
+	MED                  *int32                       `json:"MED,omitempty"`
+	LocalPreference      *int32                       `json:"localPreference,omitempty"`
+	AsPath               []string                     `json:"asPath,omitempty"`
+	Connection           *RouteTableEntryConnection   `json:"connection,omitempty"`
+	ChangeLog            Changelog                    `json:"changeLog"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -131,38 +130,6 @@ func (o *RouteTableEntry) GetStateOk() (*RouteTableEntryState, bool) {
 // SetState sets field value
 func (o *RouteTableEntry) SetState(v RouteTableEntryState) {
 	o.State = v
-}
-
-// GetAge returns the Age field value if set, zero value otherwise.
-func (o *RouteTableEntry) GetAge() string {
-	if o == nil || IsNil(o.Age) {
-		var ret string
-		return ret
-	}
-	return *o.Age
-}
-
-// GetAgeOk returns a tuple with the Age field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *RouteTableEntry) GetAgeOk() (*string, bool) {
-	if o == nil || IsNil(o.Age) {
-		return nil, false
-	}
-	return o.Age, true
-}
-
-// HasAge returns a boolean if a field has been set.
-func (o *RouteTableEntry) HasAge() bool {
-	if o != nil && !IsNil(o.Age) {
-		return true
-	}
-
-	return false
-}
-
-// SetAge gets a reference to the given string and assigns it to the Age field.
-func (o *RouteTableEntry) SetAge(v string) {
-	o.Age = &v
 }
 
 // GetPrefix returns the Prefix field value if set, zero value otherwise.
@@ -326,9 +293,9 @@ func (o *RouteTableEntry) SetAsPath(v []string) {
 }
 
 // GetConnection returns the Connection field value if set, zero value otherwise.
-func (o *RouteTableEntry) GetConnection() ConnectionRouteTableEntryConnection {
+func (o *RouteTableEntry) GetConnection() RouteTableEntryConnection {
 	if o == nil || IsNil(o.Connection) {
-		var ret ConnectionRouteTableEntryConnection
+		var ret RouteTableEntryConnection
 		return ret
 	}
 	return *o.Connection
@@ -336,7 +303,7 @@ func (o *RouteTableEntry) GetConnection() ConnectionRouteTableEntryConnection {
 
 // GetConnectionOk returns a tuple with the Connection field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RouteTableEntry) GetConnectionOk() (*ConnectionRouteTableEntryConnection, bool) {
+func (o *RouteTableEntry) GetConnectionOk() (*RouteTableEntryConnection, bool) {
 	if o == nil || IsNil(o.Connection) {
 		return nil, false
 	}
@@ -352,8 +319,8 @@ func (o *RouteTableEntry) HasConnection() bool {
 	return false
 }
 
-// SetConnection gets a reference to the given ConnectionRouteTableEntryConnection and assigns it to the Connection field.
-func (o *RouteTableEntry) SetConnection(v ConnectionRouteTableEntryConnection) {
+// SetConnection gets a reference to the given RouteTableEntryConnection and assigns it to the Connection field.
+func (o *RouteTableEntry) SetConnection(v RouteTableEntryConnection) {
 	o.Connection = &v
 }
 
@@ -396,9 +363,6 @@ func (o RouteTableEntry) ToMap() (map[string]interface{}, error) {
 		toSerialize["protocolType"] = o.ProtocolType
 	}
 	toSerialize["state"] = o.State
-	if !IsNil(o.Age) {
-		toSerialize["age"] = o.Age
-	}
 	if !IsNil(o.Prefix) {
 		toSerialize["prefix"] = o.Prefix
 	}
@@ -466,7 +430,6 @@ func (o *RouteTableEntry) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "protocolType")
 		delete(additionalProperties, "state")
-		delete(additionalProperties, "age")
 		delete(additionalProperties, "prefix")
 		delete(additionalProperties, "nextHop")
 		delete(additionalProperties, "MED")
