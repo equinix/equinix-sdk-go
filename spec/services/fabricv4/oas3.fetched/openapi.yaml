@@ -9,7 +9,7 @@ info:
   license:
     name: Equinix Inc
     url: https://developer.equinix.com/agreement
-  version: "4.24"
+  version: "4.25"
 externalDocs:
   description: Find more information on Equinix Docs Portal
   url: https://docs.equinix.com/fabric/
@@ -25,8 +25,6 @@ tags:
     description: Cloud Routers
   - name: Connections
     description: Connections
-  - name: Deployments
-    description: Deployments <font color="red"> <sup color='red'>Beta</sup></font>
   - name: Metrics
     description: Metrics
   - name: Metros
@@ -55,8 +53,8 @@ tags:
     description: Service Tokens
   - name: Statistics
     description: Statistics
-  - name: Stream Alert Rules <font color="red"> <sup color='red'>Beta</sup></font>
-    description: Stream Subscriptions
+  - name: Stream Alert Rules
+    description: Stream Alert Rules <font color="red"> <sup color='red'>Beta</sup></font>
   - name: Stream Subscriptions
     description: Stream Subscriptions
   - name: Streams
@@ -1147,6 +1145,10 @@ paths:
                 $ref: "#/components/examples/ConnectionRoutesSearchByType"
               ConnectionRoutesSearchByState:
                 $ref: "#/components/examples/ConnectionRoutesSearchByState"
+              ConnectionRoutesSearchByPrefix:
+                $ref: "#/components/examples/ConnectionRoutesSearchByPrefix"
+              ConnectionRoutesSearchByNextHop:
+                $ref: "#/components/examples/ConnectionRoutesSearchByNextHop"
               ConnectionRoutesSearchByMed:
                 $ref: "#/components/examples/ConnectionRoutesSearchByMed"
         required: true
@@ -1157,6 +1159,11 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ConnectionRouteTableEntrySearchResponse"
+              examples:
+                advertisedRoutes:
+                  $ref: "#/components/examples/CloudRouterAdvertisedRoutesSearchResponse"
+                receivedRoutes:
+                  $ref: "#/components/examples/CloudRouterReceivedRoutesSearchResponse"
         "400":
           description: Bad request
           content:
@@ -1226,6 +1233,11 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ConnectionRouteTableEntrySearchResponse"
+              examples:
+                advertisedRoutes:
+                  $ref: "#/components/examples/CloudRouterAdvertisedRoutesSearchResponse"
+                receivedRoutes:
+                  $ref: "#/components/examples/CloudRouterReceivedRoutesSearchResponse"
         "400":
           description: Bad request
           content:
@@ -2364,89 +2376,6 @@ paths:
               examples:
                 example:
                   $ref: "#/components/examples/404_invalid_id"
-        "500":
-          description: Internal server error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorList"
-              examples:
-                example:
-                  $ref: "#/components/examples/500_internal_error"
-  "/fabric/v4/connections/{uuid}/peeringProtocols":
-    post:
-      tags:
-        - Peering Protocols
-      summary: Create Peering Protocol
-      description: This API provides capability to create Peering Protocol for connections
-      operationId: createConnectionPeeringProtocol
-      parameters:
-        - name: uuid
-          in: path
-          description: uuid
-          required: true
-          schema:
-            $ref: "#/components/schemas/Uuid"
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/ConnectionPeeringProtocolPostRequest"
-        required: true
-      responses:
-        "202":
-          description: Successful operation
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PeeringProtocolData"
-        "400":
-          description: Bad request
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorList"
-              examples:
-                example:
-                  $ref: "#/components/examples/400"
-                dryRun:
-                  $ref: "#/components/examples/400_dry_run"
-        "401":
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorList"
-              examples:
-                example:
-                  $ref: "#/components/examples/401"
-        "403":
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorList"
-              examples:
-                example:
-                  $ref: "#/components/examples/403"
-        "404":
-          description: Connection ID Not Found
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorList"
-              examples:
-                example:
-                  $ref: "#/components/examples/404_invalid_id"
-        "415":
-          description: Unsupported Media Type
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorList"
-              examples:
-                example:
-                  $ref: "#/components/examples/415"
         "500":
           description: Internal server error
           content:
@@ -9352,6 +9281,9 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/RouteTableEntrySearchResponse"
+              examples:
+                activeRoutesResponse:
+                  $ref: "#/components/examples/CloudRouterActiveRoutesSearchResponse"
         "400":
           description: Bad request
           content:
@@ -12933,401 +12865,6 @@ paths:
               examples:
                 example:
                   $ref: "#/components/examples/500"
-  /fabric/v4/deployments:
-    post:
-      tags:
-        - Deployments
-      summary: Create a new topology deployment
-      description: |
-        The deployment API is used to creates new deployment topologies. 
-        It allows users to define the properties of the deployment, including Fabric and CSP providers.
-      operationId: createTopologyDeployment
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/Deployment"
-            examples:
-              CreateTopologyDeployment:
-                $ref: "#/components/examples/DeploymentCreate"
-        required: true
-      responses:
-        "201":
-          description: Deployment created successfully
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeploymentResponse"
-              examples:
-                deploymentPostResponse:
-                  $ref: "#/components/examples/DeploymentPostResponse"
-        "400":
-          description: Bad request
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorList"
-              examples:
-                InvalidName:
-                  $ref: "#/components/examples/Orchestrator_400_InvalidName"
-        "401":
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorList"
-              examples:
-                example:
-                  $ref: "#/components/examples/Orchestrator_401"
-        "403":
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorList"
-              examples:
-                example:
-                  $ref: "#/components/examples/Orchestrator_403"
-        "404":
-          description: Not Found
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorList"
-              examples:
-                example:
-                  $ref: "#/components/examples/Orchestrator_404"
-        "500":
-          description: Internal server error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorList"
-              examples:
-                example:
-                  $ref: "#/components/examples/Orchestrator_500"
-  "/fabric/v4/deployments/{deploymentId}":
-    get:
-      tags:
-        - Deployments
-      summary: Retrieve Deployment details using UUID
-      description: This API provides capability to retrieve user's deployment details.
-      operationId: getDeployment
-      parameters:
-        - name: deploymentId
-          in: path
-          description: Deployment UUID
-          required: true
-          schema:
-            $ref: "#/components/schemas/DeploymentId"
-      responses:
-        "200":
-          description: Deployment details
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeploymentResponse"
-              examples:
-                deploymentGetResponse:
-                  $ref: "#/components/examples/DeploymentGet"
-        "401":
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorList"
-              examples:
-                example:
-                  $ref: "#/components/examples/Orchestrator_401"
-        "403":
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorList"
-              examples:
-                example:
-                  $ref: "#/components/examples/Orchestrator_403"
-        "404":
-          description: Not Found
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorList"
-              examples:
-                example:
-                  $ref: "#/components/examples/Orchestrator_404"
-        "500":
-          description: Internal server error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorList"
-              examples:
-                example:
-                  $ref: "#/components/examples/Orchestrator_500"
-    delete:
-      tags:
-        - Deployments
-      summary: Delete Deployment using UUID
-      description: This API provides capability to delete user's deployment
-      operationId: deleteDeployment
-      parameters:
-        - name: deploymentId
-          in: path
-          description: Deployment UUID
-          required: true
-          schema:
-            $ref: "#/components/schemas/DeploymentId"
-      responses:
-        "200":
-          description: Deployment object
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeploymentResponse"
-        "400":
-          description: Bad request
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorList"
-              examples:
-                example:
-                  $ref: "#/components/examples/Orchestrator_400_InvalidState"
-        "401":
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorList"
-              examples:
-                example:
-                  $ref: "#/components/examples/Orchestrator_401"
-        "403":
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorList"
-              examples:
-                example:
-                  $ref: "#/components/examples/Orchestrator_403"
-        "404":
-          description: Not Found
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorList"
-              examples:
-                example:
-                  $ref: "#/components/examples/Orchestrator_404"
-        "500":
-          description: Internal server error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorList"
-              examples:
-                example:
-                  $ref: "#/components/examples/Orchestrator_500"
-  "/fabric/v4/deployments/{deploymentId}/actions":
-    post:
-      tags:
-        - Deployments
-      summary: Deploy, Dry Run or Destroy Deployment
-      description: |
-        The deployment action is used to deploy, dry run or destroy a deployment. The request body must contain the type of action to be performed and the connection details.
-        The response will contain the status of the action.
-      operationId: actionDeployment
-      parameters:
-        - name: deploymentId
-          in: path
-          description: Deployment UUID
-          required: true
-          schema:
-            $ref: "#/components/schemas/DeploymentId"
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/DeploymentActionRequest"
-            examples:
-              Deploy:
-                $ref: "#/components/examples/DeploymentActions"
-        required: true
-      responses:
-        "202":
-          description: Successful operation
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CloudRouterActionResponse"
-              examples:
-                cloudRouterActionExample:
-                  $ref: "#/components/examples/CloudRouterActionResponse"
-                receivedRouteEntriesExample:
-                  $ref: "#/components/examples/CloudRouterReceivedRoutesActionResponse"
-                advertisedRouteEntriesExample:
-                  $ref: "#/components/examples/CloudRouterAdvertisedRoutesActionResponse"
-        "400":
-          description: Bad request
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorList"
-              examples:
-                example:
-                  $ref: "#/components/examples/400_invalid_operation"
-        "401":
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorList"
-              examples:
-                example:
-                  $ref: "#/components/examples/401"
-        "403":
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorList"
-              examples:
-                example:
-                  $ref: "#/components/examples/403"
-        "404":
-          description: Not Found
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorList"
-              examples:
-                example:
-                  $ref: "#/components/examples/404"
-        "415":
-          description: Internal server error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorList"
-              examples:
-                example:
-                  $ref: "#/components/examples/415"
-        "500":
-          description: Internal server error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorList"
-              examples:
-                example:
-                  $ref: "#/components/examples/500"
-  /fabric/v4/deployments/searchDeployments:
-    post:
-      tags:
-        - Deployments
-      summary: Search deployments
-      description: The API provides capability to get list of user's deployment using search criteria.
-      operationId: searchDeployments
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/DeploymentSearchRequest"
-        required: true
-      responses:
-        "200":
-          description: A list of deployments
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeploymentSearchResponse"
-        "400":
-          description: Bad request
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorList"
-        "401":
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorList"
-              examples:
-                example:
-                  $ref: "#/components/examples/Orchestrator_401"
-        "403":
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorList"
-              examples:
-                example:
-                  $ref: "#/components/examples/Orchestrator_403"
-        "404":
-          description: Not Found
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorList"
-              examples:
-                example:
-                  $ref: "#/components/examples/Orchestrator_404"
-  /fabric/v4/providerResources/search:
-    post:
-      tags:
-        - Deployments
-      summary: Search provider resources
-      description: The API provides capability to get list of user's provider resources using search criteria, including optional filtering
-      operationId: searchProviderResources
-      parameters: []
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/ProviderSearchRequest"
-            examples:
-              SearchProviderResources:
-                $ref: "#/components/examples/ProviderResourcesSearch"
-        required: true
-      responses:
-        "200":
-          description: Successful operation
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProviderSearchResponse"
-        "401":
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorList"
-              examples:
-                example:
-                  $ref: "#/components/examples/Orchestrator_401"
-        "403":
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorList"
-              examples:
-                example:
-                  $ref: "#/components/examples/Orchestrator_403"
-        "500":
-          description: Internal server error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorList"
-              examples:
-                example:
-                  $ref: "#/components/examples/Orchestrator_500"
 components:
   schemas:
     CloudEventAssetType:
@@ -13447,6 +12984,8 @@ components:
           $ref: "#/components/schemas/CloudEventData"
       description: Cloud Event object
     CloudEventSearchRequest:
+      required:
+        - filter
       type: object
       properties:
         filter:
@@ -13521,6 +13060,8 @@ components:
           items:
             $ref: "#/components/schemas/Metric"
     MetricsSearchRequest:
+      required:
+        - filter
       type: object
       properties:
         filter:
@@ -13888,10 +13429,6 @@ components:
           type: integer
           description: Customer asn
           format: int64
-        equinixAsn:
-          type: integer
-          description: Equinix asn
-          format: int64
         bgpAuthKey:
           type: string
           description: BGP authorization key
@@ -14041,204 +13578,6 @@ components:
           items:
             $ref: "#/components/schemas/RoutingProtocolChangeData"
       description: List of network changes
-    Uuid:
-      type: string
-      description: UUID
-      format: uuid
-      example: 86534014-34b4-53f6-45d6-4b94a92d8623
-    ConnectionPeeringProtocolPostRequest:
-      required:
-        - bgpIpv4
-        - bgpIpv6
-        - customerAsn
-        - description
-        - macAddress
-        - name
-        - type
-      type: object
-      properties:
-        type:
-          type: string
-          description: Peering protocol type
-          example: BGP
-          enum:
-            - BGP
-        name:
-          type: string
-          description: Customer-provided peering protocol name
-          example: ix_bgp
-        description:
-          type: string
-          description: Customer-provided peering protocol description
-          example: ix_bgp
-        customerAsn:
-          type: integer
-          description: Customer ASN
-          format: int64
-          example: 1100
-        macAddress:
-          type: string
-          description: MAC address of the peering protocol
-          format: mac
-          example: 00:11:22:33:44:55
-        bgpIpv4:
-          $ref: "#/components/schemas/PeeringConnectionIpv4"
-        bgpIpv6:
-          $ref: "#/components/schemas/PeeringConnectionIpv6"
-    PeeringProtocolData:
-      type: object
-      properties:
-        href:
-          type: string
-          description: Peering Protocol URI
-          example: /fabric/v4/connections/{uuid}/peeringProtocols/a8ba52de-faae-43b5-b0b1-6904d37ee011
-        uuid:
-          type: string
-          description: Peering protocol identifier
-          format: uuid
-          example: a8ba52de-faae-43b5-b0b1-6904d37ee011
-        type:
-          type: string
-          description: Peering Protocol Type
-          example: BGP
-          enum:
-            - BGP
-        name:
-          type: string
-          description: Protocol Name
-          example: ix_bgp
-        description:
-          type: string
-          description: Protocol Description
-          example: ix_bgp
-        customerAsn:
-          type: integer
-          description: Customer ASN
-          format: int64
-          example: 3292
-        equinixAsn:
-          type: integer
-          description: Equinix ASN
-          format: int64
-          example: 1100
-        state:
-          type: string
-          description: Protocol State
-          example: PROVISIONED
-          enum:
-            - PROVISIONED
-            - DEPROVISIONED
-            - PROVISIONING
-            - DEPROVISIONING
-            - REPROVISIONING
-            - FAILED
-        macAddress:
-          type: string
-          description: MAC Address of The Peering Protocol
-          format: mac
-          example: 00:11:22:33:44:55
-        bgpIpv4:
-          $ref: "#/components/schemas/PeeringConnectionResIpv4"
-        bgpIpv6:
-          $ref: "#/components/schemas/PeeringConnectionResIpv6"
-        routeCollectors:
-          $ref: "#/components/schemas/PeeringProtocolData_routeCollectors"
-        changelog:
-          $ref: "#/components/schemas/Changelog"
-    PeeringConnectionResIpv4:
-      type: object
-      properties:
-        customerPeerIp:
-          type: string
-          description: Customer peer IPv4 address
-          example: 12.1.1.1
-        primaryEquinixPeerIp:
-          type: string
-          description: Primary Equinix peer IPv4 address
-          example: 10.1.1.1
-        secondaryEquinixPeerIp:
-          type: string
-          description: Secondary Equinix peer IPv4 address
-          example: 10.1.1.22
-        reverseDnsAddress:
-          type: string
-          description: Reverse DNS address for the BGP session
-          example: as6533.charlotte.com
-        asSet:
-          type: string
-          description: Autonomous System Set for the BGP session
-          example: AS-EC-SV
-        mlpeEnabled:
-          type: boolean
-          description: Whether MLPE is enabled for the BGP session
-          example: true
-        authKeys:
-          type: array
-          example:
-            - type: MD5
-              key: d6826a012b5873096d2b914856b793ef
-          items:
-            $ref: "#/components/schemas/PeeringConnectionResIpv4_authKeys"
-        ipPrefixes:
-          type: array
-          description: List of IP prefixes for the BGP session
-          example:
-            - 10.10.10.12
-            - 10.10.10.11
-          items:
-            type: string
-        enabled:
-          type: boolean
-          description: Whether BGP IPv4 is enabled
-          example: false
-      description: BGP IPv4 Connection Details
-    PeeringConnectionResIpv6:
-      type: object
-      properties:
-        customerPeerIp:
-          type: string
-          description: Customer peer IPv6 address
-          example: 2001:db8:c59b::22
-        primaryEquinixPeerIp:
-          type: string
-          description: Primary Equinix peer IPv6 address
-          example: 2001:db8:c59b::33
-        secondaryEquinixPeerIp:
-          type: string
-          description: Secondary Equinix peer IPv6 address
-          example: 2001:db8:c59b::322
-        reverseDnsAddress:
-          type: string
-          description: Reverse DNS address for the BGP session
-          example: as6533.charlotte.com
-        asSet:
-          type: string
-          description: Autonomous System Set for the BGP session
-          example: AS-EC-SV
-        mlpeEnabled:
-          type: boolean
-          description: Whether MLPE is enabled for the BGP session
-          example: true
-        authKeys:
-          type: array
-          example:
-            - type: MD5
-              key: d6826a012b5873096d2b914856b793ef
-          items:
-            $ref: "#/components/schemas/PeeringConnectionResIpv4_authKeys"
-        ipPrefixes:
-          type: array
-          description: List of IP prefixes for the BGP session
-          example:
-            - 2001:db8:c59b::22
-            - 2001:db8:c59b::23
-          items:
-            type: string
-        enabled:
-          type: boolean
-          description: Whether BGP IPv6 is enabled
-          example: false
-      description: BGP IPv6 Connection Details
     SearchRequest:
       type: object
       properties:
@@ -16943,6 +16282,7 @@ components:
              * `/prefix` - Route table entry prefix
              * `/nextHop` - Route table entry nextHop
              * `/state` - Route table entry state
+             * `/MED` - Route table entry med
              * `/*` - all-category search
           example: /type
         operator:
@@ -16998,6 +16338,7 @@ components:
         - /nextHop
         - /connection/name
         - /type
+        - /MED
     RouteTableEntrySearchResponse:
       type: object
       properties:
@@ -17061,6 +16402,10 @@ components:
             - DETACHING
             - DETACHED
             - FAILED
+        errors:
+          type: array
+          items:
+            $ref: "#/components/schemas/Error"
         changeLog:
           $ref: "#/components/schemas/Changelog"
       description: Schema representing a Gateway attaching or detaching on a Cloud Router. This schema defines the structure of the response returned when a Gateway is attached or detached to a Cloud Router.
@@ -18048,6 +17393,10 @@ components:
           items:
             $ref: "#/components/schemas/Stream"
     StreamPostRequest:
+      required:
+        - name
+        - project
+        - type
       type: object
       properties:
         type:
@@ -18077,6 +17426,19 @@ components:
           description: Equinix-assigned access point identifier
           format: uuid
           example: c9b8e7a2-f3b1-4576-a4a9-1366a63df170
+        type:
+          type: string
+          description: type
+          enum:
+            - TELEMETRY_STREAM
+        name:
+          type: string
+          description: Customer-provided stream name
+        description:
+          type: string
+          description: Customer-provided stream description
+        project:
+          $ref: "#/components/schemas/Project"
         state:
           type: string
           description: Stream provision state
@@ -18095,17 +17457,21 @@ components:
           type: integer
           description: Stream subscriptions count
           example: 2
+        alertRulesCount:
+          type: integer
+          description: Stream alert rules count
+          example: 3
         changeLog:
           $ref: "#/components/schemas/Changelog"
       description: Stream object
-      allOf:
-        - $ref: "#/components/schemas/StreamPostRequest"
     StreamId:
       type: string
       description: Stream UUID
       format: uuid
       example: 657400f8-d360-11e9-bb65-2a2ae2dbcce5
     StreamPutRequest:
+      required:
+        - name
       type: object
       properties:
         name:
@@ -18116,6 +17482,8 @@ components:
           description: Customer-provided stream description
       description: Update Stream
     StreamAssetSearchRequest:
+      required:
+        - filter
       type: object
       properties:
         filter:
@@ -18270,6 +17638,7 @@ components:
           type: boolean
           description: enable metric
           example: false
+          default: false
       description: Update Stream Asset
     GetAllStreamSubscriptionResponse:
       type: object
@@ -18282,6 +17651,10 @@ components:
           items:
             $ref: "#/components/schemas/StreamSubscription"
     StreamSubscriptionPostRequest:
+      required:
+        - name
+        - sink
+        - type
       type: object
       properties:
         type:
@@ -18298,6 +17671,7 @@ components:
           type: boolean
           description: Stream subscription enabled status
           example: true
+          default: true
         metricSelector:
           $ref: "#/components/schemas/StreamSubscriptionSelector"
         eventSelector:
@@ -18336,6 +17710,8 @@ components:
          * `equinix.access_manager.user.role.*` - identity access manager user role events
       example: equinix.fabric.connection.*
     StreamSubscriptionSink:
+      required:
+        - type
       type: object
       properties:
         uri:
@@ -18470,7 +17846,7 @@ components:
         eventSelector:
           $ref: "#/components/schemas/StreamSubscriptionSelector"
         sink:
-          $ref: "#/components/schemas/StreamSubscriptionSink"
+          $ref: "#/components/schemas/StreamSubscriptionSinkResponse"
         operation:
           $ref: "#/components/schemas/StreamSubscriptionOperation"
         changeLog:
@@ -18482,8 +17858,16 @@ components:
       format: uuid
       example: 557400f8-d360-11e9-bb65-2a2ae2dbcce4
     StreamSubscriptionPutRequest:
+      required:
+        - name
+        - sink
+        - type
       type: object
       properties:
+        type:
+          type: string
+          enum:
+            - STREAM_SUBSCRIPTION
         name:
           type: string
           description: Customer-provided stream subscription name
@@ -18514,6 +17898,12 @@ components:
           items:
             $ref: "#/components/schemas/StreamAlertRule"
     AlertRulePostRequest:
+      required:
+        - detectionMethod
+        - metricSelector
+        - name
+        - resourceSelector
+        - type
       type: object
       properties:
         type:
@@ -18529,6 +17919,7 @@ components:
         enabled:
           type: boolean
           description: Stream alert rule enabled status
+          example: true
           default: true
         metricSelector:
           $ref: "#/components/schemas/MetricSelector"
@@ -18538,6 +17929,8 @@ components:
           $ref: "#/components/schemas/DetectionMethod"
       description: Create Stream Alert Rules
     MetricSelector:
+      required:
+        - include
       type: object
       properties:
         include:
@@ -18547,6 +17940,8 @@ components:
             type: string
             example: equinix.fabric.metro.sv_da.latency
     ResourceSelector:
+      required:
+        - include
       type: object
       properties:
         include:
@@ -18559,6 +17954,8 @@ components:
           items:
             type: string
     DetectionMethod:
+      required:
+        - type
       type: object
       properties:
         type:
@@ -18620,11 +18017,11 @@ components:
           description: Stream alert rule enabled status
           default: true
         metricSelector:
-          $ref: "#/components/schemas/MetricSelector"
+          $ref: "#/components/schemas/MetricSelectorResponse"
         resourceSelector:
-          $ref: "#/components/schemas/ResourceSelector"
+          $ref: "#/components/schemas/ResourceSelectorResponse"
         detectionMethod:
-          $ref: "#/components/schemas/DetectionMethod"
+          $ref: "#/components/schemas/DetectionMethodResponse"
         changeLog:
           $ref: "#/components/schemas/Changelog"
       description: Stream object
@@ -18634,6 +18031,12 @@ components:
       format: uuid
       example: 0bbcea48-1333-4ad5-a7ea-e4d58a5fbd15
     AlertRulePutRequest:
+      required:
+        - detectionMethod
+        - metricSelector
+        - name
+        - resourceSelector
+        - type
       type: object
       properties:
         name:
@@ -18657,204 +18060,6 @@ components:
         detectionMethod:
           $ref: "#/components/schemas/DetectionMethod"
       description: Create Stream Alert Rules
-    Deployment:
-      required:
-        - account
-        - name
-        - project
-        - providers
-        - type
-      type: object
-      properties:
-        type:
-          type: string
-          example: TOPOLOGY_DEPLOYMENT
-        name:
-          type: string
-          example: MCN-Deployment
-        description:
-          type: string
-          example: FCR and AWS DGW Deployment in DC
-        topology:
-          $ref: "#/components/schemas/Deployment_topology"
-        providers:
-          type: array
-          items:
-            $ref: "#/components/schemas/OrchestratorProviders"
-        project:
-          $ref: "#/components/schemas/Project"
-        account:
-          $ref: "#/components/schemas/SimplifiedAccount"
-        order:
-          $ref: "#/components/schemas/Order"
-        notifications:
-          type: array
-          description: Preferences for notifications on deployement status changes
-          items:
-            $ref: "#/components/schemas/SimplifiedNotification"
-    DeploymentResponse:
-      type: object
-      properties:
-        href:
-          type: string
-          example: /fabric/v4/deployments/d3d51d91-7688-446b-aa08-d1cb6a5ca393
-        uuid:
-          type: string
-          format: uuid
-          example: d3d51d91-7688-446b-aa08-d1cb6a5ca393
-        type:
-          type: string
-          example: TOPOLOGY_DEPLOYMENT
-        name:
-          type: string
-          example: MCN-Deployment
-        description:
-          type: string
-          example: FCR and AWS DG Deployment in DC
-        state:
-          type: string
-          example: NOT_STARTED
-        topology:
-          $ref: "#/components/schemas/Deployment_topology"
-        providers:
-          type: array
-          items:
-            $ref: "#/components/schemas/ProviderResponse"
-        notifications:
-          type: array
-          description: Preferences for notifications on deployement status changes
-          items:
-            $ref: "#/components/schemas/SimplifiedNotification"
-      description: |
-        This API provides capability to retrieve user's deployments
-        The response contains the details of the deployment including its state, topology, and providers.
-        The deployment is identified by its UUID.
-        The response also includes a list of notifications preferences for deployment status changes.    
-        The response is in JSON format and follows the OpenAPI specification.
-    DeploymentId:
-      type: string
-      description: Deployment UUID
-      format: uuid
-      example: 6658cc3b-18e0-437c-b972-62b51a419a1e
-    DeploymentActionRequest:
-      required:
-        - data
-        - type
-      type: object
-      properties:
-        type:
-          $ref: "#/components/schemas/DeploymentActionType"
-        data:
-          type: array
-          items:
-            $ref: "#/components/schemas/ActionRequest"
-    DeploymentActionType:
-      type: string
-      description: Deployment action type
-      enum:
-        - DEPLOY
-        - DRY_RUN
-        - DESTROY
-    DeploymentSearchRequest:
-      type: object
-      properties:
-        filter:
-          $ref: "#/components/schemas/DeploymentExpression"
-      description: Search requests containing criteria
-    DeploymentExpression:
-      type: object
-      properties:
-        and:
-          $ref: "#/components/schemas/DeploymentExpressions"
-        or:
-          $ref: "#/components/schemas/DeploymentExpressions"
-    DeploymentExpressions:
-      type: array
-      items:
-        $ref: "#/components/schemas/DeploymentSearchExpressions"
-    DeploymentSearchExpressions:
-      type: object
-      properties:
-        property:
-          $ref: "#/components/schemas/SearchDeploymentField"
-        operator:
-          type: string
-          enum:
-            - =
-            - "!="
-        values:
-          type: array
-          items:
-            type: string
-            example: 7a1228ee-91f7-462f-8f87-c8c01849bd47
-    SearchDeploymentField:
-      type: string
-      description: Possible deployment field names to use on filters
-      enum:
-        - /project/projectId
-        - "*"
-    DeploymentSearchResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: "#/components/schemas/DeploymentResponse"
-      description: A list of deployments matching the search criteria
-    ProviderSearchRequest:
-      type: object
-      properties:
-        filter:
-          $ref: "#/components/schemas/ProviderExpression"
-      description: Search requests containing criteria
-    ProviderExpression:
-      type: object
-      properties:
-        and:
-          $ref: "#/components/schemas/ProviderExpressions"
-        or:
-          $ref: "#/components/schemas/ProviderExpressions"
-    ProviderExpressions:
-      type: array
-      items:
-        $ref: "#/components/schemas/ProviderSearchExpressions"
-    ProviderSearchExpressions:
-      type: object
-      properties:
-        property:
-          $ref: "#/components/schemas/SearchProviderField"
-        operator:
-          type: string
-          enum:
-            - =
-            - "!="
-        values:
-          type: array
-          items:
-            type: string
-            example: AWS_PROVIDER
-    SearchProviderField:
-      type: string
-      description: Possible Provider field names to use on filters
-      enum:
-        - /providers/type
-        - /providers/oidcCredentials/roleArn
-        - /providers/oidcCredentials/region
-        - /providers/resources/type
-        - /providers/oidcCredentials/projectId
-        - /providers/oidcCredentials/providerId
-        - /providers/oidcCredentials/poolId
-        - /project/projectId
-        - "*"
-    ProviderSearchResponse:
-      type: object
-      properties:
-        type:
-          $ref: "#/components/schemas/ProviderType"
-        data:
-          type: array
-          items:
-            $ref: "#/components/schemas/ProvidersSearchResponse"
     CloudEventData:
       type: object
       properties:
@@ -19348,9 +18553,6 @@ components:
           enum:
             - ACTIVE
             - INACTIVE
-        age:
-          type: string
-          example: PT5M30S
         prefix:
           type: string
           example: 192.168.10.0/24
@@ -19634,58 +18836,6 @@ components:
         value:
           $ref: "#/components/schemas/RoutingProtocolBase"
       description: Routing Protocol change operation data
-    PeeringConnectionIpv4:
-      type: object
-      properties:
-        reverseDnsAddress:
-          type: string
-          example: as6533.charlotte.com
-        asSet:
-          type: string
-          example: AS-EC-SV
-        mlpeEnabled:
-          type: boolean
-          example: true
-        authKeys:
-          type: array
-          example:
-            - type: MD5
-              key: d6826a012b5873096d2b914856b793ef
-          items:
-            $ref: "#/components/schemas/PeeringConnectionIpv4_authKeys"
-        ipPrefixes:
-          type: array
-          example:
-            - 10.10.10.11
-            - 10.10.10.12
-          items:
-            type: string
-    PeeringConnectionIpv6:
-      type: object
-      properties:
-        reverseDnsAddress:
-          type: string
-          example: as6533.charlotte.com
-        asSet:
-          type: string
-          example: AS-EC-SV
-        mlpeEnabled:
-          type: boolean
-          example: true
-        authKeys:
-          type: array
-          example:
-            - type: MD5
-              key: d6826a012b5873096d2b914856b793ef
-          items:
-            $ref: "#/components/schemas/PeeringConnectionIpv4_authKeys"
-        ipPrefixes:
-          type: array
-          example:
-            - 2001:db8:c59b::33
-            - 2001:db8:c59b::34
-          items:
-            type: string
     SortDirection:
       type: string
       description: Sorting direction
@@ -20997,9 +20147,6 @@ components:
           $ref: "#/components/schemas/RouteTableEntryProtocolType"
         state:
           $ref: "#/components/schemas/RouteTableEntryState"
-        age:
-          type: string
-          example: PT5M30S
         prefix:
           type: string
           example: 192.168.10.0/24
@@ -21016,8 +20163,9 @@ components:
           type: array
           items:
             type: string
+            example: "20100"
         connection:
-          $ref: "#/components/schemas/ConnectionRouteTableEntry_connection"
+          $ref: "#/components/schemas/RouteTableEntry_connection"
         changeLog:
           $ref: "#/components/schemas/Changelog"
       description: Route table entry object
@@ -21426,6 +20574,42 @@ components:
         uuid:
           type: string
           format: uuid
+    StreamSubscriptionSinkResponse:
+      type: object
+      properties:
+        uri:
+          type: string
+          description: any publicly reachable http endpoint
+        type:
+          type: string
+          description: destination type
+          enum:
+            - DATADOG
+            - GOOGLE_PUBSUB
+            - PAGERDUTY
+            - SERVICENOW
+            - SLACK
+            - SPLUNK_HEC
+            - TEAMS
+            - WEBHOOK
+        batchEnabled:
+          type: boolean
+          description: batch mode on/off
+          example: false
+        batchSizeMax:
+          type: integer
+          description: maximum batch size
+        batchWaitTimeMax:
+          type: integer
+          description: maximum batch waiting time
+        credential:
+          $ref: "#/components/schemas/StreamSubscriptionSinkCredential"
+        settings:
+          $ref: "#/components/schemas/StreamSubscriptionSinkSetting"
+        host:
+          type: string
+          description: sink host
+      description: Create Stream destination
     StreamSubscriptionOperation:
       type: object
       properties:
@@ -21550,6 +20734,54 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/StreamFilterSimpleExpression"
+    MetricSelectorResponse:
+      type: object
+      properties:
+        include:
+          type: array
+          description: Stream alert rule filtered by metric name
+          items:
+            type: string
+            example: equinix.fabric.metro.sv_da.latency
+    ResourceSelectorResponse:
+      type: object
+      properties:
+        include:
+          type: array
+          description: |
+            ### Supported metric names to use on filters with property /subject:
+              * `/fabric/v4/ports/<uuid>` - port metrics
+              * `/fabric/v4/connections/<uuid>` - connection metrics
+              * `/fabric/v4/metros/<metroCode>` - metro latency metrics
+          items:
+            type: string
+    DetectionMethodResponse:
+      type: object
+      properties:
+        type:
+          type: string
+          description: |
+            * THRESHOLD - Alert when a metric crosses a defined threshold by user.
+            * OUTLIER - Intelligent Alert that has an outlier behavior. This option is currently supported for metro latency metric.
+          enum:
+            - THRESHOLD
+            - OUTLIER
+        windowSize:
+          type: string
+          description: Stream alert rule metric window size
+          example: PT15M
+        operand:
+          type: string
+          description: Stream alert rule metric operand
+          enum:
+            - ABOVE
+            - BELOW
+        warningThreshold:
+          type: string
+          description: Stream alert rule metric warning threshold
+        criticalThreshold:
+          type: string
+          description: Stream alert rule metric critical threshold
     OrchestratorProviders:
       type: object
       description: |
@@ -23549,32 +22781,6 @@ components:
           example: 10.1.1.3
       description: |
         Defines the structure for a BGP IPv4 connection, including customer and Equinix peering IP addresses.
-    PeeringProtocolData_routeCollectors:
-      type: object
-      properties:
-        primary:
-          type: string
-          description: Primary Route Collector
-          example: routecollector1.equinix.com
-        secondary:
-          type: string
-          description: Secondary Route Collector
-          example: routecollector2.equinix.com
-      description: Route Collectors
-    PeeringConnectionResIpv4_authKeys:
-      type: object
-      properties:
-        type:
-          type: string
-          description: Type of BGP authentication key
-          example: MD5
-          enum:
-            - MD5
-            - RC-MD5
-        key:
-          type: string
-          description: BGP authentication key
-          example: d6826a012b5873096d2b914856b793ef
     PriceError_additionalInfo:
       type: object
       properties:
@@ -23693,15 +22899,9 @@ components:
         name:
           type: string
           example: connection_1
-    PeeringConnectionIpv4_authKeys:
-      type: object
-      properties:
-        type:
+        href:
           type: string
-          example: MD5
-        key:
-          type: string
-          example: d6826a012b5873096d2b914856b793ef
+          example: https://api.equinix.com/fabric/v4/connections/3066ab1d-af87-49d7-8a14-c9bdb57ac809
     PortOrder_purchaseOrder:
       type: object
       properties:
@@ -23762,6 +22962,18 @@ components:
         delegate:
           $ref: "#/components/schemas/PortOrder_signature_delegate"
       description: Port signature Type
+    RouteTableEntry_connection:
+      type: object
+      properties:
+        uuid:
+          type: string
+          example: 81331c52-04c0-4656-a4a7-18c52669348f
+        name:
+          type: string
+          example: connection_1
+        href:
+          type: string
+          format: uri
     VirtualConnectionPriceASide_accessPoint_port_settings:
       type: object
       properties:
@@ -30755,6 +29967,34 @@ components:
         sort:
           - direction: DESC
             property: /changeLog/createdDateTime
+    ConnectionRoutesSearchByPrefix:
+      value:
+        filter:
+          and:
+            - property: /prefix
+              operator: =
+              values:
+                - 192.168.10.0/24
+        pagination:
+          offset: 0
+          limit: 20
+        sort:
+          - direction: DESC
+            property: /changeLog/createdDateTime
+    ConnectionRoutesSearchByNextHop:
+      value:
+        filter:
+          and:
+            - property: /nextHop
+              operator: =
+              values:
+                - 10.10.10.5
+        pagination:
+          offset: 0
+          limit: 20
+        sort:
+          - direction: DESC
+            property: /changeLog/createdDateTime
     ConnectionRoutesSearchByMed:
       value:
         filter:
@@ -30769,6 +30009,70 @@ components:
         sort:
           - direction: DESC
             property: /changeLog/createdDateTime
+    CloudRouterAdvertisedRoutesSearchResponse:
+      value:
+        pagination:
+          offset: 0
+          limit: 20
+          total: 1
+        data:
+          - type: IPv4_BGP_ROUTE
+            protocolType: BGP
+            state: ACTIVE
+            prefix: 192.168.10.0/24
+            nextHop: 10.10.10.5
+            MED: 5
+            asPath:
+              - 20001
+            connection:
+              href: https://api.equinix.com/fabric/v4/connections/3066ab1d-af87-49d7-8a14-c9bdb57ac809
+              uuid: 81331c52-04c0-4656-a4a7-18c52669348f
+              name: connection_1
+            changeLog:
+              createdBy: johnsmith
+              createdByFullName: John Smith
+              createdByEmail: john.smith@example.com
+              createdDateTime: 2020-11-06T07:00:00Z
+              updatedBy: johnsmith
+              updatedByFullName: John Smith
+              updatedByEmail: john.smith@example.com
+              updatedDateTime: 2020-11-06T07:00:00Z
+              deletedBy: johnsmith
+              deletedByFullName: John Smith
+              deletedByEmail: john.smith@example.com
+              deletedDateTime: 2020-11-06T07:00:00Z
+    CloudRouterReceivedRoutesSearchResponse:
+      value:
+        pagination:
+          offset: 0
+          limit: 20
+          total: 1
+        data:
+          - type: IPv4_BGP_ROUTE
+            protocolType: BGP
+            state: ACTIVE
+            prefix: 192.168.10.0/24
+            nextHop: 10.10.10.5
+            MED: 5
+            asPath:
+              - 20001
+            connection:
+              href: https://api.equinix.com/fabric/v4/connections/3066ab1d-af87-49d7-8a14-c9bdb57ac809
+              uuid: 81331c52-04c0-4656-a4a7-18c52669348f
+              name: connection_1
+            changeLog:
+              createdBy: johnsmith
+              createdByFullName: John Smith
+              createdByEmail: john.smith@example.com
+              createdDateTime: 2020-11-06T07:00:00Z
+              updatedBy: johnsmith
+              updatedByFullName: John Smith
+              updatedByEmail: john.smith@example.com
+              updatedDateTime: 2020-11-06T07:00:00Z
+              deletedBy: johnsmith
+              deletedByFullName: John Smith
+              deletedByEmail: john.smith@example.com
+              deletedDateTime: 2020-11-06T07:00:00Z
     RoutingProtocolGetAll:
       value:
         pagination:
@@ -30948,7 +30252,6 @@ components:
               inboundMED: 1000
               outboundMED: 2000
             customerAsn: 0
-            equinixAsn: 0
             asOverrideEnabled: true
             bgpAuthKey: string
             bfd:
@@ -30971,7 +30274,6 @@ components:
               inboundMED: 1000
               outboundMED: 2000
             customerAsn: 0
-            equinixAsn: 0
             bgpAuthKey: string
             asOverrideEnabled: true
             bfd:
@@ -31051,7 +30353,6 @@ components:
           equinixPeerIp: 2001:db8:c59b::1
           outboundASPrependCount: 3
         customerAsn: 0
-        equinixAsn: 0
         bgpAuthKey: string
         asOverrideEnabled: true
         bfd:
@@ -40503,7 +39804,7 @@ components:
             - property: /nextHop
               operator: =
               values:
-                - 67.2223.179.193
+                - 10.10.10.5
         pagination:
           offset: 0
           limit: 20
@@ -40517,7 +39818,7 @@ components:
             - property: /prefix
               operator: =
               values:
-                - 10.203.1.0/30
+                - 192.168.10.0/24
         pagination:
           offset: 0
           limit: 20
@@ -40565,6 +39866,33 @@ components:
                   operator: LIKE
                   values:
                     - abc
+    CloudRouterActiveRoutesSearchResponse:
+      value:
+        pagination:
+          offset: 0
+          limit: 20
+          total: 1
+        data:
+          - type: IPv4_BGP_ROUTE
+            protocolType: BGP
+            state: ACTIVE
+            prefix: 192.168.10.0/24
+            nextHop: 10.10.10.5
+            asPath:
+              - 20001
+            changeLog:
+              createdBy: johnsmith
+              createdByFullName: John Smith
+              createdByEmail: john.smith@example.com
+              createdDateTime: 2020-11-06T07:00:00Z
+              updatedBy: johnsmith
+              updatedByFullName: John Smith
+              updatedByEmail: john.smith@example.com
+              updatedDateTime: 2020-11-06T07:00:00Z
+              deletedBy: johnsmith
+              deletedByFullName: John Smith
+              deletedByEmail: john.smith@example.com
+              deletedDateTime: 2020-11-06T07:00:00Z
     Request-direct-ipv4:
       value:
         filter:
@@ -40621,6 +39949,33 @@ components:
               createdByEmail: testuser@equinix.com
               createdByFullName: testuser testuser
               createdDateTime: 2020-05-21T10:30:00Z
+    GatewayAttachmentListErrorResponse:
+      value:
+        pagination:
+          offset: 0
+          limit: 10
+          total: 1
+        data:
+          - href: https://api.equinix.com/fabric/v4/routers/369c112f-1d8e-4ad1-ae85-7b03ddf4c728/gateways/3cacb007-1f0a-4686-8bf4-7cdcaf696e05
+            uuid: 3cacb007-1f0a-4686-8bf4-7cdcaf696e05
+            type: VPN_GATEWAY
+            attachmentStatus: ATTACHED
+            errors:
+              - errorCode: EQ-3040085
+                errorMessage: Gateway detachment failed due to configuration error.
+                correlationId: abcd1234-56ef-78gh-90ij-klmnopqrstuv
+                details: The gateway configuration is invalid for detachment.
+                additionalInfo:
+                  - reason: Invalid gateway settings.
+            changeLog:
+              createdBy: testuser
+              createdByEmail: testuser@equinix.com
+              createdByFullName: testuser testuser
+              createdDateTime: 2020-05-21T10:30:00Z
+              updatedBy: adminuser
+              updatedByEmail: adminuser@equinix.com
+              updatedByFullName: admin user
+              updatedDateTime: 2020-06-15T14:45:00Z
     GatewayAttachmentResponse:
       value:
         href: https://api.equinix.com/fabric/v4/routers/81331c52-04c0-4656-a4a7-18c52669348f/gateways/695a8471-6595-4ac6-a2f4-b3d96ed3a59d
@@ -40632,6 +39987,28 @@ components:
           createdByEmail: testuser@equinix.com
           createdByFullName: testuser testuser
           createdDateTime: 2020-05-21T10:30:00Z
+    GatewayAttachmentErrorResponse:
+      value:
+        href: https://api.equinix.com/fabric/v4/routers/81331c52-04c0-4656-a4a7-18c52669348f/gateways/695a8471-6595-4ac6-a2f4-b3d96ed3a59d
+        type: VPN_GATEWAY
+        uuid: 695a8471-6595-4ac6-a2f4-b3d96ed3a59d
+        attachmentStatus: ATTACHED
+        errors:
+          - errorCode: EQ-3040085
+            errorMessage: Gateway detachment failed due to configuration error.
+            correlationId: abcd1234-56ef-78gh-90ij-klmnopqrstuv
+            details: The gateway configuration is invalid for detachment.
+            additionalInfo:
+              - reason: Invalid gateway settings.
+        changeLog:
+          createdBy: testuser
+          createdByEmail: testuser@equinix.com
+          createdByFullName: testuser testuser
+          createdDateTime: 2020-05-21T10:30:00Z
+          updatedBy: adminuser
+          updatedByEmail: adminuser@equinix.com
+          updatedByFullName: admin user
+          updatedDateTime: 2020-06-15T14:45:00Z
     GatewayDetachmentResponse:
       value:
         href: https://api.equinix.com/fabric/v4/routers/369c112f-1d8e-4ad1-ae85-7b03ddf4c728/gateways/3cacb007-1f0a-4686-8bf4-7cdcaf696e05
@@ -43647,6 +43024,7 @@ components:
             state: PROVISIONED
             assetsCount: 1
             streamSubscriptionsCount: 2
+            alertRulesCount: 3
             changeLog:
               createdDateTime: 2024-05-06T16:21:18.545214Z
     StreamPostRequestExample:
@@ -43668,6 +43046,7 @@ components:
         state: PROVISIONED
         assetsCount: 1
         streamSubscriptionsCount: 2
+        alertRulesCount: 3
         changeLog:
           createdDateTime: 2024-05-06T16:21:18.545214Z
     StreamPutRequestExample:
