@@ -9,7 +9,7 @@ info:
   license:
     name: Equinix Inc
     url: https://developer.equinix.com/agreement
-  version: "4.25"
+  version: "4.26"
 externalDocs:
   description: Find more information on Equinix Docs Portal
   url: https://docs.equinix.com/fabric/
@@ -550,6 +550,8 @@ paths:
                 $ref: "#/components/examples/Fcr2Sp-Google"
               Fcr2Sp-Azure:
                 $ref: "#/components/examples/Fcr2Sp-Azure"
+              Fcr2Sp-IBM:
+                $ref: "#/components/examples/Fcr2Sp-IBM"
               Fcr2Sp-Generic:
                 $ref: "#/components/examples/Fcr2Sp-Generic"
               Fcr2Sp-Generic-Redundant-Primary:
@@ -1840,6 +1842,18 @@ paths:
       requestBody:
         content:
           application/json:
+            schema:
+              $ref: "#/components/schemas/ConnectionRoutingProtocolPatchRequest"
+            examples:
+              EnableIPv4PatchExample:
+                $ref: "#/components/examples/PatchRoutingProtocolEnableIPv4"
+              EnableIPv6PatchExample:
+                $ref: "#/components/examples/PatchRoutingProtocolEnableIPv6"
+              DisableIPv4PatchExample:
+                $ref: "#/components/examples/PatchRoutingProtocolDisableIPv4"
+              DisableIPv6PatchExample:
+                $ref: "#/components/examples/PatchRoutingProtocolDisableIPv6"
+          application/json-patch+json:
             schema:
               $ref: "#/components/schemas/ConnectionRoutingProtocolPatchRequest"
             examples:
@@ -5555,6 +5569,12 @@ paths:
             examples:
               RouteFilterNamePatchExample:
                 $ref: "#/components/examples/PatchRouteFilterName"
+          application/json-patch+json:
+            schema:
+              $ref: "#/components/schemas/RouteFiltersPatchRequest"
+            examples:
+              RouteFilterNamePatchExample:
+                $ref: "#/components/examples/PatchRouteFilterName"
         required: true
       responses:
         "202":
@@ -6416,6 +6436,16 @@ paths:
                 $ref: "#/components/examples/PatchRouteFilterRulePrefix"
               RouteFilterRulePrefixMatch:
                 $ref: "#/components/examples/PatchRouteFilterRulePrefixMatch"
+          application/json-patch+json:
+            schema:
+              $ref: "#/components/schemas/RouteFilterRulesPatchRequest"
+            examples:
+              RouteFilterRuleName:
+                $ref: "#/components/examples/PatchRouteFilterRuleName"
+              RouteFilterRulePrefix:
+                $ref: "#/components/examples/PatchRouteFilterRulePrefix"
+              RouteFilterRulePrefixMatch:
+                $ref: "#/components/examples/PatchRouteFilterRulePrefixMatch"
         required: true
       responses:
         "202":
@@ -6997,6 +7027,12 @@ paths:
       requestBody:
         content:
           application/json:
+            schema:
+              $ref: "#/components/schemas/RouteAggregationsPatchRequest"
+            examples:
+              RouteAggregationNamePatchExample:
+                $ref: "#/components/examples/PatchRouteAggregationName"
+          application/json-patch+json:
             schema:
               $ref: "#/components/schemas/RouteAggregationsPatchRequest"
             examples:
@@ -7842,6 +7878,14 @@ paths:
       requestBody:
         content:
           application/json:
+            schema:
+              $ref: "#/components/schemas/RouteAggregationRulesPatchRequest"
+            examples:
+              RouteaggregationRuleName:
+                $ref: "#/components/examples/PatchRouteAggregationRuleName"
+              RouteaggregationRulePrefix:
+                $ref: "#/components/examples/PatchRouteAggregationRulePrefix"
+          application/json-patch+json:
             schema:
               $ref: "#/components/schemas/RouteAggregationRulesPatchRequest"
             examples:
@@ -9384,176 +9428,6 @@ paths:
                   $ref: "#/components/examples/error-400"
                 Subnet Overlapping:
                   $ref: "#/components/examples/error-400-overlappingSubnet"
-  "/fabric/v4/gateways/{gatewayId}/routers":
-    get:
-      tags:
-        - Cloud Routers
-      summary: List Cloud Routers of a Gateway Attachment.
-      description: Get all Cloud Routers attached on a Gateway.
-      operationId: listGatewayAttachmentsToCloudRouter
-      parameters:
-        - name: gatewayId
-          in: path
-          description: Gateway UUID
-          required: true
-          schema:
-            $ref: "#/components/schemas/GatewayId"
-        - name: offset
-          in: query
-          description: offset
-          required: false
-          schema:
-            type: integer
-          example: 1
-        - name: limit
-          in: query
-          description: number of records to fetch
-          required: false
-          schema:
-            type: integer
-          example: 10
-      responses:
-        "200":
-          description: List of Cloud Routers on a Gateway Attachment.
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CloudRouterListForGatewayAttachment"
-              examples:
-                GatewayAttachmentListExample:
-                  $ref: "#/components/examples/CloudRouterListForGatewayAttachment"
-        "400":
-          description: Bad request
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorList"
-        "401":
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorList"
-              examples:
-                example:
-                  $ref: "#/components/examples/401"
-        "403":
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorList"
-              examples:
-                example:
-                  $ref: "#/components/examples/403"
-        "404":
-          description: Not Found
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorList"
-              examples:
-                example:
-                  $ref: "#/components/examples/404"
-        "415":
-          description: Unsupported Media Type
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorList"
-              examples:
-                example:
-                  $ref: "#/components/examples/415"
-        "500":
-          description: Internal server error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorList"
-              examples:
-                example:
-                  $ref: "#/components/examples/500"
-  "/fabric/v4/gateways/{gatewayId}/routers/{routerId}":
-    get:
-      tags:
-        - Cloud Routers
-      summary: Get Gateway Attachment details to a Cloud Router
-      description: Get details of a Specific Gateway Attachment to a Cloud Router.
-      operationId: getGatewayAttachmentToCloudRouterByUuid
-      parameters:
-        - name: gatewayId
-          in: path
-          description: Gateway UUID
-          required: true
-          schema:
-            $ref: "#/components/schemas/GatewayId"
-        - name: routerId
-          in: path
-          description: Cloud Router UUID
-          required: true
-          schema:
-            $ref: "#/components/schemas/RouterId"
-      responses:
-        "200":
-          description: Cloud Router associated to a Gateway Attachment.
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CloudRouterForGatewayAttachmentResponse"
-              examples:
-                GatewayAttachmentExample:
-                  $ref: "#/components/examples/CloudRouterForGatewayAttachmentResponse"
-        "400":
-          description: Bad request
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorList"
-        "401":
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorList"
-              examples:
-                example:
-                  $ref: "#/components/examples/401"
-        "403":
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorList"
-              examples:
-                example:
-                  $ref: "#/components/examples/403"
-        "404":
-          description: Not Found
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorList"
-              examples:
-                example:
-                  $ref: "#/components/examples/404"
-        "415":
-          description: Unsupported Media Type
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorList"
-              examples:
-                example:
-                  $ref: "#/components/examples/415"
-        "500":
-          description: Internal server error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorList"
-              examples:
-                example:
-                  $ref: "#/components/examples/500"
   /fabric/v4/routers/search:
     post:
       tags:
@@ -13605,15 +13479,8 @@ components:
             - =
             - "!="
             - ">"
-            - ">="
             - <
-            - <=
-            - BETWEEN
-            - NOT BETWEEN
             - LIKE
-            - NOT LIKE
-            - IN
-            - NOT IN
             - IS NOT NULL
             - IS NULL
         values:
@@ -13675,7 +13542,6 @@ components:
         - /zSide/accessPoint/virtualDevice/uuid
         - /zSide/serviceToken/uuid
         - /zSide/internetAccess/uuid
-        - "*"
     SortCriteria:
       type: object
       properties:
@@ -14631,6 +14497,9 @@ components:
         name:
           type: string
           description: Name of the region in which the data center is located.
+        country:
+          type: string
+          description: Country code in which the data center is located.
         equinixAsn:
           type: integer
           description: Autonomous system number (ASN) for a specified Fabric metro. The ASN is a unique identifier that carries the network routing protocol and exchanges that data with other internal systems via border gateway protocol.
@@ -14829,6 +14698,8 @@ components:
           enum:
             - EPL
             - MSP
+        serviceCode:
+          $ref: "#/components/schemas/PortServiceCode"
         bandwidth:
           minimum: 0
           type: integer
@@ -14898,6 +14769,8 @@ components:
           description: Port Loas
           items:
             $ref: "#/components/schemas/PortLoa"
+        marketplaceSubscription:
+          $ref: "#/components/schemas/marketplaceSubscription"
       description: Port specification
     PhysicalPort:
       type: object
@@ -14967,9 +14840,125 @@ components:
         - settings
         - type
       type: object
+      properties:
+        type:
+          $ref: "#/components/schemas/PortType"
+        name:
+          type: string
+          description: Equinix assigned response attribute for Port name
+        description:
+          type: string
+          description: Equinix assigned response attribute for Port description
+        physicalPortsSpeed:
+          minimum: 0
+          type: integer
+          description: Physical Ports Speed in Mbps
+        physicalPortsType:
+          type: string
+          description: Physical Ports Type. 10GBASE_SMF and 400GBASE_LR4 are only used for IX ports
+          enum:
+            - 1000BASE_LX
+            - 10GBASE_LR
+            - 100GBASE_LR4
+            - 10GBASE_ER
+            - 1000BASE_SX
+            - 10GBASE_SMF
+            - 400GBASE_LR4
+        physicalPortsCount:
+          type: integer
+        connectivitySourceType:
+          type: string
+          description: Port connectivity type
+          enum:
+            - COLO
+            - BMMR
+            - REMOTE
+        bmmrType:
+          type: string
+          enum:
+            - SELF
+            - EQUINIX
+        project:
+          $ref: "#/components/schemas/Project"
+        state:
+          $ref: "#/components/schemas/PortState"
+        order:
+          $ref: "#/components/schemas/PortOrder"
+        account:
+          $ref: "#/components/schemas/SimplifiedAccount"
+        serviceType:
+          type: string
+          description: Port service Type
+          deprecated: true
+          enum:
+            - EPL
+            - MSP
+        serviceCode:
+          $ref: "#/components/schemas/PortServiceCode"
+        bandwidth:
+          minimum: 0
+          type: integer
+          description: Equinix assigned response attribute for Port bandwidth in Mbps
+          deprecated: true
+        location:
+          $ref: "#/components/schemas/SimplifiedLocation"
+        device:
+          $ref: "#/components/schemas/PortDevice"
+        interface:
+          $ref: "#/components/schemas/PortInterface"
+        demarcationPointIbx:
+          type: string
+          description: A-side/Equinix ibx
+        tetherIbx:
+          type: string
+          description: z-side/Equinix ibx
+        demarcationPoint:
+          $ref: "#/components/schemas/PortDemarcationPoint"
+        redundancy:
+          $ref: "#/components/schemas/PortRedundancy"
+        encapsulation:
+          $ref: "#/components/schemas/PortEncapsulation"
+        lagEnabled:
+          type: boolean
+          description: If LAG enabled
+        lag:
+          allOf:
+            - $ref: "#/components/schemas/PortLag"
+        asn:
+          type: integer
+          description: Port ASN
+        package:
+          $ref: "#/components/schemas/Package"
+        settings:
+          $ref: "#/components/schemas/PortSettings"
+        physicalPortQuantity:
+          type: integer
+          description: Number of physical ports
+        notifications:
+          type: array
+          description: Notification preferences
+          items:
+            $ref: "#/components/schemas/PortNotification"
+        additionalInfo:
+          type: array
+          description: Port additional information
+          items:
+            $ref: "#/components/schemas/PortAdditionalInfo"
+        endCustomer:
+          $ref: "#/components/schemas/EndCustomer"
+        physicalPorts:
+          type: array
+          description: Physical ports that implement this port
+          items:
+            $ref: "#/components/schemas/PhysicalPort"
+        loas:
+          type: array
+          description: Port Loas
+          items:
+            $ref: "#/components/schemas/PortLoa"
+        marketplaceSubscription:
+          $ref: "#/components/schemas/marketplaceSubscription"
       description: PortRequest is the Request Object for creating single and bulk fabric ports
-      allOf:
-        - $ref: "#/components/schemas/Port"
     BulkPortRequest:
       type: object
       properties:
@@ -15900,10 +15889,6 @@ components:
           minimum: 0
           type: integer
           description: Number of connections associated with this Access point
-        gatewayAttachmentsCount:
-          minimum: 0
-          type: integer
-          description: Number of gateway attachments associated with this Access point
         marketplaceSubscription:
           $ref: "#/components/schemas/marketplaceSubscription"
         changeLog:
@@ -16409,42 +16394,6 @@ components:
         changeLog:
           $ref: "#/components/schemas/Changelog"
       description: Schema representing a Gateway attaching or detaching on a Cloud Router. This schema defines the structure of the response returned when a Gateway is attached or detached to a Cloud Router.
-    CloudRouterListForGatewayAttachment:
-      required:
-        - data
-        - pagination
-      type: object
-      properties:
-        pagination:
-          $ref: "#/components/schemas/Pagination"
-        data:
-          type: array
-          items:
-            $ref: "#/components/schemas/CloudRouterForGatewayAttachmentResponse"
-    CloudRouterForGatewayAttachmentResponse:
-      type: object
-      properties:
-        href:
-          type: string
-          format: uri
-        type:
-          type: string
-          enum:
-            - XF_ROUTER
-        uuid:
-          type: string
-          format: uuid
-        attachmentStatus:
-          type: string
-          enum:
-            - ATTACHING
-            - ATTACHED
-            - DETACHING
-            - DETACHED
-            - FAILED
-        changeLog:
-          $ref: "#/components/schemas/Changelog"
-      description: Response schema showing the Fabric Cloud Router on a Gateway Attachment. This schema defines the structure of the response showing the Cloud Router when a Gateway Attachment is done on it.
     CloudRouterSearchRequest:
       type: object
       properties:
@@ -17377,9 +17326,6 @@ components:
         code:
           type: string
           description: Cloud Router package code
-          enum:
-            - ADVANCED
-            - STANDARD
       description: Cloud Router Package Type
     GetAllStreamResponse:
       type: object
@@ -18059,6 +18005,356 @@ components:
         detectionMethod:
           $ref: "#/components/schemas/DetectionMethod"
       description: Create Stream Alert Rules
+    CompanyProfileRequest:
+      required:
+        - description
+        - name
+        - summary
+        - type
+      type: object
+      properties:
+        type:
+          type: string
+        name:
+          maxLength: 50
+          minLength: 1
+          type: string
+        summary:
+          maxLength: 125
+          minLength: 1
+          type: string
+        description:
+          maxLength: 450
+          minLength: 1
+          type: string
+        notifications:
+          type: array
+          items:
+            $ref: "#/components/schemas/Notification"
+        webUrl:
+          type: string
+    CompanyProfileResponse:
+      type: object
+      properties:
+        href:
+          type: string
+        uuid:
+          type: string
+        type:
+          type: string
+        name:
+          maxLength: 50
+          minLength: 1
+          type: string
+        summary:
+          maxLength: 125
+          minLength: 1
+          type: string
+        description:
+          maxLength: 450
+          minLength: 1
+          type: string
+        state:
+          $ref: "#/components/schemas/CompanyProfileState"
+        logo:
+          $ref: "#/components/schemas/CompanyLogo"
+        tags:
+          type: array
+          items:
+            $ref: "#/components/schemas/TagResponse"
+        serviceProfiles:
+          type: array
+          items:
+            $ref: "#/components/schemas/CompanyServiceProfile"
+        privateServices:
+          type: array
+          items:
+            $ref: "#/components/schemas/PrivateService"
+        notifications:
+          type: array
+          items:
+            $ref: "#/components/schemas/Notification"
+        webUrl:
+          type: string
+        changeLog:
+          $ref: "#/components/schemas/Changelog"
+    PatchOperation:
+      required:
+        - op
+        - path
+        - value
+      type: object
+      properties:
+        op:
+          minLength: 1
+          type: string
+          description: The operation to perform
+          enum:
+            - replace
+        path:
+          minLength: 1
+          pattern: ^/
+          type: string
+          description: JSON Pointer path to the field to modify (e.g., /name, /description, /summary, /webUrl, /notifications)
+          example: /name
+        value:
+          type: object
+          description: The value to update the field to
+    CompanyProfileUpdateResponse:
+      type: object
+      properties:
+        companyProfile:
+          $ref: "#/components/schemas/CompanyProfileResponse"
+        change:
+          $ref: "#/components/schemas/CompanyProfileChange"
+    CompanyProfileSearchRequest:
+      type: object
+      properties:
+        filter:
+          $ref: "#/components/schemas/CompanyProfileSearchFilter"
+        pagination:
+          $ref: "#/components/schemas/Pagination"
+    CompanyProfileSearchFilter:
+      type: object
+      properties:
+        and:
+          type: array
+          items:
+            $ref: "#/components/schemas/CompanyProfileSearchFilter"
+        or:
+          type: array
+          items:
+            $ref: "#/components/schemas/CompanyProfileSearchFilter"
+        property:
+          $ref: "#/components/schemas/CompanyProfileSearchFieldName"
+        operator:
+          $ref: "#/components/schemas/OperatorEnum"
+        values:
+          type: array
+          description: Values to compare against
+          items:
+            type: string
+    CompanyProfileSearchFieldName:
+      type: string
+      description: Searchable field names in company profile
+    OperatorEnum:
+      type: string
+      description: Comparison operators for filtering
+    CompanyProfileSearchResponse:
+      required:
+        - data
+        - pagination
+      type: object
+      properties:
+        pagination:
+          $ref: "#/components/schemas/Pagination"
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/CompanyProfileResponse"
+    CompanyProfileActionRequest:
+      required:
+        - type
+      type: object
+      properties:
+        type:
+          type: string
+          description: CompanyProfile Action Type
+        comments:
+          type: string
+          description: Optional comments for the action
+    ServiceProfileListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          description: List of service profiles
+          items:
+            $ref: "#/components/schemas/CompanyServiceProfile"
+    AttachServiceProfileResponse:
+      required:
+        - type
+        - uuid
+      type: object
+      properties:
+        href:
+          type: string
+          description: URL to the attached service profile
+        type:
+          type: string
+          description: Type of the service or attachment
+        uuid:
+          type: string
+          description: Unique identifier for the service profile
+        attachmentStatus:
+          type: string
+          description: Status of the attachment operation
+    TagListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/TagResponse"
+        pagination:
+          $ref: "#/components/schemas/Pagination"
+      description: Equinix Fabric Tag List Response Object
+    TagResponse:
+      type: object
+      properties:
+        href:
+          type: string
+          format: uri
+          example: https://api.equinix.com/fabric/v4/tags/18a127ad-9d0c-46e2-a66d-8ed85d1858b0
+        uuid:
+          type: string
+          format: uuid
+          example: 18a127ad-9d0c-46e2-a66d-8ed85d1858b0
+        type:
+          type: string
+          example: RESOURCE_TAG
+        name:
+          type: string
+          example: environment
+        displayName:
+          type: string
+          example: Environment
+      description: Equinix Fabric Tag Response Object
+    AttachTagResponse:
+      required:
+        - type
+        - uuid
+      type: object
+      properties:
+        href:
+          type: string
+          description: URL to the attached tag
+        type:
+          type: string
+          description: Type of the tag or attachment
+        uuid:
+          type: string
+          description: Unique identifier for the tag
+        attachmentStatus:
+          type: string
+          description: Status of the attachment operation
+    PrivateServiceListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          description: List of private services
+          items:
+            $ref: "#/components/schemas/PrivateService"
+    AttachPrivateServiceResponse:
+      required:
+        - type
+        - uuid
+      type: object
+      properties:
+        href:
+          type: string
+          description: URL to the attached private service
+        type:
+          type: string
+          description: Type of the private service or attachment
+        uuid:
+          type: string
+          description: Unique identifier for the private service
+        attachmentStatus:
+          type: string
+          description: Status of the attachment operation
+    AttachLogoResponse:
+      required:
+        - type
+        - uuid
+      type: object
+      properties:
+        href:
+          type: string
+          description: URL to the attached logo
+        type:
+          type: string
+          description: Type of the logo or attachment
+        uuid:
+          type: string
+          description: Unique identifier for the logo
+        attachmentStatus:
+          type: string
+          description: Status of the attachment operation
+    LogoRequest:
+      required:
+        - description
+        - logo
+        - name
+        - type
+      type: object
+      properties:
+        logo:
+          type: string
+          description: Logo image file
+          format: binary
+        name:
+          maxLength: 24
+          minLength: 1
+          type: string
+          description: Name of the Logo
+        description:
+          maxLength: 125
+          minLength: 1
+          type: string
+          description: Description of the logo
+        type:
+          type: string
+          description: Type of logo
+      description: Equinix Fabric Logo Request Object
+    LogoResponse:
+      type: object
+      properties:
+        href:
+          type: string
+          format: uri
+          example: https://api.equinix.com/fabric/v4/logos/18a127ad-9d0c-46e2-a66d-8ed85d1858b0
+        uuid:
+          type: string
+          format: uuid
+          example: 18a127ad-9d0c-46e2-a66d-8ed85d1858b0
+        type:
+          type: string
+          description: Type of logo
+        name:
+          type: string
+          example: GROQ
+        description:
+          type: string
+          example: Company branding logo
+        status:
+          type: string
+          example: CREATED
+        changelog:
+          $ref: "#/components/schemas/Changelog"
+      description: Equinix Fabric Logo Response Object
+    TagRequest:
+      required:
+        - displayName
+        - name
+        - type
+      type: object
+      properties:
+        type:
+          type: string
+          description: Type of tag
+          example: RESOURCE_TAG
+        name:
+          minLength: 1
+          type: string
+          description: Name of the Tag
+        displayName:
+          maxLength: 24
+          minLength: 1
+          type: string
+          description: Display name of the Tag
+      description: Equinix Fabric Tag Request Object
     CloudEventData:
       type: object
       properties:
@@ -18934,8 +19230,7 @@ components:
         - L2_PROFILE
         - L3_PROFILE
         - IA_PROFILE
-        - IX_PUBLIC_PROFILE
-        - IX_PRIVATE_PROFILE
+        - IX_PROFILE
       x-eqx-api-linter-skip-rules:
         - 40
     ServiceProfileVisibilityEnum:
@@ -19081,8 +19376,6 @@ components:
       description: Type of Port
       enum:
         - XF_PORT
-        - IX_PORT
-        - IA_PORT
     PortOrder:
       type: object
       properties:
@@ -19172,6 +19465,14 @@ components:
           format: date-time
           example: 2020-11-06T07:00:00Z
       description: Current state of latest port change
+    PortServiceCode:
+      type: string
+      description: type of product
+      enum:
+        - CX
+        - IX
+        - IA
+        - MC
     PortDevice:
       type: object
       properties:
@@ -19919,7 +20220,6 @@ components:
           description: Type of change
           enum:
             - ROUTER_UPDATE
-            - ROUTER_PACKAGE_UPDATE
         status:
           type: string
           description: Current outcome of the change flow
@@ -19941,7 +20241,9 @@ components:
           type: string
           description: Additional information
         data:
-          $ref: "#/components/schemas/CloudRouterChangeOperation"
+          type: array
+          items:
+            $ref: "#/components/schemas/CloudRouterChangeOperation"
       description: Current state of latest CloudRouter change
     CloudRouterChangeOperation:
       required:
@@ -20772,51 +21074,43 @@ components:
         criticalThreshold:
           type: string
           description: Stream alert rule metric critical threshold
-    OrchestratorProviders:
+    Notification:
       type: object
-      description: |
-        The OrchestratorProvider schema defines the structure for the orchestrator provider configuration.
-        It includes details about the provider type and its specific configurations.
-      oneOf:
-        - $ref: "#/components/schemas/FabricProvider"
-        - $ref: "#/components/schemas/AWSProvider"
-        - $ref: "#/components/schemas/GCPProvider"
-    ProviderResponse:
+    CompanyProfileState:
       type: object
-      description: |
-        Describes the response structure for different orchestrator provider types, including their specific configuration details.
-      oneOf:
-        - $ref: "#/components/schemas/FabricProviderResponse"
-        - $ref: "#/components/schemas/AWSProviderResponse"
-        - $ref: "#/components/schemas/GCPProviderResponse"
-    ActionRequest:
+    CompanyLogo:
       type: object
-      discriminator:
-        propertyName: type
-        mapping:
-          AWSPermission: "#/components/schemas/AWSPermission"
-          GCPPermission: "#/components/schemas/GCPPermission"
-      oneOf:
-        - $ref: "#/components/schemas/AWSPermission"
-        - $ref: "#/components/schemas/GCPPermission"
-    ProviderType:
-      type: string
-      description: Deployment action type
-      enum:
-        - AWS_PROVIDER
-        - GCP_PROVIDER
-    ProvidersSearchResponse:
+      properties:
+        href:
+          type: string
+        uuid:
+          type: string
+    CompanyServiceProfile:
       type: object
-      discriminator:
-        propertyName: type
-        mapping:
-          VPC: "#/components/schemas/VPC"
-          Subnet: "#/components/schemas/Subnet"
-          SearchDirectConnect: "#/components/schemas/SearchDirectConnect"
-      oneOf:
-        - $ref: "#/components/schemas/VPC"
-        - $ref: "#/components/schemas/Subnet"
-        - $ref: "#/components/schemas/SearchDirectConnect"
+      properties:
+        href:
+          type: string
+        uuid:
+          type: string
+    PrivateService:
+      type: object
+      properties:
+        href:
+          type: string
+        uuid:
+          type: string
+    CompanyProfileChange:
+      type: object
+      properties:
+        type:
+          type: string
+        status:
+          type: string
+        createdDateTime:
+          type: string
+          format: date-time
+        data:
+          $ref: "#/components/schemas/CompanyProfileChangeItem"
     ConnectionPriority:
       type: string
       description: Connection priority in redundancy group
@@ -21338,221 +21632,8 @@ components:
         accessPoint:
           $ref: "#/components/schemas/AccessPoint"
       description: Fabric Connection access point object.
-    FabricProvider:
-      required:
-        - resources
-        - type
+    CompanyProfileChangeItem:
       type: object
-      properties:
-        type:
-          type: string
-          example: FABRIC_PROVIDER
-          enum:
-            - FABRIC_PROVIDER
-        resources:
-          type: array
-          items:
-            $ref: "#/components/schemas/FabricProviderResource"
-      description: |
-        The Orchestrator Fabric Providers schema defines the structure for the orchestrator fabric provider configuration.
-    AWSProvider:
-      required:
-        - resources
-        - type
-      type: object
-      properties:
-        type:
-          type: string
-          example: AWS_PROVIDER
-          enum:
-            - AWS_PROVIDER
-        resources:
-          type: array
-          items:
-            $ref: "#/components/schemas/AWSProviderResource"
-      description: |
-        The Orchestrator AWS Providers schema defines the structure for the orchestrator aws provider configuration.
-    GCPProvider:
-      required:
-        - resources
-        - type
-      type: object
-      properties:
-        type:
-          type: string
-          example: GCP_PROVIDER
-          enum:
-            - GCP_PROVIDER
-        resources:
-          type: array
-          items:
-            $ref: "#/components/schemas/GCPProviderResource"
-      description: |
-        The Orchestrator GCP Providers schema defines the structure for the orchestrator gcp provider configuration.
-    FabricProviderResponse:
-      required:
-        - type
-      type: object
-      properties:
-        type:
-          type: string
-          example: FABRIC_PROVIDER
-          enum:
-            - FABRIC_PROVIDER
-        resources:
-          type: array
-          items:
-            $ref: "#/components/schemas/FabricProviderResourceResponse"
-      description: |
-        The response from the orchestrator when querying for fabric provider resources.
-        This response contains a list of resources that are managed by the fabric provider.
-        The resources can be routers, connections, or route protocols.
-    AWSProviderResponse:
-      required:
-        - type
-      type: object
-      properties:
-        type:
-          type: string
-          example: AWS_PROVIDER
-          enum:
-            - AWS_PROVIDER
-        resources:
-          type: array
-          items:
-            $ref: "#/components/schemas/AWSProviderResourceResponse"
-    GCPProviderResponse:
-      required:
-        - type
-      type: object
-      properties:
-        type:
-          type: string
-          example: GCP_PROVIDER
-          enum:
-            - GCP_PROVIDER
-        resources:
-          type: array
-          items:
-            $ref: "#/components/schemas/GCPProviderResourceResponse"
-    AWSPermission:
-      required:
-        - deploymentProperties
-        - region
-        - roleArn
-        - type
-      type: object
-      properties:
-        type:
-          type: string
-          example: PERMISSION
-          enum:
-            - PERMISSION
-        roleArn:
-          type: string
-          example: arn:aws:iam:::role/
-        region:
-          type: string
-          example: us-east-1
-        deploymentProperties:
-          $ref: "#/components/schemas/TopologyProperties"
-      description: |
-        Provides the AWS permission configuration for the orchestrator. This permission is used to manage the AWS resources and their access control.
-    GCPPermission:
-      required:
-        - deploymentProperties
-        - poolId
-        - projectId
-        - providerId
-        - type
-      type: object
-      properties:
-        type:
-          type: string
-          example: PERMISSION
-          enum:
-            - PERMISSION
-        projectId:
-          type: string
-          example: "149749245261"
-        providerId:
-          type: string
-          example: equinix
-        poolId:
-          type: string
-          example: orchestrator-demo
-        deploymentProperties:
-          $ref: "#/components/schemas/TopologyProperties"
-      description: |
-        Provides the GCP permission configuration for the orchestrator. This permission is used to manage the GCP resources and their access control.
-    VPC:
-      type: object
-      properties:
-        type:
-          type: string
-          example: VPC
-          enum:
-            - VPC
-        name:
-          type: string
-          example: my_aws_vpc
-        id:
-          type: string
-          example: vpc-09ac9040cd1a54aa7
-        state:
-          type: string
-          example: Available
-          enum:
-            - Available
-            - Pending
-            - Deleteing
-            - Deleted
-            - Failed
-            - Ready
-            - Creating
-    Subnet:
-      type: object
-      properties:
-        type:
-          type: string
-          example: Subnet
-          enum:
-            - Subnet
-        name:
-          type: string
-          example: test-demo-subnet-public1-us-east-1a
-        id:
-          type: string
-          example: subnet-0a3144cb5c7d41f48
-        vpcId:
-          type: string
-          example: vpc-09ac9040cd1a54aa7
-        ipv4:
-          type: string
-          example: 10.170.0.0/20
-    SearchDirectConnect:
-      type: object
-      properties:
-        type:
-          type: string
-          example: DIRECT_CONNECT
-          enum:
-            - DIRECT_CONNECT
-        name:
-          type: string
-          example: secondary_1
-        id:
-          type: string
-          example: dxcon-fg3fjufk
-        state:
-          type: string
-          example: Available
-          enum:
-            - Available
-            - Pending
-            - Deleted
-            - Down
-            - Rejected
     AccessPointType:
       type: string
       description: Access point type
@@ -21613,6 +21694,8 @@ components:
           enum:
             - EPL
             - MSP
+        serviceCode:
+          $ref: "#/components/schemas/PortServiceCode"
         bandwidth:
           minimum: 0
           type: integer
@@ -22011,98 +22094,6 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/Hop"
-    FabricProviderResource:
-      type: object
-      discriminator:
-        propertyName: type
-        mapping:
-          FabricRouter: "#/components/schemas/FabricRouter"
-          FabricConnection: "#/components/schemas/FabricConnection"
-          FabricRouteProtocols: "#/components/schemas/FabricRouteProtocols"
-          FabricIPWAN: "#/components/schemas/FabricIPWAN"
-          FabricIPWANConnection: "#/components/schemas/FabricIPWANConnection"
-      oneOf:
-        - $ref: "#/components/schemas/FabricRouter"
-        - $ref: "#/components/schemas/FabricConnection"
-        - $ref: "#/components/schemas/FabricRouteProtocols"
-        - $ref: "#/components/schemas/FabricIPWAN"
-        - $ref: "#/components/schemas/FabricIPWANConnection"
-    AWSProviderResource:
-      type: object
-      discriminator:
-        propertyName: type
-        mapping:
-          AWSPermission: "#/components/schemas/AWSPermission"
-          AWSDirectConnect: "#/components/schemas/AWSDirectConnect"
-          AWSVirtualPrivateGateway: "#/components/schemas/AWSVirtualPrivateGateway"
-      oneOf:
-        - $ref: "#/components/schemas/AWSPermission"
-        - $ref: "#/components/schemas/AWSDirectConnect"
-        - $ref: "#/components/schemas/AWSVirtualPrivateGateway"
-    GCPProviderResource:
-      type: object
-      discriminator:
-        propertyName: type
-        mapping:
-          GCPPermission: "#/components/schemas/GCPPermission"
-          GCPCloudRouter: "#/components/schemas/GCPCloudRouter"
-      oneOf:
-        - $ref: "#/components/schemas/GCPPermission"
-        - $ref: "#/components/schemas/GCPCloudRouter"
-    FabricProviderResourceResponse:
-      type: object
-      discriminator:
-        propertyName: type
-        mapping:
-          FabricRouterResponse: "#/components/schemas/FabricRouterResponse"
-          FabricConnectionResponse: "#/components/schemas/FabricConnectionResponse"
-          FabricRouteProtocolsResponse: "#/components/schemas/FabricRouteProtocolsResponse"
-          FabricIPWANResponse: "#/components/schemas/FabricIPWANResponse"
-          FabricIPWANConnectionResponse: "#/components/schemas/FabricIPWANConnectionResponse"
-      oneOf:
-        - $ref: "#/components/schemas/FabricRouterResponse"
-        - $ref: "#/components/schemas/FabricConnectionResponse"
-        - $ref: "#/components/schemas/FabricRouteProtocolsResponse"
-        - $ref: "#/components/schemas/FabricIPWANResponse"
-        - $ref: "#/components/schemas/FabricIPWANConnectionResponse"
-    AWSProviderResourceResponse:
-      type: object
-      discriminator:
-        propertyName: type
-        mapping:
-          AWSPermission: "#/components/schemas/AWSPermission"
-          AWSDirectConnectResponse: "#/components/schemas/AWSDirectConnectResponse"
-          AWSVirtualPrivateGatewayResponse: "#/components/schemas/AWSVirtualPrivateGatewayResponse"
-      oneOf:
-        - $ref: "#/components/schemas/AWSPermission"
-        - $ref: "#/components/schemas/AWSDirectConnectResponse"
-        - $ref: "#/components/schemas/AWSVirtualPrivateGatewayResponse"
-    GCPProviderResourceResponse:
-      type: object
-      discriminator:
-        propertyName: type
-        mapping:
-          GCPPermission: "#/components/schemas/GCPPermission"
-          GCPCloudRouterResponse: "#/components/schemas/GCPCloudRouterResponse"
-      oneOf:
-        - $ref: "#/components/schemas/GCPPermission"
-        - $ref: "#/components/schemas/GCPCloudRouterResponse"
-    TopologyProperties:
-      required:
-        - elementId
-      type: object
-      properties:
-        elementId:
-          type: string
-          example: 13fc5d30-036d-11f0-96a3-5336ee83f43f
-        dependsOn:
-          type: array
-          items:
-            type: string
-            example: 686fd746-78b6-42fb-8496-be6887814430
-      description: |
-        TopologyProperties is a schema that defines the properties of a topology in the orchestrator.
-        It includes the element ID and any dependencies that the topology may have.
     LinkProtocolType:
       type: string
       description: Type of Link Protocol
@@ -22292,485 +22283,12 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/Hop_probes"
-    FabricRouter:
-      required:
-        - deploymentProperties
-        - type
-      type: object
-      properties:
-        type:
-          type: string
-          example: XF_ROUTER
-          enum:
-            - XF_ROUTER
-        name:
-          type: string
-          example: router-1
-        uuid:
-          type: string
-          description: Equinix-assigned access point identifier
-          format: uuid
-          example: 6658cc3b-18e0-437c-b972-62b51a419a1e
-        location:
-          $ref: "#/components/schemas/SimplifiedLocationWithoutIBX"
-        package:
-          $ref: "#/components/schemas/CloudRouterPostRequestPackage"
-        deploymentProperties:
-          $ref: "#/components/schemas/TopologyProperties"
-      description: The Router schema defines the structure for a network router within the orchestrator system.
-    FabricConnection:
-      required:
-        - aSide
-        - bandwidth
-        - deploymentProperties
-        - redundancy
-        - type
-        - zSide
-      type: object
-      properties:
-        type:
-          type: string
-          example: IP_VC
-          enum:
-            - IP_VC
-        bandwidth:
-          type: integer
-          example: 50
-        name:
-          type: string
-          example: My connection to router
-        redundancy:
-          $ref: "#/components/schemas/ConnectionRedundancy"
-        aSide:
-          $ref: "#/components/schemas/ConnectionSide"
-        zSide:
-          $ref: "#/components/schemas/ConnectionSide"
-        deploymentProperties:
-          $ref: "#/components/schemas/TopologyProperties"
-      description: |
-        The OrchestratorProvider schema defines the configuration for a network connection and deployment properties, offering a detailed overview of the connection's characteristics and requirements.
-    FabricRouteProtocols:
-      type: object
-      description: |
-        The RouteProtocols schema specifies the supported routing protocols for orchestrator providers.
-        It defines the structure and configuration options for each protocol type.
-      oneOf:
-        - $ref: "#/components/schemas/FabricRoutingProtocolBGPType"
-    FabricIPWAN:
-      required:
-        - deploymentProperties
-        - name
-        - scope
-        - type
-      type: object
-      properties:
-        type:
-          type: string
-          example: IPWAN
-        name:
-          type: string
-          example: ipwan
-        uuid:
-          type: string
-          description: Equinix-assigned access point identifier
-          format: uuid
-          example: 4558cc3b-18e0-437c-b972-62b51a419a1e
-        scope:
-          $ref: "#/components/schemas/NetworkScope"
-        location:
-          $ref: "#/components/schemas/SimplifiedLocation"
-        deploymentProperties:
-          $ref: "#/components/schemas/TopologyProperties"
-      description: The IPWAN schema defines the structure for a network IPWAN within the orchestrator system.
-    FabricIPWANConnection:
-      required:
-        - bandwidth
-        - deploymentProperties
-        - name
-        - type
-      type: object
-      properties:
-        type:
-          type: string
-          example: IPWAN_VC
-        bandwidth:
-          type: integer
-          example: 50
-        name:
-          type: string
-          example: My connection from router to IPWAN
-        deploymentProperties:
-          $ref: "#/components/schemas/TopologyProperties"
-      description: |
-        The OrchestratorProvider schema defines the configuration for a IPWAN connection and deployment properties, offering a detailed overview of the connection's characteristics and requirements.
-    AWSDirectConnect:
-      required:
-        - deploymentProperties
-        - type
-      type: object
-      properties:
-        type:
-          type: string
-          example: DIRECT_CONNECT
-          enum:
-            - DIRECT_CONNECT
-        id:
-          type: string
-          example: dxcon-ffol3em2
-        deploymentProperties:
-          $ref: "#/components/schemas/TopologyProperties"
-      description: |
-        Direct Connect helps to identify the direct connect to use or creates new one.
-    AWSVirtualPrivateGateway:
-      required:
-        - deploymentProperties
-        - required
-        - type
-      type: object
-      properties:
-        type:
-          type: string
-          example: VIRTUAL_PRIVATE_GATEWAY
-          enum:
-            - VIRTUAL_PRIVATE_GATEWAY
-        required:
-          type: boolean
-          example: true
-        vpcId:
-          type: string
-          format: uuid
-          example: c0c68cc5-06e7-43d3-a322-afdac89038d7
-        subnetId:
-          type: string
-          format: uuid
-          example: c3af0941-b4e1-45d3-b961-8fc50768fcfb
-        deploymentProperties:
-          $ref: "#/components/schemas/TopologyProperties"
-      description: |
-        The VirtualPrivateGateway schema defines the structure for the virtual private gateway configuration.
-        It includes details about the gateway type, required flag, VPC and subnet IDs, and deployment properties.
-    GCPCloudRouter:
-      required:
-        - deploymentProperties
-        - subnetId
-        - type
-        - vpcId
-      type: object
-      properties:
-        type:
-          type: string
-          example: GCP_CLOUD_ROUTER
-          enum:
-            - GCP_CLOUD_ROUTER
-        vpcId:
-          type: string
-          format: uuid
-          example: c0c68cc5-06e7-43d3-a322-afdac89038d7
-        subnetId:
-          type: string
-          format: uuid
-          example: c3af0941-b4e1-45d3-b961-8fc50768fcfb
-        deploymentProperties:
-          $ref: "#/components/schemas/TopologyProperties"
-      description: |
-        The GCP CloudRouter schema defines the structure for the gcp cloud router configuration, including provider type, VPC, subnet, and deployment properties.
-    FabricRouterResponse:
-      required:
-        - deploymentProperties
-        - location
-        - name
-        - package
-        - state
-        - type
-      type: object
-      properties:
-        href:
-          type: string
-          description: Cloud Routers URI
-          format: uri
-          readOnly: true
-          example: https://api.equinix.com/fabric/v4/routers/3c9b8e7a2-f3b1-4576-a4a9-1366a63df170
-        type:
-          type: string
-          example: XF_ROUTER
-          enum:
-            - XF_ROUTER
-        uuid:
-          type: string
-          description: Equinix-assigned cloud router identifier
-          example: 3c9b8e7a2-f3b1-4576-a4a9-1366a63df170
-        state:
-          $ref: "#/components/schemas/DeploymentState"
-        name:
-          type: string
-          example: router-1
-        location:
-          $ref: "#/components/schemas/SimplifiedLocationWithoutIBX"
-        package:
-          $ref: "#/components/schemas/CloudRouterPostRequestPackage"
-        deploymentProperties:
-          $ref: "#/components/schemas/TopologyProperties"
-    FabricConnectionResponse:
-      required:
-        - aSide
-        - bandwidth
-        - deploymentProperties
-        - name
-        - redundancy
-        - state
-        - type
-        - zSide
-      type: object
-      properties:
-        href:
-          type: string
-          description: Connection URI
-          format: uri
-          readOnly: true
-          example: https://api.equinix.com/fabric/v4/connections/81331c52-04c0-4656-a4a7-18c52669348f
-        type:
-          type: string
-          example: IP_VC
-          enum:
-            - IP_VC
-        uuid:
-          type: string
-          description: Equinix-assigned connection identifier
-          example: 81331c52-04c0-4656-a4a7-18c52669348f
-        state:
-          $ref: "#/components/schemas/DeploymentState"
-        bandwidth:
-          type: integer
-          example: 50
-        name:
-          type: string
-          example: My connection to router
-        redundancy:
-          $ref: "#/components/schemas/ConnectionRedundancy"
-        aSide:
-          $ref: "#/components/schemas/ConnectionSide"
-        zSide:
-          $ref: "#/components/schemas/ConnectionSide"
-        deploymentProperties:
-          $ref: "#/components/schemas/TopologyProperties"
-    FabricRouteProtocolsResponse:
-      required:
-        - state
-      type: object
-      properties:
-        href:
-          type: string
-          description: Route Protocol URI
-          format: uri
-          readOnly: true
-          example: https://api.equinix.com/fabric/v4/connections/81331c52-04c0-4656-a4a7-18c52669348f/routingProtocols/69762051-85ed-4d13-b6b4-e32e93c672b5
-        uuid:
-          type: string
-          description: Equinix-assigned route protocol identifier
-          example: 69762051-85ed-4d13-b6b4-e32e93c672b5
-        state:
-          $ref: "#/components/schemas/DeploymentState"
-      oneOf:
-        - $ref: "#/components/schemas/FabricRoutingProtocolBGPType"
-    FabricIPWANResponse:
-      type: object
-      properties:
-        href:
-          type: string
-          description: IPWAN URI
-          format: uri
-          readOnly: true
-          example: https://api.equinix.com/fabric/v4/ipwan/3c9b8e7a2-f3b1-4576-a4a9-1366a63df170
-        type:
-          type: string
-          example: IPWAN
-        uuid:
-          type: string
-          description: Equinix-assigned IPWAN identifier
-          example: 3c9b8e7a2-f3b1-4576-a4a9-1366a63df170
-        state:
-          $ref: "#/components/schemas/DeploymentState"
-        name:
-          type: string
-          example: router-1
-        location:
-          $ref: "#/components/schemas/SimplifiedLocation"
-        scope:
-          $ref: "#/components/schemas/NetworkScope"
-        deploymentProperties:
-          $ref: "#/components/schemas/TopologyProperties"
-    FabricIPWANConnectionResponse:
-      type: object
-      properties:
-        href:
-          type: string
-          description: IPWAN Connection URI
-          format: uri
-          readOnly: true
-          example: https://api.equinix.com/fabric/v4/connections/81331c52-04c0-4656-a4a7-18c52669348f
-        type:
-          type: string
-          example: IPWAN_VC
-        uuid:
-          type: string
-          description: Equinix-assigned ipwan connection identifier
-          example: 81331c52-04c0-4656-a4a7-18c52669348f
-        state:
-          $ref: "#/components/schemas/DeploymentState"
-        bandwidth:
-          type: integer
-          example: 50
-        name:
-          type: string
-          example: My connection to router
-        deploymentProperties:
-          $ref: "#/components/schemas/TopologyProperties"
-    AWSDirectConnectResponse:
-      required:
-        - deploymentProperties
-        - state
-        - type
-      type: object
-      properties:
-        type:
-          type: string
-          example: DIRECT_CONNECT
-          enum:
-            - DIRECT_CONNECT
-        id:
-          type: string
-          example: dxcon-ffol3em2
-        state:
-          $ref: "#/components/schemas/DeploymentState"
-        deploymentProperties:
-          $ref: "#/components/schemas/TopologyProperties"
-    AWSVirtualPrivateGatewayResponse:
-      required:
-        - deploymentProperties
-        - state
-        - subnetId
-        - type
-        - vpcId
-      type: object
-      properties:
-        id:
-          type: string
-          description: Virtual private gateway id.
-        type:
-          type: string
-          example: VIRTUAL_PRIVATE_GATEWAY
-        state:
-          $ref: "#/components/schemas/DeploymentState"
-        required:
-          type: boolean
-          example: true
-        vpcId:
-          type: string
-          format: uuid
-          example: c0c68cc5-06e7-43d3-a322-afdac89038d7
-        subnetId:
-          type: string
-          format: uuid
-          example: c3af0941-b4e1-45d3-b961-8fc50768fcfb
-        deploymentProperties:
-          $ref: "#/components/schemas/TopologyProperties"
-    GCPCloudRouterResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Cloud Router id.
-        state:
-          $ref: "#/components/schemas/DeploymentState"
-        type:
-          type: string
-          example: GCP_CLOUD_ROUTER
-          enum:
-            - GCP_CLOUD_ROUTER
-        vpcId:
-          type: string
-          format: uuid
-          example: c0c68cc5-06e7-43d3-a322-afdac89038d7
-        subnetId:
-          type: string
-          format: uuid
-          example: c3af0941-b4e1-45d3-b961-8fc50768fcfb
-        deploymentProperties:
-          $ref: "#/components/schemas/TopologyProperties"
     TimeServicePriceConnectionAccessPoint:
       type: object
       properties:
         location:
           $ref: "#/components/schemas/PriceLocation"
       description: Time Service Price Connection Access Point configuration
-    FabricRoutingProtocolBGPType:
-      required:
-        - bgpAuthKey
-        - bgpIpv4
-        - customerAsn
-        - deployementProperties
-        - type
-      type: object
-      properties:
-        type:
-          type: string
-          description: Routing protocol type
-          enum:
-            - BGP
-        name:
-          type: string
-          example: My-BGP-route-1
-        uuid:
-          type: string
-          description: Equinix-assigned route protocol identifier
-          format: uuid
-          example: 69762051-85ed-4d13-b6b4-e32e93c672b5
-        bgpIpv4:
-          $ref: "#/components/schemas/FabricBGPConnectionIpv4"
-        customerAsn:
-          type: integer
-          description: Customer asn
-          format: int64
-        bgpAuthKey:
-          type: string
-          description: BGP authorization key
-        asOverrideEnabled:
-          type: boolean
-          description: Enable AS number override
-        deploymentProperties:
-          $ref: "#/components/schemas/TopologyProperties"
-      description: |
-        Defines the structure for BGP routing protocol configuration, including protocol type, BGP IPv4 settings, customer ASN, authentication key, and deployment properties.
-    DeploymentState:
-      type: string
-      description: Deployment status
-      example: DEPLOYED
-      enum:
-        - NOT_STARTED
-        - DEPLOYING
-        - DEPLOYED
-        - DEPROVISIONED
-        - DEPROVISIONING
-        - FAILED
-        - PENDING
-        - PROVISIONED
-        - PROVISIONING
-    FabricBGPConnectionIpv4:
-      required:
-        - customerPeerIp
-        - equinixIp
-      type: object
-      properties:
-        customerIp:
-          type: string
-          description: Customer side peering ip
-          example: 10.1.1.2
-        equinixIp:
-          type: string
-          description: Equinix side peering ip
-          example: 10.1.1.3
-      description: |
-        Defines the structure for a BGP IPv4 connection, including customer and Equinix peering IP addresses.
     PriceError_additionalInfo:
       type: object
       properties:
@@ -22840,13 +22358,6 @@ components:
           items:
             $ref: "#/components/schemas/ValidateRequest_filter_and"
       description: Filters
-    Deployment_topology:
-      type: object
-      properties:
-        uuid:
-          type: string
-          format: uuid
-          example: 3d4cfd38-5f56-4f71-b3e4-5f44631f1b2a
     Metric_resource:
       type: object
       properties:
@@ -24825,6 +24336,41 @@ components:
             emails:
               - test@equinix.com
               - test1@equinix.com
+    Fcr2Sp-IBM:
+      value:
+        type: IP_VC
+        name: My-FCR-IBMConnection
+        bandwidth: 1000
+        aSide:
+          accessPoint:
+            type: CLOUD_ROUTER
+            router:
+              uuid: 66a21614-1c4a-11ec-9621-0242ac130002
+        order:
+          purchaseOrderNumber: po1234
+        zSide:
+          accessPoint:
+            type: SP
+            profile:
+              type: L2_PROFILE
+              uuid: 22d4e853-ef33-4ff0-b5b2-a2b1d5dfa50c
+            location:
+              metroCode: DC
+            authenticationKey: xxx-xxx-xxx
+            sellerRegion: San Jose 2
+        project:
+          projectId: "567"
+        notifications:
+          - type: ALL
+            emails:
+              - test@test.com
+        additionalInfo:
+          - key: Global
+            value: false
+          - key: IBM IPv4 CIDR
+            value: 172.16.0.18/30
+          - key: CER IPv4 CIDR
+            value: 172.16.0.19/30
     Fcr2Sp-Generic:
       value:
         type: IP_VC
@@ -28354,9 +27900,9 @@ components:
           accessPoint:
             type: SP
             profile:
-              type: IX_PUBLIC_PROFILE
+              type: IX_PROFILE
               uuid: 0f6bdb36-e130-4924-b038-ee1785fad166
-              name: Public IX Profile
+              name: IX Public Peering Profile
               href: https://api.equinix.com/fabric/v4/serviceProfiles/0f6bdb36-e130-4924-b038-ee1785fad166
         notifications:
           - type: ALL
@@ -28390,7 +27936,7 @@ components:
             type: SP
             profile:
               name: Private IX Profile
-              type: IX_PRIVATE_PROFILE
+              type: IX_PROFILE
               href: https://api.equinix.com/fabric/v4/serviceProfiles/c2b7557e-95dc-412d-8dff-abbcb242ccc2
               uuid: c2b7557e-95dc-412d-8dff-abbcb242ccc2
         project:
@@ -34800,6 +34346,125 @@ components:
           errorMessage: Internal Server Error
           correlationId: c82ff3bc-de07-47e5-b3ec-53a009d01515
           details: Internal Server Error
+    ColoMetroConnectResponseDeprovisioningExample:
+      value:
+        href: https://api.equinix.com/fabric/v4/metroConnects/06dbb0e3-e55d-4090-8aff-fc5654abaad0
+        uuid: 06dbb0e3-e55d-4090-8aff-fc5654abaad0
+        type: FABRIC_MC
+        name: 270848-SV1-SV2-01
+        state: DEPROVISIONING
+        bandwidth: 10000
+        connectionDestinationType: COLO
+        connection:
+          href: https://api.equinix.com/fabric/v4/connections/a8ba52de-faae-43b5-b0b1-6904d37ee063
+          type: MC_VC
+          uuid: a8ba52de-faae-43b5-b0b1-6904d37ee063
+        aSide:
+          patchPanel:
+            id: CP:Demarc:1259684
+            portA: "10"
+            portB: "11"
+            connectorType: SC
+            cageUniqueSpaceId: SV1:01:002174
+            cabinetUniqueSpaceId: Demarc
+            ibx: SV1
+          port:
+            href: https://api.equinix.com/fabric/v4/ports/d4e5f6a7-2b3c-4d5e-8f91-1a2b3c4d5e67
+            type: XF_PORT
+            uuid: d4e5f6a7-2b3c-4d5e-8f91-1a2b3c4d5e67
+            location:
+              metroHref: https://api.equinix.com/fabric/v4/metros/SV
+              metroCode: SV
+        zSide:
+          patchPanel:
+            id: CP:Demarc:1259684
+            portA: "10"
+            portB: "11"
+            connectorType: SC
+            cageUniqueSpaceId: SV2:01:002174
+            cabinetUniqueSpaceId: Demarc
+            ibx: SV2
+          port:
+            href: https://api.equinix.com/fabric/v4/ports/b8ba52de-faae-43b5-b0b1-6904d37ee063
+            type: XF_PORT
+            uuid: b8ba52de-faae-43b5-b0b1-6904d37ee063
+            location:
+              metroHref: https://api.equinix.com/fabric/v4/metros/SV
+              metroCode: SV
+        order:
+          purchaseOrderNumber: 156576
+          orderNumber: 1-129105284100
+        project:
+          projectId: 8f23b36f-db8f-44c8-a6e5-606e1b485931
+        account:
+          accountNumber: 270848
+        notifications:
+          - type: ALL
+            emails:
+              - test@test.com
+        changeLog:
+          createdByEmail: abc@xyz.com
+          createdDateTime: 2025-07-24T06:50:46Z
+          updatedByEmail: abc@xyz.com
+          updatedDateTime: 2025-07-24T06:51:46Z
+    RemoteMetroConnectResponseDeprovisioningExample:
+      value:
+        href: https://api.equinix.com/fabric/v4/metroConnects/06dbb0e3-e55d-4090-8aff-fc5654abaad0
+        uuid: 06dbb0e3-e55d-4090-8aff-fc5654abaad0
+        type: FABRIC_MC
+        name: 270848-SV1-SV2-01
+        state: DEPROVISIONING
+        bandwidth: 10000
+        connectionDestinationType: REMOTE
+        connection:
+          href: https://api.equinix.com/fabric/v4/connections/a8ba52de-faae-43b5-b0b1-6904d37ee063
+          type: MC_VC
+          uuid: a8ba52de-faae-43b5-b0b1-6904d37ee063
+        aSide:
+          patchPanel:
+            id: CP:Demarc:1259684
+            portA: "10"
+            portB: "11"
+            connectorType: SC
+            cageUniqueSpaceId: SV1:01:002174
+            cabinetUniqueSpaceId: Demarc
+            ibx: SV1
+          port:
+            href: https://api.equinix.com/fabric/v4/ports/d4e5f6a7-2b3c-4d5e-8f91-1a2b3c4d5e67
+            type: XF_PORT
+            uuid: d4e5f6a7-2b3c-4d5e-8f91-1a2b3c4d5e67
+            location:
+              metroHref: https://api.equinix.com/fabric/v4/metros/SV
+              metroCode: SV
+        zSide:
+          patchPanel:
+            ibx: SV2
+          loas:
+            - uuid: 64de7e5-7fe7-41e6-b984-80d5aa159a0e
+              type: DIGITAL_LOA
+          port:
+            href: https://api.equinix.com/fabric/v4/ports/b8ba52de-faae-43b5-b0b1-6904d37ee063
+            type: XF_PORT
+            uuid: b8ba52de-faae-43b5-b0b1-6904d37ee063
+            location:
+              metroHref: https://api.equinix.com/fabric/v4/metros/SV
+              metroCode: SV
+        order:
+          purchaseOrderNumber: 156576
+          orderNumber: 1-129105284100
+        project:
+          projectId: 8f23b36f-db8f-44c8-a6e5-606e1b485931
+        account:
+          accountNumber: 270848
+        notifications:
+          - type: ALL
+            emails:
+              - test@test.com
+        changeLog:
+          createdByEmail: abc@xyz.com
+          createdDateTime: 2025-07-24T06:50:46Z
+          updatedByEmail: abc@xyz.com
+          updatedDateTime: 2025-07-24T06:51:46Z
     SearchMetroConnectFilterByStatus:
       value:
         filter:
@@ -39208,7 +38873,6 @@ components:
         account:
           accountNumber: 123
         connectionsCount: 0
-        gatewayAttachmentsCount: 1
         changeLog:
           createdBy: abc@xyz.com
           createdByFullName: abc
@@ -40014,33 +39678,6 @@ components:
           deletedByEmail: testuser@equinix.com
           deletedByFullName: testuser testuser
           deletedDateTime: 2020-05-21T10:30:00Z
-    CloudRouterListForGatewayAttachment:
-      value:
-        pagination:
-          offset: 0
-          limit: 10
-          total: 1
-        data:
-          - href: https://api.equinix.com/fabric/v4/gateways/3cacb007-1f0a-4686-8bf4-7cdcaf696e05/routers/3cacb007-1f0a-4686-8bf4-7cdcaf696e05
-            uuid: 3cacb007-1f0a-4686-8bf4-7cdcaf696e05
-            type: XF_ROUTER
-            attachmentStatus: ATTACHED
-            changeLog:
-              createdBy: testuser
-              createdByEmail: testuser@equinix.com
-              createdByFullName: testuser testuser
-              createdDateTime: 2020-05-21T10:30:00Z
-    CloudRouterForGatewayAttachmentResponse:
-      value:
-        href: https://api.equinix.com/fabric/v4/gateways/695a8471-6595-4ac6-a2f4-b3d96ed3a59d/routers/81331c52-04c0-4656-a4a7-18c52669348f
-        type: XF_ROUTER
-        uuid: 695a8471-6595-4ac6-a2f4-b3d96ed3a59d
-        attachmentStatus: ATTACHING
-        changeLog:
-          createdBy: testuser
-          createdByEmail: testuser@equinix.com
-          createdByFullName: testuser testuser
-          createdDateTime: 2020-05-21T10:30:00Z
     SearchFilterByNameAndMetroName:
       value:
         filter:
@@ -43532,1191 +43169,6 @@ components:
           createdDateTime: 2024-05-06T16:21:18.545214Z
           updatedBy: user
           updatedDateTime: 2025-02-04T00:20:54.511118575Z
-    GatewayCreate:
-      value:
-        type: VPN_GATEWAY
-        name: My-VPN-Gateway
-        description: my test gateway
-        localAsn: 65432
-        location:
-          metroCode: SV
-        project:
-          projectId: b1baecec-b7e7-453b-89fc-b35757bfcdbf
-    GatewayPostResponseExample:
-      value:
-        href: https://api.equinix.com/fabric/v4/gateways/c93a9ca0-bb56-490b-8bce-4b2bdaeb4d46
-        uuid: c93a9ca0-bb56-490b-8bce-4b2bdaeb4d46
-        type: VPN_GATEWAY
-        name: My-VPN-Gateway
-        description: my test gateway
-        state: PROVISIONING
-        location:
-          metroHref: https://api.equinix.com/fabric/v4/metros/SV
-          metroCode: SV
-        localAsn: 65432
-        project:
-          projectId: b1baecec-b7e7-453b-89fc-b35757bfcdbf
-        changeLog:
-          createdBy: abc@xyz.com
-          createdByFullName: abc
-          createdByEmail: abc@xyz.com
-          createdDateTime: 2025-04-21T01:11:11.117Z
-        links:
-          - href: https://api.equinix.com/fabric/v4/interfaces/search
-            rel: searchGatewayInterfaces
-            method: POST
-            contentType: application/json
-            authenticate: true
-          - href: https://api.equinix.com/fabric/v4/routers/search
-            rel: searchCloudRouters
-            method: POST
-            contentType: application/json
-            authenticate: true
-    Gateway_400_InvalidName:
-      value:
-        - errorCode: EQ-8010022
-          errorMessage: Name is minimum 0 and up to 50 characters in length
-          correlationId: fc7a32c8-2b99-4915-bb4b-eb42bbba668e
-          details: Name is minimum 0 and up to 50 characters in length
-          additionalInfo:
-            - property: /name
-              reason: Name is minimum 0 and up to 50 characters in length
-    Gateway_401:
-      value:
-        - errorCode: EQ-8010001
-          errorMessage: User not found in request or invalid.
-          correlationId: c82ff3bc-de07-47e5-b3ec-53a009d01515
-          additionalInfo:
-            - reason: You are unauthorized to perform this operation
-    Gateway_403:
-      value:
-        - errorCode: EQ-8010002
-          errorMessage: Operation not allowed
-          correlationId: 8a72af9d-23f7-4b90-8237-0987130b42dd
-          details: Operation not allowed for current user
-    Gateway_415:
-      value:
-        - errorCode: EQ-8010016
-          errorMessage: Unsupported media type, please check the request's Content-Type or Content-Encoding
-          correlationId: c82ff3bc-de07-47e5-b3ec-53a009d01515
-          additionalInfo:
-            - property: contentType
-              reason: The payload format is in an unsupported format
-    Gateway_500:
-      value:
-        - errorCode: EQ-8010030
-          errorMessage: Internal Server Error
-          correlationId: f9018571-1001-4422-978b-bfa38ed6b92e
-          details: Internal Server Error
-    GatewayGetResponseExample:
-      value:
-        href: https://api.equinix.com/fabric/v4/gateways/c93a9ca0-bb56-490b-8bce-4b2bdaeb4d46
-        uuid: c93a9ca0-bb56-490b-8bce-4b2bdaeb4d46
-        type: VPN_GATEWAY
-        name: My-VPN-Gateway
-        description: my test gateway
-        state: PROVISIONED
-        location:
-          metroHref: https://api.equinix.com/fabric/v4/metros/SV
-          metroCode: SV
-        localAsn: 65432
-        project:
-          projectId: b1baecec-b7e7-453b-89fc-b35757bfcdbf
-        change:
-          type: VPN_GATEWAY_UPDATE
-          status: COMPLETED
-          createdDateTime: 2025-03-28T04:12:36.607Z
-          updatedDateTime: 2025-03-10T05:00:00Z
-          data:
-            - op: replace
-              path: /name
-              value: My-VpnGateway
-        changeLog:
-          createdBy: abc@xyz.com
-          createdByFullName: abc
-          createdByEmail: abc@xyz.com
-          createdDateTime: 2025-04-21T01:11:11.117Z
-          updatedBy: abc@xyz.com
-          updatedByFullName: abc
-          updatedByEmail: abc@xyz.com
-          updatedDateTime: 2025-04-22T02:22:22.227Z
-        attachments:
-          - href: https://api.equinix.com/fabric/v4/routers/6658cc3b-18e0-437c-b972-62b51a419a1e
-            uuid: 6658cc3b-18e0-437c-b972-62b51a419a1e
-            type: XF_ROUTER
-            attachmentStatus: ATTACHED
-        links:
-          - href: https://api.equinix.com/fabric/v4/interfaces/search
-            rel: searchGatewayInterfaces
-            method: POST
-            contentType: application/json
-            authenticate: true
-          - href: https://api.equinix.com/fabric/v4/routers/search
-            rel: searchCloudRouters
-            method: POST
-            contentType: application/json
-            authenticate: true
-    Gateway_404:
-      value:
-        - errorCode: EQ-8010020
-          errorMessage: Gateway not found or already deleted
-          correlationId: 9b6baf30-3eb0-458c-af8b-fff3fae32bc7
-          details: Gateway not found or already deleted
-    GatewayDeleteResponseExample:
-      value:
-        href: https://api.equinix.com/fabric/v4/gateways/c93a9ca0-bb56-490b-8bce-4b2bdaeb4d46
-        uuid: c93a9ca0-bb56-490b-8bce-4b2bdaeb4d46
-        type: VPN_GATEWAY
-        name: My-VPN-Gateway
-        description: my test gateway
-        state: DEPROVISIONING
-        location:
-          metroHref: https://api.equinix.com/fabric/v4/metros/SV
-          metroCode: SV
-        localAsn: 65432
-        project:
-          projectId: b1baecec-b7e7-453b-89fc-b35757bfcdbf
-        change:
-          type: VPN_GATEWAY_UPDATE
-          status: COMPLETED
-          createdDateTime: 2025-03-28T04:12:36.607Z
-          updatedDateTime: 2025-03-10T05:00:00Z
-          data:
-            - op: replace
-              path: /name
-              value: My-VpnGateway
-        changeLog:
-          createdBy: abc@xyz.com
-          createdByFullName: abc
-          createdByEmail: abc@xyz.com
-          createdDateTime: 2025-04-21T01:11:11.117Z
-          updatedBy: abc@xyz.com
-          updatedByFullName: abc
-          updatedByEmail: abc@xyz.com
-          updatedDateTime: 2025-04-22T02:22:22.227Z
-          deletedBy: abc@xyz.com
-          deletedByFullName: abc
-          deletedByEmail: abc@xyz.com
-          deletedDateTime: 2025-04-23T03:33:33.337Z
-    Gateway_400_InvalidState:
-      value:
-        - errorCode: EQ-8010030
-          errorMessage: Cannot delete Gateway in transient state
-          correlationId: 09fbe616-e563-438e-9b1b-56632d1611ff
-          details: Cannot delete Gateway in transient state.
-    GatewaySearchFilterByStatus:
-      value:
-        filter:
-          and:
-            - property: /state
-              operator: =
-              values:
-                - PROVISIONED
-            - property: /project/projectId
-              operator: IN
-              values:
-                - b1baecec-b7e7-453b-89fc-b35757bfcdbf
-        pagination:
-          offset: 0
-          limit: 20
-        sort:
-          - direction: DESC
-            property: /changeLog/createdDateTime
-    GatewaySearchFilterByName:
-      value:
-        filter:
-          and:
-            - property: /name
-              operator: =
-              values:
-                - test-
-            - property: /project/projectId
-              operator: =
-              values:
-                - 6658cc3b-18e0-437c-b972-62b51a419a1e
-        pagination:
-          offset: 0
-          limit: 20
-        sort:
-          - direction: DESC
-            property: /changeLog/createdDateTime
-    GatewaySearchFilterOrAnd:
-      value:
-        filter:
-          and:
-            - or:
-                - property: /name
-                  operator: LIKE
-                  values:
-                    - abc%
-            - property: /project/projectId
-              operator: =
-              values:
-                - b1baecec-b7e7-453b-89fc-b35757bfcdbf
-    GatewaySearchExample:
-      value:
-        pagination:
-          offset: 20
-          limit: 20
-          total: 100
-          next: /search?offset=40&limit=20
-          previous: /search?offset=0&limit=20
-        data:
-          - href: https://api.equinix.com/fabric/v4/gateways/c93a9ca0-bb56-490b-8bce-4b2bdaeb4d46
-            uuid: c93a9ca0-bb56-490b-8bce-4b2bdaeb4d46
-            type: VPN_GATEWAY
-            name: My-VPN-Gateway
-            description: my test gateway
-            state: PROVISIONED
-            location:
-              metroHref: https://api.equinix.com/fabric/v4/metros/SV
-              metroCode: SV
-            localAsn: 65432
-            project:
-              projectId: b1baecec-b7e7-453b-89fc-b35757bfcdbf
-            changeLog:
-              createdBy: abc@xyz.com
-              createdByFullName: abc
-              createdByEmail: abc@xyz.com
-              createdDateTime: 2025-04-21T01:11:11.117Z
-              updatedBy: abc@xyz.com
-              updatedByFullName: abc
-              updatedByEmail: abc@xyz.com
-              updatedDateTime: 2025-04-22T02:22:22.227Z
-            attachments:
-              - href: https://api.equinix.com/fabric/v4/routers/6658cc3b-18e0-437c-b972-62b51a419a1e
-                uuid: 6658cc3b-18e0-437c-b972-62b51a419a1e
-                type: XF_ROUTER
-                attachmentStatus: ATTACHED
-            links:
-              - href: https://api.equinix.com/fabric/v4/interfaces/search
-                rel: searchGatewayInterfaces
-                method: POST
-                contentType: application/json
-                authenticate: true
-              - href: https://api.equinix.com/fabric/v4/routers/search
-                rel: searchCloudRouters
-                method: POST
-                contentType: application/json
-                authenticate: true
-    Gateway_400_InvalidSorting:
-      value:
-        - errorCode: EQ-8010039
-          errorMessage: Invalid value for sorting direction.
-          correlationId: 11091aa7-322a-461e-b6af-40fd10543c94
-          additionalInfo:
-            - reason: Only accept DESC and ASC for sorting direction.
-    GatewayInterfaceAttachmentPutResponseExample:
-      value:
-        href: https://api.equinix.com/fabric/v4/gateways/c93a9ca0-bb56-490b-8bce-4b2bdaeb4d46/interfaces/6658cc3b-18e0-437c-b972-62b51a419a1e
-        type: IFACE_IPSEC_VPN
-        uuid: 6658cc3b-18e0-437c-b972-62b51a419a1e
-        attachmentStatus: ATTACHING
-    GatewayInterfaceAttachmentDeleteResponseExample:
-      value:
-        href: https://api.equinix.com/fabric/v4/gateways/c93a9ca0-bb56-490b-8bce-4b2bdaeb4d46/interfaces/6658cc3b-18e0-437c-b972-62b51a419a1e
-        type: IFACE_IPSEC_VPN
-        uuid: 6658cc3b-18e0-437c-b972-62b51a419a1e
-        attachmentStatus: DETACHING
-    GatewayInterfaceCreate:
-      value:
-        type: IFACE_IPSEC_VPN
-        name: My-VpnInterface
-        description: test interface description
-        location:
-          metroCode: SV
-        bandwidth: 50
-        mtu: 1500
-        interfaceGroup: 9918ab4f-d3f1-488e-92ba-291fa3f025c1
-        project:
-          projectId: b1baecec-b7e7-453b-89fc-b35757bfcdbf
-    GatewayInterfacePostResponseExample:
-      value:
-        href: https://api.equinix.com/fabric/v4/interfaces/6658cc3b-18e0-437c-b972-62b51a419a1e
-        uuid: 6658cc3b-18e0-437c-b972-62b51a419a1e
-        type: IFACE_IPSEC_VPN
-        name: My-GatewayInterface
-        description: test interface description
-        state: PROVISIONING
-        location:
-          metroHref: https://api.equinix.com/fabric/v4/metros/SV
-          metroCode: SV
-        bandwidth: 50
-        mtu: 1500
-        interfaceGroup: 9918ab4f-d3f1-488e-92ba-291fa3f025c1
-        ipv4:
-          equinixIfaceIp: 192.10.20.10
-        ipv6:
-          equinixIfaceIp: c9f7:0b36:98c6:ac7e:f0e9:010c:f3d1:9940
-        project:
-          projectId: b1baecec-b7e7-453b-89fc-b35757bfcdbf
-        changeLog:
-          createdBy: abc@xyz.com
-          createdByFullName: abc
-          createdByEmail: abc@xyz.com
-          createdDateTime: 2025-04-21T01:11:11.117Z
-        links:
-          - href: https://api.equinix.com/fabric/v4/interfaces/6658cc3b-18e0-437c-b972-62b51a419a1e/tunnels/search
-            rel: searchGatewayTunnels
-            method: POST
-            contentType: application/json
-            authenticate: true
-    GatewayInterface_400_InvalidName:
-      value:
-        - errorCode: EQ-8020022
-          errorMessage: Name is minimum 0 and up to 50 characters in length
-          correlationId: fc7a32c8-2b99-4915-bb4b-eb42bbba668e
-          details: Name is minimum 0 and up to 50 characters in length
-          additionalInfo:
-            - property: /name
-              reason: Name is minimum 0 and up to 50 characters in length
-    GatewayInterface_401:
-      value:
-        - errorCode: EQ-8020001
-          errorMessage: User not found in request or invalid.
-          correlationId: c82ff3bc-de07-47e5-b3ec-53a009d01515
-          additionalInfo:
-            - reason: You are unauthorized to perform this operation
-    GatewayInterface_403:
-      value:
-        - errorCode: EQ-8020002
-          errorMessage: Operation not allowed
-          correlationId: 8a72af9d-23f7-4b90-8237-0987130b42dd
-          details: Operation not allowed for current user
-    GatewayInterface_415:
-      value:
-        - errorCode: EQ-8020016
-          errorMessage: Unsupported media type, please check the request's Content-Type or Content-Encoding
-          correlationId: c82ff3bc-de07-47e5-b3ec-53a009d01515
-          additionalInfo:
-            - property: contentType
-              reason: The payload format is in an unsupported format
-    GatewayInterface_500:
-      value:
-        - errorCode: EQ-8020030
-          errorMessage: Internal Server Error
-          correlationId: f9018571-1001-4422-978b-bfa38ed6b92e
-          details: Internal Server Error
-    GatewayInterfaceGetResponseExample:
-      value:
-        href: https://api.equinix.com/fabric/v4/interfaces/6658cc3b-18e0-437c-b972-62b51a419a1e
-        uuid: 6658cc3b-18e0-437c-b972-62b51a419a1e
-        type: IFACE_IPSEC_VPN
-        name: My-GatewayInterface
-        description: test interface description
-        state: PROVISIONED
-        location:
-          metroHref: https://api.equinix.com/fabric/v4/metros/SV
-          metroCode: SV
-        bandwidth: 50
-        mtu: 1500
-        interfaceGroup: 9918ab4f-d3f1-488e-92ba-291fa3f025c1
-        ipv4:
-          equinixIfaceIp: 192.10.20.10
-        ipv6:
-          equinixIfaceIp: c9f7:0b36:98c6:ac7e:f0e9:010c:f3d1:9940
-        project:
-          projectId: b1baecec-b7e7-453b-89fc-b35757bfcdbf
-        change:
-          type: IFACE_IPSEC_VPN_UPDATE
-          status: COMPLETED
-          createdDateTime: 2025-03-28T04:12:36.607Z
-          updatedDateTime: 2025-03-10T05:00:00Z
-          data:
-            - op: replace
-              path: /name
-              value: My-GatewayInterface
-        changeLog:
-          createdBy: abc@xyz.com
-          createdByFullName: abc
-          createdByEmail: abc@xyz.com
-          createdDateTime: 2025-04-21T01:11:11.117Z
-          updatedBy: abc@xyz.com
-          updatedByFullName: abc
-          updatedByEmail: abc@xyz.com
-          updatedDateTime: 2025-04-22T02:22:22.227Z
-        attachments:
-          - href: https://api.equinix.com/fabric/v4/gateways/c93a9ca0-bb56-490b-8bce-4b2bdaeb4d46
-            uuid: c93a9ca0-bb56-490b-8bce-4b2bdaeb4d46
-            type: VPN_GATEWAY
-            attachmentStatus: ATTACHED
-        links:
-          - href: https://api.equinix.com/fabric/v4/interfaces/6658cc3b-18e0-437c-b972-62b51a419a1e/tunnels/search
-            rel: searchGatewayTunnels
-            method: POST
-            contentType: application/json
-            authenticate: true
-    GatewayInterface_404:
-      value:
-        - errorCode: EQ-8020020
-          errorMessage: Interface not found or already deleted
-          correlationId: 9b6baf30-3eb0-458c-af8b-fff3fae32bc7
-          details: Interface not found or already deleted
-    GatewayInterfaceDeleteResponseExample:
-      value:
-        href: https://api.equinix.com/fabric/v4/interfaces/6658cc3b-18e0-437c-b972-62b51a419a1e
-        uuid: 6658cc3b-18e0-437c-b972-62b51a419a1e
-        type: IFACE_IPSEC_VPN
-        name: My-GatewayInterface
-        description: test interface description
-        state: DEPROVISIONING
-        location:
-          metroHref: https://api.equinix.com/fabric/v4/metros/SV
-          metroCode: SV
-        bandwidth: 50
-        mtu: 1500
-        interfaceGroup: 9918ab4f-d3f1-488e-92ba-291fa3f025c1
-        ipv4:
-          equinixIfaceIp: 192.10.20.10
-        ipv6:
-          equinixIfaceIp: c9f7:0b36:98c6:ac7e:f0e9:010c:f3d1:9940
-        project:
-          projectId: b1baecec-b7e7-453b-89fc-b35757bfcdbf
-        change:
-          type: IFACE_IPSEC_VPN_UPDATE
-          status: COMPLETED
-          createdDateTime: 2025-03-28T04:12:36.607Z
-          updatedDateTime: 2025-03-10T05:00:00Z
-          data:
-            - op: replace
-              path: /name
-              value: My-GatewayInterface
-        changeLog:
-          createdBy: abc@xyz.com
-          createdByFullName: abc
-          createdByEmail: abc@xyz.com
-          createdDateTime: 2025-04-21T01:11:11.117Z
-          updatedBy: abc@xyz.com
-          updatedByFullName: abc
-          updatedByEmail: abc@xyz.com
-          updatedDateTime: 2025-04-22T02:22:22.227Z
-          deletedBy: abc@xyz.com
-          deletedByFullName: abc
-          deletedByEmail: abc@xyz.com
-          deletedDateTime: 2025-04-23T03:33:33.337Z
-    GatewayInterface_400_InvalidState:
-      value:
-        - errorCode: EQ-8020030
-          errorMessage: Cannot delete VPN Interface in transient state
-          correlationId: 09fbe616-e563-438e-9b1b-56632d1611ff
-          details: Cannot delete VPN Interface in transient state.
-    GatewayInterfaceSearchFilterByStatus:
-      value:
-        filter:
-          and:
-            - property: /state
-              operator: =
-              values:
-                - PROVISIONED
-            - property: /project/projectId
-              operator: IN
-              values:
-                - b1baecec-b7e7-453b-89fc-b35757bfcdbf
-        pagination:
-          offset: 0
-          limit: 20
-        sort:
-          - direction: DESC
-            property: /changeLog/createdDateTime
-    GatewayInterfaceSearchFilterByName:
-      value:
-        filter:
-          and:
-            - property: /name
-              operator: =
-              values:
-                - test-
-            - property: /project/projectId
-              operator: =
-              values:
-                - 6658cc3b-18e0-437c-b972-62b51a419a1e
-        pagination:
-          offset: 0
-          limit: 20
-        sort:
-          - direction: DESC
-            property: /changeLog/createdDateTime
-    GatewayInterfaceSearchFilterOrAnd:
-      value:
-        filter:
-          and:
-            - or:
-                - property: /name
-                  operator: LIKE
-                  values:
-                    - abc%
-            - property: /project/projectId
-              operator: =
-              values:
-                - b1baecec-b7e7-453b-89fc-b35757bfcdbf
-    GatewayInterfaceSearchExample:
-      value:
-        pagination:
-          offset: 20
-          limit: 20
-          total: 100
-          next: /search?offset=40&limit=20
-          previous: /search?offset=0&limit=20
-        data:
-          - href: https://api.equinix.com/fabric/v4/interfaces/6658cc3b-18e0-437c-b972-62b51a419a1e
-            uuid: 6658cc3b-18e0-437c-b972-62b51a419a1e
-            type: IFACE_IPSEC_VPN
-            name: My-GatewayInterface
-            description: test interface description
-            state: PROVISIONED
-            location:
-              metroHref: https://api.equinix.com/fabric/v4/metros/SV
-              metroCode: SV
-            bandwidth: 50
-            mtu: 1500
-            interfaceGroup: 9918ab4f-d3f1-488e-92ba-291fa3f025c1
-            ipv4:
-              equinixIfaceIp: 192.10.20.10
-            ipv6:
-              equinixIfaceIp: c9f7:0b36:98c6:ac7e:f0e9:010c:f3d1:9940
-            project:
-              projectId: b1baecec-b7e7-453b-89fc-b35757bfcdbf
-            changeLog:
-              createdBy: abc@xyz.com
-              createdByFullName: abc
-              createdByEmail: abc@xyz.com
-              createdDateTime: 2025-04-21T01:11:11.117Z
-              updatedBy: abc@xyz.com
-              updatedByFullName: abc
-              updatedByEmail: abc@xyz.com
-              updatedDateTime: 2025-04-22T02:22:22.227Z
-            attachments:
-              - href: https://api.equinix.com/fabric/v4/gateways/c93a9ca0-bb56-490b-8bce-4b2bdaeb4d46
-                uuid: c93a9ca0-bb56-490b-8bce-4b2bdaeb4d46
-                type: VPN_GATEWAY
-                attachmentStatus: ATTACHED
-            links:
-              - href: https://api.equinix.com/fabric/v4/interfaces/6658cc3b-18e0-437c-b972-62b51a419a1e/tunnels/search
-                rel: searchGatewayTunnels
-                method: POST
-                contentType: application/json
-                authenticate: true
-    GatewayInterface_400_InvalidSorting:
-      value:
-        - errorCode: EQ-8020039
-          errorMessage: Invalid value for sorting direction.
-          correlationId: 11091aa7-322a-461e-b6af-40fd10543c94
-          additionalInfo:
-            - reason: Only accept DESC and ASC for sorting direction.
-    GatewayTunnelCreate:
-      value:
-        type: IPSEC_IPv4
-        name: My-Tunnel
-        description: ipsec tunnel configuration
-        isInitiator: true
-        tunnelLocalInsideCidr: 192.168.1.1/30
-        tunnelRemoteInsideCidr: 192.168.1.2/30
-        customerPeerIp: 1.2.3.43
-        mtu: 1500
-        enabled: true
-        authentication:
-          type: PSK
-          ikeVersion: ikev2
-          preSharedKey: EBY8EAY_yo2
-          phase1DhGroup: 2
-          phase1EncryptAlgorithm: AES_CBC
-          phase1IntegrityAlgorithm: HMAC_SHA1
-          phase2DhGroup: 2
-          phase2EncryptAlgorithm: AES_CTR
-          phase2IntegrityAlgorithm: HMAC_SHA2_256
-    GatewayTunnelPostResponseExample:
-      value:
-        href: https://api.equinix.com/fabric/v4/interfaces/6658cc3b-18e0-437c-b972-62b51a419a1e/tunnels/aee72df9-dec8-4c89-8f18-c4d0ef203656
-        uuid: aee72df9-dec8-4c89-8f18-c4d0ef203656
-        type: IPSEC_IPv4
-        name: My-Tunnel
-        description: ipsec tunnel configuration
-        state: PROVISIONED
-        isInitiator: true
-        tunnelLocalInsideCidr: 192.168.1.1/30
-        tunnelRemoteInsideCidr: 192.168.1.2/30
-        customerPeerIp: 1.2.3.43
-        mtu: 1500
-        enabled: true
-        isNatT: false
-        authentication:
-          type: PSK
-          ikeVersion: ikev2
-          preSharedKey: EBY8EAY_yo2
-          phase1DhGroup: 2
-          phase1EncryptAlgorithm: AES_CBC
-          phase1IntegrityAlgorithm: HMAC_SHA1
-          phase2DhGroup: 2
-          phase2EncryptAlgorithm: AES_CTR
-          phase2IntegrityAlgorithm: HMAC_SHA2_256
-        changeLog:
-          createdBy: testBuyer
-          createdDateTime: 2025-03-28T04:12:36.607Z
-        links:
-          - href: https://api.equinix.com/fabric/v4/interfaces/6658cc3b-18e0-437c-b972-62b51a419a1e/tunnels/aee72df9-dec8-4c89-8f18-c4d0ef203656/routingProtocols/search
-            rel: searchGatewayRoutingProtocols
-            method: POST
-            contentType: application/json
-            authenticate: true
-          - href: https://api.equinix.com/fabric/v4/interfaces/6658cc3b-18e0-437c-b972-62b51a419a1e/tunnels/aee72df9-dec8-4c89-8f18-c4d0ef203656/operationalStatus
-            rel: getGatewayTunnelOperationalStatus
-            method: GET
-            contentType: application/json
-            authenticate: true
-    GatewayTunnel_400_InvalidName:
-      value:
-        - errorCode: EQ-8030022
-          errorMessage: Name is minimum 0 and up to 50 characters in length
-          correlationId: fc7a32c8-2b99-4915-bb4b-eb42bbba668e
-          details: Name is minimum 0 and up to 50 characters in length
-          additionalInfo:
-            - property: /name
-              reason: Name is minimum 0 and up to 50 characters in length
-    GatewayTunnel_401:
-      value:
-        - errorCode: EQ-8030001
-          errorMessage: User not found in request or invalid.
-          correlationId: c82ff3bc-de07-47e5-b3ec-53a009d01515
-          additionalInfo:
-            - reason: You are unauthorized to perform this operation
-    GatewayTunnel_403:
-      value:
-        - errorCode: EQ-8030002
-          errorMessage: Operation not allowed
-          correlationId: 8a72af9d-23f7-4b90-8237-0987130b42dd
-          details: Operation not allowed for current user
-    GatewayTunnel_415:
-      value:
-        - errorCode: EQ-8030016
-          errorMessage: Unsupported media type, please check the request's Content-Type or Content-Encoding
-          correlationId: c82ff3bc-de07-47e5-b3ec-53a009d01515
-          additionalInfo:
-            - property: contentType
-              reason: The payload format is in an unsupported format
-    GatewayTunnel_500:
-      value:
-        - errorCode: EQ-8030030
-          errorMessage: Internal Server Error
-          correlationId: f9018571-1001-4422-978b-bfa38ed6b92e
-          details: Internal Server Error
-    GatewayTunnelGetResponseExample:
-      value:
-        href: https://api.equinix.com/fabric/v4/interfaces/6658cc3b-18e0-437c-b972-62b51a419a1e/tunnels/aee72df9-dec8-4c89-8f18-c4d0ef203656
-        uuid: aee72df9-dec8-4c89-8f18-c4d0ef203656
-        type: IPSEC_IPv4
-        name: My-Tunnel
-        description: ipsec tunnel configuration
-        state: PROVISIONED
-        isInitiator: true
-        tunnelLocalInsideCidr: 192.168.1.1/30
-        tunnelRemoteInsideCidr: 192.168.1.2/30
-        customerPeerIp: 1.2.3.43
-        mtu: 1500
-        enabled: true
-        isNatT: false
-        authentication:
-          type: PSK
-          ikeVersion: ikev2
-          preSharedKey: EBY8EAY_yo2
-          phase1DhGroup: 2
-          phase1EncryptAlgorithm: AES_CBC
-          phase1IntegrityAlgorithm: HMAC_SHA1
-          phase2DhGroup: 2
-          phase2EncryptAlgorithm: AES_CTR
-          phase2IntegrityAlgorithm: HMAC_SHA2_256
-        change:
-          type: IPSEC_IPv4_UPDATE
-          status: COMPLETED
-          createdDateTime: 2025-03-28T04:12:36.607Z
-          updatedDateTime: 2025-03-10T05:00:00Z
-          data:
-            - op: replace
-              path: /name
-              value: Update-Gateway-tunnel
-        changeLog:
-          createdBy: testBuyer
-          createdDateTime: 2025-03-28T04:12:36.607Z
-          updatedBy: testBuyer
-          updatedDateTime: 2025-03-10T05:00:00Z
-        links:
-          - href: https://api.equinix.com/fabric/v4/interfaces/6658cc3b-18e0-437c-b972-62b51a419a1e/tunnels/aee72df9-dec8-4c89-8f18-c4d0ef203656/routingProtocols/search
-            rel: searchGatewayRoutingProtocols
-            method: POST
-            contentType: application/json
-            authenticate: true
-          - href: https://api.equinix.com/fabric/v4/interfaces/6658cc3b-18e0-437c-b972-62b51a419a1e/tunnels/aee72df9-dec8-4c89-8f18-c4d0ef203656/operationalStatus
-            rel: getGatewayTunnelOperationalStatus
-            method: GET
-            contentType: application/json
-            authenticate: true
-    GatewayTunnel_404:
-      value:
-        - errorCode: EQ-8030020
-          errorMessage: Gateway Tunnel not found or already deleted
-          correlationId: 9b6baf30-3eb0-458c-af8b-fff3fae32bc7
-          details: Gateway Tunnel not found or already deleted
-    GatewayTunnelDeleteResponseExample:
-      value:
-        href: https://api.equinix.com/fabric/v4/interfaces/6658cc3b-18e0-437c-b972-62b51a419a1e/tunnels/aee72df9-dec8-4c89-8f18-c4d0ef203656
-        uuid: aee72df9-dec8-4c89-8f18-c4d0ef203656
-        type: IPSEC_IPv4
-        name: Update-tunnel
-        description: ipsec tunnel configuration
-        state: DEPROVISIONING
-        isInitiator: true
-        tunnelLocalInsideCidr: 192.168.1.1/30
-        tunnelRemoteInsideCidr: 192.168.1.2/30
-        customerPeerIp: 1.2.3.43
-        mtu: 1500
-        enabled: true
-        isNatT: false
-        authentication:
-          type: PSK
-          ikeVersion: ikev2
-          preSharedKey: EBY8EAY_yo2
-          phase1DhGroup: 2
-          phase1EncryptAlgorithm: AES_CBC
-          phase1IntegrityAlgorithm: HMAC_SHA1
-          phase2DhGroup: 2
-          phase2EncryptAlgorithm: AES_CTR
-          phase2IntegrityAlgorithm: HMAC_SHA2_256
-        change:
-          type: IPSEC_IPv4_UPDATE
-          status: COMPLETED
-          createdDateTime: 2025-03-28T04:12:36.607Z
-          updatedDateTime: 2025-03-10T05:00:00Z
-          data:
-            - op: replace
-              path: /name
-              value: Update-VPN-tunnel
-        changeLog:
-          createdBy: testBuyer
-          createdDateTime: 2025-03-28T04:12:36.607Z
-          updatedBy: testBuyer
-          updatedDateTime: 2025-03-10T05:00:00Z
-          deletedBy: testBuyer
-          deletedDateTime: 2025-03-15T12:20:06Z
-    GatewayTunnel_400_InvalidState:
-      value:
-        - errorCode: EQ-8030030
-          errorMessage: Cannot delete Gateway Tunnel in transient state
-          correlationId: 09fbe616-e563-438e-9b1b-56632d1611ff
-          details: Cannot delete Gateway Tunnel in transient state.
-    GatewayTunnelUpdateEnabled:
-      value:
-        - op: replace
-          path: /enabled
-          value: true
-    GatewayTunnelUpdateResponseExample:
-      value:
-        href: https://api.equinix.com/fabric/v4/interfaces/6658cc3b-18e0-437c-b972-62b51a419a1e/tunnels/aee72df9-dec8-4c89-8f18-c4d0ef203656
-        uuid: aee72df9-dec8-4c89-8f18-c4d0ef203656
-        type: IPSEC_IPv4
-        name: My-Tunnel
-        description: ipsec tunnel configuration
-        state: PROVISIONED
-        isInitiator: true
-        tunnelLocalInsideCidr: 192.168.1.1/30
-        tunnelRemoteInsideCidr: 192.168.1.2/30
-        customerPeerIp: 1.2.3.43
-        mtu: 1500
-        enabled: true
-        isNatT: false
-        authentication:
-          type: PSK
-          ikeVersion: ikev2
-          preSharedKey: EBY8EAY_yo2
-          phase1DhGroup: 2
-          phase1EncryptAlgorithm: AES_CBC
-          phase1IntegrityAlgorithm: HMAC_SHA1
-          phase2DhGroup: 2
-          phase2EncryptAlgorithm: AES_CTR
-          phase2IntegrityAlgorithm: HMAC_SHA2_256
-        change:
-          type: IPSEC_IPv4_UPDATE
-          status: COMPLETED
-          createdDateTime: 2025-03-28T04:12:36.607Z
-          updatedDateTime: 2025-03-10T05:00:00Z
-          data:
-            - op: replace
-              path: /enabled
-              value: true
-        changeLog:
-          createdBy: testBuyer
-          createdDateTime: 2025-03-28T04:12:36.607Z
-          updatedBy: testBuyer
-          updatedDateTime: 2025-03-10T05:00:00Z
-        links:
-          - href: https://api.equinix.com/fabric/v4/interfaces/6658cc3b-18e0-437c-b972-62b51a419a1e/tunnels/aee72df9-dec8-4c89-8f18-c4d0ef203656/routingProtocols/search
-            rel: searchGatewayRoutingProtocols
-            method: POST
-            contentType: application/json
-            authenticate: true
-          - href: https://api.equinix.com/fabric/v4/interfaces/6658cc3b-18e0-437c-b972-62b51a419a1e/tunnels/aee72df9-dec8-4c89-8f18-c4d0ef203656/operationalStatus
-            rel: getGatewayTunnelOperationalStatus
-            method: GET
-            contentType: application/json
-            authenticate: true
-    GatewayTunnelSearchFilterByStatus:
-      value:
-        filter:
-          and:
-            - property: /state
-              operator: IN
-              values:
-                - PROVISIONED
-        pagination:
-          offset: 0
-          limit: 20
-        sort:
-          - direction: DESC
-            property: /changeLog/createdDateTime
-    GatewayTunnelSearchFilterByName:
-      value:
-        filter:
-          and:
-            - property: /name
-              operator: =
-              values:
-                - test-
-        pagination:
-          offset: 0
-          limit: 20
-        sort:
-          - direction: DESC
-            property: /changeLog/createdDateTime
-    GatewayTunnelSearchFilterOrAnd:
-      value:
-        filter:
-          and:
-            - or:
-                - property: /name
-                  operator: LIKE
-                  values:
-                    - abc%
-            - property: /state
-              operator: =
-              values:
-                - PROVISIONED
-    GatewayTunnelSearchExample:
-      value:
-        pagination:
-          offset: 20
-          limit: 20
-          total: 100
-          next: /search?offset=40&limit=20
-          previous: /search?offset=0&limit=20
-        data:
-          - href: https://api.equinix.com/fabric/v4/interfaces/6658cc3b-18e0-437c-b972-62b51a419a1e/tunnels/aee72df9-dec8-4c89-8f18-c4d0ef203656
-            uuid: aee72df9-dec8-4c89-8f18-c4d0ef203656
-            type: IPSEC_IPv4
-            name: My-Tunnel
-            description: ipsec tunnel configuration
-            state: PROVISIONED
-            isInitiator: true
-            tunnelLocalInsideCidr: 192.168.1.1/30
-            tunnelRemoteInsideCidr: 192.168.1.2/30
-            customerPeerIp: 1.2.3.43
-            mtu: 1500
-            enabled: true
-            isNatT: false
-            authentication:
-              type: PSK
-              ikeVersion: ikev2
-              preSharedKey: EBY8EAY_yo2
-              phase1DhGroup: 2
-              phase1EncryptAlgorithm: AES_CBC
-              phase1IntegrityAlgorithm: HMAC_SHA1
-              phase2DhGroup: 2
-              phase2EncryptAlgorithm: AES_CTR
-              phase2IntegrityAlgorithm: HMAC_SHA2_256
-            change:
-              type: IPSEC_IPv4_UPDATE
-              status: COMPLETED
-              createdDateTime: 2025-03-28T04:12:36.607Z
-              updatedDateTime: 2025-03-10T05:00:00Z
-              data:
-                - op: replace
-                  path: /name
-                  value: Update-Gateway-tunnel
-            changeLog:
-              createdBy: testBuyer
-              createdDateTime: 2025-03-28T04:12:36.607Z
-              updatedBy: testBuyer
-              updatedDateTime: 2025-03-10T05:00:00Z
-            links:
-              - href: https://api.equinix.com/fabric/v4/interfaces/6658cc3b-18e0-437c-b972-62b51a419a1e/tunnels/aee72df9-dec8-4c89-8f18-c4d0ef203656/routingProtocols/search
-                rel: searchGatewayRoutingProtocols
-                method: POST
-                contentType: application/json
-                authenticate: true
-              - href: https://api.equinix.com/fabric/v4/interfaces/6658cc3b-18e0-437c-b972-62b51a419a1e/tunnels/aee72df9-dec8-4c89-8f18-c4d0ef203656/operationalStatus
-                rel: getGatewayTunnelOperationalStatus
-                method: GET
-                contentType: application/json
-                authenticate: true
-    GatewayTunnel_400_InvalidSorting:
-      value:
-        - errorCode: EQ-8030039
-          errorMessage: Invalid value for sorting direction.
-          correlationId: 11091aa7-322a-461e-b6af-40fd10543c94
-          additionalInfo:
-            - reason: Only accept DESC and ASC for sorting direction.
-    GatewayTunnelOperationalStatusGetResponse:
-      value:
-        message: tunnel operational status is up
-        status: UP
-        changedAt: 2025-04-15T07:00:00Z
-    GatewayRoutingProtocolCreate:
-      value:
-        type: BGP_IPv4
-        name: My-BgpPeer
-        description: this is my test bgp
-        localPeerIp: 200.200.2.0
-        remotePeerIp: 100.100.1.0
-        authentication:
-          type: MD5
-          key: 8a9d5f3ca2b4a5fd7e8b6d8a9c5f3e2b1a7
-        enabled: true
-        localAsn: 65432
-        remoteAsn: 65219
-    GatewayRoutingProtocolPostResponseExample:
-      value:
-        href: https://api.equinix.com/fabric/v4/interfaces/6658cc3b-18e0-437c-b972-62b51a419a1e/tunnels/aee72df9-dec8-4c89-8f18-c4d0ef203656/routingProtocols/80932bb5-1d3e-457a-b067-0ace6a3a0268
-        uuid: 80932bb5-1d3e-457a-b067-0ace6a3a0268
-        type: BGP_IPv4
-        name: My-BgpPeer
-        description: this is my test bgp
-        localPeerIp: 200.200.2.0
-        remotePeerIp: 100.100.1.0
-        authentication:
-          type: MD5
-          key: 8a9d5f3ca2b4a5fd7e8b6d8a9c5f3e2b1a7
-        enabled: true
-        localAsn: 65432
-        remoteAsn: 65219
-        state: PROVISIONED
-        changeLog:
-          createdBy: testBuyer
-          createdDateTime: 2025-03-28T04:12:36.607Z
-        links:
-          - href: https://api.equinix.com/fabric/v4/interfaces/6658cc3b-18e0-437c-b972-62b51a419a1e/tunnels/aee72df9-dec8-4c89-8f18-c4d0ef203656/routingProtocols/80932bb5-1d3e-457a-b067-0ace6a3a0268/operationalStatus
-            rel: getGatewayRoutingProtocolOperationalStatus
-            method: GET
-            contentType: application/json
-            authenticate: true
-    GatewayRoutingProtocol_400_InvalidName:
-      value:
-        - errorCode: EQ-8040022
-          errorMessage: Name is minimum 0 and up to 50 characters in length
-          correlationId: fc7a32c8-2b99-4915-bb4b-eb42bbba668e
-          details: Name is minimum 0 and up to 50 characters in length
-          additionalInfo:
-            - property: /name
-              reason: Name is minimum 0 and up to 50 characters in length
-    GatewayRoutingProtocol_401:
-      value:
-        - errorCode: EQ-8040001
-          errorMessage: User not found in request or invalid.
-          correlationId: c82ff3bc-de07-47e5-b3ec-53a009d01515
-          additionalInfo:
-            - reason: You are unauthorized to perform this operation
-    GatewayRoutingProtocol_403:
-      value:
-        - errorCode: EQ-8040002
-          errorMessage: Operation not allowed
-          correlationId: 8a72af9d-23f7-4b90-8237-0987130b42dd
-          details: Operation not allowed for current user
-    GatewayRoutingProtocol_415:
-      value:
-        - errorCode: EQ-8040016
-          errorMessage: Unsupported media type, please check the request's Content-Type or Content-Encoding
-          correlationId: c82ff3bc-de07-47e5-b3ec-53a009d01515
-          additionalInfo:
-            - property: contentType
-              reason: The payload format is in an unsupported format
-    GatewayRoutingProtocol_500:
-      value:
-        - errorCode: EQ-8040030
-          errorMessage: Internal Server Error
-          correlationId: f9018571-1001-4422-978b-bfa38ed6b92e
-          details: Internal Server Error
-    GatewayRoutingProtocolGetResponseExample:
-      value:
-        href: https://api.equinix.com/fabric/v4/interfaces/6658cc3b-18e0-437c-b972-62b51a419a1e/tunnels/aee72df9-dec8-4c89-8f18-c4d0ef203656/routingProtocols/80932bb5-1d3e-457a-b067-0ace6a3a0268
-        uuid: 80932bb5-1d3e-457a-b067-0ace6a3a0268
-        type: BGP_IPv4
-        name: My-BgpPeer
-        description: this is my test bgp
-        localPeerIp: 200.200.2.0
-        remotePeerIp: 100.100.1.0
-        authentication:
-          type: MD5
-          key: 8a9d5f3ca2b4a5fd7e8b6d8a9c5f3e2b1a7
-        enabled: true
-        localAsn: 65432
-        remoteAsn: 65219
-        state: PROVISIONED
-        change:
-          type: BGP_IPv4_UPDATE
-          status: COMPLETED
-          createdDateTime: 2025-03-28T04:12:36.607Z
-          updatedDateTime: 2025-03-10T05:00:00Z
-          data:
-            - op: replace
-              path: /name
-              value: Update-bgp
-        changeLog:
-          createdBy: testBuyer
-          createdDateTime: 2025-03-28T04:12:36.607Z
-          updatedBy: testBuyer
-          updatedDateTime: 2025-03-10T05:00:00Z
-        links:
-          - href: https://api.equinix.com/fabric/v4/interfaces/6658cc3b-18e0-437c-b972-62b51a419a1e/tunnels/aee72df9-dec8-4c89-8f18-c4d0ef203656/routingProtocols/80932bb5-1d3e-457a-b067-0ace6a3a0268/operationalStatus
-            rel: getGatewayRoutingProtocolOperationalStatus
-            method: GET
-            contentType: application/json
-            authenticate: true
-    GatewayRoutingProtocol_404:
-      value:
-        - errorCode: EQ-8040020
-          errorMessage: Gateway Routing Protocol not found or already deleted
-          correlationId: 9b6baf30-3eb0-458c-af8b-fff3fae32bc7
-          details: Gateway Routing Protocol not found or already deleted
-    GatewayRoutingProtocolDeleteResponseExample:
-      value:
-        href: https://api.equinix.com/fabric/v4/interfaces/6658cc3b-18e0-437c-b972-62b51a419a1e/tunnels/aee72df9-dec8-4c89-8f18-c4d0ef203656/routingProtocols/80932bb5-1d3e-457a-b067-0ace6a3a0268
-        uuid: 80932bb5-1d3e-457a-b067-0ace6a3a0268
-        type: BGP_IPv4
-        name: My-BgpPeer
-        description: this is my test bgp
-        localPeerIp: 200.200.2.0
-        remotePeerIp: 100.100.1.0
-        authentication:
-          type: MD5
-          key: 8a9d5f3ca2b4a5fd7e8b6d8a9c5f3e2b1a7
-        enabled: true
-        localAsn: 65432
-        remoteAsn: 65219
-        state: DEPROVISIONING
-        change:
-          type: BGP_IPv4_UPDATE
-          status: COMPLETED
-          createdDateTime: 2025-03-28T04:12:36.607Z
-          updatedDateTime: 2025-03-10T05:00:00Z
-          data:
-            - op: replace
-              path: /name
-              value: Update-bgp
-        changeLog:
-          createdBy: testBuyer
-          createdDateTime: 2025-03-28T04:12:36.607Z
-          updatedBy: testBuyer
-          updatedDateTime: 2025-03-10T05:00:00Z
-          deletedBy: testBuyer
-          deletedDateTime: 2025-03-15T12:20:06Z
-    GatewayRoutingProtocol_400_InvalidState:
-      value:
-        - errorCode: EQ-8040030
-          errorMessage: Cannot delete Gateway Routing Protocol in transient state
-          correlationId: 09fbe616-e563-438e-9b1b-56632d1611ff
-          details: Cannot delete Gateway Routing Protocol in transient state.
-    GatewayRoutingProtocolSearchFilterByStatus:
-      value:
-        filter:
-          and:
-            - property: /state
-              operator: IN
-              values:
-                - PROVISIONED
-        pagination:
-          offset: 0
-          limit: 20
-        sort:
-          - direction: DESC
-            property: /changeLog/createdDateTime
-    GatewayRoutingProtocolSearchFilterByName:
-      value:
-        filter:
-          and:
-            - property: /name
-              operator: =
-              values:
-                - test-
-        pagination:
-          offset: 0
-          limit: 20
-        sort:
-          - direction: DESC
-            property: /changeLog/createdDateTime
-    GatewayRoutingProtocolSearchFilterOrAnd:
-      value:
-        filter:
-          and:
-            - or:
-                - property: /name
-                  operator: LIKE
-                  values:
-                    - abc%
-            - property: /state
-              operator: =
-              values:
-                - PROVISIONED
-    GatewayRoutingProtocolSearchExample:
-      value:
-        pagination:
-          offset: 20
-          limit: 20
-          total: 100
-          next: /search?offset=40&limit=20
-          previous: /search?offset=0&limit=20
-        data:
-          - href: https://api.equinix.com/fabric/v4/interfaces/6658cc3b-18e0-437c-b972-62b51a419a1e/tunnels/aee72df9-dec8-4c89-8f18-c4d0ef203656/routingProtocols/80932bb5-1d3e-457a-b067-0ace6a3a0268
-            uuid: 80932bb5-1d3e-457a-b067-0ace6a3a0268
-            type: BGP_IPv4
-            name: My-BgpPeer
-            description: this is my test bgp
-            localPeerIp: 200.200.2.0
-            remotePeerIp: 100.100.1.0
-            authentication:
-              type: MD5
-              key: 8a9d5f3ca2b4a5fd7e8b6d8a9c5f3e2b1a7
-            enabled: true
-            localAsn: 65432
-            remoteAsn: 65219
-            state: PROVISIONED
-            change:
-              type: BGP_IPv4_UPDATE
-              status: COMPLETED
-              createdDateTime: 2025-03-28T04:12:36.607Z
-              updatedDateTime: 2025-03-10T05:00:00Z
-              data:
-                - op: replace
-                  path: /name
-                  value: Update-bgp
-            changeLog:
-              createdBy: testBuyer
-              createdDateTime: 2025-03-28T04:12:36.607Z
-              updatedBy: testBuyer
-              updatedDateTime: 2025-03-10T05:00:00Z
-            links:
-              - href: https://api.equinix.com/fabric/v4/interfaces/6658cc3b-18e0-437c-b972-62b51a419a1e/tunnels/aee72df9-dec8-4c89-8f18-c4d0ef203656/routingProtocols/80932bb5-1d3e-457a-b067-0ace6a3a0268/operationalStatus
-                rel: getGatewayRoutingProtocolOperationalStatus
-                method: GET
-                contentType: application/json
-                authenticate: true
-    GatewayRoutingProtocol_400_InvalidSorting:
-      value:
-        - errorCode: EQ-8040039
-          errorMessage: Invalid value for sorting direction.
-          correlationId: 11091aa7-322a-461e-b6af-40fd10543c94
-          additionalInfo:
-            - reason: Only accept DESC and ASC for sorting direction.
-    GatewayRoutingProtocolOperationalStatusGetResponse:
-      value:
-        message: routing protocol operational status is up
-        status: UP
-        changedAt: 2025-04-15T07:00:00Z
     DeploymentCreate:
       value:
         type: TOPOLOGY_DEPLOYMENT
@@ -45263,6 +43715,902 @@ components:
                 - DIRECT_CONNECT
                 - VPC
                 - SUBNET
+    PrivateDomainCreate:
+      value:
+        type: PRIVATE_DOMAIN
+        name: atlassian.net
+        description: Atlassian Domain
+        project:
+          projectId: 71b55fef-fd2e-402f-ae3c-01d5f00bf2d4
+    PrivateDomainPostResponseExample:
+      value:
+        href: https://api.equinix.com/fabric/v4/privateDomains/20f3ef8e-d670-4236-86fa-bb0038adcfc3
+        uuid: 20f3ef8e-d670-4236-86fa-bb0038adcfc3
+        type: PRIVATE_DOMAIN
+        name: atlassian.net
+        description: Atlassian Domain
+        state: PENDING_VERIFICATION
+        project:
+          projectId: 71b55fef-fd2e-402f-ae3c-01d5f00bf2d4
+    PrivateDomain_400_InvalidName:
+      value:
+        - errorCode: EQ-3810022
+          errorMessage: Domain name is invalid
+          correlationId: fc7a32c8-2b99-4915-bb4b-eb42bbba668e
+          details: Domain name is invalid
+          additionalInfo:
+            - property: /name
+              reason: Domain name is invalid
+    PrivateDomain_401:
+      value:
+        - errorCode: EQ-3810001
+          errorMessage: User not found in request or invalid.
+          correlationId: c82ff3bc-de07-47e5-b3ec-53a009d01515
+          additionalInfo:
+            - reason: You are unauthorized to perform this operation
+    PrivateDomain_403:
+      value:
+        - errorCode: EQ-3810002
+          errorMessage: Operation not allowed
+          correlationId: 8a72af9d-23f7-4b90-8237-0987130b42dd
+          details: Operation not allowed for current user
+    PrivateDomain_415:
+      value:
+        - errorCode: EQ-3810016
+          errorMessage: Unsupported media type, please check the request's Content-Type or Content-Encoding
+          correlationId: c82ff3bc-de07-47e5-b3ec-53a009d01515
+          additionalInfo:
+            - property: contentType
+              reason: The payload format is in an unsupported format
+    PrivateDomain_500:
+      value:
+        - errorCode: EQ-3810030
+          errorMessage: Internal Server Error
+          correlationId: f9018571-1001-4422-978b-bfa38ed6b92e
+          details: Internal Server Error
+    PrivateDomainGetResponseExample:
+      value:
+        href: https://api.equinix.com/fabric/v4/privateDomains/20f3ef8e-d670-4236-86fa-bb0038adcfc3
+        uuid: 20f3ef8e-d670-4236-86fa-bb0038adcfc3
+        type: PRIVATE_DOMAIN
+        name: atlassian.net
+        description: Atlassian Domain
+        state: PROVISIONED
+        project:
+          projectId: 71b55fef-fd2e-402f-ae3c-01d5f00bf2d4
+    PrivateDomain_404:
+      value:
+        - errorCode: EQ-3810020
+          errorMessage: Private Domain not found or already deleted
+          correlationId: 9b6baf30-3eb0-458c-af8b-fff3fae32bc7
+          details: Private Domain not found or already deleted
+    PrivateDomainDeleteResponseExample:
+      value:
+        href: https://api.equinix.com/fabric/v4/privateDomains/20f3ef8e-d670-4236-86fa-bb0038adcfc3
+        uuid: 20f3ef8e-d670-4236-86fa-bb0038adcfc3
+        type: PRIVATE_DOMAIN
+        name: atlassian.net
+        description: Atlassian Domain
+        state: DEPROVISIONED
+        project:
+          projectId: 71b55fef-fd2e-402f-ae3c-01d5f00bf2d4
+    PrivateDomain_400_InvalidState:
+      value:
+        - errorCode: EQ-3810030
+          errorMessage: Cannot delete Private Domain in transient state
+          correlationId: 09fbe616-e563-438e-9b1b-56632d1611ff
+          details: Cannot delete Private Domain in transient state.
+    PrivateDomainSearchFilterByStatus:
+      value:
+        filter:
+          and:
+            - property: /state
+              operator: =
+              values:
+                - PROVISIONED
+            - property: /project/projectId
+              operator: IN
+              values:
+                - 71b55fef-fd2e-402f-ae3c-01d5f00bf2d4
+        pagination:
+          offset: 0
+          limit: 20
+        sort:
+          - direction: DESC
+            property: /changeLog/createdDateTime
+    PrivateDomainSearchFilterByName:
+      value:
+        filter:
+          and:
+            - property: /name
+              operator: =
+              values:
+                - test-
+            - property: /project/projectId
+              operator: =
+              values:
+                - 71b55fef-fd2e-402f-ae3c-01d5f00bf2d4
+        pagination:
+          offset: 0
+          limit: 20
+        sort:
+          - direction: DESC
+            property: /changeLog/createdDateTime
+    PrivateDomainSearchFilterOrAnd:
+      value:
+        filter:
+          and:
+            - or:
+                - property: /name
+                  operator: LIKE
+                  values:
+                    - abc%
+            - property: /project/projectId
+              operator: =
+              values:
+                - 71b55fef-fd2e-402f-ae3c-01d5f00bf2d4
+    PrivateDomainSearchExample:
+      value:
+        pagination:
+          offset: 0
+          limit: 20
+          total: 1
+          next: /search?offset=1&limit=20
+          previous: /search?offset=0&limit=20
+        data:
+          - href: https://api.equinix.com/fabric/v4/privateDomains/20f3ef8e-d670-4236-86fa-bb0038adcfc3
+            uuid: 20f3ef8e-d670-4236-86fa-bb0038adcfc3
+            type: PRIVATE_DOMAIN
+            name: atlassian.net
+            description: Atlassian Domain
+            state: PROVISIONED
+            project:
+              projectId: 71b55fef-fd2e-402f-ae3c-01d5f00bf2d4
+    PrivateDomain_400_InvalidSorting:
+      value:
+        - errorCode: EQ-3810039
+          errorMessage: Invalid value for sorting direction.
+          correlationId: 11091aa7-322a-461e-b6af-40fd10543c94
+          additionalInfo:
+            - reason: Only accept DESC and ASC for sorting direction.
+    PrivateLinkCreate:
+      value:
+        type: PRIVATE_LINK
+        name: Atlassian Private Link
+        description: Atlassian Private Link in SV
+        router:
+          uuid: 36204584-2ae1-44f6-980f-08ecd555d9c6
+        ipv4: 192.168.10.1
+        project:
+          projectId: 71b55fef-fd2e-402f-ae3c-01d5f00bf2d4
+    PrivateLinkPostResponseExample:
+      value:
+        href: https://api.equinix.com/fabric/v4/privateLinks/23cd19ab-d3bb-478b-9f25-bd12a3af1914
+        uuid: 23cd19ab-d3bb-478b-9f25-bd12a3af1914
+        type: PRIVATE_LINK
+        name: Atlassian Private Link
+        description: Atlassian Private Link in SV
+        state: PROVISIONING
+        router:
+          href: https://api.equinix.com/fabric/v4/routers/36204584-2ae1-44f6-980f-08ecd555d9c6
+          uuid: 36204584-2ae1-44f6-980f-08ecd555d9c6
+          type: XF_ROUTER
+        ipv4: 192.168.10.1
+        project:
+          projectId: 71b55fef-fd2e-402f-ae3c-01d5f00bf2d4
+    PrivateLink_400_InvalidName:
+      value:
+        - errorCode: EQ-3820022
+          errorMessage: Name is minimum 0 and up to 50 characters in length
+          correlationId: fc7a32c8-2b99-4915-bb4b-eb42bbba668e
+          details: Name is minimum 0 and up to 50 characters in length
+          additionalInfo:
+            - property: /name
+              reason: Name is minimum 0 and up to 50 characters in length
+    PrivateLink_401:
+      value:
+        - errorCode: EQ-3820001
+          errorMessage: User not found in request or invalid.
+          correlationId: c82ff3bc-de07-47e5-b3ec-53a009d01515
+          additionalInfo:
+            - reason: You are unauthorized to perform this operation
+    PrivateLink_403:
+      value:
+        - errorCode: EQ-3820002
+          errorMessage: Operation not allowed
+          correlationId: 8a72af9d-23f7-4b90-8237-0987130b42dd
+          details: Operation not allowed for current user
+    PrivateLink_415:
+      value:
+        - errorCode: EQ-3820016
+          errorMessage: Unsupported media type, please check the request's Content-Type or Content-Encoding
+          correlationId: c82ff3bc-de07-47e5-b3ec-53a009d01515
+          additionalInfo:
+            - property: contentType
+              reason: The payload format is in an unsupported format
+    PrivateLink_500:
+      value:
+        - errorCode: EQ-3820030
+          errorMessage: Internal Server Error
+          correlationId: f9018571-1001-4422-978b-bfa38ed6b92e
+          details: Internal Server Error
+    PrivateLinkGetResponseExample:
+      value:
+        href: https://api.equinix.com/fabric/v4/privateLinks/23cd19ab-d3bb-478b-9f25-bd12a3af1914
+        uuid: 23cd19ab-d3bb-478b-9f25-bd12a3af1914
+        type: PRIVATE_LINK
+        name: Atlassian Private Link
+        description: Atlassian Private Link in SV
+        state: PROVISIONED
+        router:
+          href: https://api.equinix.com/fabric/v4/routers/36204584-2ae1-44f6-980f-08ecd555d9c6
+          uuid: 36204584-2ae1-44f6-980f-08ecd555d9c6
+          type: XF_ROUTER
+        ipv4: 192.168.10.1
+        project:
+          projectId: 71b55fef-fd2e-402f-ae3c-01d5f00bf2d4
+    PrivateLink_404:
+      value:
+        - errorCode: EQ-3820020
+          errorMessage: Private Link not found or already deleted
+          correlationId: 9b6baf30-3eb0-458c-af8b-fff3fae32bc7
+          details: Private Link not found or already deleted
+    PrivateLinkDeleteResponseExample:
+      value:
+        href: https://api.equinix.com/fabric/v4/privateLinks/23cd19ab-d3bb-478b-9f25-bd12a3af1914
+        uuid: 23cd19ab-d3bb-478b-9f25-bd12a3af1914
+        type: PRIVATE_LINK
+        name: Atlassian Private Link
+        description: Atlassian Private Link in SV
+        state: DEPROVISIONING
+        router:
+          href: https://api.equinix.com/fabric/v4/routers/36204584-2ae1-44f6-980f-08ecd555d9c6
+          uuid: 36204584-2ae1-44f6-980f-08ecd555d9c6
+          type: XF_ROUTER
+        ipv4: 192.168.10.1
+        project:
+          projectId: 71b55fef-fd2e-402f-ae3c-01d5f00bf2d4
+    PrivateLink_400_InvalidState:
+      value:
+        - errorCode: EQ-3820030
+          errorMessage: Cannot delete Private Link in transient state
+          correlationId: 09fbe616-e563-438e-9b1b-56632d1611ff
+          details: Cannot delete Private Link in transient state.
+    PrivateLinkSearchFilterByStatus:
+      value:
+        filter:
+          and:
+            - property: /state
+              operator: =
+              values:
+                - PROVISIONED
+            - property: /project/projectId
+              operator: IN
+              values:
+                - 71b55fef-fd2e-402f-ae3c-01d5f00bf2d4
+        pagination:
+          offset: 0
+          limit: 20
+        sort:
+          - direction: DESC
+            property: /changeLog/createdDateTime
+    PrivateLinkSearchFilterByName:
+      value:
+        filter:
+          and:
+            - property: /name
+              operator: =
+              values:
+                - test-
+            - property: /project/projectId
+              operator: =
+              values:
+                - 71b55fef-fd2e-402f-ae3c-01d5f00bf2d4
+        pagination:
+          offset: 0
+          limit: 20
+        sort:
+          - direction: DESC
+            property: /changeLog/createdDateTime
+    PrivateLinkSearchFilterOrAnd:
+      value:
+        filter:
+          and:
+            - or:
+                - property: /name
+                  operator: LIKE
+                  values:
+                    - abc%
+            - property: /project/projectId
+              operator: =
+              values:
+                - 71b55fef-fd2e-402f-ae3c-01d5f00bf2d4
+    PrivateLinkSearchExample:
+      value:
+        pagination:
+          offset: 0
+          limit: 20
+          total: 1
+          next: /search?offset=1&limit=20
+          previous: /search?offset=0&limit=20
+        data:
+          - href: https://api.equinix.com/fabric/v4/privateLinks/23cd19ab-d3bb-478b-9f25-bd12a3af1914
+            uuid: 23cd19ab-d3bb-478b-9f25-bd12a3af1914
+            type: PRIVATE_LINK
+            name: Atlassian Private Link
+            description: Atlassian Private Link in SV
+            state: PROVISIONED
+            router:
+              href: https://api.equinix.com/fabric/v4/routers/36204584-2ae1-44f6-980f-08ecd555d9c6
+              uuid: 36204584-2ae1-44f6-980f-08ecd555d9c6
+              type: XF_ROUTER
+            ipv4: 192.168.10.1
+            project:
+              projectId: 71b55fef-fd2e-402f-ae3c-01d5f00bf2d4
+    PrivateLink_400_InvalidSorting:
+      value:
+        - errorCode: EQ-3820039
+          errorMessage: Invalid value for sorting direction.
+          correlationId: 11091aa7-322a-461e-b6af-40fd10543c94
+          additionalInfo:
+            - reason: Only accept DESC and ASC for sorting direction.
+    PrivateLinkAttachDomain:
+      value:
+        subdomains:
+          - equinixjira
+    PrivateLinkAttachDomainAttachResponse:
+      value:
+        href: /fabric/v4/privateLinks/23cd19ab-d3bb-478b-9f25-bd12a3af1914/privateDomains/20f3ef8e-d670-4236-86fa-bb0038adcfc3
+        uuid: 20f3ef8e-d670-4236-86fa-bb0038adcfc3
+        type: PRIVATE_DOMAIN
+        name: atlassian.net
+        subdomains:
+          - equinixjira
+        attachmentStatus: ATTACHING
+    PrivateLink_400_InvalidAttachState:
+      value:
+        - errorCode: EQ-3820030
+          errorMessage: Cannot perform attach or detach operation in transient state
+          correlationId: 09fbe616-e563-438e-9b1b-56632d1611ff
+          details: Cannot perform attach or detach operation in transient state.
+    PrivateLinkAttachDomainDetachResponse:
+      value:
+        href: /fabric/v4/privateLinks/23cd19ab-d3bb-478b-9f25-bd12a3af1914/privateDomains/20f3ef8e-d670-4236-86fa-bb0038adcfc3
+        uuid: 20f3ef8e-d670-4236-86fa-bb0038adcfc3
+        type: PRIVATE_DOMAIN
+        name: atlassian.net
+        subdomains:
+          - equinixjira
+        attachmentStatus: DETACHING
+    PrivateLinkAttachDomainSearchFilterByStatus:
+      value:
+        filter:
+          and:
+            - property: /attachmentStatus
+              operator: =
+              values:
+                - ATTACHED
+        pagination:
+          offset: 0
+          limit: 20
+        sort:
+          - direction: DESC
+            property: /changeLog/createdDateTime
+    PrivateLinkAttachDomainSearchFilterOrAnd:
+      value:
+        filter:
+          and:
+            - or:
+                - property: /uuid
+                  operator: =
+                  values:
+                    - 20f3ef8e-d670-4236-86fa-bb0038adcfc3
+    PrivateLinkAttachDomainSearchExample:
+      value:
+        pagination:
+          offset: 0
+          limit: 20
+          total: 1
+          next: /search?offset=1&limit=20
+          previous: /search?offset=0&limit=20
+        data:
+          - href: /fabric/v4/privateLinks/23cd19ab-d3bb-478b-9f25-bd12a3af1914/privateDomains/20f3ef8e-d670-4236-86fa-bb0038adcfc3
+            uuid: 20f3ef8e-d670-4236-86fa-bb0038adcfc3
+            type: PRIVATE_DOMAIN
+            name: atlassian.net
+            subdomains:
+              - equinixjira
+            attachmentStatus: ATTACHED
+    PrivateLinkAttachService:
+      value:
+        geoScope: GLOBAL
+        destinationIp: 10.10.1.110
+    PrivateLinkAttachServiceAttachResponse:
+      value:
+        href: /fabric/v4/privateLinks/23cd19ab-d3bb-478b-9f25-bd12a3af1914/privateServices/5008a109-9d1c-485c-b0ba-de9736f283c2
+        uuid: 5008a109-9d1c-485c-b0ba-de9736f283c2
+        type: PRIVATE_SERVICE
+        geoScope: GLOBAL
+        destinationIp: 10.10.1.110
+        attachmentStatus: ATTACHING
+    PrivateLinkAttachServiceDetachResponse:
+      value:
+        href: /fabric/v4/privateLinks/23cd19ab-d3bb-478b-9f25-bd12a3af1914/privateServices/5008a109-9d1c-485c-b0ba-de9736f283c2
+        uuid: 5008a109-9d1c-485c-b0ba-de9736f283c2
+        type: PRIVATE_SERVICE
+        geoScope: GLOBAL
+        destinationIp: 10.10.1.110
+        attachmentStatus: DETACHING
+    PrivateLinkAttachServiceSearchFilterByStatus:
+      value:
+        filter:
+          and:
+            - property: /attachmentStatus
+              operator: =
+              values:
+                - ATTACHED
+        pagination:
+          offset: 0
+          limit: 20
+        sort:
+          - direction: DESC
+            property: /changeLog/createdDateTime
+    PrivateLinkAttachServiceSearchFilterOrAnd:
+      value:
+        filter:
+          and:
+            - or:
+                - property: /uuid
+                  operator: =
+                  values:
+                    - 20f3ef8e-d670-4236-86fa-bb0038adcfc3
+    PrivateLinkAttachServiceSearchExample:
+      value:
+        pagination:
+          offset: 0
+          limit: 20
+          total: 1
+          next: /search?offset=1&limit=20
+          previous: /search?offset=0&limit=20
+        data:
+          - href: /fabric/v4/privateLinks/23cd19ab-d3bb-478b-9f25-bd12a3af1914/privateServices/5008a109-9d1c-485c-b0ba-de9736f283c2
+            uuid: 5008a109-9d1c-485c-b0ba-de9736f283c2
+            type: PRIVATE_SERVICE
+            geoScope: GLOBAL
+            destinationIp: 10.10.1.110
+            attachmentStatus: ATTACHED
+    PrivateServiceCreate:
+      value:
+        type: PRIVATE_SERVICE
+        name: Atlassian Private Service
+        description: Atlassian Private Service in SV
+        domains:
+          - name: atlassian.net
+            subdomains:
+              - equinixjira
+        sourceDomainNames:
+          - equinix.com
+        project:
+          projectId: 71b55fef-fd2e-402f-ae3c-01d5f00bf2d4
+    PrivateServicePostResponseExample:
+      value:
+        href: https://api.equinix.com/fabric/v4/privateServices/5008a109-9d1c-485c-b0ba-de9736f283c2
+        uuid: 5008a109-9d1c-485c-b0ba-de9736f283c2
+        type: PRIVATE_SERVICE
+        name: Atlassian Private Service
+        description: Atlassian Private Service in SV
+        state: PROVISIONING
+        domains:
+          - href: https://api.equinix.com/fabric/v4/privateDomains/20f3ef8e-d670-4236-86fa-bb0038adcfc3
+            uuid: 20f3ef8e-d670-4236-86fa-bb0038adcfc3
+            type: PRIVATE_DOMAIN
+            name: atlassian.net
+            subdomains:
+              - equinixjira
+        sourceDomainNames:
+          - equinix.com
+        project:
+          projectId: 71b55fef-fd2e-402f-ae3c-01d5f00bf2d4
+    PrivateService_400_InvalidName:
+      value:
+        - errorCode: EQ-3830022
+          errorMessage: Name is minimum 0 and up to 50 characters in length
+          correlationId: fc7a32c8-2b99-4915-bb4b-eb42bbba668e
+          details: Name is minimum 0 and up to 50 characters in length
+          additionalInfo:
+            - property: /name
+              reason: Name is minimum 0 and up to 50 characters in length
+    PrivateService_401:
+      value:
+        - errorCode: EQ-3830001
+          errorMessage: User not found in request or invalid.
+          correlationId: c82ff3bc-de07-47e5-b3ec-53a009d01515
+          additionalInfo:
+            - reason: You are unauthorized to perform this operation
+    PrivateService_403:
+      value:
+        - errorCode: EQ-3830002
+          errorMessage: Operation not allowed
+          correlationId: 8a72af9d-23f7-4b90-8237-0987130b42dd
+          details: Operation not allowed for current user
+    PrivateService_415:
+      value:
+        - errorCode: EQ-3830016
+          errorMessage: Unsupported media type, please check the request's Content-Type or Content-Encoding
+          correlationId: c82ff3bc-de07-47e5-b3ec-53a009d01515
+          additionalInfo:
+            - property: contentType
+              reason: The payload format is in an unsupported format
+    PrivateService_500:
+      value:
+        - errorCode: EQ-3830030
+          errorMessage: Internal Server Error
+          correlationId: f9018571-1001-4422-978b-bfa38ed6b92e
+          details: Internal Server Error
+    PrivateServiceGetResponseExample:
+      value:
+        href: https://api.equinix.com/fabric/v4/privateServices/5008a109-9d1c-485c-b0ba-de9736f283c2
+        uuid: 5008a109-9d1c-485c-b0ba-de9736f283c2
+        type: PRIVATE_SERVICE
+        name: Atlassian Private Service
+        description: Atlassian Private Service in SV
+        state: PROVISIONED
+        domains:
+          - href: https://api.equinix.com/fabric/v4/privateDomains/20f3ef8e-d670-4236-86fa-bb0038adcfc3
+            uuid: 20f3ef8e-d670-4236-86fa-bb0038adcfc3
+            type: PRIVATE_DOMAIN
+            name: atlassian.net
+            subdomains:
+              - equinixjira
+        sourceDomainNames:
+          - equinix.com
+        project:
+          projectId: 71b55fef-fd2e-402f-ae3c-01d5f00bf2d4
+    PrivateService_404:
+      value:
+        - errorCode: EQ-3830020
+          errorMessage: Private Service not found or already deleted
+          correlationId: 9b6baf30-3eb0-458c-af8b-fff3fae32bc7
+          details: Private Service not found or already deleted
+    PrivateServiceDeleteResponseExample:
+      value:
+        href: https://api.equinix.com/fabric/v4/privateServices/5008a109-9d1c-485c-b0ba-de9736f283c2
+        uuid: 5008a109-9d1c-485c-b0ba-de9736f283c2
+        type: PRIVATE_SERVICE
+        name: Atlassian Private Service
+        description: Atlassian Private Service in SV
+        state: DEPROVISIONING
+        domains:
+          - href: https://api.equinix.com/fabric/v4/privateDomains/20f3ef8e-d670-4236-86fa-bb0038adcfc3
+            uuid: 20f3ef8e-d670-4236-86fa-bb0038adcfc3
+            type: PRIVATE_DOMAIN
+            name: atlassian.net
+            subdomains:
+              - equinixjira
+        sourceDomainNames:
+          - equinix.com
+        project:
+          projectId: 71b55fef-fd2e-402f-ae3c-01d5f00bf2d4
+    PrivateService_400_InvalidState:
+      value:
+        - errorCode: EQ-3830030
+          errorMessage: Cannot delete Private Service in transient state
+          correlationId: 09fbe616-e563-438e-9b1b-56632d1611ff
+          details: Cannot delete Private Service in transient state.
+    PrivateServiceSearchFilterByStatus:
+      value:
+        filter:
+          and:
+            - property: /state
+              operator: =
+              values:
+                - PROVISIONED
+            - property: /project/projectId
+              operator: IN
+              values:
+                - 71b55fef-fd2e-402f-ae3c-01d5f00bf2d4
+        pagination:
+          offset: 0
+          limit: 20
+        sort:
+          - direction: DESC
+            property: /changeLog/createdDateTime
+    PrivateServiceSearchFilterByName:
+      value:
+        filter:
+          and:
+            - property: /name
+              operator: =
+              values:
+                - test-
+            - property: /project/projectId
+              operator: =
+              values:
+                - 71b55fef-fd2e-402f-ae3c-01d5f00bf2d4
+        pagination:
+          offset: 0
+          limit: 20
+        sort:
+          - direction: DESC
+            property: /changeLog/createdDateTime
+    PrivateServiceSearchFilterOrAnd:
+      value:
+        filter:
+          and:
+            - or:
+                - property: /name
+                  operator: LIKE
+                  values:
+                    - abc%
+            - property: /project/projectId
+              operator: =
+              values:
+                - 71b55fef-fd2e-402f-ae3c-01d5f00bf2d4
+    PrivateServiceSearchExample:
+      value:
+        pagination:
+          offset: 0
+          limit: 20
+          total: 1
+          next: /search?offset=1&limit=20
+          previous: /search?offset=0&limit=20
+        data:
+          - href: https://api.equinix.com/fabric/v4/privateServices/5008a109-9d1c-485c-b0ba-de9736f283c2
+            uuid: 5008a109-9d1c-485c-b0ba-de9736f283c2
+            type: PRIVATE_SERVICE
+            name: Atlassian Private Service
+            description: Atlassian Private Service in SV
+            state: PROVISIONED
+            domains:
+              - href: https://api.equinix.com/fabric/v4/privateDomains/20f3ef8e-d670-4236-86fa-bb0038adcfc3
+                uuid: 20f3ef8e-d670-4236-86fa-bb0038adcfc3
+                type: PRIVATE_DOMAIN
+                name: atlassian.net
+                subdomains:
+                  - equinixjira
+            sourceDomainNames:
+              - equinix.com
+            project:
+              projectId: 71b55fef-fd2e-402f-ae3c-01d5f00bf2d4
+    PrivateService_400_InvalidSorting:
+      value:
+        - errorCode: EQ-3830039
+          errorMessage: Invalid value for sorting direction.
+          correlationId: 11091aa7-322a-461e-b6af-40fd10543c94
+          additionalInfo:
+            - reason: Only accept DESC and ASC for sorting direction.
+    PrivateSubscriptionCreate:
+      value:
+        type: PRIVATE_SUBSCRIPTION
+        source:
+          privateLink:
+            uuid: e32c9c7a-0149-4582-8345-192b82aef972
+          ipSubnets:
+            - 192.168.100.0/24
+        target:
+          privateService:
+            uuid: e18c15f4-c8aa-4c18-9e35-a7e9b288201d
+          geoScope: CONUS
+          prioritization: LATENCY
+        project:
+          projectId: 71b55fef-fd2e-402f-ae3c-01d5f00bf2d4
+    PrivateSubscriptionPostResponseExample:
+      value:
+        href: https://api.equinix.com/fabric/v4/privateSubscriptions/20f3ef8e-d670-4236-86fa-bb0038adcfc3
+        uuid: 20f3ef8e-d670-4236-86fa-bb0038adcfc3
+        type: PRIVATE_SUBSCRIPTION
+        source:
+          privateLink:
+            uuid: e32c9c7a-0149-4582-8345-192b82aef972
+          ipSubnets:
+            - 192.168.100.0/24
+        target:
+          privateService:
+            uuid: e18c15f4-c8aa-4c18-9e35-a7e9b288201d
+          geoScope: CONUS
+          prioritization: LATENCY
+        state: PROVISIONING
+        project:
+          projectId: 71b55fef-fd2e-402f-ae3c-01d5f00bf2d4
+    PrivateSubscription_401:
+      value:
+        - errorCode: EQ-3840001
+          errorMessage: User not found in request or invalid.
+          correlationId: c82ff3bc-de07-47e5-b3ec-53a009d01515
+          additionalInfo:
+            - reason: You are unauthorized to perform this operation
+    PrivateSubscription_403:
+      value:
+        - errorCode: EQ-3840002
+          errorMessage: Operation not allowed
+          correlationId: 8a72af9d-23f7-4b90-8237-0987130b42dd
+          details: Operation not allowed for current user
+    PrivateSubscription_415:
+      value:
+        - errorCode: EQ-3840016
+          errorMessage: Unsupported media type, please check the request's Content-Type or Content-Encoding
+          correlationId: c82ff3bc-de07-47e5-b3ec-53a009d01515
+          additionalInfo:
+            - property: contentType
+              reason: The payload format is in an unsupported format
+    PrivateSubscription_500:
+      value:
+        - errorCode: EQ-3840030
+          errorMessage: Internal Server Error
+          correlationId: f9018571-1001-4422-978b-bfa38ed6b92e
+          details: Internal Server Error
+    PrivateSubscriptionGetResponseExample:
+      value:
+        href: https://api.equinix.com/fabric/v4/privateSubscriptions/20f3ef8e-d670-4236-86fa-bb0038adcfc3
+        uuid: 20f3ef8e-d670-4236-86fa-bb0038adcfc3
+        type: PRIVATE_SUBSCRIPTION
+        source:
+          privateLink:
+            uuid: e32c9c7a-0149-4582-8345-192b82aef972
+          ipSubnets:
+            - 192.168.100.0/24
+        target:
+          privateService:
+            uuid: e18c15f4-c8aa-4c18-9e35-a7e9b288201d
+          geoScope: CONUS
+          prioritization: LATENCY
+        state: PROVISIONED
+        project:
+          projectId: 71b55fef-fd2e-402f-ae3c-01d5f00bf2d4
+    PrivateSubscription_404:
+      value:
+        - errorCode: EQ-3840020
+          errorMessage: Private Subscription not found or already deleted
+          correlationId: 9b6baf30-3eb0-458c-af8b-fff3fae32bc7
+          details: Private Subscription not found or already deleted
+    PrivateSubscriptionDeleteResponseExample:
+      value:
+        href: https://api.equinix.com/fabric/v4/privateSubscriptions/20f3ef8e-d670-4236-86fa-bb0038adcfc3
+        uuid: 20f3ef8e-d670-4236-86fa-bb0038adcfc3
+        type: PRIVATE_SUBSCRIPTION
+        source:
+          privateLink:
+            uuid: e32c9c7a-0149-4582-8345-192b82aef972
+          ipSubnets:
+            - 192.168.100.0/24
+        target:
+          privateService:
+            uuid: e18c15f4-c8aa-4c18-9e35-a7e9b288201d
+          geoScope: CONUS
+          prioritization: LATENCY
+        state: DEPROVISIONED
+        project:
+          projectId: 71b55fef-fd2e-402f-ae3c-01d5f00bf2d4
+    PrivateSubscription_400_InvalidState:
+      value:
+        - errorCode: EQ-3840030
+          errorMessage: Cannot delete Private Subscription in transient state
+          correlationId: 09fbe616-e563-438e-9b1b-56632d1611ff
+          details: Cannot delete Private Subscription in transient state.
+    PrivateSubscriptionSearchFilterByStatus:
+      value:
+        filter:
+          and:
+            - property: /state
+              operator: IN
+              values:
+                - PROVISIONED
+            - property: /project/projectId
+              operator: IN
+              values:
+                - 71b55fef-fd2e-402f-ae3c-01d5f00bf2d4
+        pagination:
+          offset: 0
+          limit: 20
+        sort:
+          - direction: DESC
+            property: /changeLog/createdDateTime
+    PrivateSubscriptionSearchFilterOrAnd:
+      value:
+        filter:
+          and:
+            - or:
+                - property: /uuid
+                  operator: =
+                  values:
+                    - 20f3ef8e-d670-4236-86fa-bb0038adcfc3
+            - property: /project/projectId
+              operator: =
+              values:
+                - 71b55fef-fd2e-402f-ae3c-01d5f00bf2d4
+    PrivateSubscriptionSearchExample:
+      value:
+        pagination:
+          offset: 0
+          limit: 20
+          total: 1
+          next: /search?offset=1&limit=20
+          previous: /search?offset=0&limit=20
+        data:
+          - href: https://api.equinix.com/fabric/v4/privateSubscriptions/20f3ef8e-d670-4236-86fa-bb0038adcfc3
+            uuid: 20f3ef8e-d670-4236-86fa-bb0038adcfc3
+            type: PRIVATE_SUBSCRIPTION
+            source:
+              privateLink:
+                uuid: e32c9c7a-0149-4582-8345-192b82aef972
+              ipSubnets:
+                - 192.168.100.0/24
+            target:
+              privateService:
+                uuid: e18c15f4-c8aa-4c18-9e35-a7e9b288201d
+              geoScope: CONUS
+              prioritization: LATENCY
+            state: PROVISIONED
+            project:
+              projectId: 71b55fef-fd2e-402f-ae3c-01d5f00bf2d4
+    PrivateSubscription_400_InvalidSorting:
+      value:
+        - errorCode: EQ-3840039
+          errorMessage: Invalid value for sorting direction.
+          correlationId: 11091aa7-322a-461e-b6af-40fd10543c94
+          additionalInfo:
+            - reason: Only accept DESC and ASC for sorting direction.
+    thumbs-up-response:
+      value:
+        response_id: resp_69f6f816-799f-4aa2-8e63-77fec55524d1
+        reaction: thumbs_up
+        category: other
+        comment: Looking good
+        submitted_at: 2024-11-21T10:30:00Z
+        user: test-user-123
+    thumbs-down-response:
+      value:
+        response_id: resp_69f6f816-799f-4aa2-8e63-77fec55524d1
+        reaction: thumbs_down
+        category: accuracy
+        comment: Is that true?
+        submitted_at: 2024-11-21T10:30:00Z
+        user: test-user-123
+    400-missing-required-header:
+      value:
+        - errorCode: EQ-3222001
+          errorMessage: Missing X-AUTH-USERNAME header
+          correlationId: 123e4567-e89b-12d3-a456-426614174000
+    400-invalid-auth-format:
+      value:
+        - errorCode: EQ-3222003
+          errorMessage: Invalid Authorization header format
+          correlationId: 123e4567-e89b-12d3-a456-426614174000
+    400-missing-token:
+      value:
+        - errorCode: EQ-3222004
+          errorMessage: Authorization header is missing the token
+          correlationId: 123e4567-e89b-12d3-a456-426614174000
+    401-missing-auth-header:
+      value:
+        - errorCode: EQ-3222001
+          errorMessage: Missing Authorization header
+          correlationId: 123e4567-e89b-12d3-a456-426614174000
+    401-empty-auth:
+      value:
+        - errorCode: EQ-3222003
+          errorMessage: Missing or empty Authorization header
+          correlationId: 123e4567-e89b-12d3-a456-426614174000
+    401-malformed-jwt:
+      value:
+        - errorCode: EQ-3222005
+          errorMessage: Malformed JWT token
+          correlationId: 123e4567-e89b-12d3-a456-426614174000
+    401-invalid-jwt:
+      value:
+        - errorCode: EQ-3222006
+          errorMessage: Invalid JWT token
+          correlationId: 123e4567-e89b-12d3-a456-426614174000
+    403-feature-disabled:
+      value:
+        - errorCode: EQ-3222002
+          errorMessage: ENA is disabled for this user and/or user's organization
+          correlationId: 123e4567-e89b-12d3-a456-426614174000
+    500-internal-server-error:
+      value:
+        - errorCode: EQ-3222100
+          errorMessage: Failed to store reaction
+          correlationId: 123e4567-e89b-12d3-a456-426614174000
   headers:
     ETag:
       description: response header - identifier for a specific version of a resource.
