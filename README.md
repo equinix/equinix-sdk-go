@@ -1,4 +1,4 @@
-# Equinix Go SDK 
+# Equinix Go SDK
 
 [![Release](https://img.shields.io/github/v/release/equinix/equinix-sdk-go)](https://github.com/equinix/equinix-sdk-go/releases/latest)
 [![GoDoc](https://godoc.org/github.com/equinix/equinix-sdk-go?status.svg)](https://godoc.org/github.com/equinix/equinix-sdk-go)
