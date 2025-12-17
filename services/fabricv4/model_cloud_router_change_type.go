@@ -17,14 +17,12 @@ type CloudRouterChangeType string
 
 // List of CloudRouterChange_type
 const (
-	CLOUDROUTERCHANGETYPE_UPDATE         CloudRouterChangeType = "ROUTER_UPDATE"
-	CLOUDROUTERCHANGETYPE_PACKAGE_UPDATE CloudRouterChangeType = "ROUTER_PACKAGE_UPDATE"
+	CLOUDROUTERCHANGETYPE_ROUTER_UPDATE CloudRouterChangeType = "ROUTER_UPDATE"
 )
 
 // All allowed values of CloudRouterChangeType enum
 var AllowedCloudRouterChangeTypeEnumValues = []CloudRouterChangeType{
 	"ROUTER_UPDATE",
-	"ROUTER_PACKAGE_UPDATE",
 }
 
 func (v *CloudRouterChangeType) UnmarshalJSON(src []byte) error {

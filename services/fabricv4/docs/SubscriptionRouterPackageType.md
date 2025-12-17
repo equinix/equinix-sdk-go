@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Code** | Pointer to [**SubscriptionRouterPackageTypeCode**](SubscriptionRouterPackageTypeCode.md) |  | [optional] 
+**Code** | Pointer to **string** | Cloud Router package code | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetCode
 
-`func (o *SubscriptionRouterPackageType) GetCode() SubscriptionRouterPackageTypeCode`
+`func (o *SubscriptionRouterPackageType) GetCode() string`
 
 GetCode returns the Code field if non-nil, zero value otherwise.
 
 ### GetCodeOk
 
-`func (o *SubscriptionRouterPackageType) GetCodeOk() (*SubscriptionRouterPackageTypeCode, bool)`
+`func (o *SubscriptionRouterPackageType) GetCodeOk() (*string, bool)`
 
 GetCodeOk returns a tuple with the Code field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCode
 
-`func (o *SubscriptionRouterPackageType) SetCode(v SubscriptionRouterPackageTypeCode)`
+`func (o *SubscriptionRouterPackageType) SetCode(v string)`
 
 SetCode sets Code field to given value.
 

@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **And** | Pointer to [**[]SearchExpression**](SearchExpression.md) |  | [optional] 
 **Or** | Pointer to [**[]SearchExpression**](SearchExpression.md) |  | [optional] 
 **Property** | Pointer to **string** |  | [optional] 
-**Operator** | Pointer to [**ExpressionOperator**](ExpressionOperator.md) |  | [optional] 
+**Operator** | Pointer to [**SearchExpressionOperator**](SearchExpressionOperator.md) |  | [optional] 
 **Values** | Pointer to **[]string** |  | [optional] 
 
 ## Methods
@@ -106,20 +106,20 @@ HasProperty returns a boolean if a field has been set.
 
 ### GetOperator
 
-`func (o *SearchExpression) GetOperator() ExpressionOperator`
+`func (o *SearchExpression) GetOperator() SearchExpressionOperator`
 
 GetOperator returns the Operator field if non-nil, zero value otherwise.
 
 ### GetOperatorOk
 
-`func (o *SearchExpression) GetOperatorOk() (*ExpressionOperator, bool)`
+`func (o *SearchExpression) GetOperatorOk() (*SearchExpressionOperator, bool)`
 
 GetOperatorOk returns a tuple with the Operator field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOperator
 
-`func (o *SearchExpression) SetOperator(v ExpressionOperator)`
+`func (o *SearchExpression) SetOperator(v SearchExpressionOperator)`
 
 SetOperator sets Operator field to given value.
 

@@ -4,14 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Href** | Pointer to **string** | Equinix assigned response attribute for an absolute URL that is the subject of the link&#39;s context. | [optional] [readonly] 
 **Type** | [**PortType**](PortType.md) |  | 
-**Id** | Pointer to **int32** | Equinix assigned response attribute for Port Id | [optional] 
-**Uuid** | Pointer to **string** | Equinix assigned response attribute for  port identifier | [optional] 
 **Name** | Pointer to **string** | Equinix assigned response attribute for Port name | [optional] 
 **Description** | Pointer to **string** | Equinix assigned response attribute for Port description | [optional] 
 **PhysicalPortsSpeed** | **int32** | Physical Ports Speed in Mbps | 
-**ConnectionsCount** | Pointer to **int32** | Equinix assigned response attribute for Connection count | [optional] 
 **PhysicalPortsType** | [**PortPhysicalPortsType**](PortPhysicalPortsType.md) |  | 
 **PhysicalPortsCount** | Pointer to **int32** |  | [optional] 
 **ConnectivitySourceType** | [**PortConnectivitySourceType**](PortConnectivitySourceType.md) |  | 
@@ -19,14 +15,10 @@ Name | Type | Description | Notes
 **Project** | Pointer to [**Project**](Project.md) |  | [optional] 
 **State** | Pointer to [**PortState**](PortState.md) |  | [optional] 
 **Order** | Pointer to [**PortOrder**](PortOrder.md) |  | [optional] 
-**Operation** | Pointer to [**PortOperation**](PortOperation.md) |  | [optional] 
 **Account** | [**SimplifiedAccount**](SimplifiedAccount.md) |  | 
-**Change** | Pointer to [**PortChange**](PortChange.md) |  | [optional] 
-**ChangeLog** | Pointer to [**Changelog**](Changelog.md) |  | [optional] 
 **ServiceType** | Pointer to [**PortServiceType**](PortServiceType.md) |  | [optional] 
+**ServiceCode** | Pointer to [**PortServiceCode**](PortServiceCode.md) |  | [optional] 
 **Bandwidth** | Pointer to **int32** | Equinix assigned response attribute for Port bandwidth in Mbps | [optional] 
-**AvailableBandwidth** | Pointer to **int32** | Equinix assigned response attribute for Port available bandwidth in Mbps | [optional] 
-**UsedBandwidth** | Pointer to **int32** | Equinix assigned response attribute for Port used bandwidth in Mbps | [optional] 
 **Location** | [**SimplifiedLocation**](SimplifiedLocation.md) |  | 
 **Device** | Pointer to [**PortDevice**](PortDevice.md) |  | [optional] 
 **Interface** | Pointer to [**PortInterface**](PortInterface.md) |  | [optional] 
@@ -46,6 +38,7 @@ Name | Type | Description | Notes
 **EndCustomer** | Pointer to [**EndCustomer**](EndCustomer.md) |  | [optional] 
 **PhysicalPorts** | Pointer to [**[]PhysicalPort**](PhysicalPort.md) | Physical ports that implement this port | [optional] 
 **Loas** | Pointer to [**[]PortLoa**](PortLoa.md) | Port Loas | [optional] 
+**MarketplaceSubscription** | Pointer to [**MarketplaceSubscription**](MarketplaceSubscription.md) |  | [optional] 
 
 ## Methods
 
@@ -66,31 +59,6 @@ NewPortRequestWithDefaults instantiates a new PortRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetHref
-
-`func (o *PortRequest) GetHref() string`
-
-GetHref returns the Href field if non-nil, zero value otherwise.
-
-### GetHrefOk
-
-`func (o *PortRequest) GetHrefOk() (*string, bool)`
-
-GetHrefOk returns a tuple with the Href field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetHref
-
-`func (o *PortRequest) SetHref(v string)`
-
-SetHref sets Href field to given value.
-
-### HasHref
-
-`func (o *PortRequest) HasHref() bool`
-
-HasHref returns a boolean if a field has been set.
-
 ### GetType
 
 `func (o *PortRequest) GetType() PortType`
@@ -110,56 +78,6 @@ and a boolean to check if the value has been set.
 
 SetType sets Type field to given value.
 
-
-### GetId
-
-`func (o *PortRequest) GetId() int32`
-
-GetId returns the Id field if non-nil, zero value otherwise.
-
-### GetIdOk
-
-`func (o *PortRequest) GetIdOk() (*int32, bool)`
-
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetId
-
-`func (o *PortRequest) SetId(v int32)`
-
-SetId sets Id field to given value.
-
-### HasId
-
-`func (o *PortRequest) HasId() bool`
-
-HasId returns a boolean if a field has been set.
-
-### GetUuid
-
-`func (o *PortRequest) GetUuid() string`
-
-GetUuid returns the Uuid field if non-nil, zero value otherwise.
-
-### GetUuidOk
-
-`func (o *PortRequest) GetUuidOk() (*string, bool)`
-
-GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUuid
-
-`func (o *PortRequest) SetUuid(v string)`
-
-SetUuid sets Uuid field to given value.
-
-### HasUuid
-
-`func (o *PortRequest) HasUuid() bool`
-
-HasUuid returns a boolean if a field has been set.
 
 ### GetName
 
@@ -230,31 +148,6 @@ and a boolean to check if the value has been set.
 
 SetPhysicalPortsSpeed sets PhysicalPortsSpeed field to given value.
 
-
-### GetConnectionsCount
-
-`func (o *PortRequest) GetConnectionsCount() int32`
-
-GetConnectionsCount returns the ConnectionsCount field if non-nil, zero value otherwise.
-
-### GetConnectionsCountOk
-
-`func (o *PortRequest) GetConnectionsCountOk() (*int32, bool)`
-
-GetConnectionsCountOk returns a tuple with the ConnectionsCount field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetConnectionsCount
-
-`func (o *PortRequest) SetConnectionsCount(v int32)`
-
-SetConnectionsCount sets ConnectionsCount field to given value.
-
-### HasConnectionsCount
-
-`func (o *PortRequest) HasConnectionsCount() bool`
-
-HasConnectionsCount returns a boolean if a field has been set.
 
 ### GetPhysicalPortsType
 
@@ -421,31 +314,6 @@ SetOrder sets Order field to given value.
 
 HasOrder returns a boolean if a field has been set.
 
-### GetOperation
-
-`func (o *PortRequest) GetOperation() PortOperation`
-
-GetOperation returns the Operation field if non-nil, zero value otherwise.
-
-### GetOperationOk
-
-`func (o *PortRequest) GetOperationOk() (*PortOperation, bool)`
-
-GetOperationOk returns a tuple with the Operation field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetOperation
-
-`func (o *PortRequest) SetOperation(v PortOperation)`
-
-SetOperation sets Operation field to given value.
-
-### HasOperation
-
-`func (o *PortRequest) HasOperation() bool`
-
-HasOperation returns a boolean if a field has been set.
-
 ### GetAccount
 
 `func (o *PortRequest) GetAccount() SimplifiedAccount`
@@ -465,56 +333,6 @@ and a boolean to check if the value has been set.
 
 SetAccount sets Account field to given value.
 
-
-### GetChange
-
-`func (o *PortRequest) GetChange() PortChange`
-
-GetChange returns the Change field if non-nil, zero value otherwise.
-
-### GetChangeOk
-
-`func (o *PortRequest) GetChangeOk() (*PortChange, bool)`
-
-GetChangeOk returns a tuple with the Change field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetChange
-
-`func (o *PortRequest) SetChange(v PortChange)`
-
-SetChange sets Change field to given value.
-
-### HasChange
-
-`func (o *PortRequest) HasChange() bool`
-
-HasChange returns a boolean if a field has been set.
-
-### GetChangeLog
-
-`func (o *PortRequest) GetChangeLog() Changelog`
-
-GetChangeLog returns the ChangeLog field if non-nil, zero value otherwise.
-
-### GetChangeLogOk
-
-`func (o *PortRequest) GetChangeLogOk() (*Changelog, bool)`
-
-GetChangeLogOk returns a tuple with the ChangeLog field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetChangeLog
-
-`func (o *PortRequest) SetChangeLog(v Changelog)`
-
-SetChangeLog sets ChangeLog field to given value.
-
-### HasChangeLog
-
-`func (o *PortRequest) HasChangeLog() bool`
-
-HasChangeLog returns a boolean if a field has been set.
 
 ### GetServiceType
 
@@ -541,6 +359,31 @@ SetServiceType sets ServiceType field to given value.
 
 HasServiceType returns a boolean if a field has been set.
 
+### GetServiceCode
+
+`func (o *PortRequest) GetServiceCode() PortServiceCode`
+
+GetServiceCode returns the ServiceCode field if non-nil, zero value otherwise.
+
+### GetServiceCodeOk
+
+`func (o *PortRequest) GetServiceCodeOk() (*PortServiceCode, bool)`
+
+GetServiceCodeOk returns a tuple with the ServiceCode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetServiceCode
+
+`func (o *PortRequest) SetServiceCode(v PortServiceCode)`
+
+SetServiceCode sets ServiceCode field to given value.
+
+### HasServiceCode
+
+`func (o *PortRequest) HasServiceCode() bool`
+
+HasServiceCode returns a boolean if a field has been set.
+
 ### GetBandwidth
 
 `func (o *PortRequest) GetBandwidth() int32`
@@ -565,56 +408,6 @@ SetBandwidth sets Bandwidth field to given value.
 `func (o *PortRequest) HasBandwidth() bool`
 
 HasBandwidth returns a boolean if a field has been set.
-
-### GetAvailableBandwidth
-
-`func (o *PortRequest) GetAvailableBandwidth() int32`
-
-GetAvailableBandwidth returns the AvailableBandwidth field if non-nil, zero value otherwise.
-
-### GetAvailableBandwidthOk
-
-`func (o *PortRequest) GetAvailableBandwidthOk() (*int32, bool)`
-
-GetAvailableBandwidthOk returns a tuple with the AvailableBandwidth field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAvailableBandwidth
-
-`func (o *PortRequest) SetAvailableBandwidth(v int32)`
-
-SetAvailableBandwidth sets AvailableBandwidth field to given value.
-
-### HasAvailableBandwidth
-
-`func (o *PortRequest) HasAvailableBandwidth() bool`
-
-HasAvailableBandwidth returns a boolean if a field has been set.
-
-### GetUsedBandwidth
-
-`func (o *PortRequest) GetUsedBandwidth() int32`
-
-GetUsedBandwidth returns the UsedBandwidth field if non-nil, zero value otherwise.
-
-### GetUsedBandwidthOk
-
-`func (o *PortRequest) GetUsedBandwidthOk() (*int32, bool)`
-
-GetUsedBandwidthOk returns a tuple with the UsedBandwidth field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUsedBandwidth
-
-`func (o *PortRequest) SetUsedBandwidth(v int32)`
-
-SetUsedBandwidth sets UsedBandwidth field to given value.
-
-### HasUsedBandwidth
-
-`func (o *PortRequest) HasUsedBandwidth() bool`
-
-HasUsedBandwidth returns a boolean if a field has been set.
 
 ### GetLocation
 
@@ -1075,6 +868,31 @@ SetLoas sets Loas field to given value.
 `func (o *PortRequest) HasLoas() bool`
 
 HasLoas returns a boolean if a field has been set.
+
+### GetMarketplaceSubscription
+
+`func (o *PortRequest) GetMarketplaceSubscription() MarketplaceSubscription`
+
+GetMarketplaceSubscription returns the MarketplaceSubscription field if non-nil, zero value otherwise.
+
+### GetMarketplaceSubscriptionOk
+
+`func (o *PortRequest) GetMarketplaceSubscriptionOk() (*MarketplaceSubscription, bool)`
+
+GetMarketplaceSubscriptionOk returns a tuple with the MarketplaceSubscription field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMarketplaceSubscription
+
+`func (o *PortRequest) SetMarketplaceSubscription(v MarketplaceSubscription)`
+
+SetMarketplaceSubscription sets MarketplaceSubscription field to given value.
+
+### HasMarketplaceSubscription
+
+`func (o *PortRequest) HasMarketplaceSubscription() bool`
+
+HasMarketplaceSubscription returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

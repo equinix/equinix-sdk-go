@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **CreatedDateTime** | Pointer to **time.Time** | Set when change flow starts | [optional] 
 **UpdatedDateTime** | **time.Time** | Set when change object is updated | 
 **Information** | Pointer to **string** | Additional information | [optional] 
-**Data** | Pointer to [**CloudRouterChangeOperation**](CloudRouterChangeOperation.md) |  | [optional] 
+**Data** | Pointer to [**[]CloudRouterChangeOperation**](CloudRouterChangeOperation.md) |  | [optional] 
 
 ## Methods
 
@@ -173,20 +173,20 @@ HasInformation returns a boolean if a field has been set.
 
 ### GetData
 
-`func (o *CloudRouterChange) GetData() CloudRouterChangeOperation`
+`func (o *CloudRouterChange) GetData() []CloudRouterChangeOperation`
 
 GetData returns the Data field if non-nil, zero value otherwise.
 
 ### GetDataOk
 
-`func (o *CloudRouterChange) GetDataOk() (*CloudRouterChangeOperation, bool)`
+`func (o *CloudRouterChange) GetDataOk() (*[]CloudRouterChangeOperation, bool)`
 
 GetDataOk returns a tuple with the Data field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetData
 
-`func (o *CloudRouterChange) SetData(v CloudRouterChangeOperation)`
+`func (o *CloudRouterChange) SetData(v []CloudRouterChangeOperation)`
 
 SetData sets Data field to given value.
 

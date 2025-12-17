@@ -16,11 +16,11 @@ var _ MappedNullable = &SearchExpression{}
 
 // SearchExpression struct for SearchExpression
 type SearchExpression struct {
-	And                  []SearchExpression  `json:"and,omitempty"`
-	Or                   []SearchExpression  `json:"or,omitempty"`
-	Property             *string             `json:"property,omitempty"`
-	Operator             *ExpressionOperator `json:"operator,omitempty"`
-	Values               []string            `json:"values,omitempty"`
+	And                  []SearchExpression        `json:"and,omitempty"`
+	Or                   []SearchExpression        `json:"or,omitempty"`
+	Property             *string                   `json:"property,omitempty"`
+	Operator             *SearchExpressionOperator `json:"operator,omitempty"`
+	Values               []string                  `json:"values,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -140,9 +140,9 @@ func (o *SearchExpression) SetProperty(v string) {
 }
 
 // GetOperator returns the Operator field value if set, zero value otherwise.
-func (o *SearchExpression) GetOperator() ExpressionOperator {
+func (o *SearchExpression) GetOperator() SearchExpressionOperator {
 	if o == nil || IsNil(o.Operator) {
-		var ret ExpressionOperator
+		var ret SearchExpressionOperator
 		return ret
 	}
 	return *o.Operator
@@ -150,7 +150,7 @@ func (o *SearchExpression) GetOperator() ExpressionOperator {
 
 // GetOperatorOk returns a tuple with the Operator field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SearchExpression) GetOperatorOk() (*ExpressionOperator, bool) {
+func (o *SearchExpression) GetOperatorOk() (*SearchExpressionOperator, bool) {
 	if o == nil || IsNil(o.Operator) {
 		return nil, false
 	}
@@ -166,8 +166,8 @@ func (o *SearchExpression) HasOperator() bool {
 	return false
 }
 
-// SetOperator gets a reference to the given ExpressionOperator and assigns it to the Operator field.
-func (o *SearchExpression) SetOperator(v ExpressionOperator) {
+// SetOperator gets a reference to the given SearchExpressionOperator and assigns it to the Operator field.
+func (o *SearchExpression) SetOperator(v SearchExpressionOperator) {
 	o.Operator = &v
 }
 

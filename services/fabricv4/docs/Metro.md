@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Code** | Pointer to **string** | Code Assigned to an Equinix IBX data center in a specified metropolitan area. | [optional] 
 **Region** | Pointer to **string** | Board geographic area in which the data center is located | [optional] 
 **Name** | Pointer to **string** | Name of the region in which the data center is located. | [optional] 
+**Country** | Pointer to **string** | Country code in which the data center is located. | [optional] 
 **EquinixAsn** | Pointer to **int64** | Autonomous system number (ASN) for a specified Fabric metro. The ASN is a unique identifier that carries the network routing protocol and exchanges that data with other internal systems via border gateway protocol. | [optional] 
 **LocalVCBandwidthMax** | Pointer to **int64** | This field holds Max Connection speed with in the metro | [optional] 
 **GeoCoordinates** | Pointer to [**GeoCoordinates**](GeoCoordinates.md) |  | [optional] 
@@ -159,6 +160,31 @@ SetName sets Name field to given value.
 `func (o *Metro) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+
+### GetCountry
+
+`func (o *Metro) GetCountry() string`
+
+GetCountry returns the Country field if non-nil, zero value otherwise.
+
+### GetCountryOk
+
+`func (o *Metro) GetCountryOk() (*string, bool)`
+
+GetCountryOk returns a tuple with the Country field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCountry
+
+`func (o *Metro) SetCountry(v string)`
+
+SetCountry sets Country field to given value.
+
+### HasCountry
+
+`func (o *Metro) HasCountry() bool`
+
+HasCountry returns a boolean if a field has been set.
 
 ### GetEquinixAsn
 

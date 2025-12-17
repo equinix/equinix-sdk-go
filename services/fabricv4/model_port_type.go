@@ -18,15 +18,11 @@ type PortType string
 // List of PortType
 const (
 	PORTTYPE_XF_PORT PortType = "XF_PORT"
-	PORTTYPE_IX_PORT PortType = "IX_PORT"
-	PORTTYPE_IA_PORT PortType = "IA_PORT"
 )
 
 // All allowed values of PortType enum
 var AllowedPortTypeEnumValues = []PortType{
 	"XF_PORT",
-	"IX_PORT",
-	"IA_PORT",
 }
 
 func (v *PortType) UnmarshalJSON(src []byte) error {
