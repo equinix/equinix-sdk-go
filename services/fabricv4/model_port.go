@@ -44,6 +44,7 @@ type Port struct {
 	ChangeLog              *Changelog                  `json:"changeLog,omitempty"`
 	// Deprecated
 	ServiceType *PortServiceType `json:"serviceType,omitempty"`
+	ServiceCode *PortServiceCode `json:"serviceCode,omitempty"`
 	// Equinix assigned response attribute for Port bandwidth in Mbps
 	// Deprecated
 	Bandwidth *int32 `json:"bandwidth,omitempty"`
@@ -78,8 +79,9 @@ type Port struct {
 	// Physical ports that implement this port
 	PhysicalPorts []PhysicalPort `json:"physicalPorts,omitempty"`
 	// Port Loas
-	Loas                 []PortLoa `json:"loas,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Loas                    []PortLoa                `json:"loas,omitempty"`
+	MarketplaceSubscription *MarketplaceSubscription `json:"marketplaceSubscription,omitempty"`
+	AdditionalProperties    map[string]interface{}
 }
 
 type _Port Port
@@ -742,6 +744,38 @@ func (o *Port) HasServiceType() bool {
 // Deprecated
 func (o *Port) SetServiceType(v PortServiceType) {
 	o.ServiceType = &v
+}
+
+// GetServiceCode returns the ServiceCode field value if set, zero value otherwise.
+func (o *Port) GetServiceCode() PortServiceCode {
+	if o == nil || IsNil(o.ServiceCode) {
+		var ret PortServiceCode
+		return ret
+	}
+	return *o.ServiceCode
+}
+
+// GetServiceCodeOk returns a tuple with the ServiceCode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Port) GetServiceCodeOk() (*PortServiceCode, bool) {
+	if o == nil || IsNil(o.ServiceCode) {
+		return nil, false
+	}
+	return o.ServiceCode, true
+}
+
+// HasServiceCode returns a boolean if a field has been set.
+func (o *Port) HasServiceCode() bool {
+	if o != nil && !IsNil(o.ServiceCode) {
+		return true
+	}
+
+	return false
+}
+
+// SetServiceCode gets a reference to the given PortServiceCode and assigns it to the ServiceCode field.
+func (o *Port) SetServiceCode(v PortServiceCode) {
+	o.ServiceCode = &v
 }
 
 // GetBandwidth returns the Bandwidth field value if set, zero value otherwise.
@@ -1451,6 +1485,38 @@ func (o *Port) SetLoas(v []PortLoa) {
 	o.Loas = v
 }
 
+// GetMarketplaceSubscription returns the MarketplaceSubscription field value if set, zero value otherwise.
+func (o *Port) GetMarketplaceSubscription() MarketplaceSubscription {
+	if o == nil || IsNil(o.MarketplaceSubscription) {
+		var ret MarketplaceSubscription
+		return ret
+	}
+	return *o.MarketplaceSubscription
+}
+
+// GetMarketplaceSubscriptionOk returns a tuple with the MarketplaceSubscription field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Port) GetMarketplaceSubscriptionOk() (*MarketplaceSubscription, bool) {
+	if o == nil || IsNil(o.MarketplaceSubscription) {
+		return nil, false
+	}
+	return o.MarketplaceSubscription, true
+}
+
+// HasMarketplaceSubscription returns a boolean if a field has been set.
+func (o *Port) HasMarketplaceSubscription() bool {
+	if o != nil && !IsNil(o.MarketplaceSubscription) {
+		return true
+	}
+
+	return false
+}
+
+// SetMarketplaceSubscription gets a reference to the given MarketplaceSubscription and assigns it to the MarketplaceSubscription field.
+func (o *Port) SetMarketplaceSubscription(v MarketplaceSubscription) {
+	o.MarketplaceSubscription = &v
+}
+
 func (o Port) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -1521,6 +1587,9 @@ func (o Port) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ServiceType) {
 		toSerialize["serviceType"] = o.ServiceType
 	}
+	if !IsNil(o.ServiceCode) {
+		toSerialize["serviceCode"] = o.ServiceCode
+	}
 	if !IsNil(o.Bandwidth) {
 		toSerialize["bandwidth"] = o.Bandwidth
 	}
@@ -1587,6 +1656,9 @@ func (o Port) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Loas) {
 		toSerialize["loas"] = o.Loas
 	}
+	if !IsNil(o.MarketplaceSubscription) {
+		toSerialize["marketplaceSubscription"] = o.MarketplaceSubscription
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -1629,6 +1701,7 @@ func (o *Port) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "change")
 		delete(additionalProperties, "changeLog")
 		delete(additionalProperties, "serviceType")
+		delete(additionalProperties, "serviceCode")
 		delete(additionalProperties, "bandwidth")
 		delete(additionalProperties, "availableBandwidth")
 		delete(additionalProperties, "usedBandwidth")
@@ -1651,6 +1724,7 @@ func (o *Port) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "endCustomer")
 		delete(additionalProperties, "physicalPorts")
 		delete(additionalProperties, "loas")
+		delete(additionalProperties, "marketplaceSubscription")
 		o.AdditionalProperties = additionalProperties
 	}
 

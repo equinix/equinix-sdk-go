@@ -10,7 +10,6 @@ Name | Type | Description | Notes
 **State** | Pointer to [**CloudRouterAccessPointState**](CloudRouterAccessPointState.md) |  | [optional] 
 **EquinixAsn** | Pointer to **int64** | Equinix ASN | [optional] 
 **ConnectionsCount** | Pointer to **int32** | Number of connections associated with this Access point | [optional] 
-**GatewayAttachmentsCount** | Pointer to **int32** | Number of gateway attachments associated with this Access point | [optional] 
 **MarketplaceSubscription** | Pointer to [**MarketplaceSubscription**](MarketplaceSubscription.md) |  | [optional] 
 **ChangeLog** | Pointer to [**Changelog**](Changelog.md) |  | [optional] 
 **Change** | Pointer to [**CloudRouterChange**](CloudRouterChange.md) |  | [optional] 
@@ -190,31 +189,6 @@ SetConnectionsCount sets ConnectionsCount field to given value.
 `func (o *CloudRouter) HasConnectionsCount() bool`
 
 HasConnectionsCount returns a boolean if a field has been set.
-
-### GetGatewayAttachmentsCount
-
-`func (o *CloudRouter) GetGatewayAttachmentsCount() int32`
-
-GetGatewayAttachmentsCount returns the GatewayAttachmentsCount field if non-nil, zero value otherwise.
-
-### GetGatewayAttachmentsCountOk
-
-`func (o *CloudRouter) GetGatewayAttachmentsCountOk() (*int32, bool)`
-
-GetGatewayAttachmentsCountOk returns a tuple with the GatewayAttachmentsCount field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetGatewayAttachmentsCount
-
-`func (o *CloudRouter) SetGatewayAttachmentsCount(v int32)`
-
-SetGatewayAttachmentsCount sets GatewayAttachmentsCount field to given value.
-
-### HasGatewayAttachmentsCount
-
-`func (o *CloudRouter) HasGatewayAttachmentsCount() bool`
-
-HasGatewayAttachmentsCount returns a boolean if a field has been set.
 
 ### GetMarketplaceSubscription
 

@@ -27,8 +27,8 @@ type CloudRouterChange struct {
 	// Set when change object is updated
 	UpdatedDateTime time.Time `json:"updatedDateTime"`
 	// Additional information
-	Information          *string                     `json:"information,omitempty"`
-	Data                 *CloudRouterChangeOperation `json:"data,omitempty"`
+	Information          *string                      `json:"information,omitempty"`
+	Data                 []CloudRouterChangeOperation `json:"data,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -230,17 +230,17 @@ func (o *CloudRouterChange) SetInformation(v string) {
 }
 
 // GetData returns the Data field value if set, zero value otherwise.
-func (o *CloudRouterChange) GetData() CloudRouterChangeOperation {
+func (o *CloudRouterChange) GetData() []CloudRouterChangeOperation {
 	if o == nil || IsNil(o.Data) {
-		var ret CloudRouterChangeOperation
+		var ret []CloudRouterChangeOperation
 		return ret
 	}
-	return *o.Data
+	return o.Data
 }
 
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CloudRouterChange) GetDataOk() (*CloudRouterChangeOperation, bool) {
+func (o *CloudRouterChange) GetDataOk() ([]CloudRouterChangeOperation, bool) {
 	if o == nil || IsNil(o.Data) {
 		return nil, false
 	}
@@ -256,9 +256,9 @@ func (o *CloudRouterChange) HasData() bool {
 	return false
 }
 
-// SetData gets a reference to the given CloudRouterChangeOperation and assigns it to the Data field.
-func (o *CloudRouterChange) SetData(v CloudRouterChangeOperation) {
-	o.Data = &v
+// SetData gets a reference to the given []CloudRouterChangeOperation and assigns it to the Data field.
+func (o *CloudRouterChange) SetData(v []CloudRouterChangeOperation) {
+	o.Data = v
 }
 
 func (o CloudRouterChange) MarshalJSON() ([]byte, error) {

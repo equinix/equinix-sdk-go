@@ -16,7 +16,8 @@ var _ MappedNullable = &SubscriptionRouterPackageType{}
 
 // SubscriptionRouterPackageType Cloud Router Package Type
 type SubscriptionRouterPackageType struct {
-	Code                 *SubscriptionRouterPackageTypeCode `json:"code,omitempty"`
+	// Cloud Router package code
+	Code                 *string `json:"code,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -40,9 +41,9 @@ func NewSubscriptionRouterPackageTypeWithDefaults() *SubscriptionRouterPackageTy
 }
 
 // GetCode returns the Code field value if set, zero value otherwise.
-func (o *SubscriptionRouterPackageType) GetCode() SubscriptionRouterPackageTypeCode {
+func (o *SubscriptionRouterPackageType) GetCode() string {
 	if o == nil || IsNil(o.Code) {
-		var ret SubscriptionRouterPackageTypeCode
+		var ret string
 		return ret
 	}
 	return *o.Code
@@ -50,7 +51,7 @@ func (o *SubscriptionRouterPackageType) GetCode() SubscriptionRouterPackageTypeC
 
 // GetCodeOk returns a tuple with the Code field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SubscriptionRouterPackageType) GetCodeOk() (*SubscriptionRouterPackageTypeCode, bool) {
+func (o *SubscriptionRouterPackageType) GetCodeOk() (*string, bool) {
 	if o == nil || IsNil(o.Code) {
 		return nil, false
 	}
@@ -66,8 +67,8 @@ func (o *SubscriptionRouterPackageType) HasCode() bool {
 	return false
 }
 
-// SetCode gets a reference to the given SubscriptionRouterPackageTypeCode and assigns it to the Code field.
-func (o *SubscriptionRouterPackageType) SetCode(v SubscriptionRouterPackageTypeCode) {
+// SetCode gets a reference to the given string and assigns it to the Code field.
+func (o *SubscriptionRouterPackageType) SetCode(v string) {
 	o.Code = &v
 }
 

@@ -64,7 +64,6 @@ const (
 	SEARCHFIELDNAME_Z_SIDE_ACCESS_POINT_VIRTUAL_DEVICE_UUID        SearchFieldName = "/zSide/accessPoint/virtualDevice/uuid"
 	SEARCHFIELDNAME_Z_SIDE_SERVICE_TOKEN_UUID                      SearchFieldName = "/zSide/serviceToken/uuid"
 	SEARCHFIELDNAME_Z_SIDE_INTERNET_ACCESS_UUID                    SearchFieldName = "/zSide/internetAccess/uuid"
-	SEARCHFIELDNAME_STAR                                           SearchFieldName = "*"
 )
 
 // All allowed values of SearchFieldName enum
@@ -116,7 +115,6 @@ var AllowedSearchFieldNameEnumValues = []SearchFieldName{
 	"/zSide/accessPoint/virtualDevice/uuid",
 	"/zSide/serviceToken/uuid",
 	"/zSide/internetAccess/uuid",
-	"*",
 }
 
 func (v *SearchFieldName) UnmarshalJSON(src []byte) error {

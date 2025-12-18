@@ -1318,7 +1318,7 @@ func (a *RouteAggregationRulesApiService) PatchRouteAggregationRuleByUuidExecute
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
+	localVarHTTPContentTypes := []string{"application/json", "application/json-patch+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)

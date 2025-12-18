@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **Operation** | Pointer to [**PortOperation**](PortOperation.md) |  | [optional] 
 **Account** | Pointer to [**SimplifiedAccount**](SimplifiedAccount.md) |  | [optional] 
 **ServiceType** | Pointer to [**PortServiceType**](PortServiceType.md) |  | [optional] 
+**ServiceCode** | Pointer to [**PortServiceCode**](PortServiceCode.md) |  | [optional] 
 **Bandwidth** | Pointer to **int64** | Equinix assigned response attribute for Port bandwidth in Mbps | [optional] 
 **AvailableBandwidth** | Pointer to **int64** | Equinix assigned response attribute for Port available bandwidth in Mbps | [optional] 
 **UsedBandwidth** | Pointer to **int64** | Equinix assigned response attribute for Port used bandwidth in Mbps | [optional] 
@@ -377,6 +378,31 @@ SetServiceType sets ServiceType field to given value.
 `func (o *SimplifiedPort) HasServiceType() bool`
 
 HasServiceType returns a boolean if a field has been set.
+
+### GetServiceCode
+
+`func (o *SimplifiedPort) GetServiceCode() PortServiceCode`
+
+GetServiceCode returns the ServiceCode field if non-nil, zero value otherwise.
+
+### GetServiceCodeOk
+
+`func (o *SimplifiedPort) GetServiceCodeOk() (*PortServiceCode, bool)`
+
+GetServiceCodeOk returns a tuple with the ServiceCode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetServiceCode
+
+`func (o *SimplifiedPort) SetServiceCode(v PortServiceCode)`
+
+SetServiceCode sets ServiceCode field to given value.
+
+### HasServiceCode
+
+`func (o *SimplifiedPort) HasServiceCode() bool`
+
+HasServiceCode returns a boolean if a field has been set.
 
 ### GetBandwidth
 

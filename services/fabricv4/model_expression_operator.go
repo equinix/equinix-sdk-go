@@ -17,20 +17,13 @@ type ExpressionOperator string
 
 // List of Expression_operator
 const (
-	EXPRESSIONOPERATOR_EQUAL                    ExpressionOperator = "="
-	EXPRESSIONOPERATOR_NOT_EQUAL                ExpressionOperator = "!="
-	EXPRESSIONOPERATOR_GREATER_THAN             ExpressionOperator = ">"
-	EXPRESSIONOPERATOR_GREATER_THAN_OR_EQUAL_TO ExpressionOperator = ">="
-	EXPRESSIONOPERATOR_LESS_THAN                ExpressionOperator = "<"
-	EXPRESSIONOPERATOR_LESS_THAN_OR_EQUAL_TO    ExpressionOperator = "<="
-	EXPRESSIONOPERATOR_BETWEEN                  ExpressionOperator = "BETWEEN"
-	EXPRESSIONOPERATOR_NOT_BETWEEN              ExpressionOperator = "NOT BETWEEN"
-	EXPRESSIONOPERATOR_LIKE                     ExpressionOperator = "LIKE"
-	EXPRESSIONOPERATOR_NOT_LIKE                 ExpressionOperator = "NOT LIKE"
-	EXPRESSIONOPERATOR_IN                       ExpressionOperator = "IN"
-	EXPRESSIONOPERATOR_NOT_IN                   ExpressionOperator = "NOT IN"
-	EXPRESSIONOPERATOR_IS_NOT_NULL              ExpressionOperator = "IS NOT NULL"
-	EXPRESSIONOPERATOR_IS_NULL                  ExpressionOperator = "IS NULL"
+	EXPRESSIONOPERATOR_EQUAL        ExpressionOperator = "="
+	EXPRESSIONOPERATOR_NOT_EQUAL    ExpressionOperator = "!="
+	EXPRESSIONOPERATOR_GREATER_THAN ExpressionOperator = ">"
+	EXPRESSIONOPERATOR_LESS_THAN    ExpressionOperator = "<"
+	EXPRESSIONOPERATOR_LIKE         ExpressionOperator = "LIKE"
+	EXPRESSIONOPERATOR_IS_NOT_NULL  ExpressionOperator = "IS NOT NULL"
+	EXPRESSIONOPERATOR_IS_NULL      ExpressionOperator = "IS NULL"
 )
 
 // All allowed values of ExpressionOperator enum
@@ -38,15 +31,8 @@ var AllowedExpressionOperatorEnumValues = []ExpressionOperator{
 	"=",
 	"!=",
 	">",
-	">=",
 	"<",
-	"<=",
-	"BETWEEN",
-	"NOT BETWEEN",
 	"LIKE",
-	"NOT LIKE",
-	"IN",
-	"NOT IN",
 	"IS NOT NULL",
 	"IS NULL",
 }

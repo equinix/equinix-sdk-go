@@ -37,6 +37,7 @@ type SimplifiedPort struct {
 	Account          *SimplifiedAccount `json:"account,omitempty"`
 	// Deprecated
 	ServiceType *PortServiceType `json:"serviceType,omitempty"`
+	ServiceCode *PortServiceCode `json:"serviceCode,omitempty"`
 	// Equinix assigned response attribute for Port bandwidth in Mbps
 	Bandwidth *int64 `json:"bandwidth,omitempty"`
 	// Equinix assigned response attribute for Port available bandwidth in Mbps
@@ -499,6 +500,38 @@ func (o *SimplifiedPort) HasServiceType() bool {
 // Deprecated
 func (o *SimplifiedPort) SetServiceType(v PortServiceType) {
 	o.ServiceType = &v
+}
+
+// GetServiceCode returns the ServiceCode field value if set, zero value otherwise.
+func (o *SimplifiedPort) GetServiceCode() PortServiceCode {
+	if o == nil || IsNil(o.ServiceCode) {
+		var ret PortServiceCode
+		return ret
+	}
+	return *o.ServiceCode
+}
+
+// GetServiceCodeOk returns a tuple with the ServiceCode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SimplifiedPort) GetServiceCodeOk() (*PortServiceCode, bool) {
+	if o == nil || IsNil(o.ServiceCode) {
+		return nil, false
+	}
+	return o.ServiceCode, true
+}
+
+// HasServiceCode returns a boolean if a field has been set.
+func (o *SimplifiedPort) HasServiceCode() bool {
+	if o != nil && !IsNil(o.ServiceCode) {
+		return true
+	}
+
+	return false
+}
+
+// SetServiceCode gets a reference to the given PortServiceCode and assigns it to the ServiceCode field.
+func (o *SimplifiedPort) SetServiceCode(v PortServiceCode) {
+	o.ServiceCode = &v
 }
 
 // GetBandwidth returns the Bandwidth field value if set, zero value otherwise.
@@ -1062,6 +1095,9 @@ func (o SimplifiedPort) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ServiceType) {
 		toSerialize["serviceType"] = o.ServiceType
 	}
+	if !IsNil(o.ServiceCode) {
+		toSerialize["serviceCode"] = o.ServiceCode
+	}
 	if !IsNil(o.Bandwidth) {
 		toSerialize["bandwidth"] = o.Bandwidth
 	}
@@ -1145,6 +1181,7 @@ func (o *SimplifiedPort) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "operation")
 		delete(additionalProperties, "account")
 		delete(additionalProperties, "serviceType")
+		delete(additionalProperties, "serviceCode")
 		delete(additionalProperties, "bandwidth")
 		delete(additionalProperties, "availableBandwidth")
 		delete(additionalProperties, "usedBandwidth")

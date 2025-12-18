@@ -26,6 +26,8 @@ type Metro struct {
 	Region *string `json:"region,omitempty"`
 	// Name of the region in which the data center is located.
 	Name *string `json:"name,omitempty"`
+	// Country code in which the data center is located.
+	Country *string `json:"country,omitempty"`
 	// Autonomous system number (ASN) for a specified Fabric metro. The ASN is a unique identifier that carries the network routing protocol and exchanges that data with other internal systems via border gateway protocol.
 	EquinixAsn *int64 `json:"equinixAsn,omitempty"`
 	// This field holds Max Connection speed with in the metro
@@ -215,6 +217,38 @@ func (o *Metro) HasName() bool {
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *Metro) SetName(v string) {
 	o.Name = &v
+}
+
+// GetCountry returns the Country field value if set, zero value otherwise.
+func (o *Metro) GetCountry() string {
+	if o == nil || IsNil(o.Country) {
+		var ret string
+		return ret
+	}
+	return *o.Country
+}
+
+// GetCountryOk returns a tuple with the Country field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Metro) GetCountryOk() (*string, bool) {
+	if o == nil || IsNil(o.Country) {
+		return nil, false
+	}
+	return o.Country, true
+}
+
+// HasCountry returns a boolean if a field has been set.
+func (o *Metro) HasCountry() bool {
+	if o != nil && !IsNil(o.Country) {
+		return true
+	}
+
+	return false
+}
+
+// SetCountry gets a reference to the given string and assigns it to the Country field.
+func (o *Metro) SetCountry(v string) {
+	o.Country = &v
 }
 
 // GetEquinixAsn returns the EquinixAsn field value if set, zero value otherwise.
@@ -434,6 +468,9 @@ func (o Metro) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
+	if !IsNil(o.Country) {
+		toSerialize["country"] = o.Country
+	}
 	if !IsNil(o.EquinixAsn) {
 		toSerialize["equinixAsn"] = o.EquinixAsn
 	}
@@ -479,6 +516,7 @@ func (o *Metro) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "code")
 		delete(additionalProperties, "region")
 		delete(additionalProperties, "name")
+		delete(additionalProperties, "country")
 		delete(additionalProperties, "equinixAsn")
 		delete(additionalProperties, "localVCBandwidthMax")
 		delete(additionalProperties, "geoCoordinates")

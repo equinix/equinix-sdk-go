@@ -24,6 +24,7 @@ Name | Type | Description | Notes
 **Change** | Pointer to [**PortChange**](PortChange.md) |  | [optional] 
 **ChangeLog** | Pointer to [**Changelog**](Changelog.md) |  | [optional] 
 **ServiceType** | Pointer to [**PortServiceType**](PortServiceType.md) |  | [optional] 
+**ServiceCode** | Pointer to [**PortServiceCode**](PortServiceCode.md) |  | [optional] 
 **Bandwidth** | Pointer to **int32** | Equinix assigned response attribute for Port bandwidth in Mbps | [optional] 
 **AvailableBandwidth** | Pointer to **int32** | Equinix assigned response attribute for Port available bandwidth in Mbps | [optional] 
 **UsedBandwidth** | Pointer to **int32** | Equinix assigned response attribute for Port used bandwidth in Mbps | [optional] 
@@ -46,6 +47,7 @@ Name | Type | Description | Notes
 **EndCustomer** | Pointer to [**EndCustomer**](EndCustomer.md) |  | [optional] 
 **PhysicalPorts** | Pointer to [**[]PhysicalPort**](PhysicalPort.md) | Physical ports that implement this port | [optional] 
 **Loas** | Pointer to [**[]PortLoa**](PortLoa.md) | Port Loas | [optional] 
+**MarketplaceSubscription** | Pointer to [**MarketplaceSubscription**](MarketplaceSubscription.md) |  | [optional] 
 
 ## Methods
 
@@ -565,6 +567,31 @@ SetServiceType sets ServiceType field to given value.
 `func (o *Port) HasServiceType() bool`
 
 HasServiceType returns a boolean if a field has been set.
+
+### GetServiceCode
+
+`func (o *Port) GetServiceCode() PortServiceCode`
+
+GetServiceCode returns the ServiceCode field if non-nil, zero value otherwise.
+
+### GetServiceCodeOk
+
+`func (o *Port) GetServiceCodeOk() (*PortServiceCode, bool)`
+
+GetServiceCodeOk returns a tuple with the ServiceCode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetServiceCode
+
+`func (o *Port) SetServiceCode(v PortServiceCode)`
+
+SetServiceCode sets ServiceCode field to given value.
+
+### HasServiceCode
+
+`func (o *Port) HasServiceCode() bool`
+
+HasServiceCode returns a boolean if a field has been set.
 
 ### GetBandwidth
 
@@ -1115,6 +1142,31 @@ SetLoas sets Loas field to given value.
 `func (o *Port) HasLoas() bool`
 
 HasLoas returns a boolean if a field has been set.
+
+### GetMarketplaceSubscription
+
+`func (o *Port) GetMarketplaceSubscription() MarketplaceSubscription`
+
+GetMarketplaceSubscription returns the MarketplaceSubscription field if non-nil, zero value otherwise.
+
+### GetMarketplaceSubscriptionOk
+
+`func (o *Port) GetMarketplaceSubscriptionOk() (*MarketplaceSubscription, bool)`
+
+GetMarketplaceSubscriptionOk returns a tuple with the MarketplaceSubscription field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMarketplaceSubscription
+
+`func (o *Port) SetMarketplaceSubscription(v MarketplaceSubscription)`
+
+SetMarketplaceSubscription sets MarketplaceSubscription field to given value.
+
+### HasMarketplaceSubscription
+
+`func (o *Port) HasMarketplaceSubscription() bool`
+
+HasMarketplaceSubscription returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
