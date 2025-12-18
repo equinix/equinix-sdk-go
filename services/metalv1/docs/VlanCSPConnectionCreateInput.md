@@ -13,13 +13,13 @@ Name | Type | Description | Notes
 **Tags** | Pointer to **[]string** |  | [optional] 
 **Type** | [**VlanCSPConnectionCreateInputType**](VlanCSPConnectionCreateInputType.md) |  | 
 **Vlans** | **[]int32** | A list of one or two metro-based VLANs that will be set on the virtual circuits of primary and/or secondary interconnections respectively when creating Fabric VCs. VLANs can also be set after the interconnection is created, but are required to fully activate the virtual circuits. | 
-**FabricProvider** | [**VlanCSPConnectionCreateInputFabricProvider**](VlanCSPConnectionCreateInputFabricProvider.md) |  | 
+**FabricProvider** | [**AWSFabricProvider**](AWSFabricProvider.md) |  | 
 
 ## Methods
 
 ### NewVlanCSPConnectionCreateInput
 
-`func NewVlanCSPConnectionCreateInput(name string, project string, metro string, type_ VlanCSPConnectionCreateInputType, vlans []int32, fabricProvider VlanCSPConnectionCreateInputFabricProvider, ) *VlanCSPConnectionCreateInput`
+`func NewVlanCSPConnectionCreateInput(name string, project string, metro string, type_ VlanCSPConnectionCreateInputType, vlans []int32, fabricProvider AWSFabricProvider, ) *VlanCSPConnectionCreateInput`
 
 NewVlanCSPConnectionCreateInput instantiates a new VlanCSPConnectionCreateInput object
 This constructor will assign default values to properties that have it defined,
@@ -236,20 +236,20 @@ SetVlans sets Vlans field to given value.
 
 ### GetFabricProvider
 
-`func (o *VlanCSPConnectionCreateInput) GetFabricProvider() VlanCSPConnectionCreateInputFabricProvider`
+`func (o *VlanCSPConnectionCreateInput) GetFabricProvider() AWSFabricProvider`
 
 GetFabricProvider returns the FabricProvider field if non-nil, zero value otherwise.
 
 ### GetFabricProviderOk
 
-`func (o *VlanCSPConnectionCreateInput) GetFabricProviderOk() (*VlanCSPConnectionCreateInputFabricProvider, bool)`
+`func (o *VlanCSPConnectionCreateInput) GetFabricProviderOk() (*AWSFabricProvider, bool)`
 
 GetFabricProviderOk returns a tuple with the FabricProvider field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFabricProvider
 
-`func (o *VlanCSPConnectionCreateInput) SetFabricProvider(v VlanCSPConnectionCreateInputFabricProvider)`
+`func (o *VlanCSPConnectionCreateInput) SetFabricProvider(v AWSFabricProvider)`
 
 SetFabricProvider sets FabricProvider field to given value.
 

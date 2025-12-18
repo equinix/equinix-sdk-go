@@ -180,7 +180,6 @@ docs/IncidentsApi.md
 docs/InstancesBatchCreateInput.md
 docs/InstancesBatchCreateInputBatchesInner.md
 docs/Interconnection.md
-docs/InterconnectionFabricProvider.md
 docs/InterconnectionList.md
 docs/InterconnectionMetroList.md
 docs/InterconnectionMetroListMetrosInner.md
@@ -360,7 +359,6 @@ docs/VirtualNetworkCreateInput.md
 docs/VirtualNetworkList.md
 docs/VirtualNetworkUpdateInput.md
 docs/VlanCSPConnectionCreateInput.md
-docs/VlanCSPConnectionCreateInputFabricProvider.md
 docs/VlanCSPConnectionCreateInputType.md
 docs/VlanFabricVcCreateInput.md
 docs/VlanFabricVcCreateInputServiceTokenType.md
@@ -506,7 +504,6 @@ model_href.go
 model_instances_batch_create_input.go
 model_instances_batch_create_input_batches_inner.go
 model_interconnection.go
-model_interconnection_fabric_provider.go
 model_interconnection_list.go
 model_interconnection_metro_list.go
 model_interconnection_metro_list_metros_inner.go
@@ -677,7 +674,6 @@ model_virtual_network_create_input.go
 model_virtual_network_list.go
 model_virtual_network_update_input.go
 model_vlan_csp_connection_create_input.go
-model_vlan_csp_connection_create_input_fabric_provider.go
 model_vlan_csp_connection_create_input_type.go
 model_vlan_fabric_vc_create_input.go
 model_vlan_fabric_vc_create_input_service_token_type.go

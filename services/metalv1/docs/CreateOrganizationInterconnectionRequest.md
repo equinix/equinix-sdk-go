@@ -20,13 +20,13 @@ Name | Type | Description | Notes
 **ServiceTokenType** | [**VlanFabricVcCreateInputServiceTokenType**](VlanFabricVcCreateInputServiceTokenType.md) |  | 
 **Vlans** | **[]int32** | A list of one or two metro-based VLANs that will be set on the virtual circuits of primary and/or secondary interconnections respectively when creating Fabric VCs. VLANs can also be set after the interconnection is created, but are required to fully activate the virtual circuits. | 
 **Vrfs** | **[]string** | This field holds a list of VRF UUIDs that will be set automatically on the virtual circuits of Fabric VCs on creation, and can hold up to two UUIDs. Two UUIDs are required when requesting redundant Fabric VCs. The first UUID will be set on the primary virtual circuit, while the second UUID will be set on the secondary. The two UUIDs can be the same if both the primary and secondary virtual circuits will be in the same VRF. This parameter is included in the specification as a developer preview and is generally unavailable. Please contact our Support team for more details. | 
-**FabricProvider** | [**VlanCSPConnectionCreateInputFabricProvider**](VlanCSPConnectionCreateInputFabricProvider.md) |  | 
+**FabricProvider** | [**AWSFabricProvider**](AWSFabricProvider.md) |  | 
 
 ## Methods
 
 ### NewCreateOrganizationInterconnectionRequest
 
-`func NewCreateOrganizationInterconnectionRequest(metro string, name string, project string, redundancy string, type_ VlanCSPConnectionCreateInputType, serviceTokenType VlanFabricVcCreateInputServiceTokenType, vlans []int32, vrfs []string, fabricProvider VlanCSPConnectionCreateInputFabricProvider, ) *CreateOrganizationInterconnectionRequest`
+`func NewCreateOrganizationInterconnectionRequest(metro string, name string, project string, redundancy string, type_ VlanCSPConnectionCreateInputType, serviceTokenType VlanFabricVcCreateInputServiceTokenType, vlans []int32, vrfs []string, fabricProvider AWSFabricProvider, ) *CreateOrganizationInterconnectionRequest`
 
 NewCreateOrganizationInterconnectionRequest instantiates a new CreateOrganizationInterconnectionRequest object
 This constructor will assign default values to properties that have it defined,
@@ -403,20 +403,20 @@ SetVrfs sets Vrfs field to given value.
 
 ### GetFabricProvider
 
-`func (o *CreateOrganizationInterconnectionRequest) GetFabricProvider() VlanCSPConnectionCreateInputFabricProvider`
+`func (o *CreateOrganizationInterconnectionRequest) GetFabricProvider() AWSFabricProvider`
 
 GetFabricProvider returns the FabricProvider field if non-nil, zero value otherwise.
 
 ### GetFabricProviderOk
 
-`func (o *CreateOrganizationInterconnectionRequest) GetFabricProviderOk() (*VlanCSPConnectionCreateInputFabricProvider, bool)`
+`func (o *CreateOrganizationInterconnectionRequest) GetFabricProviderOk() (*AWSFabricProvider, bool)`
 
 GetFabricProviderOk returns a tuple with the FabricProvider field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFabricProvider
 
-`func (o *CreateOrganizationInterconnectionRequest) SetFabricProvider(v VlanCSPConnectionCreateInputFabricProvider)`
+`func (o *CreateOrganizationInterconnectionRequest) SetFabricProvider(v AWSFabricProvider)`
 
 SetFabricProvider sets FabricProvider field to given value.
 
