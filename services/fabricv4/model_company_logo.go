@@ -18,6 +18,7 @@ var _ MappedNullable = &CompanyLogo{}
 type CompanyLogo struct {
 	Href                 *string `json:"href,omitempty"`
 	Uuid                 *string `json:"uuid,omitempty"`
+	ExtensionType        *string `json:"extensionType,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -104,6 +105,38 @@ func (o *CompanyLogo) SetUuid(v string) {
 	o.Uuid = &v
 }
 
+// GetExtensionType returns the ExtensionType field value if set, zero value otherwise.
+func (o *CompanyLogo) GetExtensionType() string {
+	if o == nil || IsNil(o.ExtensionType) {
+		var ret string
+		return ret
+	}
+	return *o.ExtensionType
+}
+
+// GetExtensionTypeOk returns a tuple with the ExtensionType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CompanyLogo) GetExtensionTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.ExtensionType) {
+		return nil, false
+	}
+	return o.ExtensionType, true
+}
+
+// HasExtensionType returns a boolean if a field has been set.
+func (o *CompanyLogo) HasExtensionType() bool {
+	if o != nil && !IsNil(o.ExtensionType) {
+		return true
+	}
+
+	return false
+}
+
+// SetExtensionType gets a reference to the given string and assigns it to the ExtensionType field.
+func (o *CompanyLogo) SetExtensionType(v string) {
+	o.ExtensionType = &v
+}
+
 func (o CompanyLogo) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -119,6 +152,9 @@ func (o CompanyLogo) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Uuid) {
 		toSerialize["uuid"] = o.Uuid
+	}
+	if !IsNil(o.ExtensionType) {
+		toSerialize["extensionType"] = o.ExtensionType
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -144,6 +180,7 @@ func (o *CompanyLogo) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "href")
 		delete(additionalProperties, "uuid")
+		delete(additionalProperties, "extensionType")
 		o.AdditionalProperties = additionalProperties
 	}
 

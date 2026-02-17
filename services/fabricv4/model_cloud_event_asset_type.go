@@ -20,6 +20,7 @@ const (
 	CLOUDEVENTASSETTYPE_PORTS          CloudEventAssetType = "ports"
 	CLOUDEVENTASSETTYPE_CONNECTIONS    CloudEventAssetType = "connections"
 	CLOUDEVENTASSETTYPE_ROUTERS        CloudEventAssetType = "routers"
+	CLOUDEVENTASSETTYPE_METROS         CloudEventAssetType = "metros"
 	CLOUDEVENTASSETTYPE_SERVICE_TOKENS CloudEventAssetType = "serviceTokens"
 	CLOUDEVENTASSETTYPE_NETWORKS       CloudEventAssetType = "networks"
 	CLOUDEVENTASSETTYPE_PROJECTS       CloudEventAssetType = "projects"
@@ -32,6 +33,7 @@ var AllowedCloudEventAssetTypeEnumValues = []CloudEventAssetType{
 	"ports",
 	"connections",
 	"routers",
+	"metros",
 	"serviceTokens",
 	"networks",
 	"projects",

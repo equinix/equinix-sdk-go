@@ -23,6 +23,7 @@ type CompanyProfileRequest struct {
 	Description          string                   `json:"description"`
 	Notifications        []map[string]interface{} `json:"notifications,omitempty"`
 	WebUrl               *string                  `json:"webUrl,omitempty"`
+	ContactUrl           *string                  `json:"contactUrl,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -209,6 +210,38 @@ func (o *CompanyProfileRequest) SetWebUrl(v string) {
 	o.WebUrl = &v
 }
 
+// GetContactUrl returns the ContactUrl field value if set, zero value otherwise.
+func (o *CompanyProfileRequest) GetContactUrl() string {
+	if o == nil || IsNil(o.ContactUrl) {
+		var ret string
+		return ret
+	}
+	return *o.ContactUrl
+}
+
+// GetContactUrlOk returns a tuple with the ContactUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CompanyProfileRequest) GetContactUrlOk() (*string, bool) {
+	if o == nil || IsNil(o.ContactUrl) {
+		return nil, false
+	}
+	return o.ContactUrl, true
+}
+
+// HasContactUrl returns a boolean if a field has been set.
+func (o *CompanyProfileRequest) HasContactUrl() bool {
+	if o != nil && !IsNil(o.ContactUrl) {
+		return true
+	}
+
+	return false
+}
+
+// SetContactUrl gets a reference to the given string and assigns it to the ContactUrl field.
+func (o *CompanyProfileRequest) SetContactUrl(v string) {
+	o.ContactUrl = &v
+}
+
 func (o CompanyProfileRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -228,6 +261,9 @@ func (o CompanyProfileRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.WebUrl) {
 		toSerialize["webUrl"] = o.WebUrl
+	}
+	if !IsNil(o.ContactUrl) {
+		toSerialize["contactUrl"] = o.ContactUrl
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -281,6 +317,7 @@ func (o *CompanyProfileRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "notifications")
 		delete(additionalProperties, "webUrl")
+		delete(additionalProperties, "contactUrl")
 		o.AdditionalProperties = additionalProperties
 	}
 

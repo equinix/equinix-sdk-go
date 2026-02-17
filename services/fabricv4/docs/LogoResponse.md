@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
 **Status** | Pointer to **string** |  | [optional] 
+**ExtensionType** | Pointer to **string** |  | [optional] 
 **Changelog** | Pointer to [**Changelog**](Changelog.md) |  | [optional] 
 
 ## Methods
@@ -180,6 +181,31 @@ SetStatus sets Status field to given value.
 `func (o *LogoResponse) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
+
+### GetExtensionType
+
+`func (o *LogoResponse) GetExtensionType() string`
+
+GetExtensionType returns the ExtensionType field if non-nil, zero value otherwise.
+
+### GetExtensionTypeOk
+
+`func (o *LogoResponse) GetExtensionTypeOk() (*string, bool)`
+
+GetExtensionTypeOk returns a tuple with the ExtensionType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExtensionType
+
+`func (o *LogoResponse) SetExtensionType(v string)`
+
+SetExtensionType sets ExtensionType field to given value.
+
+### HasExtensionType
+
+`func (o *LogoResponse) HasExtensionType() bool`
+
+HasExtensionType returns a boolean if a field has been set.
 
 ### GetChangelog
 

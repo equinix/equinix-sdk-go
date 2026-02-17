@@ -48,6 +48,7 @@ const (
 	EQUINIXSTATUS_DRAFT                           EquinixStatus = "DRAFT"
 	EQUINIXSTATUS_CANCELLED                       EquinixStatus = "CANCELLED"
 	EQUINIXSTATUS_PENDING_INTERFACE_CONFIGURATION EquinixStatus = "PENDING_INTERFACE_CONFIGURATION"
+	EQUINIXSTATUS_PENDING_ACTIVATION              EquinixStatus = "PENDING_ACTIVATION"
 )
 
 // All allowed values of EquinixStatus enum
@@ -83,6 +84,7 @@ var AllowedEquinixStatusEnumValues = []EquinixStatus{
 	"DRAFT",
 	"CANCELLED",
 	"PENDING_INTERFACE_CONFIGURATION",
+	"PENDING_ACTIVATION",
 }
 
 func (v *EquinixStatus) UnmarshalJSON(src []byte) error {

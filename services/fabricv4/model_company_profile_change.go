@@ -17,9 +17,11 @@ var _ MappedNullable = &CompanyProfileChange{}
 
 // CompanyProfileChange struct for CompanyProfileChange
 type CompanyProfileChange struct {
+	Uuid                 *string                `json:"uuid,omitempty"`
 	Type                 *string                `json:"type,omitempty"`
 	Status               *string                `json:"status,omitempty"`
 	CreatedDateTime      *time.Time             `json:"createdDateTime,omitempty"`
+	UpdatedDateTime      *time.Time             `json:"updatedDateTime,omitempty"`
 	Data                 map[string]interface{} `json:"data,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -41,6 +43,38 @@ func NewCompanyProfileChange() *CompanyProfileChange {
 func NewCompanyProfileChangeWithDefaults() *CompanyProfileChange {
 	this := CompanyProfileChange{}
 	return &this
+}
+
+// GetUuid returns the Uuid field value if set, zero value otherwise.
+func (o *CompanyProfileChange) GetUuid() string {
+	if o == nil || IsNil(o.Uuid) {
+		var ret string
+		return ret
+	}
+	return *o.Uuid
+}
+
+// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CompanyProfileChange) GetUuidOk() (*string, bool) {
+	if o == nil || IsNil(o.Uuid) {
+		return nil, false
+	}
+	return o.Uuid, true
+}
+
+// HasUuid returns a boolean if a field has been set.
+func (o *CompanyProfileChange) HasUuid() bool {
+	if o != nil && !IsNil(o.Uuid) {
+		return true
+	}
+
+	return false
+}
+
+// SetUuid gets a reference to the given string and assigns it to the Uuid field.
+func (o *CompanyProfileChange) SetUuid(v string) {
+	o.Uuid = &v
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
@@ -139,6 +173,38 @@ func (o *CompanyProfileChange) SetCreatedDateTime(v time.Time) {
 	o.CreatedDateTime = &v
 }
 
+// GetUpdatedDateTime returns the UpdatedDateTime field value if set, zero value otherwise.
+func (o *CompanyProfileChange) GetUpdatedDateTime() time.Time {
+	if o == nil || IsNil(o.UpdatedDateTime) {
+		var ret time.Time
+		return ret
+	}
+	return *o.UpdatedDateTime
+}
+
+// GetUpdatedDateTimeOk returns a tuple with the UpdatedDateTime field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CompanyProfileChange) GetUpdatedDateTimeOk() (*time.Time, bool) {
+	if o == nil || IsNil(o.UpdatedDateTime) {
+		return nil, false
+	}
+	return o.UpdatedDateTime, true
+}
+
+// HasUpdatedDateTime returns a boolean if a field has been set.
+func (o *CompanyProfileChange) HasUpdatedDateTime() bool {
+	if o != nil && !IsNil(o.UpdatedDateTime) {
+		return true
+	}
+
+	return false
+}
+
+// SetUpdatedDateTime gets a reference to the given time.Time and assigns it to the UpdatedDateTime field.
+func (o *CompanyProfileChange) SetUpdatedDateTime(v time.Time) {
+	o.UpdatedDateTime = &v
+}
+
 // GetData returns the Data field value if set, zero value otherwise.
 func (o *CompanyProfileChange) GetData() map[string]interface{} {
 	if o == nil || IsNil(o.Data) {
@@ -181,6 +247,9 @@ func (o CompanyProfileChange) MarshalJSON() ([]byte, error) {
 
 func (o CompanyProfileChange) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Uuid) {
+		toSerialize["uuid"] = o.Uuid
+	}
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
@@ -189,6 +258,9 @@ func (o CompanyProfileChange) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.CreatedDateTime) {
 		toSerialize["createdDateTime"] = o.CreatedDateTime
+	}
+	if !IsNil(o.UpdatedDateTime) {
+		toSerialize["updatedDateTime"] = o.UpdatedDateTime
 	}
 	if !IsNil(o.Data) {
 		toSerialize["data"] = o.Data
@@ -215,9 +287,11 @@ func (o *CompanyProfileChange) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "uuid")
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "status")
 		delete(additionalProperties, "createdDateTime")
+		delete(additionalProperties, "updatedDateTime")
 		delete(additionalProperties, "data")
 		o.AdditionalProperties = additionalProperties
 	}

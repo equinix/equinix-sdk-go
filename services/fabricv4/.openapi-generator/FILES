@@ -1,8 +1,10 @@
 README.md
 api_cloud_events.go
 api_cloud_routers.go
+api_company_profiles.go
 api_connections.go
 api_health.go
+api_logos.go
 api_marketplace_subscriptions.go
 api_metrics.go
 api_metros.go
@@ -22,6 +24,7 @@ api_statistics.go
 api_stream_alert_rules.go
 api_stream_subscriptions.go
 api_streams.go
+api_tags.go
 client.go
 configuration.go
 docs/AccessPoint.md
@@ -128,6 +131,7 @@ docs/CloudRouterSortDirection.md
 docs/CloudRoutersApi.md
 docs/Code.md
 docs/CompanyLogo.md
+docs/CompanyMetro.md
 docs/CompanyProfileActionRequest.md
 docs/CompanyProfileChange.md
 docs/CompanyProfileRequest.md
@@ -135,7 +139,8 @@ docs/CompanyProfileResponse.md
 docs/CompanyProfileSearchFilter.md
 docs/CompanyProfileSearchRequest.md
 docs/CompanyProfileSearchResponse.md
-docs/CompanyProfileUpdateResponse.md
+docs/CompanyProfileSortDirection.md
+docs/CompanyProfilesApi.md
 docs/CompanyServiceProfile.md
 docs/ConnectedMetro.md
 docs/Connection.md
@@ -216,6 +221,7 @@ docs/GetAllStreamResponse.md
 docs/GetAllStreamSubscriptionResponse.md
 docs/GetCloudEventsByAssetResponse.md
 docs/GetMetricsByAssetResponse.md
+docs/GetMetricsByNameResponse.md
 docs/GetResponse.md
 docs/GetRouteAggregationGetConnectionsResponse.md
 docs/GetRouteAggregationRulesResponse.md
@@ -245,6 +251,7 @@ docs/LinkProtocolState.md
 docs/LinkProtocolType.md
 docs/LogoRequest.md
 docs/LogoResponse.md
+docs/LogosApi.md
 docs/MarketingInfo.md
 docs/MarketplaceSubscription.md
 docs/MarketplaceSubscriptionType.md
@@ -314,6 +321,7 @@ docs/PeeringType.md
 docs/PhysicalPort.md
 docs/PhysicalPortSettings.md
 docs/PhysicalPortType.md
+docs/PlatformChangelog.md
 docs/Port.md
 docs/PortAdditionalInfo.md
 docs/PortBmmrType.md
@@ -414,6 +422,10 @@ docs/ReplaceOperation.md
 docs/ResourceData.md
 docs/ResourceSelector.md
 docs/ResourceSelectorResponse.md
+docs/ResponseIncompleteDetails.md
+docs/ResponseIncompleteDetailsReason.md
+docs/ResponseUsageInputTokensDetails.md
+docs/ResponseUsageOutputTokensDetails.md
 docs/RouteAggregationChangeData.md
 docs/RouteAggregationChangeDataResponse.md
 docs/RouteAggregationConnectionsData.md
@@ -579,6 +591,7 @@ docs/SimplifiedTokenNetworkScope.md
 docs/SimplifiedTokenNetworkType.md
 docs/SimplifiedVirtualDevice.md
 docs/SimplifiedVirtualDeviceType.md
+docs/Sort.md
 docs/SortBy.md
 docs/SortCriteria.md
 docs/SortCriteriaResponse.md
@@ -646,6 +659,7 @@ docs/SubscriptionTrial.md
 docs/TagListResponse.md
 docs/TagRequest.md
 docs/TagResponse.md
+docs/TagsApi.md
 docs/TimeServiceFilter.md
 docs/TimeServiceFilters.md
 docs/TimeServiceOperation.md
@@ -797,6 +811,7 @@ model_cloud_router_sort_criteria.go
 model_cloud_router_sort_direction.go
 model_code.go
 model_company_logo.go
+model_company_metro.go
 model_company_profile_action_request.go
 model_company_profile_change.go
 model_company_profile_request.go
@@ -804,7 +819,7 @@ model_company_profile_response.go
 model_company_profile_search_filter.go
 model_company_profile_search_request.go
 model_company_profile_search_response.go
-model_company_profile_update_response.go
+model_company_profile_sort_direction.go
 model_company_service_profile.go
 model_connected_metro.go
 model_connection.go
@@ -884,6 +899,7 @@ model_get_all_stream_response.go
 model_get_all_stream_subscription_response.go
 model_get_cloud_events_by_asset_response.go
 model_get_metrics_by_asset_response.go
+model_get_metrics_by_name_response.go
 model_get_response.go
 model_get_route_aggregation_get_connections_response.go
 model_get_route_aggregation_rules_response.go
@@ -977,6 +993,7 @@ model_peering_type.go
 model_physical_port.go
 model_physical_port_settings.go
 model_physical_port_type.go
+model_platform_changelog.go
 model_port.go
 model_port_additional_info.go
 model_port_bmmr_type.go
@@ -1073,6 +1090,10 @@ model_replace_operation.go
 model_resource_data.go
 model_resource_selector.go
 model_resource_selector_response.go
+model_response_incomplete_details.go
+model_response_incomplete_details_reason.go
+model_response_usage_input_tokens_details.go
+model_response_usage_output_tokens_details.go
 model_route_aggregation_change_data.go
 model_route_aggregation_change_data_response.go
 model_route_aggregation_connections_data.go
@@ -1231,6 +1252,7 @@ model_simplified_token_network_scope.go
 model_simplified_token_network_type.go
 model_simplified_virtual_device.go
 model_simplified_virtual_device_type.go
+model_sort.go
 model_sort_by.go
 model_sort_criteria.go
 model_sort_criteria_response.go

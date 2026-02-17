@@ -4,9 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Uuid** | Pointer to **string** |  | [optional] 
 **Type** | Pointer to **string** |  | [optional] 
 **Status** | Pointer to **string** |  | [optional] 
 **CreatedDateTime** | Pointer to **time.Time** |  | [optional] 
+**UpdatedDateTime** | Pointer to **time.Time** |  | [optional] 
 **Data** | Pointer to **map[string]interface{}** |  | [optional] 
 
 ## Methods
@@ -27,6 +29,31 @@ will change when the set of required properties is changed
 NewCompanyProfileChangeWithDefaults instantiates a new CompanyProfileChange object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetUuid
+
+`func (o *CompanyProfileChange) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *CompanyProfileChange) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *CompanyProfileChange) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *CompanyProfileChange) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetType
 
@@ -102,6 +129,31 @@ SetCreatedDateTime sets CreatedDateTime field to given value.
 `func (o *CompanyProfileChange) HasCreatedDateTime() bool`
 
 HasCreatedDateTime returns a boolean if a field has been set.
+
+### GetUpdatedDateTime
+
+`func (o *CompanyProfileChange) GetUpdatedDateTime() time.Time`
+
+GetUpdatedDateTime returns the UpdatedDateTime field if non-nil, zero value otherwise.
+
+### GetUpdatedDateTimeOk
+
+`func (o *CompanyProfileChange) GetUpdatedDateTimeOk() (*time.Time, bool)`
+
+GetUpdatedDateTimeOk returns a tuple with the UpdatedDateTime field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUpdatedDateTime
+
+`func (o *CompanyProfileChange) SetUpdatedDateTime(v time.Time)`
+
+SetUpdatedDateTime sets UpdatedDateTime field to given value.
+
+### HasUpdatedDateTime
+
+`func (o *CompanyProfileChange) HasUpdatedDateTime() bool`
+
+HasUpdatedDateTime returns a boolean if a field has been set.
 
 ### GetData
 

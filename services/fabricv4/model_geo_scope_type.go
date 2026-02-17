@@ -17,9 +17,13 @@ type GeoScopeType string
 
 // List of GeoScopeType
 const (
-	GEOSCOPETYPE_CANADA GeoScopeType = "CANADA"
-	GEOSCOPETYPE_CONUS  GeoScopeType = "CONUS"
-	GEOSCOPETYPE_JAPAN  GeoScopeType = "JAPAN"
+	GEOSCOPETYPE_CANADA      GeoScopeType = "CANADA"
+	GEOSCOPETYPE_CONUS       GeoScopeType = "CONUS"
+	GEOSCOPETYPE_JAPAN       GeoScopeType = "JAPAN"
+	GEOSCOPETYPE_UK          GeoScopeType = "UK"
+	GEOSCOPETYPE_AUSTRALIA   GeoScopeType = "AUSTRALIA"
+	GEOSCOPETYPE_BRAZIL      GeoScopeType = "BRAZIL"
+	GEOSCOPETYPE_SWITZERLAND GeoScopeType = "SWITZERLAND"
 )
 
 // All allowed values of GeoScopeType enum
@@ -27,6 +31,10 @@ var AllowedGeoScopeTypeEnumValues = []GeoScopeType{
 	"CANADA",
 	"CONUS",
 	"JAPAN",
+	"UK",
+	"AUSTRALIA",
+	"BRAZIL",
+	"SWITZERLAND",
 }
 
 func (v *GeoScopeType) UnmarshalJSON(src []byte) error {

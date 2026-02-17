@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **ServiceType** | Pointer to [**VirtualPortServiceType**](VirtualPortServiceType.md) |  | [optional] [default to VIRTUALPORTSERVICETYPE_MSP]
 **Settings** | Pointer to [**VirtualPortConfiguration**](VirtualPortConfiguration.md) |  | [optional] 
 **Package** | Pointer to [**VirtualPortPackage**](VirtualPortPackage.md) |  | [optional] 
+**ServiceCode** | Pointer to **string** | Port service code. | [optional] 
 
 ## Methods
 
@@ -309,6 +310,31 @@ SetPackage sets Package field to given value.
 `func (o *VirtualPortPrice) HasPackage() bool`
 
 HasPackage returns a boolean if a field has been set.
+
+### GetServiceCode
+
+`func (o *VirtualPortPrice) GetServiceCode() string`
+
+GetServiceCode returns the ServiceCode field if non-nil, zero value otherwise.
+
+### GetServiceCodeOk
+
+`func (o *VirtualPortPrice) GetServiceCodeOk() (*string, bool)`
+
+GetServiceCodeOk returns a tuple with the ServiceCode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetServiceCode
+
+`func (o *VirtualPortPrice) SetServiceCode(v string)`
+
+SetServiceCode sets ServiceCode field to given value.
+
+### HasServiceCode
+
+`func (o *VirtualPortPrice) HasServiceCode() bool`
+
+HasServiceCode returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

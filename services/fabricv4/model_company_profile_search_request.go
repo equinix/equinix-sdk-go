@@ -18,6 +18,7 @@ var _ MappedNullable = &CompanyProfileSearchRequest{}
 type CompanyProfileSearchRequest struct {
 	Filter               *CompanyProfileSearchFilter `json:"filter,omitempty"`
 	Pagination           *Pagination                 `json:"pagination,omitempty"`
+	Sort                 *Sort                       `json:"sort,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -104,6 +105,38 @@ func (o *CompanyProfileSearchRequest) SetPagination(v Pagination) {
 	o.Pagination = &v
 }
 
+// GetSort returns the Sort field value if set, zero value otherwise.
+func (o *CompanyProfileSearchRequest) GetSort() Sort {
+	if o == nil || IsNil(o.Sort) {
+		var ret Sort
+		return ret
+	}
+	return *o.Sort
+}
+
+// GetSortOk returns a tuple with the Sort field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CompanyProfileSearchRequest) GetSortOk() (*Sort, bool) {
+	if o == nil || IsNil(o.Sort) {
+		return nil, false
+	}
+	return o.Sort, true
+}
+
+// HasSort returns a boolean if a field has been set.
+func (o *CompanyProfileSearchRequest) HasSort() bool {
+	if o != nil && !IsNil(o.Sort) {
+		return true
+	}
+
+	return false
+}
+
+// SetSort gets a reference to the given Sort and assigns it to the Sort field.
+func (o *CompanyProfileSearchRequest) SetSort(v Sort) {
+	o.Sort = &v
+}
+
 func (o CompanyProfileSearchRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -119,6 +152,9 @@ func (o CompanyProfileSearchRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Pagination) {
 		toSerialize["pagination"] = o.Pagination
+	}
+	if !IsNil(o.Sort) {
+		toSerialize["sort"] = o.Sort
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -144,6 +180,7 @@ func (o *CompanyProfileSearchRequest) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "filter")
 		delete(additionalProperties, "pagination")
+		delete(additionalProperties, "sort")
 		o.AdditionalProperties = additionalProperties
 	}
 

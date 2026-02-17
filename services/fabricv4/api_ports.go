@@ -202,7 +202,7 @@ func (r ApiCreatePortRequest) Execute() (*Port, *http.Response, error) {
 /*
 CreatePort Create Port
 
-Creates Equinix Fabric™ Port.
+Creates Equinix Fabric? Port.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiCreatePortRequest

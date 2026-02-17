@@ -32,7 +32,7 @@ type ApiGetMetricByAssetIdRequest struct {
 	limit        *int32
 }
 
-// Name of the metric types: &lt;br&gt; - equinix.fabric.connection.bandwidth_rx.usage &lt;br&gt; - equinix.fabric.connection.bandwidth_tx.usage &lt;br&gt; - equinix.fabric.connection.packets_dropped_rx_aside_rateexceeded.count &lt;br&gt; - equinix.fabric.connection.packets_dropped_tx_aside_rateexceeded.count &lt;br&gt; - equinix.fabric.connection.packets_dropped_rx_zside_rateexceeded.count &lt;br&gt; - equinix.fabric.connection.packets_dropped_tx_zside_rateexceeded.count &lt;br&gt; - equinix.fabric.port.bandwidth_rx.usage &lt;br&gt; - equinix.fabric.port.bandwidth_tx.usage &lt;br&gt; - equinix.fabric.port.packets_dropped_rx.count &lt;br&gt; - equinix.fabric.port.packets_dropped_tx.count &lt;br&gt; - equinix.fabric.port.packets_erred_rx.count &lt;br&gt; - equinix.fabric.port.packets_erred_tx.count &lt;br&gt; - equinix.fabric.metro.{source_metro_code}_{destination_metro_code}.latency &lt;br&gt; - equinix.fabric.metro.{source_metro_code}_{destination_metro_code}.jitter_avg &lt;br&gt;
+// Name of the metric types:  - &#x60;equinix.fabric.connection.bandwidth_rx.usage&#x60; - &#x60;equinix.fabric.connection.bandwidth_tx.usage&#x60; - &#x60;equinix.fabric.connection.packets_dropped_rx_aside_rateexceeded.count&#x60; - &#x60;equinix.fabric.connection.packets_dropped_tx_aside_rateexceeded.count&#x60; - &#x60;equinix.fabric.connection.packets_dropped_rx_zside_rateexceeded.count&#x60; - &#x60;equinix.fabric.connection.packets_dropped_tx_zside_rateexceeded.count&#x60; - &#x60;equinix.fabric.port.bandwidth_rx.usage&#x60; - &#x60;equinix.fabric.port.bandwidth_tx.usage&#x60; - &#x60;equinix.fabric.port.packets_dropped_rx.count&#x60; - &#x60;equinix.fabric.port.packets_dropped_tx.count&#x60; - &#x60;equinix.fabric.port.packets_erred_rx.count&#x60; - &#x60;equinix.fabric.port.packets_erred_tx.count&#x60; - &#x60;equinix.fabric.metro.{SOURCE_METRO_CODE}_{DESTINATION_METRO_CODE}.latency&#x60; - &#x60;equinix.fabric.metro.{SOURCE_METRO_CODE}_{DESTINATION_METRO_CODE}.jitter_avg&#x60;
 func (r ApiGetMetricByAssetIdRequest) Name(name string) ApiGetMetricByAssetIdRequest {
 	r.name = &name
 	return r
@@ -119,6 +119,197 @@ func (a *MetricsApiService) GetMetricByAssetIdExecute(r ApiGetMetricByAssetIdReq
 	if r.toDateTime != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "toDateTime", r.toDateTime, "form", "")
 	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
+	}
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
+	} else {
+		var defaultValue int32 = 20
+		r.limit = &defaultValue
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v []Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v []Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v []Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v []Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiGetMetricByNameRequest struct {
+	ctx        context.Context
+	ApiService *MetricsApiService
+	name       *string
+	value      *string
+	offset     *int32
+	limit      *int32
+}
+
+// Name of the metric types with wildcard:  - &#x60;equinix.fabric.metro.*.latency&#x60; - &#x60;equinix.fabric.metro.*.jitter_avg&#x60;
+func (r ApiGetMetricByNameRequest) Name(name string) ApiGetMetricByNameRequest {
+	r.name = &name
+	return r
+}
+
+// value
+func (r ApiGetMetricByNameRequest) Value(value string) ApiGetMetricByNameRequest {
+	r.value = &value
+	return r
+}
+
+// offset
+func (r ApiGetMetricByNameRequest) Offset(offset int32) ApiGetMetricByNameRequest {
+	r.offset = &offset
+	return r
+}
+
+// limit
+func (r ApiGetMetricByNameRequest) Limit(limit int32) ApiGetMetricByNameRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiGetMetricByNameRequest) Execute() (*GetMetricsByNameResponse, *http.Response, error) {
+	return r.ApiService.GetMetricByNameExecute(r)
+}
+
+/*
+GetMetricByName Get Metrics by Name
+
+This API provides capability to retrieve Metrics by specific wildcard metric types
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGetMetricByNameRequest
+*/
+func (a *MetricsApiService) GetMetricByName(ctx context.Context) ApiGetMetricByNameRequest {
+	return ApiGetMetricByNameRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return GetMetricsByNameResponse
+func (a *MetricsApiService) GetMetricByNameExecute(r ApiGetMetricByNameRequest) (*GetMetricsByNameResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GetMetricsByNameResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MetricsApiService.GetMetricByName")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/fabric/v4/metrics"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.name == nil {
+		return localVarReturnValue, nil, reportError("name is required and must be specified")
+	}
+	if r.value == nil {
+		return localVarReturnValue, nil, reportError("value is required and must be specified")
+	}
+
+	parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "value", r.value, "form", "")
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
 	} else {

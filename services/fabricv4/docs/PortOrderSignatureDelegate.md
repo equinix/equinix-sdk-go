@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**FirstName** | Pointer to **string** | name of delegate | [optional] 
+**FirstName** | Pointer to **string** | first name of delegate | [optional] 
 **LastName** | Pointer to **string** | last Name of delegate | [optional] 
 **Email** | Pointer to **string** | email of delegate | [optional] 
 

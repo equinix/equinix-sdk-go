@@ -9,6 +9,7 @@ package fabricv4
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // checks if the PortOrderPurchaseOrder type satisfies the MappedNullable interface at compile time
@@ -19,10 +20,10 @@ type PortOrderPurchaseOrder struct {
 	// purchase order number
 	Number *string `json:"number,omitempty"`
 	// purchase order amount
-	Amount       *string `json:"amount,omitempty"`
-	StartDate    *string `json:"startDate,omitempty"`
-	EndDate      *string `json:"endDate,omitempty"`
-	AttachmentId *string `json:"attachmentId,omitempty"`
+	Amount       *string    `json:"amount,omitempty"`
+	StartDate    *time.Time `json:"startDate,omitempty"`
+	EndDate      *time.Time `json:"endDate,omitempty"`
+	AttachmentId *string    `json:"attachmentId,omitempty"`
 	// Deprecated
 	SelectionType        *PortOrderPurchaseOrderSelectionType `json:"selectionType,omitempty"`
 	Type                 *PortOrderPurchaseOrderType          `json:"type,omitempty"`
@@ -113,9 +114,9 @@ func (o *PortOrderPurchaseOrder) SetAmount(v string) {
 }
 
 // GetStartDate returns the StartDate field value if set, zero value otherwise.
-func (o *PortOrderPurchaseOrder) GetStartDate() string {
+func (o *PortOrderPurchaseOrder) GetStartDate() time.Time {
 	if o == nil || IsNil(o.StartDate) {
-		var ret string
+		var ret time.Time
 		return ret
 	}
 	return *o.StartDate
@@ -123,7 +124,7 @@ func (o *PortOrderPurchaseOrder) GetStartDate() string {
 
 // GetStartDateOk returns a tuple with the StartDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PortOrderPurchaseOrder) GetStartDateOk() (*string, bool) {
+func (o *PortOrderPurchaseOrder) GetStartDateOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.StartDate) {
 		return nil, false
 	}
@@ -139,15 +140,15 @@ func (o *PortOrderPurchaseOrder) HasStartDate() bool {
 	return false
 }
 
-// SetStartDate gets a reference to the given string and assigns it to the StartDate field.
-func (o *PortOrderPurchaseOrder) SetStartDate(v string) {
+// SetStartDate gets a reference to the given time.Time and assigns it to the StartDate field.
+func (o *PortOrderPurchaseOrder) SetStartDate(v time.Time) {
 	o.StartDate = &v
 }
 
 // GetEndDate returns the EndDate field value if set, zero value otherwise.
-func (o *PortOrderPurchaseOrder) GetEndDate() string {
+func (o *PortOrderPurchaseOrder) GetEndDate() time.Time {
 	if o == nil || IsNil(o.EndDate) {
-		var ret string
+		var ret time.Time
 		return ret
 	}
 	return *o.EndDate
@@ -155,7 +156,7 @@ func (o *PortOrderPurchaseOrder) GetEndDate() string {
 
 // GetEndDateOk returns a tuple with the EndDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PortOrderPurchaseOrder) GetEndDateOk() (*string, bool) {
+func (o *PortOrderPurchaseOrder) GetEndDateOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.EndDate) {
 		return nil, false
 	}
@@ -171,8 +172,8 @@ func (o *PortOrderPurchaseOrder) HasEndDate() bool {
 	return false
 }
 
-// SetEndDate gets a reference to the given string and assigns it to the EndDate field.
-func (o *PortOrderPurchaseOrder) SetEndDate(v string) {
+// SetEndDate gets a reference to the given time.Time and assigns it to the EndDate field.
+func (o *PortOrderPurchaseOrder) SetEndDate(v time.Time) {
 	o.EndDate = &v
 }
 

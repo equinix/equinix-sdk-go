@@ -24,12 +24,14 @@ type VirtualPortPrice struct {
 	// Number of physical ports requested. The defaults is 1.
 	PhysicalPortsQuantity *int32 `json:"physicalPortsQuantity,omitempty"`
 	// Aggregated data transfer capacity,  expressed as follows <br> -> Mbps, megabits (1 million bits) per second <br> -> Gbps, gigabits (1 billion bits) per second <br> Bandwidth must be divisible by physicalPortsQuantity.
-	Bandwidth            *int32                    `json:"bandwidth,omitempty"`
-	Redundancy           *VirtualPortRedundancy    `json:"redundancy,omitempty"`
-	ConnectivitySource   *ConnectivitySource       `json:"connectivitySource,omitempty"`
-	ServiceType          *VirtualPortServiceType   `json:"serviceType,omitempty"`
-	Settings             *VirtualPortConfiguration `json:"settings,omitempty"`
-	Package              *VirtualPortPackage       `json:"package,omitempty"`
+	Bandwidth          *int32                    `json:"bandwidth,omitempty"`
+	Redundancy         *VirtualPortRedundancy    `json:"redundancy,omitempty"`
+	ConnectivitySource *ConnectivitySource       `json:"connectivitySource,omitempty"`
+	ServiceType        *VirtualPortServiceType   `json:"serviceType,omitempty"`
+	Settings           *VirtualPortConfiguration `json:"settings,omitempty"`
+	Package            *VirtualPortPackage       `json:"package,omitempty"`
+	// Port service code.
+	ServiceCode          *string `json:"serviceCode,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -412,6 +414,38 @@ func (o *VirtualPortPrice) SetPackage(v VirtualPortPackage) {
 	o.Package = &v
 }
 
+// GetServiceCode returns the ServiceCode field value if set, zero value otherwise.
+func (o *VirtualPortPrice) GetServiceCode() string {
+	if o == nil || IsNil(o.ServiceCode) {
+		var ret string
+		return ret
+	}
+	return *o.ServiceCode
+}
+
+// GetServiceCodeOk returns a tuple with the ServiceCode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *VirtualPortPrice) GetServiceCodeOk() (*string, bool) {
+	if o == nil || IsNil(o.ServiceCode) {
+		return nil, false
+	}
+	return o.ServiceCode, true
+}
+
+// HasServiceCode returns a boolean if a field has been set.
+func (o *VirtualPortPrice) HasServiceCode() bool {
+	if o != nil && !IsNil(o.ServiceCode) {
+		return true
+	}
+
+	return false
+}
+
+// SetServiceCode gets a reference to the given string and assigns it to the ServiceCode field.
+func (o *VirtualPortPrice) SetServiceCode(v string) {
+	o.ServiceCode = &v
+}
+
 func (o VirtualPortPrice) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -455,6 +489,9 @@ func (o VirtualPortPrice) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Package) {
 		toSerialize["package"] = o.Package
 	}
+	if !IsNil(o.ServiceCode) {
+		toSerialize["serviceCode"] = o.ServiceCode
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -488,6 +525,7 @@ func (o *VirtualPortPrice) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "serviceType")
 		delete(additionalProperties, "settings")
 		delete(additionalProperties, "package")
+		delete(additionalProperties, "serviceCode")
 		o.AdditionalProperties = additionalProperties
 	}
 

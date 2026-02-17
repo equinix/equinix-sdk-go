@@ -24,7 +24,9 @@ type AttachLogoResponse struct {
 	// Unique identifier for the logo
 	Uuid string `json:"uuid"`
 	// Status of the attachment operation
-	AttachmentStatus     *string `json:"attachmentStatus,omitempty"`
+	AttachmentStatus *string `json:"attachmentStatus,omitempty"`
+	// Extension type of logo
+	ExtensionType        *string `json:"extensionType,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -161,6 +163,38 @@ func (o *AttachLogoResponse) SetAttachmentStatus(v string) {
 	o.AttachmentStatus = &v
 }
 
+// GetExtensionType returns the ExtensionType field value if set, zero value otherwise.
+func (o *AttachLogoResponse) GetExtensionType() string {
+	if o == nil || IsNil(o.ExtensionType) {
+		var ret string
+		return ret
+	}
+	return *o.ExtensionType
+}
+
+// GetExtensionTypeOk returns a tuple with the ExtensionType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AttachLogoResponse) GetExtensionTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.ExtensionType) {
+		return nil, false
+	}
+	return o.ExtensionType, true
+}
+
+// HasExtensionType returns a boolean if a field has been set.
+func (o *AttachLogoResponse) HasExtensionType() bool {
+	if o != nil && !IsNil(o.ExtensionType) {
+		return true
+	}
+
+	return false
+}
+
+// SetExtensionType gets a reference to the given string and assigns it to the ExtensionType field.
+func (o *AttachLogoResponse) SetExtensionType(v string) {
+	o.ExtensionType = &v
+}
+
 func (o AttachLogoResponse) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -178,6 +212,9 @@ func (o AttachLogoResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["uuid"] = o.Uuid
 	if !IsNil(o.AttachmentStatus) {
 		toSerialize["attachmentStatus"] = o.AttachmentStatus
+	}
+	if !IsNil(o.ExtensionType) {
+		toSerialize["extensionType"] = o.ExtensionType
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -227,6 +264,7 @@ func (o *AttachLogoResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "uuid")
 		delete(additionalProperties, "attachmentStatus")
+		delete(additionalProperties, "extensionType")
 		o.AdditionalProperties = additionalProperties
 	}
 

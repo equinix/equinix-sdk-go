@@ -37,7 +37,7 @@ var (
 	queryDescape    = strings.NewReplacer("%5B", "[", "%5D", "]")
 )
 
-// APIClient manages communication with the Equinix Fabric API v4 API v4.26
+// APIClient manages communication with the Equinix Fabric API v4 API v4.27
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
 	cfg    *Configuration
@@ -49,9 +49,13 @@ type APIClient struct {
 
 	CloudRoutersApi *CloudRoutersApiService
 
+	CompanyProfilesApi *CompanyProfilesApiService
+
 	ConnectionsApi *ConnectionsApiService
 
 	HealthApi *HealthApiService
+
+	LogosApi *LogosApiService
 
 	MarketplaceSubscriptionsApi *MarketplaceSubscriptionsApiService
 
@@ -90,6 +94,8 @@ type APIClient struct {
 	StreamSubscriptionsApi *StreamSubscriptionsApiService
 
 	StreamsApi *StreamsApiService
+
+	TagsApi *TagsApiService
 }
 
 type service struct {
@@ -110,8 +116,10 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	// API Services
 	c.CloudEventsApi = (*CloudEventsApiService)(&c.common)
 	c.CloudRoutersApi = (*CloudRoutersApiService)(&c.common)
+	c.CompanyProfilesApi = (*CompanyProfilesApiService)(&c.common)
 	c.ConnectionsApi = (*ConnectionsApiService)(&c.common)
 	c.HealthApi = (*HealthApiService)(&c.common)
+	c.LogosApi = (*LogosApiService)(&c.common)
 	c.MarketplaceSubscriptionsApi = (*MarketplaceSubscriptionsApiService)(&c.common)
 	c.MetricsApi = (*MetricsApiService)(&c.common)
 	c.MetrosApi = (*MetrosApiService)(&c.common)
@@ -131,6 +139,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.StreamAlertRulesApi = (*StreamAlertRulesApiService)(&c.common)
 	c.StreamSubscriptionsApi = (*StreamSubscriptionsApiService)(&c.common)
 	c.StreamsApi = (*StreamsApiService)(&c.common)
+	c.TagsApi = (*TagsApiService)(&c.common)
 
 	return c
 }

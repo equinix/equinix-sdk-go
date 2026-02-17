@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Href** | Pointer to **string** |  | [optional] 
 **Uuid** | Pointer to **string** |  | [optional] 
+**ExtensionType** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -75,6 +76,31 @@ SetUuid sets Uuid field to given value.
 `func (o *CompanyLogo) HasUuid() bool`
 
 HasUuid returns a boolean if a field has been set.
+
+### GetExtensionType
+
+`func (o *CompanyLogo) GetExtensionType() string`
+
+GetExtensionType returns the ExtensionType field if non-nil, zero value otherwise.
+
+### GetExtensionTypeOk
+
+`func (o *CompanyLogo) GetExtensionTypeOk() (*string, bool)`
+
+GetExtensionTypeOk returns a tuple with the ExtensionType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExtensionType
+
+`func (o *CompanyLogo) SetExtensionType(v string)`
+
+SetExtensionType sets ExtensionType field to given value.
+
+### HasExtensionType
+
+`func (o *CompanyLogo) HasExtensionType() bool`
+
+HasExtensionType returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

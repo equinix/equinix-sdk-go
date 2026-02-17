@@ -23,6 +23,7 @@ type LogoResponse struct {
 	Name                 *string    `json:"name,omitempty"`
 	Description          *string    `json:"description,omitempty"`
 	Status               *string    `json:"status,omitempty"`
+	ExtensionType        *string    `json:"extensionType,omitempty"`
 	Changelog            *Changelog `json:"changelog,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -238,6 +239,38 @@ func (o *LogoResponse) SetStatus(v string) {
 	o.Status = &v
 }
 
+// GetExtensionType returns the ExtensionType field value if set, zero value otherwise.
+func (o *LogoResponse) GetExtensionType() string {
+	if o == nil || IsNil(o.ExtensionType) {
+		var ret string
+		return ret
+	}
+	return *o.ExtensionType
+}
+
+// GetExtensionTypeOk returns a tuple with the ExtensionType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LogoResponse) GetExtensionTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.ExtensionType) {
+		return nil, false
+	}
+	return o.ExtensionType, true
+}
+
+// HasExtensionType returns a boolean if a field has been set.
+func (o *LogoResponse) HasExtensionType() bool {
+	if o != nil && !IsNil(o.ExtensionType) {
+		return true
+	}
+
+	return false
+}
+
+// SetExtensionType gets a reference to the given string and assigns it to the ExtensionType field.
+func (o *LogoResponse) SetExtensionType(v string) {
+	o.ExtensionType = &v
+}
+
 // GetChangelog returns the Changelog field value if set, zero value otherwise.
 func (o *LogoResponse) GetChangelog() Changelog {
 	if o == nil || IsNil(o.Changelog) {
@@ -298,6 +331,9 @@ func (o LogoResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
+	if !IsNil(o.ExtensionType) {
+		toSerialize["extensionType"] = o.ExtensionType
+	}
 	if !IsNil(o.Changelog) {
 		toSerialize["changelog"] = o.Changelog
 	}
@@ -329,6 +365,7 @@ func (o *LogoResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "status")
+		delete(additionalProperties, "extensionType")
 		delete(additionalProperties, "changelog")
 		o.AdditionalProperties = additionalProperties
 	}

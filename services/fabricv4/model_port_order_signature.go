@@ -14,7 +14,7 @@ import (
 // checks if the PortOrderSignature type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &PortOrderSignature{}
 
-// PortOrderSignature Port signature Type
+// PortOrderSignature Port signature details
 type PortOrderSignature struct {
 	Signatory            *PortOrderSignatureSignatory `json:"signatory,omitempty"`
 	Delegate             *PortOrderSignatureDelegate  `json:"delegate,omitempty"`
