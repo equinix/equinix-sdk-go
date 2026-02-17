@@ -9,7 +9,7 @@ info:
   license:
     name: Equinix Inc
     url: https://developer.equinix.com/agreement
-  version: "4.26"
+  version: "4.27"
 externalDocs:
   description: Find more information on Equinix Docs Portal
   url: https://docs.equinix.com/fabric/
@@ -23,6 +23,8 @@ tags:
     description: Cloud Events
   - name: Cloud Routers
     description: Cloud Routers
+  - name: Company Profiles
+    description: Company Profiles <font color="red"> <sup color='red'>Beta</sup></font>
   - name: Connections
     description: Connections
   - name: Metrics
@@ -295,11 +297,40 @@ paths:
             $ref: "#/components/schemas/AssetId"
         - name: name
           in: query
-          description: |
-            Name of the metric types: <br> - equinix.fabric.connection.bandwidth_rx.usage <br> - equinix.fabric.connection.bandwidth_tx.usage <br> - equinix.fabric.connection.packets_dropped_rx_aside_rateexceeded.count <br> - equinix.fabric.connection.packets_dropped_tx_aside_rateexceeded.count <br> - equinix.fabric.connection.packets_dropped_rx_zside_rateexceeded.count <br> - equinix.fabric.connection.packets_dropped_tx_zside_rateexceeded.count <br> - equinix.fabric.port.bandwidth_rx.usage <br> - equinix.fabric.port.bandwidth_tx.usage <br> - equinix.fabric.port.packets_dropped_rx.count <br> - equinix.fabric.port.packets_dropped_tx.count <br> - equinix.fabric.port.packets_erred_rx.count <br> - equinix.fabric.port.packets_erred_tx.count <br> - equinix.fabric.metro.{source_metro_code}_{destination_metro_code}.latency <br> - equinix.fabric.metro.{source_metro_code}_{destination_metro_code}.jitter_avg <br>
+          description: "Name of the metric types: \n- `equinix.fabric.connection.bandwidth_rx.usage`\n- `equinix.fabric.connection.bandwidth_tx.usage`\n- `equinix.fabric.connection.packets_dropped_rx_aside_rateexceeded.count`\n- `equinix.fabric.connection.packets_dropped_tx_aside_rateexceeded.count`\n- `equinix.fabric.connection.packets_dropped_rx_zside_rateexceeded.count`\n- `equinix.fabric.connection.packets_dropped_tx_zside_rateexceeded.count`\n- `equinix.fabric.port.bandwidth_rx.usage`\n- `equinix.fabric.port.bandwidth_tx.usage`\n- `equinix.fabric.port.packets_dropped_rx.count`\n- `equinix.fabric.port.packets_dropped_tx.count`\n- `equinix.fabric.port.packets_erred_rx.count`\n- `equinix.fabric.port.packets_erred_tx.count`\n- `equinix.fabric.metro.{SOURCE_METRO_CODE}_{DESTINATION_METRO_CODE}.latency`\n- `equinix.fabric.metro.{SOURCE_METRO_CODE}_{DESTINATION_METRO_CODE}.jitter_avg`\n"
           required: true
           schema:
-            $ref: "#/components/schemas/MetricTypeQueryParams"
+            pattern: ^equinix\.fabric\.(connection|port|metro)\..+
+            type: string
+          examples:
+            connectionRxUsageExample:
+              value: equinix.fabric.connection.bandwidth_rx.usage
+            connectionTxUsageExample:
+              value: equinix.fabric.connection.bandwidth_tx.usage
+            connectionRxPacketAsideDroppedExample:
+              value: equinix.fabric.connection.packets_dropped_rx_aside_rateexceeded.count
+            connectionTxPacketAsideDroppedExample:
+              value: equinix.fabric.connection.packets_dropped_tx_aside_rateexceeded.count
+            connectionRxPacketZsideDroppedExample:
+              value: equinix.fabric.connection.packets_dropped_rx_zside_rateexceeded.count
+            connectionTxPacketZsideDroppedExample:
+              value: equinix.fabric.connection.packets_dropped_tx_zside_rateexceeded.count
+            portRxUsageExample:
+              value: equinix.fabric.port.bandwidth_rx.usage
+            portTxUsageExample:
+              value: equinix.fabric.port.bandwidth_tx.usage
+            portRxPacketDroppedExample:
+              value: equinix.fabric.port.packets_dropped_rx.count
+            portTxPacketDroppedExample:
+              value: equinix.fabric.port.packets_dropped_tx.count
+            portRxPacketErredExample:
+              value: equinix.fabric.port.packets_erred_rx.count
+            portTxPacketErredExample:
+              value: equinix.fabric.port.packets_erred_tx.count
+            metroLatencyExample:
+              value: equinix.fabric.metro.sv_dc.latency
+            metroJitterExample:
+              value: equinix.fabric.metro.sv_dc.jitter_avg
         - name: fromDateTime
           in: query
           description: Start date and time
@@ -334,6 +365,90 @@ paths:
               examples:
                 Example:
                   $ref: "#/components/examples/get-metrics-by-asset-id"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+              examples:
+                example:
+                  $ref: "#/components/examples/401"
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+              examples:
+                example:
+                  $ref: "#/components/examples/403"
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+              examples:
+                example:
+                  $ref: "#/components/examples/404"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+              examples:
+                example:
+                  $ref: "#/components/examples/500"
+  /fabric/v4/metrics:
+    get:
+      tags:
+        - Metrics
+      summary: Get Metrics by Name
+      description: This API provides capability to retrieve Metrics by specific wildcard metric types
+      operationId: getMetricByName
+      parameters:
+        - name: name
+          in: query
+          description: "Name of the metric types with wildcard: \n- `equinix.fabric.metro.*.latency`\n- `equinix.fabric.metro.*.jitter_avg`\n"
+          required: true
+          schema:
+            pattern: ^equinix\.fabric\.metro\.\*\..+
+            type: string
+          examples:
+            metroLatencyExample:
+              value: equinix.fabric.metro.*.latency
+            metroJitterExample:
+              value: equinix.fabric.metro.*.jitter_avg
+        - name: value
+          in: query
+          description: value
+          required: true
+          schema:
+            $ref: "#/components/schemas/Value"
+        - name: offset
+          in: query
+          description: offset
+          required: false
+          schema:
+            $ref: "#/components/schemas/Offset"
+        - name: limit
+          in: query
+          description: limit
+          required: false
+          schema:
+            $ref: "#/components/schemas/Limit_1"
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetMetricsByNameResponse"
+              examples:
+                Example:
+                  $ref: "#/components/examples/get-metrics-by-name"
         "401":
           description: Unauthorized
           content:
@@ -537,7 +652,7 @@ paths:
               Vd2Colo:
                 $ref: "#/components/examples/Vd2Colo"
               Vd2Colo-vlanTag:
-                $ref: "#/components/examples/Vd2ColoVlanTag"
+                $ref: "#/components/examples/Vd2Colo-VlanTag"
               Vd2Colo-vlanCTag:
                 $ref: "#/components/examples/Vd2Colo-VlanCTag"
               Vd2ColoUntagged:
@@ -564,6 +679,8 @@ paths:
                 $ref: "#/components/examples/Fcr2Sp-Aws"
               Fcr2Sp-Oracle:
                 $ref: "#/components/examples/Fcr2Sp-Oracle"
+              Fcr2Sp-Alibaba:
+                $ref: "#/components/examples/Fcr2Sp-Alibaba"
               Fcr2Vd:
                 $ref: "#/components/examples/Fcr2Vd"
               Fcr2Vd-Redundant-Secondary:
@@ -679,7 +796,7 @@ paths:
                 Vd2Sp:
                   $ref: "#/components/examples/Vd2Sp-Response"
                 Vd2Token:
-                  $ref: "#/components/examples/Vd2ServiceToken_Response"
+                  $ref: "#/components/examples/Vd2ServiceToken-Response"
                 Vd2Colo:
                   $ref: "#/components/examples/Vd2Colo-Response"
                 Vd2Colo-tag:
@@ -2622,6 +2739,8 @@ paths:
                 $ref: "#/components/examples/VirtualPortProduct"
               virtualPortProductUPP:
                 $ref: "#/components/examples/VirtualPortProductUPP"
+              virtualPortProductIX:
+                $ref: "#/components/examples/VirtualPortProductIX"
               precisionTimeProductNtpStandardPackageCode:
                 $ref: "#/components/examples/PrecisionTimeNtpStandardPackage"
               precisionTimeProductNtpEnterprisePackageCode:
@@ -2649,6 +2768,8 @@ paths:
                   $ref: "#/components/examples/VirtualPort"
                 virtualPortUPP:
                   $ref: "#/components/examples/VirtualPortUPP"
+                virtualPortIX:
+                  $ref: "#/components/examples/VirtualPortIX"
                 precisionTimeService:
                   $ref: "#/components/examples/PrecisionTimeService"
         "400":
@@ -2882,7 +3003,7 @@ paths:
       tags:
         - Service Profiles
       summary: Create Profile
-      description: Create Service Profile creates Equinix Fabric™ Service Profile.
+      description: Create Service Profile creates Equinix Fabric? Service Profile.
       operationId: createServiceProfile
       parameters: []
       requestBody:
@@ -3276,7 +3397,7 @@ paths:
         content:
           application/json-patch+json:
             schema:
-              $ref: "#/components/schemas/JsonPatch"
+              $ref: "#/components/schemas/JsonPatch_1"
             examples:
               ServiceProfilePatchRequest:
                 $ref: "#/components/examples/ServiceProfilePatchRequest"
@@ -3668,7 +3789,7 @@ paths:
       tags:
         - Service Tokens
       summary: Create Service Token
-      description: Create Service Tokens generates Equinix Fabric™ service tokens. These tokens authorize users to access protected resources and services.
+      description: Create Service Tokens generates Equinix Fabric? service tokens. These tokens authorize users to access protected resources and services.
       operationId: createServiceToken
       parameters:
         - name: dryRun
@@ -4087,7 +4208,7 @@ paths:
       tags:
         - Ports
       summary: Create Port
-      description: Creates Equinix Fabric™ Port.
+      description: Creates Equinix Fabric? Port.
       operationId: createPort
       parameters:
         - name: dryRun
@@ -8461,6 +8582,10 @@ paths:
                 $ref: "#/components/examples/UpdateName"
               UpdateNotificationEmail:
                 $ref: "#/components/examples/UpdateNotifications"
+              UpdateTermLength:
+                $ref: "#/components/examples/UpdateTermLength"
+              UpdatePackageAndTermLength:
+                $ref: "#/components/examples/UpdatePackageAndTermLength"
         required: true
       responses:
         "200":
@@ -12739,6 +12864,752 @@ paths:
               examples:
                 example:
                   $ref: "#/components/examples/500"
+  /fabric/v4/companyProfiles:
+    post:
+      tags:
+        - Company Profiles
+      summary: Create Company Profile
+      description: Create a new company profile <font color="red"> <sup color='red'>Beta</sup></font>
+      operationId: createCompanyProfile
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CompanyProfileRequest"
+        required: true
+      responses:
+        "201":
+          description: Company profile created successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CompanyProfileResponse"
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+  "/fabric/v4/companyProfiles/{companyProfileId}":
+    get:
+      tags:
+        - Company Profiles
+      summary: Get Company Profile by UUID
+      description: Get company profile details by UUID <font color="red"> <sup color='red'>Beta</sup></font>
+      operationId: getCompanyProfile
+      parameters:
+        - name: companyProfileId
+          in: path
+          description: Company Profile UUID
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CompanyProfileResponse"
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+    delete:
+      tags:
+        - Company Profiles
+      summary: Delete Company Profile
+      description: Delete company profile by UUID <font color="red"> <sup color='red'>Beta</sup></font>
+      operationId: deleteCompanyProfile
+      parameters:
+        - name: companyProfileId
+          in: path
+          description: Company Profile UUID
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CompanyProfileResponse"
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+  /fabric/v4/companyProfiles/search:
+    post:
+      tags:
+        - Company Profiles
+      summary: Search Company Profiles
+      description: Search company profiles based on filter criteria <font color="red"> <sup color='red'>Beta</sup></font>
+      operationId: searchCompanyProfile
+      parameters:
+        - name: viewPoint
+          in: query
+          description: Viewpoint for the request, either 'aSide' or 'zSide'
+          required: false
+          schema:
+            type: string
+            default: aSide
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CompanyProfileSearchRequest"
+        required: true
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CompanyProfileSearchResponse"
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+  "/fabric/v4/companyProfiles/{companyProfileId}/serviceProfiles":
+    get:
+      tags:
+        - Company Profiles
+      summary: Get Service Profiles
+      description: Get all service profiles attached to a company profile <font color="red"> <sup color='red'>Beta</sup></font>
+      operationId: getCompanyProfileServiceProfiles
+      parameters:
+        - name: companyProfileId
+          in: path
+          description: Company Profile UUID
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServiceProfileListResponse"
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+  "/fabric/v4/companyProfiles/{companyProfileId}/serviceProfiles/{serviceProfileId}":
+    put:
+      tags:
+        - Company Profiles
+      summary: Attach Service Profile
+      description: Attach a service profile to a company profile <font color="red"> <sup color='red'>Beta</sup></font>
+      operationId: attachServiceProfileToProfile
+      parameters:
+        - name: companyProfileId
+          in: path
+          description: Company Profile UUID
+          required: true
+          schema:
+            type: string
+        - name: serviceProfileId
+          in: path
+          description: Service Profile UUID
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AttachServiceProfileResponse"
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+    delete:
+      tags:
+        - Company Profiles
+      summary: Detach Service Profile
+      description: Detach a service profile from a company profile <font color="red"> <sup color='red'>Beta</sup></font>
+      operationId: detachServiceProfileFromProfile
+      parameters:
+        - name: companyProfileId
+          in: path
+          description: Company Profile UUID
+          required: true
+          schema:
+            type: string
+        - name: serviceProfileId
+          in: path
+          description: Service Profile UUID
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AttachServiceProfileResponse"
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+  "/fabric/v4/companyProfiles/{companyProfileId}/tags":
+    get:
+      tags:
+        - Company Profiles
+      summary: Get Tags
+      description: Get all tags attached to a company profile <font color="red"> <sup color='red'>Beta</sup></font>
+      operationId: getTags
+      parameters:
+        - name: companyProfileId
+          in: path
+          description: Company Profile UUID
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TagListResponse"
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+  "/fabric/v4/companyProfiles/{companyProfileId}/tags/{tagId}":
+    put:
+      tags:
+        - Company Profiles
+      summary: Attach Tag
+      description: Attach a tag to a company profile <font color="red"> <sup color='red'>Beta</sup></font>
+      operationId: attachTagToProfile
+      parameters:
+        - name: companyProfileId
+          in: path
+          description: Company Profile UUID
+          required: true
+          schema:
+            type: string
+        - name: tagId
+          in: path
+          description: Tag UUID
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AttachTagResponse"
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+    delete:
+      tags:
+        - Company Profiles
+      summary: Detach Tag
+      description: Detach a tag from a company profile <font color="red"> <sup color='red'>Beta</sup></font>
+      operationId: detachTagFromProfile
+      parameters:
+        - name: companyProfileId
+          in: path
+          description: Company Profile UUID
+          required: true
+          schema:
+            type: string
+        - name: tagId
+          in: path
+          description: Tag UUID
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AttachTagResponse"
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+  "/fabric/v4/companyProfiles/{companyProfileId}/privateServices":
+    get:
+      tags:
+        - Company Profiles
+      summary: Get Private Services
+      description: Get all private services attached to a company profile <font color="red"> <sup color='red'>Beta</sup></font>
+      operationId: getCompanyProfilePrivateServices
+      parameters:
+        - name: companyProfileId
+          in: path
+          description: Company Profile UUID
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PrivateServiceListResponse"
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+  "/fabric/v4/companyProfiles/{companyProfileId}/privateServices/{privateServiceId}":
+    put:
+      tags:
+        - Company Profiles
+      summary: Attach Private Service
+      description: Attach a private service to a company profile <font color="red"> <sup color='red'>Beta</sup></font>
+      operationId: attachPrivateServiceToProfile
+      parameters:
+        - name: companyProfileId
+          in: path
+          description: Company Profile UUID
+          required: true
+          schema:
+            type: string
+        - name: privateServiceId
+          in: path
+          description: Private Service UUID
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AttachPrivateServiceResponse"
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+    delete:
+      tags:
+        - Company Profiles
+      summary: Detach Private Service
+      description: Detach a private service from a company profile <font color="red"> <sup color='red'>Beta</sup></font>
+      operationId: detachPrivateServiceFromProfile
+      parameters:
+        - name: companyProfileId
+          in: path
+          description: Company Profile UUID
+          required: true
+          schema:
+            type: string
+        - name: privateServiceId
+          in: path
+          description: Private Service UUID
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AttachPrivateServiceResponse"
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+  "/fabric/v4/logos/{uuid}":
+    get:
+      tags:
+        - Logos
+      summary: Get Logo
+      description: Get Logo by UUID
+      operationId: getLogoByUuid
+      parameters:
+        - name: uuid
+          in: path
+          description: UUID of the Logo
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: Successful Get operation
+          content:
+            multipart/mixed:
+              schema:
+                type: string
+                format: binary
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+    delete:
+      tags:
+        - Logos
+      summary: Delete Logo
+      description: Delete Logo by UUID
+      operationId: deleteLogoByUuid
+      parameters:
+        - name: uuid
+          in: path
+          description: UUID of the Logo
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "202":
+          description: Successful Delete operation
+          content:
+            application/json; charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/LogoResponse"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+  /fabric/v4/tags:
+    get:
+      tags:
+        - Tags
+      summary: List Tags
+      description: Get all Tags
+      operationId: listTags
+      parameters:
+        - name: type
+          in: query
+          description: Filter by tag type
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+        - name: offset
+          in: query
+          description: Offset for pagination
+          required: false
+          schema:
+            type: integer
+            format: int32
+            default: 0
+        - name: limit
+          in: query
+          description: Limit for pagination
+          required: false
+          schema:
+            maximum: 100
+            type: integer
+            format: int32
+            default: 20
+      responses:
+        "200":
+          description: Successful List operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TagListResponse"
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+    post:
+      tags:
+        - Tags
+      summary: Create Tag
+      description: Create Tag for Equinix Fabric?.
+      operationId: createTag
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TagRequest"
+        required: true
+      responses:
+        "201":
+          description: Successful Create operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TagResponse"
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorList"
 components:
   schemas:
     CloudEventAssetType:
@@ -12747,6 +13618,7 @@ components:
         - ports
         - connections
         - routers
+        - metros
         - serviceTokens
         - networks
         - projects
@@ -12914,16 +13786,26 @@ components:
         - ports
         - connections
         - metros
-    MetricTypeQueryParams:
-      type: string
-      description: Name of the metric types
-      example: equinix.fabric.port.bandwidth_rx.usage
     Limit_1:
       type: integer
       description: Pagination limit
       example: 20
       default: 20
     GetMetricsByAssetResponse:
+      type: object
+      properties:
+        pagination:
+          $ref: "#/components/schemas/Pagination"
+        data:
+          type: array
+          description: Data returned from the API call.
+          items:
+            $ref: "#/components/schemas/Metric"
+    Value:
+      type: string
+      description: Which value to retrieve
+      example: last
+    GetMetricsByNameResponse:
       type: object
       properties:
         pagination:
@@ -14279,7 +15161,7 @@ components:
       type: string
       description: Service Profile UUID
       format: uuid
-    JsonPatch:
+    JsonPatch_1:
       type: array
       items:
         $ref: "#/components/schemas/JsonPatchOperation"
@@ -14478,7 +15360,7 @@ components:
           description: List of Fabric Metros.
           items:
             $ref: "#/components/schemas/Metro"
-      description: GET Metros retrieves all Equinix® Fabric™ metros, as well as latency data for each location.This performance data helps network planning engineers and administrators make strategic decisions about port locations and traffic routes.
+      description: GET Metros retrieves all Equinix? Fabric? metros, as well as latency data for each location.This performance data helps network planning engineers and administrators make strategic decisions about port locations and traffic routes.
     Metro:
       type: object
       properties:
@@ -14523,7 +15405,7 @@ components:
           description: List of supported geographic boundaries of a Fabric Metro.
           items:
             $ref: "#/components/schemas/GeoScopeType"
-      description: GET Metros retrieves all Equinix® Fabric™ metros, as well as latency data for each location.This performance data helps network planning engineers and administrators make strategic decisions about port locations and traffic routes.
+      description: GET Metros retrieves all Equinix? Fabric? metros, as well as latency data for each location.This performance data helps network planning engineers and administrators make strategic decisions about port locations and traffic routes.
     GeoCoordinates:
       type: object
       properties:
@@ -14567,6 +15449,10 @@ components:
         - CANADA
         - CONUS
         - JAPAN
+        - UK
+        - AUSTRALIA
+        - BRAZIL
+        - SWITZERLAND
     MetroErrorList:
       type: array
       items:
@@ -18034,6 +18920,8 @@ components:
             $ref: "#/components/schemas/Notification"
         webUrl:
           type: string
+        contactUrl:
+          type: string
     CompanyProfileResponse:
       type: object
       properties:
@@ -18057,6 +18945,10 @@ components:
           type: string
         state:
           $ref: "#/components/schemas/CompanyProfileState"
+        metros:
+          type: array
+          items:
+            $ref: "#/components/schemas/CompanyMetro"
         logo:
           $ref: "#/components/schemas/CompanyLogo"
         tags:
@@ -18077,6 +18969,10 @@ components:
             $ref: "#/components/schemas/Notification"
         webUrl:
           type: string
+        contactUrl:
+          type: string
+        change:
+          $ref: "#/components/schemas/CompanyProfileChange"
         changeLog:
           $ref: "#/components/schemas/Changelog"
     PatchOperation:
@@ -18092,6 +18988,8 @@ components:
           description: The operation to perform
           enum:
             - replace
+            - add
+            - remove
         path:
           minLength: 1
           pattern: ^/
@@ -18101,13 +18999,6 @@ components:
         value:
           type: object
           description: The value to update the field to
-    CompanyProfileUpdateResponse:
-      type: object
-      properties:
-        companyProfile:
-          $ref: "#/components/schemas/CompanyProfileResponse"
-        change:
-          $ref: "#/components/schemas/CompanyProfileChange"
     CompanyProfileSearchRequest:
       type: object
       properties:
@@ -18115,6 +19006,8 @@ components:
           $ref: "#/components/schemas/CompanyProfileSearchFilter"
         pagination:
           $ref: "#/components/schemas/Pagination"
+        sort:
+          $ref: "#/components/schemas/Sort"
     CompanyProfileSearchFilter:
       type: object
       properties:
@@ -18141,6 +19034,14 @@ components:
     OperatorEnum:
       type: string
       description: Comparison operators for filtering
+    Sort:
+      type: object
+      properties:
+        property:
+          type: string
+          description: Property to sort by
+        direction:
+          $ref: "#/components/schemas/CompanyProfileSortDirection"
     CompanyProfileSearchResponse:
       required:
         - data
@@ -18220,6 +19121,9 @@ components:
         displayName:
           type: string
           example: Environment
+        weight:
+          type: integer
+          example: 10000
       description: Equinix Fabric Tag Response Object
     AttachTagResponse:
       required:
@@ -18283,6 +19187,9 @@ components:
         attachmentStatus:
           type: string
           description: Status of the attachment operation
+        extensionType:
+          type: string
+          description: Extension type of logo
     LogoRequest:
       required:
         - description
@@ -18332,6 +19239,9 @@ components:
         status:
           type: string
           example: CREATED
+        extensionType:
+          type: string
+          example: png
         changelog:
           $ref: "#/components/schemas/Changelog"
       description: Equinix Fabric Logo Response Object
@@ -18835,7 +19745,6 @@ components:
     ConnectionRouteTableEntry:
       required:
         - changeLog
-        - state
         - type
       type: object
       properties:
@@ -19132,6 +20041,37 @@ components:
         value:
           $ref: "#/components/schemas/RoutingProtocolBase"
       description: Routing Protocol change operation data
+    PlatformChangelog:
+      type: object
+      properties:
+        createdBy:
+          type: string
+          description: Created by User Key
+          example: johnsmith
+        createdDateTime:
+          type: string
+          description: Created by Date and Time
+          format: date-time
+          example: 2020-11-06T07:00:00Z
+        updatedBy:
+          type: string
+          description: Updated by User Key
+          example: johnsmith
+        updatedDateTime:
+          type: string
+          description: Updated by Date and Time
+          format: date-time
+          example: 2020-11-06T07:00:00Z
+        deletedBy:
+          type: string
+          description: Deleted by User Key
+          example: johnsmith
+        deletedDateTime:
+          type: string
+          description: Deleted by Date and Time
+          format: date-time
+          example: 2020-11-06T07:00:00Z
+      description: Change log
     SortDirection:
       type: string
       description: Sorting direction
@@ -19383,7 +20323,7 @@ components:
       type: object
       properties:
         purchaseOrder:
-          $ref: "#/components/schemas/PortOrder_purchaseOrder"
+          $ref: "#/components/schemas/PortOrderPurchaseOrder"
         orderId:
           type: string
           description: Order Identification
@@ -19399,7 +20339,7 @@ components:
           format: uuid
           deprecated: true
         signature:
-          $ref: "#/components/schemas/PortOrder_signature"
+          $ref: "#/components/schemas/PortOrderSignature"
     PortOperation:
       type: object
       properties:
@@ -20345,9 +21285,7 @@ components:
           maximum: 9000
           minimum: 16
           type: integer
-          description: |
-            Ping Command DataBytes. 
-            This field is only applicable for commands of type `PING_COMMAND`.
+          description: "Ping Command DataBytes. \nThis field is only applicable for commands of type `PING_COMMAND`.\n"
           example: 100
           default: 64
         probes:
@@ -20396,9 +21334,7 @@ components:
           maximum: 9000
           minimum: 16
           type: integer
-          description: |
-            Ping Command DataBytes. 
-            This field is only applicable for commands of type `PING_COMMAND`.
+          description: "Ping Command DataBytes. \nThis field is only applicable for commands of type `PING_COMMAND`.\n"
           example: 100
           default: 64
         interval:
@@ -21088,12 +22024,21 @@ components:
       type: object
     CompanyProfileState:
       type: object
+    CompanyMetro:
+      type: object
+      properties:
+        href:
+          type: string
+        metroCode:
+          type: string
     CompanyLogo:
       type: object
       properties:
         href:
           type: string
         uuid:
+          type: string
+        extensionType:
           type: string
     CompanyServiceProfile:
       type: object
@@ -21112,6 +22057,8 @@ components:
     CompanyProfileChange:
       type: object
       properties:
+        uuid:
+          type: string
         type:
           type: string
         status:
@@ -21119,8 +22066,18 @@ components:
         createdDateTime:
           type: string
           format: date-time
+        updatedDateTime:
+          type: string
+          format: date-time
         data:
           $ref: "#/components/schemas/CompanyProfileChangeItem"
+    CompanyProfileSortDirection:
+      type: string
+      description: Sorting direction
+      default: ASC
+      enum:
+        - DESC
+        - ASC
     ConnectionPriority:
       type: string
       description: Connection priority in redundancy group
@@ -21272,6 +22229,7 @@ components:
         - DRAFT
         - CANCELLED
         - PENDING_INTERFACE_CONFIGURATION
+        - PENDING_ACTIVATION
     RouteTableEntryType:
       type: string
       description: Route table entry type
@@ -21415,6 +22373,8 @@ components:
           $ref: "#/components/schemas/VirtualPortConfiguration"
         package:
           $ref: "#/components/schemas/VirtualPortPackage"
+        serviceCode:
+          $ref: "#/components/schemas/VirtualPortServiceCode"
       description: Preferences and settings for a virtual port connected to an internet service provider (ISP) or other Equinix platform entity.
     TimeServicePrice:
       type: object
@@ -21439,6 +22399,66 @@ components:
           items:
             $ref: "#/components/schemas/AccessPointSelector"
       description: Connection link protocol,virtual device or network configuration
+    PortOrderPurchaseOrder:
+      type: object
+      properties:
+        number:
+          type: string
+          description: purchase order number
+        amount:
+          type: string
+          description: purchase order amount
+        startDate:
+          type: string
+          format: date-time
+        endDate:
+          type: string
+          format: date-time
+        attachmentId:
+          type: string
+          format: uuid
+        selectionType:
+          type: string
+          deprecated: true
+          enum:
+            - EXEMPTION
+            - EXISTING
+            - NEW
+            - BLANKET
+        type:
+          type: string
+          enum:
+            - EXEMPTION
+            - EXISTING
+            - NEW
+            - BLANKET
+      description: purchase order
+    PortOrderSignature:
+      type: object
+      properties:
+        signatory:
+          type: string
+          description: Port signature Type
+          enum:
+            - DELEGATE
+            - SELF
+            - ACCOUNT_SUPPORT
+        delegate:
+          $ref: "#/components/schemas/PortOrderSignatureDelegate"
+      description: Port signature details
+    PortOrderSignatureDelegate:
+      type: object
+      properties:
+        firstName:
+          type: string
+          description: first name of delegate
+        lastName:
+          type: string
+          description: last Name of delegate
+        email:
+          type: string
+          description: email of delegate
+      description: order delegate details
     PortDeviceRedundancy:
       type: object
       properties:
@@ -22013,6 +23033,9 @@ components:
         code:
           $ref: "#/components/schemas/VirtualPortPackageCode"
       description: Virtual Port Package
+    VirtualPortServiceCode:
+      type: string
+      description: Port service code.
     TimeServicePriceConnection:
       type: object
       properties:
@@ -22368,6 +23391,36 @@ components:
           items:
             $ref: "#/components/schemas/ValidateRequest_filter_and"
       description: Filters
+    Response_incomplete_details:
+      type: object
+      properties:
+        reason:
+          type: string
+          description: The reason why the response is incomplete.
+          enum:
+            - max_output_tokens
+            - content_filter
+      description: |
+        Details about why the response is incomplete.
+      nullable: true
+    ResponseUsage_input_tokens_details:
+      required:
+        - cached_tokens
+      type: object
+      properties:
+        cached_tokens:
+          type: integer
+          description: "The number of tokens that were retrieved from the cache. \n[More on prompt caching](https://platform.openai.com/docs/guides/prompt-caching).\n"
+      description: A detailed breakdown of the input tokens.
+    ResponseUsage_output_tokens_details:
+      required:
+        - reasoning_tokens
+      type: object
+      properties:
+        reasoning_tokens:
+          type: integer
+          description: The number of reasoning tokens.
+      description: A detailed breakdown of the output tokens.
     Metric_resource:
       type: object
       properties:
@@ -22380,6 +23433,9 @@ components:
         type:
           type: string
           description: Metric resource type
+        state:
+          type: string
+          description: Metric resource state
         name:
           type: string
           description: Metric resource name
@@ -22413,66 +23469,6 @@ components:
         href:
           type: string
           example: https://api.equinix.com/fabric/v4/connections/3066ab1d-af87-49d7-8a14-c9bdb57ac809
-    PortOrder_purchaseOrder:
-      type: object
-      properties:
-        number:
-          type: string
-          description: purchase order number
-        amount:
-          type: string
-          description: purchase order amount
-        startDate:
-          type: string
-          format: datetime
-        endDate:
-          type: string
-          format: datetime
-        attachmentId:
-          type: string
-          format: uuid
-        selectionType:
-          type: string
-          deprecated: true
-          enum:
-            - EXEMPTION
-            - EXISTING
-            - NEW
-            - BLANKET
-        type:
-          type: string
-          enum:
-            - EXEMPTION
-            - EXISTING
-            - NEW
-            - BLANKET
-      description: purchase order
-    PortOrder_signature_delegate:
-      type: object
-      properties:
-        firstName:
-          type: string
-          description: name of delegate
-        lastName:
-          type: string
-          description: last Name of delegate
-        email:
-          type: string
-          description: email of delegate
-      description: delegate oder details
-    PortOrder_signature:
-      type: object
-      properties:
-        signatory:
-          type: string
-          description: Port signature Type
-          enum:
-            - DELEGATE
-            - SELF
-            - ACCOUNT_SUPPORT
-        delegate:
-          $ref: "#/components/schemas/PortOrder_signature_delegate"
-      description: Port signature Type
     RouteTableEntry_connection:
       type: object
       properties:
@@ -22885,6 +23881,9 @@ components:
             resource:
               href: https://api.equinix.com/fabric/v4/ports/0689734d-25c6-40d1-a9ff-3e4edea07a72
               uuid: 0689734d-25c6-40d1-a9ff-3e4edea07a72
+              type: XF_PORT
+              state: PROVISIONED
+              name: my-port-name
             summary:
               mean: 102.15384615384616
               max: 107
@@ -22952,6 +23951,46 @@ components:
                 value: 251
               - endDateTime: 2025-05-14T14:57:46.000Z
                 value: 243
+    get-metrics-by-name:
+      value:
+        pagination:
+          offset: 0
+          limit: 5000
+          total: 3
+        data:
+          - type: GAUGE
+            name: equinix.fabric.metro.at_am.latency
+            unit: ms
+            resource:
+              href: https://uatapi.equinix.com/fabric/v4/metros/AT
+              type: XF_METRO
+              code: AT
+              description: Atlanta to Amsterdam intermetro latency, average in milliseconds
+            datapoints:
+              - endDateTime: 2026-02-03T23:05:04Z
+                value: 94.8
+          - type: GAUGE
+            name: equinix.fabric.metro.at_ba.latency
+            unit: ms
+            resource:
+              href: https://uatapi.equinix.com/fabric/v4/metros/AT
+              type: XF_METRO
+              code: AT
+              description: Atlanta to Barcelona intermetro latency, average in milliseconds
+            datapoints:
+              - endDateTime: 2026-02-03T23:05:04Z
+                value: 111
+          - type: GAUGE
+            name: equinix.fabric.metro.at_bg.latency
+            unit: ms
+            resource:
+              href: https://uatapi.equinix.com/fabric/v4/metros/AT
+              type: XF_METRO
+              code: AT
+              description: Atlanta to Bogota intermetro latency, average in milliseconds
+            datapoints:
+              - endDateTime: 2026-02-03T23:05:04Z
+                value: 69.8
     search-metrics:
       value:
         filter:
@@ -23820,7 +24859,7 @@ components:
               uuid: 20d32a80-0d61-4333-bc03-707b591ae2f4
             interface:
               type: NETWORK
-              id: 45645
+              id: 3
         zSide:
           accessPoint:
             type: NETWORK
@@ -24070,7 +25109,7 @@ components:
               uuid: 20d32a80-0d61-4333-bc03-707b591ae2f4
             interface:
               type: NETWORK
-              id: 45645
+              id: 3
         zSide:
           accessPoint:
             type: SP
@@ -24102,7 +25141,7 @@ components:
               uuid: 20d32a80-0d61-4333-bc03-707b591ae2f4
             interface:
               type: NETWORK
-              id: 45645
+              id: 3
         zSide:
           accessPoint:
             type: SP
@@ -24131,7 +25170,7 @@ components:
               uuid: 20d32a80-0d61-4333-bc03-707b591ae2f4
             interface:
               type: NETWORK
-              id: 45645
+              id: 3
         zSide:
           accessPoint:
             type: COLO
@@ -24147,7 +25186,7 @@ components:
             emails:
               - test@equinix.com
               - test1@equinix.com
-    Vd2ColoVlanTag:
+    Vd2Colo-VlanTag:
       value:
         type: EVPL_VC
         bandwidth: 1000
@@ -24160,7 +25199,7 @@ components:
               uuid: 20d32a80-0d61-4333-bc03-707b591ae2f4
             interface:
               type: NETWORK
-              id: 45645
+              id: 3
         zSide:
           accessPoint:
             type: COLO
@@ -24190,7 +25229,7 @@ components:
               uuid: 20d32a80-0d61-4333-bc03-707b591ae2f4
             interface:
               type: NETWORK
-              id: 45645
+              id: 3
         zSide:
           accessPoint:
             type: COLO
@@ -24220,7 +25259,7 @@ components:
               uuid: 20d32a80-0d61-4333-bc03-707b591ae2f4
             interface:
               type: NETWORK
-              id: 45645
+              id: 3
         zSide:
           accessPoint:
             type: COLO
@@ -24252,7 +25291,7 @@ components:
               uuid: 20d32a80-0d61-4333-bc03-707b591ae2f4
             interface:
               type: NETWORK
-              id: 45645
+              id: 3
         zSide:
           serviceToken:
             uuid: 20d32a80-0d61-4333-bc03-707b591ae2f5
@@ -24525,6 +25564,35 @@ components:
               - test@equinix.com
         project:
           projectId: "567"
+    Fcr2Sp-Alibaba:
+      value:
+        type: IP_VC
+        name: My-FCR-AlibabaConnection
+        bandwidth: 50
+        redundancy:
+          priority: PRIMARY
+        aSide:
+          accessPoint:
+            type: CLOUD_ROUTER
+            router:
+              uuid: 66a21614-1c4a-11ec-9621-0242ac130002
+        zSide:
+          accessPoint:
+            type: SP
+            profile:
+              type: L2_PROFILE
+              uuid: 20d32a80-0d61-4333-bc03-707b591ae2f5
+            location:
+              metroCode: SV
+            authenticationKey: xx-xx-xx
+            sellerRegion: us-west-1
+        project:
+          projectId: "567"
+        notifications:
+          - type: ALL
+            emails:
+              - test@equinix.com
+              - test1@equinix.com
     Fcr2Vd:
       value:
         type: IP_VC
@@ -24545,7 +25613,7 @@ components:
               uuid: 20d32a80-0d61-4333-bc03-707b591ae2f4
             interface:
               type: NETWORK
-              id: 45645
+              id: 3
         project:
           projectId: "567"
         notifications:
@@ -24574,7 +25642,7 @@ components:
               uuid: 20d32a80-0d61-4333-bc03-707b591ae2f4
             interface:
               type: NETWORK
-              id: 45645
+              id: 3
         project:
           projectId: "567"
         notifications:
@@ -25908,7 +26976,7 @@ components:
           providerStatus: NOT_AVAILABLE
         changeLog:
           createdDateTime: 2022-10-05T19:37:12.748Z
-    Vd2ServiceToken_Response:
+    Vd2ServiceToken-Response:
       value:
         href: https://api.equinix.com/fabric/v4/connections/ebc37e2e-c36b-4e93-86a4-fc4efce7abc8
         type: EVPL_VC
@@ -26010,6 +27078,9 @@ components:
             virtualDevice:
               type: EDGE
               uuid: 20d32a80-0d61-4333-bc03-707b591ae2f4
+            linkProtocol:
+              type: DOT1Q
+              vlanTag: 15229
             interface:
               uuid: a00cef6f-8e35-4794-9ff9-665e084e4e6d
               type: NETWORK
@@ -27537,8 +28608,8 @@ components:
             role: LEAF
     Vd2IAProfile-Response:
       value:
-        type: IA_VC
         href: https://uatapi.npclouda.equinix.com/fabric/v4/connections/ce42ca81-538d-4f38-b020-d45fb48d20c7
+        type: IA_VC
         uuid: ce42ca81-538d-4f38-b020-d45fb48d20c7
         name: vd2eia-connection-1
         operation:
@@ -27585,8 +28656,8 @@ components:
               uuid: 32d81829-0bf8-45d5-84e2-7289a553dbb6
     Vd2NETWORK-Response:
       value:
-        type: EVPLAN_VC
         href: https://api.equinix.com/fabric/v4/connections/e1f165fd-29bb-4c15-8ec7-56242677e6fc
+        type: EVPLAN_VC
         uuid: e1f165fd-29bb-4c15-8ec7-56242677e6fc
         name: vd2network-connection
         operation:
@@ -27636,8 +28707,8 @@ components:
               location: null
     Vd2AwsSP-Response:
       value:
-        type: EVPL_VC
         href: https://api.equinix.com/fabric/v4/connections/f0a954e7-bdc5-4727-90cc-869f990e289f
+        type: EVPL_VC
         uuid: f0a954e7-bdc5-4727-90cc-869f990e289f
         name: vd2aws-connection-1
         operation:
@@ -27687,8 +28758,8 @@ components:
             authenticationKey: xxxx-xxx-xxx
     Vd2AzureSP-Response:
       value:
-        type: EVPL_VC
         href: https://api.equinix.com/fabric/v4/connections/3da14bba-d81c-4497-93c3-3f4a3cb0bc40
+        type: EVPL_VC
         uuid: 3da14bba-d81c-4497-93c3-3f4a3cb0bc40
         name: vd2azure-connection-1
         operation:
@@ -27737,8 +28808,8 @@ components:
             authenticationKey: xxxx-xxx-xxxx
     Vd2OracleSP-Response:
       value:
-        type: EVPL_VC
         href: https://api.equinix.com/fabric/v4/connections/53c89f1a-0be7-44a1-9c03-28059632a72d
+        type: EVPL_VC
         uuid: 53c89f1a-0be7-44a1-9c03-28059632a72d
         name: vd2oracle-connection-1
         operation:
@@ -27788,8 +28859,8 @@ components:
             authenticationKey: ocid1.virtualcircuit.oc1
     Vd2AlibabaSP-Response:
       value:
-        type: EVPL_VC
         href: https://api.equinix.com/fabric/v4/connections/66ed4e8a-584c-4027-9788-748fecb5ce35
+        type: EVPL_VC
         uuid: 66ed4e8a-584c-4027-9788-748fecb5ce35
         name: vd2alibaba-connection-1
         operation:
@@ -27838,8 +28909,8 @@ components:
             authenticationKey: xxxx-xxx-xxxx
     Vd2GoogleSP-Response:
       value:
-        type: EVPL_VC
         href: https://api.equinix.com/fabric/v4/connections/50ae793c-b466-4d71-9724-c32b5e402bbe
+        type: EVPL_VC
         uuid: 50ae793c-b466-4d71-9724-c32b5e402bbe
         name: vd2googleSp-connection-1
         operation:
@@ -30345,6 +31416,238 @@ components:
                 bfd:
                   enabled: true
                   interval: "100"
+    AllPeeringProtocolResponse:
+      value:
+        pagination:
+          offset: 0
+          limit: 10
+          total: 1
+        data:
+          - href: https://api.equinix.com/fabric/v4/connections/e8ba52fe-faae-43b5-b0b1-6904d37ee011/peeringProtocols/a8ba52de-faae-43b5-b0b1-6904d37ee011
+            uuid: a8ba52de-faae-43b5-b0b1-6904d37ee011
+            type: BGP
+            name: ix_bgp
+            description: ix_bgp
+            customerAsn: 5555
+            vlan: 99
+            routeServerAsn: 24115
+            state: PROVISIONING
+            macAddress: 00:11:22:33:44:55
+            bgpIpv4:
+              customerPeerIp: 12.1.1.1
+              domainName: gw01.sin.example.net
+              primaryRouteServerIp: 10.1.1.1
+              secondaryRouteServerIp: 10.1.1.2
+              asSet: AS-EC-SV
+              mlpeEnabled: true
+              md5AuthKey: TESTMD5Key12345
+              prefixes:
+                - 203.0.113.0/24
+              maxPrefixLimit: 300
+              prependSelfEnabled: true
+            bgpIpv6:
+              customerPeerIp: 2001:db8:c59b::22
+              domainName: gw01.sin.example.net
+              primaryRouteServerIp: 2001:db8:c59b::33
+              secondaryRouteServerIp: 2001:db8:c59b::322
+              asSet: AS-EC-SV
+              mlpeEnabled: true
+              md5AuthKey: TESTMD5Key123456
+              prefixes:
+                - 2001:DB8:123::/48
+              maxPrefixLimit: 300
+              prependSelfEnabled: true
+            routeCollector:
+              asn: 1238
+              ipV4: 10.255.255.254
+              ipV6: 2001:db8:85a3::8a2e:370:7334
+            changelog:
+              createdBy: "12345"
+              createdDateTime: 2025-08-30T07:21:39Z
+    Peering_400:
+      value:
+        - errorCode: EQ-3067103
+          errorMessage: Peering Protocol does not exist or does not belong to the user. Please check ConnectionID and PeeringProtocolId
+          correlationId: cebc3d33-9037-4a2b-a7af-0ad65602cdec
+          details: Peering Protocol Service does not exist or does not belong to the user. Please check ConnectionID and PeeringProtocolId
+    Peering_401:
+      value:
+        - errorCode: EQ-3067106
+          errorMessage: User not found in request or invalid.
+          correlationId: c82ff3bc-de07-47e5-b3ec-53a009d01515
+    Peering_403:
+      value:
+        - errorCode: EQ-3067102
+          errorMessage: Operation not allowed
+          correlationId: c82ff3bc-de07-47e5-b3ec-53a009d01515
+          details: Operation not allowed for current user
+    Peering_404:
+      value:
+        - errorCode: EQ-3067101
+          errorMessage: Peering Protocol not found; it may not exist or could have already been deleted.
+          correlationId: c82ff3bc-de07-47e5-b3ec-53a009d01515
+          details: Peering Protocol Service not found or already deleted
+    Peering_500:
+      value:
+        - errorCode: EQ-3067104
+          errorMessage: Internal Server Error
+          correlationId: c82ff3bc-de07-47e5-b3ec-53a009d01515
+          details: Internal Server Error
+    PeeringProtocolCreateRequest:
+      value:
+        type: BGP
+        name: ix_bgp
+        description: ix_bgp
+        customerAsn: 5555
+        macAddress: 00:11:22:33:44:55
+        bgpIpv4:
+          domainName: gw01.sin.example.net
+          asSet: AS-EC-SV
+          mlpeEnabled: true
+          md5AuthKey: TESTMD5KEY12345
+          prefixes:
+            - 203.0.113.0/24
+        bgpIpv6:
+          domainName: gw01.sin.example.net
+          asSet: AS-EC-SV
+          mlpeEnabled: true
+          md5AuthKey: TESTMD5KEY123456
+          prefixes:
+            - 2001:DB8:123::/48
+    PeeringProtocolResponse:
+      value:
+        href: https://api.equinix.com/fabric/v4/connections/e8ba52fe-faae-43b5-b0b1-6904d37ee011/peeringProtocols/a8ba52de-faae-43b5-b0b1-6904d37ee011
+        uuid: a8ba52de-faae-43b5-b0b1-6904d37ee011
+        type: BGP
+        name: ix_bgp
+        description: ix_bgp
+        customerAsn: 5555
+        vlan: 99
+        routeServerAsn: 24115
+        state: PROVISIONING
+        macAddress: 00:11:22:33:44:55
+        bgpIpv4:
+          customerPeerIp: 12.1.1.1
+          domainName: gw01.sin.example.net
+          primaryRouteServerIp: 10.1.1.1
+          secondaryRouteServerIp: 10.1.1.2
+          asSet: AS-EC-SV
+          mlpeEnabled: true
+          md5AuthKey: TESTMD5Key12345
+          prefixes:
+            - 203.0.113.0/24
+          maxPrefixLimit: 300
+          prependSelfEnabled: true
+        bgpIpv6:
+          customerPeerIp: 2001:db8:c59b::22
+          domainName: gw01.sin.example.net
+          primaryRouteServerIp: 2001:db8:c59b::33
+          secondaryRouteServerIp: 2001:db8:c59b::322
+          asSet: AS-EC-SV
+          mlpeEnabled: true
+          md5AuthKey: TESTMD5Key123456
+          prefixes:
+            - 2001:DB8:123::/48
+          maxPrefixLimit: 300
+          prependSelfEnabled: true
+        routeCollector:
+          asn: 1238
+          ipV4: 10.255.255.254
+          ipV6: 2001:db8:85a3::8a2e:370:7334
+        changelog:
+          createdBy: "12345"
+          createdDateTime: 2025-08-30T07:21:39Z
+    PeeringProtocolDeleteResponse:
+      value:
+        href: https://api.equinix.com/fabric/v4/connections/e8ba52fe-faae-43b5-b0b1-6904d37ee011/peeringProtocols/a8ba52de-faae-43b5-b0b1-6904d37ee011
+        uuid: a8ba52de-faae-43b5-b0b1-6904d37ee011
+        type: BGP
+        name: ix_bgp
+        description: ix_bgp
+        customerAsn: 5555
+        vlan: 99
+        routeServerAsn: 24115
+        state: DEPROVISIONING
+        macAddress: 00:11:22:33:44:55
+        bgpIpv4:
+          customerPeerIp: 12.1.1.1
+          domainName: gw01.sin.example.net
+          primaryRouteServerIp: 10.1.1.1
+          secondaryRouteServerIp: 10.1.1.2
+          asSet: AS-EC-SV
+          mlpeEnabled: true
+          md5AuthKey: TESTMD5KEY12345
+          prefixes:
+            - 203.0.113.0/24
+          maxPrefixLimit: 300
+          prependSelfEnabled: true
+        bgpIpv6:
+          customerPeerIp: 2001:db8:c59b::22
+          domainName: gw01.sin.example.net
+          primaryRouteServerIp: 2001:db8:c59b::33
+          secondaryRouteServerIp: 2001:db8:c59b::322
+          asSet: AS-EC-SV
+          mlpeEnabled: true
+          rcMd5AuthKey: TESTMD5KEY123456
+          prefixes:
+            - 2001:DB8:123::/48
+          maxPrefixLimit: 300
+          prependSelfEnabled: true
+        routeCollector:
+          asn: 1238
+          ipV4: 10.255.255.254
+          ipV6: 2001:db8:85a3::8a2e:370:7334
+        changelog:
+          createdBy: "12345"
+          createdDateTime: 2025-08-30T07:21:39Z
+    PeeringProtocolPatchRequest:
+      value:
+        - op: replace
+          path: /macAddress
+          value: 00:1A:2B:3C:4D:5E
+    PeeringProtocolPatchResponse:
+      value:
+        href: https://api.equinix.com/fabric/v4/connections/e8ba52fe-faae-43b5-b0b1-6904d37ee011/peeringProtocols/a8ba52de-faae-43b5-b0b1-6904d37ee011
+        uuid: a8ba52de-faae-43b5-b0b1-6904d37ee011
+        type: BGP
+        name: ix_bgp
+        description: ix_bgp
+        customerAsn: 5555
+        vlan: 99
+        routeServerAsn: 24115
+        state: REPROVISIONING
+        macAddress: 00:1A:2B:3C:4D:5E
+        bgpIpv4:
+          customerPeerIp: 12.1.1.1
+          domainName: gw01.sin.example.net
+          primaryRouteServerIp: 10.1.1.1
+          secondaryRouteServerIp: 10.1.1.2
+          asSet: AS-EC-SV
+          mlpeEnabled: true
+          md5AuthKey: TESTMD5Key12345
+          prefixes:
+            - 203.0.113.0/24
+          maxPrefixLimit: 300
+          prependSelfEnabled: true
+        bgpIpv6:
+          customerPeerIp: 2001:db8:c59b::22
+          domainName: gw01.sin.example.net
+          primaryRouteServerIp: 2001:db8:c59b::33
+          secondaryRouteServerIp: 2001:db8:c59b::322
+          asSet: AS-EC-SV
+          mlpeEnabled: true
+          md5AuthKey: TESTMD5Key123456
+          prefixes:
+            - 2001:DB8:123::/48
+          maxPrefixLimit: 300
+          prependSelfEnabled: true
+        routeCollector:
+          asn: 1238
+          ipV4: 10.255.255.254
+          ipV6: 2001:db8:85a3::8a2e:370:7334
+        changelog:
+          createdBy: "12345"
+          createdDateTime: 2025-08-30T07:21:39Z
     ConnectionSearchDirection:
       value:
         filter:
@@ -31508,6 +32811,34 @@ components:
               operator: =
               values:
                 - "false"
+    VirtualPortProductIX:
+      value:
+        filter:
+          and:
+            - property: /type
+              operator: =
+              values:
+                - VIRTUAL_PORT_PRODUCT
+            - property: /port/location/ibx
+              operator: =
+              values:
+                - DA1
+            - property: /port/type
+              operator: =
+              values:
+                - XF_PORT
+            - property: /port/bandwidth
+              operator: =
+              values:
+                - "1000"
+            - property: /port/serviceCode
+              operator: =
+              values:
+                - IX
+            - property: /port/connectivitySource/type
+              operator: =
+              values:
+                - COLO
     PrecisionTimeNtpStandardPackage:
       value:
         filter:
@@ -31745,6 +33076,36 @@ components:
               serviceType: EPL
               package:
                 code: UNLIMITED_PLUS
+    VirtualPortIX:
+      value:
+        pagination:
+          offset: 0
+          limit: 1
+          total: 1
+        data:
+          - type: VIRTUAL_PORT_PRODUCT
+            code: IX00008.PROD
+            name: Equinix Internet Exchange Port Product
+            description: Internet Exchange Port
+            account:
+              accountNumber: 200001
+            charges:
+              - type: MONTHLY_RECURRING
+                price: 500
+              - type: NON_RECURRING
+                price: 100
+            currency: USD
+            port:
+              type: XF_PORT
+              location:
+                ibx: DA1
+              lag:
+                enabled: false
+              physicalPortsQuantity: 1
+              bandwidth: 1000
+              connectivitySource:
+                type: COLO
+              serviceCode: IX
     PrecisionTimeService:
       value:
         pagination:
@@ -33614,6 +34975,12 @@ components:
             ibx: SV2
         order:
           purchaseOrderNumber: 156576
+          signature:
+            signatory: DELEGATE
+            delegate:
+              firstName: John
+              lastName: Doe
+              email: john.doe@company.com
         project:
           projectId: 8f23b36f-db8f-44c8-a6e5-606e1b485931
         account:
@@ -33643,6 +35010,8 @@ components:
             - uuid: 64de7e5-7fe7-41e6-b984-80d5aa159a0e
         order:
           purchaseOrderNumber: 156576
+          signature:
+            signatory: SELF
         project:
           projectId: 8f23b36f-db8f-44c8-a6e5-606e1b485931
         account:
@@ -33699,6 +35068,12 @@ components:
         order:
           purchaseOrderNumber: 156576
           orderNumber: 1-129105284100
+          signature:
+            signatory: DELEGATE
+            delegate:
+              firstName: John
+              lastName: Doe
+              email: john.doe@company.com
         project:
           projectId: 8f23b36f-db8f-44c8-a6e5-606e1b485931
         account:
@@ -33757,6 +35132,8 @@ components:
         order:
           purchaseOrderNumber: 156576
           orderNumber: 1-129105284100
+          signature:
+            signatory: SELF
         project:
           projectId: 8f23b36f-db8f-44c8-a6e5-606e1b485931
         account:
@@ -33800,10 +35177,6 @@ components:
               projectId: 8f23b36f-db8f-44c8-a6e5-606e1b485931
             account:
               accountNumber: 270848
-            notifications:
-              - type: ALL
-                emails:
-                  - test@test.com
           - type: FABRIC_MC
             bandwidth: 10000
             connectionDestinationType: COLO
@@ -33831,10 +35204,6 @@ components:
               projectId: 8f23b36f-db8f-44c8-a6e5-606e1b485931
             account:
               accountNumber: 270848
-            notifications:
-              - type: ALL
-                emails:
-                  - test@test.com
     RemoteMetroConnectBulkCreate:
       value:
         data:
@@ -33861,10 +35230,6 @@ components:
               projectId: 8f23b36f-db8f-44c8-a6e5-606e1b485931
             account:
               accountNumber: 270848
-            notifications:
-              - type: ALL
-                emails:
-                  - test@test.com
           - type: FABRIC_MC
             bandwidth: 10000
             connectionDestinationType: REMOTE
@@ -33888,10 +35253,6 @@ components:
               projectId: 8f23b36f-db8f-44c8-a6e5-606e1b485931
             account:
               accountNumber: 270848
-            notifications:
-              - type: ALL
-                emails:
-                  - test@test.com
     ColoMetroConnectBulkCreateWithOrder:
       value:
         data:
@@ -33920,14 +35281,16 @@ components:
                 ibx: SV2
             order:
               purchaseOrderNumber: 156576
+              signature:
+                signatory: DELEGATE
+                delegate:
+                  firstName: John
+                  lastName: Doe
+                  email: john.doe@company.com
             project:
               projectId: 8f23b36f-db8f-44c8-a6e5-606e1b485931
             account:
               accountNumber: 270848
-            notifications:
-              - type: ALL
-                emails:
-                  - test@test.com
           - type: FABRIC_MC
             bandwidth: 10000
             connectionDestinationType: COLO
@@ -33953,14 +35316,16 @@ components:
                 ibx: SV2
             order:
               purchaseOrderNumber: 156576
+              signature:
+                signatory: DELEGATE
+                delegate:
+                  firstName: John
+                  lastName: Doe
+                  email: john.doe@company.com
             project:
               projectId: 8f23b36f-db8f-44c8-a6e5-606e1b485931
             account:
               accountNumber: 270848
-            notifications:
-              - type: ALL
-                emails:
-                  - test@test.com
     ColoMetroConnectBulkResponseExample:
       value:
         data:
@@ -34257,6 +35622,12 @@ components:
             order:
               purchaseOrderNumber: 156576
               orderNumber: 1-129105284100
+              signature:
+                signatory: DELEGATE
+                delegate:
+                  firstName: John
+                  lastName: Doe
+                  email: john.doe@company.com
             project:
               projectId: 8f23b36f-db8f-44c8-a6e5-606e1b485931
             account:
@@ -34319,6 +35690,12 @@ components:
             order:
               purchaseOrderNumber: 156576
               orderNumber: 1-129105284100
+              signature:
+                signatory: DELEGATE
+                delegate:
+                  firstName: John
+                  lastName: Doe
+                  email: john.doe@company.com
             project:
               projectId: 8f23b36f-db8f-44c8-a6e5-606e1b485931
             account:
@@ -34404,6 +35781,12 @@ components:
         order:
           purchaseOrderNumber: 156576
           orderNumber: 1-129105284100
+          signature:
+            signatory: DELEGATE
+            delegate:
+              firstName: John
+              lastName: Doe
+              email: john.doe@company.com
         project:
           projectId: 8f23b36f-db8f-44c8-a6e5-606e1b485931
         account:
@@ -34462,6 +35845,12 @@ components:
         order:
           purchaseOrderNumber: 156576
           orderNumber: 1-129105284100
+          signature:
+            signatory: DELEGATE
+            delegate:
+              firstName: John
+              lastName: Doe
+              email: john.doe@company.com
         project:
           projectId: 8f23b36f-db8f-44c8-a6e5-606e1b485931
         account:
@@ -34587,6 +35976,12 @@ components:
             order:
               purchaseOrderNumber: 156576
               orderNumber: 1-129105284100
+              signature:
+                signatory: DELEGATE
+                delegate:
+                  firstName: John
+                  lastName: Doe
+                  email: john.doe@company.com
             project:
               projectId: 8f23b36f-db8f-44c8-a6e5-606e1b485931
             account:
@@ -34646,6 +36041,12 @@ components:
             order:
               purchaseOrderNumber: 126758
               orderNumber: 1-139105284200
+              signature:
+                signatory: DELEGATE
+                delegate:
+                  firstName: Tom
+                  lastName: Lim
+                  email: tom.lim@company.com
             project:
               projectId: 66a2d2f7-b79b-49bc-8642-d2b3c1c138b4
             account:
@@ -34732,6 +36133,14 @@ components:
             services:
               - type: ETHERNET_IP_SERVICE
               - type: TIME_SERVICE
+            geoScopes:
+              - CANADA
+              - CONUS
+              - JAPAN
+              - UK
+              - AUSTRALIA
+              - BRAZIL
+              - SWITZERLAND
     400_metros:
       value:
         - errorCode: EQ-3036013
@@ -34810,6 +36219,14 @@ components:
         services:
           - type: ETHERNET_IP_SERVICE
           - type: TIME_SERVICE
+        geoScopes:
+          - CANADA
+          - CONUS
+          - JAPAN
+          - UK
+          - AUSTRALIA
+          - BRAZIL
+          - SWITZERLAND
     400_metroCode:
       value:
         - errorCode: EQ-3036013
@@ -38961,6 +40378,19 @@ components:
               emails:
                 - testEmail1@equinix.com
                 - testEmail2@equinix.com
+    UpdateTermLength:
+      value:
+        - op: replace
+          path: /order/termLength
+          value: 12
+    UpdatePackageAndTermLength:
+      value:
+        - op: replace
+          path: /package/code
+          value: PREMIUM
+        - op: replace
+          path: /order/termLength
+          value: 12
     CloudRouterPatchResponseExample:
       value:
         href: https://api.equinix.com/fabric/v4/routers/201b7346-a9eb-42fe-ae7a-08148c71928d
@@ -38992,6 +40422,13 @@ components:
           status: REQUESTED
           createdDateTime: 2022-04-19T04:20:55.471Z
           updatedDateTime: 2022-04-19T04:20:55.471Z
+          data:
+            - op: replace
+              path: /package/code
+              value: PREMIUM
+            - op: replace
+              path: /order/termLength
+              value: 12
         changeLog:
           createdBy: abc@xyz.com
           createdByFullName: abc
@@ -39131,15 +40568,7 @@ components:
             count: 5
             interval: 1000
           response:
-            output: |-
-              PING 8.8.8.8 (8.8.8.8): 100 data bytes
-              108 bytes from 8.8.8.8: icmp_seq=0 ttl=117 time=9.839 ms
-              108 bytes from 8.8.8.8: icmp_seq=1 ttl=117 time=16.051 ms
-              108 bytes from 8.8.8.8: icmp_seq=2 ttl=117 time=9.271 ms
-              108 bytes from 8.8.8.8: icmp_seq=3 ttl=117 time=26.771 ms 
-              --- 8.8.8.8 ping statistics ---
-              4 packets transmitted, 4 packets received, 0.0% packet loss
-              round-trip min/avg/max/stddev = 9.271/15.483/26.771/7.039 ms
+            output: "PING 8.8.8.8 (8.8.8.8): 100 data bytes\n108 bytes from 8.8.8.8: icmp_seq=0 ttl=117 time=9.839 ms\n108 bytes from 8.8.8.8: icmp_seq=1 ttl=117 time=16.051 ms\n108 bytes from 8.8.8.8: icmp_seq=2 ttl=117 time=9.271 ms\n108 bytes from 8.8.8.8: icmp_seq=3 ttl=117 time=26.771 ms \n--- 8.8.8.8 ping statistics ---\n4 packets transmitted, 4 packets received, 0.0% packet loss\nround-trip min/avg/max/stddev = 9.271/15.483/26.771/7.039 ms"
             outputStructuredPing:
               destinationIp: 8.8.8.8
               destinationName: 8.8.8.8
@@ -39313,15 +40742,7 @@ components:
             count: 5
             interval: 1000
           response:
-            output: |-
-              PING 8.8.8.8 (8.8.8.8): 100 data bytes
-              108 bytes from 8.8.8.8: icmp_seq=0 ttl=117 time=9.839 ms
-              108 bytes from 8.8.8.8: icmp_seq=1 ttl=117 time=16.051 ms
-              108 bytes from 8.8.8.8: icmp_seq=2 ttl=117 time=9.271 ms
-              108 bytes from 8.8.8.8: icmp_seq=3 ttl=117 time=26.771 ms 
-              --- 8.8.8.8 ping statistics ---
-              4 packets transmitted, 4 packets received, 0.0% packet loss
-              round-trip min/avg/max/stddev = 9.271/15.483/26.771/7.039 ms
+            output: "PING 8.8.8.8 (8.8.8.8): 100 data bytes\n108 bytes from 8.8.8.8: icmp_seq=0 ttl=117 time=9.839 ms\n108 bytes from 8.8.8.8: icmp_seq=1 ttl=117 time=16.051 ms\n108 bytes from 8.8.8.8: icmp_seq=2 ttl=117 time=9.271 ms\n108 bytes from 8.8.8.8: icmp_seq=3 ttl=117 time=26.771 ms \n--- 8.8.8.8 ping statistics ---\n4 packets transmitted, 4 packets received, 0.0% packet loss\nround-trip min/avg/max/stddev = 9.271/15.483/26.771/7.039 ms"
             outputStructuredPing:
               destinationIp: 8.8.8.8
               destinationName: 8.8.8.8
@@ -39383,15 +40804,7 @@ components:
           count: 5
           interval: 1000
         response:
-          output: |-
-            PING 8.8.8.8 (8.8.8.8): 100 data bytes
-            108 bytes from 8.8.8.8: icmp_seq=0 ttl=117 time=9.839 ms
-            108 bytes from 8.8.8.8: icmp_seq=1 ttl=117 time=16.051 ms
-            108 bytes from 8.8.8.8: icmp_seq=2 ttl=117 time=9.271 ms
-            108 bytes from 8.8.8.8: icmp_seq=3 ttl=117 time=26.771 ms 
-            --- 8.8.8.8 ping statistics ---
-            4 packets transmitted, 4 packets received, 0.0% packet loss
-            round-trip min/avg/max/stddev = 9.271/15.483/26.771/7.039 ms
+          output: "PING 8.8.8.8 (8.8.8.8): 100 data bytes\n108 bytes from 8.8.8.8: icmp_seq=0 ttl=117 time=9.839 ms\n108 bytes from 8.8.8.8: icmp_seq=1 ttl=117 time=16.051 ms\n108 bytes from 8.8.8.8: icmp_seq=2 ttl=117 time=9.271 ms\n108 bytes from 8.8.8.8: icmp_seq=3 ttl=117 time=26.771 ms \n--- 8.8.8.8 ping statistics ---\n4 packets transmitted, 4 packets received, 0.0% packet loss\nround-trip min/avg/max/stddev = 9.271/15.483/26.771/7.039 ms"
           outputStructuredPing:
             destinationIp: 8.8.8.8
             destinationName: 8.8.8.8
@@ -44064,18 +45477,12 @@ components:
           correlationId: 11091aa7-322a-461e-b6af-40fd10543c94
           additionalInfo:
             - reason: Only accept DESC and ASC for sorting direction.
-    PrivateLinkAttachDomain:
-      value:
-        subdomains:
-          - equinixjira
     PrivateLinkAttachDomainAttachResponse:
       value:
         href: /fabric/v4/privateLinks/23cd19ab-d3bb-478b-9f25-bd12a3af1914/privateDomains/20f3ef8e-d670-4236-86fa-bb0038adcfc3
         uuid: 20f3ef8e-d670-4236-86fa-bb0038adcfc3
         type: PRIVATE_DOMAIN
         name: atlassian.net
-        subdomains:
-          - equinixjira
         attachmentStatus: ATTACHING
     PrivateLink_400_InvalidAttachState:
       value:
@@ -44089,8 +45496,6 @@ components:
         uuid: 20f3ef8e-d670-4236-86fa-bb0038adcfc3
         type: PRIVATE_DOMAIN
         name: atlassian.net
-        subdomains:
-          - equinixjira
         attachmentStatus: DETACHING
     PrivateLinkAttachDomainSearchFilterByStatus:
       value:
@@ -44128,8 +45533,6 @@ components:
             uuid: 20f3ef8e-d670-4236-86fa-bb0038adcfc3
             type: PRIVATE_DOMAIN
             name: atlassian.net
-            subdomains:
-              - equinixjira
             attachmentStatus: ATTACHED
     PrivateLinkAttachService:
       value:
@@ -44194,11 +45597,9 @@ components:
         type: PRIVATE_SERVICE
         name: Atlassian Private Service
         description: Atlassian Private Service in SV
-        domains:
-          - name: atlassian.net
-            subdomains:
-              - equinixjira
-        sourceDomainNames:
+        endpoints:
+          - equinixjira.atlassian.net
+        sourceDomains:
           - equinix.com
         project:
           projectId: 71b55fef-fd2e-402f-ae3c-01d5f00bf2d4
@@ -44210,14 +45611,9 @@ components:
         name: Atlassian Private Service
         description: Atlassian Private Service in SV
         state: PROVISIONING
-        domains:
-          - href: https://api.equinix.com/fabric/v4/privateDomains/20f3ef8e-d670-4236-86fa-bb0038adcfc3
-            uuid: 20f3ef8e-d670-4236-86fa-bb0038adcfc3
-            type: PRIVATE_DOMAIN
-            name: atlassian.net
-            subdomains:
-              - equinixjira
-        sourceDomainNames:
+        endpoints:
+          - equinixjira.atlassian.net
+        sourceDomains:
           - equinix.com
         project:
           projectId: 71b55fef-fd2e-402f-ae3c-01d5f00bf2d4
@@ -44265,14 +45661,9 @@ components:
         name: Atlassian Private Service
         description: Atlassian Private Service in SV
         state: PROVISIONED
-        domains:
-          - href: https://api.equinix.com/fabric/v4/privateDomains/20f3ef8e-d670-4236-86fa-bb0038adcfc3
-            uuid: 20f3ef8e-d670-4236-86fa-bb0038adcfc3
-            type: PRIVATE_DOMAIN
-            name: atlassian.net
-            subdomains:
-              - equinixjira
-        sourceDomainNames:
+        endpoints:
+          - equinixjira.atlassian.net
+        sourceDomains:
           - equinix.com
         project:
           projectId: 71b55fef-fd2e-402f-ae3c-01d5f00bf2d4
@@ -44290,14 +45681,9 @@ components:
         name: Atlassian Private Service
         description: Atlassian Private Service in SV
         state: DEPROVISIONING
-        domains:
-          - href: https://api.equinix.com/fabric/v4/privateDomains/20f3ef8e-d670-4236-86fa-bb0038adcfc3
-            uuid: 20f3ef8e-d670-4236-86fa-bb0038adcfc3
-            type: PRIVATE_DOMAIN
-            name: atlassian.net
-            subdomains:
-              - equinixjira
-        sourceDomainNames:
+        endpoints:
+          - equinixjira.atlassian.net
+        sourceDomains:
           - equinix.com
         project:
           projectId: 71b55fef-fd2e-402f-ae3c-01d5f00bf2d4
@@ -44371,14 +45757,9 @@ components:
             name: Atlassian Private Service
             description: Atlassian Private Service in SV
             state: PROVISIONED
-            domains:
-              - href: https://api.equinix.com/fabric/v4/privateDomains/20f3ef8e-d670-4236-86fa-bb0038adcfc3
-                uuid: 20f3ef8e-d670-4236-86fa-bb0038adcfc3
-                type: PRIVATE_DOMAIN
-                name: atlassian.net
-                subdomains:
-                  - equinixjira
-            sourceDomainNames:
+            endpoints:
+              - equinixjira.atlassian.net
+            sourceDomains:
               - equinix.com
             project:
               projectId: 71b55fef-fd2e-402f-ae3c-01d5f00bf2d4
@@ -44400,7 +45781,7 @@ components:
         target:
           privateService:
             uuid: e18c15f4-c8aa-4c18-9e35-a7e9b288201d
-          geoScope: CONUS
+          geoScope: GLOBAL
           prioritization: LATENCY
         project:
           projectId: 71b55fef-fd2e-402f-ae3c-01d5f00bf2d4
@@ -44417,7 +45798,7 @@ components:
         target:
           privateService:
             uuid: e18c15f4-c8aa-4c18-9e35-a7e9b288201d
-          geoScope: CONUS
+          geoScope: GLOBAL
           prioritization: LATENCY
         state: PROVISIONING
         project:
@@ -44462,7 +45843,7 @@ components:
         target:
           privateService:
             uuid: e18c15f4-c8aa-4c18-9e35-a7e9b288201d
-          geoScope: CONUS
+          geoScope: GLOBAL
           prioritization: LATENCY
         state: PROVISIONED
         project:
@@ -44486,7 +45867,7 @@ components:
         target:
           privateService:
             uuid: e18c15f4-c8aa-4c18-9e35-a7e9b288201d
-          geoScope: CONUS
+          geoScope: GLOBAL
           prioritization: LATENCY
         state: DEPROVISIONED
         project:
@@ -44548,7 +45929,7 @@ components:
             target:
               privateService:
                 uuid: e18c15f4-c8aa-4c18-9e35-a7e9b288201d
-              geoScope: CONUS
+              geoScope: GLOBAL
               prioritization: LATENCY
             state: PROVISIONED
             project:
@@ -44616,11 +45997,390 @@ components:
         - errorCode: EQ-3222002
           errorMessage: ENA is disabled for this user and/or user's organization
           correlationId: 123e4567-e89b-12d3-a456-426614174000
-    500-internal-server-error:
+    500-reactions-internal-server-error:
       value:
         - errorCode: EQ-3222100
           errorMessage: Failed to store reaction
           correlationId: 123e4567-e89b-12d3-a456-426614174000
+    standard-request:
+      value:
+        input:
+          - content:
+              - text: Which of my connections are at risk of exceeding their bandwidth limits?
+                type: input_text
+            role: user
+            type: message
+    string-input:
+      value:
+        input: Which of my connections are at risk of exceeding their bandwidth limits?
+    standard-streaming-request:
+      value:
+        input:
+          - content:
+              - text: Use the equinix_intelligence_search_docs tool to answer my questions about What is VPN
+                type: input_text
+            role: user
+            type: message
+        stream: true
+    response-chaining:
+      value:
+        input:
+          - content:
+              - text: Which of my connections are at risk of exceeding their bandwidth limits?
+                type: input_text
+            role: user
+            type: message
+        previous_response_id: resp_08b22a5f-63c6-4892-8cd6-2a4b1ef591c0
+    related-prompts-request:
+      value:
+        input:
+          - content:
+              - text: Use the equinix_intelligence_search_docs tool to answer my questions about What is VPN
+                type: input_text
+            role: user
+            type: message
+        metadata:
+          prompt_source: user/related_prompt
+          include_related_prompts: "true"
+    response_created:
+      summary: response.created
+      value:
+        response:
+          id: resp_4542cc2f-7e4c-4694-a5fb-7797a150d0e0
+          created_at: 1765358850.078279
+          model: ena-agent
+          object: response
+          output:
+            - id: msg_155f9af1-2931-4258-ae22-c34d2b138e4d
+              content:
+                - annotations: []
+                  text: ""
+                  type: output_text
+              role: assistant
+              status: in_progress
+              type: message
+          parallel_tool_calls: false
+          tool_choice: none
+          tools: []
+          status: in_progress
+        sequence_number: 0
+        type: response.created
+    response_in_progress:
+      summary: response.in_progress
+      value:
+        response:
+          id: resp_4542cc2f-7e4c-4694-a5fb-7797a150d0e0
+          created_at: 1765358850.078279
+          model: ena-agent
+          object: response
+          output:
+            - id: msg_155f9af1-2931-4258-ae22-c34d2b138e4d
+              content:
+                - annotations: []
+                  text: ""
+                  type: output_text
+              role: assistant
+              status: in_progress
+              type: message
+          parallel_tool_calls: false
+          tool_choice: none
+          tools: []
+          status: in_progress
+        sequence_number: 1
+        type: response.in_progress
+    response_output_item_added:
+      summary: response.output_item.added
+      value:
+        item:
+          id: msg_155f9af1-2931-4258-ae22-c34d2b138e4d
+          content:
+            - annotations: []
+              text: ""
+              type: output_text
+          role: assistant
+          status: in_progress
+          type: message
+        output_index: 0
+        sequence_number: 2
+        type: response.output_item.added
+    response_content_part_added:
+      summary: response.content_part.added
+      value:
+        content_index: 0
+        item_id: msg_155f9af1-2931-4258-ae22-c34d2b138e4d
+        output_index: 0
+        part:
+          annotations: []
+          text: ""
+          type: output_text
+        sequence_number: 3
+        type: response.content_part.added
+    response_output_text_delta:
+      summary: response.output_text.delta
+      value:
+        content_index: 0
+        delta: I can retrieve that ? I just need one
+        item_id: msg_155f9af1-2931-4258-ae22-c34d2b138e4d
+        logprobs: []
+        output_index: 0
+        sequence_number: 5
+        type: response.output_text.delta
+    response_output_text_done:
+      summary: response.output_text.done
+      value:
+        content_index: 0
+        item_id: msg_155f9af1-2931-4258-ae22-c34d2b138e4d
+        logprobs: []
+        output_index: 0
+        sequence_number: 24
+        text: |-
+          I can retrieve that ? I just need one detail from you.
+
+          What I need
+          - Provide the stream UUID (preferred) ? e.g., the stream's unique ID.
+          - Or, if you don't have the UUID, tell me the stream name (or confirm you want me to list your streams so you can pick one).
+
+          Options I can perform for you
+          - If you give a stream UUID ? I'll fetch the stream details and return the stream state and project ID.
+          - If you give a stream name ? I can search/list streams matching that name (you may need to pick the correct one) and then fetch details.
+          - If you ask me to list streams now ? I can return a paged list of your streams so you can choose which to inspect.
+
+          Tell me which option you prefer and, if available, paste the stream UUID (or stream name).
+        type: response.output_text.done
+    response_content_part_done:
+      summary: response.content_part.done
+      value:
+        content_index: 0
+        item_id: msg_155f9af1-2931-4258-ae22-c34d2b138e4d
+        output_index: 0
+        part:
+          annotations: []
+          text: |-
+            I can retrieve that ? I just need one detail from you.
+
+            What I need
+            - Provide the stream UUID (preferred) ? e.g., the stream's unique ID.
+            - Or, if you don't have the UUID, tell me the stream name (or confirm you want me to list your streams so you can pick one).
+
+            Options I can perform for you
+            - If you give a stream UUID ? I'll fetch the stream details and return the stream state and project ID.
+            - If you give a stream name ? I can search/list streams matching that name (you may need to pick the correct one) and then fetch details.
+            - If you ask me to list streams now ? I can return a paged list of your streams so you can choose which to inspect.
+
+            Tell me which option you prefer and, if available, paste the stream UUID (or stream name).
+          type: output_text
+        sequence_number: 25
+        type: response.content_part.done
+    response_output_item_done:
+      summary: response.output_item.done
+      value:
+        item:
+          id: msg_155f9af1-2931-4258-ae22-c34d2b138e4d
+          content:
+            - annotations: []
+              text: |-
+                I can retrieve that ? I just need one detail from you.
+
+                What I need
+                - Provide the stream UUID (preferred) ? e.g., the stream's unique ID.
+                - Or, if you don't have the UUID, tell me the stream name (or confirm you want me to list your streams so you can pick one).
+
+                Options I can perform for you
+                - If you give a stream UUID ? I'll fetch the stream details and return the stream state and project ID.
+                - If you give a stream name ? I can search/list streams matching that name (you may need to pick the correct one) and then fetch details.
+                - If you ask me to list streams now ? I can return a paged list of your streams so you can choose which to inspect.
+
+                Tell me which option you prefer and, if available, paste the stream UUID (or stream name).
+              type: output_text
+          role: assistant
+          status: completed
+          type: message
+        output_index: 0
+        sequence_number: 26
+        type: response.output_item.done
+    response_completed:
+      summary: response.completed
+      value:
+        response:
+          id: resp_4542cc2f-7e4c-4694-a5fb-7797a150d0e0
+          created_at: 1765358850.078279
+          metadata:
+            related_prompt_1: List streams
+            related_prompt_2: Get stream <STREAM_UUID> stream state & project
+            related_prompt_3: Search streams by name '<STREAM_NAME>' stream
+          model: ena-agent
+          object: response
+          output:
+            - id: msg_155f9af1-2931-4258-ae22-c34d2b138e4d
+              content:
+                - annotations: []
+                  text: |-
+                    I can retrieve that ? I just need one detail from you.
+
+                    What I need
+                    - Provide the stream UUID (preferred) ? e.g., the stream's unique ID.
+                    - Or, if you don't have the UUID, tell me the stream name (or confirm you want me to list your streams so you can pick one).
+
+                    Options I can perform for you
+                    - If you give a stream UUID ? I'll fetch the stream details and return the stream state and project ID.
+                    - If you give a stream name ? I can search/list streams matching that name (you may need to pick the correct one) and then fetch details.
+                    - If you ask me to list streams now ? I can return a paged list of your streams so you can choose which to inspect.
+
+                    Tell me which option you prefer and, if available, paste the stream UUID (or stream name).
+                  type: output_text
+              role: assistant
+              status: completed
+              type: message
+          parallel_tool_calls: false
+          tool_choice: none
+          tools: []
+          status: completed
+        sequence_number: 27
+        type: response.completed
+    standard-response:
+      value:
+        id: resp_08b22a5f-63c6-4892-8cd6-2a4b1ef591c0
+        created_at: 1765339923
+        model: ena-agent
+        object: response
+        output:
+          - id: msg_14af23c6-15ea-4f11-8fa6-0cc80ffba850
+            content:
+              - annotations: []
+                text: Output data from Equinix Networking Assistant in response to prompt
+                type: output_text
+            role: assistant
+            status: completed
+            type: message
+        parallel_tool_calls: false
+        tool_choice: none
+        tools: []
+        safety_identifier: <account_user_name>
+        status: completed
+        text:
+          format:
+            type: text
+        usage:
+          input_tokens: 86146
+          input_tokens_details:
+            cached_tokens: 0
+          output_tokens: 1803
+          output_tokens_details:
+            reasoning_tokens: 960
+          total_tokens: 87949
+        user: <account_user_name>
+    response-with-related-prompt:
+      value:
+        id: resp_08b22a5f-63c6-4892-8cd6-2a4b1ef591c0
+        created_at: 1765339923
+        metadata:
+          related_prompt_1: Get Network Edge service IPsec/IKE example
+          related_prompt_2: Pair Network Edge service VPN with FCR router BGP config
+          related_prompt_3: Compare Equinix Fabric service vs VPN for metro SV (cost/latency/SLAs)
+        model: ena-agent
+        object: response
+        output:
+          - id: msg_14af23c6-15ea-4f11-8fa6-0cc80ffba850
+            content:
+              - annotations: []
+                text: Output data from Equinix Networking Assistant in response to prompt
+                type: output_text
+            role: assistant
+            status: completed
+            type: message
+        parallel_tool_calls: false
+        tool_choice: none
+        tools: []
+        safety_identifier: <account_user_name>
+        status: completed
+        text:
+          format:
+            type: text
+        usage:
+          input_tokens: 86146
+          input_tokens_details:
+            cached_tokens: 0
+          output_tokens: 1803
+          output_tokens_details:
+            reasoning_tokens: 960
+          total_tokens: 87949
+        user: <account_user_name>
+    response-with-annotations:
+      value:
+        id: resp_08b22a5f-63c6-4892-8cd6-2a4b1ef591c0
+        created_at: 1765339923
+        model: ena-agent
+        object: response
+        output:
+          - id: msg_14af23c6-15ea-4f11-8fa6-0cc80ffba850
+            content:
+              - annotations:
+                  - start_index: 0
+                    end_index: 0
+                    type: url_citation
+                    title: ""
+                    url: https://docs.equinix.com/managed-solutions/regional/united-kingdom/gms-uk-ips-infrastructure-platform-service
+                  - start_index: 0
+                    end_index: 0
+                    type: url_citation
+                    title: ""
+                    url: https://docs.equinix.com/connecting-to-service-provider/fabric-connect-akamai
+                text: Output data from Equinix Networking Assistant in response to prompt
+                type: output_text
+            role: assistant
+            status: completed
+            type: message
+        parallel_tool_calls: false
+        tool_choice: none
+        tools: []
+        safety_identifier: <account_user_name>
+        status: completed
+        text:
+          format:
+            type: text
+        usage:
+          input_tokens: 86146
+          input_tokens_details:
+            cached_tokens: 0
+          output_tokens: 1803
+          output_tokens_details:
+            reasoning_tokens: 960
+          total_tokens: 87949
+        user: <account_user_name>
+    500-responses-internal-server-error:
+      value:
+        - errorCode: EQ-3222201
+          errorMessage: |
+            I'm so sorry, we were unable to process your prompt due to a system level issue. Equinix Networking Assistant needs some tender, loving care. Please report this error to maintainers with error code EQ-3222201.
+          correlationId: 123e4567-e89b-12d3-a456-426614174000
+    response-deleted:
+      value:
+        id: resp_08b22a5f-63c6-4892-8cd6-2a4b1ef591c0
+        deleted: true
+        object: response
+    input-items:
+      summary: Standard input items response
+      value:
+        data:
+          - id: msg_16fb930e-c71a-4cfc-9b5d-4871c6a98aef
+            content:
+              - annotations: []
+                text: |-
+                  Results ? connections in DC with Fabric Cloud Router (FCR), active (limit 20)
+                  .....
+                type: output_text
+            role: assistant
+            status: completed
+            type: message
+          - id: msg_3920f72c-5172-42d1-8f5b-7eafd490411e
+            content:
+              - text: Show connections in DC with FCRs; active, either side, limit 20
+                type: input_text
+            role: user
+        first_id: msg_16fb930e-c71a-4cfc-9b5d-4871c6a98aef
+        has_more: false
+        last_id: msg_3920f72c-5172-42d1-8f5b-7eafd490411e
+        object: list
   headers:
     ETag:
       description: response header - identifier for a specific version of a resource.
