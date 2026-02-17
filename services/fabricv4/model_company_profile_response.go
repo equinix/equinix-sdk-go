@@ -23,12 +23,15 @@ type CompanyProfileResponse struct {
 	Summary              *string                  `json:"summary,omitempty"`
 	Description          *string                  `json:"description,omitempty"`
 	State                map[string]interface{}   `json:"state,omitempty"`
+	Metros               []CompanyMetro           `json:"metros,omitempty"`
 	Logo                 *CompanyLogo             `json:"logo,omitempty"`
 	Tags                 []TagResponse            `json:"tags,omitempty"`
 	ServiceProfiles      []CompanyServiceProfile  `json:"serviceProfiles,omitempty"`
 	PrivateServices      []PrivateService         `json:"privateServices,omitempty"`
 	Notifications        []map[string]interface{} `json:"notifications,omitempty"`
 	WebUrl               *string                  `json:"webUrl,omitempty"`
+	ContactUrl           *string                  `json:"contactUrl,omitempty"`
+	Change               *CompanyProfileChange    `json:"change,omitempty"`
 	ChangeLog            *Changelog               `json:"changeLog,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -276,6 +279,38 @@ func (o *CompanyProfileResponse) SetState(v map[string]interface{}) {
 	o.State = v
 }
 
+// GetMetros returns the Metros field value if set, zero value otherwise.
+func (o *CompanyProfileResponse) GetMetros() []CompanyMetro {
+	if o == nil || IsNil(o.Metros) {
+		var ret []CompanyMetro
+		return ret
+	}
+	return o.Metros
+}
+
+// GetMetrosOk returns a tuple with the Metros field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CompanyProfileResponse) GetMetrosOk() ([]CompanyMetro, bool) {
+	if o == nil || IsNil(o.Metros) {
+		return nil, false
+	}
+	return o.Metros, true
+}
+
+// HasMetros returns a boolean if a field has been set.
+func (o *CompanyProfileResponse) HasMetros() bool {
+	if o != nil && !IsNil(o.Metros) {
+		return true
+	}
+
+	return false
+}
+
+// SetMetros gets a reference to the given []CompanyMetro and assigns it to the Metros field.
+func (o *CompanyProfileResponse) SetMetros(v []CompanyMetro) {
+	o.Metros = v
+}
+
 // GetLogo returns the Logo field value if set, zero value otherwise.
 func (o *CompanyProfileResponse) GetLogo() CompanyLogo {
 	if o == nil || IsNil(o.Logo) {
@@ -468,6 +503,70 @@ func (o *CompanyProfileResponse) SetWebUrl(v string) {
 	o.WebUrl = &v
 }
 
+// GetContactUrl returns the ContactUrl field value if set, zero value otherwise.
+func (o *CompanyProfileResponse) GetContactUrl() string {
+	if o == nil || IsNil(o.ContactUrl) {
+		var ret string
+		return ret
+	}
+	return *o.ContactUrl
+}
+
+// GetContactUrlOk returns a tuple with the ContactUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CompanyProfileResponse) GetContactUrlOk() (*string, bool) {
+	if o == nil || IsNil(o.ContactUrl) {
+		return nil, false
+	}
+	return o.ContactUrl, true
+}
+
+// HasContactUrl returns a boolean if a field has been set.
+func (o *CompanyProfileResponse) HasContactUrl() bool {
+	if o != nil && !IsNil(o.ContactUrl) {
+		return true
+	}
+
+	return false
+}
+
+// SetContactUrl gets a reference to the given string and assigns it to the ContactUrl field.
+func (o *CompanyProfileResponse) SetContactUrl(v string) {
+	o.ContactUrl = &v
+}
+
+// GetChange returns the Change field value if set, zero value otherwise.
+func (o *CompanyProfileResponse) GetChange() CompanyProfileChange {
+	if o == nil || IsNil(o.Change) {
+		var ret CompanyProfileChange
+		return ret
+	}
+	return *o.Change
+}
+
+// GetChangeOk returns a tuple with the Change field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CompanyProfileResponse) GetChangeOk() (*CompanyProfileChange, bool) {
+	if o == nil || IsNil(o.Change) {
+		return nil, false
+	}
+	return o.Change, true
+}
+
+// HasChange returns a boolean if a field has been set.
+func (o *CompanyProfileResponse) HasChange() bool {
+	if o != nil && !IsNil(o.Change) {
+		return true
+	}
+
+	return false
+}
+
+// SetChange gets a reference to the given CompanyProfileChange and assigns it to the Change field.
+func (o *CompanyProfileResponse) SetChange(v CompanyProfileChange) {
+	o.Change = &v
+}
+
 // GetChangeLog returns the ChangeLog field value if set, zero value otherwise.
 func (o *CompanyProfileResponse) GetChangeLog() Changelog {
 	if o == nil || IsNil(o.ChangeLog) {
@@ -531,6 +630,9 @@ func (o CompanyProfileResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.State) {
 		toSerialize["state"] = o.State
 	}
+	if !IsNil(o.Metros) {
+		toSerialize["metros"] = o.Metros
+	}
 	if !IsNil(o.Logo) {
 		toSerialize["logo"] = o.Logo
 	}
@@ -548,6 +650,12 @@ func (o CompanyProfileResponse) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.WebUrl) {
 		toSerialize["webUrl"] = o.WebUrl
+	}
+	if !IsNil(o.ContactUrl) {
+		toSerialize["contactUrl"] = o.ContactUrl
+	}
+	if !IsNil(o.Change) {
+		toSerialize["change"] = o.Change
 	}
 	if !IsNil(o.ChangeLog) {
 		toSerialize["changeLog"] = o.ChangeLog
@@ -581,12 +689,15 @@ func (o *CompanyProfileResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "summary")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "state")
+		delete(additionalProperties, "metros")
 		delete(additionalProperties, "logo")
 		delete(additionalProperties, "tags")
 		delete(additionalProperties, "serviceProfiles")
 		delete(additionalProperties, "privateServices")
 		delete(additionalProperties, "notifications")
 		delete(additionalProperties, "webUrl")
+		delete(additionalProperties, "contactUrl")
+		delete(additionalProperties, "change")
 		delete(additionalProperties, "changeLog")
 		o.AdditionalProperties = additionalProperties
 	}

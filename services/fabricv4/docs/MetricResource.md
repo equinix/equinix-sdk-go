@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Href** | Pointer to **string** | Metric resource href | [optional] 
 **Uuid** | Pointer to **string** | Metric resource UUID | [optional] 
 **Type** | Pointer to **string** | Metric resource type | [optional] 
+**State** | Pointer to **string** | Metric resource state | [optional] 
 **Name** | Pointer to **string** | Metric resource name | [optional] 
 **Description** | Pointer to **string** | Metric resource description | [optional] 
 
@@ -103,6 +104,31 @@ SetType sets Type field to given value.
 `func (o *MetricResource) HasType() bool`
 
 HasType returns a boolean if a field has been set.
+
+### GetState
+
+`func (o *MetricResource) GetState() string`
+
+GetState returns the State field if non-nil, zero value otherwise.
+
+### GetStateOk
+
+`func (o *MetricResource) GetStateOk() (*string, bool)`
+
+GetStateOk returns a tuple with the State field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetState
+
+`func (o *MetricResource) SetState(v string)`
+
+SetState sets State field to given value.
+
+### HasState
+
+`func (o *MetricResource) HasState() bool`
+
+HasState returns a boolean if a field has been set.
 
 ### GetName
 

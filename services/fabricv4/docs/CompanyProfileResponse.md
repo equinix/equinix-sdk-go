@@ -11,12 +11,15 @@ Name | Type | Description | Notes
 **Summary** | Pointer to **string** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
 **State** | Pointer to **map[string]interface{}** |  | [optional] 
+**Metros** | Pointer to [**[]CompanyMetro**](CompanyMetro.md) |  | [optional] 
 **Logo** | Pointer to [**CompanyLogo**](CompanyLogo.md) |  | [optional] 
 **Tags** | Pointer to [**[]TagResponse**](TagResponse.md) |  | [optional] 
 **ServiceProfiles** | Pointer to [**[]CompanyServiceProfile**](CompanyServiceProfile.md) |  | [optional] 
 **PrivateServices** | Pointer to [**[]PrivateService**](PrivateService.md) |  | [optional] 
 **Notifications** | Pointer to **[]map[string]interface{}** |  | [optional] 
 **WebUrl** | Pointer to **string** |  | [optional] 
+**ContactUrl** | Pointer to **string** |  | [optional] 
+**Change** | Pointer to [**CompanyProfileChange**](CompanyProfileChange.md) |  | [optional] 
 **ChangeLog** | Pointer to [**Changelog**](Changelog.md) |  | [optional] 
 
 ## Methods
@@ -213,6 +216,31 @@ SetState sets State field to given value.
 
 HasState returns a boolean if a field has been set.
 
+### GetMetros
+
+`func (o *CompanyProfileResponse) GetMetros() []CompanyMetro`
+
+GetMetros returns the Metros field if non-nil, zero value otherwise.
+
+### GetMetrosOk
+
+`func (o *CompanyProfileResponse) GetMetrosOk() (*[]CompanyMetro, bool)`
+
+GetMetrosOk returns a tuple with the Metros field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMetros
+
+`func (o *CompanyProfileResponse) SetMetros(v []CompanyMetro)`
+
+SetMetros sets Metros field to given value.
+
+### HasMetros
+
+`func (o *CompanyProfileResponse) HasMetros() bool`
+
+HasMetros returns a boolean if a field has been set.
+
 ### GetLogo
 
 `func (o *CompanyProfileResponse) GetLogo() CompanyLogo`
@@ -362,6 +390,56 @@ SetWebUrl sets WebUrl field to given value.
 `func (o *CompanyProfileResponse) HasWebUrl() bool`
 
 HasWebUrl returns a boolean if a field has been set.
+
+### GetContactUrl
+
+`func (o *CompanyProfileResponse) GetContactUrl() string`
+
+GetContactUrl returns the ContactUrl field if non-nil, zero value otherwise.
+
+### GetContactUrlOk
+
+`func (o *CompanyProfileResponse) GetContactUrlOk() (*string, bool)`
+
+GetContactUrlOk returns a tuple with the ContactUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetContactUrl
+
+`func (o *CompanyProfileResponse) SetContactUrl(v string)`
+
+SetContactUrl sets ContactUrl field to given value.
+
+### HasContactUrl
+
+`func (o *CompanyProfileResponse) HasContactUrl() bool`
+
+HasContactUrl returns a boolean if a field has been set.
+
+### GetChange
+
+`func (o *CompanyProfileResponse) GetChange() CompanyProfileChange`
+
+GetChange returns the Change field if non-nil, zero value otherwise.
+
+### GetChangeOk
+
+`func (o *CompanyProfileResponse) GetChangeOk() (*CompanyProfileChange, bool)`
+
+GetChangeOk returns a tuple with the Change field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetChange
+
+`func (o *CompanyProfileResponse) SetChange(v CompanyProfileChange)`
+
+SetChange sets Change field to given value.
+
+### HasChange
+
+`func (o *CompanyProfileResponse) HasChange() bool`
+
+HasChange returns a boolean if a field has been set.
 
 ### GetChangeLog
 

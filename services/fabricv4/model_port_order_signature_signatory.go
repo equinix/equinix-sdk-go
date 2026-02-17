@@ -15,7 +15,7 @@ import (
 // PortOrderSignatureSignatory Port signature Type
 type PortOrderSignatureSignatory string
 
-// List of PortOrder_signature_signatory
+// List of PortOrderSignature_signatory
 const (
 	PORTORDERSIGNATURESIGNATORY_DELEGATE        PortOrderSignatureSignatory = "DELEGATE"
 	PORTORDERSIGNATURESIGNATORY_SELF            PortOrderSignatureSignatory = "SELF"
@@ -67,7 +67,7 @@ func (v PortOrderSignatureSignatory) IsValid() bool {
 	return false
 }
 
-// Ptr returns reference to PortOrder_signature_signatory value
+// Ptr returns reference to PortOrderSignature_signatory value
 func (v PortOrderSignatureSignatory) Ptr() *PortOrderSignatureSignatory {
 	return &v
 }

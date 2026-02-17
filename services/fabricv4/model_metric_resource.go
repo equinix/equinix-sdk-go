@@ -22,6 +22,8 @@ type MetricResource struct {
 	Uuid *string `json:"uuid,omitempty"`
 	// Metric resource type
 	Type *string `json:"type,omitempty"`
+	// Metric resource state
+	State *string `json:"state,omitempty"`
 	// Metric resource name
 	Name *string `json:"name,omitempty"`
 	// Metric resource description
@@ -144,6 +146,38 @@ func (o *MetricResource) SetType(v string) {
 	o.Type = &v
 }
 
+// GetState returns the State field value if set, zero value otherwise.
+func (o *MetricResource) GetState() string {
+	if o == nil || IsNil(o.State) {
+		var ret string
+		return ret
+	}
+	return *o.State
+}
+
+// GetStateOk returns a tuple with the State field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MetricResource) GetStateOk() (*string, bool) {
+	if o == nil || IsNil(o.State) {
+		return nil, false
+	}
+	return o.State, true
+}
+
+// HasState returns a boolean if a field has been set.
+func (o *MetricResource) HasState() bool {
+	if o != nil && !IsNil(o.State) {
+		return true
+	}
+
+	return false
+}
+
+// SetState gets a reference to the given string and assigns it to the State field.
+func (o *MetricResource) SetState(v string) {
+	o.State = &v
+}
+
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *MetricResource) GetName() string {
 	if o == nil || IsNil(o.Name) {
@@ -227,6 +261,9 @@ func (o MetricResource) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
+	if !IsNil(o.State) {
+		toSerialize["state"] = o.State
+	}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
@@ -258,6 +295,7 @@ func (o *MetricResource) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "href")
 		delete(additionalProperties, "uuid")
 		delete(additionalProperties, "type")
+		delete(additionalProperties, "state")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")
 		o.AdditionalProperties = additionalProperties

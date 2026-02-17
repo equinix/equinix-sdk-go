@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **Description** | **string** |  | 
 **Notifications** | Pointer to **[]map[string]interface{}** |  | [optional] 
 **WebUrl** | Pointer to **string** |  | [optional] 
+**ContactUrl** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -159,6 +160,31 @@ SetWebUrl sets WebUrl field to given value.
 `func (o *CompanyProfileRequest) HasWebUrl() bool`
 
 HasWebUrl returns a boolean if a field has been set.
+
+### GetContactUrl
+
+`func (o *CompanyProfileRequest) GetContactUrl() string`
+
+GetContactUrl returns the ContactUrl field if non-nil, zero value otherwise.
+
+### GetContactUrlOk
+
+`func (o *CompanyProfileRequest) GetContactUrlOk() (*string, bool)`
+
+GetContactUrlOk returns a tuple with the ContactUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetContactUrl
+
+`func (o *CompanyProfileRequest) SetContactUrl(v string)`
+
+SetContactUrl sets ContactUrl field to given value.
+
+### HasContactUrl
+
+`func (o *CompanyProfileRequest) HasContactUrl() bool`
+
+HasContactUrl returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

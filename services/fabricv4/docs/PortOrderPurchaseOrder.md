@@ -6,8 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Number** | Pointer to **string** | purchase order number | [optional] 
 **Amount** | Pointer to **string** | purchase order amount | [optional] 
-**StartDate** | Pointer to **string** |  | [optional] 
-**EndDate** | Pointer to **string** |  | [optional] 
+**StartDate** | Pointer to **time.Time** |  | [optional] 
+**EndDate** | Pointer to **time.Time** |  | [optional] 
 **AttachmentId** | Pointer to **string** |  | [optional] 
 **SelectionType** | Pointer to [**PortOrderPurchaseOrderSelectionType**](PortOrderPurchaseOrderSelectionType.md) |  | [optional] 
 **Type** | Pointer to [**PortOrderPurchaseOrderType**](PortOrderPurchaseOrderType.md) |  | [optional] 
@@ -83,20 +83,20 @@ HasAmount returns a boolean if a field has been set.
 
 ### GetStartDate
 
-`func (o *PortOrderPurchaseOrder) GetStartDate() string`
+`func (o *PortOrderPurchaseOrder) GetStartDate() time.Time`
 
 GetStartDate returns the StartDate field if non-nil, zero value otherwise.
 
 ### GetStartDateOk
 
-`func (o *PortOrderPurchaseOrder) GetStartDateOk() (*string, bool)`
+`func (o *PortOrderPurchaseOrder) GetStartDateOk() (*time.Time, bool)`
 
 GetStartDateOk returns a tuple with the StartDate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStartDate
 
-`func (o *PortOrderPurchaseOrder) SetStartDate(v string)`
+`func (o *PortOrderPurchaseOrder) SetStartDate(v time.Time)`
 
 SetStartDate sets StartDate field to given value.
 
@@ -108,20 +108,20 @@ HasStartDate returns a boolean if a field has been set.
 
 ### GetEndDate
 
-`func (o *PortOrderPurchaseOrder) GetEndDate() string`
+`func (o *PortOrderPurchaseOrder) GetEndDate() time.Time`
 
 GetEndDate returns the EndDate field if non-nil, zero value otherwise.
 
 ### GetEndDateOk
 
-`func (o *PortOrderPurchaseOrder) GetEndDateOk() (*string, bool)`
+`func (o *PortOrderPurchaseOrder) GetEndDateOk() (*time.Time, bool)`
 
 GetEndDateOk returns a tuple with the EndDate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEndDate
 
-`func (o *PortOrderPurchaseOrder) SetEndDate(v string)`
+`func (o *PortOrderPurchaseOrder) SetEndDate(v time.Time)`
 
 SetEndDate sets EndDate field to given value.
 

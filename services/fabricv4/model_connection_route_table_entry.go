@@ -19,7 +19,7 @@ var _ MappedNullable = &ConnectionRouteTableEntry{}
 type ConnectionRouteTableEntry struct {
 	Type                 RouteTableEntryType                  `json:"type"`
 	ProtocolType         *RouteTableEntryProtocolType         `json:"protocolType,omitempty"`
-	State                ConnectionRouteTableEntryState       `json:"state"`
+	State                *ConnectionRouteTableEntryState      `json:"state,omitempty"`
 	Prefix               *string                              `json:"prefix,omitempty"`
 	NextHop              *string                              `json:"nextHop,omitempty"`
 	MED                  *int32                               `json:"MED,omitempty"`
@@ -36,10 +36,9 @@ type _ConnectionRouteTableEntry ConnectionRouteTableEntry
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewConnectionRouteTableEntry(type_ RouteTableEntryType, state ConnectionRouteTableEntryState, changeLog Changelog) *ConnectionRouteTableEntry {
+func NewConnectionRouteTableEntry(type_ RouteTableEntryType, changeLog Changelog) *ConnectionRouteTableEntry {
 	this := ConnectionRouteTableEntry{}
 	this.Type = type_
-	this.State = state
 	this.ChangeLog = changeLog
 	return &this
 }
@@ -108,28 +107,36 @@ func (o *ConnectionRouteTableEntry) SetProtocolType(v RouteTableEntryProtocolTyp
 	o.ProtocolType = &v
 }
 
-// GetState returns the State field value
+// GetState returns the State field value if set, zero value otherwise.
 func (o *ConnectionRouteTableEntry) GetState() ConnectionRouteTableEntryState {
-	if o == nil {
+	if o == nil || IsNil(o.State) {
 		var ret ConnectionRouteTableEntryState
 		return ret
 	}
-
-	return o.State
+	return *o.State
 }
 
-// GetStateOk returns a tuple with the State field value
+// GetStateOk returns a tuple with the State field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ConnectionRouteTableEntry) GetStateOk() (*ConnectionRouteTableEntryState, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.State) {
 		return nil, false
 	}
-	return &o.State, true
+	return o.State, true
 }
 
-// SetState sets field value
+// HasState returns a boolean if a field has been set.
+func (o *ConnectionRouteTableEntry) HasState() bool {
+	if o != nil && !IsNil(o.State) {
+		return true
+	}
+
+	return false
+}
+
+// SetState gets a reference to the given ConnectionRouteTableEntryState and assigns it to the State field.
 func (o *ConnectionRouteTableEntry) SetState(v ConnectionRouteTableEntryState) {
-	o.State = v
+	o.State = &v
 }
 
 // GetPrefix returns the Prefix field value if set, zero value otherwise.
@@ -362,7 +369,9 @@ func (o ConnectionRouteTableEntry) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ProtocolType) {
 		toSerialize["protocolType"] = o.ProtocolType
 	}
-	toSerialize["state"] = o.State
+	if !IsNil(o.State) {
+		toSerialize["state"] = o.State
+	}
 	if !IsNil(o.Prefix) {
 		toSerialize["prefix"] = o.Prefix
 	}
@@ -396,7 +405,6 @@ func (o *ConnectionRouteTableEntry) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"type",
-		"state",
 		"changeLog",
 	}
 

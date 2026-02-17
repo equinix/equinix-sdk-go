@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | [**RouteTableEntryType**](RouteTableEntryType.md) |  | 
 **ProtocolType** | Pointer to [**RouteTableEntryProtocolType**](RouteTableEntryProtocolType.md) |  | [optional] 
-**State** | [**ConnectionRouteTableEntryState**](ConnectionRouteTableEntryState.md) |  | 
+**State** | Pointer to [**ConnectionRouteTableEntryState**](ConnectionRouteTableEntryState.md) |  | [optional] 
 **Prefix** | Pointer to **string** |  | [optional] 
 **NextHop** | Pointer to **string** |  | [optional] 
 **MED** | Pointer to **int32** |  | [optional] 
@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 
 ### NewConnectionRouteTableEntry
 
-`func NewConnectionRouteTableEntry(type_ RouteTableEntryType, state ConnectionRouteTableEntryState, changeLog Changelog, ) *ConnectionRouteTableEntry`
+`func NewConnectionRouteTableEntry(type_ RouteTableEntryType, changeLog Changelog, ) *ConnectionRouteTableEntry`
 
 NewConnectionRouteTableEntry instantiates a new ConnectionRouteTableEntry object
 This constructor will assign default values to properties that have it defined,
@@ -98,6 +98,11 @@ and a boolean to check if the value has been set.
 
 SetState sets State field to given value.
 
+### HasState
+
+`func (o *ConnectionRouteTableEntry) HasState() bool`
+
+HasState returns a boolean if a field has been set.
 
 ### GetPrefix
 

@@ -15,7 +15,7 @@ import (
 // PortOrderPurchaseOrderType the model 'PortOrderPurchaseOrderType'
 type PortOrderPurchaseOrderType string
 
-// List of PortOrder_purchaseOrder_type
+// List of PortOrderPurchaseOrder_type
 const (
 	PORTORDERPURCHASEORDERTYPE_EXEMPTION PortOrderPurchaseOrderType = "EXEMPTION"
 	PORTORDERPURCHASEORDERTYPE_EXISTING  PortOrderPurchaseOrderType = "EXISTING"
@@ -69,7 +69,7 @@ func (v PortOrderPurchaseOrderType) IsValid() bool {
 	return false
 }
 
-// Ptr returns reference to PortOrder_purchaseOrder_type value
+// Ptr returns reference to PortOrderPurchaseOrder_type value
 func (v PortOrderPurchaseOrderType) Ptr() *PortOrderPurchaseOrderType {
 	return &v
 }

@@ -18,11 +18,15 @@ type PatchOperationOp string
 // List of PatchOperation_op
 const (
 	PATCHOPERATIONOP_REPLACE PatchOperationOp = "replace"
+	PATCHOPERATIONOP_ADD     PatchOperationOp = "add"
+	PATCHOPERATIONOP_REMOVE  PatchOperationOp = "remove"
 )
 
 // All allowed values of PatchOperationOp enum
 var AllowedPatchOperationOpEnumValues = []PatchOperationOp{
 	"replace",
+	"add",
+	"remove",
 }
 
 func (v *PatchOperationOp) UnmarshalJSON(src []byte) error {

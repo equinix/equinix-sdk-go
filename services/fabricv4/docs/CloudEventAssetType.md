@@ -9,6 +9,8 @@
 
 * `ROUTERS` (value: `"routers"`)
 
+* `METROS` (value: `"metros"`)
+
 * `SERVICE_TOKENS` (value: `"serviceTokens"`)
 
 * `NETWORKS` (value: `"networks"`)
