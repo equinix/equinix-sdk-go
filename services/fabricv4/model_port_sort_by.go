@@ -17,12 +17,32 @@ type PortSortBy string
 
 // List of PortSortBy
 const (
-	PORTSORTBY_DEVICE_NAME PortSortBy = "/device/name"
+	PORTSORTBY_DEVICE_NAME                            PortSortBy = "/device/name"
+	PORTSORTBY_NAME                                   PortSortBy = "/name"
+	PORTSORTBY_STATE                                  PortSortBy = "/state"
+	PORTSORTBY_LOCATION_METRO_NAME                    PortSortBy = "/location/metroName"
+	PORTSORTBY_DEMARCATION_POINT_IBX                  PortSortBy = "/demarcationPointIbx"
+	PORTSORTBY_DEVICE_REDUNDANCY_PRIORITY             PortSortBy = "/device/redundancy/priority"
+	PORTSORTBY_LAG_ENABLED                            PortSortBy = "/lagEnabled"
+	PORTSORTBY_PHYSICAL_PORTS_SPEED                   PortSortBy = "/physicalPortsSpeed"
+	PORTSORTBY_ENCAPSULATION_TYPE                     PortSortBy = "/encapsulation/type"
+	PORTSORTBY_PHYSICAL_PORTS_TETHER_CROSS_CONNECT_ID PortSortBy = "/physicalPorts/tether/crossConnectId"
+	PORTSORTBY_PACKAGE_CODE                           PortSortBy = "/package/code"
 )
 
 // All allowed values of PortSortBy enum
 var AllowedPortSortByEnumValues = []PortSortBy{
 	"/device/name",
+	"/name",
+	"/state",
+	"/location/metroName",
+	"/demarcationPointIbx",
+	"/device/redundancy/priority",
+	"/lagEnabled",
+	"/physicalPortsSpeed",
+	"/encapsulation/type",
+	"/physicalPorts/tether/crossConnectId",
+	"/package/code",
 }
 
 func (v *PortSortBy) UnmarshalJSON(src []byte) error {

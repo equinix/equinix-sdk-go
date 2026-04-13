@@ -18,8 +18,9 @@ var _ MappedNullable = &ServiceProfile{}
 type ServiceProfile struct {
 	State *ServiceProfileStateEnum `json:"state,omitempty"`
 	// Seller Account for Service Profile.
-	Account *SimplifiedAccount `json:"account,omitempty"`
-	Project *Project           `json:"project,omitempty"`
+	Account *SimplifiedAccount    `json:"account,omitempty"`
+	Project *Project              `json:"project,omitempty"`
+	Change  *ServiceProfileChange `json:"change,omitempty"`
 	// Seller Account for Service Profile.
 	ChangeLog *Changelog `json:"changeLog,omitempty"`
 	// Service Profile URI response attribute
@@ -162,6 +163,38 @@ func (o *ServiceProfile) HasProject() bool {
 // SetProject gets a reference to the given Project and assigns it to the Project field.
 func (o *ServiceProfile) SetProject(v Project) {
 	o.Project = &v
+}
+
+// GetChange returns the Change field value if set, zero value otherwise.
+func (o *ServiceProfile) GetChange() ServiceProfileChange {
+	if o == nil || IsNil(o.Change) {
+		var ret ServiceProfileChange
+		return ret
+	}
+	return *o.Change
+}
+
+// GetChangeOk returns a tuple with the Change field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ServiceProfile) GetChangeOk() (*ServiceProfileChange, bool) {
+	if o == nil || IsNil(o.Change) {
+		return nil, false
+	}
+	return o.Change, true
+}
+
+// HasChange returns a boolean if a field has been set.
+func (o *ServiceProfile) HasChange() bool {
+	if o != nil && !IsNil(o.Change) {
+		return true
+	}
+
+	return false
+}
+
+// SetChange gets a reference to the given ServiceProfileChange and assigns it to the Change field.
+func (o *ServiceProfile) SetChange(v ServiceProfileChange) {
+	o.Change = &v
 }
 
 // GetChangeLog returns the ChangeLog field value if set, zero value otherwise.
@@ -759,6 +792,9 @@ func (o ServiceProfile) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Project) {
 		toSerialize["project"] = o.Project
 	}
+	if !IsNil(o.Change) {
+		toSerialize["change"] = o.Change
+	}
 	if !IsNil(o.ChangeLog) {
 		toSerialize["changeLog"] = o.ChangeLog
 	}
@@ -838,6 +874,7 @@ func (o *ServiceProfile) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "state")
 		delete(additionalProperties, "account")
 		delete(additionalProperties, "project")
+		delete(additionalProperties, "change")
 		delete(additionalProperties, "changeLog")
 		delete(additionalProperties, "href")
 		delete(additionalProperties, "type")

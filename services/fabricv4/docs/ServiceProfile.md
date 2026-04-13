@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **State** | Pointer to [**ServiceProfileStateEnum**](ServiceProfileStateEnum.md) |  | [optional] 
 **Account** | Pointer to [**SimplifiedAccount**](SimplifiedAccount.md) | Seller Account for Service Profile. | [optional] 
 **Project** | Pointer to [**Project**](Project.md) |  | [optional] 
+**Change** | Pointer to [**ServiceProfileChange**](ServiceProfileChange.md) |  | [optional] 
 **ChangeLog** | Pointer to [**Changelog**](Changelog.md) | Seller Account for Service Profile. | [optional] 
 **Href** | Pointer to **string** | Service Profile URI response attribute | [optional] [readonly] 
 **Type** | Pointer to [**ServiceProfileTypeEnum**](ServiceProfileTypeEnum.md) |  | [optional] 
@@ -119,6 +120,31 @@ SetProject sets Project field to given value.
 `func (o *ServiceProfile) HasProject() bool`
 
 HasProject returns a boolean if a field has been set.
+
+### GetChange
+
+`func (o *ServiceProfile) GetChange() ServiceProfileChange`
+
+GetChange returns the Change field if non-nil, zero value otherwise.
+
+### GetChangeOk
+
+`func (o *ServiceProfile) GetChangeOk() (*ServiceProfileChange, bool)`
+
+GetChangeOk returns a tuple with the Change field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetChange
+
+`func (o *ServiceProfile) SetChange(v ServiceProfileChange)`
+
+SetChange sets Change field to given value.
+
+### HasChange
+
+`func (o *ServiceProfile) HasChange() bool`
+
+HasChange returns a boolean if a field has been set.
 
 ### GetChangeLog
 

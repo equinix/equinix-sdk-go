@@ -17,12 +17,14 @@ type Asset string
 
 // List of Asset
 const (
-	ASSET_PORTS         Asset = "ports"
-	ASSET_CONNECTIONS   Asset = "connections"
-	ASSET_ROUTERS       Asset = "routers"
-	ASSET_METROS        Asset = "metros"
-	ASSET_ORGANIZATIONS Asset = "organizations"
-	ASSET_PROJECTS      Asset = "projects"
+	ASSET_PORTS                Asset = "ports"
+	ASSET_CONNECTIONS          Asset = "connections"
+	ASSET_ROUTERS              Asset = "routers"
+	ASSET_METROS               Asset = "metros"
+	ASSET_ORGANIZATIONS        Asset = "organizations"
+	ASSET_PROJECTS             Asset = "projects"
+	ASSET_NETWORK_EDGE_DEVICES Asset = "networkEdgeDevices"
+	ASSET_COMPANY_PROFILES     Asset = "companyProfiles"
 )
 
 // All allowed values of Asset enum
@@ -33,6 +35,8 @@ var AllowedAssetEnumValues = []Asset{
 	"metros",
 	"organizations",
 	"projects",
+	"networkEdgeDevices",
+	"companyProfiles",
 }
 
 func (v *Asset) UnmarshalJSON(src []byte) error {

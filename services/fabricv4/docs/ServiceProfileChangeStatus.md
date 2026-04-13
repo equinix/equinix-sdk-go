@@ -1,4 +1,4 @@
-# ChangeStatus
+# ServiceProfileChangeStatus
 
 ## Enum
 

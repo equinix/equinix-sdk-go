@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **OrderId** | Pointer to **string** | Order Identification | [optional] 
 **OrderNumber** | Pointer to **string** | Order Reference Number | [optional] 
 **TermLength** | Pointer to **int32** | Term length in months, valid values are 1, 12, 24, 36 where 1 is the default value (for on-demand case). | [optional] [default to 1]
+**ContractedBandwidth** | Pointer to **int32** | Contracted bandwidth | [optional] 
 
 ## Methods
 
@@ -179,6 +180,31 @@ SetTermLength sets TermLength field to given value.
 `func (o *Order) HasTermLength() bool`
 
 HasTermLength returns a boolean if a field has been set.
+
+### GetContractedBandwidth
+
+`func (o *Order) GetContractedBandwidth() int32`
+
+GetContractedBandwidth returns the ContractedBandwidth field if non-nil, zero value otherwise.
+
+### GetContractedBandwidthOk
+
+`func (o *Order) GetContractedBandwidthOk() (*int32, bool)`
+
+GetContractedBandwidthOk returns a tuple with the ContractedBandwidth field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetContractedBandwidth
+
+`func (o *Order) SetContractedBandwidth(v int32)`
+
+SetContractedBandwidth sets ContractedBandwidth field to given value.
+
+### HasContractedBandwidth
+
+`func (o *Order) HasContractedBandwidth() bool`
+
+HasContractedBandwidth returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

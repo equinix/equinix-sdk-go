@@ -23,6 +23,8 @@ const (
 	SIMPLIFIEDNOTIFICATIONTYPE_PROFILE_LIFECYCLE       SimplifiedNotificationType = "PROFILE_LIFECYCLE"
 	SIMPLIFIEDNOTIFICATIONTYPE_ALL                     SimplifiedNotificationType = "ALL"
 	SIMPLIFIEDNOTIFICATIONTYPE_SALES_REP_NOTIFICATIONS SimplifiedNotificationType = "SALES_REP_NOTIFICATIONS"
+	SIMPLIFIEDNOTIFICATIONTYPE_TECHNICAL               SimplifiedNotificationType = "TECHNICAL"
+	SIMPLIFIEDNOTIFICATIONTYPE_ORDERING                SimplifiedNotificationType = "ORDERING"
 )
 
 // All allowed values of SimplifiedNotificationType enum
@@ -33,6 +35,8 @@ var AllowedSimplifiedNotificationTypeEnumValues = []SimplifiedNotificationType{
 	"PROFILE_LIFECYCLE",
 	"ALL",
 	"SALES_REP_NOTIFICATIONS",
+	"TECHNICAL",
+	"ORDERING",
 }
 
 func (v *SimplifiedNotificationType) UnmarshalJSON(src []byte) error {

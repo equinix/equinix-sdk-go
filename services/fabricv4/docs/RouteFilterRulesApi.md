@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**GetRouteFilterRules**](RouteFilterRulesApi.md#GetRouteFilterRules) | **Get** /fabric/v4/routeFilters/{routeFilterId}/routeFilterRules | Get Route Filter Rules
 [**PatchRouteFilterRuleByUuid**](RouteFilterRulesApi.md#PatchRouteFilterRuleByUuid) | **Patch** /fabric/v4/routeFilters/{routeFilterId}/routeFilterRules/{routeFilterRuleId} | Patch Route Filter Rule
 [**ReplaceRouteFilterRuleByUuid**](RouteFilterRulesApi.md#ReplaceRouteFilterRuleByUuid) | **Put** /fabric/v4/routeFilters/{routeFilterId}/routeFilterRules/{routeFilterRuleId} | Replace Route Filter Rule
+[**SearchRouteFilterRules**](RouteFilterRulesApi.md#SearchRouteFilterRules) | **Post** /fabric/v4/routeFilters/{routeFilterId}/routeFilterRules/search | Search Route Filter Rules
 
 
 
@@ -668,6 +669,78 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**RouteFilterRulesData**](RouteFilterRulesData.md)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SearchRouteFilterRules
+
+> RouteFilterRulesSearchResponse SearchRouteFilterRules(ctx, routeFilterId).RouteFilterRulesSearchRequest(routeFilterRulesSearchRequest).Execute()
+
+Search Route Filter Rules
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/equinix/equinix-sdk-go/services/fabricv4"
+)
+
+func main() {
+	routeFilterId := "routeFilterId_example" // string | Route Filters Id
+	routeFilterRulesSearchRequest := *openapiclient.NewRouteFilterRulesSearchRequest() // RouteFilterRulesSearchRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.RouteFilterRulesApi.SearchRouteFilterRules(context.Background(), routeFilterId).RouteFilterRulesSearchRequest(routeFilterRulesSearchRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RouteFilterRulesApi.SearchRouteFilterRules``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `SearchRouteFilterRules`: RouteFilterRulesSearchResponse
+	fmt.Fprintf(os.Stdout, "Response from `RouteFilterRulesApi.SearchRouteFilterRules`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**routeFilterId** | **string** | Route Filters Id | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSearchRouteFilterRulesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **routeFilterRulesSearchRequest** | [**RouteFilterRulesSearchRequest**](RouteFilterRulesSearchRequest.md) |  | 
+
+### Return type
+
+[**RouteFilterRulesSearchResponse**](RouteFilterRulesSearchResponse.md)
 
 ### Authorization
 

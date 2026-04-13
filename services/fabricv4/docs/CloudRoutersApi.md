@@ -449,7 +449,7 @@ Name | Type | Description  | Notes
 
 ## GetCloudRouterActions
 
-> CloudRouterActionResponse GetCloudRouterActions(ctx, routerId).State(state).Execute()
+> CloudRouterActionsSearchResponse GetCloudRouterActions(ctx, routerId).State(state).Execute()
 
 Get Route Table Actions
 
@@ -478,7 +478,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `CloudRoutersApi.GetCloudRouterActions``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetCloudRouterActions`: CloudRouterActionResponse
+	// response from `GetCloudRouterActions`: CloudRouterActionsSearchResponse
 	fmt.Fprintf(os.Stdout, "Response from `CloudRoutersApi.GetCloudRouterActions`: %v\n", resp)
 }
 ```
@@ -503,7 +503,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CloudRouterActionResponse**](CloudRouterActionResponse.md)
+[**CloudRouterActionsSearchResponse**](CloudRouterActionsSearchResponse.md)
 
 ### Authorization
 

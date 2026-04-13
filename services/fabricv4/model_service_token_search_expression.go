@@ -17,6 +17,7 @@ var _ MappedNullable = &ServiceTokenSearchExpression{}
 // ServiceTokenSearchExpression struct for ServiceTokenSearchExpression
 type ServiceTokenSearchExpression struct {
 	And                  []ServiceTokenSearchExpression        `json:"and,omitempty"`
+	Or                   []ServiceTokenSearchExpression        `json:"or,omitempty"`
 	Property             *ServiceTokenSearchFieldName          `json:"property,omitempty"`
 	Operator             *ServiceTokenSearchExpressionOperator `json:"operator,omitempty"`
 	Values               []string                              `json:"values,omitempty"`
@@ -72,6 +73,38 @@ func (o *ServiceTokenSearchExpression) HasAnd() bool {
 // SetAnd gets a reference to the given []ServiceTokenSearchExpression and assigns it to the And field.
 func (o *ServiceTokenSearchExpression) SetAnd(v []ServiceTokenSearchExpression) {
 	o.And = v
+}
+
+// GetOr returns the Or field value if set, zero value otherwise.
+func (o *ServiceTokenSearchExpression) GetOr() []ServiceTokenSearchExpression {
+	if o == nil || IsNil(o.Or) {
+		var ret []ServiceTokenSearchExpression
+		return ret
+	}
+	return o.Or
+}
+
+// GetOrOk returns a tuple with the Or field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ServiceTokenSearchExpression) GetOrOk() ([]ServiceTokenSearchExpression, bool) {
+	if o == nil || IsNil(o.Or) {
+		return nil, false
+	}
+	return o.Or, true
+}
+
+// HasOr returns a boolean if a field has been set.
+func (o *ServiceTokenSearchExpression) HasOr() bool {
+	if o != nil && !IsNil(o.Or) {
+		return true
+	}
+
+	return false
+}
+
+// SetOr gets a reference to the given []ServiceTokenSearchExpression and assigns it to the Or field.
+func (o *ServiceTokenSearchExpression) SetOr(v []ServiceTokenSearchExpression) {
+	o.Or = v
 }
 
 // GetProperty returns the Property field value if set, zero value otherwise.
@@ -183,6 +216,9 @@ func (o ServiceTokenSearchExpression) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.And) {
 		toSerialize["and"] = o.And
 	}
+	if !IsNil(o.Or) {
+		toSerialize["or"] = o.Or
+	}
 	if !IsNil(o.Property) {
 		toSerialize["property"] = o.Property
 	}
@@ -215,6 +251,7 @@ func (o *ServiceTokenSearchExpression) UnmarshalJSON(data []byte) (err error) {
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "and")
+		delete(additionalProperties, "or")
 		delete(additionalProperties, "property")
 		delete(additionalProperties, "operator")
 		delete(additionalProperties, "values")

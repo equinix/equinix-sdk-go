@@ -17,13 +17,18 @@ type ExpressionOperator string
 
 // List of Expression_operator
 const (
-	EXPRESSIONOPERATOR_EQUAL        ExpressionOperator = "="
-	EXPRESSIONOPERATOR_NOT_EQUAL    ExpressionOperator = "!="
-	EXPRESSIONOPERATOR_GREATER_THAN ExpressionOperator = ">"
-	EXPRESSIONOPERATOR_LESS_THAN    ExpressionOperator = "<"
-	EXPRESSIONOPERATOR_LIKE         ExpressionOperator = "LIKE"
-	EXPRESSIONOPERATOR_IS_NOT_NULL  ExpressionOperator = "IS NOT NULL"
-	EXPRESSIONOPERATOR_IS_NULL      ExpressionOperator = "IS NULL"
+	EXPRESSIONOPERATOR_EQUAL                    ExpressionOperator = "="
+	EXPRESSIONOPERATOR_NOT_EQUAL                ExpressionOperator = "!="
+	EXPRESSIONOPERATOR_GREATER_THAN             ExpressionOperator = ">"
+	EXPRESSIONOPERATOR_GREATER_THAN_OR_EQUAL_TO ExpressionOperator = ">="
+	EXPRESSIONOPERATOR_LESS_THAN                ExpressionOperator = "<"
+	EXPRESSIONOPERATOR_LESS_THAN_OR_EQUAL_TO    ExpressionOperator = "<="
+	EXPRESSIONOPERATOR_LIKE                     ExpressionOperator = "LIKE"
+	EXPRESSIONOPERATOR_ILKE                     ExpressionOperator = "ILKE"
+	EXPRESSIONOPERATOR_IS_NOT_NULL              ExpressionOperator = "IS NOT NULL"
+	EXPRESSIONOPERATOR_IS_NULL                  ExpressionOperator = "IS NULL"
+	EXPRESSIONOPERATOR_IN                       ExpressionOperator = "IN"
+	EXPRESSIONOPERATOR_BETWEEN                  ExpressionOperator = "BETWEEN"
 )
 
 // All allowed values of ExpressionOperator enum
@@ -31,10 +36,15 @@ var AllowedExpressionOperatorEnumValues = []ExpressionOperator{
 	"=",
 	"!=",
 	">",
+	">=",
 	"<",
+	"<=",
 	"LIKE",
+	"ILKE",
 	"IS NOT NULL",
 	"IS NULL",
+	"IN",
+	"BETWEEN",
 }
 
 func (v *ExpressionOperator) UnmarshalJSON(src []byte) error {

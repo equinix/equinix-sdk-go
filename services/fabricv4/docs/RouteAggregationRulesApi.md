@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**GetRouteAggregationRules**](RouteAggregationRulesApi.md#GetRouteAggregationRules) | **Get** /fabric/v4/routeAggregations/{routeAggregationId}/routeAggregationRules | GetRARules
 [**PatchRouteAggregationRuleByUuid**](RouteAggregationRulesApi.md#PatchRouteAggregationRuleByUuid) | **Patch** /fabric/v4/routeAggregations/{routeAggregationId}/routeAggregationRules/{routeAggregationRuleId} | PatchRARule
 [**ReplaceRouteAggregationRuleByUuid**](RouteAggregationRulesApi.md#ReplaceRouteAggregationRuleByUuid) | **Put** /fabric/v4/routeAggregations/{routeAggregationId}/routeAggregationRules/{routeAggregationRuleId} | ReplaceRARule
+[**SearchRouteAggregationRules**](RouteAggregationRulesApi.md#SearchRouteAggregationRules) | **Post** /fabric/v4/routeAggregations/{routeAggregationId}/routeAggregationRules/search | Search Route Aggregation Rules
 
 
 
@@ -668,6 +669,78 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**RouteAggregationRulesData**](RouteAggregationRulesData.md)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SearchRouteAggregationRules
+
+> RouteAggregationRulesSearchResponse SearchRouteAggregationRules(ctx, routeAggregationId).RouteAggregationRulesSearchRequest(routeAggregationRulesSearchRequest).Execute()
+
+Search Route Aggregation Rules
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/equinix/equinix-sdk-go/services/fabricv4"
+)
+
+func main() {
+	routeAggregationId := "routeAggregationId_example" // string | Route Aggregations Id
+	routeAggregationRulesSearchRequest := *openapiclient.NewRouteAggregationRulesSearchRequest() // RouteAggregationRulesSearchRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.RouteAggregationRulesApi.SearchRouteAggregationRules(context.Background(), routeAggregationId).RouteAggregationRulesSearchRequest(routeAggregationRulesSearchRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RouteAggregationRulesApi.SearchRouteAggregationRules``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `SearchRouteAggregationRules`: RouteAggregationRulesSearchResponse
+	fmt.Fprintf(os.Stdout, "Response from `RouteAggregationRulesApi.SearchRouteAggregationRules`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**routeAggregationId** | **string** | Route Aggregations Id | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSearchRouteAggregationRulesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **routeAggregationRulesSearchRequest** | [**RouteAggregationRulesSearchRequest**](RouteAggregationRulesSearchRequest.md) |  | 
+
+### Return type
+
+[**RouteAggregationRulesSearchResponse**](RouteAggregationRulesSearchResponse.md)
 
 ### Authorization
 

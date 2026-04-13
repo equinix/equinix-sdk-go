@@ -17,11 +17,7 @@
 
 * `PENDING` (value: `"PENDING"`)
 
-* `PROVISIONED` (value: `"PROVISIONED"`)
-
 * `PROVISIONING` (value: `"PROVISIONING"`)
-
-* `REPROVISIONING` (value: `"REPROVISIONING"`)
 
 * `EMPTY` (value: `""`)
 

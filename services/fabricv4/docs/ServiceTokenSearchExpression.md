@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **And** | Pointer to [**[]ServiceTokenSearchExpression**](ServiceTokenSearchExpression.md) |  | [optional] 
+**Or** | Pointer to [**[]ServiceTokenSearchExpression**](ServiceTokenSearchExpression.md) |  | [optional] 
 **Property** | Pointer to [**ServiceTokenSearchFieldName**](ServiceTokenSearchFieldName.md) |  | [optional] 
 **Operator** | Pointer to [**ServiceTokenSearchExpressionOperator**](ServiceTokenSearchExpressionOperator.md) |  | [optional] 
 **Values** | Pointer to **[]string** |  | [optional] 
@@ -52,6 +53,31 @@ SetAnd sets And field to given value.
 `func (o *ServiceTokenSearchExpression) HasAnd() bool`
 
 HasAnd returns a boolean if a field has been set.
+
+### GetOr
+
+`func (o *ServiceTokenSearchExpression) GetOr() []ServiceTokenSearchExpression`
+
+GetOr returns the Or field if non-nil, zero value otherwise.
+
+### GetOrOk
+
+`func (o *ServiceTokenSearchExpression) GetOrOk() (*[]ServiceTokenSearchExpression, bool)`
+
+GetOrOk returns a tuple with the Or field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOr
+
+`func (o *ServiceTokenSearchExpression) SetOr(v []ServiceTokenSearchExpression)`
+
+SetOr sets Or field to given value.
+
+### HasOr
+
+`func (o *ServiceTokenSearchExpression) HasOr() bool`
+
+HasOr returns a boolean if a field has been set.
 
 ### GetProperty
 

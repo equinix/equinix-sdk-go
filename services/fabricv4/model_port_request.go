@@ -61,13 +61,11 @@ type PortRequest struct {
 	Notifications []PortNotification `json:"notifications,omitempty"`
 	// Port additional information
 	AdditionalInfo []PortAdditionalInfo `json:"additionalInfo,omitempty"`
-	EndCustomer    *EndCustomer         `json:"endCustomer,omitempty"`
 	// Physical ports that implement this port
 	PhysicalPorts []PhysicalPort `json:"physicalPorts,omitempty"`
 	// Port Loas
-	Loas                    []PortLoa                `json:"loas,omitempty"`
-	MarketplaceSubscription *MarketplaceSubscription `json:"marketplaceSubscription,omitempty"`
-	AdditionalProperties    map[string]interface{}
+	Loas                 []PortLoa `json:"loas,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _PortRequest PortRequest
@@ -1031,38 +1029,6 @@ func (o *PortRequest) SetAdditionalInfo(v []PortAdditionalInfo) {
 	o.AdditionalInfo = v
 }
 
-// GetEndCustomer returns the EndCustomer field value if set, zero value otherwise.
-func (o *PortRequest) GetEndCustomer() EndCustomer {
-	if o == nil || IsNil(o.EndCustomer) {
-		var ret EndCustomer
-		return ret
-	}
-	return *o.EndCustomer
-}
-
-// GetEndCustomerOk returns a tuple with the EndCustomer field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PortRequest) GetEndCustomerOk() (*EndCustomer, bool) {
-	if o == nil || IsNil(o.EndCustomer) {
-		return nil, false
-	}
-	return o.EndCustomer, true
-}
-
-// HasEndCustomer returns a boolean if a field has been set.
-func (o *PortRequest) HasEndCustomer() bool {
-	if o != nil && !IsNil(o.EndCustomer) {
-		return true
-	}
-
-	return false
-}
-
-// SetEndCustomer gets a reference to the given EndCustomer and assigns it to the EndCustomer field.
-func (o *PortRequest) SetEndCustomer(v EndCustomer) {
-	o.EndCustomer = &v
-}
-
 // GetPhysicalPorts returns the PhysicalPorts field value if set, zero value otherwise.
 func (o *PortRequest) GetPhysicalPorts() []PhysicalPort {
 	if o == nil || IsNil(o.PhysicalPorts) {
@@ -1125,38 +1091,6 @@ func (o *PortRequest) HasLoas() bool {
 // SetLoas gets a reference to the given []PortLoa and assigns it to the Loas field.
 func (o *PortRequest) SetLoas(v []PortLoa) {
 	o.Loas = v
-}
-
-// GetMarketplaceSubscription returns the MarketplaceSubscription field value if set, zero value otherwise.
-func (o *PortRequest) GetMarketplaceSubscription() MarketplaceSubscription {
-	if o == nil || IsNil(o.MarketplaceSubscription) {
-		var ret MarketplaceSubscription
-		return ret
-	}
-	return *o.MarketplaceSubscription
-}
-
-// GetMarketplaceSubscriptionOk returns a tuple with the MarketplaceSubscription field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PortRequest) GetMarketplaceSubscriptionOk() (*MarketplaceSubscription, bool) {
-	if o == nil || IsNil(o.MarketplaceSubscription) {
-		return nil, false
-	}
-	return o.MarketplaceSubscription, true
-}
-
-// HasMarketplaceSubscription returns a boolean if a field has been set.
-func (o *PortRequest) HasMarketplaceSubscription() bool {
-	if o != nil && !IsNil(o.MarketplaceSubscription) {
-		return true
-	}
-
-	return false
-}
-
-// SetMarketplaceSubscription gets a reference to the given MarketplaceSubscription and assigns it to the MarketplaceSubscription field.
-func (o *PortRequest) SetMarketplaceSubscription(v MarketplaceSubscription) {
-	o.MarketplaceSubscription = &v
 }
 
 func (o PortRequest) MarshalJSON() ([]byte, error) {
@@ -1246,17 +1180,11 @@ func (o PortRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AdditionalInfo) {
 		toSerialize["additionalInfo"] = o.AdditionalInfo
 	}
-	if !IsNil(o.EndCustomer) {
-		toSerialize["endCustomer"] = o.EndCustomer
-	}
 	if !IsNil(o.PhysicalPorts) {
 		toSerialize["physicalPorts"] = o.PhysicalPorts
 	}
 	if !IsNil(o.Loas) {
 		toSerialize["loas"] = o.Loas
-	}
-	if !IsNil(o.MarketplaceSubscription) {
-		toSerialize["marketplaceSubscription"] = o.MarketplaceSubscription
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -1339,10 +1267,8 @@ func (o *PortRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "physicalPortQuantity")
 		delete(additionalProperties, "notifications")
 		delete(additionalProperties, "additionalInfo")
-		delete(additionalProperties, "endCustomer")
 		delete(additionalProperties, "physicalPorts")
 		delete(additionalProperties, "loas")
-		delete(additionalProperties, "marketplaceSubscription")
 		o.AdditionalProperties = additionalProperties
 	}
 

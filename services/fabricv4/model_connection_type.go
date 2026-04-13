@@ -30,8 +30,7 @@ const (
 	CONNECTIONTYPE_IPWAN_VC      ConnectionType = "IPWAN_VC"
 	CONNECTIONTYPE_IA_VC         ConnectionType = "IA_VC"
 	CONNECTIONTYPE_MC_VC         ConnectionType = "MC_VC"
-	CONNECTIONTYPE_IX_PUBLIC_VC  ConnectionType = "IX_PUBLIC_VC"
-	CONNECTIONTYPE_IX_PRIVATE_VC ConnectionType = "IX_PRIVATE_VC"
+	CONNECTIONTYPE_IX_VC         ConnectionType = "IX_VC"
 )
 
 // All allowed values of ConnectionType enum
@@ -49,8 +48,7 @@ var AllowedConnectionTypeEnumValues = []ConnectionType{
 	"IPWAN_VC",
 	"IA_VC",
 	"MC_VC",
-	"IX_PUBLIC_VC",
-	"IX_PRIVATE_VC",
+	"IX_VC",
 }
 
 func (v *ConnectionType) UnmarshalJSON(src []byte) error {

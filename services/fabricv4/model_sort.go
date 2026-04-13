@@ -16,7 +16,7 @@ var _ MappedNullable = &Sort{}
 
 // Sort struct for Sort
 type Sort struct {
-	// Property to sort by
+	// Property to sort by((currently supports tags with filter syntax)
 	Property             *string                      `json:"property,omitempty"`
 	Direction            *CompanyProfileSortDirection `json:"direction,omitempty"`
 	AdditionalProperties map[string]interface{}
