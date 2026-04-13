@@ -1,0 +1,29 @@
+--- a/spec/services/fabricv4/oas3.patched/openapi.yaml
++++ b/spec/services/fabricv4/oas3.patched/openapi.yaml
+@@ -14672,7 +14672,7 @@ components:
+         agentTemplate:
+           $ref: "#/components/schemas/AgentTemplate"
+         configuration:
+-          $ref: "#/components/schemas/Configuration"
++          $ref: "#/components/schemas/AgentConfiguration"
+       description: Create Agent
+     AgentTemplate:
+       type: object
+@@ -14680,7 +14680,7 @@ components:
+         uuid:
+           type: string
+           description: Agent Template Uuid
+-    Configuration:
++    AgentConfiguration:
+       type: object
+       properties:
+         prompt:
+@@ -14728,7 +14728,7 @@ components:
+         agentTemplate:
+           $ref: "#/components/schemas/AgentTemplate"
+         configuration:
+-          $ref: "#/components/schemas/Configuration"
++          $ref: "#/components/schemas/AgentConfiguration"
+         changeLog:
+           $ref: "#/components/schemas/Changelog"
+       description: Agent object
