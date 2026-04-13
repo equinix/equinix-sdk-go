@@ -11,37 +11,37 @@ import (
 	"encoding/json"
 )
 
-// checks if the Configuration type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &Configuration{}
+// checks if the AgentConfiguration type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AgentConfiguration{}
 
-// Configuration struct for Configuration
-type Configuration struct {
+// AgentConfiguration struct for AgentConfiguration
+type AgentConfiguration struct {
 	// Agent configuration prompt to be used for agent specification
 	Prompt               *string `json:"prompt,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _Configuration Configuration
+type _AgentConfiguration AgentConfiguration
 
-// NewConfiguration instantiates a new Configuration object
+// NewAgentConfiguration instantiates a new AgentConfiguration object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewConfiguration() *Configuration {
-	this := Configuration{}
+func NewAgentConfiguration() *AgentConfiguration {
+	this := AgentConfiguration{}
 	return &this
 }
 
-// NewConfigurationWithDefaults instantiates a new Configuration object
+// NewAgentConfigurationWithDefaults instantiates a new AgentConfiguration object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewConfigurationWithDefaults() *Configuration {
-	this := Configuration{}
+func NewAgentConfigurationWithDefaults() *AgentConfiguration {
+	this := AgentConfiguration{}
 	return &this
 }
 
 // GetPrompt returns the Prompt field value if set, zero value otherwise.
-func (o *Configuration) GetPrompt() string {
+func (o *AgentConfiguration) GetPrompt() string {
 	if o == nil || IsNil(o.Prompt) {
 		var ret string
 		return ret
@@ -51,7 +51,7 @@ func (o *Configuration) GetPrompt() string {
 
 // GetPromptOk returns a tuple with the Prompt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Configuration) GetPromptOk() (*string, bool) {
+func (o *AgentConfiguration) GetPromptOk() (*string, bool) {
 	if o == nil || IsNil(o.Prompt) {
 		return nil, false
 	}
@@ -59,7 +59,7 @@ func (o *Configuration) GetPromptOk() (*string, bool) {
 }
 
 // HasPrompt returns a boolean if a field has been set.
-func (o *Configuration) HasPrompt() bool {
+func (o *AgentConfiguration) HasPrompt() bool {
 	if o != nil && !IsNil(o.Prompt) {
 		return true
 	}
@@ -68,11 +68,11 @@ func (o *Configuration) HasPrompt() bool {
 }
 
 // SetPrompt gets a reference to the given string and assigns it to the Prompt field.
-func (o *Configuration) SetPrompt(v string) {
+func (o *AgentConfiguration) SetPrompt(v string) {
 	o.Prompt = &v
 }
 
-func (o Configuration) MarshalJSON() ([]byte, error) {
+func (o AgentConfiguration) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -80,7 +80,7 @@ func (o Configuration) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o Configuration) ToMap() (map[string]interface{}, error) {
+func (o AgentConfiguration) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Prompt) {
 		toSerialize["prompt"] = o.Prompt
@@ -93,16 +93,16 @@ func (o Configuration) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *Configuration) UnmarshalJSON(data []byte) (err error) {
-	varConfiguration := _Configuration{}
+func (o *AgentConfiguration) UnmarshalJSON(data []byte) (err error) {
+	varAgentConfiguration := _AgentConfiguration{}
 
-	err = json.Unmarshal(data, &varConfiguration)
+	err = json.Unmarshal(data, &varAgentConfiguration)
 
 	if err != nil {
 		return err
 	}
 
-	*o = Configuration(varConfiguration)
+	*o = AgentConfiguration(varAgentConfiguration)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -114,38 +114,38 @@ func (o *Configuration) UnmarshalJSON(data []byte) (err error) {
 	return err
 }
 
-type NullableConfiguration struct {
-	value *Configuration
+type NullableAgentConfiguration struct {
+	value *AgentConfiguration
 	isSet bool
 }
 
-func (v NullableConfiguration) Get() *Configuration {
+func (v NullableAgentConfiguration) Get() *AgentConfiguration {
 	return v.value
 }
 
-func (v *NullableConfiguration) Set(val *Configuration) {
+func (v *NullableAgentConfiguration) Set(val *AgentConfiguration) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableConfiguration) IsSet() bool {
+func (v NullableAgentConfiguration) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableConfiguration) Unset() {
+func (v *NullableAgentConfiguration) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableConfiguration(val *Configuration) *NullableConfiguration {
-	return &NullableConfiguration{value: val, isSet: true}
+func NewNullableAgentConfiguration(val *AgentConfiguration) *NullableAgentConfiguration {
+	return &NullableAgentConfiguration{value: val, isSet: true}
 }
 
-func (v NullableConfiguration) MarshalJSON() ([]byte, error) {
+func (v NullableAgentConfiguration) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableConfiguration) UnmarshalJSON(src []byte) error {
+func (v *NullableAgentConfiguration) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

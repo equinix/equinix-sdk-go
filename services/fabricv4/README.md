@@ -409,7 +409,7 @@ Class | Method | HTTP request | Description
  - [CompanyProfileSearchResponse](docs/CompanyProfileSearchResponse.md)
  - [CompanyProfileSortDirection](docs/CompanyProfileSortDirection.md)
  - [CompanyServiceProfile](docs/CompanyServiceProfile.md)
- - [Configuration](docs/Configuration.md)
+ - [AgentConfiguration](docs/AgentConfiguration.md)
  - [ConnectedMetro](docs/ConnectedMetro.md)
  - [Connection](docs/Connection.md)
  - [ConnectionAcceptanceData](docs/ConnectionAcceptanceData.md)

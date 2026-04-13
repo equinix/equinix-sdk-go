@@ -23,10 +23,10 @@ type AgentPostRequest struct {
 	// Customer-provided agent description
 	Description *string `json:"description,omitempty"`
 	// Customer-provided agent enabled status
-	Enabled              *bool          `json:"enabled,omitempty"`
-	Project              Project        `json:"project"`
-	AgentTemplate        AgentTemplate  `json:"agentTemplate"`
-	Configuration        *Configuration `json:"configuration,omitempty"`
+	Enabled              *bool               `json:"enabled,omitempty"`
+	Project              Project             `json:"project"`
+	AgentTemplate        AgentTemplate       `json:"agentTemplate"`
+	Configuration        *AgentConfiguration `json:"configuration,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -214,9 +214,9 @@ func (o *AgentPostRequest) SetAgentTemplate(v AgentTemplate) {
 }
 
 // GetConfiguration returns the Configuration field value if set, zero value otherwise.
-func (o *AgentPostRequest) GetConfiguration() Configuration {
+func (o *AgentPostRequest) GetConfiguration() AgentConfiguration {
 	if o == nil || IsNil(o.Configuration) {
-		var ret Configuration
+		var ret AgentConfiguration
 		return ret
 	}
 	return *o.Configuration
@@ -224,7 +224,7 @@ func (o *AgentPostRequest) GetConfiguration() Configuration {
 
 // GetConfigurationOk returns a tuple with the Configuration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AgentPostRequest) GetConfigurationOk() (*Configuration, bool) {
+func (o *AgentPostRequest) GetConfigurationOk() (*AgentConfiguration, bool) {
 	if o == nil || IsNil(o.Configuration) {
 		return nil, false
 	}
@@ -240,8 +240,8 @@ func (o *AgentPostRequest) HasConfiguration() bool {
 	return false
 }
 
-// SetConfiguration gets a reference to the given Configuration and assigns it to the Configuration field.
-func (o *AgentPostRequest) SetConfiguration(v Configuration) {
+// SetConfiguration gets a reference to the given AgentConfiguration and assigns it to the Configuration field.
+func (o *AgentPostRequest) SetConfiguration(v AgentConfiguration) {
 	o.Configuration = &v
 }
 

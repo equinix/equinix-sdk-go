@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **Enabled** | Pointer to **bool** | Customer-provided agent enabled status | [optional] 
 **Project** | [**Project**](Project.md) |  | 
 **AgentTemplate** | [**AgentTemplate**](AgentTemplate.md) |  | 
-**Configuration** | Pointer to [**Configuration**](Configuration.md) |  | [optional] 
+**Configuration** | Pointer to [**AgentConfiguration**](AgentConfiguration.md) |  | [optional] 
 
 ## Methods
 
@@ -163,20 +163,20 @@ SetAgentTemplate sets AgentTemplate field to given value.
 
 ### GetConfiguration
 
-`func (o *AgentPostRequest) GetConfiguration() Configuration`
+`func (o *AgentPostRequest) GetConfiguration() AgentConfiguration`
 
 GetConfiguration returns the Configuration field if non-nil, zero value otherwise.
 
 ### GetConfigurationOk
 
-`func (o *AgentPostRequest) GetConfigurationOk() (*Configuration, bool)`
+`func (o *AgentPostRequest) GetConfigurationOk() (*AgentConfiguration, bool)`
 
 GetConfigurationOk returns a tuple with the Configuration field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetConfiguration
 
-`func (o *AgentPostRequest) SetConfiguration(v Configuration)`
+`func (o *AgentPostRequest) SetConfiguration(v AgentConfiguration)`
 
 SetConfiguration sets Configuration field to given value.
 

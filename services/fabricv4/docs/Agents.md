@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **Enabled** | Pointer to **bool** | Customer-provided agent enabled status | [optional] 
 **Project** | Pointer to [**Project**](Project.md) |  | [optional] 
 **AgentTemplate** | Pointer to [**AgentTemplate**](AgentTemplate.md) |  | [optional] 
-**Configuration** | Pointer to [**Configuration**](Configuration.md) |  | [optional] 
+**Configuration** | Pointer to [**AgentConfiguration**](AgentConfiguration.md) |  | [optional] 
 **ChangeLog** | Pointer to [**Changelog**](Changelog.md) |  | [optional] 
 
 ## Methods
@@ -262,20 +262,20 @@ HasAgentTemplate returns a boolean if a field has been set.
 
 ### GetConfiguration
 
-`func (o *Agents) GetConfiguration() Configuration`
+`func (o *Agents) GetConfiguration() AgentConfiguration`
 
 GetConfiguration returns the Configuration field if non-nil, zero value otherwise.
 
 ### GetConfigurationOk
 
-`func (o *Agents) GetConfigurationOk() (*Configuration, bool)`
+`func (o *Agents) GetConfigurationOk() (*AgentConfiguration, bool)`
 
 GetConfigurationOk returns a tuple with the Configuration field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetConfiguration
 
-`func (o *Agents) SetConfiguration(v Configuration)`
+`func (o *Agents) SetConfiguration(v AgentConfiguration)`
 
 SetConfiguration sets Configuration field to given value.
 

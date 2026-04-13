@@ -28,11 +28,11 @@ type Agents struct {
 	Description *string              `json:"description,omitempty"`
 	State       *AgentTemplatesState `json:"state,omitempty"`
 	// Customer-provided agent enabled status
-	Enabled              *bool          `json:"enabled,omitempty"`
-	Project              *Project       `json:"project,omitempty"`
-	AgentTemplate        *AgentTemplate `json:"agentTemplate,omitempty"`
-	Configuration        *Configuration `json:"configuration,omitempty"`
-	ChangeLog            *Changelog     `json:"changeLog,omitempty"`
+	Enabled              *bool               `json:"enabled,omitempty"`
+	Project              *Project            `json:"project,omitempty"`
+	AgentTemplate        *AgentTemplate      `json:"agentTemplate,omitempty"`
+	Configuration        *AgentConfiguration `json:"configuration,omitempty"`
+	ChangeLog            *Changelog          `json:"changeLog,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -344,9 +344,9 @@ func (o *Agents) SetAgentTemplate(v AgentTemplate) {
 }
 
 // GetConfiguration returns the Configuration field value if set, zero value otherwise.
-func (o *Agents) GetConfiguration() Configuration {
+func (o *Agents) GetConfiguration() AgentConfiguration {
 	if o == nil || IsNil(o.Configuration) {
-		var ret Configuration
+		var ret AgentConfiguration
 		return ret
 	}
 	return *o.Configuration
@@ -354,7 +354,7 @@ func (o *Agents) GetConfiguration() Configuration {
 
 // GetConfigurationOk returns a tuple with the Configuration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Agents) GetConfigurationOk() (*Configuration, bool) {
+func (o *Agents) GetConfigurationOk() (*AgentConfiguration, bool) {
 	if o == nil || IsNil(o.Configuration) {
 		return nil, false
 	}
@@ -370,8 +370,8 @@ func (o *Agents) HasConfiguration() bool {
 	return false
 }
 
-// SetConfiguration gets a reference to the given Configuration and assigns it to the Configuration field.
-func (o *Agents) SetConfiguration(v Configuration) {
+// SetConfiguration gets a reference to the given AgentConfiguration and assigns it to the Configuration field.
+func (o *Agents) SetConfiguration(v AgentConfiguration) {
 	o.Configuration = &v
 }
 
