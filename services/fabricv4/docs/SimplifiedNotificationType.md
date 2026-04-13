@@ -15,6 +15,10 @@
 
 * `SALES_REP_NOTIFICATIONS` (value: `"SALES_REP_NOTIFICATIONS"`)
 
+* `TECHNICAL` (value: `"TECHNICAL"`)
+
+* `ORDERING` (value: `"ORDERING"`)
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

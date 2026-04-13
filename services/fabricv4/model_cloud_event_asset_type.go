@@ -17,15 +17,16 @@ type CloudEventAssetType string
 
 // List of CloudEventAssetType
 const (
-	CLOUDEVENTASSETTYPE_PORTS          CloudEventAssetType = "ports"
-	CLOUDEVENTASSETTYPE_CONNECTIONS    CloudEventAssetType = "connections"
-	CLOUDEVENTASSETTYPE_ROUTERS        CloudEventAssetType = "routers"
-	CLOUDEVENTASSETTYPE_METROS         CloudEventAssetType = "metros"
-	CLOUDEVENTASSETTYPE_SERVICE_TOKENS CloudEventAssetType = "serviceTokens"
-	CLOUDEVENTASSETTYPE_NETWORKS       CloudEventAssetType = "networks"
-	CLOUDEVENTASSETTYPE_PROJECTS       CloudEventAssetType = "projects"
-	CLOUDEVENTASSETTYPE_ORGANIZATIONS  CloudEventAssetType = "organizations"
-	CLOUDEVENTASSETTYPE_TIME_SERVICES  CloudEventAssetType = "timeServices"
+	CLOUDEVENTASSETTYPE_PORTS            CloudEventAssetType = "ports"
+	CLOUDEVENTASSETTYPE_CONNECTIONS      CloudEventAssetType = "connections"
+	CLOUDEVENTASSETTYPE_ROUTERS          CloudEventAssetType = "routers"
+	CLOUDEVENTASSETTYPE_METROS           CloudEventAssetType = "metros"
+	CLOUDEVENTASSETTYPE_SERVICE_TOKENS   CloudEventAssetType = "serviceTokens"
+	CLOUDEVENTASSETTYPE_NETWORKS         CloudEventAssetType = "networks"
+	CLOUDEVENTASSETTYPE_PROJECTS         CloudEventAssetType = "projects"
+	CLOUDEVENTASSETTYPE_ORGANIZATIONS    CloudEventAssetType = "organizations"
+	CLOUDEVENTASSETTYPE_TIME_SERVICES    CloudEventAssetType = "timeServices"
+	CLOUDEVENTASSETTYPE_COMPANY_PROFILES CloudEventAssetType = "companyProfiles"
 )
 
 // All allowed values of CloudEventAssetType enum
@@ -39,6 +40,7 @@ var AllowedCloudEventAssetTypeEnumValues = []CloudEventAssetType{
 	"projects",
 	"organizations",
 	"timeServices",
+	"companyProfiles",
 }
 
 func (v *CloudEventAssetType) UnmarshalJSON(src []byte) error {

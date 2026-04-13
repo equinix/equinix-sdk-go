@@ -37,13 +37,17 @@ var (
 	queryDescape    = strings.NewReplacer("%5B", "[", "%5D", "]")
 )
 
-// APIClient manages communication with the Equinix Fabric API v4 API v4.27
+// APIClient manages communication with the Equinix Fabric API v4 API v4.28
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
 	cfg    *Configuration
 	common service // Reuse a single struct instead of allocating one for each service on the heap.
 
 	// API Services
+
+	AgentTemplatesApi *AgentTemplatesApiService
+
+	AgentsApi *AgentsApiService
 
 	CloudEventsApi *CloudEventsApiService
 
@@ -114,6 +118,8 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.common.client = c
 
 	// API Services
+	c.AgentTemplatesApi = (*AgentTemplatesApiService)(&c.common)
+	c.AgentsApi = (*AgentsApiService)(&c.common)
 	c.CloudEventsApi = (*CloudEventsApiService)(&c.common)
 	c.CloudRoutersApi = (*CloudRoutersApiService)(&c.common)
 	c.CompanyProfilesApi = (*CompanyProfilesApiService)(&c.common)

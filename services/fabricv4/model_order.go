@@ -27,7 +27,9 @@ type Order struct {
 	// Order Reference Number
 	OrderNumber *string `json:"orderNumber,omitempty"`
 	// Term length in months, valid values are 1, 12, 24, 36 where 1 is the default value (for on-demand case).
-	TermLength           *int32 `json:"termLength,omitempty"`
+	TermLength *int32 `json:"termLength,omitempty"`
+	// Contracted bandwidth
+	ContractedBandwidth  *int32 `json:"contractedBandwidth,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -246,6 +248,38 @@ func (o *Order) SetTermLength(v int32) {
 	o.TermLength = &v
 }
 
+// GetContractedBandwidth returns the ContractedBandwidth field value if set, zero value otherwise.
+func (o *Order) GetContractedBandwidth() int32 {
+	if o == nil || IsNil(o.ContractedBandwidth) {
+		var ret int32
+		return ret
+	}
+	return *o.ContractedBandwidth
+}
+
+// GetContractedBandwidthOk returns a tuple with the ContractedBandwidth field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Order) GetContractedBandwidthOk() (*int32, bool) {
+	if o == nil || IsNil(o.ContractedBandwidth) {
+		return nil, false
+	}
+	return o.ContractedBandwidth, true
+}
+
+// HasContractedBandwidth returns a boolean if a field has been set.
+func (o *Order) HasContractedBandwidth() bool {
+	if o != nil && !IsNil(o.ContractedBandwidth) {
+		return true
+	}
+
+	return false
+}
+
+// SetContractedBandwidth gets a reference to the given int32 and assigns it to the ContractedBandwidth field.
+func (o *Order) SetContractedBandwidth(v int32) {
+	o.ContractedBandwidth = &v
+}
+
 func (o Order) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -273,6 +307,9 @@ func (o Order) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.TermLength) {
 		toSerialize["termLength"] = o.TermLength
+	}
+	if !IsNil(o.ContractedBandwidth) {
+		toSerialize["contractedBandwidth"] = o.ContractedBandwidth
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -302,6 +339,7 @@ func (o *Order) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "orderId")
 		delete(additionalProperties, "orderNumber")
 		delete(additionalProperties, "termLength")
+		delete(additionalProperties, "contractedBandwidth")
 		o.AdditionalProperties = additionalProperties
 	}
 

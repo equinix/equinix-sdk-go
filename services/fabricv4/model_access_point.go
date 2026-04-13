@@ -35,7 +35,6 @@ type AccessPoint struct {
 	ProviderConnectionId *string               `json:"providerConnectionId,omitempty"`
 	VirtualNetwork       *VirtualNetwork       `json:"virtualNetwork,omitempty"`
 	Interconnection      *MetalInterconnection `json:"interconnection,omitempty"`
-	VpicInterface        *VpicInterface        `json:"vpic_interface,omitempty"`
 	Role                 *AccessPointRole      `json:"role,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -571,38 +570,6 @@ func (o *AccessPoint) SetInterconnection(v MetalInterconnection) {
 	o.Interconnection = &v
 }
 
-// GetVpicInterface returns the VpicInterface field value if set, zero value otherwise.
-func (o *AccessPoint) GetVpicInterface() VpicInterface {
-	if o == nil || IsNil(o.VpicInterface) {
-		var ret VpicInterface
-		return ret
-	}
-	return *o.VpicInterface
-}
-
-// GetVpicInterfaceOk returns a tuple with the VpicInterface field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AccessPoint) GetVpicInterfaceOk() (*VpicInterface, bool) {
-	if o == nil || IsNil(o.VpicInterface) {
-		return nil, false
-	}
-	return o.VpicInterface, true
-}
-
-// HasVpicInterface returns a boolean if a field has been set.
-func (o *AccessPoint) HasVpicInterface() bool {
-	if o != nil && !IsNil(o.VpicInterface) {
-		return true
-	}
-
-	return false
-}
-
-// SetVpicInterface gets a reference to the given VpicInterface and assigns it to the VpicInterface field.
-func (o *AccessPoint) SetVpicInterface(v VpicInterface) {
-	o.VpicInterface = &v
-}
-
 // GetRole returns the Role field value if set, zero value otherwise.
 func (o *AccessPoint) GetRole() AccessPointRole {
 	if o == nil || IsNil(o.Role) {
@@ -693,9 +660,6 @@ func (o AccessPoint) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Interconnection) {
 		toSerialize["interconnection"] = o.Interconnection
 	}
-	if !IsNil(o.VpicInterface) {
-		toSerialize["vpic_interface"] = o.VpicInterface
-	}
 	if !IsNil(o.Role) {
 		toSerialize["role"] = o.Role
 	}
@@ -737,7 +701,6 @@ func (o *AccessPoint) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "providerConnectionId")
 		delete(additionalProperties, "virtualNetwork")
 		delete(additionalProperties, "interconnection")
-		delete(additionalProperties, "vpic_interface")
 		delete(additionalProperties, "role")
 		o.AdditionalProperties = additionalProperties
 	}

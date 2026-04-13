@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Property** | Pointer to **string** | Property to sort by | [optional] 
+**Property** | Pointer to **string** | Property to sort by((currently supports tags with filter syntax) | [optional] 
 **Direction** | Pointer to [**CompanyProfileSortDirection**](CompanyProfileSortDirection.md) |  | [optional] [default to COMPANYPROFILESORTDIRECTION_ASC]
 
 ## Methods

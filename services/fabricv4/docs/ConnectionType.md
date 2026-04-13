@@ -29,9 +29,7 @@
 
 * `MC_VC` (value: `"MC_VC"`)
 
-* `IX_PUBLIC_VC` (value: `"IX_PUBLIC_VC"`)
-
-* `IX_PRIVATE_VC` (value: `"IX_PRIVATE_VC"`)
+* `IX_VC` (value: `"IX_VC"`)
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

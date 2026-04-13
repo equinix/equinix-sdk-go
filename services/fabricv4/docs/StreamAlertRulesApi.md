@@ -5,7 +5,7 @@ All URIs are relative to *https://api.equinix.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateStreamAlertRules**](StreamAlertRulesApi.md#CreateStreamAlertRules) | **Post** /fabric/v4/streams/{streamId}/alertRules | Create Stream Alert Rules
-[**DeleteStreamAlertRuleByUuid**](StreamAlertRulesApi.md#DeleteStreamAlertRuleByUuid) | **Delete** /fabric/v4/streams/{streamId}/alertRules/{alertRuleId} | Update Stream Alert Rules
+[**DeleteStreamAlertRuleByUuid**](StreamAlertRulesApi.md#DeleteStreamAlertRuleByUuid) | **Delete** /fabric/v4/streams/{streamId}/alertRules/{alertRuleId} | Delete Stream Alert Rules
 [**GetStreamAlertRuleByUuid**](StreamAlertRulesApi.md#GetStreamAlertRuleByUuid) | **Get** /fabric/v4/streams/{streamId}/alertRules/{alertRuleId} | Get Stream Alert Rules
 [**GetStreamAlertRules**](StreamAlertRulesApi.md#GetStreamAlertRules) | **Get** /fabric/v4/streams/{streamId}/alertRules | Get Stream Alert Rules
 [**UpdateStreamAlertRuleByUuid**](StreamAlertRulesApi.md#UpdateStreamAlertRuleByUuid) | **Put** /fabric/v4/streams/{streamId}/alertRules/{alertRuleId} | Update Stream Alert Rules
@@ -88,7 +88,7 @@ Name | Type | Description  | Notes
 
 > StreamAlertRule DeleteStreamAlertRuleByUuid(ctx, streamId, alertRuleId).Execute()
 
-Update Stream Alert Rules
+Delete Stream Alert Rules
 
 
 

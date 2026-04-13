@@ -35,10 +35,8 @@ Name | Type | Description | Notes
 **PhysicalPortQuantity** | Pointer to **int32** | Number of physical ports | [optional] 
 **Notifications** | Pointer to [**[]PortNotification**](PortNotification.md) | Notification preferences | [optional] 
 **AdditionalInfo** | Pointer to [**[]PortAdditionalInfo**](PortAdditionalInfo.md) | Port additional information | [optional] 
-**EndCustomer** | Pointer to [**EndCustomer**](EndCustomer.md) |  | [optional] 
 **PhysicalPorts** | Pointer to [**[]PhysicalPort**](PhysicalPort.md) | Physical ports that implement this port | [optional] 
 **Loas** | Pointer to [**[]PortLoa**](PortLoa.md) | Port Loas | [optional] 
-**MarketplaceSubscription** | Pointer to [**MarketplaceSubscription**](MarketplaceSubscription.md) |  | [optional] 
 
 ## Methods
 
@@ -794,31 +792,6 @@ SetAdditionalInfo sets AdditionalInfo field to given value.
 
 HasAdditionalInfo returns a boolean if a field has been set.
 
-### GetEndCustomer
-
-`func (o *PortRequest) GetEndCustomer() EndCustomer`
-
-GetEndCustomer returns the EndCustomer field if non-nil, zero value otherwise.
-
-### GetEndCustomerOk
-
-`func (o *PortRequest) GetEndCustomerOk() (*EndCustomer, bool)`
-
-GetEndCustomerOk returns a tuple with the EndCustomer field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEndCustomer
-
-`func (o *PortRequest) SetEndCustomer(v EndCustomer)`
-
-SetEndCustomer sets EndCustomer field to given value.
-
-### HasEndCustomer
-
-`func (o *PortRequest) HasEndCustomer() bool`
-
-HasEndCustomer returns a boolean if a field has been set.
-
 ### GetPhysicalPorts
 
 `func (o *PortRequest) GetPhysicalPorts() []PhysicalPort`
@@ -868,31 +841,6 @@ SetLoas sets Loas field to given value.
 `func (o *PortRequest) HasLoas() bool`
 
 HasLoas returns a boolean if a field has been set.
-
-### GetMarketplaceSubscription
-
-`func (o *PortRequest) GetMarketplaceSubscription() MarketplaceSubscription`
-
-GetMarketplaceSubscription returns the MarketplaceSubscription field if non-nil, zero value otherwise.
-
-### GetMarketplaceSubscriptionOk
-
-`func (o *PortRequest) GetMarketplaceSubscriptionOk() (*MarketplaceSubscription, bool)`
-
-GetMarketplaceSubscriptionOk returns a tuple with the MarketplaceSubscription field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMarketplaceSubscription
-
-`func (o *PortRequest) SetMarketplaceSubscription(v MarketplaceSubscription)`
-
-SetMarketplaceSubscription sets MarketplaceSubscription field to given value.
-
-### HasMarketplaceSubscription
-
-`func (o *PortRequest) HasMarketplaceSubscription() bool`
-
-HasMarketplaceSubscription returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

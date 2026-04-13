@@ -15,6 +15,7 @@ Method | HTTP request | Description
 [**GetRouteAggregationChanges**](RouteAggregationsApi.md#GetRouteAggregationChanges) | **Get** /fabric/v4/routeAggregations/{routeAggregationId}/changes | Get All Changes
 [**GetRouteAggregationConnections**](RouteAggregationsApi.md#GetRouteAggregationConnections) | **Get** /fabric/v4/routeAggregations/{routeAggregationId}/connections | Get All Connections on Route Aggregation
 [**PatchRouteAggregationByUuid**](RouteAggregationsApi.md#PatchRouteAggregationByUuid) | **Patch** /fabric/v4/routeAggregations/{routeAggregationId} | Patch Aggregation
+[**SearchCloudRouterRouteAggregationAttachments**](RouteAggregationsApi.md#SearchCloudRouterRouteAggregationAttachments) | **Post** /fabric/v4/routers/{routerId}/routeAggregations/search | Search Cloud Router Route Aggregation Attachments
 [**SearchRouteAggregations**](RouteAggregationsApi.md#SearchRouteAggregations) | **Post** /fabric/v4/routeAggregations/search | Search Aggregations
 
 
@@ -796,6 +797,78 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json, application/json-patch+json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SearchCloudRouterRouteAggregationAttachments
+
+> CloudRouterRouteAggregationsSearchResponse SearchCloudRouterRouteAggregationAttachments(ctx, routerId).CloudRouterRouteAggregationsSearchBase(cloudRouterRouteAggregationsSearchBase).Execute()
+
+Search Cloud Router Route Aggregation Attachments
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/equinix/equinix-sdk-go/services/fabricv4"
+)
+
+func main() {
+	routerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cloud Router UUID
+	cloudRouterRouteAggregationsSearchBase := *openapiclient.NewCloudRouterRouteAggregationsSearchBase() // CloudRouterRouteAggregationsSearchBase | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.RouteAggregationsApi.SearchCloudRouterRouteAggregationAttachments(context.Background(), routerId).CloudRouterRouteAggregationsSearchBase(cloudRouterRouteAggregationsSearchBase).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RouteAggregationsApi.SearchCloudRouterRouteAggregationAttachments``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `SearchCloudRouterRouteAggregationAttachments`: CloudRouterRouteAggregationsSearchResponse
+	fmt.Fprintf(os.Stdout, "Response from `RouteAggregationsApi.SearchCloudRouterRouteAggregationAttachments`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**routerId** | **string** | Cloud Router UUID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSearchCloudRouterRouteAggregationAttachmentsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **cloudRouterRouteAggregationsSearchBase** | [**CloudRouterRouteAggregationsSearchBase**](CloudRouterRouteAggregationsSearchBase.md) |  | 
+
+### Return type
+
+[**CloudRouterRouteAggregationsSearchResponse**](CloudRouterRouteAggregationsSearchResponse.md)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

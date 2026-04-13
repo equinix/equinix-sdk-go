@@ -1913,6 +1913,186 @@ func (a *RouteAggregationsApiService) PatchRouteAggregationByUuidExecute(r ApiPa
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiSearchCloudRouterRouteAggregationAttachmentsRequest struct {
+	ctx                                    context.Context
+	ApiService                             *RouteAggregationsApiService
+	routerId                               string
+	cloudRouterRouteAggregationsSearchBase *CloudRouterRouteAggregationsSearchBase
+}
+
+func (r ApiSearchCloudRouterRouteAggregationAttachmentsRequest) CloudRouterRouteAggregationsSearchBase(cloudRouterRouteAggregationsSearchBase CloudRouterRouteAggregationsSearchBase) ApiSearchCloudRouterRouteAggregationAttachmentsRequest {
+	r.cloudRouterRouteAggregationsSearchBase = &cloudRouterRouteAggregationsSearchBase
+	return r
+}
+
+func (r ApiSearchCloudRouterRouteAggregationAttachmentsRequest) Execute() (*CloudRouterRouteAggregationsSearchResponse, *http.Response, error) {
+	return r.ApiService.SearchCloudRouterRouteAggregationAttachmentsExecute(r)
+}
+
+/*
+SearchCloudRouterRouteAggregationAttachments Search Cloud Router Route Aggregation Attachments
+
+This API provides capability to search route aggregation attachments for a given cloud router <font color="red"> <sup color='red'>Beta</sup></font>
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param routerId Cloud Router UUID
+	@return ApiSearchCloudRouterRouteAggregationAttachmentsRequest
+*/
+func (a *RouteAggregationsApiService) SearchCloudRouterRouteAggregationAttachments(ctx context.Context, routerId string) ApiSearchCloudRouterRouteAggregationAttachmentsRequest {
+	return ApiSearchCloudRouterRouteAggregationAttachmentsRequest{
+		ApiService: a,
+		ctx:        ctx,
+		routerId:   routerId,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CloudRouterRouteAggregationsSearchResponse
+func (a *RouteAggregationsApiService) SearchCloudRouterRouteAggregationAttachmentsExecute(r ApiSearchCloudRouterRouteAggregationAttachmentsRequest) (*CloudRouterRouteAggregationsSearchResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CloudRouterRouteAggregationsSearchResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RouteAggregationsApiService.SearchCloudRouterRouteAggregationAttachments")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/fabric/v4/routers/{routerId}/routeAggregations/search"
+	localVarPath = strings.Replace(localVarPath, "{"+"routerId"+"}", url.PathEscape(parameterValueToString(r.routerId, "routerId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.cloudRouterRouteAggregationsSearchBase == nil {
+		return localVarReturnValue, nil, reportError("cloudRouterRouteAggregationsSearchBase is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.cloudRouterRouteAggregationsSearchBase
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v []Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v []Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v []Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v []Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 415 {
+			var v []Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v []Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiSearchRouteAggregationsRequest struct {
 	ctx                         context.Context
 	ApiService                  *RouteAggregationsApiService

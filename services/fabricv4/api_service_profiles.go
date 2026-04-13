@@ -173,6 +173,175 @@ func (a *ServiceProfilesApiService) CreateServiceProfileExecute(r ApiCreateServi
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiCreateServiceProfileActionRequest struct {
+	ctx                         context.Context
+	ApiService                  *ServiceProfilesApiService
+	serviceProfileId            string
+	serviceProfileActionRequest *ServiceProfileActionRequest
+}
+
+func (r ApiCreateServiceProfileActionRequest) ServiceProfileActionRequest(serviceProfileActionRequest ServiceProfileActionRequest) ApiCreateServiceProfileActionRequest {
+	r.serviceProfileActionRequest = &serviceProfileActionRequest
+	return r
+}
+
+func (r ApiCreateServiceProfileActionRequest) Execute() (*ServiceProfileActionResponse, *http.Response, error) {
+	return r.ApiService.CreateServiceProfileActionExecute(r)
+}
+
+/*
+CreateServiceProfileAction Profile Actions
+
+This API provides capability to accept/reject service profile update requests
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param serviceProfileId Service Profile UUID
+	@return ApiCreateServiceProfileActionRequest
+*/
+func (a *ServiceProfilesApiService) CreateServiceProfileAction(ctx context.Context, serviceProfileId string) ApiCreateServiceProfileActionRequest {
+	return ApiCreateServiceProfileActionRequest{
+		ApiService:       a,
+		ctx:              ctx,
+		serviceProfileId: serviceProfileId,
+	}
+}
+
+// Execute executes the request
+//
+//	@return ServiceProfileActionResponse
+func (a *ServiceProfilesApiService) CreateServiceProfileActionExecute(r ApiCreateServiceProfileActionRequest) (*ServiceProfileActionResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ServiceProfileActionResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceProfilesApiService.CreateServiceProfileAction")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/fabric/v4/serviceProfiles/{serviceProfileId}/actions"
+	localVarPath = strings.Replace(localVarPath, "{"+"serviceProfileId"+"}", url.PathEscape(parameterValueToString(r.serviceProfileId, "serviceProfileId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.serviceProfileActionRequest == nil {
+		return localVarReturnValue, nil, reportError("serviceProfileActionRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json; charset=UTF-8", "application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.serviceProfileActionRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v []Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v []Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v []Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v []Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v []Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiDeleteServiceProfileByUuidRequest struct {
 	ctx              context.Context
 	ApiService       *ServiceProfilesApiService
@@ -1174,14 +1343,7 @@ type ApiUpdateServiceProfileByUuidRequest struct {
 	ctx                context.Context
 	ApiService         *ServiceProfilesApiService
 	serviceProfileId   string
-	ifMatch            *string
 	jsonPatchOperation *[]JsonPatchOperation
-}
-
-// conditional request
-func (r ApiUpdateServiceProfileByUuidRequest) IfMatch(ifMatch string) ApiUpdateServiceProfileByUuidRequest {
-	r.ifMatch = &ifMatch
-	return r
 }
 
 func (r ApiUpdateServiceProfileByUuidRequest) JsonPatchOperation(jsonPatchOperation []JsonPatchOperation) ApiUpdateServiceProfileByUuidRequest {
@@ -1232,9 +1394,6 @@ func (a *ServiceProfilesApiService) UpdateServiceProfileByUuidExecute(r ApiUpdat
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.ifMatch == nil {
-		return localVarReturnValue, nil, reportError("ifMatch is required and must be specified")
-	}
 	if r.jsonPatchOperation == nil {
 		return localVarReturnValue, nil, reportError("jsonPatchOperation is required and must be specified")
 	}
@@ -1256,7 +1415,6 @@ func (a *ServiceProfilesApiService) UpdateServiceProfileByUuidExecute(r ApiUpdat
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "If-Match", r.ifMatch, "simple", "")
 	// body params
 	localVarPostBody = r.jsonPatchOperation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -1315,17 +1473,6 @@ func (a *ServiceProfilesApiService) UpdateServiceProfileByUuidExecute(r ApiUpdat
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v []Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 412 {
 			var v []Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {

@@ -19,9 +19,9 @@ var _ MappedNullable = &Change{}
 // Change Current state of latest connection change
 type Change struct {
 	// Uniquely identifies a change
-	Uuid   *string       `json:"uuid,omitempty"`
-	Type   ChangeType    `json:"type"`
-	Status *ChangeStatus `json:"status,omitempty"`
+	Uuid   *string                     `json:"uuid,omitempty"`
+	Type   ChangeType                  `json:"type"`
+	Status *ServiceProfileChangeStatus `json:"status,omitempty"`
 	// Set when change flow starts
 	CreatedDateTime time.Time `json:"createdDateTime"`
 	// Set when change object is updated
@@ -110,9 +110,9 @@ func (o *Change) SetType(v ChangeType) {
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
-func (o *Change) GetStatus() ChangeStatus {
+func (o *Change) GetStatus() ServiceProfileChangeStatus {
 	if o == nil || IsNil(o.Status) {
-		var ret ChangeStatus
+		var ret ServiceProfileChangeStatus
 		return ret
 	}
 	return *o.Status
@@ -120,7 +120,7 @@ func (o *Change) GetStatus() ChangeStatus {
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Change) GetStatusOk() (*ChangeStatus, bool) {
+func (o *Change) GetStatusOk() (*ServiceProfileChangeStatus, bool) {
 	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
@@ -136,8 +136,8 @@ func (o *Change) HasStatus() bool {
 	return false
 }
 
-// SetStatus gets a reference to the given ChangeStatus and assigns it to the Status field.
-func (o *Change) SetStatus(v ChangeStatus) {
+// SetStatus gets a reference to the given ServiceProfileChangeStatus and assigns it to the Status field.
+func (o *Change) SetStatus(v ServiceProfileChangeStatus) {
 	o.Status = &v
 }
 

@@ -22,6 +22,7 @@ const (
 	PRODUCTTYPE_VIRTUAL_PORT_PRODUCT       ProductType = "VIRTUAL_PORT_PRODUCT"
 	PRODUCTTYPE_CLOUD_ROUTER_PRODUCT       ProductType = "CLOUD_ROUTER_PRODUCT"
 	PRODUCTTYPE_PRECISION_TIME_PRODUCT     ProductType = "PRECISION_TIME_PRODUCT"
+	PRODUCTTYPE_METRO_CONNECT_PRODUCT      ProductType = "METRO_CONNECT_PRODUCT"
 )
 
 // All allowed values of ProductType enum
@@ -31,6 +32,7 @@ var AllowedProductTypeEnumValues = []ProductType{
 	"VIRTUAL_PORT_PRODUCT",
 	"CLOUD_ROUTER_PRODUCT",
 	"PRECISION_TIME_PRODUCT",
+	"METRO_CONNECT_PRODUCT",
 }
 
 func (v *ProductType) UnmarshalJSON(src []byte) error {

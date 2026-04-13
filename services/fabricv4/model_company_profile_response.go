@@ -16,23 +16,24 @@ var _ MappedNullable = &CompanyProfileResponse{}
 
 // CompanyProfileResponse struct for CompanyProfileResponse
 type CompanyProfileResponse struct {
-	Href                 *string                  `json:"href,omitempty"`
-	Uuid                 *string                  `json:"uuid,omitempty"`
-	Type                 *string                  `json:"type,omitempty"`
-	Name                 *string                  `json:"name,omitempty"`
-	Summary              *string                  `json:"summary,omitempty"`
-	Description          *string                  `json:"description,omitempty"`
-	State                map[string]interface{}   `json:"state,omitempty"`
-	Metros               []CompanyMetro           `json:"metros,omitempty"`
-	Logo                 *CompanyLogo             `json:"logo,omitempty"`
-	Tags                 []TagResponse            `json:"tags,omitempty"`
-	ServiceProfiles      []CompanyServiceProfile  `json:"serviceProfiles,omitempty"`
-	PrivateServices      []PrivateService         `json:"privateServices,omitempty"`
-	Notifications        []map[string]interface{} `json:"notifications,omitempty"`
-	WebUrl               *string                  `json:"webUrl,omitempty"`
-	ContactUrl           *string                  `json:"contactUrl,omitempty"`
-	Change               *CompanyProfileChange    `json:"change,omitempty"`
-	ChangeLog            *Changelog               `json:"changeLog,omitempty"`
+	Href                 *string                        `json:"href,omitempty"`
+	Uuid                 *string                        `json:"uuid,omitempty"`
+	Type                 *string                        `json:"type,omitempty"`
+	Name                 *string                        `json:"name,omitempty"`
+	Summary              *string                        `json:"summary,omitempty"`
+	Description          *string                        `json:"description,omitempty"`
+	State                map[string]interface{}         `json:"state,omitempty"`
+	Account              *CompanyProfileResponseAccount `json:"account,omitempty"`
+	Metros               []CompanyMetro                 `json:"metros,omitempty"`
+	Logo                 *CompanyLogo                   `json:"logo,omitempty"`
+	Tags                 []TagResponse                  `json:"tags,omitempty"`
+	ServiceProfiles      []CompanyServiceProfile        `json:"serviceProfiles,omitempty"`
+	PrivateServices      []PrivateService               `json:"privateServices,omitempty"`
+	Notifications        []map[string]interface{}       `json:"notifications,omitempty"`
+	WebUrl               *string                        `json:"webUrl,omitempty"`
+	ContactUrl           *string                        `json:"contactUrl,omitempty"`
+	Change               *CompanyProfileChange          `json:"change,omitempty"`
+	ChangeLog            *Changelog                     `json:"changeLog,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -277,6 +278,38 @@ func (o *CompanyProfileResponse) HasState() bool {
 // SetState gets a reference to the given map[string]interface{} and assigns it to the State field.
 func (o *CompanyProfileResponse) SetState(v map[string]interface{}) {
 	o.State = v
+}
+
+// GetAccount returns the Account field value if set, zero value otherwise.
+func (o *CompanyProfileResponse) GetAccount() CompanyProfileResponseAccount {
+	if o == nil || IsNil(o.Account) {
+		var ret CompanyProfileResponseAccount
+		return ret
+	}
+	return *o.Account
+}
+
+// GetAccountOk returns a tuple with the Account field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CompanyProfileResponse) GetAccountOk() (*CompanyProfileResponseAccount, bool) {
+	if o == nil || IsNil(o.Account) {
+		return nil, false
+	}
+	return o.Account, true
+}
+
+// HasAccount returns a boolean if a field has been set.
+func (o *CompanyProfileResponse) HasAccount() bool {
+	if o != nil && !IsNil(o.Account) {
+		return true
+	}
+
+	return false
+}
+
+// SetAccount gets a reference to the given CompanyProfileResponseAccount and assigns it to the Account field.
+func (o *CompanyProfileResponse) SetAccount(v CompanyProfileResponseAccount) {
+	o.Account = &v
 }
 
 // GetMetros returns the Metros field value if set, zero value otherwise.
@@ -630,6 +663,9 @@ func (o CompanyProfileResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.State) {
 		toSerialize["state"] = o.State
 	}
+	if !IsNil(o.Account) {
+		toSerialize["account"] = o.Account
+	}
 	if !IsNil(o.Metros) {
 		toSerialize["metros"] = o.Metros
 	}
@@ -689,6 +725,7 @@ func (o *CompanyProfileResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "summary")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "state")
+		delete(additionalProperties, "account")
 		delete(additionalProperties, "metros")
 		delete(additionalProperties, "logo")
 		delete(additionalProperties, "tags")

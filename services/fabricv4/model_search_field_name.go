@@ -26,8 +26,6 @@ const (
 	SEARCHFIELDNAME_A_SIDE_ACCESS_POINT_ACCOUNT_ACCOUNT_NAME       SearchFieldName = "/aSide/accessPoint/account/accountName"
 	SEARCHFIELDNAME_A_SIDE_ACCESS_POINT_ACCOUNT_ACCOUNT_NUMBER     SearchFieldName = "/aSide/accessPoint/account/accountNumber"
 	SEARCHFIELDNAME_A_SIDE_ACCESS_POINT_ROUTER_UUID                SearchFieldName = "/aSide/accessPoint/router/uuid"
-	SEARCHFIELDNAME_A_SIDE_ACCESS_POINT_LINK_PROTOCOL_VLAN_C_TAG   SearchFieldName = "/aSide/accessPoint/linkProtocol/vlanCTag"
-	SEARCHFIELDNAME_A_SIDE_ACCESS_POINT_LINK_PROTOCOL_VLAN_S_TAG   SearchFieldName = "/aSide/accessPoint/linkProtocol/vlanSTag"
 	SEARCHFIELDNAME_A_SIDE_ACCESS_POINT_LINK_PROTOCOL_VLAN_TAG_MIN SearchFieldName = "/aSide/accessPoint/linkProtocol/vlanTagMin"
 	SEARCHFIELDNAME_A_SIDE_ACCESS_POINT_LINK_PROTOCOL_VLAN_TAG_MAX SearchFieldName = "/aSide/accessPoint/linkProtocol/vlanTagMax"
 	SEARCHFIELDNAME_A_SIDE_ACCESS_POINT_LOCATION_METRO_CODE        SearchFieldName = "/aSide/accessPoint/location/metroCode"
@@ -39,7 +37,10 @@ const (
 	SEARCHFIELDNAME_A_SIDE_ACCESS_POINT_VIRTUAL_DEVICE_NAME        SearchFieldName = "/aSide/accessPoint/virtualDevice/name"
 	SEARCHFIELDNAME_A_SIDE_ACCESS_POINT_VIRTUAL_DEVICE_UUID        SearchFieldName = "/aSide/accessPoint/virtualDevice/uuid"
 	SEARCHFIELDNAME_A_SIDE_SERVICE_TOKEN_UUID                      SearchFieldName = "/aSide/serviceToken/uuid"
+	SEARCHFIELDNAME_BANDWIDTH                                      SearchFieldName = "/bandwidth"
 	SEARCHFIELDNAME_CHANGE_STATUS                                  SearchFieldName = "/change/status"
+	SEARCHFIELDNAME_CHANGE_LOG_CREATED_BY                          SearchFieldName = "/changeLog/createdBy"
+	SEARCHFIELDNAME_CHANGE_LOG_CREATED_DATE_TIME                   SearchFieldName = "/changeLog/createdDateTime"
 	SEARCHFIELDNAME_OPERATION_EQUINIX_STATUS                       SearchFieldName = "/operation/equinixStatus"
 	SEARCHFIELDNAME_OPERATION_PROVIDER_STATUS                      SearchFieldName = "/operation/providerStatus"
 	SEARCHFIELDNAME_PROJECT_PROJECT_ID                             SearchFieldName = "/project/projectId"
@@ -47,8 +48,6 @@ const (
 	SEARCHFIELDNAME_REDUNDANCY_PRIORITY                            SearchFieldName = "/redundancy/priority"
 	SEARCHFIELDNAME_Z_SIDE_ACCESS_POINT_ACCOUNT_ACCOUNT_NAME       SearchFieldName = "/zSide/accessPoint/account/accountName"
 	SEARCHFIELDNAME_Z_SIDE_ACCESS_POINT_AUTHENTICATION_KEY         SearchFieldName = "/zSide/accessPoint/authenticationKey"
-	SEARCHFIELDNAME_Z_SIDE_ACCESS_POINT_LINK_PROTOCOL_VLAN_C_TAG   SearchFieldName = "/zSide/accessPoint/linkProtocol/vlanCTag"
-	SEARCHFIELDNAME_Z_SIDE_ACCESS_POINT_LINK_PROTOCOL_VLAN_S_TAG   SearchFieldName = "/zSide/accessPoint/linkProtocol/vlanSTag"
 	SEARCHFIELDNAME_Z_SIDE_ACCESS_POINT_LINK_PROTOCOL_VLAN_TAG_MIN SearchFieldName = "/zSide/accessPoint/linkProtocol/vlanTagMin"
 	SEARCHFIELDNAME_Z_SIDE_ACCESS_POINT_LINK_PROTOCOL_VLAN_TAG_MAX SearchFieldName = "/zSide/accessPoint/linkProtocol/vlanTagMax"
 	SEARCHFIELDNAME_Z_SIDE_ACCESS_POINT_LOCATION_METRO_CODE        SearchFieldName = "/zSide/accessPoint/location/metroCode"
@@ -77,8 +76,6 @@ var AllowedSearchFieldNameEnumValues = []SearchFieldName{
 	"/aSide/accessPoint/account/accountName",
 	"/aSide/accessPoint/account/accountNumber",
 	"/aSide/accessPoint/router/uuid",
-	"/aSide/accessPoint/linkProtocol/vlanCTag",
-	"/aSide/accessPoint/linkProtocol/vlanSTag",
 	"/aSide/accessPoint/linkProtocol/vlanTagMin",
 	"/aSide/accessPoint/linkProtocol/vlanTagMax",
 	"/aSide/accessPoint/location/metroCode",
@@ -90,7 +87,10 @@ var AllowedSearchFieldNameEnumValues = []SearchFieldName{
 	"/aSide/accessPoint/virtualDevice/name",
 	"/aSide/accessPoint/virtualDevice/uuid",
 	"/aSide/serviceToken/uuid",
+	"/bandwidth",
 	"/change/status",
+	"/changeLog/createdBy",
+	"/changeLog/createdDateTime",
 	"/operation/equinixStatus",
 	"/operation/providerStatus",
 	"/project/projectId",
@@ -98,8 +98,6 @@ var AllowedSearchFieldNameEnumValues = []SearchFieldName{
 	"/redundancy/priority",
 	"/zSide/accessPoint/account/accountName",
 	"/zSide/accessPoint/authenticationKey",
-	"/zSide/accessPoint/linkProtocol/vlanCTag",
-	"/zSide/accessPoint/linkProtocol/vlanSTag",
 	"/zSide/accessPoint/linkProtocol/vlanTagMin",
 	"/zSide/accessPoint/linkProtocol/vlanTagMax",
 	"/zSide/accessPoint/location/metroCode",

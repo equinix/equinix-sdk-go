@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Uuid** | Pointer to **string** | Uniquely identifies a change | [optional] 
 **Type** | [**ChangeType**](ChangeType.md) |  | 
-**Status** | Pointer to [**ChangeStatus**](ChangeStatus.md) |  | [optional] 
+**Status** | Pointer to [**ServiceProfileChangeStatus**](ServiceProfileChangeStatus.md) |  | [optional] 
 **CreatedDateTime** | **time.Time** | Set when change flow starts | 
 **UpdatedDateTime** | Pointer to **time.Time** | Set when change object is updated | [optional] 
 **Information** | Pointer to **string** | Additional information | [optional] 
@@ -78,20 +78,20 @@ SetType sets Type field to given value.
 
 ### GetStatus
 
-`func (o *Change) GetStatus() ChangeStatus`
+`func (o *Change) GetStatus() ServiceProfileChangeStatus`
 
 GetStatus returns the Status field if non-nil, zero value otherwise.
 
 ### GetStatusOk
 
-`func (o *Change) GetStatusOk() (*ChangeStatus, bool)`
+`func (o *Change) GetStatusOk() (*ServiceProfileChangeStatus, bool)`
 
 GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStatus
 
-`func (o *Change) SetStatus(v ChangeStatus)`
+`func (o *Change) SetStatus(v ServiceProfileChangeStatus)`
 
 SetStatus sets Status field to given value.
 
