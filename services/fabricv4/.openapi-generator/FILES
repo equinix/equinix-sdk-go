@@ -39,6 +39,7 @@ docs/AddOperation.md
 docs/Agent.md
 docs/AgentActivities.md
 docs/AgentActivitiesMetadata.md
+docs/AgentConfiguration.md
 docs/AgentDefinition.md
 docs/AgentGetActivities.md
 docs/AgentGetAllResponse.md
@@ -176,7 +177,6 @@ docs/CompanyProfileSearchResponse.md
 docs/CompanyProfileSortDirection.md
 docs/CompanyProfilesApi.md
 docs/CompanyServiceProfile.md
-docs/AgentConfiguration.md
 docs/ConnectedMetro.md
 docs/Connection.md
 docs/ConnectionAcceptanceData.md
@@ -784,6 +784,7 @@ model_add_operation.go
 model_agent.go
 model_agent_activities.go
 model_agent_activities_metadata.go
+model_agent_configuration.go
 model_agent_definition.go
 model_agent_get_activities.go
 model_agent_get_all_response.go
@@ -916,7 +917,6 @@ model_company_profile_search_request.go
 model_company_profile_search_response.go
 model_company_profile_sort_direction.go
 model_company_service_profile.go
-model_configuration.go
 model_connected_metro.go
 model_connection.go
 model_connection_acceptance_data.go
