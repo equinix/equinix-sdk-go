@@ -25,17 +25,7 @@
 
 * `PENDING_BGP` (value: `"PENDING_BGP"`)
 
-* `OUT_OF_BANDWIDTH` (value: `"OUT_OF_BANDWIDTH"`)
-
-* `DELETED` (value: `"DELETED"`)
-
 * `ERROR` (value: `"ERROR"`)
-
-* `ERRORED` (value: `"ERRORED"`)
-
-* `NOTPROVISIONED` (value: `"NOTPROVISIONED"`)
-
-* `NOT_PROVISIONED` (value: `"NOT_PROVISIONED"`)
 
 * `ORDERING` (value: `"ORDERING"`)
 

@@ -6,3 +6,7 @@
 **/.travis.yml
 **/.openapi-generator-ignore
 **/test/
+
+# Prevent overwriting manually renamed model to avoid conflict with configuration.go
+**/fabricv4/model_configuration.go
+**/fabricv4/docs/AgentConfiguration.md

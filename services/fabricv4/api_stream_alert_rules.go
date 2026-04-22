@@ -200,7 +200,7 @@ func (r ApiDeleteStreamAlertRuleByUuidRequest) Execute() (*StreamAlertRule, *htt
 }
 
 /*
-DeleteStreamAlertRuleByUuid Update Stream Alert Rules
+DeleteStreamAlertRuleByUuid Delete Stream Alert Rules
 
 This API provides capability to delete a user's stream alert rule
 

@@ -16,11 +16,8 @@ var _ MappedNullable = &ConnectionSide{}
 
 // ConnectionSide Connection configuration object for each side of multi-segment connection
 type ConnectionSide struct {
-	ServiceToken   *ServiceToken             `json:"serviceToken,omitempty"`
-	AccessPoint    *AccessPoint              `json:"accessPoint,omitempty"`
-	InternetAccess *InternetAccess           `json:"internetAccess,omitempty"`
-	CompanyProfile *ConnectionCompanyProfile `json:"companyProfile,omitempty"`
-	Invitation     *ConnectionInvitation     `json:"invitation,omitempty"`
+	ServiceToken *ServiceToken `json:"serviceToken,omitempty"`
+	AccessPoint  *AccessPoint  `json:"accessPoint,omitempty"`
 	// Any additional information, which is not part of connection metadata or configuration
 	AdditionalInfo       []ConnectionSideAdditionalInfo `json:"additionalInfo,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -109,102 +106,6 @@ func (o *ConnectionSide) SetAccessPoint(v AccessPoint) {
 	o.AccessPoint = &v
 }
 
-// GetInternetAccess returns the InternetAccess field value if set, zero value otherwise.
-func (o *ConnectionSide) GetInternetAccess() InternetAccess {
-	if o == nil || IsNil(o.InternetAccess) {
-		var ret InternetAccess
-		return ret
-	}
-	return *o.InternetAccess
-}
-
-// GetInternetAccessOk returns a tuple with the InternetAccess field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ConnectionSide) GetInternetAccessOk() (*InternetAccess, bool) {
-	if o == nil || IsNil(o.InternetAccess) {
-		return nil, false
-	}
-	return o.InternetAccess, true
-}
-
-// HasInternetAccess returns a boolean if a field has been set.
-func (o *ConnectionSide) HasInternetAccess() bool {
-	if o != nil && !IsNil(o.InternetAccess) {
-		return true
-	}
-
-	return false
-}
-
-// SetInternetAccess gets a reference to the given InternetAccess and assigns it to the InternetAccess field.
-func (o *ConnectionSide) SetInternetAccess(v InternetAccess) {
-	o.InternetAccess = &v
-}
-
-// GetCompanyProfile returns the CompanyProfile field value if set, zero value otherwise.
-func (o *ConnectionSide) GetCompanyProfile() ConnectionCompanyProfile {
-	if o == nil || IsNil(o.CompanyProfile) {
-		var ret ConnectionCompanyProfile
-		return ret
-	}
-	return *o.CompanyProfile
-}
-
-// GetCompanyProfileOk returns a tuple with the CompanyProfile field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ConnectionSide) GetCompanyProfileOk() (*ConnectionCompanyProfile, bool) {
-	if o == nil || IsNil(o.CompanyProfile) {
-		return nil, false
-	}
-	return o.CompanyProfile, true
-}
-
-// HasCompanyProfile returns a boolean if a field has been set.
-func (o *ConnectionSide) HasCompanyProfile() bool {
-	if o != nil && !IsNil(o.CompanyProfile) {
-		return true
-	}
-
-	return false
-}
-
-// SetCompanyProfile gets a reference to the given ConnectionCompanyProfile and assigns it to the CompanyProfile field.
-func (o *ConnectionSide) SetCompanyProfile(v ConnectionCompanyProfile) {
-	o.CompanyProfile = &v
-}
-
-// GetInvitation returns the Invitation field value if set, zero value otherwise.
-func (o *ConnectionSide) GetInvitation() ConnectionInvitation {
-	if o == nil || IsNil(o.Invitation) {
-		var ret ConnectionInvitation
-		return ret
-	}
-	return *o.Invitation
-}
-
-// GetInvitationOk returns a tuple with the Invitation field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ConnectionSide) GetInvitationOk() (*ConnectionInvitation, bool) {
-	if o == nil || IsNil(o.Invitation) {
-		return nil, false
-	}
-	return o.Invitation, true
-}
-
-// HasInvitation returns a boolean if a field has been set.
-func (o *ConnectionSide) HasInvitation() bool {
-	if o != nil && !IsNil(o.Invitation) {
-		return true
-	}
-
-	return false
-}
-
-// SetInvitation gets a reference to the given ConnectionInvitation and assigns it to the Invitation field.
-func (o *ConnectionSide) SetInvitation(v ConnectionInvitation) {
-	o.Invitation = &v
-}
-
 // GetAdditionalInfo returns the AdditionalInfo field value if set, zero value otherwise.
 func (o *ConnectionSide) GetAdditionalInfo() []ConnectionSideAdditionalInfo {
 	if o == nil || IsNil(o.AdditionalInfo) {
@@ -253,15 +154,6 @@ func (o ConnectionSide) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AccessPoint) {
 		toSerialize["accessPoint"] = o.AccessPoint
 	}
-	if !IsNil(o.InternetAccess) {
-		toSerialize["internetAccess"] = o.InternetAccess
-	}
-	if !IsNil(o.CompanyProfile) {
-		toSerialize["companyProfile"] = o.CompanyProfile
-	}
-	if !IsNil(o.Invitation) {
-		toSerialize["invitation"] = o.Invitation
-	}
 	if !IsNil(o.AdditionalInfo) {
 		toSerialize["additionalInfo"] = o.AdditionalInfo
 	}
@@ -289,9 +181,6 @@ func (o *ConnectionSide) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "serviceToken")
 		delete(additionalProperties, "accessPoint")
-		delete(additionalProperties, "internetAccess")
-		delete(additionalProperties, "companyProfile")
-		delete(additionalProperties, "invitation")
 		delete(additionalProperties, "additionalInfo")
 		o.AdditionalProperties = additionalProperties
 	}

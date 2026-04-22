@@ -21,10 +21,6 @@
 
 * `A_SIDE_ACCESS_POINT_ROUTER_UUID` (value: `"/aSide/accessPoint/router/uuid"`)
 
-* `A_SIDE_ACCESS_POINT_LINK_PROTOCOL_VLAN_C_TAG` (value: `"/aSide/accessPoint/linkProtocol/vlanCTag"`)
-
-* `A_SIDE_ACCESS_POINT_LINK_PROTOCOL_VLAN_S_TAG` (value: `"/aSide/accessPoint/linkProtocol/vlanSTag"`)
-
 * `A_SIDE_ACCESS_POINT_LINK_PROTOCOL_VLAN_TAG_MIN` (value: `"/aSide/accessPoint/linkProtocol/vlanTagMin"`)
 
 * `A_SIDE_ACCESS_POINT_LINK_PROTOCOL_VLAN_TAG_MAX` (value: `"/aSide/accessPoint/linkProtocol/vlanTagMax"`)
@@ -47,7 +43,13 @@
 
 * `A_SIDE_SERVICE_TOKEN_UUID` (value: `"/aSide/serviceToken/uuid"`)
 
+* `BANDWIDTH` (value: `"/bandwidth"`)
+
 * `CHANGE_STATUS` (value: `"/change/status"`)
+
+* `CHANGE_LOG_CREATED_BY` (value: `"/changeLog/createdBy"`)
+
+* `CHANGE_LOG_CREATED_DATE_TIME` (value: `"/changeLog/createdDateTime"`)
 
 * `OPERATION_EQUINIX_STATUS` (value: `"/operation/equinixStatus"`)
 
@@ -62,10 +64,6 @@
 * `Z_SIDE_ACCESS_POINT_ACCOUNT_ACCOUNT_NAME` (value: `"/zSide/accessPoint/account/accountName"`)
 
 * `Z_SIDE_ACCESS_POINT_AUTHENTICATION_KEY` (value: `"/zSide/accessPoint/authenticationKey"`)
-
-* `Z_SIDE_ACCESS_POINT_LINK_PROTOCOL_VLAN_C_TAG` (value: `"/zSide/accessPoint/linkProtocol/vlanCTag"`)
-
-* `Z_SIDE_ACCESS_POINT_LINK_PROTOCOL_VLAN_S_TAG` (value: `"/zSide/accessPoint/linkProtocol/vlanSTag"`)
 
 * `Z_SIDE_ACCESS_POINT_LINK_PROTOCOL_VLAN_TAG_MIN` (value: `"/zSide/accessPoint/linkProtocol/vlanTagMin"`)
 

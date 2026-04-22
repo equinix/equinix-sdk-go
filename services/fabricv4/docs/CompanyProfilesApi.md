@@ -260,7 +260,7 @@ import (
 )
 
 func main() {
-	companyProfileRequest := *openapiclient.NewCompanyProfileRequest("Type_example", "Name_example", "Summary_example", "Description_example") // CompanyProfileRequest | 
+	companyProfileRequest := *openapiclient.NewCompanyProfileRequest("COMPANY_PROFILE", "Equinix", "Global interconnection and data center company", "Equinix, Inc. connects the world's leading businesses to their customers, employees and partners inside the most interconnected data centers.") // CompanyProfileRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

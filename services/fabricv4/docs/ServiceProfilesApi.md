@@ -5,6 +5,7 @@ All URIs are relative to *https://api.equinix.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateServiceProfile**](ServiceProfilesApi.md#CreateServiceProfile) | **Post** /fabric/v4/serviceProfiles | Create Profile
+[**CreateServiceProfileAction**](ServiceProfilesApi.md#CreateServiceProfileAction) | **Post** /fabric/v4/serviceProfiles/{serviceProfileId}/actions | Profile Actions
 [**DeleteServiceProfileByUuid**](ServiceProfilesApi.md#DeleteServiceProfileByUuid) | **Delete** /fabric/v4/serviceProfiles/{serviceProfileId} | Delete Profile
 [**GetServiceProfileByUuid**](ServiceProfilesApi.md#GetServiceProfileByUuid) | **Get** /fabric/v4/serviceProfiles/{serviceProfileId} | Get Profile
 [**GetServiceProfileMetrosByUuid**](ServiceProfilesApi.md#GetServiceProfileMetrosByUuid) | **Get** /fabric/v4/serviceProfiles/{serviceProfileId}/metros | Get Profile Metros
@@ -66,6 +67,78 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ServiceProfile**](ServiceProfile.md)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json; charset=UTF-8, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreateServiceProfileAction
+
+> ServiceProfileActionResponse CreateServiceProfileAction(ctx, serviceProfileId).ServiceProfileActionRequest(serviceProfileActionRequest).Execute()
+
+Profile Actions
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/equinix/equinix-sdk-go/services/fabricv4"
+)
+
+func main() {
+	serviceProfileId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Service Profile UUID
+	serviceProfileActionRequest := *openapiclient.NewServiceProfileActionRequest("PROFILE_UPDATE_ACCEPTANCE") // ServiceProfileActionRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ServiceProfilesApi.CreateServiceProfileAction(context.Background(), serviceProfileId).ServiceProfileActionRequest(serviceProfileActionRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ServiceProfilesApi.CreateServiceProfileAction``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateServiceProfileAction`: ServiceProfileActionResponse
+	fmt.Fprintf(os.Stdout, "Response from `ServiceProfilesApi.CreateServiceProfileAction`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**serviceProfileId** | **string** | Service Profile UUID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateServiceProfileActionRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **serviceProfileActionRequest** | [**ServiceProfileActionRequest**](ServiceProfileActionRequest.md) |  | 
+
+### Return type
+
+[**ServiceProfileActionResponse**](ServiceProfileActionResponse.md)
 
 ### Authorization
 
@@ -511,7 +584,7 @@ Name | Type | Description  | Notes
 
 ## UpdateServiceProfileByUuid
 
-> ServiceProfile UpdateServiceProfileByUuid(ctx, serviceProfileId).IfMatch(ifMatch).JsonPatchOperation(jsonPatchOperation).Execute()
+> ServiceProfile UpdateServiceProfileByUuid(ctx, serviceProfileId).JsonPatchOperation(jsonPatchOperation).Execute()
 
 Update Profile
 
@@ -531,12 +604,11 @@ import (
 
 func main() {
 	serviceProfileId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Service Profile UUID
-	ifMatch := "ifMatch_example" // string | conditional request
 	jsonPatchOperation := []openapiclient.JsonPatchOperation{openapiclient.JsonPatchOperation{AddOperation: openapiclient.NewAddOperation(openapiclient.OpEnum("add"), "Path_example", map[string]interface{}(123))}} // []JsonPatchOperation | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ServiceProfilesApi.UpdateServiceProfileByUuid(context.Background(), serviceProfileId).IfMatch(ifMatch).JsonPatchOperation(jsonPatchOperation).Execute()
+	resp, r, err := apiClient.ServiceProfilesApi.UpdateServiceProfileByUuid(context.Background(), serviceProfileId).JsonPatchOperation(jsonPatchOperation).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ServiceProfilesApi.UpdateServiceProfileByUuid``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -562,7 +634,6 @@ Other parameters are passed through a pointer to a apiUpdateServiceProfileByUuid
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **ifMatch** | **string** | conditional request | 
  **jsonPatchOperation** | [**[]JsonPatchOperation**](JsonPatchOperation.md) |  | 
 
 ### Return type

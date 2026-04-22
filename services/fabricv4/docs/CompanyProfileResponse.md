@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **Summary** | Pointer to **string** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
 **State** | Pointer to **map[string]interface{}** |  | [optional] 
+**Account** | Pointer to [**CompanyProfileResponseAccount**](CompanyProfileResponseAccount.md) |  | [optional] 
 **Metros** | Pointer to [**[]CompanyMetro**](CompanyMetro.md) |  | [optional] 
 **Logo** | Pointer to [**CompanyLogo**](CompanyLogo.md) |  | [optional] 
 **Tags** | Pointer to [**[]TagResponse**](TagResponse.md) |  | [optional] 
@@ -215,6 +216,31 @@ SetState sets State field to given value.
 `func (o *CompanyProfileResponse) HasState() bool`
 
 HasState returns a boolean if a field has been set.
+
+### GetAccount
+
+`func (o *CompanyProfileResponse) GetAccount() CompanyProfileResponseAccount`
+
+GetAccount returns the Account field if non-nil, zero value otherwise.
+
+### GetAccountOk
+
+`func (o *CompanyProfileResponse) GetAccountOk() (*CompanyProfileResponseAccount, bool)`
+
+GetAccountOk returns a tuple with the Account field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccount
+
+`func (o *CompanyProfileResponse) SetAccount(v CompanyProfileResponseAccount)`
+
+SetAccount sets Account field to given value.
+
+### HasAccount
+
+`func (o *CompanyProfileResponse) HasAccount() bool`
+
+HasAccount returns a boolean if a field has been set.
 
 ### GetMetros
 

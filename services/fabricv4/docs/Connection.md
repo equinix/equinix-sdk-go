@@ -9,7 +9,6 @@ Name | Type | Description | Notes
 **Uuid** | Pointer to **string** | Equinix-assigned connection identifier | [optional] 
 **Name** | **string** | Customer-provided connection name | 
 **Description** | Pointer to **string** | Customer-provided connection description | [optional] 
-**State** | Pointer to [**ConnectionState**](ConnectionState.md) |  | [optional] 
 **Change** | Pointer to [**Change**](Change.md) |  | [optional] 
 **Operation** | Pointer to [**ConnectionOperation**](ConnectionOperation.md) |  | [optional] 
 **Order** | Pointer to [**Order**](Order.md) |  | [optional] 
@@ -160,31 +159,6 @@ SetDescription sets Description field to given value.
 `func (o *Connection) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
-
-### GetState
-
-`func (o *Connection) GetState() ConnectionState`
-
-GetState returns the State field if non-nil, zero value otherwise.
-
-### GetStateOk
-
-`func (o *Connection) GetStateOk() (*ConnectionState, bool)`
-
-GetStateOk returns a tuple with the State field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetState
-
-`func (o *Connection) SetState(v ConnectionState)`
-
-SetState sets State field to given value.
-
-### HasState
-
-`func (o *Connection) HasState() bool`
-
-HasState returns a boolean if a field has been set.
 
 ### GetChange
 

@@ -1035,14 +1035,14 @@ func (r ApiGetCloudRouterActionsRequest) State(state CloudRouterActionState) Api
 	return r
 }
 
-func (r ApiGetCloudRouterActionsRequest) Execute() (*CloudRouterActionResponse, *http.Response, error) {
+func (r ApiGetCloudRouterActionsRequest) Execute() (*CloudRouterActionsSearchResponse, *http.Response, error) {
 	return r.ApiService.GetCloudRouterActionsExecute(r)
 }
 
 /*
 GetCloudRouterActions Get Route Table Actions
 
-This API provides capability to fetch action status
+This API provides capability to fetch all actions for a given cloud router
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param routerId Router UUID
@@ -1058,13 +1058,13 @@ func (a *CloudRoutersApiService) GetCloudRouterActions(ctx context.Context, rout
 
 // Execute executes the request
 //
-//	@return CloudRouterActionResponse
-func (a *CloudRoutersApiService) GetCloudRouterActionsExecute(r ApiGetCloudRouterActionsRequest) (*CloudRouterActionResponse, *http.Response, error) {
+//	@return CloudRouterActionsSearchResponse
+func (a *CloudRoutersApiService) GetCloudRouterActionsExecute(r ApiGetCloudRouterActionsRequest) (*CloudRouterActionsSearchResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *CloudRouterActionResponse
+		localVarReturnValue *CloudRouterActionsSearchResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudRoutersApiService.GetCloudRouterActions")
@@ -2885,7 +2885,7 @@ func (r ApiSearchRouterActionsRequest) Execute() (*CloudRouterActionsSearchRespo
 /*
 SearchRouterActions Search Route Table Actions
 
-This API provides capability to refresh route table and bgp session summary information
+This API provides capability to search route table actions for a given cloud router
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param routerId Router UUID

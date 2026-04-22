@@ -15,6 +15,7 @@ Method | HTTP request | Description
 [**GetRouteFilterChanges**](RouteFiltersApi.md#GetRouteFilterChanges) | **Get** /fabric/v4/routeFilters/{routeFilterId}/changes | Get All Changes
 [**GetRouteFilterConnections**](RouteFiltersApi.md#GetRouteFilterConnections) | **Get** /fabric/v4/routeFilters/{routeFilterId}/connections | Get All Connections on Route Filter
 [**PatchRouteFilterByUuid**](RouteFiltersApi.md#PatchRouteFilterByUuid) | **Patch** /fabric/v4/routeFilters/{routeFilterId} | Patch Route Filter
+[**SearchCloudRouterRouteFilterAttachments**](RouteFiltersApi.md#SearchCloudRouterRouteFilterAttachments) | **Post** /fabric/v4/routers/{routerId}/routeFilters/search | Search Cloud Router Route Filter Attachments
 [**SearchRouteFilters**](RouteFiltersApi.md#SearchRouteFilters) | **Post** /fabric/v4/routeFilters/search | Search Route Filters
 
 
@@ -798,6 +799,78 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json, application/json-patch+json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SearchCloudRouterRouteFilterAttachments
+
+> CloudRouterRouteFiltersSearchResponse SearchCloudRouterRouteFilterAttachments(ctx, routerId).CloudRouterRouteFiltersSearchBase(cloudRouterRouteFiltersSearchBase).Execute()
+
+Search Cloud Router Route Filter Attachments
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/equinix/equinix-sdk-go/services/fabricv4"
+)
+
+func main() {
+	routerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cloud Router UUID
+	cloudRouterRouteFiltersSearchBase := *openapiclient.NewCloudRouterRouteFiltersSearchBase() // CloudRouterRouteFiltersSearchBase | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.RouteFiltersApi.SearchCloudRouterRouteFilterAttachments(context.Background(), routerId).CloudRouterRouteFiltersSearchBase(cloudRouterRouteFiltersSearchBase).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RouteFiltersApi.SearchCloudRouterRouteFilterAttachments``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `SearchCloudRouterRouteFilterAttachments`: CloudRouterRouteFiltersSearchResponse
+	fmt.Fprintf(os.Stdout, "Response from `RouteFiltersApi.SearchCloudRouterRouteFilterAttachments`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**routerId** | **string** | Cloud Router UUID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSearchCloudRouterRouteFilterAttachmentsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **cloudRouterRouteFiltersSearchBase** | [**CloudRouterRouteFiltersSearchBase**](CloudRouterRouteFiltersSearchBase.md) |  | 
+
+### Return type
+
+[**CloudRouterRouteFiltersSearchResponse**](CloudRouterRouteFiltersSearchResponse.md)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
