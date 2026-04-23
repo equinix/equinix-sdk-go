@@ -1,0 +1,149 @@
+name: Onboard new API
+
+on:
+  workflow_dispatch:
+    inputs:
+      service_name:
+        description: 'Service name (lowercase alphanumeric, e.g. mysvcv1 for api.equinix.com/mysvc/v1)'
+        required: true
+        type: string
+      spec_url:
+        description: 'URL to the root OpenAPI spec file (e.g. https://docs.equinix.com/api-catalog/{service}/openapi.yaml)'
+        required: true
+        type: string
+
+jobs:
+  onboard:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+    - name: Get current date
+      id: date
+      run: echo "date=$(date +'%Y-%m-%d')" >> "$GITHUB_OUTPUT"
+    - name: Checkout code
+      uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
+    - name: Install Go
+      uses: actions/setup-go@44694675825211faa026b3c33043df3e48a5fa00 # v6
+      with:
+        go-version-file: go.mod
+    - name: GitHub user
+      run: |
+        # https://api.github.com/users/github-actions[bot]
+        git config user.name 'github-actions[bot]'
+        git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+    - name: Validate inputs
+      run: |
+        SERVICE_NAME="${{ inputs.service_name }}"
+        if ! echo "$SERVICE_NAME" | grep -qE '^[a-z0-9]+$'; then
+          echo "Error: service_name must be lowercase alphanumeric (got: $SERVICE_NAME)"
+          exit 1
+        fi
+        if [ -f "Makefile.${SERVICE_NAME}" ]; then
+          echo "Error: ${SERVICE_NAME} is already onboarded (Makefile.${SERVICE_NAME} exists)"
+          exit 1
+        fi
+    - name: Scaffold service files
+      id: scaffold
+      run: |
+        SERVICE_NAME="${{ inputs.service_name }}"
+        SPEC_URL="${{ inputs.spec_url }}"
+
+        # Determine spec root filename and base URL
+        POSSIBLE_FILENAME="${SPEC_URL##*/}"
+        if echo "$POSSIBLE_FILENAME" | grep -q '\.'; then
+          SPEC_ROOT_FILE="$POSSIBLE_FILENAME"
+          SPEC_BASE_URL="${SPEC_URL%/$SPEC_ROOT_FILE}"
+        else
+          SPEC_ROOT_FILE="openapi.yaml"
+          SPEC_BASE_URL="$SPEC_URL"
+        fi
+
+        # Scaffold Makefile.<service>
+        cp templates/Makefile.sdk "Makefile.${SERVICE_NAME}"
+        sed -i "s|__PACKAGE_NAME__|${SERVICE_NAME}|g" "Makefile.${SERVICE_NAME}"
+        sed -i "s|__SPEC_BASE_URL__|${SPEC_BASE_URL}|g" "Makefile.${SERVICE_NAME}"
+        sed -i "s|__SPEC_ROOT_FILE__|${SPEC_ROOT_FILE}|g" "Makefile.${SERVICE_NAME}"
+
+        # Scaffold .github/workflows/sync-<service>.yaml
+        cp templates/.github/workflows/sync.yaml ".github/workflows/sync-${SERVICE_NAME}.yaml"
+        sed -i "s|__PACKAGE_NAME__|${SERVICE_NAME}|g" ".github/workflows/sync-${SERVICE_NAME}.yaml"
+
+        # Create required directories
+        mkdir -p "spec/services/${SERVICE_NAME}" && touch "spec/services/${SERVICE_NAME}/.keep"
+        mkdir -p "templates/services/${SERVICE_NAME}" && touch "templates/services/${SERVICE_NAME}/.keep"
+        mkdir -p "patches/services/${SERVICE_NAME}" && touch "patches/services/${SERVICE_NAME}/.keep"
+
+        git add "Makefile.${SERVICE_NAME}" ".github/workflows/sync-${SERVICE_NAME}.yaml" \
+          "spec/services/${SERVICE_NAME}" "templates/services/${SERVICE_NAME}" \
+          "patches/services/${SERVICE_NAME}"
+        echo `git commit -m "onboard: scaffold ${SERVICE_NAME} service files"`
+    - name: Fetch latest spec
+      id: fetch
+      if: ${{ always() && steps.scaffold.conclusion == 'success' }}
+      run: |
+        make -f Makefile.${{ inputs.service_name }} fetch
+        git add spec/services/${{ inputs.service_name }}
+        echo `git commit -m 'onboard: fetch ${{ steps.date.outputs.date }} spec for ${{ inputs.service_name }}'`
+    - name: Apply spec patches
+      id: patch
+      if: ${{ always() && steps.fetch.conclusion == 'success' }}
+      run: |
+        make -f Makefile.${{ inputs.service_name }} patch
+        git add spec/services/${{ inputs.service_name }}
+        echo `git commit -m 'onboard: patch spec for ${{ inputs.service_name }}'`
+    - name: Generate code
+      id: generate
+      if: ${{ always() && steps.fetch.conclusion == 'success' }}
+      run: |
+        make -f Makefile.${{ inputs.service_name }} generate
+        git add services/${{ inputs.service_name }}
+        echo `git commit -m 'onboard: generate client for ${{ inputs.service_name }}'`
+    - name: Create Pull Request
+      id: cpr
+      uses: peter-evans/create-pull-request@271a8d0340265f705b14b6d32b9829c1cb33d45e # v7
+      if: ${{ always() && steps.scaffold.conclusion == 'success' }}
+      with:
+        branch: onboard/${{ inputs.service_name }}
+        author: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
+        commit-message: "onboard: uncommitted changes detected when opening PR"
+        title: "feat: Onboard ${{ inputs.service_name }} API by GitHub Action for @${{ github.event.sender.login }}"
+        body: |
+          This onboarding PR was triggered by @${{ github.event.sender.login }} through [GitHub Actions workflow_dispatch](https://github.com/equinix/equinix-sdk-go/actions?query=event%3Aworkflow_dispatch)
+          on ${{ steps.date.outputs.date }}.
+
+          **Service:** `${{ inputs.service_name }}`
+          **Spec URL:** ${{ inputs.spec_url }}
+
+          Changes included:
+          * `Makefile.${{ inputs.service_name }}` scaffolded
+          * `.github/workflows/sync-${{ inputs.service_name }}.yaml` scaffolded
+          * OpenAPI spec fetched to `spec/services/${{ inputs.service_name }}/oas3.fetched/`
+          * Spec patches applied to `spec/services/${{ inputs.service_name }}/oas3.patched/`
+          * Go client generated to `services/${{ inputs.service_name }}/`
+        delete-branch: true
+        draft: ${{ steps.fetch.conclusion == 'failure' || steps.patch.conclusion == 'failure' || steps.generate.conclusion == 'failure' }}
+    - name: Comment for failed fetch
+      uses: mshick/add-pr-comment@b8f338c590a895d50bcbfa6c5859251edc8952fc # v2
+      if: ${{ always() && steps.fetch.conclusion == 'failure' && steps.cpr.conclusion == 'success' }}
+      with:
+        issue: ${{ steps.cpr.outputs.pull-request-number }}
+        message: Failed to fetch the OpenAPI spec from `${{ inputs.spec_url }}`. Please verify the URL is publicly accessible and points to a valid OpenAPI spec, then update the Makefile and retry.
+    - name: Comment for failed patch
+      uses: mshick/add-pr-comment@b8f338c590a895d50bcbfa6c5859251edc8952fc # v2
+      if: ${{ always() && steps.patch.conclusion == 'failure' && steps.cpr.conclusion == 'success' }}
+      with:
+        issue: ${{ steps.cpr.outputs.pull-request-number }}
+        message: Failed to patch the spec. Someone with write access must review and, if necessary, fix this PR manually and then convert it from Draft status to Ready for Review.
+    - name: Comment for failed generate
+      uses: mshick/add-pr-comment@b8f338c590a895d50bcbfa6c5859251edc8952fc # v2
+      if: ${{ always() && steps.generate.conclusion == 'failure' && steps.cpr.conclusion == 'success' }}
+      with:
+        issue: ${{ steps.cpr.outputs.pull-request-number }}
+        message: Failed to generate Go client code from the spec. Someone with write access must fix this PR manually and then convert it from Draft status to Ready for Review.
+    - name: Check outputs
+      if: ${{ always() && steps.cpr.conclusion == 'success' }}
+      run: |
+        echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
+        echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
