@@ -21332,7 +21332,9 @@ components:
         - DRAFT
         - FAILED
         - PENDING
+        - PROVISIONED
         - PROVISIONING
+        - REPROVISIONING
         - ""
     Change:
       required:
