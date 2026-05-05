@@ -23,9 +23,8 @@ type Connection struct {
 	// Equinix-assigned connection identifier
 	Uuid *string `json:"uuid,omitempty"`
 	// Customer-provided connection name
-	Name string `json:"name"`
-	// Customer-provided connection description
-	Description *string              `json:"description,omitempty"`
+	Name        string               `json:"name"`
+	Description *ConnectionState     `json:"description,omitempty"`
 	Change      *Change              `json:"change,omitempty"`
 	Operation   *ConnectionOperation `json:"operation,omitempty"`
 	Order       *Order               `json:"order,omitempty"`
@@ -186,9 +185,9 @@ func (o *Connection) SetName(v string) {
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
-func (o *Connection) GetDescription() string {
+func (o *Connection) GetDescription() ConnectionState {
 	if o == nil || IsNil(o.Description) {
-		var ret string
+		var ret ConnectionState
 		return ret
 	}
 	return *o.Description
@@ -196,7 +195,7 @@ func (o *Connection) GetDescription() string {
 
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Connection) GetDescriptionOk() (*string, bool) {
+func (o *Connection) GetDescriptionOk() (*ConnectionState, bool) {
 	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
@@ -212,8 +211,8 @@ func (o *Connection) HasDescription() bool {
 	return false
 }
 
-// SetDescription gets a reference to the given string and assigns it to the Description field.
-func (o *Connection) SetDescription(v string) {
+// SetDescription gets a reference to the given ConnectionState and assigns it to the Description field.
+func (o *Connection) SetDescription(v ConnectionState) {
 	o.Description = &v
 }
 
