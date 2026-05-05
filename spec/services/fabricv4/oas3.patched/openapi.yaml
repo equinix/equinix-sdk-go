@@ -15085,8 +15085,6 @@ components:
         description:
           type: string
           description: Customer-provided connection description
-          state:
-          $ref: "#/components/schemas/ConnectionState"
         change:
           $ref: "#/components/schemas/Change"
         operation:
