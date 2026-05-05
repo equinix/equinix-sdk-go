@@ -1,0 +1,13 @@
+diff --git a/spec/services/fabricv4/oas3.patched/openapi.yaml b/spec/services/fabricv4/oas3.patched/openapi.yaml
+index 995aee8b..01bba1a0 100644
+--- a/spec/services/fabricv4/oas3.patched/openapi.yaml
++++ b/spec/services/fabricv4/oas3.patched/openapi.yaml
+@@ -15085,6 +15085,8 @@ components:
+         description:
+           type: string
+           description: Customer-provided connection description
++          state:
++          $ref: "#/components/schemas/ConnectionState"
+         change:
+           $ref: "#/components/schemas/Change"
+         operation:

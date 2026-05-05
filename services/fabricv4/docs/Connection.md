@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Type** | [**ConnectionType**](ConnectionType.md) |  | 
 **Uuid** | Pointer to **string** | Equinix-assigned connection identifier | [optional] 
 **Name** | **string** | Customer-provided connection name | 
-**Description** | Pointer to **string** | Customer-provided connection description | [optional] 
+**Description** | Pointer to [**ConnectionState**](ConnectionState.md) |  | [optional] 
 **Change** | Pointer to [**Change**](Change.md) |  | [optional] 
 **Operation** | Pointer to [**ConnectionOperation**](ConnectionOperation.md) |  | [optional] 
 **Order** | Pointer to [**Order**](Order.md) |  | [optional] 
@@ -137,20 +137,20 @@ SetName sets Name field to given value.
 
 ### GetDescription
 
-`func (o *Connection) GetDescription() string`
+`func (o *Connection) GetDescription() ConnectionState`
 
 GetDescription returns the Description field if non-nil, zero value otherwise.
 
 ### GetDescriptionOk
 
-`func (o *Connection) GetDescriptionOk() (*string, bool)`
+`func (o *Connection) GetDescriptionOk() (*ConnectionState, bool)`
 
 GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDescription
 
-`func (o *Connection) SetDescription(v string)`
+`func (o *Connection) SetDescription(v ConnectionState)`
 
 SetDescription sets Description field to given value.
 
