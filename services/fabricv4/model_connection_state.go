@@ -24,7 +24,9 @@ const (
 	CONNECTIONSTATE_DRAFT          ConnectionState = "DRAFT"
 	CONNECTIONSTATE_FAILED         ConnectionState = "FAILED"
 	CONNECTIONSTATE_PENDING        ConnectionState = "PENDING"
+	CONNECTIONSTATE_PROVISIONED    ConnectionState = "PROVISIONED"
 	CONNECTIONSTATE_PROVISIONING   ConnectionState = "PROVISIONING"
+	CONNECTIONSTATE_REPROVISIONING ConnectionState = "REPROVISIONING"
 	CONNECTIONSTATE_EMPTY          ConnectionState = ""
 )
 
@@ -37,7 +39,9 @@ var AllowedConnectionStateEnumValues = []ConnectionState{
 	"DRAFT",
 	"FAILED",
 	"PENDING",
+	"PROVISIONED",
 	"PROVISIONING",
+	"REPROVISIONING",
 	"",
 }
 

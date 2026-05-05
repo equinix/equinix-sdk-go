@@ -1,0 +1,14 @@
+diff --git a/spec/services/fabricv4/oas3.patched/openapi.yaml b/spec/services/fabricv4/oas3.patched/openapi.yaml
+index 0ee91f56..4c1a7e1b 100644
+--- a/spec/services/fabricv4/oas3.patched/openapi.yaml
++++ b/spec/services/fabricv4/oas3.patched/openapi.yaml
+@@ -21332,7 +21332,9 @@ components:
+         - DRAFT
+         - FAILED
+         - PENDING
++        - PROVISIONED
+         - PROVISIONING
++        - REPROVISIONING
+         - ""
+     Change:
+       required:
