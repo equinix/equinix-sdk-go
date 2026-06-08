@@ -16,7 +16,7 @@ var _ MappedNullable = &FilterBody{}
 
 // FilterBody Search requests containing criteria
 type FilterBody struct {
-	Filter               *SearchExpression `json:"filter,omitempty"`
+	Filter               *PriceSearchExpression `json:"filter,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -40,9 +40,9 @@ func NewFilterBodyWithDefaults() *FilterBody {
 }
 
 // GetFilter returns the Filter field value if set, zero value otherwise.
-func (o *FilterBody) GetFilter() SearchExpression {
+func (o *FilterBody) GetFilter() PriceSearchExpression {
 	if o == nil || IsNil(o.Filter) {
-		var ret SearchExpression
+		var ret PriceSearchExpression
 		return ret
 	}
 	return *o.Filter
@@ -50,7 +50,7 @@ func (o *FilterBody) GetFilter() SearchExpression {
 
 // GetFilterOk returns a tuple with the Filter field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FilterBody) GetFilterOk() (*SearchExpression, bool) {
+func (o *FilterBody) GetFilterOk() (*PriceSearchExpression, bool) {
 	if o == nil || IsNil(o.Filter) {
 		return nil, false
 	}
@@ -66,8 +66,8 @@ func (o *FilterBody) HasFilter() bool {
 	return false
 }
 
-// SetFilter gets a reference to the given SearchExpression and assigns it to the Filter field.
-func (o *FilterBody) SetFilter(v SearchExpression) {
+// SetFilter gets a reference to the given PriceSearchExpression and assigns it to the Filter field.
+func (o *FilterBody) SetFilter(v PriceSearchExpression) {
 	o.Filter = &v
 }
 
