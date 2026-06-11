@@ -1,5 +1,8 @@
 # Equinix Go SDK
 
+> [!WARNING]
+> With the upcoming EoL of Equinix Metal on June 30, 2026, all Metal-related code (the `metalv1` package) will be removed from this SDK. Other Equinix services will continue to be supported.
+
 [![Release](https://img.shields.io/github/v/release/equinix/equinix-sdk-go)](https://github.com/equinix/equinix-sdk-go/releases/latest)
 [![GoDoc](https://godoc.org/github.com/equinix/equinix-sdk-go?status.svg)](https://godoc.org/github.com/equinix/equinix-sdk-go)
 
