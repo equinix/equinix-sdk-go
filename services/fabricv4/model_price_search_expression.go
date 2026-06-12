@@ -11,42 +11,42 @@ import (
 	"encoding/json"
 )
 
-// checks if the SearchExpression type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &SearchExpression{}
+// checks if the PriceSearchExpression type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PriceSearchExpression{}
 
-// SearchExpression struct for SearchExpression
-type SearchExpression struct {
-	And                  []SearchExpression        `json:"and,omitempty"`
-	Or                   []SearchExpression        `json:"or,omitempty"`
-	Property             *string                   `json:"property,omitempty"`
-	Operator             *SearchExpressionOperator `json:"operator,omitempty"`
-	Values               []string                  `json:"values,omitempty"`
+// PriceSearchExpression struct for PriceSearchExpression
+type PriceSearchExpression struct {
+	And                  []PriceSearchExpression        `json:"and,omitempty"`
+	Or                   []PriceSearchExpression        `json:"or,omitempty"`
+	Property             *string                        `json:"property,omitempty"`
+	Operator             *PriceSearchExpressionOperator `json:"operator,omitempty"`
+	Values               []string                       `json:"values,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _SearchExpression SearchExpression
+type _PriceSearchExpression PriceSearchExpression
 
-// NewSearchExpression instantiates a new SearchExpression object
+// NewPriceSearchExpression instantiates a new PriceSearchExpression object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSearchExpression() *SearchExpression {
-	this := SearchExpression{}
+func NewPriceSearchExpression() *PriceSearchExpression {
+	this := PriceSearchExpression{}
 	return &this
 }
 
-// NewSearchExpressionWithDefaults instantiates a new SearchExpression object
+// NewPriceSearchExpressionWithDefaults instantiates a new PriceSearchExpression object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewSearchExpressionWithDefaults() *SearchExpression {
-	this := SearchExpression{}
+func NewPriceSearchExpressionWithDefaults() *PriceSearchExpression {
+	this := PriceSearchExpression{}
 	return &this
 }
 
 // GetAnd returns the And field value if set, zero value otherwise.
-func (o *SearchExpression) GetAnd() []SearchExpression {
+func (o *PriceSearchExpression) GetAnd() []PriceSearchExpression {
 	if o == nil || IsNil(o.And) {
-		var ret []SearchExpression
+		var ret []PriceSearchExpression
 		return ret
 	}
 	return o.And
@@ -54,7 +54,7 @@ func (o *SearchExpression) GetAnd() []SearchExpression {
 
 // GetAndOk returns a tuple with the And field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SearchExpression) GetAndOk() ([]SearchExpression, bool) {
+func (o *PriceSearchExpression) GetAndOk() ([]PriceSearchExpression, bool) {
 	if o == nil || IsNil(o.And) {
 		return nil, false
 	}
@@ -62,7 +62,7 @@ func (o *SearchExpression) GetAndOk() ([]SearchExpression, bool) {
 }
 
 // HasAnd returns a boolean if a field has been set.
-func (o *SearchExpression) HasAnd() bool {
+func (o *PriceSearchExpression) HasAnd() bool {
 	if o != nil && !IsNil(o.And) {
 		return true
 	}
@@ -70,15 +70,15 @@ func (o *SearchExpression) HasAnd() bool {
 	return false
 }
 
-// SetAnd gets a reference to the given []SearchExpression and assigns it to the And field.
-func (o *SearchExpression) SetAnd(v []SearchExpression) {
+// SetAnd gets a reference to the given []PriceSearchExpression and assigns it to the And field.
+func (o *PriceSearchExpression) SetAnd(v []PriceSearchExpression) {
 	o.And = v
 }
 
 // GetOr returns the Or field value if set, zero value otherwise.
-func (o *SearchExpression) GetOr() []SearchExpression {
+func (o *PriceSearchExpression) GetOr() []PriceSearchExpression {
 	if o == nil || IsNil(o.Or) {
-		var ret []SearchExpression
+		var ret []PriceSearchExpression
 		return ret
 	}
 	return o.Or
@@ -86,7 +86,7 @@ func (o *SearchExpression) GetOr() []SearchExpression {
 
 // GetOrOk returns a tuple with the Or field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SearchExpression) GetOrOk() ([]SearchExpression, bool) {
+func (o *PriceSearchExpression) GetOrOk() ([]PriceSearchExpression, bool) {
 	if o == nil || IsNil(o.Or) {
 		return nil, false
 	}
@@ -94,7 +94,7 @@ func (o *SearchExpression) GetOrOk() ([]SearchExpression, bool) {
 }
 
 // HasOr returns a boolean if a field has been set.
-func (o *SearchExpression) HasOr() bool {
+func (o *PriceSearchExpression) HasOr() bool {
 	if o != nil && !IsNil(o.Or) {
 		return true
 	}
@@ -102,13 +102,13 @@ func (o *SearchExpression) HasOr() bool {
 	return false
 }
 
-// SetOr gets a reference to the given []SearchExpression and assigns it to the Or field.
-func (o *SearchExpression) SetOr(v []SearchExpression) {
+// SetOr gets a reference to the given []PriceSearchExpression and assigns it to the Or field.
+func (o *PriceSearchExpression) SetOr(v []PriceSearchExpression) {
 	o.Or = v
 }
 
 // GetProperty returns the Property field value if set, zero value otherwise.
-func (o *SearchExpression) GetProperty() string {
+func (o *PriceSearchExpression) GetProperty() string {
 	if o == nil || IsNil(o.Property) {
 		var ret string
 		return ret
@@ -118,7 +118,7 @@ func (o *SearchExpression) GetProperty() string {
 
 // GetPropertyOk returns a tuple with the Property field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SearchExpression) GetPropertyOk() (*string, bool) {
+func (o *PriceSearchExpression) GetPropertyOk() (*string, bool) {
 	if o == nil || IsNil(o.Property) {
 		return nil, false
 	}
@@ -126,7 +126,7 @@ func (o *SearchExpression) GetPropertyOk() (*string, bool) {
 }
 
 // HasProperty returns a boolean if a field has been set.
-func (o *SearchExpression) HasProperty() bool {
+func (o *PriceSearchExpression) HasProperty() bool {
 	if o != nil && !IsNil(o.Property) {
 		return true
 	}
@@ -135,14 +135,14 @@ func (o *SearchExpression) HasProperty() bool {
 }
 
 // SetProperty gets a reference to the given string and assigns it to the Property field.
-func (o *SearchExpression) SetProperty(v string) {
+func (o *PriceSearchExpression) SetProperty(v string) {
 	o.Property = &v
 }
 
 // GetOperator returns the Operator field value if set, zero value otherwise.
-func (o *SearchExpression) GetOperator() SearchExpressionOperator {
+func (o *PriceSearchExpression) GetOperator() PriceSearchExpressionOperator {
 	if o == nil || IsNil(o.Operator) {
-		var ret SearchExpressionOperator
+		var ret PriceSearchExpressionOperator
 		return ret
 	}
 	return *o.Operator
@@ -150,7 +150,7 @@ func (o *SearchExpression) GetOperator() SearchExpressionOperator {
 
 // GetOperatorOk returns a tuple with the Operator field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SearchExpression) GetOperatorOk() (*SearchExpressionOperator, bool) {
+func (o *PriceSearchExpression) GetOperatorOk() (*PriceSearchExpressionOperator, bool) {
 	if o == nil || IsNil(o.Operator) {
 		return nil, false
 	}
@@ -158,7 +158,7 @@ func (o *SearchExpression) GetOperatorOk() (*SearchExpressionOperator, bool) {
 }
 
 // HasOperator returns a boolean if a field has been set.
-func (o *SearchExpression) HasOperator() bool {
+func (o *PriceSearchExpression) HasOperator() bool {
 	if o != nil && !IsNil(o.Operator) {
 		return true
 	}
@@ -166,13 +166,13 @@ func (o *SearchExpression) HasOperator() bool {
 	return false
 }
 
-// SetOperator gets a reference to the given SearchExpressionOperator and assigns it to the Operator field.
-func (o *SearchExpression) SetOperator(v SearchExpressionOperator) {
+// SetOperator gets a reference to the given PriceSearchExpressionOperator and assigns it to the Operator field.
+func (o *PriceSearchExpression) SetOperator(v PriceSearchExpressionOperator) {
 	o.Operator = &v
 }
 
 // GetValues returns the Values field value if set, zero value otherwise.
-func (o *SearchExpression) GetValues() []string {
+func (o *PriceSearchExpression) GetValues() []string {
 	if o == nil || IsNil(o.Values) {
 		var ret []string
 		return ret
@@ -182,7 +182,7 @@ func (o *SearchExpression) GetValues() []string {
 
 // GetValuesOk returns a tuple with the Values field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SearchExpression) GetValuesOk() ([]string, bool) {
+func (o *PriceSearchExpression) GetValuesOk() ([]string, bool) {
 	if o == nil || IsNil(o.Values) {
 		return nil, false
 	}
@@ -190,7 +190,7 @@ func (o *SearchExpression) GetValuesOk() ([]string, bool) {
 }
 
 // HasValues returns a boolean if a field has been set.
-func (o *SearchExpression) HasValues() bool {
+func (o *PriceSearchExpression) HasValues() bool {
 	if o != nil && !IsNil(o.Values) {
 		return true
 	}
@@ -199,11 +199,11 @@ func (o *SearchExpression) HasValues() bool {
 }
 
 // SetValues gets a reference to the given []string and assigns it to the Values field.
-func (o *SearchExpression) SetValues(v []string) {
+func (o *PriceSearchExpression) SetValues(v []string) {
 	o.Values = v
 }
 
-func (o SearchExpression) MarshalJSON() ([]byte, error) {
+func (o PriceSearchExpression) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -211,7 +211,7 @@ func (o SearchExpression) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o SearchExpression) ToMap() (map[string]interface{}, error) {
+func (o PriceSearchExpression) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.And) {
 		toSerialize["and"] = o.And
@@ -236,16 +236,16 @@ func (o SearchExpression) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *SearchExpression) UnmarshalJSON(data []byte) (err error) {
-	varSearchExpression := _SearchExpression{}
+func (o *PriceSearchExpression) UnmarshalJSON(data []byte) (err error) {
+	varPriceSearchExpression := _PriceSearchExpression{}
 
-	err = json.Unmarshal(data, &varSearchExpression)
+	err = json.Unmarshal(data, &varPriceSearchExpression)
 
 	if err != nil {
 		return err
 	}
 
-	*o = SearchExpression(varSearchExpression)
+	*o = PriceSearchExpression(varPriceSearchExpression)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -261,38 +261,38 @@ func (o *SearchExpression) UnmarshalJSON(data []byte) (err error) {
 	return err
 }
 
-type NullableSearchExpression struct {
-	value *SearchExpression
+type NullablePriceSearchExpression struct {
+	value *PriceSearchExpression
 	isSet bool
 }
 
-func (v NullableSearchExpression) Get() *SearchExpression {
+func (v NullablePriceSearchExpression) Get() *PriceSearchExpression {
 	return v.value
 }
 
-func (v *NullableSearchExpression) Set(val *SearchExpression) {
+func (v *NullablePriceSearchExpression) Set(val *PriceSearchExpression) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableSearchExpression) IsSet() bool {
+func (v NullablePriceSearchExpression) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableSearchExpression) Unset() {
+func (v *NullablePriceSearchExpression) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableSearchExpression(val *SearchExpression) *NullableSearchExpression {
-	return &NullableSearchExpression{value: val, isSet: true}
+func NewNullablePriceSearchExpression(val *PriceSearchExpression) *NullablePriceSearchExpression {
+	return &NullablePriceSearchExpression{value: val, isSet: true}
 }
 
-func (v NullableSearchExpression) MarshalJSON() ([]byte, error) {
+func (v NullablePriceSearchExpression) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableSearchExpression) UnmarshalJSON(src []byte) error {
+func (v *NullablePriceSearchExpression) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

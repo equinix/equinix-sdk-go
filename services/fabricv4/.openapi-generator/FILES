@@ -438,6 +438,8 @@ docs/PriceErrorAdditionalInfo.md
 docs/PriceErrorErrorCode.md
 docs/PriceErrorErrorMessage.md
 docs/PriceLocation.md
+docs/PriceSearchExpression.md
+docs/PriceSearchExpressionOperator.md
 docs/PriceSearchResponse.md
 docs/PriceTermLength.md
 docs/PricesApi.md
@@ -584,8 +586,6 @@ docs/RoutingProtocolDirectType.md
 docs/RoutingProtocolDirectTypeType.md
 docs/RoutingProtocolOperation.md
 docs/RoutingProtocolsApi.md
-docs/SearchExpression.md
-docs/SearchExpressionOperator.md
 docs/SearchFieldName.md
 docs/SearchRequest.md
 docs/SearchResponse.md
@@ -1168,6 +1168,8 @@ model_price_error_additional_info.go
 model_price_error_error_code.go
 model_price_error_error_message.go
 model_price_location.go
+model_price_search_expression.go
+model_price_search_expression_operator.go
 model_price_search_response.go
 model_price_term_length.go
 model_private_service.go
@@ -1308,8 +1310,6 @@ model_routing_protocol_direct_data.go
 model_routing_protocol_direct_type.go
 model_routing_protocol_direct_type_type.go
 model_routing_protocol_operation.go
-model_search_expression.go
-model_search_expression_operator.go
 model_search_field_name.go
 model_search_request.go
 model_search_response.go

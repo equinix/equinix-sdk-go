@@ -15600,9 +15600,9 @@ components:
       type: object
       properties:
         filter:
-          $ref: "#/components/schemas/SearchExpression"
+          $ref: "#/components/schemas/PriceSearchExpression"
       description: Search requests containing criteria
-    SearchExpression:
+    PriceSearchExpression:
       type: object
       properties:
         and:
@@ -15615,19 +15615,7 @@ components:
           type: string
           enum:
             - =
-            - "!="
-            - ">"
-            - ">="
-            - <
-            - <=
-            - BETWEEN
-            - NOT BETWEEN
-            - LIKE
-            - NOT LIKE
             - IN
-            - NOT IN
-            - IS NOT NULL
-            - IS NULL
         values:
           type: array
           items:
@@ -15635,7 +15623,7 @@ components:
     SearchExpressions:
       type: array
       items:
-        $ref: "#/components/schemas/SearchExpression"
+        $ref: "#/components/schemas/PriceSearchExpression"
     PriceSearchResponse:
       type: object
       properties:

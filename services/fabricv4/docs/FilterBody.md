@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Filter** | Pointer to [**SearchExpression**](SearchExpression.md) |  | [optional] 
+**Filter** | Pointer to [**PriceSearchExpression**](PriceSearchExpression.md) |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetFilter
 
-`func (o *FilterBody) GetFilter() SearchExpression`
+`func (o *FilterBody) GetFilter() PriceSearchExpression`
 
 GetFilter returns the Filter field if non-nil, zero value otherwise.
 
 ### GetFilterOk
 
-`func (o *FilterBody) GetFilterOk() (*SearchExpression, bool)`
+`func (o *FilterBody) GetFilterOk() (*PriceSearchExpression, bool)`
 
 GetFilterOk returns a tuple with the Filter field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFilter
 
-`func (o *FilterBody) SetFilter(v SearchExpression)`
+`func (o *FilterBody) SetFilter(v PriceSearchExpression)`
 
 SetFilter sets Filter field to given value.
 
