@@ -20,8 +20,10 @@ Name | Type | Description | Notes
 **Ports** | Pointer to [**[]ServiceProfileAccessPointCOLO**](ServiceProfileAccessPointCOLO.md) |  | [optional] 
 **VirtualDevices** | Pointer to [**[]ServiceProfileAccessPointVD**](ServiceProfileAccessPointVD.md) |  | [optional] 
 **Metros** | Pointer to [**[]ServiceMetro**](ServiceMetro.md) | Derived response attribute. | [optional] 
+**Environments** | Pointer to [**[]ProviderEnvironment**](ProviderEnvironment.md) | Provider environments associated with this IC_PROFILE service profile. | [optional] 
 **SelfProfile** | Pointer to **bool** | response attribute indicates whether the profile belongs to the same organization as the api-invoker. | [optional] 
 **ProjectId** | Pointer to **string** |  | [optional] 
+**LastMileConfig** | Pointer to [**ServiceProfileLastMileConfig**](ServiceProfileLastMileConfig.md) |  | [optional] 
 
 ## Methods
 
@@ -427,6 +429,31 @@ SetMetros sets Metros field to given value.
 
 HasMetros returns a boolean if a field has been set.
 
+### GetEnvironments
+
+`func (o *ServiceProfileRequest) GetEnvironments() []ProviderEnvironment`
+
+GetEnvironments returns the Environments field if non-nil, zero value otherwise.
+
+### GetEnvironmentsOk
+
+`func (o *ServiceProfileRequest) GetEnvironmentsOk() (*[]ProviderEnvironment, bool)`
+
+GetEnvironmentsOk returns a tuple with the Environments field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnvironments
+
+`func (o *ServiceProfileRequest) SetEnvironments(v []ProviderEnvironment)`
+
+SetEnvironments sets Environments field to given value.
+
+### HasEnvironments
+
+`func (o *ServiceProfileRequest) HasEnvironments() bool`
+
+HasEnvironments returns a boolean if a field has been set.
+
 ### GetSelfProfile
 
 `func (o *ServiceProfileRequest) GetSelfProfile() bool`
@@ -476,6 +503,31 @@ SetProjectId sets ProjectId field to given value.
 `func (o *ServiceProfileRequest) HasProjectId() bool`
 
 HasProjectId returns a boolean if a field has been set.
+
+### GetLastMileConfig
+
+`func (o *ServiceProfileRequest) GetLastMileConfig() ServiceProfileLastMileConfig`
+
+GetLastMileConfig returns the LastMileConfig field if non-nil, zero value otherwise.
+
+### GetLastMileConfigOk
+
+`func (o *ServiceProfileRequest) GetLastMileConfigOk() (*ServiceProfileLastMileConfig, bool)`
+
+GetLastMileConfigOk returns a tuple with the LastMileConfig field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastMileConfig
+
+`func (o *ServiceProfileRequest) SetLastMileConfig(v ServiceProfileLastMileConfig)`
+
+SetLastMileConfig sets LastMileConfig field to given value.
+
+### HasLastMileConfig
+
+`func (o *ServiceProfileRequest) HasLastMileConfig() bool`
+
+HasLastMileConfig returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

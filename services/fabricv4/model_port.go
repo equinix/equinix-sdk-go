@@ -19,8 +19,6 @@ type Port struct {
 	// Equinix assigned response attribute for an absolute URL that is the subject of the link's context.
 	Href *string   `json:"href,omitempty"`
 	Type *PortType `json:"type,omitempty"`
-	// Equinix assigned response attribute for Port Id
-	Id *int32 `json:"id,omitempty"`
 	// Equinix assigned response attribute for  port identifier
 	Uuid *string `json:"uuid,omitempty"`
 	// Equinix assigned response attribute for Port name
@@ -63,8 +61,9 @@ type Port struct {
 	Redundancy       *PortRedundancy       `json:"redundancy,omitempty"`
 	Encapsulation    *PortEncapsulation    `json:"encapsulation,omitempty"`
 	// If LAG enabled
-	LagEnabled *bool    `json:"lagEnabled,omitempty"`
-	Lag        *PortLag `json:"lag,omitempty"`
+	LagEnabled *bool `json:"lagEnabled,omitempty"`
+	// Deprecated
+	Lag *PortLag `json:"lag,omitempty"`
 	// Port ASN
 	Asn      *int32        `json:"asn,omitempty"`
 	Package  *Package      `json:"package,omitempty"`
@@ -165,38 +164,6 @@ func (o *Port) HasType() bool {
 // SetType gets a reference to the given PortType and assigns it to the Type field.
 func (o *Port) SetType(v PortType) {
 	o.Type = &v
-}
-
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *Port) GetId() int32 {
-	if o == nil || IsNil(o.Id) {
-		var ret int32
-		return ret
-	}
-	return *o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Port) GetIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.Id) {
-		return nil, false
-	}
-	return o.Id, true
-}
-
-// HasId returns a boolean if a field has been set.
-func (o *Port) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given int32 and assigns it to the Id field.
-func (o *Port) SetId(v int32) {
-	o.Id = &v
 }
 
 // GetUuid returns the Uuid field value if set, zero value otherwise.
@@ -1166,6 +1133,7 @@ func (o *Port) SetLagEnabled(v bool) {
 }
 
 // GetLag returns the Lag field value if set, zero value otherwise.
+// Deprecated
 func (o *Port) GetLag() PortLag {
 	if o == nil || IsNil(o.Lag) {
 		var ret PortLag
@@ -1176,6 +1144,7 @@ func (o *Port) GetLag() PortLag {
 
 // GetLagOk returns a tuple with the Lag field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *Port) GetLagOk() (*PortLag, bool) {
 	if o == nil || IsNil(o.Lag) {
 		return nil, false
@@ -1193,6 +1162,7 @@ func (o *Port) HasLag() bool {
 }
 
 // SetLag gets a reference to the given PortLag and assigns it to the Lag field.
+// Deprecated
 func (o *Port) SetLag(v PortLag) {
 	o.Lag = &v
 }
@@ -1533,9 +1503,6 @@ func (o Port) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
 	if !IsNil(o.Uuid) {
 		toSerialize["uuid"] = o.Uuid
 	}
@@ -1683,7 +1650,6 @@ func (o *Port) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "href")
 		delete(additionalProperties, "type")
-		delete(additionalProperties, "id")
 		delete(additionalProperties, "uuid")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")

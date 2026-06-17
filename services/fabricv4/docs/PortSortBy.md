@@ -25,6 +25,14 @@
 
 * `PACKAGE_CODE` (value: `"/package/code"`)
 
+* `CHANGE_LOG_UPDATED_DATE_TIME` (value: `"/changeLog/updatedDateTime"`)
+
+* `CHANGE_LOG_CREATED_DATE_TIME` (value: `"/changeLog/createdDateTime"`)
+
+* `BANDWIDTH` (value: `"/bandwidth"`)
+
+* `SERVICE_CODE` (value: `"/serviceCode"`)
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

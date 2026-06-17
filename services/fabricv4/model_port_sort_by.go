@@ -28,6 +28,10 @@ const (
 	PORTSORTBY_ENCAPSULATION_TYPE                     PortSortBy = "/encapsulation/type"
 	PORTSORTBY_PHYSICAL_PORTS_TETHER_CROSS_CONNECT_ID PortSortBy = "/physicalPorts/tether/crossConnectId"
 	PORTSORTBY_PACKAGE_CODE                           PortSortBy = "/package/code"
+	PORTSORTBY_CHANGE_LOG_UPDATED_DATE_TIME           PortSortBy = "/changeLog/updatedDateTime"
+	PORTSORTBY_CHANGE_LOG_CREATED_DATE_TIME           PortSortBy = "/changeLog/createdDateTime"
+	PORTSORTBY_BANDWIDTH                              PortSortBy = "/bandwidth"
+	PORTSORTBY_SERVICE_CODE                           PortSortBy = "/serviceCode"
 )
 
 // All allowed values of PortSortBy enum
@@ -43,6 +47,10 @@ var AllowedPortSortByEnumValues = []PortSortBy{
 	"/encapsulation/type",
 	"/physicalPorts/tether/crossConnectId",
 	"/package/code",
+	"/changeLog/updatedDateTime",
+	"/changeLog/createdDateTime",
+	"/bandwidth",
+	"/serviceCode",
 }
 
 func (v *PortSortBy) UnmarshalJSON(src []byte) error {

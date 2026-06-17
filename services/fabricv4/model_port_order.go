@@ -17,15 +17,8 @@ var _ MappedNullable = &PortOrder{}
 // PortOrder struct for PortOrder
 type PortOrder struct {
 	PurchaseOrder *PortOrderPurchaseOrder `json:"purchaseOrder,omitempty"`
-	// Order Identification
-	OrderId *string `json:"orderId,omitempty"`
 	// Customer order reference Id
-	CustomerReferenceId *string `json:"customerReferenceId,omitempty"`
-	// Order Reference Number
-	OrderNumber *string `json:"orderNumber,omitempty"`
-	// Equinix-assigned order identifier, this is a derived response atrribute
-	// Deprecated
-	Uuid                 *string             `json:"uuid,omitempty"`
+	CustomerReferenceId  *string             `json:"customerReferenceId,omitempty"`
 	Signature            *PortOrderSignature `json:"signature,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -81,38 +74,6 @@ func (o *PortOrder) SetPurchaseOrder(v PortOrderPurchaseOrder) {
 	o.PurchaseOrder = &v
 }
 
-// GetOrderId returns the OrderId field value if set, zero value otherwise.
-func (o *PortOrder) GetOrderId() string {
-	if o == nil || IsNil(o.OrderId) {
-		var ret string
-		return ret
-	}
-	return *o.OrderId
-}
-
-// GetOrderIdOk returns a tuple with the OrderId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PortOrder) GetOrderIdOk() (*string, bool) {
-	if o == nil || IsNil(o.OrderId) {
-		return nil, false
-	}
-	return o.OrderId, true
-}
-
-// HasOrderId returns a boolean if a field has been set.
-func (o *PortOrder) HasOrderId() bool {
-	if o != nil && !IsNil(o.OrderId) {
-		return true
-	}
-
-	return false
-}
-
-// SetOrderId gets a reference to the given string and assigns it to the OrderId field.
-func (o *PortOrder) SetOrderId(v string) {
-	o.OrderId = &v
-}
-
 // GetCustomerReferenceId returns the CustomerReferenceId field value if set, zero value otherwise.
 func (o *PortOrder) GetCustomerReferenceId() string {
 	if o == nil || IsNil(o.CustomerReferenceId) {
@@ -143,73 +104,6 @@ func (o *PortOrder) HasCustomerReferenceId() bool {
 // SetCustomerReferenceId gets a reference to the given string and assigns it to the CustomerReferenceId field.
 func (o *PortOrder) SetCustomerReferenceId(v string) {
 	o.CustomerReferenceId = &v
-}
-
-// GetOrderNumber returns the OrderNumber field value if set, zero value otherwise.
-func (o *PortOrder) GetOrderNumber() string {
-	if o == nil || IsNil(o.OrderNumber) {
-		var ret string
-		return ret
-	}
-	return *o.OrderNumber
-}
-
-// GetOrderNumberOk returns a tuple with the OrderNumber field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PortOrder) GetOrderNumberOk() (*string, bool) {
-	if o == nil || IsNil(o.OrderNumber) {
-		return nil, false
-	}
-	return o.OrderNumber, true
-}
-
-// HasOrderNumber returns a boolean if a field has been set.
-func (o *PortOrder) HasOrderNumber() bool {
-	if o != nil && !IsNil(o.OrderNumber) {
-		return true
-	}
-
-	return false
-}
-
-// SetOrderNumber gets a reference to the given string and assigns it to the OrderNumber field.
-func (o *PortOrder) SetOrderNumber(v string) {
-	o.OrderNumber = &v
-}
-
-// GetUuid returns the Uuid field value if set, zero value otherwise.
-// Deprecated
-func (o *PortOrder) GetUuid() string {
-	if o == nil || IsNil(o.Uuid) {
-		var ret string
-		return ret
-	}
-	return *o.Uuid
-}
-
-// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// Deprecated
-func (o *PortOrder) GetUuidOk() (*string, bool) {
-	if o == nil || IsNil(o.Uuid) {
-		return nil, false
-	}
-	return o.Uuid, true
-}
-
-// HasUuid returns a boolean if a field has been set.
-func (o *PortOrder) HasUuid() bool {
-	if o != nil && !IsNil(o.Uuid) {
-		return true
-	}
-
-	return false
-}
-
-// SetUuid gets a reference to the given string and assigns it to the Uuid field.
-// Deprecated
-func (o *PortOrder) SetUuid(v string) {
-	o.Uuid = &v
 }
 
 // GetSignature returns the Signature field value if set, zero value otherwise.
@@ -257,17 +151,8 @@ func (o PortOrder) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.PurchaseOrder) {
 		toSerialize["purchaseOrder"] = o.PurchaseOrder
 	}
-	if !IsNil(o.OrderId) {
-		toSerialize["orderId"] = o.OrderId
-	}
 	if !IsNil(o.CustomerReferenceId) {
 		toSerialize["customerReferenceId"] = o.CustomerReferenceId
-	}
-	if !IsNil(o.OrderNumber) {
-		toSerialize["orderNumber"] = o.OrderNumber
-	}
-	if !IsNil(o.Uuid) {
-		toSerialize["uuid"] = o.Uuid
 	}
 	if !IsNil(o.Signature) {
 		toSerialize["signature"] = o.Signature
@@ -295,10 +180,7 @@ func (o *PortOrder) UnmarshalJSON(data []byte) (err error) {
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "purchaseOrder")
-		delete(additionalProperties, "orderId")
 		delete(additionalProperties, "customerReferenceId")
-		delete(additionalProperties, "orderNumber")
-		delete(additionalProperties, "uuid")
 		delete(additionalProperties, "signature")
 		o.AdditionalProperties = additionalProperties
 	}

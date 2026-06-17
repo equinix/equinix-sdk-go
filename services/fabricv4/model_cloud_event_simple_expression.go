@@ -16,9 +16,9 @@ var _ MappedNullable = &CloudEventSimpleExpression{}
 
 // CloudEventSimpleExpression struct for CloudEventSimpleExpression
 type CloudEventSimpleExpression struct {
-	// Possible field names to use on filters:  * `/subject` - Cloud Event subject description  * `/type` - Cloud Event type  * `/time` - Time of Cloud Events  * `/equinixproject` - Equinix Project of Cloud Events  * `/equinixorganization` - Equinix Organization of Cloud Events
+	// Possible field names to use on filters:  * `/id` - Cloud Event identifier  * `/subject` - Cloud Event subject description  * `/type` - Cloud Event type  * `/time` - Time of Cloud Events  * `/equinixproject` - Equinix Project of Cloud Events  * `/equinixorganization` - Equinix Organization of Cloud Events  * `/equinixalert` - Equinix Alert Identifier for raise/clear Cloud Events  * `/severitytext` - cloud event severity text  * `/authid` - Equinix user key to identify the user that performed the action that triggered the Cloud Event  * `/authtype` - Equinix user type either user or system
 	Property *string `json:"property,omitempty"`
-	// Possible operators to use on filters:  * `=` - equal  * `>` - greater than  * `>=` - greater than or equal to  * `<` - less than  * `<=` - less than or equal to  * `BETWEEN` - between  * `IN` - in
+	// Possible operators to use on filters:  * `=` - equal  * `!=` - not equal  * `>` - greater than  * `>=` - greater than or equal to  * `<` - less than  * `<=` - less than or equal to  * `BETWEEN` - between  * `IN` - in  * `LIKE` - like  * `ILIKE` - like case-insensitive  * `NOT IN` - not in  * `IS NULL` - is null  * `IS NOT NULL` - is not null
 	Operator             *string  `json:"operator,omitempty"`
 	Values               []string `json:"values,omitempty"`
 	AdditionalProperties map[string]interface{}

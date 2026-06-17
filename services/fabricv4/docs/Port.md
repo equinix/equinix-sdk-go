@@ -6,7 +6,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Href** | Pointer to **string** | Equinix assigned response attribute for an absolute URL that is the subject of the link&#39;s context. | [optional] [readonly] 
 **Type** | Pointer to [**PortType**](PortType.md) |  | [optional] 
-**Id** | Pointer to **int32** | Equinix assigned response attribute for Port Id | [optional] 
 **Uuid** | Pointer to **string** | Equinix assigned response attribute for  port identifier | [optional] 
 **Name** | Pointer to **string** | Equinix assigned response attribute for Port name | [optional] 
 **Description** | Pointer to **string** | Equinix assigned response attribute for Port description | [optional] 
@@ -117,31 +116,6 @@ SetType sets Type field to given value.
 `func (o *Port) HasType() bool`
 
 HasType returns a boolean if a field has been set.
-
-### GetId
-
-`func (o *Port) GetId() int32`
-
-GetId returns the Id field if non-nil, zero value otherwise.
-
-### GetIdOk
-
-`func (o *Port) GetIdOk() (*int32, bool)`
-
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetId
-
-`func (o *Port) SetId(v int32)`
-
-SetId sets Id field to given value.
-
-### HasId
-
-`func (o *Port) HasId() bool`
-
-HasId returns a boolean if a field has been set.
 
 ### GetUuid
 

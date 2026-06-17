@@ -14,7 +14,7 @@ import (
 // checks if the Metro type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &Metro{}
 
-// Metro GET Metros retrieves all Equinix? Fabric? metros, as well as latency data for each location.This performance data helps network planning engineers and administrators make strategic decisions about port locations and traffic routes.
+// Metro GET Metros retrieves all Equinix® Fabric™ metros, as well as latency data for each location.This performance data helps network planning engineers and administrators make strategic decisions about port locations and traffic routes.
 type Metro struct {
 	// The Canonical URL at which the resource resides.
 	Href *string `json:"href,omitempty"`
@@ -36,7 +36,9 @@ type Metro struct {
 	ConnectedMetros     []ConnectedMetro `json:"connectedMetros,omitempty"`
 	Services            []Services       `json:"services,omitempty"`
 	// List of supported geographic boundaries of a Fabric Metro.
-	GeoScopes            []GeoScopeType `json:"geoScopes,omitempty"`
+	GeoScopes []GeoScopeType `json:"geoScopes,omitempty"`
+	// List of supported geographic zones of a Fabric Metro.
+	GeoZones             []GeoZone `json:"geoZones,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -443,6 +445,38 @@ func (o *Metro) SetGeoScopes(v []GeoScopeType) {
 	o.GeoScopes = v
 }
 
+// GetGeoZones returns the GeoZones field value if set, zero value otherwise.
+func (o *Metro) GetGeoZones() []GeoZone {
+	if o == nil || IsNil(o.GeoZones) {
+		var ret []GeoZone
+		return ret
+	}
+	return o.GeoZones
+}
+
+// GetGeoZonesOk returns a tuple with the GeoZones field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Metro) GetGeoZonesOk() ([]GeoZone, bool) {
+	if o == nil || IsNil(o.GeoZones) {
+		return nil, false
+	}
+	return o.GeoZones, true
+}
+
+// HasGeoZones returns a boolean if a field has been set.
+func (o *Metro) HasGeoZones() bool {
+	if o != nil && !IsNil(o.GeoZones) {
+		return true
+	}
+
+	return false
+}
+
+// SetGeoZones gets a reference to the given []GeoZone and assigns it to the GeoZones field.
+func (o *Metro) SetGeoZones(v []GeoZone) {
+	o.GeoZones = v
+}
+
 func (o Metro) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -489,6 +523,9 @@ func (o Metro) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.GeoScopes) {
 		toSerialize["geoScopes"] = o.GeoScopes
 	}
+	if !IsNil(o.GeoZones) {
+		toSerialize["geoZones"] = o.GeoZones
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -523,6 +560,7 @@ func (o *Metro) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "connectedMetros")
 		delete(additionalProperties, "services")
 		delete(additionalProperties, "geoScopes")
+		delete(additionalProperties, "geoZones")
 		o.AdditionalProperties = additionalProperties
 	}
 

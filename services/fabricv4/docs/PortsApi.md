@@ -108,7 +108,7 @@ import (
 )
 
 func main() {
-	portRequest := *openapiclient.NewPortRequest(openapiclient.PortType("XF_PORT"), int32(123), openapiclient.Port_physicalPortsType("1000BASE_LX"), openapiclient.Port_connectivitySourceType("COLO"), *openapiclient.NewSimplifiedAccount(), *openapiclient.NewSimplifiedLocation(), *openapiclient.NewPortEncapsulation(), *openapiclient.NewPortSettings()) // PortRequest | 
+	portRequest := *openapiclient.NewPortRequest(openapiclient.PortType("XF_PORT"), int32(123), openapiclient.PortRequest_physicalPortsType("1000BASE_LX"), openapiclient.Port_connectivitySourceType("COLO"), *openapiclient.NewProject("44f4c4f8-2f39-494e-838c-d8e640591be5"), *openapiclient.NewSimplifiedAccountRequest(int64(123)), *openapiclient.NewSimplifiedLocationRequest("AM"), *openapiclient.NewPortEncapsulation()) // PortRequest | 
 	dryRun := true // bool | option to verify that API calls will succeed (optional) (default to false)
 
 	configuration := openapiclient.NewConfiguration()

@@ -37,7 +37,7 @@ func (r ApiCreateAgentRequest) Execute() (*Agents, *http.Response, error) {
 /*
 CreateAgent Create Agent
 
-This API provides capability to create user's agent
+This API provides capability to create user's agent <font color="red"> <sup color='red'>Beta</sup></font>
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiCreateAgentRequest
@@ -211,7 +211,7 @@ func (r ApiDeleteAgentByUuidRequest) Execute() (*Agents, *http.Response, error) 
 /*
 DeleteAgentByUuid Delete Agent by UUID
 
-This API provides capability to delete an agent by uuid
+This API provides capability to delete an agent by uuid <font color="red"> <sup color='red'>Beta</sup></font>
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param agentId Agent UUID
@@ -378,7 +378,7 @@ func (r ApiGetAgentActivitiesRequest) Execute() (*AgentGetActivities, *http.Resp
 /*
 GetAgentActivities Get Agent Activities
 
-This API provides capability to retrieve an agent activities
+This API provides capability to retrieve an agent activities <font color="red"> <sup color='red'>Beta</sup></font>
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param agentId Agent UUID
@@ -545,7 +545,7 @@ func (r ApiGetAgentByUuidRequest) Execute() (*Agents, *http.Response, error) {
 /*
 GetAgentByUuid Get Agent by UUID
 
-This API provides capability to retrieve an agent by uuid
+This API provides capability to retrieve an agent by uuid <font color="red"> <sup color='red'>Beta</sup></font>
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param agentId Agent UUID
@@ -711,7 +711,7 @@ func (r ApiGetAgentsRequest) Execute() (*AgentGetAllResponse, *http.Response, er
 /*
 GetAgents Get Agents
 
-This API provides capability to retrieve agents
+This API provides capability to retrieve agents <font color="red"> <sup color='red'>Beta</sup></font>
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiGetAgentsRequest
@@ -867,7 +867,7 @@ func (r ApiPatchAgentByUuidRequest) Execute() (*Agents, *http.Response, error) {
 /*
 PatchAgentByUuid Update Agent by UUID
 
-This API provides capability to update an agent by uuid
+This API provides capability to update an agent by uuid <font color="red"> <sup color='red'>Beta</sup></font>
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param agentId Agent UUID

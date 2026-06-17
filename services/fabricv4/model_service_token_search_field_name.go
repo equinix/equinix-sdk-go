@@ -17,10 +17,16 @@ type ServiceTokenSearchFieldName string
 
 // List of ServiceTokenSearchFieldName
 const (
-	SERVICETOKENSEARCHFIELDNAME_UUID               ServiceTokenSearchFieldName = "/uuid"
-	SERVICETOKENSEARCHFIELDNAME_STATE              ServiceTokenSearchFieldName = "/state"
-	SERVICETOKENSEARCHFIELDNAME_NAME               ServiceTokenSearchFieldName = "/name"
-	SERVICETOKENSEARCHFIELDNAME_PROJECT_PROJECT_ID ServiceTokenSearchFieldName = "/project/projectId"
+	SERVICETOKENSEARCHFIELDNAME_UUID                                               ServiceTokenSearchFieldName = "/uuid"
+	SERVICETOKENSEARCHFIELDNAME_STATE                                              ServiceTokenSearchFieldName = "/state"
+	SERVICETOKENSEARCHFIELDNAME_NAME                                               ServiceTokenSearchFieldName = "/name"
+	SERVICETOKENSEARCHFIELDNAME_PROJECT_PROJECT_ID                                 ServiceTokenSearchFieldName = "/project/projectId"
+	SERVICETOKENSEARCHFIELDNAME_TYPE                                               ServiceTokenSearchFieldName = "/type"
+	SERVICETOKENSEARCHFIELDNAME_EXPIRATION_DATE_TIME                               ServiceTokenSearchFieldName = "/expirationDateTime"
+	SERVICETOKENSEARCHFIELDNAME_CHANGE_LOG_CREATED_DATE_TIME                       ServiceTokenSearchFieldName = "/changeLog/createdDateTime"
+	SERVICETOKENSEARCHFIELDNAME_CHANGE_LOG_UPDATED_DATE_TIME                       ServiceTokenSearchFieldName = "/changeLog/updatedDateTime"
+	SERVICETOKENSEARCHFIELDNAME_CONNECTION_A_SIDE_ACCESS_POINT_SELECTORS_PORT_UUID ServiceTokenSearchFieldName = "/connection/aSide/accessPointSelectors/port/uuid"
+	SERVICETOKENSEARCHFIELDNAME_CONNECTION_Z_SIDE_ACCESS_POINT_SELECTORS_PORT_UUID ServiceTokenSearchFieldName = "/connection/zSide/accessPointSelectors/port/uuid"
 )
 
 // All allowed values of ServiceTokenSearchFieldName enum
@@ -29,6 +35,12 @@ var AllowedServiceTokenSearchFieldNameEnumValues = []ServiceTokenSearchFieldName
 	"/state",
 	"/name",
 	"/project/projectId",
+	"/type",
+	"/expirationDateTime",
+	"/changeLog/createdDateTime",
+	"/changeLog/updatedDateTime",
+	"/connection/aSide/accessPointSelectors/port/uuid",
+	"/connection/zSide/accessPointSelectors/port/uuid",
 }
 
 func (v *ServiceTokenSearchFieldName) UnmarshalJSON(src []byte) error {

@@ -17,7 +17,6 @@ type PortEncapsulationType string
 
 // List of PortEncapsulation_type
 const (
-	PORTENCAPSULATIONTYPE_NULL     PortEncapsulationType = "NULL"
 	PORTENCAPSULATIONTYPE_DOT1_Q   PortEncapsulationType = "DOT1Q"
 	PORTENCAPSULATIONTYPE_QINQ     PortEncapsulationType = "QINQ"
 	PORTENCAPSULATIONTYPE_UNTAGGED PortEncapsulationType = "UNTAGGED"
@@ -25,7 +24,6 @@ const (
 
 // All allowed values of PortEncapsulationType enum
 var AllowedPortEncapsulationTypeEnumValues = []PortEncapsulationType{
-	"NULL",
 	"DOT1Q",
 	"QINQ",
 	"UNTAGGED",

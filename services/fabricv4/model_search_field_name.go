@@ -41,6 +41,9 @@ const (
 	SEARCHFIELDNAME_CHANGE_STATUS                                  SearchFieldName = "/change/status"
 	SEARCHFIELDNAME_CHANGE_LOG_CREATED_BY                          SearchFieldName = "/changeLog/createdBy"
 	SEARCHFIELDNAME_CHANGE_LOG_CREATED_DATE_TIME                   SearchFieldName = "/changeLog/createdDateTime"
+	SEARCHFIELDNAME_CHANGE_LOG_DELETED_BY                          SearchFieldName = "/changeLog/deletedBy"
+	SEARCHFIELDNAME_CHANGE_LOG_DELETED_DATE_TIME                   SearchFieldName = "/changeLog/deletedDateTime"
+	SEARCHFIELDNAME_CHANGE_LOG_LAST_UPDATED_BY                     SearchFieldName = "/changeLog/lastUpdatedBy"
 	SEARCHFIELDNAME_OPERATION_EQUINIX_STATUS                       SearchFieldName = "/operation/equinixStatus"
 	SEARCHFIELDNAME_OPERATION_PROVIDER_STATUS                      SearchFieldName = "/operation/providerStatus"
 	SEARCHFIELDNAME_PROJECT_PROJECT_ID                             SearchFieldName = "/project/projectId"
@@ -52,6 +55,7 @@ const (
 	SEARCHFIELDNAME_Z_SIDE_ACCESS_POINT_LINK_PROTOCOL_VLAN_TAG_MAX SearchFieldName = "/zSide/accessPoint/linkProtocol/vlanTagMax"
 	SEARCHFIELDNAME_Z_SIDE_ACCESS_POINT_LOCATION_METRO_CODE        SearchFieldName = "/zSide/accessPoint/location/metroCode"
 	SEARCHFIELDNAME_Z_SIDE_ACCESS_POINT_LOCATION_METRO_NAME        SearchFieldName = "/zSide/accessPoint/location/metroName"
+	SEARCHFIELDNAME_Z_SIDE_ACCESS_POINT_SELLER_REGION              SearchFieldName = "/zSide/accessPoint/sellerRegion"
 	SEARCHFIELDNAME_Z_SIDE_ACCESS_POINT_NAME                       SearchFieldName = "/zSide/accessPoint/name"
 	SEARCHFIELDNAME_Z_SIDE_ACCESS_POINT_PORT_UUID                  SearchFieldName = "/zSide/accessPoint/port/uuid"
 	SEARCHFIELDNAME_Z_SIDE_ACCESS_POINT_NETWORK_UUID               SearchFieldName = "/zSide/accessPoint/network/uuid"
@@ -63,6 +67,7 @@ const (
 	SEARCHFIELDNAME_Z_SIDE_ACCESS_POINT_VIRTUAL_DEVICE_UUID        SearchFieldName = "/zSide/accessPoint/virtualDevice/uuid"
 	SEARCHFIELDNAME_Z_SIDE_SERVICE_TOKEN_UUID                      SearchFieldName = "/zSide/serviceToken/uuid"
 	SEARCHFIELDNAME_Z_SIDE_INTERNET_ACCESS_UUID                    SearchFieldName = "/zSide/internetAccess/uuid"
+	SEARCHFIELDNAME_STATE                                          SearchFieldName = "/state"
 )
 
 // All allowed values of SearchFieldName enum
@@ -91,6 +96,9 @@ var AllowedSearchFieldNameEnumValues = []SearchFieldName{
 	"/change/status",
 	"/changeLog/createdBy",
 	"/changeLog/createdDateTime",
+	"/changeLog/deletedBy",
+	"/changeLog/deletedDateTime",
+	"/changeLog/lastUpdatedBy",
 	"/operation/equinixStatus",
 	"/operation/providerStatus",
 	"/project/projectId",
@@ -102,6 +110,7 @@ var AllowedSearchFieldNameEnumValues = []SearchFieldName{
 	"/zSide/accessPoint/linkProtocol/vlanTagMax",
 	"/zSide/accessPoint/location/metroCode",
 	"/zSide/accessPoint/location/metroName",
+	"/zSide/accessPoint/sellerRegion",
 	"/zSide/accessPoint/name",
 	"/zSide/accessPoint/port/uuid",
 	"/zSide/accessPoint/network/uuid",
@@ -113,6 +122,7 @@ var AllowedSearchFieldNameEnumValues = []SearchFieldName{
 	"/zSide/accessPoint/virtualDevice/uuid",
 	"/zSide/serviceToken/uuid",
 	"/zSide/internetAccess/uuid",
+	"/state",
 }
 
 func (v *SearchFieldName) UnmarshalJSON(src []byte) error {

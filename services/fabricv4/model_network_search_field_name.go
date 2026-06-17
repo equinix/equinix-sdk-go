@@ -17,17 +17,22 @@ type NetworkSearchFieldName string
 
 // List of NetworkSearchFieldName
 const (
-	NETWORKSEARCHFIELDNAME_NAME                     NetworkSearchFieldName = "/name"
-	NETWORKSEARCHFIELDNAME_UUID                     NetworkSearchFieldName = "/uuid"
-	NETWORKSEARCHFIELDNAME_SCOPE                    NetworkSearchFieldName = "/scope"
-	NETWORKSEARCHFIELDNAME_TYPE                     NetworkSearchFieldName = "/type"
-	NETWORKSEARCHFIELDNAME_OPERATION_EQUINIX_STATUS NetworkSearchFieldName = "/operation/equinixStatus"
-	NETWORKSEARCHFIELDNAME_LOCATION_REGION          NetworkSearchFieldName = "/location/region"
-	NETWORKSEARCHFIELDNAME_PROJECT_PROJECT_ID       NetworkSearchFieldName = "/project/projectId"
-	NETWORKSEARCHFIELDNAME_ACCOUNT_GLOBAL_CUST_ID   NetworkSearchFieldName = "/account/globalCustId"
-	NETWORKSEARCHFIELDNAME_ACCOUNT_ORG_ID           NetworkSearchFieldName = "/account/orgId"
-	NETWORKSEARCHFIELDNAME_DELETED_DATE             NetworkSearchFieldName = "/deletedDate"
-	NETWORKSEARCHFIELDNAME_STAR                     NetworkSearchFieldName = "/_*"
+	NETWORKSEARCHFIELDNAME_NAME                         NetworkSearchFieldName = "/name"
+	NETWORKSEARCHFIELDNAME_UUID                         NetworkSearchFieldName = "/uuid"
+	NETWORKSEARCHFIELDNAME_SCOPE                        NetworkSearchFieldName = "/scope"
+	NETWORKSEARCHFIELDNAME_TYPE                         NetworkSearchFieldName = "/type"
+	NETWORKSEARCHFIELDNAME_STATE                        NetworkSearchFieldName = "/state"
+	NETWORKSEARCHFIELDNAME_OPERATION_EQUINIX_STATUS     NetworkSearchFieldName = "/operation/equinixStatus"
+	NETWORKSEARCHFIELDNAME_LOCATION_REGION              NetworkSearchFieldName = "/location/region"
+	NETWORKSEARCHFIELDNAME_LOCATION_METRO_CODE          NetworkSearchFieldName = "/location/metroCode"
+	NETWORKSEARCHFIELDNAME_CONNECTIONS_COUNT            NetworkSearchFieldName = "/connectionsCount"
+	NETWORKSEARCHFIELDNAME_PROJECT_PROJECT_ID           NetworkSearchFieldName = "/project/projectId"
+	NETWORKSEARCHFIELDNAME_ACCOUNT_GLOBAL_CUST_ID       NetworkSearchFieldName = "/account/globalCustId"
+	NETWORKSEARCHFIELDNAME_ACCOUNT_ORG_ID               NetworkSearchFieldName = "/account/orgId"
+	NETWORKSEARCHFIELDNAME_CHANGE_LOG_CREATED_DATE_TIME NetworkSearchFieldName = "/changeLog/createdDateTime"
+	NETWORKSEARCHFIELDNAME_CHANGE_LOG_UPDATED_DATE_TIME NetworkSearchFieldName = "/changeLog/updatedDateTime"
+	NETWORKSEARCHFIELDNAME_CHANGE_LOG_DELETED_DATE_TIME NetworkSearchFieldName = "/changeLog/deletedDateTime"
+	NETWORKSEARCHFIELDNAME_STAR                         NetworkSearchFieldName = "/_*"
 )
 
 // All allowed values of NetworkSearchFieldName enum
@@ -36,12 +41,17 @@ var AllowedNetworkSearchFieldNameEnumValues = []NetworkSearchFieldName{
 	"/uuid",
 	"/scope",
 	"/type",
+	"/state",
 	"/operation/equinixStatus",
 	"/location/region",
+	"/location/metroCode",
+	"/connectionsCount",
 	"/project/projectId",
 	"/account/globalCustId",
 	"/account/orgId",
-	"/deletedDate",
+	"/changeLog/createdDateTime",
+	"/changeLog/updatedDateTime",
+	"/changeLog/deletedDateTime",
 	"/_*",
 }
 

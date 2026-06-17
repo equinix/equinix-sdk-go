@@ -23,8 +23,12 @@ const (
 	CLOUDROUTERSORTBY_LOCATION_METRO_CODE          CloudRouterSortBy = "/location/metroCode"
 	CLOUDROUTERSORTBY_LOCATION_METRO_NAME          CloudRouterSortBy = "/location/metroName"
 	CLOUDROUTERSORTBY_PACKAGE_CODE                 CloudRouterSortBy = "/package/code"
+	CLOUDROUTERSORTBY_TYPE                         CloudRouterSortBy = "/type"
+	CLOUDROUTERSORTBY_CONNECTIONS_COUNT            CloudRouterSortBy = "/connectionsCount"
 	CLOUDROUTERSORTBY_CHANGE_LOG_CREATED_DATE_TIME CloudRouterSortBy = "/changeLog/createdDateTime"
 	CLOUDROUTERSORTBY_CHANGE_LOG_UPDATED_DATE_TIME CloudRouterSortBy = "/changeLog/updatedDateTime"
+	CLOUDROUTERSORTBY_CHANGE_LOG_DELETED_DATE_TIME CloudRouterSortBy = "/changeLog/deletedDateTime"
+	CLOUDROUTERSORTBY_ORDER_TERM_LENGTH            CloudRouterSortBy = "/order/termLength"
 )
 
 // All allowed values of CloudRouterSortBy enum
@@ -35,8 +39,12 @@ var AllowedCloudRouterSortByEnumValues = []CloudRouterSortBy{
 	"/location/metroCode",
 	"/location/metroName",
 	"/package/code",
+	"/type",
+	"/connectionsCount",
 	"/changeLog/createdDateTime",
 	"/changeLog/updatedDateTime",
+	"/changeLog/deletedDateTime",
+	"/order/termLength",
 }
 
 func (v *CloudRouterSortBy) UnmarshalJSON(src []byte) error {

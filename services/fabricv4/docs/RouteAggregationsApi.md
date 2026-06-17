@@ -878,7 +878,7 @@ Name | Type | Description  | Notes
 
 ## SearchRouteAggregations
 
-> RouteAggregationsSearchResponse SearchRouteAggregations(ctx).RouteAggregationsSearchBase(routeAggregationsSearchBase).Execute()
+> RouteAggregationsSearchResponse SearchRouteAggregations(ctx).RouteAggregationsSearchRequest(routeAggregationsSearchRequest).Execute()
 
 Search Aggregations
 
@@ -897,11 +897,11 @@ import (
 )
 
 func main() {
-	routeAggregationsSearchBase := *openapiclient.NewRouteAggregationsSearchBase() // RouteAggregationsSearchBase | 
+	routeAggregationsSearchRequest := *openapiclient.NewRouteAggregationsSearchRequest() // RouteAggregationsSearchRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.RouteAggregationsApi.SearchRouteAggregations(context.Background()).RouteAggregationsSearchBase(routeAggregationsSearchBase).Execute()
+	resp, r, err := apiClient.RouteAggregationsApi.SearchRouteAggregations(context.Background()).RouteAggregationsSearchRequest(routeAggregationsSearchRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `RouteAggregationsApi.SearchRouteAggregations``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -922,7 +922,7 @@ Other parameters are passed through a pointer to a apiSearchRouteAggregationsReq
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **routeAggregationsSearchBase** | [**RouteAggregationsSearchBase**](RouteAggregationsSearchBase.md) |  | 
+ **routeAggregationsSearchRequest** | [**RouteAggregationsSearchRequest**](RouteAggregationsSearchRequest.md) |  | 
 
 ### Return type
 

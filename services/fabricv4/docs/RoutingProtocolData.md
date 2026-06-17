@@ -19,6 +19,8 @@ Name | Type | Description | Notes
 **Operation** | Pointer to [**RoutingProtocolOperation**](RoutingProtocolOperation.md) |  | [optional] 
 **Change** | Pointer to [**RoutingProtocolChange**](RoutingProtocolChange.md) |  | [optional] 
 **Changelog** | Pointer to [**Changelog**](Changelog.md) |  | [optional] 
+**Project** | Pointer to [**RoutingProtocolProject**](RoutingProtocolProject.md) |  | [optional] 
+**Connection** | Pointer to [**RoutingProtocolConnection**](RoutingProtocolConnection.md) |  | [optional] 
 **DirectIpv4** | Pointer to [**DirectConnectionIpv4**](DirectConnectionIpv4.md) |  | [optional] 
 **DirectIpv6** | Pointer to [**DirectConnectionIpv6**](DirectConnectionIpv6.md) |  | [optional] 
 
@@ -415,6 +417,56 @@ SetChangelog sets Changelog field to given value.
 `func (o *RoutingProtocolData) HasChangelog() bool`
 
 HasChangelog returns a boolean if a field has been set.
+
+### GetProject
+
+`func (o *RoutingProtocolData) GetProject() RoutingProtocolProject`
+
+GetProject returns the Project field if non-nil, zero value otherwise.
+
+### GetProjectOk
+
+`func (o *RoutingProtocolData) GetProjectOk() (*RoutingProtocolProject, bool)`
+
+GetProjectOk returns a tuple with the Project field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProject
+
+`func (o *RoutingProtocolData) SetProject(v RoutingProtocolProject)`
+
+SetProject sets Project field to given value.
+
+### HasProject
+
+`func (o *RoutingProtocolData) HasProject() bool`
+
+HasProject returns a boolean if a field has been set.
+
+### GetConnection
+
+`func (o *RoutingProtocolData) GetConnection() RoutingProtocolConnection`
+
+GetConnection returns the Connection field if non-nil, zero value otherwise.
+
+### GetConnectionOk
+
+`func (o *RoutingProtocolData) GetConnectionOk() (*RoutingProtocolConnection, bool)`
+
+GetConnectionOk returns a tuple with the Connection field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConnection
+
+`func (o *RoutingProtocolData) SetConnection(v RoutingProtocolConnection)`
+
+SetConnection sets Connection field to given value.
+
+### HasConnection
+
+`func (o *RoutingProtocolData) HasConnection() bool`
+
+HasConnection returns a boolean if a field has been set.
 
 ### GetDirectIpv4
 

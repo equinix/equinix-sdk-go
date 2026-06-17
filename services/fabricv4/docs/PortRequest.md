@@ -5,36 +5,27 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | [**PortType**](PortType.md) |  | 
-**Name** | Pointer to **string** | Equinix assigned response attribute for Port name | [optional] 
-**Description** | Pointer to **string** | Equinix assigned response attribute for Port description | [optional] 
 **PhysicalPortsSpeed** | **int32** | Physical Ports Speed in Mbps | 
-**PhysicalPortsType** | [**PortPhysicalPortsType**](PortPhysicalPortsType.md) |  | 
+**PhysicalPortsType** | [**PortRequestPhysicalPortsType**](PortRequestPhysicalPortsType.md) |  | 
 **PhysicalPortsCount** | Pointer to **int32** |  | [optional] 
 **ConnectivitySourceType** | [**PortConnectivitySourceType**](PortConnectivitySourceType.md) |  | 
-**BmmrType** | Pointer to [**PortBmmrType**](PortBmmrType.md) |  | [optional] 
-**Project** | Pointer to [**Project**](Project.md) |  | [optional] 
-**State** | Pointer to [**PortState**](PortState.md) |  | [optional] 
+**BmmrType** | Pointer to [**PortRequestBmmrType**](PortRequestBmmrType.md) |  | [optional] 
+**Project** | [**Project**](Project.md) |  | 
 **Order** | Pointer to [**PortOrder**](PortOrder.md) |  | [optional] 
-**Account** | [**SimplifiedAccount**](SimplifiedAccount.md) |  | 
+**Account** | [**SimplifiedAccountRequest**](SimplifiedAccountRequest.md) |  | 
 **ServiceType** | Pointer to [**PortServiceType**](PortServiceType.md) |  | [optional] 
 **ServiceCode** | Pointer to [**PortServiceCode**](PortServiceCode.md) |  | [optional] 
 **Bandwidth** | Pointer to **int32** | Equinix assigned response attribute for Port bandwidth in Mbps | [optional] 
-**Location** | [**SimplifiedLocation**](SimplifiedLocation.md) |  | 
-**Device** | Pointer to [**PortDevice**](PortDevice.md) |  | [optional] 
-**Interface** | Pointer to [**PortInterface**](PortInterface.md) |  | [optional] 
+**Location** | [**SimplifiedLocationRequest**](SimplifiedLocationRequest.md) |  | 
 **DemarcationPointIbx** | Pointer to **string** | A-side/Equinix ibx | [optional] 
 **TetherIbx** | Pointer to **string** | z-side/Equinix ibx | [optional] 
 **DemarcationPoint** | Pointer to [**PortDemarcationPoint**](PortDemarcationPoint.md) |  | [optional] 
 **Redundancy** | Pointer to [**PortRedundancy**](PortRedundancy.md) |  | [optional] 
 **Encapsulation** | [**PortEncapsulation**](PortEncapsulation.md) |  | 
-**LagEnabled** | Pointer to **bool** | If LAG enabled | [optional] 
-**Lag** | Pointer to [**PortLag**](PortLag.md) |  | [optional] 
-**Asn** | Pointer to **int32** | Port ASN | [optional] 
+**LagEnabled** | Pointer to **bool** | Indicates whether Link Aggregation Group (LAG) is enabled on this port | [optional] 
 **Package** | Pointer to [**Package**](Package.md) |  | [optional] 
-**Settings** | [**PortSettings**](PortSettings.md) |  | 
-**PhysicalPortQuantity** | Pointer to **int32** | Number of physical ports | [optional] 
+**Settings** | Pointer to [**PortSettings**](PortSettings.md) |  | [optional] 
 **Notifications** | Pointer to [**[]PortNotification**](PortNotification.md) | Notification preferences | [optional] 
-**AdditionalInfo** | Pointer to [**[]PortAdditionalInfo**](PortAdditionalInfo.md) | Port additional information | [optional] 
 **PhysicalPorts** | Pointer to [**[]PhysicalPort**](PhysicalPort.md) | Physical ports that implement this port | [optional] 
 **Loas** | Pointer to [**[]PortLoa**](PortLoa.md) | Port Loas | [optional] 
 
@@ -42,7 +33,7 @@ Name | Type | Description | Notes
 
 ### NewPortRequest
 
-`func NewPortRequest(type_ PortType, physicalPortsSpeed int32, physicalPortsType PortPhysicalPortsType, connectivitySourceType PortConnectivitySourceType, account SimplifiedAccount, location SimplifiedLocation, encapsulation PortEncapsulation, settings PortSettings, ) *PortRequest`
+`func NewPortRequest(type_ PortType, physicalPortsSpeed int32, physicalPortsType PortRequestPhysicalPortsType, connectivitySourceType PortConnectivitySourceType, project Project, account SimplifiedAccountRequest, location SimplifiedLocationRequest, encapsulation PortEncapsulation, ) *PortRequest`
 
 NewPortRequest instantiates a new PortRequest object
 This constructor will assign default values to properties that have it defined,
@@ -77,56 +68,6 @@ and a boolean to check if the value has been set.
 SetType sets Type field to given value.
 
 
-### GetName
-
-`func (o *PortRequest) GetName() string`
-
-GetName returns the Name field if non-nil, zero value otherwise.
-
-### GetNameOk
-
-`func (o *PortRequest) GetNameOk() (*string, bool)`
-
-GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetName
-
-`func (o *PortRequest) SetName(v string)`
-
-SetName sets Name field to given value.
-
-### HasName
-
-`func (o *PortRequest) HasName() bool`
-
-HasName returns a boolean if a field has been set.
-
-### GetDescription
-
-`func (o *PortRequest) GetDescription() string`
-
-GetDescription returns the Description field if non-nil, zero value otherwise.
-
-### GetDescriptionOk
-
-`func (o *PortRequest) GetDescriptionOk() (*string, bool)`
-
-GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDescription
-
-`func (o *PortRequest) SetDescription(v string)`
-
-SetDescription sets Description field to given value.
-
-### HasDescription
-
-`func (o *PortRequest) HasDescription() bool`
-
-HasDescription returns a boolean if a field has been set.
-
 ### GetPhysicalPortsSpeed
 
 `func (o *PortRequest) GetPhysicalPortsSpeed() int32`
@@ -149,20 +90,20 @@ SetPhysicalPortsSpeed sets PhysicalPortsSpeed field to given value.
 
 ### GetPhysicalPortsType
 
-`func (o *PortRequest) GetPhysicalPortsType() PortPhysicalPortsType`
+`func (o *PortRequest) GetPhysicalPortsType() PortRequestPhysicalPortsType`
 
 GetPhysicalPortsType returns the PhysicalPortsType field if non-nil, zero value otherwise.
 
 ### GetPhysicalPortsTypeOk
 
-`func (o *PortRequest) GetPhysicalPortsTypeOk() (*PortPhysicalPortsType, bool)`
+`func (o *PortRequest) GetPhysicalPortsTypeOk() (*PortRequestPhysicalPortsType, bool)`
 
 GetPhysicalPortsTypeOk returns a tuple with the PhysicalPortsType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPhysicalPortsType
 
-`func (o *PortRequest) SetPhysicalPortsType(v PortPhysicalPortsType)`
+`func (o *PortRequest) SetPhysicalPortsType(v PortRequestPhysicalPortsType)`
 
 SetPhysicalPortsType sets PhysicalPortsType field to given value.
 
@@ -214,20 +155,20 @@ SetConnectivitySourceType sets ConnectivitySourceType field to given value.
 
 ### GetBmmrType
 
-`func (o *PortRequest) GetBmmrType() PortBmmrType`
+`func (o *PortRequest) GetBmmrType() PortRequestBmmrType`
 
 GetBmmrType returns the BmmrType field if non-nil, zero value otherwise.
 
 ### GetBmmrTypeOk
 
-`func (o *PortRequest) GetBmmrTypeOk() (*PortBmmrType, bool)`
+`func (o *PortRequest) GetBmmrTypeOk() (*PortRequestBmmrType, bool)`
 
 GetBmmrTypeOk returns a tuple with the BmmrType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBmmrType
 
-`func (o *PortRequest) SetBmmrType(v PortBmmrType)`
+`func (o *PortRequest) SetBmmrType(v PortRequestBmmrType)`
 
 SetBmmrType sets BmmrType field to given value.
 
@@ -256,36 +197,6 @@ and a boolean to check if the value has been set.
 
 SetProject sets Project field to given value.
 
-### HasProject
-
-`func (o *PortRequest) HasProject() bool`
-
-HasProject returns a boolean if a field has been set.
-
-### GetState
-
-`func (o *PortRequest) GetState() PortState`
-
-GetState returns the State field if non-nil, zero value otherwise.
-
-### GetStateOk
-
-`func (o *PortRequest) GetStateOk() (*PortState, bool)`
-
-GetStateOk returns a tuple with the State field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetState
-
-`func (o *PortRequest) SetState(v PortState)`
-
-SetState sets State field to given value.
-
-### HasState
-
-`func (o *PortRequest) HasState() bool`
-
-HasState returns a boolean if a field has been set.
 
 ### GetOrder
 
@@ -314,20 +225,20 @@ HasOrder returns a boolean if a field has been set.
 
 ### GetAccount
 
-`func (o *PortRequest) GetAccount() SimplifiedAccount`
+`func (o *PortRequest) GetAccount() SimplifiedAccountRequest`
 
 GetAccount returns the Account field if non-nil, zero value otherwise.
 
 ### GetAccountOk
 
-`func (o *PortRequest) GetAccountOk() (*SimplifiedAccount, bool)`
+`func (o *PortRequest) GetAccountOk() (*SimplifiedAccountRequest, bool)`
 
 GetAccountOk returns a tuple with the Account field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAccount
 
-`func (o *PortRequest) SetAccount(v SimplifiedAccount)`
+`func (o *PortRequest) SetAccount(v SimplifiedAccountRequest)`
 
 SetAccount sets Account field to given value.
 
@@ -409,73 +320,23 @@ HasBandwidth returns a boolean if a field has been set.
 
 ### GetLocation
 
-`func (o *PortRequest) GetLocation() SimplifiedLocation`
+`func (o *PortRequest) GetLocation() SimplifiedLocationRequest`
 
 GetLocation returns the Location field if non-nil, zero value otherwise.
 
 ### GetLocationOk
 
-`func (o *PortRequest) GetLocationOk() (*SimplifiedLocation, bool)`
+`func (o *PortRequest) GetLocationOk() (*SimplifiedLocationRequest, bool)`
 
 GetLocationOk returns a tuple with the Location field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLocation
 
-`func (o *PortRequest) SetLocation(v SimplifiedLocation)`
+`func (o *PortRequest) SetLocation(v SimplifiedLocationRequest)`
 
 SetLocation sets Location field to given value.
 
-
-### GetDevice
-
-`func (o *PortRequest) GetDevice() PortDevice`
-
-GetDevice returns the Device field if non-nil, zero value otherwise.
-
-### GetDeviceOk
-
-`func (o *PortRequest) GetDeviceOk() (*PortDevice, bool)`
-
-GetDeviceOk returns a tuple with the Device field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDevice
-
-`func (o *PortRequest) SetDevice(v PortDevice)`
-
-SetDevice sets Device field to given value.
-
-### HasDevice
-
-`func (o *PortRequest) HasDevice() bool`
-
-HasDevice returns a boolean if a field has been set.
-
-### GetInterface
-
-`func (o *PortRequest) GetInterface() PortInterface`
-
-GetInterface returns the Interface field if non-nil, zero value otherwise.
-
-### GetInterfaceOk
-
-`func (o *PortRequest) GetInterfaceOk() (*PortInterface, bool)`
-
-GetInterfaceOk returns a tuple with the Interface field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetInterface
-
-`func (o *PortRequest) SetInterface(v PortInterface)`
-
-SetInterface sets Interface field to given value.
-
-### HasInterface
-
-`func (o *PortRequest) HasInterface() bool`
-
-HasInterface returns a boolean if a field has been set.
 
 ### GetDemarcationPointIbx
 
@@ -622,56 +483,6 @@ SetLagEnabled sets LagEnabled field to given value.
 
 HasLagEnabled returns a boolean if a field has been set.
 
-### GetLag
-
-`func (o *PortRequest) GetLag() PortLag`
-
-GetLag returns the Lag field if non-nil, zero value otherwise.
-
-### GetLagOk
-
-`func (o *PortRequest) GetLagOk() (*PortLag, bool)`
-
-GetLagOk returns a tuple with the Lag field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLag
-
-`func (o *PortRequest) SetLag(v PortLag)`
-
-SetLag sets Lag field to given value.
-
-### HasLag
-
-`func (o *PortRequest) HasLag() bool`
-
-HasLag returns a boolean if a field has been set.
-
-### GetAsn
-
-`func (o *PortRequest) GetAsn() int32`
-
-GetAsn returns the Asn field if non-nil, zero value otherwise.
-
-### GetAsnOk
-
-`func (o *PortRequest) GetAsnOk() (*int32, bool)`
-
-GetAsnOk returns a tuple with the Asn field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAsn
-
-`func (o *PortRequest) SetAsn(v int32)`
-
-SetAsn sets Asn field to given value.
-
-### HasAsn
-
-`func (o *PortRequest) HasAsn() bool`
-
-HasAsn returns a boolean if a field has been set.
-
 ### GetPackage
 
 `func (o *PortRequest) GetPackage() Package`
@@ -716,31 +527,11 @@ and a boolean to check if the value has been set.
 
 SetSettings sets Settings field to given value.
 
+### HasSettings
 
-### GetPhysicalPortQuantity
+`func (o *PortRequest) HasSettings() bool`
 
-`func (o *PortRequest) GetPhysicalPortQuantity() int32`
-
-GetPhysicalPortQuantity returns the PhysicalPortQuantity field if non-nil, zero value otherwise.
-
-### GetPhysicalPortQuantityOk
-
-`func (o *PortRequest) GetPhysicalPortQuantityOk() (*int32, bool)`
-
-GetPhysicalPortQuantityOk returns a tuple with the PhysicalPortQuantity field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPhysicalPortQuantity
-
-`func (o *PortRequest) SetPhysicalPortQuantity(v int32)`
-
-SetPhysicalPortQuantity sets PhysicalPortQuantity field to given value.
-
-### HasPhysicalPortQuantity
-
-`func (o *PortRequest) HasPhysicalPortQuantity() bool`
-
-HasPhysicalPortQuantity returns a boolean if a field has been set.
+HasSettings returns a boolean if a field has been set.
 
 ### GetNotifications
 
@@ -766,31 +557,6 @@ SetNotifications sets Notifications field to given value.
 `func (o *PortRequest) HasNotifications() bool`
 
 HasNotifications returns a boolean if a field has been set.
-
-### GetAdditionalInfo
-
-`func (o *PortRequest) GetAdditionalInfo() []PortAdditionalInfo`
-
-GetAdditionalInfo returns the AdditionalInfo field if non-nil, zero value otherwise.
-
-### GetAdditionalInfoOk
-
-`func (o *PortRequest) GetAdditionalInfoOk() (*[]PortAdditionalInfo, bool)`
-
-GetAdditionalInfoOk returns a tuple with the AdditionalInfo field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAdditionalInfo
-
-`func (o *PortRequest) SetAdditionalInfo(v []PortAdditionalInfo)`
-
-SetAdditionalInfo sets AdditionalInfo field to given value.
-
-### HasAdditionalInfo
-
-`func (o *PortRequest) HasAdditionalInfo() bool`
-
-HasAdditionalInfo returns a boolean if a field has been set.
 
 ### GetPhysicalPorts
 

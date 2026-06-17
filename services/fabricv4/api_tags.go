@@ -37,7 +37,7 @@ func (r ApiCreateTagRequest) Execute() (*TagResponse, *http.Response, error) {
 /*
 CreateTag Create Tag
 
-Create Tag for Equinix Fabric?.
+Create Tag for Equinix Fabric™.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiCreateTagRequest

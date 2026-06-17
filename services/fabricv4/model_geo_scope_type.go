@@ -24,6 +24,7 @@ const (
 	GEOSCOPETYPE_AUSTRALIA   GeoScopeType = "AUSTRALIA"
 	GEOSCOPETYPE_BRAZIL      GeoScopeType = "BRAZIL"
 	GEOSCOPETYPE_SWITZERLAND GeoScopeType = "SWITZERLAND"
+	GEOSCOPETYPE_EU          GeoScopeType = "EU"
 )
 
 // All allowed values of GeoScopeType enum
@@ -35,6 +36,7 @@ var AllowedGeoScopeTypeEnumValues = []GeoScopeType{
 	"AUSTRALIA",
 	"BRAZIL",
 	"SWITZERLAND",
+	"EU",
 }
 
 func (v *GeoScopeType) UnmarshalJSON(src []byte) error {

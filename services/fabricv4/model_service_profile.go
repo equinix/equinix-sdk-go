@@ -44,9 +44,12 @@ type ServiceProfile struct {
 	VirtualDevices         []ServiceProfileAccessPointVD   `json:"virtualDevices,omitempty"`
 	// Derived response attribute.
 	Metros []ServiceMetro `json:"metros,omitempty"`
+	// Provider environments associated with this IC_PROFILE service profile.
+	Environments []ProviderEnvironment `json:"environments,omitempty"`
 	// response attribute indicates whether the profile belongs to the same organization as the api-invoker.
-	SelfProfile          *bool   `json:"selfProfile,omitempty"`
-	ProjectId            *string `json:"projectId,omitempty"`
+	SelfProfile          *bool                         `json:"selfProfile,omitempty"`
+	ProjectId            *string                       `json:"projectId,omitempty"`
+	LastMileConfig       *ServiceProfileLastMileConfig `json:"lastMileConfig,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -709,6 +712,38 @@ func (o *ServiceProfile) SetMetros(v []ServiceMetro) {
 	o.Metros = v
 }
 
+// GetEnvironments returns the Environments field value if set, zero value otherwise.
+func (o *ServiceProfile) GetEnvironments() []ProviderEnvironment {
+	if o == nil || IsNil(o.Environments) {
+		var ret []ProviderEnvironment
+		return ret
+	}
+	return o.Environments
+}
+
+// GetEnvironmentsOk returns a tuple with the Environments field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ServiceProfile) GetEnvironmentsOk() ([]ProviderEnvironment, bool) {
+	if o == nil || IsNil(o.Environments) {
+		return nil, false
+	}
+	return o.Environments, true
+}
+
+// HasEnvironments returns a boolean if a field has been set.
+func (o *ServiceProfile) HasEnvironments() bool {
+	if o != nil && !IsNil(o.Environments) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnvironments gets a reference to the given []ProviderEnvironment and assigns it to the Environments field.
+func (o *ServiceProfile) SetEnvironments(v []ProviderEnvironment) {
+	o.Environments = v
+}
+
 // GetSelfProfile returns the SelfProfile field value if set, zero value otherwise.
 func (o *ServiceProfile) GetSelfProfile() bool {
 	if o == nil || IsNil(o.SelfProfile) {
@@ -771,6 +806,38 @@ func (o *ServiceProfile) HasProjectId() bool {
 // SetProjectId gets a reference to the given string and assigns it to the ProjectId field.
 func (o *ServiceProfile) SetProjectId(v string) {
 	o.ProjectId = &v
+}
+
+// GetLastMileConfig returns the LastMileConfig field value if set, zero value otherwise.
+func (o *ServiceProfile) GetLastMileConfig() ServiceProfileLastMileConfig {
+	if o == nil || IsNil(o.LastMileConfig) {
+		var ret ServiceProfileLastMileConfig
+		return ret
+	}
+	return *o.LastMileConfig
+}
+
+// GetLastMileConfigOk returns a tuple with the LastMileConfig field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ServiceProfile) GetLastMileConfigOk() (*ServiceProfileLastMileConfig, bool) {
+	if o == nil || IsNil(o.LastMileConfig) {
+		return nil, false
+	}
+	return o.LastMileConfig, true
+}
+
+// HasLastMileConfig returns a boolean if a field has been set.
+func (o *ServiceProfile) HasLastMileConfig() bool {
+	if o != nil && !IsNil(o.LastMileConfig) {
+		return true
+	}
+
+	return false
+}
+
+// SetLastMileConfig gets a reference to the given ServiceProfileLastMileConfig and assigns it to the LastMileConfig field.
+func (o *ServiceProfile) SetLastMileConfig(v ServiceProfileLastMileConfig) {
+	o.LastMileConfig = &v
 }
 
 func (o ServiceProfile) MarshalJSON() ([]byte, error) {
@@ -843,11 +910,17 @@ func (o ServiceProfile) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Metros) {
 		toSerialize["metros"] = o.Metros
 	}
+	if !IsNil(o.Environments) {
+		toSerialize["environments"] = o.Environments
+	}
 	if !IsNil(o.SelfProfile) {
 		toSerialize["selfProfile"] = o.SelfProfile
 	}
 	if !IsNil(o.ProjectId) {
 		toSerialize["projectId"] = o.ProjectId
+	}
+	if !IsNil(o.LastMileConfig) {
+		toSerialize["lastMileConfig"] = o.LastMileConfig
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -891,8 +964,10 @@ func (o *ServiceProfile) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "ports")
 		delete(additionalProperties, "virtualDevices")
 		delete(additionalProperties, "metros")
+		delete(additionalProperties, "environments")
 		delete(additionalProperties, "selfProfile")
 		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "lastMileConfig")
 		o.AdditionalProperties = additionalProperties
 	}
 

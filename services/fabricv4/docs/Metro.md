@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **ConnectedMetros** | Pointer to [**[]ConnectedMetro**](ConnectedMetro.md) |  | [optional] 
 **Services** | Pointer to [**[]Services**](Services.md) |  | [optional] 
 **GeoScopes** | Pointer to [**[]GeoScopeType**](GeoScopeType.md) | List of supported geographic boundaries of a Fabric Metro. | [optional] 
+**GeoZones** | Pointer to [**[]GeoZone**](GeoZone.md) | List of supported geographic zones of a Fabric Metro. | [optional] 
 
 ## Methods
 
@@ -335,6 +336,31 @@ SetGeoScopes sets GeoScopes field to given value.
 `func (o *Metro) HasGeoScopes() bool`
 
 HasGeoScopes returns a boolean if a field has been set.
+
+### GetGeoZones
+
+`func (o *Metro) GetGeoZones() []GeoZone`
+
+GetGeoZones returns the GeoZones field if non-nil, zero value otherwise.
+
+### GetGeoZonesOk
+
+`func (o *Metro) GetGeoZonesOk() (*[]GeoZone, bool)`
+
+GetGeoZonesOk returns a tuple with the GeoZones field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGeoZones
+
+`func (o *Metro) SetGeoZones(v []GeoZone)`
+
+SetGeoZones sets GeoZones field to given value.
+
+### HasGeoZones
+
+`func (o *Metro) HasGeoZones() bool`
+
+HasGeoZones returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

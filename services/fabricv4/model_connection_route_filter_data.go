@@ -23,6 +23,7 @@ type ConnectionRouteFilterData struct {
 	Uuid                 *string                                         `json:"uuid,omitempty"`
 	AttachmentStatus     *ConnectionRouteAggregationDataAttachmentStatus `json:"attachmentStatus,omitempty"`
 	Direction            *ConnectionRouteFilterDataDirection             `json:"direction,omitempty"`
+	ChangeLog            *Changelog                                      `json:"changeLog,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -205,6 +206,38 @@ func (o *ConnectionRouteFilterData) SetDirection(v ConnectionRouteFilterDataDire
 	o.Direction = &v
 }
 
+// GetChangeLog returns the ChangeLog field value if set, zero value otherwise.
+func (o *ConnectionRouteFilterData) GetChangeLog() Changelog {
+	if o == nil || IsNil(o.ChangeLog) {
+		var ret Changelog
+		return ret
+	}
+	return *o.ChangeLog
+}
+
+// GetChangeLogOk returns a tuple with the ChangeLog field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ConnectionRouteFilterData) GetChangeLogOk() (*Changelog, bool) {
+	if o == nil || IsNil(o.ChangeLog) {
+		return nil, false
+	}
+	return o.ChangeLog, true
+}
+
+// HasChangeLog returns a boolean if a field has been set.
+func (o *ConnectionRouteFilterData) HasChangeLog() bool {
+	if o != nil && !IsNil(o.ChangeLog) {
+		return true
+	}
+
+	return false
+}
+
+// SetChangeLog gets a reference to the given Changelog and assigns it to the ChangeLog field.
+func (o *ConnectionRouteFilterData) SetChangeLog(v Changelog) {
+	o.ChangeLog = &v
+}
+
 func (o ConnectionRouteFilterData) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -229,6 +262,9 @@ func (o ConnectionRouteFilterData) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Direction) {
 		toSerialize["direction"] = o.Direction
+	}
+	if !IsNil(o.ChangeLog) {
+		toSerialize["changeLog"] = o.ChangeLog
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -257,6 +293,7 @@ func (o *ConnectionRouteFilterData) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "uuid")
 		delete(additionalProperties, "attachmentStatus")
 		delete(additionalProperties, "direction")
+		delete(additionalProperties, "changeLog")
 		o.AdditionalProperties = additionalProperties
 	}
 

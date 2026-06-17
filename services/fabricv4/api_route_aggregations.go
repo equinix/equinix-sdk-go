@@ -2094,13 +2094,13 @@ func (a *RouteAggregationsApiService) SearchCloudRouterRouteAggregationAttachmen
 }
 
 type ApiSearchRouteAggregationsRequest struct {
-	ctx                         context.Context
-	ApiService                  *RouteAggregationsApiService
-	routeAggregationsSearchBase *RouteAggregationsSearchBase
+	ctx                            context.Context
+	ApiService                     *RouteAggregationsApiService
+	routeAggregationsSearchRequest *RouteAggregationsSearchRequest
 }
 
-func (r ApiSearchRouteAggregationsRequest) RouteAggregationsSearchBase(routeAggregationsSearchBase RouteAggregationsSearchBase) ApiSearchRouteAggregationsRequest {
-	r.routeAggregationsSearchBase = &routeAggregationsSearchBase
+func (r ApiSearchRouteAggregationsRequest) RouteAggregationsSearchRequest(routeAggregationsSearchRequest RouteAggregationsSearchRequest) ApiSearchRouteAggregationsRequest {
+	r.routeAggregationsSearchRequest = &routeAggregationsSearchRequest
 	return r
 }
 
@@ -2144,8 +2144,8 @@ func (a *RouteAggregationsApiService) SearchRouteAggregationsExecute(r ApiSearch
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.routeAggregationsSearchBase == nil {
-		return localVarReturnValue, nil, reportError("routeAggregationsSearchBase is required and must be specified")
+	if r.routeAggregationsSearchRequest == nil {
+		return localVarReturnValue, nil, reportError("routeAggregationsSearchRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -2166,7 +2166,7 @@ func (a *RouteAggregationsApiService) SearchRouteAggregationsExecute(r ApiSearch
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.routeAggregationsSearchBase
+	localVarPostBody = r.routeAggregationsSearchRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
