@@ -26,13 +26,12 @@ fetch:
 
 patch:
 	rm -rf ${SPEC_PATCHED_DIR}
-	cp -r ${SPEC_FETCHED_DIR} ${SPEC_PATCHED_DIR}
-
-	for diff in $(shell set -x; find ${SPEC_PATCH_DIR} -name '*.patch' | sort -n); do \
-		patch --no-backup-if-mismatch -N -t -p1 -i $$diff; \
-		RESULT=$$(($${RESULT} + $$?)); \
-	done; \
-	exit $$RESULT;
+    	cp -r ${SPEC_FETCHED_DIR} ${SPEC_PATCHED_DIR}
+    	@set -e; \
+    	for diff in $$(find ${SPEC_PATCH_DIR} -name '*.patch' | sort -n); do \
+    	   echo "Patch apply: $$diff"; \
+    	   patch --no-backup-if-mismatch -N -t -p1 -i "$$diff"; \
+    	done
 
 patch-post:
 	# patch is idempotent, always starting with the generated files
