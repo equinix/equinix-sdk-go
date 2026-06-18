@@ -1,6 +1,0 @@
-content:
-  application/json:
-    schema:
-      $ref: '../schemas/InvitationInput.yaml'
-description: Invitation to create
-required: true

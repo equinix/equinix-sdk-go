@@ -1,6 +1,5 @@
 # See https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners#example-of-a-codeowners-file
 #
 *                       @equinix/governor-devrel-engineering
-*metalv*                @equinix/governor-metal-client-interfaces
 *fabricv*               @equinix/governor-digin-fabric
 *eiav*                  @equinix/governor-digin-fabric

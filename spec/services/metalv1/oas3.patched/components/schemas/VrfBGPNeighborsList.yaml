@@ -1,5 +1,0 @@
-properties:
-  bgp_neighbors:
-    items:
-      $ref: './VrfBGPNeighbors.yaml'
-    type: array

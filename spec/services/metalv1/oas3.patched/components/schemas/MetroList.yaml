@@ -1,6 +1,0 @@
-properties:
-  metros:
-    items:
-      $ref: './Metro.yaml'
-    type: array
-type: object
