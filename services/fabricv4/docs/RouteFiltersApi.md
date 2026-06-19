@@ -880,7 +880,7 @@ Name | Type | Description  | Notes
 
 ## SearchRouteFilters
 
-> RouteFiltersSearchResponse SearchRouteFilters(ctx).RouteFiltersSearchBase(routeFiltersSearchBase).Execute()
+> RouteFiltersSearchResponse SearchRouteFilters(ctx).RouteFiltersSearchRequest(routeFiltersSearchRequest).Execute()
 
 Search Route Filters
 
@@ -899,11 +899,11 @@ import (
 )
 
 func main() {
-	routeFiltersSearchBase := *openapiclient.NewRouteFiltersSearchBase() // RouteFiltersSearchBase | 
+	routeFiltersSearchRequest := *openapiclient.NewRouteFiltersSearchRequest() // RouteFiltersSearchRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.RouteFiltersApi.SearchRouteFilters(context.Background()).RouteFiltersSearchBase(routeFiltersSearchBase).Execute()
+	resp, r, err := apiClient.RouteFiltersApi.SearchRouteFilters(context.Background()).RouteFiltersSearchRequest(routeFiltersSearchRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `RouteFiltersApi.SearchRouteFilters``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -924,7 +924,7 @@ Other parameters are passed through a pointer to a apiSearchRouteFiltersRequest 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **routeFiltersSearchBase** | [**RouteFiltersSearchBase**](RouteFiltersSearchBase.md) |  | 
+ **routeFiltersSearchRequest** | [**RouteFiltersSearchRequest**](RouteFiltersSearchRequest.md) |  | 
 
 ### Return type
 

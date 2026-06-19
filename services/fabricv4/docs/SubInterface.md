@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | Pointer to **string** | name of subinterafce of a port | [optional] 
+**Name** | Pointer to **string** | name of subInterface of a port | [optional] 
 **Unit** | Pointer to **int32** |  | [optional] 
 
 ## Methods

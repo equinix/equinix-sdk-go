@@ -2105,13 +2105,13 @@ func (a *RouteFiltersApiService) SearchCloudRouterRouteFilterAttachmentsExecute(
 }
 
 type ApiSearchRouteFiltersRequest struct {
-	ctx                    context.Context
-	ApiService             *RouteFiltersApiService
-	routeFiltersSearchBase *RouteFiltersSearchBase
+	ctx                       context.Context
+	ApiService                *RouteFiltersApiService
+	routeFiltersSearchRequest *RouteFiltersSearchRequest
 }
 
-func (r ApiSearchRouteFiltersRequest) RouteFiltersSearchBase(routeFiltersSearchBase RouteFiltersSearchBase) ApiSearchRouteFiltersRequest {
-	r.routeFiltersSearchBase = &routeFiltersSearchBase
+func (r ApiSearchRouteFiltersRequest) RouteFiltersSearchRequest(routeFiltersSearchRequest RouteFiltersSearchRequest) ApiSearchRouteFiltersRequest {
+	r.routeFiltersSearchRequest = &routeFiltersSearchRequest
 	return r
 }
 
@@ -2155,8 +2155,8 @@ func (a *RouteFiltersApiService) SearchRouteFiltersExecute(r ApiSearchRouteFilte
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.routeFiltersSearchBase == nil {
-		return localVarReturnValue, nil, reportError("routeFiltersSearchBase is required and must be specified")
+	if r.routeFiltersSearchRequest == nil {
+		return localVarReturnValue, nil, reportError("routeFiltersSearchRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -2177,7 +2177,7 @@ func (a *RouteFiltersApiService) SearchRouteFiltersExecute(r ApiSearchRouteFilte
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.routeFiltersSearchBase
+	localVarPostBody = r.routeFiltersSearchRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

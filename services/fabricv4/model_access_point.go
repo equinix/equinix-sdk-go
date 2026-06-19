@@ -26,11 +26,14 @@ type AccessPoint struct {
 	VirtualDevice *VirtualDevice            `json:"virtualDevice,omitempty"`
 	Interface     *Interface                `json:"interface,omitempty"`
 	Network       *SimplifiedNetwork        `json:"network,omitempty"`
+	Environment   *ProviderEnvironment      `json:"environment,omitempty"`
 	// Access point seller region
 	SellerRegion *string      `json:"sellerRegion,omitempty"`
 	PeeringType  *PeeringType `json:"peeringType,omitempty"`
 	// Access point authentication key
 	AuthenticationKey *string `json:"authenticationKey,omitempty"`
+	// Access point activation key
+	ActivationKey *string `json:"activationKey,omitempty"`
 	// Provider assigned Connection Id
 	ProviderConnectionId *string               `json:"providerConnectionId,omitempty"`
 	VirtualNetwork       *VirtualNetwork       `json:"virtualNetwork,omitempty"`
@@ -378,6 +381,38 @@ func (o *AccessPoint) SetNetwork(v SimplifiedNetwork) {
 	o.Network = &v
 }
 
+// GetEnvironment returns the Environment field value if set, zero value otherwise.
+func (o *AccessPoint) GetEnvironment() ProviderEnvironment {
+	if o == nil || IsNil(o.Environment) {
+		var ret ProviderEnvironment
+		return ret
+	}
+	return *o.Environment
+}
+
+// GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccessPoint) GetEnvironmentOk() (*ProviderEnvironment, bool) {
+	if o == nil || IsNil(o.Environment) {
+		return nil, false
+	}
+	return o.Environment, true
+}
+
+// HasEnvironment returns a boolean if a field has been set.
+func (o *AccessPoint) HasEnvironment() bool {
+	if o != nil && !IsNil(o.Environment) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnvironment gets a reference to the given ProviderEnvironment and assigns it to the Environment field.
+func (o *AccessPoint) SetEnvironment(v ProviderEnvironment) {
+	o.Environment = &v
+}
+
 // GetSellerRegion returns the SellerRegion field value if set, zero value otherwise.
 func (o *AccessPoint) GetSellerRegion() string {
 	if o == nil || IsNil(o.SellerRegion) {
@@ -472,6 +507,38 @@ func (o *AccessPoint) HasAuthenticationKey() bool {
 // SetAuthenticationKey gets a reference to the given string and assigns it to the AuthenticationKey field.
 func (o *AccessPoint) SetAuthenticationKey(v string) {
 	o.AuthenticationKey = &v
+}
+
+// GetActivationKey returns the ActivationKey field value if set, zero value otherwise.
+func (o *AccessPoint) GetActivationKey() string {
+	if o == nil || IsNil(o.ActivationKey) {
+		var ret string
+		return ret
+	}
+	return *o.ActivationKey
+}
+
+// GetActivationKeyOk returns a tuple with the ActivationKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccessPoint) GetActivationKeyOk() (*string, bool) {
+	if o == nil || IsNil(o.ActivationKey) {
+		return nil, false
+	}
+	return o.ActivationKey, true
+}
+
+// HasActivationKey returns a boolean if a field has been set.
+func (o *AccessPoint) HasActivationKey() bool {
+	if o != nil && !IsNil(o.ActivationKey) {
+		return true
+	}
+
+	return false
+}
+
+// SetActivationKey gets a reference to the given string and assigns it to the ActivationKey field.
+func (o *AccessPoint) SetActivationKey(v string) {
+	o.ActivationKey = &v
 }
 
 // GetProviderConnectionId returns the ProviderConnectionId field value if set, zero value otherwise.
@@ -642,6 +709,9 @@ func (o AccessPoint) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Network) {
 		toSerialize["network"] = o.Network
 	}
+	if !IsNil(o.Environment) {
+		toSerialize["environment"] = o.Environment
+	}
 	if !IsNil(o.SellerRegion) {
 		toSerialize["sellerRegion"] = o.SellerRegion
 	}
@@ -650,6 +720,9 @@ func (o AccessPoint) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AuthenticationKey) {
 		toSerialize["authenticationKey"] = o.AuthenticationKey
+	}
+	if !IsNil(o.ActivationKey) {
+		toSerialize["activationKey"] = o.ActivationKey
 	}
 	if !IsNil(o.ProviderConnectionId) {
 		toSerialize["providerConnectionId"] = o.ProviderConnectionId
@@ -695,9 +768,11 @@ func (o *AccessPoint) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "virtualDevice")
 		delete(additionalProperties, "interface")
 		delete(additionalProperties, "network")
+		delete(additionalProperties, "environment")
 		delete(additionalProperties, "sellerRegion")
 		delete(additionalProperties, "peeringType")
 		delete(additionalProperties, "authenticationKey")
+		delete(additionalProperties, "activationKey")
 		delete(additionalProperties, "providerConnectionId")
 		delete(additionalProperties, "virtualNetwork")
 		delete(additionalProperties, "interconnection")

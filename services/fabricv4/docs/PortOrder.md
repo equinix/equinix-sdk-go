@@ -5,10 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **PurchaseOrder** | Pointer to [**PortOrderPurchaseOrder**](PortOrderPurchaseOrder.md) |  | [optional] 
-**OrderId** | Pointer to **string** | Order Identification | [optional] 
 **CustomerReferenceId** | Pointer to **string** | Customer order reference Id | [optional] 
-**OrderNumber** | Pointer to **string** | Order Reference Number | [optional] 
-**Uuid** | Pointer to **string** | Equinix-assigned order identifier, this is a derived response atrribute | [optional] 
 **Signature** | Pointer to [**PortOrderSignature**](PortOrderSignature.md) |  | [optional] 
 
 ## Methods
@@ -55,31 +52,6 @@ SetPurchaseOrder sets PurchaseOrder field to given value.
 
 HasPurchaseOrder returns a boolean if a field has been set.
 
-### GetOrderId
-
-`func (o *PortOrder) GetOrderId() string`
-
-GetOrderId returns the OrderId field if non-nil, zero value otherwise.
-
-### GetOrderIdOk
-
-`func (o *PortOrder) GetOrderIdOk() (*string, bool)`
-
-GetOrderIdOk returns a tuple with the OrderId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetOrderId
-
-`func (o *PortOrder) SetOrderId(v string)`
-
-SetOrderId sets OrderId field to given value.
-
-### HasOrderId
-
-`func (o *PortOrder) HasOrderId() bool`
-
-HasOrderId returns a boolean if a field has been set.
-
 ### GetCustomerReferenceId
 
 `func (o *PortOrder) GetCustomerReferenceId() string`
@@ -104,56 +76,6 @@ SetCustomerReferenceId sets CustomerReferenceId field to given value.
 `func (o *PortOrder) HasCustomerReferenceId() bool`
 
 HasCustomerReferenceId returns a boolean if a field has been set.
-
-### GetOrderNumber
-
-`func (o *PortOrder) GetOrderNumber() string`
-
-GetOrderNumber returns the OrderNumber field if non-nil, zero value otherwise.
-
-### GetOrderNumberOk
-
-`func (o *PortOrder) GetOrderNumberOk() (*string, bool)`
-
-GetOrderNumberOk returns a tuple with the OrderNumber field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetOrderNumber
-
-`func (o *PortOrder) SetOrderNumber(v string)`
-
-SetOrderNumber sets OrderNumber field to given value.
-
-### HasOrderNumber
-
-`func (o *PortOrder) HasOrderNumber() bool`
-
-HasOrderNumber returns a boolean if a field has been set.
-
-### GetUuid
-
-`func (o *PortOrder) GetUuid() string`
-
-GetUuid returns the Uuid field if non-nil, zero value otherwise.
-
-### GetUuidOk
-
-`func (o *PortOrder) GetUuidOk() (*string, bool)`
-
-GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUuid
-
-`func (o *PortOrder) SetUuid(v string)`
-
-SetUuid sets Uuid field to given value.
-
-### HasUuid
-
-`func (o *PortOrder) HasUuid() bool`
-
-HasUuid returns a boolean if a field has been set.
 
 ### GetSignature
 

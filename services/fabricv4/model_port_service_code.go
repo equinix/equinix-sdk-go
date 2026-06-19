@@ -12,7 +12,7 @@ import (
 	"fmt"
 )
 
-// PortServiceCode type of product
+// PortServiceCode Identifies the service type associated with this port
 type PortServiceCode string
 
 // List of PortServiceCode

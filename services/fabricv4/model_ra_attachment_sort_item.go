@@ -16,8 +16,8 @@ var _ MappedNullable = &RaAttachmentSortItem{}
 
 // RaAttachmentSortItem struct for RaAttachmentSortItem
 type RaAttachmentSortItem struct {
-	Property             *RaAttachmentSortItemProperty `json:"property,omitempty"`
-	Direction            *SortItemDirection            `json:"direction,omitempty"`
+	Property             *RaAttachmentSortItemProperty  `json:"property,omitempty"`
+	Direction            *RfAttachmentSortItemDirection `json:"direction,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -31,7 +31,7 @@ func NewRaAttachmentSortItem() *RaAttachmentSortItem {
 	this := RaAttachmentSortItem{}
 	var property RaAttachmentSortItemProperty = RAATTACHMENTSORTITEMPROPERTY_CHANGE_LOG_UPDATED_DATE_TIME
 	this.Property = &property
-	var direction SortItemDirection = SORTITEMDIRECTION_DESC
+	var direction RfAttachmentSortItemDirection = RFATTACHMENTSORTITEMDIRECTION_DESC
 	this.Direction = &direction
 	return &this
 }
@@ -43,7 +43,7 @@ func NewRaAttachmentSortItemWithDefaults() *RaAttachmentSortItem {
 	this := RaAttachmentSortItem{}
 	var property RaAttachmentSortItemProperty = RAATTACHMENTSORTITEMPROPERTY_CHANGE_LOG_UPDATED_DATE_TIME
 	this.Property = &property
-	var direction SortItemDirection = SORTITEMDIRECTION_DESC
+	var direction RfAttachmentSortItemDirection = RFATTACHMENTSORTITEMDIRECTION_DESC
 	this.Direction = &direction
 	return &this
 }
@@ -81,9 +81,9 @@ func (o *RaAttachmentSortItem) SetProperty(v RaAttachmentSortItemProperty) {
 }
 
 // GetDirection returns the Direction field value if set, zero value otherwise.
-func (o *RaAttachmentSortItem) GetDirection() SortItemDirection {
+func (o *RaAttachmentSortItem) GetDirection() RfAttachmentSortItemDirection {
 	if o == nil || IsNil(o.Direction) {
-		var ret SortItemDirection
+		var ret RfAttachmentSortItemDirection
 		return ret
 	}
 	return *o.Direction
@@ -91,7 +91,7 @@ func (o *RaAttachmentSortItem) GetDirection() SortItemDirection {
 
 // GetDirectionOk returns a tuple with the Direction field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RaAttachmentSortItem) GetDirectionOk() (*SortItemDirection, bool) {
+func (o *RaAttachmentSortItem) GetDirectionOk() (*RfAttachmentSortItemDirection, bool) {
 	if o == nil || IsNil(o.Direction) {
 		return nil, false
 	}
@@ -107,8 +107,8 @@ func (o *RaAttachmentSortItem) HasDirection() bool {
 	return false
 }
 
-// SetDirection gets a reference to the given SortItemDirection and assigns it to the Direction field.
-func (o *RaAttachmentSortItem) SetDirection(v SortItemDirection) {
+// SetDirection gets a reference to the given RfAttachmentSortItemDirection and assigns it to the Direction field.
+func (o *RaAttachmentSortItem) SetDirection(v RfAttachmentSortItemDirection) {
 	o.Direction = &v
 }
 

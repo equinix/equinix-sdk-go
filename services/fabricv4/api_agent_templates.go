@@ -46,7 +46,7 @@ func (r ApiGetAgentTemplateByUuidRequest) Execute() (*AgentTemplates, *http.Resp
 /*
 GetAgentTemplateByUuid Get Agent Template by UUID
 
-This API provides capability to retrieve an agent template by uuid
+This API provides capability to retrieve an agent template by uuid <font color="red"> <sup color='red'>Beta</sup></font>
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param agentTemplateId Agent Template UUID
@@ -212,7 +212,7 @@ func (r ApiGetAgentTemplatesRequest) Execute() (*AgentTemplateGetAllResponse, *h
 /*
 GetAgentTemplates Get Agent Templates
 
-This API provides capability to retrieve agent templates
+This API provides capability to retrieve agent templates <font color="red"> <sup color='red'>Beta</sup></font>
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiGetAgentTemplatesRequest

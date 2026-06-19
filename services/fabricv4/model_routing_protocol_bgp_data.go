@@ -37,6 +37,8 @@ type RoutingProtocolBGPData struct {
 	Operation            *RoutingProtocolOperation    `json:"operation,omitempty"`
 	Change               *RoutingProtocolChange       `json:"change,omitempty"`
 	Changelog            *Changelog                   `json:"changelog,omitempty"`
+	Project              *RoutingProtocolProject      `json:"project,omitempty"`
+	Connection           *RoutingProtocolConnection   `json:"connection,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -539,6 +541,70 @@ func (o *RoutingProtocolBGPData) SetChangelog(v Changelog) {
 	o.Changelog = &v
 }
 
+// GetProject returns the Project field value if set, zero value otherwise.
+func (o *RoutingProtocolBGPData) GetProject() RoutingProtocolProject {
+	if o == nil || IsNil(o.Project) {
+		var ret RoutingProtocolProject
+		return ret
+	}
+	return *o.Project
+}
+
+// GetProjectOk returns a tuple with the Project field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RoutingProtocolBGPData) GetProjectOk() (*RoutingProtocolProject, bool) {
+	if o == nil || IsNil(o.Project) {
+		return nil, false
+	}
+	return o.Project, true
+}
+
+// HasProject returns a boolean if a field has been set.
+func (o *RoutingProtocolBGPData) HasProject() bool {
+	if o != nil && !IsNil(o.Project) {
+		return true
+	}
+
+	return false
+}
+
+// SetProject gets a reference to the given RoutingProtocolProject and assigns it to the Project field.
+func (o *RoutingProtocolBGPData) SetProject(v RoutingProtocolProject) {
+	o.Project = &v
+}
+
+// GetConnection returns the Connection field value if set, zero value otherwise.
+func (o *RoutingProtocolBGPData) GetConnection() RoutingProtocolConnection {
+	if o == nil || IsNil(o.Connection) {
+		var ret RoutingProtocolConnection
+		return ret
+	}
+	return *o.Connection
+}
+
+// GetConnectionOk returns a tuple with the Connection field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RoutingProtocolBGPData) GetConnectionOk() (*RoutingProtocolConnection, bool) {
+	if o == nil || IsNil(o.Connection) {
+		return nil, false
+	}
+	return o.Connection, true
+}
+
+// HasConnection returns a boolean if a field has been set.
+func (o *RoutingProtocolBGPData) HasConnection() bool {
+	if o != nil && !IsNil(o.Connection) {
+		return true
+	}
+
+	return false
+}
+
+// SetConnection gets a reference to the given RoutingProtocolConnection and assigns it to the Connection field.
+func (o *RoutingProtocolBGPData) SetConnection(v RoutingProtocolConnection) {
+	o.Connection = &v
+}
+
 func (o RoutingProtocolBGPData) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -594,6 +660,12 @@ func (o RoutingProtocolBGPData) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Changelog) {
 		toSerialize["changelog"] = o.Changelog
 	}
+	if !IsNil(o.Project) {
+		toSerialize["project"] = o.Project
+	}
+	if !IsNil(o.Connection) {
+		toSerialize["connection"] = o.Connection
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -631,6 +703,8 @@ func (o *RoutingProtocolBGPData) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "operation")
 		delete(additionalProperties, "change")
 		delete(additionalProperties, "changelog")
+		delete(additionalProperties, "project")
+		delete(additionalProperties, "connection")
 		o.AdditionalProperties = additionalProperties
 	}
 

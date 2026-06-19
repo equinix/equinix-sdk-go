@@ -18,29 +18,22 @@ var _ MappedNullable = &PortRequest{}
 // PortRequest PortRequest is the Request Object for creating single and bulk fabric ports
 type PortRequest struct {
 	Type PortType `json:"type"`
-	// Equinix assigned response attribute for Port name
-	Name *string `json:"name,omitempty"`
-	// Equinix assigned response attribute for Port description
-	Description *string `json:"description,omitempty"`
 	// Physical Ports Speed in Mbps
-	PhysicalPortsSpeed     int32                      `json:"physicalPortsSpeed"`
-	PhysicalPortsType      PortPhysicalPortsType      `json:"physicalPortsType"`
-	PhysicalPortsCount     *int32                     `json:"physicalPortsCount,omitempty"`
-	ConnectivitySourceType PortConnectivitySourceType `json:"connectivitySourceType"`
-	BmmrType               *PortBmmrType              `json:"bmmrType,omitempty"`
-	Project                *Project                   `json:"project,omitempty"`
-	State                  *PortState                 `json:"state,omitempty"`
-	Order                  *PortOrder                 `json:"order,omitempty"`
-	Account                SimplifiedAccount          `json:"account"`
+	PhysicalPortsSpeed     int32                        `json:"physicalPortsSpeed"`
+	PhysicalPortsType      PortRequestPhysicalPortsType `json:"physicalPortsType"`
+	PhysicalPortsCount     *int32                       `json:"physicalPortsCount,omitempty"`
+	ConnectivitySourceType PortConnectivitySourceType   `json:"connectivitySourceType"`
+	BmmrType               *PortRequestBmmrType         `json:"bmmrType,omitempty"`
+	Project                Project                      `json:"project"`
+	Order                  *PortOrder                   `json:"order,omitempty"`
+	Account                SimplifiedAccountRequest     `json:"account"`
 	// Deprecated
 	ServiceType *PortServiceType `json:"serviceType,omitempty"`
 	ServiceCode *PortServiceCode `json:"serviceCode,omitempty"`
 	// Equinix assigned response attribute for Port bandwidth in Mbps
 	// Deprecated
-	Bandwidth *int32             `json:"bandwidth,omitempty"`
-	Location  SimplifiedLocation `json:"location"`
-	Device    *PortDevice        `json:"device,omitempty"`
-	Interface *PortInterface     `json:"interface,omitempty"`
+	Bandwidth *int32                    `json:"bandwidth,omitempty"`
+	Location  SimplifiedLocationRequest `json:"location"`
 	// A-side/Equinix ibx
 	DemarcationPointIbx *string `json:"demarcationPointIbx,omitempty"`
 	// z-side/Equinix ibx
@@ -48,19 +41,12 @@ type PortRequest struct {
 	DemarcationPoint *PortDemarcationPoint `json:"demarcationPoint,omitempty"`
 	Redundancy       *PortRedundancy       `json:"redundancy,omitempty"`
 	Encapsulation    PortEncapsulation     `json:"encapsulation"`
-	// If LAG enabled
-	LagEnabled *bool    `json:"lagEnabled,omitempty"`
-	Lag        *PortLag `json:"lag,omitempty"`
-	// Port ASN
-	Asn      *int32       `json:"asn,omitempty"`
-	Package  *Package     `json:"package,omitempty"`
-	Settings PortSettings `json:"settings"`
-	// Number of physical ports
-	PhysicalPortQuantity *int32 `json:"physicalPortQuantity,omitempty"`
+	// Indicates whether Link Aggregation Group (LAG) is enabled on this port
+	LagEnabled *bool         `json:"lagEnabled,omitempty"`
+	Package    *Package      `json:"package,omitempty"`
+	Settings   *PortSettings `json:"settings,omitempty"`
 	// Notification preferences
 	Notifications []PortNotification `json:"notifications,omitempty"`
-	// Port additional information
-	AdditionalInfo []PortAdditionalInfo `json:"additionalInfo,omitempty"`
 	// Physical ports that implement this port
 	PhysicalPorts []PhysicalPort `json:"physicalPorts,omitempty"`
 	// Port Loas
@@ -74,16 +60,16 @@ type _PortRequest PortRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPortRequest(type_ PortType, physicalPortsSpeed int32, physicalPortsType PortPhysicalPortsType, connectivitySourceType PortConnectivitySourceType, account SimplifiedAccount, location SimplifiedLocation, encapsulation PortEncapsulation, settings PortSettings) *PortRequest {
+func NewPortRequest(type_ PortType, physicalPortsSpeed int32, physicalPortsType PortRequestPhysicalPortsType, connectivitySourceType PortConnectivitySourceType, project Project, account SimplifiedAccountRequest, location SimplifiedLocationRequest, encapsulation PortEncapsulation) *PortRequest {
 	this := PortRequest{}
 	this.Type = type_
 	this.PhysicalPortsSpeed = physicalPortsSpeed
 	this.PhysicalPortsType = physicalPortsType
 	this.ConnectivitySourceType = connectivitySourceType
+	this.Project = project
 	this.Account = account
 	this.Location = location
 	this.Encapsulation = encapsulation
-	this.Settings = settings
 	return &this
 }
 
@@ -119,70 +105,6 @@ func (o *PortRequest) SetType(v PortType) {
 	o.Type = v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
-func (o *PortRequest) GetName() string {
-	if o == nil || IsNil(o.Name) {
-		var ret string
-		return ret
-	}
-	return *o.Name
-}
-
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PortRequest) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
-		return nil, false
-	}
-	return o.Name, true
-}
-
-// HasName returns a boolean if a field has been set.
-func (o *PortRequest) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given string and assigns it to the Name field.
-func (o *PortRequest) SetName(v string) {
-	o.Name = &v
-}
-
-// GetDescription returns the Description field value if set, zero value otherwise.
-func (o *PortRequest) GetDescription() string {
-	if o == nil || IsNil(o.Description) {
-		var ret string
-		return ret
-	}
-	return *o.Description
-}
-
-// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PortRequest) GetDescriptionOk() (*string, bool) {
-	if o == nil || IsNil(o.Description) {
-		return nil, false
-	}
-	return o.Description, true
-}
-
-// HasDescription returns a boolean if a field has been set.
-func (o *PortRequest) HasDescription() bool {
-	if o != nil && !IsNil(o.Description) {
-		return true
-	}
-
-	return false
-}
-
-// SetDescription gets a reference to the given string and assigns it to the Description field.
-func (o *PortRequest) SetDescription(v string) {
-	o.Description = &v
-}
-
 // GetPhysicalPortsSpeed returns the PhysicalPortsSpeed field value
 func (o *PortRequest) GetPhysicalPortsSpeed() int32 {
 	if o == nil {
@@ -208,9 +130,9 @@ func (o *PortRequest) SetPhysicalPortsSpeed(v int32) {
 }
 
 // GetPhysicalPortsType returns the PhysicalPortsType field value
-func (o *PortRequest) GetPhysicalPortsType() PortPhysicalPortsType {
+func (o *PortRequest) GetPhysicalPortsType() PortRequestPhysicalPortsType {
 	if o == nil {
-		var ret PortPhysicalPortsType
+		var ret PortRequestPhysicalPortsType
 		return ret
 	}
 
@@ -219,7 +141,7 @@ func (o *PortRequest) GetPhysicalPortsType() PortPhysicalPortsType {
 
 // GetPhysicalPortsTypeOk returns a tuple with the PhysicalPortsType field value
 // and a boolean to check if the value has been set.
-func (o *PortRequest) GetPhysicalPortsTypeOk() (*PortPhysicalPortsType, bool) {
+func (o *PortRequest) GetPhysicalPortsTypeOk() (*PortRequestPhysicalPortsType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -227,7 +149,7 @@ func (o *PortRequest) GetPhysicalPortsTypeOk() (*PortPhysicalPortsType, bool) {
 }
 
 // SetPhysicalPortsType sets field value
-func (o *PortRequest) SetPhysicalPortsType(v PortPhysicalPortsType) {
+func (o *PortRequest) SetPhysicalPortsType(v PortRequestPhysicalPortsType) {
 	o.PhysicalPortsType = v
 }
 
@@ -288,9 +210,9 @@ func (o *PortRequest) SetConnectivitySourceType(v PortConnectivitySourceType) {
 }
 
 // GetBmmrType returns the BmmrType field value if set, zero value otherwise.
-func (o *PortRequest) GetBmmrType() PortBmmrType {
+func (o *PortRequest) GetBmmrType() PortRequestBmmrType {
 	if o == nil || IsNil(o.BmmrType) {
-		var ret PortBmmrType
+		var ret PortRequestBmmrType
 		return ret
 	}
 	return *o.BmmrType
@@ -298,7 +220,7 @@ func (o *PortRequest) GetBmmrType() PortBmmrType {
 
 // GetBmmrTypeOk returns a tuple with the BmmrType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PortRequest) GetBmmrTypeOk() (*PortBmmrType, bool) {
+func (o *PortRequest) GetBmmrTypeOk() (*PortRequestBmmrType, bool) {
 	if o == nil || IsNil(o.BmmrType) {
 		return nil, false
 	}
@@ -314,73 +236,33 @@ func (o *PortRequest) HasBmmrType() bool {
 	return false
 }
 
-// SetBmmrType gets a reference to the given PortBmmrType and assigns it to the BmmrType field.
-func (o *PortRequest) SetBmmrType(v PortBmmrType) {
+// SetBmmrType gets a reference to the given PortRequestBmmrType and assigns it to the BmmrType field.
+func (o *PortRequest) SetBmmrType(v PortRequestBmmrType) {
 	o.BmmrType = &v
 }
 
-// GetProject returns the Project field value if set, zero value otherwise.
+// GetProject returns the Project field value
 func (o *PortRequest) GetProject() Project {
-	if o == nil || IsNil(o.Project) {
+	if o == nil {
 		var ret Project
 		return ret
 	}
-	return *o.Project
+
+	return o.Project
 }
 
-// GetProjectOk returns a tuple with the Project field value if set, nil otherwise
+// GetProjectOk returns a tuple with the Project field value
 // and a boolean to check if the value has been set.
 func (o *PortRequest) GetProjectOk() (*Project, bool) {
-	if o == nil || IsNil(o.Project) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Project, true
+	return &o.Project, true
 }
 
-// HasProject returns a boolean if a field has been set.
-func (o *PortRequest) HasProject() bool {
-	if o != nil && !IsNil(o.Project) {
-		return true
-	}
-
-	return false
-}
-
-// SetProject gets a reference to the given Project and assigns it to the Project field.
+// SetProject sets field value
 func (o *PortRequest) SetProject(v Project) {
-	o.Project = &v
-}
-
-// GetState returns the State field value if set, zero value otherwise.
-func (o *PortRequest) GetState() PortState {
-	if o == nil || IsNil(o.State) {
-		var ret PortState
-		return ret
-	}
-	return *o.State
-}
-
-// GetStateOk returns a tuple with the State field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PortRequest) GetStateOk() (*PortState, bool) {
-	if o == nil || IsNil(o.State) {
-		return nil, false
-	}
-	return o.State, true
-}
-
-// HasState returns a boolean if a field has been set.
-func (o *PortRequest) HasState() bool {
-	if o != nil && !IsNil(o.State) {
-		return true
-	}
-
-	return false
-}
-
-// SetState gets a reference to the given PortState and assigns it to the State field.
-func (o *PortRequest) SetState(v PortState) {
-	o.State = &v
+	o.Project = v
 }
 
 // GetOrder returns the Order field value if set, zero value otherwise.
@@ -416,9 +298,9 @@ func (o *PortRequest) SetOrder(v PortOrder) {
 }
 
 // GetAccount returns the Account field value
-func (o *PortRequest) GetAccount() SimplifiedAccount {
+func (o *PortRequest) GetAccount() SimplifiedAccountRequest {
 	if o == nil {
-		var ret SimplifiedAccount
+		var ret SimplifiedAccountRequest
 		return ret
 	}
 
@@ -427,7 +309,7 @@ func (o *PortRequest) GetAccount() SimplifiedAccount {
 
 // GetAccountOk returns a tuple with the Account field value
 // and a boolean to check if the value has been set.
-func (o *PortRequest) GetAccountOk() (*SimplifiedAccount, bool) {
+func (o *PortRequest) GetAccountOk() (*SimplifiedAccountRequest, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -435,7 +317,7 @@ func (o *PortRequest) GetAccountOk() (*SimplifiedAccount, bool) {
 }
 
 // SetAccount sets field value
-func (o *PortRequest) SetAccount(v SimplifiedAccount) {
+func (o *PortRequest) SetAccount(v SimplifiedAccountRequest) {
 	o.Account = v
 }
 
@@ -542,9 +424,9 @@ func (o *PortRequest) SetBandwidth(v int32) {
 }
 
 // GetLocation returns the Location field value
-func (o *PortRequest) GetLocation() SimplifiedLocation {
+func (o *PortRequest) GetLocation() SimplifiedLocationRequest {
 	if o == nil {
-		var ret SimplifiedLocation
+		var ret SimplifiedLocationRequest
 		return ret
 	}
 
@@ -553,7 +435,7 @@ func (o *PortRequest) GetLocation() SimplifiedLocation {
 
 // GetLocationOk returns a tuple with the Location field value
 // and a boolean to check if the value has been set.
-func (o *PortRequest) GetLocationOk() (*SimplifiedLocation, bool) {
+func (o *PortRequest) GetLocationOk() (*SimplifiedLocationRequest, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -561,72 +443,8 @@ func (o *PortRequest) GetLocationOk() (*SimplifiedLocation, bool) {
 }
 
 // SetLocation sets field value
-func (o *PortRequest) SetLocation(v SimplifiedLocation) {
+func (o *PortRequest) SetLocation(v SimplifiedLocationRequest) {
 	o.Location = v
-}
-
-// GetDevice returns the Device field value if set, zero value otherwise.
-func (o *PortRequest) GetDevice() PortDevice {
-	if o == nil || IsNil(o.Device) {
-		var ret PortDevice
-		return ret
-	}
-	return *o.Device
-}
-
-// GetDeviceOk returns a tuple with the Device field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PortRequest) GetDeviceOk() (*PortDevice, bool) {
-	if o == nil || IsNil(o.Device) {
-		return nil, false
-	}
-	return o.Device, true
-}
-
-// HasDevice returns a boolean if a field has been set.
-func (o *PortRequest) HasDevice() bool {
-	if o != nil && !IsNil(o.Device) {
-		return true
-	}
-
-	return false
-}
-
-// SetDevice gets a reference to the given PortDevice and assigns it to the Device field.
-func (o *PortRequest) SetDevice(v PortDevice) {
-	o.Device = &v
-}
-
-// GetInterface returns the Interface field value if set, zero value otherwise.
-func (o *PortRequest) GetInterface() PortInterface {
-	if o == nil || IsNil(o.Interface) {
-		var ret PortInterface
-		return ret
-	}
-	return *o.Interface
-}
-
-// GetInterfaceOk returns a tuple with the Interface field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PortRequest) GetInterfaceOk() (*PortInterface, bool) {
-	if o == nil || IsNil(o.Interface) {
-		return nil, false
-	}
-	return o.Interface, true
-}
-
-// HasInterface returns a boolean if a field has been set.
-func (o *PortRequest) HasInterface() bool {
-	if o != nil && !IsNil(o.Interface) {
-		return true
-	}
-
-	return false
-}
-
-// SetInterface gets a reference to the given PortInterface and assigns it to the Interface field.
-func (o *PortRequest) SetInterface(v PortInterface) {
-	o.Interface = &v
 }
 
 // GetDemarcationPointIbx returns the DemarcationPointIbx field value if set, zero value otherwise.
@@ -813,70 +631,6 @@ func (o *PortRequest) SetLagEnabled(v bool) {
 	o.LagEnabled = &v
 }
 
-// GetLag returns the Lag field value if set, zero value otherwise.
-func (o *PortRequest) GetLag() PortLag {
-	if o == nil || IsNil(o.Lag) {
-		var ret PortLag
-		return ret
-	}
-	return *o.Lag
-}
-
-// GetLagOk returns a tuple with the Lag field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PortRequest) GetLagOk() (*PortLag, bool) {
-	if o == nil || IsNil(o.Lag) {
-		return nil, false
-	}
-	return o.Lag, true
-}
-
-// HasLag returns a boolean if a field has been set.
-func (o *PortRequest) HasLag() bool {
-	if o != nil && !IsNil(o.Lag) {
-		return true
-	}
-
-	return false
-}
-
-// SetLag gets a reference to the given PortLag and assigns it to the Lag field.
-func (o *PortRequest) SetLag(v PortLag) {
-	o.Lag = &v
-}
-
-// GetAsn returns the Asn field value if set, zero value otherwise.
-func (o *PortRequest) GetAsn() int32 {
-	if o == nil || IsNil(o.Asn) {
-		var ret int32
-		return ret
-	}
-	return *o.Asn
-}
-
-// GetAsnOk returns a tuple with the Asn field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PortRequest) GetAsnOk() (*int32, bool) {
-	if o == nil || IsNil(o.Asn) {
-		return nil, false
-	}
-	return o.Asn, true
-}
-
-// HasAsn returns a boolean if a field has been set.
-func (o *PortRequest) HasAsn() bool {
-	if o != nil && !IsNil(o.Asn) {
-		return true
-	}
-
-	return false
-}
-
-// SetAsn gets a reference to the given int32 and assigns it to the Asn field.
-func (o *PortRequest) SetAsn(v int32) {
-	o.Asn = &v
-}
-
 // GetPackage returns the Package field value if set, zero value otherwise.
 func (o *PortRequest) GetPackage() Package {
 	if o == nil || IsNil(o.Package) {
@@ -909,60 +663,36 @@ func (o *PortRequest) SetPackage(v Package) {
 	o.Package = &v
 }
 
-// GetSettings returns the Settings field value
+// GetSettings returns the Settings field value if set, zero value otherwise.
 func (o *PortRequest) GetSettings() PortSettings {
-	if o == nil {
+	if o == nil || IsNil(o.Settings) {
 		var ret PortSettings
 		return ret
 	}
-
-	return o.Settings
+	return *o.Settings
 }
 
-// GetSettingsOk returns a tuple with the Settings field value
+// GetSettingsOk returns a tuple with the Settings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PortRequest) GetSettingsOk() (*PortSettings, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Settings) {
 		return nil, false
 	}
-	return &o.Settings, true
+	return o.Settings, true
 }
 
-// SetSettings sets field value
-func (o *PortRequest) SetSettings(v PortSettings) {
-	o.Settings = v
-}
-
-// GetPhysicalPortQuantity returns the PhysicalPortQuantity field value if set, zero value otherwise.
-func (o *PortRequest) GetPhysicalPortQuantity() int32 {
-	if o == nil || IsNil(o.PhysicalPortQuantity) {
-		var ret int32
-		return ret
-	}
-	return *o.PhysicalPortQuantity
-}
-
-// GetPhysicalPortQuantityOk returns a tuple with the PhysicalPortQuantity field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PortRequest) GetPhysicalPortQuantityOk() (*int32, bool) {
-	if o == nil || IsNil(o.PhysicalPortQuantity) {
-		return nil, false
-	}
-	return o.PhysicalPortQuantity, true
-}
-
-// HasPhysicalPortQuantity returns a boolean if a field has been set.
-func (o *PortRequest) HasPhysicalPortQuantity() bool {
-	if o != nil && !IsNil(o.PhysicalPortQuantity) {
+// HasSettings returns a boolean if a field has been set.
+func (o *PortRequest) HasSettings() bool {
+	if o != nil && !IsNil(o.Settings) {
 		return true
 	}
 
 	return false
 }
 
-// SetPhysicalPortQuantity gets a reference to the given int32 and assigns it to the PhysicalPortQuantity field.
-func (o *PortRequest) SetPhysicalPortQuantity(v int32) {
-	o.PhysicalPortQuantity = &v
+// SetSettings gets a reference to the given PortSettings and assigns it to the Settings field.
+func (o *PortRequest) SetSettings(v PortSettings) {
+	o.Settings = &v
 }
 
 // GetNotifications returns the Notifications field value if set, zero value otherwise.
@@ -995,38 +725,6 @@ func (o *PortRequest) HasNotifications() bool {
 // SetNotifications gets a reference to the given []PortNotification and assigns it to the Notifications field.
 func (o *PortRequest) SetNotifications(v []PortNotification) {
 	o.Notifications = v
-}
-
-// GetAdditionalInfo returns the AdditionalInfo field value if set, zero value otherwise.
-func (o *PortRequest) GetAdditionalInfo() []PortAdditionalInfo {
-	if o == nil || IsNil(o.AdditionalInfo) {
-		var ret []PortAdditionalInfo
-		return ret
-	}
-	return o.AdditionalInfo
-}
-
-// GetAdditionalInfoOk returns a tuple with the AdditionalInfo field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PortRequest) GetAdditionalInfoOk() ([]PortAdditionalInfo, bool) {
-	if o == nil || IsNil(o.AdditionalInfo) {
-		return nil, false
-	}
-	return o.AdditionalInfo, true
-}
-
-// HasAdditionalInfo returns a boolean if a field has been set.
-func (o *PortRequest) HasAdditionalInfo() bool {
-	if o != nil && !IsNil(o.AdditionalInfo) {
-		return true
-	}
-
-	return false
-}
-
-// SetAdditionalInfo gets a reference to the given []PortAdditionalInfo and assigns it to the AdditionalInfo field.
-func (o *PortRequest) SetAdditionalInfo(v []PortAdditionalInfo) {
-	o.AdditionalInfo = v
 }
 
 // GetPhysicalPorts returns the PhysicalPorts field value if set, zero value otherwise.
@@ -1104,12 +802,6 @@ func (o PortRequest) MarshalJSON() ([]byte, error) {
 func (o PortRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["type"] = o.Type
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
-	if !IsNil(o.Description) {
-		toSerialize["description"] = o.Description
-	}
 	toSerialize["physicalPortsSpeed"] = o.PhysicalPortsSpeed
 	toSerialize["physicalPortsType"] = o.PhysicalPortsType
 	if !IsNil(o.PhysicalPortsCount) {
@@ -1119,12 +811,7 @@ func (o PortRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.BmmrType) {
 		toSerialize["bmmrType"] = o.BmmrType
 	}
-	if !IsNil(o.Project) {
-		toSerialize["project"] = o.Project
-	}
-	if !IsNil(o.State) {
-		toSerialize["state"] = o.State
-	}
+	toSerialize["project"] = o.Project
 	if !IsNil(o.Order) {
 		toSerialize["order"] = o.Order
 	}
@@ -1139,12 +826,6 @@ func (o PortRequest) ToMap() (map[string]interface{}, error) {
 		toSerialize["bandwidth"] = o.Bandwidth
 	}
 	toSerialize["location"] = o.Location
-	if !IsNil(o.Device) {
-		toSerialize["device"] = o.Device
-	}
-	if !IsNil(o.Interface) {
-		toSerialize["interface"] = o.Interface
-	}
 	if !IsNil(o.DemarcationPointIbx) {
 		toSerialize["demarcationPointIbx"] = o.DemarcationPointIbx
 	}
@@ -1161,24 +842,14 @@ func (o PortRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.LagEnabled) {
 		toSerialize["lagEnabled"] = o.LagEnabled
 	}
-	if !IsNil(o.Lag) {
-		toSerialize["lag"] = o.Lag
-	}
-	if !IsNil(o.Asn) {
-		toSerialize["asn"] = o.Asn
-	}
 	if !IsNil(o.Package) {
 		toSerialize["package"] = o.Package
 	}
-	toSerialize["settings"] = o.Settings
-	if !IsNil(o.PhysicalPortQuantity) {
-		toSerialize["physicalPortQuantity"] = o.PhysicalPortQuantity
+	if !IsNil(o.Settings) {
+		toSerialize["settings"] = o.Settings
 	}
 	if !IsNil(o.Notifications) {
 		toSerialize["notifications"] = o.Notifications
-	}
-	if !IsNil(o.AdditionalInfo) {
-		toSerialize["additionalInfo"] = o.AdditionalInfo
 	}
 	if !IsNil(o.PhysicalPorts) {
 		toSerialize["physicalPorts"] = o.PhysicalPorts
@@ -1203,10 +874,10 @@ func (o *PortRequest) UnmarshalJSON(data []byte) (err error) {
 		"physicalPortsSpeed",
 		"physicalPortsType",
 		"connectivitySourceType",
+		"project",
 		"account",
 		"location",
 		"encapsulation",
-		"settings",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -1237,36 +908,27 @@ func (o *PortRequest) UnmarshalJSON(data []byte) (err error) {
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "type")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "description")
 		delete(additionalProperties, "physicalPortsSpeed")
 		delete(additionalProperties, "physicalPortsType")
 		delete(additionalProperties, "physicalPortsCount")
 		delete(additionalProperties, "connectivitySourceType")
 		delete(additionalProperties, "bmmrType")
 		delete(additionalProperties, "project")
-		delete(additionalProperties, "state")
 		delete(additionalProperties, "order")
 		delete(additionalProperties, "account")
 		delete(additionalProperties, "serviceType")
 		delete(additionalProperties, "serviceCode")
 		delete(additionalProperties, "bandwidth")
 		delete(additionalProperties, "location")
-		delete(additionalProperties, "device")
-		delete(additionalProperties, "interface")
 		delete(additionalProperties, "demarcationPointIbx")
 		delete(additionalProperties, "tetherIbx")
 		delete(additionalProperties, "demarcationPoint")
 		delete(additionalProperties, "redundancy")
 		delete(additionalProperties, "encapsulation")
 		delete(additionalProperties, "lagEnabled")
-		delete(additionalProperties, "lag")
-		delete(additionalProperties, "asn")
 		delete(additionalProperties, "package")
 		delete(additionalProperties, "settings")
-		delete(additionalProperties, "physicalPortQuantity")
 		delete(additionalProperties, "notifications")
-		delete(additionalProperties, "additionalInfo")
 		delete(additionalProperties, "physicalPorts")
 		delete(additionalProperties, "loas")
 		o.AdditionalProperties = additionalProperties

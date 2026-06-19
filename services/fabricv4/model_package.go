@@ -17,7 +17,6 @@ var _ MappedNullable = &Package{}
 // Package Package settings for port
 type Package struct {
 	Code                 *PackageCode `json:"code,omitempty"`
-	Type                 *PackageType `json:"type,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -72,38 +71,6 @@ func (o *Package) SetCode(v PackageCode) {
 	o.Code = &v
 }
 
-// GetType returns the Type field value if set, zero value otherwise.
-func (o *Package) GetType() PackageType {
-	if o == nil || IsNil(o.Type) {
-		var ret PackageType
-		return ret
-	}
-	return *o.Type
-}
-
-// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Package) GetTypeOk() (*PackageType, bool) {
-	if o == nil || IsNil(o.Type) {
-		return nil, false
-	}
-	return o.Type, true
-}
-
-// HasType returns a boolean if a field has been set.
-func (o *Package) HasType() bool {
-	if o != nil && !IsNil(o.Type) {
-		return true
-	}
-
-	return false
-}
-
-// SetType gets a reference to the given PackageType and assigns it to the Type field.
-func (o *Package) SetType(v PackageType) {
-	o.Type = &v
-}
-
 func (o Package) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -116,9 +83,6 @@ func (o Package) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Code) {
 		toSerialize["code"] = o.Code
-	}
-	if !IsNil(o.Type) {
-		toSerialize["type"] = o.Type
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -143,7 +107,6 @@ func (o *Package) UnmarshalJSON(data []byte) (err error) {
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "code")
-		delete(additionalProperties, "type")
 		o.AdditionalProperties = additionalProperties
 	}
 

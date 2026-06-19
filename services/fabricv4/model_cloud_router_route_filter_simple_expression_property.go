@@ -17,9 +17,11 @@ type CloudRouterRouteFilterSimpleExpressionProperty string
 
 // List of CloudRouterRouteFilterSimpleExpression_property
 const (
-	CLOUDROUTERROUTEFILTERSIMPLEEXPRESSIONPROPERTY_TYPE              CloudRouterRouteFilterSimpleExpressionProperty = "/type"
-	CLOUDROUTERROUTEFILTERSIMPLEEXPRESSIONPROPERTY_DIRECTION         CloudRouterRouteFilterSimpleExpressionProperty = "/direction"
-	CLOUDROUTERROUTEFILTERSIMPLEEXPRESSIONPROPERTY_ATTACHMENT_STATUS CloudRouterRouteFilterSimpleExpressionProperty = "/attachmentStatus"
+	CLOUDROUTERROUTEFILTERSIMPLEEXPRESSIONPROPERTY_TYPE                         CloudRouterRouteFilterSimpleExpressionProperty = "/type"
+	CLOUDROUTERROUTEFILTERSIMPLEEXPRESSIONPROPERTY_DIRECTION                    CloudRouterRouteFilterSimpleExpressionProperty = "/direction"
+	CLOUDROUTERROUTEFILTERSIMPLEEXPRESSIONPROPERTY_ATTACHMENT_STATUS            CloudRouterRouteFilterSimpleExpressionProperty = "/attachmentStatus"
+	CLOUDROUTERROUTEFILTERSIMPLEEXPRESSIONPROPERTY_CHANGE_LOG_CREATED_DATE_TIME CloudRouterRouteFilterSimpleExpressionProperty = "/changeLog/createdDateTime"
+	CLOUDROUTERROUTEFILTERSIMPLEEXPRESSIONPROPERTY_CHANGE_LOG_UPDATED_DATE_TIME CloudRouterRouteFilterSimpleExpressionProperty = "/changeLog/updatedDateTime"
 )
 
 // All allowed values of CloudRouterRouteFilterSimpleExpressionProperty enum
@@ -27,6 +29,8 @@ var AllowedCloudRouterRouteFilterSimpleExpressionPropertyEnumValues = []CloudRou
 	"/type",
 	"/direction",
 	"/attachmentStatus",
+	"/changeLog/createdDateTime",
+	"/changeLog/updatedDateTime",
 }
 
 func (v *CloudRouterRouteFilterSimpleExpressionProperty) UnmarshalJSON(src []byte) error {

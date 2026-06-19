@@ -5,7 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Code** | Pointer to [**PackageCode**](PackageCode.md) |  | [optional] 
-**Type** | Pointer to [**PackageType**](PackageType.md) |  | [optional] 
 
 ## Methods
 
@@ -50,31 +49,6 @@ SetCode sets Code field to given value.
 `func (o *Package) HasCode() bool`
 
 HasCode returns a boolean if a field has been set.
-
-### GetType
-
-`func (o *Package) GetType() PackageType`
-
-GetType returns the Type field if non-nil, zero value otherwise.
-
-### GetTypeOk
-
-`func (o *Package) GetTypeOk() (*PackageType, bool)`
-
-GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetType
-
-`func (o *Package) SetType(v PackageType)`
-
-SetType sets Type field to given value.
-
-### HasType
-
-`func (o *Package) HasType() bool`
-
-HasType returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

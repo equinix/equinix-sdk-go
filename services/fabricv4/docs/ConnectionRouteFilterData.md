@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Uuid** | Pointer to **string** | Route Filter identifier | [optional] 
 **AttachmentStatus** | Pointer to [**ConnectionRouteAggregationDataAttachmentStatus**](ConnectionRouteAggregationDataAttachmentStatus.md) |  | [optional] 
 **Direction** | Pointer to [**ConnectionRouteFilterDataDirection**](ConnectionRouteFilterDataDirection.md) |  | [optional] 
+**ChangeLog** | Pointer to [**Changelog**](Changelog.md) |  | [optional] 
 
 ## Methods
 
@@ -153,6 +154,31 @@ SetDirection sets Direction field to given value.
 `func (o *ConnectionRouteFilterData) HasDirection() bool`
 
 HasDirection returns a boolean if a field has been set.
+
+### GetChangeLog
+
+`func (o *ConnectionRouteFilterData) GetChangeLog() Changelog`
+
+GetChangeLog returns the ChangeLog field if non-nil, zero value otherwise.
+
+### GetChangeLogOk
+
+`func (o *ConnectionRouteFilterData) GetChangeLogOk() (*Changelog, bool)`
+
+GetChangeLogOk returns a tuple with the ChangeLog field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetChangeLog
+
+`func (o *ConnectionRouteFilterData) SetChangeLog(v Changelog)`
+
+SetChangeLog sets ChangeLog field to given value.
+
+### HasChangeLog
+
+`func (o *ConnectionRouteFilterData) HasChangeLog() bool`
+
+HasChangeLog returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

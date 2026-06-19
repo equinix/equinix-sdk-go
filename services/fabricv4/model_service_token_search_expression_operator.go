@@ -17,12 +17,34 @@ type ServiceTokenSearchExpressionOperator string
 
 // List of ServiceTokenSearchExpression_operator
 const (
-	SERVICETOKENSEARCHEXPRESSIONOPERATOR_EQUAL ServiceTokenSearchExpressionOperator = "="
+	SERVICETOKENSEARCHEXPRESSIONOPERATOR_EQUAL                    ServiceTokenSearchExpressionOperator = "="
+	SERVICETOKENSEARCHEXPRESSIONOPERATOR_NOT_EQUAL                ServiceTokenSearchExpressionOperator = "!="
+	SERVICETOKENSEARCHEXPRESSIONOPERATOR_LIKE                     ServiceTokenSearchExpressionOperator = "LIKE"
+	SERVICETOKENSEARCHEXPRESSIONOPERATOR_ILIKE                    ServiceTokenSearchExpressionOperator = "ILIKE"
+	SERVICETOKENSEARCHEXPRESSIONOPERATOR_LESS_THAN                ServiceTokenSearchExpressionOperator = "<"
+	SERVICETOKENSEARCHEXPRESSIONOPERATOR_GREATER_THAN             ServiceTokenSearchExpressionOperator = ">"
+	SERVICETOKENSEARCHEXPRESSIONOPERATOR_LESS_THAN_OR_EQUAL_TO    ServiceTokenSearchExpressionOperator = "<="
+	SERVICETOKENSEARCHEXPRESSIONOPERATOR_GREATER_THAN_OR_EQUAL_TO ServiceTokenSearchExpressionOperator = ">="
+	SERVICETOKENSEARCHEXPRESSIONOPERATOR_IN                       ServiceTokenSearchExpressionOperator = "IN"
+	SERVICETOKENSEARCHEXPRESSIONOPERATOR_NOT_IN                   ServiceTokenSearchExpressionOperator = "NOT IN"
+	SERVICETOKENSEARCHEXPRESSIONOPERATOR_BETWEEN                  ServiceTokenSearchExpressionOperator = "BETWEEN"
+	SERVICETOKENSEARCHEXPRESSIONOPERATOR_NOT_BETWEEN              ServiceTokenSearchExpressionOperator = "NOT BETWEEN"
 )
 
 // All allowed values of ServiceTokenSearchExpressionOperator enum
 var AllowedServiceTokenSearchExpressionOperatorEnumValues = []ServiceTokenSearchExpressionOperator{
 	"=",
+	"!=",
+	"LIKE",
+	"ILIKE",
+	"<",
+	">",
+	"<=",
+	">=",
+	"IN",
+	"NOT IN",
+	"BETWEEN",
+	"NOT BETWEEN",
 }
 
 func (v *ServiceTokenSearchExpressionOperator) UnmarshalJSON(src []byte) error {

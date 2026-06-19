@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Type** | Pointer to [**ConnectionRouteAggregationDataType**](ConnectionRouteAggregationDataType.md) |  | [optional] 
 **Uuid** | Pointer to **string** | Route Aggregation identifier | [optional] 
 **AttachmentStatus** | Pointer to [**ConnectionRouteAggregationDataAttachmentStatus**](ConnectionRouteAggregationDataAttachmentStatus.md) |  | [optional] 
+**ChangeLog** | Pointer to [**Changelog**](Changelog.md) |  | [optional] 
 
 ## Methods
 
@@ -127,6 +128,31 @@ SetAttachmentStatus sets AttachmentStatus field to given value.
 `func (o *ConnectionRouteAggregationData) HasAttachmentStatus() bool`
 
 HasAttachmentStatus returns a boolean if a field has been set.
+
+### GetChangeLog
+
+`func (o *ConnectionRouteAggregationData) GetChangeLog() Changelog`
+
+GetChangeLog returns the ChangeLog field if non-nil, zero value otherwise.
+
+### GetChangeLogOk
+
+`func (o *ConnectionRouteAggregationData) GetChangeLogOk() (*Changelog, bool)`
+
+GetChangeLogOk returns a tuple with the ChangeLog field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetChangeLog
+
+`func (o *ConnectionRouteAggregationData) SetChangeLog(v Changelog)`
+
+SetChangeLog sets ChangeLog field to given value.
+
+### HasChangeLog
+
+`func (o *ConnectionRouteAggregationData) HasChangeLog() bool`
+
+HasChangeLog returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

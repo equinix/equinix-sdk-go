@@ -3,8 +3,6 @@
 ## Enum
 
 
-* `NULL` (value: `"NULL"`)
-
 * `DOT1_Q` (value: `"DOT1Q"`)
 
 * `QINQ` (value: `"QINQ"`)

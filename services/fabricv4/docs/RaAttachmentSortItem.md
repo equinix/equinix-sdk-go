@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Property** | Pointer to [**RaAttachmentSortItemProperty**](RaAttachmentSortItemProperty.md) |  | [optional] [default to RAATTACHMENTSORTITEMPROPERTY_CHANGE_LOG_UPDATED_DATE_TIME]
-**Direction** | Pointer to [**SortItemDirection**](SortItemDirection.md) |  | [optional] [default to SORTITEMDIRECTION_DESC]
+**Direction** | Pointer to [**RfAttachmentSortItemDirection**](RfAttachmentSortItemDirection.md) |  | [optional] [default to RFATTACHMENTSORTITEMDIRECTION_DESC]
 
 ## Methods
 
@@ -53,20 +53,20 @@ HasProperty returns a boolean if a field has been set.
 
 ### GetDirection
 
-`func (o *RaAttachmentSortItem) GetDirection() SortItemDirection`
+`func (o *RaAttachmentSortItem) GetDirection() RfAttachmentSortItemDirection`
 
 GetDirection returns the Direction field if non-nil, zero value otherwise.
 
 ### GetDirectionOk
 
-`func (o *RaAttachmentSortItem) GetDirectionOk() (*SortItemDirection, bool)`
+`func (o *RaAttachmentSortItem) GetDirectionOk() (*RfAttachmentSortItemDirection, bool)`
 
 GetDirectionOk returns a tuple with the Direction field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDirection
 
-`func (o *RaAttachmentSortItem) SetDirection(v SortItemDirection)`
+`func (o *RaAttachmentSortItem) SetDirection(v RfAttachmentSortItemDirection)`
 
 SetDirection sets Direction field to given value.
 

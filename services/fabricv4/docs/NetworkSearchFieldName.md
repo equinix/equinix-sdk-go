@@ -11,9 +11,15 @@
 
 * `TYPE` (value: `"/type"`)
 
+* `STATE` (value: `"/state"`)
+
 * `OPERATION_EQUINIX_STATUS` (value: `"/operation/equinixStatus"`)
 
 * `LOCATION_REGION` (value: `"/location/region"`)
+
+* `LOCATION_METRO_CODE` (value: `"/location/metroCode"`)
+
+* `CONNECTIONS_COUNT` (value: `"/connectionsCount"`)
 
 * `PROJECT_PROJECT_ID` (value: `"/project/projectId"`)
 
@@ -21,7 +27,11 @@
 
 * `ACCOUNT_ORG_ID` (value: `"/account/orgId"`)
 
-* `DELETED_DATE` (value: `"/deletedDate"`)
+* `CHANGE_LOG_CREATED_DATE_TIME` (value: `"/changeLog/createdDateTime"`)
+
+* `CHANGE_LOG_UPDATED_DATE_TIME` (value: `"/changeLog/updatedDateTime"`)
+
+* `CHANGE_LOG_DELETED_DATE_TIME` (value: `"/changeLog/deletedDateTime"`)
 
 * `STAR` (value: `"/_*"`)
 

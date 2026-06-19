@@ -51,6 +51,12 @@
 
 * `CHANGE_LOG_CREATED_DATE_TIME` (value: `"/changeLog/createdDateTime"`)
 
+* `CHANGE_LOG_DELETED_BY` (value: `"/changeLog/deletedBy"`)
+
+* `CHANGE_LOG_DELETED_DATE_TIME` (value: `"/changeLog/deletedDateTime"`)
+
+* `CHANGE_LOG_LAST_UPDATED_BY` (value: `"/changeLog/lastUpdatedBy"`)
+
 * `OPERATION_EQUINIX_STATUS` (value: `"/operation/equinixStatus"`)
 
 * `OPERATION_PROVIDER_STATUS` (value: `"/operation/providerStatus"`)
@@ -73,6 +79,8 @@
 
 * `Z_SIDE_ACCESS_POINT_LOCATION_METRO_NAME` (value: `"/zSide/accessPoint/location/metroName"`)
 
+* `Z_SIDE_ACCESS_POINT_SELLER_REGION` (value: `"/zSide/accessPoint/sellerRegion"`)
+
 * `Z_SIDE_ACCESS_POINT_NAME` (value: `"/zSide/accessPoint/name"`)
 
 * `Z_SIDE_ACCESS_POINT_PORT_UUID` (value: `"/zSide/accessPoint/port/uuid"`)
@@ -94,6 +102,8 @@
 * `Z_SIDE_SERVICE_TOKEN_UUID` (value: `"/zSide/serviceToken/uuid"`)
 
 * `Z_SIDE_INTERNET_ACCESS_UUID` (value: `"/zSide/internetAccess/uuid"`)
+
+* `STATE` (value: `"/state"`)
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

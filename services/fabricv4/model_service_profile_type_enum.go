@@ -17,10 +17,12 @@ type ServiceProfileTypeEnum string
 
 // List of ServiceProfileTypeEnum
 const (
-	SERVICEPROFILETYPEENUM_L2_PROFILE ServiceProfileTypeEnum = "L2_PROFILE"
-	SERVICEPROFILETYPEENUM_L3_PROFILE ServiceProfileTypeEnum = "L3_PROFILE"
-	SERVICEPROFILETYPEENUM_IA_PROFILE ServiceProfileTypeEnum = "IA_PROFILE"
-	SERVICEPROFILETYPEENUM_IX_PROFILE ServiceProfileTypeEnum = "IX_PROFILE"
+	SERVICEPROFILETYPEENUM_L2_PROFILE    ServiceProfileTypeEnum = "L2_PROFILE"
+	SERVICEPROFILETYPEENUM_L3_PROFILE    ServiceProfileTypeEnum = "L3_PROFILE"
+	SERVICEPROFILETYPEENUM_IA_PROFILE    ServiceProfileTypeEnum = "IA_PROFILE"
+	SERVICEPROFILETYPEENUM_IX_PROFILE    ServiceProfileTypeEnum = "IX_PROFILE"
+	SERVICEPROFILETYPEENUM_IC_PROFILE    ServiceProfileTypeEnum = "IC_PROFILE"
+	SERVICEPROFILETYPEENUM_LMAAS_PROFILE ServiceProfileTypeEnum = "LMAAS_PROFILE"
 )
 
 // All allowed values of ServiceProfileTypeEnum enum
@@ -29,6 +31,8 @@ var AllowedServiceProfileTypeEnumEnumValues = []ServiceProfileTypeEnum{
 	"L3_PROFILE",
 	"IA_PROFILE",
 	"IX_PROFILE",
+	"IC_PROFILE",
+	"LMAAS_PROFILE",
 }
 
 func (v *ServiceProfileTypeEnum) UnmarshalJSON(src []byte) error {

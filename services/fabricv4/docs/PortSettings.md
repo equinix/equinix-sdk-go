@@ -8,8 +8,6 @@ Name | Type | Description | Notes
 **ViewPortPermission** | Pointer to **bool** |  | [optional] 
 **PlaceVcOrderPermission** | Pointer to **bool** |  | [optional] 
 **Layer3Enabled** | Pointer to **bool** |  | [optional] 
-**SharedPortType** | Pointer to **bool** |  | [optional] 
-**SharedPortProduct** | Pointer to [**PortSettingsSharedPortProduct**](PortSettingsSharedPortProduct.md) |  | [optional] 
 **PackageType** | Pointer to [**PortSettingsPackageType**](PortSettingsPackageType.md) |  | [optional] 
 
 ## Methods
@@ -130,56 +128,6 @@ SetLayer3Enabled sets Layer3Enabled field to given value.
 `func (o *PortSettings) HasLayer3Enabled() bool`
 
 HasLayer3Enabled returns a boolean if a field has been set.
-
-### GetSharedPortType
-
-`func (o *PortSettings) GetSharedPortType() bool`
-
-GetSharedPortType returns the SharedPortType field if non-nil, zero value otherwise.
-
-### GetSharedPortTypeOk
-
-`func (o *PortSettings) GetSharedPortTypeOk() (*bool, bool)`
-
-GetSharedPortTypeOk returns a tuple with the SharedPortType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSharedPortType
-
-`func (o *PortSettings) SetSharedPortType(v bool)`
-
-SetSharedPortType sets SharedPortType field to given value.
-
-### HasSharedPortType
-
-`func (o *PortSettings) HasSharedPortType() bool`
-
-HasSharedPortType returns a boolean if a field has been set.
-
-### GetSharedPortProduct
-
-`func (o *PortSettings) GetSharedPortProduct() PortSettingsSharedPortProduct`
-
-GetSharedPortProduct returns the SharedPortProduct field if non-nil, zero value otherwise.
-
-### GetSharedPortProductOk
-
-`func (o *PortSettings) GetSharedPortProductOk() (*PortSettingsSharedPortProduct, bool)`
-
-GetSharedPortProductOk returns a tuple with the SharedPortProduct field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSharedPortProduct
-
-`func (o *PortSettings) SetSharedPortProduct(v PortSettingsSharedPortProduct)`
-
-SetSharedPortProduct sets SharedPortProduct field to given value.
-
-### HasSharedPortProduct
-
-`func (o *PortSettings) HasSharedPortProduct() bool`
-
-HasSharedPortProduct returns a boolean if a field has been set.
 
 ### GetPackageType
 

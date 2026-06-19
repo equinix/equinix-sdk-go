@@ -23,9 +23,7 @@ type PortSettings struct {
 	// Deprecated
 	PlaceVcOrderPermission *bool `json:"placeVcOrderPermission,omitempty"`
 	// Deprecated
-	Layer3Enabled     *bool                          `json:"layer3Enabled,omitempty"`
-	SharedPortType    *bool                          `json:"sharedPortType,omitempty"`
-	SharedPortProduct *PortSettingsSharedPortProduct `json:"sharedPortProduct,omitempty"`
+	Layer3Enabled *bool `json:"layer3Enabled,omitempty"`
 	// Deprecated
 	PackageType          *PortSettingsPackageType `json:"packageType,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -190,70 +188,6 @@ func (o *PortSettings) SetLayer3Enabled(v bool) {
 	o.Layer3Enabled = &v
 }
 
-// GetSharedPortType returns the SharedPortType field value if set, zero value otherwise.
-func (o *PortSettings) GetSharedPortType() bool {
-	if o == nil || IsNil(o.SharedPortType) {
-		var ret bool
-		return ret
-	}
-	return *o.SharedPortType
-}
-
-// GetSharedPortTypeOk returns a tuple with the SharedPortType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PortSettings) GetSharedPortTypeOk() (*bool, bool) {
-	if o == nil || IsNil(o.SharedPortType) {
-		return nil, false
-	}
-	return o.SharedPortType, true
-}
-
-// HasSharedPortType returns a boolean if a field has been set.
-func (o *PortSettings) HasSharedPortType() bool {
-	if o != nil && !IsNil(o.SharedPortType) {
-		return true
-	}
-
-	return false
-}
-
-// SetSharedPortType gets a reference to the given bool and assigns it to the SharedPortType field.
-func (o *PortSettings) SetSharedPortType(v bool) {
-	o.SharedPortType = &v
-}
-
-// GetSharedPortProduct returns the SharedPortProduct field value if set, zero value otherwise.
-func (o *PortSettings) GetSharedPortProduct() PortSettingsSharedPortProduct {
-	if o == nil || IsNil(o.SharedPortProduct) {
-		var ret PortSettingsSharedPortProduct
-		return ret
-	}
-	return *o.SharedPortProduct
-}
-
-// GetSharedPortProductOk returns a tuple with the SharedPortProduct field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PortSettings) GetSharedPortProductOk() (*PortSettingsSharedPortProduct, bool) {
-	if o == nil || IsNil(o.SharedPortProduct) {
-		return nil, false
-	}
-	return o.SharedPortProduct, true
-}
-
-// HasSharedPortProduct returns a boolean if a field has been set.
-func (o *PortSettings) HasSharedPortProduct() bool {
-	if o != nil && !IsNil(o.SharedPortProduct) {
-		return true
-	}
-
-	return false
-}
-
-// SetSharedPortProduct gets a reference to the given PortSettingsSharedPortProduct and assigns it to the SharedPortProduct field.
-func (o *PortSettings) SetSharedPortProduct(v PortSettingsSharedPortProduct) {
-	o.SharedPortProduct = &v
-}
-
 // GetPackageType returns the PackageType field value if set, zero value otherwise.
 // Deprecated
 func (o *PortSettings) GetPackageType() PortSettingsPackageType {
@@ -311,12 +245,6 @@ func (o PortSettings) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Layer3Enabled) {
 		toSerialize["layer3Enabled"] = o.Layer3Enabled
 	}
-	if !IsNil(o.SharedPortType) {
-		toSerialize["sharedPortType"] = o.SharedPortType
-	}
-	if !IsNil(o.SharedPortProduct) {
-		toSerialize["sharedPortProduct"] = o.SharedPortProduct
-	}
 	if !IsNil(o.PackageType) {
 		toSerialize["packageType"] = o.PackageType
 	}
@@ -346,8 +274,6 @@ func (o *PortSettings) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "viewPortPermission")
 		delete(additionalProperties, "placeVcOrderPermission")
 		delete(additionalProperties, "layer3Enabled")
-		delete(additionalProperties, "sharedPortType")
-		delete(additionalProperties, "sharedPortProduct")
 		delete(additionalProperties, "packageType")
 		o.AdditionalProperties = additionalProperties
 	}

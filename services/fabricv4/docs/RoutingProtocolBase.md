@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to **string** | Routing protocol type | [optional] 
+**Type** | **string** | Routing protocol type | 
 **Name** | Pointer to **string** |  | [optional] 
 **BgpIpv4** | Pointer to [**BGPConnectionIpv4**](BGPConnectionIpv4.md) |  | [optional] 
 **BgpIpv6** | Pointer to [**BGPConnectionIpv6**](BGPConnectionIpv6.md) |  | [optional] 
@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 
 ### NewRoutingProtocolBase
 
-`func NewRoutingProtocolBase() *RoutingProtocolBase`
+`func NewRoutingProtocolBase(type_ string, ) *RoutingProtocolBase`
 
 NewRoutingProtocolBase instantiates a new RoutingProtocolBase object
 This constructor will assign default values to properties that have it defined,
@@ -53,11 +53,6 @@ and a boolean to check if the value has been set.
 
 SetType sets Type field to given value.
 
-### HasType
-
-`func (o *RoutingProtocolBase) HasType() bool`
-
-HasType returns a boolean if a field has been set.
 
 ### GetName
 

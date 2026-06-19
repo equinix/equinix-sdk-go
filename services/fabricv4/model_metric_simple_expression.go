@@ -16,7 +16,7 @@ var _ MappedNullable = &MetricSimpleExpression{}
 
 // MetricSimpleExpression struct for MetricSimpleExpression
 type MetricSimpleExpression struct {
-	// Possible field names to use on filters:  * `/subject` - Metric subject description (required and limited to 1 value)  * `/name` - Metric names (required)  * `/dataPoints/endDateTime` - Time of Metrics
+	// Possible field names to use on filters:  * `/subject` - Metric subject description (required and limited to 1 value)  * `/name` - Metric names (required)  * `/dataPoints/endDateTime` - Time of Metrics  * `/time` - Time of Metrics  * `/interval` - ISO-8601 duration format to specify the interval of metrics data points  * `/value` - specific data points of the metric to return (e.g. 'last' - for metros only)
 	Property *string `json:"property,omitempty"`
 	// Possible operators to use on filters:  * `=` - equal  * `>` - greater than  * `>=` - greater than or equal to  * `<` - less than  * `<=` - less than or equal to  * `BETWEEN` - between  * `IN` - in
 	Operator             *string  `json:"operator,omitempty"`

@@ -17,14 +17,18 @@ type CloudRouterRouteAggregationSimpleExpressionProperty string
 
 // List of CloudRouterRouteAggregationSimpleExpression_property
 const (
-	CLOUDROUTERROUTEAGGREGATIONSIMPLEEXPRESSIONPROPERTY_TYPE              CloudRouterRouteAggregationSimpleExpressionProperty = "/type"
-	CLOUDROUTERROUTEAGGREGATIONSIMPLEEXPRESSIONPROPERTY_ATTACHMENT_STATUS CloudRouterRouteAggregationSimpleExpressionProperty = "/attachmentStatus"
+	CLOUDROUTERROUTEAGGREGATIONSIMPLEEXPRESSIONPROPERTY_TYPE                         CloudRouterRouteAggregationSimpleExpressionProperty = "/type"
+	CLOUDROUTERROUTEAGGREGATIONSIMPLEEXPRESSIONPROPERTY_ATTACHMENT_STATUS            CloudRouterRouteAggregationSimpleExpressionProperty = "/attachmentStatus"
+	CLOUDROUTERROUTEAGGREGATIONSIMPLEEXPRESSIONPROPERTY_CHANGE_LOG_CREATED_DATE_TIME CloudRouterRouteAggregationSimpleExpressionProperty = "/changeLog/createdDateTime"
+	CLOUDROUTERROUTEAGGREGATIONSIMPLEEXPRESSIONPROPERTY_CHANGE_LOG_UPDATED_DATE_TIME CloudRouterRouteAggregationSimpleExpressionProperty = "/changeLog/updatedDateTime"
 )
 
 // All allowed values of CloudRouterRouteAggregationSimpleExpressionProperty enum
 var AllowedCloudRouterRouteAggregationSimpleExpressionPropertyEnumValues = []CloudRouterRouteAggregationSimpleExpressionProperty{
 	"/type",
 	"/attachmentStatus",
+	"/changeLog/createdDateTime",
+	"/changeLog/updatedDateTime",
 }
 
 func (v *CloudRouterRouteAggregationSimpleExpressionProperty) UnmarshalJSON(src []byte) error {

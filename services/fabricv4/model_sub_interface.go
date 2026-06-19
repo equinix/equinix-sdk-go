@@ -16,7 +16,8 @@ var _ MappedNullable = &SubInterface{}
 
 // SubInterface Sub Interface information
 type SubInterface struct {
-	// name of subinterafce of a port
+	// name of subInterface of a port
+	// Deprecated
 	Name                 *string `json:"name,omitempty"`
 	Unit                 *int32  `json:"unit,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -42,6 +43,7 @@ func NewSubInterfaceWithDefaults() *SubInterface {
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
+// Deprecated
 func (o *SubInterface) GetName() string {
 	if o == nil || IsNil(o.Name) {
 		var ret string
@@ -52,6 +54,7 @@ func (o *SubInterface) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *SubInterface) GetNameOk() (*string, bool) {
 	if o == nil || IsNil(o.Name) {
 		return nil, false
@@ -69,6 +72,7 @@ func (o *SubInterface) HasName() bool {
 }
 
 // SetName gets a reference to the given string and assigns it to the Name field.
+// Deprecated
 func (o *SubInterface) SetName(v string) {
 	o.Name = &v
 }

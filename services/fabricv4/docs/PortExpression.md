@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **And** | Pointer to [**[]PortExpression**](PortExpression.md) |  | [optional] 
 **Or** | Pointer to [**[]PortExpression**](PortExpression.md) |  | [optional] 
 **Property** | Pointer to [**PortSearchFieldName**](PortSearchFieldName.md) |  | [optional] 
-**Operator** | Pointer to [**ServiceTokenSearchExpressionOperator**](ServiceTokenSearchExpressionOperator.md) |  | [optional] 
+**Operator** | Pointer to [**IpBlockAndQueryOperator**](IpBlockAndQueryOperator.md) |  | [optional] 
 **Values** | Pointer to **[]string** |  | [optional] 
 
 ## Methods
@@ -106,20 +106,20 @@ HasProperty returns a boolean if a field has been set.
 
 ### GetOperator
 
-`func (o *PortExpression) GetOperator() ServiceTokenSearchExpressionOperator`
+`func (o *PortExpression) GetOperator() IpBlockAndQueryOperator`
 
 GetOperator returns the Operator field if non-nil, zero value otherwise.
 
 ### GetOperatorOk
 
-`func (o *PortExpression) GetOperatorOk() (*ServiceTokenSearchExpressionOperator, bool)`
+`func (o *PortExpression) GetOperatorOk() (*IpBlockAndQueryOperator, bool)`
 
 GetOperatorOk returns a tuple with the Operator field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOperator
 
-`func (o *PortExpression) SetOperator(v ServiceTokenSearchExpressionOperator)`
+`func (o *PortExpression) SetOperator(v IpBlockAndQueryOperator)`
 
 SetOperator sets Operator field to given value.
 
