@@ -1,6 +1,0 @@
-properties:
-  operating_systems:
-    items:
-      $ref: './OperatingSystem.yaml'
-    type: array
-type: object

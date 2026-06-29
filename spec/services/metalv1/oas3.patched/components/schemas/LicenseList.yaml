@@ -1,6 +1,0 @@
-properties:
-  licenses:
-    items:
-      $ref: './License.yaml'
-    type: array
-type: object

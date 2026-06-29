@@ -1,7 +1,0 @@
-properties:
-  id:
-    format: uuid
-    type: string
-  name:
-    type: string
-type: object

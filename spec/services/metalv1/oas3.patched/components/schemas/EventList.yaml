@@ -1,8 +1,0 @@
-properties:
-  events:
-    items:
-      $ref: './Event.yaml'
-    type: array
-  meta:
-    $ref: './Meta.yaml'
-type: object

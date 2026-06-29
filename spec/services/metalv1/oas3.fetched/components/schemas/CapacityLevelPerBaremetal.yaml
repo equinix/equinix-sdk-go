@@ -1,5 +1,0 @@
-properties:
-  level:
-    type: string
-    available_servers: integer
-type: object
