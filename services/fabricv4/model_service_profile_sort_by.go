@@ -21,6 +21,7 @@ const (
 	SERVICEPROFILESORTBY_STATE                        ServiceProfileSortBy = "/state"
 	SERVICEPROFILESORTBY_CHANGE_LOG_CREATED_DATE_TIME ServiceProfileSortBy = "/changeLog/createdDateTime"
 	SERVICEPROFILESORTBY_CHANGE_LOG_UPDATED_DATE_TIME ServiceProfileSortBy = "/changeLog/updatedDateTime"
+	SERVICEPROFILESORTBY_UNKNOWN_DEFAULT_OPEN_API     ServiceProfileSortBy = "unknown_default_open_api"
 )
 
 // All allowed values of ServiceProfileSortBy enum
@@ -29,6 +30,7 @@ var AllowedServiceProfileSortByEnumValues = []ServiceProfileSortBy{
 	"/state",
 	"/changeLog/createdDateTime",
 	"/changeLog/updatedDateTime",
+	"unknown_default_open_api",
 }
 
 func (v *ServiceProfileSortBy) UnmarshalJSON(src []byte) error {
@@ -45,7 +47,8 @@ func (v *ServiceProfileSortBy) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ServiceProfileSortBy", value)
+	*v = SERVICEPROFILESORTBY_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewServiceProfileSortByFromValue returns a pointer to a valid ServiceProfileSortBy

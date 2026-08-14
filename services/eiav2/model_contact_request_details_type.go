@@ -20,10 +20,11 @@ type ContactRequestDetailsType string
 
 // List of ContactRequest_details_type
 const (
-	CONTACTREQUESTDETAILSTYPE_EMAIL           ContactRequestDetailsType = "EMAIL"
-	CONTACTREQUESTDETAILSTYPE_PHONE           ContactRequestDetailsType = "PHONE"
-	CONTACTREQUESTDETAILSTYPE_MOBILE          ContactRequestDetailsType = "MOBILE"
-	CONTACTREQUESTDETAILSTYPE_SECONDARY_EMAIL ContactRequestDetailsType = "SECONDARY_EMAIL"
+	CONTACTREQUESTDETAILSTYPE_EMAIL                    ContactRequestDetailsType = "EMAIL"
+	CONTACTREQUESTDETAILSTYPE_PHONE                    ContactRequestDetailsType = "PHONE"
+	CONTACTREQUESTDETAILSTYPE_MOBILE                   ContactRequestDetailsType = "MOBILE"
+	CONTACTREQUESTDETAILSTYPE_SECONDARY_EMAIL          ContactRequestDetailsType = "SECONDARY_EMAIL"
+	CONTACTREQUESTDETAILSTYPE_UNKNOWN_DEFAULT_OPEN_API ContactRequestDetailsType = "unknown_default_open_api"
 )
 
 // All allowed values of ContactRequestDetailsType enum
@@ -32,6 +33,7 @@ var AllowedContactRequestDetailsTypeEnumValues = []ContactRequestDetailsType{
 	"PHONE",
 	"MOBILE",
 	"SECONDARY_EMAIL",
+	"unknown_default_open_api",
 }
 
 func (v *ContactRequestDetailsType) UnmarshalJSON(src []byte) error {
@@ -48,7 +50,8 @@ func (v *ContactRequestDetailsType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ContactRequestDetailsType", value)
+	*v = CONTACTREQUESTDETAILSTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewContactRequestDetailsTypeFromValue returns a pointer to a valid ContactRequestDetailsType

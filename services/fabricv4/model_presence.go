@@ -17,12 +17,14 @@ type Presence string
 
 // List of Presence
 const (
-	PRESENCE_MY_PORTS Presence = "MY_PORTS"
+	PRESENCE_MY_PORTS                 Presence = "MY_PORTS"
+	PRESENCE_UNKNOWN_DEFAULT_OPEN_API Presence = "unknown_default_open_api"
 )
 
 // All allowed values of Presence enum
 var AllowedPresenceEnumValues = []Presence{
 	"MY_PORTS",
+	"unknown_default_open_api",
 }
 
 func (v *Presence) UnmarshalJSON(src []byte) error {
@@ -39,7 +41,8 @@ func (v *Presence) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid Presence", value)
+	*v = PRESENCE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewPresenceFromValue returns a pointer to a valid Presence

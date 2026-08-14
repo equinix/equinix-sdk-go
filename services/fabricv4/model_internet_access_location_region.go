@@ -17,9 +17,10 @@ type InternetAccessLocationRegion string
 
 // List of InternetAccessLocation_region
 const (
-	INTERNETACCESSLOCATIONREGION_APAC InternetAccessLocationRegion = "APAC"
-	INTERNETACCESSLOCATIONREGION_EMEA InternetAccessLocationRegion = "EMEA"
-	INTERNETACCESSLOCATIONREGION_AMER InternetAccessLocationRegion = "AMER"
+	INTERNETACCESSLOCATIONREGION_APAC                     InternetAccessLocationRegion = "APAC"
+	INTERNETACCESSLOCATIONREGION_EMEA                     InternetAccessLocationRegion = "EMEA"
+	INTERNETACCESSLOCATIONREGION_AMER                     InternetAccessLocationRegion = "AMER"
+	INTERNETACCESSLOCATIONREGION_UNKNOWN_DEFAULT_OPEN_API InternetAccessLocationRegion = "unknown_default_open_api"
 )
 
 // All allowed values of InternetAccessLocationRegion enum
@@ -27,6 +28,7 @@ var AllowedInternetAccessLocationRegionEnumValues = []InternetAccessLocationRegi
 	"APAC",
 	"EMEA",
 	"AMER",
+	"unknown_default_open_api",
 }
 
 func (v *InternetAccessLocationRegion) UnmarshalJSON(src []byte) error {
@@ -43,7 +45,8 @@ func (v *InternetAccessLocationRegion) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid InternetAccessLocationRegion", value)
+	*v = INTERNETACCESSLOCATIONREGION_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewInternetAccessLocationRegionFromValue returns a pointer to a valid InternetAccessLocationRegion

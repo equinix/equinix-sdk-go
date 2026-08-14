@@ -17,14 +17,16 @@ type RouteFiltersBaseType string
 
 // List of RouteFiltersBase_type
 const (
-	ROUTEFILTERSBASETYPE_IPV4_PREFIX_FILTER RouteFiltersBaseType = "BGP_IPv4_PREFIX_FILTER"
-	ROUTEFILTERSBASETYPE_IPV6_PREFIX_FILTER RouteFiltersBaseType = "BGP_IPv6_PREFIX_FILTER"
+	ROUTEFILTERSBASETYPE_IPV4_PREFIX_FILTER       RouteFiltersBaseType = "BGP_IPv4_PREFIX_FILTER"
+	ROUTEFILTERSBASETYPE_IPV6_PREFIX_FILTER       RouteFiltersBaseType = "BGP_IPv6_PREFIX_FILTER"
+	ROUTEFILTERSBASETYPE_UNKNOWN_DEFAULT_OPEN_API RouteFiltersBaseType = "unknown_default_open_api"
 )
 
 // All allowed values of RouteFiltersBaseType enum
 var AllowedRouteFiltersBaseTypeEnumValues = []RouteFiltersBaseType{
 	"BGP_IPv4_PREFIX_FILTER",
 	"BGP_IPv6_PREFIX_FILTER",
+	"unknown_default_open_api",
 }
 
 func (v *RouteFiltersBaseType) UnmarshalJSON(src []byte) error {
@@ -41,7 +43,8 @@ func (v *RouteFiltersBaseType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid RouteFiltersBaseType", value)
+	*v = ROUTEFILTERSBASETYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewRouteFiltersBaseTypeFromValue returns a pointer to a valid RouteFiltersBaseType

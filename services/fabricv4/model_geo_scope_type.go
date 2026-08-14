@@ -17,14 +17,15 @@ type GeoScopeType string
 
 // List of GeoScopeType
 const (
-	GEOSCOPETYPE_CANADA      GeoScopeType = "CANADA"
-	GEOSCOPETYPE_CONUS       GeoScopeType = "CONUS"
-	GEOSCOPETYPE_JAPAN       GeoScopeType = "JAPAN"
-	GEOSCOPETYPE_UK          GeoScopeType = "UK"
-	GEOSCOPETYPE_AUSTRALIA   GeoScopeType = "AUSTRALIA"
-	GEOSCOPETYPE_BRAZIL      GeoScopeType = "BRAZIL"
-	GEOSCOPETYPE_SWITZERLAND GeoScopeType = "SWITZERLAND"
-	GEOSCOPETYPE_EU          GeoScopeType = "EU"
+	GEOSCOPETYPE_CANADA                   GeoScopeType = "CANADA"
+	GEOSCOPETYPE_CONUS                    GeoScopeType = "CONUS"
+	GEOSCOPETYPE_JAPAN                    GeoScopeType = "JAPAN"
+	GEOSCOPETYPE_UK                       GeoScopeType = "UK"
+	GEOSCOPETYPE_AUSTRALIA                GeoScopeType = "AUSTRALIA"
+	GEOSCOPETYPE_BRAZIL                   GeoScopeType = "BRAZIL"
+	GEOSCOPETYPE_SWITZERLAND              GeoScopeType = "SWITZERLAND"
+	GEOSCOPETYPE_EU                       GeoScopeType = "EU"
+	GEOSCOPETYPE_UNKNOWN_DEFAULT_OPEN_API GeoScopeType = "unknown_default_open_api"
 )
 
 // All allowed values of GeoScopeType enum
@@ -37,6 +38,7 @@ var AllowedGeoScopeTypeEnumValues = []GeoScopeType{
 	"BRAZIL",
 	"SWITZERLAND",
 	"EU",
+	"unknown_default_open_api",
 }
 
 func (v *GeoScopeType) UnmarshalJSON(src []byte) error {
@@ -53,7 +55,8 @@ func (v *GeoScopeType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid GeoScopeType", value)
+	*v = GEOSCOPETYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewGeoScopeTypeFromValue returns a pointer to a valid GeoScopeType

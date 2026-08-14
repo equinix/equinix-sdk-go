@@ -17,9 +17,10 @@ type PackageCode string
 
 // List of Package_code
 const (
-	PACKAGECODE_STANDARD       PackageCode = "STANDARD"
-	PACKAGECODE_UNLIMITED      PackageCode = "UNLIMITED"
-	PACKAGECODE_UNLIMITED_PLUS PackageCode = "UNLIMITED_PLUS"
+	PACKAGECODE_STANDARD                 PackageCode = "STANDARD"
+	PACKAGECODE_UNLIMITED                PackageCode = "UNLIMITED"
+	PACKAGECODE_UNLIMITED_PLUS           PackageCode = "UNLIMITED_PLUS"
+	PACKAGECODE_UNKNOWN_DEFAULT_OPEN_API PackageCode = "unknown_default_open_api"
 )
 
 // All allowed values of PackageCode enum
@@ -27,6 +28,7 @@ var AllowedPackageCodeEnumValues = []PackageCode{
 	"STANDARD",
 	"UNLIMITED",
 	"UNLIMITED_PLUS",
+	"unknown_default_open_api",
 }
 
 func (v *PackageCode) UnmarshalJSON(src []byte) error {
@@ -43,7 +45,8 @@ func (v *PackageCode) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid PackageCode", value)
+	*v = PACKAGECODE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewPackageCodeFromValue returns a pointer to a valid PackageCode

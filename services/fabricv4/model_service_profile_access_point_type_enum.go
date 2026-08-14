@@ -17,14 +17,16 @@ type ServiceProfileAccessPointTypeEnum string
 
 // List of ServiceProfileAccessPointTypeEnum
 const (
-	SERVICEPROFILEACCESSPOINTTYPEENUM_VD   ServiceProfileAccessPointTypeEnum = "VD"
-	SERVICEPROFILEACCESSPOINTTYPEENUM_COLO ServiceProfileAccessPointTypeEnum = "COLO"
+	SERVICEPROFILEACCESSPOINTTYPEENUM_VD                       ServiceProfileAccessPointTypeEnum = "VD"
+	SERVICEPROFILEACCESSPOINTTYPEENUM_COLO                     ServiceProfileAccessPointTypeEnum = "COLO"
+	SERVICEPROFILEACCESSPOINTTYPEENUM_UNKNOWN_DEFAULT_OPEN_API ServiceProfileAccessPointTypeEnum = "unknown_default_open_api"
 )
 
 // All allowed values of ServiceProfileAccessPointTypeEnum enum
 var AllowedServiceProfileAccessPointTypeEnumEnumValues = []ServiceProfileAccessPointTypeEnum{
 	"VD",
 	"COLO",
+	"unknown_default_open_api",
 }
 
 func (v *ServiceProfileAccessPointTypeEnum) UnmarshalJSON(src []byte) error {
@@ -41,7 +43,8 @@ func (v *ServiceProfileAccessPointTypeEnum) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ServiceProfileAccessPointTypeEnum", value)
+	*v = SERVICEPROFILEACCESSPOINTTYPEENUM_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewServiceProfileAccessPointTypeEnumFromValue returns a pointer to a valid ServiceProfileAccessPointTypeEnum

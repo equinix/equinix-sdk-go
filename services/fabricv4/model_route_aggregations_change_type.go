@@ -23,6 +23,7 @@ const (
 	ROUTEAGGREGATIONSCHANGETYPE_IPV6_PREFIX_AGGREGATION_UPDATE   RouteAggregationsChangeType = "BGP_IPv6_PREFIX_AGGREGATION_UPDATE"
 	ROUTEAGGREGATIONSCHANGETYPE_IPV6_PREFIX_AGGREGATION_CREATION RouteAggregationsChangeType = "BGP_IPv6_PREFIX_AGGREGATION_CREATION"
 	ROUTEAGGREGATIONSCHANGETYPE_IPV6_PREFIX_AGGREGATION_DELETION RouteAggregationsChangeType = "BGP_IPv6_PREFIX_AGGREGATION_DELETION"
+	ROUTEAGGREGATIONSCHANGETYPE_UNKNOWN_DEFAULT_OPEN_API         RouteAggregationsChangeType = "unknown_default_open_api"
 )
 
 // All allowed values of RouteAggregationsChangeType enum
@@ -33,6 +34,7 @@ var AllowedRouteAggregationsChangeTypeEnumValues = []RouteAggregationsChangeType
 	"BGP_IPv6_PREFIX_AGGREGATION_UPDATE",
 	"BGP_IPv6_PREFIX_AGGREGATION_CREATION",
 	"BGP_IPv6_PREFIX_AGGREGATION_DELETION",
+	"unknown_default_open_api",
 }
 
 func (v *RouteAggregationsChangeType) UnmarshalJSON(src []byte) error {
@@ -49,7 +51,8 @@ func (v *RouteAggregationsChangeType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid RouteAggregationsChangeType", value)
+	*v = ROUTEAGGREGATIONSCHANGETYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewRouteAggregationsChangeTypeFromValue returns a pointer to a valid RouteAggregationsChangeType

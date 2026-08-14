@@ -17,10 +17,11 @@ type ServiceTokenState string
 
 // List of ServiceTokenState
 const (
-	SERVICETOKENSTATE_ACTIVE   ServiceTokenState = "ACTIVE"
-	SERVICETOKENSTATE_INACTIVE ServiceTokenState = "INACTIVE"
-	SERVICETOKENSTATE_EXPIRED  ServiceTokenState = "EXPIRED"
-	SERVICETOKENSTATE_DELETED  ServiceTokenState = "DELETED"
+	SERVICETOKENSTATE_ACTIVE                   ServiceTokenState = "ACTIVE"
+	SERVICETOKENSTATE_INACTIVE                 ServiceTokenState = "INACTIVE"
+	SERVICETOKENSTATE_EXPIRED                  ServiceTokenState = "EXPIRED"
+	SERVICETOKENSTATE_DELETED                  ServiceTokenState = "DELETED"
+	SERVICETOKENSTATE_UNKNOWN_DEFAULT_OPEN_API ServiceTokenState = "unknown_default_open_api"
 )
 
 // All allowed values of ServiceTokenState enum
@@ -29,6 +30,7 @@ var AllowedServiceTokenStateEnumValues = []ServiceTokenState{
 	"INACTIVE",
 	"EXPIRED",
 	"DELETED",
+	"unknown_default_open_api",
 }
 
 func (v *ServiceTokenState) UnmarshalJSON(src []byte) error {
@@ -45,7 +47,8 @@ func (v *ServiceTokenState) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ServiceTokenState", value)
+	*v = SERVICETOKENSTATE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewServiceTokenStateFromValue returns a pointer to a valid ServiceTokenState

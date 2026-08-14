@@ -17,12 +17,13 @@ type RoutingProtocolBGPDataState string
 
 // List of RoutingProtocolBGPData_state
 const (
-	ROUTINGPROTOCOLBGPDATASTATE_PROVISIONED    RoutingProtocolBGPDataState = "PROVISIONED"
-	ROUTINGPROTOCOLBGPDATASTATE_DEPROVISIONED  RoutingProtocolBGPDataState = "DEPROVISIONED"
-	ROUTINGPROTOCOLBGPDATASTATE_PROVISIONING   RoutingProtocolBGPDataState = "PROVISIONING"
-	ROUTINGPROTOCOLBGPDATASTATE_DEPROVISIONING RoutingProtocolBGPDataState = "DEPROVISIONING"
-	ROUTINGPROTOCOLBGPDATASTATE_REPROVISIONING RoutingProtocolBGPDataState = "REPROVISIONING"
-	ROUTINGPROTOCOLBGPDATASTATE_FAILED         RoutingProtocolBGPDataState = "FAILED"
+	ROUTINGPROTOCOLBGPDATASTATE_PROVISIONED              RoutingProtocolBGPDataState = "PROVISIONED"
+	ROUTINGPROTOCOLBGPDATASTATE_DEPROVISIONED            RoutingProtocolBGPDataState = "DEPROVISIONED"
+	ROUTINGPROTOCOLBGPDATASTATE_PROVISIONING             RoutingProtocolBGPDataState = "PROVISIONING"
+	ROUTINGPROTOCOLBGPDATASTATE_DEPROVISIONING           RoutingProtocolBGPDataState = "DEPROVISIONING"
+	ROUTINGPROTOCOLBGPDATASTATE_REPROVISIONING           RoutingProtocolBGPDataState = "REPROVISIONING"
+	ROUTINGPROTOCOLBGPDATASTATE_FAILED                   RoutingProtocolBGPDataState = "FAILED"
+	ROUTINGPROTOCOLBGPDATASTATE_UNKNOWN_DEFAULT_OPEN_API RoutingProtocolBGPDataState = "unknown_default_open_api"
 )
 
 // All allowed values of RoutingProtocolBGPDataState enum
@@ -33,6 +34,7 @@ var AllowedRoutingProtocolBGPDataStateEnumValues = []RoutingProtocolBGPDataState
 	"DEPROVISIONING",
 	"REPROVISIONING",
 	"FAILED",
+	"unknown_default_open_api",
 }
 
 func (v *RoutingProtocolBGPDataState) UnmarshalJSON(src []byte) error {
@@ -49,7 +51,8 @@ func (v *RoutingProtocolBGPDataState) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid RoutingProtocolBGPDataState", value)
+	*v = ROUTINGPROTOCOLBGPDATASTATE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewRoutingProtocolBGPDataStateFromValue returns a pointer to a valid RoutingProtocolBGPDataState

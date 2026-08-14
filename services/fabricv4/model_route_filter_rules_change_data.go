@@ -16,10 +16,14 @@ import (
 // checks if the RouteFilterRulesChangeData type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &RouteFilterRulesChangeData{}
 
-// RouteFilterRulesChangeData Current state of latest route filter rules change
+// RouteFilterRulesChangeData struct for RouteFilterRulesChangeData
 type RouteFilterRulesChangeData struct {
-	// Current outcome of the change flow
-	Status *string `json:"status,omitempty"`
+	// Uniquely identifies a change
+	Uuid string                     `json:"uuid"`
+	Type RouteFilterRulesChangeType `json:"type"`
+	// Route Filter Change URI
+	Href   *string                               `json:"href,omitempty"`
+	Status *RoutingProtocolChangeDataAllOfStatus `json:"status,omitempty"`
 	// Created by User Key
 	CreatedBy *string `json:"createdBy,omitempty"`
 	// Set when change flow starts
@@ -27,13 +31,8 @@ type RouteFilterRulesChangeData struct {
 	// Updated by User Key
 	UpdatedBy *string `json:"updatedBy,omitempty"`
 	// Set when change object is updated
-	UpdatedDateTime *time.Time                       `json:"updatedDateTime,omitempty"`
-	Data            *RouteFilterRulesChangeOperation `json:"data,omitempty"`
-	// Uniquely identifies a change
-	Uuid string                     `json:"uuid"`
-	Type RouteFilterRulesChangeType `json:"type"`
-	// Route Filter Change URI
-	Href                 *string `json:"href,omitempty"`
+	UpdatedDateTime      *time.Time                       `json:"updatedDateTime,omitempty"`
+	Data                 *RouteFilterRulesChangeOperation `json:"data,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -58,10 +57,90 @@ func NewRouteFilterRulesChangeDataWithDefaults() *RouteFilterRulesChangeData {
 	return &this
 }
 
-// GetStatus returns the Status field value if set, zero value otherwise.
-func (o *RouteFilterRulesChangeData) GetStatus() string {
-	if o == nil || IsNil(o.Status) {
+// GetUuid returns the Uuid field value
+func (o *RouteFilterRulesChangeData) GetUuid() string {
+	if o == nil {
 		var ret string
+		return ret
+	}
+
+	return o.Uuid
+}
+
+// GetUuidOk returns a tuple with the Uuid field value
+// and a boolean to check if the value has been set.
+func (o *RouteFilterRulesChangeData) GetUuidOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Uuid, true
+}
+
+// SetUuid sets field value
+func (o *RouteFilterRulesChangeData) SetUuid(v string) {
+	o.Uuid = v
+}
+
+// GetType returns the Type field value
+func (o *RouteFilterRulesChangeData) GetType() RouteFilterRulesChangeType {
+	if o == nil {
+		var ret RouteFilterRulesChangeType
+		return ret
+	}
+
+	return o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value
+// and a boolean to check if the value has been set.
+func (o *RouteFilterRulesChangeData) GetTypeOk() (*RouteFilterRulesChangeType, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Type, true
+}
+
+// SetType sets field value
+func (o *RouteFilterRulesChangeData) SetType(v RouteFilterRulesChangeType) {
+	o.Type = v
+}
+
+// GetHref returns the Href field value if set, zero value otherwise.
+func (o *RouteFilterRulesChangeData) GetHref() string {
+	if o == nil || IsNil(o.Href) {
+		var ret string
+		return ret
+	}
+	return *o.Href
+}
+
+// GetHrefOk returns a tuple with the Href field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RouteFilterRulesChangeData) GetHrefOk() (*string, bool) {
+	if o == nil || IsNil(o.Href) {
+		return nil, false
+	}
+	return o.Href, true
+}
+
+// HasHref returns a boolean if a field has been set.
+func (o *RouteFilterRulesChangeData) HasHref() bool {
+	if o != nil && !IsNil(o.Href) {
+		return true
+	}
+
+	return false
+}
+
+// SetHref gets a reference to the given string and assigns it to the Href field.
+func (o *RouteFilterRulesChangeData) SetHref(v string) {
+	o.Href = &v
+}
+
+// GetStatus returns the Status field value if set, zero value otherwise.
+func (o *RouteFilterRulesChangeData) GetStatus() RoutingProtocolChangeDataAllOfStatus {
+	if o == nil || IsNil(o.Status) {
+		var ret RoutingProtocolChangeDataAllOfStatus
 		return ret
 	}
 	return *o.Status
@@ -69,7 +148,7 @@ func (o *RouteFilterRulesChangeData) GetStatus() string {
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RouteFilterRulesChangeData) GetStatusOk() (*string, bool) {
+func (o *RouteFilterRulesChangeData) GetStatusOk() (*RoutingProtocolChangeDataAllOfStatus, bool) {
 	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
@@ -85,8 +164,8 @@ func (o *RouteFilterRulesChangeData) HasStatus() bool {
 	return false
 }
 
-// SetStatus gets a reference to the given string and assigns it to the Status field.
-func (o *RouteFilterRulesChangeData) SetStatus(v string) {
+// SetStatus gets a reference to the given RoutingProtocolChangeDataAllOfStatus and assigns it to the Status field.
+func (o *RouteFilterRulesChangeData) SetStatus(v RoutingProtocolChangeDataAllOfStatus) {
 	o.Status = &v
 }
 
@@ -250,86 +329,6 @@ func (o *RouteFilterRulesChangeData) SetData(v RouteFilterRulesChangeOperation) 
 	o.Data = &v
 }
 
-// GetUuid returns the Uuid field value
-func (o *RouteFilterRulesChangeData) GetUuid() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Uuid
-}
-
-// GetUuidOk returns a tuple with the Uuid field value
-// and a boolean to check if the value has been set.
-func (o *RouteFilterRulesChangeData) GetUuidOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Uuid, true
-}
-
-// SetUuid sets field value
-func (o *RouteFilterRulesChangeData) SetUuid(v string) {
-	o.Uuid = v
-}
-
-// GetType returns the Type field value
-func (o *RouteFilterRulesChangeData) GetType() RouteFilterRulesChangeType {
-	if o == nil {
-		var ret RouteFilterRulesChangeType
-		return ret
-	}
-
-	return o.Type
-}
-
-// GetTypeOk returns a tuple with the Type field value
-// and a boolean to check if the value has been set.
-func (o *RouteFilterRulesChangeData) GetTypeOk() (*RouteFilterRulesChangeType, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Type, true
-}
-
-// SetType sets field value
-func (o *RouteFilterRulesChangeData) SetType(v RouteFilterRulesChangeType) {
-	o.Type = v
-}
-
-// GetHref returns the Href field value if set, zero value otherwise.
-func (o *RouteFilterRulesChangeData) GetHref() string {
-	if o == nil || IsNil(o.Href) {
-		var ret string
-		return ret
-	}
-	return *o.Href
-}
-
-// GetHrefOk returns a tuple with the Href field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *RouteFilterRulesChangeData) GetHrefOk() (*string, bool) {
-	if o == nil || IsNil(o.Href) {
-		return nil, false
-	}
-	return o.Href, true
-}
-
-// HasHref returns a boolean if a field has been set.
-func (o *RouteFilterRulesChangeData) HasHref() bool {
-	if o != nil && !IsNil(o.Href) {
-		return true
-	}
-
-	return false
-}
-
-// SetHref gets a reference to the given string and assigns it to the Href field.
-func (o *RouteFilterRulesChangeData) SetHref(v string) {
-	o.Href = &v
-}
-
 func (o RouteFilterRulesChangeData) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -340,6 +339,11 @@ func (o RouteFilterRulesChangeData) MarshalJSON() ([]byte, error) {
 
 func (o RouteFilterRulesChangeData) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["uuid"] = o.Uuid
+	toSerialize["type"] = o.Type
+	if !IsNil(o.Href) {
+		toSerialize["href"] = o.Href
+	}
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
@@ -357,11 +361,6 @@ func (o RouteFilterRulesChangeData) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Data) {
 		toSerialize["data"] = o.Data
-	}
-	toSerialize["uuid"] = o.Uuid
-	toSerialize["type"] = o.Type
-	if !IsNil(o.Href) {
-		toSerialize["href"] = o.Href
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -407,15 +406,15 @@ func (o *RouteFilterRulesChangeData) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "uuid")
+		delete(additionalProperties, "type")
+		delete(additionalProperties, "href")
 		delete(additionalProperties, "status")
 		delete(additionalProperties, "createdBy")
 		delete(additionalProperties, "createdDateTime")
 		delete(additionalProperties, "updatedBy")
 		delete(additionalProperties, "updatedDateTime")
 		delete(additionalProperties, "data")
-		delete(additionalProperties, "uuid")
-		delete(additionalProperties, "type")
-		delete(additionalProperties, "href")
 		o.AdditionalProperties = additionalProperties
 	}
 

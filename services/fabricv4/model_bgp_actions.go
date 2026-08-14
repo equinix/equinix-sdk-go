@@ -17,12 +17,13 @@ type BGPActions string
 
 // List of BGPActions
 const (
-	BGPACTIONS_CLEAR_BGPIPV4         BGPActions = "CLEAR_BGPIPV4"
-	BGPACTIONS_CLEAR_BGPIPV6         BGPActions = "CLEAR_BGPIPV6"
-	BGPACTIONS_CLEAR_BGPIPV4_INBOUND BGPActions = "CLEAR_BGPIPV4_INBOUND"
-	BGPACTIONS_CLEAR_BGPIPV6_INBOUND BGPActions = "CLEAR_BGPIPV6_INBOUND"
-	BGPACTIONS_RESET_BGPIPV4         BGPActions = "RESET_BGPIPV4"
-	BGPACTIONS_RESET_BGPIPV6         BGPActions = "RESET_BGPIPV6"
+	BGPACTIONS_CLEAR_BGPIPV4            BGPActions = "CLEAR_BGPIPV4"
+	BGPACTIONS_CLEAR_BGPIPV6            BGPActions = "CLEAR_BGPIPV6"
+	BGPACTIONS_CLEAR_BGPIPV4_INBOUND    BGPActions = "CLEAR_BGPIPV4_INBOUND"
+	BGPACTIONS_CLEAR_BGPIPV6_INBOUND    BGPActions = "CLEAR_BGPIPV6_INBOUND"
+	BGPACTIONS_RESET_BGPIPV4            BGPActions = "RESET_BGPIPV4"
+	BGPACTIONS_RESET_BGPIPV6            BGPActions = "RESET_BGPIPV6"
+	BGPACTIONS_UNKNOWN_DEFAULT_OPEN_API BGPActions = "unknown_default_open_api"
 )
 
 // All allowed values of BGPActions enum
@@ -33,6 +34,7 @@ var AllowedBGPActionsEnumValues = []BGPActions{
 	"CLEAR_BGPIPV6_INBOUND",
 	"RESET_BGPIPV4",
 	"RESET_BGPIPV6",
+	"unknown_default_open_api",
 }
 
 func (v *BGPActions) UnmarshalJSON(src []byte) error {
@@ -49,7 +51,8 @@ func (v *BGPActions) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid BGPActions", value)
+	*v = BGPACTIONS_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewBGPActionsFromValue returns a pointer to a valid BGPActions

@@ -17,9 +17,10 @@ type PrecisionTimeChangeOperationOp string
 
 // List of precisionTimeChangeOperation_op
 const (
-	PRECISIONTIMECHANGEOPERATIONOP_REPLACE PrecisionTimeChangeOperationOp = "replace"
-	PRECISIONTIMECHANGEOPERATIONOP_ADD     PrecisionTimeChangeOperationOp = "add"
-	PRECISIONTIMECHANGEOPERATIONOP_REMOVE  PrecisionTimeChangeOperationOp = "remove"
+	PRECISIONTIMECHANGEOPERATIONOP_REPLACE                  PrecisionTimeChangeOperationOp = "replace"
+	PRECISIONTIMECHANGEOPERATIONOP_ADD                      PrecisionTimeChangeOperationOp = "add"
+	PRECISIONTIMECHANGEOPERATIONOP_REMOVE                   PrecisionTimeChangeOperationOp = "remove"
+	PRECISIONTIMECHANGEOPERATIONOP_UNKNOWN_DEFAULT_OPEN_API PrecisionTimeChangeOperationOp = "unknown_default_open_api"
 )
 
 // All allowed values of PrecisionTimeChangeOperationOp enum
@@ -27,6 +28,7 @@ var AllowedPrecisionTimeChangeOperationOpEnumValues = []PrecisionTimeChangeOpera
 	"replace",
 	"add",
 	"remove",
+	"unknown_default_open_api",
 }
 
 func (v *PrecisionTimeChangeOperationOp) UnmarshalJSON(src []byte) error {
@@ -43,7 +45,8 @@ func (v *PrecisionTimeChangeOperationOp) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid PrecisionTimeChangeOperationOp", value)
+	*v = PRECISIONTIMECHANGEOPERATIONOP_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewPrecisionTimeChangeOperationOpFromValue returns a pointer to a valid PrecisionTimeChangeOperationOp

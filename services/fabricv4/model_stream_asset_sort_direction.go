@@ -17,14 +17,16 @@ type StreamAssetSortDirection string
 
 // List of StreamAssetSortDirection
 const (
-	STREAMASSETSORTDIRECTION_DESC StreamAssetSortDirection = "DESC"
-	STREAMASSETSORTDIRECTION_ASC  StreamAssetSortDirection = "ASC"
+	STREAMASSETSORTDIRECTION_DESC                     StreamAssetSortDirection = "DESC"
+	STREAMASSETSORTDIRECTION_ASC                      StreamAssetSortDirection = "ASC"
+	STREAMASSETSORTDIRECTION_UNKNOWN_DEFAULT_OPEN_API StreamAssetSortDirection = "unknown_default_open_api"
 )
 
 // All allowed values of StreamAssetSortDirection enum
 var AllowedStreamAssetSortDirectionEnumValues = []StreamAssetSortDirection{
 	"DESC",
 	"ASC",
+	"unknown_default_open_api",
 }
 
 func (v *StreamAssetSortDirection) UnmarshalJSON(src []byte) error {
@@ -41,7 +43,8 @@ func (v *StreamAssetSortDirection) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid StreamAssetSortDirection", value)
+	*v = STREAMASSETSORTDIRECTION_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewStreamAssetSortDirectionFromValue returns a pointer to a valid StreamAssetSortDirection

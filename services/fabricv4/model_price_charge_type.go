@@ -17,14 +17,16 @@ type PriceChargeType string
 
 // List of PriceCharge_type
 const (
-	PRICECHARGETYPE_MONTHLY_RECURRING PriceChargeType = "MONTHLY_RECURRING"
-	PRICECHARGETYPE_NON_RECURRING     PriceChargeType = "NON_RECURRING"
+	PRICECHARGETYPE_MONTHLY_RECURRING        PriceChargeType = "MONTHLY_RECURRING"
+	PRICECHARGETYPE_NON_RECURRING            PriceChargeType = "NON_RECURRING"
+	PRICECHARGETYPE_UNKNOWN_DEFAULT_OPEN_API PriceChargeType = "unknown_default_open_api"
 )
 
 // All allowed values of PriceChargeType enum
 var AllowedPriceChargeTypeEnumValues = []PriceChargeType{
 	"MONTHLY_RECURRING",
 	"NON_RECURRING",
+	"unknown_default_open_api",
 }
 
 func (v *PriceChargeType) UnmarshalJSON(src []byte) error {
@@ -41,7 +43,8 @@ func (v *PriceChargeType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid PriceChargeType", value)
+	*v = PRICECHARGETYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewPriceChargeTypeFromValue returns a pointer to a valid PriceChargeType

@@ -20,14 +20,16 @@ type PatchPanelDetailsProvisioningType string
 
 // List of patch_panel_details_provisioningType
 const (
-	PATCHPANELDETAILSPROVISIONINGTYPE_REGULAR           PatchPanelDetailsProvisioningType = "REGULAR"
-	PATCHPANELDETAILSPROVISIONINGTYPE_FAST_PROVISIONING PatchPanelDetailsProvisioningType = "FAST_PROVISIONING"
+	PATCHPANELDETAILSPROVISIONINGTYPE_REGULAR                  PatchPanelDetailsProvisioningType = "REGULAR"
+	PATCHPANELDETAILSPROVISIONINGTYPE_FAST_PROVISIONING        PatchPanelDetailsProvisioningType = "FAST_PROVISIONING"
+	PATCHPANELDETAILSPROVISIONINGTYPE_UNKNOWN_DEFAULT_OPEN_API PatchPanelDetailsProvisioningType = "unknown_default_open_api"
 )
 
 // All allowed values of PatchPanelDetailsProvisioningType enum
 var AllowedPatchPanelDetailsProvisioningTypeEnumValues = []PatchPanelDetailsProvisioningType{
 	"REGULAR",
 	"FAST_PROVISIONING",
+	"unknown_default_open_api",
 }
 
 func (v *PatchPanelDetailsProvisioningType) UnmarshalJSON(src []byte) error {
@@ -44,7 +46,8 @@ func (v *PatchPanelDetailsProvisioningType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid PatchPanelDetailsProvisioningType", value)
+	*v = PATCHPANELDETAILSPROVISIONINGTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewPatchPanelDetailsProvisioningTypeFromValue returns a pointer to a valid PatchPanelDetailsProvisioningType

@@ -17,13 +17,14 @@ type PortPhysicalPortsType string
 
 // List of Port_physicalPortsType
 const (
-	PORTPHYSICALPORTSTYPE__1000_BASE_LX  PortPhysicalPortsType = "1000BASE_LX"
-	PORTPHYSICALPORTSTYPE__10_GBASE_LR   PortPhysicalPortsType = "10GBASE_LR"
-	PORTPHYSICALPORTSTYPE__100_GBASE_LR4 PortPhysicalPortsType = "100GBASE_LR4"
-	PORTPHYSICALPORTSTYPE__10_GBASE_ER   PortPhysicalPortsType = "10GBASE_ER"
-	PORTPHYSICALPORTSTYPE__1000_BASE_SX  PortPhysicalPortsType = "1000BASE_SX"
-	PORTPHYSICALPORTSTYPE__10_GBASE_SMF  PortPhysicalPortsType = "10GBASE_SMF"
-	PORTPHYSICALPORTSTYPE__400_GBASE_LR4 PortPhysicalPortsType = "400GBASE_LR4"
+	PORTPHYSICALPORTSTYPE__1000_BASE_LX            PortPhysicalPortsType = "1000BASE_LX"
+	PORTPHYSICALPORTSTYPE__10_GBASE_LR             PortPhysicalPortsType = "10GBASE_LR"
+	PORTPHYSICALPORTSTYPE__100_GBASE_LR4           PortPhysicalPortsType = "100GBASE_LR4"
+	PORTPHYSICALPORTSTYPE__10_GBASE_ER             PortPhysicalPortsType = "10GBASE_ER"
+	PORTPHYSICALPORTSTYPE__1000_BASE_SX            PortPhysicalPortsType = "1000BASE_SX"
+	PORTPHYSICALPORTSTYPE__10_GBASE_SMF            PortPhysicalPortsType = "10GBASE_SMF"
+	PORTPHYSICALPORTSTYPE__400_GBASE_LR4           PortPhysicalPortsType = "400GBASE_LR4"
+	PORTPHYSICALPORTSTYPE_UNKNOWN_DEFAULT_OPEN_API PortPhysicalPortsType = "unknown_default_open_api"
 )
 
 // All allowed values of PortPhysicalPortsType enum
@@ -35,6 +36,7 @@ var AllowedPortPhysicalPortsTypeEnumValues = []PortPhysicalPortsType{
 	"1000BASE_SX",
 	"10GBASE_SMF",
 	"400GBASE_LR4",
+	"unknown_default_open_api",
 }
 
 func (v *PortPhysicalPortsType) UnmarshalJSON(src []byte) error {
@@ -51,7 +53,8 @@ func (v *PortPhysicalPortsType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid PortPhysicalPortsType", value)
+	*v = PORTPHYSICALPORTSTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewPortPhysicalPortsTypeFromValue returns a pointer to a valid PortPhysicalPortsType

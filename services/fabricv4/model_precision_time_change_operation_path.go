@@ -22,6 +22,7 @@ const (
 	PRECISIONTIMECHANGEOPERATIONPATH_IPV4                       PrecisionTimeChangeOperationPath = "/ipv4"
 	PRECISIONTIMECHANGEOPERATIONPATH_NTP_ADVANCED_CONFIGURATION PrecisionTimeChangeOperationPath = "/ntpAdvancedConfiguration"
 	PRECISIONTIMECHANGEOPERATIONPATH_PTP_ADVANCED_CONFIGURATION PrecisionTimeChangeOperationPath = "/ptpAdvancedConfiguration"
+	PRECISIONTIMECHANGEOPERATIONPATH_UNKNOWN_DEFAULT_OPEN_API   PrecisionTimeChangeOperationPath = "unknown_default_open_api"
 )
 
 // All allowed values of PrecisionTimeChangeOperationPath enum
@@ -31,6 +32,7 @@ var AllowedPrecisionTimeChangeOperationPathEnumValues = []PrecisionTimeChangeOpe
 	"/ipv4",
 	"/ntpAdvancedConfiguration",
 	"/ptpAdvancedConfiguration",
+	"unknown_default_open_api",
 }
 
 func (v *PrecisionTimeChangeOperationPath) UnmarshalJSON(src []byte) error {
@@ -47,7 +49,8 @@ func (v *PrecisionTimeChangeOperationPath) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid PrecisionTimeChangeOperationPath", value)
+	*v = PRECISIONTIMECHANGEOPERATIONPATH_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewPrecisionTimeChangeOperationPathFromValue returns a pointer to a valid PrecisionTimeChangeOperationPath

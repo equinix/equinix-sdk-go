@@ -17,14 +17,16 @@ type ServiceTokenType string
 
 // List of ServiceTokenType
 const (
-	SERVICETOKENTYPE_VC_TOKEN  ServiceTokenType = "VC_TOKEN"
-	SERVICETOKENTYPE_EPL_TOKEN ServiceTokenType = "EPL_TOKEN"
+	SERVICETOKENTYPE_VC_TOKEN                 ServiceTokenType = "VC_TOKEN"
+	SERVICETOKENTYPE_EPL_TOKEN                ServiceTokenType = "EPL_TOKEN"
+	SERVICETOKENTYPE_UNKNOWN_DEFAULT_OPEN_API ServiceTokenType = "unknown_default_open_api"
 )
 
 // All allowed values of ServiceTokenType enum
 var AllowedServiceTokenTypeEnumValues = []ServiceTokenType{
 	"VC_TOKEN",
 	"EPL_TOKEN",
+	"unknown_default_open_api",
 }
 
 func (v *ServiceTokenType) UnmarshalJSON(src []byte) error {
@@ -41,7 +43,8 @@ func (v *ServiceTokenType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ServiceTokenType", value)
+	*v = SERVICETOKENTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewServiceTokenTypeFromValue returns a pointer to a valid ServiceTokenType

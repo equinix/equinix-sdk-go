@@ -17,14 +17,16 @@ type DetectionMethodType string
 
 // List of DetectionMethod_type
 const (
-	DETECTIONMETHODTYPE_THRESHOLD DetectionMethodType = "THRESHOLD"
-	DETECTIONMETHODTYPE_OUTLIER   DetectionMethodType = "OUTLIER"
+	DETECTIONMETHODTYPE_THRESHOLD                DetectionMethodType = "THRESHOLD"
+	DETECTIONMETHODTYPE_OUTLIER                  DetectionMethodType = "OUTLIER"
+	DETECTIONMETHODTYPE_UNKNOWN_DEFAULT_OPEN_API DetectionMethodType = "unknown_default_open_api"
 )
 
 // All allowed values of DetectionMethodType enum
 var AllowedDetectionMethodTypeEnumValues = []DetectionMethodType{
 	"THRESHOLD",
 	"OUTLIER",
+	"unknown_default_open_api",
 }
 
 func (v *DetectionMethodType) UnmarshalJSON(src []byte) error {
@@ -41,7 +43,8 @@ func (v *DetectionMethodType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid DetectionMethodType", value)
+	*v = DETECTIONMETHODTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewDetectionMethodTypeFromValue returns a pointer to a valid DetectionMethodType

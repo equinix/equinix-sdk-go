@@ -21,7 +21,7 @@ var _ MappedNullable = &ShipmentUnpackRequestServiceDetails{}
 // ShipmentUnpackRequestServiceDetails Shipment Unpacking
 type ShipmentUnpackRequestServiceDetails struct {
 	// Inbound Shipment Order Number
-	InboundShipmentOrderNumber string "json:\"inboundShipmentOrderNumber\" validate:\"regexp=^[ A-Za-z0-9~!|\\\\[\\\\]@#$%^&*()_+:\\\"<>?\\/.,;'=\\\\-\\\\{\\\\}`]{1,50}$\""
+	InboundShipmentOrderNumber string `json:"inboundShipmentOrderNumber" validate:"regexp=^[ A-Za-z0-9~!|\\[\\]@#$%^&*()_+:\"<>?/.\\,;'=\\-\\{\\}\x60]{1\\,50}$"`
 	// Copy of Packaging Slip Needed?
 	CopyOfPackingSlipNeeded bool `json:"copyOfPackingSlipNeeded"`
 	// Enter any additional details that will help our technicians execute your request. You may also attach your scope of work as a document if you exceed the character limit in this field.

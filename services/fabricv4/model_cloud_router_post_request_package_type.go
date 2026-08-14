@@ -17,12 +17,14 @@ type CloudRouterPostRequestPackageType string
 
 // List of CloudRouterPostRequestPackage_type
 const (
-	CLOUDROUTERPOSTREQUESTPACKAGETYPE_ROUTER_PACKAGE CloudRouterPostRequestPackageType = "ROUTER_PACKAGE"
+	CLOUDROUTERPOSTREQUESTPACKAGETYPE_ROUTER_PACKAGE           CloudRouterPostRequestPackageType = "ROUTER_PACKAGE"
+	CLOUDROUTERPOSTREQUESTPACKAGETYPE_UNKNOWN_DEFAULT_OPEN_API CloudRouterPostRequestPackageType = "unknown_default_open_api"
 )
 
 // All allowed values of CloudRouterPostRequestPackageType enum
 var AllowedCloudRouterPostRequestPackageTypeEnumValues = []CloudRouterPostRequestPackageType{
 	"ROUTER_PACKAGE",
+	"unknown_default_open_api",
 }
 
 func (v *CloudRouterPostRequestPackageType) UnmarshalJSON(src []byte) error {
@@ -39,7 +41,8 @@ func (v *CloudRouterPostRequestPackageType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid CloudRouterPostRequestPackageType", value)
+	*v = CLOUDROUTERPOSTREQUESTPACKAGETYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewCloudRouterPostRequestPackageTypeFromValue returns a pointer to a valid CloudRouterPostRequestPackageType

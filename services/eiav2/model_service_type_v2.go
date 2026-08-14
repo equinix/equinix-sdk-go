@@ -20,14 +20,16 @@ type ServiceTypeV2 string
 
 // List of ServiceTypeV2
 const (
-	SERVICETYPEV2_SINGLE ServiceTypeV2 = "SINGLE"
-	SERVICETYPEV2_DUAL   ServiceTypeV2 = "DUAL"
+	SERVICETYPEV2_SINGLE                   ServiceTypeV2 = "SINGLE"
+	SERVICETYPEV2_DUAL                     ServiceTypeV2 = "DUAL"
+	SERVICETYPEV2_UNKNOWN_DEFAULT_OPEN_API ServiceTypeV2 = "unknown_default_open_api"
 )
 
 // All allowed values of ServiceTypeV2 enum
 var AllowedServiceTypeV2EnumValues = []ServiceTypeV2{
 	"SINGLE",
 	"DUAL",
+	"unknown_default_open_api",
 }
 
 func (v *ServiceTypeV2) UnmarshalJSON(src []byte) error {
@@ -44,7 +46,8 @@ func (v *ServiceTypeV2) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ServiceTypeV2", value)
+	*v = SERVICETYPEV2_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewServiceTypeV2FromValue returns a pointer to a valid ServiceTypeV2

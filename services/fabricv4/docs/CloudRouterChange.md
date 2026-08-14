@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Uuid** | Pointer to **string** | Uniquely identifies a change | [optional] 
 **Type** | [**CloudRouterChangeType**](CloudRouterChangeType.md) |  | 
-**Status** | Pointer to [**PortChangeStatus**](PortChangeStatus.md) |  | [optional] 
+**Status** | Pointer to [**RoutingProtocolChangeDataAllOfStatus**](RoutingProtocolChangeDataAllOfStatus.md) |  | [optional] 
 **CreatedDateTime** | Pointer to **time.Time** | Set when change flow starts | [optional] 
 **UpdatedDateTime** | **time.Time** | Set when change object is updated | 
 **Information** | Pointer to **string** | Additional information | [optional] 
@@ -78,20 +78,20 @@ SetType sets Type field to given value.
 
 ### GetStatus
 
-`func (o *CloudRouterChange) GetStatus() PortChangeStatus`
+`func (o *CloudRouterChange) GetStatus() RoutingProtocolChangeDataAllOfStatus`
 
 GetStatus returns the Status field if non-nil, zero value otherwise.
 
 ### GetStatusOk
 
-`func (o *CloudRouterChange) GetStatusOk() (*PortChangeStatus, bool)`
+`func (o *CloudRouterChange) GetStatusOk() (*RoutingProtocolChangeDataAllOfStatus, bool)`
 
 GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStatus
 
-`func (o *CloudRouterChange) SetStatus(v PortChangeStatus)`
+`func (o *CloudRouterChange) SetStatus(v RoutingProtocolChangeDataAllOfStatus)`
 
 SetStatus sets Status field to given value.
 

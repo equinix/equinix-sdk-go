@@ -20,17 +20,18 @@ type CableRequestRequestServiceDetailsQuantity string
 
 // List of cableRequestRequest_serviceDetails_quantity
 const (
-	CABLEREQUESTREQUESTSERVICEDETAILSQUANTITY__1   CableRequestRequestServiceDetailsQuantity = "1"
-	CABLEREQUESTREQUESTSERVICEDETAILSQUANTITY__2   CableRequestRequestServiceDetailsQuantity = "2"
-	CABLEREQUESTREQUESTSERVICEDETAILSQUANTITY__3   CableRequestRequestServiceDetailsQuantity = "3"
-	CABLEREQUESTREQUESTSERVICEDETAILSQUANTITY__4   CableRequestRequestServiceDetailsQuantity = "4"
-	CABLEREQUESTREQUESTSERVICEDETAILSQUANTITY__5   CableRequestRequestServiceDetailsQuantity = "5"
-	CABLEREQUESTREQUESTSERVICEDETAILSQUANTITY__6   CableRequestRequestServiceDetailsQuantity = "6"
-	CABLEREQUESTREQUESTSERVICEDETAILSQUANTITY__7   CableRequestRequestServiceDetailsQuantity = "7"
-	CABLEREQUESTREQUESTSERVICEDETAILSQUANTITY__8   CableRequestRequestServiceDetailsQuantity = "8"
-	CABLEREQUESTREQUESTSERVICEDETAILSQUANTITY__9   CableRequestRequestServiceDetailsQuantity = "9"
-	CABLEREQUESTREQUESTSERVICEDETAILSQUANTITY__10  CableRequestRequestServiceDetailsQuantity = "10"
-	CABLEREQUESTREQUESTSERVICEDETAILSQUANTITY__102 CableRequestRequestServiceDetailsQuantity = ">10"
+	CABLEREQUESTREQUESTSERVICEDETAILSQUANTITY__1                       CableRequestRequestServiceDetailsQuantity = "1"
+	CABLEREQUESTREQUESTSERVICEDETAILSQUANTITY__2                       CableRequestRequestServiceDetailsQuantity = "2"
+	CABLEREQUESTREQUESTSERVICEDETAILSQUANTITY__3                       CableRequestRequestServiceDetailsQuantity = "3"
+	CABLEREQUESTREQUESTSERVICEDETAILSQUANTITY__4                       CableRequestRequestServiceDetailsQuantity = "4"
+	CABLEREQUESTREQUESTSERVICEDETAILSQUANTITY__5                       CableRequestRequestServiceDetailsQuantity = "5"
+	CABLEREQUESTREQUESTSERVICEDETAILSQUANTITY__6                       CableRequestRequestServiceDetailsQuantity = "6"
+	CABLEREQUESTREQUESTSERVICEDETAILSQUANTITY__7                       CableRequestRequestServiceDetailsQuantity = "7"
+	CABLEREQUESTREQUESTSERVICEDETAILSQUANTITY__8                       CableRequestRequestServiceDetailsQuantity = "8"
+	CABLEREQUESTREQUESTSERVICEDETAILSQUANTITY__9                       CableRequestRequestServiceDetailsQuantity = "9"
+	CABLEREQUESTREQUESTSERVICEDETAILSQUANTITY__10                      CableRequestRequestServiceDetailsQuantity = "10"
+	CABLEREQUESTREQUESTSERVICEDETAILSQUANTITY__102                     CableRequestRequestServiceDetailsQuantity = ">10"
+	CABLEREQUESTREQUESTSERVICEDETAILSQUANTITY_UNKNOWN_DEFAULT_OPEN_API CableRequestRequestServiceDetailsQuantity = "unknown_default_open_api"
 )
 
 // All allowed values of CableRequestRequestServiceDetailsQuantity enum
@@ -46,6 +47,7 @@ var AllowedCableRequestRequestServiceDetailsQuantityEnumValues = []CableRequestR
 	"9",
 	"10",
 	">10",
+	"unknown_default_open_api",
 }
 
 func (v *CableRequestRequestServiceDetailsQuantity) UnmarshalJSON(src []byte) error {
@@ -62,7 +64,8 @@ func (v *CableRequestRequestServiceDetailsQuantity) UnmarshalJSON(src []byte) er
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid CableRequestRequestServiceDetailsQuantity", value)
+	*v = CABLEREQUESTREQUESTSERVICEDETAILSQUANTITY_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewCableRequestRequestServiceDetailsQuantityFromValue returns a pointer to a valid CableRequestRequestServiceDetailsQuantity

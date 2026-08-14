@@ -17,14 +17,16 @@ type PtpAdvanceConfigurationTimeScale string
 
 // List of ptpAdvanceConfiguration_timeScale
 const (
-	PTPADVANCECONFIGURATIONTIMESCALE_ARB PtpAdvanceConfigurationTimeScale = "ARB"
-	PTPADVANCECONFIGURATIONTIMESCALE_PTP PtpAdvanceConfigurationTimeScale = "PTP"
+	PTPADVANCECONFIGURATIONTIMESCALE_ARB                      PtpAdvanceConfigurationTimeScale = "ARB"
+	PTPADVANCECONFIGURATIONTIMESCALE_PTP                      PtpAdvanceConfigurationTimeScale = "PTP"
+	PTPADVANCECONFIGURATIONTIMESCALE_UNKNOWN_DEFAULT_OPEN_API PtpAdvanceConfigurationTimeScale = "unknown_default_open_api"
 )
 
 // All allowed values of PtpAdvanceConfigurationTimeScale enum
 var AllowedPtpAdvanceConfigurationTimeScaleEnumValues = []PtpAdvanceConfigurationTimeScale{
 	"ARB",
 	"PTP",
+	"unknown_default_open_api",
 }
 
 func (v *PtpAdvanceConfigurationTimeScale) UnmarshalJSON(src []byte) error {
@@ -41,7 +43,8 @@ func (v *PtpAdvanceConfigurationTimeScale) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid PtpAdvanceConfigurationTimeScale", value)
+	*v = PTPADVANCECONFIGURATIONTIMESCALE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewPtpAdvanceConfigurationTimeScaleFromValue returns a pointer to a valid PtpAdvanceConfigurationTimeScale

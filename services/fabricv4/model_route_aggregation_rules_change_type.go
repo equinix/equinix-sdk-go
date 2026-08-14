@@ -17,9 +17,10 @@ type RouteAggregationRulesChangeType string
 
 // List of RouteAggregationRulesChange_type
 const (
-	ROUTEAGGREGATIONRULESCHANGETYPE_UPDATE   RouteAggregationRulesChangeType = "BGP_IPv4_PREFIX_AGGREGATION_RULE_UPDATE"
-	ROUTEAGGREGATIONRULESCHANGETYPE_CREATION RouteAggregationRulesChangeType = "BGP_IPv4_PREFIX_AGGREGATION_RULE_CREATION"
-	ROUTEAGGREGATIONRULESCHANGETYPE_DELETION RouteAggregationRulesChangeType = "BGP_IPv4_PREFIX_AGGREGATION_RULE_DELETION"
+	ROUTEAGGREGATIONRULESCHANGETYPE_UPDATE                   RouteAggregationRulesChangeType = "BGP_IPv4_PREFIX_AGGREGATION_RULE_UPDATE"
+	ROUTEAGGREGATIONRULESCHANGETYPE_CREATION                 RouteAggregationRulesChangeType = "BGP_IPv4_PREFIX_AGGREGATION_RULE_CREATION"
+	ROUTEAGGREGATIONRULESCHANGETYPE_DELETION                 RouteAggregationRulesChangeType = "BGP_IPv4_PREFIX_AGGREGATION_RULE_DELETION"
+	ROUTEAGGREGATIONRULESCHANGETYPE_UNKNOWN_DEFAULT_OPEN_API RouteAggregationRulesChangeType = "unknown_default_open_api"
 )
 
 // All allowed values of RouteAggregationRulesChangeType enum
@@ -27,6 +28,7 @@ var AllowedRouteAggregationRulesChangeTypeEnumValues = []RouteAggregationRulesCh
 	"BGP_IPv4_PREFIX_AGGREGATION_RULE_UPDATE",
 	"BGP_IPv4_PREFIX_AGGREGATION_RULE_CREATION",
 	"BGP_IPv4_PREFIX_AGGREGATION_RULE_DELETION",
+	"unknown_default_open_api",
 }
 
 func (v *RouteAggregationRulesChangeType) UnmarshalJSON(src []byte) error {
@@ -43,7 +45,8 @@ func (v *RouteAggregationRulesChangeType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid RouteAggregationRulesChangeType", value)
+	*v = ROUTEAGGREGATIONRULESCHANGETYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewRouteAggregationRulesChangeTypeFromValue returns a pointer to a valid RouteAggregationRulesChangeType

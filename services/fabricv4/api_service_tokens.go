@@ -85,6 +85,7 @@ func (a *ServiceTokensApiService) CreateServiceTokenExecute(r ApiCreateServiceTo
 		parameterAddToHeaderOrQuery(localVarQueryParams, "dryRun", r.dryRun, "form", "")
 	} else {
 		var defaultValue bool = false
+		parameterAddToHeaderOrQuery(localVarQueryParams, "dryRun", defaultValue, "form", "")
 		r.dryRun = &defaultValue
 	}
 	// to determine the Content-Type header
@@ -982,6 +983,7 @@ func (a *ServiceTokensApiService) UpdateServiceTokenByUuidExecute(r ApiUpdateSer
 		parameterAddToHeaderOrQuery(localVarQueryParams, "dryRun", r.dryRun, "form", "")
 	} else {
 		var defaultValue bool = false
+		parameterAddToHeaderOrQuery(localVarQueryParams, "dryRun", defaultValue, "form", "")
 		r.dryRun = &defaultValue
 	}
 	// to determine the Content-Type header

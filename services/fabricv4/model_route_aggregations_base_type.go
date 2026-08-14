@@ -17,14 +17,16 @@ type RouteAggregationsBaseType string
 
 // List of RouteAggregationsBase_type
 const (
-	ROUTEAGGREGATIONSBASETYPE_IPV4_PREFIX_AGGREGATION RouteAggregationsBaseType = "BGP_IPv4_PREFIX_AGGREGATION"
-	ROUTEAGGREGATIONSBASETYPE_IPV6_PREFIX_AGGREGATION RouteAggregationsBaseType = "BGP_IPv6_PREFIX_AGGREGATION"
+	ROUTEAGGREGATIONSBASETYPE_IPV4_PREFIX_AGGREGATION  RouteAggregationsBaseType = "BGP_IPv4_PREFIX_AGGREGATION"
+	ROUTEAGGREGATIONSBASETYPE_IPV6_PREFIX_AGGREGATION  RouteAggregationsBaseType = "BGP_IPv6_PREFIX_AGGREGATION"
+	ROUTEAGGREGATIONSBASETYPE_UNKNOWN_DEFAULT_OPEN_API RouteAggregationsBaseType = "unknown_default_open_api"
 )
 
 // All allowed values of RouteAggregationsBaseType enum
 var AllowedRouteAggregationsBaseTypeEnumValues = []RouteAggregationsBaseType{
 	"BGP_IPv4_PREFIX_AGGREGATION",
 	"BGP_IPv6_PREFIX_AGGREGATION",
+	"unknown_default_open_api",
 }
 
 func (v *RouteAggregationsBaseType) UnmarshalJSON(src []byte) error {
@@ -41,7 +43,8 @@ func (v *RouteAggregationsBaseType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid RouteAggregationsBaseType", value)
+	*v = ROUTEAGGREGATIONSBASETYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewRouteAggregationsBaseTypeFromValue returns a pointer to a valid RouteAggregationsBaseType

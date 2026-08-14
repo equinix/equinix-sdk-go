@@ -17,14 +17,16 @@ type ServiceProfileSortDirection string
 
 // List of ServiceProfileSortDirection
 const (
-	SERVICEPROFILESORTDIRECTION_DESC ServiceProfileSortDirection = "DESC"
-	SERVICEPROFILESORTDIRECTION_ASC  ServiceProfileSortDirection = "ASC"
+	SERVICEPROFILESORTDIRECTION_DESC                     ServiceProfileSortDirection = "DESC"
+	SERVICEPROFILESORTDIRECTION_ASC                      ServiceProfileSortDirection = "ASC"
+	SERVICEPROFILESORTDIRECTION_UNKNOWN_DEFAULT_OPEN_API ServiceProfileSortDirection = "unknown_default_open_api"
 )
 
 // All allowed values of ServiceProfileSortDirection enum
 var AllowedServiceProfileSortDirectionEnumValues = []ServiceProfileSortDirection{
 	"DESC",
 	"ASC",
+	"unknown_default_open_api",
 }
 
 func (v *ServiceProfileSortDirection) UnmarshalJSON(src []byte) error {
@@ -41,7 +43,8 @@ func (v *ServiceProfileSortDirection) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ServiceProfileSortDirection", value)
+	*v = SERVICEPROFILESORTDIRECTION_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewServiceProfileSortDirectionFromValue returns a pointer to a valid ServiceProfileSortDirection

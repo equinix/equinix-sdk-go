@@ -17,14 +17,16 @@ type PriceCategory string
 
 // List of PriceCategory
 const (
-	PRICECATEGORY_COUNTRY  PriceCategory = "COUNTRY"
-	PRICECATEGORY_CUSTOMER PriceCategory = "CUSTOMER"
+	PRICECATEGORY_COUNTRY                  PriceCategory = "COUNTRY"
+	PRICECATEGORY_CUSTOMER                 PriceCategory = "CUSTOMER"
+	PRICECATEGORY_UNKNOWN_DEFAULT_OPEN_API PriceCategory = "unknown_default_open_api"
 )
 
 // All allowed values of PriceCategory enum
 var AllowedPriceCategoryEnumValues = []PriceCategory{
 	"COUNTRY",
 	"CUSTOMER",
+	"unknown_default_open_api",
 }
 
 func (v *PriceCategory) UnmarshalJSON(src []byte) error {
@@ -41,7 +43,8 @@ func (v *PriceCategory) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid PriceCategory", value)
+	*v = PRICECATEGORY_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewPriceCategoryFromValue returns a pointer to a valid PriceCategory

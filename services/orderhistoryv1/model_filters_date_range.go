@@ -20,12 +20,13 @@ type FiltersDateRange string
 
 // List of filters_dateRange
 const (
-	FILTERSDATERANGE__7_DAYS   FiltersDateRange = "PAST_7_DAYS"
-	FILTERSDATERANGE__14_DAYS  FiltersDateRange = "PAST_14_DAYS"
-	FILTERSDATERANGE__30_DAYS  FiltersDateRange = "PAST_30_DAYS"
-	FILTERSDATERANGE__3_MONTHS FiltersDateRange = "PAST_3_MONTHS"
-	FILTERSDATERANGE__6_MONTHS FiltersDateRange = "PAST_6_MONTHS"
-	FILTERSDATERANGE_YEAR      FiltersDateRange = "PAST_YEAR"
+	FILTERSDATERANGE__7_DAYS                  FiltersDateRange = "PAST_7_DAYS"
+	FILTERSDATERANGE__14_DAYS                 FiltersDateRange = "PAST_14_DAYS"
+	FILTERSDATERANGE__30_DAYS                 FiltersDateRange = "PAST_30_DAYS"
+	FILTERSDATERANGE__3_MONTHS                FiltersDateRange = "PAST_3_MONTHS"
+	FILTERSDATERANGE__6_MONTHS                FiltersDateRange = "PAST_6_MONTHS"
+	FILTERSDATERANGE_YEAR                     FiltersDateRange = "PAST_YEAR"
+	FILTERSDATERANGE_UNKNOWN_DEFAULT_OPEN_API FiltersDateRange = "unknown_default_open_api"
 )
 
 // All allowed values of FiltersDateRange enum
@@ -36,6 +37,7 @@ var AllowedFiltersDateRangeEnumValues = []FiltersDateRange{
 	"PAST_3_MONTHS",
 	"PAST_6_MONTHS",
 	"PAST_YEAR",
+	"unknown_default_open_api",
 }
 
 func (v *FiltersDateRange) UnmarshalJSON(src []byte) error {
@@ -52,7 +54,8 @@ func (v *FiltersDateRange) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid FiltersDateRange", value)
+	*v = FILTERSDATERANGE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewFiltersDateRangeFromValue returns a pointer to a valid FiltersDateRange

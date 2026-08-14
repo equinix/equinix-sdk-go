@@ -17,12 +17,14 @@ type IpBlockAndQueryOperator string
 
 // List of IpBlockAndQuery_operator
 const (
-	IPBLOCKANDQUERYOPERATOR_EQUAL IpBlockAndQueryOperator = "="
+	IPBLOCKANDQUERYOPERATOR_EQUAL                    IpBlockAndQueryOperator = "="
+	IPBLOCKANDQUERYOPERATOR_UNKNOWN_DEFAULT_OPEN_API IpBlockAndQueryOperator = "unknown_default_open_api"
 )
 
 // All allowed values of IpBlockAndQueryOperator enum
 var AllowedIpBlockAndQueryOperatorEnumValues = []IpBlockAndQueryOperator{
 	"=",
+	"unknown_default_open_api",
 }
 
 func (v *IpBlockAndQueryOperator) UnmarshalJSON(src []byte) error {
@@ -39,7 +41,8 @@ func (v *IpBlockAndQueryOperator) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid IpBlockAndQueryOperator", value)
+	*v = IPBLOCKANDQUERYOPERATOR_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewIpBlockAndQueryOperatorFromValue returns a pointer to a valid IpBlockAndQueryOperator

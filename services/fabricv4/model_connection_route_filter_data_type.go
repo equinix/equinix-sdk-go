@@ -17,14 +17,16 @@ type ConnectionRouteFilterDataType string
 
 // List of ConnectionRouteFilterData_type
 const (
-	CONNECTIONROUTEFILTERDATATYPE_IPV4_PREFIX_FILTER ConnectionRouteFilterDataType = "BGP_IPv4_PREFIX_FILTER"
-	CONNECTIONROUTEFILTERDATATYPE_IPV6_PREFIX_FILTER ConnectionRouteFilterDataType = "BGP_IPv6_PREFIX_FILTER"
+	CONNECTIONROUTEFILTERDATATYPE_IPV4_PREFIX_FILTER       ConnectionRouteFilterDataType = "BGP_IPv4_PREFIX_FILTER"
+	CONNECTIONROUTEFILTERDATATYPE_IPV6_PREFIX_FILTER       ConnectionRouteFilterDataType = "BGP_IPv6_PREFIX_FILTER"
+	CONNECTIONROUTEFILTERDATATYPE_UNKNOWN_DEFAULT_OPEN_API ConnectionRouteFilterDataType = "unknown_default_open_api"
 )
 
 // All allowed values of ConnectionRouteFilterDataType enum
 var AllowedConnectionRouteFilterDataTypeEnumValues = []ConnectionRouteFilterDataType{
 	"BGP_IPv4_PREFIX_FILTER",
 	"BGP_IPv6_PREFIX_FILTER",
+	"unknown_default_open_api",
 }
 
 func (v *ConnectionRouteFilterDataType) UnmarshalJSON(src []byte) error {
@@ -41,7 +43,8 @@ func (v *ConnectionRouteFilterDataType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ConnectionRouteFilterDataType", value)
+	*v = CONNECTIONROUTEFILTERDATATYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewConnectionRouteFilterDataTypeFromValue returns a pointer to a valid ConnectionRouteFilterDataType

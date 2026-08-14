@@ -17,13 +17,14 @@ type CloudRouterAccessPointState string
 
 // List of CloudRouterAccessPointState
 const (
-	CLOUDROUTERACCESSPOINTSTATE_PROVISIONED       CloudRouterAccessPointState = "PROVISIONED"
-	CLOUDROUTERACCESSPOINTSTATE_PROVISIONING      CloudRouterAccessPointState = "PROVISIONING"
-	CLOUDROUTERACCESSPOINTSTATE_DEPROVISIONING    CloudRouterAccessPointState = "DEPROVISIONING"
-	CLOUDROUTERACCESSPOINTSTATE_DEPROVISIONED     CloudRouterAccessPointState = "DEPROVISIONED"
-	CLOUDROUTERACCESSPOINTSTATE_REPROVISIONING    CloudRouterAccessPointState = "REPROVISIONING"
-	CLOUDROUTERACCESSPOINTSTATE_NOT_PROVISIONED   CloudRouterAccessPointState = "NOT_PROVISIONED"
-	CLOUDROUTERACCESSPOINTSTATE_NOT_DEPROVISIONED CloudRouterAccessPointState = "NOT_DEPROVISIONED"
+	CLOUDROUTERACCESSPOINTSTATE_PROVISIONED              CloudRouterAccessPointState = "PROVISIONED"
+	CLOUDROUTERACCESSPOINTSTATE_PROVISIONING             CloudRouterAccessPointState = "PROVISIONING"
+	CLOUDROUTERACCESSPOINTSTATE_DEPROVISIONING           CloudRouterAccessPointState = "DEPROVISIONING"
+	CLOUDROUTERACCESSPOINTSTATE_DEPROVISIONED            CloudRouterAccessPointState = "DEPROVISIONED"
+	CLOUDROUTERACCESSPOINTSTATE_REPROVISIONING           CloudRouterAccessPointState = "REPROVISIONING"
+	CLOUDROUTERACCESSPOINTSTATE_NOT_PROVISIONED          CloudRouterAccessPointState = "NOT_PROVISIONED"
+	CLOUDROUTERACCESSPOINTSTATE_NOT_DEPROVISIONED        CloudRouterAccessPointState = "NOT_DEPROVISIONED"
+	CLOUDROUTERACCESSPOINTSTATE_UNKNOWN_DEFAULT_OPEN_API CloudRouterAccessPointState = "unknown_default_open_api"
 )
 
 // All allowed values of CloudRouterAccessPointState enum
@@ -35,6 +36,7 @@ var AllowedCloudRouterAccessPointStateEnumValues = []CloudRouterAccessPointState
 	"REPROVISIONING",
 	"NOT_PROVISIONED",
 	"NOT_DEPROVISIONED",
+	"unknown_default_open_api",
 }
 
 func (v *CloudRouterAccessPointState) UnmarshalJSON(src []byte) error {
@@ -51,7 +53,8 @@ func (v *CloudRouterAccessPointState) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid CloudRouterAccessPointState", value)
+	*v = CLOUDROUTERACCESSPOINTSTATE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewCloudRouterAccessPointStateFromValue returns a pointer to a valid CloudRouterAccessPointState

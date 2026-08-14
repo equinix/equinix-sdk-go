@@ -17,9 +17,10 @@ type PortPackageSourceType string
 
 // List of PortPackageSourceType
 const (
-	PORTPACKAGESOURCETYPE_COLO   PortPackageSourceType = "COLO"
-	PORTPACKAGESOURCETYPE_REMOTE PortPackageSourceType = "REMOTE"
-	PORTPACKAGESOURCETYPE_BMMR   PortPackageSourceType = "BMMR"
+	PORTPACKAGESOURCETYPE_COLO                     PortPackageSourceType = "COLO"
+	PORTPACKAGESOURCETYPE_REMOTE                   PortPackageSourceType = "REMOTE"
+	PORTPACKAGESOURCETYPE_BMMR                     PortPackageSourceType = "BMMR"
+	PORTPACKAGESOURCETYPE_UNKNOWN_DEFAULT_OPEN_API PortPackageSourceType = "unknown_default_open_api"
 )
 
 // All allowed values of PortPackageSourceType enum
@@ -27,6 +28,7 @@ var AllowedPortPackageSourceTypeEnumValues = []PortPackageSourceType{
 	"COLO",
 	"REMOTE",
 	"BMMR",
+	"unknown_default_open_api",
 }
 
 func (v *PortPackageSourceType) UnmarshalJSON(src []byte) error {
@@ -43,7 +45,8 @@ func (v *PortPackageSourceType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid PortPackageSourceType", value)
+	*v = PORTPACKAGESOURCETYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewPortPackageSourceTypeFromValue returns a pointer to a valid PortPackageSourceType

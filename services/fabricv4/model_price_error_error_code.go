@@ -17,9 +17,10 @@ type PriceErrorErrorCode string
 
 // List of PriceError_errorCode
 const (
-	PRICEERRORERRORCODE__3038010 PriceErrorErrorCode = "EQ-3038010"
-	PRICEERRORERRORCODE__3038022 PriceErrorErrorCode = "EQ-3038022"
-	PRICEERRORERRORCODE__3038030 PriceErrorErrorCode = "EQ-3038030"
+	PRICEERRORERRORCODE__3038010                 PriceErrorErrorCode = "EQ-3038010"
+	PRICEERRORERRORCODE__3038022                 PriceErrorErrorCode = "EQ-3038022"
+	PRICEERRORERRORCODE__3038030                 PriceErrorErrorCode = "EQ-3038030"
+	PRICEERRORERRORCODE_UNKNOWN_DEFAULT_OPEN_API PriceErrorErrorCode = "unknown_default_open_api"
 )
 
 // All allowed values of PriceErrorErrorCode enum
@@ -27,6 +28,7 @@ var AllowedPriceErrorErrorCodeEnumValues = []PriceErrorErrorCode{
 	"EQ-3038010",
 	"EQ-3038022",
 	"EQ-3038030",
+	"unknown_default_open_api",
 }
 
 func (v *PriceErrorErrorCode) UnmarshalJSON(src []byte) error {
@@ -43,7 +45,8 @@ func (v *PriceErrorErrorCode) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid PriceErrorErrorCode", value)
+	*v = PRICEERRORERRORCODE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewPriceErrorErrorCodeFromValue returns a pointer to a valid PriceErrorErrorCode

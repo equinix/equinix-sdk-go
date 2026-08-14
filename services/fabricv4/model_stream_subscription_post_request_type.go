@@ -17,12 +17,14 @@ type StreamSubscriptionPostRequestType string
 
 // List of StreamSubscriptionPostRequest_type
 const (
-	STREAMSUBSCRIPTIONPOSTREQUESTTYPE_STREAM_SUBSCRIPTION StreamSubscriptionPostRequestType = "STREAM_SUBSCRIPTION"
+	STREAMSUBSCRIPTIONPOSTREQUESTTYPE_STREAM_SUBSCRIPTION      StreamSubscriptionPostRequestType = "STREAM_SUBSCRIPTION"
+	STREAMSUBSCRIPTIONPOSTREQUESTTYPE_UNKNOWN_DEFAULT_OPEN_API StreamSubscriptionPostRequestType = "unknown_default_open_api"
 )
 
 // All allowed values of StreamSubscriptionPostRequestType enum
 var AllowedStreamSubscriptionPostRequestTypeEnumValues = []StreamSubscriptionPostRequestType{
 	"STREAM_SUBSCRIPTION",
+	"unknown_default_open_api",
 }
 
 func (v *StreamSubscriptionPostRequestType) UnmarshalJSON(src []byte) error {
@@ -39,7 +41,8 @@ func (v *StreamSubscriptionPostRequestType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid StreamSubscriptionPostRequestType", value)
+	*v = STREAMSUBSCRIPTIONPOSTREQUESTTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewStreamSubscriptionPostRequestTypeFromValue returns a pointer to a valid StreamSubscriptionPostRequestType

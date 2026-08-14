@@ -561,6 +561,7 @@ func (a *ServiceProfilesApiService) GetServiceProfileByUuidExecute(r ApiGetServi
 		parameterAddToHeaderOrQuery(localVarQueryParams, "viewPoint", r.viewPoint, "form", "")
 	} else {
 		var defaultValue GetServiceProfilesViewPointParameter = "aSide"
+		parameterAddToHeaderOrQuery(localVarQueryParams, "viewPoint", defaultValue, "form", "")
 		r.viewPoint = &defaultValue
 	}
 	// to determine the Content-Type header
@@ -904,6 +905,7 @@ func (a *ServiceProfilesApiService) GetServiceProfilesExecute(r ApiGetServicePro
 		parameterAddToHeaderOrQuery(localVarQueryParams, "viewPoint", r.viewPoint, "form", "")
 	} else {
 		var defaultValue GetServiceProfilesViewPointParameter = "aSide"
+		parameterAddToHeaderOrQuery(localVarQueryParams, "viewPoint", defaultValue, "form", "")
 		r.viewPoint = &defaultValue
 	}
 	// to determine the Content-Type header
@@ -1249,6 +1251,7 @@ func (a *ServiceProfilesApiService) SearchServiceProfilesExecute(r ApiSearchServ
 		parameterAddToHeaderOrQuery(localVarQueryParams, "viewPoint", r.viewPoint, "form", "")
 	} else {
 		var defaultValue GetServiceProfilesViewPointParameter = "aSide"
+		parameterAddToHeaderOrQuery(localVarQueryParams, "viewPoint", defaultValue, "form", "")
 		r.viewPoint = &defaultValue
 	}
 	// to determine the Content-Type header

@@ -1,13 +1,13 @@
-# PortChangeStatus
+# RoutingProtocolBaseType
 
 ## Enum
 
 
-* `COMPLETED` (value: `"COMPLETED"`)
+* `BGP` (value: `"BGP"`)
 
-* `FAILED` (value: `"FAILED"`)
+* `DIRECT` (value: `"DIRECT"`)
 
-* `REQUESTED` (value: `"REQUESTED"`)
+* `UNKNOWN_DEFAULT_OPEN_API` (value: `"unknown_default_open_api"`)
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

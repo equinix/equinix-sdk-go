@@ -17,12 +17,14 @@ type RouteTableEntryState string
 
 // List of RouteTableEntryState
 const (
-	ROUTETABLEENTRYSTATE_ACTIVE RouteTableEntryState = "ACTIVE"
+	ROUTETABLEENTRYSTATE_ACTIVE                   RouteTableEntryState = "ACTIVE"
+	ROUTETABLEENTRYSTATE_UNKNOWN_DEFAULT_OPEN_API RouteTableEntryState = "unknown_default_open_api"
 )
 
 // All allowed values of RouteTableEntryState enum
 var AllowedRouteTableEntryStateEnumValues = []RouteTableEntryState{
 	"ACTIVE",
+	"unknown_default_open_api",
 }
 
 func (v *RouteTableEntryState) UnmarshalJSON(src []byte) error {
@@ -39,7 +41,8 @@ func (v *RouteTableEntryState) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid RouteTableEntryState", value)
+	*v = ROUTETABLEENTRYSTATE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewRouteTableEntryStateFromValue returns a pointer to a valid RouteTableEntryState

@@ -17,9 +17,10 @@ type PortOrderSignatureSignatory string
 
 // List of PortOrderSignature_signatory
 const (
-	PORTORDERSIGNATURESIGNATORY_DELEGATE        PortOrderSignatureSignatory = "DELEGATE"
-	PORTORDERSIGNATURESIGNATORY_SELF            PortOrderSignatureSignatory = "SELF"
-	PORTORDERSIGNATURESIGNATORY_ACCOUNT_SUPPORT PortOrderSignatureSignatory = "ACCOUNT_SUPPORT"
+	PORTORDERSIGNATURESIGNATORY_DELEGATE                 PortOrderSignatureSignatory = "DELEGATE"
+	PORTORDERSIGNATURESIGNATORY_SELF                     PortOrderSignatureSignatory = "SELF"
+	PORTORDERSIGNATURESIGNATORY_ACCOUNT_SUPPORT          PortOrderSignatureSignatory = "ACCOUNT_SUPPORT"
+	PORTORDERSIGNATURESIGNATORY_UNKNOWN_DEFAULT_OPEN_API PortOrderSignatureSignatory = "unknown_default_open_api"
 )
 
 // All allowed values of PortOrderSignatureSignatory enum
@@ -27,6 +28,7 @@ var AllowedPortOrderSignatureSignatoryEnumValues = []PortOrderSignatureSignatory
 	"DELEGATE",
 	"SELF",
 	"ACCOUNT_SUPPORT",
+	"unknown_default_open_api",
 }
 
 func (v *PortOrderSignatureSignatory) UnmarshalJSON(src []byte) error {
@@ -43,7 +45,8 @@ func (v *PortOrderSignatureSignatory) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid PortOrderSignatureSignatory", value)
+	*v = PORTORDERSIGNATURESIGNATORY_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewPortOrderSignatureSignatoryFromValue returns a pointer to a valid PortOrderSignatureSignatory

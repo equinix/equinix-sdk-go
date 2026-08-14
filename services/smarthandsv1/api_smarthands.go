@@ -99,6 +99,7 @@ func (a *SmarthandsApiService) GetLocationExecute(r ApiGetLocationRequest) (*Get
 		parameterAddToHeaderOrQuery(localVarQueryParams, "detail", r.detail, "", "")
 	} else {
 		var defaultValue bool = false
+		parameterAddToHeaderOrQuery(localVarQueryParams, "detail", defaultValue, "", "")
 		r.detail = &defaultValue
 	}
 	if r.ibxs != nil {

@@ -17,9 +17,10 @@ type ConnectionDirection string
 
 // List of ConnectionDirection
 const (
-	CONNECTIONDIRECTION_INTERNAL ConnectionDirection = "INTERNAL"
-	CONNECTIONDIRECTION_INCOMING ConnectionDirection = "INCOMING"
-	CONNECTIONDIRECTION_OUTGOING ConnectionDirection = "OUTGOING"
+	CONNECTIONDIRECTION_INTERNAL                 ConnectionDirection = "INTERNAL"
+	CONNECTIONDIRECTION_INCOMING                 ConnectionDirection = "INCOMING"
+	CONNECTIONDIRECTION_OUTGOING                 ConnectionDirection = "OUTGOING"
+	CONNECTIONDIRECTION_UNKNOWN_DEFAULT_OPEN_API ConnectionDirection = "unknown_default_open_api"
 )
 
 // All allowed values of ConnectionDirection enum
@@ -27,6 +28,7 @@ var AllowedConnectionDirectionEnumValues = []ConnectionDirection{
 	"INTERNAL",
 	"INCOMING",
 	"OUTGOING",
+	"unknown_default_open_api",
 }
 
 func (v *ConnectionDirection) UnmarshalJSON(src []byte) error {
@@ -43,7 +45,8 @@ func (v *ConnectionDirection) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ConnectionDirection", value)
+	*v = CONNECTIONDIRECTION_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewConnectionDirectionFromValue returns a pointer to a valid ConnectionDirection

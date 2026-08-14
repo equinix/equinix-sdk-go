@@ -20,14 +20,15 @@ type CageEscortRequestServiceDetailsDurationVisit string
 
 // List of cageEscortRequest_serviceDetails_durationVisit
 const (
-	CAGEESCORTREQUESTSERVICEDETAILSDURATIONVISIT__30_MINUTES         CageEscortRequestServiceDetailsDurationVisit = "30 Minutes"
-	CAGEESCORTREQUESTSERVICEDETAILSDURATIONVISIT__60_MINUTES         CageEscortRequestServiceDetailsDurationVisit = "60 Minutes"
-	CAGEESCORTREQUESTSERVICEDETAILSDURATIONVISIT__90_MINUTES         CageEscortRequestServiceDetailsDurationVisit = "90 Minutes"
-	CAGEESCORTREQUESTSERVICEDETAILSDURATIONVISIT__2_HOURS            CageEscortRequestServiceDetailsDurationVisit = "2 Hours"
-	CAGEESCORTREQUESTSERVICEDETAILSDURATIONVISIT__2_HOURS_30_MINUTES CageEscortRequestServiceDetailsDurationVisit = "2 Hours 30 Minutes"
-	CAGEESCORTREQUESTSERVICEDETAILSDURATIONVISIT__3_HOURS            CageEscortRequestServiceDetailsDurationVisit = "3 Hours"
-	CAGEESCORTREQUESTSERVICEDETAILSDURATIONVISIT__3_HOURS_30_MINUTES CageEscortRequestServiceDetailsDurationVisit = "3 Hours 30 Minutes"
-	CAGEESCORTREQUESTSERVICEDETAILSDURATIONVISIT__4_HOURS            CageEscortRequestServiceDetailsDurationVisit = "4 Hours"
+	CAGEESCORTREQUESTSERVICEDETAILSDURATIONVISIT__30_MINUTES              CageEscortRequestServiceDetailsDurationVisit = "30 Minutes"
+	CAGEESCORTREQUESTSERVICEDETAILSDURATIONVISIT__60_MINUTES              CageEscortRequestServiceDetailsDurationVisit = "60 Minutes"
+	CAGEESCORTREQUESTSERVICEDETAILSDURATIONVISIT__90_MINUTES              CageEscortRequestServiceDetailsDurationVisit = "90 Minutes"
+	CAGEESCORTREQUESTSERVICEDETAILSDURATIONVISIT__2_HOURS                 CageEscortRequestServiceDetailsDurationVisit = "2 Hours"
+	CAGEESCORTREQUESTSERVICEDETAILSDURATIONVISIT__2_HOURS_30_MINUTES      CageEscortRequestServiceDetailsDurationVisit = "2 Hours 30 Minutes"
+	CAGEESCORTREQUESTSERVICEDETAILSDURATIONVISIT__3_HOURS                 CageEscortRequestServiceDetailsDurationVisit = "3 Hours"
+	CAGEESCORTREQUESTSERVICEDETAILSDURATIONVISIT__3_HOURS_30_MINUTES      CageEscortRequestServiceDetailsDurationVisit = "3 Hours 30 Minutes"
+	CAGEESCORTREQUESTSERVICEDETAILSDURATIONVISIT__4_HOURS                 CageEscortRequestServiceDetailsDurationVisit = "4 Hours"
+	CAGEESCORTREQUESTSERVICEDETAILSDURATIONVISIT_UNKNOWN_DEFAULT_OPEN_API CageEscortRequestServiceDetailsDurationVisit = "unknown_default_open_api"
 )
 
 // All allowed values of CageEscortRequestServiceDetailsDurationVisit enum
@@ -40,6 +41,7 @@ var AllowedCageEscortRequestServiceDetailsDurationVisitEnumValues = []CageEscort
 	"3 Hours",
 	"3 Hours 30 Minutes",
 	"4 Hours",
+	"unknown_default_open_api",
 }
 
 func (v *CageEscortRequestServiceDetailsDurationVisit) UnmarshalJSON(src []byte) error {
@@ -56,7 +58,8 @@ func (v *CageEscortRequestServiceDetailsDurationVisit) UnmarshalJSON(src []byte)
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid CageEscortRequestServiceDetailsDurationVisit", value)
+	*v = CAGEESCORTREQUESTSERVICEDETAILSDURATIONVISIT_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewCageEscortRequestServiceDetailsDurationVisitFromValue returns a pointer to a valid CageEscortRequestServiceDetailsDurationVisit

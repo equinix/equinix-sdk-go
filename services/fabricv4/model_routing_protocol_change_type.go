@@ -17,9 +17,10 @@ type RoutingProtocolChangeType string
 
 // List of RoutingProtocolChange_type
 const (
-	ROUTINGPROTOCOLCHANGETYPE_UPDATE   RoutingProtocolChangeType = "ROUTING_PROTOCOL_UPDATE"
-	ROUTINGPROTOCOLCHANGETYPE_CREATION RoutingProtocolChangeType = "ROUTING_PROTOCOL_CREATION"
-	ROUTINGPROTOCOLCHANGETYPE_DELETION RoutingProtocolChangeType = "ROUTING_PROTOCOL_DELETION"
+	ROUTINGPROTOCOLCHANGETYPE_UPDATE                   RoutingProtocolChangeType = "ROUTING_PROTOCOL_UPDATE"
+	ROUTINGPROTOCOLCHANGETYPE_CREATION                 RoutingProtocolChangeType = "ROUTING_PROTOCOL_CREATION"
+	ROUTINGPROTOCOLCHANGETYPE_DELETION                 RoutingProtocolChangeType = "ROUTING_PROTOCOL_DELETION"
+	ROUTINGPROTOCOLCHANGETYPE_UNKNOWN_DEFAULT_OPEN_API RoutingProtocolChangeType = "unknown_default_open_api"
 )
 
 // All allowed values of RoutingProtocolChangeType enum
@@ -27,6 +28,7 @@ var AllowedRoutingProtocolChangeTypeEnumValues = []RoutingProtocolChangeType{
 	"ROUTING_PROTOCOL_UPDATE",
 	"ROUTING_PROTOCOL_CREATION",
 	"ROUTING_PROTOCOL_DELETION",
+	"unknown_default_open_api",
 }
 
 func (v *RoutingProtocolChangeType) UnmarshalJSON(src []byte) error {
@@ -43,7 +45,8 @@ func (v *RoutingProtocolChangeType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid RoutingProtocolChangeType", value)
+	*v = ROUTINGPROTOCOLCHANGETYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewRoutingProtocolChangeTypeFromValue returns a pointer to a valid RoutingProtocolChangeType

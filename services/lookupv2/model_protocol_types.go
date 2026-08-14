@@ -20,32 +20,33 @@ type ProtocolTypes string
 
 // List of protocol_types
 const (
-	PROTOCOLTYPES_ANTENNA           ProtocolTypes = "ANTENNA"
-	PROTOCOLTYPES_DS_3              ProtocolTypes = "DS-3"
-	PROTOCOLTYPES_E1                ProtocolTypes = "E1"
-	PROTOCOLTYPES_E3                ProtocolTypes = "E3"
-	PROTOCOLTYPES_ETHERNET          ProtocolTypes = "ETHERNET"
-	PROTOCOLTYPES_FAST_ETHERNET     ProtocolTypes = "FAST_ETHERNET"
-	PROTOCOLTYPES_GIGABIT_ETHERNET  ProtocolTypes = "GIGABIT_ETHERNET"
-	PROTOCOLTYPES_POTS              ProtocolTypes = "POTS"
-	PROTOCOLTYPES_T1                ProtocolTypes = "T1"
-	PROTOCOLTYPES_FIBRE_CHANNEL     ProtocolTypes = "FIBRE_CHANNEL"
-	PROTOCOLTYPES__10_GIG_ETHERNET  ProtocolTypes = "10_GIG_ETHERNET"
-	PROTOCOLTYPES__100_GIG_ETHERNET ProtocolTypes = "100_GIG_ETHERNET"
-	PROTOCOLTYPES__40_GIG_ETHERNET  ProtocolTypes = "40_GIG_ETHERNET"
-	PROTOCOLTYPES_DARK_FIBER        ProtocolTypes = "DARK_FIBER"
-	PROTOCOLTYPES_DWDM              ProtocolTypes = "DWDM"
-	PROTOCOLTYPES__56_K             ProtocolTypes = "56K"
-	PROTOCOLTYPES_ISDN              ProtocolTypes = "ISDN"
-	PROTOCOLTYPES_OC_12             ProtocolTypes = "OC-12"
-	PROTOCOLTYPES_OC_192            ProtocolTypes = "OC-192"
-	PROTOCOLTYPES_OC_3              ProtocolTypes = "OC-3"
-	PROTOCOLTYPES_OC_48             ProtocolTypes = "OC-48"
-	PROTOCOLTYPES_STM_1             ProtocolTypes = "STM-1"
-	PROTOCOLTYPES_STM_16            ProtocolTypes = "STM-16"
-	PROTOCOLTYPES_STM_4             ProtocolTypes = "STM-4"
-	PROTOCOLTYPES_STM_64            ProtocolTypes = "STM-64"
-	PROTOCOLTYPES_NA                ProtocolTypes = "NA"
+	PROTOCOLTYPES_ANTENNA                  ProtocolTypes = "ANTENNA"
+	PROTOCOLTYPES_DS_3                     ProtocolTypes = "DS-3"
+	PROTOCOLTYPES_E1                       ProtocolTypes = "E1"
+	PROTOCOLTYPES_E3                       ProtocolTypes = "E3"
+	PROTOCOLTYPES_ETHERNET                 ProtocolTypes = "ETHERNET"
+	PROTOCOLTYPES_FAST_ETHERNET            ProtocolTypes = "FAST_ETHERNET"
+	PROTOCOLTYPES_GIGABIT_ETHERNET         ProtocolTypes = "GIGABIT_ETHERNET"
+	PROTOCOLTYPES_POTS                     ProtocolTypes = "POTS"
+	PROTOCOLTYPES_T1                       ProtocolTypes = "T1"
+	PROTOCOLTYPES_FIBRE_CHANNEL            ProtocolTypes = "FIBRE_CHANNEL"
+	PROTOCOLTYPES__10_GIG_ETHERNET         ProtocolTypes = "10_GIG_ETHERNET"
+	PROTOCOLTYPES__100_GIG_ETHERNET        ProtocolTypes = "100_GIG_ETHERNET"
+	PROTOCOLTYPES__40_GIG_ETHERNET         ProtocolTypes = "40_GIG_ETHERNET"
+	PROTOCOLTYPES_DARK_FIBER               ProtocolTypes = "DARK_FIBER"
+	PROTOCOLTYPES_DWDM                     ProtocolTypes = "DWDM"
+	PROTOCOLTYPES__56_K                    ProtocolTypes = "56K"
+	PROTOCOLTYPES_ISDN                     ProtocolTypes = "ISDN"
+	PROTOCOLTYPES_OC_12                    ProtocolTypes = "OC-12"
+	PROTOCOLTYPES_OC_192                   ProtocolTypes = "OC-192"
+	PROTOCOLTYPES_OC_3                     ProtocolTypes = "OC-3"
+	PROTOCOLTYPES_OC_48                    ProtocolTypes = "OC-48"
+	PROTOCOLTYPES_STM_1                    ProtocolTypes = "STM-1"
+	PROTOCOLTYPES_STM_16                   ProtocolTypes = "STM-16"
+	PROTOCOLTYPES_STM_4                    ProtocolTypes = "STM-4"
+	PROTOCOLTYPES_STM_64                   ProtocolTypes = "STM-64"
+	PROTOCOLTYPES_NA                       ProtocolTypes = "NA"
+	PROTOCOLTYPES_UNKNOWN_DEFAULT_OPEN_API ProtocolTypes = "unknown_default_open_api"
 )
 
 // All allowed values of ProtocolTypes enum
@@ -76,6 +77,7 @@ var AllowedProtocolTypesEnumValues = []ProtocolTypes{
 	"STM-4",
 	"STM-64",
 	"NA",
+	"unknown_default_open_api",
 }
 
 func (v *ProtocolTypes) UnmarshalJSON(src []byte) error {
@@ -92,7 +94,8 @@ func (v *ProtocolTypes) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ProtocolTypes", value)
+	*v = PROTOCOLTYPES_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewProtocolTypesFromValue returns a pointer to a valid ProtocolTypes

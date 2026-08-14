@@ -20,12 +20,14 @@ type Phase string
 
 // List of Phase
 const (
-	PHASE_SINGLE Phase = "SINGLE"
+	PHASE_SINGLE                   Phase = "SINGLE"
+	PHASE_UNKNOWN_DEFAULT_OPEN_API Phase = "unknown_default_open_api"
 )
 
 // All allowed values of Phase enum
 var AllowedPhaseEnumValues = []Phase{
 	"SINGLE",
+	"unknown_default_open_api",
 }
 
 func (v *Phase) UnmarshalJSON(src []byte) error {
@@ -42,7 +44,8 @@ func (v *Phase) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid Phase", value)
+	*v = PHASE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewPhaseFromValue returns a pointer to a valid Phase

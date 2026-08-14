@@ -37,7 +37,7 @@ import (
 )
 
 func main() {
-	serviceProfileRequest := *openapiclient.NewServiceProfileRequest(openapiclient.ServiceProfileTypeEnum("L2_PROFILE"), "Sample Service Profile", "offering connectivity to my-network") // ServiceProfileRequest | 
+	serviceProfileRequest := *openapiclient.NewServiceProfileRequest() // ServiceProfileRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -463,7 +463,7 @@ import (
 func main() {
 	serviceProfileId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Service Profile UUID
 	ifMatch := "ifMatch_example" // string | conditional request
-	serviceProfileRequest := *openapiclient.NewServiceProfileRequest(openapiclient.ServiceProfileTypeEnum("L2_PROFILE"), "Sample Service Profile", "offering connectivity to my-network") // ServiceProfileRequest | 
+	serviceProfileRequest := *openapiclient.NewServiceProfileRequest() // ServiceProfileRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

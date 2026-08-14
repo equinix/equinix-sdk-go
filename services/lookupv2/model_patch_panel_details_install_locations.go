@@ -20,12 +20,14 @@ type PatchPanelDetailsInstallLocations string
 
 // List of patch_panel_details_installLocations
 const (
-	PATCHPANELDETAILSINSTALLLOCATIONS_STANDARD PatchPanelDetailsInstallLocations = "STANDARD"
+	PATCHPANELDETAILSINSTALLLOCATIONS_STANDARD                 PatchPanelDetailsInstallLocations = "STANDARD"
+	PATCHPANELDETAILSINSTALLLOCATIONS_UNKNOWN_DEFAULT_OPEN_API PatchPanelDetailsInstallLocations = "unknown_default_open_api"
 )
 
 // All allowed values of PatchPanelDetailsInstallLocations enum
 var AllowedPatchPanelDetailsInstallLocationsEnumValues = []PatchPanelDetailsInstallLocations{
 	"STANDARD",
+	"unknown_default_open_api",
 }
 
 func (v *PatchPanelDetailsInstallLocations) UnmarshalJSON(src []byte) error {
@@ -42,7 +44,8 @@ func (v *PatchPanelDetailsInstallLocations) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid PatchPanelDetailsInstallLocations", value)
+	*v = PATCHPANELDETAILSINSTALLLOCATIONS_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewPatchPanelDetailsInstallLocationsFromValue returns a pointer to a valid PatchPanelDetailsInstallLocations

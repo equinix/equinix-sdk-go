@@ -17,14 +17,16 @@ type AuthContextAuthtype string
 
 // List of AuthContext_authtype
 const (
-	AUTHCONTEXTAUTHTYPE_SYSTEM AuthContextAuthtype = "system"
-	AUTHCONTEXTAUTHTYPE_USER   AuthContextAuthtype = "user"
+	AUTHCONTEXTAUTHTYPE_SYSTEM                   AuthContextAuthtype = "system"
+	AUTHCONTEXTAUTHTYPE_USER                     AuthContextAuthtype = "user"
+	AUTHCONTEXTAUTHTYPE_UNKNOWN_DEFAULT_OPEN_API AuthContextAuthtype = "unknown_default_open_api"
 )
 
 // All allowed values of AuthContextAuthtype enum
 var AllowedAuthContextAuthtypeEnumValues = []AuthContextAuthtype{
 	"system",
 	"user",
+	"unknown_default_open_api",
 }
 
 func (v *AuthContextAuthtype) UnmarshalJSON(src []byte) error {
@@ -41,7 +43,8 @@ func (v *AuthContextAuthtype) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid AuthContextAuthtype", value)
+	*v = AUTHCONTEXTAUTHTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewAuthContextAuthtypeFromValue returns a pointer to a valid AuthContextAuthtype

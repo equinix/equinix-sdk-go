@@ -130,6 +130,7 @@ func (a *LookupApiService) GetLocationsByPermissionCodeExecute(r ApiGetLocations
 		parameterAddToHeaderOrQuery(localVarQueryParams, "details", r.details, "form", "")
 	} else {
 		var defaultValue bool = false
+		parameterAddToHeaderOrQuery(localVarQueryParams, "details", defaultValue, "form", "")
 		r.details = &defaultValue
 	}
 	// to determine the Content-Type header

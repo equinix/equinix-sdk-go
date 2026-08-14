@@ -17,9 +17,10 @@ type ServiceProfileAccessPointCOLOType string
 
 // List of ServiceProfileAccessPointCOLO_type
 const (
-	SERVICEPROFILEACCESSPOINTCOLOTYPE_XF_PORT              ServiceProfileAccessPointCOLOType = "XF_PORT"
-	SERVICEPROFILEACCESSPOINTCOLOTYPE_IX_PORT              ServiceProfileAccessPointCOLOType = "IX_PORT"
-	SERVICEPROFILEACCESSPOINTCOLOTYPE_XF_INTERCONNECT_PORT ServiceProfileAccessPointCOLOType = "XF_INTERCONNECT_PORT"
+	SERVICEPROFILEACCESSPOINTCOLOTYPE_XF_PORT                  ServiceProfileAccessPointCOLOType = "XF_PORT"
+	SERVICEPROFILEACCESSPOINTCOLOTYPE_IX_PORT                  ServiceProfileAccessPointCOLOType = "IX_PORT"
+	SERVICEPROFILEACCESSPOINTCOLOTYPE_XF_INTERCONNECT_PORT     ServiceProfileAccessPointCOLOType = "XF_INTERCONNECT_PORT"
+	SERVICEPROFILEACCESSPOINTCOLOTYPE_UNKNOWN_DEFAULT_OPEN_API ServiceProfileAccessPointCOLOType = "unknown_default_open_api"
 )
 
 // All allowed values of ServiceProfileAccessPointCOLOType enum
@@ -27,6 +28,7 @@ var AllowedServiceProfileAccessPointCOLOTypeEnumValues = []ServiceProfileAccessP
 	"XF_PORT",
 	"IX_PORT",
 	"XF_INTERCONNECT_PORT",
+	"unknown_default_open_api",
 }
 
 func (v *ServiceProfileAccessPointCOLOType) UnmarshalJSON(src []byte) error {
@@ -43,7 +45,8 @@ func (v *ServiceProfileAccessPointCOLOType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ServiceProfileAccessPointCOLOType", value)
+	*v = SERVICEPROFILEACCESSPOINTCOLOTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewServiceProfileAccessPointCOLOTypeFromValue returns a pointer to a valid ServiceProfileAccessPointCOLOType

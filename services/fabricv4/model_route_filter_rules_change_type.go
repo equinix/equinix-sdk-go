@@ -23,6 +23,7 @@ const (
 	ROUTEFILTERRULESCHANGETYPE_IPV6_PREFIX_FILTER_RULE_UPDATE   RouteFilterRulesChangeType = "BGP_IPv6_PREFIX_FILTER_RULE_UPDATE"
 	ROUTEFILTERRULESCHANGETYPE_IPV6_PREFIX_FILTER_RULE_CREATION RouteFilterRulesChangeType = "BGP_IPv6_PREFIX_FILTER_RULE_CREATION"
 	ROUTEFILTERRULESCHANGETYPE_IPV6_PREFIX_FILTER_RULE_DELETION RouteFilterRulesChangeType = "BGP_IPv6_PREFIX_FILTER_RULE_DELETION"
+	ROUTEFILTERRULESCHANGETYPE_UNKNOWN_DEFAULT_OPEN_API         RouteFilterRulesChangeType = "unknown_default_open_api"
 )
 
 // All allowed values of RouteFilterRulesChangeType enum
@@ -33,6 +34,7 @@ var AllowedRouteFilterRulesChangeTypeEnumValues = []RouteFilterRulesChangeType{
 	"BGP_IPv6_PREFIX_FILTER_RULE_UPDATE",
 	"BGP_IPv6_PREFIX_FILTER_RULE_CREATION",
 	"BGP_IPv6_PREFIX_FILTER_RULE_DELETION",
+	"unknown_default_open_api",
 }
 
 func (v *RouteFilterRulesChangeType) UnmarshalJSON(src []byte) error {
@@ -49,7 +51,8 @@ func (v *RouteFilterRulesChangeType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid RouteFilterRulesChangeType", value)
+	*v = ROUTEFILTERRULESCHANGETYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewRouteFilterRulesChangeTypeFromValue returns a pointer to a valid RouteFilterRulesChangeType

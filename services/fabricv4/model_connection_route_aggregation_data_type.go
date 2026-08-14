@@ -18,11 +18,13 @@ type ConnectionRouteAggregationDataType string
 // List of ConnectionRouteAggregationData_type
 const (
 	CONNECTIONROUTEAGGREGATIONDATATYPE_BGP_IPV4_PREFIX_AGGREGATION ConnectionRouteAggregationDataType = "BGP_IPv4_PREFIX_AGGREGATION"
+	CONNECTIONROUTEAGGREGATIONDATATYPE_UNKNOWN_DEFAULT_OPEN_API    ConnectionRouteAggregationDataType = "unknown_default_open_api"
 )
 
 // All allowed values of ConnectionRouteAggregationDataType enum
 var AllowedConnectionRouteAggregationDataTypeEnumValues = []ConnectionRouteAggregationDataType{
 	"BGP_IPv4_PREFIX_AGGREGATION",
+	"unknown_default_open_api",
 }
 
 func (v *ConnectionRouteAggregationDataType) UnmarshalJSON(src []byte) error {
@@ -39,7 +41,8 @@ func (v *ConnectionRouteAggregationDataType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ConnectionRouteAggregationDataType", value)
+	*v = CONNECTIONROUTEAGGREGATIONDATATYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewConnectionRouteAggregationDataTypeFromValue returns a pointer to a valid ConnectionRouteAggregationDataType

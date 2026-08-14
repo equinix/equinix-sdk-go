@@ -17,10 +17,11 @@ type SubscriptionResponseMarketplace string
 
 // List of SubscriptionResponse_marketplace
 const (
-	SUBSCRIPTIONRESPONSEMARKETPLACE_AWS    SubscriptionResponseMarketplace = "AWS"
-	SUBSCRIPTIONRESPONSEMARKETPLACE_GCP    SubscriptionResponseMarketplace = "GCP"
-	SUBSCRIPTIONRESPONSEMARKETPLACE_AZURE  SubscriptionResponseMarketplace = "AZURE"
-	SUBSCRIPTIONRESPONSEMARKETPLACE_REDHAT SubscriptionResponseMarketplace = "REDHAT"
+	SUBSCRIPTIONRESPONSEMARKETPLACE_AWS                      SubscriptionResponseMarketplace = "AWS"
+	SUBSCRIPTIONRESPONSEMARKETPLACE_GCP                      SubscriptionResponseMarketplace = "GCP"
+	SUBSCRIPTIONRESPONSEMARKETPLACE_AZURE                    SubscriptionResponseMarketplace = "AZURE"
+	SUBSCRIPTIONRESPONSEMARKETPLACE_REDHAT                   SubscriptionResponseMarketplace = "REDHAT"
+	SUBSCRIPTIONRESPONSEMARKETPLACE_UNKNOWN_DEFAULT_OPEN_API SubscriptionResponseMarketplace = "unknown_default_open_api"
 )
 
 // All allowed values of SubscriptionResponseMarketplace enum
@@ -29,6 +30,7 @@ var AllowedSubscriptionResponseMarketplaceEnumValues = []SubscriptionResponseMar
 	"GCP",
 	"AZURE",
 	"REDHAT",
+	"unknown_default_open_api",
 }
 
 func (v *SubscriptionResponseMarketplace) UnmarshalJSON(src []byte) error {
@@ -45,7 +47,8 @@ func (v *SubscriptionResponseMarketplace) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid SubscriptionResponseMarketplace", value)
+	*v = SUBSCRIPTIONRESPONSEMARKETPLACE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewSubscriptionResponseMarketplaceFromValue returns a pointer to a valid SubscriptionResponseMarketplace

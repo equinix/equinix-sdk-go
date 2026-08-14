@@ -20,14 +20,16 @@ type PriceValueType string
 
 // List of price_valueType
 const (
-	PRICEVALUETYPE_ABSOLUTE   PriceValueType = "ABSOLUTE"
-	PRICEVALUETYPE_PERCENTAGE PriceValueType = "PERCENTAGE"
+	PRICEVALUETYPE_ABSOLUTE                 PriceValueType = "ABSOLUTE"
+	PRICEVALUETYPE_PERCENTAGE               PriceValueType = "PERCENTAGE"
+	PRICEVALUETYPE_UNKNOWN_DEFAULT_OPEN_API PriceValueType = "unknown_default_open_api"
 )
 
 // All allowed values of PriceValueType enum
 var AllowedPriceValueTypeEnumValues = []PriceValueType{
 	"ABSOLUTE",
 	"PERCENTAGE",
+	"unknown_default_open_api",
 }
 
 func (v *PriceValueType) UnmarshalJSON(src []byte) error {
@@ -44,7 +46,8 @@ func (v *PriceValueType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid PriceValueType", value)
+	*v = PRICEVALUETYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewPriceValueTypeFromValue returns a pointer to a valid PriceValueType

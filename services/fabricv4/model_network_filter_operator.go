@@ -31,6 +31,7 @@ const (
 	NETWORKFILTEROPERATOR_NOT_ILIKE                NetworkFilterOperator = "NOT ILIKE"
 	NETWORKFILTEROPERATOR_IN                       NetworkFilterOperator = "IN"
 	NETWORKFILTEROPERATOR_NOT_IN                   NetworkFilterOperator = "NOT IN"
+	NETWORKFILTEROPERATOR_UNKNOWN_DEFAULT_OPEN_API NetworkFilterOperator = "unknown_default_open_api"
 )
 
 // All allowed values of NetworkFilterOperator enum
@@ -49,6 +50,7 @@ var AllowedNetworkFilterOperatorEnumValues = []NetworkFilterOperator{
 	"NOT ILIKE",
 	"IN",
 	"NOT IN",
+	"unknown_default_open_api",
 }
 
 func (v *NetworkFilterOperator) UnmarshalJSON(src []byte) error {
@@ -65,7 +67,8 @@ func (v *NetworkFilterOperator) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid NetworkFilterOperator", value)
+	*v = NETWORKFILTEROPERATOR_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewNetworkFilterOperatorFromValue returns a pointer to a valid NetworkFilterOperator

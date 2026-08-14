@@ -17,9 +17,10 @@ type SimplifiedTokenNetworkScope string
 
 // List of SimplifiedTokenNetwork_scope
 const (
-	SIMPLIFIEDTOKENNETWORKSCOPE_LOCAL    SimplifiedTokenNetworkScope = "LOCAL"
-	SIMPLIFIEDTOKENNETWORKSCOPE_REGIONAL SimplifiedTokenNetworkScope = "REGIONAL"
-	SIMPLIFIEDTOKENNETWORKSCOPE_GLOBAL   SimplifiedTokenNetworkScope = "GLOBAL"
+	SIMPLIFIEDTOKENNETWORKSCOPE_LOCAL                    SimplifiedTokenNetworkScope = "LOCAL"
+	SIMPLIFIEDTOKENNETWORKSCOPE_REGIONAL                 SimplifiedTokenNetworkScope = "REGIONAL"
+	SIMPLIFIEDTOKENNETWORKSCOPE_GLOBAL                   SimplifiedTokenNetworkScope = "GLOBAL"
+	SIMPLIFIEDTOKENNETWORKSCOPE_UNKNOWN_DEFAULT_OPEN_API SimplifiedTokenNetworkScope = "unknown_default_open_api"
 )
 
 // All allowed values of SimplifiedTokenNetworkScope enum
@@ -27,6 +28,7 @@ var AllowedSimplifiedTokenNetworkScopeEnumValues = []SimplifiedTokenNetworkScope
 	"LOCAL",
 	"REGIONAL",
 	"GLOBAL",
+	"unknown_default_open_api",
 }
 
 func (v *SimplifiedTokenNetworkScope) UnmarshalJSON(src []byte) error {
@@ -43,7 +45,8 @@ func (v *SimplifiedTokenNetworkScope) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid SimplifiedTokenNetworkScope", value)
+	*v = SIMPLIFIEDTOKENNETWORKSCOPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewSimplifiedTokenNetworkScopeFromValue returns a pointer to a valid SimplifiedTokenNetworkScope

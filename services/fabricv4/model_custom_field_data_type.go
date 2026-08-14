@@ -17,9 +17,10 @@ type CustomFieldDataType string
 
 // List of CustomField_dataType
 const (
-	CUSTOMFIELDDATATYPE_STRING CustomFieldDataType = "STRING"
-	CUSTOMFIELDDATATYPE_LIST   CustomFieldDataType = "LIST"
-	CUSTOMFIELDDATATYPE_NUMBER CustomFieldDataType = "NUMBER"
+	CUSTOMFIELDDATATYPE_STRING                   CustomFieldDataType = "STRING"
+	CUSTOMFIELDDATATYPE_LIST                     CustomFieldDataType = "LIST"
+	CUSTOMFIELDDATATYPE_NUMBER                   CustomFieldDataType = "NUMBER"
+	CUSTOMFIELDDATATYPE_UNKNOWN_DEFAULT_OPEN_API CustomFieldDataType = "unknown_default_open_api"
 )
 
 // All allowed values of CustomFieldDataType enum
@@ -27,6 +28,7 @@ var AllowedCustomFieldDataTypeEnumValues = []CustomFieldDataType{
 	"STRING",
 	"LIST",
 	"NUMBER",
+	"unknown_default_open_api",
 }
 
 func (v *CustomFieldDataType) UnmarshalJSON(src []byte) error {
@@ -43,7 +45,8 @@ func (v *CustomFieldDataType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid CustomFieldDataType", value)
+	*v = CUSTOMFIELDDATATYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewCustomFieldDataTypeFromValue returns a pointer to a valid CustomFieldDataType

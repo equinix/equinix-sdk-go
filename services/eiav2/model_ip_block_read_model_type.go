@@ -20,12 +20,14 @@ type IpBlockReadModelType string
 
 // List of IpBlockReadModel_type
 const (
-	IPBLOCKREADMODELTYPE_IA_IP_BLOCK IpBlockReadModelType = "IA_IP_BLOCK"
+	IPBLOCKREADMODELTYPE_IA_IP_BLOCK              IpBlockReadModelType = "IA_IP_BLOCK"
+	IPBLOCKREADMODELTYPE_UNKNOWN_DEFAULT_OPEN_API IpBlockReadModelType = "unknown_default_open_api"
 )
 
 // All allowed values of IpBlockReadModelType enum
 var AllowedIpBlockReadModelTypeEnumValues = []IpBlockReadModelType{
 	"IA_IP_BLOCK",
+	"unknown_default_open_api",
 }
 
 func (v *IpBlockReadModelType) UnmarshalJSON(src []byte) error {
@@ -42,7 +44,8 @@ func (v *IpBlockReadModelType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid IpBlockReadModelType", value)
+	*v = IPBLOCKREADMODELTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewIpBlockReadModelTypeFromValue returns a pointer to a valid IpBlockReadModelType

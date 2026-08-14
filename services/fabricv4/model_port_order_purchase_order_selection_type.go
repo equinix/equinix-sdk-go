@@ -17,10 +17,11 @@ type PortOrderPurchaseOrderSelectionType string
 
 // List of PortOrderPurchaseOrder_selectionType
 const (
-	PORTORDERPURCHASEORDERSELECTIONTYPE_EXEMPTION PortOrderPurchaseOrderSelectionType = "EXEMPTION"
-	PORTORDERPURCHASEORDERSELECTIONTYPE_EXISTING  PortOrderPurchaseOrderSelectionType = "EXISTING"
-	PORTORDERPURCHASEORDERSELECTIONTYPE_NEW       PortOrderPurchaseOrderSelectionType = "NEW"
-	PORTORDERPURCHASEORDERSELECTIONTYPE_BLANKET   PortOrderPurchaseOrderSelectionType = "BLANKET"
+	PORTORDERPURCHASEORDERSELECTIONTYPE_EXEMPTION                PortOrderPurchaseOrderSelectionType = "EXEMPTION"
+	PORTORDERPURCHASEORDERSELECTIONTYPE_EXISTING                 PortOrderPurchaseOrderSelectionType = "EXISTING"
+	PORTORDERPURCHASEORDERSELECTIONTYPE_NEW                      PortOrderPurchaseOrderSelectionType = "NEW"
+	PORTORDERPURCHASEORDERSELECTIONTYPE_BLANKET                  PortOrderPurchaseOrderSelectionType = "BLANKET"
+	PORTORDERPURCHASEORDERSELECTIONTYPE_UNKNOWN_DEFAULT_OPEN_API PortOrderPurchaseOrderSelectionType = "unknown_default_open_api"
 )
 
 // All allowed values of PortOrderPurchaseOrderSelectionType enum
@@ -29,6 +30,7 @@ var AllowedPortOrderPurchaseOrderSelectionTypeEnumValues = []PortOrderPurchaseOr
 	"EXISTING",
 	"NEW",
 	"BLANKET",
+	"unknown_default_open_api",
 }
 
 func (v *PortOrderPurchaseOrderSelectionType) UnmarshalJSON(src []byte) error {
@@ -45,7 +47,8 @@ func (v *PortOrderPurchaseOrderSelectionType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid PortOrderPurchaseOrderSelectionType", value)
+	*v = PORTORDERPURCHASEORDERSELECTIONTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewPortOrderPurchaseOrderSelectionTypeFromValue returns a pointer to a valid PortOrderPurchaseOrderSelectionType

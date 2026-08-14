@@ -24,6 +24,7 @@ const (
 	NETWORKSORTBY_LOCATION_REGION              NetworkSortBy = "/location/region"
 	NETWORKSORTBY_CHANGE_LOG_CREATED_DATE_TIME NetworkSortBy = "/changeLog/createdDateTime"
 	NETWORKSORTBY_CHANGE_LOG_UPDATED_DATE_TIME NetworkSortBy = "/changeLog/updatedDateTime"
+	NETWORKSORTBY_UNKNOWN_DEFAULT_OPEN_API     NetworkSortBy = "unknown_default_open_api"
 )
 
 // All allowed values of NetworkSortBy enum
@@ -35,6 +36,7 @@ var AllowedNetworkSortByEnumValues = []NetworkSortBy{
 	"/location/region",
 	"/changeLog/createdDateTime",
 	"/changeLog/updatedDateTime",
+	"unknown_default_open_api",
 }
 
 func (v *NetworkSortBy) UnmarshalJSON(src []byte) error {
@@ -51,7 +53,8 @@ func (v *NetworkSortBy) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid NetworkSortBy", value)
+	*v = NETWORKSORTBY_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewNetworkSortByFromValue returns a pointer to a valid NetworkSortBy

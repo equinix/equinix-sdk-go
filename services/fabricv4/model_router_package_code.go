@@ -17,11 +17,12 @@ type RouterPackageCode string
 
 // List of RouterPackageCode
 const (
-	ROUTERPACKAGECODE_LAB      RouterPackageCode = "LAB"
-	ROUTERPACKAGECODE_BASIC    RouterPackageCode = "BASIC"
-	ROUTERPACKAGECODE_STANDARD RouterPackageCode = "STANDARD"
-	ROUTERPACKAGECODE_ADVANCED RouterPackageCode = "ADVANCED"
-	ROUTERPACKAGECODE_PREMIUM  RouterPackageCode = "PREMIUM"
+	ROUTERPACKAGECODE_LAB                      RouterPackageCode = "LAB"
+	ROUTERPACKAGECODE_BASIC                    RouterPackageCode = "BASIC"
+	ROUTERPACKAGECODE_STANDARD                 RouterPackageCode = "STANDARD"
+	ROUTERPACKAGECODE_ADVANCED                 RouterPackageCode = "ADVANCED"
+	ROUTERPACKAGECODE_PREMIUM                  RouterPackageCode = "PREMIUM"
+	ROUTERPACKAGECODE_UNKNOWN_DEFAULT_OPEN_API RouterPackageCode = "unknown_default_open_api"
 )
 
 // All allowed values of RouterPackageCode enum
@@ -31,6 +32,7 @@ var AllowedRouterPackageCodeEnumValues = []RouterPackageCode{
 	"STANDARD",
 	"ADVANCED",
 	"PREMIUM",
+	"unknown_default_open_api",
 }
 
 func (v *RouterPackageCode) UnmarshalJSON(src []byte) error {
@@ -47,7 +49,8 @@ func (v *RouterPackageCode) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid RouterPackageCode", value)
+	*v = ROUTERPACKAGECODE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewRouterPackageCodeFromValue returns a pointer to a valid RouterPackageCode

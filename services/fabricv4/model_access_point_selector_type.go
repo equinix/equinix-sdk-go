@@ -17,9 +17,10 @@ type AccessPointSelectorType string
 
 // List of AccessPointSelector_type
 const (
-	ACCESSPOINTSELECTORTYPE_COLO    AccessPointSelectorType = "COLO"
-	ACCESSPOINTSELECTORTYPE_VD      AccessPointSelectorType = "VD"
-	ACCESSPOINTSELECTORTYPE_NETWORK AccessPointSelectorType = "NETWORK"
+	ACCESSPOINTSELECTORTYPE_COLO                     AccessPointSelectorType = "COLO"
+	ACCESSPOINTSELECTORTYPE_VD                       AccessPointSelectorType = "VD"
+	ACCESSPOINTSELECTORTYPE_NETWORK                  AccessPointSelectorType = "NETWORK"
+	ACCESSPOINTSELECTORTYPE_UNKNOWN_DEFAULT_OPEN_API AccessPointSelectorType = "unknown_default_open_api"
 )
 
 // All allowed values of AccessPointSelectorType enum
@@ -27,6 +28,7 @@ var AllowedAccessPointSelectorTypeEnumValues = []AccessPointSelectorType{
 	"COLO",
 	"VD",
 	"NETWORK",
+	"unknown_default_open_api",
 }
 
 func (v *AccessPointSelectorType) UnmarshalJSON(src []byte) error {
@@ -43,7 +45,8 @@ func (v *AccessPointSelectorType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid AccessPointSelectorType", value)
+	*v = ACCESSPOINTSELECTORTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewAccessPointSelectorTypeFromValue returns a pointer to a valid AccessPointSelectorType

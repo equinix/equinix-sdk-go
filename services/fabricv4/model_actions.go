@@ -31,6 +31,7 @@ const (
 	ACTIONS_CANCEL_EVPL_VC_DRAFT_ORDERS           Actions = "CANCEL_EVPL_VC_DRAFT_ORDERS"
 	ACTIONS_CONNECTION_CREATION_RETRY             Actions = "CONNECTION_CREATION_RETRY"
 	ACTIONS_CONNECTION_DELETION_RETRY             Actions = "CONNECTION_DELETION_RETRY"
+	ACTIONS_UNKNOWN_DEFAULT_OPEN_API              Actions = "unknown_default_open_api"
 )
 
 // All allowed values of Actions enum
@@ -49,6 +50,7 @@ var AllowedActionsEnumValues = []Actions{
 	"CANCEL_EVPL_VC_DRAFT_ORDERS",
 	"CONNECTION_CREATION_RETRY",
 	"CONNECTION_DELETION_RETRY",
+	"unknown_default_open_api",
 }
 
 func (v *Actions) UnmarshalJSON(src []byte) error {
@@ -65,7 +67,8 @@ func (v *Actions) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid Actions", value)
+	*v = ACTIONS_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewActionsFromValue returns a pointer to a valid Actions

@@ -21,11 +21,13 @@ type UseTokenPostRequestSubjectTokenType string
 // List of _use_token_post_request_subject_token_type
 const (
 	USETOKENPOSTREQUESTSUBJECTTOKENTYPE_URN_IETF_PARAMS_OAUTH_TOKEN_TYPE_ID_TOKEN UseTokenPostRequestSubjectTokenType = "urn:ietf:params:oauth:token-type:id_token"
+	USETOKENPOSTREQUESTSUBJECTTOKENTYPE_UNKNOWN_DEFAULT_OPEN_API                  UseTokenPostRequestSubjectTokenType = "unknown_default_open_api"
 )
 
 // All allowed values of UseTokenPostRequestSubjectTokenType enum
 var AllowedUseTokenPostRequestSubjectTokenTypeEnumValues = []UseTokenPostRequestSubjectTokenType{
 	"urn:ietf:params:oauth:token-type:id_token",
+	"unknown_default_open_api",
 }
 
 func (v *UseTokenPostRequestSubjectTokenType) UnmarshalJSON(src []byte) error {
@@ -42,7 +44,8 @@ func (v *UseTokenPostRequestSubjectTokenType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid UseTokenPostRequestSubjectTokenType", value)
+	*v = USETOKENPOSTREQUESTSUBJECTTOKENTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewUseTokenPostRequestSubjectTokenTypeFromValue returns a pointer to a valid UseTokenPostRequestSubjectTokenType

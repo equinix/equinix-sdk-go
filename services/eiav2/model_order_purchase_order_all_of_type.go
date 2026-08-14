@@ -20,14 +20,16 @@ type OrderPurchaseOrderAllOfType string
 
 // List of OrderPurchaseOrder_allOf_type
 const (
-	ORDERPURCHASEORDERALLOFTYPE_STANDARD_PURCHASE_ORDER OrderPurchaseOrderAllOfType = "STANDARD_PURCHASE_ORDER"
-	ORDERPURCHASEORDERALLOFTYPE_BLANKET_PURCHASE_ORDER  OrderPurchaseOrderAllOfType = "BLANKET_PURCHASE_ORDER"
+	ORDERPURCHASEORDERALLOFTYPE_STANDARD_PURCHASE_ORDER  OrderPurchaseOrderAllOfType = "STANDARD_PURCHASE_ORDER"
+	ORDERPURCHASEORDERALLOFTYPE_BLANKET_PURCHASE_ORDER   OrderPurchaseOrderAllOfType = "BLANKET_PURCHASE_ORDER"
+	ORDERPURCHASEORDERALLOFTYPE_UNKNOWN_DEFAULT_OPEN_API OrderPurchaseOrderAllOfType = "unknown_default_open_api"
 )
 
 // All allowed values of OrderPurchaseOrderAllOfType enum
 var AllowedOrderPurchaseOrderAllOfTypeEnumValues = []OrderPurchaseOrderAllOfType{
 	"STANDARD_PURCHASE_ORDER",
 	"BLANKET_PURCHASE_ORDER",
+	"unknown_default_open_api",
 }
 
 func (v *OrderPurchaseOrderAllOfType) UnmarshalJSON(src []byte) error {
@@ -44,7 +46,8 @@ func (v *OrderPurchaseOrderAllOfType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid OrderPurchaseOrderAllOfType", value)
+	*v = ORDERPURCHASEORDERALLOFTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewOrderPurchaseOrderAllOfTypeFromValue returns a pointer to a valid OrderPurchaseOrderAllOfType

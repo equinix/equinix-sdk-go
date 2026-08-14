@@ -17,14 +17,16 @@ type RfAttachmentSortItemDirection string
 
 // List of RfAttachmentSortItem_direction
 const (
-	RFATTACHMENTSORTITEMDIRECTION_DESC RfAttachmentSortItemDirection = "DESC"
-	RFATTACHMENTSORTITEMDIRECTION_ASC  RfAttachmentSortItemDirection = "ASC"
+	RFATTACHMENTSORTITEMDIRECTION_DESC                     RfAttachmentSortItemDirection = "DESC"
+	RFATTACHMENTSORTITEMDIRECTION_ASC                      RfAttachmentSortItemDirection = "ASC"
+	RFATTACHMENTSORTITEMDIRECTION_UNKNOWN_DEFAULT_OPEN_API RfAttachmentSortItemDirection = "unknown_default_open_api"
 )
 
 // All allowed values of RfAttachmentSortItemDirection enum
 var AllowedRfAttachmentSortItemDirectionEnumValues = []RfAttachmentSortItemDirection{
 	"DESC",
 	"ASC",
+	"unknown_default_open_api",
 }
 
 func (v *RfAttachmentSortItemDirection) UnmarshalJSON(src []byte) error {
@@ -41,7 +43,8 @@ func (v *RfAttachmentSortItemDirection) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid RfAttachmentSortItemDirection", value)
+	*v = RFATTACHMENTSORTITEMDIRECTION_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewRfAttachmentSortItemDirectionFromValue returns a pointer to a valid RfAttachmentSortItemDirection

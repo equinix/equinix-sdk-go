@@ -21,6 +21,7 @@ const (
 	CLOUDROUTERACTIONTYPE_ROUTE_TABLE_ENTRY_UPDATE      CloudRouterActionType = "ROUTE_TABLE_ENTRY_UPDATE"
 	CLOUDROUTERACTIONTYPE_RECEIVED_ROUTE_ENTRY_UPDATE   CloudRouterActionType = "RECEIVED_ROUTE_ENTRY_UPDATE"
 	CLOUDROUTERACTIONTYPE_ADVERTISED_ROUTE_ENTRY_UPDATE CloudRouterActionType = "ADVERTISED_ROUTE_ENTRY_UPDATE"
+	CLOUDROUTERACTIONTYPE_UNKNOWN_DEFAULT_OPEN_API      CloudRouterActionType = "unknown_default_open_api"
 )
 
 // All allowed values of CloudRouterActionType enum
@@ -29,6 +30,7 @@ var AllowedCloudRouterActionTypeEnumValues = []CloudRouterActionType{
 	"ROUTE_TABLE_ENTRY_UPDATE",
 	"RECEIVED_ROUTE_ENTRY_UPDATE",
 	"ADVERTISED_ROUTE_ENTRY_UPDATE",
+	"unknown_default_open_api",
 }
 
 func (v *CloudRouterActionType) UnmarshalJSON(src []byte) error {
@@ -45,7 +47,8 @@ func (v *CloudRouterActionType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid CloudRouterActionType", value)
+	*v = CLOUDROUTERACTIONTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewCloudRouterActionTypeFromValue returns a pointer to a valid CloudRouterActionType

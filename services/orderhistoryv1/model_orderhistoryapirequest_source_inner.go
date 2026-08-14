@@ -27,6 +27,7 @@ const (
 	ORDERHISTORYAPIREQUESTSOURCEINNER_SR_NUMBER                 OrderhistoryapirequestSourceInner = "SR_NUMBER"
 	ORDERHISTORYAPIREQUESTSOURCEINNER_TROUBLE_TICKET_NUMBER     OrderhistoryapirequestSourceInner = "TROUBLE_TICKET_NUMBER"
 	ORDERHISTORYAPIREQUESTSOURCEINNER_WORK_ACTIVITY_NUMBER      OrderhistoryapirequestSourceInner = "WORK_ACTIVITY_NUMBER"
+	ORDERHISTORYAPIREQUESTSOURCEINNER_UNKNOWN_DEFAULT_OPEN_API  OrderhistoryapirequestSourceInner = "unknown_default_open_api"
 )
 
 // All allowed values of OrderhistoryapirequestSourceInner enum
@@ -38,6 +39,7 @@ var AllowedOrderhistoryapirequestSourceInnerEnumValues = []Orderhistoryapireques
 	"SR_NUMBER",
 	"TROUBLE_TICKET_NUMBER",
 	"WORK_ACTIVITY_NUMBER",
+	"unknown_default_open_api",
 }
 
 func (v *OrderhistoryapirequestSourceInner) UnmarshalJSON(src []byte) error {
@@ -54,7 +56,8 @@ func (v *OrderhistoryapirequestSourceInner) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid OrderhistoryapirequestSourceInner", value)
+	*v = ORDERHISTORYAPIREQUESTSOURCEINNER_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewOrderhistoryapirequestSourceInnerFromValue returns a pointer to a valid OrderhistoryapirequestSourceInner

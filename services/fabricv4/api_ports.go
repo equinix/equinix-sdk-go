@@ -243,6 +243,7 @@ func (a *PortsApiService) CreatePortExecute(r ApiCreatePortRequest) (*Port, *htt
 		parameterAddToHeaderOrQuery(localVarQueryParams, "dryRun", r.dryRun, "form", "")
 	} else {
 		var defaultValue bool = false
+		parameterAddToHeaderOrQuery(localVarQueryParams, "dryRun", defaultValue, "form", "")
 		r.dryRun = &defaultValue
 	}
 	// to determine the Content-Type header
@@ -394,6 +395,7 @@ func (a *PortsApiService) DeletePortExecute(r ApiDeletePortRequest) (*Port, *htt
 		parameterAddToHeaderOrQuery(localVarQueryParams, "dryRun", r.dryRun, "form", "")
 	} else {
 		var defaultValue bool = false
+		parameterAddToHeaderOrQuery(localVarQueryParams, "dryRun", defaultValue, "form", "")
 		r.dryRun = &defaultValue
 	}
 	// to determine the Content-Type header
@@ -1123,6 +1125,7 @@ func (a *PortsApiService) UpdatePortByUuidExecute(r ApiUpdatePortByUuidRequest) 
 		parameterAddToHeaderOrQuery(localVarQueryParams, "dryRun", r.dryRun, "form", "")
 	} else {
 		var defaultValue bool = false
+		parameterAddToHeaderOrQuery(localVarQueryParams, "dryRun", defaultValue, "form", "")
 		r.dryRun = &defaultValue
 	}
 	// to determine the Content-Type header

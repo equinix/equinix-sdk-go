@@ -18,11 +18,13 @@ type ServiceTokenActions string
 // List of ServiceTokenActions
 const (
 	SERVICETOKENACTIONS_RESEND_EMAIL_NOTIFICATION ServiceTokenActions = "RESEND_EMAIL_NOTIFICATION"
+	SERVICETOKENACTIONS_UNKNOWN_DEFAULT_OPEN_API  ServiceTokenActions = "unknown_default_open_api"
 )
 
 // All allowed values of ServiceTokenActions enum
 var AllowedServiceTokenActionsEnumValues = []ServiceTokenActions{
 	"RESEND_EMAIL_NOTIFICATION",
+	"unknown_default_open_api",
 }
 
 func (v *ServiceTokenActions) UnmarshalJSON(src []byte) error {
@@ -39,7 +41,8 @@ func (v *ServiceTokenActions) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ServiceTokenActions", value)
+	*v = SERVICETOKENACTIONS_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewServiceTokenActionsFromValue returns a pointer to a valid ServiceTokenActions

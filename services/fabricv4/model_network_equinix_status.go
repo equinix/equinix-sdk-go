@@ -17,12 +17,13 @@ type NetworkEquinixStatus string
 
 // List of NetworkEquinixStatus
 const (
-	NETWORKEQUINIXSTATUS_PROVISIONING      NetworkEquinixStatus = "PROVISIONING"
-	NETWORKEQUINIXSTATUS_PROVISIONED       NetworkEquinixStatus = "PROVISIONED"
-	NETWORKEQUINIXSTATUS_NOT_PROVISIONED   NetworkEquinixStatus = "NOT_PROVISIONED"
-	NETWORKEQUINIXSTATUS_DEPROVISIONING    NetworkEquinixStatus = "DEPROVISIONING"
-	NETWORKEQUINIXSTATUS_DEPROVISIONED     NetworkEquinixStatus = "DEPROVISIONED"
-	NETWORKEQUINIXSTATUS_NOT_DEPROVISIONED NetworkEquinixStatus = "NOT_DEPROVISIONED"
+	NETWORKEQUINIXSTATUS_PROVISIONING             NetworkEquinixStatus = "PROVISIONING"
+	NETWORKEQUINIXSTATUS_PROVISIONED              NetworkEquinixStatus = "PROVISIONED"
+	NETWORKEQUINIXSTATUS_NOT_PROVISIONED          NetworkEquinixStatus = "NOT_PROVISIONED"
+	NETWORKEQUINIXSTATUS_DEPROVISIONING           NetworkEquinixStatus = "DEPROVISIONING"
+	NETWORKEQUINIXSTATUS_DEPROVISIONED            NetworkEquinixStatus = "DEPROVISIONED"
+	NETWORKEQUINIXSTATUS_NOT_DEPROVISIONED        NetworkEquinixStatus = "NOT_DEPROVISIONED"
+	NETWORKEQUINIXSTATUS_UNKNOWN_DEFAULT_OPEN_API NetworkEquinixStatus = "unknown_default_open_api"
 )
 
 // All allowed values of NetworkEquinixStatus enum
@@ -33,6 +34,7 @@ var AllowedNetworkEquinixStatusEnumValues = []NetworkEquinixStatus{
 	"DEPROVISIONING",
 	"DEPROVISIONED",
 	"NOT_DEPROVISIONED",
+	"unknown_default_open_api",
 }
 
 func (v *NetworkEquinixStatus) UnmarshalJSON(src []byte) error {
@@ -49,7 +51,8 @@ func (v *NetworkEquinixStatus) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid NetworkEquinixStatus", value)
+	*v = NETWORKEQUINIXSTATUS_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewNetworkEquinixStatusFromValue returns a pointer to a valid NetworkEquinixStatus

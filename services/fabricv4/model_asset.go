@@ -17,14 +17,15 @@ type Asset string
 
 // List of Asset
 const (
-	ASSET_PORTS                Asset = "ports"
-	ASSET_CONNECTIONS          Asset = "connections"
-	ASSET_ROUTERS              Asset = "routers"
-	ASSET_METROS               Asset = "metros"
-	ASSET_ORGANIZATIONS        Asset = "organizations"
-	ASSET_PROJECTS             Asset = "projects"
-	ASSET_NETWORK_EDGE_DEVICES Asset = "networkEdgeDevices"
-	ASSET_COMPANY_PROFILES     Asset = "companyProfiles"
+	ASSET_PORTS                    Asset = "ports"
+	ASSET_CONNECTIONS              Asset = "connections"
+	ASSET_ROUTERS                  Asset = "routers"
+	ASSET_METROS                   Asset = "metros"
+	ASSET_ORGANIZATIONS            Asset = "organizations"
+	ASSET_PROJECTS                 Asset = "projects"
+	ASSET_NETWORK_EDGE_DEVICES     Asset = "networkEdgeDevices"
+	ASSET_COMPANY_PROFILES         Asset = "companyProfiles"
+	ASSET_UNKNOWN_DEFAULT_OPEN_API Asset = "unknown_default_open_api"
 )
 
 // All allowed values of Asset enum
@@ -37,6 +38,7 @@ var AllowedAssetEnumValues = []Asset{
 	"projects",
 	"networkEdgeDevices",
 	"companyProfiles",
+	"unknown_default_open_api",
 }
 
 func (v *Asset) UnmarshalJSON(src []byte) error {
@@ -53,7 +55,8 @@ func (v *Asset) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid Asset", value)
+	*v = ASSET_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewAssetFromValue returns a pointer to a valid Asset

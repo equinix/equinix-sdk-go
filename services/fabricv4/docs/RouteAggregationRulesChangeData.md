@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Status** | Pointer to **string** | Current outcome of the change flow | [optional] 
+**Uuid** | **string** | Uniquely identifies a change | 
+**Type** | [**RouteAggregationRulesChangeType**](RouteAggregationRulesChangeType.md) |  | 
+**Href** | Pointer to **string** | Route Aggregation Change URI | [optional] 
+**Status** | Pointer to [**RoutingProtocolChangeDataAllOfStatus**](RoutingProtocolChangeDataAllOfStatus.md) |  | [optional] 
 **CreatedBy** | Pointer to **string** | Created by User Key | [optional] 
 **CreatedDateTime** | Pointer to **time.Time** | Set when change flow starts | [optional] 
 **UpdatedBy** | Pointer to **string** | Updated by User Key | [optional] 
 **UpdatedDateTime** | Pointer to **time.Time** | Set when change object is updated | [optional] 
 **Data** | Pointer to [**RouteAggregationRulesChangeOperation**](RouteAggregationRulesChangeOperation.md) |  | [optional] 
-**Uuid** | **string** | Uniquely identifies a change | 
-**Type** | [**RouteAggregationRulesChangeType**](RouteAggregationRulesChangeType.md) |  | 
-**Href** | Pointer to **string** | Route Aggregation Change URI | [optional] 
 
 ## Methods
 
@@ -33,22 +33,87 @@ NewRouteAggregationRulesChangeDataWithDefaults instantiates a new RouteAggregati
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
+### GetUuid
+
+`func (o *RouteAggregationRulesChangeData) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *RouteAggregationRulesChangeData) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *RouteAggregationRulesChangeData) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+
+### GetType
+
+`func (o *RouteAggregationRulesChangeData) GetType() RouteAggregationRulesChangeType`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *RouteAggregationRulesChangeData) GetTypeOk() (*RouteAggregationRulesChangeType, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *RouteAggregationRulesChangeData) SetType(v RouteAggregationRulesChangeType)`
+
+SetType sets Type field to given value.
+
+
+### GetHref
+
+`func (o *RouteAggregationRulesChangeData) GetHref() string`
+
+GetHref returns the Href field if non-nil, zero value otherwise.
+
+### GetHrefOk
+
+`func (o *RouteAggregationRulesChangeData) GetHrefOk() (*string, bool)`
+
+GetHrefOk returns a tuple with the Href field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHref
+
+`func (o *RouteAggregationRulesChangeData) SetHref(v string)`
+
+SetHref sets Href field to given value.
+
+### HasHref
+
+`func (o *RouteAggregationRulesChangeData) HasHref() bool`
+
+HasHref returns a boolean if a field has been set.
+
 ### GetStatus
 
-`func (o *RouteAggregationRulesChangeData) GetStatus() string`
+`func (o *RouteAggregationRulesChangeData) GetStatus() RoutingProtocolChangeDataAllOfStatus`
 
 GetStatus returns the Status field if non-nil, zero value otherwise.
 
 ### GetStatusOk
 
-`func (o *RouteAggregationRulesChangeData) GetStatusOk() (*string, bool)`
+`func (o *RouteAggregationRulesChangeData) GetStatusOk() (*RoutingProtocolChangeDataAllOfStatus, bool)`
 
 GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStatus
 
-`func (o *RouteAggregationRulesChangeData) SetStatus(v string)`
+`func (o *RouteAggregationRulesChangeData) SetStatus(v RoutingProtocolChangeDataAllOfStatus)`
 
 SetStatus sets Status field to given value.
 
@@ -182,71 +247,6 @@ SetData sets Data field to given value.
 `func (o *RouteAggregationRulesChangeData) HasData() bool`
 
 HasData returns a boolean if a field has been set.
-
-### GetUuid
-
-`func (o *RouteAggregationRulesChangeData) GetUuid() string`
-
-GetUuid returns the Uuid field if non-nil, zero value otherwise.
-
-### GetUuidOk
-
-`func (o *RouteAggregationRulesChangeData) GetUuidOk() (*string, bool)`
-
-GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUuid
-
-`func (o *RouteAggregationRulesChangeData) SetUuid(v string)`
-
-SetUuid sets Uuid field to given value.
-
-
-### GetType
-
-`func (o *RouteAggregationRulesChangeData) GetType() RouteAggregationRulesChangeType`
-
-GetType returns the Type field if non-nil, zero value otherwise.
-
-### GetTypeOk
-
-`func (o *RouteAggregationRulesChangeData) GetTypeOk() (*RouteAggregationRulesChangeType, bool)`
-
-GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetType
-
-`func (o *RouteAggregationRulesChangeData) SetType(v RouteAggregationRulesChangeType)`
-
-SetType sets Type field to given value.
-
-
-### GetHref
-
-`func (o *RouteAggregationRulesChangeData) GetHref() string`
-
-GetHref returns the Href field if non-nil, zero value otherwise.
-
-### GetHrefOk
-
-`func (o *RouteAggregationRulesChangeData) GetHrefOk() (*string, bool)`
-
-GetHrefOk returns a tuple with the Href field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetHref
-
-`func (o *RouteAggregationRulesChangeData) SetHref(v string)`
-
-SetHref sets Href field to given value.
-
-### HasHref
-
-`func (o *RouteAggregationRulesChangeData) HasHref() bool`
-
-HasHref returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

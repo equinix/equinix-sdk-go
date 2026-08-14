@@ -17,12 +17,14 @@ type BandwidthUtilizationUnit string
 
 // List of BandwidthUtilization_unit
 const (
-	BANDWIDTHUTILIZATIONUNIT_MBPS BandwidthUtilizationUnit = "Mbps"
+	BANDWIDTHUTILIZATIONUNIT_MBPS                     BandwidthUtilizationUnit = "Mbps"
+	BANDWIDTHUTILIZATIONUNIT_UNKNOWN_DEFAULT_OPEN_API BandwidthUtilizationUnit = "unknown_default_open_api"
 )
 
 // All allowed values of BandwidthUtilizationUnit enum
 var AllowedBandwidthUtilizationUnitEnumValues = []BandwidthUtilizationUnit{
 	"Mbps",
+	"unknown_default_open_api",
 }
 
 func (v *BandwidthUtilizationUnit) UnmarshalJSON(src []byte) error {
@@ -39,7 +41,8 @@ func (v *BandwidthUtilizationUnit) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid BandwidthUtilizationUnit", value)
+	*v = BANDWIDTHUTILIZATIONUNIT_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewBandwidthUtilizationUnitFromValue returns a pointer to a valid BandwidthUtilizationUnit

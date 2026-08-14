@@ -20,9 +20,10 @@ type OrderSignatureSignatory string
 
 // List of OrderSignature_signatory
 const (
-	ORDERSIGNATURESIGNATORY_SELF     OrderSignatureSignatory = "SELF"
-	ORDERSIGNATURESIGNATORY_DELEGATE OrderSignatureSignatory = "DELEGATE"
-	ORDERSIGNATURESIGNATORY_SUPPORT  OrderSignatureSignatory = "SUPPORT"
+	ORDERSIGNATURESIGNATORY_SELF                     OrderSignatureSignatory = "SELF"
+	ORDERSIGNATURESIGNATORY_DELEGATE                 OrderSignatureSignatory = "DELEGATE"
+	ORDERSIGNATURESIGNATORY_SUPPORT                  OrderSignatureSignatory = "SUPPORT"
+	ORDERSIGNATURESIGNATORY_UNKNOWN_DEFAULT_OPEN_API OrderSignatureSignatory = "unknown_default_open_api"
 )
 
 // All allowed values of OrderSignatureSignatory enum
@@ -30,6 +31,7 @@ var AllowedOrderSignatureSignatoryEnumValues = []OrderSignatureSignatory{
 	"SELF",
 	"DELEGATE",
 	"SUPPORT",
+	"unknown_default_open_api",
 }
 
 func (v *OrderSignatureSignatory) UnmarshalJSON(src []byte) error {
@@ -46,7 +48,8 @@ func (v *OrderSignatureSignatory) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid OrderSignatureSignatory", value)
+	*v = ORDERSIGNATURESIGNATORY_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewOrderSignatureSignatoryFromValue returns a pointer to a valid OrderSignatureSignatory

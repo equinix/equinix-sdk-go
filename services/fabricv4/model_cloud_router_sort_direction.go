@@ -17,14 +17,16 @@ type CloudRouterSortDirection string
 
 // List of CloudRouterSortDirection
 const (
-	CLOUDROUTERSORTDIRECTION_DESC CloudRouterSortDirection = "DESC"
-	CLOUDROUTERSORTDIRECTION_ASC  CloudRouterSortDirection = "ASC"
+	CLOUDROUTERSORTDIRECTION_DESC                     CloudRouterSortDirection = "DESC"
+	CLOUDROUTERSORTDIRECTION_ASC                      CloudRouterSortDirection = "ASC"
+	CLOUDROUTERSORTDIRECTION_UNKNOWN_DEFAULT_OPEN_API CloudRouterSortDirection = "unknown_default_open_api"
 )
 
 // All allowed values of CloudRouterSortDirection enum
 var AllowedCloudRouterSortDirectionEnumValues = []CloudRouterSortDirection{
 	"DESC",
 	"ASC",
+	"unknown_default_open_api",
 }
 
 func (v *CloudRouterSortDirection) UnmarshalJSON(src []byte) error {
@@ -41,7 +43,8 @@ func (v *CloudRouterSortDirection) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid CloudRouterSortDirection", value)
+	*v = CLOUDROUTERSORTDIRECTION_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewCloudRouterSortDirectionFromValue returns a pointer to a valid CloudRouterSortDirection

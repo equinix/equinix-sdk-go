@@ -17,9 +17,10 @@ type PortConnectivitySourceType string
 
 // List of Port_connectivitySourceType
 const (
-	PORTCONNECTIVITYSOURCETYPE_COLO   PortConnectivitySourceType = "COLO"
-	PORTCONNECTIVITYSOURCETYPE_BMMR   PortConnectivitySourceType = "BMMR"
-	PORTCONNECTIVITYSOURCETYPE_REMOTE PortConnectivitySourceType = "REMOTE"
+	PORTCONNECTIVITYSOURCETYPE_COLO                     PortConnectivitySourceType = "COLO"
+	PORTCONNECTIVITYSOURCETYPE_BMMR                     PortConnectivitySourceType = "BMMR"
+	PORTCONNECTIVITYSOURCETYPE_REMOTE                   PortConnectivitySourceType = "REMOTE"
+	PORTCONNECTIVITYSOURCETYPE_UNKNOWN_DEFAULT_OPEN_API PortConnectivitySourceType = "unknown_default_open_api"
 )
 
 // All allowed values of PortConnectivitySourceType enum
@@ -27,6 +28,7 @@ var AllowedPortConnectivitySourceTypeEnumValues = []PortConnectivitySourceType{
 	"COLO",
 	"BMMR",
 	"REMOTE",
+	"unknown_default_open_api",
 }
 
 func (v *PortConnectivitySourceType) UnmarshalJSON(src []byte) error {
@@ -43,7 +45,8 @@ func (v *PortConnectivitySourceType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid PortConnectivitySourceType", value)
+	*v = PORTCONNECTIVITYSOURCETYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewPortConnectivitySourceTypeFromValue returns a pointer to a valid PortConnectivitySourceType

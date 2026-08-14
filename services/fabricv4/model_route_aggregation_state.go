@@ -17,13 +17,14 @@ type RouteAggregationState string
 
 // List of RouteAggregationState
 const (
-	ROUTEAGGREGATIONSTATE_PROVISIONING      RouteAggregationState = "PROVISIONING"
-	ROUTEAGGREGATIONSTATE_REPROVISIONING    RouteAggregationState = "REPROVISIONING"
-	ROUTEAGGREGATIONSTATE_DEPROVISIONING    RouteAggregationState = "DEPROVISIONING"
-	ROUTEAGGREGATIONSTATE_PROVISIONED       RouteAggregationState = "PROVISIONED"
-	ROUTEAGGREGATIONSTATE_DEPROVISIONED     RouteAggregationState = "DEPROVISIONED"
-	ROUTEAGGREGATIONSTATE_NOT_PROVISIONED   RouteAggregationState = "NOT_PROVISIONED"
-	ROUTEAGGREGATIONSTATE_NOT_DEPROVISIONED RouteAggregationState = "NOT_DEPROVISIONED"
+	ROUTEAGGREGATIONSTATE_PROVISIONING             RouteAggregationState = "PROVISIONING"
+	ROUTEAGGREGATIONSTATE_REPROVISIONING           RouteAggregationState = "REPROVISIONING"
+	ROUTEAGGREGATIONSTATE_DEPROVISIONING           RouteAggregationState = "DEPROVISIONING"
+	ROUTEAGGREGATIONSTATE_PROVISIONED              RouteAggregationState = "PROVISIONED"
+	ROUTEAGGREGATIONSTATE_DEPROVISIONED            RouteAggregationState = "DEPROVISIONED"
+	ROUTEAGGREGATIONSTATE_NOT_PROVISIONED          RouteAggregationState = "NOT_PROVISIONED"
+	ROUTEAGGREGATIONSTATE_NOT_DEPROVISIONED        RouteAggregationState = "NOT_DEPROVISIONED"
+	ROUTEAGGREGATIONSTATE_UNKNOWN_DEFAULT_OPEN_API RouteAggregationState = "unknown_default_open_api"
 )
 
 // All allowed values of RouteAggregationState enum
@@ -35,6 +36,7 @@ var AllowedRouteAggregationStateEnumValues = []RouteAggregationState{
 	"DEPROVISIONED",
 	"NOT_PROVISIONED",
 	"NOT_DEPROVISIONED",
+	"unknown_default_open_api",
 }
 
 func (v *RouteAggregationState) UnmarshalJSON(src []byte) error {
@@ -51,7 +53,8 @@ func (v *RouteAggregationState) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid RouteAggregationState", value)
+	*v = ROUTEAGGREGATIONSTATE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewRouteAggregationStateFromValue returns a pointer to a valid RouteAggregationState

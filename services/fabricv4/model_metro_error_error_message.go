@@ -23,6 +23,7 @@ const (
 	METROERRORERRORMESSAGE_INVALID_QUERY_OR_PATH_PARAMETER MetroErrorErrorMessage = "Invalid Query or Path Parameter"
 	METROERRORERRORMESSAGE_INTERNAL_SERVER_ERROR           MetroErrorErrorMessage = "Internal Server Error"
 	METROERRORERRORMESSAGE_METRO_NOT_FOUND                 MetroErrorErrorMessage = "Metro Not Found"
+	METROERRORERRORMESSAGE_UNKNOWN_DEFAULT_OPEN_API        MetroErrorErrorMessage = "unknown_default_open_api"
 )
 
 // All allowed values of MetroErrorErrorMessage enum
@@ -33,6 +34,7 @@ var AllowedMetroErrorErrorMessageEnumValues = []MetroErrorErrorMessage{
 	"Invalid Query or Path Parameter",
 	"Internal Server Error",
 	"Metro Not Found",
+	"unknown_default_open_api",
 }
 
 func (v *MetroErrorErrorMessage) UnmarshalJSON(src []byte) error {
@@ -49,7 +51,8 @@ func (v *MetroErrorErrorMessage) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid MetroErrorErrorMessage", value)
+	*v = METROERRORERRORMESSAGE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewMetroErrorErrorMessageFromValue returns a pointer to a valid MetroErrorErrorMessage

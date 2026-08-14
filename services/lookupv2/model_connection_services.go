@@ -20,12 +20,13 @@ type ConnectionServices string
 
 // List of Connection_services
 const (
-	CONNECTIONSERVICES_COAX              ConnectionServices = "COAX"
-	CONNECTIONSERVICES_MP4_CABLE         ConnectionServices = "MP4_CABLE"
-	CONNECTIONSERVICES_MULTI_MODE_FIBER  ConnectionServices = "MULTI_MODE_FIBER"
-	CONNECTIONSERVICES_POTS              ConnectionServices = "POTS"
-	CONNECTIONSERVICES_SINGLE_MODE_FIBER ConnectionServices = "SINGLE_MODE_FIBER"
-	CONNECTIONSERVICES_UTP               ConnectionServices = "UTP"
+	CONNECTIONSERVICES_COAX                     ConnectionServices = "COAX"
+	CONNECTIONSERVICES_MP4_CABLE                ConnectionServices = "MP4_CABLE"
+	CONNECTIONSERVICES_MULTI_MODE_FIBER         ConnectionServices = "MULTI_MODE_FIBER"
+	CONNECTIONSERVICES_POTS                     ConnectionServices = "POTS"
+	CONNECTIONSERVICES_SINGLE_MODE_FIBER        ConnectionServices = "SINGLE_MODE_FIBER"
+	CONNECTIONSERVICES_UTP                      ConnectionServices = "UTP"
+	CONNECTIONSERVICES_UNKNOWN_DEFAULT_OPEN_API ConnectionServices = "unknown_default_open_api"
 )
 
 // All allowed values of ConnectionServices enum
@@ -36,6 +37,7 @@ var AllowedConnectionServicesEnumValues = []ConnectionServices{
 	"POTS",
 	"SINGLE_MODE_FIBER",
 	"UTP",
+	"unknown_default_open_api",
 }
 
 func (v *ConnectionServices) UnmarshalJSON(src []byte) error {
@@ -52,7 +54,8 @@ func (v *ConnectionServices) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ConnectionServices", value)
+	*v = CONNECTIONSERVICES_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewConnectionServicesFromValue returns a pointer to a valid ConnectionServices

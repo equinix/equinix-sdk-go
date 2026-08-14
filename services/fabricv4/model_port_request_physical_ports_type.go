@@ -17,13 +17,14 @@ type PortRequestPhysicalPortsType string
 
 // List of PortRequest_physicalPortsType
 const (
-	PORTREQUESTPHYSICALPORTSTYPE__1000_BASE_LX  PortRequestPhysicalPortsType = "1000BASE_LX"
-	PORTREQUESTPHYSICALPORTSTYPE__10_GBASE_LR   PortRequestPhysicalPortsType = "10GBASE_LR"
-	PORTREQUESTPHYSICALPORTSTYPE__100_GBASE_LR4 PortRequestPhysicalPortsType = "100GBASE_LR4"
-	PORTREQUESTPHYSICALPORTSTYPE__10_GBASE_ER   PortRequestPhysicalPortsType = "10GBASE_ER"
-	PORTREQUESTPHYSICALPORTSTYPE__1000_BASE_SX  PortRequestPhysicalPortsType = "1000BASE_SX"
-	PORTREQUESTPHYSICALPORTSTYPE__10_GBASE_SMF  PortRequestPhysicalPortsType = "10GBASE_SMF"
-	PORTREQUESTPHYSICALPORTSTYPE__400_GBASE_LR4 PortRequestPhysicalPortsType = "400GBASE_LR4"
+	PORTREQUESTPHYSICALPORTSTYPE__1000_BASE_LX            PortRequestPhysicalPortsType = "1000BASE_LX"
+	PORTREQUESTPHYSICALPORTSTYPE__10_GBASE_LR             PortRequestPhysicalPortsType = "10GBASE_LR"
+	PORTREQUESTPHYSICALPORTSTYPE__100_GBASE_LR4           PortRequestPhysicalPortsType = "100GBASE_LR4"
+	PORTREQUESTPHYSICALPORTSTYPE__10_GBASE_ER             PortRequestPhysicalPortsType = "10GBASE_ER"
+	PORTREQUESTPHYSICALPORTSTYPE__1000_BASE_SX            PortRequestPhysicalPortsType = "1000BASE_SX"
+	PORTREQUESTPHYSICALPORTSTYPE__10_GBASE_SMF            PortRequestPhysicalPortsType = "10GBASE_SMF"
+	PORTREQUESTPHYSICALPORTSTYPE__400_GBASE_LR4           PortRequestPhysicalPortsType = "400GBASE_LR4"
+	PORTREQUESTPHYSICALPORTSTYPE_UNKNOWN_DEFAULT_OPEN_API PortRequestPhysicalPortsType = "unknown_default_open_api"
 )
 
 // All allowed values of PortRequestPhysicalPortsType enum
@@ -35,6 +36,7 @@ var AllowedPortRequestPhysicalPortsTypeEnumValues = []PortRequestPhysicalPortsTy
 	"1000BASE_SX",
 	"10GBASE_SMF",
 	"400GBASE_LR4",
+	"unknown_default_open_api",
 }
 
 func (v *PortRequestPhysicalPortsType) UnmarshalJSON(src []byte) error {
@@ -51,7 +53,8 @@ func (v *PortRequestPhysicalPortsType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid PortRequestPhysicalPortsType", value)
+	*v = PORTREQUESTPHYSICALPORTSTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewPortRequestPhysicalPortsTypeFromValue returns a pointer to a valid PortRequestPhysicalPortsType

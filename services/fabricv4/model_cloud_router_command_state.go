@@ -17,10 +17,11 @@ type CloudRouterCommandState string
 
 // List of CloudRouterCommandState
 const (
-	CLOUDROUTERCOMMANDSTATE_PENDING   CloudRouterCommandState = "PENDING"
-	CLOUDROUTERCOMMANDSTATE_SUCCEEDED CloudRouterCommandState = "SUCCEEDED"
-	CLOUDROUTERCOMMANDSTATE_FAILED    CloudRouterCommandState = "FAILED"
-	CLOUDROUTERCOMMANDSTATE_DELETED   CloudRouterCommandState = "DELETED"
+	CLOUDROUTERCOMMANDSTATE_PENDING                  CloudRouterCommandState = "PENDING"
+	CLOUDROUTERCOMMANDSTATE_SUCCEEDED                CloudRouterCommandState = "SUCCEEDED"
+	CLOUDROUTERCOMMANDSTATE_FAILED                   CloudRouterCommandState = "FAILED"
+	CLOUDROUTERCOMMANDSTATE_DELETED                  CloudRouterCommandState = "DELETED"
+	CLOUDROUTERCOMMANDSTATE_UNKNOWN_DEFAULT_OPEN_API CloudRouterCommandState = "unknown_default_open_api"
 )
 
 // All allowed values of CloudRouterCommandState enum
@@ -29,6 +30,7 @@ var AllowedCloudRouterCommandStateEnumValues = []CloudRouterCommandState{
 	"SUCCEEDED",
 	"FAILED",
 	"DELETED",
+	"unknown_default_open_api",
 }
 
 func (v *CloudRouterCommandState) UnmarshalJSON(src []byte) error {
@@ -45,7 +47,8 @@ func (v *CloudRouterCommandState) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid CloudRouterCommandState", value)
+	*v = CLOUDROUTERCOMMANDSTATE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewCloudRouterCommandStateFromValue returns a pointer to a valid CloudRouterCommandState

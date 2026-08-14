@@ -17,14 +17,16 @@ type PortPriority string
 
 // List of PortPriority
 const (
-	PORTPRIORITY_PRIMARY   PortPriority = "PRIMARY"
-	PORTPRIORITY_SECONDARY PortPriority = "SECONDARY"
+	PORTPRIORITY_PRIMARY                  PortPriority = "PRIMARY"
+	PORTPRIORITY_SECONDARY                PortPriority = "SECONDARY"
+	PORTPRIORITY_UNKNOWN_DEFAULT_OPEN_API PortPriority = "unknown_default_open_api"
 )
 
 // All allowed values of PortPriority enum
 var AllowedPortPriorityEnumValues = []PortPriority{
 	"PRIMARY",
 	"SECONDARY",
+	"unknown_default_open_api",
 }
 
 func (v *PortPriority) UnmarshalJSON(src []byte) error {
@@ -41,7 +43,8 @@ func (v *PortPriority) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid PortPriority", value)
+	*v = PORTPRIORITY_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewPortPriorityFromValue returns a pointer to a valid PortPriority

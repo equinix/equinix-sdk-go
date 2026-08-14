@@ -33,6 +33,7 @@ const (
 	NETWORKSEARCHFIELDNAME_CHANGE_LOG_UPDATED_DATE_TIME NetworkSearchFieldName = "/changeLog/updatedDateTime"
 	NETWORKSEARCHFIELDNAME_CHANGE_LOG_DELETED_DATE_TIME NetworkSearchFieldName = "/changeLog/deletedDateTime"
 	NETWORKSEARCHFIELDNAME_STAR                         NetworkSearchFieldName = "/_*"
+	NETWORKSEARCHFIELDNAME_UNKNOWN_DEFAULT_OPEN_API     NetworkSearchFieldName = "unknown_default_open_api"
 )
 
 // All allowed values of NetworkSearchFieldName enum
@@ -53,6 +54,7 @@ var AllowedNetworkSearchFieldNameEnumValues = []NetworkSearchFieldName{
 	"/changeLog/updatedDateTime",
 	"/changeLog/deletedDateTime",
 	"/_*",
+	"unknown_default_open_api",
 }
 
 func (v *NetworkSearchFieldName) UnmarshalJSON(src []byte) error {
@@ -69,7 +71,8 @@ func (v *NetworkSearchFieldName) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid NetworkSearchFieldName", value)
+	*v = NETWORKSEARCHFIELDNAME_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewNetworkSearchFieldNameFromValue returns a pointer to a valid NetworkSearchFieldName

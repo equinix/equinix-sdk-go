@@ -20,14 +20,16 @@ type IpBlockQuestionsAnswer string
 
 // List of IpBlockQuestions_answer
 const (
-	IPBLOCKQUESTIONSANSWER_TRUE  IpBlockQuestionsAnswer = "true"
-	IPBLOCKQUESTIONSANSWER_FALSE IpBlockQuestionsAnswer = "false"
+	IPBLOCKQUESTIONSANSWER_TRUE                     IpBlockQuestionsAnswer = "true"
+	IPBLOCKQUESTIONSANSWER_FALSE                    IpBlockQuestionsAnswer = "false"
+	IPBLOCKQUESTIONSANSWER_UNKNOWN_DEFAULT_OPEN_API IpBlockQuestionsAnswer = "unknown_default_open_api"
 )
 
 // All allowed values of IpBlockQuestionsAnswer enum
 var AllowedIpBlockQuestionsAnswerEnumValues = []IpBlockQuestionsAnswer{
 	"true",
 	"false",
+	"unknown_default_open_api",
 }
 
 func (v *IpBlockQuestionsAnswer) UnmarshalJSON(src []byte) error {
@@ -44,7 +46,8 @@ func (v *IpBlockQuestionsAnswer) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid IpBlockQuestionsAnswer", value)
+	*v = IPBLOCKQUESTIONSANSWER_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewIpBlockQuestionsAnswerFromValue returns a pointer to a valid IpBlockQuestionsAnswer

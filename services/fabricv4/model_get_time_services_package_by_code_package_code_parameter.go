@@ -17,10 +17,11 @@ type GetTimeServicesPackageByCodePackageCodeParameter string
 
 // List of getTimeServicesPackageByCode_packageCode_parameter
 const (
-	GETTIMESERVICESPACKAGEBYCODEPACKAGECODEPARAMETER_NTP_STANDARD   GetTimeServicesPackageByCodePackageCodeParameter = "NTP_STANDARD"
-	GETTIMESERVICESPACKAGEBYCODEPACKAGECODEPARAMETER_NTP_ENTERPRISE GetTimeServicesPackageByCodePackageCodeParameter = "NTP_ENTERPRISE"
-	GETTIMESERVICESPACKAGEBYCODEPACKAGECODEPARAMETER_PTP_STANDARD   GetTimeServicesPackageByCodePackageCodeParameter = "PTP_STANDARD"
-	GETTIMESERVICESPACKAGEBYCODEPACKAGECODEPARAMETER_PTP_ENTERPRISE GetTimeServicesPackageByCodePackageCodeParameter = "PTP_ENTERPRISE"
+	GETTIMESERVICESPACKAGEBYCODEPACKAGECODEPARAMETER_NTP_STANDARD             GetTimeServicesPackageByCodePackageCodeParameter = "NTP_STANDARD"
+	GETTIMESERVICESPACKAGEBYCODEPACKAGECODEPARAMETER_NTP_ENTERPRISE           GetTimeServicesPackageByCodePackageCodeParameter = "NTP_ENTERPRISE"
+	GETTIMESERVICESPACKAGEBYCODEPACKAGECODEPARAMETER_PTP_STANDARD             GetTimeServicesPackageByCodePackageCodeParameter = "PTP_STANDARD"
+	GETTIMESERVICESPACKAGEBYCODEPACKAGECODEPARAMETER_PTP_ENTERPRISE           GetTimeServicesPackageByCodePackageCodeParameter = "PTP_ENTERPRISE"
+	GETTIMESERVICESPACKAGEBYCODEPACKAGECODEPARAMETER_UNKNOWN_DEFAULT_OPEN_API GetTimeServicesPackageByCodePackageCodeParameter = "unknown_default_open_api"
 )
 
 // All allowed values of GetTimeServicesPackageByCodePackageCodeParameter enum
@@ -29,6 +30,7 @@ var AllowedGetTimeServicesPackageByCodePackageCodeParameterEnumValues = []GetTim
 	"NTP_ENTERPRISE",
 	"PTP_STANDARD",
 	"PTP_ENTERPRISE",
+	"unknown_default_open_api",
 }
 
 func (v *GetTimeServicesPackageByCodePackageCodeParameter) UnmarshalJSON(src []byte) error {
@@ -45,7 +47,8 @@ func (v *GetTimeServicesPackageByCodePackageCodeParameter) UnmarshalJSON(src []b
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid GetTimeServicesPackageByCodePackageCodeParameter", value)
+	*v = GETTIMESERVICESPACKAGEBYCODEPACKAGECODEPARAMETER_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewGetTimeServicesPackageByCodePackageCodeParameterFromValue returns a pointer to a valid GetTimeServicesPackageByCodePackageCodeParameter

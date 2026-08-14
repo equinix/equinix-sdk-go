@@ -20,10 +20,11 @@ type OrdersBaseChannel string
 
 // List of ordersBase_channel
 const (
-	ORDERSBASECHANNEL_API     OrdersBaseChannel = "API"
-	ORDERSBASECHANNEL_PORTAL  OrdersBaseChannel = "PORTAL"
-	ORDERSBASECHANNEL_MOBILE  OrdersBaseChannel = "MOBILE"
-	ORDERSBASECHANNEL_OFFLINE OrdersBaseChannel = "OFFLINE"
+	ORDERSBASECHANNEL_API                      OrdersBaseChannel = "API"
+	ORDERSBASECHANNEL_PORTAL                   OrdersBaseChannel = "PORTAL"
+	ORDERSBASECHANNEL_MOBILE                   OrdersBaseChannel = "MOBILE"
+	ORDERSBASECHANNEL_OFFLINE                  OrdersBaseChannel = "OFFLINE"
+	ORDERSBASECHANNEL_UNKNOWN_DEFAULT_OPEN_API OrdersBaseChannel = "unknown_default_open_api"
 )
 
 // All allowed values of OrdersBaseChannel enum
@@ -32,6 +33,7 @@ var AllowedOrdersBaseChannelEnumValues = []OrdersBaseChannel{
 	"PORTAL",
 	"MOBILE",
 	"OFFLINE",
+	"unknown_default_open_api",
 }
 
 func (v *OrdersBaseChannel) UnmarshalJSON(src []byte) error {
@@ -48,7 +50,8 @@ func (v *OrdersBaseChannel) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid OrdersBaseChannel", value)
+	*v = ORDERSBASECHANNEL_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewOrdersBaseChannelFromValue returns a pointer to a valid OrdersBaseChannel

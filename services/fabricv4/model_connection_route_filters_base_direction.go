@@ -17,14 +17,16 @@ type ConnectionRouteFiltersBaseDirection string
 
 // List of ConnectionRouteFiltersBase_direction
 const (
-	CONNECTIONROUTEFILTERSBASEDIRECTION_INBOUND  ConnectionRouteFiltersBaseDirection = "INBOUND"
-	CONNECTIONROUTEFILTERSBASEDIRECTION_OUTBOUND ConnectionRouteFiltersBaseDirection = "OUTBOUND"
+	CONNECTIONROUTEFILTERSBASEDIRECTION_INBOUND                  ConnectionRouteFiltersBaseDirection = "INBOUND"
+	CONNECTIONROUTEFILTERSBASEDIRECTION_OUTBOUND                 ConnectionRouteFiltersBaseDirection = "OUTBOUND"
+	CONNECTIONROUTEFILTERSBASEDIRECTION_UNKNOWN_DEFAULT_OPEN_API ConnectionRouteFiltersBaseDirection = "unknown_default_open_api"
 )
 
 // All allowed values of ConnectionRouteFiltersBaseDirection enum
 var AllowedConnectionRouteFiltersBaseDirectionEnumValues = []ConnectionRouteFiltersBaseDirection{
 	"INBOUND",
 	"OUTBOUND",
+	"unknown_default_open_api",
 }
 
 func (v *ConnectionRouteFiltersBaseDirection) UnmarshalJSON(src []byte) error {
@@ -41,7 +43,8 @@ func (v *ConnectionRouteFiltersBaseDirection) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ConnectionRouteFiltersBaseDirection", value)
+	*v = CONNECTIONROUTEFILTERSBASEDIRECTION_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewConnectionRouteFiltersBaseDirectionFromValue returns a pointer to a valid ConnectionRouteFiltersBaseDirection

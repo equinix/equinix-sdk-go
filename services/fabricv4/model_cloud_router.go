@@ -14,30 +14,30 @@ import (
 // checks if the CloudRouter type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &CloudRouter{}
 
-// CloudRouter Fabric Cloud Router object
+// CloudRouter struct for CloudRouter
 type CloudRouter struct {
+	Type *CloudRouterPostRequestBaseType `json:"type,omitempty"`
+	// Customer-provided Cloud Router name
+	Name     *string                        `json:"name,omitempty"`
+	Location *SimplifiedLocationWithoutIBX  `json:"location,omitempty"`
+	Package  *CloudRouterPostRequestPackage `json:"package,omitempty"`
+	Order    *Order                         `json:"order,omitempty"`
+	Project  *Project                       `json:"project,omitempty"`
+	Account  *SimplifiedAccount             `json:"account,omitempty"`
+	// Preferences for notifications on connection configuration or status changes
+	Notifications           []SimplifiedNotification `json:"notifications,omitempty"`
+	MarketplaceSubscription *MarketplaceSubscription `json:"marketplaceSubscription,omitempty"`
 	// Cloud Routers URI
 	Href *string `json:"href,omitempty"`
 	// Equinix-assigned access point identifier
-	Uuid *string `json:"uuid,omitempty"`
-	// Customer-provided Cloud Router name
-	Name  *string                      `json:"name,omitempty"`
+	Uuid  *string                      `json:"uuid,omitempty"`
 	State *CloudRouterAccessPointState `json:"state,omitempty"`
 	// Equinix ASN
 	EquinixAsn *int64 `json:"equinixAsn,omitempty"`
 	// Number of connections associated with this Access point
-	ConnectionsCount        *int32                          `json:"connectionsCount,omitempty"`
-	MarketplaceSubscription *MarketplaceSubscription        `json:"marketplaceSubscription,omitempty"`
-	ChangeLog               *Changelog                      `json:"changeLog,omitempty"`
-	Change                  *CloudRouterChange              `json:"change,omitempty"`
-	Type                    *CloudRouterPostRequestBaseType `json:"type,omitempty"`
-	Location                *SimplifiedLocationWithoutIBX   `json:"location,omitempty"`
-	Package                 *CloudRouterPostRequestPackage  `json:"package,omitempty"`
-	Order                   *Order                          `json:"order,omitempty"`
-	Project                 *Project                        `json:"project,omitempty"`
-	Account                 *SimplifiedAccount              `json:"account,omitempty"`
-	// Preferences for notifications on connection configuration or status changes
-	Notifications        []SimplifiedNotification `json:"notifications,omitempty"`
+	ConnectionsCount     *int32             `json:"connectionsCount,omitempty"`
+	ChangeLog            *Changelog         `json:"changeLog,omitempty"`
+	Change               *CloudRouterChange `json:"change,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -58,294 +58,6 @@ func NewCloudRouter() *CloudRouter {
 func NewCloudRouterWithDefaults() *CloudRouter {
 	this := CloudRouter{}
 	return &this
-}
-
-// GetHref returns the Href field value if set, zero value otherwise.
-func (o *CloudRouter) GetHref() string {
-	if o == nil || IsNil(o.Href) {
-		var ret string
-		return ret
-	}
-	return *o.Href
-}
-
-// GetHrefOk returns a tuple with the Href field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CloudRouter) GetHrefOk() (*string, bool) {
-	if o == nil || IsNil(o.Href) {
-		return nil, false
-	}
-	return o.Href, true
-}
-
-// HasHref returns a boolean if a field has been set.
-func (o *CloudRouter) HasHref() bool {
-	if o != nil && !IsNil(o.Href) {
-		return true
-	}
-
-	return false
-}
-
-// SetHref gets a reference to the given string and assigns it to the Href field.
-func (o *CloudRouter) SetHref(v string) {
-	o.Href = &v
-}
-
-// GetUuid returns the Uuid field value if set, zero value otherwise.
-func (o *CloudRouter) GetUuid() string {
-	if o == nil || IsNil(o.Uuid) {
-		var ret string
-		return ret
-	}
-	return *o.Uuid
-}
-
-// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CloudRouter) GetUuidOk() (*string, bool) {
-	if o == nil || IsNil(o.Uuid) {
-		return nil, false
-	}
-	return o.Uuid, true
-}
-
-// HasUuid returns a boolean if a field has been set.
-func (o *CloudRouter) HasUuid() bool {
-	if o != nil && !IsNil(o.Uuid) {
-		return true
-	}
-
-	return false
-}
-
-// SetUuid gets a reference to the given string and assigns it to the Uuid field.
-func (o *CloudRouter) SetUuid(v string) {
-	o.Uuid = &v
-}
-
-// GetName returns the Name field value if set, zero value otherwise.
-func (o *CloudRouter) GetName() string {
-	if o == nil || IsNil(o.Name) {
-		var ret string
-		return ret
-	}
-	return *o.Name
-}
-
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CloudRouter) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
-		return nil, false
-	}
-	return o.Name, true
-}
-
-// HasName returns a boolean if a field has been set.
-func (o *CloudRouter) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given string and assigns it to the Name field.
-func (o *CloudRouter) SetName(v string) {
-	o.Name = &v
-}
-
-// GetState returns the State field value if set, zero value otherwise.
-func (o *CloudRouter) GetState() CloudRouterAccessPointState {
-	if o == nil || IsNil(o.State) {
-		var ret CloudRouterAccessPointState
-		return ret
-	}
-	return *o.State
-}
-
-// GetStateOk returns a tuple with the State field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CloudRouter) GetStateOk() (*CloudRouterAccessPointState, bool) {
-	if o == nil || IsNil(o.State) {
-		return nil, false
-	}
-	return o.State, true
-}
-
-// HasState returns a boolean if a field has been set.
-func (o *CloudRouter) HasState() bool {
-	if o != nil && !IsNil(o.State) {
-		return true
-	}
-
-	return false
-}
-
-// SetState gets a reference to the given CloudRouterAccessPointState and assigns it to the State field.
-func (o *CloudRouter) SetState(v CloudRouterAccessPointState) {
-	o.State = &v
-}
-
-// GetEquinixAsn returns the EquinixAsn field value if set, zero value otherwise.
-func (o *CloudRouter) GetEquinixAsn() int64 {
-	if o == nil || IsNil(o.EquinixAsn) {
-		var ret int64
-		return ret
-	}
-	return *o.EquinixAsn
-}
-
-// GetEquinixAsnOk returns a tuple with the EquinixAsn field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CloudRouter) GetEquinixAsnOk() (*int64, bool) {
-	if o == nil || IsNil(o.EquinixAsn) {
-		return nil, false
-	}
-	return o.EquinixAsn, true
-}
-
-// HasEquinixAsn returns a boolean if a field has been set.
-func (o *CloudRouter) HasEquinixAsn() bool {
-	if o != nil && !IsNil(o.EquinixAsn) {
-		return true
-	}
-
-	return false
-}
-
-// SetEquinixAsn gets a reference to the given int64 and assigns it to the EquinixAsn field.
-func (o *CloudRouter) SetEquinixAsn(v int64) {
-	o.EquinixAsn = &v
-}
-
-// GetConnectionsCount returns the ConnectionsCount field value if set, zero value otherwise.
-func (o *CloudRouter) GetConnectionsCount() int32 {
-	if o == nil || IsNil(o.ConnectionsCount) {
-		var ret int32
-		return ret
-	}
-	return *o.ConnectionsCount
-}
-
-// GetConnectionsCountOk returns a tuple with the ConnectionsCount field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CloudRouter) GetConnectionsCountOk() (*int32, bool) {
-	if o == nil || IsNil(o.ConnectionsCount) {
-		return nil, false
-	}
-	return o.ConnectionsCount, true
-}
-
-// HasConnectionsCount returns a boolean if a field has been set.
-func (o *CloudRouter) HasConnectionsCount() bool {
-	if o != nil && !IsNil(o.ConnectionsCount) {
-		return true
-	}
-
-	return false
-}
-
-// SetConnectionsCount gets a reference to the given int32 and assigns it to the ConnectionsCount field.
-func (o *CloudRouter) SetConnectionsCount(v int32) {
-	o.ConnectionsCount = &v
-}
-
-// GetMarketplaceSubscription returns the MarketplaceSubscription field value if set, zero value otherwise.
-func (o *CloudRouter) GetMarketplaceSubscription() MarketplaceSubscription {
-	if o == nil || IsNil(o.MarketplaceSubscription) {
-		var ret MarketplaceSubscription
-		return ret
-	}
-	return *o.MarketplaceSubscription
-}
-
-// GetMarketplaceSubscriptionOk returns a tuple with the MarketplaceSubscription field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CloudRouter) GetMarketplaceSubscriptionOk() (*MarketplaceSubscription, bool) {
-	if o == nil || IsNil(o.MarketplaceSubscription) {
-		return nil, false
-	}
-	return o.MarketplaceSubscription, true
-}
-
-// HasMarketplaceSubscription returns a boolean if a field has been set.
-func (o *CloudRouter) HasMarketplaceSubscription() bool {
-	if o != nil && !IsNil(o.MarketplaceSubscription) {
-		return true
-	}
-
-	return false
-}
-
-// SetMarketplaceSubscription gets a reference to the given MarketplaceSubscription and assigns it to the MarketplaceSubscription field.
-func (o *CloudRouter) SetMarketplaceSubscription(v MarketplaceSubscription) {
-	o.MarketplaceSubscription = &v
-}
-
-// GetChangeLog returns the ChangeLog field value if set, zero value otherwise.
-func (o *CloudRouter) GetChangeLog() Changelog {
-	if o == nil || IsNil(o.ChangeLog) {
-		var ret Changelog
-		return ret
-	}
-	return *o.ChangeLog
-}
-
-// GetChangeLogOk returns a tuple with the ChangeLog field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CloudRouter) GetChangeLogOk() (*Changelog, bool) {
-	if o == nil || IsNil(o.ChangeLog) {
-		return nil, false
-	}
-	return o.ChangeLog, true
-}
-
-// HasChangeLog returns a boolean if a field has been set.
-func (o *CloudRouter) HasChangeLog() bool {
-	if o != nil && !IsNil(o.ChangeLog) {
-		return true
-	}
-
-	return false
-}
-
-// SetChangeLog gets a reference to the given Changelog and assigns it to the ChangeLog field.
-func (o *CloudRouter) SetChangeLog(v Changelog) {
-	o.ChangeLog = &v
-}
-
-// GetChange returns the Change field value if set, zero value otherwise.
-func (o *CloudRouter) GetChange() CloudRouterChange {
-	if o == nil || IsNil(o.Change) {
-		var ret CloudRouterChange
-		return ret
-	}
-	return *o.Change
-}
-
-// GetChangeOk returns a tuple with the Change field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CloudRouter) GetChangeOk() (*CloudRouterChange, bool) {
-	if o == nil || IsNil(o.Change) {
-		return nil, false
-	}
-	return o.Change, true
-}
-
-// HasChange returns a boolean if a field has been set.
-func (o *CloudRouter) HasChange() bool {
-	if o != nil && !IsNil(o.Change) {
-		return true
-	}
-
-	return false
-}
-
-// SetChange gets a reference to the given CloudRouterChange and assigns it to the Change field.
-func (o *CloudRouter) SetChange(v CloudRouterChange) {
-	o.Change = &v
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
@@ -378,6 +90,38 @@ func (o *CloudRouter) HasType() bool {
 // SetType gets a reference to the given CloudRouterPostRequestBaseType and assigns it to the Type field.
 func (o *CloudRouter) SetType(v CloudRouterPostRequestBaseType) {
 	o.Type = &v
+}
+
+// GetName returns the Name field value if set, zero value otherwise.
+func (o *CloudRouter) GetName() string {
+	if o == nil || IsNil(o.Name) {
+		var ret string
+		return ret
+	}
+	return *o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CloudRouter) GetNameOk() (*string, bool) {
+	if o == nil || IsNil(o.Name) {
+		return nil, false
+	}
+	return o.Name, true
+}
+
+// HasName returns a boolean if a field has been set.
+func (o *CloudRouter) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
+func (o *CloudRouter) SetName(v string) {
+	o.Name = &v
 }
 
 // GetLocation returns the Location field value if set, zero value otherwise.
@@ -572,6 +316,262 @@ func (o *CloudRouter) SetNotifications(v []SimplifiedNotification) {
 	o.Notifications = v
 }
 
+// GetMarketplaceSubscription returns the MarketplaceSubscription field value if set, zero value otherwise.
+func (o *CloudRouter) GetMarketplaceSubscription() MarketplaceSubscription {
+	if o == nil || IsNil(o.MarketplaceSubscription) {
+		var ret MarketplaceSubscription
+		return ret
+	}
+	return *o.MarketplaceSubscription
+}
+
+// GetMarketplaceSubscriptionOk returns a tuple with the MarketplaceSubscription field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CloudRouter) GetMarketplaceSubscriptionOk() (*MarketplaceSubscription, bool) {
+	if o == nil || IsNil(o.MarketplaceSubscription) {
+		return nil, false
+	}
+	return o.MarketplaceSubscription, true
+}
+
+// HasMarketplaceSubscription returns a boolean if a field has been set.
+func (o *CloudRouter) HasMarketplaceSubscription() bool {
+	if o != nil && !IsNil(o.MarketplaceSubscription) {
+		return true
+	}
+
+	return false
+}
+
+// SetMarketplaceSubscription gets a reference to the given MarketplaceSubscription and assigns it to the MarketplaceSubscription field.
+func (o *CloudRouter) SetMarketplaceSubscription(v MarketplaceSubscription) {
+	o.MarketplaceSubscription = &v
+}
+
+// GetHref returns the Href field value if set, zero value otherwise.
+func (o *CloudRouter) GetHref() string {
+	if o == nil || IsNil(o.Href) {
+		var ret string
+		return ret
+	}
+	return *o.Href
+}
+
+// GetHrefOk returns a tuple with the Href field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CloudRouter) GetHrefOk() (*string, bool) {
+	if o == nil || IsNil(o.Href) {
+		return nil, false
+	}
+	return o.Href, true
+}
+
+// HasHref returns a boolean if a field has been set.
+func (o *CloudRouter) HasHref() bool {
+	if o != nil && !IsNil(o.Href) {
+		return true
+	}
+
+	return false
+}
+
+// SetHref gets a reference to the given string and assigns it to the Href field.
+func (o *CloudRouter) SetHref(v string) {
+	o.Href = &v
+}
+
+// GetUuid returns the Uuid field value if set, zero value otherwise.
+func (o *CloudRouter) GetUuid() string {
+	if o == nil || IsNil(o.Uuid) {
+		var ret string
+		return ret
+	}
+	return *o.Uuid
+}
+
+// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CloudRouter) GetUuidOk() (*string, bool) {
+	if o == nil || IsNil(o.Uuid) {
+		return nil, false
+	}
+	return o.Uuid, true
+}
+
+// HasUuid returns a boolean if a field has been set.
+func (o *CloudRouter) HasUuid() bool {
+	if o != nil && !IsNil(o.Uuid) {
+		return true
+	}
+
+	return false
+}
+
+// SetUuid gets a reference to the given string and assigns it to the Uuid field.
+func (o *CloudRouter) SetUuid(v string) {
+	o.Uuid = &v
+}
+
+// GetState returns the State field value if set, zero value otherwise.
+func (o *CloudRouter) GetState() CloudRouterAccessPointState {
+	if o == nil || IsNil(o.State) {
+		var ret CloudRouterAccessPointState
+		return ret
+	}
+	return *o.State
+}
+
+// GetStateOk returns a tuple with the State field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CloudRouter) GetStateOk() (*CloudRouterAccessPointState, bool) {
+	if o == nil || IsNil(o.State) {
+		return nil, false
+	}
+	return o.State, true
+}
+
+// HasState returns a boolean if a field has been set.
+func (o *CloudRouter) HasState() bool {
+	if o != nil && !IsNil(o.State) {
+		return true
+	}
+
+	return false
+}
+
+// SetState gets a reference to the given CloudRouterAccessPointState and assigns it to the State field.
+func (o *CloudRouter) SetState(v CloudRouterAccessPointState) {
+	o.State = &v
+}
+
+// GetEquinixAsn returns the EquinixAsn field value if set, zero value otherwise.
+func (o *CloudRouter) GetEquinixAsn() int64 {
+	if o == nil || IsNil(o.EquinixAsn) {
+		var ret int64
+		return ret
+	}
+	return *o.EquinixAsn
+}
+
+// GetEquinixAsnOk returns a tuple with the EquinixAsn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CloudRouter) GetEquinixAsnOk() (*int64, bool) {
+	if o == nil || IsNil(o.EquinixAsn) {
+		return nil, false
+	}
+	return o.EquinixAsn, true
+}
+
+// HasEquinixAsn returns a boolean if a field has been set.
+func (o *CloudRouter) HasEquinixAsn() bool {
+	if o != nil && !IsNil(o.EquinixAsn) {
+		return true
+	}
+
+	return false
+}
+
+// SetEquinixAsn gets a reference to the given int64 and assigns it to the EquinixAsn field.
+func (o *CloudRouter) SetEquinixAsn(v int64) {
+	o.EquinixAsn = &v
+}
+
+// GetConnectionsCount returns the ConnectionsCount field value if set, zero value otherwise.
+func (o *CloudRouter) GetConnectionsCount() int32 {
+	if o == nil || IsNil(o.ConnectionsCount) {
+		var ret int32
+		return ret
+	}
+	return *o.ConnectionsCount
+}
+
+// GetConnectionsCountOk returns a tuple with the ConnectionsCount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CloudRouter) GetConnectionsCountOk() (*int32, bool) {
+	if o == nil || IsNil(o.ConnectionsCount) {
+		return nil, false
+	}
+	return o.ConnectionsCount, true
+}
+
+// HasConnectionsCount returns a boolean if a field has been set.
+func (o *CloudRouter) HasConnectionsCount() bool {
+	if o != nil && !IsNil(o.ConnectionsCount) {
+		return true
+	}
+
+	return false
+}
+
+// SetConnectionsCount gets a reference to the given int32 and assigns it to the ConnectionsCount field.
+func (o *CloudRouter) SetConnectionsCount(v int32) {
+	o.ConnectionsCount = &v
+}
+
+// GetChangeLog returns the ChangeLog field value if set, zero value otherwise.
+func (o *CloudRouter) GetChangeLog() Changelog {
+	if o == nil || IsNil(o.ChangeLog) {
+		var ret Changelog
+		return ret
+	}
+	return *o.ChangeLog
+}
+
+// GetChangeLogOk returns a tuple with the ChangeLog field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CloudRouter) GetChangeLogOk() (*Changelog, bool) {
+	if o == nil || IsNil(o.ChangeLog) {
+		return nil, false
+	}
+	return o.ChangeLog, true
+}
+
+// HasChangeLog returns a boolean if a field has been set.
+func (o *CloudRouter) HasChangeLog() bool {
+	if o != nil && !IsNil(o.ChangeLog) {
+		return true
+	}
+
+	return false
+}
+
+// SetChangeLog gets a reference to the given Changelog and assigns it to the ChangeLog field.
+func (o *CloudRouter) SetChangeLog(v Changelog) {
+	o.ChangeLog = &v
+}
+
+// GetChange returns the Change field value if set, zero value otherwise.
+func (o *CloudRouter) GetChange() CloudRouterChange {
+	if o == nil || IsNil(o.Change) {
+		var ret CloudRouterChange
+		return ret
+	}
+	return *o.Change
+}
+
+// GetChangeOk returns a tuple with the Change field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CloudRouter) GetChangeOk() (*CloudRouterChange, bool) {
+	if o == nil || IsNil(o.Change) {
+		return nil, false
+	}
+	return o.Change, true
+}
+
+// HasChange returns a boolean if a field has been set.
+func (o *CloudRouter) HasChange() bool {
+	if o != nil && !IsNil(o.Change) {
+		return true
+	}
+
+	return false
+}
+
+// SetChange gets a reference to the given CloudRouterChange and assigns it to the Change field.
+func (o *CloudRouter) SetChange(v CloudRouterChange) {
+	o.Change = &v
+}
+
 func (o CloudRouter) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -582,35 +582,11 @@ func (o CloudRouter) MarshalJSON() ([]byte, error) {
 
 func (o CloudRouter) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Href) {
-		toSerialize["href"] = o.Href
-	}
-	if !IsNil(o.Uuid) {
-		toSerialize["uuid"] = o.Uuid
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
 	}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
-	}
-	if !IsNil(o.State) {
-		toSerialize["state"] = o.State
-	}
-	if !IsNil(o.EquinixAsn) {
-		toSerialize["equinixAsn"] = o.EquinixAsn
-	}
-	if !IsNil(o.ConnectionsCount) {
-		toSerialize["connectionsCount"] = o.ConnectionsCount
-	}
-	if !IsNil(o.MarketplaceSubscription) {
-		toSerialize["marketplaceSubscription"] = o.MarketplaceSubscription
-	}
-	if !IsNil(o.ChangeLog) {
-		toSerialize["changeLog"] = o.ChangeLog
-	}
-	if !IsNil(o.Change) {
-		toSerialize["change"] = o.Change
-	}
-	if !IsNil(o.Type) {
-		toSerialize["type"] = o.Type
 	}
 	if !IsNil(o.Location) {
 		toSerialize["location"] = o.Location
@@ -629,6 +605,30 @@ func (o CloudRouter) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Notifications) {
 		toSerialize["notifications"] = o.Notifications
+	}
+	if !IsNil(o.MarketplaceSubscription) {
+		toSerialize["marketplaceSubscription"] = o.MarketplaceSubscription
+	}
+	if !IsNil(o.Href) {
+		toSerialize["href"] = o.Href
+	}
+	if !IsNil(o.Uuid) {
+		toSerialize["uuid"] = o.Uuid
+	}
+	if !IsNil(o.State) {
+		toSerialize["state"] = o.State
+	}
+	if !IsNil(o.EquinixAsn) {
+		toSerialize["equinixAsn"] = o.EquinixAsn
+	}
+	if !IsNil(o.ConnectionsCount) {
+		toSerialize["connectionsCount"] = o.ConnectionsCount
+	}
+	if !IsNil(o.ChangeLog) {
+		toSerialize["changeLog"] = o.ChangeLog
+	}
+	if !IsNil(o.Change) {
+		toSerialize["change"] = o.Change
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -652,22 +652,22 @@ func (o *CloudRouter) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "href")
-		delete(additionalProperties, "uuid")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "state")
-		delete(additionalProperties, "equinixAsn")
-		delete(additionalProperties, "connectionsCount")
-		delete(additionalProperties, "marketplaceSubscription")
-		delete(additionalProperties, "changeLog")
-		delete(additionalProperties, "change")
 		delete(additionalProperties, "type")
+		delete(additionalProperties, "name")
 		delete(additionalProperties, "location")
 		delete(additionalProperties, "package")
 		delete(additionalProperties, "order")
 		delete(additionalProperties, "project")
 		delete(additionalProperties, "account")
 		delete(additionalProperties, "notifications")
+		delete(additionalProperties, "marketplaceSubscription")
+		delete(additionalProperties, "href")
+		delete(additionalProperties, "uuid")
+		delete(additionalProperties, "state")
+		delete(additionalProperties, "equinixAsn")
+		delete(additionalProperties, "connectionsCount")
+		delete(additionalProperties, "changeLog")
+		delete(additionalProperties, "change")
 		o.AdditionalProperties = additionalProperties
 	}
 

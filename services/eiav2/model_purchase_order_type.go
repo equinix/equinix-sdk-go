@@ -20,14 +20,16 @@ type PurchaseOrderType string
 
 // List of PurchaseOrderType
 const (
-	PURCHASEORDERTYPE_STANDARD_PURCHASE_ORDER PurchaseOrderType = "STANDARD_PURCHASE_ORDER"
-	PURCHASEORDERTYPE_BLANKET_PURCHASE_ORDER  PurchaseOrderType = "BLANKET_PURCHASE_ORDER"
+	PURCHASEORDERTYPE_STANDARD_PURCHASE_ORDER  PurchaseOrderType = "STANDARD_PURCHASE_ORDER"
+	PURCHASEORDERTYPE_BLANKET_PURCHASE_ORDER   PurchaseOrderType = "BLANKET_PURCHASE_ORDER"
+	PURCHASEORDERTYPE_UNKNOWN_DEFAULT_OPEN_API PurchaseOrderType = "unknown_default_open_api"
 )
 
 // All allowed values of PurchaseOrderType enum
 var AllowedPurchaseOrderTypeEnumValues = []PurchaseOrderType{
 	"STANDARD_PURCHASE_ORDER",
 	"BLANKET_PURCHASE_ORDER",
+	"unknown_default_open_api",
 }
 
 func (v *PurchaseOrderType) UnmarshalJSON(src []byte) error {
@@ -44,7 +46,8 @@ func (v *PurchaseOrderType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid PurchaseOrderType", value)
+	*v = PURCHASEORDERTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewPurchaseOrderTypeFromValue returns a pointer to a valid PurchaseOrderType

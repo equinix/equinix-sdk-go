@@ -20,14 +20,16 @@ type ServiceType string
 
 // List of ServiceType
 const (
-	SERVICETYPE_SINGLE_PORT ServiceType = "SINGLE_PORT"
-	SERVICETYPE_DUAL_PORT   ServiceType = "DUAL_PORT"
+	SERVICETYPE_SINGLE_PORT              ServiceType = "SINGLE_PORT"
+	SERVICETYPE_DUAL_PORT                ServiceType = "DUAL_PORT"
+	SERVICETYPE_UNKNOWN_DEFAULT_OPEN_API ServiceType = "unknown_default_open_api"
 )
 
 // All allowed values of ServiceType enum
 var AllowedServiceTypeEnumValues = []ServiceType{
 	"SINGLE_PORT",
 	"DUAL_PORT",
+	"unknown_default_open_api",
 }
 
 func (v *ServiceType) UnmarshalJSON(src []byte) error {
@@ -44,7 +46,8 @@ func (v *ServiceType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ServiceType", value)
+	*v = SERVICETYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewServiceTypeFromValue returns a pointer to a valid ServiceType

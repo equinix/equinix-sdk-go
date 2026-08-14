@@ -28,6 +28,7 @@ const (
 	SEARCHSIMPLEEXPRESSIONOPERATOR_GREATER_THAN_OR_EQUAL_TO SearchSimpleExpressionOperator = ">="
 	SEARCHSIMPLEEXPRESSIONOPERATOR_LESS_THAN                SearchSimpleExpressionOperator = "<"
 	SEARCHSIMPLEEXPRESSIONOPERATOR_LESS_THAN_OR_EQUAL_TO    SearchSimpleExpressionOperator = "<="
+	SEARCHSIMPLEEXPRESSIONOPERATOR_UNKNOWN_DEFAULT_OPEN_API SearchSimpleExpressionOperator = "unknown_default_open_api"
 )
 
 // All allowed values of SearchSimpleExpressionOperator enum
@@ -43,6 +44,7 @@ var AllowedSearchSimpleExpressionOperatorEnumValues = []SearchSimpleExpressionOp
 	">=",
 	"<",
 	"<=",
+	"unknown_default_open_api",
 }
 
 func (v *SearchSimpleExpressionOperator) UnmarshalJSON(src []byte) error {
@@ -59,7 +61,8 @@ func (v *SearchSimpleExpressionOperator) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid SearchSimpleExpressionOperator", value)
+	*v = SEARCHSIMPLEEXPRESSIONOPERATOR_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewSearchSimpleExpressionOperatorFromValue returns a pointer to a valid SearchSimpleExpressionOperator

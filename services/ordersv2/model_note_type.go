@@ -20,10 +20,11 @@ type NoteType string
 
 // List of Note_type
 const (
-	NOTETYPE_CUSTOMER_QUERY   NoteType = "CUSTOMER_QUERY"
-	NOTETYPE_CUSTOMER_NOTES   NoteType = "CUSTOMER_NOTES"
-	NOTETYPE_TECHNICIAN_QUERY NoteType = "TECHNICIAN_QUERY"
-	NOTETYPE_TECHNICIAN_NOTES NoteType = "TECHNICIAN_NOTES"
+	NOTETYPE_CUSTOMER_QUERY           NoteType = "CUSTOMER_QUERY"
+	NOTETYPE_CUSTOMER_NOTES           NoteType = "CUSTOMER_NOTES"
+	NOTETYPE_TECHNICIAN_QUERY         NoteType = "TECHNICIAN_QUERY"
+	NOTETYPE_TECHNICIAN_NOTES         NoteType = "TECHNICIAN_NOTES"
+	NOTETYPE_UNKNOWN_DEFAULT_OPEN_API NoteType = "unknown_default_open_api"
 )
 
 // All allowed values of NoteType enum
@@ -32,6 +33,7 @@ var AllowedNoteTypeEnumValues = []NoteType{
 	"CUSTOMER_NOTES",
 	"TECHNICIAN_QUERY",
 	"TECHNICIAN_NOTES",
+	"unknown_default_open_api",
 }
 
 func (v *NoteType) UnmarshalJSON(src []byte) error {
@@ -48,7 +50,8 @@ func (v *NoteType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid NoteType", value)
+	*v = NOTETYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewNoteTypeFromValue returns a pointer to a valid NoteType

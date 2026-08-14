@@ -17,14 +17,16 @@ type Md5Type string
 
 // List of md5_type
 const (
-	MD5TYPE_ASCII Md5Type = "ASCII"
-	MD5TYPE_HEX   Md5Type = "HEX"
+	MD5TYPE_ASCII                    Md5Type = "ASCII"
+	MD5TYPE_HEX                      Md5Type = "HEX"
+	MD5TYPE_UNKNOWN_DEFAULT_OPEN_API Md5Type = "unknown_default_open_api"
 )
 
 // All allowed values of Md5Type enum
 var AllowedMd5TypeEnumValues = []Md5Type{
 	"ASCII",
 	"HEX",
+	"unknown_default_open_api",
 }
 
 func (v *Md5Type) UnmarshalJSON(src []byte) error {
@@ -41,7 +43,8 @@ func (v *Md5Type) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid Md5Type", value)
+	*v = MD5TYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewMd5TypeFromValue returns a pointer to a valid Md5Type

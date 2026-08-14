@@ -9,24 +9,22 @@ package fabricv4
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the ServiceProfileRequest type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &ServiceProfileRequest{}
 
-// ServiceProfileRequest Service Profile is a software definition for a named provider service and it's network connectivity requirements. This includes the basic marketing information and one or more sets of access points (a set per each access point type) fulfilling the provider service.
+// ServiceProfileRequest struct for ServiceProfileRequest
 type ServiceProfileRequest struct {
-	Project *Project `json:"project,omitempty"`
 	// Service Profile URI response attribute
-	Href *string                `json:"href,omitempty"`
-	Type ServiceProfileTypeEnum `json:"type"`
+	Href *string                 `json:"href,omitempty"`
+	Type *ServiceProfileTypeEnum `json:"type,omitempty"`
 	// Customer-assigned service profile name
-	Name string `json:"name"`
+	Name *string `json:"name,omitempty"`
 	// Equinix-assigned service profile identifier
 	Uuid *string `json:"uuid,omitempty"`
 	// User-provided service description should be of maximum length 375
-	Description string `json:"description"`
+	Description *string `json:"description,omitempty"`
 	// Recipients of notifications on service profile change
 	Notifications          []SimplifiedNotification        `json:"notifications,omitempty"`
 	Tags                   []string                        `json:"tags,omitempty"`
@@ -45,6 +43,7 @@ type ServiceProfileRequest struct {
 	SelfProfile          *bool                         `json:"selfProfile,omitempty"`
 	ProjectId            *string                       `json:"projectId,omitempty"`
 	LastMileConfig       *ServiceProfileLastMileConfig `json:"lastMileConfig,omitempty"`
+	Project              *Project                      `json:"project,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -54,11 +53,8 @@ type _ServiceProfileRequest ServiceProfileRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewServiceProfileRequest(type_ ServiceProfileTypeEnum, name string, description string) *ServiceProfileRequest {
+func NewServiceProfileRequest() *ServiceProfileRequest {
 	this := ServiceProfileRequest{}
-	this.Type = type_
-	this.Name = name
-	this.Description = description
 	return &this
 }
 
@@ -68,38 +64,6 @@ func NewServiceProfileRequest(type_ ServiceProfileTypeEnum, name string, descrip
 func NewServiceProfileRequestWithDefaults() *ServiceProfileRequest {
 	this := ServiceProfileRequest{}
 	return &this
-}
-
-// GetProject returns the Project field value if set, zero value otherwise.
-func (o *ServiceProfileRequest) GetProject() Project {
-	if o == nil || IsNil(o.Project) {
-		var ret Project
-		return ret
-	}
-	return *o.Project
-}
-
-// GetProjectOk returns a tuple with the Project field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ServiceProfileRequest) GetProjectOk() (*Project, bool) {
-	if o == nil || IsNil(o.Project) {
-		return nil, false
-	}
-	return o.Project, true
-}
-
-// HasProject returns a boolean if a field has been set.
-func (o *ServiceProfileRequest) HasProject() bool {
-	if o != nil && !IsNil(o.Project) {
-		return true
-	}
-
-	return false
-}
-
-// SetProject gets a reference to the given Project and assigns it to the Project field.
-func (o *ServiceProfileRequest) SetProject(v Project) {
-	o.Project = &v
 }
 
 // GetHref returns the Href field value if set, zero value otherwise.
@@ -134,52 +98,68 @@ func (o *ServiceProfileRequest) SetHref(v string) {
 	o.Href = &v
 }
 
-// GetType returns the Type field value
+// GetType returns the Type field value if set, zero value otherwise.
 func (o *ServiceProfileRequest) GetType() ServiceProfileTypeEnum {
-	if o == nil {
+	if o == nil || IsNil(o.Type) {
 		var ret ServiceProfileTypeEnum
 		return ret
 	}
-
-	return o.Type
+	return *o.Type
 }
 
-// GetTypeOk returns a tuple with the Type field value
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServiceProfileRequest) GetTypeOk() (*ServiceProfileTypeEnum, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
-	return &o.Type, true
+	return o.Type, true
 }
 
-// SetType sets field value
+// HasType returns a boolean if a field has been set.
+func (o *ServiceProfileRequest) HasType() bool {
+	if o != nil && !IsNil(o.Type) {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given ServiceProfileTypeEnum and assigns it to the Type field.
 func (o *ServiceProfileRequest) SetType(v ServiceProfileTypeEnum) {
-	o.Type = v
+	o.Type = &v
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *ServiceProfileRequest) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServiceProfileRequest) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *ServiceProfileRequest) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *ServiceProfileRequest) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
 // GetUuid returns the Uuid field value if set, zero value otherwise.
@@ -214,28 +194,36 @@ func (o *ServiceProfileRequest) SetUuid(v string) {
 	o.Uuid = &v
 }
 
-// GetDescription returns the Description field value
+// GetDescription returns the Description field value if set, zero value otherwise.
 func (o *ServiceProfileRequest) GetDescription() string {
-	if o == nil {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
-
-	return o.Description
+	return *o.Description
 }
 
-// GetDescriptionOk returns a tuple with the Description field value
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServiceProfileRequest) GetDescriptionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
-	return &o.Description, true
+	return o.Description, true
 }
 
-// SetDescription sets field value
+// HasDescription returns a boolean if a field has been set.
+func (o *ServiceProfileRequest) HasDescription() bool {
+	if o != nil && !IsNil(o.Description) {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *ServiceProfileRequest) SetDescription(v string) {
-	o.Description = v
+	o.Description = &v
 }
 
 // GetNotifications returns the Notifications field value if set, zero value otherwise.
@@ -686,6 +674,38 @@ func (o *ServiceProfileRequest) SetLastMileConfig(v ServiceProfileLastMileConfig
 	o.LastMileConfig = &v
 }
 
+// GetProject returns the Project field value if set, zero value otherwise.
+func (o *ServiceProfileRequest) GetProject() Project {
+	if o == nil || IsNil(o.Project) {
+		var ret Project
+		return ret
+	}
+	return *o.Project
+}
+
+// GetProjectOk returns a tuple with the Project field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ServiceProfileRequest) GetProjectOk() (*Project, bool) {
+	if o == nil || IsNil(o.Project) {
+		return nil, false
+	}
+	return o.Project, true
+}
+
+// HasProject returns a boolean if a field has been set.
+func (o *ServiceProfileRequest) HasProject() bool {
+	if o != nil && !IsNil(o.Project) {
+		return true
+	}
+
+	return false
+}
+
+// SetProject gets a reference to the given Project and assigns it to the Project field.
+func (o *ServiceProfileRequest) SetProject(v Project) {
+	o.Project = &v
+}
+
 func (o ServiceProfileRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -696,18 +716,21 @@ func (o ServiceProfileRequest) MarshalJSON() ([]byte, error) {
 
 func (o ServiceProfileRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Project) {
-		toSerialize["project"] = o.Project
-	}
 	if !IsNil(o.Href) {
 		toSerialize["href"] = o.Href
 	}
-	toSerialize["type"] = o.Type
-	toSerialize["name"] = o.Name
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
 	if !IsNil(o.Uuid) {
 		toSerialize["uuid"] = o.Uuid
 	}
-	toSerialize["description"] = o.Description
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
 	if !IsNil(o.Notifications) {
 		toSerialize["notifications"] = o.Notifications
 	}
@@ -750,6 +773,9 @@ func (o ServiceProfileRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.LastMileConfig) {
 		toSerialize["lastMileConfig"] = o.LastMileConfig
 	}
+	if !IsNil(o.Project) {
+		toSerialize["project"] = o.Project
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -759,29 +785,6 @@ func (o ServiceProfileRequest) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *ServiceProfileRequest) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"type",
-		"name",
-		"description",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
 	varServiceProfileRequest := _ServiceProfileRequest{}
 
 	err = json.Unmarshal(data, &varServiceProfileRequest)
@@ -795,7 +798,6 @@ func (o *ServiceProfileRequest) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "project")
 		delete(additionalProperties, "href")
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "name")
@@ -815,6 +817,7 @@ func (o *ServiceProfileRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "selfProfile")
 		delete(additionalProperties, "projectId")
 		delete(additionalProperties, "lastMileConfig")
+		delete(additionalProperties, "project")
 		o.AdditionalProperties = additionalProperties
 	}
 

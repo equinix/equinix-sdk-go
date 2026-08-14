@@ -20,14 +20,16 @@ type CageDetailsCabinetType string
 
 // List of cage_details_cabinetType
 const (
-	CAGEDETAILSCABINETTYPE_PRIVATE     CageDetailsCabinetType = "PRIVATE"
-	CAGEDETAILSCABINETTYPE_DEMARCATION CageDetailsCabinetType = "DEMARCATION"
+	CAGEDETAILSCABINETTYPE_PRIVATE                  CageDetailsCabinetType = "PRIVATE"
+	CAGEDETAILSCABINETTYPE_DEMARCATION              CageDetailsCabinetType = "DEMARCATION"
+	CAGEDETAILSCABINETTYPE_UNKNOWN_DEFAULT_OPEN_API CageDetailsCabinetType = "unknown_default_open_api"
 )
 
 // All allowed values of CageDetailsCabinetType enum
 var AllowedCageDetailsCabinetTypeEnumValues = []CageDetailsCabinetType{
 	"PRIVATE",
 	"DEMARCATION",
+	"unknown_default_open_api",
 }
 
 func (v *CageDetailsCabinetType) UnmarshalJSON(src []byte) error {
@@ -44,7 +46,8 @@ func (v *CageDetailsCabinetType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid CageDetailsCabinetType", value)
+	*v = CAGEDETAILSCABINETTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewCageDetailsCabinetTypeFromValue returns a pointer to a valid CageDetailsCabinetType

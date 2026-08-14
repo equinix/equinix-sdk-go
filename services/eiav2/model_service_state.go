@@ -20,14 +20,15 @@ type ServiceState string
 
 // List of ServiceState
 const (
-	SERVICESTATE_DRAFT          ServiceState = "DRAFT"
-	SERVICESTATE_PENDING        ServiceState = "PENDING"
-	SERVICESTATE_PROVISIONING   ServiceState = "PROVISIONING"
-	SERVICESTATE_ACTIVE         ServiceState = "ACTIVE"
-	SERVICESTATE_INACTIVE       ServiceState = "INACTIVE"
-	SERVICESTATE_DEPROVISIONING ServiceState = "DEPROVISIONING"
-	SERVICESTATE_DEPROVISIONED  ServiceState = "DEPROVISIONED"
-	SERVICESTATE_FAILED         ServiceState = "FAILED"
+	SERVICESTATE_DRAFT                    ServiceState = "DRAFT"
+	SERVICESTATE_PENDING                  ServiceState = "PENDING"
+	SERVICESTATE_PROVISIONING             ServiceState = "PROVISIONING"
+	SERVICESTATE_ACTIVE                   ServiceState = "ACTIVE"
+	SERVICESTATE_INACTIVE                 ServiceState = "INACTIVE"
+	SERVICESTATE_DEPROVISIONING           ServiceState = "DEPROVISIONING"
+	SERVICESTATE_DEPROVISIONED            ServiceState = "DEPROVISIONED"
+	SERVICESTATE_FAILED                   ServiceState = "FAILED"
+	SERVICESTATE_UNKNOWN_DEFAULT_OPEN_API ServiceState = "unknown_default_open_api"
 )
 
 // All allowed values of ServiceState enum
@@ -40,6 +41,7 @@ var AllowedServiceStateEnumValues = []ServiceState{
 	"DEPROVISIONING",
 	"DEPROVISIONED",
 	"FAILED",
+	"unknown_default_open_api",
 }
 
 func (v *ServiceState) UnmarshalJSON(src []byte) error {
@@ -56,7 +58,8 @@ func (v *ServiceState) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ServiceState", value)
+	*v = SERVICESTATE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewServiceStateFromValue returns a pointer to a valid ServiceState

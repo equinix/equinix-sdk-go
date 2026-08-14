@@ -17,14 +17,16 @@ type PortServiceType string
 
 // List of Port_serviceType
 const (
-	PORTSERVICETYPE_EPL PortServiceType = "EPL"
-	PORTSERVICETYPE_MSP PortServiceType = "MSP"
+	PORTSERVICETYPE_EPL                      PortServiceType = "EPL"
+	PORTSERVICETYPE_MSP                      PortServiceType = "MSP"
+	PORTSERVICETYPE_UNKNOWN_DEFAULT_OPEN_API PortServiceType = "unknown_default_open_api"
 )
 
 // All allowed values of PortServiceType enum
 var AllowedPortServiceTypeEnumValues = []PortServiceType{
 	"EPL",
 	"MSP",
+	"unknown_default_open_api",
 }
 
 func (v *PortServiceType) UnmarshalJSON(src []byte) error {
@@ -41,7 +43,8 @@ func (v *PortServiceType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid PortServiceType", value)
+	*v = PORTSERVICETYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewPortServiceTypeFromValue returns a pointer to a valid PortServiceType

@@ -17,12 +17,13 @@ type StreamState string
 
 // List of Stream_state
 const (
-	STREAMSTATE_PROVISIONING   StreamState = "PROVISIONING"
-	STREAMSTATE_PROVISIONED    StreamState = "PROVISIONED"
-	STREAMSTATE_REPROVISIONING StreamState = "REPROVISIONING"
-	STREAMSTATE_DEPROVISIONING StreamState = "DEPROVISIONING"
-	STREAMSTATE_DEPROVISIONED  StreamState = "DEPROVISIONED"
-	STREAMSTATE_FAILED         StreamState = "FAILED"
+	STREAMSTATE_PROVISIONING             StreamState = "PROVISIONING"
+	STREAMSTATE_PROVISIONED              StreamState = "PROVISIONED"
+	STREAMSTATE_REPROVISIONING           StreamState = "REPROVISIONING"
+	STREAMSTATE_DEPROVISIONING           StreamState = "DEPROVISIONING"
+	STREAMSTATE_DEPROVISIONED            StreamState = "DEPROVISIONED"
+	STREAMSTATE_FAILED                   StreamState = "FAILED"
+	STREAMSTATE_UNKNOWN_DEFAULT_OPEN_API StreamState = "unknown_default_open_api"
 )
 
 // All allowed values of StreamState enum
@@ -33,6 +34,7 @@ var AllowedStreamStateEnumValues = []StreamState{
 	"DEPROVISIONING",
 	"DEPROVISIONED",
 	"FAILED",
+	"unknown_default_open_api",
 }
 
 func (v *StreamState) UnmarshalJSON(src []byte) error {
@@ -49,7 +51,8 @@ func (v *StreamState) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid StreamState", value)
+	*v = STREAMSTATE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewStreamStateFromValue returns a pointer to a valid StreamState

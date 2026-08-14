@@ -25,6 +25,7 @@ const (
 	ROUTEAGGREGATIONSORTBY_CHANGE_LOG_CREATED_DATE_TIME RouteAggregationSortBy = "/changeLog/createdDateTime"
 	ROUTEAGGREGATIONSORTBY_CHANGE_LOG_UPDATED_DATE_TIME RouteAggregationSortBy = "/changeLog/updatedDateTime"
 	ROUTEAGGREGATIONSORTBY_CHANGE_LOG_DELETED_DATE_TIME RouteAggregationSortBy = "/changeLog/deletedDateTime"
+	ROUTEAGGREGATIONSORTBY_UNKNOWN_DEFAULT_OPEN_API     RouteAggregationSortBy = "unknown_default_open_api"
 )
 
 // All allowed values of RouteAggregationSortBy enum
@@ -37,6 +38,7 @@ var AllowedRouteAggregationSortByEnumValues = []RouteAggregationSortBy{
 	"/changeLog/createdDateTime",
 	"/changeLog/updatedDateTime",
 	"/changeLog/deletedDateTime",
+	"unknown_default_open_api",
 }
 
 func (v *RouteAggregationSortBy) UnmarshalJSON(src []byte) error {
@@ -53,7 +55,8 @@ func (v *RouteAggregationSortBy) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid RouteAggregationSortBy", value)
+	*v = ROUTEAGGREGATIONSORTBY_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewRouteAggregationSortByFromValue returns a pointer to a valid RouteAggregationSortBy

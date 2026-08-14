@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Status** | Pointer to **string** | Current outcome of the change flow | [optional] 
+**Uuid** | **string** | Uniquely identifies a change | 
+**Type** | [**RouteFilterRulesChangeType**](RouteFilterRulesChangeType.md) |  | 
+**Href** | Pointer to **string** | Route Filter Change URI | [optional] 
+**Status** | Pointer to [**RoutingProtocolChangeDataAllOfStatus**](RoutingProtocolChangeDataAllOfStatus.md) |  | [optional] 
 **CreatedBy** | Pointer to **string** | Created by User Key | [optional] 
 **CreatedDateTime** | Pointer to **time.Time** | Set when change flow starts | [optional] 
 **UpdatedBy** | Pointer to **string** | Updated by User Key | [optional] 
 **UpdatedDateTime** | Pointer to **time.Time** | Set when change object is updated | [optional] 
 **Data** | Pointer to [**RouteFilterRulesChangeOperation**](RouteFilterRulesChangeOperation.md) |  | [optional] 
-**Uuid** | **string** | Uniquely identifies a change | 
-**Type** | [**RouteFilterRulesChangeType**](RouteFilterRulesChangeType.md) |  | 
-**Href** | Pointer to **string** | Route Filter Change URI | [optional] 
 
 ## Methods
 
@@ -33,22 +33,87 @@ NewRouteFilterRulesChangeDataWithDefaults instantiates a new RouteFilterRulesCha
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
+### GetUuid
+
+`func (o *RouteFilterRulesChangeData) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *RouteFilterRulesChangeData) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *RouteFilterRulesChangeData) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+
+### GetType
+
+`func (o *RouteFilterRulesChangeData) GetType() RouteFilterRulesChangeType`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *RouteFilterRulesChangeData) GetTypeOk() (*RouteFilterRulesChangeType, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *RouteFilterRulesChangeData) SetType(v RouteFilterRulesChangeType)`
+
+SetType sets Type field to given value.
+
+
+### GetHref
+
+`func (o *RouteFilterRulesChangeData) GetHref() string`
+
+GetHref returns the Href field if non-nil, zero value otherwise.
+
+### GetHrefOk
+
+`func (o *RouteFilterRulesChangeData) GetHrefOk() (*string, bool)`
+
+GetHrefOk returns a tuple with the Href field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHref
+
+`func (o *RouteFilterRulesChangeData) SetHref(v string)`
+
+SetHref sets Href field to given value.
+
+### HasHref
+
+`func (o *RouteFilterRulesChangeData) HasHref() bool`
+
+HasHref returns a boolean if a field has been set.
+
 ### GetStatus
 
-`func (o *RouteFilterRulesChangeData) GetStatus() string`
+`func (o *RouteFilterRulesChangeData) GetStatus() RoutingProtocolChangeDataAllOfStatus`
 
 GetStatus returns the Status field if non-nil, zero value otherwise.
 
 ### GetStatusOk
 
-`func (o *RouteFilterRulesChangeData) GetStatusOk() (*string, bool)`
+`func (o *RouteFilterRulesChangeData) GetStatusOk() (*RoutingProtocolChangeDataAllOfStatus, bool)`
 
 GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStatus
 
-`func (o *RouteFilterRulesChangeData) SetStatus(v string)`
+`func (o *RouteFilterRulesChangeData) SetStatus(v RoutingProtocolChangeDataAllOfStatus)`
 
 SetStatus sets Status field to given value.
 
@@ -182,71 +247,6 @@ SetData sets Data field to given value.
 `func (o *RouteFilterRulesChangeData) HasData() bool`
 
 HasData returns a boolean if a field has been set.
-
-### GetUuid
-
-`func (o *RouteFilterRulesChangeData) GetUuid() string`
-
-GetUuid returns the Uuid field if non-nil, zero value otherwise.
-
-### GetUuidOk
-
-`func (o *RouteFilterRulesChangeData) GetUuidOk() (*string, bool)`
-
-GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUuid
-
-`func (o *RouteFilterRulesChangeData) SetUuid(v string)`
-
-SetUuid sets Uuid field to given value.
-
-
-### GetType
-
-`func (o *RouteFilterRulesChangeData) GetType() RouteFilterRulesChangeType`
-
-GetType returns the Type field if non-nil, zero value otherwise.
-
-### GetTypeOk
-
-`func (o *RouteFilterRulesChangeData) GetTypeOk() (*RouteFilterRulesChangeType, bool)`
-
-GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetType
-
-`func (o *RouteFilterRulesChangeData) SetType(v RouteFilterRulesChangeType)`
-
-SetType sets Type field to given value.
-
-
-### GetHref
-
-`func (o *RouteFilterRulesChangeData) GetHref() string`
-
-GetHref returns the Href field if non-nil, zero value otherwise.
-
-### GetHrefOk
-
-`func (o *RouteFilterRulesChangeData) GetHrefOk() (*string, bool)`
-
-GetHrefOk returns a tuple with the Href field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetHref
-
-`func (o *RouteFilterRulesChangeData) SetHref(v string)`
-
-SetHref sets Href field to given value.
-
-### HasHref
-
-`func (o *RouteFilterRulesChangeData) HasHref() bool`
-
-HasHref returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -17,14 +17,16 @@ type InterfaceType string
 
 // List of Interface_type
 const (
-	INTERFACETYPE_CLOUD   InterfaceType = "CLOUD"
-	INTERFACETYPE_NETWORK InterfaceType = "NETWORK"
+	INTERFACETYPE_CLOUD                    InterfaceType = "CLOUD"
+	INTERFACETYPE_NETWORK                  InterfaceType = "NETWORK"
+	INTERFACETYPE_UNKNOWN_DEFAULT_OPEN_API InterfaceType = "unknown_default_open_api"
 )
 
 // All allowed values of InterfaceType enum
 var AllowedInterfaceTypeEnumValues = []InterfaceType{
 	"CLOUD",
 	"NETWORK",
+	"unknown_default_open_api",
 }
 
 func (v *InterfaceType) UnmarshalJSON(src []byte) error {
@@ -41,7 +43,8 @@ func (v *InterfaceType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid InterfaceType", value)
+	*v = INTERFACETYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewInterfaceTypeFromValue returns a pointer to a valid InterfaceType

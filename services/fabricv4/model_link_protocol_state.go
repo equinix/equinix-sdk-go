@@ -17,14 +17,16 @@ type LinkProtocolState string
 
 // List of LinkProtocolState
 const (
-	LINKPROTOCOLSTATE_RESERVED LinkProtocolState = "RESERVED"
-	LINKPROTOCOLSTATE_RELEASED LinkProtocolState = "RELEASED"
+	LINKPROTOCOLSTATE_RESERVED                 LinkProtocolState = "RESERVED"
+	LINKPROTOCOLSTATE_RELEASED                 LinkProtocolState = "RELEASED"
+	LINKPROTOCOLSTATE_UNKNOWN_DEFAULT_OPEN_API LinkProtocolState = "unknown_default_open_api"
 )
 
 // All allowed values of LinkProtocolState enum
 var AllowedLinkProtocolStateEnumValues = []LinkProtocolState{
 	"RESERVED",
 	"RELEASED",
+	"unknown_default_open_api",
 }
 
 func (v *LinkProtocolState) UnmarshalJSON(src []byte) error {
@@ -41,7 +43,8 @@ func (v *LinkProtocolState) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid LinkProtocolState", value)
+	*v = LINKPROTOCOLSTATE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewLinkProtocolStateFromValue returns a pointer to a valid LinkProtocolState

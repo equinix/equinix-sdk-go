@@ -20,12 +20,13 @@ type OrdersBaseSubChannel string
 
 // List of ordersBase_subChannel
 const (
-	ORDERSBASESUBCHANNEL_ECP   OrdersBaseSubChannel = "ECP"
-	ORDERSBASESUBCHANNEL_ECX   OrdersBaseSubChannel = "ECX"
-	ORDERSBASESUBCHANNEL_IX    OrdersBaseSubChannel = "IX"
-	ORDERSBASESUBCHANNEL_NE    OrdersBaseSubChannel = "NE"
-	ORDERSBASESUBCHANNEL_EMG   OrdersBaseSubChannel = "EMG"
-	ORDERSBASESUBCHANNEL_QUOTE OrdersBaseSubChannel = "QUOTE"
+	ORDERSBASESUBCHANNEL_ECP                      OrdersBaseSubChannel = "ECP"
+	ORDERSBASESUBCHANNEL_ECX                      OrdersBaseSubChannel = "ECX"
+	ORDERSBASESUBCHANNEL_IX                       OrdersBaseSubChannel = "IX"
+	ORDERSBASESUBCHANNEL_NE                       OrdersBaseSubChannel = "NE"
+	ORDERSBASESUBCHANNEL_EMG                      OrdersBaseSubChannel = "EMG"
+	ORDERSBASESUBCHANNEL_QUOTE                    OrdersBaseSubChannel = "QUOTE"
+	ORDERSBASESUBCHANNEL_UNKNOWN_DEFAULT_OPEN_API OrdersBaseSubChannel = "unknown_default_open_api"
 )
 
 // All allowed values of OrdersBaseSubChannel enum
@@ -36,6 +37,7 @@ var AllowedOrdersBaseSubChannelEnumValues = []OrdersBaseSubChannel{
 	"NE",
 	"EMG",
 	"QUOTE",
+	"unknown_default_open_api",
 }
 
 func (v *OrdersBaseSubChannel) UnmarshalJSON(src []byte) error {
@@ -52,7 +54,8 @@ func (v *OrdersBaseSubChannel) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid OrdersBaseSubChannel", value)
+	*v = ORDERSBASESUBCHANNEL_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewOrdersBaseSubChannelFromValue returns a pointer to a valid OrdersBaseSubChannel

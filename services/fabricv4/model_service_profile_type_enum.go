@@ -17,12 +17,13 @@ type ServiceProfileTypeEnum string
 
 // List of ServiceProfileTypeEnum
 const (
-	SERVICEPROFILETYPEENUM_L2_PROFILE    ServiceProfileTypeEnum = "L2_PROFILE"
-	SERVICEPROFILETYPEENUM_L3_PROFILE    ServiceProfileTypeEnum = "L3_PROFILE"
-	SERVICEPROFILETYPEENUM_IA_PROFILE    ServiceProfileTypeEnum = "IA_PROFILE"
-	SERVICEPROFILETYPEENUM_IX_PROFILE    ServiceProfileTypeEnum = "IX_PROFILE"
-	SERVICEPROFILETYPEENUM_IC_PROFILE    ServiceProfileTypeEnum = "IC_PROFILE"
-	SERVICEPROFILETYPEENUM_LMAAS_PROFILE ServiceProfileTypeEnum = "LMAAS_PROFILE"
+	SERVICEPROFILETYPEENUM_L2_PROFILE               ServiceProfileTypeEnum = "L2_PROFILE"
+	SERVICEPROFILETYPEENUM_L3_PROFILE               ServiceProfileTypeEnum = "L3_PROFILE"
+	SERVICEPROFILETYPEENUM_IA_PROFILE               ServiceProfileTypeEnum = "IA_PROFILE"
+	SERVICEPROFILETYPEENUM_IX_PROFILE               ServiceProfileTypeEnum = "IX_PROFILE"
+	SERVICEPROFILETYPEENUM_IC_PROFILE               ServiceProfileTypeEnum = "IC_PROFILE"
+	SERVICEPROFILETYPEENUM_LMAAS_PROFILE            ServiceProfileTypeEnum = "LMAAS_PROFILE"
+	SERVICEPROFILETYPEENUM_UNKNOWN_DEFAULT_OPEN_API ServiceProfileTypeEnum = "unknown_default_open_api"
 )
 
 // All allowed values of ServiceProfileTypeEnum enum
@@ -33,6 +34,7 @@ var AllowedServiceProfileTypeEnumEnumValues = []ServiceProfileTypeEnum{
 	"IX_PROFILE",
 	"IC_PROFILE",
 	"LMAAS_PROFILE",
+	"unknown_default_open_api",
 }
 
 func (v *ServiceProfileTypeEnum) UnmarshalJSON(src []byte) error {
@@ -49,7 +51,8 @@ func (v *ServiceProfileTypeEnum) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ServiceProfileTypeEnum", value)
+	*v = SERVICEPROFILETYPEENUM_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewServiceProfileTypeEnumFromValue returns a pointer to a valid ServiceProfileTypeEnum

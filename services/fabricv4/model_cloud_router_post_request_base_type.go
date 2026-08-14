@@ -17,12 +17,14 @@ type CloudRouterPostRequestBaseType string
 
 // List of CloudRouterPostRequestBase_type
 const (
-	CLOUDROUTERPOSTREQUESTBASETYPE_XF_ROUTER CloudRouterPostRequestBaseType = "XF_ROUTER"
+	CLOUDROUTERPOSTREQUESTBASETYPE_XF_ROUTER                CloudRouterPostRequestBaseType = "XF_ROUTER"
+	CLOUDROUTERPOSTREQUESTBASETYPE_UNKNOWN_DEFAULT_OPEN_API CloudRouterPostRequestBaseType = "unknown_default_open_api"
 )
 
 // All allowed values of CloudRouterPostRequestBaseType enum
 var AllowedCloudRouterPostRequestBaseTypeEnumValues = []CloudRouterPostRequestBaseType{
 	"XF_ROUTER",
+	"unknown_default_open_api",
 }
 
 func (v *CloudRouterPostRequestBaseType) UnmarshalJSON(src []byte) error {
@@ -39,7 +41,8 @@ func (v *CloudRouterPostRequestBaseType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid CloudRouterPostRequestBaseType", value)
+	*v = CLOUDROUTERPOSTREQUESTBASETYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewCloudRouterPostRequestBaseTypeFromValue returns a pointer to a valid CloudRouterPostRequestBaseType

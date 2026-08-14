@@ -21,6 +21,7 @@ const (
 	CLOUDROUTERACTIONSSEARCHSORTBY_CHANGE_LOG_UPDATED_DATE_TIME CloudRouterActionsSearchSortBy = "/changeLog/updatedDateTime"
 	CLOUDROUTERACTIONSSEARCHSORTBY_CONNECTION_NAME              CloudRouterActionsSearchSortBy = "/connection/name"
 	CLOUDROUTERACTIONSSEARCHSORTBY_TYPE                         CloudRouterActionsSearchSortBy = "/type"
+	CLOUDROUTERACTIONSSEARCHSORTBY_UNKNOWN_DEFAULT_OPEN_API     CloudRouterActionsSearchSortBy = "unknown_default_open_api"
 )
 
 // All allowed values of CloudRouterActionsSearchSortBy enum
@@ -29,6 +30,7 @@ var AllowedCloudRouterActionsSearchSortByEnumValues = []CloudRouterActionsSearch
 	"/changeLog/updatedDateTime",
 	"/connection/name",
 	"/type",
+	"unknown_default_open_api",
 }
 
 func (v *CloudRouterActionsSearchSortBy) UnmarshalJSON(src []byte) error {
@@ -45,7 +47,8 @@ func (v *CloudRouterActionsSearchSortBy) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid CloudRouterActionsSearchSortBy", value)
+	*v = CLOUDROUTERACTIONSSEARCHSORTBY_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewCloudRouterActionsSearchSortByFromValue returns a pointer to a valid CloudRouterActionsSearchSortBy

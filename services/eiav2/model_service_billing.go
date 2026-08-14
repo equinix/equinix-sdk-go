@@ -20,9 +20,10 @@ type ServiceBilling string
 
 // List of ServiceBilling
 const (
-	SERVICEBILLING_FIXED       ServiceBilling = "FIXED"
-	SERVICEBILLING_USAGE_BASED ServiceBilling = "USAGE_BASED"
-	SERVICEBILLING_BURST_BASED ServiceBilling = "BURST_BASED"
+	SERVICEBILLING_FIXED                    ServiceBilling = "FIXED"
+	SERVICEBILLING_USAGE_BASED              ServiceBilling = "USAGE_BASED"
+	SERVICEBILLING_BURST_BASED              ServiceBilling = "BURST_BASED"
+	SERVICEBILLING_UNKNOWN_DEFAULT_OPEN_API ServiceBilling = "unknown_default_open_api"
 )
 
 // All allowed values of ServiceBilling enum
@@ -30,6 +31,7 @@ var AllowedServiceBillingEnumValues = []ServiceBilling{
 	"FIXED",
 	"USAGE_BASED",
 	"BURST_BASED",
+	"unknown_default_open_api",
 }
 
 func (v *ServiceBilling) UnmarshalJSON(src []byte) error {
@@ -46,7 +48,8 @@ func (v *ServiceBilling) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ServiceBilling", value)
+	*v = SERVICEBILLING_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewServiceBillingFromValue returns a pointer to a valid ServiceBilling

@@ -20,10 +20,11 @@ type BgpRoutingProtocolRequestAllOfExportPolicy string
 
 // List of BgpRoutingProtocolRequest_allOf_exportPolicy
 const (
-	BGPROUTINGPROTOCOLREQUESTALLOFEXPORTPOLICY_FULL         BgpRoutingProtocolRequestAllOfExportPolicy = "FULL"
-	BGPROUTINGPROTOCOLREQUESTALLOFEXPORTPOLICY_DEFAULT      BgpRoutingProtocolRequestAllOfExportPolicy = "DEFAULT"
-	BGPROUTINGPROTOCOLREQUESTALLOFEXPORTPOLICY_FULL_DEFAULT BgpRoutingProtocolRequestAllOfExportPolicy = "FULL_DEFAULT"
-	BGPROUTINGPROTOCOLREQUESTALLOFEXPORTPOLICY_PARTIAL      BgpRoutingProtocolRequestAllOfExportPolicy = "PARTIAL"
+	BGPROUTINGPROTOCOLREQUESTALLOFEXPORTPOLICY_FULL                     BgpRoutingProtocolRequestAllOfExportPolicy = "FULL"
+	BGPROUTINGPROTOCOLREQUESTALLOFEXPORTPOLICY_DEFAULT                  BgpRoutingProtocolRequestAllOfExportPolicy = "DEFAULT"
+	BGPROUTINGPROTOCOLREQUESTALLOFEXPORTPOLICY_FULL_DEFAULT             BgpRoutingProtocolRequestAllOfExportPolicy = "FULL_DEFAULT"
+	BGPROUTINGPROTOCOLREQUESTALLOFEXPORTPOLICY_PARTIAL                  BgpRoutingProtocolRequestAllOfExportPolicy = "PARTIAL"
+	BGPROUTINGPROTOCOLREQUESTALLOFEXPORTPOLICY_UNKNOWN_DEFAULT_OPEN_API BgpRoutingProtocolRequestAllOfExportPolicy = "unknown_default_open_api"
 )
 
 // All allowed values of BgpRoutingProtocolRequestAllOfExportPolicy enum
@@ -32,6 +33,7 @@ var AllowedBgpRoutingProtocolRequestAllOfExportPolicyEnumValues = []BgpRoutingPr
 	"DEFAULT",
 	"FULL_DEFAULT",
 	"PARTIAL",
+	"unknown_default_open_api",
 }
 
 func (v *BgpRoutingProtocolRequestAllOfExportPolicy) UnmarshalJSON(src []byte) error {
@@ -48,7 +50,8 @@ func (v *BgpRoutingProtocolRequestAllOfExportPolicy) UnmarshalJSON(src []byte) e
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid BgpRoutingProtocolRequestAllOfExportPolicy", value)
+	*v = BGPROUTINGPROTOCOLREQUESTALLOFEXPORTPOLICY_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewBgpRoutingProtocolRequestAllOfExportPolicyFromValue returns a pointer to a valid BgpRoutingProtocolRequestAllOfExportPolicy

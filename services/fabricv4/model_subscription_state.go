@@ -17,10 +17,11 @@ type SubscriptionState string
 
 // List of SubscriptionState
 const (
-	SUBSCRIPTIONSTATE_ACTIVE       SubscriptionState = "ACTIVE"
-	SUBSCRIPTIONSTATE_EXPIRED      SubscriptionState = "EXPIRED"
-	SUBSCRIPTIONSTATE_CANCELLED    SubscriptionState = "CANCELLED"
-	SUBSCRIPTIONSTATE_GRACE_PERIOD SubscriptionState = "GRACE_PERIOD"
+	SUBSCRIPTIONSTATE_ACTIVE                   SubscriptionState = "ACTIVE"
+	SUBSCRIPTIONSTATE_EXPIRED                  SubscriptionState = "EXPIRED"
+	SUBSCRIPTIONSTATE_CANCELLED                SubscriptionState = "CANCELLED"
+	SUBSCRIPTIONSTATE_GRACE_PERIOD             SubscriptionState = "GRACE_PERIOD"
+	SUBSCRIPTIONSTATE_UNKNOWN_DEFAULT_OPEN_API SubscriptionState = "unknown_default_open_api"
 )
 
 // All allowed values of SubscriptionState enum
@@ -29,6 +30,7 @@ var AllowedSubscriptionStateEnumValues = []SubscriptionState{
 	"EXPIRED",
 	"CANCELLED",
 	"GRACE_PERIOD",
+	"unknown_default_open_api",
 }
 
 func (v *SubscriptionState) UnmarshalJSON(src []byte) error {
@@ -45,7 +47,8 @@ func (v *SubscriptionState) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid SubscriptionState", value)
+	*v = SUBSCRIPTIONSTATE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewSubscriptionStateFromValue returns a pointer to a valid SubscriptionState

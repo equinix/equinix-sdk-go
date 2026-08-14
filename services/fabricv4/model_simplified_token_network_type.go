@@ -17,11 +17,12 @@ type SimplifiedTokenNetworkType string
 
 // List of SimplifiedTokenNetwork_type
 const (
-	SIMPLIFIEDTOKENNETWORKTYPE_EVPLAN  SimplifiedTokenNetworkType = "EVPLAN"
-	SIMPLIFIEDTOKENNETWORKTYPE_EPLAN   SimplifiedTokenNetworkType = "EPLAN"
-	SIMPLIFIEDTOKENNETWORKTYPE_IPWAN   SimplifiedTokenNetworkType = "IPWAN"
-	SIMPLIFIEDTOKENNETWORKTYPE_EVPTREE SimplifiedTokenNetworkType = "EVPTREE"
-	SIMPLIFIEDTOKENNETWORKTYPE_EPTREE  SimplifiedTokenNetworkType = "EPTREE"
+	SIMPLIFIEDTOKENNETWORKTYPE_EVPLAN                   SimplifiedTokenNetworkType = "EVPLAN"
+	SIMPLIFIEDTOKENNETWORKTYPE_EPLAN                    SimplifiedTokenNetworkType = "EPLAN"
+	SIMPLIFIEDTOKENNETWORKTYPE_IPWAN                    SimplifiedTokenNetworkType = "IPWAN"
+	SIMPLIFIEDTOKENNETWORKTYPE_EVPTREE                  SimplifiedTokenNetworkType = "EVPTREE"
+	SIMPLIFIEDTOKENNETWORKTYPE_EPTREE                   SimplifiedTokenNetworkType = "EPTREE"
+	SIMPLIFIEDTOKENNETWORKTYPE_UNKNOWN_DEFAULT_OPEN_API SimplifiedTokenNetworkType = "unknown_default_open_api"
 )
 
 // All allowed values of SimplifiedTokenNetworkType enum
@@ -31,6 +32,7 @@ var AllowedSimplifiedTokenNetworkTypeEnumValues = []SimplifiedTokenNetworkType{
 	"IPWAN",
 	"EVPTREE",
 	"EPTREE",
+	"unknown_default_open_api",
 }
 
 func (v *SimplifiedTokenNetworkType) UnmarshalJSON(src []byte) error {
@@ -47,7 +49,8 @@ func (v *SimplifiedTokenNetworkType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid SimplifiedTokenNetworkType", value)
+	*v = SIMPLIFIEDTOKENNETWORKTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewSimplifiedTokenNetworkTypeFromValue returns a pointer to a valid SimplifiedTokenNetworkType

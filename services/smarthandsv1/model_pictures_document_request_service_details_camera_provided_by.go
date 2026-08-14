@@ -20,14 +20,16 @@ type PicturesDocumentRequestServiceDetailsCameraProvidedBy string
 
 // List of picturesDocumentRequest_serviceDetails_cameraProvidedBy
 const (
-	PICTURESDOCUMENTREQUESTSERVICEDETAILSCAMERAPROVIDEDBY_EQUINIX  PicturesDocumentRequestServiceDetailsCameraProvidedBy = "Equinix"
-	PICTURESDOCUMENTREQUESTSERVICEDETAILSCAMERAPROVIDEDBY_CUSTOMER PicturesDocumentRequestServiceDetailsCameraProvidedBy = "Customer"
+	PICTURESDOCUMENTREQUESTSERVICEDETAILSCAMERAPROVIDEDBY_EQUINIX                  PicturesDocumentRequestServiceDetailsCameraProvidedBy = "Equinix"
+	PICTURESDOCUMENTREQUESTSERVICEDETAILSCAMERAPROVIDEDBY_CUSTOMER                 PicturesDocumentRequestServiceDetailsCameraProvidedBy = "Customer"
+	PICTURESDOCUMENTREQUESTSERVICEDETAILSCAMERAPROVIDEDBY_UNKNOWN_DEFAULT_OPEN_API PicturesDocumentRequestServiceDetailsCameraProvidedBy = "unknown_default_open_api"
 )
 
 // All allowed values of PicturesDocumentRequestServiceDetailsCameraProvidedBy enum
 var AllowedPicturesDocumentRequestServiceDetailsCameraProvidedByEnumValues = []PicturesDocumentRequestServiceDetailsCameraProvidedBy{
 	"Equinix",
 	"Customer",
+	"unknown_default_open_api",
 }
 
 func (v *PicturesDocumentRequestServiceDetailsCameraProvidedBy) UnmarshalJSON(src []byte) error {
@@ -44,7 +46,8 @@ func (v *PicturesDocumentRequestServiceDetailsCameraProvidedBy) UnmarshalJSON(sr
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid PicturesDocumentRequestServiceDetailsCameraProvidedBy", value)
+	*v = PICTURESDOCUMENTREQUESTSERVICEDETAILSCAMERAPROVIDEDBY_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewPicturesDocumentRequestServiceDetailsCameraProvidedByFromValue returns a pointer to a valid PicturesDocumentRequestServiceDetailsCameraProvidedBy

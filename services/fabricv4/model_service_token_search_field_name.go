@@ -27,6 +27,7 @@ const (
 	SERVICETOKENSEARCHFIELDNAME_CHANGE_LOG_UPDATED_DATE_TIME                       ServiceTokenSearchFieldName = "/changeLog/updatedDateTime"
 	SERVICETOKENSEARCHFIELDNAME_CONNECTION_A_SIDE_ACCESS_POINT_SELECTORS_PORT_UUID ServiceTokenSearchFieldName = "/connection/aSide/accessPointSelectors/port/uuid"
 	SERVICETOKENSEARCHFIELDNAME_CONNECTION_Z_SIDE_ACCESS_POINT_SELECTORS_PORT_UUID ServiceTokenSearchFieldName = "/connection/zSide/accessPointSelectors/port/uuid"
+	SERVICETOKENSEARCHFIELDNAME_UNKNOWN_DEFAULT_OPEN_API                           ServiceTokenSearchFieldName = "unknown_default_open_api"
 )
 
 // All allowed values of ServiceTokenSearchFieldName enum
@@ -41,6 +42,7 @@ var AllowedServiceTokenSearchFieldNameEnumValues = []ServiceTokenSearchFieldName
 	"/changeLog/updatedDateTime",
 	"/connection/aSide/accessPointSelectors/port/uuid",
 	"/connection/zSide/accessPointSelectors/port/uuid",
+	"unknown_default_open_api",
 }
 
 func (v *ServiceTokenSearchFieldName) UnmarshalJSON(src []byte) error {
@@ -57,7 +59,8 @@ func (v *ServiceTokenSearchFieldName) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ServiceTokenSearchFieldName", value)
+	*v = SERVICETOKENSEARCHFIELDNAME_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewServiceTokenSearchFieldNameFromValue returns a pointer to a valid ServiceTokenSearchFieldName

@@ -29,6 +29,7 @@ const (
 	EXPRESSIONOPERATOR_IS_NULL                  ExpressionOperator = "IS NULL"
 	EXPRESSIONOPERATOR_IN                       ExpressionOperator = "IN"
 	EXPRESSIONOPERATOR_BETWEEN                  ExpressionOperator = "BETWEEN"
+	EXPRESSIONOPERATOR_UNKNOWN_DEFAULT_OPEN_API ExpressionOperator = "unknown_default_open_api"
 )
 
 // All allowed values of ExpressionOperator enum
@@ -45,6 +46,7 @@ var AllowedExpressionOperatorEnumValues = []ExpressionOperator{
 	"IS NULL",
 	"IN",
 	"BETWEEN",
+	"unknown_default_open_api",
 }
 
 func (v *ExpressionOperator) UnmarshalJSON(src []byte) error {
@@ -61,7 +63,8 @@ func (v *ExpressionOperator) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ExpressionOperator", value)
+	*v = EXPRESSIONOPERATOR_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewExpressionOperatorFromValue returns a pointer to a valid ExpressionOperator

@@ -17,10 +17,11 @@ type InternetAccessExportPolicy string
 
 // List of InternetAccessExportPolicy
 const (
-	INTERNETACCESSEXPORTPOLICY_FULL         InternetAccessExportPolicy = "FULL"
-	INTERNETACCESSEXPORTPOLICY_DEFAULT      InternetAccessExportPolicy = "DEFAULT"
-	INTERNETACCESSEXPORTPOLICY_FULL_DEFAULT InternetAccessExportPolicy = "FULL_DEFAULT"
-	INTERNETACCESSEXPORTPOLICY_PARTIAL      InternetAccessExportPolicy = "PARTIAL"
+	INTERNETACCESSEXPORTPOLICY_FULL                     InternetAccessExportPolicy = "FULL"
+	INTERNETACCESSEXPORTPOLICY_DEFAULT                  InternetAccessExportPolicy = "DEFAULT"
+	INTERNETACCESSEXPORTPOLICY_FULL_DEFAULT             InternetAccessExportPolicy = "FULL_DEFAULT"
+	INTERNETACCESSEXPORTPOLICY_PARTIAL                  InternetAccessExportPolicy = "PARTIAL"
+	INTERNETACCESSEXPORTPOLICY_UNKNOWN_DEFAULT_OPEN_API InternetAccessExportPolicy = "unknown_default_open_api"
 )
 
 // All allowed values of InternetAccessExportPolicy enum
@@ -29,6 +30,7 @@ var AllowedInternetAccessExportPolicyEnumValues = []InternetAccessExportPolicy{
 	"DEFAULT",
 	"FULL_DEFAULT",
 	"PARTIAL",
+	"unknown_default_open_api",
 }
 
 func (v *InternetAccessExportPolicy) UnmarshalJSON(src []byte) error {
@@ -45,7 +47,8 @@ func (v *InternetAccessExportPolicy) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid InternetAccessExportPolicy", value)
+	*v = INTERNETACCESSEXPORTPOLICY_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewInternetAccessExportPolicyFromValue returns a pointer to a valid InternetAccessExportPolicy

@@ -20,10 +20,11 @@ type OrdersLineRequestType string
 
 // List of ordersLine_requestType
 const (
-	ORDERSLINEREQUESTTYPE_ADD       OrdersLineRequestType = "ADD"
-	ORDERSLINEREQUESTTYPE_DELETE    OrdersLineRequestType = "DELETE"
-	ORDERSLINEREQUESTTYPE_NO_CHANGE OrdersLineRequestType = "NO_CHANGE"
-	ORDERSLINEREQUESTTYPE_UPDATE    OrdersLineRequestType = "UPDATE"
+	ORDERSLINEREQUESTTYPE_ADD                      OrdersLineRequestType = "ADD"
+	ORDERSLINEREQUESTTYPE_DELETE                   OrdersLineRequestType = "DELETE"
+	ORDERSLINEREQUESTTYPE_NO_CHANGE                OrdersLineRequestType = "NO_CHANGE"
+	ORDERSLINEREQUESTTYPE_UPDATE                   OrdersLineRequestType = "UPDATE"
+	ORDERSLINEREQUESTTYPE_UNKNOWN_DEFAULT_OPEN_API OrdersLineRequestType = "unknown_default_open_api"
 )
 
 // All allowed values of OrdersLineRequestType enum
@@ -32,6 +33,7 @@ var AllowedOrdersLineRequestTypeEnumValues = []OrdersLineRequestType{
 	"DELETE",
 	"NO_CHANGE",
 	"UPDATE",
+	"unknown_default_open_api",
 }
 
 func (v *OrdersLineRequestType) UnmarshalJSON(src []byte) error {
@@ -48,7 +50,8 @@ func (v *OrdersLineRequestType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid OrdersLineRequestType", value)
+	*v = ORDERSLINEREQUESTTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewOrdersLineRequestTypeFromValue returns a pointer to a valid OrdersLineRequestType

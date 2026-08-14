@@ -17,10 +17,11 @@ type MetroErrorErrorCode string
 
 // List of MetroError_errorCode
 const (
-	METROERRORERRORCODE__3036001 MetroErrorErrorCode = "EQ-3036001"
-	METROERRORERRORCODE__3036013 MetroErrorErrorCode = "EQ-3036013"
-	METROERRORERRORCODE__3036030 MetroErrorErrorCode = "EQ-3036030"
-	METROERRORERRORCODE__3036100 MetroErrorErrorCode = "EQ-3036100"
+	METROERRORERRORCODE__3036001                 MetroErrorErrorCode = "EQ-3036001"
+	METROERRORERRORCODE__3036013                 MetroErrorErrorCode = "EQ-3036013"
+	METROERRORERRORCODE__3036030                 MetroErrorErrorCode = "EQ-3036030"
+	METROERRORERRORCODE__3036100                 MetroErrorErrorCode = "EQ-3036100"
+	METROERRORERRORCODE_UNKNOWN_DEFAULT_OPEN_API MetroErrorErrorCode = "unknown_default_open_api"
 )
 
 // All allowed values of MetroErrorErrorCode enum
@@ -29,6 +30,7 @@ var AllowedMetroErrorErrorCodeEnumValues = []MetroErrorErrorCode{
 	"EQ-3036013",
 	"EQ-3036030",
 	"EQ-3036100",
+	"unknown_default_open_api",
 }
 
 func (v *MetroErrorErrorCode) UnmarshalJSON(src []byte) error {
@@ -45,7 +47,8 @@ func (v *MetroErrorErrorCode) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid MetroErrorErrorCode", value)
+	*v = METROERRORERRORCODE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewMetroErrorErrorCodeFromValue returns a pointer to a valid MetroErrorErrorCode

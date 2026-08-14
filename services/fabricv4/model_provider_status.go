@@ -17,22 +17,23 @@ type ProviderStatus string
 
 // List of ProviderStatus
 const (
-	PROVIDERSTATUS_AVAILABLE             ProviderStatus = "AVAILABLE"
-	PROVIDERSTATUS_DEPROVISIONED         ProviderStatus = "DEPROVISIONED"
-	PROVIDERSTATUS_DEPROVISIONING        ProviderStatus = "DEPROVISIONING"
-	PROVIDERSTATUS_FAILED                ProviderStatus = "FAILED"
-	PROVIDERSTATUS_NOT_AVAILABLE         ProviderStatus = "NOT_AVAILABLE"
-	PROVIDERSTATUS_PENDING_APPROVAL      ProviderStatus = "PENDING_APPROVAL"
-	PROVIDERSTATUS_PENDING_CONFIGURATION ProviderStatus = "PENDING_CONFIGURATION"
-	PROVIDERSTATUS_PROVISIONED           ProviderStatus = "PROVISIONED"
-	PROVIDERSTATUS_PROVISIONING          ProviderStatus = "PROVISIONING"
-	PROVIDERSTATUS_REJECTED              ProviderStatus = "REJECTED"
-	PROVIDERSTATUS_PENDING_BGP           ProviderStatus = "PENDING_BGP"
-	PROVIDERSTATUS_ERROR                 ProviderStatus = "ERROR"
-	PROVIDERSTATUS_ORDERING              ProviderStatus = "ORDERING"
-	PROVIDERSTATUS_DELETING              ProviderStatus = "DELETING"
-	PROVIDERSTATUS_PENDING_DELETE        ProviderStatus = "PENDING DELETE"
-	PROVIDERSTATUS_N_A                   ProviderStatus = "N/A"
+	PROVIDERSTATUS_AVAILABLE                ProviderStatus = "AVAILABLE"
+	PROVIDERSTATUS_DEPROVISIONED            ProviderStatus = "DEPROVISIONED"
+	PROVIDERSTATUS_DEPROVISIONING           ProviderStatus = "DEPROVISIONING"
+	PROVIDERSTATUS_FAILED                   ProviderStatus = "FAILED"
+	PROVIDERSTATUS_NOT_AVAILABLE            ProviderStatus = "NOT_AVAILABLE"
+	PROVIDERSTATUS_PENDING_APPROVAL         ProviderStatus = "PENDING_APPROVAL"
+	PROVIDERSTATUS_PENDING_CONFIGURATION    ProviderStatus = "PENDING_CONFIGURATION"
+	PROVIDERSTATUS_PROVISIONED              ProviderStatus = "PROVISIONED"
+	PROVIDERSTATUS_PROVISIONING             ProviderStatus = "PROVISIONING"
+	PROVIDERSTATUS_REJECTED                 ProviderStatus = "REJECTED"
+	PROVIDERSTATUS_PENDING_BGP              ProviderStatus = "PENDING_BGP"
+	PROVIDERSTATUS_ERROR                    ProviderStatus = "ERROR"
+	PROVIDERSTATUS_ORDERING                 ProviderStatus = "ORDERING"
+	PROVIDERSTATUS_DELETING                 ProviderStatus = "DELETING"
+	PROVIDERSTATUS_PENDING_DELETE           ProviderStatus = "PENDING DELETE"
+	PROVIDERSTATUS_N_A                      ProviderStatus = "N/A"
+	PROVIDERSTATUS_UNKNOWN_DEFAULT_OPEN_API ProviderStatus = "unknown_default_open_api"
 )
 
 // All allowed values of ProviderStatus enum
@@ -53,6 +54,7 @@ var AllowedProviderStatusEnumValues = []ProviderStatus{
 	"DELETING",
 	"PENDING DELETE",
 	"N/A",
+	"unknown_default_open_api",
 }
 
 func (v *ProviderStatus) UnmarshalJSON(src []byte) error {
@@ -69,7 +71,8 @@ func (v *ProviderStatus) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ProviderStatus", value)
+	*v = PROVIDERSTATUS_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewProviderStatusFromValue returns a pointer to a valid ProviderStatus

@@ -17,14 +17,16 @@ type DetectionMethodOperand string
 
 // List of DetectionMethod_operand
 const (
-	DETECTIONMETHODOPERAND_ABOVE DetectionMethodOperand = "ABOVE"
-	DETECTIONMETHODOPERAND_BELOW DetectionMethodOperand = "BELOW"
+	DETECTIONMETHODOPERAND_ABOVE                    DetectionMethodOperand = "ABOVE"
+	DETECTIONMETHODOPERAND_BELOW                    DetectionMethodOperand = "BELOW"
+	DETECTIONMETHODOPERAND_UNKNOWN_DEFAULT_OPEN_API DetectionMethodOperand = "unknown_default_open_api"
 )
 
 // All allowed values of DetectionMethodOperand enum
 var AllowedDetectionMethodOperandEnumValues = []DetectionMethodOperand{
 	"ABOVE",
 	"BELOW",
+	"unknown_default_open_api",
 }
 
 func (v *DetectionMethodOperand) UnmarshalJSON(src []byte) error {
@@ -41,7 +43,8 @@ func (v *DetectionMethodOperand) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid DetectionMethodOperand", value)
+	*v = DETECTIONMETHODOPERAND_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewDetectionMethodOperandFromValue returns a pointer to a valid DetectionMethodOperand

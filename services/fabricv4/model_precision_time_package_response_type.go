@@ -17,12 +17,14 @@ type PrecisionTimePackageResponseType string
 
 // List of precisionTimePackageResponse_type
 const (
-	PRECISIONTIMEPACKAGERESPONSETYPE_TIME_SERVICE_PACKAGE PrecisionTimePackageResponseType = "TIME_SERVICE_PACKAGE"
+	PRECISIONTIMEPACKAGERESPONSETYPE_TIME_SERVICE_PACKAGE     PrecisionTimePackageResponseType = "TIME_SERVICE_PACKAGE"
+	PRECISIONTIMEPACKAGERESPONSETYPE_UNKNOWN_DEFAULT_OPEN_API PrecisionTimePackageResponseType = "unknown_default_open_api"
 )
 
 // All allowed values of PrecisionTimePackageResponseType enum
 var AllowedPrecisionTimePackageResponseTypeEnumValues = []PrecisionTimePackageResponseType{
 	"TIME_SERVICE_PACKAGE",
+	"unknown_default_open_api",
 }
 
 func (v *PrecisionTimePackageResponseType) UnmarshalJSON(src []byte) error {
@@ -39,7 +41,8 @@ func (v *PrecisionTimePackageResponseType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid PrecisionTimePackageResponseType", value)
+	*v = PRECISIONTIMEPACKAGERESPONSETYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewPrecisionTimePackageResponseTypeFromValue returns a pointer to a valid PrecisionTimePackageResponseType

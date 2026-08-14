@@ -17,14 +17,16 @@ type ResponseIncompleteDetailsReason string
 
 // List of Response_incomplete_details_reason
 const (
-	RESPONSEINCOMPLETEDETAILSREASON_MAX_OUTPUT_TOKENS ResponseIncompleteDetailsReason = "max_output_tokens"
-	RESPONSEINCOMPLETEDETAILSREASON_CONTENT_FILTER    ResponseIncompleteDetailsReason = "content_filter"
+	RESPONSEINCOMPLETEDETAILSREASON_MAX_OUTPUT_TOKENS        ResponseIncompleteDetailsReason = "max_output_tokens"
+	RESPONSEINCOMPLETEDETAILSREASON_CONTENT_FILTER           ResponseIncompleteDetailsReason = "content_filter"
+	RESPONSEINCOMPLETEDETAILSREASON_UNKNOWN_DEFAULT_OPEN_API ResponseIncompleteDetailsReason = "unknown_default_open_api"
 )
 
 // All allowed values of ResponseIncompleteDetailsReason enum
 var AllowedResponseIncompleteDetailsReasonEnumValues = []ResponseIncompleteDetailsReason{
 	"max_output_tokens",
 	"content_filter",
+	"unknown_default_open_api",
 }
 
 func (v *ResponseIncompleteDetailsReason) UnmarshalJSON(src []byte) error {
@@ -41,7 +43,8 @@ func (v *ResponseIncompleteDetailsReason) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ResponseIncompleteDetailsReason", value)
+	*v = RESPONSEINCOMPLETEDETAILSREASON_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewResponseIncompleteDetailsReasonFromValue returns a pointer to a valid ResponseIncompleteDetailsReason

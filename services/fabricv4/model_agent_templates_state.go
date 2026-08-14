@@ -17,12 +17,13 @@ type AgentTemplatesState string
 
 // List of AgentTemplates_state
 const (
-	AGENTTEMPLATESSTATE_PROVISIONING   AgentTemplatesState = "PROVISIONING"
-	AGENTTEMPLATESSTATE_PROVISIONED    AgentTemplatesState = "PROVISIONED"
-	AGENTTEMPLATESSTATE_REPROVISIONING AgentTemplatesState = "REPROVISIONING"
-	AGENTTEMPLATESSTATE_DEPROVISIONING AgentTemplatesState = "DEPROVISIONING"
-	AGENTTEMPLATESSTATE_DEPROVISIONED  AgentTemplatesState = "DEPROVISIONED"
-	AGENTTEMPLATESSTATE_FAILED         AgentTemplatesState = "FAILED"
+	AGENTTEMPLATESSTATE_PROVISIONING             AgentTemplatesState = "PROVISIONING"
+	AGENTTEMPLATESSTATE_PROVISIONED              AgentTemplatesState = "PROVISIONED"
+	AGENTTEMPLATESSTATE_REPROVISIONING           AgentTemplatesState = "REPROVISIONING"
+	AGENTTEMPLATESSTATE_DEPROVISIONING           AgentTemplatesState = "DEPROVISIONING"
+	AGENTTEMPLATESSTATE_DEPROVISIONED            AgentTemplatesState = "DEPROVISIONED"
+	AGENTTEMPLATESSTATE_FAILED                   AgentTemplatesState = "FAILED"
+	AGENTTEMPLATESSTATE_UNKNOWN_DEFAULT_OPEN_API AgentTemplatesState = "unknown_default_open_api"
 )
 
 // All allowed values of AgentTemplatesState enum
@@ -33,6 +34,7 @@ var AllowedAgentTemplatesStateEnumValues = []AgentTemplatesState{
 	"DEPROVISIONING",
 	"DEPROVISIONED",
 	"FAILED",
+	"unknown_default_open_api",
 }
 
 func (v *AgentTemplatesState) UnmarshalJSON(src []byte) error {
@@ -49,7 +51,8 @@ func (v *AgentTemplatesState) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid AgentTemplatesState", value)
+	*v = AGENTTEMPLATESSTATE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewAgentTemplatesStateFromValue returns a pointer to a valid AgentTemplatesState

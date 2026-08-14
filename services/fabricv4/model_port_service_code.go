@@ -17,10 +17,11 @@ type PortServiceCode string
 
 // List of PortServiceCode
 const (
-	PORTSERVICECODE_CX PortServiceCode = "CX"
-	PORTSERVICECODE_IX PortServiceCode = "IX"
-	PORTSERVICECODE_IA PortServiceCode = "IA"
-	PORTSERVICECODE_MC PortServiceCode = "MC"
+	PORTSERVICECODE_CX                       PortServiceCode = "CX"
+	PORTSERVICECODE_IX                       PortServiceCode = "IX"
+	PORTSERVICECODE_IA                       PortServiceCode = "IA"
+	PORTSERVICECODE_MC                       PortServiceCode = "MC"
+	PORTSERVICECODE_UNKNOWN_DEFAULT_OPEN_API PortServiceCode = "unknown_default_open_api"
 )
 
 // All allowed values of PortServiceCode enum
@@ -29,6 +30,7 @@ var AllowedPortServiceCodeEnumValues = []PortServiceCode{
 	"IX",
 	"IA",
 	"MC",
+	"unknown_default_open_api",
 }
 
 func (v *PortServiceCode) UnmarshalJSON(src []byte) error {
@@ -45,7 +47,8 @@ func (v *PortServiceCode) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid PortServiceCode", value)
+	*v = PORTSERVICECODE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewPortServiceCodeFromValue returns a pointer to a valid PortServiceCode

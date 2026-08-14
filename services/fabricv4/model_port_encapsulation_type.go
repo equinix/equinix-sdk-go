@@ -17,9 +17,10 @@ type PortEncapsulationType string
 
 // List of PortEncapsulation_type
 const (
-	PORTENCAPSULATIONTYPE_DOT1_Q   PortEncapsulationType = "DOT1Q"
-	PORTENCAPSULATIONTYPE_QINQ     PortEncapsulationType = "QINQ"
-	PORTENCAPSULATIONTYPE_UNTAGGED PortEncapsulationType = "UNTAGGED"
+	PORTENCAPSULATIONTYPE_DOT1_Q                   PortEncapsulationType = "DOT1Q"
+	PORTENCAPSULATIONTYPE_QINQ                     PortEncapsulationType = "QINQ"
+	PORTENCAPSULATIONTYPE_UNTAGGED                 PortEncapsulationType = "UNTAGGED"
+	PORTENCAPSULATIONTYPE_UNKNOWN_DEFAULT_OPEN_API PortEncapsulationType = "unknown_default_open_api"
 )
 
 // All allowed values of PortEncapsulationType enum
@@ -27,6 +28,7 @@ var AllowedPortEncapsulationTypeEnumValues = []PortEncapsulationType{
 	"DOT1Q",
 	"QINQ",
 	"UNTAGGED",
+	"unknown_default_open_api",
 }
 
 func (v *PortEncapsulationType) UnmarshalJSON(src []byte) error {
@@ -43,7 +45,8 @@ func (v *PortEncapsulationType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid PortEncapsulationType", value)
+	*v = PORTENCAPSULATIONTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewPortEncapsulationTypeFromValue returns a pointer to a valid PortEncapsulationType

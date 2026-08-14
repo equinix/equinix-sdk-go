@@ -17,9 +17,10 @@ type TimeServiceOperationOperationalStatus string
 
 // List of timeServiceOperation_operationalStatus
 const (
-	TIMESERVICEOPERATIONOPERATIONALSTATUS_UP       TimeServiceOperationOperationalStatus = "UP"
-	TIMESERVICEOPERATIONOPERATIONALSTATUS_DOWN     TimeServiceOperationOperationalStatus = "DOWN"
-	TIMESERVICEOPERATIONOPERATIONALSTATUS_DEGRADED TimeServiceOperationOperationalStatus = "DEGRADED"
+	TIMESERVICEOPERATIONOPERATIONALSTATUS_UP                       TimeServiceOperationOperationalStatus = "UP"
+	TIMESERVICEOPERATIONOPERATIONALSTATUS_DOWN                     TimeServiceOperationOperationalStatus = "DOWN"
+	TIMESERVICEOPERATIONOPERATIONALSTATUS_DEGRADED                 TimeServiceOperationOperationalStatus = "DEGRADED"
+	TIMESERVICEOPERATIONOPERATIONALSTATUS_UNKNOWN_DEFAULT_OPEN_API TimeServiceOperationOperationalStatus = "unknown_default_open_api"
 )
 
 // All allowed values of TimeServiceOperationOperationalStatus enum
@@ -27,6 +28,7 @@ var AllowedTimeServiceOperationOperationalStatusEnumValues = []TimeServiceOperat
 	"UP",
 	"DOWN",
 	"DEGRADED",
+	"unknown_default_open_api",
 }
 
 func (v *TimeServiceOperationOperationalStatus) UnmarshalJSON(src []byte) error {
@@ -43,7 +45,8 @@ func (v *TimeServiceOperationOperationalStatus) UnmarshalJSON(src []byte) error 
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid TimeServiceOperationOperationalStatus", value)
+	*v = TIMESERVICEOPERATIONOPERATIONALSTATUS_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewTimeServiceOperationOperationalStatusFromValue returns a pointer to a valid TimeServiceOperationOperationalStatus

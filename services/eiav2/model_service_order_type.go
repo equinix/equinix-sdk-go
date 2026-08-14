@@ -20,14 +20,16 @@ type ServiceOrderType string
 
 // List of ServiceOrderType
 const (
-	SERVICEORDERTYPE_NEW       ServiceOrderType = "NEW"
-	SERVICEORDERTYPE_AMENDMENT ServiceOrderType = "AMENDMENT"
+	SERVICEORDERTYPE_NEW                      ServiceOrderType = "NEW"
+	SERVICEORDERTYPE_AMENDMENT                ServiceOrderType = "AMENDMENT"
+	SERVICEORDERTYPE_UNKNOWN_DEFAULT_OPEN_API ServiceOrderType = "unknown_default_open_api"
 )
 
 // All allowed values of ServiceOrderType enum
 var AllowedServiceOrderTypeEnumValues = []ServiceOrderType{
 	"NEW",
 	"AMENDMENT",
+	"unknown_default_open_api",
 }
 
 func (v *ServiceOrderType) UnmarshalJSON(src []byte) error {
@@ -44,7 +46,8 @@ func (v *ServiceOrderType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ServiceOrderType", value)
+	*v = SERVICEORDERTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewServiceOrderTypeFromValue returns a pointer to a valid ServiceOrderType

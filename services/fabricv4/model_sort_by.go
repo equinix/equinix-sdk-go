@@ -43,6 +43,7 @@ const (
 	SORTBY_OPERATION_EQUINIX_STATUS                     SortBy = "/operation/equinixStatus"
 	SORTBY_OPERATION_PROVIDER_STATUS                    SortBy = "/operation/providerStatus"
 	SORTBY_REDUNDANCY_PRIORITY                          SortBy = "/redundancy/priority"
+	SORTBY_UNKNOWN_DEFAULT_OPEN_API                     SortBy = "unknown_default_open_api"
 )
 
 // All allowed values of SortBy enum
@@ -73,6 +74,7 @@ var AllowedSortByEnumValues = []SortBy{
 	"/operation/equinixStatus",
 	"/operation/providerStatus",
 	"/redundancy/priority",
+	"unknown_default_open_api",
 }
 
 func (v *SortBy) UnmarshalJSON(src []byte) error {
@@ -89,7 +91,8 @@ func (v *SortBy) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid SortBy", value)
+	*v = SORTBY_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewSortByFromValue returns a pointer to a valid SortBy

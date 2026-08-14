@@ -17,14 +17,16 @@ type StreamAlertRuleState string
 
 // List of StreamAlertRule_state
 const (
-	STREAMALERTRULESTATE_ACTIVE   StreamAlertRuleState = "ACTIVE"
-	STREAMALERTRULESTATE_INACTIVE StreamAlertRuleState = "INACTIVE"
+	STREAMALERTRULESTATE_ACTIVE                   StreamAlertRuleState = "ACTIVE"
+	STREAMALERTRULESTATE_INACTIVE                 StreamAlertRuleState = "INACTIVE"
+	STREAMALERTRULESTATE_UNKNOWN_DEFAULT_OPEN_API StreamAlertRuleState = "unknown_default_open_api"
 )
 
 // All allowed values of StreamAlertRuleState enum
 var AllowedStreamAlertRuleStateEnumValues = []StreamAlertRuleState{
 	"ACTIVE",
 	"INACTIVE",
+	"unknown_default_open_api",
 }
 
 func (v *StreamAlertRuleState) UnmarshalJSON(src []byte) error {
@@ -41,7 +43,8 @@ func (v *StreamAlertRuleState) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid StreamAlertRuleState", value)
+	*v = STREAMALERTRULESTATE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewStreamAlertRuleStateFromValue returns a pointer to a valid StreamAlertRuleState

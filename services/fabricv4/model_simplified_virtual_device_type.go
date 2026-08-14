@@ -17,12 +17,14 @@ type SimplifiedVirtualDeviceType string
 
 // List of SimplifiedVirtualDevice_type
 const (
-	SIMPLIFIEDVIRTUALDEVICETYPE_EDGE SimplifiedVirtualDeviceType = "EDGE"
+	SIMPLIFIEDVIRTUALDEVICETYPE_EDGE                     SimplifiedVirtualDeviceType = "EDGE"
+	SIMPLIFIEDVIRTUALDEVICETYPE_UNKNOWN_DEFAULT_OPEN_API SimplifiedVirtualDeviceType = "unknown_default_open_api"
 )
 
 // All allowed values of SimplifiedVirtualDeviceType enum
 var AllowedSimplifiedVirtualDeviceTypeEnumValues = []SimplifiedVirtualDeviceType{
 	"EDGE",
+	"unknown_default_open_api",
 }
 
 func (v *SimplifiedVirtualDeviceType) UnmarshalJSON(src []byte) error {
@@ -39,7 +41,8 @@ func (v *SimplifiedVirtualDeviceType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid SimplifiedVirtualDeviceType", value)
+	*v = SIMPLIFIEDVIRTUALDEVICETYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewSimplifiedVirtualDeviceTypeFromValue returns a pointer to a valid SimplifiedVirtualDeviceType

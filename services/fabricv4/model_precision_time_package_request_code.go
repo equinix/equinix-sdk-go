@@ -17,10 +17,11 @@ type PrecisionTimePackageRequestCode string
 
 // List of precisionTimePackageRequest_code
 const (
-	PRECISIONTIMEPACKAGEREQUESTCODE_NTP_STANDARD   PrecisionTimePackageRequestCode = "NTP_STANDARD"
-	PRECISIONTIMEPACKAGEREQUESTCODE_NTP_ENTERPRISE PrecisionTimePackageRequestCode = "NTP_ENTERPRISE"
-	PRECISIONTIMEPACKAGEREQUESTCODE_PTP_STANDARD   PrecisionTimePackageRequestCode = "PTP_STANDARD"
-	PRECISIONTIMEPACKAGEREQUESTCODE_PTP_ENTERPRISE PrecisionTimePackageRequestCode = "PTP_ENTERPRISE"
+	PRECISIONTIMEPACKAGEREQUESTCODE_NTP_STANDARD             PrecisionTimePackageRequestCode = "NTP_STANDARD"
+	PRECISIONTIMEPACKAGEREQUESTCODE_NTP_ENTERPRISE           PrecisionTimePackageRequestCode = "NTP_ENTERPRISE"
+	PRECISIONTIMEPACKAGEREQUESTCODE_PTP_STANDARD             PrecisionTimePackageRequestCode = "PTP_STANDARD"
+	PRECISIONTIMEPACKAGEREQUESTCODE_PTP_ENTERPRISE           PrecisionTimePackageRequestCode = "PTP_ENTERPRISE"
+	PRECISIONTIMEPACKAGEREQUESTCODE_UNKNOWN_DEFAULT_OPEN_API PrecisionTimePackageRequestCode = "unknown_default_open_api"
 )
 
 // All allowed values of PrecisionTimePackageRequestCode enum
@@ -29,6 +30,7 @@ var AllowedPrecisionTimePackageRequestCodeEnumValues = []PrecisionTimePackageReq
 	"NTP_ENTERPRISE",
 	"PTP_STANDARD",
 	"PTP_ENTERPRISE",
+	"unknown_default_open_api",
 }
 
 func (v *PrecisionTimePackageRequestCode) UnmarshalJSON(src []byte) error {
@@ -45,7 +47,8 @@ func (v *PrecisionTimePackageRequestCode) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid PrecisionTimePackageRequestCode", value)
+	*v = PRECISIONTIMEPACKAGEREQUESTCODE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewPrecisionTimePackageRequestCodeFromValue returns a pointer to a valid PrecisionTimePackageRequestCode

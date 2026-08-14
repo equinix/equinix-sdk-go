@@ -20,9 +20,10 @@ type UseCaseType string
 
 // List of UseCaseType
 const (
-	USECASETYPE_MAIN              UseCaseType = "MAIN"
-	USECASETYPE_BACKUP            UseCaseType = "BACKUP"
-	USECASETYPE_MANAGEMENT_ACCESS UseCaseType = "MANAGEMENT_ACCESS"
+	USECASETYPE_MAIN                     UseCaseType = "MAIN"
+	USECASETYPE_BACKUP                   UseCaseType = "BACKUP"
+	USECASETYPE_MANAGEMENT_ACCESS        UseCaseType = "MANAGEMENT_ACCESS"
+	USECASETYPE_UNKNOWN_DEFAULT_OPEN_API UseCaseType = "unknown_default_open_api"
 )
 
 // All allowed values of UseCaseType enum
@@ -30,6 +31,7 @@ var AllowedUseCaseTypeEnumValues = []UseCaseType{
 	"MAIN",
 	"BACKUP",
 	"MANAGEMENT_ACCESS",
+	"unknown_default_open_api",
 }
 
 func (v *UseCaseType) UnmarshalJSON(src []byte) error {
@@ -46,7 +48,8 @@ func (v *UseCaseType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid UseCaseType", value)
+	*v = USECASETYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewUseCaseTypeFromValue returns a pointer to a valid UseCaseType

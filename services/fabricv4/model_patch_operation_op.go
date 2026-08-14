@@ -17,9 +17,10 @@ type PatchOperationOp string
 
 // List of PatchOperation_op
 const (
-	PATCHOPERATIONOP_REPLACE PatchOperationOp = "replace"
-	PATCHOPERATIONOP_ADD     PatchOperationOp = "add"
-	PATCHOPERATIONOP_REMOVE  PatchOperationOp = "remove"
+	PATCHOPERATIONOP_REPLACE                  PatchOperationOp = "replace"
+	PATCHOPERATIONOP_ADD                      PatchOperationOp = "add"
+	PATCHOPERATIONOP_REMOVE                   PatchOperationOp = "remove"
+	PATCHOPERATIONOP_UNKNOWN_DEFAULT_OPEN_API PatchOperationOp = "unknown_default_open_api"
 )
 
 // All allowed values of PatchOperationOp enum
@@ -27,6 +28,7 @@ var AllowedPatchOperationOpEnumValues = []PatchOperationOp{
 	"replace",
 	"add",
 	"remove",
+	"unknown_default_open_api",
 }
 
 func (v *PatchOperationOp) UnmarshalJSON(src []byte) error {
@@ -43,7 +45,8 @@ func (v *PatchOperationOp) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid PatchOperationOp", value)
+	*v = PATCHOPERATIONOP_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewPatchOperationOpFromValue returns a pointer to a valid PatchOperationOp

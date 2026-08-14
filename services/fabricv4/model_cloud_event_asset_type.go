@@ -17,16 +17,17 @@ type CloudEventAssetType string
 
 // List of CloudEventAssetType
 const (
-	CLOUDEVENTASSETTYPE_PORTS            CloudEventAssetType = "ports"
-	CLOUDEVENTASSETTYPE_CONNECTIONS      CloudEventAssetType = "connections"
-	CLOUDEVENTASSETTYPE_ROUTERS          CloudEventAssetType = "routers"
-	CLOUDEVENTASSETTYPE_METROS           CloudEventAssetType = "metros"
-	CLOUDEVENTASSETTYPE_SERVICE_TOKENS   CloudEventAssetType = "serviceTokens"
-	CLOUDEVENTASSETTYPE_NETWORKS         CloudEventAssetType = "networks"
-	CLOUDEVENTASSETTYPE_PROJECTS         CloudEventAssetType = "projects"
-	CLOUDEVENTASSETTYPE_ORGANIZATIONS    CloudEventAssetType = "organizations"
-	CLOUDEVENTASSETTYPE_TIME_SERVICES    CloudEventAssetType = "timeServices"
-	CLOUDEVENTASSETTYPE_COMPANY_PROFILES CloudEventAssetType = "companyProfiles"
+	CLOUDEVENTASSETTYPE_PORTS                    CloudEventAssetType = "ports"
+	CLOUDEVENTASSETTYPE_CONNECTIONS              CloudEventAssetType = "connections"
+	CLOUDEVENTASSETTYPE_ROUTERS                  CloudEventAssetType = "routers"
+	CLOUDEVENTASSETTYPE_METROS                   CloudEventAssetType = "metros"
+	CLOUDEVENTASSETTYPE_SERVICE_TOKENS           CloudEventAssetType = "serviceTokens"
+	CLOUDEVENTASSETTYPE_NETWORKS                 CloudEventAssetType = "networks"
+	CLOUDEVENTASSETTYPE_PROJECTS                 CloudEventAssetType = "projects"
+	CLOUDEVENTASSETTYPE_ORGANIZATIONS            CloudEventAssetType = "organizations"
+	CLOUDEVENTASSETTYPE_TIME_SERVICES            CloudEventAssetType = "timeServices"
+	CLOUDEVENTASSETTYPE_COMPANY_PROFILES         CloudEventAssetType = "companyProfiles"
+	CLOUDEVENTASSETTYPE_UNKNOWN_DEFAULT_OPEN_API CloudEventAssetType = "unknown_default_open_api"
 )
 
 // All allowed values of CloudEventAssetType enum
@@ -41,6 +42,7 @@ var AllowedCloudEventAssetTypeEnumValues = []CloudEventAssetType{
 	"organizations",
 	"timeServices",
 	"companyProfiles",
+	"unknown_default_open_api",
 }
 
 func (v *CloudEventAssetType) UnmarshalJSON(src []byte) error {
@@ -57,7 +59,8 @@ func (v *CloudEventAssetType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid CloudEventAssetType", value)
+	*v = CLOUDEVENTASSETTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewCloudEventAssetTypeFromValue returns a pointer to a valid CloudEventAssetType

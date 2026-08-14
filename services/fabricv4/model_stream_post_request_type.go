@@ -17,12 +17,14 @@ type StreamPostRequestType string
 
 // List of StreamPostRequest_type
 const (
-	STREAMPOSTREQUESTTYPE_TELEMETRY_STREAM StreamPostRequestType = "TELEMETRY_STREAM"
+	STREAMPOSTREQUESTTYPE_TELEMETRY_STREAM         StreamPostRequestType = "TELEMETRY_STREAM"
+	STREAMPOSTREQUESTTYPE_UNKNOWN_DEFAULT_OPEN_API StreamPostRequestType = "unknown_default_open_api"
 )
 
 // All allowed values of StreamPostRequestType enum
 var AllowedStreamPostRequestTypeEnumValues = []StreamPostRequestType{
 	"TELEMETRY_STREAM",
+	"unknown_default_open_api",
 }
 
 func (v *StreamPostRequestType) UnmarshalJSON(src []byte) error {
@@ -39,7 +41,8 @@ func (v *StreamPostRequestType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid StreamPostRequestType", value)
+	*v = STREAMPOSTREQUESTTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewStreamPostRequestTypeFromValue returns a pointer to a valid StreamPostRequestType

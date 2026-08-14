@@ -17,12 +17,14 @@ type StreamType string
 
 // List of Stream_type
 const (
-	STREAMTYPE_TELEMETRY_STREAM StreamType = "TELEMETRY_STREAM"
+	STREAMTYPE_TELEMETRY_STREAM         StreamType = "TELEMETRY_STREAM"
+	STREAMTYPE_UNKNOWN_DEFAULT_OPEN_API StreamType = "unknown_default_open_api"
 )
 
 // All allowed values of StreamType enum
 var AllowedStreamTypeEnumValues = []StreamType{
 	"TELEMETRY_STREAM",
+	"unknown_default_open_api",
 }
 
 func (v *StreamType) UnmarshalJSON(src []byte) error {
@@ -39,7 +41,8 @@ func (v *StreamType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid StreamType", value)
+	*v = STREAMTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewStreamTypeFromValue returns a pointer to a valid StreamType

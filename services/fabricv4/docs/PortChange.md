@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Uuid** | Pointer to **string** | Uniquely identifies a change | [optional] 
 **Type** | Pointer to [**PortChangeType**](PortChangeType.md) |  | [optional] 
-**Status** | Pointer to [**PortChangeStatus**](PortChangeStatus.md) |  | [optional] 
+**Status** | Pointer to [**RoutingProtocolChangeDataAllOfStatus**](RoutingProtocolChangeDataAllOfStatus.md) |  | [optional] 
 **Information** | Pointer to **string** | Additional information | [optional] 
 **Data** | Pointer to [**PortChangeOperation**](PortChangeOperation.md) |  | [optional] 
 **CreatedDateTime** | Pointer to **time.Time** | Set when change flow starts | [optional] 
@@ -83,20 +83,20 @@ HasType returns a boolean if a field has been set.
 
 ### GetStatus
 
-`func (o *PortChange) GetStatus() PortChangeStatus`
+`func (o *PortChange) GetStatus() RoutingProtocolChangeDataAllOfStatus`
 
 GetStatus returns the Status field if non-nil, zero value otherwise.
 
 ### GetStatusOk
 
-`func (o *PortChange) GetStatusOk() (*PortChangeStatus, bool)`
+`func (o *PortChange) GetStatusOk() (*RoutingProtocolChangeDataAllOfStatus, bool)`
 
 GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStatus
 
-`func (o *PortChange) SetStatus(v PortChangeStatus)`
+`func (o *PortChange) SetStatus(v RoutingProtocolChangeDataAllOfStatus)`
 
 SetStatus sets Status field to given value.
 

@@ -20,15 +20,16 @@ type CableRequestRequestServiceDetailsMediaType string
 
 // List of cableRequestRequest_serviceDetails_mediaType
 const (
-	CABLEREQUESTREQUESTSERVICEDETAILSMEDIATYPE_MULTI_MODE_62_5MIC CableRequestRequestServiceDetailsMediaType = "Multi-mode 62.5mic"
-	CABLEREQUESTREQUESTSERVICEDETAILSMEDIATYPE_MULTI_MODE_50MIC   CableRequestRequestServiceDetailsMediaType = "Multi-mode 50mic"
-	CABLEREQUESTREQUESTSERVICEDETAILSMEDIATYPE_SINGLE_MODE        CableRequestRequestServiceDetailsMediaType = "Single-mode"
-	CABLEREQUESTREQUESTSERVICEDETAILSMEDIATYPE_CAT_5              CableRequestRequestServiceDetailsMediaType = "Cat-5"
-	CABLEREQUESTREQUESTSERVICEDETAILSMEDIATYPE_CAT_6              CableRequestRequestServiceDetailsMediaType = "Cat-6"
-	CABLEREQUESTREQUESTSERVICEDETAILSMEDIATYPE_COAX               CableRequestRequestServiceDetailsMediaType = "Coax"
-	CABLEREQUESTREQUESTSERVICEDETAILSMEDIATYPE_POTS               CableRequestRequestServiceDetailsMediaType = "POTS"
-	CABLEREQUESTREQUESTSERVICEDETAILSMEDIATYPE_T1                 CableRequestRequestServiceDetailsMediaType = "T1"
-	CABLEREQUESTREQUESTSERVICEDETAILSMEDIATYPE_E1                 CableRequestRequestServiceDetailsMediaType = "E1"
+	CABLEREQUESTREQUESTSERVICEDETAILSMEDIATYPE_MULTI_MODE_62_5MIC       CableRequestRequestServiceDetailsMediaType = "Multi-mode 62.5mic"
+	CABLEREQUESTREQUESTSERVICEDETAILSMEDIATYPE_MULTI_MODE_50MIC         CableRequestRequestServiceDetailsMediaType = "Multi-mode 50mic"
+	CABLEREQUESTREQUESTSERVICEDETAILSMEDIATYPE_SINGLE_MODE              CableRequestRequestServiceDetailsMediaType = "Single-mode"
+	CABLEREQUESTREQUESTSERVICEDETAILSMEDIATYPE_CAT_5                    CableRequestRequestServiceDetailsMediaType = "Cat-5"
+	CABLEREQUESTREQUESTSERVICEDETAILSMEDIATYPE_CAT_6                    CableRequestRequestServiceDetailsMediaType = "Cat-6"
+	CABLEREQUESTREQUESTSERVICEDETAILSMEDIATYPE_COAX                     CableRequestRequestServiceDetailsMediaType = "Coax"
+	CABLEREQUESTREQUESTSERVICEDETAILSMEDIATYPE_POTS                     CableRequestRequestServiceDetailsMediaType = "POTS"
+	CABLEREQUESTREQUESTSERVICEDETAILSMEDIATYPE_T1                       CableRequestRequestServiceDetailsMediaType = "T1"
+	CABLEREQUESTREQUESTSERVICEDETAILSMEDIATYPE_E1                       CableRequestRequestServiceDetailsMediaType = "E1"
+	CABLEREQUESTREQUESTSERVICEDETAILSMEDIATYPE_UNKNOWN_DEFAULT_OPEN_API CableRequestRequestServiceDetailsMediaType = "unknown_default_open_api"
 )
 
 // All allowed values of CableRequestRequestServiceDetailsMediaType enum
@@ -42,6 +43,7 @@ var AllowedCableRequestRequestServiceDetailsMediaTypeEnumValues = []CableRequest
 	"POTS",
 	"T1",
 	"E1",
+	"unknown_default_open_api",
 }
 
 func (v *CableRequestRequestServiceDetailsMediaType) UnmarshalJSON(src []byte) error {
@@ -58,7 +60,8 @@ func (v *CableRequestRequestServiceDetailsMediaType) UnmarshalJSON(src []byte) e
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid CableRequestRequestServiceDetailsMediaType", value)
+	*v = CABLEREQUESTREQUESTSERVICEDETAILSMEDIATYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewCableRequestRequestServiceDetailsMediaTypeFromValue returns a pointer to a valid CableRequestRequestServiceDetailsMediaType

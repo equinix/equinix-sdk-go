@@ -20,9 +20,10 @@ type GetLocationsByPermissionCodePermissionCodeParameter string
 
 // List of Get_Locations_by_permission_code_permissionCode_parameter
 const (
-	GETLOCATIONSBYPERMISSIONCODEPERMISSIONCODEPARAMETER_CROSS_CONNECT GetLocationsByPermissionCodePermissionCodeParameter = "CROSS_CONNECT"
-	GETLOCATIONSBYPERMISSIONCODEPERMISSIONCODEPARAMETER_WORK_VISIT    GetLocationsByPermissionCodePermissionCodeParameter = "WORK_VISIT"
-	GETLOCATIONSBYPERMISSIONCODEPERMISSIONCODEPARAMETER_SHIPMENTS     GetLocationsByPermissionCodePermissionCodeParameter = "SHIPMENTS"
+	GETLOCATIONSBYPERMISSIONCODEPERMISSIONCODEPARAMETER_CROSS_CONNECT            GetLocationsByPermissionCodePermissionCodeParameter = "CROSS_CONNECT"
+	GETLOCATIONSBYPERMISSIONCODEPERMISSIONCODEPARAMETER_WORK_VISIT               GetLocationsByPermissionCodePermissionCodeParameter = "WORK_VISIT"
+	GETLOCATIONSBYPERMISSIONCODEPERMISSIONCODEPARAMETER_SHIPMENTS                GetLocationsByPermissionCodePermissionCodeParameter = "SHIPMENTS"
+	GETLOCATIONSBYPERMISSIONCODEPERMISSIONCODEPARAMETER_UNKNOWN_DEFAULT_OPEN_API GetLocationsByPermissionCodePermissionCodeParameter = "unknown_default_open_api"
 )
 
 // All allowed values of GetLocationsByPermissionCodePermissionCodeParameter enum
@@ -30,6 +31,7 @@ var AllowedGetLocationsByPermissionCodePermissionCodeParameterEnumValues = []Get
 	"CROSS_CONNECT",
 	"WORK_VISIT",
 	"SHIPMENTS",
+	"unknown_default_open_api",
 }
 
 func (v *GetLocationsByPermissionCodePermissionCodeParameter) UnmarshalJSON(src []byte) error {
@@ -46,7 +48,8 @@ func (v *GetLocationsByPermissionCodePermissionCodeParameter) UnmarshalJSON(src 
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid GetLocationsByPermissionCodePermissionCodeParameter", value)
+	*v = GETLOCATIONSBYPERMISSIONCODEPERMISSIONCODEPARAMETER_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewGetLocationsByPermissionCodePermissionCodeParameterFromValue returns a pointer to a valid GetLocationsByPermissionCodePermissionCodeParameter

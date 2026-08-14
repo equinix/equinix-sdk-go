@@ -36,6 +36,7 @@ const (
 	EQUINIXSTATUS_DRAFT                           EquinixStatus = "DRAFT"
 	EQUINIXSTATUS_CANCELLED                       EquinixStatus = "CANCELLED"
 	EQUINIXSTATUS_PENDING_INTERFACE_CONFIGURATION EquinixStatus = "PENDING_INTERFACE_CONFIGURATION"
+	EQUINIXSTATUS_UNKNOWN_DEFAULT_OPEN_API        EquinixStatus = "unknown_default_open_api"
 )
 
 // All allowed values of EquinixStatus enum
@@ -59,6 +60,7 @@ var AllowedEquinixStatusEnumValues = []EquinixStatus{
 	"DRAFT",
 	"CANCELLED",
 	"PENDING_INTERFACE_CONFIGURATION",
+	"unknown_default_open_api",
 }
 
 func (v *EquinixStatus) UnmarshalJSON(src []byte) error {
@@ -75,7 +77,8 @@ func (v *EquinixStatus) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EquinixStatus", value)
+	*v = EQUINIXSTATUS_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewEquinixStatusFromValue returns a pointer to a valid EquinixStatus

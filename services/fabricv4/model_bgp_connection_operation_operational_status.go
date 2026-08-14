@@ -17,9 +17,10 @@ type BGPConnectionOperationOperationalStatus string
 
 // List of BGPConnectionOperation_operationalStatus
 const (
-	BGPCONNECTIONOPERATIONOPERATIONALSTATUS_UP      BGPConnectionOperationOperationalStatus = "UP"
-	BGPCONNECTIONOPERATIONOPERATIONALSTATUS_DOWN    BGPConnectionOperationOperationalStatus = "DOWN"
-	BGPCONNECTIONOPERATIONOPERATIONALSTATUS_UNKNOWN BGPConnectionOperationOperationalStatus = "UNKNOWN"
+	BGPCONNECTIONOPERATIONOPERATIONALSTATUS_UP                       BGPConnectionOperationOperationalStatus = "UP"
+	BGPCONNECTIONOPERATIONOPERATIONALSTATUS_DOWN                     BGPConnectionOperationOperationalStatus = "DOWN"
+	BGPCONNECTIONOPERATIONOPERATIONALSTATUS_UNKNOWN                  BGPConnectionOperationOperationalStatus = "UNKNOWN"
+	BGPCONNECTIONOPERATIONOPERATIONALSTATUS_UNKNOWN_DEFAULT_OPEN_API BGPConnectionOperationOperationalStatus = "unknown_default_open_api"
 )
 
 // All allowed values of BGPConnectionOperationOperationalStatus enum
@@ -27,6 +28,7 @@ var AllowedBGPConnectionOperationOperationalStatusEnumValues = []BGPConnectionOp
 	"UP",
 	"DOWN",
 	"UNKNOWN",
+	"unknown_default_open_api",
 }
 
 func (v *BGPConnectionOperationOperationalStatus) UnmarshalJSON(src []byte) error {
@@ -43,7 +45,8 @@ func (v *BGPConnectionOperationOperationalStatus) UnmarshalJSON(src []byte) erro
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid BGPConnectionOperationOperationalStatus", value)
+	*v = BGPCONNECTIONOPERATIONOPERATIONALSTATUS_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewBGPConnectionOperationOperationalStatusFromValue returns a pointer to a valid BGPConnectionOperationOperationalStatus

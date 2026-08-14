@@ -17,14 +17,16 @@ type InternetAccessUseCase string
 
 // List of InternetAccessUseCase
 const (
-	INTERNETACCESSUSECASE_MAIN              InternetAccessUseCase = "MAIN"
-	INTERNETACCESSUSECASE_MANAGEMENT_ACCESS InternetAccessUseCase = "MANAGEMENT_ACCESS"
+	INTERNETACCESSUSECASE_MAIN                     InternetAccessUseCase = "MAIN"
+	INTERNETACCESSUSECASE_MANAGEMENT_ACCESS        InternetAccessUseCase = "MANAGEMENT_ACCESS"
+	INTERNETACCESSUSECASE_UNKNOWN_DEFAULT_OPEN_API InternetAccessUseCase = "unknown_default_open_api"
 )
 
 // All allowed values of InternetAccessUseCase enum
 var AllowedInternetAccessUseCaseEnumValues = []InternetAccessUseCase{
 	"MAIN",
 	"MANAGEMENT_ACCESS",
+	"unknown_default_open_api",
 }
 
 func (v *InternetAccessUseCase) UnmarshalJSON(src []byte) error {
@@ -41,7 +43,8 @@ func (v *InternetAccessUseCase) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid InternetAccessUseCase", value)
+	*v = INTERNETACCESSUSECASE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewInternetAccessUseCaseFromValue returns a pointer to a valid InternetAccessUseCase

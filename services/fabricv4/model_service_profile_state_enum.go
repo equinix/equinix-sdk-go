@@ -17,10 +17,11 @@ type ServiceProfileStateEnum string
 
 // List of ServiceProfileStateEnum
 const (
-	SERVICEPROFILESTATEENUM_ACTIVE           ServiceProfileStateEnum = "ACTIVE"
-	SERVICEPROFILESTATEENUM_PENDING_APPROVAL ServiceProfileStateEnum = "PENDING_APPROVAL"
-	SERVICEPROFILESTATEENUM_DELETED          ServiceProfileStateEnum = "DELETED"
-	SERVICEPROFILESTATEENUM_REJECTED         ServiceProfileStateEnum = "REJECTED"
+	SERVICEPROFILESTATEENUM_ACTIVE                   ServiceProfileStateEnum = "ACTIVE"
+	SERVICEPROFILESTATEENUM_PENDING_APPROVAL         ServiceProfileStateEnum = "PENDING_APPROVAL"
+	SERVICEPROFILESTATEENUM_DELETED                  ServiceProfileStateEnum = "DELETED"
+	SERVICEPROFILESTATEENUM_REJECTED                 ServiceProfileStateEnum = "REJECTED"
+	SERVICEPROFILESTATEENUM_UNKNOWN_DEFAULT_OPEN_API ServiceProfileStateEnum = "unknown_default_open_api"
 )
 
 // All allowed values of ServiceProfileStateEnum enum
@@ -29,6 +30,7 @@ var AllowedServiceProfileStateEnumEnumValues = []ServiceProfileStateEnum{
 	"PENDING_APPROVAL",
 	"DELETED",
 	"REJECTED",
+	"unknown_default_open_api",
 }
 
 func (v *ServiceProfileStateEnum) UnmarshalJSON(src []byte) error {
@@ -45,7 +47,8 @@ func (v *ServiceProfileStateEnum) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ServiceProfileStateEnum", value)
+	*v = SERVICEPROFILESTATEENUM_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewServiceProfileStateEnumFromValue returns a pointer to a valid ServiceProfileStateEnum

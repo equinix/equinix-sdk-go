@@ -17,9 +17,10 @@ type RoutingProtocolChangeOperationOp string
 
 // List of RoutingProtocolChangeOperation_op
 const (
-	ROUTINGPROTOCOLCHANGEOPERATIONOP_ADD     RoutingProtocolChangeOperationOp = "add"
-	ROUTINGPROTOCOLCHANGEOPERATIONOP_REPLACE RoutingProtocolChangeOperationOp = "replace"
-	ROUTINGPROTOCOLCHANGEOPERATIONOP_REMOVE  RoutingProtocolChangeOperationOp = "remove"
+	ROUTINGPROTOCOLCHANGEOPERATIONOP_ADD                      RoutingProtocolChangeOperationOp = "add"
+	ROUTINGPROTOCOLCHANGEOPERATIONOP_REPLACE                  RoutingProtocolChangeOperationOp = "replace"
+	ROUTINGPROTOCOLCHANGEOPERATIONOP_REMOVE                   RoutingProtocolChangeOperationOp = "remove"
+	ROUTINGPROTOCOLCHANGEOPERATIONOP_UNKNOWN_DEFAULT_OPEN_API RoutingProtocolChangeOperationOp = "unknown_default_open_api"
 )
 
 // All allowed values of RoutingProtocolChangeOperationOp enum
@@ -27,6 +28,7 @@ var AllowedRoutingProtocolChangeOperationOpEnumValues = []RoutingProtocolChangeO
 	"add",
 	"replace",
 	"remove",
+	"unknown_default_open_api",
 }
 
 func (v *RoutingProtocolChangeOperationOp) UnmarshalJSON(src []byte) error {
@@ -43,7 +45,8 @@ func (v *RoutingProtocolChangeOperationOp) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid RoutingProtocolChangeOperationOp", value)
+	*v = ROUTINGPROTOCOLCHANGEOPERATIONOP_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewRoutingProtocolChangeOperationOpFromValue returns a pointer to a valid RoutingProtocolChangeOperationOp

@@ -17,13 +17,14 @@ type RouteFilterRuleState string
 
 // List of RouteFilterRuleState
 const (
-	ROUTEFILTERRULESTATE_PROVISIONING      RouteFilterRuleState = "PROVISIONING"
-	ROUTEFILTERRULESTATE_REPROVISIONING    RouteFilterRuleState = "REPROVISIONING"
-	ROUTEFILTERRULESTATE_DEPROVISIONING    RouteFilterRuleState = "DEPROVISIONING"
-	ROUTEFILTERRULESTATE_PROVISIONED       RouteFilterRuleState = "PROVISIONED"
-	ROUTEFILTERRULESTATE_DEPROVISIONED     RouteFilterRuleState = "DEPROVISIONED"
-	ROUTEFILTERRULESTATE_NOT_PROVISIONED   RouteFilterRuleState = "NOT_PROVISIONED"
-	ROUTEFILTERRULESTATE_NOT_DEPROVISIONED RouteFilterRuleState = "NOT_DEPROVISIONED"
+	ROUTEFILTERRULESTATE_PROVISIONING             RouteFilterRuleState = "PROVISIONING"
+	ROUTEFILTERRULESTATE_REPROVISIONING           RouteFilterRuleState = "REPROVISIONING"
+	ROUTEFILTERRULESTATE_DEPROVISIONING           RouteFilterRuleState = "DEPROVISIONING"
+	ROUTEFILTERRULESTATE_PROVISIONED              RouteFilterRuleState = "PROVISIONED"
+	ROUTEFILTERRULESTATE_DEPROVISIONED            RouteFilterRuleState = "DEPROVISIONED"
+	ROUTEFILTERRULESTATE_NOT_PROVISIONED          RouteFilterRuleState = "NOT_PROVISIONED"
+	ROUTEFILTERRULESTATE_NOT_DEPROVISIONED        RouteFilterRuleState = "NOT_DEPROVISIONED"
+	ROUTEFILTERRULESTATE_UNKNOWN_DEFAULT_OPEN_API RouteFilterRuleState = "unknown_default_open_api"
 )
 
 // All allowed values of RouteFilterRuleState enum
@@ -35,6 +36,7 @@ var AllowedRouteFilterRuleStateEnumValues = []RouteFilterRuleState{
 	"DEPROVISIONED",
 	"NOT_PROVISIONED",
 	"NOT_DEPROVISIONED",
+	"unknown_default_open_api",
 }
 
 func (v *RouteFilterRuleState) UnmarshalJSON(src []byte) error {
@@ -51,7 +53,8 @@ func (v *RouteFilterRuleState) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid RouteFilterRuleState", value)
+	*v = ROUTEFILTERRULESTATE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewRouteFilterRuleStateFromValue returns a pointer to a valid RouteFilterRuleState

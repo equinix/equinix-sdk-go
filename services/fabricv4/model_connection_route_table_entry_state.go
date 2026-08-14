@@ -17,14 +17,16 @@ type ConnectionRouteTableEntryState string
 
 // List of ConnectionRouteTableEntry_state
 const (
-	CONNECTIONROUTETABLEENTRYSTATE_ACTIVE   ConnectionRouteTableEntryState = "ACTIVE"
-	CONNECTIONROUTETABLEENTRYSTATE_INACTIVE ConnectionRouteTableEntryState = "INACTIVE"
+	CONNECTIONROUTETABLEENTRYSTATE_ACTIVE                   ConnectionRouteTableEntryState = "ACTIVE"
+	CONNECTIONROUTETABLEENTRYSTATE_INACTIVE                 ConnectionRouteTableEntryState = "INACTIVE"
+	CONNECTIONROUTETABLEENTRYSTATE_UNKNOWN_DEFAULT_OPEN_API ConnectionRouteTableEntryState = "unknown_default_open_api"
 )
 
 // All allowed values of ConnectionRouteTableEntryState enum
 var AllowedConnectionRouteTableEntryStateEnumValues = []ConnectionRouteTableEntryState{
 	"ACTIVE",
 	"INACTIVE",
+	"unknown_default_open_api",
 }
 
 func (v *ConnectionRouteTableEntryState) UnmarshalJSON(src []byte) error {
@@ -41,7 +43,8 @@ func (v *ConnectionRouteTableEntryState) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ConnectionRouteTableEntryState", value)
+	*v = CONNECTIONROUTETABLEENTRYSTATE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewConnectionRouteTableEntryStateFromValue returns a pointer to a valid ConnectionRouteTableEntryState

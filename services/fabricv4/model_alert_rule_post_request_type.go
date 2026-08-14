@@ -17,12 +17,14 @@ type AlertRulePostRequestType string
 
 // List of AlertRulePostRequest_type
 const (
-	ALERTRULEPOSTREQUESTTYPE_METRIC_ALERT AlertRulePostRequestType = "METRIC_ALERT"
+	ALERTRULEPOSTREQUESTTYPE_METRIC_ALERT             AlertRulePostRequestType = "METRIC_ALERT"
+	ALERTRULEPOSTREQUESTTYPE_UNKNOWN_DEFAULT_OPEN_API AlertRulePostRequestType = "unknown_default_open_api"
 )
 
 // All allowed values of AlertRulePostRequestType enum
 var AllowedAlertRulePostRequestTypeEnumValues = []AlertRulePostRequestType{
 	"METRIC_ALERT",
+	"unknown_default_open_api",
 }
 
 func (v *AlertRulePostRequestType) UnmarshalJSON(src []byte) error {
@@ -39,7 +41,8 @@ func (v *AlertRulePostRequestType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid AlertRulePostRequestType", value)
+	*v = ALERTRULEPOSTREQUESTTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewAlertRulePostRequestTypeFromValue returns a pointer to a valid AlertRulePostRequestType

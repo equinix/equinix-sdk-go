@@ -20,15 +20,16 @@ type ConnectorTypes string
 
 // List of connector_types
 const (
-	CONNECTORTYPES_BNC       ConnectorTypes = "BNC"
-	CONNECTORTYPES_LC        ConnectorTypes = "LC"
-	CONNECTORTYPES_FC        ConnectorTypes = "FC"
-	CONNECTORTYPES_SC        ConnectorTypes = "SC"
-	CONNECTORTYPES_ST        ConnectorTypes = "ST"
-	CONNECTORTYPES_WIRE_WRAP ConnectorTypes = "WIRE_WRAP"
-	CONNECTORTYPES_RJ45      ConnectorTypes = "RJ45"
-	CONNECTORTYPES_E2000     ConnectorTypes = "E2000"
-	CONNECTORTYPES_RJ11      ConnectorTypes = "RJ11"
+	CONNECTORTYPES_BNC                      ConnectorTypes = "BNC"
+	CONNECTORTYPES_LC                       ConnectorTypes = "LC"
+	CONNECTORTYPES_FC                       ConnectorTypes = "FC"
+	CONNECTORTYPES_SC                       ConnectorTypes = "SC"
+	CONNECTORTYPES_ST                       ConnectorTypes = "ST"
+	CONNECTORTYPES_WIRE_WRAP                ConnectorTypes = "WIRE_WRAP"
+	CONNECTORTYPES_RJ45                     ConnectorTypes = "RJ45"
+	CONNECTORTYPES_E2000                    ConnectorTypes = "E2000"
+	CONNECTORTYPES_RJ11                     ConnectorTypes = "RJ11"
+	CONNECTORTYPES_UNKNOWN_DEFAULT_OPEN_API ConnectorTypes = "unknown_default_open_api"
 )
 
 // All allowed values of ConnectorTypes enum
@@ -42,6 +43,7 @@ var AllowedConnectorTypesEnumValues = []ConnectorTypes{
 	"RJ45",
 	"E2000",
 	"RJ11",
+	"unknown_default_open_api",
 }
 
 func (v *ConnectorTypes) UnmarshalJSON(src []byte) error {
@@ -58,7 +60,8 @@ func (v *ConnectorTypes) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ConnectorTypes", value)
+	*v = CONNECTORTYPES_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewConnectorTypesFromValue returns a pointer to a valid ConnectorTypes

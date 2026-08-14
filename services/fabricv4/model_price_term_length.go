@@ -17,10 +17,11 @@ type PriceTermLength int32
 
 // List of Price_termLength
 const (
-	PRICETERMLENGTH__1  PriceTermLength = 1
-	PRICETERMLENGTH__12 PriceTermLength = 12
-	PRICETERMLENGTH__24 PriceTermLength = 24
-	PRICETERMLENGTH__36 PriceTermLength = 36
+	PRICETERMLENGTH__1                        PriceTermLength = 1
+	PRICETERMLENGTH__12                       PriceTermLength = 12
+	PRICETERMLENGTH__24                       PriceTermLength = 24
+	PRICETERMLENGTH__36                       PriceTermLength = 36
+	PRICETERMLENGTH__unknown_default_open_api PriceTermLength = 11184809
 )
 
 // All allowed values of PriceTermLength enum
@@ -29,6 +30,7 @@ var AllowedPriceTermLengthEnumValues = []PriceTermLength{
 	12,
 	24,
 	36,
+	11184809,
 }
 
 func (v *PriceTermLength) UnmarshalJSON(src []byte) error {
@@ -45,7 +47,8 @@ func (v *PriceTermLength) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid PriceTermLength", value)
+	*v = PRICETERMLENGTH__unknown_default_open_api
+	return nil
 }
 
 // NewPriceTermLengthFromValue returns a pointer to a valid PriceTermLength

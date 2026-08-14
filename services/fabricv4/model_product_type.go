@@ -23,6 +23,7 @@ const (
 	PRODUCTTYPE_CLOUD_ROUTER_PRODUCT       ProductType = "CLOUD_ROUTER_PRODUCT"
 	PRODUCTTYPE_PRECISION_TIME_PRODUCT     ProductType = "PRECISION_TIME_PRODUCT"
 	PRODUCTTYPE_METRO_CONNECT_PRODUCT      ProductType = "METRO_CONNECT_PRODUCT"
+	PRODUCTTYPE_UNKNOWN_DEFAULT_OPEN_API   ProductType = "unknown_default_open_api"
 )
 
 // All allowed values of ProductType enum
@@ -33,6 +34,7 @@ var AllowedProductTypeEnumValues = []ProductType{
 	"CLOUD_ROUTER_PRODUCT",
 	"PRECISION_TIME_PRODUCT",
 	"METRO_CONNECT_PRODUCT",
+	"unknown_default_open_api",
 }
 
 func (v *ProductType) UnmarshalJSON(src []byte) error {
@@ -49,7 +51,8 @@ func (v *ProductType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ProductType", value)
+	*v = PRODUCTTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewProductTypeFromValue returns a pointer to a valid ProductType

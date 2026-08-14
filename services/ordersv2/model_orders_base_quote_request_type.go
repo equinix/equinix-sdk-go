@@ -20,12 +20,13 @@ type OrdersBaseQuoteRequestType string
 
 // List of ordersBase_quoteRequestType
 const (
-	ORDERSBASEQUOTEREQUESTTYPE_NEW                 OrdersBaseQuoteRequestType = "NEW"
-	ORDERSBASEQUOTEREQUESTTYPE_AMENDMENT           OrdersBaseQuoteRequestType = "AMENDMENT"
-	ORDERSBASEQUOTEREQUESTTYPE_PAPERWORK           OrdersBaseQuoteRequestType = "PAPERWORK"
-	ORDERSBASEQUOTEREQUESTTYPE_REPLACEMENT_RENEWAL OrdersBaseQuoteRequestType = "REPLACEMENT_RENEWAL"
-	ORDERSBASEQUOTEREQUESTTYPE_TERMINATION         OrdersBaseQuoteRequestType = "TERMINATION"
-	ORDERSBASEQUOTEREQUESTTYPE_MIGRATION           OrdersBaseQuoteRequestType = "MIGRATION"
+	ORDERSBASEQUOTEREQUESTTYPE_NEW                      OrdersBaseQuoteRequestType = "NEW"
+	ORDERSBASEQUOTEREQUESTTYPE_AMENDMENT                OrdersBaseQuoteRequestType = "AMENDMENT"
+	ORDERSBASEQUOTEREQUESTTYPE_PAPERWORK                OrdersBaseQuoteRequestType = "PAPERWORK"
+	ORDERSBASEQUOTEREQUESTTYPE_REPLACEMENT_RENEWAL      OrdersBaseQuoteRequestType = "REPLACEMENT_RENEWAL"
+	ORDERSBASEQUOTEREQUESTTYPE_TERMINATION              OrdersBaseQuoteRequestType = "TERMINATION"
+	ORDERSBASEQUOTEREQUESTTYPE_MIGRATION                OrdersBaseQuoteRequestType = "MIGRATION"
+	ORDERSBASEQUOTEREQUESTTYPE_UNKNOWN_DEFAULT_OPEN_API OrdersBaseQuoteRequestType = "unknown_default_open_api"
 )
 
 // All allowed values of OrdersBaseQuoteRequestType enum
@@ -36,6 +37,7 @@ var AllowedOrdersBaseQuoteRequestTypeEnumValues = []OrdersBaseQuoteRequestType{
 	"REPLACEMENT_RENEWAL",
 	"TERMINATION",
 	"MIGRATION",
+	"unknown_default_open_api",
 }
 
 func (v *OrdersBaseQuoteRequestType) UnmarshalJSON(src []byte) error {
@@ -52,7 +54,8 @@ func (v *OrdersBaseQuoteRequestType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid OrdersBaseQuoteRequestType", value)
+	*v = ORDERSBASEQUOTEREQUESTTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewOrdersBaseQuoteRequestTypeFromValue returns a pointer to a valid OrdersBaseQuoteRequestType

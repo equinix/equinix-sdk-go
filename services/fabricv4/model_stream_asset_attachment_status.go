@@ -17,11 +17,12 @@ type StreamAssetAttachmentStatus string
 
 // List of StreamAsset_attachmentStatus
 const (
-	STREAMASSETATTACHMENTSTATUS_ATTACHING StreamAssetAttachmentStatus = "ATTACHING"
-	STREAMASSETATTACHMENTSTATUS_ATTACHED  StreamAssetAttachmentStatus = "ATTACHED"
-	STREAMASSETATTACHMENTSTATUS_DETACHED  StreamAssetAttachmentStatus = "DETACHED"
-	STREAMASSETATTACHMENTSTATUS_DETACHING StreamAssetAttachmentStatus = "DETACHING"
-	STREAMASSETATTACHMENTSTATUS_FAILED    StreamAssetAttachmentStatus = "FAILED"
+	STREAMASSETATTACHMENTSTATUS_ATTACHING                StreamAssetAttachmentStatus = "ATTACHING"
+	STREAMASSETATTACHMENTSTATUS_ATTACHED                 StreamAssetAttachmentStatus = "ATTACHED"
+	STREAMASSETATTACHMENTSTATUS_DETACHED                 StreamAssetAttachmentStatus = "DETACHED"
+	STREAMASSETATTACHMENTSTATUS_DETACHING                StreamAssetAttachmentStatus = "DETACHING"
+	STREAMASSETATTACHMENTSTATUS_FAILED                   StreamAssetAttachmentStatus = "FAILED"
+	STREAMASSETATTACHMENTSTATUS_UNKNOWN_DEFAULT_OPEN_API StreamAssetAttachmentStatus = "unknown_default_open_api"
 )
 
 // All allowed values of StreamAssetAttachmentStatus enum
@@ -31,6 +32,7 @@ var AllowedStreamAssetAttachmentStatusEnumValues = []StreamAssetAttachmentStatus
 	"DETACHED",
 	"DETACHING",
 	"FAILED",
+	"unknown_default_open_api",
 }
 
 func (v *StreamAssetAttachmentStatus) UnmarshalJSON(src []byte) error {
@@ -47,7 +49,8 @@ func (v *StreamAssetAttachmentStatus) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid StreamAssetAttachmentStatus", value)
+	*v = STREAMASSETATTACHMENTSTATUS_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewStreamAssetAttachmentStatusFromValue returns a pointer to a valid StreamAssetAttachmentStatus

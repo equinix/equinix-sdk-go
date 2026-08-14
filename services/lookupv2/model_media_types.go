@@ -35,6 +35,7 @@ const (
 	MEDIATYPES_CAT6_A                            MediaTypes = "CAT6A"
 	MEDIATYPES_OS1                               MediaTypes = "OS1"
 	MEDIATYPES_SINGLE_MODE_FIBER                 MediaTypes = "SINGLE_MODE_FIBER"
+	MEDIATYPES_UNKNOWN_DEFAULT_OPEN_API          MediaTypes = "unknown_default_open_api"
 )
 
 // All allowed values of MediaTypes enum
@@ -54,6 +55,7 @@ var AllowedMediaTypesEnumValues = []MediaTypes{
 	"CAT6A",
 	"OS1",
 	"SINGLE_MODE_FIBER",
+	"unknown_default_open_api",
 }
 
 func (v *MediaTypes) UnmarshalJSON(src []byte) error {
@@ -70,7 +72,8 @@ func (v *MediaTypes) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid MediaTypes", value)
+	*v = MEDIATYPES_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewMediaTypesFromValue returns a pointer to a valid MediaTypes

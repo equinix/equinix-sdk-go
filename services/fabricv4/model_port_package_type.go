@@ -17,12 +17,14 @@ type PortPackageType string
 
 // List of PortPackage_type
 const (
-	PORTPACKAGETYPE_PORT_PACKAGE PortPackageType = "PORT_PACKAGE"
+	PORTPACKAGETYPE_PORT_PACKAGE             PortPackageType = "PORT_PACKAGE"
+	PORTPACKAGETYPE_UNKNOWN_DEFAULT_OPEN_API PortPackageType = "unknown_default_open_api"
 )
 
 // All allowed values of PortPackageType enum
 var AllowedPortPackageTypeEnumValues = []PortPackageType{
 	"PORT_PACKAGE",
+	"unknown_default_open_api",
 }
 
 func (v *PortPackageType) UnmarshalJSON(src []byte) error {
@@ -39,7 +41,8 @@ func (v *PortPackageType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid PortPackageType", value)
+	*v = PORTPACKAGETYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewPortPackageTypeFromValue returns a pointer to a valid PortPackageType

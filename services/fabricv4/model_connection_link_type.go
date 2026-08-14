@@ -17,12 +17,14 @@ type ConnectionLinkType string
 
 // List of connectionLink_type
 const (
-	CONNECTIONLINKTYPE_EVPL_VC ConnectionLinkType = "EVPL_VC"
+	CONNECTIONLINKTYPE_EVPL_VC                  ConnectionLinkType = "EVPL_VC"
+	CONNECTIONLINKTYPE_UNKNOWN_DEFAULT_OPEN_API ConnectionLinkType = "unknown_default_open_api"
 )
 
 // All allowed values of ConnectionLinkType enum
 var AllowedConnectionLinkTypeEnumValues = []ConnectionLinkType{
 	"EVPL_VC",
+	"unknown_default_open_api",
 }
 
 func (v *ConnectionLinkType) UnmarshalJSON(src []byte) error {
@@ -39,7 +41,8 @@ func (v *ConnectionLinkType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ConnectionLinkType", value)
+	*v = CONNECTIONLINKTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewConnectionLinkTypeFromValue returns a pointer to a valid ConnectionLinkType

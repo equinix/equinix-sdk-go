@@ -17,10 +17,11 @@ type ChangeType string
 
 // List of Change_type
 const (
-	CHANGETYPE_CREATION                ChangeType = "CONNECTION_CREATION"
-	CHANGETYPE_UPDATE                  ChangeType = "CONNECTION_UPDATE"
-	CHANGETYPE_DELETION                ChangeType = "CONNECTION_DELETION"
-	CHANGETYPE_PROVIDER_STATUS_REQUEST ChangeType = "CONNECTION_PROVIDER_STATUS_REQUEST"
+	CHANGETYPE_CREATION                 ChangeType = "CONNECTION_CREATION"
+	CHANGETYPE_UPDATE                   ChangeType = "CONNECTION_UPDATE"
+	CHANGETYPE_DELETION                 ChangeType = "CONNECTION_DELETION"
+	CHANGETYPE_PROVIDER_STATUS_REQUEST  ChangeType = "CONNECTION_PROVIDER_STATUS_REQUEST"
+	CHANGETYPE_UNKNOWN_DEFAULT_OPEN_API ChangeType = "unknown_default_open_api"
 )
 
 // All allowed values of ChangeType enum
@@ -29,6 +30,7 @@ var AllowedChangeTypeEnumValues = []ChangeType{
 	"CONNECTION_UPDATE",
 	"CONNECTION_DELETION",
 	"CONNECTION_PROVIDER_STATUS_REQUEST",
+	"unknown_default_open_api",
 }
 
 func (v *ChangeType) UnmarshalJSON(src []byte) error {
@@ -45,7 +47,8 @@ func (v *ChangeType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ChangeType", value)
+	*v = CHANGETYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewChangeTypeFromValue returns a pointer to a valid ChangeType

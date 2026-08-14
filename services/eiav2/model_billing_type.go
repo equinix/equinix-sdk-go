@@ -20,9 +20,10 @@ type BillingType string
 
 // List of BillingType
 const (
-	BILLINGTYPE_FIXED       BillingType = "FIXED"
-	BILLINGTYPE_USAGE_BASED BillingType = "USAGE_BASED"
-	BILLINGTYPE_BURST_BASED BillingType = "BURST_BASED"
+	BILLINGTYPE_FIXED                    BillingType = "FIXED"
+	BILLINGTYPE_USAGE_BASED              BillingType = "USAGE_BASED"
+	BILLINGTYPE_BURST_BASED              BillingType = "BURST_BASED"
+	BILLINGTYPE_UNKNOWN_DEFAULT_OPEN_API BillingType = "unknown_default_open_api"
 )
 
 // All allowed values of BillingType enum
@@ -30,6 +31,7 @@ var AllowedBillingTypeEnumValues = []BillingType{
 	"FIXED",
 	"USAGE_BASED",
 	"BURST_BASED",
+	"unknown_default_open_api",
 }
 
 func (v *BillingType) UnmarshalJSON(src []byte) error {
@@ -46,7 +48,8 @@ func (v *BillingType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid BillingType", value)
+	*v = BILLINGTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewBillingTypeFromValue returns a pointer to a valid BillingType

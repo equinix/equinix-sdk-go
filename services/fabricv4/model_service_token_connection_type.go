@@ -17,14 +17,15 @@ type ServiceTokenConnectionType string
 
 // List of ServiceTokenConnection_type
 const (
-	SERVICETOKENCONNECTIONTYPE_EVPL_VC    ServiceTokenConnectionType = "EVPL_VC"
-	SERVICETOKENCONNECTIONTYPE_EPL_VC     ServiceTokenConnectionType = "EPL_VC"
-	SERVICETOKENCONNECTIONTYPE_EVPLAN_VC  ServiceTokenConnectionType = "EVPLAN_VC"
-	SERVICETOKENCONNECTIONTYPE_EPLAN_VC   ServiceTokenConnectionType = "EPLAN_VC"
-	SERVICETOKENCONNECTIONTYPE_IPWAN_VC   ServiceTokenConnectionType = "IPWAN_VC"
-	SERVICETOKENCONNECTIONTYPE_IP_VC      ServiceTokenConnectionType = "IP_VC"
-	SERVICETOKENCONNECTIONTYPE_EVPTREE_VC ServiceTokenConnectionType = "EVPTREE_VC"
-	SERVICETOKENCONNECTIONTYPE_EPTREE_VC  ServiceTokenConnectionType = "EPTREE_VC"
+	SERVICETOKENCONNECTIONTYPE_EVPL_VC                  ServiceTokenConnectionType = "EVPL_VC"
+	SERVICETOKENCONNECTIONTYPE_EPL_VC                   ServiceTokenConnectionType = "EPL_VC"
+	SERVICETOKENCONNECTIONTYPE_EVPLAN_VC                ServiceTokenConnectionType = "EVPLAN_VC"
+	SERVICETOKENCONNECTIONTYPE_EPLAN_VC                 ServiceTokenConnectionType = "EPLAN_VC"
+	SERVICETOKENCONNECTIONTYPE_IPWAN_VC                 ServiceTokenConnectionType = "IPWAN_VC"
+	SERVICETOKENCONNECTIONTYPE_IP_VC                    ServiceTokenConnectionType = "IP_VC"
+	SERVICETOKENCONNECTIONTYPE_EVPTREE_VC               ServiceTokenConnectionType = "EVPTREE_VC"
+	SERVICETOKENCONNECTIONTYPE_EPTREE_VC                ServiceTokenConnectionType = "EPTREE_VC"
+	SERVICETOKENCONNECTIONTYPE_UNKNOWN_DEFAULT_OPEN_API ServiceTokenConnectionType = "unknown_default_open_api"
 )
 
 // All allowed values of ServiceTokenConnectionType enum
@@ -37,6 +38,7 @@ var AllowedServiceTokenConnectionTypeEnumValues = []ServiceTokenConnectionType{
 	"IP_VC",
 	"EVPTREE_VC",
 	"EPTREE_VC",
+	"unknown_default_open_api",
 }
 
 func (v *ServiceTokenConnectionType) UnmarshalJSON(src []byte) error {
@@ -53,7 +55,8 @@ func (v *ServiceTokenConnectionType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ServiceTokenConnectionType", value)
+	*v = SERVICETOKENCONNECTIONTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewServiceTokenConnectionTypeFromValue returns a pointer to a valid ServiceTokenConnectionType

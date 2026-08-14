@@ -20,13 +20,14 @@ type OrderState string
 
 // List of OrderState
 const (
-	ORDERSTATE_DRAFT              OrderState = "DRAFT"
-	ORDERSTATE_PROCESSING         OrderState = "PROCESSING"
-	ORDERSTATE_AWAITING_SIGNATURE OrderState = "AWAITING_SIGNATURE"
-	ORDERSTATE_SIGNATURE_REJECTED OrderState = "SIGNATURE_REJECTED"
-	ORDERSTATE_SIGNATURE_EXPIRED  OrderState = "SIGNATURE_EXPIRED"
-	ORDERSTATE_COMPLETED          OrderState = "COMPLETED"
-	ORDERSTATE_FAILED             OrderState = "FAILED"
+	ORDERSTATE_DRAFT                    OrderState = "DRAFT"
+	ORDERSTATE_PROCESSING               OrderState = "PROCESSING"
+	ORDERSTATE_AWAITING_SIGNATURE       OrderState = "AWAITING_SIGNATURE"
+	ORDERSTATE_SIGNATURE_REJECTED       OrderState = "SIGNATURE_REJECTED"
+	ORDERSTATE_SIGNATURE_EXPIRED        OrderState = "SIGNATURE_EXPIRED"
+	ORDERSTATE_COMPLETED                OrderState = "COMPLETED"
+	ORDERSTATE_FAILED                   OrderState = "FAILED"
+	ORDERSTATE_UNKNOWN_DEFAULT_OPEN_API OrderState = "unknown_default_open_api"
 )
 
 // All allowed values of OrderState enum
@@ -38,6 +39,7 @@ var AllowedOrderStateEnumValues = []OrderState{
 	"SIGNATURE_EXPIRED",
 	"COMPLETED",
 	"FAILED",
+	"unknown_default_open_api",
 }
 
 func (v *OrderState) UnmarshalJSON(src []byte) error {
@@ -54,7 +56,8 @@ func (v *OrderState) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid OrderState", value)
+	*v = ORDERSTATE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewOrderStateFromValue returns a pointer to a valid OrderState

@@ -17,13 +17,14 @@ type PtpAdvanceConfigurationLogSyncInterval int32
 
 // List of ptpAdvanceConfiguration_logSyncInterval
 const (
-	PTPADVANCECONFIGURATIONLOGSYNCINTERVAL__MINUS_5 PtpAdvanceConfigurationLogSyncInterval = -5
-	PTPADVANCECONFIGURATIONLOGSYNCINTERVAL__MINUS_4 PtpAdvanceConfigurationLogSyncInterval = -4
-	PTPADVANCECONFIGURATIONLOGSYNCINTERVAL__MINUS_3 PtpAdvanceConfigurationLogSyncInterval = -3
-	PTPADVANCECONFIGURATIONLOGSYNCINTERVAL__MINUS_2 PtpAdvanceConfigurationLogSyncInterval = -2
-	PTPADVANCECONFIGURATIONLOGSYNCINTERVAL__MINUS_1 PtpAdvanceConfigurationLogSyncInterval = -1
-	PTPADVANCECONFIGURATIONLOGSYNCINTERVAL__0       PtpAdvanceConfigurationLogSyncInterval = 0
-	PTPADVANCECONFIGURATIONLOGSYNCINTERVAL__1       PtpAdvanceConfigurationLogSyncInterval = 1
+	PTPADVANCECONFIGURATIONLOGSYNCINTERVAL__MINUS_5                  PtpAdvanceConfigurationLogSyncInterval = -5
+	PTPADVANCECONFIGURATIONLOGSYNCINTERVAL__MINUS_4                  PtpAdvanceConfigurationLogSyncInterval = -4
+	PTPADVANCECONFIGURATIONLOGSYNCINTERVAL__MINUS_3                  PtpAdvanceConfigurationLogSyncInterval = -3
+	PTPADVANCECONFIGURATIONLOGSYNCINTERVAL__MINUS_2                  PtpAdvanceConfigurationLogSyncInterval = -2
+	PTPADVANCECONFIGURATIONLOGSYNCINTERVAL__MINUS_1                  PtpAdvanceConfigurationLogSyncInterval = -1
+	PTPADVANCECONFIGURATIONLOGSYNCINTERVAL__0                        PtpAdvanceConfigurationLogSyncInterval = 0
+	PTPADVANCECONFIGURATIONLOGSYNCINTERVAL__1                        PtpAdvanceConfigurationLogSyncInterval = 1
+	PTPADVANCECONFIGURATIONLOGSYNCINTERVAL__unknown_default_open_api PtpAdvanceConfigurationLogSyncInterval = 11184809
 )
 
 // All allowed values of PtpAdvanceConfigurationLogSyncInterval enum
@@ -35,6 +36,7 @@ var AllowedPtpAdvanceConfigurationLogSyncIntervalEnumValues = []PtpAdvanceConfig
 	-1,
 	0,
 	1,
+	11184809,
 }
 
 func (v *PtpAdvanceConfigurationLogSyncInterval) UnmarshalJSON(src []byte) error {
@@ -51,7 +53,8 @@ func (v *PtpAdvanceConfigurationLogSyncInterval) UnmarshalJSON(src []byte) error
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid PtpAdvanceConfigurationLogSyncInterval", value)
+	*v = PTPADVANCECONFIGURATIONLOGSYNCINTERVAL__unknown_default_open_api
+	return nil
 }
 
 // NewPtpAdvanceConfigurationLogSyncIntervalFromValue returns a pointer to a valid PtpAdvanceConfigurationLogSyncInterval

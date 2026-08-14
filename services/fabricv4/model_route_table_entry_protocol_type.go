@@ -17,9 +17,10 @@ type RouteTableEntryProtocolType string
 
 // List of RouteTableEntryProtocolType
 const (
-	ROUTETABLEENTRYPROTOCOLTYPE_BGP    RouteTableEntryProtocolType = "BGP"
-	ROUTETABLEENTRYPROTOCOLTYPE_STATIC RouteTableEntryProtocolType = "STATIC"
-	ROUTETABLEENTRYPROTOCOLTYPE_DIRECT RouteTableEntryProtocolType = "DIRECT"
+	ROUTETABLEENTRYPROTOCOLTYPE_BGP                      RouteTableEntryProtocolType = "BGP"
+	ROUTETABLEENTRYPROTOCOLTYPE_STATIC                   RouteTableEntryProtocolType = "STATIC"
+	ROUTETABLEENTRYPROTOCOLTYPE_DIRECT                   RouteTableEntryProtocolType = "DIRECT"
+	ROUTETABLEENTRYPROTOCOLTYPE_UNKNOWN_DEFAULT_OPEN_API RouteTableEntryProtocolType = "unknown_default_open_api"
 )
 
 // All allowed values of RouteTableEntryProtocolType enum
@@ -27,6 +28,7 @@ var AllowedRouteTableEntryProtocolTypeEnumValues = []RouteTableEntryProtocolType
 	"BGP",
 	"STATIC",
 	"DIRECT",
+	"unknown_default_open_api",
 }
 
 func (v *RouteTableEntryProtocolType) UnmarshalJSON(src []byte) error {
@@ -43,7 +45,8 @@ func (v *RouteTableEntryProtocolType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid RouteTableEntryProtocolType", value)
+	*v = ROUTETABLEENTRYPROTOCOLTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewRouteTableEntryProtocolTypeFromValue returns a pointer to a valid RouteTableEntryProtocolType

@@ -17,13 +17,14 @@ type RouteAggregationRuleState string
 
 // List of RouteAggregationRuleState
 const (
-	ROUTEAGGREGATIONRULESTATE_PROVISIONING      RouteAggregationRuleState = "PROVISIONING"
-	ROUTEAGGREGATIONRULESTATE_REPROVISIONING    RouteAggregationRuleState = "REPROVISIONING"
-	ROUTEAGGREGATIONRULESTATE_DEPROVISIONING    RouteAggregationRuleState = "DEPROVISIONING"
-	ROUTEAGGREGATIONRULESTATE_PROVISIONED       RouteAggregationRuleState = "PROVISIONED"
-	ROUTEAGGREGATIONRULESTATE_DEPROVISIONED     RouteAggregationRuleState = "DEPROVISIONED"
-	ROUTEAGGREGATIONRULESTATE_NOT_PROVISIONED   RouteAggregationRuleState = "NOT_PROVISIONED"
-	ROUTEAGGREGATIONRULESTATE_NOT_DEPROVISIONED RouteAggregationRuleState = "NOT_DEPROVISIONED"
+	ROUTEAGGREGATIONRULESTATE_PROVISIONING             RouteAggregationRuleState = "PROVISIONING"
+	ROUTEAGGREGATIONRULESTATE_REPROVISIONING           RouteAggregationRuleState = "REPROVISIONING"
+	ROUTEAGGREGATIONRULESTATE_DEPROVISIONING           RouteAggregationRuleState = "DEPROVISIONING"
+	ROUTEAGGREGATIONRULESTATE_PROVISIONED              RouteAggregationRuleState = "PROVISIONED"
+	ROUTEAGGREGATIONRULESTATE_DEPROVISIONED            RouteAggregationRuleState = "DEPROVISIONED"
+	ROUTEAGGREGATIONRULESTATE_NOT_PROVISIONED          RouteAggregationRuleState = "NOT_PROVISIONED"
+	ROUTEAGGREGATIONRULESTATE_NOT_DEPROVISIONED        RouteAggregationRuleState = "NOT_DEPROVISIONED"
+	ROUTEAGGREGATIONRULESTATE_UNKNOWN_DEFAULT_OPEN_API RouteAggregationRuleState = "unknown_default_open_api"
 )
 
 // All allowed values of RouteAggregationRuleState enum
@@ -35,6 +36,7 @@ var AllowedRouteAggregationRuleStateEnumValues = []RouteAggregationRuleState{
 	"DEPROVISIONED",
 	"NOT_PROVISIONED",
 	"NOT_DEPROVISIONED",
+	"unknown_default_open_api",
 }
 
 func (v *RouteAggregationRuleState) UnmarshalJSON(src []byte) error {
@@ -51,7 +53,8 @@ func (v *RouteAggregationRuleState) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid RouteAggregationRuleState", value)
+	*v = ROUTEAGGREGATIONRULESTATE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewRouteAggregationRuleStateFromValue returns a pointer to a valid RouteAggregationRuleState

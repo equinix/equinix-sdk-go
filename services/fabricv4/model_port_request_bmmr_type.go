@@ -17,14 +17,16 @@ type PortRequestBmmrType string
 
 // List of PortRequest_bmmrType
 const (
-	PORTREQUESTBMMRTYPE_SELF    PortRequestBmmrType = "SELF"
-	PORTREQUESTBMMRTYPE_EQUINIX PortRequestBmmrType = "EQUINIX"
+	PORTREQUESTBMMRTYPE_SELF                     PortRequestBmmrType = "SELF"
+	PORTREQUESTBMMRTYPE_EQUINIX                  PortRequestBmmrType = "EQUINIX"
+	PORTREQUESTBMMRTYPE_UNKNOWN_DEFAULT_OPEN_API PortRequestBmmrType = "unknown_default_open_api"
 )
 
 // All allowed values of PortRequestBmmrType enum
 var AllowedPortRequestBmmrTypeEnumValues = []PortRequestBmmrType{
 	"SELF",
 	"EQUINIX",
+	"unknown_default_open_api",
 }
 
 func (v *PortRequestBmmrType) UnmarshalJSON(src []byte) error {
@@ -41,7 +43,8 @@ func (v *PortRequestBmmrType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid PortRequestBmmrType", value)
+	*v = PORTREQUESTBMMRTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewPortRequestBmmrTypeFromValue returns a pointer to a valid PortRequestBmmrType

@@ -23,6 +23,8 @@
 
 * `CONNECTION_Z_SIDE_ACCESS_POINT_SELECTORS_PORT_UUID` (value: `"/connection/zSide/accessPointSelectors/port/uuid"`)
 
+* `UNKNOWN_DEFAULT_OPEN_API` (value: `"unknown_default_open_api"`)
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

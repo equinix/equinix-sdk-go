@@ -17,9 +17,10 @@ type PriceErrorErrorMessage string
 
 // List of PriceError_errorMessage
 const (
-	PRICEERRORERRORMESSAGE_VALIDATION_FAILURE    PriceErrorErrorMessage = "Validation failure"
-	PRICEERRORERRORMESSAGE_INVALID_VALUE         PriceErrorErrorMessage = "Invalid value"
-	PRICEERRORERRORMESSAGE_INTERNAL_SERVER_ERROR PriceErrorErrorMessage = "Internal Server Error"
+	PRICEERRORERRORMESSAGE_VALIDATION_FAILURE       PriceErrorErrorMessage = "Validation failure"
+	PRICEERRORERRORMESSAGE_INVALID_VALUE            PriceErrorErrorMessage = "Invalid value"
+	PRICEERRORERRORMESSAGE_INTERNAL_SERVER_ERROR    PriceErrorErrorMessage = "Internal Server Error"
+	PRICEERRORERRORMESSAGE_UNKNOWN_DEFAULT_OPEN_API PriceErrorErrorMessage = "unknown_default_open_api"
 )
 
 // All allowed values of PriceErrorErrorMessage enum
@@ -27,6 +28,7 @@ var AllowedPriceErrorErrorMessageEnumValues = []PriceErrorErrorMessage{
 	"Validation failure",
 	"Invalid value",
 	"Internal Server Error",
+	"unknown_default_open_api",
 }
 
 func (v *PriceErrorErrorMessage) UnmarshalJSON(src []byte) error {
@@ -43,7 +45,8 @@ func (v *PriceErrorErrorMessage) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid PriceErrorErrorMessage", value)
+	*v = PRICEERRORERRORMESSAGE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewPriceErrorErrorMessageFromValue returns a pointer to a valid PriceErrorErrorMessage

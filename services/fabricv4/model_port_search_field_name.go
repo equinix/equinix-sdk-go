@@ -27,6 +27,7 @@ const (
 	PORTSEARCHFIELDNAME_ACCOUNT_ORG_ID                         PortSearchFieldName = "/account/orgId"
 	PORTSEARCHFIELDNAME_ACCOUNT_ACCOUNT_NUMBER                 PortSearchFieldName = "/account/accountNumber"
 	PORTSEARCHFIELDNAME_LOCATION_METRO_CODE                    PortSearchFieldName = "/location/metroCode"
+	PORTSEARCHFIELDNAME_UNKNOWN_DEFAULT_OPEN_API               PortSearchFieldName = "unknown_default_open_api"
 )
 
 // All allowed values of PortSearchFieldName enum
@@ -41,6 +42,7 @@ var AllowedPortSearchFieldNameEnumValues = []PortSearchFieldName{
 	"/account/orgId",
 	"/account/accountNumber",
 	"/location/metroCode",
+	"unknown_default_open_api",
 }
 
 func (v *PortSearchFieldName) UnmarshalJSON(src []byte) error {
@@ -57,7 +59,8 @@ func (v *PortSearchFieldName) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid PortSearchFieldName", value)
+	*v = PORTSEARCHFIELDNAME_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewPortSearchFieldNameFromValue returns a pointer to a valid PortSearchFieldName

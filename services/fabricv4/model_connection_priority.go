@@ -17,14 +17,16 @@ type ConnectionPriority string
 
 // List of ConnectionPriority
 const (
-	CONNECTIONPRIORITY_PRIMARY   ConnectionPriority = "PRIMARY"
-	CONNECTIONPRIORITY_SECONDARY ConnectionPriority = "SECONDARY"
+	CONNECTIONPRIORITY_PRIMARY                  ConnectionPriority = "PRIMARY"
+	CONNECTIONPRIORITY_SECONDARY                ConnectionPriority = "SECONDARY"
+	CONNECTIONPRIORITY_UNKNOWN_DEFAULT_OPEN_API ConnectionPriority = "unknown_default_open_api"
 )
 
 // All allowed values of ConnectionPriority enum
 var AllowedConnectionPriorityEnumValues = []ConnectionPriority{
 	"PRIMARY",
 	"SECONDARY",
+	"unknown_default_open_api",
 }
 
 func (v *ConnectionPriority) UnmarshalJSON(src []byte) error {
@@ -41,7 +43,8 @@ func (v *ConnectionPriority) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ConnectionPriority", value)
+	*v = CONNECTIONPRIORITY_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewConnectionPriorityFromValue returns a pointer to a valid ConnectionPriority

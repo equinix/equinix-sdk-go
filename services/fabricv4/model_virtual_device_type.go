@@ -17,12 +17,14 @@ type VirtualDeviceType string
 
 // List of VirtualDevice_type
 const (
-	VIRTUALDEVICETYPE_EDGE VirtualDeviceType = "EDGE"
+	VIRTUALDEVICETYPE_EDGE                     VirtualDeviceType = "EDGE"
+	VIRTUALDEVICETYPE_UNKNOWN_DEFAULT_OPEN_API VirtualDeviceType = "unknown_default_open_api"
 )
 
 // All allowed values of VirtualDeviceType enum
 var AllowedVirtualDeviceTypeEnumValues = []VirtualDeviceType{
 	"EDGE",
+	"unknown_default_open_api",
 }
 
 func (v *VirtualDeviceType) UnmarshalJSON(src []byte) error {
@@ -39,7 +41,8 @@ func (v *VirtualDeviceType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid VirtualDeviceType", value)
+	*v = VIRTUALDEVICETYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewVirtualDeviceTypeFromValue returns a pointer to a valid VirtualDeviceType

@@ -17,14 +17,16 @@ type RouteFilterRuleSortDirection string
 
 // List of RouteFilterRuleSortDirection
 const (
-	ROUTEFILTERRULESORTDIRECTION_DESC RouteFilterRuleSortDirection = "DESC"
-	ROUTEFILTERRULESORTDIRECTION_ASC  RouteFilterRuleSortDirection = "ASC"
+	ROUTEFILTERRULESORTDIRECTION_DESC                     RouteFilterRuleSortDirection = "DESC"
+	ROUTEFILTERRULESORTDIRECTION_ASC                      RouteFilterRuleSortDirection = "ASC"
+	ROUTEFILTERRULESORTDIRECTION_UNKNOWN_DEFAULT_OPEN_API RouteFilterRuleSortDirection = "unknown_default_open_api"
 )
 
 // All allowed values of RouteFilterRuleSortDirection enum
 var AllowedRouteFilterRuleSortDirectionEnumValues = []RouteFilterRuleSortDirection{
 	"DESC",
 	"ASC",
+	"unknown_default_open_api",
 }
 
 func (v *RouteFilterRuleSortDirection) UnmarshalJSON(src []byte) error {
@@ -41,7 +43,8 @@ func (v *RouteFilterRuleSortDirection) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid RouteFilterRuleSortDirection", value)
+	*v = ROUTEFILTERRULESORTDIRECTION_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewRouteFilterRuleSortDirectionFromValue returns a pointer to a valid RouteFilterRuleSortDirection

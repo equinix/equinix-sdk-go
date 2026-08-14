@@ -17,9 +17,10 @@ type NetworkChangeType string
 
 // List of NetworkChangeType
 const (
-	NETWORKCHANGETYPE_CREATION NetworkChangeType = "NETWORK_CREATION"
-	NETWORKCHANGETYPE_UPDATE   NetworkChangeType = "NETWORK_UPDATE"
-	NETWORKCHANGETYPE_DELETION NetworkChangeType = "NETWORK_DELETION"
+	NETWORKCHANGETYPE_CREATION                 NetworkChangeType = "NETWORK_CREATION"
+	NETWORKCHANGETYPE_UPDATE                   NetworkChangeType = "NETWORK_UPDATE"
+	NETWORKCHANGETYPE_DELETION                 NetworkChangeType = "NETWORK_DELETION"
+	NETWORKCHANGETYPE_UNKNOWN_DEFAULT_OPEN_API NetworkChangeType = "unknown_default_open_api"
 )
 
 // All allowed values of NetworkChangeType enum
@@ -27,6 +28,7 @@ var AllowedNetworkChangeTypeEnumValues = []NetworkChangeType{
 	"NETWORK_CREATION",
 	"NETWORK_UPDATE",
 	"NETWORK_DELETION",
+	"unknown_default_open_api",
 }
 
 func (v *NetworkChangeType) UnmarshalJSON(src []byte) error {
@@ -43,7 +45,8 @@ func (v *NetworkChangeType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid NetworkChangeType", value)
+	*v = NETWORKCHANGETYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewNetworkChangeTypeFromValue returns a pointer to a valid NetworkChangeType
