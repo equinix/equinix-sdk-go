@@ -17,17 +17,17 @@ var _ MappedNullable = &InternetAccessPeeringIpv4{}
 // InternetAccessPeeringIpv4 struct for InternetAccessPeeringIpv4
 type InternetAccessPeeringIpv4 struct {
 	// IPv4 prefix for the peering connection
-	Prefix *string `json:"prefix,omitempty" validate:"regexp=^([01]?\\d\\d?|2[0-4]\\d|25[0-5])(?:\\.(?:[01]?\\d\\d?|2[0-4]\\d|25[0-5])){3}/(?:[1-9]|[12]\\d|3[0-2])$"`
+	Prefix *string `json:"prefix,omitempty" validate:"regexp=^([01]?\\\\d\\\\d?|2[0-4]\\\\d|25[0-5])(?:\\\\.(?:[01]?\\\\d\\\\d?|2[0-4]\\\\d|25[0-5])){3}\\/(?:[1-9]|[12]\\\\d|3[0-2])$"`
 	// Determines the size of subnet
 	PrefixLength *int32 `json:"prefixLength,omitempty"`
 	// IPv4 peering IP address for Equinix side
-	EquinixPeerIp *string `json:"equinixPeerIp,omitempty" validate:"regexp=^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$"`
+	EquinixPeerIp *string `json:"equinixPeerIp,omitempty" validate:"regexp=^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$"`
 	// IPv4 peering IP address for customer side
-	CustomerPeerIp *string `json:"customerPeerIp,omitempty" validate:"regexp=^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$"`
+	CustomerPeerIp *string `json:"customerPeerIp,omitempty" validate:"regexp=^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$"`
 	// IPv4 address for Equinix VRRP IP
-	EquinixVrrpIp *string `json:"equinixVrrpIp,omitempty" validate:"regexp=^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$"`
+	EquinixVrrpIp *string `json:"equinixVrrpIp,omitempty" validate:"regexp=^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$"`
 	// IPv4 address for customer VRRP IP
-	CustomerVrrpIp       *string `json:"customerVrrpIp,omitempty" validate:"regexp=^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$"`
+	CustomerVrrpIp       *string `json:"customerVrrpIp,omitempty" validate:"regexp=^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$"`
 	AdditionalProperties map[string]interface{}
 }
 

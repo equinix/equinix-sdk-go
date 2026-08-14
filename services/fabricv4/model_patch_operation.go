@@ -19,7 +19,7 @@ var _ MappedNullable = &PatchOperation{}
 type PatchOperation struct {
 	Op PatchOperationOp `json:"op"`
 	// JSON Pointer path to the field to modify (e.g., /name, /description, /summary, /webUrl, /notifications)
-	Path string `json:"path" validate:"regexp=^/"`
+	Path string `json:"path" validate:"regexp=^\\/"`
 	// The value to update the field to
 	Value                map[string]interface{} `json:"value"`
 	AdditionalProperties map[string]interface{}

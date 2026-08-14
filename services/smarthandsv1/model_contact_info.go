@@ -24,18 +24,18 @@ type ContactInfo struct {
 	// User Name
 	UserName *string `json:"userName,omitempty"`
 	// Full Name of the Contact, Eg. 'First_Name' + 'Last_Name'
-	Name *string `json:"name,omitempty" validate:"regexp=^[\\s.]*([^\\s.][\\s.]*){0\\,100}$"`
+	Name *string `json:"name,omitempty" validate:"regexp=^[\\\\s.]*([^\\\\s.][\\\\s.]*){0,100}$"`
 	// Valid email address of the contact
-	Email *string `json:"email,omitempty" validate:"regexp=^(([^<>()\\[\\]\\.\\,;:\\s@\"]+(\\.[^<>()\\[\\]\\.\\,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1\\,3}\\.[0-9]{1\\,3}\\.[0-9]{1\\,3}\\.[0-9]{1\\,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2\\,}))$"`
+	Email *string `json:"email,omitempty" validate:"regexp=^(([^<>()\\\\[\\\\]\\\\.,;:\\\\s@\\"]+(\\\\.[^<>()\\\\[\\\\]\\\\.,;:\\\\s@\\"]+)*)|(\\".+\\"))@((\\\\[[0-9]{1,3}\\\\.[0-9]{1,3}\\\\.[0-9]{1,3}\\\\.[0-9]{1,3}])|(([a-zA-Z\\\\-0-9]+\\\\.)+[a-zA-Z]{2,}))$"`
 	// Country Code of Primary Phone of the contact
-	WorkPhoneCountryCode *string `json:"workPhoneCountryCode,omitempty" validate:"regexp=^\\+[0-9]{1\\,6}$"`
+	WorkPhoneCountryCode *string `json:"workPhoneCountryCode,omitempty" validate:"regexp=^\\\\+[0-9]{1,6}$"`
 	// Primary Phone of the contact
-	WorkPhone           *string                         `json:"workPhone,omitempty" validate:"regexp=^[0-9\\.\\-() ]{2\\,40}(?:(x|ext)[0-9\\.\\-() ]{1\\,10})?$"`
+	WorkPhone           *string                         `json:"workPhone,omitempty" validate:"regexp=^[0-9\\\\.\\\\-() ]{2,40}(?:(x|ext)[0-9\\\\.\\\\-() ]{1,10})?$"`
 	WorkPhonePrefToCall *ContactInfoWorkPhonePrefToCall `json:"workPhonePrefToCall,omitempty"`
 	// Country Code of Mobile Phone of the contact
-	MobilePhoneCountryCode *string `json:"mobilePhoneCountryCode,omitempty" validate:"regexp=^\\+[0-9]{1\\,6}$"`
+	MobilePhoneCountryCode *string `json:"mobilePhoneCountryCode,omitempty" validate:"regexp=^\\\\+[0-9]{1,6}$"`
 	// Mobile Phone of the contact
-	MobilePhone           *string                         `json:"mobilePhone,omitempty" validate:"regexp=^[0-9\\.\\-() ]{2\\,40}(?:(x|ext)[0-9\\.\\-() ]{1\\,10})?$"`
+	MobilePhone           *string                         `json:"mobilePhone,omitempty" validate:"regexp=^[0-9\\\\.\\\\-() ]{2,40}(?:(x|ext)[0-9\\\\.\\\\-() ]{1,10})?$"`
 	MobilePhonePrefToCall *ContactInfoWorkPhonePrefToCall `json:"mobilePhonePrefToCall,omitempty"`
 	// Work Phone TimeZone
 	WorkPhoneTimeZone *string `json:"workPhoneTimeZone,omitempty"`

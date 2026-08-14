@@ -21,13 +21,13 @@ var _ MappedNullable = &LocatePackageRequestServiceDetails{}
 // LocatePackageRequestServiceDetails Shipment Unpacking
 type LocatePackageRequestServiceDetails struct {
 	// Inbound Shipment Order Number
-	ShipmentOrderNumber string `json:"shipmentOrderNumber" validate:"regexp=^[ A-Za-z0-9~!|\\[\\]@#$%^&*()_+:\"<>?/.\\,;'=\\-\\{\\}\x60]{1\\,50}$"`
+	ShipmentOrderNumber string "json:\"shipmentOrderNumber\" validate:\"regexp=^[ A-Za-z0-9~!|\\\\[\\\\]@#$%^&*()_+:\\\"<>?\\/.,;'=\\\\-\\\\{\\\\}`]{1,50}$\""
 	// Tracking Number
-	TrackingNumber string `json:"trackingNumber" validate:"regexp=^[ A-Za-z0-9~!|\\[\\]@#$%^&*()_+:\"<>?/.\\,;'=\\-\\{\\}\x60]{1\\,200}$"`
+	TrackingNumber string "json:\"trackingNumber\" validate:\"regexp=^[ A-Za-z0-9~!|\\\\[\\\\]@#$%^&*()_+:\\\"<>?\\/.,;'=\\\\-\\\\{\\\\}`]{1,200}$\""
 	// Possible Location
-	PossibleLocation string `json:"possibleLocation" validate:"regexp=^[ A-Za-z0-9~!|\\[\\]@#$%^&*()_+:\"<>?/.\\,;'=\\-\\{\\}\x60]{1\\,200}$"`
+	PossibleLocation string "json:\"possibleLocation\" validate:\"regexp=^[ A-Za-z0-9~!|\\\\[\\\\]@#$%^&*()_+:\\\"<>?\\/.,;'=\\\\-\\\\{\\\\}`]{1,200}$\""
 	// Package Description
-	PackageDescription string `json:"packageDescription" validate:"regexp=^[ A-Za-z0-9~!|\\[\\]@#$%^&*()_+:\"<>?/.\\,;'=\\-\\{\\}\x60]{1\\,200}$"`
+	PackageDescription string "json:\"packageDescription\" validate:\"regexp=^[ A-Za-z0-9~!|\\\\[\\\\]@#$%^&*()_+:\\\"<>?\\/.,;'=\\\\-\\\\{\\\\}`]{1,200}$\""
 	// Enter any additional details that will help our technicians execute your request. You may also attach your scope of work as a document if you exceed the character limit in this field.
 	ScopeOfWork          string `json:"scopeOfWork"`
 	AdditionalProperties map[string]interface{}

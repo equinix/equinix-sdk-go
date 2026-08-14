@@ -19,7 +19,7 @@ var _ MappedNullable = &InternetAccessPatchOperationUpdate{}
 type InternetAccessPatchOperationUpdate struct {
 	Op InternetAccessPatchOperationUpdateAllowedOp `json:"op"`
 	// Allowed patch paths for Internet Access update.
-	Path string `json:"path" validate:"regexp=^(/bandwidth|/bandwidthCommit|/routingProtocol/customerRoutes(?:\\[@\\.ipBlock\\.uuid=[A-Fa-f0-9-]+\\])?|/order/purchaseOrderNumber)$"`
+	Path string `json:"path" validate:"regexp=^(\\/bandwidth|\\/bandwidthCommit|\\/routingProtocol\\/customerRoutes(?:\\\\[@\\\\.ipBlock\\\\.uuid=[A-Fa-f0-9-]+\\\\])?|\\/order\\/purchaseOrderNumber)$"`
 	// New value for updated parameter. Required for add and replace.
 	Value                interface{} `json:"value,omitempty"`
 	AdditionalProperties map[string]interface{}

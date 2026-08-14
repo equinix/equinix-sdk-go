@@ -28,7 +28,7 @@ type CageEscortRequestServiceDetails struct {
 	// Supervision Required For the Visitor?
 	SupervisionReqForVisitor bool `json:"supervisionReqForVisitor"`
 	// Work Visit Order Number
-	WorkVisitOrderNumber string `json:"workVisitOrderNumber" validate:"regexp=^[ A-Za-z0-9~!|\\[\\]@#$%^&*()_+:\"<>?/.\\,;'=\\-\\{\\}\x60]{1\\,200}$"`
+	WorkVisitOrderNumber string "json:\"workVisitOrderNumber\" validate:\"regexp=^[ A-Za-z0-9~!|\\\\[\\\\]@#$%^&*()_+:\\\"<>?\\/.,;'=\\\\-\\\\{\\\\}`]{1,200}$\""
 	AdditionalProperties map[string]interface{}
 }
 

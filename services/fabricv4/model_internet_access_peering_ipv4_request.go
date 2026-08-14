@@ -17,9 +17,9 @@ var _ MappedNullable = &InternetAccessPeeringIpv4Request{}
 // InternetAccessPeeringIpv4Request struct for InternetAccessPeeringIpv4Request
 type InternetAccessPeeringIpv4Request struct {
 	// IPv4 address of the Equinix peering IP
-	EquinixPeerIp *string `json:"equinixPeerIp,omitempty" validate:"regexp=^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$"`
+	EquinixPeerIp *string `json:"equinixPeerIp,omitempty" validate:"regexp=^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$"`
 	// IPv4 address for Equinix VRRP IP
-	EquinixVrrpIp        *string `json:"equinixVrrpIp,omitempty" validate:"regexp=^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$"`
+	EquinixVrrpIp        *string `json:"equinixVrrpIp,omitempty" validate:"regexp=^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$"`
 	AdditionalProperties map[string]interface{}
 }
 
