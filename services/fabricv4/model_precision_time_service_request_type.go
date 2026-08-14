@@ -17,14 +17,16 @@ type PrecisionTimeServiceRequestType string
 
 // List of precisionTimeServiceRequest_type
 const (
-	PRECISIONTIMESERVICEREQUESTTYPE_NTP PrecisionTimeServiceRequestType = "NTP"
-	PRECISIONTIMESERVICEREQUESTTYPE_PTP PrecisionTimeServiceRequestType = "PTP"
+	PRECISIONTIMESERVICEREQUESTTYPE_NTP                      PrecisionTimeServiceRequestType = "NTP"
+	PRECISIONTIMESERVICEREQUESTTYPE_PTP                      PrecisionTimeServiceRequestType = "PTP"
+	PRECISIONTIMESERVICEREQUESTTYPE_UNKNOWN_DEFAULT_OPEN_API PrecisionTimeServiceRequestType = "unknown_default_open_api"
 )
 
 // All allowed values of PrecisionTimeServiceRequestType enum
 var AllowedPrecisionTimeServiceRequestTypeEnumValues = []PrecisionTimeServiceRequestType{
 	"NTP",
 	"PTP",
+	"unknown_default_open_api",
 }
 
 func (v *PrecisionTimeServiceRequestType) UnmarshalJSON(src []byte) error {
@@ -41,7 +43,8 @@ func (v *PrecisionTimeServiceRequestType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid PrecisionTimeServiceRequestType", value)
+	*v = PRECISIONTIMESERVICEREQUESTTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewPrecisionTimeServiceRequestTypeFromValue returns a pointer to a valid PrecisionTimeServiceRequestType

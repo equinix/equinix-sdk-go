@@ -17,12 +17,13 @@ type NetworkChangeStatus string
 
 // List of NetworkChangeStatus
 const (
-	NETWORKCHANGESTATUS_APPROVED               NetworkChangeStatus = "APPROVED"
-	NETWORKCHANGESTATUS_COMPLETED              NetworkChangeStatus = "COMPLETED"
-	NETWORKCHANGESTATUS_FAILED                 NetworkChangeStatus = "FAILED"
-	NETWORKCHANGESTATUS_REJECTED               NetworkChangeStatus = "REJECTED"
-	NETWORKCHANGESTATUS_REQUESTED              NetworkChangeStatus = "REQUESTED"
-	NETWORKCHANGESTATUS_SUBMITTED_FOR_APPROVAL NetworkChangeStatus = "SUBMITTED_FOR_APPROVAL"
+	NETWORKCHANGESTATUS_APPROVED                 NetworkChangeStatus = "APPROVED"
+	NETWORKCHANGESTATUS_COMPLETED                NetworkChangeStatus = "COMPLETED"
+	NETWORKCHANGESTATUS_FAILED                   NetworkChangeStatus = "FAILED"
+	NETWORKCHANGESTATUS_REJECTED                 NetworkChangeStatus = "REJECTED"
+	NETWORKCHANGESTATUS_REQUESTED                NetworkChangeStatus = "REQUESTED"
+	NETWORKCHANGESTATUS_SUBMITTED_FOR_APPROVAL   NetworkChangeStatus = "SUBMITTED_FOR_APPROVAL"
+	NETWORKCHANGESTATUS_UNKNOWN_DEFAULT_OPEN_API NetworkChangeStatus = "unknown_default_open_api"
 )
 
 // All allowed values of NetworkChangeStatus enum
@@ -33,6 +34,7 @@ var AllowedNetworkChangeStatusEnumValues = []NetworkChangeStatus{
 	"REJECTED",
 	"REQUESTED",
 	"SUBMITTED_FOR_APPROVAL",
+	"unknown_default_open_api",
 }
 
 func (v *NetworkChangeStatus) UnmarshalJSON(src []byte) error {
@@ -49,7 +51,8 @@ func (v *NetworkChangeStatus) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid NetworkChangeStatus", value)
+	*v = NETWORKCHANGESTATUS_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewNetworkChangeStatusFromValue returns a pointer to a valid NetworkChangeStatus

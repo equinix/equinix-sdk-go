@@ -68,6 +68,7 @@ const (
 	SEARCHFIELDNAME_Z_SIDE_SERVICE_TOKEN_UUID                      SearchFieldName = "/zSide/serviceToken/uuid"
 	SEARCHFIELDNAME_Z_SIDE_INTERNET_ACCESS_UUID                    SearchFieldName = "/zSide/internetAccess/uuid"
 	SEARCHFIELDNAME_STATE                                          SearchFieldName = "/state"
+	SEARCHFIELDNAME_UNKNOWN_DEFAULT_OPEN_API                       SearchFieldName = "unknown_default_open_api"
 )
 
 // All allowed values of SearchFieldName enum
@@ -123,6 +124,7 @@ var AllowedSearchFieldNameEnumValues = []SearchFieldName{
 	"/zSide/serviceToken/uuid",
 	"/zSide/internetAccess/uuid",
 	"/state",
+	"unknown_default_open_api",
 }
 
 func (v *SearchFieldName) UnmarshalJSON(src []byte) error {
@@ -139,7 +141,8 @@ func (v *SearchFieldName) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid SearchFieldName", value)
+	*v = SEARCHFIELDNAME_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewSearchFieldNameFromValue returns a pointer to a valid SearchFieldName

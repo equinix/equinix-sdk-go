@@ -17,12 +17,14 @@ type PhysicalPortType string
 
 // List of PhysicalPortType
 const (
-	PHYSICALPORTTYPE_XF_PHYSICAL_PORT PhysicalPortType = "XF_PHYSICAL_PORT"
+	PHYSICALPORTTYPE_XF_PHYSICAL_PORT         PhysicalPortType = "XF_PHYSICAL_PORT"
+	PHYSICALPORTTYPE_UNKNOWN_DEFAULT_OPEN_API PhysicalPortType = "unknown_default_open_api"
 )
 
 // All allowed values of PhysicalPortType enum
 var AllowedPhysicalPortTypeEnumValues = []PhysicalPortType{
 	"XF_PHYSICAL_PORT",
+	"unknown_default_open_api",
 }
 
 func (v *PhysicalPortType) UnmarshalJSON(src []byte) error {
@@ -39,7 +41,8 @@ func (v *PhysicalPortType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid PhysicalPortType", value)
+	*v = PHYSICALPORTTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewPhysicalPortTypeFromValue returns a pointer to a valid PhysicalPortType

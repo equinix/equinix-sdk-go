@@ -17,12 +17,13 @@ type RouteTableEntryType string
 
 // List of RouteTableEntryType
 const (
-	ROUTETABLEENTRYTYPE_IPV4_BGP_ROUTE    RouteTableEntryType = "IPv4_BGP_ROUTE"
-	ROUTETABLEENTRYTYPE_IPV4_STATIC_ROUTE RouteTableEntryType = "IPv4_STATIC_ROUTE"
-	ROUTETABLEENTRYTYPE_IPV4_DIRECT_ROUTE RouteTableEntryType = "IPv4_DIRECT_ROUTE"
-	ROUTETABLEENTRYTYPE_IPV6_BGP_ROUTE    RouteTableEntryType = "IPv6_BGP_ROUTE"
-	ROUTETABLEENTRYTYPE_IPV6_STATIC_ROUTE RouteTableEntryType = "IPv6_STATIC_ROUTE"
-	ROUTETABLEENTRYTYPE_IPV6_DIRECT_ROUTE RouteTableEntryType = "IPv6_DIRECT_ROUTE"
+	ROUTETABLEENTRYTYPE_IPV4_BGP_ROUTE           RouteTableEntryType = "IPv4_BGP_ROUTE"
+	ROUTETABLEENTRYTYPE_IPV4_STATIC_ROUTE        RouteTableEntryType = "IPv4_STATIC_ROUTE"
+	ROUTETABLEENTRYTYPE_IPV4_DIRECT_ROUTE        RouteTableEntryType = "IPv4_DIRECT_ROUTE"
+	ROUTETABLEENTRYTYPE_IPV6_BGP_ROUTE           RouteTableEntryType = "IPv6_BGP_ROUTE"
+	ROUTETABLEENTRYTYPE_IPV6_STATIC_ROUTE        RouteTableEntryType = "IPv6_STATIC_ROUTE"
+	ROUTETABLEENTRYTYPE_IPV6_DIRECT_ROUTE        RouteTableEntryType = "IPv6_DIRECT_ROUTE"
+	ROUTETABLEENTRYTYPE_UNKNOWN_DEFAULT_OPEN_API RouteTableEntryType = "unknown_default_open_api"
 )
 
 // All allowed values of RouteTableEntryType enum
@@ -33,6 +34,7 @@ var AllowedRouteTableEntryTypeEnumValues = []RouteTableEntryType{
 	"IPv6_BGP_ROUTE",
 	"IPv6_STATIC_ROUTE",
 	"IPv6_DIRECT_ROUTE",
+	"unknown_default_open_api",
 }
 
 func (v *RouteTableEntryType) UnmarshalJSON(src []byte) error {
@@ -49,7 +51,8 @@ func (v *RouteTableEntryType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid RouteTableEntryType", value)
+	*v = ROUTETABLEENTRYTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewRouteTableEntryTypeFromValue returns a pointer to a valid RouteTableEntryType

@@ -22,6 +22,7 @@ const (
 	CLOUDROUTERROUTEFILTERSIMPLEEXPRESSIONPROPERTY_ATTACHMENT_STATUS            CloudRouterRouteFilterSimpleExpressionProperty = "/attachmentStatus"
 	CLOUDROUTERROUTEFILTERSIMPLEEXPRESSIONPROPERTY_CHANGE_LOG_CREATED_DATE_TIME CloudRouterRouteFilterSimpleExpressionProperty = "/changeLog/createdDateTime"
 	CLOUDROUTERROUTEFILTERSIMPLEEXPRESSIONPROPERTY_CHANGE_LOG_UPDATED_DATE_TIME CloudRouterRouteFilterSimpleExpressionProperty = "/changeLog/updatedDateTime"
+	CLOUDROUTERROUTEFILTERSIMPLEEXPRESSIONPROPERTY_UNKNOWN_DEFAULT_OPEN_API     CloudRouterRouteFilterSimpleExpressionProperty = "unknown_default_open_api"
 )
 
 // All allowed values of CloudRouterRouteFilterSimpleExpressionProperty enum
@@ -31,6 +32,7 @@ var AllowedCloudRouterRouteFilterSimpleExpressionPropertyEnumValues = []CloudRou
 	"/attachmentStatus",
 	"/changeLog/createdDateTime",
 	"/changeLog/updatedDateTime",
+	"unknown_default_open_api",
 }
 
 func (v *CloudRouterRouteFilterSimpleExpressionProperty) UnmarshalJSON(src []byte) error {
@@ -47,7 +49,8 @@ func (v *CloudRouterRouteFilterSimpleExpressionProperty) UnmarshalJSON(src []byt
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid CloudRouterRouteFilterSimpleExpressionProperty", value)
+	*v = CLOUDROUTERROUTEFILTERSIMPLEEXPRESSIONPROPERTY_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewCloudRouterRouteFilterSimpleExpressionPropertyFromValue returns a pointer to a valid CloudRouterRouteFilterSimpleExpressionProperty

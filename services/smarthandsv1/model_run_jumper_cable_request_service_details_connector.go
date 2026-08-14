@@ -20,11 +20,12 @@ type RunJumperCableRequestServiceDetailsConnector string
 
 // List of runJumperCableRequest_serviceDetails_connector
 const (
-	RUNJUMPERCABLEREQUESTSERVICEDETAILSCONNECTOR_RJ45  RunJumperCableRequestServiceDetailsConnector = "RJ45"
-	RUNJUMPERCABLEREQUESTSERVICEDETAILSCONNECTOR_SC    RunJumperCableRequestServiceDetailsConnector = "SC"
-	RUNJUMPERCABLEREQUESTSERVICEDETAILSCONNECTOR_LC    RunJumperCableRequestServiceDetailsConnector = "LC"
-	RUNJUMPERCABLEREQUESTSERVICEDETAILSCONNECTOR_BNC   RunJumperCableRequestServiceDetailsConnector = "BNC"
-	RUNJUMPERCABLEREQUESTSERVICEDETAILSCONNECTOR_OTHER RunJumperCableRequestServiceDetailsConnector = "Other"
+	RUNJUMPERCABLEREQUESTSERVICEDETAILSCONNECTOR_RJ45                     RunJumperCableRequestServiceDetailsConnector = "RJ45"
+	RUNJUMPERCABLEREQUESTSERVICEDETAILSCONNECTOR_SC                       RunJumperCableRequestServiceDetailsConnector = "SC"
+	RUNJUMPERCABLEREQUESTSERVICEDETAILSCONNECTOR_LC                       RunJumperCableRequestServiceDetailsConnector = "LC"
+	RUNJUMPERCABLEREQUESTSERVICEDETAILSCONNECTOR_BNC                      RunJumperCableRequestServiceDetailsConnector = "BNC"
+	RUNJUMPERCABLEREQUESTSERVICEDETAILSCONNECTOR_OTHER                    RunJumperCableRequestServiceDetailsConnector = "Other"
+	RUNJUMPERCABLEREQUESTSERVICEDETAILSCONNECTOR_UNKNOWN_DEFAULT_OPEN_API RunJumperCableRequestServiceDetailsConnector = "unknown_default_open_api"
 )
 
 // All allowed values of RunJumperCableRequestServiceDetailsConnector enum
@@ -34,6 +35,7 @@ var AllowedRunJumperCableRequestServiceDetailsConnectorEnumValues = []RunJumperC
 	"LC",
 	"BNC",
 	"Other",
+	"unknown_default_open_api",
 }
 
 func (v *RunJumperCableRequestServiceDetailsConnector) UnmarshalJSON(src []byte) error {
@@ -50,7 +52,8 @@ func (v *RunJumperCableRequestServiceDetailsConnector) UnmarshalJSON(src []byte)
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid RunJumperCableRequestServiceDetailsConnector", value)
+	*v = RUNJUMPERCABLEREQUESTSERVICEDETAILSCONNECTOR_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewRunJumperCableRequestServiceDetailsConnectorFromValue returns a pointer to a valid RunJumperCableRequestServiceDetailsConnector

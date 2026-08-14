@@ -17,14 +17,16 @@ type ViewPoint string
 
 // List of viewPoint
 const (
-	VIEWPOINT_A_SIDE ViewPoint = "aSide"
-	VIEWPOINT_Z_SIDE ViewPoint = "zSide"
+	VIEWPOINT_A_SIDE                   ViewPoint = "aSide"
+	VIEWPOINT_Z_SIDE                   ViewPoint = "zSide"
+	VIEWPOINT_UNKNOWN_DEFAULT_OPEN_API ViewPoint = "unknown_default_open_api"
 )
 
 // All allowed values of ViewPoint enum
 var AllowedViewPointEnumValues = []ViewPoint{
 	"aSide",
 	"zSide",
+	"unknown_default_open_api",
 }
 
 func (v *ViewPoint) UnmarshalJSON(src []byte) error {
@@ -41,7 +43,8 @@ func (v *ViewPoint) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ViewPoint", value)
+	*v = VIEWPOINT_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewViewPointFromValue returns a pointer to a valid ViewPoint

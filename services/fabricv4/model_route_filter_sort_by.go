@@ -25,6 +25,7 @@ const (
 	ROUTEFILTERSORTBY_CHANGE_LOG_CREATED_DATE_TIME RouteFilterSortBy = "/changeLog/createdDateTime"
 	ROUTEFILTERSORTBY_CHANGE_LOG_UPDATED_DATE_TIME RouteFilterSortBy = "/changeLog/updatedDateTime"
 	ROUTEFILTERSORTBY_CHANGE_LOG_DELETED_DATE_TIME RouteFilterSortBy = "/changeLog/deletedDateTime"
+	ROUTEFILTERSORTBY_UNKNOWN_DEFAULT_OPEN_API     RouteFilterSortBy = "unknown_default_open_api"
 )
 
 // All allowed values of RouteFilterSortBy enum
@@ -37,6 +38,7 @@ var AllowedRouteFilterSortByEnumValues = []RouteFilterSortBy{
 	"/changeLog/createdDateTime",
 	"/changeLog/updatedDateTime",
 	"/changeLog/deletedDateTime",
+	"unknown_default_open_api",
 }
 
 func (v *RouteFilterSortBy) UnmarshalJSON(src []byte) error {
@@ -53,7 +55,8 @@ func (v *RouteFilterSortBy) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid RouteFilterSortBy", value)
+	*v = ROUTEFILTERSORTBY_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewRouteFilterSortByFromValue returns a pointer to a valid RouteFilterSortBy

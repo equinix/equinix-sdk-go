@@ -23,6 +23,7 @@ const (
 	CONNECTIONROUTEAGGREGATIONDATAATTACHMENTSTATUS_DETACHING                 ConnectionRouteAggregationDataAttachmentStatus = "DETACHING"
 	CONNECTIONROUTEAGGREGATIONDATAATTACHMENTSTATUS_FAILED                    ConnectionRouteAggregationDataAttachmentStatus = "FAILED"
 	CONNECTIONROUTEAGGREGATIONDATAATTACHMENTSTATUS_PENDING_BGP_CONFIGURATION ConnectionRouteAggregationDataAttachmentStatus = "PENDING_BGP_CONFIGURATION"
+	CONNECTIONROUTEAGGREGATIONDATAATTACHMENTSTATUS_UNKNOWN_DEFAULT_OPEN_API  ConnectionRouteAggregationDataAttachmentStatus = "unknown_default_open_api"
 )
 
 // All allowed values of ConnectionRouteAggregationDataAttachmentStatus enum
@@ -33,6 +34,7 @@ var AllowedConnectionRouteAggregationDataAttachmentStatusEnumValues = []Connecti
 	"DETACHING",
 	"FAILED",
 	"PENDING_BGP_CONFIGURATION",
+	"unknown_default_open_api",
 }
 
 func (v *ConnectionRouteAggregationDataAttachmentStatus) UnmarshalJSON(src []byte) error {
@@ -49,7 +51,8 @@ func (v *ConnectionRouteAggregationDataAttachmentStatus) UnmarshalJSON(src []byt
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ConnectionRouteAggregationDataAttachmentStatus", value)
+	*v = CONNECTIONROUTEAGGREGATIONDATAATTACHMENTSTATUS_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewConnectionRouteAggregationDataAttachmentStatusFromValue returns a pointer to a valid ConnectionRouteAggregationDataAttachmentStatus

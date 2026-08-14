@@ -17,12 +17,14 @@ type GatewayAttachmentResponseType string
 
 // List of GatewayAttachmentResponse_type
 const (
-	GATEWAYATTACHMENTRESPONSETYPE_VPN_GATEWAY GatewayAttachmentResponseType = "VPN_GATEWAY"
+	GATEWAYATTACHMENTRESPONSETYPE_VPN_GATEWAY              GatewayAttachmentResponseType = "VPN_GATEWAY"
+	GATEWAYATTACHMENTRESPONSETYPE_UNKNOWN_DEFAULT_OPEN_API GatewayAttachmentResponseType = "unknown_default_open_api"
 )
 
 // All allowed values of GatewayAttachmentResponseType enum
 var AllowedGatewayAttachmentResponseTypeEnumValues = []GatewayAttachmentResponseType{
 	"VPN_GATEWAY",
+	"unknown_default_open_api",
 }
 
 func (v *GatewayAttachmentResponseType) UnmarshalJSON(src []byte) error {
@@ -39,7 +41,8 @@ func (v *GatewayAttachmentResponseType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid GatewayAttachmentResponseType", value)
+	*v = GATEWAYATTACHMENTRESPONSETYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewGatewayAttachmentResponseTypeFromValue returns a pointer to a valid GatewayAttachmentResponseType

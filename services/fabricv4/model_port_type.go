@@ -17,12 +17,14 @@ type PortType string
 
 // List of PortType
 const (
-	PORTTYPE_XF_PORT PortType = "XF_PORT"
+	PORTTYPE_XF_PORT                  PortType = "XF_PORT"
+	PORTTYPE_UNKNOWN_DEFAULT_OPEN_API PortType = "unknown_default_open_api"
 )
 
 // All allowed values of PortType enum
 var AllowedPortTypeEnumValues = []PortType{
 	"XF_PORT",
+	"unknown_default_open_api",
 }
 
 func (v *PortType) UnmarshalJSON(src []byte) error {
@@ -39,7 +41,8 @@ func (v *PortType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid PortType", value)
+	*v = PORTTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewPortTypeFromValue returns a pointer to a valid PortType

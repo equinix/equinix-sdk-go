@@ -17,14 +17,16 @@ type GetServiceProfilesViewPointParameter string
 
 // List of getServiceProfiles_viewPoint_parameter
 const (
-	GETSERVICEPROFILESVIEWPOINTPARAMETER_A_SIDE GetServiceProfilesViewPointParameter = "aSide"
-	GETSERVICEPROFILESVIEWPOINTPARAMETER_Z_SIDE GetServiceProfilesViewPointParameter = "zSide"
+	GETSERVICEPROFILESVIEWPOINTPARAMETER_A_SIDE                   GetServiceProfilesViewPointParameter = "aSide"
+	GETSERVICEPROFILESVIEWPOINTPARAMETER_Z_SIDE                   GetServiceProfilesViewPointParameter = "zSide"
+	GETSERVICEPROFILESVIEWPOINTPARAMETER_UNKNOWN_DEFAULT_OPEN_API GetServiceProfilesViewPointParameter = "unknown_default_open_api"
 )
 
 // All allowed values of GetServiceProfilesViewPointParameter enum
 var AllowedGetServiceProfilesViewPointParameterEnumValues = []GetServiceProfilesViewPointParameter{
 	"aSide",
 	"zSide",
+	"unknown_default_open_api",
 }
 
 func (v *GetServiceProfilesViewPointParameter) UnmarshalJSON(src []byte) error {
@@ -41,7 +43,8 @@ func (v *GetServiceProfilesViewPointParameter) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid GetServiceProfilesViewPointParameter", value)
+	*v = GETSERVICEPROFILESVIEWPOINTPARAMETER_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewGetServiceProfilesViewPointParameterFromValue returns a pointer to a valid GetServiceProfilesViewPointParameter

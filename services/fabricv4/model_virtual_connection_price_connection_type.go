@@ -17,18 +17,19 @@ type VirtualConnectionPriceConnectionType string
 
 // List of VirtualConnectionPriceConnectionType
 const (
-	VIRTUALCONNECTIONPRICECONNECTIONTYPE_EVPL_VC       VirtualConnectionPriceConnectionType = "EVPL_VC"
-	VIRTUALCONNECTIONPRICECONNECTIONTYPE_EPL_VC        VirtualConnectionPriceConnectionType = "EPL_VC"
-	VIRTUALCONNECTIONPRICECONNECTIONTYPE_EC_VC         VirtualConnectionPriceConnectionType = "EC_VC"
-	VIRTUALCONNECTIONPRICECONNECTIONTYPE_IP_VC         VirtualConnectionPriceConnectionType = "IP_VC"
-	VIRTUALCONNECTIONPRICECONNECTIONTYPE_VD_CHAIN_VC   VirtualConnectionPriceConnectionType = "VD_CHAIN_VC"
-	VIRTUALCONNECTIONPRICECONNECTIONTYPE_ACCESS_EPL_VC VirtualConnectionPriceConnectionType = "ACCESS_EPL_VC"
-	VIRTUALCONNECTIONPRICECONNECTIONTYPE_EVPLAN_VC     VirtualConnectionPriceConnectionType = "EVPLAN_VC"
-	VIRTUALCONNECTIONPRICECONNECTIONTYPE_EPLAN_VC      VirtualConnectionPriceConnectionType = "EPLAN_VC"
-	VIRTUALCONNECTIONPRICECONNECTIONTYPE_IPWAN_VC      VirtualConnectionPriceConnectionType = "IPWAN_VC"
-	VIRTUALCONNECTIONPRICECONNECTIONTYPE_EVPTREE_VC    VirtualConnectionPriceConnectionType = "EVPTREE_VC"
-	VIRTUALCONNECTIONPRICECONNECTIONTYPE_EPTREE_VC     VirtualConnectionPriceConnectionType = "EPTREE_VC"
-	VIRTUALCONNECTIONPRICECONNECTIONTYPE_IA_VC         VirtualConnectionPriceConnectionType = "IA_VC"
+	VIRTUALCONNECTIONPRICECONNECTIONTYPE_EVPL_VC                  VirtualConnectionPriceConnectionType = "EVPL_VC"
+	VIRTUALCONNECTIONPRICECONNECTIONTYPE_EPL_VC                   VirtualConnectionPriceConnectionType = "EPL_VC"
+	VIRTUALCONNECTIONPRICECONNECTIONTYPE_EC_VC                    VirtualConnectionPriceConnectionType = "EC_VC"
+	VIRTUALCONNECTIONPRICECONNECTIONTYPE_IP_VC                    VirtualConnectionPriceConnectionType = "IP_VC"
+	VIRTUALCONNECTIONPRICECONNECTIONTYPE_VD_CHAIN_VC              VirtualConnectionPriceConnectionType = "VD_CHAIN_VC"
+	VIRTUALCONNECTIONPRICECONNECTIONTYPE_ACCESS_EPL_VC            VirtualConnectionPriceConnectionType = "ACCESS_EPL_VC"
+	VIRTUALCONNECTIONPRICECONNECTIONTYPE_EVPLAN_VC                VirtualConnectionPriceConnectionType = "EVPLAN_VC"
+	VIRTUALCONNECTIONPRICECONNECTIONTYPE_EPLAN_VC                 VirtualConnectionPriceConnectionType = "EPLAN_VC"
+	VIRTUALCONNECTIONPRICECONNECTIONTYPE_IPWAN_VC                 VirtualConnectionPriceConnectionType = "IPWAN_VC"
+	VIRTUALCONNECTIONPRICECONNECTIONTYPE_EVPTREE_VC               VirtualConnectionPriceConnectionType = "EVPTREE_VC"
+	VIRTUALCONNECTIONPRICECONNECTIONTYPE_EPTREE_VC                VirtualConnectionPriceConnectionType = "EPTREE_VC"
+	VIRTUALCONNECTIONPRICECONNECTIONTYPE_IA_VC                    VirtualConnectionPriceConnectionType = "IA_VC"
+	VIRTUALCONNECTIONPRICECONNECTIONTYPE_UNKNOWN_DEFAULT_OPEN_API VirtualConnectionPriceConnectionType = "unknown_default_open_api"
 )
 
 // All allowed values of VirtualConnectionPriceConnectionType enum
@@ -45,6 +46,7 @@ var AllowedVirtualConnectionPriceConnectionTypeEnumValues = []VirtualConnectionP
 	"EVPTREE_VC",
 	"EPTREE_VC",
 	"IA_VC",
+	"unknown_default_open_api",
 }
 
 func (v *VirtualConnectionPriceConnectionType) UnmarshalJSON(src []byte) error {
@@ -61,7 +63,8 @@ func (v *VirtualConnectionPriceConnectionType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid VirtualConnectionPriceConnectionType", value)
+	*v = VIRTUALCONNECTIONPRICECONNECTIONTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewVirtualConnectionPriceConnectionTypeFromValue returns a pointer to a valid VirtualConnectionPriceConnectionType

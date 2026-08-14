@@ -19,9 +19,9 @@ var _ MappedNullable = &CloudRouterChange{}
 // CloudRouterChange Current state of latest CloudRouter change
 type CloudRouterChange struct {
 	// Uniquely identifies a change
-	Uuid   *string               `json:"uuid,omitempty"`
-	Type   CloudRouterChangeType `json:"type"`
-	Status *PortChangeStatus     `json:"status,omitempty"`
+	Uuid   *string                               `json:"uuid,omitempty"`
+	Type   CloudRouterChangeType                 `json:"type"`
+	Status *RoutingProtocolChangeDataAllOfStatus `json:"status,omitempty"`
 	// Set when change flow starts
 	CreatedDateTime *time.Time `json:"createdDateTime,omitempty"`
 	// Set when change object is updated
@@ -110,9 +110,9 @@ func (o *CloudRouterChange) SetType(v CloudRouterChangeType) {
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
-func (o *CloudRouterChange) GetStatus() PortChangeStatus {
+func (o *CloudRouterChange) GetStatus() RoutingProtocolChangeDataAllOfStatus {
 	if o == nil || IsNil(o.Status) {
-		var ret PortChangeStatus
+		var ret RoutingProtocolChangeDataAllOfStatus
 		return ret
 	}
 	return *o.Status
@@ -120,7 +120,7 @@ func (o *CloudRouterChange) GetStatus() PortChangeStatus {
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CloudRouterChange) GetStatusOk() (*PortChangeStatus, bool) {
+func (o *CloudRouterChange) GetStatusOk() (*RoutingProtocolChangeDataAllOfStatus, bool) {
 	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
@@ -136,8 +136,8 @@ func (o *CloudRouterChange) HasStatus() bool {
 	return false
 }
 
-// SetStatus gets a reference to the given PortChangeStatus and assigns it to the Status field.
-func (o *CloudRouterChange) SetStatus(v PortChangeStatus) {
+// SetStatus gets a reference to the given RoutingProtocolChangeDataAllOfStatus and assigns it to the Status field.
+func (o *CloudRouterChange) SetStatus(v RoutingProtocolChangeDataAllOfStatus) {
 	o.Status = &v
 }
 

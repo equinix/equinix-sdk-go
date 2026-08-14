@@ -20,10 +20,11 @@ type OrderSourceEnum string
 
 // List of order-source-enum
 const (
-	ORDERSOURCEENUM_PORTAL  OrderSourceEnum = "Portal"
-	ORDERSOURCEENUM_MOBILE  OrderSourceEnum = "Mobile"
-	ORDERSOURCEENUM_QUOTE   OrderSourceEnum = "Quote"
-	ORDERSOURCEENUM_OFFLINE OrderSourceEnum = "Offline"
+	ORDERSOURCEENUM_PORTAL                   OrderSourceEnum = "Portal"
+	ORDERSOURCEENUM_MOBILE                   OrderSourceEnum = "Mobile"
+	ORDERSOURCEENUM_QUOTE                    OrderSourceEnum = "Quote"
+	ORDERSOURCEENUM_OFFLINE                  OrderSourceEnum = "Offline"
+	ORDERSOURCEENUM_UNKNOWN_DEFAULT_OPEN_API OrderSourceEnum = "unknown_default_open_api"
 )
 
 // All allowed values of OrderSourceEnum enum
@@ -32,6 +33,7 @@ var AllowedOrderSourceEnumEnumValues = []OrderSourceEnum{
 	"Mobile",
 	"Quote",
 	"Offline",
+	"unknown_default_open_api",
 }
 
 func (v *OrderSourceEnum) UnmarshalJSON(src []byte) error {
@@ -48,7 +50,8 @@ func (v *OrderSourceEnum) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid OrderSourceEnum", value)
+	*v = ORDERSOURCEENUM_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewOrderSourceEnumFromValue returns a pointer to a valid OrderSourceEnum

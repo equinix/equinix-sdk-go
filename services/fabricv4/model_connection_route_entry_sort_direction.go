@@ -17,14 +17,16 @@ type ConnectionRouteEntrySortDirection string
 
 // List of ConnectionRouteEntrySortDirection
 const (
-	CONNECTIONROUTEENTRYSORTDIRECTION_DESC ConnectionRouteEntrySortDirection = "DESC"
-	CONNECTIONROUTEENTRYSORTDIRECTION_ASC  ConnectionRouteEntrySortDirection = "ASC"
+	CONNECTIONROUTEENTRYSORTDIRECTION_DESC                     ConnectionRouteEntrySortDirection = "DESC"
+	CONNECTIONROUTEENTRYSORTDIRECTION_ASC                      ConnectionRouteEntrySortDirection = "ASC"
+	CONNECTIONROUTEENTRYSORTDIRECTION_UNKNOWN_DEFAULT_OPEN_API ConnectionRouteEntrySortDirection = "unknown_default_open_api"
 )
 
 // All allowed values of ConnectionRouteEntrySortDirection enum
 var AllowedConnectionRouteEntrySortDirectionEnumValues = []ConnectionRouteEntrySortDirection{
 	"DESC",
 	"ASC",
+	"unknown_default_open_api",
 }
 
 func (v *ConnectionRouteEntrySortDirection) UnmarshalJSON(src []byte) error {
@@ -41,7 +43,8 @@ func (v *ConnectionRouteEntrySortDirection) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ConnectionRouteEntrySortDirection", value)
+	*v = CONNECTIONROUTEENTRYSORTDIRECTION_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewConnectionRouteEntrySortDirectionFromValue returns a pointer to a valid ConnectionRouteEntrySortDirection

@@ -17,11 +17,12 @@ type FabricCloudRouterCode string
 
 // List of FabricCloudRouterCode
 const (
-	FABRICCLOUDROUTERCODE_LAB      FabricCloudRouterCode = "LAB"
-	FABRICCLOUDROUTERCODE_BASIC    FabricCloudRouterCode = "BASIC"
-	FABRICCLOUDROUTERCODE_STANDARD FabricCloudRouterCode = "STANDARD"
-	FABRICCLOUDROUTERCODE_ADVANCED FabricCloudRouterCode = "ADVANCED"
-	FABRICCLOUDROUTERCODE_PREMIUM  FabricCloudRouterCode = "PREMIUM"
+	FABRICCLOUDROUTERCODE_LAB                      FabricCloudRouterCode = "LAB"
+	FABRICCLOUDROUTERCODE_BASIC                    FabricCloudRouterCode = "BASIC"
+	FABRICCLOUDROUTERCODE_STANDARD                 FabricCloudRouterCode = "STANDARD"
+	FABRICCLOUDROUTERCODE_ADVANCED                 FabricCloudRouterCode = "ADVANCED"
+	FABRICCLOUDROUTERCODE_PREMIUM                  FabricCloudRouterCode = "PREMIUM"
+	FABRICCLOUDROUTERCODE_UNKNOWN_DEFAULT_OPEN_API FabricCloudRouterCode = "unknown_default_open_api"
 )
 
 // All allowed values of FabricCloudRouterCode enum
@@ -31,6 +32,7 @@ var AllowedFabricCloudRouterCodeEnumValues = []FabricCloudRouterCode{
 	"STANDARD",
 	"ADVANCED",
 	"PREMIUM",
+	"unknown_default_open_api",
 }
 
 func (v *FabricCloudRouterCode) UnmarshalJSON(src []byte) error {
@@ -47,7 +49,8 @@ func (v *FabricCloudRouterCode) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid FabricCloudRouterCode", value)
+	*v = FABRICCLOUDROUTERCODE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewFabricCloudRouterCodeFromValue returns a pointer to a valid FabricCloudRouterCode

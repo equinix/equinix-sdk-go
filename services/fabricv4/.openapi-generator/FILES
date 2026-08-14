@@ -438,7 +438,6 @@ docs/PortAdditionalInfo.md
 docs/PortBmmrType.md
 docs/PortChange.md
 docs/PortChangeOperation.md
-docs/PortChangeStatus.md
 docs/PortChangeType.md
 docs/PortConnectivitySourceType.md
 docs/PortDemarcationPoint.md
@@ -650,8 +649,10 @@ docs/RoutingProtocolBGPDataState.md
 docs/RoutingProtocolBGPType.md
 docs/RoutingProtocolBGPTypeType.md
 docs/RoutingProtocolBase.md
+docs/RoutingProtocolBaseType.md
 docs/RoutingProtocolChange.md
 docs/RoutingProtocolChangeData.md
+docs/RoutingProtocolChangeDataAllOfStatus.md
 docs/RoutingProtocolChangeDataResponse.md
 docs/RoutingProtocolChangeOperation.md
 docs/RoutingProtocolChangeOperationOp.md
@@ -690,6 +691,8 @@ docs/ServiceProfileAccessPointVD.md
 docs/ServiceProfileAccessPointVDType.md
 docs/ServiceProfileActionRequest.md
 docs/ServiceProfileActionResponse.md
+docs/ServiceProfileAllOfAccount.md
+docs/ServiceProfileAllOfChangeLog.md
 docs/ServiceProfileAndFilter.md
 docs/ServiceProfileChange.md
 docs/ServiceProfileChangeStatus.md
@@ -1263,7 +1266,6 @@ model_port_additional_info.go
 model_port_bmmr_type.go
 model_port_change.go
 model_port_change_operation.go
-model_port_change_status.go
 model_port_change_type.go
 model_port_connectivity_source_type.go
 model_port_demarcation_point.go
@@ -1462,6 +1464,7 @@ model_router_actions_connection.go
 model_router_actions_router.go
 model_router_package_code.go
 model_routing_protocol_base.go
+model_routing_protocol_base_type.go
 model_routing_protocol_bfd.go
 model_routing_protocol_bgp_data.go
 model_routing_protocol_bgp_data_state.go
@@ -1469,6 +1472,7 @@ model_routing_protocol_bgp_type.go
 model_routing_protocol_bgp_type_type.go
 model_routing_protocol_change.go
 model_routing_protocol_change_data.go
+model_routing_protocol_change_data_all_of_status.go
 model_routing_protocol_change_data_response.go
 model_routing_protocol_change_operation.go
 model_routing_protocol_change_operation_op.go
@@ -1506,6 +1510,8 @@ model_service_profile_access_point_vd.go
 model_service_profile_access_point_vd_type.go
 model_service_profile_action_request.go
 model_service_profile_action_response.go
+model_service_profile_all_of_account.go
+model_service_profile_all_of_change_log.go
 model_service_profile_and_filter.go
 model_service_profile_change.go
 model_service_profile_change_status.go

@@ -20,10 +20,11 @@ type ContactsType string
 
 // List of Contacts_type
 const (
-	CONTACTSTYPE_ORDERING     ContactsType = "ORDERING"
-	CONTACTSTYPE_NOTIFICATION ContactsType = "NOTIFICATION"
-	CONTACTSTYPE_TECHNICAL    ContactsType = "TECHNICAL"
-	CONTACTSTYPE_RESELLER     ContactsType = "RESELLER"
+	CONTACTSTYPE_ORDERING                 ContactsType = "ORDERING"
+	CONTACTSTYPE_NOTIFICATION             ContactsType = "NOTIFICATION"
+	CONTACTSTYPE_TECHNICAL                ContactsType = "TECHNICAL"
+	CONTACTSTYPE_RESELLER                 ContactsType = "RESELLER"
+	CONTACTSTYPE_UNKNOWN_DEFAULT_OPEN_API ContactsType = "unknown_default_open_api"
 )
 
 // All allowed values of ContactsType enum
@@ -32,6 +33,7 @@ var AllowedContactsTypeEnumValues = []ContactsType{
 	"NOTIFICATION",
 	"TECHNICAL",
 	"RESELLER",
+	"unknown_default_open_api",
 }
 
 func (v *ContactsType) UnmarshalJSON(src []byte) error {
@@ -48,7 +50,8 @@ func (v *ContactsType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ContactsType", value)
+	*v = CONTACTSTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewContactsTypeFromValue returns a pointer to a valid ContactsType

@@ -18,11 +18,13 @@ type RouteAggregationRulesDataType string
 // List of RouteAggregationRulesData_type
 const (
 	ROUTEAGGREGATIONRULESDATATYPE_BGP_IPV4_PREFIX_AGGREGATION_RULE RouteAggregationRulesDataType = "BGP_IPv4_PREFIX_AGGREGATION_RULE"
+	ROUTEAGGREGATIONRULESDATATYPE_UNKNOWN_DEFAULT_OPEN_API         RouteAggregationRulesDataType = "unknown_default_open_api"
 )
 
 // All allowed values of RouteAggregationRulesDataType enum
 var AllowedRouteAggregationRulesDataTypeEnumValues = []RouteAggregationRulesDataType{
 	"BGP_IPv4_PREFIX_AGGREGATION_RULE",
+	"unknown_default_open_api",
 }
 
 func (v *RouteAggregationRulesDataType) UnmarshalJSON(src []byte) error {
@@ -39,7 +41,8 @@ func (v *RouteAggregationRulesDataType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid RouteAggregationRulesDataType", value)
+	*v = ROUTEAGGREGATIONRULESDATATYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewRouteAggregationRulesDataTypeFromValue returns a pointer to a valid RouteAggregationRulesDataType

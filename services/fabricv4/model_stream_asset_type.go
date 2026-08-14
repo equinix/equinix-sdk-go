@@ -17,14 +17,15 @@ type StreamAssetType string
 
 // List of StreamAsset_type
 const (
-	STREAMASSETTYPE_XF_PORT      StreamAssetType = "XF_PORT"
-	STREAMASSETTYPE_IP_VC        StreamAssetType = "IP_VC"
-	STREAMASSETTYPE_EVPLAN_VC    StreamAssetType = "EVPLAN_VC"
-	STREAMASSETTYPE_EVPL_VC      StreamAssetType = "EVPL_VC"
-	STREAMASSETTYPE_XF_METRO     StreamAssetType = "XF_METRO"
-	STREAMASSETTYPE_XF_ROUTER    StreamAssetType = "XF_ROUTER"
-	STREAMASSETTYPE_ORGANIZATION StreamAssetType = "ORGANIZATION"
-	STREAMASSETTYPE_PROJECT      StreamAssetType = "PROJECT"
+	STREAMASSETTYPE_XF_PORT                  StreamAssetType = "XF_PORT"
+	STREAMASSETTYPE_IP_VC                    StreamAssetType = "IP_VC"
+	STREAMASSETTYPE_EVPLAN_VC                StreamAssetType = "EVPLAN_VC"
+	STREAMASSETTYPE_EVPL_VC                  StreamAssetType = "EVPL_VC"
+	STREAMASSETTYPE_XF_METRO                 StreamAssetType = "XF_METRO"
+	STREAMASSETTYPE_XF_ROUTER                StreamAssetType = "XF_ROUTER"
+	STREAMASSETTYPE_ORGANIZATION             StreamAssetType = "ORGANIZATION"
+	STREAMASSETTYPE_PROJECT                  StreamAssetType = "PROJECT"
+	STREAMASSETTYPE_UNKNOWN_DEFAULT_OPEN_API StreamAssetType = "unknown_default_open_api"
 )
 
 // All allowed values of StreamAssetType enum
@@ -37,6 +38,7 @@ var AllowedStreamAssetTypeEnumValues = []StreamAssetType{
 	"XF_ROUTER",
 	"ORGANIZATION",
 	"PROJECT",
+	"unknown_default_open_api",
 }
 
 func (v *StreamAssetType) UnmarshalJSON(src []byte) error {
@@ -53,7 +55,8 @@ func (v *StreamAssetType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid StreamAssetType", value)
+	*v = STREAMASSETTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewStreamAssetTypeFromValue returns a pointer to a valid StreamAssetType

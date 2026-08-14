@@ -20,12 +20,13 @@ type OrderHeaderStatusEnum string
 
 // List of order-header-status-enum
 const (
-	ORDERHEADERSTATUSENUM_ENTERED     OrderHeaderStatusEnum = "ENTERED"
-	ORDERHEADERSTATUSENUM_SUBMITTED   OrderHeaderStatusEnum = "SUBMITTED"
-	ORDERHEADERSTATUSENUM_IN_PROGRESS OrderHeaderStatusEnum = "IN_PROGRESS"
-	ORDERHEADERSTATUSENUM_PENDING_QA  OrderHeaderStatusEnum = "PENDING_QA"
-	ORDERHEADERSTATUSENUM_CANCELLED   OrderHeaderStatusEnum = "CANCELLED"
-	ORDERHEADERSTATUSENUM_CLOSED      OrderHeaderStatusEnum = "CLOSED"
+	ORDERHEADERSTATUSENUM_ENTERED                  OrderHeaderStatusEnum = "ENTERED"
+	ORDERHEADERSTATUSENUM_SUBMITTED                OrderHeaderStatusEnum = "SUBMITTED"
+	ORDERHEADERSTATUSENUM_IN_PROGRESS              OrderHeaderStatusEnum = "IN_PROGRESS"
+	ORDERHEADERSTATUSENUM_PENDING_QA               OrderHeaderStatusEnum = "PENDING_QA"
+	ORDERHEADERSTATUSENUM_CANCELLED                OrderHeaderStatusEnum = "CANCELLED"
+	ORDERHEADERSTATUSENUM_CLOSED                   OrderHeaderStatusEnum = "CLOSED"
+	ORDERHEADERSTATUSENUM_UNKNOWN_DEFAULT_OPEN_API OrderHeaderStatusEnum = "unknown_default_open_api"
 )
 
 // All allowed values of OrderHeaderStatusEnum enum
@@ -36,6 +37,7 @@ var AllowedOrderHeaderStatusEnumEnumValues = []OrderHeaderStatusEnum{
 	"PENDING_QA",
 	"CANCELLED",
 	"CLOSED",
+	"unknown_default_open_api",
 }
 
 func (v *OrderHeaderStatusEnum) UnmarshalJSON(src []byte) error {
@@ -52,7 +54,8 @@ func (v *OrderHeaderStatusEnum) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid OrderHeaderStatusEnum", value)
+	*v = ORDERHEADERSTATUSENUM_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewOrderHeaderStatusEnumFromValue returns a pointer to a valid OrderHeaderStatusEnum

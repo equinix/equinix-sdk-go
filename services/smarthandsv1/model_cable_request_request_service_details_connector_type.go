@@ -20,11 +20,12 @@ type CableRequestRequestServiceDetailsConnectorType string
 
 // List of cableRequestRequest_serviceDetails_connectorType
 const (
-	CABLEREQUESTREQUESTSERVICEDETAILSCONNECTORTYPE_RJ45  CableRequestRequestServiceDetailsConnectorType = "RJ45"
-	CABLEREQUESTREQUESTSERVICEDETAILSCONNECTORTYPE_SC    CableRequestRequestServiceDetailsConnectorType = "SC"
-	CABLEREQUESTREQUESTSERVICEDETAILSCONNECTORTYPE_LC    CableRequestRequestServiceDetailsConnectorType = "LC"
-	CABLEREQUESTREQUESTSERVICEDETAILSCONNECTORTYPE_BNC   CableRequestRequestServiceDetailsConnectorType = "BNC"
-	CABLEREQUESTREQUESTSERVICEDETAILSCONNECTORTYPE_OTHER CableRequestRequestServiceDetailsConnectorType = "Other"
+	CABLEREQUESTREQUESTSERVICEDETAILSCONNECTORTYPE_RJ45                     CableRequestRequestServiceDetailsConnectorType = "RJ45"
+	CABLEREQUESTREQUESTSERVICEDETAILSCONNECTORTYPE_SC                       CableRequestRequestServiceDetailsConnectorType = "SC"
+	CABLEREQUESTREQUESTSERVICEDETAILSCONNECTORTYPE_LC                       CableRequestRequestServiceDetailsConnectorType = "LC"
+	CABLEREQUESTREQUESTSERVICEDETAILSCONNECTORTYPE_BNC                      CableRequestRequestServiceDetailsConnectorType = "BNC"
+	CABLEREQUESTREQUESTSERVICEDETAILSCONNECTORTYPE_OTHER                    CableRequestRequestServiceDetailsConnectorType = "Other"
+	CABLEREQUESTREQUESTSERVICEDETAILSCONNECTORTYPE_UNKNOWN_DEFAULT_OPEN_API CableRequestRequestServiceDetailsConnectorType = "unknown_default_open_api"
 )
 
 // All allowed values of CableRequestRequestServiceDetailsConnectorType enum
@@ -34,6 +35,7 @@ var AllowedCableRequestRequestServiceDetailsConnectorTypeEnumValues = []CableReq
 	"LC",
 	"BNC",
 	"Other",
+	"unknown_default_open_api",
 }
 
 func (v *CableRequestRequestServiceDetailsConnectorType) UnmarshalJSON(src []byte) error {
@@ -50,7 +52,8 @@ func (v *CableRequestRequestServiceDetailsConnectorType) UnmarshalJSON(src []byt
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid CableRequestRequestServiceDetailsConnectorType", value)
+	*v = CABLEREQUESTREQUESTSERVICEDETAILSCONNECTORTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewCableRequestRequestServiceDetailsConnectorTypeFromValue returns a pointer to a valid CableRequestRequestServiceDetailsConnectorType

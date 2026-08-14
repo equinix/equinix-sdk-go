@@ -17,10 +17,11 @@ type PeeringType string
 
 // List of PeeringType
 const (
-	PEERINGTYPE_PRIVATE   PeeringType = "PRIVATE"
-	PEERINGTYPE_MICROSOFT PeeringType = "MICROSOFT"
-	PEERINGTYPE_PUBLIC    PeeringType = "PUBLIC"
-	PEERINGTYPE_MANUAL    PeeringType = "MANUAL"
+	PEERINGTYPE_PRIVATE                  PeeringType = "PRIVATE"
+	PEERINGTYPE_MICROSOFT                PeeringType = "MICROSOFT"
+	PEERINGTYPE_PUBLIC                   PeeringType = "PUBLIC"
+	PEERINGTYPE_MANUAL                   PeeringType = "MANUAL"
+	PEERINGTYPE_UNKNOWN_DEFAULT_OPEN_API PeeringType = "unknown_default_open_api"
 )
 
 // All allowed values of PeeringType enum
@@ -29,6 +30,7 @@ var AllowedPeeringTypeEnumValues = []PeeringType{
 	"MICROSOFT",
 	"PUBLIC",
 	"MANUAL",
+	"unknown_default_open_api",
 }
 
 func (v *PeeringType) UnmarshalJSON(src []byte) error {
@@ -45,7 +47,8 @@ func (v *PeeringType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid PeeringType", value)
+	*v = PEERINGTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewPeeringTypeFromValue returns a pointer to a valid PeeringType

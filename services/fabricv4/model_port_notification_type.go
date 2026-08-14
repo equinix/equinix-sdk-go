@@ -17,10 +17,11 @@ type PortNotificationType string
 
 // List of PortNotification_type
 const (
-	PORTNOTIFICATIONTYPE_NOTIFICATION PortNotificationType = "NOTIFICATION"
-	PORTNOTIFICATIONTYPE_TECHNICAL    PortNotificationType = "TECHNICAL"
-	PORTNOTIFICATIONTYPE_PEERING      PortNotificationType = "PEERING"
-	PORTNOTIFICATIONTYPE_ESCALATION   PortNotificationType = "ESCALATION"
+	PORTNOTIFICATIONTYPE_NOTIFICATION             PortNotificationType = "NOTIFICATION"
+	PORTNOTIFICATIONTYPE_TECHNICAL                PortNotificationType = "TECHNICAL"
+	PORTNOTIFICATIONTYPE_PEERING                  PortNotificationType = "PEERING"
+	PORTNOTIFICATIONTYPE_ESCALATION               PortNotificationType = "ESCALATION"
+	PORTNOTIFICATIONTYPE_UNKNOWN_DEFAULT_OPEN_API PortNotificationType = "unknown_default_open_api"
 )
 
 // All allowed values of PortNotificationType enum
@@ -29,6 +30,7 @@ var AllowedPortNotificationTypeEnumValues = []PortNotificationType{
 	"TECHNICAL",
 	"PEERING",
 	"ESCALATION",
+	"unknown_default_open_api",
 }
 
 func (v *PortNotificationType) UnmarshalJSON(src []byte) error {
@@ -45,7 +47,8 @@ func (v *PortNotificationType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid PortNotificationType", value)
+	*v = PORTNOTIFICATIONTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewPortNotificationTypeFromValue returns a pointer to a valid PortNotificationType

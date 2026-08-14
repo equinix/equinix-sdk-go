@@ -17,11 +17,12 @@ type CloudRouterPostRequestPackageCode string
 
 // List of CloudRouterPostRequestPackage_code
 const (
-	CLOUDROUTERPOSTREQUESTPACKAGECODE_LAB      CloudRouterPostRequestPackageCode = "LAB"
-	CLOUDROUTERPOSTREQUESTPACKAGECODE_BASIC    CloudRouterPostRequestPackageCode = "BASIC"
-	CLOUDROUTERPOSTREQUESTPACKAGECODE_STANDARD CloudRouterPostRequestPackageCode = "STANDARD"
-	CLOUDROUTERPOSTREQUESTPACKAGECODE_ADVANCED CloudRouterPostRequestPackageCode = "ADVANCED"
-	CLOUDROUTERPOSTREQUESTPACKAGECODE_PREMIUM  CloudRouterPostRequestPackageCode = "PREMIUM"
+	CLOUDROUTERPOSTREQUESTPACKAGECODE_LAB                      CloudRouterPostRequestPackageCode = "LAB"
+	CLOUDROUTERPOSTREQUESTPACKAGECODE_BASIC                    CloudRouterPostRequestPackageCode = "BASIC"
+	CLOUDROUTERPOSTREQUESTPACKAGECODE_STANDARD                 CloudRouterPostRequestPackageCode = "STANDARD"
+	CLOUDROUTERPOSTREQUESTPACKAGECODE_ADVANCED                 CloudRouterPostRequestPackageCode = "ADVANCED"
+	CLOUDROUTERPOSTREQUESTPACKAGECODE_PREMIUM                  CloudRouterPostRequestPackageCode = "PREMIUM"
+	CLOUDROUTERPOSTREQUESTPACKAGECODE_UNKNOWN_DEFAULT_OPEN_API CloudRouterPostRequestPackageCode = "unknown_default_open_api"
 )
 
 // All allowed values of CloudRouterPostRequestPackageCode enum
@@ -31,6 +32,7 @@ var AllowedCloudRouterPostRequestPackageCodeEnumValues = []CloudRouterPostReques
 	"STANDARD",
 	"ADVANCED",
 	"PREMIUM",
+	"unknown_default_open_api",
 }
 
 func (v *CloudRouterPostRequestPackageCode) UnmarshalJSON(src []byte) error {
@@ -47,7 +49,8 @@ func (v *CloudRouterPostRequestPackageCode) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid CloudRouterPostRequestPackageCode", value)
+	*v = CLOUDROUTERPOSTREQUESTPACKAGECODE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewCloudRouterPostRequestPackageCodeFromValue returns a pointer to a valid CloudRouterPostRequestPackageCode

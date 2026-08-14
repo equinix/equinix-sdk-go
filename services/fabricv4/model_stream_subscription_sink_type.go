@@ -17,14 +17,15 @@ type StreamSubscriptionSinkType string
 
 // List of StreamSubscriptionSink_type
 const (
-	STREAMSUBSCRIPTIONSINKTYPE_DATADOG       StreamSubscriptionSinkType = "DATADOG"
-	STREAMSUBSCRIPTIONSINKTYPE_GOOGLE_PUBSUB StreamSubscriptionSinkType = "GOOGLE_PUBSUB"
-	STREAMSUBSCRIPTIONSINKTYPE_PAGERDUTY     StreamSubscriptionSinkType = "PAGERDUTY"
-	STREAMSUBSCRIPTIONSINKTYPE_SERVICENOW    StreamSubscriptionSinkType = "SERVICENOW"
-	STREAMSUBSCRIPTIONSINKTYPE_SLACK         StreamSubscriptionSinkType = "SLACK"
-	STREAMSUBSCRIPTIONSINKTYPE_SPLUNK_HEC    StreamSubscriptionSinkType = "SPLUNK_HEC"
-	STREAMSUBSCRIPTIONSINKTYPE_TEAMS         StreamSubscriptionSinkType = "TEAMS"
-	STREAMSUBSCRIPTIONSINKTYPE_WEBHOOK       StreamSubscriptionSinkType = "WEBHOOK"
+	STREAMSUBSCRIPTIONSINKTYPE_DATADOG                  StreamSubscriptionSinkType = "DATADOG"
+	STREAMSUBSCRIPTIONSINKTYPE_GOOGLE_PUBSUB            StreamSubscriptionSinkType = "GOOGLE_PUBSUB"
+	STREAMSUBSCRIPTIONSINKTYPE_PAGERDUTY                StreamSubscriptionSinkType = "PAGERDUTY"
+	STREAMSUBSCRIPTIONSINKTYPE_SERVICENOW               StreamSubscriptionSinkType = "SERVICENOW"
+	STREAMSUBSCRIPTIONSINKTYPE_SLACK                    StreamSubscriptionSinkType = "SLACK"
+	STREAMSUBSCRIPTIONSINKTYPE_SPLUNK_HEC               StreamSubscriptionSinkType = "SPLUNK_HEC"
+	STREAMSUBSCRIPTIONSINKTYPE_TEAMS                    StreamSubscriptionSinkType = "TEAMS"
+	STREAMSUBSCRIPTIONSINKTYPE_WEBHOOK                  StreamSubscriptionSinkType = "WEBHOOK"
+	STREAMSUBSCRIPTIONSINKTYPE_UNKNOWN_DEFAULT_OPEN_API StreamSubscriptionSinkType = "unknown_default_open_api"
 )
 
 // All allowed values of StreamSubscriptionSinkType enum
@@ -37,6 +38,7 @@ var AllowedStreamSubscriptionSinkTypeEnumValues = []StreamSubscriptionSinkType{
 	"SPLUNK_HEC",
 	"TEAMS",
 	"WEBHOOK",
+	"unknown_default_open_api",
 }
 
 func (v *StreamSubscriptionSinkType) UnmarshalJSON(src []byte) error {
@@ -53,7 +55,8 @@ func (v *StreamSubscriptionSinkType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid StreamSubscriptionSinkType", value)
+	*v = STREAMSUBSCRIPTIONSINKTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewStreamSubscriptionSinkTypeFromValue returns a pointer to a valid StreamSubscriptionSinkType

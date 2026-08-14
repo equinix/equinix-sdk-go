@@ -23,6 +23,7 @@ const (
 	IPBLOCKQUESTIONSTYPE_PRIVATE_SPACE_CONSIDERED IpBlockQuestionsType = "PRIVATE_SPACE_CONSIDERED"
 	IPBLOCKQUESTIONSTYPE_REFUSED_PREVIOUSLY       IpBlockQuestionsType = "REFUSED_PREVIOUSLY"
 	IPBLOCKQUESTIONSTYPE_RETURNING_ADDRESS_SPACE  IpBlockQuestionsType = "RETURNING_ADDRESS_SPACE"
+	IPBLOCKQUESTIONSTYPE_UNKNOWN_DEFAULT_OPEN_API IpBlockQuestionsType = "unknown_default_open_api"
 )
 
 // All allowed values of IpBlockQuestionsType enum
@@ -30,6 +31,7 @@ var AllowedIpBlockQuestionsTypeEnumValues = []IpBlockQuestionsType{
 	"PRIVATE_SPACE_CONSIDERED",
 	"REFUSED_PREVIOUSLY",
 	"RETURNING_ADDRESS_SPACE",
+	"unknown_default_open_api",
 }
 
 func (v *IpBlockQuestionsType) UnmarshalJSON(src []byte) error {
@@ -46,7 +48,8 @@ func (v *IpBlockQuestionsType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid IpBlockQuestionsType", value)
+	*v = IPBLOCKQUESTIONSTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewIpBlockQuestionsTypeFromValue returns a pointer to a valid IpBlockQuestionsType

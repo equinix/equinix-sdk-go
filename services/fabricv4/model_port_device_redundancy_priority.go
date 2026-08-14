@@ -17,14 +17,16 @@ type PortDeviceRedundancyPriority string
 
 // List of PortDeviceRedundancy_priority
 const (
-	PORTDEVICEREDUNDANCYPRIORITY_PRIMARY   PortDeviceRedundancyPriority = "PRIMARY"
-	PORTDEVICEREDUNDANCYPRIORITY_SECONDARY PortDeviceRedundancyPriority = "SECONDARY"
+	PORTDEVICEREDUNDANCYPRIORITY_PRIMARY                  PortDeviceRedundancyPriority = "PRIMARY"
+	PORTDEVICEREDUNDANCYPRIORITY_SECONDARY                PortDeviceRedundancyPriority = "SECONDARY"
+	PORTDEVICEREDUNDANCYPRIORITY_UNKNOWN_DEFAULT_OPEN_API PortDeviceRedundancyPriority = "unknown_default_open_api"
 )
 
 // All allowed values of PortDeviceRedundancyPriority enum
 var AllowedPortDeviceRedundancyPriorityEnumValues = []PortDeviceRedundancyPriority{
 	"PRIMARY",
 	"SECONDARY",
+	"unknown_default_open_api",
 }
 
 func (v *PortDeviceRedundancyPriority) UnmarshalJSON(src []byte) error {
@@ -41,7 +43,8 @@ func (v *PortDeviceRedundancyPriority) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid PortDeviceRedundancyPriority", value)
+	*v = PORTDEVICEREDUNDANCYPRIORITY_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewPortDeviceRedundancyPriorityFromValue returns a pointer to a valid PortDeviceRedundancyPriority

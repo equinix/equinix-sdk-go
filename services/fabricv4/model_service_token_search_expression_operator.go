@@ -29,6 +29,7 @@ const (
 	SERVICETOKENSEARCHEXPRESSIONOPERATOR_NOT_IN                   ServiceTokenSearchExpressionOperator = "NOT IN"
 	SERVICETOKENSEARCHEXPRESSIONOPERATOR_BETWEEN                  ServiceTokenSearchExpressionOperator = "BETWEEN"
 	SERVICETOKENSEARCHEXPRESSIONOPERATOR_NOT_BETWEEN              ServiceTokenSearchExpressionOperator = "NOT BETWEEN"
+	SERVICETOKENSEARCHEXPRESSIONOPERATOR_UNKNOWN_DEFAULT_OPEN_API ServiceTokenSearchExpressionOperator = "unknown_default_open_api"
 )
 
 // All allowed values of ServiceTokenSearchExpressionOperator enum
@@ -45,6 +46,7 @@ var AllowedServiceTokenSearchExpressionOperatorEnumValues = []ServiceTokenSearch
 	"NOT IN",
 	"BETWEEN",
 	"NOT BETWEEN",
+	"unknown_default_open_api",
 }
 
 func (v *ServiceTokenSearchExpressionOperator) UnmarshalJSON(src []byte) error {
@@ -61,7 +63,8 @@ func (v *ServiceTokenSearchExpressionOperator) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ServiceTokenSearchExpressionOperator", value)
+	*v = SERVICETOKENSEARCHEXPRESSIONOPERATOR_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewServiceTokenSearchExpressionOperatorFromValue returns a pointer to a valid ServiceTokenSearchExpressionOperator

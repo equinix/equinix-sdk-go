@@ -17,9 +17,10 @@ type IpBlockProductType string
 
 // List of IpBlockProductType
 const (
-	IPBLOCKPRODUCTTYPE_EIA    IpBlockProductType = "EIA"
-	IPBLOCKPRODUCTTYPE_FABRIC IpBlockProductType = "FABRIC"
-	IPBLOCKPRODUCTTYPE_NE     IpBlockProductType = "NE"
+	IPBLOCKPRODUCTTYPE_EIA                      IpBlockProductType = "EIA"
+	IPBLOCKPRODUCTTYPE_FABRIC                   IpBlockProductType = "FABRIC"
+	IPBLOCKPRODUCTTYPE_NE                       IpBlockProductType = "NE"
+	IPBLOCKPRODUCTTYPE_UNKNOWN_DEFAULT_OPEN_API IpBlockProductType = "unknown_default_open_api"
 )
 
 // All allowed values of IpBlockProductType enum
@@ -27,6 +28,7 @@ var AllowedIpBlockProductTypeEnumValues = []IpBlockProductType{
 	"EIA",
 	"FABRIC",
 	"NE",
+	"unknown_default_open_api",
 }
 
 func (v *IpBlockProductType) UnmarshalJSON(src []byte) error {
@@ -43,7 +45,8 @@ func (v *IpBlockProductType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid IpBlockProductType", value)
+	*v = IPBLOCKPRODUCTTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewIpBlockProductTypeFromValue returns a pointer to a valid IpBlockProductType

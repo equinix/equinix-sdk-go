@@ -17,14 +17,16 @@ type InternetAccessCustomerAsnRange string
 
 // List of InternetAccessCustomerAsnRange
 const (
-	INTERNETACCESSCUSTOMERASNRANGE_BITS_16 InternetAccessCustomerAsnRange = "BITS_16"
-	INTERNETACCESSCUSTOMERASNRANGE_BITS_32 InternetAccessCustomerAsnRange = "BITS_32"
+	INTERNETACCESSCUSTOMERASNRANGE_BITS_16                  InternetAccessCustomerAsnRange = "BITS_16"
+	INTERNETACCESSCUSTOMERASNRANGE_BITS_32                  InternetAccessCustomerAsnRange = "BITS_32"
+	INTERNETACCESSCUSTOMERASNRANGE_UNKNOWN_DEFAULT_OPEN_API InternetAccessCustomerAsnRange = "unknown_default_open_api"
 )
 
 // All allowed values of InternetAccessCustomerAsnRange enum
 var AllowedInternetAccessCustomerAsnRangeEnumValues = []InternetAccessCustomerAsnRange{
 	"BITS_16",
 	"BITS_32",
+	"unknown_default_open_api",
 }
 
 func (v *InternetAccessCustomerAsnRange) UnmarshalJSON(src []byte) error {
@@ -41,7 +43,8 @@ func (v *InternetAccessCustomerAsnRange) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid InternetAccessCustomerAsnRange", value)
+	*v = INTERNETACCESSCUSTOMERASNRANGE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewInternetAccessCustomerAsnRangeFromValue returns a pointer to a valid InternetAccessCustomerAsnRange

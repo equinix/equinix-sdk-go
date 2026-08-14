@@ -20,6 +20,7 @@ const (
 	MARKETPLACESUBSCRIPTIONTYPE_AWS_MARKETPLACE_SUBSCRIPTION   MarketplaceSubscriptionType = "AWS_MARKETPLACE_SUBSCRIPTION"
 	MARKETPLACESUBSCRIPTIONTYPE_GCP_MARKETPLACE_SUBSCRIPTION   MarketplaceSubscriptionType = "GCP_MARKETPLACE_SUBSCRIPTION"
 	MARKETPLACESUBSCRIPTIONTYPE_AZURE_MARKETPLACE_SUBSCRIPTION MarketplaceSubscriptionType = "AZURE_MARKETPLACE_SUBSCRIPTION"
+	MARKETPLACESUBSCRIPTIONTYPE_UNKNOWN_DEFAULT_OPEN_API       MarketplaceSubscriptionType = "unknown_default_open_api"
 )
 
 // All allowed values of MarketplaceSubscriptionType enum
@@ -27,6 +28,7 @@ var AllowedMarketplaceSubscriptionTypeEnumValues = []MarketplaceSubscriptionType
 	"AWS_MARKETPLACE_SUBSCRIPTION",
 	"GCP_MARKETPLACE_SUBSCRIPTION",
 	"AZURE_MARKETPLACE_SUBSCRIPTION",
+	"unknown_default_open_api",
 }
 
 func (v *MarketplaceSubscriptionType) UnmarshalJSON(src []byte) error {
@@ -43,7 +45,8 @@ func (v *MarketplaceSubscriptionType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid MarketplaceSubscriptionType", value)
+	*v = MARKETPLACESUBSCRIPTIONTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewMarketplaceSubscriptionTypeFromValue returns a pointer to a valid MarketplaceSubscriptionType

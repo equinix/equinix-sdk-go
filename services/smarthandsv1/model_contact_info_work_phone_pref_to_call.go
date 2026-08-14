@@ -20,11 +20,12 @@ type ContactInfoWorkPhonePrefToCall string
 
 // List of contactInfo_workPhonePrefToCall
 const (
-	CONTACTINFOWORKPHONEPREFTOCALL_NEVER              ContactInfoWorkPhonePrefToCall = "NEVER"
-	CONTACTINFOWORKPHONEPREFTOCALL_ANYTIME            ContactInfoWorkPhonePrefToCall = "ANYTIME"
-	CONTACTINFOWORKPHONEPREFTOCALL_MY_BUSINESS_HOURS  ContactInfoWorkPhonePrefToCall = "MY_BUSINESS_HOURS"
-	CONTACTINFOWORKPHONEPREFTOCALL_IBX_BUSINESS_HOURS ContactInfoWorkPhonePrefToCall = "IBX_BUSINESS_HOURS"
-	CONTACTINFOWORKPHONEPREFTOCALL_BUSINESS_HOURS     ContactInfoWorkPhonePrefToCall = "BUSINESS_HOURS"
+	CONTACTINFOWORKPHONEPREFTOCALL_NEVER                    ContactInfoWorkPhonePrefToCall = "NEVER"
+	CONTACTINFOWORKPHONEPREFTOCALL_ANYTIME                  ContactInfoWorkPhonePrefToCall = "ANYTIME"
+	CONTACTINFOWORKPHONEPREFTOCALL_MY_BUSINESS_HOURS        ContactInfoWorkPhonePrefToCall = "MY_BUSINESS_HOURS"
+	CONTACTINFOWORKPHONEPREFTOCALL_IBX_BUSINESS_HOURS       ContactInfoWorkPhonePrefToCall = "IBX_BUSINESS_HOURS"
+	CONTACTINFOWORKPHONEPREFTOCALL_BUSINESS_HOURS           ContactInfoWorkPhonePrefToCall = "BUSINESS_HOURS"
+	CONTACTINFOWORKPHONEPREFTOCALL_UNKNOWN_DEFAULT_OPEN_API ContactInfoWorkPhonePrefToCall = "unknown_default_open_api"
 )
 
 // All allowed values of ContactInfoWorkPhonePrefToCall enum
@@ -34,6 +35,7 @@ var AllowedContactInfoWorkPhonePrefToCallEnumValues = []ContactInfoWorkPhonePref
 	"MY_BUSINESS_HOURS",
 	"IBX_BUSINESS_HOURS",
 	"BUSINESS_HOURS",
+	"unknown_default_open_api",
 }
 
 func (v *ContactInfoWorkPhonePrefToCall) UnmarshalJSON(src []byte) error {
@@ -50,7 +52,8 @@ func (v *ContactInfoWorkPhonePrefToCall) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ContactInfoWorkPhonePrefToCall", value)
+	*v = CONTACTINFOWORKPHONEPREFTOCALL_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewContactInfoWorkPhonePrefToCallFromValue returns a pointer to a valid ContactInfoWorkPhonePrefToCall

@@ -17,14 +17,16 @@ type PortSortDirection string
 
 // List of PortSortDirection
 const (
-	PORTSORTDIRECTION_DESC PortSortDirection = "DESC"
-	PORTSORTDIRECTION_ASC  PortSortDirection = "ASC"
+	PORTSORTDIRECTION_DESC                     PortSortDirection = "DESC"
+	PORTSORTDIRECTION_ASC                      PortSortDirection = "ASC"
+	PORTSORTDIRECTION_UNKNOWN_DEFAULT_OPEN_API PortSortDirection = "unknown_default_open_api"
 )
 
 // All allowed values of PortSortDirection enum
 var AllowedPortSortDirectionEnumValues = []PortSortDirection{
 	"DESC",
 	"ASC",
+	"unknown_default_open_api",
 }
 
 func (v *PortSortDirection) UnmarshalJSON(src []byte) error {
@@ -41,7 +43,8 @@ func (v *PortSortDirection) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid PortSortDirection", value)
+	*v = PORTSORTDIRECTION_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewPortSortDirectionFromValue returns a pointer to a valid PortSortDirection

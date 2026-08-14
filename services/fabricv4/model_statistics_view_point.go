@@ -17,14 +17,16 @@ type StatisticsViewPoint string
 
 // List of Statistics_viewPoint
 const (
-	STATISTICSVIEWPOINT_A_SIDE StatisticsViewPoint = "aSide"
-	STATISTICSVIEWPOINT_Z_SIDE StatisticsViewPoint = "zSide"
+	STATISTICSVIEWPOINT_A_SIDE                   StatisticsViewPoint = "aSide"
+	STATISTICSVIEWPOINT_Z_SIDE                   StatisticsViewPoint = "zSide"
+	STATISTICSVIEWPOINT_UNKNOWN_DEFAULT_OPEN_API StatisticsViewPoint = "unknown_default_open_api"
 )
 
 // All allowed values of StatisticsViewPoint enum
 var AllowedStatisticsViewPointEnumValues = []StatisticsViewPoint{
 	"aSide",
 	"zSide",
+	"unknown_default_open_api",
 }
 
 func (v *StatisticsViewPoint) UnmarshalJSON(src []byte) error {
@@ -41,7 +43,8 @@ func (v *StatisticsViewPoint) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid StatisticsViewPoint", value)
+	*v = STATISTICSVIEWPOINT_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewStatisticsViewPointFromValue returns a pointer to a valid StatisticsViewPoint

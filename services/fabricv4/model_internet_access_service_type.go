@@ -17,14 +17,16 @@ type InternetAccessServiceType string
 
 // List of InternetAccessServiceType
 const (
-	INTERNETACCESSSERVICETYPE_SINGLE_IA InternetAccessServiceType = "SINGLE_IA"
-	INTERNETACCESSSERVICETYPE_DUAL_IA   InternetAccessServiceType = "DUAL_IA"
+	INTERNETACCESSSERVICETYPE_SINGLE_IA                InternetAccessServiceType = "SINGLE_IA"
+	INTERNETACCESSSERVICETYPE_DUAL_IA                  InternetAccessServiceType = "DUAL_IA"
+	INTERNETACCESSSERVICETYPE_UNKNOWN_DEFAULT_OPEN_API InternetAccessServiceType = "unknown_default_open_api"
 )
 
 // All allowed values of InternetAccessServiceType enum
 var AllowedInternetAccessServiceTypeEnumValues = []InternetAccessServiceType{
 	"SINGLE_IA",
 	"DUAL_IA",
+	"unknown_default_open_api",
 }
 
 func (v *InternetAccessServiceType) UnmarshalJSON(src []byte) error {
@@ -41,7 +43,8 @@ func (v *InternetAccessServiceType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid InternetAccessServiceType", value)
+	*v = INTERNETACCESSSERVICETYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewInternetAccessServiceTypeFromValue returns a pointer to a valid InternetAccessServiceType

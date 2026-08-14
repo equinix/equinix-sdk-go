@@ -17,9 +17,10 @@ type ConnectivitySourceType string
 
 // List of ConnectivitySourceType
 const (
-	CONNECTIVITYSOURCETYPE_COLO   ConnectivitySourceType = "COLO"
-	CONNECTIVITYSOURCETYPE_BMMR   ConnectivitySourceType = "BMMR"
-	CONNECTIVITYSOURCETYPE_REMOTE ConnectivitySourceType = "REMOTE"
+	CONNECTIVITYSOURCETYPE_COLO                     ConnectivitySourceType = "COLO"
+	CONNECTIVITYSOURCETYPE_BMMR                     ConnectivitySourceType = "BMMR"
+	CONNECTIVITYSOURCETYPE_REMOTE                   ConnectivitySourceType = "REMOTE"
+	CONNECTIVITYSOURCETYPE_UNKNOWN_DEFAULT_OPEN_API ConnectivitySourceType = "unknown_default_open_api"
 )
 
 // All allowed values of ConnectivitySourceType enum
@@ -27,6 +28,7 @@ var AllowedConnectivitySourceTypeEnumValues = []ConnectivitySourceType{
 	"COLO",
 	"BMMR",
 	"REMOTE",
+	"unknown_default_open_api",
 }
 
 func (v *ConnectivitySourceType) UnmarshalJSON(src []byte) error {
@@ -43,7 +45,8 @@ func (v *ConnectivitySourceType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ConnectivitySourceType", value)
+	*v = CONNECTIVITYSOURCETYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewConnectivitySourceTypeFromValue returns a pointer to a valid ConnectivitySourceType

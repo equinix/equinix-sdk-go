@@ -17,14 +17,16 @@ type RouteFiltersDataNotMatchedRuleAction string
 
 // List of RouteFiltersData_notMatchedRuleAction
 const (
-	ROUTEFILTERSDATANOTMATCHEDRULEACTION_ALLOW RouteFiltersDataNotMatchedRuleAction = "ALLOW"
-	ROUTEFILTERSDATANOTMATCHEDRULEACTION_DENY  RouteFiltersDataNotMatchedRuleAction = "DENY"
+	ROUTEFILTERSDATANOTMATCHEDRULEACTION_ALLOW                    RouteFiltersDataNotMatchedRuleAction = "ALLOW"
+	ROUTEFILTERSDATANOTMATCHEDRULEACTION_DENY                     RouteFiltersDataNotMatchedRuleAction = "DENY"
+	ROUTEFILTERSDATANOTMATCHEDRULEACTION_UNKNOWN_DEFAULT_OPEN_API RouteFiltersDataNotMatchedRuleAction = "unknown_default_open_api"
 )
 
 // All allowed values of RouteFiltersDataNotMatchedRuleAction enum
 var AllowedRouteFiltersDataNotMatchedRuleActionEnumValues = []RouteFiltersDataNotMatchedRuleAction{
 	"ALLOW",
 	"DENY",
+	"unknown_default_open_api",
 }
 
 func (v *RouteFiltersDataNotMatchedRuleAction) UnmarshalJSON(src []byte) error {
@@ -41,7 +43,8 @@ func (v *RouteFiltersDataNotMatchedRuleAction) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid RouteFiltersDataNotMatchedRuleAction", value)
+	*v = ROUTEFILTERSDATANOTMATCHEDRULEACTION_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewRouteFiltersDataNotMatchedRuleActionFromValue returns a pointer to a valid RouteFiltersDataNotMatchedRuleAction

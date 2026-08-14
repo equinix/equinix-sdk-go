@@ -17,12 +17,14 @@ type RoutingProtocolBGPTypeType string
 
 // List of RoutingProtocolBGPType_type
 const (
-	ROUTINGPROTOCOLBGPTYPETYPE_BGP RoutingProtocolBGPTypeType = "BGP"
+	ROUTINGPROTOCOLBGPTYPETYPE_BGP                      RoutingProtocolBGPTypeType = "BGP"
+	ROUTINGPROTOCOLBGPTYPETYPE_UNKNOWN_DEFAULT_OPEN_API RoutingProtocolBGPTypeType = "unknown_default_open_api"
 )
 
 // All allowed values of RoutingProtocolBGPTypeType enum
 var AllowedRoutingProtocolBGPTypeTypeEnumValues = []RoutingProtocolBGPTypeType{
 	"BGP",
+	"unknown_default_open_api",
 }
 
 func (v *RoutingProtocolBGPTypeType) UnmarshalJSON(src []byte) error {
@@ -39,7 +41,8 @@ func (v *RoutingProtocolBGPTypeType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid RoutingProtocolBGPTypeType", value)
+	*v = ROUTINGPROTOCOLBGPTYPETYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewRoutingProtocolBGPTypeTypeFromValue returns a pointer to a valid RoutingProtocolBGPTypeType

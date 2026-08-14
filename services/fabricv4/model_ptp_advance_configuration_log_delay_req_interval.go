@@ -17,13 +17,14 @@ type PtpAdvanceConfigurationLogDelayReqInterval int32
 
 // List of ptpAdvanceConfiguration_logDelayReqInterval
 const (
-	PTPADVANCECONFIGURATIONLOGDELAYREQINTERVAL__MINUS_5 PtpAdvanceConfigurationLogDelayReqInterval = -5
-	PTPADVANCECONFIGURATIONLOGDELAYREQINTERVAL__MINUS_4 PtpAdvanceConfigurationLogDelayReqInterval = -4
-	PTPADVANCECONFIGURATIONLOGDELAYREQINTERVAL__MINUS_3 PtpAdvanceConfigurationLogDelayReqInterval = -3
-	PTPADVANCECONFIGURATIONLOGDELAYREQINTERVAL__MINUS_2 PtpAdvanceConfigurationLogDelayReqInterval = -2
-	PTPADVANCECONFIGURATIONLOGDELAYREQINTERVAL__MINUS_1 PtpAdvanceConfigurationLogDelayReqInterval = -1
-	PTPADVANCECONFIGURATIONLOGDELAYREQINTERVAL__0       PtpAdvanceConfigurationLogDelayReqInterval = 0
-	PTPADVANCECONFIGURATIONLOGDELAYREQINTERVAL__1       PtpAdvanceConfigurationLogDelayReqInterval = 1
+	PTPADVANCECONFIGURATIONLOGDELAYREQINTERVAL__MINUS_5                  PtpAdvanceConfigurationLogDelayReqInterval = -5
+	PTPADVANCECONFIGURATIONLOGDELAYREQINTERVAL__MINUS_4                  PtpAdvanceConfigurationLogDelayReqInterval = -4
+	PTPADVANCECONFIGURATIONLOGDELAYREQINTERVAL__MINUS_3                  PtpAdvanceConfigurationLogDelayReqInterval = -3
+	PTPADVANCECONFIGURATIONLOGDELAYREQINTERVAL__MINUS_2                  PtpAdvanceConfigurationLogDelayReqInterval = -2
+	PTPADVANCECONFIGURATIONLOGDELAYREQINTERVAL__MINUS_1                  PtpAdvanceConfigurationLogDelayReqInterval = -1
+	PTPADVANCECONFIGURATIONLOGDELAYREQINTERVAL__0                        PtpAdvanceConfigurationLogDelayReqInterval = 0
+	PTPADVANCECONFIGURATIONLOGDELAYREQINTERVAL__1                        PtpAdvanceConfigurationLogDelayReqInterval = 1
+	PTPADVANCECONFIGURATIONLOGDELAYREQINTERVAL__unknown_default_open_api PtpAdvanceConfigurationLogDelayReqInterval = 11184809
 )
 
 // All allowed values of PtpAdvanceConfigurationLogDelayReqInterval enum
@@ -35,6 +36,7 @@ var AllowedPtpAdvanceConfigurationLogDelayReqIntervalEnumValues = []PtpAdvanceCo
 	-1,
 	0,
 	1,
+	11184809,
 }
 
 func (v *PtpAdvanceConfigurationLogDelayReqInterval) UnmarshalJSON(src []byte) error {
@@ -51,7 +53,8 @@ func (v *PtpAdvanceConfigurationLogDelayReqInterval) UnmarshalJSON(src []byte) e
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid PtpAdvanceConfigurationLogDelayReqInterval", value)
+	*v = PTPADVANCECONFIGURATIONLOGDELAYREQINTERVAL__unknown_default_open_api
+	return nil
 }
 
 // NewPtpAdvanceConfigurationLogDelayReqIntervalFromValue returns a pointer to a valid PtpAdvanceConfigurationLogDelayReqInterval

@@ -17,9 +17,10 @@ type PortChangeType string
 
 // List of PortChange_type
 const (
-	PORTCHANGETYPE_CREATION PortChangeType = "PORT_CREATION"
-	PORTCHANGETYPE_UPDATE   PortChangeType = "PORT_UPDATE"
-	PORTCHANGETYPE_DELETION PortChangeType = "PORT_DELETION"
+	PORTCHANGETYPE_CREATION                 PortChangeType = "PORT_CREATION"
+	PORTCHANGETYPE_UPDATE                   PortChangeType = "PORT_UPDATE"
+	PORTCHANGETYPE_DELETION                 PortChangeType = "PORT_DELETION"
+	PORTCHANGETYPE_UNKNOWN_DEFAULT_OPEN_API PortChangeType = "unknown_default_open_api"
 )
 
 // All allowed values of PortChangeType enum
@@ -27,6 +28,7 @@ var AllowedPortChangeTypeEnumValues = []PortChangeType{
 	"PORT_CREATION",
 	"PORT_UPDATE",
 	"PORT_DELETION",
+	"unknown_default_open_api",
 }
 
 func (v *PortChangeType) UnmarshalJSON(src []byte) error {
@@ -43,7 +45,8 @@ func (v *PortChangeType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid PortChangeType", value)
+	*v = PORTCHANGETYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewPortChangeTypeFromValue returns a pointer to a valid PortChangeType

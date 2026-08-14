@@ -1748,6 +1748,7 @@ func (a *CompanyProfilesApiService) SearchCompanyProfileExecute(r ApiSearchCompa
 		parameterAddToHeaderOrQuery(localVarQueryParams, "viewPoint", r.viewPoint, "form", "")
 	} else {
 		var defaultValue string = "aSide"
+		parameterAddToHeaderOrQuery(localVarQueryParams, "viewPoint", defaultValue, "form", "")
 		r.viewPoint = &defaultValue
 	}
 	// to determine the Content-Type header

@@ -17,14 +17,16 @@ type PrecisionTimeServiceResponseType string
 
 // List of precisionTimeServiceResponse_type
 const (
-	PRECISIONTIMESERVICERESPONSETYPE_NTP PrecisionTimeServiceResponseType = "NTP"
-	PRECISIONTIMESERVICERESPONSETYPE_PTP PrecisionTimeServiceResponseType = "PTP"
+	PRECISIONTIMESERVICERESPONSETYPE_NTP                      PrecisionTimeServiceResponseType = "NTP"
+	PRECISIONTIMESERVICERESPONSETYPE_PTP                      PrecisionTimeServiceResponseType = "PTP"
+	PRECISIONTIMESERVICERESPONSETYPE_UNKNOWN_DEFAULT_OPEN_API PrecisionTimeServiceResponseType = "unknown_default_open_api"
 )
 
 // All allowed values of PrecisionTimeServiceResponseType enum
 var AllowedPrecisionTimeServiceResponseTypeEnumValues = []PrecisionTimeServiceResponseType{
 	"NTP",
 	"PTP",
+	"unknown_default_open_api",
 }
 
 func (v *PrecisionTimeServiceResponseType) UnmarshalJSON(src []byte) error {
@@ -41,7 +43,8 @@ func (v *PrecisionTimeServiceResponseType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid PrecisionTimeServiceResponseType", value)
+	*v = PRECISIONTIMESERVICERESPONSETYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewPrecisionTimeServiceResponseTypeFromValue returns a pointer to a valid PrecisionTimeServiceResponseType

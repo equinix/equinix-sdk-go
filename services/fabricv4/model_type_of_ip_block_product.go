@@ -17,14 +17,16 @@ type TypeOfIpBlockProduct string
 
 // List of TypeOfIpBlockProduct
 const (
-	TYPEOFIPBLOCKPRODUCT_IPV4_IP_BLOCK TypeOfIpBlockProduct = "IPV4_IP_BLOCK"
-	TYPEOFIPBLOCKPRODUCT_IPV6_IP_BLOCK TypeOfIpBlockProduct = "IPV6_IP_BLOCK"
+	TYPEOFIPBLOCKPRODUCT_IPV4_IP_BLOCK            TypeOfIpBlockProduct = "IPV4_IP_BLOCK"
+	TYPEOFIPBLOCKPRODUCT_IPV6_IP_BLOCK            TypeOfIpBlockProduct = "IPV6_IP_BLOCK"
+	TYPEOFIPBLOCKPRODUCT_UNKNOWN_DEFAULT_OPEN_API TypeOfIpBlockProduct = "unknown_default_open_api"
 )
 
 // All allowed values of TypeOfIpBlockProduct enum
 var AllowedTypeOfIpBlockProductEnumValues = []TypeOfIpBlockProduct{
 	"IPV4_IP_BLOCK",
 	"IPV6_IP_BLOCK",
+	"unknown_default_open_api",
 }
 
 func (v *TypeOfIpBlockProduct) UnmarshalJSON(src []byte) error {
@@ -41,7 +43,8 @@ func (v *TypeOfIpBlockProduct) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid TypeOfIpBlockProduct", value)
+	*v = TYPEOFIPBLOCKPRODUCT_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewTypeOfIpBlockProductFromValue returns a pointer to a valid TypeOfIpBlockProduct

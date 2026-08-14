@@ -17,12 +17,14 @@ type StreamAlertRuleType string
 
 // List of StreamAlertRule_type
 const (
-	STREAMALERTRULETYPE_METRIC_ALERT StreamAlertRuleType = "METRIC_ALERT"
+	STREAMALERTRULETYPE_METRIC_ALERT             StreamAlertRuleType = "METRIC_ALERT"
+	STREAMALERTRULETYPE_UNKNOWN_DEFAULT_OPEN_API StreamAlertRuleType = "unknown_default_open_api"
 )
 
 // All allowed values of StreamAlertRuleType enum
 var AllowedStreamAlertRuleTypeEnumValues = []StreamAlertRuleType{
 	"METRIC_ALERT",
+	"unknown_default_open_api",
 }
 
 func (v *StreamAlertRuleType) UnmarshalJSON(src []byte) error {
@@ -39,7 +41,8 @@ func (v *StreamAlertRuleType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid StreamAlertRuleType", value)
+	*v = STREAMALERTRULETYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewStreamAlertRuleTypeFromValue returns a pointer to a valid StreamAlertRuleType

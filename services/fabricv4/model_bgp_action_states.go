@@ -17,9 +17,10 @@ type BGPActionStates string
 
 // List of BGPActionStates
 const (
-	BGPACTIONSTATES_PENDING   BGPActionStates = "PENDING"
-	BGPACTIONSTATES_FAILED    BGPActionStates = "FAILED"
-	BGPACTIONSTATES_SUCCEEDED BGPActionStates = "SUCCEEDED"
+	BGPACTIONSTATES_PENDING                  BGPActionStates = "PENDING"
+	BGPACTIONSTATES_FAILED                   BGPActionStates = "FAILED"
+	BGPACTIONSTATES_SUCCEEDED                BGPActionStates = "SUCCEEDED"
+	BGPACTIONSTATES_UNKNOWN_DEFAULT_OPEN_API BGPActionStates = "unknown_default_open_api"
 )
 
 // All allowed values of BGPActionStates enum
@@ -27,6 +28,7 @@ var AllowedBGPActionStatesEnumValues = []BGPActionStates{
 	"PENDING",
 	"FAILED",
 	"SUCCEEDED",
+	"unknown_default_open_api",
 }
 
 func (v *BGPActionStates) UnmarshalJSON(src []byte) error {
@@ -43,7 +45,8 @@ func (v *BGPActionStates) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid BGPActionStates", value)
+	*v = BGPACTIONSTATES_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewBGPActionStatesFromValue returns a pointer to a valid BGPActionStates

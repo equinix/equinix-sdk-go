@@ -24,6 +24,7 @@ const (
 	ROUTETABLEENTRYSORTBY_CONNECTION_NAME              RouteTableEntrySortBy = "/connection/name"
 	ROUTETABLEENTRYSORTBY_TYPE                         RouteTableEntrySortBy = "/type"
 	ROUTETABLEENTRYSORTBY_MED                          RouteTableEntrySortBy = "/MED"
+	ROUTETABLEENTRYSORTBY_UNKNOWN_DEFAULT_OPEN_API     RouteTableEntrySortBy = "unknown_default_open_api"
 )
 
 // All allowed values of RouteTableEntrySortBy enum
@@ -35,6 +36,7 @@ var AllowedRouteTableEntrySortByEnumValues = []RouteTableEntrySortBy{
 	"/connection/name",
 	"/type",
 	"/MED",
+	"unknown_default_open_api",
 }
 
 func (v *RouteTableEntrySortBy) UnmarshalJSON(src []byte) error {
@@ -51,7 +53,8 @@ func (v *RouteTableEntrySortBy) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid RouteTableEntrySortBy", value)
+	*v = ROUTETABLEENTRYSORTBY_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewRouteTableEntrySortByFromValue returns a pointer to a valid RouteTableEntrySortBy

@@ -22,12 +22,14 @@ type UseTokenPostRequestGrantType string
 const (
 	USETOKENPOSTREQUESTGRANTTYPE_CLIENT_CREDENTIALS                              UseTokenPostRequestGrantType = "client_credentials"
 	USETOKENPOSTREQUESTGRANTTYPE_URN_IETF_PARAMS_OAUTH_GRANT_TYPE_TOKEN_EXCHANGE UseTokenPostRequestGrantType = "urn:ietf:params:oauth:grant-type:token-exchange"
+	USETOKENPOSTREQUESTGRANTTYPE_UNKNOWN_DEFAULT_OPEN_API                        UseTokenPostRequestGrantType = "unknown_default_open_api"
 )
 
 // All allowed values of UseTokenPostRequestGrantType enum
 var AllowedUseTokenPostRequestGrantTypeEnumValues = []UseTokenPostRequestGrantType{
 	"client_credentials",
 	"urn:ietf:params:oauth:grant-type:token-exchange",
+	"unknown_default_open_api",
 }
 
 func (v *UseTokenPostRequestGrantType) UnmarshalJSON(src []byte) error {
@@ -44,7 +46,8 @@ func (v *UseTokenPostRequestGrantType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid UseTokenPostRequestGrantType", value)
+	*v = USETOKENPOSTREQUESTGRANTTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewUseTokenPostRequestGrantTypeFromValue returns a pointer to a valid UseTokenPostRequestGrantType

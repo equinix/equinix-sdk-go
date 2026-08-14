@@ -17,12 +17,14 @@ type RoutingProtocolDirectTypeType string
 
 // List of RoutingProtocolDirectType_type
 const (
-	ROUTINGPROTOCOLDIRECTTYPETYPE_DIRECT RoutingProtocolDirectTypeType = "DIRECT"
+	ROUTINGPROTOCOLDIRECTTYPETYPE_DIRECT                   RoutingProtocolDirectTypeType = "DIRECT"
+	ROUTINGPROTOCOLDIRECTTYPETYPE_UNKNOWN_DEFAULT_OPEN_API RoutingProtocolDirectTypeType = "unknown_default_open_api"
 )
 
 // All allowed values of RoutingProtocolDirectTypeType enum
 var AllowedRoutingProtocolDirectTypeTypeEnumValues = []RoutingProtocolDirectTypeType{
 	"DIRECT",
+	"unknown_default_open_api",
 }
 
 func (v *RoutingProtocolDirectTypeType) UnmarshalJSON(src []byte) error {
@@ -39,7 +41,8 @@ func (v *RoutingProtocolDirectTypeType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid RoutingProtocolDirectTypeType", value)
+	*v = ROUTINGPROTOCOLDIRECTTYPETYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewRoutingProtocolDirectTypeTypeFromValue returns a pointer to a valid RoutingProtocolDirectTypeType

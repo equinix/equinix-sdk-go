@@ -20,14 +20,16 @@ type OrderType string
 
 // List of OrderType
 const (
-	ORDERTYPE_NEW       OrderType = "NEW"
-	ORDERTYPE_AMENDMENT OrderType = "AMENDMENT"
+	ORDERTYPE_NEW                      OrderType = "NEW"
+	ORDERTYPE_AMENDMENT                OrderType = "AMENDMENT"
+	ORDERTYPE_UNKNOWN_DEFAULT_OPEN_API OrderType = "unknown_default_open_api"
 )
 
 // All allowed values of OrderType enum
 var AllowedOrderTypeEnumValues = []OrderType{
 	"NEW",
 	"AMENDMENT",
+	"unknown_default_open_api",
 }
 
 func (v *OrderType) UnmarshalJSON(src []byte) error {
@@ -44,7 +46,8 @@ func (v *OrderType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid OrderType", value)
+	*v = ORDERTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewOrderTypeFromValue returns a pointer to a valid OrderType

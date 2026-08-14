@@ -17,9 +17,10 @@ type LoaActionState string
 
 // List of LoaActionState
 const (
-	LOAACTIONSTATE_COMPLETED LoaActionState = "COMPLETED"
-	LOAACTIONSTATE_FAILED    LoaActionState = "FAILED"
-	LOAACTIONSTATE_PENDING   LoaActionState = "PENDING"
+	LOAACTIONSTATE_COMPLETED                LoaActionState = "COMPLETED"
+	LOAACTIONSTATE_FAILED                   LoaActionState = "FAILED"
+	LOAACTIONSTATE_PENDING                  LoaActionState = "PENDING"
+	LOAACTIONSTATE_UNKNOWN_DEFAULT_OPEN_API LoaActionState = "unknown_default_open_api"
 )
 
 // All allowed values of LoaActionState enum
@@ -27,6 +28,7 @@ var AllowedLoaActionStateEnumValues = []LoaActionState{
 	"COMPLETED",
 	"FAILED",
 	"PENDING",
+	"unknown_default_open_api",
 }
 
 func (v *LoaActionState) UnmarshalJSON(src []byte) error {
@@ -43,7 +45,8 @@ func (v *LoaActionState) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid LoaActionState", value)
+	*v = LOAACTIONSTATE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewLoaActionStateFromValue returns a pointer to a valid LoaActionState

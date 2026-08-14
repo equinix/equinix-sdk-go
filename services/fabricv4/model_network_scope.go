@@ -17,9 +17,10 @@ type NetworkScope string
 
 // List of NetworkScope
 const (
-	NETWORKSCOPE_REGIONAL NetworkScope = "REGIONAL"
-	NETWORKSCOPE_GLOBAL   NetworkScope = "GLOBAL"
-	NETWORKSCOPE_LOCAL    NetworkScope = "LOCAL"
+	NETWORKSCOPE_REGIONAL                 NetworkScope = "REGIONAL"
+	NETWORKSCOPE_GLOBAL                   NetworkScope = "GLOBAL"
+	NETWORKSCOPE_LOCAL                    NetworkScope = "LOCAL"
+	NETWORKSCOPE_UNKNOWN_DEFAULT_OPEN_API NetworkScope = "unknown_default_open_api"
 )
 
 // All allowed values of NetworkScope enum
@@ -27,6 +28,7 @@ var AllowedNetworkScopeEnumValues = []NetworkScope{
 	"REGIONAL",
 	"GLOBAL",
 	"LOCAL",
+	"unknown_default_open_api",
 }
 
 func (v *NetworkScope) UnmarshalJSON(src []byte) error {
@@ -43,7 +45,8 @@ func (v *NetworkScope) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid NetworkScope", value)
+	*v = NETWORKSCOPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewNetworkScopeFromValue returns a pointer to a valid NetworkScope

@@ -17,12 +17,13 @@ type StreamSubscriptionState string
 
 // List of StreamSubscription_state
 const (
-	STREAMSUBSCRIPTIONSTATE_PROVISIONING   StreamSubscriptionState = "PROVISIONING"
-	STREAMSUBSCRIPTIONSTATE_PROVISIONED    StreamSubscriptionState = "PROVISIONED"
-	STREAMSUBSCRIPTIONSTATE_REPROVISIONING StreamSubscriptionState = "REPROVISIONING"
-	STREAMSUBSCRIPTIONSTATE_DEPROVISIONING StreamSubscriptionState = "DEPROVISIONING"
-	STREAMSUBSCRIPTIONSTATE_DEPROVISIONED  StreamSubscriptionState = "DEPROVISIONED"
-	STREAMSUBSCRIPTIONSTATE_FAILED         StreamSubscriptionState = "FAILED"
+	STREAMSUBSCRIPTIONSTATE_PROVISIONING             StreamSubscriptionState = "PROVISIONING"
+	STREAMSUBSCRIPTIONSTATE_PROVISIONED              StreamSubscriptionState = "PROVISIONED"
+	STREAMSUBSCRIPTIONSTATE_REPROVISIONING           StreamSubscriptionState = "REPROVISIONING"
+	STREAMSUBSCRIPTIONSTATE_DEPROVISIONING           StreamSubscriptionState = "DEPROVISIONING"
+	STREAMSUBSCRIPTIONSTATE_DEPROVISIONED            StreamSubscriptionState = "DEPROVISIONED"
+	STREAMSUBSCRIPTIONSTATE_FAILED                   StreamSubscriptionState = "FAILED"
+	STREAMSUBSCRIPTIONSTATE_UNKNOWN_DEFAULT_OPEN_API StreamSubscriptionState = "unknown_default_open_api"
 )
 
 // All allowed values of StreamSubscriptionState enum
@@ -33,6 +34,7 @@ var AllowedStreamSubscriptionStateEnumValues = []StreamSubscriptionState{
 	"DEPROVISIONING",
 	"DEPROVISIONED",
 	"FAILED",
+	"unknown_default_open_api",
 }
 
 func (v *StreamSubscriptionState) UnmarshalJSON(src []byte) error {
@@ -49,7 +51,8 @@ func (v *StreamSubscriptionState) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid StreamSubscriptionState", value)
+	*v = STREAMSUBSCRIPTIONSTATE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewStreamSubscriptionStateFromValue returns a pointer to a valid StreamSubscriptionState

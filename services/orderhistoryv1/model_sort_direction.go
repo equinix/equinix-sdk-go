@@ -20,14 +20,16 @@ type SortDirection string
 
 // List of sort_direction
 const (
-	SORTDIRECTION_ASC  SortDirection = "ASC"
-	SORTDIRECTION_DESC SortDirection = "DESC"
+	SORTDIRECTION_ASC                      SortDirection = "ASC"
+	SORTDIRECTION_DESC                     SortDirection = "DESC"
+	SORTDIRECTION_UNKNOWN_DEFAULT_OPEN_API SortDirection = "unknown_default_open_api"
 )
 
 // All allowed values of SortDirection enum
 var AllowedSortDirectionEnumValues = []SortDirection{
 	"ASC",
 	"DESC",
+	"unknown_default_open_api",
 }
 
 func (v *SortDirection) UnmarshalJSON(src []byte) error {
@@ -44,7 +46,8 @@ func (v *SortDirection) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid SortDirection", value)
+	*v = SORTDIRECTION_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewSortDirectionFromValue returns a pointer to a valid SortDirection

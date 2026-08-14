@@ -17,11 +17,12 @@ type NetworkType string
 
 // List of NetworkType
 const (
-	NETWORKTYPE_EVPLAN  NetworkType = "EVPLAN"
-	NETWORKTYPE_EPLAN   NetworkType = "EPLAN"
-	NETWORKTYPE_IPWAN   NetworkType = "IPWAN"
-	NETWORKTYPE_EVPTREE NetworkType = "EVPTREE"
-	NETWORKTYPE_EPTREE  NetworkType = "EPTREE"
+	NETWORKTYPE_EVPLAN                   NetworkType = "EVPLAN"
+	NETWORKTYPE_EPLAN                    NetworkType = "EPLAN"
+	NETWORKTYPE_IPWAN                    NetworkType = "IPWAN"
+	NETWORKTYPE_EVPTREE                  NetworkType = "EVPTREE"
+	NETWORKTYPE_EPTREE                   NetworkType = "EPTREE"
+	NETWORKTYPE_UNKNOWN_DEFAULT_OPEN_API NetworkType = "unknown_default_open_api"
 )
 
 // All allowed values of NetworkType enum
@@ -31,6 +32,7 @@ var AllowedNetworkTypeEnumValues = []NetworkType{
 	"IPWAN",
 	"EVPTREE",
 	"EPTREE",
+	"unknown_default_open_api",
 }
 
 func (v *NetworkType) UnmarshalJSON(src []byte) error {
@@ -47,7 +49,8 @@ func (v *NetworkType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid NetworkType", value)
+	*v = NETWORKTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewNetworkTypeFromValue returns a pointer to a valid NetworkType

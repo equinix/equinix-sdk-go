@@ -17,14 +17,16 @@ type NetworkSortDirection string
 
 // List of NetworkSortDirection
 const (
-	NETWORKSORTDIRECTION_DESC NetworkSortDirection = "DESC"
-	NETWORKSORTDIRECTION_ASC  NetworkSortDirection = "ASC"
+	NETWORKSORTDIRECTION_DESC                     NetworkSortDirection = "DESC"
+	NETWORKSORTDIRECTION_ASC                      NetworkSortDirection = "ASC"
+	NETWORKSORTDIRECTION_UNKNOWN_DEFAULT_OPEN_API NetworkSortDirection = "unknown_default_open_api"
 )
 
 // All allowed values of NetworkSortDirection enum
 var AllowedNetworkSortDirectionEnumValues = []NetworkSortDirection{
 	"DESC",
 	"ASC",
+	"unknown_default_open_api",
 }
 
 func (v *NetworkSortDirection) UnmarshalJSON(src []byte) error {
@@ -41,7 +43,8 @@ func (v *NetworkSortDirection) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid NetworkSortDirection", value)
+	*v = NETWORKSORTDIRECTION_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewNetworkSortDirectionFromValue returns a pointer to a valid NetworkSortDirection

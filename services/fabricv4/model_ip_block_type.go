@@ -17,14 +17,16 @@ type IpBlockType string
 
 // List of IpBlockType
 const (
-	IPBLOCKTYPE_IPV4 IpBlockType = "IPv4"
-	IPBLOCKTYPE_IPV6 IpBlockType = "IPv6"
+	IPBLOCKTYPE_IPV4                     IpBlockType = "IPv4"
+	IPBLOCKTYPE_IPV6                     IpBlockType = "IPv6"
+	IPBLOCKTYPE_UNKNOWN_DEFAULT_OPEN_API IpBlockType = "unknown_default_open_api"
 )
 
 // All allowed values of IpBlockType enum
 var AllowedIpBlockTypeEnumValues = []IpBlockType{
 	"IPv4",
 	"IPv6",
+	"unknown_default_open_api",
 }
 
 func (v *IpBlockType) UnmarshalJSON(src []byte) error {
@@ -41,7 +43,8 @@ func (v *IpBlockType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid IpBlockType", value)
+	*v = IPBLOCKTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewIpBlockTypeFromValue returns a pointer to a valid IpBlockType

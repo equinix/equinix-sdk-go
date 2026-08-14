@@ -16,10 +16,14 @@ import (
 // checks if the RoutingProtocolChangeData type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &RoutingProtocolChangeData{}
 
-// RoutingProtocolChangeData Current state of latest Routing Protocol change
+// RoutingProtocolChangeData struct for RoutingProtocolChangeData
 type RoutingProtocolChangeData struct {
-	// Current outcome of the change flow
-	Status *string `json:"status,omitempty"`
+	// Uniquely identifies a change
+	Uuid string                    `json:"uuid"`
+	Type RoutingProtocolChangeType `json:"type"`
+	// Routing Protocol Change URI
+	Href   *string                               `json:"href,omitempty"`
+	Status *RoutingProtocolChangeDataAllOfStatus `json:"status,omitempty"`
 	// Created by User Key
 	CreatedBy *string `json:"createdBy,omitempty"`
 	// Set when change flow starts
@@ -29,13 +33,8 @@ type RoutingProtocolChangeData struct {
 	// Set when change object is updated
 	UpdatedDateTime *time.Time `json:"updatedDateTime,omitempty"`
 	// Additional information
-	Information *string                         `json:"information,omitempty"`
-	Data        *RoutingProtocolChangeOperation `json:"data,omitempty"`
-	// Uniquely identifies a change
-	Uuid string                    `json:"uuid"`
-	Type RoutingProtocolChangeType `json:"type"`
-	// Routing Protocol Change URI
-	Href                 *string `json:"href,omitempty"`
+	Information          *string                         `json:"information,omitempty"`
+	Data                 *RoutingProtocolChangeOperation `json:"data,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -60,10 +59,90 @@ func NewRoutingProtocolChangeDataWithDefaults() *RoutingProtocolChangeData {
 	return &this
 }
 
-// GetStatus returns the Status field value if set, zero value otherwise.
-func (o *RoutingProtocolChangeData) GetStatus() string {
-	if o == nil || IsNil(o.Status) {
+// GetUuid returns the Uuid field value
+func (o *RoutingProtocolChangeData) GetUuid() string {
+	if o == nil {
 		var ret string
+		return ret
+	}
+
+	return o.Uuid
+}
+
+// GetUuidOk returns a tuple with the Uuid field value
+// and a boolean to check if the value has been set.
+func (o *RoutingProtocolChangeData) GetUuidOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Uuid, true
+}
+
+// SetUuid sets field value
+func (o *RoutingProtocolChangeData) SetUuid(v string) {
+	o.Uuid = v
+}
+
+// GetType returns the Type field value
+func (o *RoutingProtocolChangeData) GetType() RoutingProtocolChangeType {
+	if o == nil {
+		var ret RoutingProtocolChangeType
+		return ret
+	}
+
+	return o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value
+// and a boolean to check if the value has been set.
+func (o *RoutingProtocolChangeData) GetTypeOk() (*RoutingProtocolChangeType, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Type, true
+}
+
+// SetType sets field value
+func (o *RoutingProtocolChangeData) SetType(v RoutingProtocolChangeType) {
+	o.Type = v
+}
+
+// GetHref returns the Href field value if set, zero value otherwise.
+func (o *RoutingProtocolChangeData) GetHref() string {
+	if o == nil || IsNil(o.Href) {
+		var ret string
+		return ret
+	}
+	return *o.Href
+}
+
+// GetHrefOk returns a tuple with the Href field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RoutingProtocolChangeData) GetHrefOk() (*string, bool) {
+	if o == nil || IsNil(o.Href) {
+		return nil, false
+	}
+	return o.Href, true
+}
+
+// HasHref returns a boolean if a field has been set.
+func (o *RoutingProtocolChangeData) HasHref() bool {
+	if o != nil && !IsNil(o.Href) {
+		return true
+	}
+
+	return false
+}
+
+// SetHref gets a reference to the given string and assigns it to the Href field.
+func (o *RoutingProtocolChangeData) SetHref(v string) {
+	o.Href = &v
+}
+
+// GetStatus returns the Status field value if set, zero value otherwise.
+func (o *RoutingProtocolChangeData) GetStatus() RoutingProtocolChangeDataAllOfStatus {
+	if o == nil || IsNil(o.Status) {
+		var ret RoutingProtocolChangeDataAllOfStatus
 		return ret
 	}
 	return *o.Status
@@ -71,7 +150,7 @@ func (o *RoutingProtocolChangeData) GetStatus() string {
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RoutingProtocolChangeData) GetStatusOk() (*string, bool) {
+func (o *RoutingProtocolChangeData) GetStatusOk() (*RoutingProtocolChangeDataAllOfStatus, bool) {
 	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
@@ -87,8 +166,8 @@ func (o *RoutingProtocolChangeData) HasStatus() bool {
 	return false
 }
 
-// SetStatus gets a reference to the given string and assigns it to the Status field.
-func (o *RoutingProtocolChangeData) SetStatus(v string) {
+// SetStatus gets a reference to the given RoutingProtocolChangeDataAllOfStatus and assigns it to the Status field.
+func (o *RoutingProtocolChangeData) SetStatus(v RoutingProtocolChangeDataAllOfStatus) {
 	o.Status = &v
 }
 
@@ -284,86 +363,6 @@ func (o *RoutingProtocolChangeData) SetData(v RoutingProtocolChangeOperation) {
 	o.Data = &v
 }
 
-// GetUuid returns the Uuid field value
-func (o *RoutingProtocolChangeData) GetUuid() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Uuid
-}
-
-// GetUuidOk returns a tuple with the Uuid field value
-// and a boolean to check if the value has been set.
-func (o *RoutingProtocolChangeData) GetUuidOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Uuid, true
-}
-
-// SetUuid sets field value
-func (o *RoutingProtocolChangeData) SetUuid(v string) {
-	o.Uuid = v
-}
-
-// GetType returns the Type field value
-func (o *RoutingProtocolChangeData) GetType() RoutingProtocolChangeType {
-	if o == nil {
-		var ret RoutingProtocolChangeType
-		return ret
-	}
-
-	return o.Type
-}
-
-// GetTypeOk returns a tuple with the Type field value
-// and a boolean to check if the value has been set.
-func (o *RoutingProtocolChangeData) GetTypeOk() (*RoutingProtocolChangeType, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Type, true
-}
-
-// SetType sets field value
-func (o *RoutingProtocolChangeData) SetType(v RoutingProtocolChangeType) {
-	o.Type = v
-}
-
-// GetHref returns the Href field value if set, zero value otherwise.
-func (o *RoutingProtocolChangeData) GetHref() string {
-	if o == nil || IsNil(o.Href) {
-		var ret string
-		return ret
-	}
-	return *o.Href
-}
-
-// GetHrefOk returns a tuple with the Href field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *RoutingProtocolChangeData) GetHrefOk() (*string, bool) {
-	if o == nil || IsNil(o.Href) {
-		return nil, false
-	}
-	return o.Href, true
-}
-
-// HasHref returns a boolean if a field has been set.
-func (o *RoutingProtocolChangeData) HasHref() bool {
-	if o != nil && !IsNil(o.Href) {
-		return true
-	}
-
-	return false
-}
-
-// SetHref gets a reference to the given string and assigns it to the Href field.
-func (o *RoutingProtocolChangeData) SetHref(v string) {
-	o.Href = &v
-}
-
 func (o RoutingProtocolChangeData) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -374,6 +373,11 @@ func (o RoutingProtocolChangeData) MarshalJSON() ([]byte, error) {
 
 func (o RoutingProtocolChangeData) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["uuid"] = o.Uuid
+	toSerialize["type"] = o.Type
+	if !IsNil(o.Href) {
+		toSerialize["href"] = o.Href
+	}
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
@@ -394,11 +398,6 @@ func (o RoutingProtocolChangeData) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Data) {
 		toSerialize["data"] = o.Data
-	}
-	toSerialize["uuid"] = o.Uuid
-	toSerialize["type"] = o.Type
-	if !IsNil(o.Href) {
-		toSerialize["href"] = o.Href
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -444,6 +443,9 @@ func (o *RoutingProtocolChangeData) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "uuid")
+		delete(additionalProperties, "type")
+		delete(additionalProperties, "href")
 		delete(additionalProperties, "status")
 		delete(additionalProperties, "createdBy")
 		delete(additionalProperties, "createdDateTime")
@@ -451,9 +453,6 @@ func (o *RoutingProtocolChangeData) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "updatedDateTime")
 		delete(additionalProperties, "information")
 		delete(additionalProperties, "data")
-		delete(additionalProperties, "uuid")
-		delete(additionalProperties, "type")
-		delete(additionalProperties, "href")
 		o.AdditionalProperties = additionalProperties
 	}
 

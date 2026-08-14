@@ -24,6 +24,7 @@ const (
 	TIMESERVICESORTBY_PACKAGE_CODE                 TimeServiceSortBy = "/package/code"
 	TIMESERVICESORTBY_CHANGE_LOG_CREATED_DATE_TIME TimeServiceSortBy = "/changeLog/createdDateTime"
 	TIMESERVICESORTBY_CHANGE_LOG_UPDATED_DATE_TIME TimeServiceSortBy = "/changeLog/updatedDateTime"
+	TIMESERVICESORTBY_UNKNOWN_DEFAULT_OPEN_API     TimeServiceSortBy = "unknown_default_open_api"
 )
 
 // All allowed values of TimeServiceSortBy enum
@@ -35,6 +36,7 @@ var AllowedTimeServiceSortByEnumValues = []TimeServiceSortBy{
 	"/package/code",
 	"/changeLog/createdDateTime",
 	"/changeLog/updatedDateTime",
+	"unknown_default_open_api",
 }
 
 func (v *TimeServiceSortBy) UnmarshalJSON(src []byte) error {
@@ -51,7 +53,8 @@ func (v *TimeServiceSortBy) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid TimeServiceSortBy", value)
+	*v = TIMESERVICESORTBY_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewTimeServiceSortByFromValue returns a pointer to a valid TimeServiceSortBy

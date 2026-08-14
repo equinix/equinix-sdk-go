@@ -17,14 +17,16 @@ type VirtualConnectionBridgePackageCode string
 
 // List of VirtualConnectionBridgePackageCode
 const (
-	VIRTUALCONNECTIONBRIDGEPACKAGECODE_REGIONAL VirtualConnectionBridgePackageCode = "REGIONAL"
-	VIRTUALCONNECTIONBRIDGEPACKAGECODE_GLOBAL   VirtualConnectionBridgePackageCode = "GLOBAL"
+	VIRTUALCONNECTIONBRIDGEPACKAGECODE_REGIONAL                 VirtualConnectionBridgePackageCode = "REGIONAL"
+	VIRTUALCONNECTIONBRIDGEPACKAGECODE_GLOBAL                   VirtualConnectionBridgePackageCode = "GLOBAL"
+	VIRTUALCONNECTIONBRIDGEPACKAGECODE_UNKNOWN_DEFAULT_OPEN_API VirtualConnectionBridgePackageCode = "unknown_default_open_api"
 )
 
 // All allowed values of VirtualConnectionBridgePackageCode enum
 var AllowedVirtualConnectionBridgePackageCodeEnumValues = []VirtualConnectionBridgePackageCode{
 	"REGIONAL",
 	"GLOBAL",
+	"unknown_default_open_api",
 }
 
 func (v *VirtualConnectionBridgePackageCode) UnmarshalJSON(src []byte) error {
@@ -41,7 +43,8 @@ func (v *VirtualConnectionBridgePackageCode) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid VirtualConnectionBridgePackageCode", value)
+	*v = VIRTUALCONNECTIONBRIDGEPACKAGECODE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewVirtualConnectionBridgePackageCodeFromValue returns a pointer to a valid VirtualConnectionBridgePackageCode

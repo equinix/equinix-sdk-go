@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **string** | Routing protocol type | 
+**Type** | [**RoutingProtocolBaseType**](RoutingProtocolBaseType.md) |  | 
 **Name** | Pointer to **string** |  | [optional] 
 **BgpIpv4** | Pointer to [**BGPConnectionIpv4**](BGPConnectionIpv4.md) |  | [optional] 
 **BgpIpv6** | Pointer to [**BGPConnectionIpv6**](BGPConnectionIpv6.md) |  | [optional] 
@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 
 ### NewRoutingProtocolBase
 
-`func NewRoutingProtocolBase(type_ string, ) *RoutingProtocolBase`
+`func NewRoutingProtocolBase(type_ RoutingProtocolBaseType, ) *RoutingProtocolBase`
 
 NewRoutingProtocolBase instantiates a new RoutingProtocolBase object
 This constructor will assign default values to properties that have it defined,
@@ -36,20 +36,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetType
 
-`func (o *RoutingProtocolBase) GetType() string`
+`func (o *RoutingProtocolBase) GetType() RoutingProtocolBaseType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *RoutingProtocolBase) GetTypeOk() (*string, bool)`
+`func (o *RoutingProtocolBase) GetTypeOk() (*RoutingProtocolBaseType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *RoutingProtocolBase) SetType(v string)`
+`func (o *RoutingProtocolBase) SetType(v RoutingProtocolBaseType)`
 
 SetType sets Type field to given value.
 

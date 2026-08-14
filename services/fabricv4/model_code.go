@@ -17,11 +17,12 @@ type Code string
 
 // List of code
 const (
-	CODE_LAB      Code = "LAB"
-	CODE_BASIC    Code = "BASIC"
-	CODE_STANDARD Code = "STANDARD"
-	CODE_ADVANCED Code = "ADVANCED"
-	CODE_PREMIUM  Code = "PREMIUM"
+	CODE_LAB                      Code = "LAB"
+	CODE_BASIC                    Code = "BASIC"
+	CODE_STANDARD                 Code = "STANDARD"
+	CODE_ADVANCED                 Code = "ADVANCED"
+	CODE_PREMIUM                  Code = "PREMIUM"
+	CODE_UNKNOWN_DEFAULT_OPEN_API Code = "unknown_default_open_api"
 )
 
 // All allowed values of Code enum
@@ -31,6 +32,7 @@ var AllowedCodeEnumValues = []Code{
 	"STANDARD",
 	"ADVANCED",
 	"PREMIUM",
+	"unknown_default_open_api",
 }
 
 func (v *Code) UnmarshalJSON(src []byte) error {
@@ -47,7 +49,8 @@ func (v *Code) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid Code", value)
+	*v = CODE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewCodeFromValue returns a pointer to a valid Code

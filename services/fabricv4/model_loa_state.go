@@ -17,15 +17,16 @@ type LoaState string
 
 // List of LoaState
 const (
-	LOASTATE_PENDING               LoaState = "PENDING"
-	LOASTATE_FAILED                LoaState = "FAILED"
-	LOASTATE_PENDING_AUTHORIZATION LoaState = "PENDING_AUTHORIZATION"
-	LOASTATE_PENDING_ACCEPTANCE    LoaState = "PENDING_ACCEPTANCE"
-	LOASTATE_REJECTED              LoaState = "REJECTED"
-	LOASTATE_CANCELLED             LoaState = "CANCELLED"
-	LOASTATE_INACTIVE              LoaState = "INACTIVE"
-	LOASTATE_ACTIVE                LoaState = "ACTIVE"
-	LOASTATE_EXPIRED               LoaState = "EXPIRED"
+	LOASTATE_PENDING                  LoaState = "PENDING"
+	LOASTATE_FAILED                   LoaState = "FAILED"
+	LOASTATE_PENDING_AUTHORIZATION    LoaState = "PENDING_AUTHORIZATION"
+	LOASTATE_PENDING_ACCEPTANCE       LoaState = "PENDING_ACCEPTANCE"
+	LOASTATE_REJECTED                 LoaState = "REJECTED"
+	LOASTATE_CANCELLED                LoaState = "CANCELLED"
+	LOASTATE_INACTIVE                 LoaState = "INACTIVE"
+	LOASTATE_ACTIVE                   LoaState = "ACTIVE"
+	LOASTATE_EXPIRED                  LoaState = "EXPIRED"
+	LOASTATE_UNKNOWN_DEFAULT_OPEN_API LoaState = "unknown_default_open_api"
 )
 
 // All allowed values of LoaState enum
@@ -39,6 +40,7 @@ var AllowedLoaStateEnumValues = []LoaState{
 	"INACTIVE",
 	"ACTIVE",
 	"EXPIRED",
+	"unknown_default_open_api",
 }
 
 func (v *LoaState) UnmarshalJSON(src []byte) error {
@@ -55,7 +57,8 @@ func (v *LoaState) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid LoaState", value)
+	*v = LOASTATE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewLoaStateFromValue returns a pointer to a valid LoaState

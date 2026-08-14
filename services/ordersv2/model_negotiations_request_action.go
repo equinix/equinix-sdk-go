@@ -20,9 +20,10 @@ type NegotiationsRequestAction string
 
 // List of Negotiations_request_action
 const (
-	NEGOTIATIONSREQUESTACTION_APPROVE              NegotiationsRequestAction = "APPROVE"
-	NEGOTIATIONSREQUESTACTION_APPROVE_NON_EXPEDITE NegotiationsRequestAction = "APPROVE_NON_EXPEDITE"
-	NEGOTIATIONSREQUESTACTION_CANCEL               NegotiationsRequestAction = "CANCEL"
+	NEGOTIATIONSREQUESTACTION_APPROVE                  NegotiationsRequestAction = "APPROVE"
+	NEGOTIATIONSREQUESTACTION_APPROVE_NON_EXPEDITE     NegotiationsRequestAction = "APPROVE_NON_EXPEDITE"
+	NEGOTIATIONSREQUESTACTION_CANCEL                   NegotiationsRequestAction = "CANCEL"
+	NEGOTIATIONSREQUESTACTION_UNKNOWN_DEFAULT_OPEN_API NegotiationsRequestAction = "unknown_default_open_api"
 )
 
 // All allowed values of NegotiationsRequestAction enum
@@ -30,6 +31,7 @@ var AllowedNegotiationsRequestActionEnumValues = []NegotiationsRequestAction{
 	"APPROVE",
 	"APPROVE_NON_EXPEDITE",
 	"CANCEL",
+	"unknown_default_open_api",
 }
 
 func (v *NegotiationsRequestAction) UnmarshalJSON(src []byte) error {
@@ -46,7 +48,8 @@ func (v *NegotiationsRequestAction) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid NegotiationsRequestAction", value)
+	*v = NEGOTIATIONSREQUESTACTION_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewNegotiationsRequestActionFromValue returns a pointer to a valid NegotiationsRequestAction

@@ -17,12 +17,13 @@ type ServiceProfileChangeStatus string
 
 // List of ServiceProfileChange_status
 const (
-	SERVICEPROFILECHANGESTATUS_APPROVED               ServiceProfileChangeStatus = "APPROVED"
-	SERVICEPROFILECHANGESTATUS_COMPLETED              ServiceProfileChangeStatus = "COMPLETED"
-	SERVICEPROFILECHANGESTATUS_FAILED                 ServiceProfileChangeStatus = "FAILED"
-	SERVICEPROFILECHANGESTATUS_REJECTED               ServiceProfileChangeStatus = "REJECTED"
-	SERVICEPROFILECHANGESTATUS_REQUESTED              ServiceProfileChangeStatus = "REQUESTED"
-	SERVICEPROFILECHANGESTATUS_SUBMITTED_FOR_APPROVAL ServiceProfileChangeStatus = "SUBMITTED_FOR_APPROVAL"
+	SERVICEPROFILECHANGESTATUS_APPROVED                 ServiceProfileChangeStatus = "APPROVED"
+	SERVICEPROFILECHANGESTATUS_COMPLETED                ServiceProfileChangeStatus = "COMPLETED"
+	SERVICEPROFILECHANGESTATUS_FAILED                   ServiceProfileChangeStatus = "FAILED"
+	SERVICEPROFILECHANGESTATUS_REJECTED                 ServiceProfileChangeStatus = "REJECTED"
+	SERVICEPROFILECHANGESTATUS_REQUESTED                ServiceProfileChangeStatus = "REQUESTED"
+	SERVICEPROFILECHANGESTATUS_SUBMITTED_FOR_APPROVAL   ServiceProfileChangeStatus = "SUBMITTED_FOR_APPROVAL"
+	SERVICEPROFILECHANGESTATUS_UNKNOWN_DEFAULT_OPEN_API ServiceProfileChangeStatus = "unknown_default_open_api"
 )
 
 // All allowed values of ServiceProfileChangeStatus enum
@@ -33,6 +34,7 @@ var AllowedServiceProfileChangeStatusEnumValues = []ServiceProfileChangeStatus{
 	"REJECTED",
 	"REQUESTED",
 	"SUBMITTED_FOR_APPROVAL",
+	"unknown_default_open_api",
 }
 
 func (v *ServiceProfileChangeStatus) UnmarshalJSON(src []byte) error {
@@ -49,7 +51,8 @@ func (v *ServiceProfileChangeStatus) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ServiceProfileChangeStatus", value)
+	*v = SERVICEPROFILECHANGESTATUS_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewServiceProfileChangeStatusFromValue returns a pointer to a valid ServiceProfileChangeStatus

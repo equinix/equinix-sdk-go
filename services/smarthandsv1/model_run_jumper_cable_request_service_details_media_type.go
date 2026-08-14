@@ -20,15 +20,16 @@ type RunJumperCableRequestServiceDetailsMediaType string
 
 // List of runJumperCableRequest_serviceDetails_mediaType
 const (
-	RUNJUMPERCABLEREQUESTSERVICEDETAILSMEDIATYPE_MULTI_MODE_62_5MIC RunJumperCableRequestServiceDetailsMediaType = "Multi-mode 62.5mic"
-	RUNJUMPERCABLEREQUESTSERVICEDETAILSMEDIATYPE_MULTI_MODE_50MIC   RunJumperCableRequestServiceDetailsMediaType = "Multi-mode 50mic"
-	RUNJUMPERCABLEREQUESTSERVICEDETAILSMEDIATYPE_SINGLE_MODE        RunJumperCableRequestServiceDetailsMediaType = "Single-mode"
-	RUNJUMPERCABLEREQUESTSERVICEDETAILSMEDIATYPE_CAT_5              RunJumperCableRequestServiceDetailsMediaType = "Cat-5"
-	RUNJUMPERCABLEREQUESTSERVICEDETAILSMEDIATYPE_CAT_6              RunJumperCableRequestServiceDetailsMediaType = "Cat-6"
-	RUNJUMPERCABLEREQUESTSERVICEDETAILSMEDIATYPE_COAX               RunJumperCableRequestServiceDetailsMediaType = "Coax"
-	RUNJUMPERCABLEREQUESTSERVICEDETAILSMEDIATYPE_POTS               RunJumperCableRequestServiceDetailsMediaType = "POTS"
-	RUNJUMPERCABLEREQUESTSERVICEDETAILSMEDIATYPE_T1                 RunJumperCableRequestServiceDetailsMediaType = "T1"
-	RUNJUMPERCABLEREQUESTSERVICEDETAILSMEDIATYPE_E1                 RunJumperCableRequestServiceDetailsMediaType = "E1"
+	RUNJUMPERCABLEREQUESTSERVICEDETAILSMEDIATYPE_MULTI_MODE_62_5MIC       RunJumperCableRequestServiceDetailsMediaType = "Multi-mode 62.5mic"
+	RUNJUMPERCABLEREQUESTSERVICEDETAILSMEDIATYPE_MULTI_MODE_50MIC         RunJumperCableRequestServiceDetailsMediaType = "Multi-mode 50mic"
+	RUNJUMPERCABLEREQUESTSERVICEDETAILSMEDIATYPE_SINGLE_MODE              RunJumperCableRequestServiceDetailsMediaType = "Single-mode"
+	RUNJUMPERCABLEREQUESTSERVICEDETAILSMEDIATYPE_CAT_5                    RunJumperCableRequestServiceDetailsMediaType = "Cat-5"
+	RUNJUMPERCABLEREQUESTSERVICEDETAILSMEDIATYPE_CAT_6                    RunJumperCableRequestServiceDetailsMediaType = "Cat-6"
+	RUNJUMPERCABLEREQUESTSERVICEDETAILSMEDIATYPE_COAX                     RunJumperCableRequestServiceDetailsMediaType = "Coax"
+	RUNJUMPERCABLEREQUESTSERVICEDETAILSMEDIATYPE_POTS                     RunJumperCableRequestServiceDetailsMediaType = "POTS"
+	RUNJUMPERCABLEREQUESTSERVICEDETAILSMEDIATYPE_T1                       RunJumperCableRequestServiceDetailsMediaType = "T1"
+	RUNJUMPERCABLEREQUESTSERVICEDETAILSMEDIATYPE_E1                       RunJumperCableRequestServiceDetailsMediaType = "E1"
+	RUNJUMPERCABLEREQUESTSERVICEDETAILSMEDIATYPE_UNKNOWN_DEFAULT_OPEN_API RunJumperCableRequestServiceDetailsMediaType = "unknown_default_open_api"
 )
 
 // All allowed values of RunJumperCableRequestServiceDetailsMediaType enum
@@ -42,6 +43,7 @@ var AllowedRunJumperCableRequestServiceDetailsMediaTypeEnumValues = []RunJumperC
 	"POTS",
 	"T1",
 	"E1",
+	"unknown_default_open_api",
 }
 
 func (v *RunJumperCableRequestServiceDetailsMediaType) UnmarshalJSON(src []byte) error {
@@ -58,7 +60,8 @@ func (v *RunJumperCableRequestServiceDetailsMediaType) UnmarshalJSON(src []byte)
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid RunJumperCableRequestServiceDetailsMediaType", value)
+	*v = RUNJUMPERCABLEREQUESTSERVICEDETAILSMEDIATYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewRunJumperCableRequestServiceDetailsMediaTypeFromValue returns a pointer to a valid RunJumperCableRequestServiceDetailsMediaType

@@ -20,10 +20,11 @@ type ContactRequestAvailability string
 
 // List of ContactRequest_availability
 const (
-	CONTACTREQUESTAVAILABILITY_WORK_HOURS              ContactRequestAvailability = "WORK_HOURS"
-	CONTACTREQUESTAVAILABILITY_ANYTIME                 ContactRequestAvailability = "ANYTIME"
-	CONTACTREQUESTAVAILABILITY_CUSTOMER_BUSINESS_HOURS ContactRequestAvailability = "CUSTOMER_BUSINESS_HOURS"
-	CONTACTREQUESTAVAILABILITY_NOT_AVAILABLE           ContactRequestAvailability = "NOT_AVAILABLE"
+	CONTACTREQUESTAVAILABILITY_WORK_HOURS               ContactRequestAvailability = "WORK_HOURS"
+	CONTACTREQUESTAVAILABILITY_ANYTIME                  ContactRequestAvailability = "ANYTIME"
+	CONTACTREQUESTAVAILABILITY_CUSTOMER_BUSINESS_HOURS  ContactRequestAvailability = "CUSTOMER_BUSINESS_HOURS"
+	CONTACTREQUESTAVAILABILITY_NOT_AVAILABLE            ContactRequestAvailability = "NOT_AVAILABLE"
+	CONTACTREQUESTAVAILABILITY_UNKNOWN_DEFAULT_OPEN_API ContactRequestAvailability = "unknown_default_open_api"
 )
 
 // All allowed values of ContactRequestAvailability enum
@@ -32,6 +33,7 @@ var AllowedContactRequestAvailabilityEnumValues = []ContactRequestAvailability{
 	"ANYTIME",
 	"CUSTOMER_BUSINESS_HOURS",
 	"NOT_AVAILABLE",
+	"unknown_default_open_api",
 }
 
 func (v *ContactRequestAvailability) UnmarshalJSON(src []byte) error {
@@ -48,7 +50,8 @@ func (v *ContactRequestAvailability) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ContactRequestAvailability", value)
+	*v = CONTACTREQUESTAVAILABILITY_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewContactRequestAvailabilityFromValue returns a pointer to a valid ContactRequestAvailability

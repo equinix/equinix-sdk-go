@@ -17,9 +17,10 @@ type PtpAdvanceConfigurationTransportMode string
 
 // List of ptpAdvanceConfiguration_transportMode
 const (
-	PTPADVANCECONFIGURATIONTRANSPORTMODE_MULTICAST PtpAdvanceConfigurationTransportMode = "MULTICAST"
-	PTPADVANCECONFIGURATIONTRANSPORTMODE_UNICAST   PtpAdvanceConfigurationTransportMode = "UNICAST"
-	PTPADVANCECONFIGURATIONTRANSPORTMODE_HYBRID    PtpAdvanceConfigurationTransportMode = "HYBRID"
+	PTPADVANCECONFIGURATIONTRANSPORTMODE_MULTICAST                PtpAdvanceConfigurationTransportMode = "MULTICAST"
+	PTPADVANCECONFIGURATIONTRANSPORTMODE_UNICAST                  PtpAdvanceConfigurationTransportMode = "UNICAST"
+	PTPADVANCECONFIGURATIONTRANSPORTMODE_HYBRID                   PtpAdvanceConfigurationTransportMode = "HYBRID"
+	PTPADVANCECONFIGURATIONTRANSPORTMODE_UNKNOWN_DEFAULT_OPEN_API PtpAdvanceConfigurationTransportMode = "unknown_default_open_api"
 )
 
 // All allowed values of PtpAdvanceConfigurationTransportMode enum
@@ -27,6 +28,7 @@ var AllowedPtpAdvanceConfigurationTransportModeEnumValues = []PtpAdvanceConfigur
 	"MULTICAST",
 	"UNICAST",
 	"HYBRID",
+	"unknown_default_open_api",
 }
 
 func (v *PtpAdvanceConfigurationTransportMode) UnmarshalJSON(src []byte) error {
@@ -43,7 +45,8 @@ func (v *PtpAdvanceConfigurationTransportMode) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid PtpAdvanceConfigurationTransportMode", value)
+	*v = PTPADVANCECONFIGURATIONTRANSPORTMODE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewPtpAdvanceConfigurationTransportModeFromValue returns a pointer to a valid PtpAdvanceConfigurationTransportMode

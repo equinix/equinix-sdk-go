@@ -17,21 +17,22 @@ type ConnectionType string
 
 // List of ConnectionType
 const (
-	CONNECTIONTYPE_EVPL_VC       ConnectionType = "EVPL_VC"
-	CONNECTIONTYPE_EPL_VC        ConnectionType = "EPL_VC"
-	CONNECTIONTYPE_EC_VC         ConnectionType = "EC_VC"
-	CONNECTIONTYPE_IP_VC         ConnectionType = "IP_VC"
-	CONNECTIONTYPE_ACCESS_EPL_VC ConnectionType = "ACCESS_EPL_VC"
-	CONNECTIONTYPE_EIA_VC        ConnectionType = "EIA_VC"
-	CONNECTIONTYPE_EVPLAN_VC     ConnectionType = "EVPLAN_VC"
-	CONNECTIONTYPE_EPLAN_VC      ConnectionType = "EPLAN_VC"
-	CONNECTIONTYPE_EVPTREE_VC    ConnectionType = "EVPTREE_VC"
-	CONNECTIONTYPE_EPTREE_VC     ConnectionType = "EPTREE_VC"
-	CONNECTIONTYPE_IPWAN_VC      ConnectionType = "IPWAN_VC"
-	CONNECTIONTYPE_IA_VC         ConnectionType = "IA_VC"
-	CONNECTIONTYPE_MC_VC         ConnectionType = "MC_VC"
-	CONNECTIONTYPE_IX_VC         ConnectionType = "IX_VC"
-	CONNECTIONTYPE_IC_VC         ConnectionType = "IC_VC"
+	CONNECTIONTYPE_EVPL_VC                  ConnectionType = "EVPL_VC"
+	CONNECTIONTYPE_EPL_VC                   ConnectionType = "EPL_VC"
+	CONNECTIONTYPE_EC_VC                    ConnectionType = "EC_VC"
+	CONNECTIONTYPE_IP_VC                    ConnectionType = "IP_VC"
+	CONNECTIONTYPE_ACCESS_EPL_VC            ConnectionType = "ACCESS_EPL_VC"
+	CONNECTIONTYPE_EIA_VC                   ConnectionType = "EIA_VC"
+	CONNECTIONTYPE_EVPLAN_VC                ConnectionType = "EVPLAN_VC"
+	CONNECTIONTYPE_EPLAN_VC                 ConnectionType = "EPLAN_VC"
+	CONNECTIONTYPE_EVPTREE_VC               ConnectionType = "EVPTREE_VC"
+	CONNECTIONTYPE_EPTREE_VC                ConnectionType = "EPTREE_VC"
+	CONNECTIONTYPE_IPWAN_VC                 ConnectionType = "IPWAN_VC"
+	CONNECTIONTYPE_IA_VC                    ConnectionType = "IA_VC"
+	CONNECTIONTYPE_MC_VC                    ConnectionType = "MC_VC"
+	CONNECTIONTYPE_IX_VC                    ConnectionType = "IX_VC"
+	CONNECTIONTYPE_IC_VC                    ConnectionType = "IC_VC"
+	CONNECTIONTYPE_UNKNOWN_DEFAULT_OPEN_API ConnectionType = "unknown_default_open_api"
 )
 
 // All allowed values of ConnectionType enum
@@ -51,6 +52,7 @@ var AllowedConnectionTypeEnumValues = []ConnectionType{
 	"MC_VC",
 	"IX_VC",
 	"IC_VC",
+	"unknown_default_open_api",
 }
 
 func (v *ConnectionType) UnmarshalJSON(src []byte) error {
@@ -67,7 +69,8 @@ func (v *ConnectionType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ConnectionType", value)
+	*v = CONNECTIONTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewConnectionTypeFromValue returns a pointer to a valid ConnectionType

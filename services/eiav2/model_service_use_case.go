@@ -20,9 +20,10 @@ type ServiceUseCase string
 
 // List of ServiceUseCase
 const (
-	SERVICEUSECASE_MAIN              ServiceUseCase = "MAIN"
-	SERVICEUSECASE_BACKUP            ServiceUseCase = "BACKUP"
-	SERVICEUSECASE_MANAGEMENT_ACCESS ServiceUseCase = "MANAGEMENT_ACCESS"
+	SERVICEUSECASE_MAIN                     ServiceUseCase = "MAIN"
+	SERVICEUSECASE_BACKUP                   ServiceUseCase = "BACKUP"
+	SERVICEUSECASE_MANAGEMENT_ACCESS        ServiceUseCase = "MANAGEMENT_ACCESS"
+	SERVICEUSECASE_UNKNOWN_DEFAULT_OPEN_API ServiceUseCase = "unknown_default_open_api"
 )
 
 // All allowed values of ServiceUseCase enum
@@ -30,6 +31,7 @@ var AllowedServiceUseCaseEnumValues = []ServiceUseCase{
 	"MAIN",
 	"BACKUP",
 	"MANAGEMENT_ACCESS",
+	"unknown_default_open_api",
 }
 
 func (v *ServiceUseCase) UnmarshalJSON(src []byte) error {
@@ -46,7 +48,8 @@ func (v *ServiceUseCase) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ServiceUseCase", value)
+	*v = SERVICEUSECASE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewServiceUseCaseFromValue returns a pointer to a valid ServiceUseCase

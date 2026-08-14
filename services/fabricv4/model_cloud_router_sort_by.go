@@ -29,6 +29,7 @@ const (
 	CLOUDROUTERSORTBY_CHANGE_LOG_UPDATED_DATE_TIME CloudRouterSortBy = "/changeLog/updatedDateTime"
 	CLOUDROUTERSORTBY_CHANGE_LOG_DELETED_DATE_TIME CloudRouterSortBy = "/changeLog/deletedDateTime"
 	CLOUDROUTERSORTBY_ORDER_TERM_LENGTH            CloudRouterSortBy = "/order/termLength"
+	CLOUDROUTERSORTBY_UNKNOWN_DEFAULT_OPEN_API     CloudRouterSortBy = "unknown_default_open_api"
 )
 
 // All allowed values of CloudRouterSortBy enum
@@ -45,6 +46,7 @@ var AllowedCloudRouterSortByEnumValues = []CloudRouterSortBy{
 	"/changeLog/updatedDateTime",
 	"/changeLog/deletedDateTime",
 	"/order/termLength",
+	"unknown_default_open_api",
 }
 
 func (v *CloudRouterSortBy) UnmarshalJSON(src []byte) error {
@@ -61,7 +63,8 @@ func (v *CloudRouterSortBy) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid CloudRouterSortBy", value)
+	*v = CLOUDROUTERSORTBY_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewCloudRouterSortByFromValue returns a pointer to a valid CloudRouterSortBy

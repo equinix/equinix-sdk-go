@@ -17,9 +17,10 @@ type PortSettingsPackageType string
 
 // List of PortSettings_packageType
 const (
-	PORTSETTINGSPACKAGETYPE_STANDARD       PortSettingsPackageType = "STANDARD"
-	PORTSETTINGSPACKAGETYPE_UNLIMITED      PortSettingsPackageType = "UNLIMITED"
-	PORTSETTINGSPACKAGETYPE_UNLIMITED_PLUS PortSettingsPackageType = "UNLIMITED_PLUS"
+	PORTSETTINGSPACKAGETYPE_STANDARD                 PortSettingsPackageType = "STANDARD"
+	PORTSETTINGSPACKAGETYPE_UNLIMITED                PortSettingsPackageType = "UNLIMITED"
+	PORTSETTINGSPACKAGETYPE_UNLIMITED_PLUS           PortSettingsPackageType = "UNLIMITED_PLUS"
+	PORTSETTINGSPACKAGETYPE_UNKNOWN_DEFAULT_OPEN_API PortSettingsPackageType = "unknown_default_open_api"
 )
 
 // All allowed values of PortSettingsPackageType enum
@@ -27,6 +28,7 @@ var AllowedPortSettingsPackageTypeEnumValues = []PortSettingsPackageType{
 	"STANDARD",
 	"UNLIMITED",
 	"UNLIMITED_PLUS",
+	"unknown_default_open_api",
 }
 
 func (v *PortSettingsPackageType) UnmarshalJSON(src []byte) error {
@@ -43,7 +45,8 @@ func (v *PortSettingsPackageType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid PortSettingsPackageType", value)
+	*v = PORTSETTINGSPACKAGETYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewPortSettingsPackageTypeFromValue returns a pointer to a valid PortSettingsPackageType

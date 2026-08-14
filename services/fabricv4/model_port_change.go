@@ -18,9 +18,9 @@ var _ MappedNullable = &PortChange{}
 // PortChange Current state of latest port change
 type PortChange struct {
 	// Uniquely identifies a change
-	Uuid   *string           `json:"uuid,omitempty"`
-	Type   *PortChangeType   `json:"type,omitempty"`
-	Status *PortChangeStatus `json:"status,omitempty"`
+	Uuid   *string                               `json:"uuid,omitempty"`
+	Type   *PortChangeType                       `json:"type,omitempty"`
+	Status *RoutingProtocolChangeDataAllOfStatus `json:"status,omitempty"`
 	// Additional information
 	Information *string              `json:"information,omitempty"`
 	Data        *PortChangeOperation `json:"data,omitempty"`
@@ -115,9 +115,9 @@ func (o *PortChange) SetType(v PortChangeType) {
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
-func (o *PortChange) GetStatus() PortChangeStatus {
+func (o *PortChange) GetStatus() RoutingProtocolChangeDataAllOfStatus {
 	if o == nil || IsNil(o.Status) {
-		var ret PortChangeStatus
+		var ret RoutingProtocolChangeDataAllOfStatus
 		return ret
 	}
 	return *o.Status
@@ -125,7 +125,7 @@ func (o *PortChange) GetStatus() PortChangeStatus {
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PortChange) GetStatusOk() (*PortChangeStatus, bool) {
+func (o *PortChange) GetStatusOk() (*RoutingProtocolChangeDataAllOfStatus, bool) {
 	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
@@ -141,8 +141,8 @@ func (o *PortChange) HasStatus() bool {
 	return false
 }
 
-// SetStatus gets a reference to the given PortChangeStatus and assigns it to the Status field.
-func (o *PortChange) SetStatus(v PortChangeStatus) {
+// SetStatus gets a reference to the given RoutingProtocolChangeDataAllOfStatus and assigns it to the Status field.
+func (o *PortChange) SetStatus(v RoutingProtocolChangeDataAllOfStatus) {
 	o.Status = &v
 }
 

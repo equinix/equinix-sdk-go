@@ -17,11 +17,12 @@ type GatewayAttachmentResponseAttachmentStatus string
 
 // List of GatewayAttachmentResponse_attachmentStatus
 const (
-	GATEWAYATTACHMENTRESPONSEATTACHMENTSTATUS_ATTACHING GatewayAttachmentResponseAttachmentStatus = "ATTACHING"
-	GATEWAYATTACHMENTRESPONSEATTACHMENTSTATUS_ATTACHED  GatewayAttachmentResponseAttachmentStatus = "ATTACHED"
-	GATEWAYATTACHMENTRESPONSEATTACHMENTSTATUS_DETACHING GatewayAttachmentResponseAttachmentStatus = "DETACHING"
-	GATEWAYATTACHMENTRESPONSEATTACHMENTSTATUS_DETACHED  GatewayAttachmentResponseAttachmentStatus = "DETACHED"
-	GATEWAYATTACHMENTRESPONSEATTACHMENTSTATUS_FAILED    GatewayAttachmentResponseAttachmentStatus = "FAILED"
+	GATEWAYATTACHMENTRESPONSEATTACHMENTSTATUS_ATTACHING                GatewayAttachmentResponseAttachmentStatus = "ATTACHING"
+	GATEWAYATTACHMENTRESPONSEATTACHMENTSTATUS_ATTACHED                 GatewayAttachmentResponseAttachmentStatus = "ATTACHED"
+	GATEWAYATTACHMENTRESPONSEATTACHMENTSTATUS_DETACHING                GatewayAttachmentResponseAttachmentStatus = "DETACHING"
+	GATEWAYATTACHMENTRESPONSEATTACHMENTSTATUS_DETACHED                 GatewayAttachmentResponseAttachmentStatus = "DETACHED"
+	GATEWAYATTACHMENTRESPONSEATTACHMENTSTATUS_FAILED                   GatewayAttachmentResponseAttachmentStatus = "FAILED"
+	GATEWAYATTACHMENTRESPONSEATTACHMENTSTATUS_UNKNOWN_DEFAULT_OPEN_API GatewayAttachmentResponseAttachmentStatus = "unknown_default_open_api"
 )
 
 // All allowed values of GatewayAttachmentResponseAttachmentStatus enum
@@ -31,6 +32,7 @@ var AllowedGatewayAttachmentResponseAttachmentStatusEnumValues = []GatewayAttach
 	"DETACHING",
 	"DETACHED",
 	"FAILED",
+	"unknown_default_open_api",
 }
 
 func (v *GatewayAttachmentResponseAttachmentStatus) UnmarshalJSON(src []byte) error {
@@ -47,7 +49,8 @@ func (v *GatewayAttachmentResponseAttachmentStatus) UnmarshalJSON(src []byte) er
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid GatewayAttachmentResponseAttachmentStatus", value)
+	*v = GATEWAYATTACHMENTRESPONSEATTACHMENTSTATUS_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewGatewayAttachmentResponseAttachmentStatusFromValue returns a pointer to a valid GatewayAttachmentResponseAttachmentStatus

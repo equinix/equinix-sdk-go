@@ -17,17 +17,18 @@ type AccessPointType string
 
 // List of AccessPointType
 const (
-	ACCESSPOINTTYPE_VD             AccessPointType = "VD"
-	ACCESSPOINTTYPE_VG             AccessPointType = "VG"
-	ACCESSPOINTTYPE_SP             AccessPointType = "SP"
-	ACCESSPOINTTYPE_IGW            AccessPointType = "IGW"
-	ACCESSPOINTTYPE_COLO           AccessPointType = "COLO"
-	ACCESSPOINTTYPE_SUBNET         AccessPointType = "SUBNET"
-	ACCESSPOINTTYPE_CLOUD_ROUTER   AccessPointType = "CLOUD_ROUTER"
-	ACCESSPOINTTYPE_NETWORK        AccessPointType = "NETWORK"
-	ACCESSPOINTTYPE_METAL_NETWORK  AccessPointType = "METAL_NETWORK"
-	ACCESSPOINTTYPE_VPIC_INTERFACE AccessPointType = "VPIC_INTERFACE"
-	ACCESSPOINTTYPE_APP_LINK       AccessPointType = "APP_LINK"
+	ACCESSPOINTTYPE_VD                       AccessPointType = "VD"
+	ACCESSPOINTTYPE_VG                       AccessPointType = "VG"
+	ACCESSPOINTTYPE_SP                       AccessPointType = "SP"
+	ACCESSPOINTTYPE_IGW                      AccessPointType = "IGW"
+	ACCESSPOINTTYPE_COLO                     AccessPointType = "COLO"
+	ACCESSPOINTTYPE_SUBNET                   AccessPointType = "SUBNET"
+	ACCESSPOINTTYPE_CLOUD_ROUTER             AccessPointType = "CLOUD_ROUTER"
+	ACCESSPOINTTYPE_NETWORK                  AccessPointType = "NETWORK"
+	ACCESSPOINTTYPE_METAL_NETWORK            AccessPointType = "METAL_NETWORK"
+	ACCESSPOINTTYPE_VPIC_INTERFACE           AccessPointType = "VPIC_INTERFACE"
+	ACCESSPOINTTYPE_APP_LINK                 AccessPointType = "APP_LINK"
+	ACCESSPOINTTYPE_UNKNOWN_DEFAULT_OPEN_API AccessPointType = "unknown_default_open_api"
 )
 
 // All allowed values of AccessPointType enum
@@ -43,6 +44,7 @@ var AllowedAccessPointTypeEnumValues = []AccessPointType{
 	"METAL_NETWORK",
 	"VPIC_INTERFACE",
 	"APP_LINK",
+	"unknown_default_open_api",
 }
 
 func (v *AccessPointType) UnmarshalJSON(src []byte) error {
@@ -59,7 +61,8 @@ func (v *AccessPointType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid AccessPointType", value)
+	*v = ACCESSPOINTTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewAccessPointTypeFromValue returns a pointer to a valid AccessPointType

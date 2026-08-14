@@ -17,9 +17,10 @@ type ServiceProfileLinkProtocolConfigEncapsulation string
 
 // List of ServiceProfileLinkProtocolConfig_encapsulation
 const (
-	SERVICEPROFILELINKPROTOCOLCONFIGENCAPSULATION_QINQ     ServiceProfileLinkProtocolConfigEncapsulation = "QINQ"
-	SERVICEPROFILELINKPROTOCOLCONFIGENCAPSULATION_DOT1_Q   ServiceProfileLinkProtocolConfigEncapsulation = "DOT1Q"
-	SERVICEPROFILELINKPROTOCOLCONFIGENCAPSULATION_UNTAGGED ServiceProfileLinkProtocolConfigEncapsulation = "UNTAGGED"
+	SERVICEPROFILELINKPROTOCOLCONFIGENCAPSULATION_QINQ                     ServiceProfileLinkProtocolConfigEncapsulation = "QINQ"
+	SERVICEPROFILELINKPROTOCOLCONFIGENCAPSULATION_DOT1_Q                   ServiceProfileLinkProtocolConfigEncapsulation = "DOT1Q"
+	SERVICEPROFILELINKPROTOCOLCONFIGENCAPSULATION_UNTAGGED                 ServiceProfileLinkProtocolConfigEncapsulation = "UNTAGGED"
+	SERVICEPROFILELINKPROTOCOLCONFIGENCAPSULATION_UNKNOWN_DEFAULT_OPEN_API ServiceProfileLinkProtocolConfigEncapsulation = "unknown_default_open_api"
 )
 
 // All allowed values of ServiceProfileLinkProtocolConfigEncapsulation enum
@@ -27,6 +28,7 @@ var AllowedServiceProfileLinkProtocolConfigEncapsulationEnumValues = []ServicePr
 	"QINQ",
 	"DOT1Q",
 	"UNTAGGED",
+	"unknown_default_open_api",
 }
 
 func (v *ServiceProfileLinkProtocolConfigEncapsulation) UnmarshalJSON(src []byte) error {
@@ -43,7 +45,8 @@ func (v *ServiceProfileLinkProtocolConfigEncapsulation) UnmarshalJSON(src []byte
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ServiceProfileLinkProtocolConfigEncapsulation", value)
+	*v = SERVICEPROFILELINKPROTOCOLCONFIGENCAPSULATION_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewServiceProfileLinkProtocolConfigEncapsulationFromValue returns a pointer to a valid ServiceProfileLinkProtocolConfigEncapsulation

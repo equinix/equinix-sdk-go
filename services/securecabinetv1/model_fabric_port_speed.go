@@ -20,14 +20,16 @@ type FabricPortSpeed string
 
 // List of FabricPortSpeed
 const (
-	FABRICPORTSPEED__1_GBPS  FabricPortSpeed = "SPEED_1_GBPS"
-	FABRICPORTSPEED__10_GBPS FabricPortSpeed = "SPEED_10_GBPS"
+	FABRICPORTSPEED__1_GBPS                  FabricPortSpeed = "SPEED_1_GBPS"
+	FABRICPORTSPEED__10_GBPS                 FabricPortSpeed = "SPEED_10_GBPS"
+	FABRICPORTSPEED_UNKNOWN_DEFAULT_OPEN_API FabricPortSpeed = "unknown_default_open_api"
 )
 
 // All allowed values of FabricPortSpeed enum
 var AllowedFabricPortSpeedEnumValues = []FabricPortSpeed{
 	"SPEED_1_GBPS",
 	"SPEED_10_GBPS",
+	"unknown_default_open_api",
 }
 
 func (v *FabricPortSpeed) UnmarshalJSON(src []byte) error {
@@ -44,7 +46,8 @@ func (v *FabricPortSpeed) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid FabricPortSpeed", value)
+	*v = FABRICPORTSPEED_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewFabricPortSpeedFromValue returns a pointer to a valid FabricPortSpeed

@@ -17,12 +17,14 @@ type StreamSubscriptionType string
 
 // List of StreamSubscription_type
 const (
-	STREAMSUBSCRIPTIONTYPE_STREAM_SUBSCRIPTION StreamSubscriptionType = "STREAM_SUBSCRIPTION"
+	STREAMSUBSCRIPTIONTYPE_STREAM_SUBSCRIPTION      StreamSubscriptionType = "STREAM_SUBSCRIPTION"
+	STREAMSUBSCRIPTIONTYPE_UNKNOWN_DEFAULT_OPEN_API StreamSubscriptionType = "unknown_default_open_api"
 )
 
 // All allowed values of StreamSubscriptionType enum
 var AllowedStreamSubscriptionTypeEnumValues = []StreamSubscriptionType{
 	"STREAM_SUBSCRIPTION",
+	"unknown_default_open_api",
 }
 
 func (v *StreamSubscriptionType) UnmarshalJSON(src []byte) error {
@@ -39,7 +41,8 @@ func (v *StreamSubscriptionType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid StreamSubscriptionType", value)
+	*v = STREAMSUBSCRIPTIONTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewStreamSubscriptionTypeFromValue returns a pointer to a valid StreamSubscriptionType

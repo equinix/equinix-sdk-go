@@ -20,9 +20,10 @@ type DimensionUnit string
 
 // List of Dimension_unit
 const (
-	DIMENSIONUNIT_MILLIMETER DimensionUnit = "MILLIMETER"
-	DIMENSIONUNIT_CENTIMETER DimensionUnit = "CENTIMETER"
-	DIMENSIONUNIT_METER      DimensionUnit = "METER"
+	DIMENSIONUNIT_MILLIMETER               DimensionUnit = "MILLIMETER"
+	DIMENSIONUNIT_CENTIMETER               DimensionUnit = "CENTIMETER"
+	DIMENSIONUNIT_METER                    DimensionUnit = "METER"
+	DIMENSIONUNIT_UNKNOWN_DEFAULT_OPEN_API DimensionUnit = "unknown_default_open_api"
 )
 
 // All allowed values of DimensionUnit enum
@@ -30,6 +31,7 @@ var AllowedDimensionUnitEnumValues = []DimensionUnit{
 	"MILLIMETER",
 	"CENTIMETER",
 	"METER",
+	"unknown_default_open_api",
 }
 
 func (v *DimensionUnit) UnmarshalJSON(src []byte) error {
@@ -46,7 +48,8 @@ func (v *DimensionUnit) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid DimensionUnit", value)
+	*v = DIMENSIONUNIT_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewDimensionUnitFromValue returns a pointer to a valid DimensionUnit

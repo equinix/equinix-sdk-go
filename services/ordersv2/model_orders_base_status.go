@@ -20,11 +20,12 @@ type OrdersBaseStatus string
 
 // List of ordersBase_status
 const (
-	ORDERSBASESTATUS_RECEIVED    OrdersBaseStatus = "RECEIVED"
-	ORDERSBASESTATUS_IN_PROGRESS OrdersBaseStatus = "IN_PROGRESS"
-	ORDERSBASESTATUS_ON_HOLD     OrdersBaseStatus = "ON_HOLD"
-	ORDERSBASESTATUS_CLOSED      OrdersBaseStatus = "CLOSED"
-	ORDERSBASESTATUS_CANCELLED   OrdersBaseStatus = "CANCELLED"
+	ORDERSBASESTATUS_RECEIVED                 OrdersBaseStatus = "RECEIVED"
+	ORDERSBASESTATUS_IN_PROGRESS              OrdersBaseStatus = "IN_PROGRESS"
+	ORDERSBASESTATUS_ON_HOLD                  OrdersBaseStatus = "ON_HOLD"
+	ORDERSBASESTATUS_CLOSED                   OrdersBaseStatus = "CLOSED"
+	ORDERSBASESTATUS_CANCELLED                OrdersBaseStatus = "CANCELLED"
+	ORDERSBASESTATUS_UNKNOWN_DEFAULT_OPEN_API OrdersBaseStatus = "unknown_default_open_api"
 )
 
 // All allowed values of OrdersBaseStatus enum
@@ -34,6 +35,7 @@ var AllowedOrdersBaseStatusEnumValues = []OrdersBaseStatus{
 	"ON_HOLD",
 	"CLOSED",
 	"CANCELLED",
+	"unknown_default_open_api",
 }
 
 func (v *OrdersBaseStatus) UnmarshalJSON(src []byte) error {
@@ -50,7 +52,8 @@ func (v *OrdersBaseStatus) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid OrdersBaseStatus", value)
+	*v = ORDERSBASESTATUS_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewOrdersBaseStatusFromValue returns a pointer to a valid OrdersBaseStatus

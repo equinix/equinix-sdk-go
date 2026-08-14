@@ -17,9 +17,10 @@ type InternetAccessPatchOperationUpdateAllowedOp string
 
 // List of InternetAccessPatchOperationUpdateAllowedOp
 const (
-	INTERNETACCESSPATCHOPERATIONUPDATEALLOWEDOP_REPLACE InternetAccessPatchOperationUpdateAllowedOp = "replace"
-	INTERNETACCESSPATCHOPERATIONUPDATEALLOWEDOP_ADD     InternetAccessPatchOperationUpdateAllowedOp = "add"
-	INTERNETACCESSPATCHOPERATIONUPDATEALLOWEDOP_REMOVE  InternetAccessPatchOperationUpdateAllowedOp = "remove"
+	INTERNETACCESSPATCHOPERATIONUPDATEALLOWEDOP_REPLACE                  InternetAccessPatchOperationUpdateAllowedOp = "replace"
+	INTERNETACCESSPATCHOPERATIONUPDATEALLOWEDOP_ADD                      InternetAccessPatchOperationUpdateAllowedOp = "add"
+	INTERNETACCESSPATCHOPERATIONUPDATEALLOWEDOP_REMOVE                   InternetAccessPatchOperationUpdateAllowedOp = "remove"
+	INTERNETACCESSPATCHOPERATIONUPDATEALLOWEDOP_UNKNOWN_DEFAULT_OPEN_API InternetAccessPatchOperationUpdateAllowedOp = "unknown_default_open_api"
 )
 
 // All allowed values of InternetAccessPatchOperationUpdateAllowedOp enum
@@ -27,6 +28,7 @@ var AllowedInternetAccessPatchOperationUpdateAllowedOpEnumValues = []InternetAcc
 	"replace",
 	"add",
 	"remove",
+	"unknown_default_open_api",
 }
 
 func (v *InternetAccessPatchOperationUpdateAllowedOp) UnmarshalJSON(src []byte) error {
@@ -43,7 +45,8 @@ func (v *InternetAccessPatchOperationUpdateAllowedOp) UnmarshalJSON(src []byte) 
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid InternetAccessPatchOperationUpdateAllowedOp", value)
+	*v = INTERNETACCESSPATCHOPERATIONUPDATEALLOWEDOP_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewInternetAccessPatchOperationUpdateAllowedOpFromValue returns a pointer to a valid InternetAccessPatchOperationUpdateAllowedOp

@@ -17,14 +17,16 @@ type RouteTableEntrySortDirection string
 
 // List of RouteTableEntrySortDirection
 const (
-	ROUTETABLEENTRYSORTDIRECTION_DESC RouteTableEntrySortDirection = "DESC"
-	ROUTETABLEENTRYSORTDIRECTION_ASC  RouteTableEntrySortDirection = "ASC"
+	ROUTETABLEENTRYSORTDIRECTION_DESC                     RouteTableEntrySortDirection = "DESC"
+	ROUTETABLEENTRYSORTDIRECTION_ASC                      RouteTableEntrySortDirection = "ASC"
+	ROUTETABLEENTRYSORTDIRECTION_UNKNOWN_DEFAULT_OPEN_API RouteTableEntrySortDirection = "unknown_default_open_api"
 )
 
 // All allowed values of RouteTableEntrySortDirection enum
 var AllowedRouteTableEntrySortDirectionEnumValues = []RouteTableEntrySortDirection{
 	"DESC",
 	"ASC",
+	"unknown_default_open_api",
 }
 
 func (v *RouteTableEntrySortDirection) UnmarshalJSON(src []byte) error {
@@ -41,7 +43,8 @@ func (v *RouteTableEntrySortDirection) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid RouteTableEntrySortDirection", value)
+	*v = ROUTETABLEENTRYSORTDIRECTION_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewRouteTableEntrySortDirectionFromValue returns a pointer to a valid RouteTableEntrySortDirection

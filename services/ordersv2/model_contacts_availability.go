@@ -20,14 +20,16 @@ type ContactsAvailability string
 
 // List of Contacts_availability
 const (
-	CONTACTSAVAILABILITY_WORK_HOURS ContactsAvailability = "WORK_HOURS"
-	CONTACTSAVAILABILITY_ANYTIME    ContactsAvailability = "ANYTIME"
+	CONTACTSAVAILABILITY_WORK_HOURS               ContactsAvailability = "WORK_HOURS"
+	CONTACTSAVAILABILITY_ANYTIME                  ContactsAvailability = "ANYTIME"
+	CONTACTSAVAILABILITY_UNKNOWN_DEFAULT_OPEN_API ContactsAvailability = "unknown_default_open_api"
 )
 
 // All allowed values of ContactsAvailability enum
 var AllowedContactsAvailabilityEnumValues = []ContactsAvailability{
 	"WORK_HOURS",
 	"ANYTIME",
+	"unknown_default_open_api",
 }
 
 func (v *ContactsAvailability) UnmarshalJSON(src []byte) error {
@@ -44,7 +46,8 @@ func (v *ContactsAvailability) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ContactsAvailability", value)
+	*v = CONTACTSAVAILABILITY_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewContactsAvailabilityFromValue returns a pointer to a valid ContactsAvailability

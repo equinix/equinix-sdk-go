@@ -17,11 +17,12 @@ type LoaActionType string
 
 // List of LoaActionType
 const (
-	LOAACTIONTYPE_AUTHORIZE_LOA LoaActionType = "AUTHORIZE_LOA"
-	LOAACTIONTYPE_ACCEPT_LOA    LoaActionType = "ACCEPT_LOA"
-	LOAACTIONTYPE_COPY_LOA      LoaActionType = "COPY_LOA"
-	LOAACTIONTYPE_SEND_LOA      LoaActionType = "SEND_LOA"
-	LOAACTIONTYPE_CANCEL_LOA    LoaActionType = "CANCEL_LOA"
+	LOAACTIONTYPE_AUTHORIZE_LOA            LoaActionType = "AUTHORIZE_LOA"
+	LOAACTIONTYPE_ACCEPT_LOA               LoaActionType = "ACCEPT_LOA"
+	LOAACTIONTYPE_COPY_LOA                 LoaActionType = "COPY_LOA"
+	LOAACTIONTYPE_SEND_LOA                 LoaActionType = "SEND_LOA"
+	LOAACTIONTYPE_CANCEL_LOA               LoaActionType = "CANCEL_LOA"
+	LOAACTIONTYPE_UNKNOWN_DEFAULT_OPEN_API LoaActionType = "unknown_default_open_api"
 )
 
 // All allowed values of LoaActionType enum
@@ -31,6 +32,7 @@ var AllowedLoaActionTypeEnumValues = []LoaActionType{
 	"COPY_LOA",
 	"SEND_LOA",
 	"CANCEL_LOA",
+	"unknown_default_open_api",
 }
 
 func (v *LoaActionType) UnmarshalJSON(src []byte) error {
@@ -47,7 +49,8 @@ func (v *LoaActionType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid LoaActionType", value)
+	*v = LOAACTIONTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewLoaActionTypeFromValue returns a pointer to a valid LoaActionType

@@ -17,11 +17,12 @@ type IpBlockState string
 
 // List of IpBlockState
 const (
-	IPBLOCKSTATE_PENDING  IpBlockState = "PENDING"
-	IPBLOCKSTATE_ACTIVE   IpBlockState = "ACTIVE"
-	IPBLOCKSTATE_DELETING IpBlockState = "DELETING"
-	IPBLOCKSTATE_DELETED  IpBlockState = "DELETED"
-	IPBLOCKSTATE_FAILED   IpBlockState = "FAILED"
+	IPBLOCKSTATE_PENDING                  IpBlockState = "PENDING"
+	IPBLOCKSTATE_ACTIVE                   IpBlockState = "ACTIVE"
+	IPBLOCKSTATE_DELETING                 IpBlockState = "DELETING"
+	IPBLOCKSTATE_DELETED                  IpBlockState = "DELETED"
+	IPBLOCKSTATE_FAILED                   IpBlockState = "FAILED"
+	IPBLOCKSTATE_UNKNOWN_DEFAULT_OPEN_API IpBlockState = "unknown_default_open_api"
 )
 
 // All allowed values of IpBlockState enum
@@ -31,6 +32,7 @@ var AllowedIpBlockStateEnumValues = []IpBlockState{
 	"DELETING",
 	"DELETED",
 	"FAILED",
+	"unknown_default_open_api",
 }
 
 func (v *IpBlockState) UnmarshalJSON(src []byte) error {
@@ -47,7 +49,8 @@ func (v *IpBlockState) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid IpBlockState", value)
+	*v = IPBLOCKSTATE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewIpBlockStateFromValue returns a pointer to a valid IpBlockState

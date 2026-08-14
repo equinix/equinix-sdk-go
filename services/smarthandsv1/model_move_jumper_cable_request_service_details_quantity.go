@@ -20,19 +20,20 @@ type MoveJumperCableRequestServiceDetailsQuantity string
 
 // List of moveJumperCableRequest_serviceDetails_quantity
 const (
-	MOVEJUMPERCABLEREQUESTSERVICEDETAILSQUANTITY__1   MoveJumperCableRequestServiceDetailsQuantity = "1"
-	MOVEJUMPERCABLEREQUESTSERVICEDETAILSQUANTITY__2   MoveJumperCableRequestServiceDetailsQuantity = "2"
-	MOVEJUMPERCABLEREQUESTSERVICEDETAILSQUANTITY__3   MoveJumperCableRequestServiceDetailsQuantity = "3"
-	MOVEJUMPERCABLEREQUESTSERVICEDETAILSQUANTITY__4   MoveJumperCableRequestServiceDetailsQuantity = "4"
-	MOVEJUMPERCABLEREQUESTSERVICEDETAILSQUANTITY__5   MoveJumperCableRequestServiceDetailsQuantity = "5"
-	MOVEJUMPERCABLEREQUESTSERVICEDETAILSQUANTITY__6   MoveJumperCableRequestServiceDetailsQuantity = "6"
-	MOVEJUMPERCABLEREQUESTSERVICEDETAILSQUANTITY__7   MoveJumperCableRequestServiceDetailsQuantity = "7"
-	MOVEJUMPERCABLEREQUESTSERVICEDETAILSQUANTITY__8   MoveJumperCableRequestServiceDetailsQuantity = "8"
-	MOVEJUMPERCABLEREQUESTSERVICEDETAILSQUANTITY__9   MoveJumperCableRequestServiceDetailsQuantity = "9"
-	MOVEJUMPERCABLEREQUESTSERVICEDETAILSQUANTITY__10  MoveJumperCableRequestServiceDetailsQuantity = "10"
-	MOVEJUMPERCABLEREQUESTSERVICEDETAILSQUANTITY__11  MoveJumperCableRequestServiceDetailsQuantity = "11"
-	MOVEJUMPERCABLEREQUESTSERVICEDETAILSQUANTITY__12  MoveJumperCableRequestServiceDetailsQuantity = "12"
-	MOVEJUMPERCABLEREQUESTSERVICEDETAILSQUANTITY__122 MoveJumperCableRequestServiceDetailsQuantity = "12+"
+	MOVEJUMPERCABLEREQUESTSERVICEDETAILSQUANTITY__1                       MoveJumperCableRequestServiceDetailsQuantity = "1"
+	MOVEJUMPERCABLEREQUESTSERVICEDETAILSQUANTITY__2                       MoveJumperCableRequestServiceDetailsQuantity = "2"
+	MOVEJUMPERCABLEREQUESTSERVICEDETAILSQUANTITY__3                       MoveJumperCableRequestServiceDetailsQuantity = "3"
+	MOVEJUMPERCABLEREQUESTSERVICEDETAILSQUANTITY__4                       MoveJumperCableRequestServiceDetailsQuantity = "4"
+	MOVEJUMPERCABLEREQUESTSERVICEDETAILSQUANTITY__5                       MoveJumperCableRequestServiceDetailsQuantity = "5"
+	MOVEJUMPERCABLEREQUESTSERVICEDETAILSQUANTITY__6                       MoveJumperCableRequestServiceDetailsQuantity = "6"
+	MOVEJUMPERCABLEREQUESTSERVICEDETAILSQUANTITY__7                       MoveJumperCableRequestServiceDetailsQuantity = "7"
+	MOVEJUMPERCABLEREQUESTSERVICEDETAILSQUANTITY__8                       MoveJumperCableRequestServiceDetailsQuantity = "8"
+	MOVEJUMPERCABLEREQUESTSERVICEDETAILSQUANTITY__9                       MoveJumperCableRequestServiceDetailsQuantity = "9"
+	MOVEJUMPERCABLEREQUESTSERVICEDETAILSQUANTITY__10                      MoveJumperCableRequestServiceDetailsQuantity = "10"
+	MOVEJUMPERCABLEREQUESTSERVICEDETAILSQUANTITY__11                      MoveJumperCableRequestServiceDetailsQuantity = "11"
+	MOVEJUMPERCABLEREQUESTSERVICEDETAILSQUANTITY__12                      MoveJumperCableRequestServiceDetailsQuantity = "12"
+	MOVEJUMPERCABLEREQUESTSERVICEDETAILSQUANTITY__122                     MoveJumperCableRequestServiceDetailsQuantity = "12+"
+	MOVEJUMPERCABLEREQUESTSERVICEDETAILSQUANTITY_UNKNOWN_DEFAULT_OPEN_API MoveJumperCableRequestServiceDetailsQuantity = "unknown_default_open_api"
 )
 
 // All allowed values of MoveJumperCableRequestServiceDetailsQuantity enum
@@ -50,6 +51,7 @@ var AllowedMoveJumperCableRequestServiceDetailsQuantityEnumValues = []MoveJumper
 	"11",
 	"12",
 	"12+",
+	"unknown_default_open_api",
 }
 
 func (v *MoveJumperCableRequestServiceDetailsQuantity) UnmarshalJSON(src []byte) error {
@@ -66,7 +68,8 @@ func (v *MoveJumperCableRequestServiceDetailsQuantity) UnmarshalJSON(src []byte)
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid MoveJumperCableRequestServiceDetailsQuantity", value)
+	*v = MOVEJUMPERCABLEREQUESTSERVICEDETAILSQUANTITY_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewMoveJumperCableRequestServiceDetailsQuantityFromValue returns a pointer to a valid MoveJumperCableRequestServiceDetailsQuantity

@@ -17,14 +17,16 @@ type SearchSortItemDirection string
 
 // List of SearchSortItem_direction
 const (
-	SEARCHSORTITEMDIRECTION_ASC  SearchSortItemDirection = "ASC"
-	SEARCHSORTITEMDIRECTION_DESC SearchSortItemDirection = "DESC"
+	SEARCHSORTITEMDIRECTION_ASC                      SearchSortItemDirection = "ASC"
+	SEARCHSORTITEMDIRECTION_DESC                     SearchSortItemDirection = "DESC"
+	SEARCHSORTITEMDIRECTION_UNKNOWN_DEFAULT_OPEN_API SearchSortItemDirection = "unknown_default_open_api"
 )
 
 // All allowed values of SearchSortItemDirection enum
 var AllowedSearchSortItemDirectionEnumValues = []SearchSortItemDirection{
 	"ASC",
 	"DESC",
+	"unknown_default_open_api",
 }
 
 func (v *SearchSortItemDirection) UnmarshalJSON(src []byte) error {
@@ -41,7 +43,8 @@ func (v *SearchSortItemDirection) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid SearchSortItemDirection", value)
+	*v = SEARCHSORTITEMDIRECTION_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewSearchSortItemDirectionFromValue returns a pointer to a valid SearchSortItemDirection

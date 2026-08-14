@@ -20,14 +20,16 @@ type BgpRoutingProtocolRequestAllOfCustomerAsnRange string
 
 // List of BgpRoutingProtocolRequest_allOf_customerAsnRange
 const (
-	BGPROUTINGPROTOCOLREQUESTALLOFCUSTOMERASNRANGE__16 BgpRoutingProtocolRequestAllOfCustomerAsnRange = "BITS_16"
-	BGPROUTINGPROTOCOLREQUESTALLOFCUSTOMERASNRANGE__32 BgpRoutingProtocolRequestAllOfCustomerAsnRange = "BITS_32"
+	BGPROUTINGPROTOCOLREQUESTALLOFCUSTOMERASNRANGE__16                      BgpRoutingProtocolRequestAllOfCustomerAsnRange = "BITS_16"
+	BGPROUTINGPROTOCOLREQUESTALLOFCUSTOMERASNRANGE__32                      BgpRoutingProtocolRequestAllOfCustomerAsnRange = "BITS_32"
+	BGPROUTINGPROTOCOLREQUESTALLOFCUSTOMERASNRANGE_UNKNOWN_DEFAULT_OPEN_API BgpRoutingProtocolRequestAllOfCustomerAsnRange = "unknown_default_open_api"
 )
 
 // All allowed values of BgpRoutingProtocolRequestAllOfCustomerAsnRange enum
 var AllowedBgpRoutingProtocolRequestAllOfCustomerAsnRangeEnumValues = []BgpRoutingProtocolRequestAllOfCustomerAsnRange{
 	"BITS_16",
 	"BITS_32",
+	"unknown_default_open_api",
 }
 
 func (v *BgpRoutingProtocolRequestAllOfCustomerAsnRange) UnmarshalJSON(src []byte) error {
@@ -44,7 +46,8 @@ func (v *BgpRoutingProtocolRequestAllOfCustomerAsnRange) UnmarshalJSON(src []byt
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid BgpRoutingProtocolRequestAllOfCustomerAsnRange", value)
+	*v = BGPROUTINGPROTOCOLREQUESTALLOFCUSTOMERASNRANGE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewBgpRoutingProtocolRequestAllOfCustomerAsnRangeFromValue returns a pointer to a valid BgpRoutingProtocolRequestAllOfCustomerAsnRange

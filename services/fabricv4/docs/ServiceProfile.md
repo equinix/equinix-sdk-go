@@ -4,11 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**State** | Pointer to [**ServiceProfileStateEnum**](ServiceProfileStateEnum.md) |  | [optional] 
-**Account** | Pointer to [**SimplifiedAccount**](SimplifiedAccount.md) | Seller Account for Service Profile. | [optional] 
-**Project** | Pointer to [**Project**](Project.md) |  | [optional] 
-**Change** | Pointer to [**ServiceProfileChange**](ServiceProfileChange.md) |  | [optional] 
-**ChangeLog** | Pointer to [**Changelog**](Changelog.md) | Seller Account for Service Profile. | [optional] 
 **Href** | Pointer to **string** | Service Profile URI response attribute | [optional] [readonly] 
 **Type** | Pointer to [**ServiceProfileTypeEnum**](ServiceProfileTypeEnum.md) |  | [optional] 
 **Name** | Pointer to **string** | Customer-assigned service profile name | [optional] 
@@ -28,6 +23,11 @@ Name | Type | Description | Notes
 **SelfProfile** | Pointer to **bool** | response attribute indicates whether the profile belongs to the same organization as the api-invoker. | [optional] 
 **ProjectId** | Pointer to **string** |  | [optional] 
 **LastMileConfig** | Pointer to [**ServiceProfileLastMileConfig**](ServiceProfileLastMileConfig.md) |  | [optional] 
+**State** | Pointer to [**ServiceProfileStateEnum**](ServiceProfileStateEnum.md) |  | [optional] 
+**Account** | Pointer to [**ServiceProfileAllOfAccount**](ServiceProfileAllOfAccount.md) |  | [optional] 
+**Project** | Pointer to [**Project**](Project.md) |  | [optional] 
+**Change** | Pointer to [**ServiceProfileChange**](ServiceProfileChange.md) |  | [optional] 
+**ChangeLog** | Pointer to [**ServiceProfileAllOfChangeLog**](ServiceProfileAllOfChangeLog.md) |  | [optional] 
 
 ## Methods
 
@@ -47,131 +47,6 @@ will change when the set of required properties is changed
 NewServiceProfileWithDefaults instantiates a new ServiceProfile object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetState
-
-`func (o *ServiceProfile) GetState() ServiceProfileStateEnum`
-
-GetState returns the State field if non-nil, zero value otherwise.
-
-### GetStateOk
-
-`func (o *ServiceProfile) GetStateOk() (*ServiceProfileStateEnum, bool)`
-
-GetStateOk returns a tuple with the State field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetState
-
-`func (o *ServiceProfile) SetState(v ServiceProfileStateEnum)`
-
-SetState sets State field to given value.
-
-### HasState
-
-`func (o *ServiceProfile) HasState() bool`
-
-HasState returns a boolean if a field has been set.
-
-### GetAccount
-
-`func (o *ServiceProfile) GetAccount() SimplifiedAccount`
-
-GetAccount returns the Account field if non-nil, zero value otherwise.
-
-### GetAccountOk
-
-`func (o *ServiceProfile) GetAccountOk() (*SimplifiedAccount, bool)`
-
-GetAccountOk returns a tuple with the Account field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAccount
-
-`func (o *ServiceProfile) SetAccount(v SimplifiedAccount)`
-
-SetAccount sets Account field to given value.
-
-### HasAccount
-
-`func (o *ServiceProfile) HasAccount() bool`
-
-HasAccount returns a boolean if a field has been set.
-
-### GetProject
-
-`func (o *ServiceProfile) GetProject() Project`
-
-GetProject returns the Project field if non-nil, zero value otherwise.
-
-### GetProjectOk
-
-`func (o *ServiceProfile) GetProjectOk() (*Project, bool)`
-
-GetProjectOk returns a tuple with the Project field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetProject
-
-`func (o *ServiceProfile) SetProject(v Project)`
-
-SetProject sets Project field to given value.
-
-### HasProject
-
-`func (o *ServiceProfile) HasProject() bool`
-
-HasProject returns a boolean if a field has been set.
-
-### GetChange
-
-`func (o *ServiceProfile) GetChange() ServiceProfileChange`
-
-GetChange returns the Change field if non-nil, zero value otherwise.
-
-### GetChangeOk
-
-`func (o *ServiceProfile) GetChangeOk() (*ServiceProfileChange, bool)`
-
-GetChangeOk returns a tuple with the Change field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetChange
-
-`func (o *ServiceProfile) SetChange(v ServiceProfileChange)`
-
-SetChange sets Change field to given value.
-
-### HasChange
-
-`func (o *ServiceProfile) HasChange() bool`
-
-HasChange returns a boolean if a field has been set.
-
-### GetChangeLog
-
-`func (o *ServiceProfile) GetChangeLog() Changelog`
-
-GetChangeLog returns the ChangeLog field if non-nil, zero value otherwise.
-
-### GetChangeLogOk
-
-`func (o *ServiceProfile) GetChangeLogOk() (*Changelog, bool)`
-
-GetChangeLogOk returns a tuple with the ChangeLog field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetChangeLog
-
-`func (o *ServiceProfile) SetChangeLog(v Changelog)`
-
-SetChangeLog sets ChangeLog field to given value.
-
-### HasChangeLog
-
-`func (o *ServiceProfile) HasChangeLog() bool`
-
-HasChangeLog returns a boolean if a field has been set.
 
 ### GetHref
 
@@ -647,6 +522,131 @@ SetLastMileConfig sets LastMileConfig field to given value.
 `func (o *ServiceProfile) HasLastMileConfig() bool`
 
 HasLastMileConfig returns a boolean if a field has been set.
+
+### GetState
+
+`func (o *ServiceProfile) GetState() ServiceProfileStateEnum`
+
+GetState returns the State field if non-nil, zero value otherwise.
+
+### GetStateOk
+
+`func (o *ServiceProfile) GetStateOk() (*ServiceProfileStateEnum, bool)`
+
+GetStateOk returns a tuple with the State field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetState
+
+`func (o *ServiceProfile) SetState(v ServiceProfileStateEnum)`
+
+SetState sets State field to given value.
+
+### HasState
+
+`func (o *ServiceProfile) HasState() bool`
+
+HasState returns a boolean if a field has been set.
+
+### GetAccount
+
+`func (o *ServiceProfile) GetAccount() ServiceProfileAllOfAccount`
+
+GetAccount returns the Account field if non-nil, zero value otherwise.
+
+### GetAccountOk
+
+`func (o *ServiceProfile) GetAccountOk() (*ServiceProfileAllOfAccount, bool)`
+
+GetAccountOk returns a tuple with the Account field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccount
+
+`func (o *ServiceProfile) SetAccount(v ServiceProfileAllOfAccount)`
+
+SetAccount sets Account field to given value.
+
+### HasAccount
+
+`func (o *ServiceProfile) HasAccount() bool`
+
+HasAccount returns a boolean if a field has been set.
+
+### GetProject
+
+`func (o *ServiceProfile) GetProject() Project`
+
+GetProject returns the Project field if non-nil, zero value otherwise.
+
+### GetProjectOk
+
+`func (o *ServiceProfile) GetProjectOk() (*Project, bool)`
+
+GetProjectOk returns a tuple with the Project field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProject
+
+`func (o *ServiceProfile) SetProject(v Project)`
+
+SetProject sets Project field to given value.
+
+### HasProject
+
+`func (o *ServiceProfile) HasProject() bool`
+
+HasProject returns a boolean if a field has been set.
+
+### GetChange
+
+`func (o *ServiceProfile) GetChange() ServiceProfileChange`
+
+GetChange returns the Change field if non-nil, zero value otherwise.
+
+### GetChangeOk
+
+`func (o *ServiceProfile) GetChangeOk() (*ServiceProfileChange, bool)`
+
+GetChangeOk returns a tuple with the Change field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetChange
+
+`func (o *ServiceProfile) SetChange(v ServiceProfileChange)`
+
+SetChange sets Change field to given value.
+
+### HasChange
+
+`func (o *ServiceProfile) HasChange() bool`
+
+HasChange returns a boolean if a field has been set.
+
+### GetChangeLog
+
+`func (o *ServiceProfile) GetChangeLog() ServiceProfileAllOfChangeLog`
+
+GetChangeLog returns the ChangeLog field if non-nil, zero value otherwise.
+
+### GetChangeLogOk
+
+`func (o *ServiceProfile) GetChangeLogOk() (*ServiceProfileAllOfChangeLog, bool)`
+
+GetChangeLogOk returns a tuple with the ChangeLog field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetChangeLog
+
+`func (o *ServiceProfile) SetChangeLog(v ServiceProfileAllOfChangeLog)`
+
+SetChangeLog sets ChangeLog field to given value.
+
+### HasChangeLog
+
+`func (o *ServiceProfile) HasChangeLog() bool`
+
+HasChangeLog returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

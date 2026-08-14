@@ -17,11 +17,12 @@ type PtpAdvanceConfigurationLogAnnounceInterval int32
 
 // List of ptpAdvanceConfiguration_logAnnounceInterval
 const (
-	PTPADVANCECONFIGURATIONLOGANNOUNCEINTERVAL__MINUS_3 PtpAdvanceConfigurationLogAnnounceInterval = -3
-	PTPADVANCECONFIGURATIONLOGANNOUNCEINTERVAL__MINUS_2 PtpAdvanceConfigurationLogAnnounceInterval = -2
-	PTPADVANCECONFIGURATIONLOGANNOUNCEINTERVAL__MINUS_1 PtpAdvanceConfigurationLogAnnounceInterval = -1
-	PTPADVANCECONFIGURATIONLOGANNOUNCEINTERVAL__0       PtpAdvanceConfigurationLogAnnounceInterval = 0
-	PTPADVANCECONFIGURATIONLOGANNOUNCEINTERVAL__1       PtpAdvanceConfigurationLogAnnounceInterval = 1
+	PTPADVANCECONFIGURATIONLOGANNOUNCEINTERVAL__MINUS_3                  PtpAdvanceConfigurationLogAnnounceInterval = -3
+	PTPADVANCECONFIGURATIONLOGANNOUNCEINTERVAL__MINUS_2                  PtpAdvanceConfigurationLogAnnounceInterval = -2
+	PTPADVANCECONFIGURATIONLOGANNOUNCEINTERVAL__MINUS_1                  PtpAdvanceConfigurationLogAnnounceInterval = -1
+	PTPADVANCECONFIGURATIONLOGANNOUNCEINTERVAL__0                        PtpAdvanceConfigurationLogAnnounceInterval = 0
+	PTPADVANCECONFIGURATIONLOGANNOUNCEINTERVAL__1                        PtpAdvanceConfigurationLogAnnounceInterval = 1
+	PTPADVANCECONFIGURATIONLOGANNOUNCEINTERVAL__unknown_default_open_api PtpAdvanceConfigurationLogAnnounceInterval = 11184809
 )
 
 // All allowed values of PtpAdvanceConfigurationLogAnnounceInterval enum
@@ -31,6 +32,7 @@ var AllowedPtpAdvanceConfigurationLogAnnounceIntervalEnumValues = []PtpAdvanceCo
 	-1,
 	0,
 	1,
+	11184809,
 }
 
 func (v *PtpAdvanceConfigurationLogAnnounceInterval) UnmarshalJSON(src []byte) error {
@@ -47,7 +49,8 @@ func (v *PtpAdvanceConfigurationLogAnnounceInterval) UnmarshalJSON(src []byte) e
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid PtpAdvanceConfigurationLogAnnounceInterval", value)
+	*v = PTPADVANCECONFIGURATIONLOGANNOUNCEINTERVAL__unknown_default_open_api
+	return nil
 }
 
 // NewPtpAdvanceConfigurationLogAnnounceIntervalFromValue returns a pointer to a valid PtpAdvanceConfigurationLogAnnounceInterval

@@ -17,14 +17,16 @@ type ServiceProfileVisibilityEnum string
 
 // List of ServiceProfileVisibilityEnum
 const (
-	SERVICEPROFILEVISIBILITYENUM_PRIVATE ServiceProfileVisibilityEnum = "PRIVATE"
-	SERVICEPROFILEVISIBILITYENUM_PUBLIC  ServiceProfileVisibilityEnum = "PUBLIC"
+	SERVICEPROFILEVISIBILITYENUM_PRIVATE                  ServiceProfileVisibilityEnum = "PRIVATE"
+	SERVICEPROFILEVISIBILITYENUM_PUBLIC                   ServiceProfileVisibilityEnum = "PUBLIC"
+	SERVICEPROFILEVISIBILITYENUM_UNKNOWN_DEFAULT_OPEN_API ServiceProfileVisibilityEnum = "unknown_default_open_api"
 )
 
 // All allowed values of ServiceProfileVisibilityEnum enum
 var AllowedServiceProfileVisibilityEnumEnumValues = []ServiceProfileVisibilityEnum{
 	"PRIVATE",
 	"PUBLIC",
+	"unknown_default_open_api",
 }
 
 func (v *ServiceProfileVisibilityEnum) UnmarshalJSON(src []byte) error {
@@ -41,7 +43,8 @@ func (v *ServiceProfileVisibilityEnum) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ServiceProfileVisibilityEnum", value)
+	*v = SERVICEPROFILEVISIBILITYENUM_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewServiceProfileVisibilityEnumFromValue returns a pointer to a valid ServiceProfileVisibilityEnum

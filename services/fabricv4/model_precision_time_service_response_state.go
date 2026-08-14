@@ -17,19 +17,20 @@ type PrecisionTimeServiceResponseState string
 
 // List of precisionTimeServiceResponse_state
 const (
-	PRECISIONTIMESERVICERESPONSESTATE_CANCELLED             PrecisionTimeServiceResponseState = "CANCELLED"
-	PRECISIONTIMESERVICERESPONSESTATE_CANCELLING            PrecisionTimeServiceResponseState = "CANCELLING"
-	PRECISIONTIMESERVICERESPONSESTATE_CONFIGURING           PrecisionTimeServiceResponseState = "CONFIGURING"
-	PRECISIONTIMESERVICERESPONSESTATE_CONFIGURING_FAILED    PrecisionTimeServiceResponseState = "CONFIGURING_FAILED"
-	PRECISIONTIMESERVICERESPONSESTATE_DRAFT                 PrecisionTimeServiceResponseState = "DRAFT"
-	PRECISIONTIMESERVICERESPONSESTATE_DEPROVISIONING        PrecisionTimeServiceResponseState = "DEPROVISIONING"
-	PRECISIONTIMESERVICERESPONSESTATE_DEPROVISIONING_FAILED PrecisionTimeServiceResponseState = "DEPROVISIONING_FAILED"
-	PRECISIONTIMESERVICERESPONSESTATE_DEPROVISIONED         PrecisionTimeServiceResponseState = "DEPROVISIONED"
-	PRECISIONTIMESERVICERESPONSESTATE_PROVISIONED           PrecisionTimeServiceResponseState = "PROVISIONED"
-	PRECISIONTIMESERVICERESPONSESTATE_PROVISIONING          PrecisionTimeServiceResponseState = "PROVISIONING"
-	PRECISIONTIMESERVICERESPONSESTATE_PROVISIONING_FAILED   PrecisionTimeServiceResponseState = "PROVISIONING_FAILED"
-	PRECISIONTIMESERVICERESPONSESTATE_REPROVISIONING        PrecisionTimeServiceResponseState = "REPROVISIONING"
-	PRECISIONTIMESERVICERESPONSESTATE_REPROVISIONING_FAILED PrecisionTimeServiceResponseState = "REPROVISIONING_FAILED"
+	PRECISIONTIMESERVICERESPONSESTATE_CANCELLED                PrecisionTimeServiceResponseState = "CANCELLED"
+	PRECISIONTIMESERVICERESPONSESTATE_CANCELLING               PrecisionTimeServiceResponseState = "CANCELLING"
+	PRECISIONTIMESERVICERESPONSESTATE_CONFIGURING              PrecisionTimeServiceResponseState = "CONFIGURING"
+	PRECISIONTIMESERVICERESPONSESTATE_CONFIGURING_FAILED       PrecisionTimeServiceResponseState = "CONFIGURING_FAILED"
+	PRECISIONTIMESERVICERESPONSESTATE_DRAFT                    PrecisionTimeServiceResponseState = "DRAFT"
+	PRECISIONTIMESERVICERESPONSESTATE_DEPROVISIONING           PrecisionTimeServiceResponseState = "DEPROVISIONING"
+	PRECISIONTIMESERVICERESPONSESTATE_DEPROVISIONING_FAILED    PrecisionTimeServiceResponseState = "DEPROVISIONING_FAILED"
+	PRECISIONTIMESERVICERESPONSESTATE_DEPROVISIONED            PrecisionTimeServiceResponseState = "DEPROVISIONED"
+	PRECISIONTIMESERVICERESPONSESTATE_PROVISIONED              PrecisionTimeServiceResponseState = "PROVISIONED"
+	PRECISIONTIMESERVICERESPONSESTATE_PROVISIONING             PrecisionTimeServiceResponseState = "PROVISIONING"
+	PRECISIONTIMESERVICERESPONSESTATE_PROVISIONING_FAILED      PrecisionTimeServiceResponseState = "PROVISIONING_FAILED"
+	PRECISIONTIMESERVICERESPONSESTATE_REPROVISIONING           PrecisionTimeServiceResponseState = "REPROVISIONING"
+	PRECISIONTIMESERVICERESPONSESTATE_REPROVISIONING_FAILED    PrecisionTimeServiceResponseState = "REPROVISIONING_FAILED"
+	PRECISIONTIMESERVICERESPONSESTATE_UNKNOWN_DEFAULT_OPEN_API PrecisionTimeServiceResponseState = "unknown_default_open_api"
 )
 
 // All allowed values of PrecisionTimeServiceResponseState enum
@@ -47,6 +48,7 @@ var AllowedPrecisionTimeServiceResponseStateEnumValues = []PrecisionTimeServiceR
 	"PROVISIONING_FAILED",
 	"REPROVISIONING",
 	"REPROVISIONING_FAILED",
+	"unknown_default_open_api",
 }
 
 func (v *PrecisionTimeServiceResponseState) UnmarshalJSON(src []byte) error {
@@ -63,7 +65,8 @@ func (v *PrecisionTimeServiceResponseState) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid PrecisionTimeServiceResponseState", value)
+	*v = PRECISIONTIMESERVICERESPONSESTATE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewPrecisionTimeServiceResponseStateFromValue returns a pointer to a valid PrecisionTimeServiceResponseState

@@ -17,13 +17,14 @@ type VirtualConnectionPriceAccessPointType string
 
 // List of VirtualConnectionPriceAccessPointType
 const (
-	VIRTUALCONNECTIONPRICEACCESSPOINTTYPE_VD            VirtualConnectionPriceAccessPointType = "VD"
-	VIRTUALCONNECTIONPRICEACCESSPOINTTYPE_SP            VirtualConnectionPriceAccessPointType = "SP"
-	VIRTUALCONNECTIONPRICEACCESSPOINTTYPE_COLO          VirtualConnectionPriceAccessPointType = "COLO"
-	VIRTUALCONNECTIONPRICEACCESSPOINTTYPE_CLOUD_ROUTER  VirtualConnectionPriceAccessPointType = "CLOUD_ROUTER"
-	VIRTUALCONNECTIONPRICEACCESSPOINTTYPE_CHAINGROUP    VirtualConnectionPriceAccessPointType = "CHAINGROUP"
-	VIRTUALCONNECTIONPRICEACCESSPOINTTYPE_NETWORK       VirtualConnectionPriceAccessPointType = "NETWORK"
-	VIRTUALCONNECTIONPRICEACCESSPOINTTYPE_METAL_NETWORK VirtualConnectionPriceAccessPointType = "METAL_NETWORK"
+	VIRTUALCONNECTIONPRICEACCESSPOINTTYPE_VD                       VirtualConnectionPriceAccessPointType = "VD"
+	VIRTUALCONNECTIONPRICEACCESSPOINTTYPE_SP                       VirtualConnectionPriceAccessPointType = "SP"
+	VIRTUALCONNECTIONPRICEACCESSPOINTTYPE_COLO                     VirtualConnectionPriceAccessPointType = "COLO"
+	VIRTUALCONNECTIONPRICEACCESSPOINTTYPE_CLOUD_ROUTER             VirtualConnectionPriceAccessPointType = "CLOUD_ROUTER"
+	VIRTUALCONNECTIONPRICEACCESSPOINTTYPE_CHAINGROUP               VirtualConnectionPriceAccessPointType = "CHAINGROUP"
+	VIRTUALCONNECTIONPRICEACCESSPOINTTYPE_NETWORK                  VirtualConnectionPriceAccessPointType = "NETWORK"
+	VIRTUALCONNECTIONPRICEACCESSPOINTTYPE_METAL_NETWORK            VirtualConnectionPriceAccessPointType = "METAL_NETWORK"
+	VIRTUALCONNECTIONPRICEACCESSPOINTTYPE_UNKNOWN_DEFAULT_OPEN_API VirtualConnectionPriceAccessPointType = "unknown_default_open_api"
 )
 
 // All allowed values of VirtualConnectionPriceAccessPointType enum
@@ -35,6 +36,7 @@ var AllowedVirtualConnectionPriceAccessPointTypeEnumValues = []VirtualConnection
 	"CHAINGROUP",
 	"NETWORK",
 	"METAL_NETWORK",
+	"unknown_default_open_api",
 }
 
 func (v *VirtualConnectionPriceAccessPointType) UnmarshalJSON(src []byte) error {
@@ -51,7 +53,8 @@ func (v *VirtualConnectionPriceAccessPointType) UnmarshalJSON(src []byte) error 
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid VirtualConnectionPriceAccessPointType", value)
+	*v = VIRTUALCONNECTIONPRICEACCESSPOINTTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewVirtualConnectionPriceAccessPointTypeFromValue returns a pointer to a valid VirtualConnectionPriceAccessPointType

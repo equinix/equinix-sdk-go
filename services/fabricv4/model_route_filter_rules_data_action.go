@@ -17,14 +17,16 @@ type RouteFilterRulesDataAction string
 
 // List of RouteFilterRulesData_action
 const (
-	ROUTEFILTERRULESDATAACTION_PERMIT RouteFilterRulesDataAction = "PERMIT"
-	ROUTEFILTERRULESDATAACTION_DENY   RouteFilterRulesDataAction = "DENY"
+	ROUTEFILTERRULESDATAACTION_PERMIT                   RouteFilterRulesDataAction = "PERMIT"
+	ROUTEFILTERRULESDATAACTION_DENY                     RouteFilterRulesDataAction = "DENY"
+	ROUTEFILTERRULESDATAACTION_UNKNOWN_DEFAULT_OPEN_API RouteFilterRulesDataAction = "unknown_default_open_api"
 )
 
 // All allowed values of RouteFilterRulesDataAction enum
 var AllowedRouteFilterRulesDataActionEnumValues = []RouteFilterRulesDataAction{
 	"PERMIT",
 	"DENY",
+	"unknown_default_open_api",
 }
 
 func (v *RouteFilterRulesDataAction) UnmarshalJSON(src []byte) error {
@@ -41,7 +43,8 @@ func (v *RouteFilterRulesDataAction) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid RouteFilterRulesDataAction", value)
+	*v = ROUTEFILTERRULESDATAACTION_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewRouteFilterRulesDataActionFromValue returns a pointer to a valid RouteFilterRulesDataAction

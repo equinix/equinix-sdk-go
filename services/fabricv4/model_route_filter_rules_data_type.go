@@ -17,14 +17,16 @@ type RouteFilterRulesDataType string
 
 // List of RouteFilterRulesData_type
 const (
-	ROUTEFILTERRULESDATATYPE_IPV4_PREFIX_FILTER_RULE RouteFilterRulesDataType = "BGP_IPv4_PREFIX_FILTER_RULE"
-	ROUTEFILTERRULESDATATYPE_IPV6_PREFIX_FILTER_RULE RouteFilterRulesDataType = "BGP_IPv6_PREFIX_FILTER_RULE"
+	ROUTEFILTERRULESDATATYPE_IPV4_PREFIX_FILTER_RULE  RouteFilterRulesDataType = "BGP_IPv4_PREFIX_FILTER_RULE"
+	ROUTEFILTERRULESDATATYPE_IPV6_PREFIX_FILTER_RULE  RouteFilterRulesDataType = "BGP_IPv6_PREFIX_FILTER_RULE"
+	ROUTEFILTERRULESDATATYPE_UNKNOWN_DEFAULT_OPEN_API RouteFilterRulesDataType = "unknown_default_open_api"
 )
 
 // All allowed values of RouteFilterRulesDataType enum
 var AllowedRouteFilterRulesDataTypeEnumValues = []RouteFilterRulesDataType{
 	"BGP_IPv4_PREFIX_FILTER_RULE",
 	"BGP_IPv6_PREFIX_FILTER_RULE",
+	"unknown_default_open_api",
 }
 
 func (v *RouteFilterRulesDataType) UnmarshalJSON(src []byte) error {
@@ -41,7 +43,8 @@ func (v *RouteFilterRulesDataType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid RouteFilterRulesDataType", value)
+	*v = ROUTEFILTERRULESDATATYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewRouteFilterRulesDataTypeFromValue returns a pointer to a valid RouteFilterRulesDataType

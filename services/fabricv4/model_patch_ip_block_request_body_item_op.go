@@ -17,14 +17,16 @@ type PatchIpBlockRequestBodyItemOp string
 
 // List of PatchIpBlockRequestBodyItem_op
 const (
-	PATCHIPBLOCKREQUESTBODYITEMOP_ADD    PatchIpBlockRequestBodyItemOp = "add"
-	PATCHIPBLOCKREQUESTBODYITEMOP_REMOVE PatchIpBlockRequestBodyItemOp = "remove"
+	PATCHIPBLOCKREQUESTBODYITEMOP_ADD                      PatchIpBlockRequestBodyItemOp = "add"
+	PATCHIPBLOCKREQUESTBODYITEMOP_REMOVE                   PatchIpBlockRequestBodyItemOp = "remove"
+	PATCHIPBLOCKREQUESTBODYITEMOP_UNKNOWN_DEFAULT_OPEN_API PatchIpBlockRequestBodyItemOp = "unknown_default_open_api"
 )
 
 // All allowed values of PatchIpBlockRequestBodyItemOp enum
 var AllowedPatchIpBlockRequestBodyItemOpEnumValues = []PatchIpBlockRequestBodyItemOp{
 	"add",
 	"remove",
+	"unknown_default_open_api",
 }
 
 func (v *PatchIpBlockRequestBodyItemOp) UnmarshalJSON(src []byte) error {
@@ -41,7 +43,8 @@ func (v *PatchIpBlockRequestBodyItemOp) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid PatchIpBlockRequestBodyItemOp", value)
+	*v = PATCHIPBLOCKREQUESTBODYITEMOP_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewPatchIpBlockRequestBodyItemOpFromValue returns a pointer to a valid PatchIpBlockRequestBodyItemOp

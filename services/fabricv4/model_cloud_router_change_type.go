@@ -17,12 +17,14 @@ type CloudRouterChangeType string
 
 // List of CloudRouterChange_type
 const (
-	CLOUDROUTERCHANGETYPE_ROUTER_UPDATE CloudRouterChangeType = "ROUTER_UPDATE"
+	CLOUDROUTERCHANGETYPE_ROUTER_UPDATE            CloudRouterChangeType = "ROUTER_UPDATE"
+	CLOUDROUTERCHANGETYPE_UNKNOWN_DEFAULT_OPEN_API CloudRouterChangeType = "unknown_default_open_api"
 )
 
 // All allowed values of CloudRouterChangeType enum
 var AllowedCloudRouterChangeTypeEnumValues = []CloudRouterChangeType{
 	"ROUTER_UPDATE",
+	"unknown_default_open_api",
 }
 
 func (v *CloudRouterChangeType) UnmarshalJSON(src []byte) error {
@@ -39,7 +41,8 @@ func (v *CloudRouterChangeType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid CloudRouterChangeType", value)
+	*v = CLOUDROUTERCHANGETYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewCloudRouterChangeTypeFromValue returns a pointer to a valid CloudRouterChangeType

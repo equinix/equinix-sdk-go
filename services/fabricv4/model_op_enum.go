@@ -17,9 +17,10 @@ type OpEnum string
 
 // List of OpEnum
 const (
-	OPENUM_ADD     OpEnum = "add"
-	OPENUM_REMOVE  OpEnum = "remove"
-	OPENUM_REPLACE OpEnum = "replace"
+	OPENUM_ADD                      OpEnum = "add"
+	OPENUM_REMOVE                   OpEnum = "remove"
+	OPENUM_REPLACE                  OpEnum = "replace"
+	OPENUM_UNKNOWN_DEFAULT_OPEN_API OpEnum = "unknown_default_open_api"
 )
 
 // All allowed values of OpEnum enum
@@ -27,6 +28,7 @@ var AllowedOpEnumEnumValues = []OpEnum{
 	"add",
 	"remove",
 	"replace",
+	"unknown_default_open_api",
 }
 
 func (v *OpEnum) UnmarshalJSON(src []byte) error {
@@ -43,7 +45,8 @@ func (v *OpEnum) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid OpEnum", value)
+	*v = OPENUM_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewOpEnumFromValue returns a pointer to a valid OpEnum

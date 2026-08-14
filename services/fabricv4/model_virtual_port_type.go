@@ -17,12 +17,14 @@ type VirtualPortType string
 
 // List of VirtualPortType
 const (
-	VIRTUALPORTTYPE_XF_PORT VirtualPortType = "XF_PORT"
+	VIRTUALPORTTYPE_XF_PORT                  VirtualPortType = "XF_PORT"
+	VIRTUALPORTTYPE_UNKNOWN_DEFAULT_OPEN_API VirtualPortType = "unknown_default_open_api"
 )
 
 // All allowed values of VirtualPortType enum
 var AllowedVirtualPortTypeEnumValues = []VirtualPortType{
 	"XF_PORT",
+	"unknown_default_open_api",
 }
 
 func (v *VirtualPortType) UnmarshalJSON(src []byte) error {
@@ -39,7 +41,8 @@ func (v *VirtualPortType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid VirtualPortType", value)
+	*v = VIRTUALPORTTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewVirtualPortTypeFromValue returns a pointer to a valid VirtualPortType

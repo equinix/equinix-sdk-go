@@ -20,23 +20,24 @@ type ProductTypesEnum string
 
 // List of product-types-enum
 const (
-	PRODUCTTYPESENUM_SMART_HANDS            ProductTypesEnum = "SMART_HANDS"
-	PRODUCTTYPESENUM_TROUBLE                ProductTypesEnum = "TROUBLE"
-	PRODUCTTYPESENUM_SHIPMENT               ProductTypesEnum = "SHIPMENT"
-	PRODUCTTYPESENUM_WORK_VISIT             ProductTypesEnum = "WORK_VISIT"
-	PRODUCTTYPESENUM_SECURITY_ACCESS        ProductTypesEnum = "SECURITY_ACCESS"
-	PRODUCTTYPESENUM_CONFERENCE_ROOM        ProductTypesEnum = "CONFERENCE_ROOM"
-	PRODUCTTYPESENUM_TOUR_REQUESTS          ProductTypesEnum = "TOUR_REQUESTS"
-	PRODUCTTYPESENUM_CROSS_CONNECT          ProductTypesEnum = "CROSS_CONNECT"
-	PRODUCTTYPESENUM_CLOUD_EXCHANGE_PORT    ProductTypesEnum = "CLOUD_EXCHANGE_PORT"
-	PRODUCTTYPESENUM_INTERNET_EXCHANGE_PORT ProductTypesEnum = "INTERNET_EXCHANGE_PORT"
-	PRODUCTTYPESENUM_METRO_CONNECT          ProductTypesEnum = "METRO_CONNECT"
-	PRODUCTTYPESENUM_POWER                  ProductTypesEnum = "POWER"
-	PRODUCTTYPESENUM_IBX_SMARTVIEW_SENSOR   ProductTypesEnum = "IBX_SMARTVIEW_SENSOR"
-	PRODUCTTYPESENUM_ACCESSORY              ProductTypesEnum = "ACCESSORY"
-	PRODUCTTYPESENUM_CAGE                   ProductTypesEnum = "CAGE"
-	PRODUCTTYPESENUM_CABINET                ProductTypesEnum = "CABINET"
-	PRODUCTTYPESENUM_IBX_SMART_VIEW         ProductTypesEnum = "IBX_SMART_VIEW"
+	PRODUCTTYPESENUM_SMART_HANDS              ProductTypesEnum = "SMART_HANDS"
+	PRODUCTTYPESENUM_TROUBLE                  ProductTypesEnum = "TROUBLE"
+	PRODUCTTYPESENUM_SHIPMENT                 ProductTypesEnum = "SHIPMENT"
+	PRODUCTTYPESENUM_WORK_VISIT               ProductTypesEnum = "WORK_VISIT"
+	PRODUCTTYPESENUM_SECURITY_ACCESS          ProductTypesEnum = "SECURITY_ACCESS"
+	PRODUCTTYPESENUM_CONFERENCE_ROOM          ProductTypesEnum = "CONFERENCE_ROOM"
+	PRODUCTTYPESENUM_TOUR_REQUESTS            ProductTypesEnum = "TOUR_REQUESTS"
+	PRODUCTTYPESENUM_CROSS_CONNECT            ProductTypesEnum = "CROSS_CONNECT"
+	PRODUCTTYPESENUM_CLOUD_EXCHANGE_PORT      ProductTypesEnum = "CLOUD_EXCHANGE_PORT"
+	PRODUCTTYPESENUM_INTERNET_EXCHANGE_PORT   ProductTypesEnum = "INTERNET_EXCHANGE_PORT"
+	PRODUCTTYPESENUM_METRO_CONNECT            ProductTypesEnum = "METRO_CONNECT"
+	PRODUCTTYPESENUM_POWER                    ProductTypesEnum = "POWER"
+	PRODUCTTYPESENUM_IBX_SMARTVIEW_SENSOR     ProductTypesEnum = "IBX_SMARTVIEW_SENSOR"
+	PRODUCTTYPESENUM_ACCESSORY                ProductTypesEnum = "ACCESSORY"
+	PRODUCTTYPESENUM_CAGE                     ProductTypesEnum = "CAGE"
+	PRODUCTTYPESENUM_CABINET                  ProductTypesEnum = "CABINET"
+	PRODUCTTYPESENUM_IBX_SMART_VIEW           ProductTypesEnum = "IBX_SMART_VIEW"
+	PRODUCTTYPESENUM_UNKNOWN_DEFAULT_OPEN_API ProductTypesEnum = "unknown_default_open_api"
 )
 
 // All allowed values of ProductTypesEnum enum
@@ -58,6 +59,7 @@ var AllowedProductTypesEnumEnumValues = []ProductTypesEnum{
 	"CAGE",
 	"CABINET",
 	"IBX_SMART_VIEW",
+	"unknown_default_open_api",
 }
 
 func (v *ProductTypesEnum) UnmarshalJSON(src []byte) error {
@@ -74,7 +76,8 @@ func (v *ProductTypesEnum) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ProductTypesEnum", value)
+	*v = PRODUCTTYPESENUM_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewProductTypesEnumFromValue returns a pointer to a valid ProductTypesEnum

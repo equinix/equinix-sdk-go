@@ -20,14 +20,16 @@ type PatchPanelDetailsType string
 
 // List of patch_panel_details_type
 const (
-	PATCHPANELDETAILSTYPE_CUSTOMER_PROVIDED PatchPanelDetailsType = "CUSTOMER_PROVIDED"
-	PATCHPANELDETAILSTYPE_EQUINIX_PROVIDED  PatchPanelDetailsType = "EQUINIX_PROVIDED"
+	PATCHPANELDETAILSTYPE_CUSTOMER_PROVIDED        PatchPanelDetailsType = "CUSTOMER_PROVIDED"
+	PATCHPANELDETAILSTYPE_EQUINIX_PROVIDED         PatchPanelDetailsType = "EQUINIX_PROVIDED"
+	PATCHPANELDETAILSTYPE_UNKNOWN_DEFAULT_OPEN_API PatchPanelDetailsType = "unknown_default_open_api"
 )
 
 // All allowed values of PatchPanelDetailsType enum
 var AllowedPatchPanelDetailsTypeEnumValues = []PatchPanelDetailsType{
 	"CUSTOMER_PROVIDED",
 	"EQUINIX_PROVIDED",
+	"unknown_default_open_api",
 }
 
 func (v *PatchPanelDetailsType) UnmarshalJSON(src []byte) error {
@@ -44,7 +46,8 @@ func (v *PatchPanelDetailsType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid PatchPanelDetailsType", value)
+	*v = PATCHPANELDETAILSTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewPatchPanelDetailsTypeFromValue returns a pointer to a valid PatchPanelDetailsType

@@ -20,12 +20,14 @@ type TokenExchangeResponseTokenType string
 
 // List of TokenExchangeResponse_token_type
 const (
-	TOKENEXCHANGERESPONSETOKENTYPE_BEARER TokenExchangeResponseTokenType = "Bearer"
+	TOKENEXCHANGERESPONSETOKENTYPE_BEARER                   TokenExchangeResponseTokenType = "Bearer"
+	TOKENEXCHANGERESPONSETOKENTYPE_UNKNOWN_DEFAULT_OPEN_API TokenExchangeResponseTokenType = "unknown_default_open_api"
 )
 
 // All allowed values of TokenExchangeResponseTokenType enum
 var AllowedTokenExchangeResponseTokenTypeEnumValues = []TokenExchangeResponseTokenType{
 	"Bearer",
+	"unknown_default_open_api",
 }
 
 func (v *TokenExchangeResponseTokenType) UnmarshalJSON(src []byte) error {
@@ -42,7 +44,8 @@ func (v *TokenExchangeResponseTokenType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid TokenExchangeResponseTokenType", value)
+	*v = TOKENEXCHANGERESPONSETOKENTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewTokenExchangeResponseTokenTypeFromValue returns a pointer to a valid TokenExchangeResponseTokenType

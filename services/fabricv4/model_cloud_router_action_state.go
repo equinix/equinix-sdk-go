@@ -17,9 +17,10 @@ type CloudRouterActionState string
 
 // List of CloudRouterActionState
 const (
-	CLOUDROUTERACTIONSTATE_SUCCEEDED CloudRouterActionState = "SUCCEEDED"
-	CLOUDROUTERACTIONSTATE_FAILED    CloudRouterActionState = "FAILED"
-	CLOUDROUTERACTIONSTATE_PENDING   CloudRouterActionState = "PENDING"
+	CLOUDROUTERACTIONSTATE_SUCCEEDED                CloudRouterActionState = "SUCCEEDED"
+	CLOUDROUTERACTIONSTATE_FAILED                   CloudRouterActionState = "FAILED"
+	CLOUDROUTERACTIONSTATE_PENDING                  CloudRouterActionState = "PENDING"
+	CLOUDROUTERACTIONSTATE_UNKNOWN_DEFAULT_OPEN_API CloudRouterActionState = "unknown_default_open_api"
 )
 
 // All allowed values of CloudRouterActionState enum
@@ -27,6 +28,7 @@ var AllowedCloudRouterActionStateEnumValues = []CloudRouterActionState{
 	"SUCCEEDED",
 	"FAILED",
 	"PENDING",
+	"unknown_default_open_api",
 }
 
 func (v *CloudRouterActionState) UnmarshalJSON(src []byte) error {
@@ -43,7 +45,8 @@ func (v *CloudRouterActionState) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid CloudRouterActionState", value)
+	*v = CLOUDROUTERACTIONSTATE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewCloudRouterActionStateFromValue returns a pointer to a valid CloudRouterActionState

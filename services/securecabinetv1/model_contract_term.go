@@ -20,10 +20,11 @@ type ContractTerm string
 
 // List of ContractTerm
 const (
-	CONTRACTTERM__24_MONTHS ContractTerm = "TERM_24_MONTHS"
-	CONTRACTTERM__36_MONTHS ContractTerm = "TERM_36_MONTHS"
-	CONTRACTTERM__48_MONTHS ContractTerm = "TERM_48_MONTHS"
-	CONTRACTTERM__60_MONTHS ContractTerm = "TERM_60_MONTHS"
+	CONTRACTTERM__24_MONTHS               ContractTerm = "TERM_24_MONTHS"
+	CONTRACTTERM__36_MONTHS               ContractTerm = "TERM_36_MONTHS"
+	CONTRACTTERM__48_MONTHS               ContractTerm = "TERM_48_MONTHS"
+	CONTRACTTERM__60_MONTHS               ContractTerm = "TERM_60_MONTHS"
+	CONTRACTTERM_UNKNOWN_DEFAULT_OPEN_API ContractTerm = "unknown_default_open_api"
 )
 
 // All allowed values of ContractTerm enum
@@ -32,6 +33,7 @@ var AllowedContractTermEnumValues = []ContractTerm{
 	"TERM_36_MONTHS",
 	"TERM_48_MONTHS",
 	"TERM_60_MONTHS",
+	"unknown_default_open_api",
 }
 
 func (v *ContractTerm) UnmarshalJSON(src []byte) error {
@@ -48,7 +50,8 @@ func (v *ContractTerm) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ContractTerm", value)
+	*v = CONTRACTTERM_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewContractTermFromValue returns a pointer to a valid ContractTerm

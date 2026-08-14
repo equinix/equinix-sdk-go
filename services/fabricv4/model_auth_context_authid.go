@@ -17,14 +17,16 @@ type AuthContextAuthid string
 
 // List of AuthContext_authid
 const (
-	AUTHCONTEXTAUTHID_EQUINIX AuthContextAuthid = "equinix"
-	AUTHCONTEXTAUTHID_USER_ID AuthContextAuthid = "userId"
+	AUTHCONTEXTAUTHID_EQUINIX                  AuthContextAuthid = "equinix"
+	AUTHCONTEXTAUTHID_USER_ID                  AuthContextAuthid = "userId"
+	AUTHCONTEXTAUTHID_UNKNOWN_DEFAULT_OPEN_API AuthContextAuthid = "unknown_default_open_api"
 )
 
 // All allowed values of AuthContextAuthid enum
 var AllowedAuthContextAuthidEnumValues = []AuthContextAuthid{
 	"equinix",
 	"userId",
+	"unknown_default_open_api",
 }
 
 func (v *AuthContextAuthid) UnmarshalJSON(src []byte) error {
@@ -41,7 +43,8 @@ func (v *AuthContextAuthid) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid AuthContextAuthid", value)
+	*v = AUTHCONTEXTAUTHID_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewAuthContextAuthidFromValue returns a pointer to a valid AuthContextAuthid

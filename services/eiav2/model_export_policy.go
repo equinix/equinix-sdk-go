@@ -20,10 +20,11 @@ type ExportPolicy string
 
 // List of ExportPolicy
 const (
-	EXPORTPOLICY_FULL         ExportPolicy = "FULL"
-	EXPORTPOLICY_DEFAULT      ExportPolicy = "DEFAULT"
-	EXPORTPOLICY_FULL_DEFAULT ExportPolicy = "FULL_DEFAULT"
-	EXPORTPOLICY_PARTIAL      ExportPolicy = "PARTIAL"
+	EXPORTPOLICY_FULL                     ExportPolicy = "FULL"
+	EXPORTPOLICY_DEFAULT                  ExportPolicy = "DEFAULT"
+	EXPORTPOLICY_FULL_DEFAULT             ExportPolicy = "FULL_DEFAULT"
+	EXPORTPOLICY_PARTIAL                  ExportPolicy = "PARTIAL"
+	EXPORTPOLICY_UNKNOWN_DEFAULT_OPEN_API ExportPolicy = "unknown_default_open_api"
 )
 
 // All allowed values of ExportPolicy enum
@@ -32,6 +33,7 @@ var AllowedExportPolicyEnumValues = []ExportPolicy{
 	"DEFAULT",
 	"FULL_DEFAULT",
 	"PARTIAL",
+	"unknown_default_open_api",
 }
 
 func (v *ExportPolicy) UnmarshalJSON(src []byte) error {
@@ -48,7 +50,8 @@ func (v *ExportPolicy) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ExportPolicy", value)
+	*v = EXPORTPOLICY_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewExportPolicyFromValue returns a pointer to a valid ExportPolicy

@@ -17,17 +17,18 @@ type ConnectionState string
 
 // List of ConnectionState
 const (
-	CONNECTIONSTATE_ACTIVE         ConnectionState = "ACTIVE"
-	CONNECTIONSTATE_CANCELLED      ConnectionState = "CANCELLED"
-	CONNECTIONSTATE_DEPROVISIONED  ConnectionState = "DEPROVISIONED"
-	CONNECTIONSTATE_DEPROVISIONING ConnectionState = "DEPROVISIONING"
-	CONNECTIONSTATE_DRAFT          ConnectionState = "DRAFT"
-	CONNECTIONSTATE_FAILED         ConnectionState = "FAILED"
-	CONNECTIONSTATE_PENDING        ConnectionState = "PENDING"
-	CONNECTIONSTATE_PROVISIONED    ConnectionState = "PROVISIONED"
-	CONNECTIONSTATE_PROVISIONING   ConnectionState = "PROVISIONING"
-	CONNECTIONSTATE_REPROVISIONING ConnectionState = "REPROVISIONING"
-	CONNECTIONSTATE_EMPTY          ConnectionState = ""
+	CONNECTIONSTATE_ACTIVE                   ConnectionState = "ACTIVE"
+	CONNECTIONSTATE_CANCELLED                ConnectionState = "CANCELLED"
+	CONNECTIONSTATE_DEPROVISIONED            ConnectionState = "DEPROVISIONED"
+	CONNECTIONSTATE_DEPROVISIONING           ConnectionState = "DEPROVISIONING"
+	CONNECTIONSTATE_DRAFT                    ConnectionState = "DRAFT"
+	CONNECTIONSTATE_FAILED                   ConnectionState = "FAILED"
+	CONNECTIONSTATE_PENDING                  ConnectionState = "PENDING"
+	CONNECTIONSTATE_PROVISIONED              ConnectionState = "PROVISIONED"
+	CONNECTIONSTATE_PROVISIONING             ConnectionState = "PROVISIONING"
+	CONNECTIONSTATE_REPROVISIONING           ConnectionState = "REPROVISIONING"
+	CONNECTIONSTATE_EMPTY                    ConnectionState = ""
+	CONNECTIONSTATE_UNKNOWN_DEFAULT_OPEN_API ConnectionState = "unknown_default_open_api"
 )
 
 // All allowed values of ConnectionState enum
@@ -43,6 +44,7 @@ var AllowedConnectionStateEnumValues = []ConnectionState{
 	"PROVISIONING",
 	"REPROVISIONING",
 	"",
+	"unknown_default_open_api",
 }
 
 func (v *ConnectionState) UnmarshalJSON(src []byte) error {
@@ -59,7 +61,8 @@ func (v *ConnectionState) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ConnectionState", value)
+	*v = CONNECTIONSTATE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewConnectionStateFromValue returns a pointer to a valid ConnectionState

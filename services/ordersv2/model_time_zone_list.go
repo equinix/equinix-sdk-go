@@ -125,6 +125,7 @@ const (
 	TIMEZONELIST_AUSTRALIA_VICTORIA             TIMEZONELIST = "Australia/Victoria"
 	TIMEZONELIST_AUSTRALIA_WEST                 TIMEZONELIST = "Australia/West"
 	TIMEZONELIST_AUSTRALIA_CANBERRA             TIMEZONELIST = "Australia/Canberra"
+	TIMEZONELIST_UNKNOWN_DEFAULT_OPEN_API       TIMEZONELIST = "unknown_default_open_api"
 )
 
 // All allowed values of TIMEZONELIST enum
@@ -234,6 +235,7 @@ var AllowedTIMEZONELISTEnumValues = []TIMEZONELIST{
 	"Australia/Victoria",
 	"Australia/West",
 	"Australia/Canberra",
+	"unknown_default_open_api",
 }
 
 func (v *TIMEZONELIST) UnmarshalJSON(src []byte) error {
@@ -250,7 +252,8 @@ func (v *TIMEZONELIST) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid TIMEZONELIST", value)
+	*v = TIMEZONELIST_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewTIMEZONELISTFromValue returns a pointer to a valid TIMEZONELIST

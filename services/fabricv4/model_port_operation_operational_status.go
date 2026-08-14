@@ -17,9 +17,10 @@ type PortOperationOperationalStatus string
 
 // List of PortOperation_operationalStatus
 const (
-	PORTOPERATIONOPERATIONALSTATUS_UP      PortOperationOperationalStatus = "UP"
-	PORTOPERATIONOPERATIONALSTATUS_DOWN    PortOperationOperationalStatus = "DOWN"
-	PORTOPERATIONOPERATIONALSTATUS_PARTIAL PortOperationOperationalStatus = "PARTIAL"
+	PORTOPERATIONOPERATIONALSTATUS_UP                       PortOperationOperationalStatus = "UP"
+	PORTOPERATIONOPERATIONALSTATUS_DOWN                     PortOperationOperationalStatus = "DOWN"
+	PORTOPERATIONOPERATIONALSTATUS_PARTIAL                  PortOperationOperationalStatus = "PARTIAL"
+	PORTOPERATIONOPERATIONALSTATUS_UNKNOWN_DEFAULT_OPEN_API PortOperationOperationalStatus = "unknown_default_open_api"
 )
 
 // All allowed values of PortOperationOperationalStatus enum
@@ -27,6 +28,7 @@ var AllowedPortOperationOperationalStatusEnumValues = []PortOperationOperational
 	"UP",
 	"DOWN",
 	"PARTIAL",
+	"unknown_default_open_api",
 }
 
 func (v *PortOperationOperationalStatus) UnmarshalJSON(src []byte) error {
@@ -43,7 +45,8 @@ func (v *PortOperationOperationalStatus) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid PortOperationOperationalStatus", value)
+	*v = PORTOPERATIONOPERATIONALSTATUS_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewPortOperationOperationalStatusFromValue returns a pointer to a valid PortOperationOperationalStatus

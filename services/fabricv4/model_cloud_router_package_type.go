@@ -17,12 +17,14 @@ type CloudRouterPackageType string
 
 // List of CloudRouterPackage_type
 const (
-	CLOUDROUTERPACKAGETYPE_ROUTER_PACKAGE CloudRouterPackageType = "ROUTER_PACKAGE"
+	CLOUDROUTERPACKAGETYPE_ROUTER_PACKAGE           CloudRouterPackageType = "ROUTER_PACKAGE"
+	CLOUDROUTERPACKAGETYPE_UNKNOWN_DEFAULT_OPEN_API CloudRouterPackageType = "unknown_default_open_api"
 )
 
 // All allowed values of CloudRouterPackageType enum
 var AllowedCloudRouterPackageTypeEnumValues = []CloudRouterPackageType{
 	"ROUTER_PACKAGE",
+	"unknown_default_open_api",
 }
 
 func (v *CloudRouterPackageType) UnmarshalJSON(src []byte) error {
@@ -39,7 +41,8 @@ func (v *CloudRouterPackageType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid CloudRouterPackageType", value)
+	*v = CLOUDROUTERPACKAGETYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewCloudRouterPackageTypeFromValue returns a pointer to a valid CloudRouterPackageType

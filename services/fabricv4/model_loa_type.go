@@ -17,14 +17,16 @@ type LoaType string
 
 // List of LoaType
 const (
-	LOATYPE_PATCH_PANEL_PORT_LOA LoaType = "PATCH_PANEL_PORT_LOA"
-	LOATYPE_CAGE_LOA             LoaType = "CAGE_LOA"
+	LOATYPE_PATCH_PANEL_PORT_LOA     LoaType = "PATCH_PANEL_PORT_LOA"
+	LOATYPE_CAGE_LOA                 LoaType = "CAGE_LOA"
+	LOATYPE_UNKNOWN_DEFAULT_OPEN_API LoaType = "unknown_default_open_api"
 )
 
 // All allowed values of LoaType enum
 var AllowedLoaTypeEnumValues = []LoaType{
 	"PATCH_PANEL_PORT_LOA",
 	"CAGE_LOA",
+	"unknown_default_open_api",
 }
 
 func (v *LoaType) UnmarshalJSON(src []byte) error {
@@ -41,7 +43,8 @@ func (v *LoaType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid LoaType", value)
+	*v = LOATYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewLoaTypeFromValue returns a pointer to a valid LoaType

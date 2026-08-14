@@ -32,6 +32,7 @@ const (
 	PORTSORTBY_CHANGE_LOG_CREATED_DATE_TIME           PortSortBy = "/changeLog/createdDateTime"
 	PORTSORTBY_BANDWIDTH                              PortSortBy = "/bandwidth"
 	PORTSORTBY_SERVICE_CODE                           PortSortBy = "/serviceCode"
+	PORTSORTBY_UNKNOWN_DEFAULT_OPEN_API               PortSortBy = "unknown_default_open_api"
 )
 
 // All allowed values of PortSortBy enum
@@ -51,6 +52,7 @@ var AllowedPortSortByEnumValues = []PortSortBy{
 	"/changeLog/createdDateTime",
 	"/bandwidth",
 	"/serviceCode",
+	"unknown_default_open_api",
 }
 
 func (v *PortSortBy) UnmarshalJSON(src []byte) error {
@@ -67,7 +69,8 @@ func (v *PortSortBy) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid PortSortBy", value)
+	*v = PORTSORTBY_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewPortSortByFromValue returns a pointer to a valid PortSortBy

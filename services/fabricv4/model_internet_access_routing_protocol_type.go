@@ -17,9 +17,10 @@ type InternetAccessRoutingProtocolType string
 
 // List of InternetAccessRoutingProtocolType
 const (
-	INTERNETACCESSROUTINGPROTOCOLTYPE_BGP    InternetAccessRoutingProtocolType = "BGP"
-	INTERNETACCESSROUTINGPROTOCOLTYPE_DIRECT InternetAccessRoutingProtocolType = "DIRECT"
-	INTERNETACCESSROUTINGPROTOCOLTYPE_STATIC InternetAccessRoutingProtocolType = "STATIC"
+	INTERNETACCESSROUTINGPROTOCOLTYPE_BGP                      InternetAccessRoutingProtocolType = "BGP"
+	INTERNETACCESSROUTINGPROTOCOLTYPE_DIRECT                   InternetAccessRoutingProtocolType = "DIRECT"
+	INTERNETACCESSROUTINGPROTOCOLTYPE_STATIC                   InternetAccessRoutingProtocolType = "STATIC"
+	INTERNETACCESSROUTINGPROTOCOLTYPE_UNKNOWN_DEFAULT_OPEN_API InternetAccessRoutingProtocolType = "unknown_default_open_api"
 )
 
 // All allowed values of InternetAccessRoutingProtocolType enum
@@ -27,6 +28,7 @@ var AllowedInternetAccessRoutingProtocolTypeEnumValues = []InternetAccessRouting
 	"BGP",
 	"DIRECT",
 	"STATIC",
+	"unknown_default_open_api",
 }
 
 func (v *InternetAccessRoutingProtocolType) UnmarshalJSON(src []byte) error {
@@ -43,7 +45,8 @@ func (v *InternetAccessRoutingProtocolType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid InternetAccessRoutingProtocolType", value)
+	*v = INTERNETACCESSROUTINGPROTOCOLTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewInternetAccessRoutingProtocolTypeFromValue returns a pointer to a valid InternetAccessRoutingProtocolType

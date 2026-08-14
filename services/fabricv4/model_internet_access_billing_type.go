@@ -17,9 +17,10 @@ type InternetAccessBillingType string
 
 // List of InternetAccessBillingType
 const (
-	INTERNETACCESSBILLINGTYPE_FIXED       InternetAccessBillingType = "FIXED"
-	INTERNETACCESSBILLINGTYPE_USAGE_BASED InternetAccessBillingType = "USAGE_BASED"
-	INTERNETACCESSBILLINGTYPE_BURST_BASED InternetAccessBillingType = "BURST_BASED"
+	INTERNETACCESSBILLINGTYPE_FIXED                    InternetAccessBillingType = "FIXED"
+	INTERNETACCESSBILLINGTYPE_USAGE_BASED              InternetAccessBillingType = "USAGE_BASED"
+	INTERNETACCESSBILLINGTYPE_BURST_BASED              InternetAccessBillingType = "BURST_BASED"
+	INTERNETACCESSBILLINGTYPE_UNKNOWN_DEFAULT_OPEN_API InternetAccessBillingType = "unknown_default_open_api"
 )
 
 // All allowed values of InternetAccessBillingType enum
@@ -27,6 +28,7 @@ var AllowedInternetAccessBillingTypeEnumValues = []InternetAccessBillingType{
 	"FIXED",
 	"USAGE_BASED",
 	"BURST_BASED",
+	"unknown_default_open_api",
 }
 
 func (v *InternetAccessBillingType) UnmarshalJSON(src []byte) error {
@@ -43,7 +45,8 @@ func (v *InternetAccessBillingType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid InternetAccessBillingType", value)
+	*v = INTERNETACCESSBILLINGTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewInternetAccessBillingTypeFromValue returns a pointer to a valid InternetAccessBillingType

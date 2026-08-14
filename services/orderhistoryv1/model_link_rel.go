@@ -20,10 +20,11 @@ type LinkRel string
 
 // List of link_rel
 const (
-	LINKREL_SELF               LinkRel = "self"
-	LINKREL_PREV               LinkRel = "prev"
-	LINKREL_NEXT               LinkRel = "next"
-	LINKREL_ORDER_FULL_DETAILS LinkRel = "orderFullDetails"
+	LINKREL_SELF                     LinkRel = "self"
+	LINKREL_PREV                     LinkRel = "prev"
+	LINKREL_NEXT                     LinkRel = "next"
+	LINKREL_ORDER_FULL_DETAILS       LinkRel = "orderFullDetails"
+	LINKREL_UNKNOWN_DEFAULT_OPEN_API LinkRel = "unknown_default_open_api"
 )
 
 // All allowed values of LinkRel enum
@@ -32,6 +33,7 @@ var AllowedLinkRelEnumValues = []LinkRel{
 	"prev",
 	"next",
 	"orderFullDetails",
+	"unknown_default_open_api",
 }
 
 func (v *LinkRel) UnmarshalJSON(src []byte) error {
@@ -48,7 +50,8 @@ func (v *LinkRel) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid LinkRel", value)
+	*v = LINKREL_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewLinkRelFromValue returns a pointer to a valid LinkRel

@@ -17,12 +17,14 @@ type PortPackageSupportedServiceTypesInner string
 
 // List of PortPackage_supportedServiceTypes_inner
 const (
-	PORTPACKAGESUPPORTEDSERVICETYPESINNER_MSP PortPackageSupportedServiceTypesInner = "MSP"
+	PORTPACKAGESUPPORTEDSERVICETYPESINNER_MSP                      PortPackageSupportedServiceTypesInner = "MSP"
+	PORTPACKAGESUPPORTEDSERVICETYPESINNER_UNKNOWN_DEFAULT_OPEN_API PortPackageSupportedServiceTypesInner = "unknown_default_open_api"
 )
 
 // All allowed values of PortPackageSupportedServiceTypesInner enum
 var AllowedPortPackageSupportedServiceTypesInnerEnumValues = []PortPackageSupportedServiceTypesInner{
 	"MSP",
+	"unknown_default_open_api",
 }
 
 func (v *PortPackageSupportedServiceTypesInner) UnmarshalJSON(src []byte) error {
@@ -39,7 +41,8 @@ func (v *PortPackageSupportedServiceTypesInner) UnmarshalJSON(src []byte) error 
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid PortPackageSupportedServiceTypesInner", value)
+	*v = PORTPACKAGESUPPORTEDSERVICETYPESINNER_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewPortPackageSupportedServiceTypesInnerFromValue returns a pointer to a valid PortPackageSupportedServiceTypesInner

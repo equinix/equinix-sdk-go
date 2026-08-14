@@ -17,14 +17,16 @@ type ConnectionOperationOperationalStatus string
 
 // List of ConnectionOperation_operationalStatus
 const (
-	CONNECTIONOPERATIONOPERATIONALSTATUS_UP   ConnectionOperationOperationalStatus = "UP"
-	CONNECTIONOPERATIONOPERATIONALSTATUS_DOWN ConnectionOperationOperationalStatus = "DOWN"
+	CONNECTIONOPERATIONOPERATIONALSTATUS_UP                       ConnectionOperationOperationalStatus = "UP"
+	CONNECTIONOPERATIONOPERATIONALSTATUS_DOWN                     ConnectionOperationOperationalStatus = "DOWN"
+	CONNECTIONOPERATIONOPERATIONALSTATUS_UNKNOWN_DEFAULT_OPEN_API ConnectionOperationOperationalStatus = "unknown_default_open_api"
 )
 
 // All allowed values of ConnectionOperationOperationalStatus enum
 var AllowedConnectionOperationOperationalStatusEnumValues = []ConnectionOperationOperationalStatus{
 	"UP",
 	"DOWN",
+	"unknown_default_open_api",
 }
 
 func (v *ConnectionOperationOperationalStatus) UnmarshalJSON(src []byte) error {
@@ -41,7 +43,8 @@ func (v *ConnectionOperationOperationalStatus) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ConnectionOperationOperationalStatus", value)
+	*v = CONNECTIONOPERATIONOPERATIONALSTATUS_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewConnectionOperationOperationalStatusFromValue returns a pointer to a valid ConnectionOperationOperationalStatus

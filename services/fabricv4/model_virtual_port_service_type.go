@@ -17,14 +17,16 @@ type VirtualPortServiceType string
 
 // List of VirtualPortServiceType
 const (
-	VIRTUALPORTSERVICETYPE_MSP VirtualPortServiceType = "MSP"
-	VIRTUALPORTSERVICETYPE_EPL VirtualPortServiceType = "EPL"
+	VIRTUALPORTSERVICETYPE_MSP                      VirtualPortServiceType = "MSP"
+	VIRTUALPORTSERVICETYPE_EPL                      VirtualPortServiceType = "EPL"
+	VIRTUALPORTSERVICETYPE_UNKNOWN_DEFAULT_OPEN_API VirtualPortServiceType = "unknown_default_open_api"
 )
 
 // All allowed values of VirtualPortServiceType enum
 var AllowedVirtualPortServiceTypeEnumValues = []VirtualPortServiceType{
 	"MSP",
 	"EPL",
+	"unknown_default_open_api",
 }
 
 func (v *VirtualPortServiceType) UnmarshalJSON(src []byte) error {
@@ -41,7 +43,8 @@ func (v *VirtualPortServiceType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid VirtualPortServiceType", value)
+	*v = VIRTUALPORTSERVICETYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewVirtualPortServiceTypeFromValue returns a pointer to a valid VirtualPortServiceType

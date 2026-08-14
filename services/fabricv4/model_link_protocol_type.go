@@ -17,11 +17,12 @@ type LinkProtocolType string
 
 // List of LinkProtocolType
 const (
-	LINKPROTOCOLTYPE_UNTAGGED   LinkProtocolType = "UNTAGGED"
-	LINKPROTOCOLTYPE_DOT1_Q     LinkProtocolType = "DOT1Q"
-	LINKPROTOCOLTYPE_QINQ       LinkProtocolType = "QINQ"
-	LINKPROTOCOLTYPE_EVPN_VXLAN LinkProtocolType = "EVPN_VXLAN"
-	LINKPROTOCOLTYPE_VXLAN      LinkProtocolType = "VXLAN"
+	LINKPROTOCOLTYPE_UNTAGGED                 LinkProtocolType = "UNTAGGED"
+	LINKPROTOCOLTYPE_DOT1_Q                   LinkProtocolType = "DOT1Q"
+	LINKPROTOCOLTYPE_QINQ                     LinkProtocolType = "QINQ"
+	LINKPROTOCOLTYPE_EVPN_VXLAN               LinkProtocolType = "EVPN_VXLAN"
+	LINKPROTOCOLTYPE_VXLAN                    LinkProtocolType = "VXLAN"
+	LINKPROTOCOLTYPE_UNKNOWN_DEFAULT_OPEN_API LinkProtocolType = "unknown_default_open_api"
 )
 
 // All allowed values of LinkProtocolType enum
@@ -31,6 +32,7 @@ var AllowedLinkProtocolTypeEnumValues = []LinkProtocolType{
 	"QINQ",
 	"EVPN_VXLAN",
 	"VXLAN",
+	"unknown_default_open_api",
 }
 
 func (v *LinkProtocolType) UnmarshalJSON(src []byte) error {
@@ -47,7 +49,8 @@ func (v *LinkProtocolType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid LinkProtocolType", value)
+	*v = LINKPROTOCOLTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewLinkProtocolTypeFromValue returns a pointer to a valid LinkProtocolType

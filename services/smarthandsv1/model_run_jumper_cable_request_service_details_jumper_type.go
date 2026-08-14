@@ -20,10 +20,11 @@ type RunJumperCableRequestServiceDetailsJumperType string
 
 // List of runJumperCableRequest_serviceDetails_jumperType
 const (
-	RUNJUMPERCABLEREQUESTSERVICEDETAILSJUMPERTYPE_JUMPER      RunJumperCableRequestServiceDetailsJumperType = "Jumper"
-	RUNJUMPERCABLEREQUESTSERVICEDETAILSJUMPERTYPE_PRE_WIRING  RunJumperCableRequestServiceDetailsJumperType = "Pre-Wiring"
-	RUNJUMPERCABLEREQUESTSERVICEDETAILSJUMPERTYPE_PATCH_CABLE RunJumperCableRequestServiceDetailsJumperType = "Patch Cable"
-	RUNJUMPERCABLEREQUESTSERVICEDETAILSJUMPERTYPE_OTHER       RunJumperCableRequestServiceDetailsJumperType = "Other"
+	RUNJUMPERCABLEREQUESTSERVICEDETAILSJUMPERTYPE_JUMPER                   RunJumperCableRequestServiceDetailsJumperType = "Jumper"
+	RUNJUMPERCABLEREQUESTSERVICEDETAILSJUMPERTYPE_PRE_WIRING               RunJumperCableRequestServiceDetailsJumperType = "Pre-Wiring"
+	RUNJUMPERCABLEREQUESTSERVICEDETAILSJUMPERTYPE_PATCH_CABLE              RunJumperCableRequestServiceDetailsJumperType = "Patch Cable"
+	RUNJUMPERCABLEREQUESTSERVICEDETAILSJUMPERTYPE_OTHER                    RunJumperCableRequestServiceDetailsJumperType = "Other"
+	RUNJUMPERCABLEREQUESTSERVICEDETAILSJUMPERTYPE_UNKNOWN_DEFAULT_OPEN_API RunJumperCableRequestServiceDetailsJumperType = "unknown_default_open_api"
 )
 
 // All allowed values of RunJumperCableRequestServiceDetailsJumperType enum
@@ -32,6 +33,7 @@ var AllowedRunJumperCableRequestServiceDetailsJumperTypeEnumValues = []RunJumper
 	"Pre-Wiring",
 	"Patch Cable",
 	"Other",
+	"unknown_default_open_api",
 }
 
 func (v *RunJumperCableRequestServiceDetailsJumperType) UnmarshalJSON(src []byte) error {
@@ -48,7 +50,8 @@ func (v *RunJumperCableRequestServiceDetailsJumperType) UnmarshalJSON(src []byte
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid RunJumperCableRequestServiceDetailsJumperType", value)
+	*v = RUNJUMPERCABLEREQUESTSERVICEDETAILSJUMPERTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewRunJumperCableRequestServiceDetailsJumperTypeFromValue returns a pointer to a valid RunJumperCableRequestServiceDetailsJumperType

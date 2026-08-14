@@ -17,14 +17,16 @@ type TimeServiceSortDirection string
 
 // List of TimeServiceSortDirection
 const (
-	TIMESERVICESORTDIRECTION_DESC TimeServiceSortDirection = "DESC"
-	TIMESERVICESORTDIRECTION_ASC  TimeServiceSortDirection = "ASC"
+	TIMESERVICESORTDIRECTION_DESC                     TimeServiceSortDirection = "DESC"
+	TIMESERVICESORTDIRECTION_ASC                      TimeServiceSortDirection = "ASC"
+	TIMESERVICESORTDIRECTION_UNKNOWN_DEFAULT_OPEN_API TimeServiceSortDirection = "unknown_default_open_api"
 )
 
 // All allowed values of TimeServiceSortDirection enum
 var AllowedTimeServiceSortDirectionEnumValues = []TimeServiceSortDirection{
 	"DESC",
 	"ASC",
+	"unknown_default_open_api",
 }
 
 func (v *TimeServiceSortDirection) UnmarshalJSON(src []byte) error {
@@ -41,7 +43,8 @@ func (v *TimeServiceSortDirection) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid TimeServiceSortDirection", value)
+	*v = TIMESERVICESORTDIRECTION_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewTimeServiceSortDirectionFromValue returns a pointer to a valid TimeServiceSortDirection

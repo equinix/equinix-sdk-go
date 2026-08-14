@@ -4,16 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Status** | Pointer to **string** | Current outcome of the change flow | [optional] 
+**Uuid** | **string** | Uniquely identifies a change | 
+**Type** | [**RoutingProtocolChangeType**](RoutingProtocolChangeType.md) |  | 
+**Href** | Pointer to **string** | Routing Protocol Change URI | [optional] 
+**Status** | Pointer to [**RoutingProtocolChangeDataAllOfStatus**](RoutingProtocolChangeDataAllOfStatus.md) |  | [optional] 
 **CreatedBy** | Pointer to **string** | Created by User Key | [optional] 
 **CreatedDateTime** | Pointer to **time.Time** | Set when change flow starts | [optional] 
 **UpdatedBy** | Pointer to **string** | Updated by User Key | [optional] 
 **UpdatedDateTime** | Pointer to **time.Time** | Set when change object is updated | [optional] 
 **Information** | Pointer to **string** | Additional information | [optional] 
 **Data** | Pointer to [**RoutingProtocolChangeOperation**](RoutingProtocolChangeOperation.md) |  | [optional] 
-**Uuid** | **string** | Uniquely identifies a change | 
-**Type** | [**RoutingProtocolChangeType**](RoutingProtocolChangeType.md) |  | 
-**Href** | Pointer to **string** | Routing Protocol Change URI | [optional] 
 
 ## Methods
 
@@ -34,22 +34,87 @@ NewRoutingProtocolChangeDataWithDefaults instantiates a new RoutingProtocolChang
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
+### GetUuid
+
+`func (o *RoutingProtocolChangeData) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *RoutingProtocolChangeData) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *RoutingProtocolChangeData) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+
+### GetType
+
+`func (o *RoutingProtocolChangeData) GetType() RoutingProtocolChangeType`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *RoutingProtocolChangeData) GetTypeOk() (*RoutingProtocolChangeType, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *RoutingProtocolChangeData) SetType(v RoutingProtocolChangeType)`
+
+SetType sets Type field to given value.
+
+
+### GetHref
+
+`func (o *RoutingProtocolChangeData) GetHref() string`
+
+GetHref returns the Href field if non-nil, zero value otherwise.
+
+### GetHrefOk
+
+`func (o *RoutingProtocolChangeData) GetHrefOk() (*string, bool)`
+
+GetHrefOk returns a tuple with the Href field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHref
+
+`func (o *RoutingProtocolChangeData) SetHref(v string)`
+
+SetHref sets Href field to given value.
+
+### HasHref
+
+`func (o *RoutingProtocolChangeData) HasHref() bool`
+
+HasHref returns a boolean if a field has been set.
+
 ### GetStatus
 
-`func (o *RoutingProtocolChangeData) GetStatus() string`
+`func (o *RoutingProtocolChangeData) GetStatus() RoutingProtocolChangeDataAllOfStatus`
 
 GetStatus returns the Status field if non-nil, zero value otherwise.
 
 ### GetStatusOk
 
-`func (o *RoutingProtocolChangeData) GetStatusOk() (*string, bool)`
+`func (o *RoutingProtocolChangeData) GetStatusOk() (*RoutingProtocolChangeDataAllOfStatus, bool)`
 
 GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStatus
 
-`func (o *RoutingProtocolChangeData) SetStatus(v string)`
+`func (o *RoutingProtocolChangeData) SetStatus(v RoutingProtocolChangeDataAllOfStatus)`
 
 SetStatus sets Status field to given value.
 
@@ -208,71 +273,6 @@ SetData sets Data field to given value.
 `func (o *RoutingProtocolChangeData) HasData() bool`
 
 HasData returns a boolean if a field has been set.
-
-### GetUuid
-
-`func (o *RoutingProtocolChangeData) GetUuid() string`
-
-GetUuid returns the Uuid field if non-nil, zero value otherwise.
-
-### GetUuidOk
-
-`func (o *RoutingProtocolChangeData) GetUuidOk() (*string, bool)`
-
-GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUuid
-
-`func (o *RoutingProtocolChangeData) SetUuid(v string)`
-
-SetUuid sets Uuid field to given value.
-
-
-### GetType
-
-`func (o *RoutingProtocolChangeData) GetType() RoutingProtocolChangeType`
-
-GetType returns the Type field if non-nil, zero value otherwise.
-
-### GetTypeOk
-
-`func (o *RoutingProtocolChangeData) GetTypeOk() (*RoutingProtocolChangeType, bool)`
-
-GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetType
-
-`func (o *RoutingProtocolChangeData) SetType(v RoutingProtocolChangeType)`
-
-SetType sets Type field to given value.
-
-
-### GetHref
-
-`func (o *RoutingProtocolChangeData) GetHref() string`
-
-GetHref returns the Href field if non-nil, zero value otherwise.
-
-### GetHrefOk
-
-`func (o *RoutingProtocolChangeData) GetHrefOk() (*string, bool)`
-
-GetHrefOk returns a tuple with the Href field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetHref
-
-`func (o *RoutingProtocolChangeData) SetHref(v string)`
-
-SetHref sets Href field to given value.
-
-### HasHref
-
-`func (o *RoutingProtocolChangeData) HasHref() bool`
-
-HasHref returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

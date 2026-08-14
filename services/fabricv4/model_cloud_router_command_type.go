@@ -17,14 +17,16 @@ type CloudRouterCommandType string
 
 // List of CloudRouterCommandType
 const (
-	CLOUDROUTERCOMMANDTYPE_PING_COMMAND       CloudRouterCommandType = "PING_COMMAND"
-	CLOUDROUTERCOMMANDTYPE_TRACEROUTE_COMMAND CloudRouterCommandType = "TRACEROUTE_COMMAND"
+	CLOUDROUTERCOMMANDTYPE_PING_COMMAND             CloudRouterCommandType = "PING_COMMAND"
+	CLOUDROUTERCOMMANDTYPE_TRACEROUTE_COMMAND       CloudRouterCommandType = "TRACEROUTE_COMMAND"
+	CLOUDROUTERCOMMANDTYPE_UNKNOWN_DEFAULT_OPEN_API CloudRouterCommandType = "unknown_default_open_api"
 )
 
 // All allowed values of CloudRouterCommandType enum
 var AllowedCloudRouterCommandTypeEnumValues = []CloudRouterCommandType{
 	"PING_COMMAND",
 	"TRACEROUTE_COMMAND",
+	"unknown_default_open_api",
 }
 
 func (v *CloudRouterCommandType) UnmarshalJSON(src []byte) error {
@@ -41,7 +43,8 @@ func (v *CloudRouterCommandType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid CloudRouterCommandType", value)
+	*v = CLOUDROUTERCOMMANDTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewCloudRouterCommandTypeFromValue returns a pointer to a valid CloudRouterCommandType

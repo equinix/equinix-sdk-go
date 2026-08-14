@@ -17,9 +17,10 @@ type ServiceProfileLinkProtocolConfigEncapsulationStrategy string
 
 // List of ServiceProfileLinkProtocolConfig_encapsulationStrategy
 const (
-	SERVICEPROFILELINKPROTOCOLCONFIGENCAPSULATIONSTRATEGY_CTAGED ServiceProfileLinkProtocolConfigEncapsulationStrategy = "CTAGED"
-	SERVICEPROFILELINKPROTOCOLCONFIGENCAPSULATIONSTRATEGY_BOTH   ServiceProfileLinkProtocolConfigEncapsulationStrategy = "BOTH"
-	SERVICEPROFILELINKPROTOCOLCONFIGENCAPSULATIONSTRATEGY_NAMED  ServiceProfileLinkProtocolConfigEncapsulationStrategy = "NAMED"
+	SERVICEPROFILELINKPROTOCOLCONFIGENCAPSULATIONSTRATEGY_CTAGED                   ServiceProfileLinkProtocolConfigEncapsulationStrategy = "CTAGED"
+	SERVICEPROFILELINKPROTOCOLCONFIGENCAPSULATIONSTRATEGY_BOTH                     ServiceProfileLinkProtocolConfigEncapsulationStrategy = "BOTH"
+	SERVICEPROFILELINKPROTOCOLCONFIGENCAPSULATIONSTRATEGY_NAMED                    ServiceProfileLinkProtocolConfigEncapsulationStrategy = "NAMED"
+	SERVICEPROFILELINKPROTOCOLCONFIGENCAPSULATIONSTRATEGY_UNKNOWN_DEFAULT_OPEN_API ServiceProfileLinkProtocolConfigEncapsulationStrategy = "unknown_default_open_api"
 )
 
 // All allowed values of ServiceProfileLinkProtocolConfigEncapsulationStrategy enum
@@ -27,6 +28,7 @@ var AllowedServiceProfileLinkProtocolConfigEncapsulationStrategyEnumValues = []S
 	"CTAGED",
 	"BOTH",
 	"NAMED",
+	"unknown_default_open_api",
 }
 
 func (v *ServiceProfileLinkProtocolConfigEncapsulationStrategy) UnmarshalJSON(src []byte) error {
@@ -43,7 +45,8 @@ func (v *ServiceProfileLinkProtocolConfigEncapsulationStrategy) UnmarshalJSON(sr
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ServiceProfileLinkProtocolConfigEncapsulationStrategy", value)
+	*v = SERVICEPROFILELINKPROTOCOLCONFIGENCAPSULATIONSTRATEGY_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewServiceProfileLinkProtocolConfigEncapsulationStrategyFromValue returns a pointer to a valid ServiceProfileLinkProtocolConfigEncapsulationStrategy

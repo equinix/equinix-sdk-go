@@ -17,14 +17,16 @@ type IpBlockOwnership string
 
 // List of IpBlockOwnership
 const (
-	IPBLOCKOWNERSHIP_EQUINIX  IpBlockOwnership = "EQUINIX"
-	IPBLOCKOWNERSHIP_CUSTOMER IpBlockOwnership = "CUSTOMER"
+	IPBLOCKOWNERSHIP_EQUINIX                  IpBlockOwnership = "EQUINIX"
+	IPBLOCKOWNERSHIP_CUSTOMER                 IpBlockOwnership = "CUSTOMER"
+	IPBLOCKOWNERSHIP_UNKNOWN_DEFAULT_OPEN_API IpBlockOwnership = "unknown_default_open_api"
 )
 
 // All allowed values of IpBlockOwnership enum
 var AllowedIpBlockOwnershipEnumValues = []IpBlockOwnership{
 	"EQUINIX",
 	"CUSTOMER",
+	"unknown_default_open_api",
 }
 
 func (v *IpBlockOwnership) UnmarshalJSON(src []byte) error {
@@ -41,7 +43,8 @@ func (v *IpBlockOwnership) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid IpBlockOwnership", value)
+	*v = IPBLOCKOWNERSHIP_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewIpBlockOwnershipFromValue returns a pointer to a valid IpBlockOwnership

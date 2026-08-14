@@ -17,12 +17,14 @@ type ProviderEnvironmentTypeEnum string
 
 // List of ProviderEnvironmentTypeEnum
 const (
-	PROVIDERENVIRONMENTTYPEENUM_IC_ENV ProviderEnvironmentTypeEnum = "IC_ENV"
+	PROVIDERENVIRONMENTTYPEENUM_IC_ENV                   ProviderEnvironmentTypeEnum = "IC_ENV"
+	PROVIDERENVIRONMENTTYPEENUM_UNKNOWN_DEFAULT_OPEN_API ProviderEnvironmentTypeEnum = "unknown_default_open_api"
 )
 
 // All allowed values of ProviderEnvironmentTypeEnum enum
 var AllowedProviderEnvironmentTypeEnumEnumValues = []ProviderEnvironmentTypeEnum{
 	"IC_ENV",
+	"unknown_default_open_api",
 }
 
 func (v *ProviderEnvironmentTypeEnum) UnmarshalJSON(src []byte) error {
@@ -39,7 +41,8 @@ func (v *ProviderEnvironmentTypeEnum) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ProviderEnvironmentTypeEnum", value)
+	*v = PROVIDERENVIRONMENTTYPEENUM_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewProviderEnvironmentTypeEnumFromValue returns a pointer to a valid ProviderEnvironmentTypeEnum

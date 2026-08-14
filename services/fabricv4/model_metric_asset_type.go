@@ -17,9 +17,10 @@ type MetricAssetType string
 
 // List of MetricAssetType
 const (
-	METRICASSETTYPE_PORTS       MetricAssetType = "ports"
-	METRICASSETTYPE_CONNECTIONS MetricAssetType = "connections"
-	METRICASSETTYPE_METROS      MetricAssetType = "metros"
+	METRICASSETTYPE_PORTS                    MetricAssetType = "ports"
+	METRICASSETTYPE_CONNECTIONS              MetricAssetType = "connections"
+	METRICASSETTYPE_METROS                   MetricAssetType = "metros"
+	METRICASSETTYPE_UNKNOWN_DEFAULT_OPEN_API MetricAssetType = "unknown_default_open_api"
 )
 
 // All allowed values of MetricAssetType enum
@@ -27,6 +28,7 @@ var AllowedMetricAssetTypeEnumValues = []MetricAssetType{
 	"ports",
 	"connections",
 	"metros",
+	"unknown_default_open_api",
 }
 
 func (v *MetricAssetType) UnmarshalJSON(src []byte) error {
@@ -43,7 +45,8 @@ func (v *MetricAssetType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid MetricAssetType", value)
+	*v = METRICASSETTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewMetricAssetTypeFromValue returns a pointer to a valid MetricAssetType

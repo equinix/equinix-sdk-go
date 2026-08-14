@@ -20,14 +20,16 @@ type CageDetailsType string
 
 // List of cage_details_type
 const (
-	CAGEDETAILSTYPE_SHARED  CageDetailsType = "SHARED"
-	CAGEDETAILSTYPE_PRIVATE CageDetailsType = "PRIVATE"
+	CAGEDETAILSTYPE_SHARED                   CageDetailsType = "SHARED"
+	CAGEDETAILSTYPE_PRIVATE                  CageDetailsType = "PRIVATE"
+	CAGEDETAILSTYPE_UNKNOWN_DEFAULT_OPEN_API CageDetailsType = "unknown_default_open_api"
 )
 
 // All allowed values of CageDetailsType enum
 var AllowedCageDetailsTypeEnumValues = []CageDetailsType{
 	"SHARED",
 	"PRIVATE",
+	"unknown_default_open_api",
 }
 
 func (v *CageDetailsType) UnmarshalJSON(src []byte) error {
@@ -44,7 +46,8 @@ func (v *CageDetailsType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid CageDetailsType", value)
+	*v = CAGEDETAILSTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewCageDetailsTypeFromValue returns a pointer to a valid CageDetailsType

@@ -17,20 +17,21 @@ type PortState string
 
 // List of PortState
 const (
-	PORTSTATE_PENDING               PortState = "PENDING"
-	PORTSTATE_PROVISIONING          PortState = "PROVISIONING"
-	PORTSTATE_REPROVISIONING        PortState = "REPROVISIONING"
-	PORTSTATE_PENDING_CROSS_CONNECT PortState = "PENDING_CROSS_CONNECT"
-	PORTSTATE_PROVISIONED           PortState = "PROVISIONED"
-	PORTSTATE_ACTIVE                PortState = "ACTIVE"
-	PORTSTATE_DEPROVISIONING        PortState = "DEPROVISIONING"
-	PORTSTATE_DEPROVISIONED         PortState = "DEPROVISIONED"
-	PORTSTATE_INACTIVE              PortState = "INACTIVE"
-	PORTSTATE_FAILED                PortState = "FAILED"
-	PORTSTATE_ADDED                 PortState = "ADDED"
-	PORTSTATE_DELETED               PortState = "DELETED"
-	PORTSTATE_TO_BE_ADDED           PortState = "TO_BE_ADDED"
-	PORTSTATE_TO_BE_DELETED         PortState = "TO_BE_DELETED"
+	PORTSTATE_PENDING                  PortState = "PENDING"
+	PORTSTATE_PROVISIONING             PortState = "PROVISIONING"
+	PORTSTATE_REPROVISIONING           PortState = "REPROVISIONING"
+	PORTSTATE_PENDING_CROSS_CONNECT    PortState = "PENDING_CROSS_CONNECT"
+	PORTSTATE_PROVISIONED              PortState = "PROVISIONED"
+	PORTSTATE_ACTIVE                   PortState = "ACTIVE"
+	PORTSTATE_DEPROVISIONING           PortState = "DEPROVISIONING"
+	PORTSTATE_DEPROVISIONED            PortState = "DEPROVISIONED"
+	PORTSTATE_INACTIVE                 PortState = "INACTIVE"
+	PORTSTATE_FAILED                   PortState = "FAILED"
+	PORTSTATE_ADDED                    PortState = "ADDED"
+	PORTSTATE_DELETED                  PortState = "DELETED"
+	PORTSTATE_TO_BE_ADDED              PortState = "TO_BE_ADDED"
+	PORTSTATE_TO_BE_DELETED            PortState = "TO_BE_DELETED"
+	PORTSTATE_UNKNOWN_DEFAULT_OPEN_API PortState = "unknown_default_open_api"
 )
 
 // All allowed values of PortState enum
@@ -49,6 +50,7 @@ var AllowedPortStateEnumValues = []PortState{
 	"DELETED",
 	"TO_BE_ADDED",
 	"TO_BE_DELETED",
+	"unknown_default_open_api",
 }
 
 func (v *PortState) UnmarshalJSON(src []byte) error {
@@ -65,7 +67,8 @@ func (v *PortState) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid PortState", value)
+	*v = PORTSTATE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewPortStateFromValue returns a pointer to a valid PortState

@@ -24,6 +24,7 @@ const (
 	CONNECTIONROUTEENTRYSORTBY_TYPE                         ConnectionRouteEntrySortBy = "/type"
 	CONNECTIONROUTEENTRYSORTBY_PREFIX                       ConnectionRouteEntrySortBy = "/prefix"
 	CONNECTIONROUTEENTRYSORTBY_NEXT_HOP                     ConnectionRouteEntrySortBy = "/nextHop"
+	CONNECTIONROUTEENTRYSORTBY_UNKNOWN_DEFAULT_OPEN_API     ConnectionRouteEntrySortBy = "unknown_default_open_api"
 )
 
 // All allowed values of ConnectionRouteEntrySortBy enum
@@ -35,6 +36,7 @@ var AllowedConnectionRouteEntrySortByEnumValues = []ConnectionRouteEntrySortBy{
 	"/type",
 	"/prefix",
 	"/nextHop",
+	"unknown_default_open_api",
 }
 
 func (v *ConnectionRouteEntrySortBy) UnmarshalJSON(src []byte) error {
@@ -51,7 +53,8 @@ func (v *ConnectionRouteEntrySortBy) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ConnectionRouteEntrySortBy", value)
+	*v = CONNECTIONROUTEENTRYSORTBY_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewConnectionRouteEntrySortByFromValue returns a pointer to a valid ConnectionRouteEntrySortBy

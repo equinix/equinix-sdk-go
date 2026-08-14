@@ -17,14 +17,16 @@ type StreamSubscriptionSinkSettingFormat string
 
 // List of StreamSubscriptionSinkSetting_format
 const (
-	STREAMSUBSCRIPTIONSINKSETTINGFORMAT_CLOUDEVENT    StreamSubscriptionSinkSettingFormat = "CLOUDEVENT"
-	STREAMSUBSCRIPTIONSINKSETTINGFORMAT_OPENTELEMETRY StreamSubscriptionSinkSettingFormat = "OPENTELEMETRY"
+	STREAMSUBSCRIPTIONSINKSETTINGFORMAT_CLOUDEVENT               StreamSubscriptionSinkSettingFormat = "CLOUDEVENT"
+	STREAMSUBSCRIPTIONSINKSETTINGFORMAT_OPENTELEMETRY            StreamSubscriptionSinkSettingFormat = "OPENTELEMETRY"
+	STREAMSUBSCRIPTIONSINKSETTINGFORMAT_UNKNOWN_DEFAULT_OPEN_API StreamSubscriptionSinkSettingFormat = "unknown_default_open_api"
 )
 
 // All allowed values of StreamSubscriptionSinkSettingFormat enum
 var AllowedStreamSubscriptionSinkSettingFormatEnumValues = []StreamSubscriptionSinkSettingFormat{
 	"CLOUDEVENT",
 	"OPENTELEMETRY",
+	"unknown_default_open_api",
 }
 
 func (v *StreamSubscriptionSinkSettingFormat) UnmarshalJSON(src []byte) error {
@@ -41,7 +43,8 @@ func (v *StreamSubscriptionSinkSettingFormat) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid StreamSubscriptionSinkSettingFormat", value)
+	*v = STREAMSUBSCRIPTIONSINKSETTINGFORMAT_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewStreamSubscriptionSinkSettingFormatFromValue returns a pointer to a valid StreamSubscriptionSinkSettingFormat

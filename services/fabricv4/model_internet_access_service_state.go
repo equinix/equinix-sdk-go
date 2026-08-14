@@ -17,11 +17,12 @@ type InternetAccessServiceState string
 
 // List of InternetAccessServiceState
 const (
-	INTERNETACCESSSERVICESTATE_PROVISIONING   InternetAccessServiceState = "PROVISIONING"
-	INTERNETACCESSSERVICESTATE_PROVISIONED    InternetAccessServiceState = "PROVISIONED"
-	INTERNETACCESSSERVICESTATE_FAILED         InternetAccessServiceState = "FAILED"
-	INTERNETACCESSSERVICESTATE_DEPROVISIONING InternetAccessServiceState = "DEPROVISIONING"
-	INTERNETACCESSSERVICESTATE_DEPROVISIONED  InternetAccessServiceState = "DEPROVISIONED"
+	INTERNETACCESSSERVICESTATE_PROVISIONING             InternetAccessServiceState = "PROVISIONING"
+	INTERNETACCESSSERVICESTATE_PROVISIONED              InternetAccessServiceState = "PROVISIONED"
+	INTERNETACCESSSERVICESTATE_FAILED                   InternetAccessServiceState = "FAILED"
+	INTERNETACCESSSERVICESTATE_DEPROVISIONING           InternetAccessServiceState = "DEPROVISIONING"
+	INTERNETACCESSSERVICESTATE_DEPROVISIONED            InternetAccessServiceState = "DEPROVISIONED"
+	INTERNETACCESSSERVICESTATE_UNKNOWN_DEFAULT_OPEN_API InternetAccessServiceState = "unknown_default_open_api"
 )
 
 // All allowed values of InternetAccessServiceState enum
@@ -31,6 +32,7 @@ var AllowedInternetAccessServiceStateEnumValues = []InternetAccessServiceState{
 	"FAILED",
 	"DEPROVISIONING",
 	"DEPROVISIONED",
+	"unknown_default_open_api",
 }
 
 func (v *InternetAccessServiceState) UnmarshalJSON(src []byte) error {
@@ -47,7 +49,8 @@ func (v *InternetAccessServiceState) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid InternetAccessServiceState", value)
+	*v = INTERNETACCESSSERVICESTATE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewInternetAccessServiceStateFromValue returns a pointer to a valid InternetAccessServiceState

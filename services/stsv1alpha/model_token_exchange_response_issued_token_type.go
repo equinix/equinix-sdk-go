@@ -21,11 +21,13 @@ type TokenExchangeResponseIssuedTokenType string
 // List of TokenExchangeResponse_issued_token_type
 const (
 	TOKENEXCHANGERESPONSEISSUEDTOKENTYPE_URN_IETF_PARAMS_OAUTH_TOKEN_TYPE_ACCESS_TOKEN TokenExchangeResponseIssuedTokenType = "urn:ietf:params:oauth:token-type:access_token"
+	TOKENEXCHANGERESPONSEISSUEDTOKENTYPE_UNKNOWN_DEFAULT_OPEN_API                      TokenExchangeResponseIssuedTokenType = "unknown_default_open_api"
 )
 
 // All allowed values of TokenExchangeResponseIssuedTokenType enum
 var AllowedTokenExchangeResponseIssuedTokenTypeEnumValues = []TokenExchangeResponseIssuedTokenType{
 	"urn:ietf:params:oauth:token-type:access_token",
+	"unknown_default_open_api",
 }
 
 func (v *TokenExchangeResponseIssuedTokenType) UnmarshalJSON(src []byte) error {
@@ -42,7 +44,8 @@ func (v *TokenExchangeResponseIssuedTokenType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid TokenExchangeResponseIssuedTokenType", value)
+	*v = TOKENEXCHANGERESPONSEISSUEDTOKENTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewTokenExchangeResponseIssuedTokenTypeFromValue returns a pointer to a valid TokenExchangeResponseIssuedTokenType

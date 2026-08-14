@@ -22,6 +22,7 @@ const (
 	RAATTACHMENTSORTITEMPROPERTY_ATTACHMENT_STATUS            RaAttachmentSortItemProperty = "/attachmentStatus"
 	RAATTACHMENTSORTITEMPROPERTY_CHANGE_LOG_CREATED_DATE_TIME RaAttachmentSortItemProperty = "/changeLog/createdDateTime"
 	RAATTACHMENTSORTITEMPROPERTY_CHANGE_LOG_UPDATED_DATE_TIME RaAttachmentSortItemProperty = "/changeLog/updatedDateTime"
+	RAATTACHMENTSORTITEMPROPERTY_UNKNOWN_DEFAULT_OPEN_API     RaAttachmentSortItemProperty = "unknown_default_open_api"
 )
 
 // All allowed values of RaAttachmentSortItemProperty enum
@@ -31,6 +32,7 @@ var AllowedRaAttachmentSortItemPropertyEnumValues = []RaAttachmentSortItemProper
 	"/attachmentStatus",
 	"/changeLog/createdDateTime",
 	"/changeLog/updatedDateTime",
+	"unknown_default_open_api",
 }
 
 func (v *RaAttachmentSortItemProperty) UnmarshalJSON(src []byte) error {
@@ -47,7 +49,8 @@ func (v *RaAttachmentSortItemProperty) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid RaAttachmentSortItemProperty", value)
+	*v = RAATTACHMENTSORTITEMPROPERTY_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewRaAttachmentSortItemPropertyFromValue returns a pointer to a valid RaAttachmentSortItemProperty

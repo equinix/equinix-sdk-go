@@ -17,14 +17,16 @@ type RouteAggregationSortDirection string
 
 // List of RouteAggregationSortDirection
 const (
-	ROUTEAGGREGATIONSORTDIRECTION_DESC RouteAggregationSortDirection = "DESC"
-	ROUTEAGGREGATIONSORTDIRECTION_ASC  RouteAggregationSortDirection = "ASC"
+	ROUTEAGGREGATIONSORTDIRECTION_DESC                     RouteAggregationSortDirection = "DESC"
+	ROUTEAGGREGATIONSORTDIRECTION_ASC                      RouteAggregationSortDirection = "ASC"
+	ROUTEAGGREGATIONSORTDIRECTION_UNKNOWN_DEFAULT_OPEN_API RouteAggregationSortDirection = "unknown_default_open_api"
 )
 
 // All allowed values of RouteAggregationSortDirection enum
 var AllowedRouteAggregationSortDirectionEnumValues = []RouteAggregationSortDirection{
 	"DESC",
 	"ASC",
+	"unknown_default_open_api",
 }
 
 func (v *RouteAggregationSortDirection) UnmarshalJSON(src []byte) error {
@@ -41,7 +43,8 @@ func (v *RouteAggregationSortDirection) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid RouteAggregationSortDirection", value)
+	*v = ROUTEAGGREGATIONSORTDIRECTION_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewRouteAggregationSortDirectionFromValue returns a pointer to a valid RouteAggregationSortDirection

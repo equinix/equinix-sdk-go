@@ -20,9 +20,10 @@ type ScheduleInfoScheduleType string
 
 // List of scheduleInfo_scheduleType
 const (
-	SCHEDULEINFOSCHEDULETYPE_STANDARD              ScheduleInfoScheduleType = "STANDARD"
-	SCHEDULEINFOSCHEDULETYPE_EXPEDITED             ScheduleInfoScheduleType = "EXPEDITED"
-	SCHEDULEINFOSCHEDULETYPE_SCHEDULED_MAINTENANCE ScheduleInfoScheduleType = "SCHEDULED_MAINTENANCE"
+	SCHEDULEINFOSCHEDULETYPE_STANDARD                 ScheduleInfoScheduleType = "STANDARD"
+	SCHEDULEINFOSCHEDULETYPE_EXPEDITED                ScheduleInfoScheduleType = "EXPEDITED"
+	SCHEDULEINFOSCHEDULETYPE_SCHEDULED_MAINTENANCE    ScheduleInfoScheduleType = "SCHEDULED_MAINTENANCE"
+	SCHEDULEINFOSCHEDULETYPE_UNKNOWN_DEFAULT_OPEN_API ScheduleInfoScheduleType = "unknown_default_open_api"
 )
 
 // All allowed values of ScheduleInfoScheduleType enum
@@ -30,6 +31,7 @@ var AllowedScheduleInfoScheduleTypeEnumValues = []ScheduleInfoScheduleType{
 	"STANDARD",
 	"EXPEDITED",
 	"SCHEDULED_MAINTENANCE",
+	"unknown_default_open_api",
 }
 
 func (v *ScheduleInfoScheduleType) UnmarshalJSON(src []byte) error {
@@ -46,7 +48,8 @@ func (v *ScheduleInfoScheduleType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ScheduleInfoScheduleType", value)
+	*v = SCHEDULEINFOSCHEDULETYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewScheduleInfoScheduleTypeFromValue returns a pointer to a valid ScheduleInfoScheduleType

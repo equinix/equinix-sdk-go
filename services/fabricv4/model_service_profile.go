@@ -14,15 +14,8 @@ import (
 // checks if the ServiceProfile type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &ServiceProfile{}
 
-// ServiceProfile Service Profile is a software definition for a named provider service and it's network connectivity requirements. This includes the basic marketing information and one or more sets of access points (a set per each access point type) fulfilling the provider service.
+// ServiceProfile struct for ServiceProfile
 type ServiceProfile struct {
-	State *ServiceProfileStateEnum `json:"state,omitempty"`
-	// Seller Account for Service Profile.
-	Account *SimplifiedAccount    `json:"account,omitempty"`
-	Project *Project              `json:"project,omitempty"`
-	Change  *ServiceProfileChange `json:"change,omitempty"`
-	// Seller Account for Service Profile.
-	ChangeLog *Changelog `json:"changeLog,omitempty"`
 	// Service Profile URI response attribute
 	Href *string                 `json:"href,omitempty"`
 	Type *ServiceProfileTypeEnum `json:"type,omitempty"`
@@ -50,6 +43,11 @@ type ServiceProfile struct {
 	SelfProfile          *bool                         `json:"selfProfile,omitempty"`
 	ProjectId            *string                       `json:"projectId,omitempty"`
 	LastMileConfig       *ServiceProfileLastMileConfig `json:"lastMileConfig,omitempty"`
+	State                *ServiceProfileStateEnum      `json:"state,omitempty"`
+	Account              *ServiceProfileAllOfAccount   `json:"account,omitempty"`
+	Project              *Project                      `json:"project,omitempty"`
+	Change               *ServiceProfileChange         `json:"change,omitempty"`
+	ChangeLog            *ServiceProfileAllOfChangeLog `json:"changeLog,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -70,166 +68,6 @@ func NewServiceProfile() *ServiceProfile {
 func NewServiceProfileWithDefaults() *ServiceProfile {
 	this := ServiceProfile{}
 	return &this
-}
-
-// GetState returns the State field value if set, zero value otherwise.
-func (o *ServiceProfile) GetState() ServiceProfileStateEnum {
-	if o == nil || IsNil(o.State) {
-		var ret ServiceProfileStateEnum
-		return ret
-	}
-	return *o.State
-}
-
-// GetStateOk returns a tuple with the State field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ServiceProfile) GetStateOk() (*ServiceProfileStateEnum, bool) {
-	if o == nil || IsNil(o.State) {
-		return nil, false
-	}
-	return o.State, true
-}
-
-// HasState returns a boolean if a field has been set.
-func (o *ServiceProfile) HasState() bool {
-	if o != nil && !IsNil(o.State) {
-		return true
-	}
-
-	return false
-}
-
-// SetState gets a reference to the given ServiceProfileStateEnum and assigns it to the State field.
-func (o *ServiceProfile) SetState(v ServiceProfileStateEnum) {
-	o.State = &v
-}
-
-// GetAccount returns the Account field value if set, zero value otherwise.
-func (o *ServiceProfile) GetAccount() SimplifiedAccount {
-	if o == nil || IsNil(o.Account) {
-		var ret SimplifiedAccount
-		return ret
-	}
-	return *o.Account
-}
-
-// GetAccountOk returns a tuple with the Account field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ServiceProfile) GetAccountOk() (*SimplifiedAccount, bool) {
-	if o == nil || IsNil(o.Account) {
-		return nil, false
-	}
-	return o.Account, true
-}
-
-// HasAccount returns a boolean if a field has been set.
-func (o *ServiceProfile) HasAccount() bool {
-	if o != nil && !IsNil(o.Account) {
-		return true
-	}
-
-	return false
-}
-
-// SetAccount gets a reference to the given SimplifiedAccount and assigns it to the Account field.
-func (o *ServiceProfile) SetAccount(v SimplifiedAccount) {
-	o.Account = &v
-}
-
-// GetProject returns the Project field value if set, zero value otherwise.
-func (o *ServiceProfile) GetProject() Project {
-	if o == nil || IsNil(o.Project) {
-		var ret Project
-		return ret
-	}
-	return *o.Project
-}
-
-// GetProjectOk returns a tuple with the Project field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ServiceProfile) GetProjectOk() (*Project, bool) {
-	if o == nil || IsNil(o.Project) {
-		return nil, false
-	}
-	return o.Project, true
-}
-
-// HasProject returns a boolean if a field has been set.
-func (o *ServiceProfile) HasProject() bool {
-	if o != nil && !IsNil(o.Project) {
-		return true
-	}
-
-	return false
-}
-
-// SetProject gets a reference to the given Project and assigns it to the Project field.
-func (o *ServiceProfile) SetProject(v Project) {
-	o.Project = &v
-}
-
-// GetChange returns the Change field value if set, zero value otherwise.
-func (o *ServiceProfile) GetChange() ServiceProfileChange {
-	if o == nil || IsNil(o.Change) {
-		var ret ServiceProfileChange
-		return ret
-	}
-	return *o.Change
-}
-
-// GetChangeOk returns a tuple with the Change field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ServiceProfile) GetChangeOk() (*ServiceProfileChange, bool) {
-	if o == nil || IsNil(o.Change) {
-		return nil, false
-	}
-	return o.Change, true
-}
-
-// HasChange returns a boolean if a field has been set.
-func (o *ServiceProfile) HasChange() bool {
-	if o != nil && !IsNil(o.Change) {
-		return true
-	}
-
-	return false
-}
-
-// SetChange gets a reference to the given ServiceProfileChange and assigns it to the Change field.
-func (o *ServiceProfile) SetChange(v ServiceProfileChange) {
-	o.Change = &v
-}
-
-// GetChangeLog returns the ChangeLog field value if set, zero value otherwise.
-func (o *ServiceProfile) GetChangeLog() Changelog {
-	if o == nil || IsNil(o.ChangeLog) {
-		var ret Changelog
-		return ret
-	}
-	return *o.ChangeLog
-}
-
-// GetChangeLogOk returns a tuple with the ChangeLog field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ServiceProfile) GetChangeLogOk() (*Changelog, bool) {
-	if o == nil || IsNil(o.ChangeLog) {
-		return nil, false
-	}
-	return o.ChangeLog, true
-}
-
-// HasChangeLog returns a boolean if a field has been set.
-func (o *ServiceProfile) HasChangeLog() bool {
-	if o != nil && !IsNil(o.ChangeLog) {
-		return true
-	}
-
-	return false
-}
-
-// SetChangeLog gets a reference to the given Changelog and assigns it to the ChangeLog field.
-func (o *ServiceProfile) SetChangeLog(v Changelog) {
-	o.ChangeLog = &v
 }
 
 // GetHref returns the Href field value if set, zero value otherwise.
@@ -840,6 +678,166 @@ func (o *ServiceProfile) SetLastMileConfig(v ServiceProfileLastMileConfig) {
 	o.LastMileConfig = &v
 }
 
+// GetState returns the State field value if set, zero value otherwise.
+func (o *ServiceProfile) GetState() ServiceProfileStateEnum {
+	if o == nil || IsNil(o.State) {
+		var ret ServiceProfileStateEnum
+		return ret
+	}
+	return *o.State
+}
+
+// GetStateOk returns a tuple with the State field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ServiceProfile) GetStateOk() (*ServiceProfileStateEnum, bool) {
+	if o == nil || IsNil(o.State) {
+		return nil, false
+	}
+	return o.State, true
+}
+
+// HasState returns a boolean if a field has been set.
+func (o *ServiceProfile) HasState() bool {
+	if o != nil && !IsNil(o.State) {
+		return true
+	}
+
+	return false
+}
+
+// SetState gets a reference to the given ServiceProfileStateEnum and assigns it to the State field.
+func (o *ServiceProfile) SetState(v ServiceProfileStateEnum) {
+	o.State = &v
+}
+
+// GetAccount returns the Account field value if set, zero value otherwise.
+func (o *ServiceProfile) GetAccount() ServiceProfileAllOfAccount {
+	if o == nil || IsNil(o.Account) {
+		var ret ServiceProfileAllOfAccount
+		return ret
+	}
+	return *o.Account
+}
+
+// GetAccountOk returns a tuple with the Account field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ServiceProfile) GetAccountOk() (*ServiceProfileAllOfAccount, bool) {
+	if o == nil || IsNil(o.Account) {
+		return nil, false
+	}
+	return o.Account, true
+}
+
+// HasAccount returns a boolean if a field has been set.
+func (o *ServiceProfile) HasAccount() bool {
+	if o != nil && !IsNil(o.Account) {
+		return true
+	}
+
+	return false
+}
+
+// SetAccount gets a reference to the given ServiceProfileAllOfAccount and assigns it to the Account field.
+func (o *ServiceProfile) SetAccount(v ServiceProfileAllOfAccount) {
+	o.Account = &v
+}
+
+// GetProject returns the Project field value if set, zero value otherwise.
+func (o *ServiceProfile) GetProject() Project {
+	if o == nil || IsNil(o.Project) {
+		var ret Project
+		return ret
+	}
+	return *o.Project
+}
+
+// GetProjectOk returns a tuple with the Project field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ServiceProfile) GetProjectOk() (*Project, bool) {
+	if o == nil || IsNil(o.Project) {
+		return nil, false
+	}
+	return o.Project, true
+}
+
+// HasProject returns a boolean if a field has been set.
+func (o *ServiceProfile) HasProject() bool {
+	if o != nil && !IsNil(o.Project) {
+		return true
+	}
+
+	return false
+}
+
+// SetProject gets a reference to the given Project and assigns it to the Project field.
+func (o *ServiceProfile) SetProject(v Project) {
+	o.Project = &v
+}
+
+// GetChange returns the Change field value if set, zero value otherwise.
+func (o *ServiceProfile) GetChange() ServiceProfileChange {
+	if o == nil || IsNil(o.Change) {
+		var ret ServiceProfileChange
+		return ret
+	}
+	return *o.Change
+}
+
+// GetChangeOk returns a tuple with the Change field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ServiceProfile) GetChangeOk() (*ServiceProfileChange, bool) {
+	if o == nil || IsNil(o.Change) {
+		return nil, false
+	}
+	return o.Change, true
+}
+
+// HasChange returns a boolean if a field has been set.
+func (o *ServiceProfile) HasChange() bool {
+	if o != nil && !IsNil(o.Change) {
+		return true
+	}
+
+	return false
+}
+
+// SetChange gets a reference to the given ServiceProfileChange and assigns it to the Change field.
+func (o *ServiceProfile) SetChange(v ServiceProfileChange) {
+	o.Change = &v
+}
+
+// GetChangeLog returns the ChangeLog field value if set, zero value otherwise.
+func (o *ServiceProfile) GetChangeLog() ServiceProfileAllOfChangeLog {
+	if o == nil || IsNil(o.ChangeLog) {
+		var ret ServiceProfileAllOfChangeLog
+		return ret
+	}
+	return *o.ChangeLog
+}
+
+// GetChangeLogOk returns a tuple with the ChangeLog field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ServiceProfile) GetChangeLogOk() (*ServiceProfileAllOfChangeLog, bool) {
+	if o == nil || IsNil(o.ChangeLog) {
+		return nil, false
+	}
+	return o.ChangeLog, true
+}
+
+// HasChangeLog returns a boolean if a field has been set.
+func (o *ServiceProfile) HasChangeLog() bool {
+	if o != nil && !IsNil(o.ChangeLog) {
+		return true
+	}
+
+	return false
+}
+
+// SetChangeLog gets a reference to the given ServiceProfileAllOfChangeLog and assigns it to the ChangeLog field.
+func (o *ServiceProfile) SetChangeLog(v ServiceProfileAllOfChangeLog) {
+	o.ChangeLog = &v
+}
+
 func (o ServiceProfile) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -850,21 +848,6 @@ func (o ServiceProfile) MarshalJSON() ([]byte, error) {
 
 func (o ServiceProfile) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.State) {
-		toSerialize["state"] = o.State
-	}
-	if !IsNil(o.Account) {
-		toSerialize["account"] = o.Account
-	}
-	if !IsNil(o.Project) {
-		toSerialize["project"] = o.Project
-	}
-	if !IsNil(o.Change) {
-		toSerialize["change"] = o.Change
-	}
-	if !IsNil(o.ChangeLog) {
-		toSerialize["changeLog"] = o.ChangeLog
-	}
 	if !IsNil(o.Href) {
 		toSerialize["href"] = o.Href
 	}
@@ -922,6 +905,21 @@ func (o ServiceProfile) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.LastMileConfig) {
 		toSerialize["lastMileConfig"] = o.LastMileConfig
 	}
+	if !IsNil(o.State) {
+		toSerialize["state"] = o.State
+	}
+	if !IsNil(o.Account) {
+		toSerialize["account"] = o.Account
+	}
+	if !IsNil(o.Project) {
+		toSerialize["project"] = o.Project
+	}
+	if !IsNil(o.Change) {
+		toSerialize["change"] = o.Change
+	}
+	if !IsNil(o.ChangeLog) {
+		toSerialize["changeLog"] = o.ChangeLog
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -944,11 +942,6 @@ func (o *ServiceProfile) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "state")
-		delete(additionalProperties, "account")
-		delete(additionalProperties, "project")
-		delete(additionalProperties, "change")
-		delete(additionalProperties, "changeLog")
 		delete(additionalProperties, "href")
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "name")
@@ -968,6 +961,11 @@ func (o *ServiceProfile) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "selfProfile")
 		delete(additionalProperties, "projectId")
 		delete(additionalProperties, "lastMileConfig")
+		delete(additionalProperties, "state")
+		delete(additionalProperties, "account")
+		delete(additionalProperties, "project")
+		delete(additionalProperties, "change")
+		delete(additionalProperties, "changeLog")
 		o.AdditionalProperties = additionalProperties
 	}
 

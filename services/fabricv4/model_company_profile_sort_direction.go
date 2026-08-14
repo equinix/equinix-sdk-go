@@ -17,14 +17,16 @@ type CompanyProfileSortDirection string
 
 // List of CompanyProfileSortDirection
 const (
-	COMPANYPROFILESORTDIRECTION_DESC CompanyProfileSortDirection = "DESC"
-	COMPANYPROFILESORTDIRECTION_ASC  CompanyProfileSortDirection = "ASC"
+	COMPANYPROFILESORTDIRECTION_DESC                     CompanyProfileSortDirection = "DESC"
+	COMPANYPROFILESORTDIRECTION_ASC                      CompanyProfileSortDirection = "ASC"
+	COMPANYPROFILESORTDIRECTION_UNKNOWN_DEFAULT_OPEN_API CompanyProfileSortDirection = "unknown_default_open_api"
 )
 
 // All allowed values of CompanyProfileSortDirection enum
 var AllowedCompanyProfileSortDirectionEnumValues = []CompanyProfileSortDirection{
 	"DESC",
 	"ASC",
+	"unknown_default_open_api",
 }
 
 func (v *CompanyProfileSortDirection) UnmarshalJSON(src []byte) error {
@@ -41,7 +43,8 @@ func (v *CompanyProfileSortDirection) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid CompanyProfileSortDirection", value)
+	*v = COMPANYPROFILESORTDIRECTION_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewCompanyProfileSortDirectionFromValue returns a pointer to a valid CompanyProfileSortDirection

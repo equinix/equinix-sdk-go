@@ -20,14 +20,16 @@ type ConnectionType string
 
 // List of ConnectionType
 const (
-	CONNECTIONTYPE_C  ConnectionType = "IA_C"
-	CONNECTIONTYPE_VC ConnectionType = "IA_VC"
+	CONNECTIONTYPE_C                        ConnectionType = "IA_C"
+	CONNECTIONTYPE_VC                       ConnectionType = "IA_VC"
+	CONNECTIONTYPE_UNKNOWN_DEFAULT_OPEN_API ConnectionType = "unknown_default_open_api"
 )
 
 // All allowed values of ConnectionType enum
 var AllowedConnectionTypeEnumValues = []ConnectionType{
 	"IA_C",
 	"IA_VC",
+	"unknown_default_open_api",
 }
 
 func (v *ConnectionType) UnmarshalJSON(src []byte) error {
@@ -44,7 +46,8 @@ func (v *ConnectionType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ConnectionType", value)
+	*v = CONNECTIONTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewConnectionTypeFromValue returns a pointer to a valid ConnectionType

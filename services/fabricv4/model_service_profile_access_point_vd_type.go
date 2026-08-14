@@ -17,12 +17,14 @@ type ServiceProfileAccessPointVDType string
 
 // List of ServiceProfileAccessPointVD_type
 const (
-	SERVICEPROFILEACCESSPOINTVDTYPE_VD ServiceProfileAccessPointVDType = "VD"
+	SERVICEPROFILEACCESSPOINTVDTYPE_VD                       ServiceProfileAccessPointVDType = "VD"
+	SERVICEPROFILEACCESSPOINTVDTYPE_UNKNOWN_DEFAULT_OPEN_API ServiceProfileAccessPointVDType = "unknown_default_open_api"
 )
 
 // All allowed values of ServiceProfileAccessPointVDType enum
 var AllowedServiceProfileAccessPointVDTypeEnumValues = []ServiceProfileAccessPointVDType{
 	"VD",
+	"unknown_default_open_api",
 }
 
 func (v *ServiceProfileAccessPointVDType) UnmarshalJSON(src []byte) error {
@@ -39,7 +41,8 @@ func (v *ServiceProfileAccessPointVDType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ServiceProfileAccessPointVDType", value)
+	*v = SERVICEPROFILEACCESSPOINTVDTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewServiceProfileAccessPointVDTypeFromValue returns a pointer to a valid ServiceProfileAccessPointVDType

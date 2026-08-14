@@ -17,14 +17,16 @@ type SubscriptionResponseOfferType string
 
 // List of SubscriptionResponse_offerType
 const (
-	SUBSCRIPTIONRESPONSEOFFERTYPE_PUBLIC        SubscriptionResponseOfferType = "PUBLIC"
-	SUBSCRIPTIONRESPONSEOFFERTYPE_PRIVATE_OFFER SubscriptionResponseOfferType = "PRIVATE_OFFER"
+	SUBSCRIPTIONRESPONSEOFFERTYPE_PUBLIC                   SubscriptionResponseOfferType = "PUBLIC"
+	SUBSCRIPTIONRESPONSEOFFERTYPE_PRIVATE_OFFER            SubscriptionResponseOfferType = "PRIVATE_OFFER"
+	SUBSCRIPTIONRESPONSEOFFERTYPE_UNKNOWN_DEFAULT_OPEN_API SubscriptionResponseOfferType = "unknown_default_open_api"
 )
 
 // All allowed values of SubscriptionResponseOfferType enum
 var AllowedSubscriptionResponseOfferTypeEnumValues = []SubscriptionResponseOfferType{
 	"PUBLIC",
 	"PRIVATE_OFFER",
+	"unknown_default_open_api",
 }
 
 func (v *SubscriptionResponseOfferType) UnmarshalJSON(src []byte) error {
@@ -41,7 +43,8 @@ func (v *SubscriptionResponseOfferType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid SubscriptionResponseOfferType", value)
+	*v = SUBSCRIPTIONRESPONSEOFFERTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewSubscriptionResponseOfferTypeFromValue returns a pointer to a valid SubscriptionResponseOfferType

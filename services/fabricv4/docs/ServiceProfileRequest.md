@@ -4,12 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Project** | Pointer to [**Project**](Project.md) |  | [optional] 
 **Href** | Pointer to **string** | Service Profile URI response attribute | [optional] [readonly] 
-**Type** | [**ServiceProfileTypeEnum**](ServiceProfileTypeEnum.md) |  | 
-**Name** | **string** | Customer-assigned service profile name | 
+**Type** | Pointer to [**ServiceProfileTypeEnum**](ServiceProfileTypeEnum.md) |  | [optional] 
+**Name** | Pointer to **string** | Customer-assigned service profile name | [optional] 
 **Uuid** | Pointer to **string** | Equinix-assigned service profile identifier | [optional] 
-**Description** | **string** | User-provided service description should be of maximum length 375 | 
+**Description** | Pointer to **string** | User-provided service description should be of maximum length 375 | [optional] 
 **Notifications** | Pointer to [**[]SimplifiedNotification**](SimplifiedNotification.md) | Recipients of notifications on service profile change | [optional] 
 **Tags** | Pointer to **[]string** |  | [optional] 
 **Visibility** | Pointer to [**ServiceProfileVisibilityEnum**](ServiceProfileVisibilityEnum.md) |  | [optional] 
@@ -24,12 +23,13 @@ Name | Type | Description | Notes
 **SelfProfile** | Pointer to **bool** | response attribute indicates whether the profile belongs to the same organization as the api-invoker. | [optional] 
 **ProjectId** | Pointer to **string** |  | [optional] 
 **LastMileConfig** | Pointer to [**ServiceProfileLastMileConfig**](ServiceProfileLastMileConfig.md) |  | [optional] 
+**Project** | Pointer to [**Project**](Project.md) |  | [optional] 
 
 ## Methods
 
 ### NewServiceProfileRequest
 
-`func NewServiceProfileRequest(type_ ServiceProfileTypeEnum, name string, description string, ) *ServiceProfileRequest`
+`func NewServiceProfileRequest() *ServiceProfileRequest`
 
 NewServiceProfileRequest instantiates a new ServiceProfileRequest object
 This constructor will assign default values to properties that have it defined,
@@ -43,31 +43,6 @@ will change when the set of required properties is changed
 NewServiceProfileRequestWithDefaults instantiates a new ServiceProfileRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetProject
-
-`func (o *ServiceProfileRequest) GetProject() Project`
-
-GetProject returns the Project field if non-nil, zero value otherwise.
-
-### GetProjectOk
-
-`func (o *ServiceProfileRequest) GetProjectOk() (*Project, bool)`
-
-GetProjectOk returns a tuple with the Project field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetProject
-
-`func (o *ServiceProfileRequest) SetProject(v Project)`
-
-SetProject sets Project field to given value.
-
-### HasProject
-
-`func (o *ServiceProfileRequest) HasProject() bool`
-
-HasProject returns a boolean if a field has been set.
 
 ### GetHref
 
@@ -113,6 +88,11 @@ and a boolean to check if the value has been set.
 
 SetType sets Type field to given value.
 
+### HasType
+
+`func (o *ServiceProfileRequest) HasType() bool`
+
+HasType returns a boolean if a field has been set.
 
 ### GetName
 
@@ -133,6 +113,11 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+### HasName
+
+`func (o *ServiceProfileRequest) HasName() bool`
+
+HasName returns a boolean if a field has been set.
 
 ### GetUuid
 
@@ -178,6 +163,11 @@ and a boolean to check if the value has been set.
 
 SetDescription sets Description field to given value.
 
+### HasDescription
+
+`func (o *ServiceProfileRequest) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
 
 ### GetNotifications
 
@@ -528,6 +518,31 @@ SetLastMileConfig sets LastMileConfig field to given value.
 `func (o *ServiceProfileRequest) HasLastMileConfig() bool`
 
 HasLastMileConfig returns a boolean if a field has been set.
+
+### GetProject
+
+`func (o *ServiceProfileRequest) GetProject() Project`
+
+GetProject returns the Project field if non-nil, zero value otherwise.
+
+### GetProjectOk
+
+`func (o *ServiceProfileRequest) GetProjectOk() (*Project, bool)`
+
+GetProjectOk returns a tuple with the Project field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProject
+
+`func (o *ServiceProfileRequest) SetProject(v Project)`
+
+SetProject sets Project field to given value.
+
+### HasProject
+
+`func (o *ServiceProfileRequest) HasProject() bool`
+
+HasProject returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

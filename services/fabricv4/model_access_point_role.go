@@ -17,14 +17,16 @@ type AccessPointRole string
 
 // List of AccessPoint_role
 const (
-	ACCESSPOINTROLE_LEAF AccessPointRole = "LEAF"
-	ACCESSPOINTROLE_ROOT AccessPointRole = "ROOT"
+	ACCESSPOINTROLE_LEAF                     AccessPointRole = "LEAF"
+	ACCESSPOINTROLE_ROOT                     AccessPointRole = "ROOT"
+	ACCESSPOINTROLE_UNKNOWN_DEFAULT_OPEN_API AccessPointRole = "unknown_default_open_api"
 )
 
 // All allowed values of AccessPointRole enum
 var AllowedAccessPointRoleEnumValues = []AccessPointRole{
 	"LEAF",
 	"ROOT",
+	"unknown_default_open_api",
 }
 
 func (v *AccessPointRole) UnmarshalJSON(src []byte) error {
@@ -41,7 +43,8 @@ func (v *AccessPointRole) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid AccessPointRole", value)
+	*v = ACCESSPOINTROLE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewAccessPointRoleFromValue returns a pointer to a valid AccessPointRole

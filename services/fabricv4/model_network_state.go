@@ -17,9 +17,10 @@ type NetworkState string
 
 // List of NetworkState
 const (
-	NETWORKSTATE_ACTIVE   NetworkState = "ACTIVE"
-	NETWORKSTATE_INACTIVE NetworkState = "INACTIVE"
-	NETWORKSTATE_DELETED  NetworkState = "DELETED"
+	NETWORKSTATE_ACTIVE                   NetworkState = "ACTIVE"
+	NETWORKSTATE_INACTIVE                 NetworkState = "INACTIVE"
+	NETWORKSTATE_DELETED                  NetworkState = "DELETED"
+	NETWORKSTATE_UNKNOWN_DEFAULT_OPEN_API NetworkState = "unknown_default_open_api"
 )
 
 // All allowed values of NetworkState enum
@@ -27,6 +28,7 @@ var AllowedNetworkStateEnumValues = []NetworkState{
 	"ACTIVE",
 	"INACTIVE",
 	"DELETED",
+	"unknown_default_open_api",
 }
 
 func (v *NetworkState) UnmarshalJSON(src []byte) error {
@@ -43,7 +45,8 @@ func (v *NetworkState) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid NetworkState", value)
+	*v = NETWORKSTATE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewNetworkStateFromValue returns a pointer to a valid NetworkState

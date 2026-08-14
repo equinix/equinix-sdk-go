@@ -17,12 +17,14 @@ type StreamAssetSortBy string
 
 // List of StreamAssetSortBy
 const (
-	STREAMASSETSORTBY_UUID StreamAssetSortBy = "/uuid"
+	STREAMASSETSORTBY_UUID                     StreamAssetSortBy = "/uuid"
+	STREAMASSETSORTBY_UNKNOWN_DEFAULT_OPEN_API StreamAssetSortBy = "unknown_default_open_api"
 )
 
 // All allowed values of StreamAssetSortBy enum
 var AllowedStreamAssetSortByEnumValues = []StreamAssetSortBy{
 	"/uuid",
+	"unknown_default_open_api",
 }
 
 func (v *StreamAssetSortBy) UnmarshalJSON(src []byte) error {
@@ -39,7 +41,8 @@ func (v *StreamAssetSortBy) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid StreamAssetSortBy", value)
+	*v = STREAMASSETSORTBY_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewStreamAssetSortByFromValue returns a pointer to a valid StreamAssetSortBy

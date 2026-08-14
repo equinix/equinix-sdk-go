@@ -17,12 +17,14 @@ type VirtualDeviceInterfaceType string
 
 // List of VirtualDeviceInterface_type
 const (
-	VIRTUALDEVICEINTERFACETYPE_NETWORK VirtualDeviceInterfaceType = "NETWORK"
+	VIRTUALDEVICEINTERFACETYPE_NETWORK                  VirtualDeviceInterfaceType = "NETWORK"
+	VIRTUALDEVICEINTERFACETYPE_UNKNOWN_DEFAULT_OPEN_API VirtualDeviceInterfaceType = "unknown_default_open_api"
 )
 
 // All allowed values of VirtualDeviceInterfaceType enum
 var AllowedVirtualDeviceInterfaceTypeEnumValues = []VirtualDeviceInterfaceType{
 	"NETWORK",
+	"unknown_default_open_api",
 }
 
 func (v *VirtualDeviceInterfaceType) UnmarshalJSON(src []byte) error {
@@ -39,7 +41,8 @@ func (v *VirtualDeviceInterfaceType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid VirtualDeviceInterfaceType", value)
+	*v = VIRTUALDEVICEINTERFACETYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewVirtualDeviceInterfaceTypeFromValue returns a pointer to a valid VirtualDeviceInterfaceType

@@ -31,6 +31,7 @@ const (
 	SEARCHEXPRESSIONOPERATOR_NOT_IN                   SearchExpressionOperator = "NOT IN"
 	SEARCHEXPRESSIONOPERATOR_IS_NOT_NULL              SearchExpressionOperator = "IS NOT NULL"
 	SEARCHEXPRESSIONOPERATOR_IS_NULL                  SearchExpressionOperator = "IS NULL"
+	SEARCHEXPRESSIONOPERATOR_UNKNOWN_DEFAULT_OPEN_API SearchExpressionOperator = "unknown_default_open_api"
 )
 
 // All allowed values of SearchExpressionOperator enum
@@ -49,6 +50,7 @@ var AllowedSearchExpressionOperatorEnumValues = []SearchExpressionOperator{
 	"NOT IN",
 	"IS NOT NULL",
 	"IS NULL",
+	"unknown_default_open_api",
 }
 
 func (v *SearchExpressionOperator) UnmarshalJSON(src []byte) error {
@@ -65,7 +67,8 @@ func (v *SearchExpressionOperator) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid SearchExpressionOperator", value)
+	*v = SEARCHEXPRESSIONOPERATOR_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewSearchExpressionOperatorFromValue returns a pointer to a valid SearchExpressionOperator

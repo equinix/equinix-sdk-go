@@ -17,14 +17,15 @@ type SimplifiedNotificationType string
 
 // List of SimplifiedNotification_type
 const (
-	SIMPLIFIEDNOTIFICATIONTYPE_NOTIFICATION            SimplifiedNotificationType = "NOTIFICATION"
-	SIMPLIFIEDNOTIFICATIONTYPE_BANDWIDTH_ALERT         SimplifiedNotificationType = "BANDWIDTH_ALERT"
-	SIMPLIFIEDNOTIFICATIONTYPE_CONNECTION_APPROVAL     SimplifiedNotificationType = "CONNECTION_APPROVAL"
-	SIMPLIFIEDNOTIFICATIONTYPE_PROFILE_LIFECYCLE       SimplifiedNotificationType = "PROFILE_LIFECYCLE"
-	SIMPLIFIEDNOTIFICATIONTYPE_ALL                     SimplifiedNotificationType = "ALL"
-	SIMPLIFIEDNOTIFICATIONTYPE_SALES_REP_NOTIFICATIONS SimplifiedNotificationType = "SALES_REP_NOTIFICATIONS"
-	SIMPLIFIEDNOTIFICATIONTYPE_TECHNICAL               SimplifiedNotificationType = "TECHNICAL"
-	SIMPLIFIEDNOTIFICATIONTYPE_ORDERING                SimplifiedNotificationType = "ORDERING"
+	SIMPLIFIEDNOTIFICATIONTYPE_NOTIFICATION             SimplifiedNotificationType = "NOTIFICATION"
+	SIMPLIFIEDNOTIFICATIONTYPE_BANDWIDTH_ALERT          SimplifiedNotificationType = "BANDWIDTH_ALERT"
+	SIMPLIFIEDNOTIFICATIONTYPE_CONNECTION_APPROVAL      SimplifiedNotificationType = "CONNECTION_APPROVAL"
+	SIMPLIFIEDNOTIFICATIONTYPE_PROFILE_LIFECYCLE        SimplifiedNotificationType = "PROFILE_LIFECYCLE"
+	SIMPLIFIEDNOTIFICATIONTYPE_ALL                      SimplifiedNotificationType = "ALL"
+	SIMPLIFIEDNOTIFICATIONTYPE_SALES_REP_NOTIFICATIONS  SimplifiedNotificationType = "SALES_REP_NOTIFICATIONS"
+	SIMPLIFIEDNOTIFICATIONTYPE_TECHNICAL                SimplifiedNotificationType = "TECHNICAL"
+	SIMPLIFIEDNOTIFICATIONTYPE_ORDERING                 SimplifiedNotificationType = "ORDERING"
+	SIMPLIFIEDNOTIFICATIONTYPE_UNKNOWN_DEFAULT_OPEN_API SimplifiedNotificationType = "unknown_default_open_api"
 )
 
 // All allowed values of SimplifiedNotificationType enum
@@ -37,6 +38,7 @@ var AllowedSimplifiedNotificationTypeEnumValues = []SimplifiedNotificationType{
 	"SALES_REP_NOTIFICATIONS",
 	"TECHNICAL",
 	"ORDERING",
+	"unknown_default_open_api",
 }
 
 func (v *SimplifiedNotificationType) UnmarshalJSON(src []byte) error {
@@ -53,7 +55,8 @@ func (v *SimplifiedNotificationType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid SimplifiedNotificationType", value)
+	*v = SIMPLIFIEDNOTIFICATIONTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewSimplifiedNotificationTypeFromValue returns a pointer to a valid SimplifiedNotificationType

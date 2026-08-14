@@ -20,9 +20,10 @@ type SortName string
 
 // List of sort_name
 const (
-	SORTNAME_ORDERING_CONTACT SortName = "ORDERING_CONTACT"
-	SORTNAME_ACCOUNT_NUMBER   SortName = "ACCOUNT_NUMBER"
-	SORTNAME_CREATED_ON       SortName = "CREATED_ON"
+	SORTNAME_ORDERING_CONTACT         SortName = "ORDERING_CONTACT"
+	SORTNAME_ACCOUNT_NUMBER           SortName = "ACCOUNT_NUMBER"
+	SORTNAME_CREATED_ON               SortName = "CREATED_ON"
+	SORTNAME_UNKNOWN_DEFAULT_OPEN_API SortName = "unknown_default_open_api"
 )
 
 // All allowed values of SortName enum
@@ -30,6 +31,7 @@ var AllowedSortNameEnumValues = []SortName{
 	"ORDERING_CONTACT",
 	"ACCOUNT_NUMBER",
 	"CREATED_ON",
+	"unknown_default_open_api",
 }
 
 func (v *SortName) UnmarshalJSON(src []byte) error {
@@ -46,7 +48,8 @@ func (v *SortName) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid SortName", value)
+	*v = SORTNAME_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewSortNameFromValue returns a pointer to a valid SortName
