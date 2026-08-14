@@ -7,5 +7,6 @@
         "RESOLVE_INLINE_ENUMS": true
     },
     "enumClassPrefix": true,
+    "enumUnknownDefaultCase": true,
     "removeEnumValuePrefix": true
 }
