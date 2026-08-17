@@ -12,25 +12,25 @@ import (
 	"fmt"
 )
 
-// LoaActionType Loa Action Type
+// LoaActionType Action to perform on the LOA.
 type LoaActionType string
 
 // List of LoaActionType
 const (
-	LOAACTIONTYPE_AUTHORIZE_LOA LoaActionType = "AUTHORIZE_LOA"
-	LOAACTIONTYPE_ACCEPT_LOA    LoaActionType = "ACCEPT_LOA"
-	LOAACTIONTYPE_COPY_LOA      LoaActionType = "COPY_LOA"
-	LOAACTIONTYPE_SEND_LOA      LoaActionType = "SEND_LOA"
-	LOAACTIONTYPE_CANCEL_LOA    LoaActionType = "CANCEL_LOA"
+	LOAACTIONTYPE_ISSUER_AUTHORIZATION    LoaActionType = "LOA_ISSUER_AUTHORIZATION"
+	LOAACTIONTYPE_REQUESTOR_ACCEPTANCE    LoaActionType = "LOA_REQUESTOR_ACCEPTANCE"
+	LOAACTIONTYPE_COPY_LINK               LoaActionType = "LOA_COPY_LINK"
+	LOAACTIONTYPE_SEND_EMAIL_NOTIFICATION LoaActionType = "LOA_SEND_EMAIL_NOTIFICATION"
+	LOAACTIONTYPE_CANCEL                  LoaActionType = "LOA_CANCEL"
 )
 
 // All allowed values of LoaActionType enum
 var AllowedLoaActionTypeEnumValues = []LoaActionType{
-	"AUTHORIZE_LOA",
-	"ACCEPT_LOA",
-	"COPY_LOA",
-	"SEND_LOA",
-	"CANCEL_LOA",
+	"LOA_ISSUER_AUTHORIZATION",
+	"LOA_REQUESTOR_ACCEPTANCE",
+	"LOA_COPY_LINK",
+	"LOA_SEND_EMAIL_NOTIFICATION",
+	"LOA_CANCEL",
 }
 
 func (v *LoaActionType) UnmarshalJSON(src []byte) error {

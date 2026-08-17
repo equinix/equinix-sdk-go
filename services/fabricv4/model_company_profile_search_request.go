@@ -16,9 +16,9 @@ var _ MappedNullable = &CompanyProfileSearchRequest{}
 
 // CompanyProfileSearchRequest struct for CompanyProfileSearchRequest
 type CompanyProfileSearchRequest struct {
-	Filter               *CompanyProfileSearchFilter `json:"filter,omitempty"`
-	Pagination           *Pagination                 `json:"pagination,omitempty"`
-	Sort                 *Sort                       `json:"sort,omitempty"`
+	Filter               *CompanyProfileSearchFilters `json:"filter,omitempty"`
+	Pagination           *Pagination                  `json:"pagination,omitempty"`
+	Sort                 *Sort                        `json:"sort,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -42,9 +42,9 @@ func NewCompanyProfileSearchRequestWithDefaults() *CompanyProfileSearchRequest {
 }
 
 // GetFilter returns the Filter field value if set, zero value otherwise.
-func (o *CompanyProfileSearchRequest) GetFilter() CompanyProfileSearchFilter {
+func (o *CompanyProfileSearchRequest) GetFilter() CompanyProfileSearchFilters {
 	if o == nil || IsNil(o.Filter) {
-		var ret CompanyProfileSearchFilter
+		var ret CompanyProfileSearchFilters
 		return ret
 	}
 	return *o.Filter
@@ -52,7 +52,7 @@ func (o *CompanyProfileSearchRequest) GetFilter() CompanyProfileSearchFilter {
 
 // GetFilterOk returns a tuple with the Filter field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CompanyProfileSearchRequest) GetFilterOk() (*CompanyProfileSearchFilter, bool) {
+func (o *CompanyProfileSearchRequest) GetFilterOk() (*CompanyProfileSearchFilters, bool) {
 	if o == nil || IsNil(o.Filter) {
 		return nil, false
 	}
@@ -68,8 +68,8 @@ func (o *CompanyProfileSearchRequest) HasFilter() bool {
 	return false
 }
 
-// SetFilter gets a reference to the given CompanyProfileSearchFilter and assigns it to the Filter field.
-func (o *CompanyProfileSearchRequest) SetFilter(v CompanyProfileSearchFilter) {
+// SetFilter gets a reference to the given CompanyProfileSearchFilters and assigns it to the Filter field.
+func (o *CompanyProfileSearchRequest) SetFilter(v CompanyProfileSearchFilters) {
 	o.Filter = &v
 }
 

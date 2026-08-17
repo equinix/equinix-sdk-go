@@ -11,6 +11,8 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** | Provider environment description | [optional] 
 **Region** | Pointer to **string** | Cloud provider region identifier | [optional] 
 **SupportedBandwidths** | Pointer to **[]int32** | Supported bandwidths in Mbps | [optional] 
+**Metros** | Pointer to [**[]ServiceMetro**](ServiceMetro.md) | Derived response attribute. | [optional] 
+**SupportedFeatures** | Pointer to **[]string** | Supported Feature Types | [optional] 
 **ChangeLog** | Pointer to [**Changelog**](Changelog.md) |  | [optional] 
 
 ## Methods
@@ -206,6 +208,56 @@ SetSupportedBandwidths sets SupportedBandwidths field to given value.
 `func (o *ProviderEnvironment) HasSupportedBandwidths() bool`
 
 HasSupportedBandwidths returns a boolean if a field has been set.
+
+### GetMetros
+
+`func (o *ProviderEnvironment) GetMetros() []ServiceMetro`
+
+GetMetros returns the Metros field if non-nil, zero value otherwise.
+
+### GetMetrosOk
+
+`func (o *ProviderEnvironment) GetMetrosOk() (*[]ServiceMetro, bool)`
+
+GetMetrosOk returns a tuple with the Metros field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMetros
+
+`func (o *ProviderEnvironment) SetMetros(v []ServiceMetro)`
+
+SetMetros sets Metros field to given value.
+
+### HasMetros
+
+`func (o *ProviderEnvironment) HasMetros() bool`
+
+HasMetros returns a boolean if a field has been set.
+
+### GetSupportedFeatures
+
+`func (o *ProviderEnvironment) GetSupportedFeatures() []string`
+
+GetSupportedFeatures returns the SupportedFeatures field if non-nil, zero value otherwise.
+
+### GetSupportedFeaturesOk
+
+`func (o *ProviderEnvironment) GetSupportedFeaturesOk() (*[]string, bool)`
+
+GetSupportedFeaturesOk returns a tuple with the SupportedFeatures field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSupportedFeatures
+
+`func (o *ProviderEnvironment) SetSupportedFeatures(v []string)`
+
+SetSupportedFeatures sets SupportedFeatures field to given value.
+
+### HasSupportedFeatures
+
+`func (o *ProviderEnvironment) HasSupportedFeatures() bool`
+
+HasSupportedFeatures returns a boolean if a field has been set.
 
 ### GetChangeLog
 

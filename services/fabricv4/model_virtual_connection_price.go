@@ -22,6 +22,7 @@ type VirtualConnectionPrice struct {
 	Bandwidth            *int32                                `json:"bandwidth,omitempty"`
 	ASide                *VirtualConnectionPriceASide          `json:"aSide,omitempty"`
 	ZSide                *VirtualConnectionPriceZSide          `json:"zSide,omitempty"`
+	GeoScope             *GeoScopeType                         `json:"geoScope,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -204,6 +205,38 @@ func (o *VirtualConnectionPrice) SetZSide(v VirtualConnectionPriceZSide) {
 	o.ZSide = &v
 }
 
+// GetGeoScope returns the GeoScope field value if set, zero value otherwise.
+func (o *VirtualConnectionPrice) GetGeoScope() GeoScopeType {
+	if o == nil || IsNil(o.GeoScope) {
+		var ret GeoScopeType
+		return ret
+	}
+	return *o.GeoScope
+}
+
+// GetGeoScopeOk returns a tuple with the GeoScope field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *VirtualConnectionPrice) GetGeoScopeOk() (*GeoScopeType, bool) {
+	if o == nil || IsNil(o.GeoScope) {
+		return nil, false
+	}
+	return o.GeoScope, true
+}
+
+// HasGeoScope returns a boolean if a field has been set.
+func (o *VirtualConnectionPrice) HasGeoScope() bool {
+	if o != nil && !IsNil(o.GeoScope) {
+		return true
+	}
+
+	return false
+}
+
+// SetGeoScope gets a reference to the given GeoScopeType and assigns it to the GeoScope field.
+func (o *VirtualConnectionPrice) SetGeoScope(v GeoScopeType) {
+	o.GeoScope = &v
+}
+
 func (o VirtualConnectionPrice) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -228,6 +261,9 @@ func (o VirtualConnectionPrice) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ZSide) {
 		toSerialize["zSide"] = o.ZSide
+	}
+	if !IsNil(o.GeoScope) {
+		toSerialize["geoScope"] = o.GeoScope
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -256,6 +292,7 @@ func (o *VirtualConnectionPrice) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "bandwidth")
 		delete(additionalProperties, "aSide")
 		delete(additionalProperties, "zSide")
+		delete(additionalProperties, "geoScope")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -27,6 +27,8 @@ const (
 	PORTSEARCHFIELDNAME_ACCOUNT_ORG_ID                         PortSearchFieldName = "/account/orgId"
 	PORTSEARCHFIELDNAME_ACCOUNT_ACCOUNT_NUMBER                 PortSearchFieldName = "/account/accountNumber"
 	PORTSEARCHFIELDNAME_LOCATION_METRO_CODE                    PortSearchFieldName = "/location/metroCode"
+	PORTSEARCHFIELDNAME_OPERATION_MAINTENANCE_STATUS           PortSearchFieldName = "/operation/maintenanceStatus"
+	PORTSEARCHFIELDNAME_OPERATION_LOCK_ENABLED                 PortSearchFieldName = "/operation/lockEnabled"
 )
 
 // All allowed values of PortSearchFieldName enum
@@ -41,6 +43,8 @@ var AllowedPortSearchFieldNameEnumValues = []PortSearchFieldName{
 	"/account/orgId",
 	"/account/accountNumber",
 	"/location/metroCode",
+	"/operation/maintenanceStatus",
+	"/operation/lockEnabled",
 }
 
 func (v *PortSearchFieldName) UnmarshalJSON(src []byte) error {

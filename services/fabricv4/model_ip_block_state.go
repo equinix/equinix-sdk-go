@@ -12,7 +12,7 @@ import (
 	"fmt"
 )
 
-// IpBlockState Current state of the Ip Block
+// IpBlockState Current state of the IP Block
 type IpBlockState string
 
 // List of IpBlockState

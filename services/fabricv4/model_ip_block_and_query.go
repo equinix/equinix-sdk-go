@@ -17,9 +17,9 @@ var _ MappedNullable = &IpBlockAndQuery{}
 
 // IpBlockAndQuery struct for IpBlockAndQuery
 type IpBlockAndQuery struct {
-	Property             string                  `json:"property"`
-	Operator             IpBlockAndQueryOperator `json:"operator"`
-	Values               []string                `json:"values"`
+	Property             string                                    `json:"property"`
+	Operator             ExchangeServicePropertyExpressionOperator `json:"operator"`
+	Values               []string                                  `json:"values"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -29,7 +29,7 @@ type _IpBlockAndQuery IpBlockAndQuery
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewIpBlockAndQuery(property string, operator IpBlockAndQueryOperator, values []string) *IpBlockAndQuery {
+func NewIpBlockAndQuery(property string, operator ExchangeServicePropertyExpressionOperator, values []string) *IpBlockAndQuery {
 	this := IpBlockAndQuery{}
 	this.Property = property
 	this.Operator = operator
@@ -70,9 +70,9 @@ func (o *IpBlockAndQuery) SetProperty(v string) {
 }
 
 // GetOperator returns the Operator field value
-func (o *IpBlockAndQuery) GetOperator() IpBlockAndQueryOperator {
+func (o *IpBlockAndQuery) GetOperator() ExchangeServicePropertyExpressionOperator {
 	if o == nil {
-		var ret IpBlockAndQueryOperator
+		var ret ExchangeServicePropertyExpressionOperator
 		return ret
 	}
 
@@ -81,7 +81,7 @@ func (o *IpBlockAndQuery) GetOperator() IpBlockAndQueryOperator {
 
 // GetOperatorOk returns a tuple with the Operator field value
 // and a boolean to check if the value has been set.
-func (o *IpBlockAndQuery) GetOperatorOk() (*IpBlockAndQueryOperator, bool) {
+func (o *IpBlockAndQuery) GetOperatorOk() (*ExchangeServicePropertyExpressionOperator, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -89,7 +89,7 @@ func (o *IpBlockAndQuery) GetOperatorOk() (*IpBlockAndQueryOperator, bool) {
 }
 
 // SetOperator sets field value
-func (o *IpBlockAndQuery) SetOperator(v IpBlockAndQueryOperator) {
+func (o *IpBlockAndQuery) SetOperator(v ExchangeServicePropertyExpressionOperator) {
 	o.Operator = v
 }
 

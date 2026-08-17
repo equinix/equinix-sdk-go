@@ -12,7 +12,7 @@ import (
 	"fmt"
 )
 
-// LoaActionState Loa Action State
+// LoaActionState Action State
 type LoaActionState string
 
 // List of LoaActionState

@@ -12,7 +12,7 @@ import (
 	"fmt"
 )
 
-// LoaState Loa State
+// LoaState Current lifecycle state of the LOA.
 type LoaState string
 
 // List of LoaState
@@ -21,7 +21,6 @@ const (
 	LOASTATE_FAILED                LoaState = "FAILED"
 	LOASTATE_PENDING_AUTHORIZATION LoaState = "PENDING_AUTHORIZATION"
 	LOASTATE_PENDING_ACCEPTANCE    LoaState = "PENDING_ACCEPTANCE"
-	LOASTATE_REJECTED              LoaState = "REJECTED"
 	LOASTATE_CANCELLED             LoaState = "CANCELLED"
 	LOASTATE_INACTIVE              LoaState = "INACTIVE"
 	LOASTATE_ACTIVE                LoaState = "ACTIVE"
@@ -34,7 +33,6 @@ var AllowedLoaStateEnumValues = []LoaState{
 	"FAILED",
 	"PENDING_AUTHORIZATION",
 	"PENDING_ACCEPTANCE",
-	"REJECTED",
 	"CANCELLED",
 	"INACTIVE",
 	"ACTIVE",

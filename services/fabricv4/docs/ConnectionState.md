@@ -21,9 +21,9 @@
 
 * `PROVISIONING` (value: `"PROVISIONING"`)
 
-* `REPROVISIONING` (value: `"REPROVISIONING"`)
-
 * `EMPTY` (value: `""`)
+
+* `REPROVISIONING` (value: `"REPROVISIONING"`)
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

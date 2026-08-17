@@ -31,7 +31,9 @@
 
 * `IX_VC` (value: `"IX_VC"`)
 
-* `IC_VC` (value: `"IC_VC"`)
+* `GW_VC` (value: `"GW_VC"`)
+
+* `IPX_VC` (value: `"IPX_VC"`)
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

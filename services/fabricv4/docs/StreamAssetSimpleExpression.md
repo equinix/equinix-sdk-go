@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Property** | Pointer to **string** | Possible field names to use on filters:  * &#x60;/uuid&#x60; - Asset uuid  * &#x60;/streamUuid&#x60; - Stream uuid  * &#x60;/projectId&#x60; - Asset projectId  * &#x60;/_*&#x60; - all-category search  | [optional] 
-**Operator** | Pointer to **string** | Possible operators to use on filters:  * &#x60;&#x3D;&#x60; - equal  * &#x60;!&#x3D;&#x60; - not equal  * &#x60;&gt;&#x60; - greater than  * &#x60;&gt;&#x3D;&#x60; - greater than or equal to  * &#x60;&lt;&#x60; - less than  * &#x60;&lt;&#x3D;&#x60; - less than or equal to  * &#x60;[NOT] BETWEEN&#x60; - (not) between  * &#x60;[NOT] LIKE&#x60; - (not) like  * &#x60;[NOT] IN&#x60; - (not) in  * &#x60;ILIKE&#x60; - case-insensitive like  | [optional] 
+**Property** | Pointer to **string** | Possible field names to use on filters:  * &#x60;/uuid&#x60; - Asset uuid (&#x60;&#x3D;&#x60; and &#x60;IN&#x60; only)  * &#x60;/streamUuid&#x60; - Stream uuid (&#x60;&#x3D;&#x60; and &#x60;IN&#x60; only)  * &#x60;/attachmentStatus&#x60; - Asset attachment status (&#x60;&#x3D;&#x60;, &#x60;IN&#x60;, and &#x60;NOT IN&#x60;)  | [optional] 
+**Operator** | Pointer to **string** | Possible operators to use on filters:  * &#x60;&#x3D;&#x60; - equal  * &#x60;IN&#x60; - in  * &#x60;NOT IN&#x60; - not in  | [optional] 
 **Values** | Pointer to **[]string** |  | [optional] 
 
 ## Methods

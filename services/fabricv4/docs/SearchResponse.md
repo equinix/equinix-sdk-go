@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pagination** | Pointer to [**Pagination**](Pagination.md) |  | [optional] 
-**Data** | Pointer to [**[]CloudRouter**](CloudRouter.md) | Data returned from the API call. | [optional] 
+**Data** | Pointer to [**[]CloudRouterReadResponse**](CloudRouterReadResponse.md) | Data returned from the API call. | [optional] 
 
 ## Methods
 
@@ -53,20 +53,20 @@ HasPagination returns a boolean if a field has been set.
 
 ### GetData
 
-`func (o *SearchResponse) GetData() []CloudRouter`
+`func (o *SearchResponse) GetData() []CloudRouterReadResponse`
 
 GetData returns the Data field if non-nil, zero value otherwise.
 
 ### GetDataOk
 
-`func (o *SearchResponse) GetDataOk() (*[]CloudRouter, bool)`
+`func (o *SearchResponse) GetDataOk() (*[]CloudRouterReadResponse, bool)`
 
 GetDataOk returns a tuple with the Data field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetData
 
-`func (o *SearchResponse) SetData(v []CloudRouter)`
+`func (o *SearchResponse) SetData(v []CloudRouterReadResponse)`
 
 SetData sets Data field to given value.
 

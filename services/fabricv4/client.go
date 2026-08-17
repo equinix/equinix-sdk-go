@@ -37,7 +37,7 @@ var (
 	queryDescape    = strings.NewReplacer("%5B", "[", "%5D", "]")
 )
 
-// APIClient manages communication with the Equinix Fabric API v4 API v4.30
+// APIClient manages communication with the Equinix Fabric API v4 API v4.31
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
 	cfg    *Configuration
@@ -45,9 +45,13 @@ type APIClient struct {
 
 	// API Services
 
-	AgentTemplatesApi *AgentTemplatesApiService
+	ApplicationDomainsApi *ApplicationDomainsApiService
 
-	AgentsApi *AgentsApiService
+	ApplicationLinksApi *ApplicationLinksApiService
+
+	ApplicationServicesApi *ApplicationServicesApiService
+
+	ApplicationSubscriptionsApi *ApplicationSubscriptionsApiService
 
 	CloudEventsApi *CloudEventsApiService
 
@@ -57,11 +61,19 @@ type APIClient struct {
 
 	ConnectionsApi *ConnectionsApiService
 
+	FabricOneApi *FabricOneApiService
+
+	GatewaysApi *GatewaysApiService
+
 	HealthApi *HealthApiService
+
+	IPBlocksApi *IPBlocksApiService
 
 	InternetAccessServicesApi *InternetAccessServicesApiService
 
-	IpBlocksApi *IpBlocksApiService
+	InternetExchangeServicesApi *InternetExchangeServicesApiService
+
+	LoasApi *LoasApiService
 
 	LogosApi *LogosApiService
 
@@ -72,6 +84,8 @@ type APIClient struct {
 	MetrosApi *MetrosApiService
 
 	NetworksApi *NetworksApiService
+
+	OpticalMetroConnectsApi *OpticalMetroConnectsApiService
 
 	PortPackagesApi *PortPackagesApiService
 
@@ -122,20 +136,27 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.common.client = c
 
 	// API Services
-	c.AgentTemplatesApi = (*AgentTemplatesApiService)(&c.common)
-	c.AgentsApi = (*AgentsApiService)(&c.common)
+	c.ApplicationDomainsApi = (*ApplicationDomainsApiService)(&c.common)
+	c.ApplicationLinksApi = (*ApplicationLinksApiService)(&c.common)
+	c.ApplicationServicesApi = (*ApplicationServicesApiService)(&c.common)
+	c.ApplicationSubscriptionsApi = (*ApplicationSubscriptionsApiService)(&c.common)
 	c.CloudEventsApi = (*CloudEventsApiService)(&c.common)
 	c.CloudRoutersApi = (*CloudRoutersApiService)(&c.common)
 	c.CompanyProfilesApi = (*CompanyProfilesApiService)(&c.common)
 	c.ConnectionsApi = (*ConnectionsApiService)(&c.common)
+	c.FabricOneApi = (*FabricOneApiService)(&c.common)
+	c.GatewaysApi = (*GatewaysApiService)(&c.common)
 	c.HealthApi = (*HealthApiService)(&c.common)
+	c.IPBlocksApi = (*IPBlocksApiService)(&c.common)
 	c.InternetAccessServicesApi = (*InternetAccessServicesApiService)(&c.common)
-	c.IpBlocksApi = (*IpBlocksApiService)(&c.common)
+	c.InternetExchangeServicesApi = (*InternetExchangeServicesApiService)(&c.common)
+	c.LoasApi = (*LoasApiService)(&c.common)
 	c.LogosApi = (*LogosApiService)(&c.common)
 	c.MarketplaceSubscriptionsApi = (*MarketplaceSubscriptionsApiService)(&c.common)
 	c.MetricsApi = (*MetricsApiService)(&c.common)
 	c.MetrosApi = (*MetrosApiService)(&c.common)
 	c.NetworksApi = (*NetworksApiService)(&c.common)
+	c.OpticalMetroConnectsApi = (*OpticalMetroConnectsApiService)(&c.common)
 	c.PortPackagesApi = (*PortPackagesApiService)(&c.common)
 	c.PortsApi = (*PortsApiService)(&c.common)
 	c.PrecisionTimeApi = (*PrecisionTimeApiService)(&c.common)

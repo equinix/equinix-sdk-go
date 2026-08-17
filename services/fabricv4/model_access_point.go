@@ -26,6 +26,7 @@ type AccessPoint struct {
 	VirtualDevice *VirtualDevice            `json:"virtualDevice,omitempty"`
 	Interface     *Interface                `json:"interface,omitempty"`
 	Network       *SimplifiedNetwork        `json:"network,omitempty"`
+	Interconnect  *Interconnect             `json:"interconnect,omitempty"`
 	Environment   *ProviderEnvironment      `json:"environment,omitempty"`
 	// Access point seller region
 	SellerRegion *string      `json:"sellerRegion,omitempty"`
@@ -39,6 +40,12 @@ type AccessPoint struct {
 	VirtualNetwork       *VirtualNetwork       `json:"virtualNetwork,omitempty"`
 	Interconnection      *MetalInterconnection `json:"interconnection,omitempty"`
 	Role                 *AccessPointRole      `json:"role,omitempty"`
+	ProductOffering      *ProductOffering      `json:"productOffering,omitempty"`
+	// Bandwidth commit in Mbps
+	BandwidthCommit *int32 `json:"bandwidthCommit,omitempty"`
+	// Provider identifier
+	ProviderIdentifier   *string  `json:"providerIdentifier,omitempty"`
+	Address              *Address `json:"address,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -381,6 +388,38 @@ func (o *AccessPoint) SetNetwork(v SimplifiedNetwork) {
 	o.Network = &v
 }
 
+// GetInterconnect returns the Interconnect field value if set, zero value otherwise.
+func (o *AccessPoint) GetInterconnect() Interconnect {
+	if o == nil || IsNil(o.Interconnect) {
+		var ret Interconnect
+		return ret
+	}
+	return *o.Interconnect
+}
+
+// GetInterconnectOk returns a tuple with the Interconnect field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccessPoint) GetInterconnectOk() (*Interconnect, bool) {
+	if o == nil || IsNil(o.Interconnect) {
+		return nil, false
+	}
+	return o.Interconnect, true
+}
+
+// HasInterconnect returns a boolean if a field has been set.
+func (o *AccessPoint) HasInterconnect() bool {
+	if o != nil && !IsNil(o.Interconnect) {
+		return true
+	}
+
+	return false
+}
+
+// SetInterconnect gets a reference to the given Interconnect and assigns it to the Interconnect field.
+func (o *AccessPoint) SetInterconnect(v Interconnect) {
+	o.Interconnect = &v
+}
+
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
 func (o *AccessPoint) GetEnvironment() ProviderEnvironment {
 	if o == nil || IsNil(o.Environment) {
@@ -669,6 +708,134 @@ func (o *AccessPoint) SetRole(v AccessPointRole) {
 	o.Role = &v
 }
 
+// GetProductOffering returns the ProductOffering field value if set, zero value otherwise.
+func (o *AccessPoint) GetProductOffering() ProductOffering {
+	if o == nil || IsNil(o.ProductOffering) {
+		var ret ProductOffering
+		return ret
+	}
+	return *o.ProductOffering
+}
+
+// GetProductOfferingOk returns a tuple with the ProductOffering field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccessPoint) GetProductOfferingOk() (*ProductOffering, bool) {
+	if o == nil || IsNil(o.ProductOffering) {
+		return nil, false
+	}
+	return o.ProductOffering, true
+}
+
+// HasProductOffering returns a boolean if a field has been set.
+func (o *AccessPoint) HasProductOffering() bool {
+	if o != nil && !IsNil(o.ProductOffering) {
+		return true
+	}
+
+	return false
+}
+
+// SetProductOffering gets a reference to the given ProductOffering and assigns it to the ProductOffering field.
+func (o *AccessPoint) SetProductOffering(v ProductOffering) {
+	o.ProductOffering = &v
+}
+
+// GetBandwidthCommit returns the BandwidthCommit field value if set, zero value otherwise.
+func (o *AccessPoint) GetBandwidthCommit() int32 {
+	if o == nil || IsNil(o.BandwidthCommit) {
+		var ret int32
+		return ret
+	}
+	return *o.BandwidthCommit
+}
+
+// GetBandwidthCommitOk returns a tuple with the BandwidthCommit field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccessPoint) GetBandwidthCommitOk() (*int32, bool) {
+	if o == nil || IsNil(o.BandwidthCommit) {
+		return nil, false
+	}
+	return o.BandwidthCommit, true
+}
+
+// HasBandwidthCommit returns a boolean if a field has been set.
+func (o *AccessPoint) HasBandwidthCommit() bool {
+	if o != nil && !IsNil(o.BandwidthCommit) {
+		return true
+	}
+
+	return false
+}
+
+// SetBandwidthCommit gets a reference to the given int32 and assigns it to the BandwidthCommit field.
+func (o *AccessPoint) SetBandwidthCommit(v int32) {
+	o.BandwidthCommit = &v
+}
+
+// GetProviderIdentifier returns the ProviderIdentifier field value if set, zero value otherwise.
+func (o *AccessPoint) GetProviderIdentifier() string {
+	if o == nil || IsNil(o.ProviderIdentifier) {
+		var ret string
+		return ret
+	}
+	return *o.ProviderIdentifier
+}
+
+// GetProviderIdentifierOk returns a tuple with the ProviderIdentifier field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccessPoint) GetProviderIdentifierOk() (*string, bool) {
+	if o == nil || IsNil(o.ProviderIdentifier) {
+		return nil, false
+	}
+	return o.ProviderIdentifier, true
+}
+
+// HasProviderIdentifier returns a boolean if a field has been set.
+func (o *AccessPoint) HasProviderIdentifier() bool {
+	if o != nil && !IsNil(o.ProviderIdentifier) {
+		return true
+	}
+
+	return false
+}
+
+// SetProviderIdentifier gets a reference to the given string and assigns it to the ProviderIdentifier field.
+func (o *AccessPoint) SetProviderIdentifier(v string) {
+	o.ProviderIdentifier = &v
+}
+
+// GetAddress returns the Address field value if set, zero value otherwise.
+func (o *AccessPoint) GetAddress() Address {
+	if o == nil || IsNil(o.Address) {
+		var ret Address
+		return ret
+	}
+	return *o.Address
+}
+
+// GetAddressOk returns a tuple with the Address field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccessPoint) GetAddressOk() (*Address, bool) {
+	if o == nil || IsNil(o.Address) {
+		return nil, false
+	}
+	return o.Address, true
+}
+
+// HasAddress returns a boolean if a field has been set.
+func (o *AccessPoint) HasAddress() bool {
+	if o != nil && !IsNil(o.Address) {
+		return true
+	}
+
+	return false
+}
+
+// SetAddress gets a reference to the given Address and assigns it to the Address field.
+func (o *AccessPoint) SetAddress(v Address) {
+	o.Address = &v
+}
+
 func (o AccessPoint) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -709,6 +876,9 @@ func (o AccessPoint) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Network) {
 		toSerialize["network"] = o.Network
 	}
+	if !IsNil(o.Interconnect) {
+		toSerialize["interconnect"] = o.Interconnect
+	}
 	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
 	}
@@ -735,6 +905,18 @@ func (o AccessPoint) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Role) {
 		toSerialize["role"] = o.Role
+	}
+	if !IsNil(o.ProductOffering) {
+		toSerialize["productOffering"] = o.ProductOffering
+	}
+	if !IsNil(o.BandwidthCommit) {
+		toSerialize["bandwidthCommit"] = o.BandwidthCommit
+	}
+	if !IsNil(o.ProviderIdentifier) {
+		toSerialize["providerIdentifier"] = o.ProviderIdentifier
+	}
+	if !IsNil(o.Address) {
+		toSerialize["address"] = o.Address
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -768,6 +950,7 @@ func (o *AccessPoint) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "virtualDevice")
 		delete(additionalProperties, "interface")
 		delete(additionalProperties, "network")
+		delete(additionalProperties, "interconnect")
 		delete(additionalProperties, "environment")
 		delete(additionalProperties, "sellerRegion")
 		delete(additionalProperties, "peeringType")
@@ -777,6 +960,10 @@ func (o *AccessPoint) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "virtualNetwork")
 		delete(additionalProperties, "interconnection")
 		delete(additionalProperties, "role")
+		delete(additionalProperties, "productOffering")
+		delete(additionalProperties, "bandwidthCommit")
+		delete(additionalProperties, "providerIdentifier")
+		delete(additionalProperties, "address")
 		o.AdditionalProperties = additionalProperties
 	}
 

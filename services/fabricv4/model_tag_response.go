@@ -16,12 +16,14 @@ var _ MappedNullable = &TagResponse{}
 
 // TagResponse Equinix Fabric Tag Response Object
 type TagResponse struct {
-	Href                 *string `json:"href,omitempty"`
-	Uuid                 *string `json:"uuid,omitempty"`
-	Type                 *string `json:"type,omitempty"`
-	Name                 *string `json:"name,omitempty"`
-	DisplayName          *string `json:"displayName,omitempty"`
-	Weight               *int32  `json:"weight,omitempty"`
+	Href                 *string                  `json:"href,omitempty"`
+	Uuid                 *string                  `json:"uuid,omitempty"`
+	Type                 *string                  `json:"type,omitempty"`
+	Name                 *string                  `json:"name,omitempty"`
+	DisplayName          *string                  `json:"displayName,omitempty"`
+	State                *TagResponseState        `json:"state,omitempty"`
+	Notifications        []SimplifiedNotification `json:"notifications,omitempty"`
+	ChangeLog            *Changelog               `json:"changeLog,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -204,36 +206,100 @@ func (o *TagResponse) SetDisplayName(v string) {
 	o.DisplayName = &v
 }
 
-// GetWeight returns the Weight field value if set, zero value otherwise.
-func (o *TagResponse) GetWeight() int32 {
-	if o == nil || IsNil(o.Weight) {
-		var ret int32
+// GetState returns the State field value if set, zero value otherwise.
+func (o *TagResponse) GetState() TagResponseState {
+	if o == nil || IsNil(o.State) {
+		var ret TagResponseState
 		return ret
 	}
-	return *o.Weight
+	return *o.State
 }
 
-// GetWeightOk returns a tuple with the Weight field value if set, nil otherwise
+// GetStateOk returns a tuple with the State field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TagResponse) GetWeightOk() (*int32, bool) {
-	if o == nil || IsNil(o.Weight) {
+func (o *TagResponse) GetStateOk() (*TagResponseState, bool) {
+	if o == nil || IsNil(o.State) {
 		return nil, false
 	}
-	return o.Weight, true
+	return o.State, true
 }
 
-// HasWeight returns a boolean if a field has been set.
-func (o *TagResponse) HasWeight() bool {
-	if o != nil && !IsNil(o.Weight) {
+// HasState returns a boolean if a field has been set.
+func (o *TagResponse) HasState() bool {
+	if o != nil && !IsNil(o.State) {
 		return true
 	}
 
 	return false
 }
 
-// SetWeight gets a reference to the given int32 and assigns it to the Weight field.
-func (o *TagResponse) SetWeight(v int32) {
-	o.Weight = &v
+// SetState gets a reference to the given TagResponseState and assigns it to the State field.
+func (o *TagResponse) SetState(v TagResponseState) {
+	o.State = &v
+}
+
+// GetNotifications returns the Notifications field value if set, zero value otherwise.
+func (o *TagResponse) GetNotifications() []SimplifiedNotification {
+	if o == nil || IsNil(o.Notifications) {
+		var ret []SimplifiedNotification
+		return ret
+	}
+	return o.Notifications
+}
+
+// GetNotificationsOk returns a tuple with the Notifications field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TagResponse) GetNotificationsOk() ([]SimplifiedNotification, bool) {
+	if o == nil || IsNil(o.Notifications) {
+		return nil, false
+	}
+	return o.Notifications, true
+}
+
+// HasNotifications returns a boolean if a field has been set.
+func (o *TagResponse) HasNotifications() bool {
+	if o != nil && !IsNil(o.Notifications) {
+		return true
+	}
+
+	return false
+}
+
+// SetNotifications gets a reference to the given []SimplifiedNotification and assigns it to the Notifications field.
+func (o *TagResponse) SetNotifications(v []SimplifiedNotification) {
+	o.Notifications = v
+}
+
+// GetChangeLog returns the ChangeLog field value if set, zero value otherwise.
+func (o *TagResponse) GetChangeLog() Changelog {
+	if o == nil || IsNil(o.ChangeLog) {
+		var ret Changelog
+		return ret
+	}
+	return *o.ChangeLog
+}
+
+// GetChangeLogOk returns a tuple with the ChangeLog field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TagResponse) GetChangeLogOk() (*Changelog, bool) {
+	if o == nil || IsNil(o.ChangeLog) {
+		return nil, false
+	}
+	return o.ChangeLog, true
+}
+
+// HasChangeLog returns a boolean if a field has been set.
+func (o *TagResponse) HasChangeLog() bool {
+	if o != nil && !IsNil(o.ChangeLog) {
+		return true
+	}
+
+	return false
+}
+
+// SetChangeLog gets a reference to the given Changelog and assigns it to the ChangeLog field.
+func (o *TagResponse) SetChangeLog(v Changelog) {
+	o.ChangeLog = &v
 }
 
 func (o TagResponse) MarshalJSON() ([]byte, error) {
@@ -261,8 +327,14 @@ func (o TagResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DisplayName) {
 		toSerialize["displayName"] = o.DisplayName
 	}
-	if !IsNil(o.Weight) {
-		toSerialize["weight"] = o.Weight
+	if !IsNil(o.State) {
+		toSerialize["state"] = o.State
+	}
+	if !IsNil(o.Notifications) {
+		toSerialize["notifications"] = o.Notifications
+	}
+	if !IsNil(o.ChangeLog) {
+		toSerialize["changeLog"] = o.ChangeLog
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -291,7 +363,9 @@ func (o *TagResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "displayName")
-		delete(additionalProperties, "weight")
+		delete(additionalProperties, "state")
+		delete(additionalProperties, "notifications")
+		delete(additionalProperties, "changeLog")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **VirtualDevice** | Pointer to [**VirtualDevice**](VirtualDevice.md) |  | [optional] 
 **Interface** | Pointer to [**Interface**](Interface.md) |  | [optional] 
 **Network** | Pointer to [**SimplifiedNetwork**](SimplifiedNetwork.md) |  | [optional] 
+**Interconnect** | Pointer to [**Interconnect**](Interconnect.md) |  | [optional] 
 **Environment** | Pointer to [**ProviderEnvironment**](ProviderEnvironment.md) |  | [optional] 
 **SellerRegion** | Pointer to **string** | Access point seller region | [optional] 
 **PeeringType** | Pointer to [**PeeringType**](PeeringType.md) |  | [optional] 
@@ -23,6 +24,10 @@ Name | Type | Description | Notes
 **VirtualNetwork** | Pointer to [**VirtualNetwork**](VirtualNetwork.md) |  | [optional] 
 **Interconnection** | Pointer to [**MetalInterconnection**](MetalInterconnection.md) |  | [optional] 
 **Role** | Pointer to [**AccessPointRole**](AccessPointRole.md) |  | [optional] 
+**ProductOffering** | Pointer to [**ProductOffering**](ProductOffering.md) |  | [optional] 
+**BandwidthCommit** | Pointer to **int32** | Bandwidth commit in Mbps | [optional] 
+**ProviderIdentifier** | Pointer to **string** | Provider identifier | [optional] 
+**Address** | Pointer to [**Address**](Address.md) |  | [optional] 
 
 ## Methods
 
@@ -293,6 +298,31 @@ SetNetwork sets Network field to given value.
 
 HasNetwork returns a boolean if a field has been set.
 
+### GetInterconnect
+
+`func (o *AccessPoint) GetInterconnect() Interconnect`
+
+GetInterconnect returns the Interconnect field if non-nil, zero value otherwise.
+
+### GetInterconnectOk
+
+`func (o *AccessPoint) GetInterconnectOk() (*Interconnect, bool)`
+
+GetInterconnectOk returns a tuple with the Interconnect field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInterconnect
+
+`func (o *AccessPoint) SetInterconnect(v Interconnect)`
+
+SetInterconnect sets Interconnect field to given value.
+
+### HasInterconnect
+
+`func (o *AccessPoint) HasInterconnect() bool`
+
+HasInterconnect returns a boolean if a field has been set.
+
 ### GetEnvironment
 
 `func (o *AccessPoint) GetEnvironment() ProviderEnvironment`
@@ -517,6 +547,106 @@ SetRole sets Role field to given value.
 `func (o *AccessPoint) HasRole() bool`
 
 HasRole returns a boolean if a field has been set.
+
+### GetProductOffering
+
+`func (o *AccessPoint) GetProductOffering() ProductOffering`
+
+GetProductOffering returns the ProductOffering field if non-nil, zero value otherwise.
+
+### GetProductOfferingOk
+
+`func (o *AccessPoint) GetProductOfferingOk() (*ProductOffering, bool)`
+
+GetProductOfferingOk returns a tuple with the ProductOffering field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProductOffering
+
+`func (o *AccessPoint) SetProductOffering(v ProductOffering)`
+
+SetProductOffering sets ProductOffering field to given value.
+
+### HasProductOffering
+
+`func (o *AccessPoint) HasProductOffering() bool`
+
+HasProductOffering returns a boolean if a field has been set.
+
+### GetBandwidthCommit
+
+`func (o *AccessPoint) GetBandwidthCommit() int32`
+
+GetBandwidthCommit returns the BandwidthCommit field if non-nil, zero value otherwise.
+
+### GetBandwidthCommitOk
+
+`func (o *AccessPoint) GetBandwidthCommitOk() (*int32, bool)`
+
+GetBandwidthCommitOk returns a tuple with the BandwidthCommit field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBandwidthCommit
+
+`func (o *AccessPoint) SetBandwidthCommit(v int32)`
+
+SetBandwidthCommit sets BandwidthCommit field to given value.
+
+### HasBandwidthCommit
+
+`func (o *AccessPoint) HasBandwidthCommit() bool`
+
+HasBandwidthCommit returns a boolean if a field has been set.
+
+### GetProviderIdentifier
+
+`func (o *AccessPoint) GetProviderIdentifier() string`
+
+GetProviderIdentifier returns the ProviderIdentifier field if non-nil, zero value otherwise.
+
+### GetProviderIdentifierOk
+
+`func (o *AccessPoint) GetProviderIdentifierOk() (*string, bool)`
+
+GetProviderIdentifierOk returns a tuple with the ProviderIdentifier field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProviderIdentifier
+
+`func (o *AccessPoint) SetProviderIdentifier(v string)`
+
+SetProviderIdentifier sets ProviderIdentifier field to given value.
+
+### HasProviderIdentifier
+
+`func (o *AccessPoint) HasProviderIdentifier() bool`
+
+HasProviderIdentifier returns a boolean if a field has been set.
+
+### GetAddress
+
+`func (o *AccessPoint) GetAddress() Address`
+
+GetAddress returns the Address field if non-nil, zero value otherwise.
+
+### GetAddressOk
+
+`func (o *AccessPoint) GetAddressOk() (*Address, bool)`
+
+GetAddressOk returns a tuple with the Address field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAddress
+
+`func (o *AccessPoint) SetAddress(v Address)`
+
+SetAddress sets Address field to given value.
+
+### HasAddress
+
+`func (o *AccessPoint) HasAddress() bool`
+
+HasAddress returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

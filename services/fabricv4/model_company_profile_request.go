@@ -21,8 +21,10 @@ type CompanyProfileRequest struct {
 	Name                 string                   `json:"name"`
 	Summary              string                   `json:"summary"`
 	Description          string                   `json:"description"`
-	Notifications        []map[string]interface{} `json:"notifications,omitempty"`
-	WebUrl               *string                  `json:"webUrl,omitempty"`
+	PointOfContacts      []CompanyProfileContact  `json:"pointOfContacts,omitempty"`
+	Notifications        []SimplifiedNotification `json:"notifications,omitempty"`
+	Overview             *string                  `json:"overview,omitempty"`
+	WebUrl               string                   `json:"webUrl"`
 	ContactUrl           *string                  `json:"contactUrl,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -33,12 +35,13 @@ type _CompanyProfileRequest CompanyProfileRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCompanyProfileRequest(type_ string, name string, summary string, description string) *CompanyProfileRequest {
+func NewCompanyProfileRequest(type_ string, name string, summary string, description string, webUrl string) *CompanyProfileRequest {
 	this := CompanyProfileRequest{}
 	this.Type = type_
 	this.Name = name
 	this.Summary = summary
 	this.Description = description
+	this.WebUrl = webUrl
 	return &this
 }
 
@@ -146,10 +149,42 @@ func (o *CompanyProfileRequest) SetDescription(v string) {
 	o.Description = v
 }
 
+// GetPointOfContacts returns the PointOfContacts field value if set, zero value otherwise.
+func (o *CompanyProfileRequest) GetPointOfContacts() []CompanyProfileContact {
+	if o == nil || IsNil(o.PointOfContacts) {
+		var ret []CompanyProfileContact
+		return ret
+	}
+	return o.PointOfContacts
+}
+
+// GetPointOfContactsOk returns a tuple with the PointOfContacts field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CompanyProfileRequest) GetPointOfContactsOk() ([]CompanyProfileContact, bool) {
+	if o == nil || IsNil(o.PointOfContacts) {
+		return nil, false
+	}
+	return o.PointOfContacts, true
+}
+
+// HasPointOfContacts returns a boolean if a field has been set.
+func (o *CompanyProfileRequest) HasPointOfContacts() bool {
+	if o != nil && !IsNil(o.PointOfContacts) {
+		return true
+	}
+
+	return false
+}
+
+// SetPointOfContacts gets a reference to the given []CompanyProfileContact and assigns it to the PointOfContacts field.
+func (o *CompanyProfileRequest) SetPointOfContacts(v []CompanyProfileContact) {
+	o.PointOfContacts = v
+}
+
 // GetNotifications returns the Notifications field value if set, zero value otherwise.
-func (o *CompanyProfileRequest) GetNotifications() []map[string]interface{} {
+func (o *CompanyProfileRequest) GetNotifications() []SimplifiedNotification {
 	if o == nil || IsNil(o.Notifications) {
-		var ret []map[string]interface{}
+		var ret []SimplifiedNotification
 		return ret
 	}
 	return o.Notifications
@@ -157,7 +192,7 @@ func (o *CompanyProfileRequest) GetNotifications() []map[string]interface{} {
 
 // GetNotificationsOk returns a tuple with the Notifications field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CompanyProfileRequest) GetNotificationsOk() ([]map[string]interface{}, bool) {
+func (o *CompanyProfileRequest) GetNotificationsOk() ([]SimplifiedNotification, bool) {
 	if o == nil || IsNil(o.Notifications) {
 		return nil, false
 	}
@@ -173,41 +208,65 @@ func (o *CompanyProfileRequest) HasNotifications() bool {
 	return false
 }
 
-// SetNotifications gets a reference to the given []map[string]interface{} and assigns it to the Notifications field.
-func (o *CompanyProfileRequest) SetNotifications(v []map[string]interface{}) {
+// SetNotifications gets a reference to the given []SimplifiedNotification and assigns it to the Notifications field.
+func (o *CompanyProfileRequest) SetNotifications(v []SimplifiedNotification) {
 	o.Notifications = v
 }
 
-// GetWebUrl returns the WebUrl field value if set, zero value otherwise.
-func (o *CompanyProfileRequest) GetWebUrl() string {
-	if o == nil || IsNil(o.WebUrl) {
+// GetOverview returns the Overview field value if set, zero value otherwise.
+func (o *CompanyProfileRequest) GetOverview() string {
+	if o == nil || IsNil(o.Overview) {
 		var ret string
 		return ret
 	}
-	return *o.WebUrl
+	return *o.Overview
 }
 
-// GetWebUrlOk returns a tuple with the WebUrl field value if set, nil otherwise
+// GetOverviewOk returns a tuple with the Overview field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CompanyProfileRequest) GetWebUrlOk() (*string, bool) {
-	if o == nil || IsNil(o.WebUrl) {
+func (o *CompanyProfileRequest) GetOverviewOk() (*string, bool) {
+	if o == nil || IsNil(o.Overview) {
 		return nil, false
 	}
-	return o.WebUrl, true
+	return o.Overview, true
 }
 
-// HasWebUrl returns a boolean if a field has been set.
-func (o *CompanyProfileRequest) HasWebUrl() bool {
-	if o != nil && !IsNil(o.WebUrl) {
+// HasOverview returns a boolean if a field has been set.
+func (o *CompanyProfileRequest) HasOverview() bool {
+	if o != nil && !IsNil(o.Overview) {
 		return true
 	}
 
 	return false
 }
 
-// SetWebUrl gets a reference to the given string and assigns it to the WebUrl field.
+// SetOverview gets a reference to the given string and assigns it to the Overview field.
+func (o *CompanyProfileRequest) SetOverview(v string) {
+	o.Overview = &v
+}
+
+// GetWebUrl returns the WebUrl field value
+func (o *CompanyProfileRequest) GetWebUrl() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.WebUrl
+}
+
+// GetWebUrlOk returns a tuple with the WebUrl field value
+// and a boolean to check if the value has been set.
+func (o *CompanyProfileRequest) GetWebUrlOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.WebUrl, true
+}
+
+// SetWebUrl sets field value
 func (o *CompanyProfileRequest) SetWebUrl(v string) {
-	o.WebUrl = &v
+	o.WebUrl = v
 }
 
 // GetContactUrl returns the ContactUrl field value if set, zero value otherwise.
@@ -256,12 +315,16 @@ func (o CompanyProfileRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize["name"] = o.Name
 	toSerialize["summary"] = o.Summary
 	toSerialize["description"] = o.Description
+	if !IsNil(o.PointOfContacts) {
+		toSerialize["pointOfContacts"] = o.PointOfContacts
+	}
 	if !IsNil(o.Notifications) {
 		toSerialize["notifications"] = o.Notifications
 	}
-	if !IsNil(o.WebUrl) {
-		toSerialize["webUrl"] = o.WebUrl
+	if !IsNil(o.Overview) {
+		toSerialize["overview"] = o.Overview
 	}
+	toSerialize["webUrl"] = o.WebUrl
 	if !IsNil(o.ContactUrl) {
 		toSerialize["contactUrl"] = o.ContactUrl
 	}
@@ -282,6 +345,7 @@ func (o *CompanyProfileRequest) UnmarshalJSON(data []byte) (err error) {
 		"name",
 		"summary",
 		"description",
+		"webUrl",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -315,7 +379,9 @@ func (o *CompanyProfileRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "summary")
 		delete(additionalProperties, "description")
+		delete(additionalProperties, "pointOfContacts")
 		delete(additionalProperties, "notifications")
+		delete(additionalProperties, "overview")
 		delete(additionalProperties, "webUrl")
 		delete(additionalProperties, "contactUrl")
 		o.AdditionalProperties = additionalProperties

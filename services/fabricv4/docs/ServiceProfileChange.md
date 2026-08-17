@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **CreatedDateTime** | **time.Time** | Set when change flow starts | 
 **UpdatedDateTime** | Pointer to **time.Time** | Set when change object is updated | [optional] 
 **Information** | Pointer to **string** | Additional information | [optional] 
-**Data** | Pointer to [**[]JsonPatchOperation**](JsonPatchOperation.md) |  | [optional] 
+**Data** | Pointer to [**[]ServiceProfileUpdateOperation**](ServiceProfileUpdateOperation.md) |  | [optional] 
 
 ## Methods
 
@@ -173,20 +173,20 @@ HasInformation returns a boolean if a field has been set.
 
 ### GetData
 
-`func (o *ServiceProfileChange) GetData() []JsonPatchOperation`
+`func (o *ServiceProfileChange) GetData() []ServiceProfileUpdateOperation`
 
 GetData returns the Data field if non-nil, zero value otherwise.
 
 ### GetDataOk
 
-`func (o *ServiceProfileChange) GetDataOk() (*[]JsonPatchOperation, bool)`
+`func (o *ServiceProfileChange) GetDataOk() (*[]ServiceProfileUpdateOperation, bool)`
 
 GetDataOk returns a tuple with the Data field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetData
 
-`func (o *ServiceProfileChange) SetData(v []JsonPatchOperation)`
+`func (o *ServiceProfileChange) SetData(v []ServiceProfileUpdateOperation)`
 
 SetData sets Data field to given value.
 

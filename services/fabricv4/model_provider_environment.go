@@ -14,7 +14,7 @@ import (
 // checks if the ProviderEnvironment type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &ProviderEnvironment{}
 
-// ProviderEnvironment Provider Environment associated with an IC_PROFILE service profile
+// ProviderEnvironment Provider Environment associated with an IC_PROFILE service profile <font color=\"red\"> <sup color='red'>Beta</sup></font>
 type ProviderEnvironment struct {
 	// Provider Environment URI
 	Href *string `json:"href,omitempty"`
@@ -28,7 +28,11 @@ type ProviderEnvironment struct {
 	// Cloud provider region identifier
 	Region *string `json:"region,omitempty"`
 	// Supported bandwidths in Mbps
-	SupportedBandwidths  []int32    `json:"supportedBandwidths,omitempty"`
+	SupportedBandwidths []int32 `json:"supportedBandwidths,omitempty"`
+	// Derived response attribute.
+	Metros []ServiceMetro `json:"metros,omitempty"`
+	// Supported Feature Types
+	SupportedFeatures    []string   `json:"supportedFeatures,omitempty"`
 	ChangeLog            *Changelog `json:"changeLog,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -276,6 +280,70 @@ func (o *ProviderEnvironment) SetSupportedBandwidths(v []int32) {
 	o.SupportedBandwidths = v
 }
 
+// GetMetros returns the Metros field value if set, zero value otherwise.
+func (o *ProviderEnvironment) GetMetros() []ServiceMetro {
+	if o == nil || IsNil(o.Metros) {
+		var ret []ServiceMetro
+		return ret
+	}
+	return o.Metros
+}
+
+// GetMetrosOk returns a tuple with the Metros field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProviderEnvironment) GetMetrosOk() ([]ServiceMetro, bool) {
+	if o == nil || IsNil(o.Metros) {
+		return nil, false
+	}
+	return o.Metros, true
+}
+
+// HasMetros returns a boolean if a field has been set.
+func (o *ProviderEnvironment) HasMetros() bool {
+	if o != nil && !IsNil(o.Metros) {
+		return true
+	}
+
+	return false
+}
+
+// SetMetros gets a reference to the given []ServiceMetro and assigns it to the Metros field.
+func (o *ProviderEnvironment) SetMetros(v []ServiceMetro) {
+	o.Metros = v
+}
+
+// GetSupportedFeatures returns the SupportedFeatures field value if set, zero value otherwise.
+func (o *ProviderEnvironment) GetSupportedFeatures() []string {
+	if o == nil || IsNil(o.SupportedFeatures) {
+		var ret []string
+		return ret
+	}
+	return o.SupportedFeatures
+}
+
+// GetSupportedFeaturesOk returns a tuple with the SupportedFeatures field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProviderEnvironment) GetSupportedFeaturesOk() ([]string, bool) {
+	if o == nil || IsNil(o.SupportedFeatures) {
+		return nil, false
+	}
+	return o.SupportedFeatures, true
+}
+
+// HasSupportedFeatures returns a boolean if a field has been set.
+func (o *ProviderEnvironment) HasSupportedFeatures() bool {
+	if o != nil && !IsNil(o.SupportedFeatures) {
+		return true
+	}
+
+	return false
+}
+
+// SetSupportedFeatures gets a reference to the given []string and assigns it to the SupportedFeatures field.
+func (o *ProviderEnvironment) SetSupportedFeatures(v []string) {
+	o.SupportedFeatures = v
+}
+
 // GetChangeLog returns the ChangeLog field value if set, zero value otherwise.
 func (o *ProviderEnvironment) GetChangeLog() Changelog {
 	if o == nil || IsNil(o.ChangeLog) {
@@ -339,6 +407,12 @@ func (o ProviderEnvironment) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SupportedBandwidths) {
 		toSerialize["supportedBandwidths"] = o.SupportedBandwidths
 	}
+	if !IsNil(o.Metros) {
+		toSerialize["metros"] = o.Metros
+	}
+	if !IsNil(o.SupportedFeatures) {
+		toSerialize["supportedFeatures"] = o.SupportedFeatures
+	}
 	if !IsNil(o.ChangeLog) {
 		toSerialize["changeLog"] = o.ChangeLog
 	}
@@ -371,6 +445,8 @@ func (o *ProviderEnvironment) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "region")
 		delete(additionalProperties, "supportedBandwidths")
+		delete(additionalProperties, "metros")
+		delete(additionalProperties, "supportedFeatures")
 		delete(additionalProperties, "changeLog")
 		o.AdditionalProperties = additionalProperties
 	}

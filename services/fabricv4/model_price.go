@@ -36,6 +36,7 @@ type Price struct {
 	Router               *FabricCloudRouterPrice `json:"router,omitempty"`
 	Port                 *VirtualPortPrice       `json:"port,omitempty"`
 	TimeService          *TimeServicePrice       `json:"timeService,omitempty"`
+	OpticalConnect       *OpticalConnectPrice    `json:"opticalConnect,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -538,6 +539,38 @@ func (o *Price) SetTimeService(v TimeServicePrice) {
 	o.TimeService = &v
 }
 
+// GetOpticalConnect returns the OpticalConnect field value if set, zero value otherwise.
+func (o *Price) GetOpticalConnect() OpticalConnectPrice {
+	if o == nil || IsNil(o.OpticalConnect) {
+		var ret OpticalConnectPrice
+		return ret
+	}
+	return *o.OpticalConnect
+}
+
+// GetOpticalConnectOk returns a tuple with the OpticalConnect field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Price) GetOpticalConnectOk() (*OpticalConnectPrice, bool) {
+	if o == nil || IsNil(o.OpticalConnect) {
+		return nil, false
+	}
+	return o.OpticalConnect, true
+}
+
+// HasOpticalConnect returns a boolean if a field has been set.
+func (o *Price) HasOpticalConnect() bool {
+	if o != nil && !IsNil(o.OpticalConnect) {
+		return true
+	}
+
+	return false
+}
+
+// SetOpticalConnect gets a reference to the given OpticalConnectPrice and assigns it to the OpticalConnect field.
+func (o *Price) SetOpticalConnect(v OpticalConnectPrice) {
+	o.OpticalConnect = &v
+}
+
 func (o Price) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -593,6 +626,9 @@ func (o Price) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.TimeService) {
 		toSerialize["timeService"] = o.TimeService
 	}
+	if !IsNil(o.OpticalConnect) {
+		toSerialize["opticalConnect"] = o.OpticalConnect
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -630,6 +666,7 @@ func (o *Price) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "router")
 		delete(additionalProperties, "port")
 		delete(additionalProperties, "timeService")
+		delete(additionalProperties, "opticalConnect")
 		o.AdditionalProperties = additionalProperties
 	}
 

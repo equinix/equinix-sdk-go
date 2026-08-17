@@ -16,11 +16,9 @@ var _ MappedNullable = &ServiceProfileLastMileConfig{}
 
 // ServiceProfileLastMileConfig Last-mile configuration for the service profile.
 type ServiceProfileLastMileConfig struct {
-	Address *ServiceProfileLastMileAddress `json:"address,omitempty"`
+	ApiIntegration *ServiceProfileLastMileApiIntegration `json:"apiIntegration,omitempty"`
 	// Last-mile provider catalogs.
-	ProductCatalogs []ServiceProfileLastMileProductCatalog `json:"productCatalogs,omitempty"`
-	// Contact details for notifications related to last-mile provisioning and ordering.
-	Notifications        []ServiceProfileLastMileNotification `json:"notifications,omitempty"`
+	ProductCatalogs      []ServiceProfileLastMileProductCatalog `json:"productCatalogs,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -43,36 +41,36 @@ func NewServiceProfileLastMileConfigWithDefaults() *ServiceProfileLastMileConfig
 	return &this
 }
 
-// GetAddress returns the Address field value if set, zero value otherwise.
-func (o *ServiceProfileLastMileConfig) GetAddress() ServiceProfileLastMileAddress {
-	if o == nil || IsNil(o.Address) {
-		var ret ServiceProfileLastMileAddress
+// GetApiIntegration returns the ApiIntegration field value if set, zero value otherwise.
+func (o *ServiceProfileLastMileConfig) GetApiIntegration() ServiceProfileLastMileApiIntegration {
+	if o == nil || IsNil(o.ApiIntegration) {
+		var ret ServiceProfileLastMileApiIntegration
 		return ret
 	}
-	return *o.Address
+	return *o.ApiIntegration
 }
 
-// GetAddressOk returns a tuple with the Address field value if set, nil otherwise
+// GetApiIntegrationOk returns a tuple with the ApiIntegration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ServiceProfileLastMileConfig) GetAddressOk() (*ServiceProfileLastMileAddress, bool) {
-	if o == nil || IsNil(o.Address) {
+func (o *ServiceProfileLastMileConfig) GetApiIntegrationOk() (*ServiceProfileLastMileApiIntegration, bool) {
+	if o == nil || IsNil(o.ApiIntegration) {
 		return nil, false
 	}
-	return o.Address, true
+	return o.ApiIntegration, true
 }
 
-// HasAddress returns a boolean if a field has been set.
-func (o *ServiceProfileLastMileConfig) HasAddress() bool {
-	if o != nil && !IsNil(o.Address) {
+// HasApiIntegration returns a boolean if a field has been set.
+func (o *ServiceProfileLastMileConfig) HasApiIntegration() bool {
+	if o != nil && !IsNil(o.ApiIntegration) {
 		return true
 	}
 
 	return false
 }
 
-// SetAddress gets a reference to the given ServiceProfileLastMileAddress and assigns it to the Address field.
-func (o *ServiceProfileLastMileConfig) SetAddress(v ServiceProfileLastMileAddress) {
-	o.Address = &v
+// SetApiIntegration gets a reference to the given ServiceProfileLastMileApiIntegration and assigns it to the ApiIntegration field.
+func (o *ServiceProfileLastMileConfig) SetApiIntegration(v ServiceProfileLastMileApiIntegration) {
+	o.ApiIntegration = &v
 }
 
 // GetProductCatalogs returns the ProductCatalogs field value if set, zero value otherwise.
@@ -107,38 +105,6 @@ func (o *ServiceProfileLastMileConfig) SetProductCatalogs(v []ServiceProfileLast
 	o.ProductCatalogs = v
 }
 
-// GetNotifications returns the Notifications field value if set, zero value otherwise.
-func (o *ServiceProfileLastMileConfig) GetNotifications() []ServiceProfileLastMileNotification {
-	if o == nil || IsNil(o.Notifications) {
-		var ret []ServiceProfileLastMileNotification
-		return ret
-	}
-	return o.Notifications
-}
-
-// GetNotificationsOk returns a tuple with the Notifications field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ServiceProfileLastMileConfig) GetNotificationsOk() ([]ServiceProfileLastMileNotification, bool) {
-	if o == nil || IsNil(o.Notifications) {
-		return nil, false
-	}
-	return o.Notifications, true
-}
-
-// HasNotifications returns a boolean if a field has been set.
-func (o *ServiceProfileLastMileConfig) HasNotifications() bool {
-	if o != nil && !IsNil(o.Notifications) {
-		return true
-	}
-
-	return false
-}
-
-// SetNotifications gets a reference to the given []ServiceProfileLastMileNotification and assigns it to the Notifications field.
-func (o *ServiceProfileLastMileConfig) SetNotifications(v []ServiceProfileLastMileNotification) {
-	o.Notifications = v
-}
-
 func (o ServiceProfileLastMileConfig) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -149,14 +115,11 @@ func (o ServiceProfileLastMileConfig) MarshalJSON() ([]byte, error) {
 
 func (o ServiceProfileLastMileConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Address) {
-		toSerialize["address"] = o.Address
+	if !IsNil(o.ApiIntegration) {
+		toSerialize["apiIntegration"] = o.ApiIntegration
 	}
 	if !IsNil(o.ProductCatalogs) {
 		toSerialize["productCatalogs"] = o.ProductCatalogs
-	}
-	if !IsNil(o.Notifications) {
-		toSerialize["notifications"] = o.Notifications
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -180,9 +143,8 @@ func (o *ServiceProfileLastMileConfig) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "address")
+		delete(additionalProperties, "apiIntegration")
 		delete(additionalProperties, "productCatalogs")
-		delete(additionalProperties, "notifications")
 		o.AdditionalProperties = additionalProperties
 	}
 

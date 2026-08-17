@@ -1390,7 +1390,7 @@ type ApiGetCloudRouterByUuidRequest struct {
 	routerId   string
 }
 
-func (r ApiGetCloudRouterByUuidRequest) Execute() (*CloudRouter, *http.Response, error) {
+func (r ApiGetCloudRouterByUuidRequest) Execute() (*CloudRouterReadResponse, *http.Response, error) {
 	return r.ApiService.GetCloudRouterByUuidExecute(r)
 }
 
@@ -1413,13 +1413,13 @@ func (a *CloudRoutersApiService) GetCloudRouterByUuid(ctx context.Context, route
 
 // Execute executes the request
 //
-//	@return CloudRouter
-func (a *CloudRoutersApiService) GetCloudRouterByUuidExecute(r ApiGetCloudRouterByUuidRequest) (*CloudRouter, *http.Response, error) {
+//	@return CloudRouterReadResponse
+func (a *CloudRoutersApiService) GetCloudRouterByUuidExecute(r ApiGetCloudRouterByUuidRequest) (*CloudRouterReadResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *CloudRouter
+		localVarReturnValue *CloudRouterReadResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudRoutersApiService.GetCloudRouterByUuid")

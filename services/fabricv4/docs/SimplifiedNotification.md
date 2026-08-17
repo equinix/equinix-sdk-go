@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **SendInterval** | Pointer to **string** |  | [optional] 
 **Emails** | **[]string** | Array of contact emails | 
 **RegisteredUsers** | Pointer to **[]string** | Array of registered users | [optional] 
+**Phone** | Pointer to [**[]Phone**](Phone.md) | Array of contact phone numbers | [optional] 
 
 ## Methods
 
@@ -117,6 +118,31 @@ SetRegisteredUsers sets RegisteredUsers field to given value.
 `func (o *SimplifiedNotification) HasRegisteredUsers() bool`
 
 HasRegisteredUsers returns a boolean if a field has been set.
+
+### GetPhone
+
+`func (o *SimplifiedNotification) GetPhone() []Phone`
+
+GetPhone returns the Phone field if non-nil, zero value otherwise.
+
+### GetPhoneOk
+
+`func (o *SimplifiedNotification) GetPhoneOk() (*[]Phone, bool)`
+
+GetPhoneOk returns a tuple with the Phone field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPhone
+
+`func (o *SimplifiedNotification) SetPhone(v []Phone)`
+
+SetPhone sets Phone field to given value.
+
+### HasPhone
+
+`func (o *SimplifiedNotification) HasPhone() bool`
+
+HasPhone returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

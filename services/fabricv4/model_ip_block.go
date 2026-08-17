@@ -17,9 +17,9 @@ var _ MappedNullable = &IpBlock{}
 
 // IpBlock struct for IpBlock
 type IpBlock struct {
-	// Unique identifier for the Ip Block
+	// Unique identifier for the IP Block
 	Uuid string `json:"uuid"`
-	// Resource URL path for the Ip Block
+	// Resource URL path for the IP Block
 	Href      string               `json:"href"`
 	Type      TypeOfIpBlockProduct `json:"type"`
 	State     IpBlockState         `json:"state"`
@@ -33,7 +33,7 @@ type IpBlock struct {
 	Account     *IpBlockAccount       `json:"account,omitempty"`
 	Project     IpBlockProject        `json:"project"`
 	Regulations *IpBlockRegulations   `json:"regulations,omitempty"`
-	// Products using this Ip Block
+	// Products using this IP Block
 	Assets               []IpBlockAsset   `json:"assets,omitempty"`
 	Change               *IpBlockChange   `json:"change,omitempty"`
 	ChangeLog            IpBlockChangeLog `json:"changeLog"`

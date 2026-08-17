@@ -1,14 +1,14 @@
-# \IpBlocksApi
+# \IPBlocksApi
 
 All URIs are relative to *https://api.equinix.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DeleteIpBlockById**](IpBlocksApi.md#DeleteIpBlockById) | **Delete** /fabric/v4/ipBlocks/{uuid} | Delete Ip Block by UUID
-[**GetIpBlock**](IpBlocksApi.md#GetIpBlock) | **Get** /fabric/v4/ipBlocks/{uuid} | Retrieve Ip Block by UUID
-[**PatchIpBlockById**](IpBlocksApi.md#PatchIpBlockById) | **Patch** /fabric/v4/ipBlocks/{uuid} | patch Ip Block by UUID
-[**SearchIpBlocks**](IpBlocksApi.md#SearchIpBlocks) | **Post** /fabric/v4/ipBlocks/search | Search for Ip Blocks
-[**SubmitIpBlock**](IpBlocksApi.md#SubmitIpBlock) | **Post** /fabric/v4/ipBlocks | Submits new Equinix owned or customer owned Ip Block request
+[**DeleteIpBlockById**](IPBlocksApi.md#DeleteIpBlockById) | **Delete** /fabric/v4/ipBlocks/{uuid} | Delete IP Block by UUID
+[**GetIpBlock**](IPBlocksApi.md#GetIpBlock) | **Get** /fabric/v4/ipBlocks/{uuid} | Retrieve IP Block by UUID
+[**PatchIpBlockById**](IPBlocksApi.md#PatchIpBlockById) | **Patch** /fabric/v4/ipBlocks/{uuid} | patch IP Block by UUID
+[**SearchIpBlocks**](IPBlocksApi.md#SearchIpBlocks) | **Post** /fabric/v4/ipBlocks/search | Search for IP Blocks
+[**SubmitIpBlock**](IPBlocksApi.md#SubmitIpBlock) | **Post** /fabric/v4/ipBlocks | Submits new Equinix owned or customer owned IP Block request
 
 
 
@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 > IpBlock DeleteIpBlockById(ctx, uuid).Execute()
 
-Delete Ip Block by UUID
+Delete IP Block by UUID
 
 
 
@@ -33,17 +33,17 @@ import (
 )
 
 func main() {
-	uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | UUID of the Ip Block
+	uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | UUID of the IP Block
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.IpBlocksApi.DeleteIpBlockById(context.Background(), uuid).Execute()
+	resp, r, err := apiClient.IPBlocksApi.DeleteIpBlockById(context.Background(), uuid).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IpBlocksApi.DeleteIpBlockById``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `IPBlocksApi.DeleteIpBlockById``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 	// response from `DeleteIpBlockById`: IpBlock
-	fmt.Fprintf(os.Stdout, "Response from `IpBlocksApi.DeleteIpBlockById`: %v\n", resp)
+	fmt.Fprintf(os.Stdout, "Response from `IPBlocksApi.DeleteIpBlockById`: %v\n", resp)
 }
 ```
 
@@ -53,7 +53,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**uuid** | **string** | UUID of the Ip Block | 
+**uuid** | **string** | UUID of the IP Block | 
 
 ### Other Parameters
 
@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
 
 > IpBlock GetIpBlock(ctx, uuid).Execute()
 
-Retrieve Ip Block by UUID
+Retrieve IP Block by UUID
 
 
 
@@ -103,17 +103,17 @@ import (
 )
 
 func main() {
-	uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | UUID of the Ip Block
+	uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | UUID of the IP Block
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.IpBlocksApi.GetIpBlock(context.Background(), uuid).Execute()
+	resp, r, err := apiClient.IPBlocksApi.GetIpBlock(context.Background(), uuid).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IpBlocksApi.GetIpBlock``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `IPBlocksApi.GetIpBlock``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 	// response from `GetIpBlock`: IpBlock
-	fmt.Fprintf(os.Stdout, "Response from `IpBlocksApi.GetIpBlock`: %v\n", resp)
+	fmt.Fprintf(os.Stdout, "Response from `IPBlocksApi.GetIpBlock`: %v\n", resp)
 }
 ```
 
@@ -123,7 +123,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**uuid** | **string** | UUID of the Ip Block | 
+**uuid** | **string** | UUID of the IP Block | 
 
 ### Other Parameters
 
@@ -156,7 +156,7 @@ Name | Type | Description  | Notes
 
 > IpBlock PatchIpBlockById(ctx, uuid).PatchIpBlockRequestBodyItem(patchIpBlockRequestBodyItem).Execute()
 
-patch Ip Block by UUID
+patch IP Block by UUID
 
 
 
@@ -173,18 +173,18 @@ import (
 )
 
 func main() {
-	uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | UUID of the Ip Block
+	uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | UUID of the IP Block
 	patchIpBlockRequestBodyItem := []openapiclient.PatchIpBlockRequestBodyItem{*openapiclient.NewPatchIpBlockRequestBodyItem(openapiclient.PatchIpBlockRequestBodyItem_op("add"), "Path_example")} // []PatchIpBlockRequestBodyItem | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.IpBlocksApi.PatchIpBlockById(context.Background(), uuid).PatchIpBlockRequestBodyItem(patchIpBlockRequestBodyItem).Execute()
+	resp, r, err := apiClient.IPBlocksApi.PatchIpBlockById(context.Background(), uuid).PatchIpBlockRequestBodyItem(patchIpBlockRequestBodyItem).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IpBlocksApi.PatchIpBlockById``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `IPBlocksApi.PatchIpBlockById``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 	// response from `PatchIpBlockById`: IpBlock
-	fmt.Fprintf(os.Stdout, "Response from `IpBlocksApi.PatchIpBlockById`: %v\n", resp)
+	fmt.Fprintf(os.Stdout, "Response from `IPBlocksApi.PatchIpBlockById`: %v\n", resp)
 }
 ```
 
@@ -194,7 +194,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**uuid** | **string** | UUID of the Ip Block | 
+**uuid** | **string** | UUID of the IP Block | 
 
 ### Other Parameters
 
@@ -228,7 +228,7 @@ Name | Type | Description  | Notes
 
 > IpBlockSearchResponseBody SearchIpBlocks(ctx).IpBlocksSearchRequestBody(ipBlocksSearchRequestBody).Execute()
 
-Search for Ip Blocks
+Search for IP Blocks
 
 
 
@@ -249,13 +249,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.IpBlocksApi.SearchIpBlocks(context.Background()).IpBlocksSearchRequestBody(ipBlocksSearchRequestBody).Execute()
+	resp, r, err := apiClient.IPBlocksApi.SearchIpBlocks(context.Background()).IpBlocksSearchRequestBody(ipBlocksSearchRequestBody).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IpBlocksApi.SearchIpBlocks``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `IPBlocksApi.SearchIpBlocks``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 	// response from `SearchIpBlocks`: IpBlockSearchResponseBody
-	fmt.Fprintf(os.Stdout, "Response from `IpBlocksApi.SearchIpBlocks`: %v\n", resp)
+	fmt.Fprintf(os.Stdout, "Response from `IPBlocksApi.SearchIpBlocks`: %v\n", resp)
 }
 ```
 
@@ -294,7 +294,7 @@ Name | Type | Description  | Notes
 
 > IpBlock SubmitIpBlock(ctx).SubmitIpBlockRequestBody(submitIpBlockRequestBody).Execute()
 
-Submits new Equinix owned or customer owned Ip Block request
+Submits new Equinix owned or customer owned IP Block request
 
 
 
@@ -315,13 +315,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.IpBlocksApi.SubmitIpBlock(context.Background()).SubmitIpBlockRequestBody(submitIpBlockRequestBody).Execute()
+	resp, r, err := apiClient.IPBlocksApi.SubmitIpBlock(context.Background()).SubmitIpBlockRequestBody(submitIpBlockRequestBody).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IpBlocksApi.SubmitIpBlock``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `IPBlocksApi.SubmitIpBlock``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 	// response from `SubmitIpBlock`: IpBlock
-	fmt.Fprintf(os.Stdout, "Response from `IpBlocksApi.SubmitIpBlock`: %v\n", resp)
+	fmt.Fprintf(os.Stdout, "Response from `IPBlocksApi.SubmitIpBlock`: %v\n", resp)
 }
 ```
 

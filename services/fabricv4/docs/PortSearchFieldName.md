@@ -23,6 +23,10 @@
 
 * `LOCATION_METRO_CODE` (value: `"/location/metroCode"`)
 
+* `OPERATION_MAINTENANCE_STATUS` (value: `"/operation/maintenanceStatus"`)
+
+* `OPERATION_LOCK_ENABLED` (value: `"/operation/lockEnabled"`)
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

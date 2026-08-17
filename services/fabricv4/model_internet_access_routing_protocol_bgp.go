@@ -20,8 +20,10 @@ var _ MappedNullable = &InternetAccessRoutingProtocolBgp{}
 // InternetAccessRoutingProtocolBgp struct for InternetAccessRoutingProtocolBgp
 type InternetAccessRoutingProtocolBgp struct {
 	InternetAccessRoutingProtocol
-	ExportPolicy InternetAccessExportPolicy `json:"exportPolicy"`
+	ExportPolicy InternetAccessExportPolicy           `json:"exportPolicy"`
+	Asn          *InternetAccessRoutingProtocolBgpAsn `json:"asn,omitempty"`
 	// Customer ASN. Valid range is 1-64495 or 131072-4199999999. Currently this option is only available for EIA over dedicated port.
+	// Deprecated
 	CustomerAsn *int64 `json:"customerAsn,omitempty"`
 	// BGP authentication key
 	BgpAuthKey           *string                        `json:"bgpAuthKey,omitempty"`
@@ -77,7 +79,40 @@ func (o *InternetAccessRoutingProtocolBgp) SetExportPolicy(v InternetAccessExpor
 	o.ExportPolicy = v
 }
 
+// GetAsn returns the Asn field value if set, zero value otherwise.
+func (o *InternetAccessRoutingProtocolBgp) GetAsn() InternetAccessRoutingProtocolBgpAsn {
+	if o == nil || IsNil(o.Asn) {
+		var ret InternetAccessRoutingProtocolBgpAsn
+		return ret
+	}
+	return *o.Asn
+}
+
+// GetAsnOk returns a tuple with the Asn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *InternetAccessRoutingProtocolBgp) GetAsnOk() (*InternetAccessRoutingProtocolBgpAsn, bool) {
+	if o == nil || IsNil(o.Asn) {
+		return nil, false
+	}
+	return o.Asn, true
+}
+
+// HasAsn returns a boolean if a field has been set.
+func (o *InternetAccessRoutingProtocolBgp) HasAsn() bool {
+	if o != nil && !IsNil(o.Asn) {
+		return true
+	}
+
+	return false
+}
+
+// SetAsn gets a reference to the given InternetAccessRoutingProtocolBgpAsn and assigns it to the Asn field.
+func (o *InternetAccessRoutingProtocolBgp) SetAsn(v InternetAccessRoutingProtocolBgpAsn) {
+	o.Asn = &v
+}
+
 // GetCustomerAsn returns the CustomerAsn field value if set, zero value otherwise.
+// Deprecated
 func (o *InternetAccessRoutingProtocolBgp) GetCustomerAsn() int64 {
 	if o == nil || IsNil(o.CustomerAsn) {
 		var ret int64
@@ -88,6 +123,7 @@ func (o *InternetAccessRoutingProtocolBgp) GetCustomerAsn() int64 {
 
 // GetCustomerAsnOk returns a tuple with the CustomerAsn field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *InternetAccessRoutingProtocolBgp) GetCustomerAsnOk() (*int64, bool) {
 	if o == nil || IsNil(o.CustomerAsn) {
 		return nil, false
@@ -105,6 +141,7 @@ func (o *InternetAccessRoutingProtocolBgp) HasCustomerAsn() bool {
 }
 
 // SetCustomerAsn gets a reference to the given int64 and assigns it to the CustomerAsn field.
+// Deprecated
 func (o *InternetAccessRoutingProtocolBgp) SetCustomerAsn(v int64) {
 	o.CustomerAsn = &v
 }
@@ -184,6 +221,9 @@ func (o InternetAccessRoutingProtocolBgp) ToMap() (map[string]interface{}, error
 		return map[string]interface{}{}, errInternetAccessRoutingProtocol
 	}
 	toSerialize["exportPolicy"] = o.ExportPolicy
+	if !IsNil(o.Asn) {
+		toSerialize["asn"] = o.Asn
+	}
 	if !IsNil(o.CustomerAsn) {
 		toSerialize["customerAsn"] = o.CustomerAsn
 	}
@@ -226,8 +266,10 @@ func (o *InternetAccessRoutingProtocolBgp) UnmarshalJSON(data []byte) (err error
 	}
 
 	type InternetAccessRoutingProtocolBgpWithoutEmbeddedStruct struct {
-		ExportPolicy InternetAccessExportPolicy `json:"exportPolicy"`
+		ExportPolicy InternetAccessExportPolicy           `json:"exportPolicy"`
+		Asn          *InternetAccessRoutingProtocolBgpAsn `json:"asn,omitempty"`
 		// Customer ASN. Valid range is 1-64495 or 131072-4199999999. Currently this option is only available for EIA over dedicated port.
+		// Deprecated
 		CustomerAsn *int64 `json:"customerAsn,omitempty"`
 		// BGP authentication key
 		BgpAuthKey       *string                        `json:"bgpAuthKey,omitempty"`
@@ -240,6 +282,7 @@ func (o *InternetAccessRoutingProtocolBgp) UnmarshalJSON(data []byte) (err error
 	if err == nil {
 		varInternetAccessRoutingProtocolBgp := _InternetAccessRoutingProtocolBgp{}
 		varInternetAccessRoutingProtocolBgp.ExportPolicy = varInternetAccessRoutingProtocolBgpWithoutEmbeddedStruct.ExportPolicy
+		varInternetAccessRoutingProtocolBgp.Asn = varInternetAccessRoutingProtocolBgpWithoutEmbeddedStruct.Asn
 		varInternetAccessRoutingProtocolBgp.CustomerAsn = varInternetAccessRoutingProtocolBgpWithoutEmbeddedStruct.CustomerAsn
 		varInternetAccessRoutingProtocolBgp.BgpAuthKey = varInternetAccessRoutingProtocolBgpWithoutEmbeddedStruct.BgpAuthKey
 		varInternetAccessRoutingProtocolBgp.CustomerAsnRange = varInternetAccessRoutingProtocolBgpWithoutEmbeddedStruct.CustomerAsnRange
@@ -261,6 +304,7 @@ func (o *InternetAccessRoutingProtocolBgp) UnmarshalJSON(data []byte) (err error
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "exportPolicy")
+		delete(additionalProperties, "asn")
 		delete(additionalProperties, "customerAsn")
 		delete(additionalProperties, "bgpAuthKey")
 		delete(additionalProperties, "customerAsnRange")

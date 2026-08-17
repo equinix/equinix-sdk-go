@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Uuid** | **string** | Unique identifier for the Ip Block | 
-**Href** | **string** | Resource URL path for the Ip Block | 
+**Uuid** | **string** | Unique identifier for the IP Block | 
+**Href** | **string** | Resource URL path for the IP Block | 
 **Type** | [**TypeOfIpBlockProduct**](TypeOfIpBlockProduct.md) |  | 
 **State** | [**IpBlockState**](IpBlockState.md) |  | 
 **Ownership** | [**IpBlockOwnership**](IpBlockOwnership.md) |  | 
@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **Account** | Pointer to [**IpBlockAccount**](IpBlockAccount.md) |  | [optional] 
 **Project** | [**IpBlockProject**](IpBlockProject.md) |  | 
 **Regulations** | Pointer to [**IpBlockRegulations**](IpBlockRegulations.md) |  | [optional] 
-**Assets** | Pointer to [**[]IpBlockAsset**](IpBlockAsset.md) | Products using this Ip Block | [optional] 
+**Assets** | Pointer to [**[]IpBlockAsset**](IpBlockAsset.md) | Products using this IP Block | [optional] 
 **Change** | Pointer to [**IpBlockChange**](IpBlockChange.md) |  | [optional] 
 **ChangeLog** | [**IpBlockChangeLog**](IpBlockChangeLog.md) |  | 
 **Error** | Pointer to [**Error**](Error.md) |  | [optional] 

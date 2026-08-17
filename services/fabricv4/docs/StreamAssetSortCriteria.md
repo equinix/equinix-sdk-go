@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Direction** | Pointer to [**StreamAssetSortDirection**](StreamAssetSortDirection.md) |  | [optional] [default to STREAMASSETSORTDIRECTION_DESC]
-**Property** | Pointer to [**StreamAssetSortBy**](StreamAssetSortBy.md) |  | [optional] [default to STREAMASSETSORTBY_UUID]
+**Direction** | [**StreamAssetSortDirection**](StreamAssetSortDirection.md) |  | [default to STREAMASSETSORTDIRECTION_DESC]
+**Property** | [**StreamAssetSortBy**](StreamAssetSortBy.md) |  | [default to STREAMASSETSORTBY_UUID]
 
 ## Methods
 
 ### NewStreamAssetSortCriteria
 
-`func NewStreamAssetSortCriteria() *StreamAssetSortCriteria`
+`func NewStreamAssetSortCriteria(direction StreamAssetSortDirection, property StreamAssetSortBy, ) *StreamAssetSortCriteria`
 
 NewStreamAssetSortCriteria instantiates a new StreamAssetSortCriteria object
 This constructor will assign default values to properties that have it defined,
@@ -45,11 +45,6 @@ and a boolean to check if the value has been set.
 
 SetDirection sets Direction field to given value.
 
-### HasDirection
-
-`func (o *StreamAssetSortCriteria) HasDirection() bool`
-
-HasDirection returns a boolean if a field has been set.
 
 ### GetProperty
 
@@ -70,11 +65,6 @@ and a boolean to check if the value has been set.
 
 SetProperty sets Property field to given value.
 
-### HasProperty
-
-`func (o *StreamAssetSortCriteria) HasProperty() bool`
-
-HasProperty returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

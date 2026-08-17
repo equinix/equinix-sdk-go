@@ -22,7 +22,8 @@ type ConnectionOperation struct {
 	OperationalStatus *ConnectionOperationOperationalStatus `json:"operationalStatus,omitempty"`
 	Errors            []Error                               `json:"errors,omitempty"`
 	// When connection transitioned into current operational status
-	OpStatusChangedAt    *time.Time `json:"opStatusChangedAt,omitempty"`
+	OpStatusChangedAt    *time.Time        `json:"opStatusChangedAt,omitempty"`
+	MaintenanceStatus    *MaintenanceState `json:"maintenanceStatus,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -205,6 +206,38 @@ func (o *ConnectionOperation) SetOpStatusChangedAt(v time.Time) {
 	o.OpStatusChangedAt = &v
 }
 
+// GetMaintenanceStatus returns the MaintenanceStatus field value if set, zero value otherwise.
+func (o *ConnectionOperation) GetMaintenanceStatus() MaintenanceState {
+	if o == nil || IsNil(o.MaintenanceStatus) {
+		var ret MaintenanceState
+		return ret
+	}
+	return *o.MaintenanceStatus
+}
+
+// GetMaintenanceStatusOk returns a tuple with the MaintenanceStatus field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ConnectionOperation) GetMaintenanceStatusOk() (*MaintenanceState, bool) {
+	if o == nil || IsNil(o.MaintenanceStatus) {
+		return nil, false
+	}
+	return o.MaintenanceStatus, true
+}
+
+// HasMaintenanceStatus returns a boolean if a field has been set.
+func (o *ConnectionOperation) HasMaintenanceStatus() bool {
+	if o != nil && !IsNil(o.MaintenanceStatus) {
+		return true
+	}
+
+	return false
+}
+
+// SetMaintenanceStatus gets a reference to the given MaintenanceState and assigns it to the MaintenanceStatus field.
+func (o *ConnectionOperation) SetMaintenanceStatus(v MaintenanceState) {
+	o.MaintenanceStatus = &v
+}
+
 func (o ConnectionOperation) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -229,6 +262,9 @@ func (o ConnectionOperation) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.OpStatusChangedAt) {
 		toSerialize["opStatusChangedAt"] = o.OpStatusChangedAt
+	}
+	if !IsNil(o.MaintenanceStatus) {
+		toSerialize["maintenanceStatus"] = o.MaintenanceStatus
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -257,6 +293,7 @@ func (o *ConnectionOperation) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "operationalStatus")
 		delete(additionalProperties, "errors")
 		delete(additionalProperties, "opStatusChangedAt")
+		delete(additionalProperties, "maintenanceStatus")
 		o.AdditionalProperties = additionalProperties
 	}
 

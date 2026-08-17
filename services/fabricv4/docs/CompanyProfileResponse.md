@@ -10,14 +10,16 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** |  | [optional] 
 **Summary** | Pointer to **string** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
-**State** | Pointer to **map[string]interface{}** |  | [optional] 
+**State** | Pointer to **string** | Company Profile State | [optional] 
 **Account** | Pointer to [**CompanyProfileResponseAccount**](CompanyProfileResponseAccount.md) |  | [optional] 
 **Metros** | Pointer to [**[]CompanyMetro**](CompanyMetro.md) |  | [optional] 
 **Logo** | Pointer to [**CompanyLogo**](CompanyLogo.md) |  | [optional] 
 **Tags** | Pointer to [**[]TagResponse**](TagResponse.md) |  | [optional] 
 **ServiceProfiles** | Pointer to [**[]CompanyServiceProfile**](CompanyServiceProfile.md) |  | [optional] 
 **PrivateServices** | Pointer to [**[]PrivateService**](PrivateService.md) |  | [optional] 
-**Notifications** | Pointer to **[]map[string]interface{}** |  | [optional] 
+**PointOfContacts** | Pointer to [**[]CompanyProfileContact**](CompanyProfileContact.md) |  | [optional] 
+**Notifications** | Pointer to [**[]SimplifiedNotification**](SimplifiedNotification.md) |  | [optional] 
+**Overview** | Pointer to **string** |  | [optional] 
 **WebUrl** | Pointer to **string** |  | [optional] 
 **ContactUrl** | Pointer to **string** |  | [optional] 
 **Change** | Pointer to [**CompanyProfileChange**](CompanyProfileChange.md) |  | [optional] 
@@ -194,20 +196,20 @@ HasDescription returns a boolean if a field has been set.
 
 ### GetState
 
-`func (o *CompanyProfileResponse) GetState() map[string]interface{}`
+`func (o *CompanyProfileResponse) GetState() string`
 
 GetState returns the State field if non-nil, zero value otherwise.
 
 ### GetStateOk
 
-`func (o *CompanyProfileResponse) GetStateOk() (*map[string]interface{}, bool)`
+`func (o *CompanyProfileResponse) GetStateOk() (*string, bool)`
 
 GetStateOk returns a tuple with the State field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetState
 
-`func (o *CompanyProfileResponse) SetState(v map[string]interface{})`
+`func (o *CompanyProfileResponse) SetState(v string)`
 
 SetState sets State field to given value.
 
@@ -367,22 +369,47 @@ SetPrivateServices sets PrivateServices field to given value.
 
 HasPrivateServices returns a boolean if a field has been set.
 
+### GetPointOfContacts
+
+`func (o *CompanyProfileResponse) GetPointOfContacts() []CompanyProfileContact`
+
+GetPointOfContacts returns the PointOfContacts field if non-nil, zero value otherwise.
+
+### GetPointOfContactsOk
+
+`func (o *CompanyProfileResponse) GetPointOfContactsOk() (*[]CompanyProfileContact, bool)`
+
+GetPointOfContactsOk returns a tuple with the PointOfContacts field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPointOfContacts
+
+`func (o *CompanyProfileResponse) SetPointOfContacts(v []CompanyProfileContact)`
+
+SetPointOfContacts sets PointOfContacts field to given value.
+
+### HasPointOfContacts
+
+`func (o *CompanyProfileResponse) HasPointOfContacts() bool`
+
+HasPointOfContacts returns a boolean if a field has been set.
+
 ### GetNotifications
 
-`func (o *CompanyProfileResponse) GetNotifications() []map[string]interface{}`
+`func (o *CompanyProfileResponse) GetNotifications() []SimplifiedNotification`
 
 GetNotifications returns the Notifications field if non-nil, zero value otherwise.
 
 ### GetNotificationsOk
 
-`func (o *CompanyProfileResponse) GetNotificationsOk() (*[]map[string]interface{}, bool)`
+`func (o *CompanyProfileResponse) GetNotificationsOk() (*[]SimplifiedNotification, bool)`
 
 GetNotificationsOk returns a tuple with the Notifications field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNotifications
 
-`func (o *CompanyProfileResponse) SetNotifications(v []map[string]interface{})`
+`func (o *CompanyProfileResponse) SetNotifications(v []SimplifiedNotification)`
 
 SetNotifications sets Notifications field to given value.
 
@@ -391,6 +418,31 @@ SetNotifications sets Notifications field to given value.
 `func (o *CompanyProfileResponse) HasNotifications() bool`
 
 HasNotifications returns a boolean if a field has been set.
+
+### GetOverview
+
+`func (o *CompanyProfileResponse) GetOverview() string`
+
+GetOverview returns the Overview field if non-nil, zero value otherwise.
+
+### GetOverviewOk
+
+`func (o *CompanyProfileResponse) GetOverviewOk() (*string, bool)`
+
+GetOverviewOk returns a tuple with the Overview field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOverview
+
+`func (o *CompanyProfileResponse) SetOverview(v string)`
+
+SetOverview sets Overview field to given value.
+
+### HasOverview
+
+`func (o *CompanyProfileResponse) HasOverview() bool`
+
+HasOverview returns a boolean if a field has been set.
 
 ### GetWebUrl
 

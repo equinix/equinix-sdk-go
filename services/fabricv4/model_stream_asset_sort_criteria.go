@@ -9,6 +9,7 @@ package fabricv4
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the StreamAssetSortCriteria type satisfies the MappedNullable interface at compile time
@@ -16,8 +17,8 @@ var _ MappedNullable = &StreamAssetSortCriteria{}
 
 // StreamAssetSortCriteria struct for StreamAssetSortCriteria
 type StreamAssetSortCriteria struct {
-	Direction            *StreamAssetSortDirection `json:"direction,omitempty"`
-	Property             *StreamAssetSortBy        `json:"property,omitempty"`
+	Direction            StreamAssetSortDirection `json:"direction"`
+	Property             StreamAssetSortBy        `json:"property"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -27,12 +28,10 @@ type _StreamAssetSortCriteria StreamAssetSortCriteria
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStreamAssetSortCriteria() *StreamAssetSortCriteria {
+func NewStreamAssetSortCriteria(direction StreamAssetSortDirection, property StreamAssetSortBy) *StreamAssetSortCriteria {
 	this := StreamAssetSortCriteria{}
-	var direction StreamAssetSortDirection = STREAMASSETSORTDIRECTION_DESC
-	this.Direction = &direction
-	var property StreamAssetSortBy = STREAMASSETSORTBY_UUID
-	this.Property = &property
+	this.Direction = direction
+	this.Property = property
 	return &this
 }
 
@@ -42,74 +41,58 @@ func NewStreamAssetSortCriteria() *StreamAssetSortCriteria {
 func NewStreamAssetSortCriteriaWithDefaults() *StreamAssetSortCriteria {
 	this := StreamAssetSortCriteria{}
 	var direction StreamAssetSortDirection = STREAMASSETSORTDIRECTION_DESC
-	this.Direction = &direction
+	this.Direction = direction
 	var property StreamAssetSortBy = STREAMASSETSORTBY_UUID
-	this.Property = &property
+	this.Property = property
 	return &this
 }
 
-// GetDirection returns the Direction field value if set, zero value otherwise.
+// GetDirection returns the Direction field value
 func (o *StreamAssetSortCriteria) GetDirection() StreamAssetSortDirection {
-	if o == nil || IsNil(o.Direction) {
+	if o == nil {
 		var ret StreamAssetSortDirection
 		return ret
 	}
-	return *o.Direction
+
+	return o.Direction
 }
 
-// GetDirectionOk returns a tuple with the Direction field value if set, nil otherwise
+// GetDirectionOk returns a tuple with the Direction field value
 // and a boolean to check if the value has been set.
 func (o *StreamAssetSortCriteria) GetDirectionOk() (*StreamAssetSortDirection, bool) {
-	if o == nil || IsNil(o.Direction) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Direction, true
+	return &o.Direction, true
 }
 
-// HasDirection returns a boolean if a field has been set.
-func (o *StreamAssetSortCriteria) HasDirection() bool {
-	if o != nil && !IsNil(o.Direction) {
-		return true
-	}
-
-	return false
-}
-
-// SetDirection gets a reference to the given StreamAssetSortDirection and assigns it to the Direction field.
+// SetDirection sets field value
 func (o *StreamAssetSortCriteria) SetDirection(v StreamAssetSortDirection) {
-	o.Direction = &v
+	o.Direction = v
 }
 
-// GetProperty returns the Property field value if set, zero value otherwise.
+// GetProperty returns the Property field value
 func (o *StreamAssetSortCriteria) GetProperty() StreamAssetSortBy {
-	if o == nil || IsNil(o.Property) {
+	if o == nil {
 		var ret StreamAssetSortBy
 		return ret
 	}
-	return *o.Property
+
+	return o.Property
 }
 
-// GetPropertyOk returns a tuple with the Property field value if set, nil otherwise
+// GetPropertyOk returns a tuple with the Property field value
 // and a boolean to check if the value has been set.
 func (o *StreamAssetSortCriteria) GetPropertyOk() (*StreamAssetSortBy, bool) {
-	if o == nil || IsNil(o.Property) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Property, true
+	return &o.Property, true
 }
 
-// HasProperty returns a boolean if a field has been set.
-func (o *StreamAssetSortCriteria) HasProperty() bool {
-	if o != nil && !IsNil(o.Property) {
-		return true
-	}
-
-	return false
-}
-
-// SetProperty gets a reference to the given StreamAssetSortBy and assigns it to the Property field.
+// SetProperty sets field value
 func (o *StreamAssetSortCriteria) SetProperty(v StreamAssetSortBy) {
-	o.Property = &v
+	o.Property = v
 }
 
 func (o StreamAssetSortCriteria) MarshalJSON() ([]byte, error) {
@@ -122,12 +105,8 @@ func (o StreamAssetSortCriteria) MarshalJSON() ([]byte, error) {
 
 func (o StreamAssetSortCriteria) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Direction) {
-		toSerialize["direction"] = o.Direction
-	}
-	if !IsNil(o.Property) {
-		toSerialize["property"] = o.Property
-	}
+	toSerialize["direction"] = o.Direction
+	toSerialize["property"] = o.Property
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -137,6 +116,28 @@ func (o StreamAssetSortCriteria) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *StreamAssetSortCriteria) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"direction",
+		"property",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
 	varStreamAssetSortCriteria := _StreamAssetSortCriteria{}
 
 	err = json.Unmarshal(data, &varStreamAssetSortCriteria)

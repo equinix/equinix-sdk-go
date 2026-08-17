@@ -25,6 +25,7 @@ const (
 	SIMPLIFIEDNOTIFICATIONTYPE_SALES_REP_NOTIFICATIONS SimplifiedNotificationType = "SALES_REP_NOTIFICATIONS"
 	SIMPLIFIEDNOTIFICATIONTYPE_TECHNICAL               SimplifiedNotificationType = "TECHNICAL"
 	SIMPLIFIEDNOTIFICATIONTYPE_ORDERING                SimplifiedNotificationType = "ORDERING"
+	SIMPLIFIEDNOTIFICATIONTYPE_QUOTE_NOTIFICATIONS     SimplifiedNotificationType = "QUOTE_NOTIFICATIONS"
 )
 
 // All allowed values of SimplifiedNotificationType enum
@@ -37,6 +38,7 @@ var AllowedSimplifiedNotificationTypeEnumValues = []SimplifiedNotificationType{
 	"SALES_REP_NOTIFICATIONS",
 	"TECHNICAL",
 	"ORDERING",
+	"QUOTE_NOTIFICATIONS",
 }
 
 func (v *SimplifiedNotificationType) UnmarshalJSON(src []byte) error {

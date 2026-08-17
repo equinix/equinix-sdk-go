@@ -5,14 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | **string** | Type of tag | 
-**Name** | **string** | Name of the Tag | 
 **DisplayName** | **string** | Display name of the Tag | 
+**Notifications** | Pointer to [**[]SimplifiedNotification**](SimplifiedNotification.md) |  | [optional] 
 
 ## Methods
 
 ### NewTagRequest
 
-`func NewTagRequest(type_ string, name string, displayName string, ) *TagRequest`
+`func NewTagRequest(type_ string, displayName string, ) *TagRequest`
 
 NewTagRequest instantiates a new TagRequest object
 This constructor will assign default values to properties that have it defined,
@@ -47,26 +47,6 @@ and a boolean to check if the value has been set.
 SetType sets Type field to given value.
 
 
-### GetName
-
-`func (o *TagRequest) GetName() string`
-
-GetName returns the Name field if non-nil, zero value otherwise.
-
-### GetNameOk
-
-`func (o *TagRequest) GetNameOk() (*string, bool)`
-
-GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetName
-
-`func (o *TagRequest) SetName(v string)`
-
-SetName sets Name field to given value.
-
-
 ### GetDisplayName
 
 `func (o *TagRequest) GetDisplayName() string`
@@ -86,6 +66,31 @@ and a boolean to check if the value has been set.
 
 SetDisplayName sets DisplayName field to given value.
 
+
+### GetNotifications
+
+`func (o *TagRequest) GetNotifications() []SimplifiedNotification`
+
+GetNotifications returns the Notifications field if non-nil, zero value otherwise.
+
+### GetNotificationsOk
+
+`func (o *TagRequest) GetNotificationsOk() (*[]SimplifiedNotification, bool)`
+
+GetNotificationsOk returns a tuple with the Notifications field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNotifications
+
+`func (o *TagRequest) SetNotifications(v []SimplifiedNotification)`
+
+SetNotifications sets Notifications field to given value.
+
+### HasNotifications
+
+`func (o *TagRequest) HasNotifications() bool`
+
+HasNotifications returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

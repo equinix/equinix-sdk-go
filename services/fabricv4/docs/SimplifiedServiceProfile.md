@@ -19,8 +19,8 @@ Name | Type | Description | Notes
 **Ports** | Pointer to [**[]ServiceProfileAccessPointCOLO**](ServiceProfileAccessPointCOLO.md) |  | [optional] 
 **VirtualDevices** | Pointer to [**[]ServiceProfileAccessPointVD**](ServiceProfileAccessPointVD.md) |  | [optional] 
 **Metros** | Pointer to [**[]ServiceMetro**](ServiceMetro.md) | Derived response attribute. | [optional] 
-**Environments** | Pointer to [**[]ProviderEnvironment**](ProviderEnvironment.md) | Provider environments associated with this IC_PROFILE service profile. | [optional] 
-**SelfProfile** | Pointer to **bool** | response attribute indicates whether the profile belongs to the same organization as the api-invoker. | [optional] 
+**Environments** | Pointer to [**[]ProviderEnvironment**](ProviderEnvironment.md) | Provider environments associated with this IC_PROFILE service profile. &lt;font color&#x3D;\&quot;red\&quot;&gt; &lt;sup color&#x3D;&#39;red&#39;&gt;Beta&lt;/sup&gt;&lt;/font&gt; | [optional] 
+**SelfProfile** | Pointer to **bool** | response attribute indicates whether the profile belongs to the same organization as the api-invoker. | [optional] [readonly] 
 **ProjectId** | Pointer to **string** |  | [optional] 
 **LastMileConfig** | Pointer to [**ServiceProfileLastMileConfig**](ServiceProfileLastMileConfig.md) |  | [optional] 
 

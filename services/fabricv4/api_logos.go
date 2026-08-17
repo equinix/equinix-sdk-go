@@ -20,6 +20,219 @@ import (
 // LogosApiService LogosApi service
 type LogosApiService service
 
+type ApiCreateLogoRequest struct {
+	ctx         context.Context
+	ApiService  *LogosApiService
+	logo        *os.File
+	name        *string
+	description *string
+	type_       *string
+}
+
+// Logo image file
+func (r ApiCreateLogoRequest) Logo(logo *os.File) ApiCreateLogoRequest {
+	r.logo = logo
+	return r
+}
+
+// Name of the Logo
+func (r ApiCreateLogoRequest) Name(name string) ApiCreateLogoRequest {
+	r.name = &name
+	return r
+}
+
+// Description of the logo
+func (r ApiCreateLogoRequest) Description(description string) ApiCreateLogoRequest {
+	r.description = &description
+	return r
+}
+
+// Type of logo
+func (r ApiCreateLogoRequest) Type_(type_ string) ApiCreateLogoRequest {
+	r.type_ = &type_
+	return r
+}
+
+func (r ApiCreateLogoRequest) Execute() (*LogoResponse, *http.Response, error) {
+	return r.ApiService.CreateLogoExecute(r)
+}
+
+/*
+CreateLogo Create Logo
+
+Create Logo for Equinix Fabric™ Company Profile.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCreateLogoRequest
+*/
+func (a *LogosApiService) CreateLogo(ctx context.Context) ApiCreateLogoRequest {
+	return ApiCreateLogoRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return LogoResponse
+func (a *LogosApiService) CreateLogoExecute(r ApiCreateLogoRequest) (*LogoResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *LogoResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LogosApiService.CreateLogo")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/fabric/v4/logos"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.logo == nil {
+		return localVarReturnValue, nil, reportError("logo is required and must be specified")
+	}
+	if r.name == nil {
+		return localVarReturnValue, nil, reportError("name is required and must be specified")
+	}
+	if strlen(*r.name) < 1 {
+		return localVarReturnValue, nil, reportError("name must have at least 1 elements")
+	}
+	if strlen(*r.name) > 24 {
+		return localVarReturnValue, nil, reportError("name must have less than 24 elements")
+	}
+	if r.description == nil {
+		return localVarReturnValue, nil, reportError("description is required and must be specified")
+	}
+	if strlen(*r.description) < 1 {
+		return localVarReturnValue, nil, reportError("description must have at least 1 elements")
+	}
+	if strlen(*r.description) > 125 {
+		return localVarReturnValue, nil, reportError("description must have less than 125 elements")
+	}
+	if r.type_ == nil {
+		return localVarReturnValue, nil, reportError("type_ is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"multipart/form-data"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	var logoLocalVarFormFileName string
+	var logoLocalVarFileName string
+	var logoLocalVarFileBytes []byte
+
+	logoLocalVarFormFileName = "logo"
+	logoLocalVarFile := r.logo
+
+	if logoLocalVarFile != nil {
+		fbs, _ := io.ReadAll(logoLocalVarFile)
+
+		logoLocalVarFileBytes = fbs
+		logoLocalVarFileName = logoLocalVarFile.Name()
+		logoLocalVarFile.Close()
+		formFiles = append(formFiles, formFile{fileBytes: logoLocalVarFileBytes, fileName: logoLocalVarFileName, formFileName: logoLocalVarFormFileName})
+	}
+	parameterAddToHeaderOrQuery(localVarFormParams, "name", r.name, "", "")
+	parameterAddToHeaderOrQuery(localVarFormParams, "description", r.description, "", "")
+	parameterAddToHeaderOrQuery(localVarFormParams, "type", r.type_, "", "")
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v []Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v []Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v []Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v []Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiDeleteLogoByUuidRequest struct {
 	ctx        context.Context
 	ApiService *LogosApiService

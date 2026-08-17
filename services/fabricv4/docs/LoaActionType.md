@@ -3,15 +3,15 @@
 ## Enum
 
 
-* `AUTHORIZE_LOA` (value: `"AUTHORIZE_LOA"`)
+* `ISSUER_AUTHORIZATION` (value: `"LOA_ISSUER_AUTHORIZATION"`)
 
-* `ACCEPT_LOA` (value: `"ACCEPT_LOA"`)
+* `REQUESTOR_ACCEPTANCE` (value: `"LOA_REQUESTOR_ACCEPTANCE"`)
 
-* `COPY_LOA` (value: `"COPY_LOA"`)
+* `COPY_LINK` (value: `"LOA_COPY_LINK"`)
 
-* `SEND_LOA` (value: `"SEND_LOA"`)
+* `SEND_EMAIL_NOTIFICATION` (value: `"LOA_SEND_EMAIL_NOTIFICATION"`)
 
-* `CANCEL_LOA` (value: `"CANCEL_LOA"`)
+* `CANCEL` (value: `"LOA_CANCEL"`)
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

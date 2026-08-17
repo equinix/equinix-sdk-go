@@ -16,12 +16,12 @@ import (
 	"strings"
 )
 
-// IpBlocksApiService IpBlocksApi service
-type IpBlocksApiService service
+// IPBlocksApiService IPBlocksApi service
+type IPBlocksApiService service
 
 type ApiDeleteIpBlockByIdRequest struct {
 	ctx        context.Context
-	ApiService *IpBlocksApiService
+	ApiService *IPBlocksApiService
 	uuid       string
 }
 
@@ -30,15 +30,15 @@ func (r ApiDeleteIpBlockByIdRequest) Execute() (*IpBlock, *http.Response, error)
 }
 
 /*
-DeleteIpBlockById Delete Ip Block by UUID
+DeleteIpBlockById Delete IP Block by UUID
 
-Delete Ip Block by UUID
+Delete IP Block by UUID
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param uuid UUID of the Ip Block
+	@param uuid UUID of the IP Block
 	@return ApiDeleteIpBlockByIdRequest
 */
-func (a *IpBlocksApiService) DeleteIpBlockById(ctx context.Context, uuid string) ApiDeleteIpBlockByIdRequest {
+func (a *IPBlocksApiService) DeleteIpBlockById(ctx context.Context, uuid string) ApiDeleteIpBlockByIdRequest {
 	return ApiDeleteIpBlockByIdRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -49,7 +49,7 @@ func (a *IpBlocksApiService) DeleteIpBlockById(ctx context.Context, uuid string)
 // Execute executes the request
 //
 //	@return IpBlock
-func (a *IpBlocksApiService) DeleteIpBlockByIdExecute(r ApiDeleteIpBlockByIdRequest) (*IpBlock, *http.Response, error) {
+func (a *IPBlocksApiService) DeleteIpBlockByIdExecute(r ApiDeleteIpBlockByIdRequest) (*IpBlock, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    interface{}
@@ -57,7 +57,7 @@ func (a *IpBlocksApiService) DeleteIpBlockByIdExecute(r ApiDeleteIpBlockByIdRequ
 		localVarReturnValue *IpBlock
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IpBlocksApiService.DeleteIpBlockById")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IPBlocksApiService.DeleteIpBlockById")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -179,7 +179,7 @@ func (a *IpBlocksApiService) DeleteIpBlockByIdExecute(r ApiDeleteIpBlockByIdRequ
 
 type ApiGetIpBlockRequest struct {
 	ctx        context.Context
-	ApiService *IpBlocksApiService
+	ApiService *IPBlocksApiService
 	uuid       string
 }
 
@@ -188,15 +188,15 @@ func (r ApiGetIpBlockRequest) Execute() (*IpBlock, *http.Response, error) {
 }
 
 /*
-GetIpBlock Retrieve Ip Block by UUID
+GetIpBlock Retrieve IP Block by UUID
 
-Retrieve Ip Block by UUID
+Retrieve IP Block by UUID
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param uuid UUID of the Ip Block
+	@param uuid UUID of the IP Block
 	@return ApiGetIpBlockRequest
 */
-func (a *IpBlocksApiService) GetIpBlock(ctx context.Context, uuid string) ApiGetIpBlockRequest {
+func (a *IPBlocksApiService) GetIpBlock(ctx context.Context, uuid string) ApiGetIpBlockRequest {
 	return ApiGetIpBlockRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -207,7 +207,7 @@ func (a *IpBlocksApiService) GetIpBlock(ctx context.Context, uuid string) ApiGet
 // Execute executes the request
 //
 //	@return IpBlock
-func (a *IpBlocksApiService) GetIpBlockExecute(r ApiGetIpBlockRequest) (*IpBlock, *http.Response, error) {
+func (a *IPBlocksApiService) GetIpBlockExecute(r ApiGetIpBlockRequest) (*IpBlock, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -215,7 +215,7 @@ func (a *IpBlocksApiService) GetIpBlockExecute(r ApiGetIpBlockRequest) (*IpBlock
 		localVarReturnValue *IpBlock
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IpBlocksApiService.GetIpBlock")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IPBlocksApiService.GetIpBlock")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -315,7 +315,7 @@ func (a *IpBlocksApiService) GetIpBlockExecute(r ApiGetIpBlockRequest) (*IpBlock
 
 type ApiPatchIpBlockByIdRequest struct {
 	ctx                         context.Context
-	ApiService                  *IpBlocksApiService
+	ApiService                  *IPBlocksApiService
 	uuid                        string
 	patchIpBlockRequestBodyItem *[]PatchIpBlockRequestBodyItem
 }
@@ -330,15 +330,15 @@ func (r ApiPatchIpBlockByIdRequest) Execute() (*IpBlock, *http.Response, error) 
 }
 
 /*
-PatchIpBlockById patch Ip Block by UUID
+PatchIpBlockById patch IP Block by UUID
 
-patch Ip Block by UUID
+patch IP Block by UUID
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param uuid UUID of the Ip Block
+	@param uuid UUID of the IP Block
 	@return ApiPatchIpBlockByIdRequest
 */
-func (a *IpBlocksApiService) PatchIpBlockById(ctx context.Context, uuid string) ApiPatchIpBlockByIdRequest {
+func (a *IPBlocksApiService) PatchIpBlockById(ctx context.Context, uuid string) ApiPatchIpBlockByIdRequest {
 	return ApiPatchIpBlockByIdRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -349,7 +349,7 @@ func (a *IpBlocksApiService) PatchIpBlockById(ctx context.Context, uuid string) 
 // Execute executes the request
 //
 //	@return IpBlock
-func (a *IpBlocksApiService) PatchIpBlockByIdExecute(r ApiPatchIpBlockByIdRequest) (*IpBlock, *http.Response, error) {
+func (a *IPBlocksApiService) PatchIpBlockByIdExecute(r ApiPatchIpBlockByIdRequest) (*IpBlock, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -357,7 +357,7 @@ func (a *IpBlocksApiService) PatchIpBlockByIdExecute(r ApiPatchIpBlockByIdReques
 		localVarReturnValue *IpBlock
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IpBlocksApiService.PatchIpBlockById")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IPBlocksApiService.PatchIpBlockById")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -457,7 +457,7 @@ func (a *IpBlocksApiService) PatchIpBlockByIdExecute(r ApiPatchIpBlockByIdReques
 
 type ApiSearchIpBlocksRequest struct {
 	ctx                       context.Context
-	ApiService                *IpBlocksApiService
+	ApiService                *IPBlocksApiService
 	ipBlocksSearchRequestBody *IpBlocksSearchRequestBody
 }
 
@@ -471,14 +471,14 @@ func (r ApiSearchIpBlocksRequest) Execute() (*IpBlockSearchResponseBody, *http.R
 }
 
 /*
-SearchIpBlocks Search for Ip Blocks
+SearchIpBlocks Search for IP Blocks
 
-Search for Ip Blocks based on criteria
+Search for IP Blocks based on criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiSearchIpBlocksRequest
 */
-func (a *IpBlocksApiService) SearchIpBlocks(ctx context.Context) ApiSearchIpBlocksRequest {
+func (a *IPBlocksApiService) SearchIpBlocks(ctx context.Context) ApiSearchIpBlocksRequest {
 	return ApiSearchIpBlocksRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -488,7 +488,7 @@ func (a *IpBlocksApiService) SearchIpBlocks(ctx context.Context) ApiSearchIpBloc
 // Execute executes the request
 //
 //	@return IpBlockSearchResponseBody
-func (a *IpBlocksApiService) SearchIpBlocksExecute(r ApiSearchIpBlocksRequest) (*IpBlockSearchResponseBody, *http.Response, error) {
+func (a *IPBlocksApiService) SearchIpBlocksExecute(r ApiSearchIpBlocksRequest) (*IpBlockSearchResponseBody, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -496,7 +496,7 @@ func (a *IpBlocksApiService) SearchIpBlocksExecute(r ApiSearchIpBlocksRequest) (
 		localVarReturnValue *IpBlockSearchResponseBody
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IpBlocksApiService.SearchIpBlocks")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IPBlocksApiService.SearchIpBlocks")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -589,7 +589,7 @@ func (a *IpBlocksApiService) SearchIpBlocksExecute(r ApiSearchIpBlocksRequest) (
 
 type ApiSubmitIpBlockRequest struct {
 	ctx                      context.Context
-	ApiService               *IpBlocksApiService
+	ApiService               *IPBlocksApiService
 	submitIpBlockRequestBody *SubmitIpBlockRequestBody
 }
 
@@ -603,14 +603,14 @@ func (r ApiSubmitIpBlockRequest) Execute() (*IpBlock, *http.Response, error) {
 }
 
 /*
-SubmitIpBlock Submits new Equinix owned or customer owned Ip Block request
+SubmitIpBlock Submits new Equinix owned or customer owned IP Block request
 
-Submits new Equinix owned or customer owned Ip Block request
+Submits new Equinix owned or customer owned IP Block request
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiSubmitIpBlockRequest
 */
-func (a *IpBlocksApiService) SubmitIpBlock(ctx context.Context) ApiSubmitIpBlockRequest {
+func (a *IPBlocksApiService) SubmitIpBlock(ctx context.Context) ApiSubmitIpBlockRequest {
 	return ApiSubmitIpBlockRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -620,7 +620,7 @@ func (a *IpBlocksApiService) SubmitIpBlock(ctx context.Context) ApiSubmitIpBlock
 // Execute executes the request
 //
 //	@return IpBlock
-func (a *IpBlocksApiService) SubmitIpBlockExecute(r ApiSubmitIpBlockRequest) (*IpBlock, *http.Response, error) {
+func (a *IPBlocksApiService) SubmitIpBlockExecute(r ApiSubmitIpBlockRequest) (*IpBlock, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -628,7 +628,7 @@ func (a *IpBlocksApiService) SubmitIpBlockExecute(r ApiSubmitIpBlockRequest) (*I
 		localVarReturnValue *IpBlock
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IpBlocksApiService.SubmitIpBlock")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IPBlocksApiService.SubmitIpBlock")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

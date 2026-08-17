@@ -28,8 +28,8 @@ type ServiceProfileChange struct {
 	// Set when change object is updated
 	UpdatedDateTime *time.Time `json:"updatedDateTime,omitempty"`
 	// Additional information
-	Information          *string              `json:"information,omitempty"`
-	Data                 []JsonPatchOperation `json:"data,omitempty"`
+	Information          *string                         `json:"information,omitempty"`
+	Data                 []ServiceProfileUpdateOperation `json:"data,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -231,9 +231,9 @@ func (o *ServiceProfileChange) SetInformation(v string) {
 }
 
 // GetData returns the Data field value if set, zero value otherwise.
-func (o *ServiceProfileChange) GetData() []JsonPatchOperation {
+func (o *ServiceProfileChange) GetData() []ServiceProfileUpdateOperation {
 	if o == nil || IsNil(o.Data) {
-		var ret []JsonPatchOperation
+		var ret []ServiceProfileUpdateOperation
 		return ret
 	}
 	return o.Data
@@ -241,7 +241,7 @@ func (o *ServiceProfileChange) GetData() []JsonPatchOperation {
 
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ServiceProfileChange) GetDataOk() ([]JsonPatchOperation, bool) {
+func (o *ServiceProfileChange) GetDataOk() ([]ServiceProfileUpdateOperation, bool) {
 	if o == nil || IsNil(o.Data) {
 		return nil, false
 	}
@@ -257,8 +257,8 @@ func (o *ServiceProfileChange) HasData() bool {
 	return false
 }
 
-// SetData gets a reference to the given []JsonPatchOperation and assigns it to the Data field.
-func (o *ServiceProfileChange) SetData(v []JsonPatchOperation) {
+// SetData gets a reference to the given []ServiceProfileUpdateOperation and assigns it to the Data field.
+func (o *ServiceProfileChange) SetData(v []ServiceProfileUpdateOperation) {
 	o.Data = v
 }
 

@@ -22,7 +22,9 @@ type SimplifiedNotification struct {
 	// Array of contact emails
 	Emails []string `json:"emails"`
 	// Array of registered users
-	RegisteredUsers      []string `json:"registeredUsers,omitempty"`
+	RegisteredUsers []string `json:"registeredUsers,omitempty"`
+	// Array of contact phone numbers
+	Phone                []Phone `json:"phone,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -159,6 +161,38 @@ func (o *SimplifiedNotification) SetRegisteredUsers(v []string) {
 	o.RegisteredUsers = v
 }
 
+// GetPhone returns the Phone field value if set, zero value otherwise.
+func (o *SimplifiedNotification) GetPhone() []Phone {
+	if o == nil || IsNil(o.Phone) {
+		var ret []Phone
+		return ret
+	}
+	return o.Phone
+}
+
+// GetPhoneOk returns a tuple with the Phone field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SimplifiedNotification) GetPhoneOk() ([]Phone, bool) {
+	if o == nil || IsNil(o.Phone) {
+		return nil, false
+	}
+	return o.Phone, true
+}
+
+// HasPhone returns a boolean if a field has been set.
+func (o *SimplifiedNotification) HasPhone() bool {
+	if o != nil && !IsNil(o.Phone) {
+		return true
+	}
+
+	return false
+}
+
+// SetPhone gets a reference to the given []Phone and assigns it to the Phone field.
+func (o *SimplifiedNotification) SetPhone(v []Phone) {
+	o.Phone = v
+}
+
 func (o SimplifiedNotification) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -176,6 +210,9 @@ func (o SimplifiedNotification) ToMap() (map[string]interface{}, error) {
 	toSerialize["emails"] = o.Emails
 	if !IsNil(o.RegisteredUsers) {
 		toSerialize["registeredUsers"] = o.RegisteredUsers
+	}
+	if !IsNil(o.Phone) {
+		toSerialize["phone"] = o.Phone
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -225,6 +262,7 @@ func (o *SimplifiedNotification) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "sendInterval")
 		delete(additionalProperties, "emails")
 		delete(additionalProperties, "registeredUsers")
+		delete(additionalProperties, "phone")
 		o.AdditionalProperties = additionalProperties
 	}
 
