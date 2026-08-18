@@ -17,7 +17,7 @@ var _ MappedNullable = &ReplaceOperation{}
 
 // ReplaceOperation Replace attribute value or sub-resource in the existing model
 type ReplaceOperation struct {
-	Op OpEnum `json:"op"`
+	Op ReplaceOperationOp `json:"op"`
 	// A JSON Pointer path.
 	Path string `json:"path"`
 	// value to replace with
@@ -31,7 +31,7 @@ type _ReplaceOperation ReplaceOperation
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewReplaceOperation(op OpEnum, path string, value map[string]interface{}) *ReplaceOperation {
+func NewReplaceOperation(op ReplaceOperationOp, path string, value map[string]interface{}) *ReplaceOperation {
 	this := ReplaceOperation{}
 	this.Op = op
 	this.Path = path
@@ -48,9 +48,9 @@ func NewReplaceOperationWithDefaults() *ReplaceOperation {
 }
 
 // GetOp returns the Op field value
-func (o *ReplaceOperation) GetOp() OpEnum {
+func (o *ReplaceOperation) GetOp() ReplaceOperationOp {
 	if o == nil {
-		var ret OpEnum
+		var ret ReplaceOperationOp
 		return ret
 	}
 
@@ -59,7 +59,7 @@ func (o *ReplaceOperation) GetOp() OpEnum {
 
 // GetOpOk returns a tuple with the Op field value
 // and a boolean to check if the value has been set.
-func (o *ReplaceOperation) GetOpOk() (*OpEnum, bool) {
+func (o *ReplaceOperation) GetOpOk() (*ReplaceOperationOp, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -67,7 +67,7 @@ func (o *ReplaceOperation) GetOpOk() (*OpEnum, bool) {
 }
 
 // SetOp sets field value
-func (o *ReplaceOperation) SetOp(v OpEnum) {
+func (o *ReplaceOperation) SetOp(v ReplaceOperationOp) {
 	o.Op = v
 }
 

@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**DeleteStreamSubscriptionByUuid**](StreamSubscriptionsApi.md#DeleteStreamSubscriptionByUuid) | **Delete** /fabric/v4/streams/{streamId}/subscriptions/{subscriptionId} | Delete Subscription
 [**GetStreamSubscriptionByUuid**](StreamSubscriptionsApi.md#GetStreamSubscriptionByUuid) | **Get** /fabric/v4/streams/{streamId}/subscriptions/{subscriptionId} | Get Subscription
 [**GetStreamSubscriptions**](StreamSubscriptionsApi.md#GetStreamSubscriptions) | **Get** /fabric/v4/streams/{streamId}/subscriptions | Get Subscriptions
+[**SearchStreamSubscriptions**](StreamSubscriptionsApi.md#SearchStreamSubscriptions) | **Post** /fabric/v4/streamSubscriptions/search | Search Stream Subscriptions
 [**UpdateStreamSubscriptionByUuid**](StreamSubscriptionsApi.md#UpdateStreamSubscriptionByUuid) | **Put** /fabric/v4/streams/{streamId}/subscriptions/{subscriptionId} | Update Subscription
 
 
@@ -297,6 +298,72 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SearchStreamSubscriptions
+
+> SearchStreamSubscriptionResponse SearchStreamSubscriptions(ctx).StreamSubscriptionSearchRequest(streamSubscriptionSearchRequest).Execute()
+
+Search Stream Subscriptions
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/equinix/equinix-sdk-go/services/fabricv4"
+)
+
+func main() {
+	streamSubscriptionSearchRequest := *openapiclient.NewStreamSubscriptionSearchRequest(*openapiclient.NewStreamSubscriptionSearchFilters([]openapiclient.StreamSubscriptionSearchFilter{*openapiclient.NewStreamSubscriptionSearchFilter()})) // StreamSubscriptionSearchRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StreamSubscriptionsApi.SearchStreamSubscriptions(context.Background()).StreamSubscriptionSearchRequest(streamSubscriptionSearchRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StreamSubscriptionsApi.SearchStreamSubscriptions``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `SearchStreamSubscriptions`: SearchStreamSubscriptionResponse
+	fmt.Fprintf(os.Stdout, "Response from `StreamSubscriptionsApi.SearchStreamSubscriptions`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSearchStreamSubscriptionsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **streamSubscriptionSearchRequest** | [**StreamSubscriptionSearchRequest**](StreamSubscriptionSearchRequest.md) |  | 
+
+### Return type
+
+[**SearchStreamSubscriptionResponse**](SearchStreamSubscriptionResponse.md)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

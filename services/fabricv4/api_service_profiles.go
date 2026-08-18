@@ -660,6 +660,173 @@ func (a *ServiceProfilesApiService) GetServiceProfileByUuidExecute(r ApiGetServi
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiGetServiceProfileEnvironmentsByUuidRequest struct {
+	ctx              context.Context
+	ApiService       *ServiceProfilesApiService
+	serviceProfileId string
+	offset           *int32
+	limit            *int32
+}
+
+// offset
+func (r ApiGetServiceProfileEnvironmentsByUuidRequest) Offset(offset int32) ApiGetServiceProfileEnvironmentsByUuidRequest {
+	r.offset = &offset
+	return r
+}
+
+// number of records to fetch
+func (r ApiGetServiceProfileEnvironmentsByUuidRequest) Limit(limit int32) ApiGetServiceProfileEnvironmentsByUuidRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiGetServiceProfileEnvironmentsByUuidRequest) Execute() (*ProviderEnvironments, *http.Response, error) {
+	return r.ApiService.GetServiceProfileEnvironmentsByUuidExecute(r)
+}
+
+/*
+GetServiceProfileEnvironmentsByUuid Get Profile Environments
+
+Get service profile provider environments by UUID <sup color='red'>Beta</sup></font>.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param serviceProfileId Service Profile UUID
+	@return ApiGetServiceProfileEnvironmentsByUuidRequest
+*/
+func (a *ServiceProfilesApiService) GetServiceProfileEnvironmentsByUuid(ctx context.Context, serviceProfileId string) ApiGetServiceProfileEnvironmentsByUuidRequest {
+	return ApiGetServiceProfileEnvironmentsByUuidRequest{
+		ApiService:       a,
+		ctx:              ctx,
+		serviceProfileId: serviceProfileId,
+	}
+}
+
+// Execute executes the request
+//
+//	@return ProviderEnvironments
+func (a *ServiceProfilesApiService) GetServiceProfileEnvironmentsByUuidExecute(r ApiGetServiceProfileEnvironmentsByUuidRequest) (*ProviderEnvironments, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ProviderEnvironments
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceProfilesApiService.GetServiceProfileEnvironmentsByUuid")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/fabric/v4/serviceProfiles/{serviceProfileId}/environments"
+	localVarPath = strings.Replace(localVarPath, "{"+"serviceProfileId"+"}", url.PathEscape(parameterValueToString(r.serviceProfileId, "serviceProfileId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
+	}
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json; charset=UTF-8", "application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v []Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v []Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v []Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v []Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiGetServiceProfileMetrosByUuidRequest struct {
 	ctx              context.Context
 	ApiService       *ServiceProfilesApiService
@@ -1339,15 +1506,177 @@ func (a *ServiceProfilesApiService) SearchServiceProfilesExecute(r ApiSearchServ
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiUpdateServiceProfileByUuidRequest struct {
-	ctx                context.Context
-	ApiService         *ServiceProfilesApiService
-	serviceProfileId   string
-	jsonPatchOperation *[]JsonPatchOperation
+type ApiServiceProfileEnvironmentActionRequest struct {
+	ctx                      context.Context
+	ApiService               *ServiceProfilesApiService
+	serviceProfileId         string
+	environmentId            string
+	environmentActionRequest *EnvironmentActionRequest
 }
 
-func (r ApiUpdateServiceProfileByUuidRequest) JsonPatchOperation(jsonPatchOperation []JsonPatchOperation) ApiUpdateServiceProfileByUuidRequest {
-	r.jsonPatchOperation = &jsonPatchOperation
+func (r ApiServiceProfileEnvironmentActionRequest) EnvironmentActionRequest(environmentActionRequest EnvironmentActionRequest) ApiServiceProfileEnvironmentActionRequest {
+	r.environmentActionRequest = &environmentActionRequest
+	return r
+}
+
+func (r ApiServiceProfileEnvironmentActionRequest) Execute() (*EnvironmentActionResponse, *http.Response, error) {
+	return r.ApiService.ServiceProfileEnvironmentActionExecute(r)
+}
+
+/*
+ServiceProfileEnvironmentAction Service Profile Environment Actions
+
+This API provides capability to perform actions on a service profile environment, such as validating an activation key.<sup color='red'>Beta</sup></font>
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param serviceProfileId Service Profile UUID
+	@param environmentId Provider Environment Reference
+	@return ApiServiceProfileEnvironmentActionRequest
+*/
+func (a *ServiceProfilesApiService) ServiceProfileEnvironmentAction(ctx context.Context, serviceProfileId string, environmentId string) ApiServiceProfileEnvironmentActionRequest {
+	return ApiServiceProfileEnvironmentActionRequest{
+		ApiService:       a,
+		ctx:              ctx,
+		serviceProfileId: serviceProfileId,
+		environmentId:    environmentId,
+	}
+}
+
+// Execute executes the request
+//
+//	@return EnvironmentActionResponse
+func (a *ServiceProfilesApiService) ServiceProfileEnvironmentActionExecute(r ApiServiceProfileEnvironmentActionRequest) (*EnvironmentActionResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *EnvironmentActionResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceProfilesApiService.ServiceProfileEnvironmentAction")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/fabric/v4/serviceProfiles/{serviceProfileId}/environments/{environmentId}/actions"
+	localVarPath = strings.Replace(localVarPath, "{"+"serviceProfileId"+"}", url.PathEscape(parameterValueToString(r.serviceProfileId, "serviceProfileId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterValueToString(r.environmentId, "environmentId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.environmentActionRequest == nil {
+		return localVarReturnValue, nil, reportError("environmentActionRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.environmentActionRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v []Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v []Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v []Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v []Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiUpdateServiceProfileByUuidRequest struct {
+	ctx                           context.Context
+	ApiService                    *ServiceProfilesApiService
+	serviceProfileId              string
+	serviceProfileUpdateOperation *[]ServiceProfileUpdateOperation
+}
+
+func (r ApiUpdateServiceProfileByUuidRequest) ServiceProfileUpdateOperation(serviceProfileUpdateOperation []ServiceProfileUpdateOperation) ApiUpdateServiceProfileByUuidRequest {
+	r.serviceProfileUpdateOperation = &serviceProfileUpdateOperation
 	return r
 }
 
@@ -1394,8 +1723,8 @@ func (a *ServiceProfilesApiService) UpdateServiceProfileByUuidExecute(r ApiUpdat
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.jsonPatchOperation == nil {
-		return localVarReturnValue, nil, reportError("jsonPatchOperation is required and must be specified")
+	if r.serviceProfileUpdateOperation == nil {
+		return localVarReturnValue, nil, reportError("serviceProfileUpdateOperation is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1416,7 +1745,7 @@ func (a *ServiceProfilesApiService) UpdateServiceProfileByUuidExecute(r ApiUpdat
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.jsonPatchOperation
+	localVarPostBody = r.serviceProfileUpdateOperation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

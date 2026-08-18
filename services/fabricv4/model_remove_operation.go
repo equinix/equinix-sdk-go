@@ -17,7 +17,7 @@ var _ MappedNullable = &RemoveOperation{}
 
 // RemoveOperation Remove sub-resource from an existing model
 type RemoveOperation struct {
-	Op OpEnum `json:"op"`
+	Op RemoveOperationOp `json:"op"`
 	// A JSON Pointer path.
 	Path                 string `json:"path"`
 	AdditionalProperties map[string]interface{}
@@ -29,7 +29,7 @@ type _RemoveOperation RemoveOperation
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRemoveOperation(op OpEnum, path string) *RemoveOperation {
+func NewRemoveOperation(op RemoveOperationOp, path string) *RemoveOperation {
 	this := RemoveOperation{}
 	this.Op = op
 	this.Path = path
@@ -45,9 +45,9 @@ func NewRemoveOperationWithDefaults() *RemoveOperation {
 }
 
 // GetOp returns the Op field value
-func (o *RemoveOperation) GetOp() OpEnum {
+func (o *RemoveOperation) GetOp() RemoveOperationOp {
 	if o == nil {
-		var ret OpEnum
+		var ret RemoveOperationOp
 		return ret
 	}
 
@@ -56,7 +56,7 @@ func (o *RemoveOperation) GetOp() OpEnum {
 
 // GetOpOk returns a tuple with the Op field value
 // and a boolean to check if the value has been set.
-func (o *RemoveOperation) GetOpOk() (*OpEnum, bool) {
+func (o *RemoveOperation) GetOpOk() (*RemoveOperationOp, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -64,7 +64,7 @@ func (o *RemoveOperation) GetOpOk() (*OpEnum, bool) {
 }
 
 // SetOp sets field value
-func (o *RemoveOperation) SetOp(v OpEnum) {
+func (o *RemoveOperation) SetOp(v RemoveOperationOp) {
 	o.Op = v
 }
 

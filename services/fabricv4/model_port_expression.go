@@ -16,11 +16,11 @@ var _ MappedNullable = &PortExpression{}
 
 // PortExpression Either use 'and' for AND operations, 'or' for OR operations,  or specify 'property', 'operator', and 'values' for field filtering. Only one of these patterns should be used at a time.
 type PortExpression struct {
-	And                  []PortExpression         `json:"and,omitempty"`
-	Or                   []PortExpression         `json:"or,omitempty"`
-	Property             *PortSearchFieldName     `json:"property,omitempty"`
-	Operator             *IpBlockAndQueryOperator `json:"operator,omitempty"`
-	Values               []string                 `json:"values,omitempty"`
+	And                  []PortExpression        `json:"and,omitempty"`
+	Or                   []PortExpression        `json:"or,omitempty"`
+	Property             *PortSearchFieldName    `json:"property,omitempty"`
+	Operator             *PortExpressionOperator `json:"operator,omitempty"`
+	Values               []string                `json:"values,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -140,9 +140,9 @@ func (o *PortExpression) SetProperty(v PortSearchFieldName) {
 }
 
 // GetOperator returns the Operator field value if set, zero value otherwise.
-func (o *PortExpression) GetOperator() IpBlockAndQueryOperator {
+func (o *PortExpression) GetOperator() PortExpressionOperator {
 	if o == nil || IsNil(o.Operator) {
-		var ret IpBlockAndQueryOperator
+		var ret PortExpressionOperator
 		return ret
 	}
 	return *o.Operator
@@ -150,7 +150,7 @@ func (o *PortExpression) GetOperator() IpBlockAndQueryOperator {
 
 // GetOperatorOk returns a tuple with the Operator field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PortExpression) GetOperatorOk() (*IpBlockAndQueryOperator, bool) {
+func (o *PortExpression) GetOperatorOk() (*PortExpressionOperator, bool) {
 	if o == nil || IsNil(o.Operator) {
 		return nil, false
 	}
@@ -166,8 +166,8 @@ func (o *PortExpression) HasOperator() bool {
 	return false
 }
 
-// SetOperator gets a reference to the given IpBlockAndQueryOperator and assigns it to the Operator field.
-func (o *PortExpression) SetOperator(v IpBlockAndQueryOperator) {
+// SetOperator gets a reference to the given PortExpressionOperator and assigns it to the Operator field.
+func (o *PortExpression) SetOperator(v PortExpressionOperator) {
 	o.Operator = &v
 }
 

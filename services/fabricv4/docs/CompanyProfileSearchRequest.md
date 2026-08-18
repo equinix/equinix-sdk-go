@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Filter** | Pointer to [**CompanyProfileSearchFilter**](CompanyProfileSearchFilter.md) |  | [optional] 
+**Filter** | Pointer to [**CompanyProfileSearchFilters**](CompanyProfileSearchFilters.md) |  | [optional] 
 **Pagination** | Pointer to [**Pagination**](Pagination.md) |  | [optional] 
 **Sort** | Pointer to [**Sort**](Sort.md) |  | [optional] 
 
@@ -29,20 +29,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetFilter
 
-`func (o *CompanyProfileSearchRequest) GetFilter() CompanyProfileSearchFilter`
+`func (o *CompanyProfileSearchRequest) GetFilter() CompanyProfileSearchFilters`
 
 GetFilter returns the Filter field if non-nil, zero value otherwise.
 
 ### GetFilterOk
 
-`func (o *CompanyProfileSearchRequest) GetFilterOk() (*CompanyProfileSearchFilter, bool)`
+`func (o *CompanyProfileSearchRequest) GetFilterOk() (*CompanyProfileSearchFilters, bool)`
 
 GetFilterOk returns a tuple with the Filter field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFilter
 
-`func (o *CompanyProfileSearchRequest) SetFilter(v CompanyProfileSearchFilter)`
+`func (o *CompanyProfileSearchRequest) SetFilter(v CompanyProfileSearchFilters)`
 
 SetFilter sets Filter field to given value.
 

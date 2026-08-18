@@ -17,7 +17,7 @@ var _ MappedNullable = &AddOperation{}
 
 // AddOperation Add Sub-Resource to the existing model
 type AddOperation struct {
-	Op OpEnum `json:"op"`
+	Op AddOperationOp `json:"op"`
 	// A JSON Pointer path.
 	Path string `json:"path"`
 	// value to add
@@ -31,7 +31,7 @@ type _AddOperation AddOperation
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAddOperation(op OpEnum, path string, value map[string]interface{}) *AddOperation {
+func NewAddOperation(op AddOperationOp, path string, value map[string]interface{}) *AddOperation {
 	this := AddOperation{}
 	this.Op = op
 	this.Path = path
@@ -48,9 +48,9 @@ func NewAddOperationWithDefaults() *AddOperation {
 }
 
 // GetOp returns the Op field value
-func (o *AddOperation) GetOp() OpEnum {
+func (o *AddOperation) GetOp() AddOperationOp {
 	if o == nil {
-		var ret OpEnum
+		var ret AddOperationOp
 		return ret
 	}
 
@@ -59,7 +59,7 @@ func (o *AddOperation) GetOp() OpEnum {
 
 // GetOpOk returns a tuple with the Op field value
 // and a boolean to check if the value has been set.
-func (o *AddOperation) GetOpOk() (*OpEnum, bool) {
+func (o *AddOperation) GetOpOk() (*AddOperationOp, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -67,7 +67,7 @@ func (o *AddOperation) GetOpOk() (*OpEnum, bool) {
 }
 
 // SetOp sets field value
-func (o *AddOperation) SetOp(v OpEnum) {
+func (o *AddOperation) SetOp(v AddOperationOp) {
 	o.Op = v
 }
 

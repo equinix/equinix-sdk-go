@@ -16,8 +16,8 @@ var _ MappedNullable = &RfAttachmentSortItem{}
 
 // RfAttachmentSortItem struct for RfAttachmentSortItem
 type RfAttachmentSortItem struct {
-	Property             *RfAttachmentSortItemProperty  `json:"property,omitempty"`
-	Direction            *RfAttachmentSortItemDirection `json:"direction,omitempty"`
+	Property             *RfAttachmentSortItemProperty               `json:"property,omitempty"`
+	Direction            *ExchangeServiceSearchSortCriteriaDirection `json:"direction,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -31,7 +31,7 @@ func NewRfAttachmentSortItem() *RfAttachmentSortItem {
 	this := RfAttachmentSortItem{}
 	var property RfAttachmentSortItemProperty = RFATTACHMENTSORTITEMPROPERTY_CHANGE_LOG_UPDATED_DATE_TIME
 	this.Property = &property
-	var direction RfAttachmentSortItemDirection = RFATTACHMENTSORTITEMDIRECTION_DESC
+	var direction ExchangeServiceSearchSortCriteriaDirection = EXCHANGESERVICESEARCHSORTCRITERIADIRECTION_DESC
 	this.Direction = &direction
 	return &this
 }
@@ -43,7 +43,7 @@ func NewRfAttachmentSortItemWithDefaults() *RfAttachmentSortItem {
 	this := RfAttachmentSortItem{}
 	var property RfAttachmentSortItemProperty = RFATTACHMENTSORTITEMPROPERTY_CHANGE_LOG_UPDATED_DATE_TIME
 	this.Property = &property
-	var direction RfAttachmentSortItemDirection = RFATTACHMENTSORTITEMDIRECTION_DESC
+	var direction ExchangeServiceSearchSortCriteriaDirection = EXCHANGESERVICESEARCHSORTCRITERIADIRECTION_DESC
 	this.Direction = &direction
 	return &this
 }
@@ -81,9 +81,9 @@ func (o *RfAttachmentSortItem) SetProperty(v RfAttachmentSortItemProperty) {
 }
 
 // GetDirection returns the Direction field value if set, zero value otherwise.
-func (o *RfAttachmentSortItem) GetDirection() RfAttachmentSortItemDirection {
+func (o *RfAttachmentSortItem) GetDirection() ExchangeServiceSearchSortCriteriaDirection {
 	if o == nil || IsNil(o.Direction) {
-		var ret RfAttachmentSortItemDirection
+		var ret ExchangeServiceSearchSortCriteriaDirection
 		return ret
 	}
 	return *o.Direction
@@ -91,7 +91,7 @@ func (o *RfAttachmentSortItem) GetDirection() RfAttachmentSortItemDirection {
 
 // GetDirectionOk returns a tuple with the Direction field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RfAttachmentSortItem) GetDirectionOk() (*RfAttachmentSortItemDirection, bool) {
+func (o *RfAttachmentSortItem) GetDirectionOk() (*ExchangeServiceSearchSortCriteriaDirection, bool) {
 	if o == nil || IsNil(o.Direction) {
 		return nil, false
 	}
@@ -107,8 +107,8 @@ func (o *RfAttachmentSortItem) HasDirection() bool {
 	return false
 }
 
-// SetDirection gets a reference to the given RfAttachmentSortItemDirection and assigns it to the Direction field.
-func (o *RfAttachmentSortItem) SetDirection(v RfAttachmentSortItemDirection) {
+// SetDirection gets a reference to the given ExchangeServiceSearchSortCriteriaDirection and assigns it to the Direction field.
+func (o *RfAttachmentSortItem) SetDirection(v ExchangeServiceSearchSortCriteriaDirection) {
 	o.Direction = &v
 }
 

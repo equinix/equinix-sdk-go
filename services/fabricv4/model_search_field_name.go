@@ -46,6 +46,8 @@ const (
 	SEARCHFIELDNAME_CHANGE_LOG_LAST_UPDATED_BY                     SearchFieldName = "/changeLog/lastUpdatedBy"
 	SEARCHFIELDNAME_OPERATION_EQUINIX_STATUS                       SearchFieldName = "/operation/equinixStatus"
 	SEARCHFIELDNAME_OPERATION_PROVIDER_STATUS                      SearchFieldName = "/operation/providerStatus"
+	SEARCHFIELDNAME_OPERATION_MAINTENANCE_STATUS                   SearchFieldName = "/operation/maintenanceStatus"
+	SEARCHFIELDNAME_OPERATION_LOCK_ENABLED                         SearchFieldName = "/operation/lockEnabled"
 	SEARCHFIELDNAME_PROJECT_PROJECT_ID                             SearchFieldName = "/project/projectId"
 	SEARCHFIELDNAME_REDUNDANCY_GROUP                               SearchFieldName = "/redundancy/group"
 	SEARCHFIELDNAME_REDUNDANCY_PRIORITY                            SearchFieldName = "/redundancy/priority"
@@ -101,6 +103,8 @@ var AllowedSearchFieldNameEnumValues = []SearchFieldName{
 	"/changeLog/lastUpdatedBy",
 	"/operation/equinixStatus",
 	"/operation/providerStatus",
+	"/operation/maintenanceStatus",
+	"/operation/lockEnabled",
 	"/project/projectId",
 	"/redundancy/group",
 	"/redundancy/priority",

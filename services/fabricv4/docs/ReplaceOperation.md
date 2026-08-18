@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Op** | [**OpEnum**](OpEnum.md) |  | 
+**Op** | [**ReplaceOperationOp**](ReplaceOperationOp.md) |  | 
 **Path** | **string** | A JSON Pointer path. | 
 **Value** | **map[string]interface{}** | value to replace with | 
 
@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 ### NewReplaceOperation
 
-`func NewReplaceOperation(op OpEnum, path string, value map[string]interface{}, ) *ReplaceOperation`
+`func NewReplaceOperation(op ReplaceOperationOp, path string, value map[string]interface{}, ) *ReplaceOperation`
 
 NewReplaceOperation instantiates a new ReplaceOperation object
 This constructor will assign default values to properties that have it defined,
@@ -29,20 +29,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetOp
 
-`func (o *ReplaceOperation) GetOp() OpEnum`
+`func (o *ReplaceOperation) GetOp() ReplaceOperationOp`
 
 GetOp returns the Op field if non-nil, zero value otherwise.
 
 ### GetOpOk
 
-`func (o *ReplaceOperation) GetOpOk() (*OpEnum, bool)`
+`func (o *ReplaceOperation) GetOpOk() (*ReplaceOperationOp, bool)`
 
 GetOpOk returns a tuple with the Op field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOp
 
-`func (o *ReplaceOperation) SetOp(v OpEnum)`
+`func (o *ReplaceOperation) SetOp(v ReplaceOperationOp)`
 
 SetOp sets Op field to given value.
 

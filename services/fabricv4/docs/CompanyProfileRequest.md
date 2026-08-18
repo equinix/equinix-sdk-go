@@ -8,15 +8,17 @@ Name | Type | Description | Notes
 **Name** | **string** |  | 
 **Summary** | **string** |  | 
 **Description** | **string** |  | 
-**Notifications** | Pointer to **[]map[string]interface{}** |  | [optional] 
-**WebUrl** | Pointer to **string** |  | [optional] 
+**PointOfContacts** | Pointer to [**[]CompanyProfileContact**](CompanyProfileContact.md) |  | [optional] 
+**Notifications** | Pointer to [**[]SimplifiedNotification**](SimplifiedNotification.md) |  | [optional] 
+**Overview** | Pointer to **string** |  | [optional] 
+**WebUrl** | **string** |  | 
 **ContactUrl** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
 ### NewCompanyProfileRequest
 
-`func NewCompanyProfileRequest(type_ string, name string, summary string, description string, ) *CompanyProfileRequest`
+`func NewCompanyProfileRequest(type_ string, name string, summary string, description string, webUrl string, ) *CompanyProfileRequest`
 
 NewCompanyProfileRequest instantiates a new CompanyProfileRequest object
 This constructor will assign default values to properties that have it defined,
@@ -111,22 +113,47 @@ and a boolean to check if the value has been set.
 SetDescription sets Description field to given value.
 
 
+### GetPointOfContacts
+
+`func (o *CompanyProfileRequest) GetPointOfContacts() []CompanyProfileContact`
+
+GetPointOfContacts returns the PointOfContacts field if non-nil, zero value otherwise.
+
+### GetPointOfContactsOk
+
+`func (o *CompanyProfileRequest) GetPointOfContactsOk() (*[]CompanyProfileContact, bool)`
+
+GetPointOfContactsOk returns a tuple with the PointOfContacts field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPointOfContacts
+
+`func (o *CompanyProfileRequest) SetPointOfContacts(v []CompanyProfileContact)`
+
+SetPointOfContacts sets PointOfContacts field to given value.
+
+### HasPointOfContacts
+
+`func (o *CompanyProfileRequest) HasPointOfContacts() bool`
+
+HasPointOfContacts returns a boolean if a field has been set.
+
 ### GetNotifications
 
-`func (o *CompanyProfileRequest) GetNotifications() []map[string]interface{}`
+`func (o *CompanyProfileRequest) GetNotifications() []SimplifiedNotification`
 
 GetNotifications returns the Notifications field if non-nil, zero value otherwise.
 
 ### GetNotificationsOk
 
-`func (o *CompanyProfileRequest) GetNotificationsOk() (*[]map[string]interface{}, bool)`
+`func (o *CompanyProfileRequest) GetNotificationsOk() (*[]SimplifiedNotification, bool)`
 
 GetNotificationsOk returns a tuple with the Notifications field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNotifications
 
-`func (o *CompanyProfileRequest) SetNotifications(v []map[string]interface{})`
+`func (o *CompanyProfileRequest) SetNotifications(v []SimplifiedNotification)`
 
 SetNotifications sets Notifications field to given value.
 
@@ -135,6 +162,31 @@ SetNotifications sets Notifications field to given value.
 `func (o *CompanyProfileRequest) HasNotifications() bool`
 
 HasNotifications returns a boolean if a field has been set.
+
+### GetOverview
+
+`func (o *CompanyProfileRequest) GetOverview() string`
+
+GetOverview returns the Overview field if non-nil, zero value otherwise.
+
+### GetOverviewOk
+
+`func (o *CompanyProfileRequest) GetOverviewOk() (*string, bool)`
+
+GetOverviewOk returns a tuple with the Overview field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOverview
+
+`func (o *CompanyProfileRequest) SetOverview(v string)`
+
+SetOverview sets Overview field to given value.
+
+### HasOverview
+
+`func (o *CompanyProfileRequest) HasOverview() bool`
+
+HasOverview returns a boolean if a field has been set.
 
 ### GetWebUrl
 
@@ -155,11 +207,6 @@ and a boolean to check if the value has been set.
 
 SetWebUrl sets WebUrl field to given value.
 
-### HasWebUrl
-
-`func (o *CompanyProfileRequest) HasWebUrl() bool`
-
-HasWebUrl returns a boolean if a field has been set.
 
 ### GetContactUrl
 

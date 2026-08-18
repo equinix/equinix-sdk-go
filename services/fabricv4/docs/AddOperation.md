@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Op** | [**OpEnum**](OpEnum.md) |  | 
+**Op** | [**AddOperationOp**](AddOperationOp.md) |  | 
 **Path** | **string** | A JSON Pointer path. | 
 **Value** | **map[string]interface{}** | value to add | 
 
@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 ### NewAddOperation
 
-`func NewAddOperation(op OpEnum, path string, value map[string]interface{}, ) *AddOperation`
+`func NewAddOperation(op AddOperationOp, path string, value map[string]interface{}, ) *AddOperation`
 
 NewAddOperation instantiates a new AddOperation object
 This constructor will assign default values to properties that have it defined,
@@ -29,20 +29,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetOp
 
-`func (o *AddOperation) GetOp() OpEnum`
+`func (o *AddOperation) GetOp() AddOperationOp`
 
 GetOp returns the Op field if non-nil, zero value otherwise.
 
 ### GetOpOk
 
-`func (o *AddOperation) GetOpOk() (*OpEnum, bool)`
+`func (o *AddOperation) GetOpOk() (*AddOperationOp, bool)`
 
 GetOpOk returns a tuple with the Op field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOp
 
-`func (o *AddOperation) SetOp(v OpEnum)`
+`func (o *AddOperation) SetOp(v AddOperationOp)`
 
 SetOp sets Op field to given value.
 

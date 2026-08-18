@@ -18,7 +18,7 @@ var _ MappedNullable = &SearchResponse{}
 type SearchResponse struct {
 	Pagination *Pagination `json:"pagination,omitempty"`
 	// Data returned from the API call.
-	Data                 []CloudRouter `json:"data,omitempty"`
+	Data                 []CloudRouterReadResponse `json:"data,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -74,9 +74,9 @@ func (o *SearchResponse) SetPagination(v Pagination) {
 }
 
 // GetData returns the Data field value if set, zero value otherwise.
-func (o *SearchResponse) GetData() []CloudRouter {
+func (o *SearchResponse) GetData() []CloudRouterReadResponse {
 	if o == nil || IsNil(o.Data) {
-		var ret []CloudRouter
+		var ret []CloudRouterReadResponse
 		return ret
 	}
 	return o.Data
@@ -84,7 +84,7 @@ func (o *SearchResponse) GetData() []CloudRouter {
 
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SearchResponse) GetDataOk() ([]CloudRouter, bool) {
+func (o *SearchResponse) GetDataOk() ([]CloudRouterReadResponse, bool) {
 	if o == nil || IsNil(o.Data) {
 		return nil, false
 	}
@@ -100,8 +100,8 @@ func (o *SearchResponse) HasData() bool {
 	return false
 }
 
-// SetData gets a reference to the given []CloudRouter and assigns it to the Data field.
-func (o *SearchResponse) SetData(v []CloudRouter) {
+// SetData gets a reference to the given []CloudRouterReadResponse and assigns it to the Data field.
+func (o *SearchResponse) SetData(v []CloudRouterReadResponse) {
 	o.Data = v
 }
 

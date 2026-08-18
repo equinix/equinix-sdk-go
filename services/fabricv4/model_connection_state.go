@@ -26,8 +26,8 @@ const (
 	CONNECTIONSTATE_PENDING        ConnectionState = "PENDING"
 	CONNECTIONSTATE_PROVISIONED    ConnectionState = "PROVISIONED"
 	CONNECTIONSTATE_PROVISIONING   ConnectionState = "PROVISIONING"
-	CONNECTIONSTATE_REPROVISIONING ConnectionState = "REPROVISIONING"
 	CONNECTIONSTATE_EMPTY          ConnectionState = ""
+	CONNECTIONSTATE_REPROVISIONING ConnectionState = "REPROVISIONING"
 )
 
 // All allowed values of ConnectionState enum
@@ -41,8 +41,8 @@ var AllowedConnectionStateEnumValues = []ConnectionState{
 	"PENDING",
 	"PROVISIONED",
 	"PROVISIONING",
-	"REPROVISIONING",
 	"",
+	"REPROVISIONING",
 }
 
 func (v *ConnectionState) UnmarshalJSON(src []byte) error {

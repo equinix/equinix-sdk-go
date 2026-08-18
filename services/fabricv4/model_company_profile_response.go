@@ -16,20 +16,23 @@ var _ MappedNullable = &CompanyProfileResponse{}
 
 // CompanyProfileResponse struct for CompanyProfileResponse
 type CompanyProfileResponse struct {
-	Href                 *string                        `json:"href,omitempty"`
-	Uuid                 *string                        `json:"uuid,omitempty"`
-	Type                 *string                        `json:"type,omitempty"`
-	Name                 *string                        `json:"name,omitempty"`
-	Summary              *string                        `json:"summary,omitempty"`
-	Description          *string                        `json:"description,omitempty"`
-	State                map[string]interface{}         `json:"state,omitempty"`
+	Href        *string `json:"href,omitempty"`
+	Uuid        *string `json:"uuid,omitempty"`
+	Type        *string `json:"type,omitempty"`
+	Name        *string `json:"name,omitempty"`
+	Summary     *string `json:"summary,omitempty"`
+	Description *string `json:"description,omitempty"`
+	// Company Profile State
+	State                *string                        `json:"state,omitempty"`
 	Account              *CompanyProfileResponseAccount `json:"account,omitempty"`
 	Metros               []CompanyMetro                 `json:"metros,omitempty"`
 	Logo                 *CompanyLogo                   `json:"logo,omitempty"`
 	Tags                 []TagResponse                  `json:"tags,omitempty"`
 	ServiceProfiles      []CompanyServiceProfile        `json:"serviceProfiles,omitempty"`
 	PrivateServices      []PrivateService               `json:"privateServices,omitempty"`
-	Notifications        []map[string]interface{}       `json:"notifications,omitempty"`
+	PointOfContacts      []CompanyProfileContact        `json:"pointOfContacts,omitempty"`
+	Notifications        []SimplifiedNotification       `json:"notifications,omitempty"`
+	Overview             *string                        `json:"overview,omitempty"`
 	WebUrl               *string                        `json:"webUrl,omitempty"`
 	ContactUrl           *string                        `json:"contactUrl,omitempty"`
 	Change               *CompanyProfileChange          `json:"change,omitempty"`
@@ -249,19 +252,19 @@ func (o *CompanyProfileResponse) SetDescription(v string) {
 }
 
 // GetState returns the State field value if set, zero value otherwise.
-func (o *CompanyProfileResponse) GetState() map[string]interface{} {
+func (o *CompanyProfileResponse) GetState() string {
 	if o == nil || IsNil(o.State) {
-		var ret map[string]interface{}
+		var ret string
 		return ret
 	}
-	return o.State
+	return *o.State
 }
 
 // GetStateOk returns a tuple with the State field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CompanyProfileResponse) GetStateOk() (map[string]interface{}, bool) {
+func (o *CompanyProfileResponse) GetStateOk() (*string, bool) {
 	if o == nil || IsNil(o.State) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
 	return o.State, true
 }
@@ -275,9 +278,9 @@ func (o *CompanyProfileResponse) HasState() bool {
 	return false
 }
 
-// SetState gets a reference to the given map[string]interface{} and assigns it to the State field.
-func (o *CompanyProfileResponse) SetState(v map[string]interface{}) {
-	o.State = v
+// SetState gets a reference to the given string and assigns it to the State field.
+func (o *CompanyProfileResponse) SetState(v string) {
+	o.State = &v
 }
 
 // GetAccount returns the Account field value if set, zero value otherwise.
@@ -472,10 +475,42 @@ func (o *CompanyProfileResponse) SetPrivateServices(v []PrivateService) {
 	o.PrivateServices = v
 }
 
+// GetPointOfContacts returns the PointOfContacts field value if set, zero value otherwise.
+func (o *CompanyProfileResponse) GetPointOfContacts() []CompanyProfileContact {
+	if o == nil || IsNil(o.PointOfContacts) {
+		var ret []CompanyProfileContact
+		return ret
+	}
+	return o.PointOfContacts
+}
+
+// GetPointOfContactsOk returns a tuple with the PointOfContacts field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CompanyProfileResponse) GetPointOfContactsOk() ([]CompanyProfileContact, bool) {
+	if o == nil || IsNil(o.PointOfContacts) {
+		return nil, false
+	}
+	return o.PointOfContacts, true
+}
+
+// HasPointOfContacts returns a boolean if a field has been set.
+func (o *CompanyProfileResponse) HasPointOfContacts() bool {
+	if o != nil && !IsNil(o.PointOfContacts) {
+		return true
+	}
+
+	return false
+}
+
+// SetPointOfContacts gets a reference to the given []CompanyProfileContact and assigns it to the PointOfContacts field.
+func (o *CompanyProfileResponse) SetPointOfContacts(v []CompanyProfileContact) {
+	o.PointOfContacts = v
+}
+
 // GetNotifications returns the Notifications field value if set, zero value otherwise.
-func (o *CompanyProfileResponse) GetNotifications() []map[string]interface{} {
+func (o *CompanyProfileResponse) GetNotifications() []SimplifiedNotification {
 	if o == nil || IsNil(o.Notifications) {
-		var ret []map[string]interface{}
+		var ret []SimplifiedNotification
 		return ret
 	}
 	return o.Notifications
@@ -483,7 +518,7 @@ func (o *CompanyProfileResponse) GetNotifications() []map[string]interface{} {
 
 // GetNotificationsOk returns a tuple with the Notifications field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CompanyProfileResponse) GetNotificationsOk() ([]map[string]interface{}, bool) {
+func (o *CompanyProfileResponse) GetNotificationsOk() ([]SimplifiedNotification, bool) {
 	if o == nil || IsNil(o.Notifications) {
 		return nil, false
 	}
@@ -499,9 +534,41 @@ func (o *CompanyProfileResponse) HasNotifications() bool {
 	return false
 }
 
-// SetNotifications gets a reference to the given []map[string]interface{} and assigns it to the Notifications field.
-func (o *CompanyProfileResponse) SetNotifications(v []map[string]interface{}) {
+// SetNotifications gets a reference to the given []SimplifiedNotification and assigns it to the Notifications field.
+func (o *CompanyProfileResponse) SetNotifications(v []SimplifiedNotification) {
 	o.Notifications = v
+}
+
+// GetOverview returns the Overview field value if set, zero value otherwise.
+func (o *CompanyProfileResponse) GetOverview() string {
+	if o == nil || IsNil(o.Overview) {
+		var ret string
+		return ret
+	}
+	return *o.Overview
+}
+
+// GetOverviewOk returns a tuple with the Overview field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CompanyProfileResponse) GetOverviewOk() (*string, bool) {
+	if o == nil || IsNil(o.Overview) {
+		return nil, false
+	}
+	return o.Overview, true
+}
+
+// HasOverview returns a boolean if a field has been set.
+func (o *CompanyProfileResponse) HasOverview() bool {
+	if o != nil && !IsNil(o.Overview) {
+		return true
+	}
+
+	return false
+}
+
+// SetOverview gets a reference to the given string and assigns it to the Overview field.
+func (o *CompanyProfileResponse) SetOverview(v string) {
+	o.Overview = &v
 }
 
 // GetWebUrl returns the WebUrl field value if set, zero value otherwise.
@@ -681,8 +748,14 @@ func (o CompanyProfileResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.PrivateServices) {
 		toSerialize["privateServices"] = o.PrivateServices
 	}
+	if !IsNil(o.PointOfContacts) {
+		toSerialize["pointOfContacts"] = o.PointOfContacts
+	}
 	if !IsNil(o.Notifications) {
 		toSerialize["notifications"] = o.Notifications
+	}
+	if !IsNil(o.Overview) {
+		toSerialize["overview"] = o.Overview
 	}
 	if !IsNil(o.WebUrl) {
 		toSerialize["webUrl"] = o.WebUrl
@@ -731,7 +804,9 @@ func (o *CompanyProfileResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "tags")
 		delete(additionalProperties, "serviceProfiles")
 		delete(additionalProperties, "privateServices")
+		delete(additionalProperties, "pointOfContacts")
 		delete(additionalProperties, "notifications")
+		delete(additionalProperties, "overview")
 		delete(additionalProperties, "webUrl")
 		delete(additionalProperties, "contactUrl")
 		delete(additionalProperties, "change")

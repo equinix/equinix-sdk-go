@@ -12,7 +12,7 @@ import (
 	"fmt"
 )
 
-// IpBlockOwnership IpBlockOwnership of the Ip Block
+// IpBlockOwnership IpBlockOwnership of the IP Block
 type IpBlockOwnership string
 
 // List of IpBlockOwnership

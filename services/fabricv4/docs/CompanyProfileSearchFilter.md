@@ -4,17 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**And** | Pointer to [**[]CompanyProfileSearchFilter**](CompanyProfileSearchFilter.md) |  | [optional] 
-**Or** | Pointer to [**[]CompanyProfileSearchFilter**](CompanyProfileSearchFilter.md) |  | [optional] 
-**Property** | Pointer to **string** | Searchable field names in company profile | [optional] 
-**Operator** | Pointer to **string** | Comparison operators for filtering | [optional] 
-**Values** | Pointer to **[]string** | Values to compare against | [optional] 
+**Property** | [**CompanyProfileSearchFieldName**](CompanyProfileSearchFieldName.md) | Searchable field name. Properties are grouped by their supported operators: String properties (support all operators):  * &#x60;/name&#x60; - Company profile name  * &#x60;/uuid&#x60; - Company profile UUID  * &#x60;/tags/name&#x60; - Tag name  * &#x60;/tags/uuid&#x60; - Tag UUID  * &#x60;/tags/displayName&#x60; - Tag display name  Discrete value properties (only support &#x60;&#x3D;&#x60;, &#x60;!&#x3D;&#x60;, &#x60;IN&#x60;, &#x60;NOT IN&#x60;):  * &#x60;/state&#x60; - Company profile state (&#x60;PENDING&#x60;, &#x60;PROVISIONED&#x60;, &#x60;DEPROVISIONED&#x60;, &#x60;REJECTED&#x60;)  * &#x60;/metros/metroCode&#x60; - Metro code (e.g. &#x60;SV&#x60;, &#x60;NY&#x60;, &#x60;DC&#x60;)  * &#x60;/change/status&#x60; - Change status (&#x60;PENDING&#x60;, &#x60;COMPLETED&#x60;, &#x60;REJECTED&#x60;) — seller and admin users only  | 
+**Operator** | [**OperatorEnum**](OperatorEnum.md) | Comparison operator. &#x60;LIKE&#x60;, &#x60;NOT LIKE&#x60;, &#x60;ILIKE&#x60;, and &#x60;NOT ILIKE&#x60; require exactly one value. All other operators accept one or more values.  * &#x60;&#x3D;&#x60; - equal; equivalent to &#x60;IN&#x60; when multiple values are provided  * &#x60;!&#x3D;&#x60; - not equal; equivalent to &#x60;NOT IN&#x60; when multiple values are provided  * &#x60;LIKE&#x60; - case-sensitive partial match (single value)  * &#x60;NOT LIKE&#x60; - case-sensitive partial non-match (single value)  * &#x60;ILIKE&#x60; - case-insensitive partial match (single value)  * &#x60;NOT ILIKE&#x60; - case-insensitive partial non-match (single value)  * &#x60;IN&#x60; - matches any of the provided values  * &#x60;NOT IN&#x60; - does not match any of the provided values  | 
+**Values** | **[]string** |  | 
+**Or** | [**[]CompanyProfileSearchSimpleExpression**](CompanyProfileSearchSimpleExpression.md) |  | 
 
 ## Methods
 
 ### NewCompanyProfileSearchFilter
 
-`func NewCompanyProfileSearchFilter() *CompanyProfileSearchFilter`
+`func NewCompanyProfileSearchFilter(property CompanyProfileSearchFieldName, operator OperatorEnum, values []string, or []CompanyProfileSearchSimpleExpression, ) *CompanyProfileSearchFilter`
 
 NewCompanyProfileSearchFilter instantiates a new CompanyProfileSearchFilter object
 This constructor will assign default values to properties that have it defined,
@@ -29,105 +28,45 @@ NewCompanyProfileSearchFilterWithDefaults instantiates a new CompanyProfileSearc
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetAnd
-
-`func (o *CompanyProfileSearchFilter) GetAnd() []CompanyProfileSearchFilter`
-
-GetAnd returns the And field if non-nil, zero value otherwise.
-
-### GetAndOk
-
-`func (o *CompanyProfileSearchFilter) GetAndOk() (*[]CompanyProfileSearchFilter, bool)`
-
-GetAndOk returns a tuple with the And field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAnd
-
-`func (o *CompanyProfileSearchFilter) SetAnd(v []CompanyProfileSearchFilter)`
-
-SetAnd sets And field to given value.
-
-### HasAnd
-
-`func (o *CompanyProfileSearchFilter) HasAnd() bool`
-
-HasAnd returns a boolean if a field has been set.
-
-### GetOr
-
-`func (o *CompanyProfileSearchFilter) GetOr() []CompanyProfileSearchFilter`
-
-GetOr returns the Or field if non-nil, zero value otherwise.
-
-### GetOrOk
-
-`func (o *CompanyProfileSearchFilter) GetOrOk() (*[]CompanyProfileSearchFilter, bool)`
-
-GetOrOk returns a tuple with the Or field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetOr
-
-`func (o *CompanyProfileSearchFilter) SetOr(v []CompanyProfileSearchFilter)`
-
-SetOr sets Or field to given value.
-
-### HasOr
-
-`func (o *CompanyProfileSearchFilter) HasOr() bool`
-
-HasOr returns a boolean if a field has been set.
-
 ### GetProperty
 
-`func (o *CompanyProfileSearchFilter) GetProperty() string`
+`func (o *CompanyProfileSearchFilter) GetProperty() CompanyProfileSearchFieldName`
 
 GetProperty returns the Property field if non-nil, zero value otherwise.
 
 ### GetPropertyOk
 
-`func (o *CompanyProfileSearchFilter) GetPropertyOk() (*string, bool)`
+`func (o *CompanyProfileSearchFilter) GetPropertyOk() (*CompanyProfileSearchFieldName, bool)`
 
 GetPropertyOk returns a tuple with the Property field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetProperty
 
-`func (o *CompanyProfileSearchFilter) SetProperty(v string)`
+`func (o *CompanyProfileSearchFilter) SetProperty(v CompanyProfileSearchFieldName)`
 
 SetProperty sets Property field to given value.
 
-### HasProperty
-
-`func (o *CompanyProfileSearchFilter) HasProperty() bool`
-
-HasProperty returns a boolean if a field has been set.
 
 ### GetOperator
 
-`func (o *CompanyProfileSearchFilter) GetOperator() string`
+`func (o *CompanyProfileSearchFilter) GetOperator() OperatorEnum`
 
 GetOperator returns the Operator field if non-nil, zero value otherwise.
 
 ### GetOperatorOk
 
-`func (o *CompanyProfileSearchFilter) GetOperatorOk() (*string, bool)`
+`func (o *CompanyProfileSearchFilter) GetOperatorOk() (*OperatorEnum, bool)`
 
 GetOperatorOk returns a tuple with the Operator field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOperator
 
-`func (o *CompanyProfileSearchFilter) SetOperator(v string)`
+`func (o *CompanyProfileSearchFilter) SetOperator(v OperatorEnum)`
 
 SetOperator sets Operator field to given value.
 
-### HasOperator
-
-`func (o *CompanyProfileSearchFilter) HasOperator() bool`
-
-HasOperator returns a boolean if a field has been set.
 
 ### GetValues
 
@@ -148,11 +87,26 @@ and a boolean to check if the value has been set.
 
 SetValues sets Values field to given value.
 
-### HasValues
 
-`func (o *CompanyProfileSearchFilter) HasValues() bool`
+### GetOr
 
-HasValues returns a boolean if a field has been set.
+`func (o *CompanyProfileSearchFilter) GetOr() []CompanyProfileSearchSimpleExpression`
+
+GetOr returns the Or field if non-nil, zero value otherwise.
+
+### GetOrOk
+
+`func (o *CompanyProfileSearchFilter) GetOrOk() (*[]CompanyProfileSearchSimpleExpression, bool)`
+
+GetOrOk returns a tuple with the Or field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOr
+
+`func (o *CompanyProfileSearchFilter) SetOr(v []CompanyProfileSearchSimpleExpression)`
+
+SetOr sets Or field to given value.
+
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -596,7 +596,7 @@ Name | Type | Description  | Notes
 
 ## GetCloudRouterByUuid
 
-> CloudRouter GetCloudRouterByUuid(ctx, routerId).Execute()
+> CloudRouterReadResponse GetCloudRouterByUuid(ctx, routerId).Execute()
 
 Get Routers
 
@@ -624,7 +624,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `CloudRoutersApi.GetCloudRouterByUuid``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetCloudRouterByUuid`: CloudRouter
+	// response from `GetCloudRouterByUuid`: CloudRouterReadResponse
 	fmt.Fprintf(os.Stdout, "Response from `CloudRoutersApi.GetCloudRouterByUuid`: %v\n", resp)
 }
 ```
@@ -648,7 +648,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CloudRouter**](CloudRouter.md)
+[**CloudRouterReadResponse**](CloudRouterReadResponse.md)
 
 ### Authorization
 

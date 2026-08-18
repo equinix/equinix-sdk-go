@@ -9,7 +9,9 @@ Name | Type | Description | Notes
 **Type** | Pointer to **string** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **DisplayName** | Pointer to **string** |  | [optional] 
-**Weight** | Pointer to **int32** |  | [optional] 
+**State** | Pointer to [**TagResponseState**](TagResponseState.md) |  | [optional] 
+**Notifications** | Pointer to [**[]SimplifiedNotification**](SimplifiedNotification.md) |  | [optional] 
+**ChangeLog** | Pointer to [**Changelog**](Changelog.md) |  | [optional] 
 
 ## Methods
 
@@ -155,30 +157,80 @@ SetDisplayName sets DisplayName field to given value.
 
 HasDisplayName returns a boolean if a field has been set.
 
-### GetWeight
+### GetState
 
-`func (o *TagResponse) GetWeight() int32`
+`func (o *TagResponse) GetState() TagResponseState`
 
-GetWeight returns the Weight field if non-nil, zero value otherwise.
+GetState returns the State field if non-nil, zero value otherwise.
 
-### GetWeightOk
+### GetStateOk
 
-`func (o *TagResponse) GetWeightOk() (*int32, bool)`
+`func (o *TagResponse) GetStateOk() (*TagResponseState, bool)`
 
-GetWeightOk returns a tuple with the Weight field if it's non-nil, zero value otherwise
+GetStateOk returns a tuple with the State field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetWeight
+### SetState
 
-`func (o *TagResponse) SetWeight(v int32)`
+`func (o *TagResponse) SetState(v TagResponseState)`
 
-SetWeight sets Weight field to given value.
+SetState sets State field to given value.
 
-### HasWeight
+### HasState
 
-`func (o *TagResponse) HasWeight() bool`
+`func (o *TagResponse) HasState() bool`
 
-HasWeight returns a boolean if a field has been set.
+HasState returns a boolean if a field has been set.
+
+### GetNotifications
+
+`func (o *TagResponse) GetNotifications() []SimplifiedNotification`
+
+GetNotifications returns the Notifications field if non-nil, zero value otherwise.
+
+### GetNotificationsOk
+
+`func (o *TagResponse) GetNotificationsOk() (*[]SimplifiedNotification, bool)`
+
+GetNotificationsOk returns a tuple with the Notifications field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNotifications
+
+`func (o *TagResponse) SetNotifications(v []SimplifiedNotification)`
+
+SetNotifications sets Notifications field to given value.
+
+### HasNotifications
+
+`func (o *TagResponse) HasNotifications() bool`
+
+HasNotifications returns a boolean if a field has been set.
+
+### GetChangeLog
+
+`func (o *TagResponse) GetChangeLog() Changelog`
+
+GetChangeLog returns the ChangeLog field if non-nil, zero value otherwise.
+
+### GetChangeLogOk
+
+`func (o *TagResponse) GetChangeLogOk() (*Changelog, bool)`
+
+GetChangeLogOk returns a tuple with the ChangeLog field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetChangeLog
+
+`func (o *TagResponse) SetChangeLog(v Changelog)`
+
+SetChangeLog sets ChangeLog field to given value.
+
+### HasChangeLog
+
+`func (o *TagResponse) HasChangeLog() bool`
+
+HasChangeLog returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

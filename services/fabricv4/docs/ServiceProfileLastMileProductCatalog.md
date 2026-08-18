@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** | Last-mile provider or catalog name. | [optional] 
+**Id** | Pointer to **string** | Last-mile provider or catalog identifier. | [optional] 
 **WebUrl** | Pointer to **string** | Last-mile catalog or provider website URL. | [optional] 
 **DeliveryDate** | Pointer to [**ServiceProfileLastMileDeliveryDateRange**](ServiceProfileLastMileDeliveryDateRange.md) |  | [optional] 
 **Offerings** | Pointer to [**[]ServiceProfileLastMileOffering**](ServiceProfileLastMileOffering.md) | Available last-mile offerings. | [optional] 
@@ -52,6 +53,31 @@ SetName sets Name field to given value.
 `func (o *ServiceProfileLastMileProductCatalog) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+
+### GetId
+
+`func (o *ServiceProfileLastMileProductCatalog) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *ServiceProfileLastMileProductCatalog) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *ServiceProfileLastMileProductCatalog) SetId(v string)`
+
+SetId sets Id field to given value.
+
+### HasId
+
+`func (o *ServiceProfileLastMileProductCatalog) HasId() bool`
+
+HasId returns a boolean if a field has been set.
 
 ### GetWebUrl
 

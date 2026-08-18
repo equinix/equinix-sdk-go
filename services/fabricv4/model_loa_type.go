@@ -12,19 +12,21 @@ import (
 	"fmt"
 )
 
-// LoaType Loa Type
+// LoaType Type of Letter of Authorization
 type LoaType string
 
 // List of LoaType
 const (
-	LOATYPE_PATCH_PANEL_PORT_LOA LoaType = "PATCH_PANEL_PORT_LOA"
 	LOATYPE_CAGE_LOA             LoaType = "CAGE_LOA"
+	LOATYPE_PATCH_PANEL_LOA      LoaType = "PATCH_PANEL_LOA"
+	LOATYPE_PATCH_PANEL_PORT_LOA LoaType = "PATCH_PANEL_PORT_LOA"
 )
 
 // All allowed values of LoaType enum
 var AllowedLoaTypeEnumValues = []LoaType{
-	"PATCH_PANEL_PORT_LOA",
 	"CAGE_LOA",
+	"PATCH_PANEL_LOA",
+	"PATCH_PANEL_PORT_LOA",
 }
 
 func (v *LoaType) UnmarshalJSON(src []byte) error {

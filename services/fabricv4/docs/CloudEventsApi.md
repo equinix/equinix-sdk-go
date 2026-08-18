@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**GetCloudEvent**](CloudEventsApi.md#GetCloudEvent) | **Get** /fabric/v4/cloudevents/{cloudEventId} | Get Cloud Event
 [**GetCloudEventByAssetId**](CloudEventsApi.md#GetCloudEventByAssetId) | **Get** /fabric/v4/{asset}/{assetId}/cloudevents | Get Cloud Events by Asset Id
 [**SearchCloudEvents**](CloudEventsApi.md#SearchCloudEvents) | **Post** /fabric/v4/cloudevents/search | Search Cloud Events
+[**SearchLastOpEvents**](CloudEventsApi.md#SearchLastOpEvents) | **Post** /fabric/v4/latestOperationalEvents/search | Search Last Operational Cloud Events
 
 
 
@@ -213,6 +214,72 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**GetCloudEventsByAssetResponse**](GetCloudEventsByAssetResponse.md)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SearchLastOpEvents
+
+> SearchOperationalEventResponse SearchLastOpEvents(ctx).OperationalEventSearchRequest(operationalEventSearchRequest).Execute()
+
+Search Last Operational Cloud Events
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/equinix/equinix-sdk-go/services/fabricv4"
+)
+
+func main() {
+	operationalEventSearchRequest := *openapiclient.NewOperationalEventSearchRequest() // OperationalEventSearchRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CloudEventsApi.SearchLastOpEvents(context.Background()).OperationalEventSearchRequest(operationalEventSearchRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CloudEventsApi.SearchLastOpEvents``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `SearchLastOpEvents`: SearchOperationalEventResponse
+	fmt.Fprintf(os.Stdout, "Response from `CloudEventsApi.SearchLastOpEvents`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSearchLastOpEventsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **operationalEventSearchRequest** | [**OperationalEventSearchRequest**](OperationalEventSearchRequest.md) |  | 
+
+### Return type
+
+[**SearchOperationalEventResponse**](SearchOperationalEventResponse.md)
 
 ### Authorization
 

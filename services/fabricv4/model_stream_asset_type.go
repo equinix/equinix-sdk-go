@@ -25,6 +25,11 @@ const (
 	STREAMASSETTYPE_XF_ROUTER    StreamAssetType = "XF_ROUTER"
 	STREAMASSETTYPE_ORGANIZATION StreamAssetType = "ORGANIZATION"
 	STREAMASSETTYPE_PROJECT      StreamAssetType = "PROJECT"
+	STREAMASSETTYPE_DATA         StreamAssetType = "DATA"
+	STREAMASSETTYPE_MGMT         StreamAssetType = "MGMT"
+	STREAMASSETTYPE_SSH          StreamAssetType = "SSH"
+	STREAMASSETTYPE_FAB          StreamAssetType = "FAB"
+	STREAMASSETTYPE_CTRL         StreamAssetType = "CTRL"
 )
 
 // All allowed values of StreamAssetType enum
@@ -37,6 +42,11 @@ var AllowedStreamAssetTypeEnumValues = []StreamAssetType{
 	"XF_ROUTER",
 	"ORGANIZATION",
 	"PROJECT",
+	"DATA",
+	"MGMT",
+	"SSH",
+	"FAB",
+	"CTRL",
 }
 
 func (v *StreamAssetType) UnmarshalJSON(src []byte) error {

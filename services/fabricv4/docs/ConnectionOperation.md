@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **OperationalStatus** | Pointer to [**ConnectionOperationOperationalStatus**](ConnectionOperationOperationalStatus.md) |  | [optional] 
 **Errors** | Pointer to [**[]Error**](Error.md) |  | [optional] 
 **OpStatusChangedAt** | Pointer to **time.Time** | When connection transitioned into current operational status | [optional] 
+**MaintenanceStatus** | Pointer to [**MaintenanceState**](MaintenanceState.md) |  | [optional] 
 
 ## Methods
 
@@ -153,6 +154,31 @@ SetOpStatusChangedAt sets OpStatusChangedAt field to given value.
 `func (o *ConnectionOperation) HasOpStatusChangedAt() bool`
 
 HasOpStatusChangedAt returns a boolean if a field has been set.
+
+### GetMaintenanceStatus
+
+`func (o *ConnectionOperation) GetMaintenanceStatus() MaintenanceState`
+
+GetMaintenanceStatus returns the MaintenanceStatus field if non-nil, zero value otherwise.
+
+### GetMaintenanceStatusOk
+
+`func (o *ConnectionOperation) GetMaintenanceStatusOk() (*MaintenanceState, bool)`
+
+GetMaintenanceStatusOk returns a tuple with the MaintenanceStatus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMaintenanceStatus
+
+`func (o *ConnectionOperation) SetMaintenanceStatus(v MaintenanceState)`
+
+SetMaintenanceStatus sets MaintenanceStatus field to given value.
+
+### HasMaintenanceStatus
+
+`func (o *ConnectionOperation) HasMaintenanceStatus() bool`
+
+HasMaintenanceStatus returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

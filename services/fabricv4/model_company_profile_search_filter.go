@@ -9,259 +9,123 @@ package fabricv4
 
 import (
 	"encoding/json"
+	"fmt"
+	"gopkg.in/validator.v2"
 )
 
-// checks if the CompanyProfileSearchFilter type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CompanyProfileSearchFilter{}
-
-// CompanyProfileSearchFilter struct for CompanyProfileSearchFilter
+// CompanyProfileSearchFilter - struct for CompanyProfileSearchFilter
 type CompanyProfileSearchFilter struct {
-	And []CompanyProfileSearchFilter `json:"and,omitempty"`
-	Or  []CompanyProfileSearchFilter `json:"or,omitempty"`
-	// Searchable field names in company profile
-	Property *string `json:"property,omitempty"`
-	// Comparison operators for filtering
-	Operator *string `json:"operator,omitempty"`
-	// Values to compare against
-	Values               []string `json:"values,omitempty"`
-	AdditionalProperties map[string]interface{}
+	CompanyProfileSearchOrFilter         *CompanyProfileSearchOrFilter
+	CompanyProfileSearchSimpleExpression *CompanyProfileSearchSimpleExpression
 }
 
-type _CompanyProfileSearchFilter CompanyProfileSearchFilter
-
-// NewCompanyProfileSearchFilter instantiates a new CompanyProfileSearchFilter object
-// This constructor will assign default values to properties that have it defined,
-// and makes sure properties required by API are set, but the set of arguments
-// will change when the set of required properties is changed
-func NewCompanyProfileSearchFilter() *CompanyProfileSearchFilter {
-	this := CompanyProfileSearchFilter{}
-	return &this
-}
-
-// NewCompanyProfileSearchFilterWithDefaults instantiates a new CompanyProfileSearchFilter object
-// This constructor will only assign default values to properties that have it defined,
-// but it doesn't guarantee that properties required by API are set
-func NewCompanyProfileSearchFilterWithDefaults() *CompanyProfileSearchFilter {
-	this := CompanyProfileSearchFilter{}
-	return &this
-}
-
-// GetAnd returns the And field value if set, zero value otherwise.
-func (o *CompanyProfileSearchFilter) GetAnd() []CompanyProfileSearchFilter {
-	if o == nil || IsNil(o.And) {
-		var ret []CompanyProfileSearchFilter
-		return ret
+// CompanyProfileSearchOrFilterAsCompanyProfileSearchFilter is a convenience function that returns CompanyProfileSearchOrFilter wrapped in CompanyProfileSearchFilter
+func CompanyProfileSearchOrFilterAsCompanyProfileSearchFilter(v *CompanyProfileSearchOrFilter) CompanyProfileSearchFilter {
+	return CompanyProfileSearchFilter{
+		CompanyProfileSearchOrFilter: v,
 	}
-	return o.And
 }
 
-// GetAndOk returns a tuple with the And field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CompanyProfileSearchFilter) GetAndOk() ([]CompanyProfileSearchFilter, bool) {
-	if o == nil || IsNil(o.And) {
-		return nil, false
+// CompanyProfileSearchSimpleExpressionAsCompanyProfileSearchFilter is a convenience function that returns CompanyProfileSearchSimpleExpression wrapped in CompanyProfileSearchFilter
+func CompanyProfileSearchSimpleExpressionAsCompanyProfileSearchFilter(v *CompanyProfileSearchSimpleExpression) CompanyProfileSearchFilter {
+	return CompanyProfileSearchFilter{
+		CompanyProfileSearchSimpleExpression: v,
 	}
-	return o.And, true
 }
 
-// HasAnd returns a boolean if a field has been set.
-func (o *CompanyProfileSearchFilter) HasAnd() bool {
-	if o != nil && !IsNil(o.And) {
-		return true
+// Unmarshal JSON data into one of the pointers in the struct
+func (dst *CompanyProfileSearchFilter) UnmarshalJSON(data []byte) error {
+	var err error
+	match := 0
+	// try to unmarshal data into CompanyProfileSearchOrFilter
+	err = newStrictDecoder(data).Decode(&dst.CompanyProfileSearchOrFilter)
+	if err == nil {
+		jsonCompanyProfileSearchOrFilter, _ := json.Marshal(dst.CompanyProfileSearchOrFilter)
+		if string(jsonCompanyProfileSearchOrFilter) == "{}" { // empty struct
+			dst.CompanyProfileSearchOrFilter = nil
+		} else {
+			if err = validator.Validate(dst.CompanyProfileSearchOrFilter); err != nil {
+				dst.CompanyProfileSearchOrFilter = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.CompanyProfileSearchOrFilter = nil
 	}
 
-	return false
+	// try to unmarshal data into CompanyProfileSearchSimpleExpression
+	err = newStrictDecoder(data).Decode(&dst.CompanyProfileSearchSimpleExpression)
+	if err == nil {
+		jsonCompanyProfileSearchSimpleExpression, _ := json.Marshal(dst.CompanyProfileSearchSimpleExpression)
+		if string(jsonCompanyProfileSearchSimpleExpression) == "{}" { // empty struct
+			dst.CompanyProfileSearchSimpleExpression = nil
+		} else {
+			if err = validator.Validate(dst.CompanyProfileSearchSimpleExpression); err != nil {
+				dst.CompanyProfileSearchSimpleExpression = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.CompanyProfileSearchSimpleExpression = nil
+	}
+
+	if match > 1 { // more than 1 match
+		// reset to nil
+		dst.CompanyProfileSearchOrFilter = nil
+		dst.CompanyProfileSearchSimpleExpression = nil
+
+		return fmt.Errorf("data matches more than one schema in oneOf(CompanyProfileSearchFilter)")
+	} else if match == 1 {
+		return nil // exactly one match
+	} else { // no match
+		return fmt.Errorf("data failed to match schemas in oneOf(CompanyProfileSearchFilter)")
+	}
 }
 
-// SetAnd gets a reference to the given []CompanyProfileSearchFilter and assigns it to the And field.
-func (o *CompanyProfileSearchFilter) SetAnd(v []CompanyProfileSearchFilter) {
-	o.And = v
+// Marshal data from the first non-nil pointers in the struct to JSON
+func (src CompanyProfileSearchFilter) MarshalJSON() ([]byte, error) {
+	if src.CompanyProfileSearchOrFilter != nil {
+		return json.Marshal(&src.CompanyProfileSearchOrFilter)
+	}
+
+	if src.CompanyProfileSearchSimpleExpression != nil {
+		return json.Marshal(&src.CompanyProfileSearchSimpleExpression)
+	}
+
+	return nil, nil // no data in oneOf schemas
 }
 
-// GetOr returns the Or field value if set, zero value otherwise.
-func (o *CompanyProfileSearchFilter) GetOr() []CompanyProfileSearchFilter {
-	if o == nil || IsNil(o.Or) {
-		var ret []CompanyProfileSearchFilter
-		return ret
+// Get the actual instance
+func (obj *CompanyProfileSearchFilter) GetActualInstance() interface{} {
+	if obj == nil {
+		return nil
 	}
-	return o.Or
+	if obj.CompanyProfileSearchOrFilter != nil {
+		return obj.CompanyProfileSearchOrFilter
+	}
+
+	if obj.CompanyProfileSearchSimpleExpression != nil {
+		return obj.CompanyProfileSearchSimpleExpression
+	}
+
+	// all schemas are nil
+	return nil
 }
 
-// GetOrOk returns a tuple with the Or field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CompanyProfileSearchFilter) GetOrOk() ([]CompanyProfileSearchFilter, bool) {
-	if o == nil || IsNil(o.Or) {
-		return nil, false
-	}
-	return o.Or, true
-}
-
-// HasOr returns a boolean if a field has been set.
-func (o *CompanyProfileSearchFilter) HasOr() bool {
-	if o != nil && !IsNil(o.Or) {
-		return true
+// Get the actual instance value
+func (obj CompanyProfileSearchFilter) GetActualInstanceValue() interface{} {
+	if obj.CompanyProfileSearchOrFilter != nil {
+		return *obj.CompanyProfileSearchOrFilter
 	}
 
-	return false
-}
-
-// SetOr gets a reference to the given []CompanyProfileSearchFilter and assigns it to the Or field.
-func (o *CompanyProfileSearchFilter) SetOr(v []CompanyProfileSearchFilter) {
-	o.Or = v
-}
-
-// GetProperty returns the Property field value if set, zero value otherwise.
-func (o *CompanyProfileSearchFilter) GetProperty() string {
-	if o == nil || IsNil(o.Property) {
-		var ret string
-		return ret
-	}
-	return *o.Property
-}
-
-// GetPropertyOk returns a tuple with the Property field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CompanyProfileSearchFilter) GetPropertyOk() (*string, bool) {
-	if o == nil || IsNil(o.Property) {
-		return nil, false
-	}
-	return o.Property, true
-}
-
-// HasProperty returns a boolean if a field has been set.
-func (o *CompanyProfileSearchFilter) HasProperty() bool {
-	if o != nil && !IsNil(o.Property) {
-		return true
+	if obj.CompanyProfileSearchSimpleExpression != nil {
+		return *obj.CompanyProfileSearchSimpleExpression
 	}
 
-	return false
-}
-
-// SetProperty gets a reference to the given string and assigns it to the Property field.
-func (o *CompanyProfileSearchFilter) SetProperty(v string) {
-	o.Property = &v
-}
-
-// GetOperator returns the Operator field value if set, zero value otherwise.
-func (o *CompanyProfileSearchFilter) GetOperator() string {
-	if o == nil || IsNil(o.Operator) {
-		var ret string
-		return ret
-	}
-	return *o.Operator
-}
-
-// GetOperatorOk returns a tuple with the Operator field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CompanyProfileSearchFilter) GetOperatorOk() (*string, bool) {
-	if o == nil || IsNil(o.Operator) {
-		return nil, false
-	}
-	return o.Operator, true
-}
-
-// HasOperator returns a boolean if a field has been set.
-func (o *CompanyProfileSearchFilter) HasOperator() bool {
-	if o != nil && !IsNil(o.Operator) {
-		return true
-	}
-
-	return false
-}
-
-// SetOperator gets a reference to the given string and assigns it to the Operator field.
-func (o *CompanyProfileSearchFilter) SetOperator(v string) {
-	o.Operator = &v
-}
-
-// GetValues returns the Values field value if set, zero value otherwise.
-func (o *CompanyProfileSearchFilter) GetValues() []string {
-	if o == nil || IsNil(o.Values) {
-		var ret []string
-		return ret
-	}
-	return o.Values
-}
-
-// GetValuesOk returns a tuple with the Values field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CompanyProfileSearchFilter) GetValuesOk() ([]string, bool) {
-	if o == nil || IsNil(o.Values) {
-		return nil, false
-	}
-	return o.Values, true
-}
-
-// HasValues returns a boolean if a field has been set.
-func (o *CompanyProfileSearchFilter) HasValues() bool {
-	if o != nil && !IsNil(o.Values) {
-		return true
-	}
-
-	return false
-}
-
-// SetValues gets a reference to the given []string and assigns it to the Values field.
-func (o *CompanyProfileSearchFilter) SetValues(v []string) {
-	o.Values = v
-}
-
-func (o CompanyProfileSearchFilter) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o CompanyProfileSearchFilter) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.And) {
-		toSerialize["and"] = o.And
-	}
-	if !IsNil(o.Or) {
-		toSerialize["or"] = o.Or
-	}
-	if !IsNil(o.Property) {
-		toSerialize["property"] = o.Property
-	}
-	if !IsNil(o.Operator) {
-		toSerialize["operator"] = o.Operator
-	}
-	if !IsNil(o.Values) {
-		toSerialize["values"] = o.Values
-	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
-	return toSerialize, nil
-}
-
-func (o *CompanyProfileSearchFilter) UnmarshalJSON(data []byte) (err error) {
-	varCompanyProfileSearchFilter := _CompanyProfileSearchFilter{}
-
-	err = json.Unmarshal(data, &varCompanyProfileSearchFilter)
-
-	if err != nil {
-		return err
-	}
-
-	*o = CompanyProfileSearchFilter(varCompanyProfileSearchFilter)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "and")
-		delete(additionalProperties, "or")
-		delete(additionalProperties, "property")
-		delete(additionalProperties, "operator")
-		delete(additionalProperties, "values")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
+	// all schemas are nil
+	return nil
 }
 
 type NullableCompanyProfileSearchFilter struct {

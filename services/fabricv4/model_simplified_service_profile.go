@@ -37,7 +37,7 @@ type SimplifiedServiceProfile struct {
 	VirtualDevices         []ServiceProfileAccessPointVD   `json:"virtualDevices,omitempty"`
 	// Derived response attribute.
 	Metros []ServiceMetro `json:"metros,omitempty"`
-	// Provider environments associated with this IC_PROFILE service profile.
+	// Provider environments associated with this IC_PROFILE service profile. <font color=\"red\"> <sup color='red'>Beta</sup></font>
 	Environments []ProviderEnvironment `json:"environments,omitempty"`
 	// response attribute indicates whether the profile belongs to the same organization as the api-invoker.
 	SelfProfile          *bool                         `json:"selfProfile,omitempty"`

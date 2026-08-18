@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **FgVCCount** | Pointer to **int64** | Total number of connections. | [optional] 
 **AccessVCCount** | Pointer to **int64** | Total number of connections. | [optional] 
 **OpStatusChangedAt** | Pointer to **time.Time** | Date and time at which port availability changed. | [optional] 
+**MaintenanceStatus** | Pointer to [**MaintenanceState**](MaintenanceState.md) |  | [optional] 
 
 ## Methods
 
@@ -179,6 +180,31 @@ SetOpStatusChangedAt sets OpStatusChangedAt field to given value.
 `func (o *PortOperation) HasOpStatusChangedAt() bool`
 
 HasOpStatusChangedAt returns a boolean if a field has been set.
+
+### GetMaintenanceStatus
+
+`func (o *PortOperation) GetMaintenanceStatus() MaintenanceState`
+
+GetMaintenanceStatus returns the MaintenanceStatus field if non-nil, zero value otherwise.
+
+### GetMaintenanceStatusOk
+
+`func (o *PortOperation) GetMaintenanceStatusOk() (*MaintenanceState, bool)`
+
+GetMaintenanceStatusOk returns a tuple with the MaintenanceStatus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMaintenanceStatus
+
+`func (o *PortOperation) SetMaintenanceStatus(v MaintenanceState)`
+
+SetMaintenanceStatus sets MaintenanceStatus field to given value.
+
+### HasMaintenanceStatus
+
+`func (o *PortOperation) HasMaintenanceStatus() bool`
+
+HasMaintenanceStatus returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -10,7 +10,8 @@ Method | HTTP request | Description
 [**GetStreamAssetByUuid**](StreamsApi.md#GetStreamAssetByUuid) | **Get** /fabric/v4/streams/{streamId}/{asset}/{assetId} | Get Asset
 [**GetStreamByUuid**](StreamsApi.md#GetStreamByUuid) | **Get** /fabric/v4/streams/{streamId} | Get Stream
 [**GetStreams**](StreamsApi.md#GetStreams) | **Get** /fabric/v4/streams | Get Streams
-[**GetStreamsAssets**](StreamsApi.md#GetStreamsAssets) | **Post** /fabric/v4/streamAssets/search | Get Assets
+[**SearchStreamAssets**](StreamsApi.md#SearchStreamAssets) | **Post** /fabric/v4/streamAssets/search | Search Stream Assets
+[**SearchStreams**](StreamsApi.md#SearchStreams) | **Post** /fabric/v4/streams/search | Search Streams
 [**UpdateStreamAssetByUuid**](StreamsApi.md#UpdateStreamAssetByUuid) | **Put** /fabric/v4/streams/{streamId}/{asset}/{assetId} | Attach Asset
 [**UpdateStreamByUuid**](StreamsApi.md#UpdateStreamByUuid) | **Put** /fabric/v4/streams/{streamId} | Update Stream
 
@@ -442,11 +443,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetStreamsAssets
+## SearchStreamAssets
 
-> GetAllStreamAssetResponse GetStreamsAssets(ctx).StreamAssetSearchRequest(streamAssetSearchRequest).Offset(offset).Limit(limit).Execute()
+> SearchStreamAssetResponse SearchStreamAssets(ctx).StreamAssetSearchRequest(streamAssetSearchRequest).Execute()
 
-Get Assets
+Search Stream Assets
 
 
 
@@ -463,19 +464,17 @@ import (
 )
 
 func main() {
-	streamAssetSearchRequest := *openapiclient.NewStreamAssetSearchRequest(*openapiclient.NewStreamAssetFilters()) // StreamAssetSearchRequest | 
-	offset := int32(1) // int32 | offset (optional)
-	limit := int32(10) // int32 | number of records to fetch (optional)
+	streamAssetSearchRequest := *openapiclient.NewStreamAssetSearchRequest() // StreamAssetSearchRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.StreamsApi.GetStreamsAssets(context.Background()).StreamAssetSearchRequest(streamAssetSearchRequest).Offset(offset).Limit(limit).Execute()
+	resp, r, err := apiClient.StreamsApi.SearchStreamAssets(context.Background()).StreamAssetSearchRequest(streamAssetSearchRequest).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.GetStreamsAssets``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.SearchStreamAssets``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetStreamsAssets`: GetAllStreamAssetResponse
-	fmt.Fprintf(os.Stdout, "Response from `StreamsApi.GetStreamsAssets`: %v\n", resp)
+	// response from `SearchStreamAssets`: SearchStreamAssetResponse
+	fmt.Fprintf(os.Stdout, "Response from `StreamsApi.SearchStreamAssets`: %v\n", resp)
 }
 ```
 
@@ -485,18 +484,82 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetStreamsAssetsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiSearchStreamAssetsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **streamAssetSearchRequest** | [**StreamAssetSearchRequest**](StreamAssetSearchRequest.md) |  | 
- **offset** | **int32** | offset | 
- **limit** | **int32** | number of records to fetch | 
 
 ### Return type
 
-[**GetAllStreamAssetResponse**](GetAllStreamAssetResponse.md)
+[**SearchStreamAssetResponse**](SearchStreamAssetResponse.md)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SearchStreams
+
+> SearchStreamResponse SearchStreams(ctx).StreamSearchRequest(streamSearchRequest).Execute()
+
+Search Streams
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/equinix/equinix-sdk-go/services/fabricv4"
+)
+
+func main() {
+	streamSearchRequest := *openapiclient.NewStreamSearchRequest() // StreamSearchRequest |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StreamsApi.SearchStreams(context.Background()).StreamSearchRequest(streamSearchRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.SearchStreams``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `SearchStreams`: SearchStreamResponse
+	fmt.Fprintf(os.Stdout, "Response from `StreamsApi.SearchStreams`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSearchStreamsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **streamSearchRequest** | [**StreamSearchRequest**](StreamSearchRequest.md) |  | 
+
+### Return type
+
+[**SearchStreamResponse**](SearchStreamResponse.md)
 
 ### Authorization
 

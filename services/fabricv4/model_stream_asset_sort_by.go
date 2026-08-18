@@ -17,12 +17,14 @@ type StreamAssetSortBy string
 
 // List of StreamAssetSortBy
 const (
-	STREAMASSETSORTBY_UUID StreamAssetSortBy = "/uuid"
+	STREAMASSETSORTBY_UUID        StreamAssetSortBy = "/uuid"
+	STREAMASSETSORTBY_STREAM_UUID StreamAssetSortBy = "/streamUuid"
 )
 
 // All allowed values of StreamAssetSortBy enum
 var AllowedStreamAssetSortByEnumValues = []StreamAssetSortBy{
 	"/uuid",
+	"/streamUuid",
 }
 
 func (v *StreamAssetSortBy) UnmarshalJSON(src []byte) error {

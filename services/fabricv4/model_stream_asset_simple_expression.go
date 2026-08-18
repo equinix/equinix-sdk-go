@@ -16,9 +16,9 @@ var _ MappedNullable = &StreamAssetSimpleExpression{}
 
 // StreamAssetSimpleExpression struct for StreamAssetSimpleExpression
 type StreamAssetSimpleExpression struct {
-	// Possible field names to use on filters:  * `/uuid` - Asset uuid  * `/streamUuid` - Stream uuid  * `/projectId` - Asset projectId  * `/_*` - all-category search
+	// Possible field names to use on filters:  * `/uuid` - Asset uuid (`=` and `IN` only)  * `/streamUuid` - Stream uuid (`=` and `IN` only)  * `/attachmentStatus` - Asset attachment status (`=`, `IN`, and `NOT IN`)
 	Property *string `json:"property,omitempty"`
-	// Possible operators to use on filters:  * `=` - equal  * `!=` - not equal  * `>` - greater than  * `>=` - greater than or equal to  * `<` - less than  * `<=` - less than or equal to  * `[NOT] BETWEEN` - (not) between  * `[NOT] LIKE` - (not) like  * `[NOT] IN` - (not) in  * `ILIKE` - case-insensitive like
+	// Possible operators to use on filters:  * `=` - equal  * `IN` - in  * `NOT IN` - not in
 	Operator             *string  `json:"operator,omitempty"`
 	Values               []string `json:"values,omitempty"`
 	AdditionalProperties map[string]interface{}

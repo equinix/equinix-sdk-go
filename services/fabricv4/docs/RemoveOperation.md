@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Op** | [**OpEnum**](OpEnum.md) |  | 
+**Op** | [**RemoveOperationOp**](RemoveOperationOp.md) |  | 
 **Path** | **string** | A JSON Pointer path. | 
 
 ## Methods
 
 ### NewRemoveOperation
 
-`func NewRemoveOperation(op OpEnum, path string, ) *RemoveOperation`
+`func NewRemoveOperation(op RemoveOperationOp, path string, ) *RemoveOperation`
 
 NewRemoveOperation instantiates a new RemoveOperation object
 This constructor will assign default values to properties that have it defined,
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetOp
 
-`func (o *RemoveOperation) GetOp() OpEnum`
+`func (o *RemoveOperation) GetOp() RemoveOperationOp`
 
 GetOp returns the Op field if non-nil, zero value otherwise.
 
 ### GetOpOk
 
-`func (o *RemoveOperation) GetOpOk() (*OpEnum, bool)`
+`func (o *RemoveOperation) GetOpOk() (*RemoveOperationOp, bool)`
 
 GetOpOk returns a tuple with the Op field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOp
 
-`func (o *RemoveOperation) SetOp(v OpEnum)`
+`func (o *RemoveOperation) SetOp(v RemoveOperationOp)`
 
 SetOp sets Op field to given value.
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Property** | Pointer to **string** | Property to sort by((currently supports tags with filter syntax) | [optional] 
+**Property** | Pointer to **string** | Property to sort by. Supported values:  * &#x60;/name&#x60; - Company profile name  * &#x60;/state&#x60; - Company profile state  * &#x60;/changeLog/updatedDateTime&#x60; - Date and time the profile was last updated  * &#x60;/changeLog/createdDateTime&#x60; - Date and time the profile was created  | [optional] 
 **Direction** | Pointer to [**CompanyProfileSortDirection**](CompanyProfileSortDirection.md) |  | [optional] [default to COMPANYPROFILESORTDIRECTION_ASC]
 
 ## Methods

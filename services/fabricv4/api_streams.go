@@ -995,45 +995,31 @@ func (a *StreamsApiService) GetStreamsExecute(r ApiGetStreamsRequest) (*GetAllSt
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetStreamsAssetsRequest struct {
+type ApiSearchStreamAssetsRequest struct {
 	ctx                      context.Context
 	ApiService               *StreamsApiService
 	streamAssetSearchRequest *StreamAssetSearchRequest
-	offset                   *int32
-	limit                    *int32
 }
 
-func (r ApiGetStreamsAssetsRequest) StreamAssetSearchRequest(streamAssetSearchRequest StreamAssetSearchRequest) ApiGetStreamsAssetsRequest {
+func (r ApiSearchStreamAssetsRequest) StreamAssetSearchRequest(streamAssetSearchRequest StreamAssetSearchRequest) ApiSearchStreamAssetsRequest {
 	r.streamAssetSearchRequest = &streamAssetSearchRequest
 	return r
 }
 
-// offset
-func (r ApiGetStreamsAssetsRequest) Offset(offset int32) ApiGetStreamsAssetsRequest {
-	r.offset = &offset
-	return r
-}
-
-// number of records to fetch
-func (r ApiGetStreamsAssetsRequest) Limit(limit int32) ApiGetStreamsAssetsRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiGetStreamsAssetsRequest) Execute() (*GetAllStreamAssetResponse, *http.Response, error) {
-	return r.ApiService.GetStreamsAssetsExecute(r)
+func (r ApiSearchStreamAssetsRequest) Execute() (*SearchStreamAssetResponse, *http.Response, error) {
+	return r.ApiService.SearchStreamAssetsExecute(r)
 }
 
 /*
-GetStreamsAssets Get Assets
+SearchStreamAssets Search Stream Assets
 
-This API provides capability to retrieve stream assets
+This API provides capability to search stream assets
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiGetStreamsAssetsRequest
+	@return ApiSearchStreamAssetsRequest
 */
-func (a *StreamsApiService) GetStreamsAssets(ctx context.Context) ApiGetStreamsAssetsRequest {
-	return ApiGetStreamsAssetsRequest{
+func (a *StreamsApiService) SearchStreamAssets(ctx context.Context) ApiSearchStreamAssetsRequest {
+	return ApiSearchStreamAssetsRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -1041,16 +1027,16 @@ func (a *StreamsApiService) GetStreamsAssets(ctx context.Context) ApiGetStreamsA
 
 // Execute executes the request
 //
-//	@return GetAllStreamAssetResponse
-func (a *StreamsApiService) GetStreamsAssetsExecute(r ApiGetStreamsAssetsRequest) (*GetAllStreamAssetResponse, *http.Response, error) {
+//	@return SearchStreamAssetResponse
+func (a *StreamsApiService) SearchStreamAssetsExecute(r ApiSearchStreamAssetsRequest) (*SearchStreamAssetResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *GetAllStreamAssetResponse
+		localVarReturnValue *SearchStreamAssetResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.GetStreamsAssets")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.SearchStreamAssets")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1064,12 +1050,6 @@ func (a *StreamsApiService) GetStreamsAssetsExecute(r ApiGetStreamsAssetsRequest
 		return localVarReturnValue, nil, reportError("streamAssetSearchRequest is required and must be specified")
 	}
 
-	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
-	}
-	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
 
@@ -1089,6 +1069,168 @@ func (a *StreamsApiService) GetStreamsAssetsExecute(r ApiGetStreamsAssetsRequest
 	}
 	// body params
 	localVarPostBody = r.streamAssetSearchRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v []Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v []Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v []Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v []Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v []Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiSearchStreamsRequest struct {
+	ctx                 context.Context
+	ApiService          *StreamsApiService
+	streamSearchRequest *StreamSearchRequest
+}
+
+func (r ApiSearchStreamsRequest) StreamSearchRequest(streamSearchRequest StreamSearchRequest) ApiSearchStreamsRequest {
+	r.streamSearchRequest = &streamSearchRequest
+	return r
+}
+
+func (r ApiSearchStreamsRequest) Execute() (*SearchStreamResponse, *http.Response, error) {
+	return r.ApiService.SearchStreamsExecute(r)
+}
+
+/*
+SearchStreams Search Streams
+
+This API provides capability to search streams
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSearchStreamsRequest
+*/
+func (a *StreamsApiService) SearchStreams(ctx context.Context) ApiSearchStreamsRequest {
+	return ApiSearchStreamsRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return SearchStreamResponse
+func (a *StreamsApiService) SearchStreamsExecute(r ApiSearchStreamsRequest) (*SearchStreamResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *SearchStreamResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.SearchStreams")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/fabric/v4/streams/search"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.streamSearchRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

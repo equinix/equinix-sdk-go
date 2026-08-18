@@ -18,6 +18,8 @@ var _ MappedNullable = &ServiceProfileLastMileProductCatalog{}
 type ServiceProfileLastMileProductCatalog struct {
 	// Last-mile provider or catalog name.
 	Name *string `json:"name,omitempty"`
+	// Last-mile provider or catalog identifier.
+	Id *string `json:"id,omitempty"`
 	// Last-mile catalog or provider website URL.
 	WebUrl       *string                                  `json:"webUrl,omitempty"`
 	DeliveryDate *ServiceProfileLastMileDeliveryDateRange `json:"deliveryDate,omitempty"`
@@ -75,6 +77,38 @@ func (o *ServiceProfileLastMileProductCatalog) HasName() bool {
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *ServiceProfileLastMileProductCatalog) SetName(v string) {
 	o.Name = &v
+}
+
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *ServiceProfileLastMileProductCatalog) GetId() string {
+	if o == nil || IsNil(o.Id) {
+		var ret string
+		return ret
+	}
+	return *o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ServiceProfileLastMileProductCatalog) GetIdOk() (*string, bool) {
+	if o == nil || IsNil(o.Id) {
+		return nil, false
+	}
+	return o.Id, true
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *ServiceProfileLastMileProductCatalog) HasId() bool {
+	if o != nil && !IsNil(o.Id) {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *ServiceProfileLastMileProductCatalog) SetId(v string) {
+	o.Id = &v
 }
 
 // GetWebUrl returns the WebUrl field value if set, zero value otherwise.
@@ -186,6 +220,9 @@ func (o ServiceProfileLastMileProductCatalog) ToMap() (map[string]interface{}, e
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	if !IsNil(o.WebUrl) {
 		toSerialize["webUrl"] = o.WebUrl
 	}
@@ -218,6 +255,7 @@ func (o *ServiceProfileLastMileProductCatalog) UnmarshalJSON(data []byte) (err e
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "name")
+		delete(additionalProperties, "id")
 		delete(additionalProperties, "webUrl")
 		delete(additionalProperties, "deliveryDate")
 		delete(additionalProperties, "offerings")

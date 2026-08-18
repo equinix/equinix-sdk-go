@@ -4,9 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Address** | Pointer to [**ServiceProfileLastMileAddress**](ServiceProfileLastMileAddress.md) |  | [optional] 
+**ApiIntegration** | Pointer to [**ServiceProfileLastMileApiIntegration**](ServiceProfileLastMileApiIntegration.md) |  | [optional] 
 **ProductCatalogs** | Pointer to [**[]ServiceProfileLastMileProductCatalog**](ServiceProfileLastMileProductCatalog.md) | Last-mile provider catalogs. | [optional] 
-**Notifications** | Pointer to [**[]ServiceProfileLastMileNotification**](ServiceProfileLastMileNotification.md) | Contact details for notifications related to last-mile provisioning and ordering. | [optional] 
 
 ## Methods
 
@@ -27,30 +26,30 @@ NewServiceProfileLastMileConfigWithDefaults instantiates a new ServiceProfileLas
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetAddress
+### GetApiIntegration
 
-`func (o *ServiceProfileLastMileConfig) GetAddress() ServiceProfileLastMileAddress`
+`func (o *ServiceProfileLastMileConfig) GetApiIntegration() ServiceProfileLastMileApiIntegration`
 
-GetAddress returns the Address field if non-nil, zero value otherwise.
+GetApiIntegration returns the ApiIntegration field if non-nil, zero value otherwise.
 
-### GetAddressOk
+### GetApiIntegrationOk
 
-`func (o *ServiceProfileLastMileConfig) GetAddressOk() (*ServiceProfileLastMileAddress, bool)`
+`func (o *ServiceProfileLastMileConfig) GetApiIntegrationOk() (*ServiceProfileLastMileApiIntegration, bool)`
 
-GetAddressOk returns a tuple with the Address field if it's non-nil, zero value otherwise
+GetApiIntegrationOk returns a tuple with the ApiIntegration field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAddress
+### SetApiIntegration
 
-`func (o *ServiceProfileLastMileConfig) SetAddress(v ServiceProfileLastMileAddress)`
+`func (o *ServiceProfileLastMileConfig) SetApiIntegration(v ServiceProfileLastMileApiIntegration)`
 
-SetAddress sets Address field to given value.
+SetApiIntegration sets ApiIntegration field to given value.
 
-### HasAddress
+### HasApiIntegration
 
-`func (o *ServiceProfileLastMileConfig) HasAddress() bool`
+`func (o *ServiceProfileLastMileConfig) HasApiIntegration() bool`
 
-HasAddress returns a boolean if a field has been set.
+HasApiIntegration returns a boolean if a field has been set.
 
 ### GetProductCatalogs
 
@@ -76,31 +75,6 @@ SetProductCatalogs sets ProductCatalogs field to given value.
 `func (o *ServiceProfileLastMileConfig) HasProductCatalogs() bool`
 
 HasProductCatalogs returns a boolean if a field has been set.
-
-### GetNotifications
-
-`func (o *ServiceProfileLastMileConfig) GetNotifications() []ServiceProfileLastMileNotification`
-
-GetNotifications returns the Notifications field if non-nil, zero value otherwise.
-
-### GetNotificationsOk
-
-`func (o *ServiceProfileLastMileConfig) GetNotificationsOk() (*[]ServiceProfileLastMileNotification, bool)`
-
-GetNotificationsOk returns a tuple with the Notifications field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetNotifications
-
-`func (o *ServiceProfileLastMileConfig) SetNotifications(v []ServiceProfileLastMileNotification)`
-
-SetNotifications sets Notifications field to given value.
-
-### HasNotifications
-
-`func (o *ServiceProfileLastMileConfig) HasNotifications() bool`
-
-HasNotifications returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -8,10 +8,12 @@ Method | HTTP request | Description
 [**CreateServiceProfileAction**](ServiceProfilesApi.md#CreateServiceProfileAction) | **Post** /fabric/v4/serviceProfiles/{serviceProfileId}/actions | Profile Actions
 [**DeleteServiceProfileByUuid**](ServiceProfilesApi.md#DeleteServiceProfileByUuid) | **Delete** /fabric/v4/serviceProfiles/{serviceProfileId} | Delete Profile
 [**GetServiceProfileByUuid**](ServiceProfilesApi.md#GetServiceProfileByUuid) | **Get** /fabric/v4/serviceProfiles/{serviceProfileId} | Get Profile
+[**GetServiceProfileEnvironmentsByUuid**](ServiceProfilesApi.md#GetServiceProfileEnvironmentsByUuid) | **Get** /fabric/v4/serviceProfiles/{serviceProfileId}/environments | Get Profile Environments
 [**GetServiceProfileMetrosByUuid**](ServiceProfilesApi.md#GetServiceProfileMetrosByUuid) | **Get** /fabric/v4/serviceProfiles/{serviceProfileId}/metros | Get Profile Metros
 [**GetServiceProfiles**](ServiceProfilesApi.md#GetServiceProfiles) | **Get** /fabric/v4/serviceProfiles | Get all Profiles
 [**PutServiceProfileByUuid**](ServiceProfilesApi.md#PutServiceProfileByUuid) | **Put** /fabric/v4/serviceProfiles/{serviceProfileId} | Replace Profile
 [**SearchServiceProfiles**](ServiceProfilesApi.md#SearchServiceProfiles) | **Post** /fabric/v4/serviceProfiles/search | Profile Search
+[**ServiceProfileEnvironmentAction**](ServiceProfilesApi.md#ServiceProfileEnvironmentAction) | **Post** /fabric/v4/serviceProfiles/{serviceProfileId}/environments/{environmentId}/actions | Service Profile Environment Actions
 [**UpdateServiceProfileByUuid**](ServiceProfilesApi.md#UpdateServiceProfileByUuid) | **Patch** /fabric/v4/serviceProfiles/{serviceProfileId} | Update Profile
 
 
@@ -281,6 +283,80 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ServiceProfile**](ServiceProfile.md)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json; charset=UTF-8, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetServiceProfileEnvironmentsByUuid
+
+> ProviderEnvironments GetServiceProfileEnvironmentsByUuid(ctx, serviceProfileId).Offset(offset).Limit(limit).Execute()
+
+Get Profile Environments
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/equinix/equinix-sdk-go/services/fabricv4"
+)
+
+func main() {
+	serviceProfileId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Service Profile UUID
+	offset := int32(1) // int32 | offset (optional)
+	limit := int32(10) // int32 | number of records to fetch (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ServiceProfilesApi.GetServiceProfileEnvironmentsByUuid(context.Background(), serviceProfileId).Offset(offset).Limit(limit).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ServiceProfilesApi.GetServiceProfileEnvironmentsByUuid``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetServiceProfileEnvironmentsByUuid`: ProviderEnvironments
+	fmt.Fprintf(os.Stdout, "Response from `ServiceProfilesApi.GetServiceProfileEnvironmentsByUuid`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**serviceProfileId** | **string** | Service Profile UUID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetServiceProfileEnvironmentsByUuidRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **offset** | **int32** | offset | 
+ **limit** | **int32** | number of records to fetch | 
+
+### Return type
+
+[**ProviderEnvironments**](ProviderEnvironments.md)
 
 ### Authorization
 
@@ -582,9 +658,84 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## ServiceProfileEnvironmentAction
+
+> EnvironmentActionResponse ServiceProfileEnvironmentAction(ctx, serviceProfileId, environmentId).EnvironmentActionRequest(environmentActionRequest).Execute()
+
+Service Profile Environment Actions
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/equinix/equinix-sdk-go/services/fabricv4"
+)
+
+func main() {
+	serviceProfileId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Service Profile UUID
+	environmentId := "environmentId_example" // string | Provider Environment Reference
+	environmentActionRequest := *openapiclient.NewEnvironmentActionRequest(openapiclient.EnvironmentActionTypeEnum("VALIDATE_ACTIVATION_KEY"), *openapiclient.NewActivationKeyDetails()) // EnvironmentActionRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ServiceProfilesApi.ServiceProfileEnvironmentAction(context.Background(), serviceProfileId, environmentId).EnvironmentActionRequest(environmentActionRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ServiceProfilesApi.ServiceProfileEnvironmentAction``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ServiceProfileEnvironmentAction`: EnvironmentActionResponse
+	fmt.Fprintf(os.Stdout, "Response from `ServiceProfilesApi.ServiceProfileEnvironmentAction`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**serviceProfileId** | **string** | Service Profile UUID | 
+**environmentId** | **string** | Provider Environment Reference | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiServiceProfileEnvironmentActionRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **environmentActionRequest** | [**EnvironmentActionRequest**](EnvironmentActionRequest.md) |  | 
+
+### Return type
+
+[**EnvironmentActionResponse**](EnvironmentActionResponse.md)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## UpdateServiceProfileByUuid
 
-> ServiceProfile UpdateServiceProfileByUuid(ctx, serviceProfileId).JsonPatchOperation(jsonPatchOperation).Execute()
+> ServiceProfile UpdateServiceProfileByUuid(ctx, serviceProfileId).ServiceProfileUpdateOperation(serviceProfileUpdateOperation).Execute()
 
 Update Profile
 
@@ -604,11 +755,11 @@ import (
 
 func main() {
 	serviceProfileId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Service Profile UUID
-	jsonPatchOperation := []openapiclient.JsonPatchOperation{openapiclient.JsonPatchOperation{AddOperation: openapiclient.NewAddOperation(openapiclient.OpEnum("add"), "Path_example", map[string]interface{}(123))}} // []JsonPatchOperation | 
+	serviceProfileUpdateOperation := []openapiclient.ServiceProfileUpdateOperation{openapiclient.ServiceProfileUpdateOperation{AddOperation: openapiclient.NewAddOperation(openapiclient.AddOperation_op("add"), "Path_example", map[string]interface{}(123))}} // []ServiceProfileUpdateOperation | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ServiceProfilesApi.UpdateServiceProfileByUuid(context.Background(), serviceProfileId).JsonPatchOperation(jsonPatchOperation).Execute()
+	resp, r, err := apiClient.ServiceProfilesApi.UpdateServiceProfileByUuid(context.Background(), serviceProfileId).ServiceProfileUpdateOperation(serviceProfileUpdateOperation).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ServiceProfilesApi.UpdateServiceProfileByUuid``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -634,7 +785,7 @@ Other parameters are passed through a pointer to a apiUpdateServiceProfileByUuid
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **jsonPatchOperation** | [**[]JsonPatchOperation**](JsonPatchOperation.md) |  | 
+ **serviceProfileUpdateOperation** | [**[]ServiceProfileUpdateOperation**](ServiceProfileUpdateOperation.md) |  | 
 
 ### Return type
 

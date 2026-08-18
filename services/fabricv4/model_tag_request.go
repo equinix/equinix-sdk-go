@@ -19,10 +19,9 @@ var _ MappedNullable = &TagRequest{}
 type TagRequest struct {
 	// Type of tag
 	Type string `json:"type"`
-	// Name of the Tag
-	Name string `json:"name"`
 	// Display name of the Tag
-	DisplayName          string `json:"displayName"`
+	DisplayName          string                   `json:"displayName"`
+	Notifications        []SimplifiedNotification `json:"notifications,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -32,10 +31,9 @@ type _TagRequest TagRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTagRequest(type_ string, name string, displayName string) *TagRequest {
+func NewTagRequest(type_ string, displayName string) *TagRequest {
 	this := TagRequest{}
 	this.Type = type_
-	this.Name = name
 	this.DisplayName = displayName
 	return &this
 }
@@ -72,30 +70,6 @@ func (o *TagRequest) SetType(v string) {
 	o.Type = v
 }
 
-// GetName returns the Name field value
-func (o *TagRequest) GetName() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Name
-}
-
-// GetNameOk returns a tuple with the Name field value
-// and a boolean to check if the value has been set.
-func (o *TagRequest) GetNameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Name, true
-}
-
-// SetName sets field value
-func (o *TagRequest) SetName(v string) {
-	o.Name = v
-}
-
 // GetDisplayName returns the DisplayName field value
 func (o *TagRequest) GetDisplayName() string {
 	if o == nil {
@@ -120,6 +94,38 @@ func (o *TagRequest) SetDisplayName(v string) {
 	o.DisplayName = v
 }
 
+// GetNotifications returns the Notifications field value if set, zero value otherwise.
+func (o *TagRequest) GetNotifications() []SimplifiedNotification {
+	if o == nil || IsNil(o.Notifications) {
+		var ret []SimplifiedNotification
+		return ret
+	}
+	return o.Notifications
+}
+
+// GetNotificationsOk returns a tuple with the Notifications field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TagRequest) GetNotificationsOk() ([]SimplifiedNotification, bool) {
+	if o == nil || IsNil(o.Notifications) {
+		return nil, false
+	}
+	return o.Notifications, true
+}
+
+// HasNotifications returns a boolean if a field has been set.
+func (o *TagRequest) HasNotifications() bool {
+	if o != nil && !IsNil(o.Notifications) {
+		return true
+	}
+
+	return false
+}
+
+// SetNotifications gets a reference to the given []SimplifiedNotification and assigns it to the Notifications field.
+func (o *TagRequest) SetNotifications(v []SimplifiedNotification) {
+	o.Notifications = v
+}
+
 func (o TagRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -131,8 +137,10 @@ func (o TagRequest) MarshalJSON() ([]byte, error) {
 func (o TagRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["type"] = o.Type
-	toSerialize["name"] = o.Name
 	toSerialize["displayName"] = o.DisplayName
+	if !IsNil(o.Notifications) {
+		toSerialize["notifications"] = o.Notifications
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -147,7 +155,6 @@ func (o *TagRequest) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"type",
-		"name",
 		"displayName",
 	}
 
@@ -179,8 +186,8 @@ func (o *TagRequest) UnmarshalJSON(data []byte) (err error) {
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "type")
-		delete(additionalProperties, "name")
 		delete(additionalProperties, "displayName")
+		delete(additionalProperties, "notifications")
 		o.AdditionalProperties = additionalProperties
 	}
 
