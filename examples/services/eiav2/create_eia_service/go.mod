@@ -1,6 +1,6 @@
 module github.com/equinix/equinix-sdk-go/examples/services/eiav2/create_eia_service
 
-go 1.19
+go 1.24
 
 require (
 	github.com/equinix/equinix-sdk-go v0.39.1
