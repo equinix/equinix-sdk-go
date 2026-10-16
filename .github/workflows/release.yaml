@@ -22,7 +22,7 @@ jobs:
           go-version-file: go.mod
 
       - name: Release
-        uses: cycjimmy/semantic-release-action@v4
+        uses: cycjimmy/semantic-release-action@03595b5eaf44910cf239ff20904cc52d410f97d4 # v8.1.2
         with:
           semantic_version: 19.0.5
           extra_plugins: |
