@@ -1,6 +1,6 @@
 module github.com/equinix/equinix-sdk-go/examples/services/securecabinetv1/check_availability
 
-go 1.19
+go 1.24
 
 replace github.com/equinix/equinix-sdk-go => ../../../..
 
