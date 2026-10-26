@@ -25,9 +25,11 @@ type InternetAccessRoutingProtocolBgp struct {
 	// Customer ASN. Valid range is 1-64495 or 131072-4199999999. Currently this option is only available for EIA over dedicated port.
 	// Deprecated
 	CustomerAsn *int64 `json:"customerAsn,omitempty"`
-	// BGP authentication key
-	BgpAuthKey           *string                        `json:"bgpAuthKey,omitempty"`
-	CustomerAsnRange     InternetAccessCustomerAsnRange `json:"customerAsnRange"`
+	// BGP authentication key. This field is deprecated and will be removed in future releases. Please use bgpAuthType instead to determine if a BGP authentication key is configured.
+	// Deprecated
+	BgpAuthKey           *string                         `json:"bgpAuthKey,omitempty"`
+	BgpAuthType          *InternetAccessBgpAuthType      `json:"bgpAuthType,omitempty"`
+	CustomerAsnRange     *InternetAccessCustomerAsnRange `json:"customerAsnRange,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -37,13 +39,14 @@ type _InternetAccessRoutingProtocolBgp InternetAccessRoutingProtocolBgp
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInternetAccessRoutingProtocolBgp(exportPolicy InternetAccessExportPolicy, customerAsnRange InternetAccessCustomerAsnRange, type_ InternetAccessRoutingProtocolType, customerRoutes []InternetAccessCustomerRoute, connections []InternetAccessConnection) *InternetAccessRoutingProtocolBgp {
+func NewInternetAccessRoutingProtocolBgp(exportPolicy InternetAccessExportPolicy, type_ InternetAccessRoutingProtocolType, customerRoutes []InternetAccessCustomerRoute, connections []InternetAccessConnection) *InternetAccessRoutingProtocolBgp {
 	this := InternetAccessRoutingProtocolBgp{}
 	this.Type = type_
 	this.CustomerRoutes = customerRoutes
 	this.Connections = connections
 	this.ExportPolicy = exportPolicy
-	this.CustomerAsnRange = customerAsnRange
+	var bgpAuthType InternetAccessBgpAuthType = INTERNETACCESSBGPAUTHTYPE_NONE
+	this.BgpAuthType = &bgpAuthType
 	return &this
 }
 
@@ -52,6 +55,8 @@ func NewInternetAccessRoutingProtocolBgp(exportPolicy InternetAccessExportPolicy
 // but it doesn't guarantee that properties required by API are set
 func NewInternetAccessRoutingProtocolBgpWithDefaults() *InternetAccessRoutingProtocolBgp {
 	this := InternetAccessRoutingProtocolBgp{}
+	var bgpAuthType InternetAccessBgpAuthType = INTERNETACCESSBGPAUTHTYPE_NONE
+	this.BgpAuthType = &bgpAuthType
 	return &this
 }
 
@@ -147,6 +152,7 @@ func (o *InternetAccessRoutingProtocolBgp) SetCustomerAsn(v int64) {
 }
 
 // GetBgpAuthKey returns the BgpAuthKey field value if set, zero value otherwise.
+// Deprecated
 func (o *InternetAccessRoutingProtocolBgp) GetBgpAuthKey() string {
 	if o == nil || IsNil(o.BgpAuthKey) {
 		var ret string
@@ -157,6 +163,7 @@ func (o *InternetAccessRoutingProtocolBgp) GetBgpAuthKey() string {
 
 // GetBgpAuthKeyOk returns a tuple with the BgpAuthKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *InternetAccessRoutingProtocolBgp) GetBgpAuthKeyOk() (*string, bool) {
 	if o == nil || IsNil(o.BgpAuthKey) {
 		return nil, false
@@ -174,32 +181,73 @@ func (o *InternetAccessRoutingProtocolBgp) HasBgpAuthKey() bool {
 }
 
 // SetBgpAuthKey gets a reference to the given string and assigns it to the BgpAuthKey field.
+// Deprecated
 func (o *InternetAccessRoutingProtocolBgp) SetBgpAuthKey(v string) {
 	o.BgpAuthKey = &v
 }
 
-// GetCustomerAsnRange returns the CustomerAsnRange field value
+// GetBgpAuthType returns the BgpAuthType field value if set, zero value otherwise.
+func (o *InternetAccessRoutingProtocolBgp) GetBgpAuthType() InternetAccessBgpAuthType {
+	if o == nil || IsNil(o.BgpAuthType) {
+		var ret InternetAccessBgpAuthType
+		return ret
+	}
+	return *o.BgpAuthType
+}
+
+// GetBgpAuthTypeOk returns a tuple with the BgpAuthType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *InternetAccessRoutingProtocolBgp) GetBgpAuthTypeOk() (*InternetAccessBgpAuthType, bool) {
+	if o == nil || IsNil(o.BgpAuthType) {
+		return nil, false
+	}
+	return o.BgpAuthType, true
+}
+
+// HasBgpAuthType returns a boolean if a field has been set.
+func (o *InternetAccessRoutingProtocolBgp) HasBgpAuthType() bool {
+	if o != nil && !IsNil(o.BgpAuthType) {
+		return true
+	}
+
+	return false
+}
+
+// SetBgpAuthType gets a reference to the given InternetAccessBgpAuthType and assigns it to the BgpAuthType field.
+func (o *InternetAccessRoutingProtocolBgp) SetBgpAuthType(v InternetAccessBgpAuthType) {
+	o.BgpAuthType = &v
+}
+
+// GetCustomerAsnRange returns the CustomerAsnRange field value if set, zero value otherwise.
 func (o *InternetAccessRoutingProtocolBgp) GetCustomerAsnRange() InternetAccessCustomerAsnRange {
-	if o == nil {
+	if o == nil || IsNil(o.CustomerAsnRange) {
 		var ret InternetAccessCustomerAsnRange
 		return ret
 	}
-
-	return o.CustomerAsnRange
+	return *o.CustomerAsnRange
 }
 
-// GetCustomerAsnRangeOk returns a tuple with the CustomerAsnRange field value
+// GetCustomerAsnRangeOk returns a tuple with the CustomerAsnRange field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InternetAccessRoutingProtocolBgp) GetCustomerAsnRangeOk() (*InternetAccessCustomerAsnRange, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.CustomerAsnRange) {
 		return nil, false
 	}
-	return &o.CustomerAsnRange, true
+	return o.CustomerAsnRange, true
 }
 
-// SetCustomerAsnRange sets field value
+// HasCustomerAsnRange returns a boolean if a field has been set.
+func (o *InternetAccessRoutingProtocolBgp) HasCustomerAsnRange() bool {
+	if o != nil && !IsNil(o.CustomerAsnRange) {
+		return true
+	}
+
+	return false
+}
+
+// SetCustomerAsnRange gets a reference to the given InternetAccessCustomerAsnRange and assigns it to the CustomerAsnRange field.
 func (o *InternetAccessRoutingProtocolBgp) SetCustomerAsnRange(v InternetAccessCustomerAsnRange) {
-	o.CustomerAsnRange = v
+	o.CustomerAsnRange = &v
 }
 
 func (o InternetAccessRoutingProtocolBgp) MarshalJSON() ([]byte, error) {
@@ -230,7 +278,12 @@ func (o InternetAccessRoutingProtocolBgp) ToMap() (map[string]interface{}, error
 	if !IsNil(o.BgpAuthKey) {
 		toSerialize["bgpAuthKey"] = o.BgpAuthKey
 	}
-	toSerialize["customerAsnRange"] = o.CustomerAsnRange
+	if !IsNil(o.BgpAuthType) {
+		toSerialize["bgpAuthType"] = o.BgpAuthType
+	}
+	if !IsNil(o.CustomerAsnRange) {
+		toSerialize["customerAsnRange"] = o.CustomerAsnRange
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -245,7 +298,6 @@ func (o *InternetAccessRoutingProtocolBgp) UnmarshalJSON(data []byte) (err error
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"exportPolicy",
-		"customerAsnRange",
 		"type",
 		"customerRoutes",
 		"connections",
@@ -271,9 +323,11 @@ func (o *InternetAccessRoutingProtocolBgp) UnmarshalJSON(data []byte) (err error
 		// Customer ASN. Valid range is 1-64495 or 131072-4199999999. Currently this option is only available for EIA over dedicated port.
 		// Deprecated
 		CustomerAsn *int64 `json:"customerAsn,omitempty"`
-		// BGP authentication key
-		BgpAuthKey       *string                        `json:"bgpAuthKey,omitempty"`
-		CustomerAsnRange InternetAccessCustomerAsnRange `json:"customerAsnRange"`
+		// BGP authentication key. This field is deprecated and will be removed in future releases. Please use bgpAuthType instead to determine if a BGP authentication key is configured.
+		// Deprecated
+		BgpAuthKey       *string                         `json:"bgpAuthKey,omitempty"`
+		BgpAuthType      *InternetAccessBgpAuthType      `json:"bgpAuthType,omitempty"`
+		CustomerAsnRange *InternetAccessCustomerAsnRange `json:"customerAsnRange,omitempty"`
 	}
 
 	varInternetAccessRoutingProtocolBgpWithoutEmbeddedStruct := InternetAccessRoutingProtocolBgpWithoutEmbeddedStruct{}
@@ -285,6 +339,7 @@ func (o *InternetAccessRoutingProtocolBgp) UnmarshalJSON(data []byte) (err error
 		varInternetAccessRoutingProtocolBgp.Asn = varInternetAccessRoutingProtocolBgpWithoutEmbeddedStruct.Asn
 		varInternetAccessRoutingProtocolBgp.CustomerAsn = varInternetAccessRoutingProtocolBgpWithoutEmbeddedStruct.CustomerAsn
 		varInternetAccessRoutingProtocolBgp.BgpAuthKey = varInternetAccessRoutingProtocolBgpWithoutEmbeddedStruct.BgpAuthKey
+		varInternetAccessRoutingProtocolBgp.BgpAuthType = varInternetAccessRoutingProtocolBgpWithoutEmbeddedStruct.BgpAuthType
 		varInternetAccessRoutingProtocolBgp.CustomerAsnRange = varInternetAccessRoutingProtocolBgpWithoutEmbeddedStruct.CustomerAsnRange
 		*o = InternetAccessRoutingProtocolBgp(varInternetAccessRoutingProtocolBgp)
 	} else {
@@ -307,6 +362,7 @@ func (o *InternetAccessRoutingProtocolBgp) UnmarshalJSON(data []byte) (err error
 		delete(additionalProperties, "asn")
 		delete(additionalProperties, "customerAsn")
 		delete(additionalProperties, "bgpAuthKey")
+		delete(additionalProperties, "bgpAuthType")
 		delete(additionalProperties, "customerAsnRange")
 
 		// remove fields from embedded structs

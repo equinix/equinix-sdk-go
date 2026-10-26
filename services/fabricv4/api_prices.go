@@ -34,7 +34,7 @@ func (r ApiSearchPricesRequest) Execute() (*PriceSearchResponse, *http.Response,
 }
 
 /*
-SearchPrices Get Prices
+SearchPrices Search Prices
 
 Search prices by search criteria
 

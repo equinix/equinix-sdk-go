@@ -941,9 +941,9 @@ func (r ApiSearchNetworksRequest) Execute() (*NetworkSearchResponse, *http.Respo
 }
 
 /*
-SearchNetworks Search Network
+SearchNetworks Search Networks
 
-The API provides capability to get list of user's Fabric Network using search criteria, including optional filtering, pagination and sorting
+The API provides capability to search user's Fabric Network using search criteria, including optional filtering, pagination and sorting
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiSearchNetworksRequest

@@ -36,7 +36,7 @@ func (r ApiCreateRouteAggregationRuleRequest) Execute() (*RouteAggregationRulesD
 }
 
 /*
-CreateRouteAggregationRule Create RARule
+CreateRouteAggregationRule Create Route Aggregation Rule
 
 This API provides capability to create a Route Aggregation Rule
 
@@ -216,7 +216,7 @@ func (r ApiCreateRouteAggregationRulesInBulkRequest) Execute() (*GetRouteAggrega
 }
 
 /*
-CreateRouteAggregationRulesInBulk Bulk RARules
+CreateRouteAggregationRulesInBulk Bulk Create Route Aggregation Rules
 
 This API provides capability to create bulk route aggregation rules
 
@@ -391,7 +391,7 @@ func (r ApiDeleteRouteAggregationRuleByUuidRequest) Execute() (*RouteAggregation
 }
 
 /*
-DeleteRouteAggregationRuleByUuid DeleteRARule
+DeleteRouteAggregationRuleByUuid Delete Route Aggregation Rule
 
 This API provides capability to delete a Route aggregation Rule
 
@@ -564,7 +564,7 @@ func (r ApiGetRouteAggregationRuleByUuidRequest) Execute() (*RouteAggregationRul
 }
 
 /*
-GetRouteAggregationRuleByUuid GetRARule By UUID
+GetRouteAggregationRuleByUuid Get Route Aggregation Rule by ID
 
 This API provides capability to view a Route Aggregation Rule by UUID
 
@@ -917,7 +917,7 @@ func (r ApiGetRouteAggregationRuleChangesRequest) Execute() (*RouteAggregationRu
 }
 
 /*
-GetRouteAggregationRuleChanges Get All Changes
+GetRouteAggregationRuleChanges Get Route Aggregation Rule Changes
 
 This API provides capability to retrieve all of a Route Aggregation Rule's Changes
 
@@ -1098,7 +1098,7 @@ func (r ApiGetRouteAggregationRulesRequest) Execute() (*GetRouteAggregationRules
 }
 
 /*
-GetRouteAggregationRules GetRARules
+GetRouteAggregationRules Get Route Aggregation Rules
 
 This API provides capability to get all Route Aggregations Rules for Fabric
 
@@ -1269,7 +1269,7 @@ func (r ApiPatchRouteAggregationRuleByUuidRequest) Execute() (*RouteAggregationR
 }
 
 /*
-PatchRouteAggregationRuleByUuid PatchRARule
+PatchRouteAggregationRuleByUuid Update Route Aggregation Rule
 
 This API provides capability to partially update a Route Aggregation Rule
 
@@ -1456,7 +1456,7 @@ func (r ApiReplaceRouteAggregationRuleByUuidRequest) Execute() (*RouteAggregatio
 }
 
 /*
-ReplaceRouteAggregationRuleByUuid ReplaceRARule
+ReplaceRouteAggregationRuleByUuid Replace Route Aggregation Rule
 
 This API provides capability to replace a Route Aggregation Rule completely
 

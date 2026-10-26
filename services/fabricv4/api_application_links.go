@@ -31,9 +31,9 @@ func (r ApiAttachAppDomainToAppLinkRequest) Execute() (*AppLinkAppDomainAttachme
 }
 
 /*
-AttachAppDomainToAppLink Attach App Domain to App Link
+AttachAppDomainToAppLink Attach Domain to Link
 
-This API provides ability to attach the user's App Domain to App Link.
+This API provides ability to attach the user's App Domain to App Link
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param appLinkId App Link UUID
@@ -181,6 +181,190 @@ func (a *ApplicationLinksApiService) AttachAppDomainToAppLinkExecute(r ApiAttach
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiAttachAppProcessorToAppLinkRequest struct {
+	ctx                           context.Context
+	ApiService                    *ApplicationLinksApiService
+	appLinkId                     string
+	appProcessorId                string
+	appLinkAttachProcessorRequest *AppLinkAttachProcessorRequest
+}
+
+func (r ApiAttachAppProcessorToAppLinkRequest) AppLinkAttachProcessorRequest(appLinkAttachProcessorRequest AppLinkAttachProcessorRequest) ApiAttachAppProcessorToAppLinkRequest {
+	r.appLinkAttachProcessorRequest = &appLinkAttachProcessorRequest
+	return r
+}
+
+func (r ApiAttachAppProcessorToAppLinkRequest) Execute() (*AppLinkAppProcessorAttachment, *http.Response, error) {
+	return r.ApiService.AttachAppProcessorToAppLinkExecute(r)
+}
+
+/*
+AttachAppProcessorToAppLink Attach Processor to Link
+
+This API provides ability to attach an App Processor to an App Link.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param appLinkId App Link UUID
+	@param appProcessorId App Processor UUID
+	@return ApiAttachAppProcessorToAppLinkRequest
+*/
+func (a *ApplicationLinksApiService) AttachAppProcessorToAppLink(ctx context.Context, appLinkId string, appProcessorId string) ApiAttachAppProcessorToAppLinkRequest {
+	return ApiAttachAppProcessorToAppLinkRequest{
+		ApiService:     a,
+		ctx:            ctx,
+		appLinkId:      appLinkId,
+		appProcessorId: appProcessorId,
+	}
+}
+
+// Execute executes the request
+//
+//	@return AppLinkAppProcessorAttachment
+func (a *ApplicationLinksApiService) AttachAppProcessorToAppLinkExecute(r ApiAttachAppProcessorToAppLinkRequest) (*AppLinkAppProcessorAttachment, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *AppLinkAppProcessorAttachment
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationLinksApiService.AttachAppProcessorToAppLink")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/fabric/v4/appLinks/{appLinkId}/appProcessors/{appProcessorId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"appLinkId"+"}", url.PathEscape(parameterValueToString(r.appLinkId, "appLinkId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"appProcessorId"+"}", url.PathEscape(parameterValueToString(r.appProcessorId, "appProcessorId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.appLinkAttachProcessorRequest == nil {
+		return localVarReturnValue, nil, reportError("appLinkAttachProcessorRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.appLinkAttachProcessorRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v []Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v []Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v []Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v []Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 415 {
+			var v []Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v []Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiAttachAppServiceToAppLinkRequest struct {
 	ctx                         context.Context
 	ApiService                  *ApplicationLinksApiService
@@ -199,9 +383,9 @@ func (r ApiAttachAppServiceToAppLinkRequest) Execute() (*AppLinkAppServiceAttach
 }
 
 /*
-AttachAppServiceToAppLink Attach App Service to App Link
+AttachAppServiceToAppLink Attach Service to Link
 
-This API provides ability to attach the user's App Service to App Link.
+This API provides ability to attach the user's App Service to App Link
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param appLinkId App Link UUID
@@ -359,9 +543,9 @@ func (r ApiCreateAppLinkRequest) Execute() (*AppLink, *http.Response, error) {
 }
 
 /*
-CreateAppLink Create App Link
+CreateAppLink Create Link
 
-This API provides capability to create user's App Link
+This API provides capability to create user's Link
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiCreateAppLinkRequest
@@ -519,9 +703,9 @@ func (r ApiDeleteAppLinkByUuidRequest) Execute() (*AppLink, *http.Response, erro
 }
 
 /*
-DeleteAppLinkByUuid Delete App Link
+DeleteAppLinkByUuid Delete Link
 
-This API provides capability to delete user's App Link
+This API provides capability to delete user's Link
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param appLinkId App Link UUID
@@ -678,7 +862,7 @@ func (r ApiDetachAppDomainFromAppLinkRequest) Execute() (*AppLinkAppDomainAttach
 }
 
 /*
-DetachAppDomainFromAppLink Detach App Domain from App Link
+DetachAppDomainFromAppLink Detach Domain from Link
 
 This API provides ability to detach App Domain from App Link
 
@@ -828,6 +1012,168 @@ func (a *ApplicationLinksApiService) DetachAppDomainFromAppLinkExecute(r ApiDeta
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiDetachAppProcessorFromAppLinkRequest struct {
+	ctx            context.Context
+	ApiService     *ApplicationLinksApiService
+	appLinkId      string
+	appProcessorId string
+}
+
+func (r ApiDetachAppProcessorFromAppLinkRequest) Execute() (*AppLinkAppProcessorAttachment, *http.Response, error) {
+	return r.ApiService.DetachAppProcessorFromAppLinkExecute(r)
+}
+
+/*
+DetachAppProcessorFromAppLink Detach App Processor from App Link
+
+This API provides ability to detach an App Processor from an App Link.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param appLinkId App Link UUID
+	@param appProcessorId App Processor UUID
+	@return ApiDetachAppProcessorFromAppLinkRequest
+*/
+func (a *ApplicationLinksApiService) DetachAppProcessorFromAppLink(ctx context.Context, appLinkId string, appProcessorId string) ApiDetachAppProcessorFromAppLinkRequest {
+	return ApiDetachAppProcessorFromAppLinkRequest{
+		ApiService:     a,
+		ctx:            ctx,
+		appLinkId:      appLinkId,
+		appProcessorId: appProcessorId,
+	}
+}
+
+// Execute executes the request
+//
+//	@return AppLinkAppProcessorAttachment
+func (a *ApplicationLinksApiService) DetachAppProcessorFromAppLinkExecute(r ApiDetachAppProcessorFromAppLinkRequest) (*AppLinkAppProcessorAttachment, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodDelete
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *AppLinkAppProcessorAttachment
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationLinksApiService.DetachAppProcessorFromAppLink")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/fabric/v4/appLinks/{appLinkId}/appProcessors/{appProcessorId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"appLinkId"+"}", url.PathEscape(parameterValueToString(r.appLinkId, "appLinkId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"appProcessorId"+"}", url.PathEscape(parameterValueToString(r.appProcessorId, "appProcessorId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v []Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v []Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v []Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v []Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v []Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiDetachAppServiceFromAppLinkRequest struct {
 	ctx          context.Context
 	ApiService   *ApplicationLinksApiService
@@ -840,7 +1186,7 @@ func (r ApiDetachAppServiceFromAppLinkRequest) Execute() (*AppLinkAppServiceAtta
 }
 
 /*
-DetachAppServiceFromAppLink Detach App Service from App Link
+DetachAppServiceFromAppLink Detach Service from Link
 
 This API provides ability to detach App Service from App Link
 
@@ -1001,9 +1347,9 @@ func (r ApiGetAppLinkByUuidRequest) Execute() (*AppLink, *http.Response, error) 
 }
 
 /*
-GetAppLinkByUuid Get App Link
+GetAppLinkByUuid Get Link
 
-This API provides capability to retrieve user's App Link
+This API provides capability to retrieve user's Link
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param appLinkId App Link UUID
@@ -1149,9 +1495,9 @@ func (r ApiGetAttachedAppDomainByUuidRequest) Execute() (*AppLinkAppDomainAttach
 }
 
 /*
-GetAttachedAppDomainByUuid Get attached App Domain for App Link
+GetAttachedAppDomainByUuid Get Attached Domain for Link
 
-This API provides ability to retrieve an App Domain attached to an App Link.
+This API provides ability to retrieve an App Domain attached to an App Link
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param appLinkId App Link UUID
@@ -1334,9 +1680,9 @@ func (r ApiGetAttachedAppDomainsByAppLinkIdRequest) Execute() (*AppLinkAttachedA
 }
 
 /*
-GetAttachedAppDomainsByAppLinkId Get attached App Domains for App Link
+GetAttachedAppDomainsByAppLinkId Get Attached Domains for Link
 
-This API provides capability to retrieve App Domains attached to an App Link.
+This API provides capability to retrieve App Domains attached to an App Link
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param appLinkId App Link UUID
@@ -1502,6 +1848,371 @@ func (a *ApplicationLinksApiService) GetAttachedAppDomainsByAppLinkIdExecute(r A
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiGetAttachedAppProcessorRequest struct {
+	ctx            context.Context
+	ApiService     *ApplicationLinksApiService
+	appLinkId      string
+	appProcessorId string
+}
+
+func (r ApiGetAttachedAppProcessorRequest) Execute() (*AppLinkAppProcessorAttachment, *http.Response, error) {
+	return r.ApiService.GetAttachedAppProcessorExecute(r)
+}
+
+/*
+GetAttachedAppProcessor Get attached App Processor for App Link
+
+This API provides ability to get an App Processor attached to an App Link.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param appLinkId App Link UUID
+	@param appProcessorId App Processor UUID
+	@return ApiGetAttachedAppProcessorRequest
+*/
+func (a *ApplicationLinksApiService) GetAttachedAppProcessor(ctx context.Context, appLinkId string, appProcessorId string) ApiGetAttachedAppProcessorRequest {
+	return ApiGetAttachedAppProcessorRequest{
+		ApiService:     a,
+		ctx:            ctx,
+		appLinkId:      appLinkId,
+		appProcessorId: appProcessorId,
+	}
+}
+
+// Execute executes the request
+//
+//	@return AppLinkAppProcessorAttachment
+func (a *ApplicationLinksApiService) GetAttachedAppProcessorExecute(r ApiGetAttachedAppProcessorRequest) (*AppLinkAppProcessorAttachment, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *AppLinkAppProcessorAttachment
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationLinksApiService.GetAttachedAppProcessor")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/fabric/v4/appLinks/{appLinkId}/appProcessors/{appProcessorId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"appLinkId"+"}", url.PathEscape(parameterValueToString(r.appLinkId, "appLinkId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"appProcessorId"+"}", url.PathEscape(parameterValueToString(r.appProcessorId, "appProcessorId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v []Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v []Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v []Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v []Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiGetAttachedAppProcessorsByAppLinkIdRequest struct {
+	ctx              context.Context
+	ApiService       *ApplicationLinksApiService
+	appLinkId        string
+	offset           *int32
+	limit            *int32
+	attachmentStatus *[]AppLinkAttachState
+	order            *AttachedAppProcessorOrder
+	style            *Style
+}
+
+// offset
+func (r ApiGetAttachedAppProcessorsByAppLinkIdRequest) Offset(offset int32) ApiGetAttachedAppProcessorsByAppLinkIdRequest {
+	r.offset = &offset
+	return r
+}
+
+// number of records to fetch
+func (r ApiGetAttachedAppProcessorsByAppLinkIdRequest) Limit(limit int32) ApiGetAttachedAppProcessorsByAppLinkIdRequest {
+	r.limit = &limit
+	return r
+}
+
+// Filter attached App Processors by one or more attachment lifecycle states.
+func (r ApiGetAttachedAppProcessorsByAppLinkIdRequest) AttachmentStatus(attachmentStatus []AppLinkAttachState) ApiGetAttachedAppProcessorsByAppLinkIdRequest {
+	r.attachmentStatus = &attachmentStatus
+	return r
+}
+
+// Sort order for attached App Processors.
+func (r ApiGetAttachedAppProcessorsByAppLinkIdRequest) Order(order AttachedAppProcessorOrder) ApiGetAttachedAppProcessorsByAppLinkIdRequest {
+	r.order = &order
+	return r
+}
+
+// Detail level of the response.
+func (r ApiGetAttachedAppProcessorsByAppLinkIdRequest) Style(style Style) ApiGetAttachedAppProcessorsByAppLinkIdRequest {
+	r.style = &style
+	return r
+}
+
+func (r ApiGetAttachedAppProcessorsByAppLinkIdRequest) Execute() (*AppLinkAttachedAppProcessors, *http.Response, error) {
+	return r.ApiService.GetAttachedAppProcessorsByAppLinkIdExecute(r)
+}
+
+/*
+GetAttachedAppProcessorsByAppLinkId Get attached Processors for Link
+
+This API provides capability to retrieve App Processors attached to an App Link.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param appLinkId App Link UUID
+	@return ApiGetAttachedAppProcessorsByAppLinkIdRequest
+*/
+func (a *ApplicationLinksApiService) GetAttachedAppProcessorsByAppLinkId(ctx context.Context, appLinkId string) ApiGetAttachedAppProcessorsByAppLinkIdRequest {
+	return ApiGetAttachedAppProcessorsByAppLinkIdRequest{
+		ApiService: a,
+		ctx:        ctx,
+		appLinkId:  appLinkId,
+	}
+}
+
+// Execute executes the request
+//
+//	@return AppLinkAttachedAppProcessors
+func (a *ApplicationLinksApiService) GetAttachedAppProcessorsByAppLinkIdExecute(r ApiGetAttachedAppProcessorsByAppLinkIdRequest) (*AppLinkAttachedAppProcessors, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *AppLinkAttachedAppProcessors
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationLinksApiService.GetAttachedAppProcessorsByAppLinkId")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/fabric/v4/appLinks/{appLinkId}/appProcessors"
+	localVarPath = strings.Replace(localVarPath, "{"+"appLinkId"+"}", url.PathEscape(parameterValueToString(r.appLinkId, "appLinkId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
+	}
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
+	}
+	if r.attachmentStatus != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "attachmentStatus", r.attachmentStatus, "form", "csv")
+	}
+	if r.order != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "order", r.order, "form", "")
+	} else {
+		var defaultValue AttachedAppProcessorOrder = "DESC"
+		r.order = &defaultValue
+	}
+	if r.style != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "style", r.style, "form", "")
+	} else {
+		var defaultValue Style = "MEDIUM"
+		r.style = &defaultValue
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v []Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v []Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v []Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v []Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v []Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiGetAttachedAppServiceByUuidRequest struct {
 	ctx          context.Context
 	ApiService   *ApplicationLinksApiService
@@ -1514,9 +2225,9 @@ func (r ApiGetAttachedAppServiceByUuidRequest) Execute() (*AppLinkAppServiceAtta
 }
 
 /*
-GetAttachedAppServiceByUuid Get attached App Service for App Link
+GetAttachedAppServiceByUuid Get Attached Service for Link
 
-This API provides ability to retrieve an App Service attached to an App Link.
+This API provides ability to retrieve an App Service attached to an App Link
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param appLinkId App Link UUID
@@ -1699,9 +2410,9 @@ func (r ApiGetAttachedAppServicesByAppLinkIdRequest) Execute() (*AppLinkAttached
 }
 
 /*
-GetAttachedAppServicesByAppLinkId Get attached App Services for App Link
+GetAttachedAppServicesByAppLinkId Get Attached Services for Link
 
-This API provides capability to retrieve App Services attached to an App Link.
+This API provides capability to retrieve App Services attached to an App Link
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param appLinkId App Link UUID
@@ -1883,7 +2594,7 @@ func (r ApiSearchAppLinksRequest) Execute() (*AppLinkSearchResponse, *http.Respo
 }
 
 /*
-SearchAppLinks Search App Links
+SearchAppLinks Search Links
 
 The API provides capability to get list of user's App Links using search criteria, including optional filtering, pagination and sorting
 
@@ -2049,7 +2760,7 @@ func (r ApiSearchAttachedAppDomainsRequest) Execute() (*AppLinkAttachDomainSearc
 }
 
 /*
-SearchAttachedAppDomains Search attached App Domain to App Link
+SearchAttachedAppDomains Search Attached Domains for Link
 
 The API provides capability to get list of user's attached App Domains using search criteria, including optional filtering, pagination and sorting
 
@@ -2201,6 +2912,175 @@ func (a *ApplicationLinksApiService) SearchAttachedAppDomainsExecute(r ApiSearch
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiSearchAttachedAppProcessorsRequest struct {
+	ctx                                 context.Context
+	ApiService                          *ApplicationLinksApiService
+	appLinkId                           string
+	appLinkAttachProcessorSearchRequest *AppLinkAttachProcessorSearchRequest
+}
+
+func (r ApiSearchAttachedAppProcessorsRequest) AppLinkAttachProcessorSearchRequest(appLinkAttachProcessorSearchRequest AppLinkAttachProcessorSearchRequest) ApiSearchAttachedAppProcessorsRequest {
+	r.appLinkAttachProcessorSearchRequest = &appLinkAttachProcessorSearchRequest
+	return r
+}
+
+func (r ApiSearchAttachedAppProcessorsRequest) Execute() (*AppLinkAttachProcessorSearchResponse, *http.Response, error) {
+	return r.ApiService.SearchAttachedAppProcessorsExecute(r)
+}
+
+/*
+SearchAttachedAppProcessors Search attached Processors to Link
+
+The API provides capability to get list of App Processors attached to an App Link using search criteria, including optional filtering, pagination and sorting
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param appLinkId App Link UUID
+	@return ApiSearchAttachedAppProcessorsRequest
+*/
+func (a *ApplicationLinksApiService) SearchAttachedAppProcessors(ctx context.Context, appLinkId string) ApiSearchAttachedAppProcessorsRequest {
+	return ApiSearchAttachedAppProcessorsRequest{
+		ApiService: a,
+		ctx:        ctx,
+		appLinkId:  appLinkId,
+	}
+}
+
+// Execute executes the request
+//
+//	@return AppLinkAttachProcessorSearchResponse
+func (a *ApplicationLinksApiService) SearchAttachedAppProcessorsExecute(r ApiSearchAttachedAppProcessorsRequest) (*AppLinkAttachProcessorSearchResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *AppLinkAttachProcessorSearchResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationLinksApiService.SearchAttachedAppProcessors")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/fabric/v4/appLinks/{appLinkId}/appProcessors/search"
+	localVarPath = strings.Replace(localVarPath, "{"+"appLinkId"+"}", url.PathEscape(parameterValueToString(r.appLinkId, "appLinkId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.appLinkAttachProcessorSearchRequest == nil {
+		return localVarReturnValue, nil, reportError("appLinkAttachProcessorSearchRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.appLinkAttachProcessorSearchRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v []Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v []Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v []Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 415 {
+			var v []Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v []Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiSearchAttachedAppServicesRequest struct {
 	ctx                               context.Context
 	ApiService                        *ApplicationLinksApiService
@@ -2218,7 +3098,7 @@ func (r ApiSearchAttachedAppServicesRequest) Execute() (*AppLinkAttachServiceSea
 }
 
 /*
-SearchAttachedAppServices Search attached App Service to App Link
+SearchAttachedAppServices Search Attached Services for Link
 
 The API provides capability to get list of user's attached App Services using search criteria, including optional filtering, pagination and sorting
 
@@ -2387,9 +3267,9 @@ func (r ApiUpdateAppLinkByUuidRequest) Execute() (*AppLink, *http.Response, erro
 }
 
 /*
-UpdateAppLinkByUuid Update App Link
+UpdateAppLinkByUuid Update Link
 
-This API provides capability to update user's App Link
+This API provides capability to update user's Link
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param appLinkId App Link UUID
@@ -2574,9 +3454,9 @@ func (r ApiUpdateAppServiceAttachmentToAppLinkRequest) Execute() (*AppLinkAppSer
 }
 
 /*
-UpdateAppServiceAttachmentToAppLink Update App Service attachment to App Link
+UpdateAppServiceAttachmentToAppLink Update Service Attachment for Link
 
-This API provides ability to update the App Service attachment to App Link.
+This API provides ability to update the App Service attachment to App Link
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param appLinkId App Link UUID

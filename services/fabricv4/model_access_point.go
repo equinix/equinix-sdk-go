@@ -26,7 +26,6 @@ type AccessPoint struct {
 	VirtualDevice *VirtualDevice            `json:"virtualDevice,omitempty"`
 	Interface     *Interface                `json:"interface,omitempty"`
 	Network       *SimplifiedNetwork        `json:"network,omitempty"`
-	Interconnect  *Interconnect             `json:"interconnect,omitempty"`
 	Environment   *ProviderEnvironment      `json:"environment,omitempty"`
 	// Access point seller region
 	SellerRegion *string      `json:"sellerRegion,omitempty"`
@@ -386,38 +385,6 @@ func (o *AccessPoint) HasNetwork() bool {
 // SetNetwork gets a reference to the given SimplifiedNetwork and assigns it to the Network field.
 func (o *AccessPoint) SetNetwork(v SimplifiedNetwork) {
 	o.Network = &v
-}
-
-// GetInterconnect returns the Interconnect field value if set, zero value otherwise.
-func (o *AccessPoint) GetInterconnect() Interconnect {
-	if o == nil || IsNil(o.Interconnect) {
-		var ret Interconnect
-		return ret
-	}
-	return *o.Interconnect
-}
-
-// GetInterconnectOk returns a tuple with the Interconnect field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AccessPoint) GetInterconnectOk() (*Interconnect, bool) {
-	if o == nil || IsNil(o.Interconnect) {
-		return nil, false
-	}
-	return o.Interconnect, true
-}
-
-// HasInterconnect returns a boolean if a field has been set.
-func (o *AccessPoint) HasInterconnect() bool {
-	if o != nil && !IsNil(o.Interconnect) {
-		return true
-	}
-
-	return false
-}
-
-// SetInterconnect gets a reference to the given Interconnect and assigns it to the Interconnect field.
-func (o *AccessPoint) SetInterconnect(v Interconnect) {
-	o.Interconnect = &v
 }
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
@@ -876,9 +843,6 @@ func (o AccessPoint) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Network) {
 		toSerialize["network"] = o.Network
 	}
-	if !IsNil(o.Interconnect) {
-		toSerialize["interconnect"] = o.Interconnect
-	}
 	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
 	}
@@ -950,7 +914,6 @@ func (o *AccessPoint) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "virtualDevice")
 		delete(additionalProperties, "interface")
 		delete(additionalProperties, "network")
-		delete(additionalProperties, "interconnect")
 		delete(additionalProperties, "environment")
 		delete(additionalProperties, "sellerRegion")
 		delete(additionalProperties, "peeringType")

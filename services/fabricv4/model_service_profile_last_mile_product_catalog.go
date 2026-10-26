@@ -23,6 +23,8 @@ type ServiceProfileLastMileProductCatalog struct {
 	// Last-mile catalog or provider website URL.
 	WebUrl       *string                                  `json:"webUrl,omitempty"`
 	DeliveryDate *ServiceProfileLastMileDeliveryDateRange `json:"deliveryDate,omitempty"`
+	// Available billing terms in months.
+	BillingTerms []ServiceProfileLastMileProductCatalogBillingTermsInner `json:"billingTerms,omitempty"`
 	// Available last-mile offerings.
 	Offerings            []ServiceProfileLastMileOffering `json:"offerings,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -175,6 +177,39 @@ func (o *ServiceProfileLastMileProductCatalog) SetDeliveryDate(v ServiceProfileL
 	o.DeliveryDate = &v
 }
 
+// GetBillingTerms returns the BillingTerms field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ServiceProfileLastMileProductCatalog) GetBillingTerms() []ServiceProfileLastMileProductCatalogBillingTermsInner {
+	if o == nil {
+		var ret []ServiceProfileLastMileProductCatalogBillingTermsInner
+		return ret
+	}
+	return o.BillingTerms
+}
+
+// GetBillingTermsOk returns a tuple with the BillingTerms field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ServiceProfileLastMileProductCatalog) GetBillingTermsOk() ([]ServiceProfileLastMileProductCatalogBillingTermsInner, bool) {
+	if o == nil || IsNil(o.BillingTerms) {
+		return nil, false
+	}
+	return o.BillingTerms, true
+}
+
+// HasBillingTerms returns a boolean if a field has been set.
+func (o *ServiceProfileLastMileProductCatalog) HasBillingTerms() bool {
+	if o != nil && !IsNil(o.BillingTerms) {
+		return true
+	}
+
+	return false
+}
+
+// SetBillingTerms gets a reference to the given []ServiceProfileLastMileProductCatalogBillingTermsInner and assigns it to the BillingTerms field.
+func (o *ServiceProfileLastMileProductCatalog) SetBillingTerms(v []ServiceProfileLastMileProductCatalogBillingTermsInner) {
+	o.BillingTerms = v
+}
+
 // GetOfferings returns the Offerings field value if set, zero value otherwise.
 func (o *ServiceProfileLastMileProductCatalog) GetOfferings() []ServiceProfileLastMileOffering {
 	if o == nil || IsNil(o.Offerings) {
@@ -229,6 +264,9 @@ func (o ServiceProfileLastMileProductCatalog) ToMap() (map[string]interface{}, e
 	if !IsNil(o.DeliveryDate) {
 		toSerialize["deliveryDate"] = o.DeliveryDate
 	}
+	if o.BillingTerms != nil {
+		toSerialize["billingTerms"] = o.BillingTerms
+	}
 	if !IsNil(o.Offerings) {
 		toSerialize["offerings"] = o.Offerings
 	}
@@ -258,6 +296,7 @@ func (o *ServiceProfileLastMileProductCatalog) UnmarshalJSON(data []byte) (err e
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "webUrl")
 		delete(additionalProperties, "deliveryDate")
+		delete(additionalProperties, "billingTerms")
 		delete(additionalProperties, "offerings")
 		o.AdditionalProperties = additionalProperties
 	}

@@ -4,15 +4,15 @@ All URIs are relative to *https://api.equinix.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateRouteAggregationRule**](RouteAggregationRulesApi.md#CreateRouteAggregationRule) | **Post** /fabric/v4/routeAggregations/{routeAggregationId}/routeAggregationRules | Create RARule
-[**CreateRouteAggregationRulesInBulk**](RouteAggregationRulesApi.md#CreateRouteAggregationRulesInBulk) | **Post** /fabric/v4/routeAggregations/{routeAggregationId}/routeAggregationRules/bulk | Bulk RARules
-[**DeleteRouteAggregationRuleByUuid**](RouteAggregationRulesApi.md#DeleteRouteAggregationRuleByUuid) | **Delete** /fabric/v4/routeAggregations/{routeAggregationId}/routeAggregationRules/{routeAggregationRuleId} | DeleteRARule
-[**GetRouteAggregationRuleByUuid**](RouteAggregationRulesApi.md#GetRouteAggregationRuleByUuid) | **Get** /fabric/v4/routeAggregations/{routeAggregationId}/routeAggregationRules/{routeAggregationRuleId} | GetRARule By UUID
+[**CreateRouteAggregationRule**](RouteAggregationRulesApi.md#CreateRouteAggregationRule) | **Post** /fabric/v4/routeAggregations/{routeAggregationId}/routeAggregationRules | Create Route Aggregation Rule
+[**CreateRouteAggregationRulesInBulk**](RouteAggregationRulesApi.md#CreateRouteAggregationRulesInBulk) | **Post** /fabric/v4/routeAggregations/{routeAggregationId}/routeAggregationRules/bulk | Bulk Create Route Aggregation Rules
+[**DeleteRouteAggregationRuleByUuid**](RouteAggregationRulesApi.md#DeleteRouteAggregationRuleByUuid) | **Delete** /fabric/v4/routeAggregations/{routeAggregationId}/routeAggregationRules/{routeAggregationRuleId} | Delete Route Aggregation Rule
+[**GetRouteAggregationRuleByUuid**](RouteAggregationRulesApi.md#GetRouteAggregationRuleByUuid) | **Get** /fabric/v4/routeAggregations/{routeAggregationId}/routeAggregationRules/{routeAggregationRuleId} | Get Route Aggregation Rule by ID
 [**GetRouteAggregationRuleChangeByUuid**](RouteAggregationRulesApi.md#GetRouteAggregationRuleChangeByUuid) | **Get** /fabric/v4/routeAggregations/{routeAggregationId}/routeAggregationRules/{routeAggregationRuleId}/changes/{changeId} | Get Change By ID
-[**GetRouteAggregationRuleChanges**](RouteAggregationRulesApi.md#GetRouteAggregationRuleChanges) | **Get** /fabric/v4/routeAggregations/{routeAggregationId}/routeAggregationRules/{routeAggregationRuleId}/changes | Get All Changes
-[**GetRouteAggregationRules**](RouteAggregationRulesApi.md#GetRouteAggregationRules) | **Get** /fabric/v4/routeAggregations/{routeAggregationId}/routeAggregationRules | GetRARules
-[**PatchRouteAggregationRuleByUuid**](RouteAggregationRulesApi.md#PatchRouteAggregationRuleByUuid) | **Patch** /fabric/v4/routeAggregations/{routeAggregationId}/routeAggregationRules/{routeAggregationRuleId} | PatchRARule
-[**ReplaceRouteAggregationRuleByUuid**](RouteAggregationRulesApi.md#ReplaceRouteAggregationRuleByUuid) | **Put** /fabric/v4/routeAggregations/{routeAggregationId}/routeAggregationRules/{routeAggregationRuleId} | ReplaceRARule
+[**GetRouteAggregationRuleChanges**](RouteAggregationRulesApi.md#GetRouteAggregationRuleChanges) | **Get** /fabric/v4/routeAggregations/{routeAggregationId}/routeAggregationRules/{routeAggregationRuleId}/changes | Get Route Aggregation Rule Changes
+[**GetRouteAggregationRules**](RouteAggregationRulesApi.md#GetRouteAggregationRules) | **Get** /fabric/v4/routeAggregations/{routeAggregationId}/routeAggregationRules | Get Route Aggregation Rules
+[**PatchRouteAggregationRuleByUuid**](RouteAggregationRulesApi.md#PatchRouteAggregationRuleByUuid) | **Patch** /fabric/v4/routeAggregations/{routeAggregationId}/routeAggregationRules/{routeAggregationRuleId} | Update Route Aggregation Rule
+[**ReplaceRouteAggregationRuleByUuid**](RouteAggregationRulesApi.md#ReplaceRouteAggregationRuleByUuid) | **Put** /fabric/v4/routeAggregations/{routeAggregationId}/routeAggregationRules/{routeAggregationRuleId} | Replace Route Aggregation Rule
 [**SearchRouteAggregationRules**](RouteAggregationRulesApi.md#SearchRouteAggregationRules) | **Post** /fabric/v4/routeAggregations/{routeAggregationId}/routeAggregationRules/search | Search Route Aggregation Rules
 
 
@@ -21,7 +21,7 @@ Method | HTTP request | Description
 
 > RouteAggregationRulesData CreateRouteAggregationRule(ctx, routeAggregationId).RouteAggregationRulesBase(routeAggregationRulesBase).Execute()
 
-Create RARule
+Create Route Aggregation Rule
 
 
 
@@ -93,7 +93,7 @@ Name | Type | Description  | Notes
 
 > GetRouteAggregationRulesResponse CreateRouteAggregationRulesInBulk(ctx, routeAggregationId).RouteAggregationRulesPostRequest(routeAggregationRulesPostRequest).Execute()
 
-Bulk RARules
+Bulk Create Route Aggregation Rules
 
 
 
@@ -165,7 +165,7 @@ Name | Type | Description  | Notes
 
 > RouteAggregationRulesData DeleteRouteAggregationRuleByUuid(ctx, routeAggregationId, routeAggregationRuleId).Execute()
 
-DeleteRARule
+Delete Route Aggregation Rule
 
 
 
@@ -238,7 +238,7 @@ Name | Type | Description  | Notes
 
 > RouteAggregationRulesData GetRouteAggregationRuleByUuid(ctx, routeAggregationId, routeAggregationRuleId).Execute()
 
-GetRARule By UUID
+Get Route Aggregation Rule by ID
 
 
 
@@ -387,7 +387,7 @@ Name | Type | Description  | Notes
 
 > RouteAggregationRulesChangeDataResponse GetRouteAggregationRuleChanges(ctx, routeAggregationId, routeAggregationRuleId).Offset(offset).Limit(limit).Execute()
 
-Get All Changes
+Get Route Aggregation Rule Changes
 
 
 
@@ -464,7 +464,7 @@ Name | Type | Description  | Notes
 
 > GetRouteAggregationRulesResponse GetRouteAggregationRules(ctx, routeAggregationId).Offset(offset).Limit(limit).Execute()
 
-GetRARules
+Get Route Aggregation Rules
 
 
 
@@ -538,7 +538,7 @@ Name | Type | Description  | Notes
 
 > RouteAggregationRulesData PatchRouteAggregationRuleByUuid(ctx, routeAggregationId, routeAggregationRuleId).RouteAggregationRulesPatchRequestItem(routeAggregationRulesPatchRequestItem).Execute()
 
-PatchRARule
+Update Route Aggregation Rule
 
 
 
@@ -613,7 +613,7 @@ Name | Type | Description  | Notes
 
 > RouteAggregationRulesData ReplaceRouteAggregationRuleByUuid(ctx, routeAggregationId, routeAggregationRuleId).RouteAggregationRulesBase(routeAggregationRulesBase).Execute()
 
-ReplaceRARule
+Replace Route Aggregation Rule
 
 
 

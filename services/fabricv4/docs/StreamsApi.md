@@ -7,13 +7,16 @@ Method | HTTP request | Description
 [**CreateStreams**](StreamsApi.md#CreateStreams) | **Post** /fabric/v4/streams | Create Stream
 [**DeleteStreamAssetByUuid**](StreamsApi.md#DeleteStreamAssetByUuid) | **Delete** /fabric/v4/streams/{streamId}/{asset}/{assetId} | Detach Asset
 [**DeleteStreamByUuid**](StreamsApi.md#DeleteStreamByUuid) | **Delete** /fabric/v4/streams/{streamId} | Delete Stream
+[**DeleteStreamDevice**](StreamsApi.md#DeleteStreamDevice) | **Delete** /fabric/v4/streams/{streamId}/devices/{deviceId} | Detach Network Edge Device
 [**GetStreamAssetByUuid**](StreamsApi.md#GetStreamAssetByUuid) | **Get** /fabric/v4/streams/{streamId}/{asset}/{assetId} | Get Asset
 [**GetStreamByUuid**](StreamsApi.md#GetStreamByUuid) | **Get** /fabric/v4/streams/{streamId} | Get Stream
+[**GetStreamDevice**](StreamsApi.md#GetStreamDevice) | **Get** /fabric/v4/streams/{streamId}/devices/{deviceId} | Get Network Edge Device
 [**GetStreams**](StreamsApi.md#GetStreams) | **Get** /fabric/v4/streams | Get Streams
 [**SearchStreamAssets**](StreamsApi.md#SearchStreamAssets) | **Post** /fabric/v4/streamAssets/search | Search Stream Assets
 [**SearchStreams**](StreamsApi.md#SearchStreams) | **Post** /fabric/v4/streams/search | Search Streams
 [**UpdateStreamAssetByUuid**](StreamsApi.md#UpdateStreamAssetByUuid) | **Put** /fabric/v4/streams/{streamId}/{asset}/{assetId} | Attach Asset
 [**UpdateStreamByUuid**](StreamsApi.md#UpdateStreamByUuid) | **Put** /fabric/v4/streams/{streamId} | Update Stream
+[**UpdateStreamDevice**](StreamsApi.md#UpdateStreamDevice) | **Put** /fabric/v4/streams/{streamId}/devices/{deviceId} | Attach Network Edge Device Interfaces
 
 
 
@@ -229,6 +232,79 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## DeleteStreamDevice
+
+> StreamAsset DeleteStreamDevice(ctx, streamId, deviceId).Execute()
+
+Detach Network Edge Device
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/equinix/equinix-sdk-go/services/fabricv4"
+)
+
+func main() {
+	streamId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Stream UUID
+	deviceId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Network Edge Device UUID
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StreamsApi.DeleteStreamDevice(context.Background(), streamId, deviceId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.DeleteStreamDevice``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `DeleteStreamDevice`: StreamAsset
+	fmt.Fprintf(os.Stdout, "Response from `StreamsApi.DeleteStreamDevice`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**streamId** | **string** | Stream UUID | 
+**deviceId** | **string** | Network Edge Device UUID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteStreamDeviceRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**StreamAsset**](StreamAsset.md)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GetStreamAssetByUuid
 
 > StreamAsset GetStreamAssetByUuid(ctx, assetId, asset, streamId).Execute()
@@ -360,6 +436,79 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Stream**](Stream.md)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetStreamDevice
+
+> StreamAsset GetStreamDevice(ctx, streamId, deviceId).Execute()
+
+Get Network Edge Device
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/equinix/equinix-sdk-go/services/fabricv4"
+)
+
+func main() {
+	streamId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Stream UUID
+	deviceId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Network Edge Device UUID
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StreamsApi.GetStreamDevice(context.Background(), streamId, deviceId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.GetStreamDevice``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetStreamDevice`: StreamAsset
+	fmt.Fprintf(os.Stdout, "Response from `StreamsApi.GetStreamDevice`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**streamId** | **string** | Stream UUID | 
+**deviceId** | **string** | Network Edge Device UUID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetStreamDeviceRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**StreamAsset**](StreamAsset.md)
 
 ### Authorization
 
@@ -710,6 +859,81 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Stream**](Stream.md)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateStreamDevice
+
+> StreamAsset UpdateStreamDevice(ctx, streamId, deviceId).StreamDevicePutRequest(streamDevicePutRequest).Execute()
+
+Attach Network Edge Device Interfaces
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/equinix/equinix-sdk-go/services/fabricv4"
+)
+
+func main() {
+	streamId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Stream UUID
+	deviceId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Network Edge Device UUID
+	streamDevicePutRequest := *openapiclient.NewStreamDevicePutRequest() // StreamDevicePutRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StreamsApi.UpdateStreamDevice(context.Background(), streamId, deviceId).StreamDevicePutRequest(streamDevicePutRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.UpdateStreamDevice``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdateStreamDevice`: StreamAsset
+	fmt.Fprintf(os.Stdout, "Response from `StreamsApi.UpdateStreamDevice`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**streamId** | **string** | Stream UUID | 
+**deviceId** | **string** | Network Edge Device UUID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateStreamDeviceRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **streamDevicePutRequest** | [**StreamDevicePutRequest**](StreamDevicePutRequest.md) |  | 
+
+### Return type
+
+[**StreamAsset**](StreamAsset.md)
 
 ### Authorization
 

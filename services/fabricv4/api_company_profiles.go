@@ -1149,7 +1149,7 @@ func (r ApiGetCompanyProfileRequest) Execute() (*CompanyProfileResponse, *http.R
 }
 
 /*
-GetCompanyProfile Get Company Profile by UUID
+GetCompanyProfile Get Company Profile by ID
 
 Get company profile details by UUID <font color="red"> <sup color='red'>Beta</sup></font>
 

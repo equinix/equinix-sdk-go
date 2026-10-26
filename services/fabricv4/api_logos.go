@@ -60,7 +60,7 @@ func (r ApiCreateLogoRequest) Execute() (*LogoResponse, *http.Response, error) {
 /*
 CreateLogo Create Logo
 
-Create Logo for Equinix Fabric™ Company Profile.
+Create Logo for Equinix Fabric™ Company Profile
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiCreateLogoRequest

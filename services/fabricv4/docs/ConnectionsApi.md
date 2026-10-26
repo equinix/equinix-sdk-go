@@ -5,11 +5,11 @@ All URIs are relative to *https://api.equinix.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateConnection**](ConnectionsApi.md#CreateConnection) | **Post** /fabric/v4/connections | Create Connection
-[**CreateConnectionAction**](ConnectionsApi.md#CreateConnectionAction) | **Post** /fabric/v4/connections/{connectionId}/actions | Connection Actions
-[**DeleteConnectionByUuid**](ConnectionsApi.md#DeleteConnectionByUuid) | **Delete** /fabric/v4/connections/{connectionId} | Delete by ID
+[**CreateConnectionAction**](ConnectionsApi.md#CreateConnectionAction) | **Post** /fabric/v4/connections/{connectionId}/actions | Create Connection Action
+[**DeleteConnectionByUuid**](ConnectionsApi.md#DeleteConnectionByUuid) | **Delete** /fabric/v4/connections/{connectionId} | Delete Connection by ID
 [**GetConnectionByUuid**](ConnectionsApi.md#GetConnectionByUuid) | **Get** /fabric/v4/connections/{connectionId} | Get Connection by ID
-[**SearchConnections**](ConnectionsApi.md#SearchConnections) | **Post** /fabric/v4/connections/search | Search connections
-[**UpdateConnectionByUuid**](ConnectionsApi.md#UpdateConnectionByUuid) | **Patch** /fabric/v4/connections/{connectionId} | Update by ID
+[**SearchConnections**](ConnectionsApi.md#SearchConnections) | **Post** /fabric/v4/connections/search | Search Connections
+[**UpdateConnectionByUuid**](ConnectionsApi.md#UpdateConnectionByUuid) | **Patch** /fabric/v4/connections/{connectionId} | Update Connection by ID
 [**ValidateConnections**](ConnectionsApi.md#ValidateConnections) | **Post** /fabric/v4/connections/validate | Validate Connection
 
 
@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
 
 > ConnectionAction CreateConnectionAction(ctx, connectionId).ConnectionActionRequest(connectionActionRequest).Execute()
 
-Connection Actions
+Create Connection Action
 
 
 
@@ -158,7 +158,7 @@ Name | Type | Description  | Notes
 
 > Connection DeleteConnectionByUuid(ctx, connectionId).Execute()
 
-Delete by ID
+Delete Connection by ID
 
 
 
@@ -300,7 +300,7 @@ Name | Type | Description  | Notes
 
 > ConnectionSearchResponse SearchConnections(ctx).SearchRequest(searchRequest).Execute()
 
-Search connections
+Search Connections
 
 
 
@@ -366,7 +366,7 @@ Name | Type | Description  | Notes
 
 > Connection UpdateConnectionByUuid(ctx, connectionId).ConnectionChangeOperation(connectionChangeOperation).DryRun(dryRun).Execute()
 
-Update by ID
+Update Connection by ID
 
 
 

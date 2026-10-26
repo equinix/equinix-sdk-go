@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **State** | Pointer to [**TagResponseState**](TagResponseState.md) |  | [optional] 
 **Notifications** | Pointer to [**[]SimplifiedNotification**](SimplifiedNotification.md) |  | [optional] 
 **ChangeLog** | Pointer to [**Changelog**](Changelog.md) |  | [optional] 
+**Weight** | Pointer to **int32** |  | [optional] 
 
 ## Methods
 
@@ -231,6 +232,31 @@ SetChangeLog sets ChangeLog field to given value.
 `func (o *TagResponse) HasChangeLog() bool`
 
 HasChangeLog returns a boolean if a field has been set.
+
+### GetWeight
+
+`func (o *TagResponse) GetWeight() int32`
+
+GetWeight returns the Weight field if non-nil, zero value otherwise.
+
+### GetWeightOk
+
+`func (o *TagResponse) GetWeightOk() (*int32, bool)`
+
+GetWeightOk returns a tuple with the Weight field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWeight
+
+`func (o *TagResponse) SetWeight(v int32)`
+
+SetWeight sets Weight field to given value.
+
+### HasWeight
+
+`func (o *TagResponse) HasWeight() bool`
+
+HasWeight returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

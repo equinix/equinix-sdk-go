@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** | Last-mile provider or catalog identifier. | [optional] 
 **WebUrl** | Pointer to **string** | Last-mile catalog or provider website URL. | [optional] 
 **DeliveryDate** | Pointer to [**ServiceProfileLastMileDeliveryDateRange**](ServiceProfileLastMileDeliveryDateRange.md) |  | [optional] 
+**BillingTerms** | Pointer to [**[]ServiceProfileLastMileProductCatalogBillingTermsInner**](ServiceProfileLastMileProductCatalogBillingTermsInner.md) | Available billing terms in months. | [optional] 
 **Offerings** | Pointer to [**[]ServiceProfileLastMileOffering**](ServiceProfileLastMileOffering.md) | Available last-mile offerings. | [optional] 
 
 ## Methods
@@ -129,6 +130,41 @@ SetDeliveryDate sets DeliveryDate field to given value.
 
 HasDeliveryDate returns a boolean if a field has been set.
 
+### GetBillingTerms
+
+`func (o *ServiceProfileLastMileProductCatalog) GetBillingTerms() []ServiceProfileLastMileProductCatalogBillingTermsInner`
+
+GetBillingTerms returns the BillingTerms field if non-nil, zero value otherwise.
+
+### GetBillingTermsOk
+
+`func (o *ServiceProfileLastMileProductCatalog) GetBillingTermsOk() (*[]ServiceProfileLastMileProductCatalogBillingTermsInner, bool)`
+
+GetBillingTermsOk returns a tuple with the BillingTerms field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBillingTerms
+
+`func (o *ServiceProfileLastMileProductCatalog) SetBillingTerms(v []ServiceProfileLastMileProductCatalogBillingTermsInner)`
+
+SetBillingTerms sets BillingTerms field to given value.
+
+### HasBillingTerms
+
+`func (o *ServiceProfileLastMileProductCatalog) HasBillingTerms() bool`
+
+HasBillingTerms returns a boolean if a field has been set.
+
+### SetBillingTermsNil
+
+`func (o *ServiceProfileLastMileProductCatalog) SetBillingTermsNil(b bool)`
+
+ SetBillingTermsNil sets the value for BillingTerms to be an explicit nil
+
+### UnsetBillingTerms
+`func (o *ServiceProfileLastMileProductCatalog) UnsetBillingTerms()`
+
+UnsetBillingTerms ensures that no value is present for BillingTerms, not even an explicit nil
 ### GetOfferings
 
 `func (o *ServiceProfileLastMileProductCatalog) GetOfferings() []ServiceProfileLastMileOffering`

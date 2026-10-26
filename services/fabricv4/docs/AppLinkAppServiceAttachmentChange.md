@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Uuid** | Pointer to **string** | Uniquely identifies a change | [optional] 
-**Type** | [**AppLinkChangeType**](AppLinkChangeType.md) |  | 
+**Type** | [**AppLinkAppServiceAttachmentChangeType**](AppLinkAppServiceAttachmentChangeType.md) |  | 
 **Status** | Pointer to [**PortChangeStatus**](PortChangeStatus.md) |  | [optional] 
 **CreatedDateTime** | Pointer to **time.Time** | Set when change flow starts | [optional] 
 **UpdatedDateTime** | **time.Time** | Set when change object is updated | 
@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 
 ### NewAppLinkAppServiceAttachmentChange
 
-`func NewAppLinkAppServiceAttachmentChange(type_ AppLinkChangeType, updatedDateTime time.Time, ) *AppLinkAppServiceAttachmentChange`
+`func NewAppLinkAppServiceAttachmentChange(type_ AppLinkAppServiceAttachmentChangeType, updatedDateTime time.Time, ) *AppLinkAppServiceAttachmentChange`
 
 NewAppLinkAppServiceAttachmentChange instantiates a new AppLinkAppServiceAttachmentChange object
 This constructor will assign default values to properties that have it defined,
@@ -57,20 +57,20 @@ HasUuid returns a boolean if a field has been set.
 
 ### GetType
 
-`func (o *AppLinkAppServiceAttachmentChange) GetType() AppLinkChangeType`
+`func (o *AppLinkAppServiceAttachmentChange) GetType() AppLinkAppServiceAttachmentChangeType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *AppLinkAppServiceAttachmentChange) GetTypeOk() (*AppLinkChangeType, bool)`
+`func (o *AppLinkAppServiceAttachmentChange) GetTypeOk() (*AppLinkAppServiceAttachmentChangeType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *AppLinkAppServiceAttachmentChange) SetType(v AppLinkChangeType)`
+`func (o *AppLinkAppServiceAttachmentChange) SetType(v AppLinkAppServiceAttachmentChangeType)`
 
 SetType sets Type field to given value.
 

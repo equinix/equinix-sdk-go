@@ -5,6 +5,8 @@
 
 * `DATADOG` (value: `"DATADOG"`)
 
+* `DYNATRACE` (value: `"DYNATRACE"`)
+
 * `GOOGLE_PUBSUB` (value: `"GOOGLE_PUBSUB"`)
 
 * `PAGERDUTY` (value: `"PAGERDUTY"`)

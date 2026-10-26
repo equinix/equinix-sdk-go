@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Type** | Pointer to [**ProviderEnvironmentTypeEnum**](ProviderEnvironmentTypeEnum.md) |  | [optional] 
 **Name** | Pointer to **string** | Provider environment name | [optional] 
 **Description** | Pointer to **string** | Provider environment description | [optional] 
-**Region** | Pointer to **string** | Cloud provider region identifier | [optional] 
+**SellerRegion** | Pointer to **string** | Cloud provider region identifier | [optional] 
 **SupportedBandwidths** | Pointer to **[]int32** | Supported bandwidths in Mbps | [optional] 
 **Metros** | Pointer to [**[]ServiceMetro**](ServiceMetro.md) | Derived response attribute. | [optional] 
 **SupportedFeatures** | Pointer to **[]string** | Supported Feature Types | [optional] 
@@ -159,30 +159,30 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
-### GetRegion
+### GetSellerRegion
 
-`func (o *ProviderEnvironment) GetRegion() string`
+`func (o *ProviderEnvironment) GetSellerRegion() string`
 
-GetRegion returns the Region field if non-nil, zero value otherwise.
+GetSellerRegion returns the SellerRegion field if non-nil, zero value otherwise.
 
-### GetRegionOk
+### GetSellerRegionOk
 
-`func (o *ProviderEnvironment) GetRegionOk() (*string, bool)`
+`func (o *ProviderEnvironment) GetSellerRegionOk() (*string, bool)`
 
-GetRegionOk returns a tuple with the Region field if it's non-nil, zero value otherwise
+GetSellerRegionOk returns a tuple with the SellerRegion field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetRegion
+### SetSellerRegion
 
-`func (o *ProviderEnvironment) SetRegion(v string)`
+`func (o *ProviderEnvironment) SetSellerRegion(v string)`
 
-SetRegion sets Region field to given value.
+SetSellerRegion sets SellerRegion field to given value.
 
-### HasRegion
+### HasSellerRegion
 
-`func (o *ProviderEnvironment) HasRegion() bool`
+`func (o *ProviderEnvironment) HasSellerRegion() bool`
 
-HasRegion returns a boolean if a field has been set.
+HasSellerRegion returns a boolean if a field has been set.
 
 ### GetSupportedBandwidths
 

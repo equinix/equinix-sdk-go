@@ -52,7 +52,7 @@ func (r ApiGetConnectionStatsByPortUuidRequest) Execute() (*Statistics, *http.Re
 }
 
 /*
-GetConnectionStatsByPortUuid Get Stats by uuid **(DEPRECATED)**
+GetConnectionStatsByPortUuid Get Stats by ID (DEPRECATED)
 
 This API provides service-level metrics so that you can view access and gather key information required to manage service subscription sizing and capacity **(DEPRECATED)**
 
@@ -207,7 +207,7 @@ func (r ApiGetPortStatsByPortUuidRequest) Execute() (*Statistics, *http.Response
 }
 
 /*
-GetPortStatsByPortUuid Get Stats by uuid **(DEPRECATED)**
+GetPortStatsByPortUuid Get Stats by ID (DEPRECATED)
 
 This API provides service-level traffic metrics so that you can view access and gather key information required to manage service subscription sizing and capacity.**(DEPRECATED)**
 

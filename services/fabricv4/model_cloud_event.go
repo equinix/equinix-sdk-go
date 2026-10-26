@@ -18,7 +18,7 @@ var _ MappedNullable = &CloudEvent{}
 // CloudEvent Cloud Event object
 type CloudEvent struct {
 	// Cloud Event Open Telemetry specification
-	Spec *string `json:"spec,omitempty"`
+	Specversion *string `json:"specversion,omitempty"`
 	// Cloud Event source
 	Source *string `json:"source,omitempty"`
 	// Cloud Event identifier
@@ -74,36 +74,36 @@ func NewCloudEventWithDefaults() *CloudEvent {
 	return &this
 }
 
-// GetSpec returns the Spec field value if set, zero value otherwise.
-func (o *CloudEvent) GetSpec() string {
-	if o == nil || IsNil(o.Spec) {
+// GetSpecversion returns the Specversion field value if set, zero value otherwise.
+func (o *CloudEvent) GetSpecversion() string {
+	if o == nil || IsNil(o.Specversion) {
 		var ret string
 		return ret
 	}
-	return *o.Spec
+	return *o.Specversion
 }
 
-// GetSpecOk returns a tuple with the Spec field value if set, nil otherwise
+// GetSpecversionOk returns a tuple with the Specversion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CloudEvent) GetSpecOk() (*string, bool) {
-	if o == nil || IsNil(o.Spec) {
+func (o *CloudEvent) GetSpecversionOk() (*string, bool) {
+	if o == nil || IsNil(o.Specversion) {
 		return nil, false
 	}
-	return o.Spec, true
+	return o.Specversion, true
 }
 
-// HasSpec returns a boolean if a field has been set.
-func (o *CloudEvent) HasSpec() bool {
-	if o != nil && !IsNil(o.Spec) {
+// HasSpecversion returns a boolean if a field has been set.
+func (o *CloudEvent) HasSpecversion() bool {
+	if o != nil && !IsNil(o.Specversion) {
 		return true
 	}
 
 	return false
 }
 
-// SetSpec gets a reference to the given string and assigns it to the Spec field.
-func (o *CloudEvent) SetSpec(v string) {
-	o.Spec = &v
+// SetSpecversion gets a reference to the given string and assigns it to the Specversion field.
+func (o *CloudEvent) SetSpecversion(v string) {
+	o.Specversion = &v
 }
 
 // GetSource returns the Source field value if set, zero value otherwise.
@@ -660,8 +660,8 @@ func (o CloudEvent) MarshalJSON() ([]byte, error) {
 
 func (o CloudEvent) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Spec) {
-		toSerialize["spec"] = o.Spec
+	if !IsNil(o.Specversion) {
+		toSerialize["specversion"] = o.Specversion
 	}
 	if !IsNil(o.Source) {
 		toSerialize["source"] = o.Source
@@ -736,7 +736,7 @@ func (o *CloudEvent) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "spec")
+		delete(additionalProperties, "specversion")
 		delete(additionalProperties, "source")
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "type")

@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **Errors** | Pointer to [**[]Error**](Error.md) |  | [optional] 
 **OpStatusChangedAt** | Pointer to **time.Time** | When connection transitioned into current operational status | [optional] 
 **MaintenanceStatus** | Pointer to [**MaintenanceState**](MaintenanceState.md) |  | [optional] 
+**LockEnabled** | Pointer to **bool** | Indicates whether the connection configuration is locked due to an ongoing or scheduled maintenance. | [optional] 
 
 ## Methods
 
@@ -179,6 +180,31 @@ SetMaintenanceStatus sets MaintenanceStatus field to given value.
 `func (o *ConnectionOperation) HasMaintenanceStatus() bool`
 
 HasMaintenanceStatus returns a boolean if a field has been set.
+
+### GetLockEnabled
+
+`func (o *ConnectionOperation) GetLockEnabled() bool`
+
+GetLockEnabled returns the LockEnabled field if non-nil, zero value otherwise.
+
+### GetLockEnabledOk
+
+`func (o *ConnectionOperation) GetLockEnabledOk() (*bool, bool)`
+
+GetLockEnabledOk returns a tuple with the LockEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLockEnabled
+
+`func (o *ConnectionOperation) SetLockEnabled(v bool)`
+
+SetLockEnabled sets LockEnabled field to given value.
+
+### HasLockEnabled
+
+`func (o *ConnectionOperation) HasLockEnabled() bool`
+
+HasLockEnabled returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

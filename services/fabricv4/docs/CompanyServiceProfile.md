@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Href** | Pointer to **string** |  | [optional] 
 **Uuid** | Pointer to **string** |  | [optional] 
+**Type** | Pointer to [**ServiceProfileTypeEnum**](ServiceProfileTypeEnum.md) |  | [optional] 
 
 ## Methods
 
@@ -75,6 +76,31 @@ SetUuid sets Uuid field to given value.
 `func (o *CompanyServiceProfile) HasUuid() bool`
 
 HasUuid returns a boolean if a field has been set.
+
+### GetType
+
+`func (o *CompanyServiceProfile) GetType() ServiceProfileTypeEnum`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *CompanyServiceProfile) GetTypeOk() (*ServiceProfileTypeEnum, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *CompanyServiceProfile) SetType(v ServiceProfileTypeEnum)`
+
+SetType sets Type field to given value.
+
+### HasType
+
+`func (o *CompanyServiceProfile) HasType() bool`
+
+HasType returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

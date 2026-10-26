@@ -17,12 +17,28 @@ type ExchangeServicePropertyExpressionProperty string
 
 // List of ExchangeServicePropertyExpression_property
 const (
-	EXCHANGESERVICEPROPERTYEXPRESSIONPROPERTY_PROJECT_PROJECT_ID ExchangeServicePropertyExpressionProperty = "/project/projectId"
+	EXCHANGESERVICEPROPERTYEXPRESSIONPROPERTY_PROJECT_PROJECT_ID          ExchangeServicePropertyExpressionProperty = "/project/projectId"
+	EXCHANGESERVICEPROPERTYEXPRESSIONPROPERTY_UUID                        ExchangeServicePropertyExpressionProperty = "/uuid"
+	EXCHANGESERVICEPROPERTYEXPRESSIONPROPERTY_STATE                       ExchangeServicePropertyExpressionProperty = "/state"
+	EXCHANGESERVICEPROPERTYEXPRESSIONPROPERTY_NAME                        ExchangeServicePropertyExpressionProperty = "/name"
+	EXCHANGESERVICEPROPERTYEXPRESSIONPROPERTY_BANDWIDTH                   ExchangeServicePropertyExpressionProperty = "/bandwidth"
+	EXCHANGESERVICEPROPERTYEXPRESSIONPROPERTY_CHANGELOG_CREATED_DATE_TIME ExchangeServicePropertyExpressionProperty = "/changelog/createdDateTime"
+	EXCHANGESERVICEPROPERTYEXPRESSIONPROPERTY_CHANGELOG_UPDATED_DATE_TIME ExchangeServicePropertyExpressionProperty = "/changelog/updatedDateTime"
+	EXCHANGESERVICEPROPERTYEXPRESSIONPROPERTY_CHANGELOG_DELETED_DATE_TIME ExchangeServicePropertyExpressionProperty = "/changelog/deletedDateTime"
+	EXCHANGESERVICEPROPERTYEXPRESSIONPROPERTY_LOCATION_METRO_CODE         ExchangeServicePropertyExpressionProperty = "/location/metroCode"
 )
 
 // All allowed values of ExchangeServicePropertyExpressionProperty enum
 var AllowedExchangeServicePropertyExpressionPropertyEnumValues = []ExchangeServicePropertyExpressionProperty{
 	"/project/projectId",
+	"/uuid",
+	"/state",
+	"/name",
+	"/bandwidth",
+	"/changelog/createdDateTime",
+	"/changelog/updatedDateTime",
+	"/changelog/deletedDateTime",
+	"/location/metroCode",
 }
 
 func (v *ExchangeServicePropertyExpressionProperty) UnmarshalJSON(src []byte) error {

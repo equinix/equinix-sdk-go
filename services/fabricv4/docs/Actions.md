@@ -31,6 +31,8 @@
 
 * `CONNECTION_DELETION_RETRY` (value: `"CONNECTION_DELETION_RETRY"`)
 
+* `CONNECTION_PROVIDER_STATUS_UPDATE_REQUEST` (value: `"CONNECTION_PROVIDER_STATUS_UPDATE_REQUEST"`)
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

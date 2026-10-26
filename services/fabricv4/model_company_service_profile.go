@@ -16,8 +16,9 @@ var _ MappedNullable = &CompanyServiceProfile{}
 
 // CompanyServiceProfile struct for CompanyServiceProfile
 type CompanyServiceProfile struct {
-	Href                 *string `json:"href,omitempty"`
-	Uuid                 *string `json:"uuid,omitempty"`
+	Href                 *string                 `json:"href,omitempty"`
+	Uuid                 *string                 `json:"uuid,omitempty"`
+	Type                 *ServiceProfileTypeEnum `json:"type,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -104,6 +105,38 @@ func (o *CompanyServiceProfile) SetUuid(v string) {
 	o.Uuid = &v
 }
 
+// GetType returns the Type field value if set, zero value otherwise.
+func (o *CompanyServiceProfile) GetType() ServiceProfileTypeEnum {
+	if o == nil || IsNil(o.Type) {
+		var ret ServiceProfileTypeEnum
+		return ret
+	}
+	return *o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CompanyServiceProfile) GetTypeOk() (*ServiceProfileTypeEnum, bool) {
+	if o == nil || IsNil(o.Type) {
+		return nil, false
+	}
+	return o.Type, true
+}
+
+// HasType returns a boolean if a field has been set.
+func (o *CompanyServiceProfile) HasType() bool {
+	if o != nil && !IsNil(o.Type) {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given ServiceProfileTypeEnum and assigns it to the Type field.
+func (o *CompanyServiceProfile) SetType(v ServiceProfileTypeEnum) {
+	o.Type = &v
+}
+
 func (o CompanyServiceProfile) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -119,6 +152,9 @@ func (o CompanyServiceProfile) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Uuid) {
 		toSerialize["uuid"] = o.Uuid
+	}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -144,6 +180,7 @@ func (o *CompanyServiceProfile) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "href")
 		delete(additionalProperties, "uuid")
+		delete(additionalProperties, "type")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Spec** | Pointer to **string** | Cloud Event Open Telemetry specification | [optional] [readonly] 
+**Specversion** | Pointer to **string** | Cloud Event Open Telemetry specification | [optional] [readonly] 
 **Source** | Pointer to **string** | Cloud Event source | [optional] 
 **Id** | Pointer to **string** | Cloud Event identifier | [optional] 
 **Type** | Pointer to **string** | Equinix supported event type | [optional] 
@@ -42,30 +42,30 @@ NewCloudEventWithDefaults instantiates a new CloudEvent object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetSpec
+### GetSpecversion
 
-`func (o *CloudEvent) GetSpec() string`
+`func (o *CloudEvent) GetSpecversion() string`
 
-GetSpec returns the Spec field if non-nil, zero value otherwise.
+GetSpecversion returns the Specversion field if non-nil, zero value otherwise.
 
-### GetSpecOk
+### GetSpecversionOk
 
-`func (o *CloudEvent) GetSpecOk() (*string, bool)`
+`func (o *CloudEvent) GetSpecversionOk() (*string, bool)`
 
-GetSpecOk returns a tuple with the Spec field if it's non-nil, zero value otherwise
+GetSpecversionOk returns a tuple with the Specversion field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetSpec
+### SetSpecversion
 
-`func (o *CloudEvent) SetSpec(v string)`
+`func (o *CloudEvent) SetSpecversion(v string)`
 
-SetSpec sets Spec field to given value.
+SetSpecversion sets Specversion field to given value.
 
-### HasSpec
+### HasSpecversion
 
-`func (o *CloudEvent) HasSpec() bool`
+`func (o *CloudEvent) HasSpecversion() bool`
 
-HasSpec returns a boolean if a field has been set.
+HasSpecversion returns a boolean if a field has been set.
 
 ### GetSource
 

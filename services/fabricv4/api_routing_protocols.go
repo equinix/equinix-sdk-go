@@ -36,7 +36,7 @@ func (r ApiCreateConnectionRoutingProtocolRequest) Execute() (*RoutingProtocolDa
 }
 
 /*
-CreateConnectionRoutingProtocol Create Protocol
+CreateConnectionRoutingProtocol Create Routing Protocol
 
 This API provides capability to create Routing Protocol for connections
 
@@ -216,7 +216,7 @@ func (r ApiCreateConnectionRoutingProtocolsInBulkRequest) Execute() (*GetRespons
 }
 
 /*
-CreateConnectionRoutingProtocolsInBulk Bulk Create Protocol
+CreateConnectionRoutingProtocolsInBulk Bulk Create Routing Protocols
 
 This API provides capability to create Routing Protocol for connections
 
@@ -943,7 +943,7 @@ func (r ApiGetConnectionRoutingProtocolsRequest) Execute() (*GetResponse, *http.
 }
 
 /*
-GetConnectionRoutingProtocols GetRoutingProtocols
+GetConnectionRoutingProtocols Get Routing Protocols
 
 This API provides capability to get Routing Protocols for connections
 
@@ -1454,7 +1454,7 @@ func (r ApiGetConnectionRoutingProtocolsChangesRequest) Execute() (*RoutingProto
 }
 
 /*
-GetConnectionRoutingProtocolsChanges Get Changes
+GetConnectionRoutingProtocolsChanges Get Routing Protocol Changes
 
 This API provides capability to retrieve user's Routing Protocol Changes
 

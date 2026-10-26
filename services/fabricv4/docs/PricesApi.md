@@ -4,7 +4,7 @@ All URIs are relative to *https://api.equinix.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**SearchPrices**](PricesApi.md#SearchPrices) | **Post** /fabric/v4/prices/search | Get Prices
+[**SearchPrices**](PricesApi.md#SearchPrices) | **Post** /fabric/v4/prices/search | Search Prices
 
 
 
@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 > PriceSearchResponse SearchPrices(ctx).FilterBody(filterBody).Execute()
 
-Get Prices
+Search Prices
 
 
 

@@ -18,6 +18,7 @@ type StreamSubscriptionSinkType string
 // List of StreamSubscriptionSink_type
 const (
 	STREAMSUBSCRIPTIONSINKTYPE_DATADOG       StreamSubscriptionSinkType = "DATADOG"
+	STREAMSUBSCRIPTIONSINKTYPE_DYNATRACE     StreamSubscriptionSinkType = "DYNATRACE"
 	STREAMSUBSCRIPTIONSINKTYPE_GOOGLE_PUBSUB StreamSubscriptionSinkType = "GOOGLE_PUBSUB"
 	STREAMSUBSCRIPTIONSINKTYPE_PAGERDUTY     StreamSubscriptionSinkType = "PAGERDUTY"
 	STREAMSUBSCRIPTIONSINKTYPE_SERVICENOW    StreamSubscriptionSinkType = "SERVICENOW"
@@ -30,6 +31,7 @@ const (
 // All allowed values of StreamSubscriptionSinkType enum
 var AllowedStreamSubscriptionSinkTypeEnumValues = []StreamSubscriptionSinkType{
 	"DATADOG",
+	"DYNATRACE",
 	"GOOGLE_PUBSUB",
 	"PAGERDUTY",
 	"SERVICENOW",

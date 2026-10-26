@@ -28,9 +28,9 @@ func (r ApiGetStatusRequest) Execute() (*HealthResponse, *http.Response, error) 
 }
 
 /*
-GetStatus Get service status
+GetStatus Get Service Status
 
-GET All service health statys with an option query parameter to return all Equinix Fabric customer in which the customer has a presence.
+Retrieves the operational health status of all Equinix Fabric services, enabling customers to monitor service availability and detect potential disruptions across regions where they have a presence. Supports an optional query parameter to filter results by customer
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiGetStatusRequest

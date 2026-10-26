@@ -31,6 +31,7 @@ type SimplifiedAccount struct {
 	// Account ucmId
 	UcmId *string `json:"ucmId,omitempty"`
 	// Account name
+	// Deprecated
 	GlobalCustId *string `json:"globalCustId,omitempty"`
 	// Reseller account number
 	ResellerAccountNumber *int64 `json:"resellerAccountNumber,omitempty"`
@@ -287,6 +288,7 @@ func (o *SimplifiedAccount) SetUcmId(v string) {
 }
 
 // GetGlobalCustId returns the GlobalCustId field value if set, zero value otherwise.
+// Deprecated
 func (o *SimplifiedAccount) GetGlobalCustId() string {
 	if o == nil || IsNil(o.GlobalCustId) {
 		var ret string
@@ -297,6 +299,7 @@ func (o *SimplifiedAccount) GetGlobalCustId() string {
 
 // GetGlobalCustIdOk returns a tuple with the GlobalCustId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *SimplifiedAccount) GetGlobalCustIdOk() (*string, bool) {
 	if o == nil || IsNil(o.GlobalCustId) {
 		return nil, false
@@ -314,6 +317,7 @@ func (o *SimplifiedAccount) HasGlobalCustId() bool {
 }
 
 // SetGlobalCustId gets a reference to the given string and assigns it to the GlobalCustId field.
+// Deprecated
 func (o *SimplifiedAccount) SetGlobalCustId(v string) {
 	o.GlobalCustId = &v
 }

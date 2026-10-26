@@ -19,9 +19,9 @@ var _ MappedNullable = &AppLinkAppServiceAttachmentChange{}
 // AppLinkAppServiceAttachmentChange Current state of latest AppLink change
 type AppLinkAppServiceAttachmentChange struct {
 	// Uniquely identifies a change
-	Uuid   *string           `json:"uuid,omitempty"`
-	Type   AppLinkChangeType `json:"type"`
-	Status *PortChangeStatus `json:"status,omitempty"`
+	Uuid   *string                               `json:"uuid,omitempty"`
+	Type   AppLinkAppServiceAttachmentChangeType `json:"type"`
+	Status *PortChangeStatus                     `json:"status,omitempty"`
 	// Set when change flow starts
 	CreatedDateTime *time.Time `json:"createdDateTime,omitempty"`
 	// Set when change object is updated
@@ -36,7 +36,7 @@ type _AppLinkAppServiceAttachmentChange AppLinkAppServiceAttachmentChange
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAppLinkAppServiceAttachmentChange(type_ AppLinkChangeType, updatedDateTime time.Time) *AppLinkAppServiceAttachmentChange {
+func NewAppLinkAppServiceAttachmentChange(type_ AppLinkAppServiceAttachmentChangeType, updatedDateTime time.Time) *AppLinkAppServiceAttachmentChange {
 	this := AppLinkAppServiceAttachmentChange{}
 	this.Type = type_
 	this.UpdatedDateTime = updatedDateTime
@@ -84,9 +84,9 @@ func (o *AppLinkAppServiceAttachmentChange) SetUuid(v string) {
 }
 
 // GetType returns the Type field value
-func (o *AppLinkAppServiceAttachmentChange) GetType() AppLinkChangeType {
+func (o *AppLinkAppServiceAttachmentChange) GetType() AppLinkAppServiceAttachmentChangeType {
 	if o == nil {
-		var ret AppLinkChangeType
+		var ret AppLinkAppServiceAttachmentChangeType
 		return ret
 	}
 
@@ -95,7 +95,7 @@ func (o *AppLinkAppServiceAttachmentChange) GetType() AppLinkChangeType {
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *AppLinkAppServiceAttachmentChange) GetTypeOk() (*AppLinkChangeType, bool) {
+func (o *AppLinkAppServiceAttachmentChange) GetTypeOk() (*AppLinkAppServiceAttachmentChangeType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -103,7 +103,7 @@ func (o *AppLinkAppServiceAttachmentChange) GetTypeOk() (*AppLinkChangeType, boo
 }
 
 // SetType sets field value
-func (o *AppLinkAppServiceAttachmentChange) SetType(v AppLinkChangeType) {
+func (o *AppLinkAppServiceAttachmentChange) SetType(v AppLinkAppServiceAttachmentChangeType) {
 	o.Type = v
 }
 

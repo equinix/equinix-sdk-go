@@ -202,7 +202,7 @@ func (r ApiCreatePortRequest) Execute() (*Port, *http.Response, error) {
 /*
 CreatePort Create Port
 
-Creates Equinix Fabric™ Port.
+Creates Equinix Fabric™ Port
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiCreatePortRequest
@@ -351,7 +351,7 @@ func (r ApiDeletePortRequest) Execute() (*Port, *http.Response, error) {
 }
 
 /*
-DeletePort Delete a single port
+DeletePort Delete Port
 
 The API provides capability to delete a single port
 
@@ -493,9 +493,9 @@ func (r ApiGetPortByUuidRequest) Execute() (*Port, *http.Response, error) {
 }
 
 /*
-GetPortByUuid Get Port by uuid
+GetPortByUuid Get Port by ID
 
-Get Port By uuid returns details of assigned and available Equinix Fabric port for the specified user credentials. The metro code attribute in the response shows the origin of the proposed connection.
+Get Port by ID returns details of assigned and available Equinix Fabric port for the specified user credentials. The metro code attribute in the response shows the origin of the proposed connection
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param portId Port UUID
@@ -637,7 +637,7 @@ func (r ApiGetPortsRequest) Execute() (*AllPortsResponse, *http.Response, error)
 /*
 GetPorts Get All Ports
 
-Get All Ports returns details of all assigned and available ports for the specified user credentials. The metro attribute in the response shows the origin of the proposed connection.
+Get All Ports returns details of all assigned and available ports for the specified user credentials. The metro attribute in the response shows the origin of the proposed connection
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiGetPortsRequest
@@ -775,6 +775,20 @@ type ApiGetVlansRequest struct {
 	ctx        context.Context
 	ApiService *PortsApiService
 	portUuid   string
+	offset     *int32
+	limit      *int32
+}
+
+// offset
+func (r ApiGetVlansRequest) Offset(offset int32) ApiGetVlansRequest {
+	r.offset = &offset
+	return r
+}
+
+// number of records to fetch
+func (r ApiGetVlansRequest) Limit(limit int32) ApiGetVlansRequest {
+	r.limit = &limit
+	return r
 }
 
 func (r ApiGetVlansRequest) Execute() (*LinkProtocolGetResponse, *http.Response, error) {
@@ -784,7 +798,7 @@ func (r ApiGetVlansRequest) Execute() (*LinkProtocolGetResponse, *http.Response,
 /*
 GetVlans Get Vlans
 
-The API provides capability to retrieve Vlans for a Port.
+The API provides capability to retrieve Vlans for a Port
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param portUuid Port UUID
@@ -821,6 +835,12 @@ func (a *PortsApiService) GetVlansExecute(r ApiGetVlansRequest) (*LinkProtocolGe
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
+	}
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -912,7 +932,7 @@ func (r ApiSearchPortsRequest) Execute() (*AllPortsResponse, *http.Response, err
 }
 
 /*
-SearchPorts Search ports
+SearchPorts Search Ports
 
 The API provides capability to get list of user's virtual ports using search criteria, including optional filtering, pagination and sorting
 
@@ -1074,7 +1094,7 @@ func (r ApiUpdatePortByUuidRequest) Execute() (*AllPortsResponse, *http.Response
 }
 
 /*
-UpdatePortByUuid Update by UUID
+UpdatePortByUuid Update Port by ID
 
 Update Port by UUID
 
