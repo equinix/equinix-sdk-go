@@ -14,7 +14,6 @@ Name | Type | Description | Notes
 **VirtualDevice** | Pointer to [**VirtualDevice**](VirtualDevice.md) |  | [optional] 
 **Interface** | Pointer to [**Interface**](Interface.md) |  | [optional] 
 **Network** | Pointer to [**SimplifiedNetwork**](SimplifiedNetwork.md) |  | [optional] 
-**Interconnect** | Pointer to [**Interconnect**](Interconnect.md) |  | [optional] 
 **Environment** | Pointer to [**ProviderEnvironment**](ProviderEnvironment.md) |  | [optional] 
 **SellerRegion** | Pointer to **string** | Access point seller region | [optional] 
 **PeeringType** | Pointer to [**PeeringType**](PeeringType.md) |  | [optional] 
@@ -297,31 +296,6 @@ SetNetwork sets Network field to given value.
 `func (o *AccessPoint) HasNetwork() bool`
 
 HasNetwork returns a boolean if a field has been set.
-
-### GetInterconnect
-
-`func (o *AccessPoint) GetInterconnect() Interconnect`
-
-GetInterconnect returns the Interconnect field if non-nil, zero value otherwise.
-
-### GetInterconnectOk
-
-`func (o *AccessPoint) GetInterconnectOk() (*Interconnect, bool)`
-
-GetInterconnectOk returns a tuple with the Interconnect field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetInterconnect
-
-`func (o *AccessPoint) SetInterconnect(v Interconnect)`
-
-SetInterconnect sets Interconnect field to given value.
-
-### HasInterconnect
-
-`func (o *AccessPoint) HasInterconnect() bool`
-
-HasInterconnect returns a boolean if a field has been set.
 
 ### GetEnvironment
 

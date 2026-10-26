@@ -16,11 +16,11 @@ var _ MappedNullable = &NetworkFilter{}
 
 // NetworkFilter struct for NetworkFilter
 type NetworkFilter struct {
-	And                  []NetworkFilter             `json:"and,omitempty"`
-	Or                   []NetworkFilter             `json:"or,omitempty"`
-	Property             *NetworkSearchFieldName     `json:"property,omitempty"`
-	Operator             *InterconnectFilterOperator `json:"operator,omitempty"`
-	Values               []string                    `json:"values,omitempty"`
+	And                  []NetworkFilter         `json:"and,omitempty"`
+	Or                   []NetworkFilter         `json:"or,omitempty"`
+	Property             *NetworkSearchFieldName `json:"property,omitempty"`
+	Operator             *NetworkFilterOperator  `json:"operator,omitempty"`
+	Values               []string                `json:"values,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -140,9 +140,9 @@ func (o *NetworkFilter) SetProperty(v NetworkSearchFieldName) {
 }
 
 // GetOperator returns the Operator field value if set, zero value otherwise.
-func (o *NetworkFilter) GetOperator() InterconnectFilterOperator {
+func (o *NetworkFilter) GetOperator() NetworkFilterOperator {
 	if o == nil || IsNil(o.Operator) {
-		var ret InterconnectFilterOperator
+		var ret NetworkFilterOperator
 		return ret
 	}
 	return *o.Operator
@@ -150,7 +150,7 @@ func (o *NetworkFilter) GetOperator() InterconnectFilterOperator {
 
 // GetOperatorOk returns a tuple with the Operator field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NetworkFilter) GetOperatorOk() (*InterconnectFilterOperator, bool) {
+func (o *NetworkFilter) GetOperatorOk() (*NetworkFilterOperator, bool) {
 	if o == nil || IsNil(o.Operator) {
 		return nil, false
 	}
@@ -166,8 +166,8 @@ func (o *NetworkFilter) HasOperator() bool {
 	return false
 }
 
-// SetOperator gets a reference to the given InterconnectFilterOperator and assigns it to the Operator field.
-func (o *NetworkFilter) SetOperator(v InterconnectFilterOperator) {
+// SetOperator gets a reference to the given NetworkFilterOperator and assigns it to the Operator field.
+func (o *NetworkFilter) SetOperator(v NetworkFilterOperator) {
 	o.Operator = &v
 }
 

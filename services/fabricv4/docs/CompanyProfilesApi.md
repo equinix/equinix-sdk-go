@@ -12,7 +12,7 @@ Method | HTTP request | Description
 [**DetachPrivateServiceFromProfile**](CompanyProfilesApi.md#DetachPrivateServiceFromProfile) | **Delete** /fabric/v4/companyProfiles/{companyProfileId}/privateServices/{privateServiceId} | Detach Private Service
 [**DetachServiceProfileFromProfile**](CompanyProfilesApi.md#DetachServiceProfileFromProfile) | **Delete** /fabric/v4/companyProfiles/{companyProfileId}/serviceProfiles/{serviceProfileId} | Detach Service Profile
 [**DetachTagFromProfile**](CompanyProfilesApi.md#DetachTagFromProfile) | **Delete** /fabric/v4/companyProfiles/{companyProfileId}/tags/{tagId} | Detach Tag
-[**GetCompanyProfile**](CompanyProfilesApi.md#GetCompanyProfile) | **Get** /fabric/v4/companyProfiles/{companyProfileId} | Get Company Profile by UUID
+[**GetCompanyProfile**](CompanyProfilesApi.md#GetCompanyProfile) | **Get** /fabric/v4/companyProfiles/{companyProfileId} | Get Company Profile by ID
 [**GetCompanyProfilePrivateServices**](CompanyProfilesApi.md#GetCompanyProfilePrivateServices) | **Get** /fabric/v4/companyProfiles/{companyProfileId}/privateServices | Get Private Services
 [**GetCompanyProfileServiceProfiles**](CompanyProfilesApi.md#GetCompanyProfileServiceProfiles) | **Get** /fabric/v4/companyProfiles/{companyProfileId}/serviceProfiles | Get Service Profiles
 [**GetTags**](CompanyProfilesApi.md#GetTags) | **Get** /fabric/v4/companyProfiles/{companyProfileId}/tags | Get Tags
@@ -598,7 +598,7 @@ Name | Type | Description  | Notes
 
 > CompanyProfileResponse GetCompanyProfile(ctx, companyProfileId).Execute()
 
-Get Company Profile by UUID
+Get Company Profile by ID
 
 
 

@@ -17,12 +17,12 @@ var _ MappedNullable = &CompanyProfileChange{}
 
 // CompanyProfileChange struct for CompanyProfileChange
 type CompanyProfileChange struct {
-	Uuid                 *string                `json:"uuid,omitempty"`
-	Type                 *string                `json:"type,omitempty"`
-	Status               *string                `json:"status,omitempty"`
-	CreatedDateTime      *time.Time             `json:"createdDateTime,omitempty"`
-	UpdatedDateTime      *time.Time             `json:"updatedDateTime,omitempty"`
-	Data                 map[string]interface{} `json:"data,omitempty"`
+	Uuid                 *string                    `json:"uuid,omitempty"`
+	Type                 *string                    `json:"type,omitempty"`
+	Status               *string                    `json:"status,omitempty"`
+	CreatedDateTime      *time.Time                 `json:"createdDateTime,omitempty"`
+	UpdatedDateTime      *time.Time                 `json:"updatedDateTime,omitempty"`
+	Data                 []CompanyProfileChangeItem `json:"data,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -206,9 +206,9 @@ func (o *CompanyProfileChange) SetUpdatedDateTime(v time.Time) {
 }
 
 // GetData returns the Data field value if set, zero value otherwise.
-func (o *CompanyProfileChange) GetData() map[string]interface{} {
+func (o *CompanyProfileChange) GetData() []CompanyProfileChangeItem {
 	if o == nil || IsNil(o.Data) {
-		var ret map[string]interface{}
+		var ret []CompanyProfileChangeItem
 		return ret
 	}
 	return o.Data
@@ -216,9 +216,9 @@ func (o *CompanyProfileChange) GetData() map[string]interface{} {
 
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CompanyProfileChange) GetDataOk() (map[string]interface{}, bool) {
+func (o *CompanyProfileChange) GetDataOk() ([]CompanyProfileChangeItem, bool) {
 	if o == nil || IsNil(o.Data) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
 	return o.Data, true
 }
@@ -232,8 +232,8 @@ func (o *CompanyProfileChange) HasData() bool {
 	return false
 }
 
-// SetData gets a reference to the given map[string]interface{} and assigns it to the Data field.
-func (o *CompanyProfileChange) SetData(v map[string]interface{}) {
+// SetData gets a reference to the given []CompanyProfileChangeItem and assigns it to the Data field.
+func (o *CompanyProfileChange) SetData(v []CompanyProfileChangeItem) {
 	o.Data = v
 }
 

@@ -4,11 +4,11 @@ All URIs are relative to *https://api.equinix.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateStreamAlertRules**](StreamAlertRulesApi.md#CreateStreamAlertRules) | **Post** /fabric/v4/streams/{streamId}/alertRules | Create Stream Alert Rules
-[**DeleteStreamAlertRuleByUuid**](StreamAlertRulesApi.md#DeleteStreamAlertRuleByUuid) | **Delete** /fabric/v4/streams/{streamId}/alertRules/{alertRuleId} | Delete Stream Alert Rules
-[**GetStreamAlertRuleByUuid**](StreamAlertRulesApi.md#GetStreamAlertRuleByUuid) | **Get** /fabric/v4/streams/{streamId}/alertRules/{alertRuleId} | Get Stream Alert Rules
+[**CreateStreamAlertRules**](StreamAlertRulesApi.md#CreateStreamAlertRules) | **Post** /fabric/v4/streams/{streamId}/alertRules | Create Stream Alert Rule
+[**DeleteStreamAlertRuleByUuid**](StreamAlertRulesApi.md#DeleteStreamAlertRuleByUuid) | **Delete** /fabric/v4/streams/{streamId}/alertRules/{alertRuleId} | Delete Stream Alert Rule
+[**GetStreamAlertRuleByUuid**](StreamAlertRulesApi.md#GetStreamAlertRuleByUuid) | **Get** /fabric/v4/streams/{streamId}/alertRules/{alertRuleId} | Get Stream Alert Rule
 [**GetStreamAlertRules**](StreamAlertRulesApi.md#GetStreamAlertRules) | **Get** /fabric/v4/streams/{streamId}/alertRules | Get Stream Alert Rules
-[**UpdateStreamAlertRuleByUuid**](StreamAlertRulesApi.md#UpdateStreamAlertRuleByUuid) | **Put** /fabric/v4/streams/{streamId}/alertRules/{alertRuleId} | Update Stream Alert Rules
+[**UpdateStreamAlertRuleByUuid**](StreamAlertRulesApi.md#UpdateStreamAlertRuleByUuid) | **Put** /fabric/v4/streams/{streamId}/alertRules/{alertRuleId} | Update Stream Alert Rule
 
 
 
@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 > StreamAlertRule CreateStreamAlertRules(ctx, streamId).AlertRulePostRequest(alertRulePostRequest).Execute()
 
-Create Stream Alert Rules
+Create Stream Alert Rule
 
 
 
@@ -88,7 +88,7 @@ Name | Type | Description  | Notes
 
 > StreamAlertRule DeleteStreamAlertRuleByUuid(ctx, streamId, alertRuleId).Execute()
 
-Delete Stream Alert Rules
+Delete Stream Alert Rule
 
 
 
@@ -161,7 +161,7 @@ Name | Type | Description  | Notes
 
 > StreamAlertRule GetStreamAlertRuleByUuid(ctx, streamId, alertRuleId).Execute()
 
-Get Stream Alert Rules
+Get Stream Alert Rule
 
 
 
@@ -308,7 +308,7 @@ Name | Type | Description  | Notes
 
 > StreamAlertRule UpdateStreamAlertRuleByUuid(ctx, streamId, alertRuleId).AlertRulePutRequest(alertRulePutRequest).Execute()
 
-Update Stream Alert Rules
+Update Stream Alert Rule
 
 
 

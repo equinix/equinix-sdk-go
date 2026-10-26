@@ -26,7 +26,7 @@ type ProviderEnvironment struct {
 	// Provider environment description
 	Description *string `json:"description,omitempty"`
 	// Cloud provider region identifier
-	Region *string `json:"region,omitempty"`
+	SellerRegion *string `json:"sellerRegion,omitempty"`
 	// Supported bandwidths in Mbps
 	SupportedBandwidths []int32 `json:"supportedBandwidths,omitempty"`
 	// Derived response attribute.
@@ -216,36 +216,36 @@ func (o *ProviderEnvironment) SetDescription(v string) {
 	o.Description = &v
 }
 
-// GetRegion returns the Region field value if set, zero value otherwise.
-func (o *ProviderEnvironment) GetRegion() string {
-	if o == nil || IsNil(o.Region) {
+// GetSellerRegion returns the SellerRegion field value if set, zero value otherwise.
+func (o *ProviderEnvironment) GetSellerRegion() string {
+	if o == nil || IsNil(o.SellerRegion) {
 		var ret string
 		return ret
 	}
-	return *o.Region
+	return *o.SellerRegion
 }
 
-// GetRegionOk returns a tuple with the Region field value if set, nil otherwise
+// GetSellerRegionOk returns a tuple with the SellerRegion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProviderEnvironment) GetRegionOk() (*string, bool) {
-	if o == nil || IsNil(o.Region) {
+func (o *ProviderEnvironment) GetSellerRegionOk() (*string, bool) {
+	if o == nil || IsNil(o.SellerRegion) {
 		return nil, false
 	}
-	return o.Region, true
+	return o.SellerRegion, true
 }
 
-// HasRegion returns a boolean if a field has been set.
-func (o *ProviderEnvironment) HasRegion() bool {
-	if o != nil && !IsNil(o.Region) {
+// HasSellerRegion returns a boolean if a field has been set.
+func (o *ProviderEnvironment) HasSellerRegion() bool {
+	if o != nil && !IsNil(o.SellerRegion) {
 		return true
 	}
 
 	return false
 }
 
-// SetRegion gets a reference to the given string and assigns it to the Region field.
-func (o *ProviderEnvironment) SetRegion(v string) {
-	o.Region = &v
+// SetSellerRegion gets a reference to the given string and assigns it to the SellerRegion field.
+func (o *ProviderEnvironment) SetSellerRegion(v string) {
+	o.SellerRegion = &v
 }
 
 // GetSupportedBandwidths returns the SupportedBandwidths field value if set, zero value otherwise.
@@ -401,8 +401,8 @@ func (o ProviderEnvironment) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !IsNil(o.Region) {
-		toSerialize["region"] = o.Region
+	if !IsNil(o.SellerRegion) {
+		toSerialize["sellerRegion"] = o.SellerRegion
 	}
 	if !IsNil(o.SupportedBandwidths) {
 		toSerialize["supportedBandwidths"] = o.SupportedBandwidths
@@ -443,7 +443,7 @@ func (o *ProviderEnvironment) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")
-		delete(additionalProperties, "region")
+		delete(additionalProperties, "sellerRegion")
 		delete(additionalProperties, "supportedBandwidths")
 		delete(additionalProperties, "metros")
 		delete(additionalProperties, "supportedFeatures")

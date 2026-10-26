@@ -36,7 +36,7 @@ func (r ApiCreateStreamAlertRulesRequest) Execute() (*StreamAlertRule, *http.Res
 }
 
 /*
-CreateStreamAlertRules Create Stream Alert Rules
+CreateStreamAlertRules Create Stream Alert Rule
 
 This API provides capability to create user's Stream Alert Rules
 
@@ -200,7 +200,7 @@ func (r ApiDeleteStreamAlertRuleByUuidRequest) Execute() (*StreamAlertRule, *htt
 }
 
 /*
-DeleteStreamAlertRuleByUuid Delete Stream Alert Rules
+DeleteStreamAlertRuleByUuid Delete Stream Alert Rule
 
 This API provides capability to delete a user's stream alert rule
 
@@ -362,9 +362,9 @@ func (r ApiGetStreamAlertRuleByUuidRequest) Execute() (*StreamAlertRule, *http.R
 }
 
 /*
-GetStreamAlertRuleByUuid Get Stream Alert Rules
+GetStreamAlertRuleByUuid Get Stream Alert Rule
 
-This API provides capability to get user's stream alert rules
+This API provides capability to get user's stream alert rule
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param streamId Stream UUID
@@ -697,7 +697,7 @@ func (r ApiUpdateStreamAlertRuleByUuidRequest) Execute() (*StreamAlertRule, *htt
 }
 
 /*
-UpdateStreamAlertRuleByUuid Update Stream Alert Rules
+UpdateStreamAlertRuleByUuid Update Stream Alert Rule
 
 This API provides capability to update a user's stream alert rule
 

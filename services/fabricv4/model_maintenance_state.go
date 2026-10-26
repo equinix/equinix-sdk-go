@@ -20,7 +20,8 @@ const (
 	MAINTENANCESTATE_SCHEDULED   MaintenanceState = "SCHEDULED"
 	MAINTENANCESTATE_IN_PROGRESS MaintenanceState = "IN_PROGRESS"
 	MAINTENANCESTATE_COMPLETED   MaintenanceState = "COMPLETED"
-	MAINTENANCESTATE_DEFERRED    MaintenanceState = "DEFERRED"
+	MAINTENANCESTATE_CANCELLED   MaintenanceState = "CANCELLED"
+	MAINTENANCESTATE_POSTPONED   MaintenanceState = "POSTPONED"
 )
 
 // All allowed values of MaintenanceState enum
@@ -28,7 +29,8 @@ var AllowedMaintenanceStateEnumValues = []MaintenanceState{
 	"SCHEDULED",
 	"IN_PROGRESS",
 	"COMPLETED",
-	"DEFERRED",
+	"CANCELLED",
+	"POSTPONED",
 }
 
 func (v *MaintenanceState) UnmarshalJSON(src []byte) error {

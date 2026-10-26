@@ -4,11 +4,11 @@ All URIs are relative to *https://api.equinix.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateAppSubscription**](ApplicationSubscriptionsApi.md#CreateAppSubscription) | **Post** /fabric/v4/appSubscriptions | Create App Subscription
-[**DeleteAppSubscriptionByUuid**](ApplicationSubscriptionsApi.md#DeleteAppSubscriptionByUuid) | **Delete** /fabric/v4/appSubscriptions/{appSubscriptionId} | Delete App Subscription
-[**GetAppSubscriptionByUuid**](ApplicationSubscriptionsApi.md#GetAppSubscriptionByUuid) | **Get** /fabric/v4/appSubscriptions/{appSubscriptionId} | Get App Subscription
-[**SearchAppSubscriptions**](ApplicationSubscriptionsApi.md#SearchAppSubscriptions) | **Post** /fabric/v4/appSubscriptions/search | Search App Subscriptions
-[**UpdateAppSubscriptionByUuid**](ApplicationSubscriptionsApi.md#UpdateAppSubscriptionByUuid) | **Patch** /fabric/v4/appSubscriptions/{appSubscriptionId} | Update App Subscription
+[**CreateAppSubscription**](ApplicationSubscriptionsApi.md#CreateAppSubscription) | **Post** /fabric/v4/appSubscriptions | Create Subscription
+[**DeleteAppSubscriptionByUuid**](ApplicationSubscriptionsApi.md#DeleteAppSubscriptionByUuid) | **Delete** /fabric/v4/appSubscriptions/{appSubscriptionId} | Delete Subscription
+[**GetAppSubscriptionByUuid**](ApplicationSubscriptionsApi.md#GetAppSubscriptionByUuid) | **Get** /fabric/v4/appSubscriptions/{appSubscriptionId} | Get Subscription
+[**SearchAppSubscriptions**](ApplicationSubscriptionsApi.md#SearchAppSubscriptions) | **Post** /fabric/v4/appSubscriptions/search | Search Subscriptions
+[**UpdateAppSubscriptionByUuid**](ApplicationSubscriptionsApi.md#UpdateAppSubscriptionByUuid) | **Patch** /fabric/v4/appSubscriptions/{appSubscriptionId} | Update Subscription
 
 
 
@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 > AppSubscription CreateAppSubscription(ctx).AppSubscriptionPostRequest(appSubscriptionPostRequest).Execute()
 
-Create App Subscription
+Create Subscription
 
 
 
@@ -82,7 +82,7 @@ Name | Type | Description  | Notes
 
 > AppSubscription DeleteAppSubscriptionByUuid(ctx, appSubscriptionId).Execute()
 
-Delete App Subscription
+Delete Subscription
 
 
 
@@ -152,7 +152,7 @@ Name | Type | Description  | Notes
 
 > AppSubscription GetAppSubscriptionByUuid(ctx, appSubscriptionId).Execute()
 
-Get App Subscription
+Get Subscription
 
 
 
@@ -222,7 +222,7 @@ Name | Type | Description  | Notes
 
 > AppSubscriptionSearchResponse SearchAppSubscriptions(ctx).AppSubscriptionSearchRequest(appSubscriptionSearchRequest).Execute()
 
-Search App Subscriptions
+Search Subscriptions
 
 
 
@@ -288,7 +288,7 @@ Name | Type | Description  | Notes
 
 > AppSubscription UpdateAppSubscriptionByUuid(ctx, appSubscriptionId).AppSubscriptionChangeOperation(appSubscriptionChangeOperation).Execute()
 
-Update App Subscription
+Update Subscription
 
 
 
@@ -306,7 +306,7 @@ import (
 
 func main() {
 	appSubscriptionId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | App Subscription UUID
-	appSubscriptionChangeOperation := []openapiclient.AppSubscriptionChangeOperation{*openapiclient.NewAppSubscriptionChangeOperation(openapiclient.precisionTimeChangeOperation_op("replace"), "Path_example", map[string]interface{}(123))} // []AppSubscriptionChangeOperation | 
+	appSubscriptionChangeOperation := []openapiclient.AppSubscriptionChangeOperation{*openapiclient.NewAppSubscriptionChangeOperation(openapiclient.AppDomainChangeOperation_op("replace"), "Path_example", map[string]interface{}(123))} // []AppSubscriptionChangeOperation | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

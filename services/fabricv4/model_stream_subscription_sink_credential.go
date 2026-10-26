@@ -26,7 +26,9 @@ type StreamSubscriptionSinkCredential struct {
 	// passed as Authorization header value
 	Username *string `json:"username,omitempty"`
 	// passed as Authorization header value
-	Password             *string `json:"password,omitempty"`
+	Password *string `json:"password,omitempty"`
+	// passed as Authorization header value
+	ApiToken             *string `json:"apiToken,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -241,6 +243,38 @@ func (o *StreamSubscriptionSinkCredential) SetPassword(v string) {
 	o.Password = &v
 }
 
+// GetApiToken returns the ApiToken field value if set, zero value otherwise.
+func (o *StreamSubscriptionSinkCredential) GetApiToken() string {
+	if o == nil || IsNil(o.ApiToken) {
+		var ret string
+		return ret
+	}
+	return *o.ApiToken
+}
+
+// GetApiTokenOk returns a tuple with the ApiToken field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamSubscriptionSinkCredential) GetApiTokenOk() (*string, bool) {
+	if o == nil || IsNil(o.ApiToken) {
+		return nil, false
+	}
+	return o.ApiToken, true
+}
+
+// HasApiToken returns a boolean if a field has been set.
+func (o *StreamSubscriptionSinkCredential) HasApiToken() bool {
+	if o != nil && !IsNil(o.ApiToken) {
+		return true
+	}
+
+	return false
+}
+
+// SetApiToken gets a reference to the given string and assigns it to the ApiToken field.
+func (o *StreamSubscriptionSinkCredential) SetApiToken(v string) {
+	o.ApiToken = &v
+}
+
 func (o StreamSubscriptionSinkCredential) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -268,6 +302,9 @@ func (o StreamSubscriptionSinkCredential) ToMap() (map[string]interface{}, error
 	}
 	if !IsNil(o.Password) {
 		toSerialize["password"] = o.Password
+	}
+	if !IsNil(o.ApiToken) {
+		toSerialize["apiToken"] = o.ApiToken
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -297,6 +334,7 @@ func (o *StreamSubscriptionSinkCredential) UnmarshalJSON(data []byte) (err error
 		delete(additionalProperties, "apiKey")
 		delete(additionalProperties, "username")
 		delete(additionalProperties, "password")
+		delete(additionalProperties, "apiToken")
 		o.AdditionalProperties = additionalProperties
 	}
 

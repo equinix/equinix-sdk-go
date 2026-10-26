@@ -16,8 +16,10 @@ var _ MappedNullable = &RoutingProtocolResponse{}
 
 // RoutingProtocolResponse struct for RoutingProtocolResponse
 type RoutingProtocolResponse struct {
-	CustomerAsn *string `json:"customerAsn,omitempty"`
-	MacAddress  *string `json:"macAddress,omitempty"`
+	// Customer Autonomous System Number (ASN)
+	CustomerAsn *int32 `json:"customerAsn,omitempty"`
+	// MAC address of the customer interface
+	MacAddress *string `json:"macAddress,omitempty"`
 	// VLAN ID
 	Vlan *int64 `json:"vlan,omitempty"`
 	// Equinix Route Server ASN
@@ -48,9 +50,9 @@ func NewRoutingProtocolResponseWithDefaults() *RoutingProtocolResponse {
 }
 
 // GetCustomerAsn returns the CustomerAsn field value if set, zero value otherwise.
-func (o *RoutingProtocolResponse) GetCustomerAsn() string {
+func (o *RoutingProtocolResponse) GetCustomerAsn() int32 {
 	if o == nil || IsNil(o.CustomerAsn) {
-		var ret string
+		var ret int32
 		return ret
 	}
 	return *o.CustomerAsn
@@ -58,7 +60,7 @@ func (o *RoutingProtocolResponse) GetCustomerAsn() string {
 
 // GetCustomerAsnOk returns a tuple with the CustomerAsn field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RoutingProtocolResponse) GetCustomerAsnOk() (*string, bool) {
+func (o *RoutingProtocolResponse) GetCustomerAsnOk() (*int32, bool) {
 	if o == nil || IsNil(o.CustomerAsn) {
 		return nil, false
 	}
@@ -74,8 +76,8 @@ func (o *RoutingProtocolResponse) HasCustomerAsn() bool {
 	return false
 }
 
-// SetCustomerAsn gets a reference to the given string and assigns it to the CustomerAsn field.
-func (o *RoutingProtocolResponse) SetCustomerAsn(v string) {
+// SetCustomerAsn gets a reference to the given int32 and assigns it to the CustomerAsn field.
+func (o *RoutingProtocolResponse) SetCustomerAsn(v int32) {
 	o.CustomerAsn = &v
 }
 

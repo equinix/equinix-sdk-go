@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Type** | [**Actions**](Actions.md) |  | 
 **Href** | **string** | Connection action URI | [readonly] 
 **Uuid** | **string** | Equinix-assigned connection identifier | 
+**State** | Pointer to [**ConnectionActionState**](ConnectionActionState.md) |  | [optional] 
 **Description** | Pointer to **string** | Connection rejection reason detail | [optional] 
 **Data** | [**ConnectionAcceptanceData**](ConnectionAcceptanceData.md) |  | 
 **ChangeLog** | Pointer to [**Changelog**](Changelog.md) |  | [optional] 
@@ -89,6 +90,31 @@ and a boolean to check if the value has been set.
 
 SetUuid sets Uuid field to given value.
 
+
+### GetState
+
+`func (o *ConnectionAction) GetState() ConnectionActionState`
+
+GetState returns the State field if non-nil, zero value otherwise.
+
+### GetStateOk
+
+`func (o *ConnectionAction) GetStateOk() (*ConnectionActionState, bool)`
+
+GetStateOk returns a tuple with the State field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetState
+
+`func (o *ConnectionAction) SetState(v ConnectionActionState)`
+
+SetState sets State field to given value.
+
+### HasState
+
+`func (o *ConnectionAction) HasState() bool`
+
+HasState returns a boolean if a field has been set.
 
 ### GetDescription
 

@@ -14,11 +14,12 @@ Name | Type | Description | Notes
 **Location** | Pointer to [**SimplifiedLocation**](SimplifiedLocation.md) |  | [optional] 
 **PublicPeeringConnection** | Pointer to [**PublicPeeringConnectionResponse**](PublicPeeringConnectionResponse.md) |  | [optional] 
 **RoutingProtocol** | Pointer to [**RoutingProtocolResponse**](RoutingProtocolResponse.md) |  | [optional] 
-**Order** | Pointer to [**Order**](Order.md) |  | [optional] 
+**Order** | Pointer to [**ExchangeServiceOrder**](ExchangeServiceOrder.md) |  | [optional] 
 **Project** | Pointer to [**Project**](Project.md) |  | [optional] 
 **Account** | Pointer to [**SimplifiedAccount**](SimplifiedAccount.md) |  | [optional] 
 **Notifications** | Pointer to [**[]ExchangeServiceNotification**](ExchangeServiceNotification.md) | Preferences for notifications on Internet Exchange Service configuration or status changes | [optional] 
 **Changelog** | Pointer to [**PlatformChangelog**](PlatformChangelog.md) |  | [optional] 
+**AdditionalInfo** | Pointer to [**ExchangeServiceAdditionalInfo**](ExchangeServiceAdditionalInfo.md) |  | [optional] 
 
 ## Methods
 
@@ -291,20 +292,20 @@ HasRoutingProtocol returns a boolean if a field has been set.
 
 ### GetOrder
 
-`func (o *ExchangeServiceResponse) GetOrder() Order`
+`func (o *ExchangeServiceResponse) GetOrder() ExchangeServiceOrder`
 
 GetOrder returns the Order field if non-nil, zero value otherwise.
 
 ### GetOrderOk
 
-`func (o *ExchangeServiceResponse) GetOrderOk() (*Order, bool)`
+`func (o *ExchangeServiceResponse) GetOrderOk() (*ExchangeServiceOrder, bool)`
 
 GetOrderOk returns a tuple with the Order field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOrder
 
-`func (o *ExchangeServiceResponse) SetOrder(v Order)`
+`func (o *ExchangeServiceResponse) SetOrder(v ExchangeServiceOrder)`
 
 SetOrder sets Order field to given value.
 
@@ -413,6 +414,31 @@ SetChangelog sets Changelog field to given value.
 `func (o *ExchangeServiceResponse) HasChangelog() bool`
 
 HasChangelog returns a boolean if a field has been set.
+
+### GetAdditionalInfo
+
+`func (o *ExchangeServiceResponse) GetAdditionalInfo() ExchangeServiceAdditionalInfo`
+
+GetAdditionalInfo returns the AdditionalInfo field if non-nil, zero value otherwise.
+
+### GetAdditionalInfoOk
+
+`func (o *ExchangeServiceResponse) GetAdditionalInfoOk() (*ExchangeServiceAdditionalInfo, bool)`
+
+GetAdditionalInfoOk returns a tuple with the AdditionalInfo field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdditionalInfo
+
+`func (o *ExchangeServiceResponse) SetAdditionalInfo(v ExchangeServiceAdditionalInfo)`
+
+SetAdditionalInfo sets AdditionalInfo field to given value.
+
+### HasAdditionalInfo
+
+`func (o *ExchangeServiceResponse) HasAdditionalInfo() bool`
+
+HasAdditionalInfo returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

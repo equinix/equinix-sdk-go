@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Op** | [**PrecisionTimeChangeOperationOp**](PrecisionTimeChangeOperationOp.md) |  | 
+**Op** | [**AppDomainChangeOperationOp**](AppDomainChangeOperationOp.md) |  | 
 **Path** | [**AppLinkAppServiceAttachmentChangeOperationPath**](AppLinkAppServiceAttachmentChangeOperationPath.md) |  | 
 **Value** | **map[string]interface{}** | new value for updated parameter | 
 
@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 ### NewAppLinkAppServiceAttachmentChangeOperation
 
-`func NewAppLinkAppServiceAttachmentChangeOperation(op PrecisionTimeChangeOperationOp, path AppLinkAppServiceAttachmentChangeOperationPath, value map[string]interface{}, ) *AppLinkAppServiceAttachmentChangeOperation`
+`func NewAppLinkAppServiceAttachmentChangeOperation(op AppDomainChangeOperationOp, path AppLinkAppServiceAttachmentChangeOperationPath, value map[string]interface{}, ) *AppLinkAppServiceAttachmentChangeOperation`
 
 NewAppLinkAppServiceAttachmentChangeOperation instantiates a new AppLinkAppServiceAttachmentChangeOperation object
 This constructor will assign default values to properties that have it defined,
@@ -29,20 +29,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetOp
 
-`func (o *AppLinkAppServiceAttachmentChangeOperation) GetOp() PrecisionTimeChangeOperationOp`
+`func (o *AppLinkAppServiceAttachmentChangeOperation) GetOp() AppDomainChangeOperationOp`
 
 GetOp returns the Op field if non-nil, zero value otherwise.
 
 ### GetOpOk
 
-`func (o *AppLinkAppServiceAttachmentChangeOperation) GetOpOk() (*PrecisionTimeChangeOperationOp, bool)`
+`func (o *AppLinkAppServiceAttachmentChangeOperation) GetOpOk() (*AppDomainChangeOperationOp, bool)`
 
 GetOpOk returns a tuple with the Op field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOp
 
-`func (o *AppLinkAppServiceAttachmentChangeOperation) SetOp(v PrecisionTimeChangeOperationOp)`
+`func (o *AppLinkAppServiceAttachmentChangeOperation) SetOp(v AppDomainChangeOperationOp)`
 
 SetOp sets Op field to given value.
 

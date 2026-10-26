@@ -12,7 +12,7 @@ import (
 	"fmt"
 )
 
-// SearchSimpleExpressionOperator the model 'SearchSimpleExpressionOperator'
+// SearchSimpleExpressionOperator \"~*\" is a case-insensitive glob match, equivalent to ILIKE - the same single \"*\" wildcard, not POSIX regex - kept as its own operator only because existing callers already send it.
 type SearchSimpleExpressionOperator string
 
 // List of SearchSimpleExpression_operator
@@ -28,6 +28,7 @@ const (
 	SEARCHSIMPLEEXPRESSIONOPERATOR_GREATER_THAN_OR_EQUAL_TO SearchSimpleExpressionOperator = ">="
 	SEARCHSIMPLEEXPRESSIONOPERATOR_LESS_THAN                SearchSimpleExpressionOperator = "<"
 	SEARCHSIMPLEEXPRESSIONOPERATOR_LESS_THAN_OR_EQUAL_TO    SearchSimpleExpressionOperator = "<="
+	SEARCHSIMPLEEXPRESSIONOPERATOR_CASE_INSENSITIVE_REGEX   SearchSimpleExpressionOperator = "~*"
 )
 
 // All allowed values of SearchSimpleExpressionOperator enum
@@ -43,6 +44,7 @@ var AllowedSearchSimpleExpressionOperatorEnumValues = []SearchSimpleExpressionOp
 	">=",
 	"<",
 	"<=",
+	"~*",
 }
 
 func (v *SearchSimpleExpressionOperator) UnmarshalJSON(src []byte) error {

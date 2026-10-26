@@ -219,7 +219,7 @@ func (r ApiCreateRouteFilterRequest) Execute() (*RouteFiltersData, *http.Respons
 }
 
 /*
-CreateRouteFilter Create Route Filters
+CreateRouteFilter Create Route Filter
 
 This API provides capability to create a Route Filter
 
@@ -905,7 +905,7 @@ func (r ApiGetConnectionRouteFiltersRequest) Execute() (*GetAllConnectionRouteFi
 }
 
 /*
-GetConnectionRouteFilters Get All Route Filters
+GetConnectionRouteFilters Get Connection Route Filters
 
 This API provides capability to view all Route Filters attached to a Connection
 
@@ -1074,7 +1074,7 @@ func (r ApiGetRouteFilterByUuidRequest) Execute() (*RouteFiltersData, *http.Resp
 }
 
 /*
-GetRouteFilterByUuid Get Route Filter By UUID
+GetRouteFilterByUuid Get Route Filter by ID
 
 This API provides capability to view a Route Filter by UUID
 
@@ -1419,7 +1419,7 @@ func (r ApiGetRouteFilterChangesRequest) Execute() (*RouteFilterChangeDataRespon
 }
 
 /*
-GetRouteFilterChanges Get All Changes
+GetRouteFilterChanges Get Route Filter Changes
 
 This API provides capability to retrieve all of a Route Filter's Changes
 
@@ -1758,7 +1758,7 @@ func (r ApiPatchRouteFilterByUuidRequest) Execute() (*RouteFiltersData, *http.Re
 }
 
 /*
-PatchRouteFilterByUuid Patch Route Filter
+PatchRouteFilterByUuid Update Route Filter
 
 This API provides capability to partially update a Route Filter
 

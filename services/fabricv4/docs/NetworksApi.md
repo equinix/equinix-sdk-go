@@ -10,7 +10,7 @@ Method | HTTP request | Description
 [**GetNetworkByUuid**](NetworksApi.md#GetNetworkByUuid) | **Get** /fabric/v4/networks/{networkId} | Get Network By ID
 [**GetNetworkChangeByUuid**](NetworksApi.md#GetNetworkChangeByUuid) | **Get** /fabric/v4/networks/{networkId}/changes/{changeId} | Get Change By ID
 [**GetNetworkChanges**](NetworksApi.md#GetNetworkChanges) | **Get** /fabric/v4/networks/{networkId}/changes | Get Network Changes
-[**SearchNetworks**](NetworksApi.md#SearchNetworks) | **Post** /fabric/v4/networks/search | Search Network
+[**SearchNetworks**](NetworksApi.md#SearchNetworks) | **Post** /fabric/v4/networks/search | Search Networks
 [**UpdateNetworkByUuid**](NetworksApi.md#UpdateNetworkByUuid) | **Patch** /fabric/v4/networks/{networkId} | Update Network By ID
 
 
@@ -440,7 +440,7 @@ Name | Type | Description  | Notes
 
 > NetworkSearchResponse SearchNetworks(ctx).NetworkSearchRequest(networkSearchRequest).Execute()
 
-Search Network
+Search Networks
 
 
 

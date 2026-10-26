@@ -42,6 +42,7 @@ const (
 	SORTBY_CHANGE_LOG_UPDATED_DATE_TIME                 SortBy = "/changeLog/updatedDateTime"
 	SORTBY_OPERATION_EQUINIX_STATUS                     SortBy = "/operation/equinixStatus"
 	SORTBY_OPERATION_PROVIDER_STATUS                    SortBy = "/operation/providerStatus"
+	SORTBY_OPERATION_MAINTENANCE_STATUS                 SortBy = "/operation/maintenanceStatus"
 	SORTBY_REDUNDANCY_PRIORITY                          SortBy = "/redundancy/priority"
 )
 
@@ -72,6 +73,7 @@ var AllowedSortByEnumValues = []SortBy{
 	"/changeLog/updatedDateTime",
 	"/operation/equinixStatus",
 	"/operation/providerStatus",
+	"/operation/maintenanceStatus",
 	"/redundancy/priority",
 }
 

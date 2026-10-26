@@ -4,17 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CustomerPeerIp** | Pointer to **string** |  | [optional] 
-**DomainName** | Pointer to **string** |  | [optional] 
-**PrimaryRouteServerIp** | Pointer to **string** |  | [optional] 
-**SecondaryRouteServerIp** | Pointer to **string** |  | [optional] 
-**AsSet** | Pointer to **string** |  | [optional] 
-**MlpeEnabled** | Pointer to **bool** |  | [optional] 
-**Md5AuthKey** | Pointer to **string** |  | [optional] 
-**RcMd5AuthKey** | Pointer to **string** |  | [optional] 
+**CustomerPeerIp** | Pointer to **string** | Customer peer IP address | [optional] 
+**DomainName** | Pointer to **string** | Domain name for BGP | [optional] 
+**PrimaryRouteServerIp** | Pointer to **string** | Primary route server IP address with prefix length | [optional] 
+**SecondaryRouteServerIp** | Pointer to **string** | Secondary route server IP address with prefix length | [optional] 
+**AsSet** | Pointer to **string** | AS-SET used to filter the prefixes announced by the customer | [optional] 
+**MlpeEnabled** | Pointer to **bool** | Whether Multi-Lateral Peering Exchange (MLPE) is enabled | [optional] 
+**Md5AuthKey** | Pointer to **string** | MD5 key for BGP | [optional] 
+**RcMd5AuthKey** | Pointer to **string** | RC MD5 key for BGP | [optional] 
 **Prefixes** | Pointer to **[]string** | List of IP prefix | [optional] 
-**MaxPrefixLimit** | Pointer to **int64** |  | [optional] 
-**PrependSelfEnabled** | Pointer to **bool** |  | [optional] 
+**MaxPrefixLimit** | Pointer to **int64** | Max Prefix Limit number | [optional] 
+**PrependSelfEnabled** | Pointer to **bool** | Prepend Self Enabled | [optional] 
 
 ## Methods
 

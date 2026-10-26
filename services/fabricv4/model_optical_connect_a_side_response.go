@@ -14,20 +14,10 @@ import (
 // checks if the OpticalConnectASideResponse type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &OpticalConnectASideResponse{}
 
-// OpticalConnectASideResponse Originating end as provisioned, with the cage, cabinet and IBX location.
+// OpticalConnectASideResponse Originating end as provisioned, with the demarcation point and IBX location.
 type OpticalConnectASideResponse struct {
-	// Unique identifier of the patch panel.
-	PatchPanelId *string `json:"patchPanelId,omitempty"`
-	// Specify the desired port number for Port A. <br> When ports are not provided, next available ports will be used.
-	PatchPanelPortA *string `json:"patchPanelPortA,omitempty"`
-	// Specify the desired port number for Port B. <br> When ports are not provided, next available ports will be used. <br> Required for Connector type FC, SC and ST only.
-	PatchPanelPortB *string                                      `json:"patchPanelPortB,omitempty"`
-	ConnectorType   *OpticalConnectPatchPanelFieldsConnectorType `json:"connectorType,omitempty"`
-	// Unique identifier of the cage.
-	CageUniqueSpaceId *string `json:"cageUniqueSpaceId,omitempty"`
-	// Unique identifier of the cabinet.
-	CabinetUniqueSpaceId *string                 `json:"cabinetUniqueSpaceId,omitempty"`
-	Location             *OpticalConnectLocation `json:"location,omitempty"`
+	DemarcationPoint     *OpticalConnectResponseDemarcationPoint `json:"demarcationPoint,omitempty"`
+	Location             *OpticalConnectLocation                 `json:"location,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -50,196 +40,36 @@ func NewOpticalConnectASideResponseWithDefaults() *OpticalConnectASideResponse {
 	return &this
 }
 
-// GetPatchPanelId returns the PatchPanelId field value if set, zero value otherwise.
-func (o *OpticalConnectASideResponse) GetPatchPanelId() string {
-	if o == nil || IsNil(o.PatchPanelId) {
-		var ret string
+// GetDemarcationPoint returns the DemarcationPoint field value if set, zero value otherwise.
+func (o *OpticalConnectASideResponse) GetDemarcationPoint() OpticalConnectResponseDemarcationPoint {
+	if o == nil || IsNil(o.DemarcationPoint) {
+		var ret OpticalConnectResponseDemarcationPoint
 		return ret
 	}
-	return *o.PatchPanelId
+	return *o.DemarcationPoint
 }
 
-// GetPatchPanelIdOk returns a tuple with the PatchPanelId field value if set, nil otherwise
+// GetDemarcationPointOk returns a tuple with the DemarcationPoint field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OpticalConnectASideResponse) GetPatchPanelIdOk() (*string, bool) {
-	if o == nil || IsNil(o.PatchPanelId) {
+func (o *OpticalConnectASideResponse) GetDemarcationPointOk() (*OpticalConnectResponseDemarcationPoint, bool) {
+	if o == nil || IsNil(o.DemarcationPoint) {
 		return nil, false
 	}
-	return o.PatchPanelId, true
+	return o.DemarcationPoint, true
 }
 
-// HasPatchPanelId returns a boolean if a field has been set.
-func (o *OpticalConnectASideResponse) HasPatchPanelId() bool {
-	if o != nil && !IsNil(o.PatchPanelId) {
+// HasDemarcationPoint returns a boolean if a field has been set.
+func (o *OpticalConnectASideResponse) HasDemarcationPoint() bool {
+	if o != nil && !IsNil(o.DemarcationPoint) {
 		return true
 	}
 
 	return false
 }
 
-// SetPatchPanelId gets a reference to the given string and assigns it to the PatchPanelId field.
-func (o *OpticalConnectASideResponse) SetPatchPanelId(v string) {
-	o.PatchPanelId = &v
-}
-
-// GetPatchPanelPortA returns the PatchPanelPortA field value if set, zero value otherwise.
-func (o *OpticalConnectASideResponse) GetPatchPanelPortA() string {
-	if o == nil || IsNil(o.PatchPanelPortA) {
-		var ret string
-		return ret
-	}
-	return *o.PatchPanelPortA
-}
-
-// GetPatchPanelPortAOk returns a tuple with the PatchPanelPortA field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OpticalConnectASideResponse) GetPatchPanelPortAOk() (*string, bool) {
-	if o == nil || IsNil(o.PatchPanelPortA) {
-		return nil, false
-	}
-	return o.PatchPanelPortA, true
-}
-
-// HasPatchPanelPortA returns a boolean if a field has been set.
-func (o *OpticalConnectASideResponse) HasPatchPanelPortA() bool {
-	if o != nil && !IsNil(o.PatchPanelPortA) {
-		return true
-	}
-
-	return false
-}
-
-// SetPatchPanelPortA gets a reference to the given string and assigns it to the PatchPanelPortA field.
-func (o *OpticalConnectASideResponse) SetPatchPanelPortA(v string) {
-	o.PatchPanelPortA = &v
-}
-
-// GetPatchPanelPortB returns the PatchPanelPortB field value if set, zero value otherwise.
-func (o *OpticalConnectASideResponse) GetPatchPanelPortB() string {
-	if o == nil || IsNil(o.PatchPanelPortB) {
-		var ret string
-		return ret
-	}
-	return *o.PatchPanelPortB
-}
-
-// GetPatchPanelPortBOk returns a tuple with the PatchPanelPortB field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OpticalConnectASideResponse) GetPatchPanelPortBOk() (*string, bool) {
-	if o == nil || IsNil(o.PatchPanelPortB) {
-		return nil, false
-	}
-	return o.PatchPanelPortB, true
-}
-
-// HasPatchPanelPortB returns a boolean if a field has been set.
-func (o *OpticalConnectASideResponse) HasPatchPanelPortB() bool {
-	if o != nil && !IsNil(o.PatchPanelPortB) {
-		return true
-	}
-
-	return false
-}
-
-// SetPatchPanelPortB gets a reference to the given string and assigns it to the PatchPanelPortB field.
-func (o *OpticalConnectASideResponse) SetPatchPanelPortB(v string) {
-	o.PatchPanelPortB = &v
-}
-
-// GetConnectorType returns the ConnectorType field value if set, zero value otherwise.
-func (o *OpticalConnectASideResponse) GetConnectorType() OpticalConnectPatchPanelFieldsConnectorType {
-	if o == nil || IsNil(o.ConnectorType) {
-		var ret OpticalConnectPatchPanelFieldsConnectorType
-		return ret
-	}
-	return *o.ConnectorType
-}
-
-// GetConnectorTypeOk returns a tuple with the ConnectorType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OpticalConnectASideResponse) GetConnectorTypeOk() (*OpticalConnectPatchPanelFieldsConnectorType, bool) {
-	if o == nil || IsNil(o.ConnectorType) {
-		return nil, false
-	}
-	return o.ConnectorType, true
-}
-
-// HasConnectorType returns a boolean if a field has been set.
-func (o *OpticalConnectASideResponse) HasConnectorType() bool {
-	if o != nil && !IsNil(o.ConnectorType) {
-		return true
-	}
-
-	return false
-}
-
-// SetConnectorType gets a reference to the given OpticalConnectPatchPanelFieldsConnectorType and assigns it to the ConnectorType field.
-func (o *OpticalConnectASideResponse) SetConnectorType(v OpticalConnectPatchPanelFieldsConnectorType) {
-	o.ConnectorType = &v
-}
-
-// GetCageUniqueSpaceId returns the CageUniqueSpaceId field value if set, zero value otherwise.
-func (o *OpticalConnectASideResponse) GetCageUniqueSpaceId() string {
-	if o == nil || IsNil(o.CageUniqueSpaceId) {
-		var ret string
-		return ret
-	}
-	return *o.CageUniqueSpaceId
-}
-
-// GetCageUniqueSpaceIdOk returns a tuple with the CageUniqueSpaceId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OpticalConnectASideResponse) GetCageUniqueSpaceIdOk() (*string, bool) {
-	if o == nil || IsNil(o.CageUniqueSpaceId) {
-		return nil, false
-	}
-	return o.CageUniqueSpaceId, true
-}
-
-// HasCageUniqueSpaceId returns a boolean if a field has been set.
-func (o *OpticalConnectASideResponse) HasCageUniqueSpaceId() bool {
-	if o != nil && !IsNil(o.CageUniqueSpaceId) {
-		return true
-	}
-
-	return false
-}
-
-// SetCageUniqueSpaceId gets a reference to the given string and assigns it to the CageUniqueSpaceId field.
-func (o *OpticalConnectASideResponse) SetCageUniqueSpaceId(v string) {
-	o.CageUniqueSpaceId = &v
-}
-
-// GetCabinetUniqueSpaceId returns the CabinetUniqueSpaceId field value if set, zero value otherwise.
-func (o *OpticalConnectASideResponse) GetCabinetUniqueSpaceId() string {
-	if o == nil || IsNil(o.CabinetUniqueSpaceId) {
-		var ret string
-		return ret
-	}
-	return *o.CabinetUniqueSpaceId
-}
-
-// GetCabinetUniqueSpaceIdOk returns a tuple with the CabinetUniqueSpaceId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OpticalConnectASideResponse) GetCabinetUniqueSpaceIdOk() (*string, bool) {
-	if o == nil || IsNil(o.CabinetUniqueSpaceId) {
-		return nil, false
-	}
-	return o.CabinetUniqueSpaceId, true
-}
-
-// HasCabinetUniqueSpaceId returns a boolean if a field has been set.
-func (o *OpticalConnectASideResponse) HasCabinetUniqueSpaceId() bool {
-	if o != nil && !IsNil(o.CabinetUniqueSpaceId) {
-		return true
-	}
-
-	return false
-}
-
-// SetCabinetUniqueSpaceId gets a reference to the given string and assigns it to the CabinetUniqueSpaceId field.
-func (o *OpticalConnectASideResponse) SetCabinetUniqueSpaceId(v string) {
-	o.CabinetUniqueSpaceId = &v
+// SetDemarcationPoint gets a reference to the given OpticalConnectResponseDemarcationPoint and assigns it to the DemarcationPoint field.
+func (o *OpticalConnectASideResponse) SetDemarcationPoint(v OpticalConnectResponseDemarcationPoint) {
+	o.DemarcationPoint = &v
 }
 
 // GetLocation returns the Location field value if set, zero value otherwise.
@@ -284,23 +114,8 @@ func (o OpticalConnectASideResponse) MarshalJSON() ([]byte, error) {
 
 func (o OpticalConnectASideResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.PatchPanelId) {
-		toSerialize["patchPanelId"] = o.PatchPanelId
-	}
-	if !IsNil(o.PatchPanelPortA) {
-		toSerialize["patchPanelPortA"] = o.PatchPanelPortA
-	}
-	if !IsNil(o.PatchPanelPortB) {
-		toSerialize["patchPanelPortB"] = o.PatchPanelPortB
-	}
-	if !IsNil(o.ConnectorType) {
-		toSerialize["connectorType"] = o.ConnectorType
-	}
-	if !IsNil(o.CageUniqueSpaceId) {
-		toSerialize["cageUniqueSpaceId"] = o.CageUniqueSpaceId
-	}
-	if !IsNil(o.CabinetUniqueSpaceId) {
-		toSerialize["cabinetUniqueSpaceId"] = o.CabinetUniqueSpaceId
+	if !IsNil(o.DemarcationPoint) {
+		toSerialize["demarcationPoint"] = o.DemarcationPoint
 	}
 	if !IsNil(o.Location) {
 		toSerialize["location"] = o.Location
@@ -327,12 +142,7 @@ func (o *OpticalConnectASideResponse) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "patchPanelId")
-		delete(additionalProperties, "patchPanelPortA")
-		delete(additionalProperties, "patchPanelPortB")
-		delete(additionalProperties, "connectorType")
-		delete(additionalProperties, "cageUniqueSpaceId")
-		delete(additionalProperties, "cabinetUniqueSpaceId")
+		delete(additionalProperties, "demarcationPoint")
 		delete(additionalProperties, "location")
 		o.AdditionalProperties = additionalProperties
 	}

@@ -22,8 +22,10 @@ type ConnectionOperation struct {
 	OperationalStatus *ConnectionOperationOperationalStatus `json:"operationalStatus,omitempty"`
 	Errors            []Error                               `json:"errors,omitempty"`
 	// When connection transitioned into current operational status
-	OpStatusChangedAt    *time.Time        `json:"opStatusChangedAt,omitempty"`
-	MaintenanceStatus    *MaintenanceState `json:"maintenanceStatus,omitempty"`
+	OpStatusChangedAt *time.Time        `json:"opStatusChangedAt,omitempty"`
+	MaintenanceStatus *MaintenanceState `json:"maintenanceStatus,omitempty"`
+	// Indicates whether the connection configuration is locked due to an ongoing or scheduled maintenance.
+	LockEnabled          *bool `json:"lockEnabled,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -238,6 +240,38 @@ func (o *ConnectionOperation) SetMaintenanceStatus(v MaintenanceState) {
 	o.MaintenanceStatus = &v
 }
 
+// GetLockEnabled returns the LockEnabled field value if set, zero value otherwise.
+func (o *ConnectionOperation) GetLockEnabled() bool {
+	if o == nil || IsNil(o.LockEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.LockEnabled
+}
+
+// GetLockEnabledOk returns a tuple with the LockEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ConnectionOperation) GetLockEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.LockEnabled) {
+		return nil, false
+	}
+	return o.LockEnabled, true
+}
+
+// HasLockEnabled returns a boolean if a field has been set.
+func (o *ConnectionOperation) HasLockEnabled() bool {
+	if o != nil && !IsNil(o.LockEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetLockEnabled gets a reference to the given bool and assigns it to the LockEnabled field.
+func (o *ConnectionOperation) SetLockEnabled(v bool) {
+	o.LockEnabled = &v
+}
+
 func (o ConnectionOperation) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -265,6 +299,9 @@ func (o ConnectionOperation) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.MaintenanceStatus) {
 		toSerialize["maintenanceStatus"] = o.MaintenanceStatus
+	}
+	if !IsNil(o.LockEnabled) {
+		toSerialize["lockEnabled"] = o.LockEnabled
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -294,6 +331,7 @@ func (o *ConnectionOperation) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "errors")
 		delete(additionalProperties, "opStatusChangedAt")
 		delete(additionalProperties, "maintenanceStatus")
+		delete(additionalProperties, "lockEnabled")
 		o.AdditionalProperties = additionalProperties
 	}
 

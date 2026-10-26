@@ -16,7 +16,7 @@ var _ MappedNullable = &CloudRouterSearchRequest{}
 
 // CloudRouterSearchRequest Search requests containing criteria
 type CloudRouterSearchRequest struct {
-	Filter               *CloudRouterFilters       `json:"filter,omitempty"`
+	Filter               *CloudRouterExpression    `json:"filter,omitempty"`
 	Pagination           *PaginationRequest        `json:"pagination,omitempty"`
 	Sort                 []CloudRouterSortCriteria `json:"sort,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -42,9 +42,9 @@ func NewCloudRouterSearchRequestWithDefaults() *CloudRouterSearchRequest {
 }
 
 // GetFilter returns the Filter field value if set, zero value otherwise.
-func (o *CloudRouterSearchRequest) GetFilter() CloudRouterFilters {
+func (o *CloudRouterSearchRequest) GetFilter() CloudRouterExpression {
 	if o == nil || IsNil(o.Filter) {
-		var ret CloudRouterFilters
+		var ret CloudRouterExpression
 		return ret
 	}
 	return *o.Filter
@@ -52,7 +52,7 @@ func (o *CloudRouterSearchRequest) GetFilter() CloudRouterFilters {
 
 // GetFilterOk returns a tuple with the Filter field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CloudRouterSearchRequest) GetFilterOk() (*CloudRouterFilters, bool) {
+func (o *CloudRouterSearchRequest) GetFilterOk() (*CloudRouterExpression, bool) {
 	if o == nil || IsNil(o.Filter) {
 		return nil, false
 	}
@@ -68,8 +68,8 @@ func (o *CloudRouterSearchRequest) HasFilter() bool {
 	return false
 }
 
-// SetFilter gets a reference to the given CloudRouterFilters and assigns it to the Filter field.
-func (o *CloudRouterSearchRequest) SetFilter(v CloudRouterFilters) {
+// SetFilter gets a reference to the given CloudRouterExpression and assigns it to the Filter field.
+func (o *CloudRouterSearchRequest) SetFilter(v CloudRouterExpression) {
 	o.Filter = &v
 }
 

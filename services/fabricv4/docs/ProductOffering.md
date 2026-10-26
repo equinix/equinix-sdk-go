@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | Product offering identifier | [optional] 
 **Name** | Pointer to **string** | Product offering name | [optional] 
+**BillingTerm** | Pointer to [**ProductOfferingBillingTerm**](ProductOfferingBillingTerm.md) |  | [optional] 
 
 ## Methods
 
@@ -75,6 +76,31 @@ SetName sets Name field to given value.
 `func (o *ProductOffering) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+
+### GetBillingTerm
+
+`func (o *ProductOffering) GetBillingTerm() ProductOfferingBillingTerm`
+
+GetBillingTerm returns the BillingTerm field if non-nil, zero value otherwise.
+
+### GetBillingTermOk
+
+`func (o *ProductOffering) GetBillingTermOk() (*ProductOfferingBillingTerm, bool)`
+
+GetBillingTermOk returns a tuple with the BillingTerm field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBillingTerm
+
+`func (o *ProductOffering) SetBillingTerm(v ProductOfferingBillingTerm)`
+
+SetBillingTerm sets BillingTerm field to given value.
+
+### HasBillingTerm
+
+`func (o *ProductOffering) HasBillingTerm() bool`
+
+HasBillingTerm returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

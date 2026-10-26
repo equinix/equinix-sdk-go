@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **AccessVCCount** | Pointer to **int64** | Total number of connections. | [optional] 
 **OpStatusChangedAt** | Pointer to **time.Time** | Date and time at which port availability changed. | [optional] 
 **MaintenanceStatus** | Pointer to [**MaintenanceState**](MaintenanceState.md) |  | [optional] 
+**LockEnabled** | Pointer to **bool** | Indicates whether the port configuration is locked due to an ongoing or scheduled maintenance. | [optional] 
 
 ## Methods
 
@@ -205,6 +206,31 @@ SetMaintenanceStatus sets MaintenanceStatus field to given value.
 `func (o *PortOperation) HasMaintenanceStatus() bool`
 
 HasMaintenanceStatus returns a boolean if a field has been set.
+
+### GetLockEnabled
+
+`func (o *PortOperation) GetLockEnabled() bool`
+
+GetLockEnabled returns the LockEnabled field if non-nil, zero value otherwise.
+
+### GetLockEnabledOk
+
+`func (o *PortOperation) GetLockEnabledOk() (*bool, bool)`
+
+GetLockEnabledOk returns a tuple with the LockEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLockEnabled
+
+`func (o *PortOperation) SetLockEnabled(v bool)`
+
+SetLockEnabled sets LockEnabled field to given value.
+
+### HasLockEnabled
+
+`func (o *PortOperation) HasLockEnabled() bool`
+
+HasLockEnabled returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

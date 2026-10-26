@@ -28,6 +28,8 @@ type AppLink struct {
 	Description *string            `json:"description,omitempty"`
 	State       *AppLinkState      `json:"state,omitempty"`
 	Router      AppLinkCloudRouter `json:"router"`
+	// Customer-provided IP subnet for AppLink setup (/29 or larger subnet)
+	Ipv4Subnet string `json:"ipv4Subnet"`
 	// App Link IP address
 	Ipv4Address *string `json:"ipv4Address,omitempty"`
 	// App Link aggregated data transfer capacity in Mbps
@@ -44,11 +46,12 @@ type _AppLink AppLink
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAppLink(type_ AppLinkType, name string, router AppLinkCloudRouter, bandwidth int32, project Project) *AppLink {
+func NewAppLink(type_ AppLinkType, name string, router AppLinkCloudRouter, ipv4Subnet string, bandwidth int32, project Project) *AppLink {
 	this := AppLink{}
 	this.Type = type_
 	this.Name = name
 	this.Router = router
+	this.Ipv4Subnet = ipv4Subnet
 	this.Bandwidth = bandwidth
 	this.Project = project
 	return &this
@@ -264,6 +267,30 @@ func (o *AppLink) SetRouter(v AppLinkCloudRouter) {
 	o.Router = v
 }
 
+// GetIpv4Subnet returns the Ipv4Subnet field value
+func (o *AppLink) GetIpv4Subnet() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Ipv4Subnet
+}
+
+// GetIpv4SubnetOk returns a tuple with the Ipv4Subnet field value
+// and a boolean to check if the value has been set.
+func (o *AppLink) GetIpv4SubnetOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Ipv4Subnet, true
+}
+
+// SetIpv4Subnet sets field value
+func (o *AppLink) SetIpv4Subnet(v string) {
+	o.Ipv4Subnet = v
+}
+
 // GetIpv4Address returns the Ipv4Address field value if set, zero value otherwise.
 func (o *AppLink) GetIpv4Address() string {
 	if o == nil || IsNil(o.Ipv4Address) {
@@ -433,6 +460,7 @@ func (o AppLink) ToMap() (map[string]interface{}, error) {
 		toSerialize["state"] = o.State
 	}
 	toSerialize["router"] = o.Router
+	toSerialize["ipv4Subnet"] = o.Ipv4Subnet
 	if !IsNil(o.Ipv4Address) {
 		toSerialize["ipv4Address"] = o.Ipv4Address
 	}
@@ -460,6 +488,7 @@ func (o *AppLink) UnmarshalJSON(data []byte) (err error) {
 		"type",
 		"name",
 		"router",
+		"ipv4Subnet",
 		"bandwidth",
 		"project",
 	}
@@ -498,6 +527,7 @@ func (o *AppLink) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "state")
 		delete(additionalProperties, "router")
+		delete(additionalProperties, "ipv4Subnet")
 		delete(additionalProperties, "ipv4Address")
 		delete(additionalProperties, "bandwidth")
 		delete(additionalProperties, "project")

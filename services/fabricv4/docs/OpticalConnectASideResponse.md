@@ -4,12 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**PatchPanelId** | Pointer to **string** | Unique identifier of the patch panel. | [optional] 
-**PatchPanelPortA** | Pointer to **string** | Specify the desired port number for Port A. &lt;br&gt; When ports are not provided, next available ports will be used.  | [optional] 
-**PatchPanelPortB** | Pointer to **string** | Specify the desired port number for Port B. &lt;br&gt; When ports are not provided, next available ports will be used. &lt;br&gt; Required for Connector type FC, SC and ST only.  | [optional] 
-**ConnectorType** | Pointer to [**OpticalConnectPatchPanelFieldsConnectorType**](OpticalConnectPatchPanelFieldsConnectorType.md) |  | [optional] 
-**CageUniqueSpaceId** | Pointer to **string** | Unique identifier of the cage. | [optional] 
-**CabinetUniqueSpaceId** | Pointer to **string** | Unique identifier of the cabinet. | [optional] 
+**DemarcationPoint** | Pointer to [**OpticalConnectResponseDemarcationPoint**](OpticalConnectResponseDemarcationPoint.md) |  | [optional] 
 **Location** | Pointer to [**OpticalConnectLocation**](OpticalConnectLocation.md) |  | [optional] 
 
 ## Methods
@@ -31,155 +26,30 @@ NewOpticalConnectASideResponseWithDefaults instantiates a new OpticalConnectASid
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetPatchPanelId
+### GetDemarcationPoint
 
-`func (o *OpticalConnectASideResponse) GetPatchPanelId() string`
+`func (o *OpticalConnectASideResponse) GetDemarcationPoint() OpticalConnectResponseDemarcationPoint`
 
-GetPatchPanelId returns the PatchPanelId field if non-nil, zero value otherwise.
+GetDemarcationPoint returns the DemarcationPoint field if non-nil, zero value otherwise.
 
-### GetPatchPanelIdOk
+### GetDemarcationPointOk
 
-`func (o *OpticalConnectASideResponse) GetPatchPanelIdOk() (*string, bool)`
+`func (o *OpticalConnectASideResponse) GetDemarcationPointOk() (*OpticalConnectResponseDemarcationPoint, bool)`
 
-GetPatchPanelIdOk returns a tuple with the PatchPanelId field if it's non-nil, zero value otherwise
+GetDemarcationPointOk returns a tuple with the DemarcationPoint field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetPatchPanelId
+### SetDemarcationPoint
 
-`func (o *OpticalConnectASideResponse) SetPatchPanelId(v string)`
+`func (o *OpticalConnectASideResponse) SetDemarcationPoint(v OpticalConnectResponseDemarcationPoint)`
 
-SetPatchPanelId sets PatchPanelId field to given value.
+SetDemarcationPoint sets DemarcationPoint field to given value.
 
-### HasPatchPanelId
+### HasDemarcationPoint
 
-`func (o *OpticalConnectASideResponse) HasPatchPanelId() bool`
+`func (o *OpticalConnectASideResponse) HasDemarcationPoint() bool`
 
-HasPatchPanelId returns a boolean if a field has been set.
-
-### GetPatchPanelPortA
-
-`func (o *OpticalConnectASideResponse) GetPatchPanelPortA() string`
-
-GetPatchPanelPortA returns the PatchPanelPortA field if non-nil, zero value otherwise.
-
-### GetPatchPanelPortAOk
-
-`func (o *OpticalConnectASideResponse) GetPatchPanelPortAOk() (*string, bool)`
-
-GetPatchPanelPortAOk returns a tuple with the PatchPanelPortA field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPatchPanelPortA
-
-`func (o *OpticalConnectASideResponse) SetPatchPanelPortA(v string)`
-
-SetPatchPanelPortA sets PatchPanelPortA field to given value.
-
-### HasPatchPanelPortA
-
-`func (o *OpticalConnectASideResponse) HasPatchPanelPortA() bool`
-
-HasPatchPanelPortA returns a boolean if a field has been set.
-
-### GetPatchPanelPortB
-
-`func (o *OpticalConnectASideResponse) GetPatchPanelPortB() string`
-
-GetPatchPanelPortB returns the PatchPanelPortB field if non-nil, zero value otherwise.
-
-### GetPatchPanelPortBOk
-
-`func (o *OpticalConnectASideResponse) GetPatchPanelPortBOk() (*string, bool)`
-
-GetPatchPanelPortBOk returns a tuple with the PatchPanelPortB field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPatchPanelPortB
-
-`func (o *OpticalConnectASideResponse) SetPatchPanelPortB(v string)`
-
-SetPatchPanelPortB sets PatchPanelPortB field to given value.
-
-### HasPatchPanelPortB
-
-`func (o *OpticalConnectASideResponse) HasPatchPanelPortB() bool`
-
-HasPatchPanelPortB returns a boolean if a field has been set.
-
-### GetConnectorType
-
-`func (o *OpticalConnectASideResponse) GetConnectorType() OpticalConnectPatchPanelFieldsConnectorType`
-
-GetConnectorType returns the ConnectorType field if non-nil, zero value otherwise.
-
-### GetConnectorTypeOk
-
-`func (o *OpticalConnectASideResponse) GetConnectorTypeOk() (*OpticalConnectPatchPanelFieldsConnectorType, bool)`
-
-GetConnectorTypeOk returns a tuple with the ConnectorType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetConnectorType
-
-`func (o *OpticalConnectASideResponse) SetConnectorType(v OpticalConnectPatchPanelFieldsConnectorType)`
-
-SetConnectorType sets ConnectorType field to given value.
-
-### HasConnectorType
-
-`func (o *OpticalConnectASideResponse) HasConnectorType() bool`
-
-HasConnectorType returns a boolean if a field has been set.
-
-### GetCageUniqueSpaceId
-
-`func (o *OpticalConnectASideResponse) GetCageUniqueSpaceId() string`
-
-GetCageUniqueSpaceId returns the CageUniqueSpaceId field if non-nil, zero value otherwise.
-
-### GetCageUniqueSpaceIdOk
-
-`func (o *OpticalConnectASideResponse) GetCageUniqueSpaceIdOk() (*string, bool)`
-
-GetCageUniqueSpaceIdOk returns a tuple with the CageUniqueSpaceId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCageUniqueSpaceId
-
-`func (o *OpticalConnectASideResponse) SetCageUniqueSpaceId(v string)`
-
-SetCageUniqueSpaceId sets CageUniqueSpaceId field to given value.
-
-### HasCageUniqueSpaceId
-
-`func (o *OpticalConnectASideResponse) HasCageUniqueSpaceId() bool`
-
-HasCageUniqueSpaceId returns a boolean if a field has been set.
-
-### GetCabinetUniqueSpaceId
-
-`func (o *OpticalConnectASideResponse) GetCabinetUniqueSpaceId() string`
-
-GetCabinetUniqueSpaceId returns the CabinetUniqueSpaceId field if non-nil, zero value otherwise.
-
-### GetCabinetUniqueSpaceIdOk
-
-`func (o *OpticalConnectASideResponse) GetCabinetUniqueSpaceIdOk() (*string, bool)`
-
-GetCabinetUniqueSpaceIdOk returns a tuple with the CabinetUniqueSpaceId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCabinetUniqueSpaceId
-
-`func (o *OpticalConnectASideResponse) SetCabinetUniqueSpaceId(v string)`
-
-SetCabinetUniqueSpaceId sets CabinetUniqueSpaceId field to given value.
-
-### HasCabinetUniqueSpaceId
-
-`func (o *OpticalConnectASideResponse) HasCabinetUniqueSpaceId() bool`
-
-HasCabinetUniqueSpaceId returns a boolean if a field has been set.
+HasDemarcationPoint returns a boolean if a field has been set.
 
 ### GetLocation
 

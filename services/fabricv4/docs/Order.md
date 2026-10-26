@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **BillingTier** | Pointer to **string** | Billing tier for connection bandwidth | [optional] 
 **OrderId** | Pointer to **string** | Order Identification | [optional] 
 **OrderNumber** | Pointer to **string** | Order Reference Number | [optional] 
-**TermLength** | Pointer to **int32** | Term length in months, valid values are 1, 12, 24, 36 where 1 is the default value (for on-demand case). | [optional] [default to 1]
+**TermLength** | Pointer to **int32** | Term length in months, valid values are 1, 12, 24, 36, 60 where 1 is the default value (for on-demand case). | [optional] [default to 1]
 **ContractedBandwidth** | Pointer to **int32** | Contracted bandwidth | [optional] 
 
 ## Methods

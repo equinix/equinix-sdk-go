@@ -21,6 +21,7 @@ const (
 	PRICETERMLENGTH__12 PriceTermLength = 12
 	PRICETERMLENGTH__24 PriceTermLength = 24
 	PRICETERMLENGTH__36 PriceTermLength = 36
+	PRICETERMLENGTH__60 PriceTermLength = 60
 )
 
 // All allowed values of PriceTermLength enum
@@ -29,6 +30,7 @@ var AllowedPriceTermLengthEnumValues = []PriceTermLength{
 	12,
 	24,
 	36,
+	60,
 }
 
 func (v *PriceTermLength) UnmarshalJSON(src []byte) error {

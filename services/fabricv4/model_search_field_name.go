@@ -26,6 +26,7 @@ const (
 	SEARCHFIELDNAME_A_SIDE_ACCESS_POINT_ACCOUNT_ACCOUNT_NAME       SearchFieldName = "/aSide/accessPoint/account/accountName"
 	SEARCHFIELDNAME_A_SIDE_ACCESS_POINT_ACCOUNT_ACCOUNT_NUMBER     SearchFieldName = "/aSide/accessPoint/account/accountNumber"
 	SEARCHFIELDNAME_A_SIDE_ACCESS_POINT_ROUTER_UUID                SearchFieldName = "/aSide/accessPoint/router/uuid"
+	SEARCHFIELDNAME_A_SIDE_ACCESS_POINT_INTERCONNECT_UUID          SearchFieldName = "/aSide/accessPoint/interconnect/uuid"
 	SEARCHFIELDNAME_A_SIDE_ACCESS_POINT_LINK_PROTOCOL_VLAN_TAG_MIN SearchFieldName = "/aSide/accessPoint/linkProtocol/vlanTagMin"
 	SEARCHFIELDNAME_A_SIDE_ACCESS_POINT_LINK_PROTOCOL_VLAN_TAG_MAX SearchFieldName = "/aSide/accessPoint/linkProtocol/vlanTagMax"
 	SEARCHFIELDNAME_A_SIDE_ACCESS_POINT_LOCATION_METRO_CODE        SearchFieldName = "/aSide/accessPoint/location/metroCode"
@@ -51,6 +52,8 @@ const (
 	SEARCHFIELDNAME_PROJECT_PROJECT_ID                             SearchFieldName = "/project/projectId"
 	SEARCHFIELDNAME_REDUNDANCY_GROUP                               SearchFieldName = "/redundancy/group"
 	SEARCHFIELDNAME_REDUNDANCY_PRIORITY                            SearchFieldName = "/redundancy/priority"
+	SEARCHFIELDNAME_REDUNDANCY_NAME                                SearchFieldName = "/redundancy/name"
+	SEARCHFIELDNAME_REDUNDANCY_DESCRIPTION                         SearchFieldName = "/redundancy/description"
 	SEARCHFIELDNAME_Z_SIDE_ACCESS_POINT_ACCOUNT_ACCOUNT_NAME       SearchFieldName = "/zSide/accessPoint/account/accountName"
 	SEARCHFIELDNAME_Z_SIDE_ACCESS_POINT_AUTHENTICATION_KEY         SearchFieldName = "/zSide/accessPoint/authenticationKey"
 	SEARCHFIELDNAME_Z_SIDE_ACCESS_POINT_LINK_PROTOCOL_VLAN_TAG_MIN SearchFieldName = "/zSide/accessPoint/linkProtocol/vlanTagMin"
@@ -83,6 +86,7 @@ var AllowedSearchFieldNameEnumValues = []SearchFieldName{
 	"/aSide/accessPoint/account/accountName",
 	"/aSide/accessPoint/account/accountNumber",
 	"/aSide/accessPoint/router/uuid",
+	"/aSide/accessPoint/interconnect/uuid",
 	"/aSide/accessPoint/linkProtocol/vlanTagMin",
 	"/aSide/accessPoint/linkProtocol/vlanTagMax",
 	"/aSide/accessPoint/location/metroCode",
@@ -108,6 +112,8 @@ var AllowedSearchFieldNameEnumValues = []SearchFieldName{
 	"/project/projectId",
 	"/redundancy/group",
 	"/redundancy/priority",
+	"/redundancy/name",
+	"/redundancy/description",
 	"/zSide/accessPoint/account/accountName",
 	"/zSide/accessPoint/authenticationKey",
 	"/zSide/accessPoint/linkProtocol/vlanTagMin",

@@ -32,6 +32,7 @@ const (
 	PORTSORTBY_CHANGE_LOG_CREATED_DATE_TIME           PortSortBy = "/changeLog/createdDateTime"
 	PORTSORTBY_BANDWIDTH                              PortSortBy = "/bandwidth"
 	PORTSORTBY_SERVICE_CODE                           PortSortBy = "/serviceCode"
+	PORTSORTBY_OPERATION_MAINTENANCE_STATUS           PortSortBy = "/operation/maintenanceStatus"
 )
 
 // All allowed values of PortSortBy enum
@@ -51,6 +52,7 @@ var AllowedPortSortByEnumValues = []PortSortBy{
 	"/changeLog/createdDateTime",
 	"/bandwidth",
 	"/serviceCode",
+	"/operation/maintenanceStatus",
 }
 
 func (v *PortSortBy) UnmarshalJSON(src []byte) error {

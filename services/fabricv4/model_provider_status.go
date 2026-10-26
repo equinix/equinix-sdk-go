@@ -33,6 +33,7 @@ const (
 	PROVIDERSTATUS_DELETING              ProviderStatus = "DELETING"
 	PROVIDERSTATUS_PENDING_DELETE        ProviderStatus = "PENDING DELETE"
 	PROVIDERSTATUS_N_A                   ProviderStatus = "N/A"
+	PROVIDERSTATUS_QUOTING               ProviderStatus = "QUOTING"
 )
 
 // All allowed values of ProviderStatus enum
@@ -53,6 +54,7 @@ var AllowedProviderStatusEnumValues = []ProviderStatus{
 	"DELETING",
 	"PENDING DELETE",
 	"N/A",
+	"QUOTING",
 }
 
 func (v *ProviderStatus) UnmarshalJSON(src []byte) error {

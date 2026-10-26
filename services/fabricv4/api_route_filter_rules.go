@@ -564,7 +564,7 @@ func (r ApiGetRouteFilterRuleByUuidRequest) Execute() (*RouteFilterRulesData, *h
 }
 
 /*
-GetRouteFilterRuleByUuid Get Route Filter Rule By UUID
+GetRouteFilterRuleByUuid Get Route Filter Rule by ID
 
 This API provides capability to view a Route Filter Rule by UUID
 
@@ -917,7 +917,7 @@ func (r ApiGetRouteFilterRuleChangesRequest) Execute() (*RouteFilterRulesChangeD
 }
 
 /*
-GetRouteFilterRuleChanges Get All Changes
+GetRouteFilterRuleChanges Get Route Filter Rule Changes
 
 This API provides capability to retrieve all of a Route Filter Rule's Changes
 
@@ -1269,7 +1269,7 @@ func (r ApiPatchRouteFilterRuleByUuidRequest) Execute() (*RouteFilterRulesData, 
 }
 
 /*
-PatchRouteFilterRuleByUuid Patch Route Filter Rule
+PatchRouteFilterRuleByUuid Update Route Filter Rule
 
 This API provides capability to partially update a Route Filter Rule
 

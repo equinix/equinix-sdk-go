@@ -28,6 +28,8 @@ type AppDomainAttachedAppLink struct {
 	Description *string             `json:"description,omitempty"`
 	State       *AppLinkState       `json:"state,omitempty"`
 	Router      *AppLinkCloudRouter `json:"router,omitempty"`
+	// Customer-provided IP subnet for AppLink setup (/29 or larger subnet)
+	Ipv4Subnet *string `json:"ipv4Subnet,omitempty"`
 	// App Link IP address
 	Ipv4Address *string `json:"ipv4Address,omitempty"`
 	// App Link aggregated data transfer capacity in Mbps
@@ -267,6 +269,38 @@ func (o *AppDomainAttachedAppLink) SetRouter(v AppLinkCloudRouter) {
 	o.Router = &v
 }
 
+// GetIpv4Subnet returns the Ipv4Subnet field value if set, zero value otherwise.
+func (o *AppDomainAttachedAppLink) GetIpv4Subnet() string {
+	if o == nil || IsNil(o.Ipv4Subnet) {
+		var ret string
+		return ret
+	}
+	return *o.Ipv4Subnet
+}
+
+// GetIpv4SubnetOk returns a tuple with the Ipv4Subnet field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AppDomainAttachedAppLink) GetIpv4SubnetOk() (*string, bool) {
+	if o == nil || IsNil(o.Ipv4Subnet) {
+		return nil, false
+	}
+	return o.Ipv4Subnet, true
+}
+
+// HasIpv4Subnet returns a boolean if a field has been set.
+func (o *AppDomainAttachedAppLink) HasIpv4Subnet() bool {
+	if o != nil && !IsNil(o.Ipv4Subnet) {
+		return true
+	}
+
+	return false
+}
+
+// SetIpv4Subnet gets a reference to the given string and assigns it to the Ipv4Subnet field.
+func (o *AppDomainAttachedAppLink) SetIpv4Subnet(v string) {
+	o.Ipv4Subnet = &v
+}
+
 // GetIpv4Address returns the Ipv4Address field value if set, zero value otherwise.
 func (o *AppDomainAttachedAppLink) GetIpv4Address() string {
 	if o == nil || IsNil(o.Ipv4Address) {
@@ -390,6 +424,9 @@ func (o AppDomainAttachedAppLink) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Router) {
 		toSerialize["router"] = o.Router
 	}
+	if !IsNil(o.Ipv4Subnet) {
+		toSerialize["ipv4Subnet"] = o.Ipv4Subnet
+	}
 	if !IsNil(o.Ipv4Address) {
 		toSerialize["ipv4Address"] = o.Ipv4Address
 	}
@@ -450,6 +487,7 @@ func (o *AppDomainAttachedAppLink) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "state")
 		delete(additionalProperties, "router")
+		delete(additionalProperties, "ipv4Subnet")
 		delete(additionalProperties, "ipv4Address")
 		delete(additionalProperties, "bandwidth")
 		delete(additionalProperties, "project")

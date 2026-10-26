@@ -10,6 +10,8 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** | Customer-provided stream name | [optional] 
 **Description** | Pointer to **string** | Customer-provided stream description | [optional] 
 **Project** | Pointer to [**Project**](Project.md) |  | [optional] 
+**Account** | Pointer to [**SimplifiedAccount**](SimplifiedAccount.md) |  | [optional] 
+**Notifications** | Pointer to [**[]SimplifiedNotification**](SimplifiedNotification.md) | Preferences for stream notifications, set at creation | [optional] 
 **State** | Pointer to [**StreamState**](StreamState.md) |  | [optional] 
 **AssetsCount** | Pointer to **int32** | Stream assets count | [optional] 
 **StreamSubscriptionsCount** | Pointer to **int32** | Stream subscriptions count | [optional] 
@@ -184,6 +186,56 @@ SetProject sets Project field to given value.
 `func (o *Stream) HasProject() bool`
 
 HasProject returns a boolean if a field has been set.
+
+### GetAccount
+
+`func (o *Stream) GetAccount() SimplifiedAccount`
+
+GetAccount returns the Account field if non-nil, zero value otherwise.
+
+### GetAccountOk
+
+`func (o *Stream) GetAccountOk() (*SimplifiedAccount, bool)`
+
+GetAccountOk returns a tuple with the Account field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccount
+
+`func (o *Stream) SetAccount(v SimplifiedAccount)`
+
+SetAccount sets Account field to given value.
+
+### HasAccount
+
+`func (o *Stream) HasAccount() bool`
+
+HasAccount returns a boolean if a field has been set.
+
+### GetNotifications
+
+`func (o *Stream) GetNotifications() []SimplifiedNotification`
+
+GetNotifications returns the Notifications field if non-nil, zero value otherwise.
+
+### GetNotificationsOk
+
+`func (o *Stream) GetNotificationsOk() (*[]SimplifiedNotification, bool)`
+
+GetNotificationsOk returns a tuple with the Notifications field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNotifications
+
+`func (o *Stream) SetNotifications(v []SimplifiedNotification)`
+
+SetNotifications sets Notifications field to given value.
+
+### HasNotifications
+
+`func (o *Stream) HasNotifications() bool`
+
+HasNotifications returns a boolean if a field has been set.
 
 ### GetState
 

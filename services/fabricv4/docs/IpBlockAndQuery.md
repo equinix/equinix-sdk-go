@@ -5,14 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Property** | **string** |  | 
-**Operator** | [**ExchangeServicePropertyExpressionOperator**](ExchangeServicePropertyExpressionOperator.md) |  | 
+**Operator** | [**IpBlockAndQueryOperator**](IpBlockAndQueryOperator.md) |  | 
 **Values** | **[]string** |  | 
 
 ## Methods
 
 ### NewIpBlockAndQuery
 
-`func NewIpBlockAndQuery(property string, operator ExchangeServicePropertyExpressionOperator, values []string, ) *IpBlockAndQuery`
+`func NewIpBlockAndQuery(property string, operator IpBlockAndQueryOperator, values []string, ) *IpBlockAndQuery`
 
 NewIpBlockAndQuery instantiates a new IpBlockAndQuery object
 This constructor will assign default values to properties that have it defined,
@@ -49,20 +49,20 @@ SetProperty sets Property field to given value.
 
 ### GetOperator
 
-`func (o *IpBlockAndQuery) GetOperator() ExchangeServicePropertyExpressionOperator`
+`func (o *IpBlockAndQuery) GetOperator() IpBlockAndQueryOperator`
 
 GetOperator returns the Operator field if non-nil, zero value otherwise.
 
 ### GetOperatorOk
 
-`func (o *IpBlockAndQuery) GetOperatorOk() (*ExchangeServicePropertyExpressionOperator, bool)`
+`func (o *IpBlockAndQuery) GetOperatorOk() (*IpBlockAndQueryOperator, bool)`
 
 GetOperatorOk returns a tuple with the Operator field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOperator
 
-`func (o *IpBlockAndQuery) SetOperator(v ExchangeServicePropertyExpressionOperator)`
+`func (o *IpBlockAndQuery) SetOperator(v IpBlockAndQueryOperator)`
 
 SetOperator sets Operator field to given value.
 
