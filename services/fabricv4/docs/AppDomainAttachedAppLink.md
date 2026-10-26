@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** | Customer-provided App Link description | [optional] 
 **State** | Pointer to [**AppLinkState**](AppLinkState.md) |  | [optional] 
 **Router** | Pointer to [**AppLinkCloudRouter**](AppLinkCloudRouter.md) |  | [optional] 
+**Ipv4Subnet** | Pointer to **string** | Customer-provided IP subnet for AppLink setup (/29 or larger subnet) | [optional] 
 **Ipv4Address** | Pointer to **string** | App Link IP address | [optional] 
 **Bandwidth** | Pointer to **int32** | App Link aggregated data transfer capacity in Mbps | [optional] 
 **Project** | Pointer to [**Project**](Project.md) |  | [optional] 
@@ -198,6 +199,31 @@ SetRouter sets Router field to given value.
 `func (o *AppDomainAttachedAppLink) HasRouter() bool`
 
 HasRouter returns a boolean if a field has been set.
+
+### GetIpv4Subnet
+
+`func (o *AppDomainAttachedAppLink) GetIpv4Subnet() string`
+
+GetIpv4Subnet returns the Ipv4Subnet field if non-nil, zero value otherwise.
+
+### GetIpv4SubnetOk
+
+`func (o *AppDomainAttachedAppLink) GetIpv4SubnetOk() (*string, bool)`
+
+GetIpv4SubnetOk returns a tuple with the Ipv4Subnet field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIpv4Subnet
+
+`func (o *AppDomainAttachedAppLink) SetIpv4Subnet(v string)`
+
+SetIpv4Subnet sets Ipv4Subnet field to given value.
+
+### HasIpv4Subnet
+
+`func (o *AppDomainAttachedAppLink) HasIpv4Subnet() bool`
+
+HasIpv4Subnet returns a boolean if a field has been set.
 
 ### GetIpv4Address
 

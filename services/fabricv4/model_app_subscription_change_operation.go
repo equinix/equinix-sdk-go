@@ -17,7 +17,7 @@ var _ MappedNullable = &AppSubscriptionChangeOperation{}
 
 // AppSubscriptionChangeOperation App Subscription change operation data
 type AppSubscriptionChangeOperation struct {
-	Op PrecisionTimeChangeOperationOp `json:"op"`
+	Op AppDomainChangeOperationOp `json:"op"`
 	// path inside document leading to updated parameter
 	Path string `json:"path"`
 	// new value for updated parameter
@@ -31,7 +31,7 @@ type _AppSubscriptionChangeOperation AppSubscriptionChangeOperation
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAppSubscriptionChangeOperation(op PrecisionTimeChangeOperationOp, path string, value map[string]interface{}) *AppSubscriptionChangeOperation {
+func NewAppSubscriptionChangeOperation(op AppDomainChangeOperationOp, path string, value map[string]interface{}) *AppSubscriptionChangeOperation {
 	this := AppSubscriptionChangeOperation{}
 	this.Op = op
 	this.Path = path
@@ -48,9 +48,9 @@ func NewAppSubscriptionChangeOperationWithDefaults() *AppSubscriptionChangeOpera
 }
 
 // GetOp returns the Op field value
-func (o *AppSubscriptionChangeOperation) GetOp() PrecisionTimeChangeOperationOp {
+func (o *AppSubscriptionChangeOperation) GetOp() AppDomainChangeOperationOp {
 	if o == nil {
-		var ret PrecisionTimeChangeOperationOp
+		var ret AppDomainChangeOperationOp
 		return ret
 	}
 
@@ -59,7 +59,7 @@ func (o *AppSubscriptionChangeOperation) GetOp() PrecisionTimeChangeOperationOp 
 
 // GetOpOk returns a tuple with the Op field value
 // and a boolean to check if the value has been set.
-func (o *AppSubscriptionChangeOperation) GetOpOk() (*PrecisionTimeChangeOperationOp, bool) {
+func (o *AppSubscriptionChangeOperation) GetOpOk() (*AppDomainChangeOperationOp, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -67,7 +67,7 @@ func (o *AppSubscriptionChangeOperation) GetOpOk() (*PrecisionTimeChangeOperatio
 }
 
 // SetOp sets field value
-func (o *AppSubscriptionChangeOperation) SetOp(v PrecisionTimeChangeOperationOp) {
+func (o *AppSubscriptionChangeOperation) SetOp(v AppDomainChangeOperationOp) {
 	o.Op = v
 }
 

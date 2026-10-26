@@ -24,6 +24,7 @@ type TagResponse struct {
 	State                *TagResponseState        `json:"state,omitempty"`
 	Notifications        []SimplifiedNotification `json:"notifications,omitempty"`
 	ChangeLog            *Changelog               `json:"changeLog,omitempty"`
+	Weight               *int32                   `json:"weight,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -302,6 +303,38 @@ func (o *TagResponse) SetChangeLog(v Changelog) {
 	o.ChangeLog = &v
 }
 
+// GetWeight returns the Weight field value if set, zero value otherwise.
+func (o *TagResponse) GetWeight() int32 {
+	if o == nil || IsNil(o.Weight) {
+		var ret int32
+		return ret
+	}
+	return *o.Weight
+}
+
+// GetWeightOk returns a tuple with the Weight field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TagResponse) GetWeightOk() (*int32, bool) {
+	if o == nil || IsNil(o.Weight) {
+		return nil, false
+	}
+	return o.Weight, true
+}
+
+// HasWeight returns a boolean if a field has been set.
+func (o *TagResponse) HasWeight() bool {
+	if o != nil && !IsNil(o.Weight) {
+		return true
+	}
+
+	return false
+}
+
+// SetWeight gets a reference to the given int32 and assigns it to the Weight field.
+func (o *TagResponse) SetWeight(v int32) {
+	o.Weight = &v
+}
+
 func (o TagResponse) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -336,6 +369,9 @@ func (o TagResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ChangeLog) {
 		toSerialize["changeLog"] = o.ChangeLog
 	}
+	if !IsNil(o.Weight) {
+		toSerialize["weight"] = o.Weight
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -366,6 +402,7 @@ func (o *TagResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "state")
 		delete(additionalProperties, "notifications")
 		delete(additionalProperties, "changeLog")
+		delete(additionalProperties, "weight")
 		o.AdditionalProperties = additionalProperties
 	}
 

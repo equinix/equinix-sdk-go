@@ -17,19 +17,20 @@ type StreamAssetType string
 
 // List of StreamAsset_type
 const (
-	STREAMASSETTYPE_XF_PORT      StreamAssetType = "XF_PORT"
-	STREAMASSETTYPE_IP_VC        StreamAssetType = "IP_VC"
-	STREAMASSETTYPE_EVPLAN_VC    StreamAssetType = "EVPLAN_VC"
-	STREAMASSETTYPE_EVPL_VC      StreamAssetType = "EVPL_VC"
-	STREAMASSETTYPE_XF_METRO     StreamAssetType = "XF_METRO"
-	STREAMASSETTYPE_XF_ROUTER    StreamAssetType = "XF_ROUTER"
-	STREAMASSETTYPE_ORGANIZATION StreamAssetType = "ORGANIZATION"
-	STREAMASSETTYPE_PROJECT      StreamAssetType = "PROJECT"
-	STREAMASSETTYPE_DATA         StreamAssetType = "DATA"
-	STREAMASSETTYPE_MGMT         StreamAssetType = "MGMT"
-	STREAMASSETTYPE_SSH          StreamAssetType = "SSH"
-	STREAMASSETTYPE_FAB          StreamAssetType = "FAB"
-	STREAMASSETTYPE_CTRL         StreamAssetType = "CTRL"
+	STREAMASSETTYPE_XF_PORT        StreamAssetType = "XF_PORT"
+	STREAMASSETTYPE_IP_VC          StreamAssetType = "IP_VC"
+	STREAMASSETTYPE_EVPLAN_VC      StreamAssetType = "EVPLAN_VC"
+	STREAMASSETTYPE_EVPL_VC        StreamAssetType = "EVPL_VC"
+	STREAMASSETTYPE_XF_METRO       StreamAssetType = "XF_METRO"
+	STREAMASSETTYPE_XF_ROUTER      StreamAssetType = "XF_ROUTER"
+	STREAMASSETTYPE_ORGANIZATION   StreamAssetType = "ORGANIZATION"
+	STREAMASSETTYPE_PROJECT        StreamAssetType = "PROJECT"
+	STREAMASSETTYPE_VIRTUAL_DEVICE StreamAssetType = "VIRTUAL_DEVICE"
+	STREAMASSETTYPE_DATA           StreamAssetType = "DATA"
+	STREAMASSETTYPE_MGMT           StreamAssetType = "MGMT"
+	STREAMASSETTYPE_SSH            StreamAssetType = "SSH"
+	STREAMASSETTYPE_FAB            StreamAssetType = "FAB"
+	STREAMASSETTYPE_CTRL           StreamAssetType = "CTRL"
 )
 
 // All allowed values of StreamAssetType enum
@@ -42,6 +43,7 @@ var AllowedStreamAssetTypeEnumValues = []StreamAssetType{
 	"XF_ROUTER",
 	"ORGANIZATION",
 	"PROJECT",
+	"VIRTUAL_DEVICE",
 	"DATA",
 	"MGMT",
 	"SSH",

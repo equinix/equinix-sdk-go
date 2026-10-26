@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** | Customer-provided App Link description | [optional] 
 **State** | Pointer to [**AppLinkState**](AppLinkState.md) |  | [optional] 
 **Router** | [**AppLinkCloudRouter**](AppLinkCloudRouter.md) |  | 
+**Ipv4Subnet** | **string** | Customer-provided IP subnet for AppLink setup (/29 or larger subnet) | 
 **Ipv4Address** | Pointer to **string** | App Link IP address | [optional] 
 **Bandwidth** | **int32** | App Link aggregated data transfer capacity in Mbps | 
 **Project** | [**Project**](Project.md) |  | 
@@ -21,7 +22,7 @@ Name | Type | Description | Notes
 
 ### NewAppLink
 
-`func NewAppLink(type_ AppLinkType, name string, router AppLinkCloudRouter, bandwidth int32, project Project, ) *AppLink`
+`func NewAppLink(type_ AppLinkType, name string, router AppLinkCloudRouter, ipv4Subnet string, bandwidth int32, project Project, ) *AppLink`
 
 NewAppLink instantiates a new AppLink object
 This constructor will assign default values to properties that have it defined,
@@ -194,6 +195,26 @@ and a boolean to check if the value has been set.
 `func (o *AppLink) SetRouter(v AppLinkCloudRouter)`
 
 SetRouter sets Router field to given value.
+
+
+### GetIpv4Subnet
+
+`func (o *AppLink) GetIpv4Subnet() string`
+
+GetIpv4Subnet returns the Ipv4Subnet field if non-nil, zero value otherwise.
+
+### GetIpv4SubnetOk
+
+`func (o *AppLink) GetIpv4SubnetOk() (*string, bool)`
+
+GetIpv4SubnetOk returns a tuple with the Ipv4Subnet field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIpv4Subnet
+
+`func (o *AppLink) SetIpv4Subnet(v string)`
+
+SetIpv4Subnet sets Ipv4Subnet field to given value.
 
 
 ### GetIpv4Address

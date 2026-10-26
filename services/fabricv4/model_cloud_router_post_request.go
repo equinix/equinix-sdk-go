@@ -26,7 +26,7 @@ type CloudRouterPostRequest struct {
 	Project  *Project                      `json:"project,omitempty"`
 	Account  *SimplifiedAccount            `json:"account,omitempty"`
 	// Preferences for notifications on connection configuration or status changes
-	Notifications           []SimplifiedNotification `json:"notifications,omitempty"`
+	Notifications           []SimplifiedNotification `json:"notifications"`
 	MarketplaceSubscription *MarketplaceSubscription `json:"marketplaceSubscription,omitempty"`
 	AdditionalProperties    map[string]interface{}
 }
@@ -37,12 +37,13 @@ type _CloudRouterPostRequest CloudRouterPostRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCloudRouterPostRequest(type_ CloudRouterPostRequestBaseType, name string, location SimplifiedLocationWithoutIBX, package_ CloudRouterPostRequestPackage) *CloudRouterPostRequest {
+func NewCloudRouterPostRequest(type_ CloudRouterPostRequestBaseType, name string, location SimplifiedLocationWithoutIBX, package_ CloudRouterPostRequestPackage, notifications []SimplifiedNotification) *CloudRouterPostRequest {
 	this := CloudRouterPostRequest{}
 	this.Type = type_
 	this.Name = name
 	this.Location = location
 	this.Package = package_
+	this.Notifications = notifications
 	return &this
 }
 
@@ -246,34 +247,26 @@ func (o *CloudRouterPostRequest) SetAccount(v SimplifiedAccount) {
 	o.Account = &v
 }
 
-// GetNotifications returns the Notifications field value if set, zero value otherwise.
+// GetNotifications returns the Notifications field value
 func (o *CloudRouterPostRequest) GetNotifications() []SimplifiedNotification {
-	if o == nil || IsNil(o.Notifications) {
+	if o == nil {
 		var ret []SimplifiedNotification
 		return ret
 	}
+
 	return o.Notifications
 }
 
-// GetNotificationsOk returns a tuple with the Notifications field value if set, nil otherwise
+// GetNotificationsOk returns a tuple with the Notifications field value
 // and a boolean to check if the value has been set.
 func (o *CloudRouterPostRequest) GetNotificationsOk() ([]SimplifiedNotification, bool) {
-	if o == nil || IsNil(o.Notifications) {
+	if o == nil {
 		return nil, false
 	}
 	return o.Notifications, true
 }
 
-// HasNotifications returns a boolean if a field has been set.
-func (o *CloudRouterPostRequest) HasNotifications() bool {
-	if o != nil && !IsNil(o.Notifications) {
-		return true
-	}
-
-	return false
-}
-
-// SetNotifications gets a reference to the given []SimplifiedNotification and assigns it to the Notifications field.
+// SetNotifications sets field value
 func (o *CloudRouterPostRequest) SetNotifications(v []SimplifiedNotification) {
 	o.Notifications = v
 }
@@ -333,9 +326,7 @@ func (o CloudRouterPostRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Account) {
 		toSerialize["account"] = o.Account
 	}
-	if !IsNil(o.Notifications) {
-		toSerialize["notifications"] = o.Notifications
-	}
+	toSerialize["notifications"] = o.Notifications
 	if !IsNil(o.MarketplaceSubscription) {
 		toSerialize["marketplaceSubscription"] = o.MarketplaceSubscription
 	}
@@ -356,6 +347,7 @@ func (o *CloudRouterPostRequest) UnmarshalJSON(data []byte) (err error) {
 		"name",
 		"location",
 		"package",
+		"notifications",
 	}
 
 	allProperties := make(map[string]interface{})

@@ -18,6 +18,8 @@ var _ MappedNullable = &LoaDemarcationPoint{}
 type LoaDemarcationPoint struct {
 	// Unique identifier of the Cage.
 	CageUniqueSpaceId *string `json:"cageUniqueSpaceId,omitempty"`
+	// Unique identifier of the Cabinet.
+	CabinetUniqueSpaceId *string `json:"cabinetUniqueSpaceId,omitempty"`
 	// Unique identifier of the Patch Panel.
 	PatchPanelId *string `json:"patchPanelId,omitempty"`
 	// Specify the desired port number. <br> When ports are not provided, next available ports will be used.
@@ -77,6 +79,38 @@ func (o *LoaDemarcationPoint) HasCageUniqueSpaceId() bool {
 // SetCageUniqueSpaceId gets a reference to the given string and assigns it to the CageUniqueSpaceId field.
 func (o *LoaDemarcationPoint) SetCageUniqueSpaceId(v string) {
 	o.CageUniqueSpaceId = &v
+}
+
+// GetCabinetUniqueSpaceId returns the CabinetUniqueSpaceId field value if set, zero value otherwise.
+func (o *LoaDemarcationPoint) GetCabinetUniqueSpaceId() string {
+	if o == nil || IsNil(o.CabinetUniqueSpaceId) {
+		var ret string
+		return ret
+	}
+	return *o.CabinetUniqueSpaceId
+}
+
+// GetCabinetUniqueSpaceIdOk returns a tuple with the CabinetUniqueSpaceId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LoaDemarcationPoint) GetCabinetUniqueSpaceIdOk() (*string, bool) {
+	if o == nil || IsNil(o.CabinetUniqueSpaceId) {
+		return nil, false
+	}
+	return o.CabinetUniqueSpaceId, true
+}
+
+// HasCabinetUniqueSpaceId returns a boolean if a field has been set.
+func (o *LoaDemarcationPoint) HasCabinetUniqueSpaceId() bool {
+	if o != nil && !IsNil(o.CabinetUniqueSpaceId) {
+		return true
+	}
+
+	return false
+}
+
+// SetCabinetUniqueSpaceId gets a reference to the given string and assigns it to the CabinetUniqueSpaceId field.
+func (o *LoaDemarcationPoint) SetCabinetUniqueSpaceId(v string) {
+	o.CabinetUniqueSpaceId = &v
 }
 
 // GetPatchPanelId returns the PatchPanelId field value if set, zero value otherwise.
@@ -220,6 +254,9 @@ func (o LoaDemarcationPoint) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.CageUniqueSpaceId) {
 		toSerialize["cageUniqueSpaceId"] = o.CageUniqueSpaceId
 	}
+	if !IsNil(o.CabinetUniqueSpaceId) {
+		toSerialize["cabinetUniqueSpaceId"] = o.CabinetUniqueSpaceId
+	}
 	if !IsNil(o.PatchPanelId) {
 		toSerialize["patchPanelId"] = o.PatchPanelId
 	}
@@ -255,6 +292,7 @@ func (o *LoaDemarcationPoint) UnmarshalJSON(data []byte) (err error) {
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "cageUniqueSpaceId")
+		delete(additionalProperties, "cabinetUniqueSpaceId")
 		delete(additionalProperties, "patchPanelId")
 		delete(additionalProperties, "patchPanelPortA")
 		delete(additionalProperties, "patchPanelPortB")

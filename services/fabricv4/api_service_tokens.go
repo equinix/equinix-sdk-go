@@ -192,7 +192,7 @@ func (r ApiCreateServiceTokenActionRequest) Execute() (*ServiceToken, *http.Resp
 }
 
 /*
-CreateServiceTokenAction ServiceToken Actions
+CreateServiceTokenAction Create Service Token Action
 
 This API provides capability to accept/reject user's servicetokens
 
@@ -344,9 +344,9 @@ func (r ApiDeleteServiceTokenByUuidRequest) Execute() (*ServiceToken, *http.Resp
 }
 
 /*
-DeleteServiceTokenByUuid Delete Token by uuid
+DeleteServiceTokenByUuid Delete Service Token by ID
 
-Delete Service Tokens removes an Equinix Fabric service token corresponding to the specified uuid which are in INACTIVE state.
+Delete Service Tokens removes an Equinix Fabric service token corresponding to the specified uuid which are in INACTIVE state
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param serviceTokenId Service Token UUID
@@ -480,7 +480,7 @@ func (r ApiGetServiceTokenByUuidRequest) Execute() (*ServiceToken, *http.Respons
 }
 
 /*
-GetServiceTokenByUuid Get Token by uuid
+GetServiceTokenByUuid Get Service Token by ID
 
 Get Specified Service Tokens uses the uuid of an Equinix Fabric service token to return details about the token's type, state, location, bandwidth, and other key properties.
 
@@ -629,7 +629,7 @@ func (r ApiGetServiceTokensRequest) Execute() (*ServiceTokens, *http.Response, e
 }
 
 /*
-GetServiceTokens Get All Tokens
+GetServiceTokens Get Service Tokens
 
 Get All ServiceTokens creates a list of all Equinix Fabric service tokens associated with the subscriber's account.
 
@@ -765,7 +765,7 @@ func (r ApiSearchServiceTokensRequest) Execute() (*ServiceTokens, *http.Response
 }
 
 /*
-SearchServiceTokens Search servicetokens
+SearchServiceTokens Search Service Tokens
 
 The API provides capability to get list of user's servicetokens using search criteria, including optional filtering, pagination and sorting
 

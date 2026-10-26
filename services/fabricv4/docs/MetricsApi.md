@@ -4,7 +4,7 @@ All URIs are relative to *https://api.equinix.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetMetricByAssetId**](MetricsApi.md#GetMetricByAssetId) | **Get** /fabric/v4/{asset}/{assetId}/metrics | Get Metrics by Asset Id
+[**GetMetricByAssetId**](MetricsApi.md#GetMetricByAssetId) | **Get** /fabric/v4/{asset}/{assetId}/metrics | Get Metrics by Asset Id (Deprecated)
 [**GetMetricByName**](MetricsApi.md#GetMetricByName) | **Get** /fabric/v4/metrics | Get Metrics by Name
 [**SearchMetrics**](MetricsApi.md#SearchMetrics) | **Post** /fabric/v4/metrics/search | Search Metrics
 
@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 > GetMetricsByAssetResponse GetMetricByAssetId(ctx, asset, assetId).Name(name).FromDateTime(fromDateTime).ToDateTime(toDateTime).Offset(offset).Limit(limit).Execute()
 
-Get Metrics by Asset Id
+Get Metrics by Asset Id (Deprecated)
 
 
 

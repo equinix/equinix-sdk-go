@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Name** | **string** | Customer-provided App Link name | 
 **Description** | Pointer to **string** | Customer-provided App Link description | [optional] 
 **Router** | [**AppLinkPostRequestRouter**](AppLinkPostRequestRouter.md) |  | 
-**Ipv4Address** | Pointer to **string** | AppLink IP address | [optional] 
+**Ipv4Subnet** | **string** | Customer-provided IP subnet for AppLink setup (/29 or larger subnet) | 
 **Bandwidth** | **int32** | App Link aggregated data transfer capacity in Mbps | 
 **Project** | [**Project**](Project.md) |  | 
 
@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 
 ### NewAppLinkPostRequest
 
-`func NewAppLinkPostRequest(type_ AppLinkType, name string, router AppLinkPostRequestRouter, bandwidth int32, project Project, ) *AppLinkPostRequest`
+`func NewAppLinkPostRequest(type_ AppLinkType, name string, router AppLinkPostRequestRouter, ipv4Subnet string, bandwidth int32, project Project, ) *AppLinkPostRequest`
 
 NewAppLinkPostRequest instantiates a new AppLinkPostRequest object
 This constructor will assign default values to properties that have it defined,
@@ -116,30 +116,25 @@ and a boolean to check if the value has been set.
 SetRouter sets Router field to given value.
 
 
-### GetIpv4Address
+### GetIpv4Subnet
 
-`func (o *AppLinkPostRequest) GetIpv4Address() string`
+`func (o *AppLinkPostRequest) GetIpv4Subnet() string`
 
-GetIpv4Address returns the Ipv4Address field if non-nil, zero value otherwise.
+GetIpv4Subnet returns the Ipv4Subnet field if non-nil, zero value otherwise.
 
-### GetIpv4AddressOk
+### GetIpv4SubnetOk
 
-`func (o *AppLinkPostRequest) GetIpv4AddressOk() (*string, bool)`
+`func (o *AppLinkPostRequest) GetIpv4SubnetOk() (*string, bool)`
 
-GetIpv4AddressOk returns a tuple with the Ipv4Address field if it's non-nil, zero value otherwise
+GetIpv4SubnetOk returns a tuple with the Ipv4Subnet field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetIpv4Address
+### SetIpv4Subnet
 
-`func (o *AppLinkPostRequest) SetIpv4Address(v string)`
+`func (o *AppLinkPostRequest) SetIpv4Subnet(v string)`
 
-SetIpv4Address sets Ipv4Address field to given value.
+SetIpv4Subnet sets Ipv4Subnet field to given value.
 
-### HasIpv4Address
-
-`func (o *AppLinkPostRequest) HasIpv4Address() bool`
-
-HasIpv4Address returns a boolean if a field has been set.
 
 ### GetBandwidth
 

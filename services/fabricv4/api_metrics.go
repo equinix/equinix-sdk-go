@@ -67,7 +67,7 @@ func (r ApiGetMetricByAssetIdRequest) Execute() (*GetMetricsByAssetResponse, *ht
 }
 
 /*
-GetMetricByAssetId Get Metrics by Asset Id
+GetMetricByAssetId Get Metrics by Asset Id (Deprecated)
 
 This API provides capability to retrieve Metrics of an asset id
 
@@ -75,6 +75,8 @@ This API provides capability to retrieve Metrics of an asset id
 	@param asset asset
 	@param assetId asset UUID
 	@return ApiGetMetricByAssetIdRequest
+
+Deprecated
 */
 func (a *MetricsApiService) GetMetricByAssetId(ctx context.Context, asset MetricAssetType, assetId string) ApiGetMetricByAssetIdRequest {
 	return ApiGetMetricByAssetIdRequest{
@@ -88,6 +90,8 @@ func (a *MetricsApiService) GetMetricByAssetId(ctx context.Context, asset Metric
 // Execute executes the request
 //
 //	@return GetMetricsByAssetResponse
+//
+// Deprecated
 func (a *MetricsApiService) GetMetricByAssetIdExecute(r ApiGetMetricByAssetIdRequest) (*GetMetricsByAssetResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

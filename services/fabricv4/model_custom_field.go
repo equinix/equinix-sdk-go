@@ -19,7 +19,7 @@ var _ MappedNullable = &CustomField{}
 type CustomField struct {
 	Label       string              `json:"label"`
 	Description *string             `json:"description,omitempty"`
-	Required    *bool               `json:"required,omitempty"`
+	Required    bool                `json:"required"`
 	DataType    CustomFieldDataType `json:"dataType"`
 	Options     []string            `json:"options,omitempty"`
 	// capture this field as a part of email notification
@@ -33,9 +33,10 @@ type _CustomField CustomField
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCustomField(label string, dataType CustomFieldDataType) *CustomField {
+func NewCustomField(label string, required bool, dataType CustomFieldDataType) *CustomField {
 	this := CustomField{}
 	this.Label = label
+	this.Required = required
 	this.DataType = dataType
 	return &this
 }
@@ -104,36 +105,28 @@ func (o *CustomField) SetDescription(v string) {
 	o.Description = &v
 }
 
-// GetRequired returns the Required field value if set, zero value otherwise.
+// GetRequired returns the Required field value
 func (o *CustomField) GetRequired() bool {
-	if o == nil || IsNil(o.Required) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.Required
+
+	return o.Required
 }
 
-// GetRequiredOk returns a tuple with the Required field value if set, nil otherwise
+// GetRequiredOk returns a tuple with the Required field value
 // and a boolean to check if the value has been set.
 func (o *CustomField) GetRequiredOk() (*bool, bool) {
-	if o == nil || IsNil(o.Required) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Required, true
+	return &o.Required, true
 }
 
-// HasRequired returns a boolean if a field has been set.
-func (o *CustomField) HasRequired() bool {
-	if o != nil && !IsNil(o.Required) {
-		return true
-	}
-
-	return false
-}
-
-// SetRequired gets a reference to the given bool and assigns it to the Required field.
+// SetRequired sets field value
 func (o *CustomField) SetRequired(v bool) {
-	o.Required = &v
+	o.Required = v
 }
 
 // GetDataType returns the DataType field value
@@ -238,9 +231,7 @@ func (o CustomField) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !IsNil(o.Required) {
-		toSerialize["required"] = o.Required
-	}
+	toSerialize["required"] = o.Required
 	toSerialize["dataType"] = o.DataType
 	if !IsNil(o.Options) {
 		toSerialize["options"] = o.Options
@@ -262,6 +253,7 @@ func (o *CustomField) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"label",
+		"required",
 		"dataType",
 	}
 

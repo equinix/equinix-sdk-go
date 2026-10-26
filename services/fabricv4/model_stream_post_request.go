@@ -21,8 +21,11 @@ type StreamPostRequest struct {
 	// Customer-provided stream name
 	Name string `json:"name"`
 	// Customer-provided stream description
-	Description          *string `json:"description,omitempty"`
-	Project              Project `json:"project"`
+	Description *string            `json:"description,omitempty"`
+	Project     Project            `json:"project"`
+	Account     *SimplifiedAccount `json:"account,omitempty"`
+	// Preferences for stream notifications. Optional; at most one entry, of type ALL, with up to 12 emails. Set at creation only.
+	Notifications        []SimplifiedNotification `json:"notifications,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -152,6 +155,70 @@ func (o *StreamPostRequest) SetProject(v Project) {
 	o.Project = v
 }
 
+// GetAccount returns the Account field value if set, zero value otherwise.
+func (o *StreamPostRequest) GetAccount() SimplifiedAccount {
+	if o == nil || IsNil(o.Account) {
+		var ret SimplifiedAccount
+		return ret
+	}
+	return *o.Account
+}
+
+// GetAccountOk returns a tuple with the Account field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamPostRequest) GetAccountOk() (*SimplifiedAccount, bool) {
+	if o == nil || IsNil(o.Account) {
+		return nil, false
+	}
+	return o.Account, true
+}
+
+// HasAccount returns a boolean if a field has been set.
+func (o *StreamPostRequest) HasAccount() bool {
+	if o != nil && !IsNil(o.Account) {
+		return true
+	}
+
+	return false
+}
+
+// SetAccount gets a reference to the given SimplifiedAccount and assigns it to the Account field.
+func (o *StreamPostRequest) SetAccount(v SimplifiedAccount) {
+	o.Account = &v
+}
+
+// GetNotifications returns the Notifications field value if set, zero value otherwise.
+func (o *StreamPostRequest) GetNotifications() []SimplifiedNotification {
+	if o == nil || IsNil(o.Notifications) {
+		var ret []SimplifiedNotification
+		return ret
+	}
+	return o.Notifications
+}
+
+// GetNotificationsOk returns a tuple with the Notifications field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamPostRequest) GetNotificationsOk() ([]SimplifiedNotification, bool) {
+	if o == nil || IsNil(o.Notifications) {
+		return nil, false
+	}
+	return o.Notifications, true
+}
+
+// HasNotifications returns a boolean if a field has been set.
+func (o *StreamPostRequest) HasNotifications() bool {
+	if o != nil && !IsNil(o.Notifications) {
+		return true
+	}
+
+	return false
+}
+
+// SetNotifications gets a reference to the given []SimplifiedNotification and assigns it to the Notifications field.
+func (o *StreamPostRequest) SetNotifications(v []SimplifiedNotification) {
+	o.Notifications = v
+}
+
 func (o StreamPostRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -168,6 +235,12 @@ func (o StreamPostRequest) ToMap() (map[string]interface{}, error) {
 		toSerialize["description"] = o.Description
 	}
 	toSerialize["project"] = o.Project
+	if !IsNil(o.Account) {
+		toSerialize["account"] = o.Account
+	}
+	if !IsNil(o.Notifications) {
+		toSerialize["notifications"] = o.Notifications
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -217,6 +290,8 @@ func (o *StreamPostRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "project")
+		delete(additionalProperties, "account")
+		delete(additionalProperties, "notifications")
 		o.AdditionalProperties = additionalProperties
 	}
 

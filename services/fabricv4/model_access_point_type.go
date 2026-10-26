@@ -28,7 +28,7 @@ const (
 	ACCESSPOINTTYPE_METAL_NETWORK  AccessPointType = "METAL_NETWORK"
 	ACCESSPOINTTYPE_VPIC_INTERFACE AccessPointType = "VPIC_INTERFACE"
 	ACCESSPOINTTYPE_APP_LINK       AccessPointType = "APP_LINK"
-	ACCESSPOINTTYPE_XF_IC          AccessPointType = "XF_IC"
+	ACCESSPOINTTYPE_IC             AccessPointType = "IC"
 )
 
 // All allowed values of AccessPointType enum
@@ -44,7 +44,7 @@ var AllowedAccessPointTypeEnumValues = []AccessPointType{
 	"METAL_NETWORK",
 	"VPIC_INTERFACE",
 	"APP_LINK",
-	"XF_IC",
+	"IC",
 }
 
 func (v *AccessPointType) UnmarshalJSON(src []byte) error {

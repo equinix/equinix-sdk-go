@@ -26,7 +26,7 @@ type Order struct {
 	OrderId *string `json:"orderId,omitempty"`
 	// Order Reference Number
 	OrderNumber *string `json:"orderNumber,omitempty"`
-	// Term length in months, valid values are 1, 12, 24, 36 where 1 is the default value (for on-demand case).
+	// Term length in months, valid values are 1, 12, 24, 36, 60 where 1 is the default value (for on-demand case).
 	TermLength *int32 `json:"termLength,omitempty"`
 	// Contracted bandwidth
 	ContractedBandwidth  *int32 `json:"contractedBandwidth,omitempty"`

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Uuid** | Pointer to **string** | Uniquely identifies a change | [optional] 
-**Type** | [**AppServiceChangeType**](AppServiceChangeType.md) |  | 
+**Type** | [**AppLinkAppServiceAttachmentChangeType**](AppLinkAppServiceAttachmentChangeType.md) |  | 
 **Status** | Pointer to [**PortChangeStatus**](PortChangeStatus.md) |  | [optional] 
 **CreatedDateTime** | Pointer to **time.Time** | Set when change flow starts | [optional] 
 **UpdatedDateTime** | **time.Time** | Set when change object is updated | 
@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 
 ### NewAppServiceChange
 
-`func NewAppServiceChange(type_ AppServiceChangeType, updatedDateTime time.Time, ) *AppServiceChange`
+`func NewAppServiceChange(type_ AppLinkAppServiceAttachmentChangeType, updatedDateTime time.Time, ) *AppServiceChange`
 
 NewAppServiceChange instantiates a new AppServiceChange object
 This constructor will assign default values to properties that have it defined,
@@ -57,20 +57,20 @@ HasUuid returns a boolean if a field has been set.
 
 ### GetType
 
-`func (o *AppServiceChange) GetType() AppServiceChangeType`
+`func (o *AppServiceChange) GetType() AppLinkAppServiceAttachmentChangeType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *AppServiceChange) GetTypeOk() (*AppServiceChangeType, bool)`
+`func (o *AppServiceChange) GetTypeOk() (*AppLinkAppServiceAttachmentChangeType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *AppServiceChange) SetType(v AppServiceChangeType)`
+`func (o *AppServiceChange) SetType(v AppLinkAppServiceAttachmentChangeType)`
 
 SetType sets Type field to given value.
 

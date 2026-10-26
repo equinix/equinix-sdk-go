@@ -35,9 +35,9 @@ func (r ApiCreateAppServiceRequest) Execute() (*AppService, *http.Response, erro
 }
 
 /*
-CreateAppService Create App Service
+CreateAppService Create Service
 
-This API provides capability to create user's App Service
+This API provides capability to create user's Service
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiCreateAppServiceRequest
@@ -195,9 +195,9 @@ func (r ApiDeleteAppServiceByUuidRequest) Execute() (*AppService, *http.Response
 }
 
 /*
-DeleteAppServiceByUuid Delete App Service
+DeleteAppServiceByUuid Delete Service
 
-This API provides capability to delete user's App Service
+This API provides capability to delete user's Service
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param appServiceId App Service UUID
@@ -353,9 +353,9 @@ func (r ApiGetAppServiceByUuidRequest) Execute() (*AppService, *http.Response, e
 }
 
 /*
-GetAppServiceByUuid Get App Service
+GetAppServiceByUuid Get Service
 
-This API provides capability to retrieve user's App Service
+This API provides capability to retrieve user's Service
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param appServiceId App Service UUID
@@ -535,9 +535,9 @@ func (r ApiGetAttachedAppLinksByAppServiceIdRequest) Execute() (*AppServiceAttac
 }
 
 /*
-GetAttachedAppLinksByAppServiceId Get attached App Links for App Service
+GetAttachedAppLinksByAppServiceId Get Attached Links for Service
 
-This API provides capability to retrieve App Links attached to an App Service.
+This API provides capability to retrieve App Links attached to an App Service
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param appServiceId App Service UUID
@@ -749,9 +749,9 @@ func (r ApiGetAttachedAppSubscriptionsByAppServiceIdRequest) Execute() (*AppServ
 }
 
 /*
-GetAttachedAppSubscriptionsByAppServiceId Get attached App Subscriptions for App Service
+GetAttachedAppSubscriptionsByAppServiceId Get Attached Subscriptions for Service
 
-This API provides capability to retrieve App Subscriptions attached to an App Service.
+This API provides capability to retrieve App Subscriptions attached to an App Service
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param appServiceId App Service UUID
@@ -933,7 +933,7 @@ func (r ApiSearchAppServicesRequest) Execute() (*AppServiceSearchResponse, *http
 }
 
 /*
-SearchAppServices Search App Services
+SearchAppServices Search Services
 
 The API provides capability to get list of user's App Services using search criteria, including optional filtering, pagination and sorting
 
@@ -1099,9 +1099,9 @@ func (r ApiSearchAttachedAppSubscriptionsByAppServiceIdRequest) Execute() (*AppS
 }
 
 /*
-SearchAttachedAppSubscriptionsByAppServiceId Search attached App Subscriptions
+SearchAttachedAppSubscriptionsByAppServiceId Search Attached Subscriptions
 
-The API provides capability to get list of App Subscriptions attached to an App Service using search criteria.
+The API provides capability to get list of App Subscriptions attached to an App Service using search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param appServiceId App Service UUID
@@ -1268,9 +1268,9 @@ func (r ApiUpdateAppServiceByUuidRequest) Execute() (*AppService, *http.Response
 }
 
 /*
-UpdateAppServiceByUuid Update App Service
+UpdateAppServiceByUuid Update Service
 
-This API provides capability to update user's App Service
+This API provides capability to update user's Service
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param appServiceId App Service UUID

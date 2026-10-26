@@ -17,8 +17,12 @@ var _ MappedNullable = &ConnectionRedundancy{}
 // ConnectionRedundancy Connection redundancy configuration
 type ConnectionRedundancy struct {
 	// Redundancy group identifier (UUID of primary connection)
-	Group                *string             `json:"group,omitempty"`
-	Priority             *ConnectionPriority `json:"priority,omitempty"`
+	Group    *string             `json:"group,omitempty"`
+	Priority *ConnectionPriority `json:"priority,omitempty"`
+	// Customer-provided name for the redundancy group
+	Name *string `json:"name,omitempty"`
+	// Customer-provided description for the redundancy group
+	Description          *string `json:"description,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -105,6 +109,70 @@ func (o *ConnectionRedundancy) SetPriority(v ConnectionPriority) {
 	o.Priority = &v
 }
 
+// GetName returns the Name field value if set, zero value otherwise.
+func (o *ConnectionRedundancy) GetName() string {
+	if o == nil || IsNil(o.Name) {
+		var ret string
+		return ret
+	}
+	return *o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ConnectionRedundancy) GetNameOk() (*string, bool) {
+	if o == nil || IsNil(o.Name) {
+		return nil, false
+	}
+	return o.Name, true
+}
+
+// HasName returns a boolean if a field has been set.
+func (o *ConnectionRedundancy) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
+func (o *ConnectionRedundancy) SetName(v string) {
+	o.Name = &v
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *ConnectionRedundancy) GetDescription() string {
+	if o == nil || IsNil(o.Description) {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ConnectionRedundancy) GetDescriptionOk() (*string, bool) {
+	if o == nil || IsNil(o.Description) {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *ConnectionRedundancy) HasDescription() bool {
+	if o != nil && !IsNil(o.Description) {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *ConnectionRedundancy) SetDescription(v string) {
+	o.Description = &v
+}
+
 func (o ConnectionRedundancy) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -120,6 +188,12 @@ func (o ConnectionRedundancy) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Priority) {
 		toSerialize["priority"] = o.Priority
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -145,6 +219,8 @@ func (o *ConnectionRedundancy) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "group")
 		delete(additionalProperties, "priority")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "description")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -4,12 +4,12 @@ All URIs are relative to *https://api.equinix.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateAppDomain**](ApplicationDomainsApi.md#CreateAppDomain) | **Post** /fabric/v4/appDomains | Create App Domain
-[**DeleteAppDomainByUuid**](ApplicationDomainsApi.md#DeleteAppDomainByUuid) | **Delete** /fabric/v4/appDomains/{appDomainId} | Delete App Domain
-[**GetAppDomainByUuid**](ApplicationDomainsApi.md#GetAppDomainByUuid) | **Get** /fabric/v4/appDomains/{appDomainId} | Get App Domain
-[**GetAttachedAppLinksByAppDomainId**](ApplicationDomainsApi.md#GetAttachedAppLinksByAppDomainId) | **Get** /fabric/v4/appDomains/{appDomainId}/appLinks | Get attached App Links for App Domain
-[**SearchAppDomains**](ApplicationDomainsApi.md#SearchAppDomains) | **Post** /fabric/v4/appDomains/search | Search App Domains
-[**UpdateAppDomainByUuid**](ApplicationDomainsApi.md#UpdateAppDomainByUuid) | **Patch** /fabric/v4/appDomains/{appDomainId} | Update App Domain
+[**CreateAppDomain**](ApplicationDomainsApi.md#CreateAppDomain) | **Post** /fabric/v4/appDomains | Create Domain
+[**DeleteAppDomainByUuid**](ApplicationDomainsApi.md#DeleteAppDomainByUuid) | **Delete** /fabric/v4/appDomains/{appDomainId} | Delete Domain
+[**GetAppDomainByUuid**](ApplicationDomainsApi.md#GetAppDomainByUuid) | **Get** /fabric/v4/appDomains/{appDomainId} | Get Domain
+[**GetAttachedAppLinksByAppDomainId**](ApplicationDomainsApi.md#GetAttachedAppLinksByAppDomainId) | **Get** /fabric/v4/appDomains/{appDomainId}/appLinks | Get Attached Links for Domain
+[**SearchAppDomains**](ApplicationDomainsApi.md#SearchAppDomains) | **Post** /fabric/v4/appDomains/search | Search Domains
+[**UpdateAppDomainByUuid**](ApplicationDomainsApi.md#UpdateAppDomainByUuid) | **Patch** /fabric/v4/appDomains/{appDomainId} | Update Domain
 
 
 
@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 > AppDomain CreateAppDomain(ctx).AppDomainPostRequest(appDomainPostRequest).Execute()
 
-Create App Domain
+Create Domain
 
 
 
@@ -83,7 +83,7 @@ Name | Type | Description  | Notes
 
 > AppDomain DeleteAppDomainByUuid(ctx, appDomainId).Execute()
 
-Delete App Domain
+Delete Domain
 
 
 
@@ -153,7 +153,7 @@ Name | Type | Description  | Notes
 
 > AppDomain GetAppDomainByUuid(ctx, appDomainId).Execute()
 
-Get App Domain
+Get Domain
 
 
 
@@ -223,7 +223,7 @@ Name | Type | Description  | Notes
 
 > AppDomainAttachedAppLinks GetAttachedAppLinksByAppDomainId(ctx, appDomainId).Offset(offset).Limit(limit).State(state).Order(order).Style(style).Execute()
 
-Get attached App Links for App Domain
+Get Attached Links for Domain
 
 
 
@@ -303,7 +303,7 @@ Name | Type | Description  | Notes
 
 > AppDomainSearchResponse SearchAppDomains(ctx).AppDomainSearchRequest(appDomainSearchRequest).Execute()
 
-Search App Domains
+Search Domains
 
 
 
@@ -369,7 +369,7 @@ Name | Type | Description  | Notes
 
 > AppDomain UpdateAppDomainByUuid(ctx, appDomainId).AppDomainChangeOperation(appDomainChangeOperation).Execute()
 
-Update App Domain
+Update Domain
 
 
 
@@ -387,7 +387,7 @@ import (
 
 func main() {
 	appDomainId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | App Domain UUID
-	appDomainChangeOperation := []openapiclient.AppDomainChangeOperation{*openapiclient.NewAppDomainChangeOperation(openapiclient.precisionTimeChangeOperation_op("replace"), openapiclient.AppDomainChangeOperation_path("/description"), map[string]interface{}(123))} // []AppDomainChangeOperation | 
+	appDomainChangeOperation := []openapiclient.AppDomainChangeOperation{*openapiclient.NewAppDomainChangeOperation(openapiclient.AppDomainChangeOperation_op("replace"), openapiclient.AppDomainChangeOperation_path("/description"), map[string]interface{}(123))} // []AppDomainChangeOperation | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

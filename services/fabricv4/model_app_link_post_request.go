@@ -23,8 +23,8 @@ type AppLinkPostRequest struct {
 	// Customer-provided App Link description
 	Description *string                  `json:"description,omitempty"`
 	Router      AppLinkPostRequestRouter `json:"router"`
-	// AppLink IP address
-	Ipv4Address *string `json:"ipv4Address,omitempty"`
+	// Customer-provided IP subnet for AppLink setup (/29 or larger subnet)
+	Ipv4Subnet string `json:"ipv4Subnet"`
 	// App Link aggregated data transfer capacity in Mbps
 	Bandwidth            int32   `json:"bandwidth"`
 	Project              Project `json:"project"`
@@ -37,11 +37,12 @@ type _AppLinkPostRequest AppLinkPostRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAppLinkPostRequest(type_ AppLinkType, name string, router AppLinkPostRequestRouter, bandwidth int32, project Project) *AppLinkPostRequest {
+func NewAppLinkPostRequest(type_ AppLinkType, name string, router AppLinkPostRequestRouter, ipv4Subnet string, bandwidth int32, project Project) *AppLinkPostRequest {
 	this := AppLinkPostRequest{}
 	this.Type = type_
 	this.Name = name
 	this.Router = router
+	this.Ipv4Subnet = ipv4Subnet
 	this.Bandwidth = bandwidth
 	this.Project = project
 	return &this
@@ -161,36 +162,28 @@ func (o *AppLinkPostRequest) SetRouter(v AppLinkPostRequestRouter) {
 	o.Router = v
 }
 
-// GetIpv4Address returns the Ipv4Address field value if set, zero value otherwise.
-func (o *AppLinkPostRequest) GetIpv4Address() string {
-	if o == nil || IsNil(o.Ipv4Address) {
+// GetIpv4Subnet returns the Ipv4Subnet field value
+func (o *AppLinkPostRequest) GetIpv4Subnet() string {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Ipv4Address
+
+	return o.Ipv4Subnet
 }
 
-// GetIpv4AddressOk returns a tuple with the Ipv4Address field value if set, nil otherwise
+// GetIpv4SubnetOk returns a tuple with the Ipv4Subnet field value
 // and a boolean to check if the value has been set.
-func (o *AppLinkPostRequest) GetIpv4AddressOk() (*string, bool) {
-	if o == nil || IsNil(o.Ipv4Address) {
+func (o *AppLinkPostRequest) GetIpv4SubnetOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Ipv4Address, true
+	return &o.Ipv4Subnet, true
 }
 
-// HasIpv4Address returns a boolean if a field has been set.
-func (o *AppLinkPostRequest) HasIpv4Address() bool {
-	if o != nil && !IsNil(o.Ipv4Address) {
-		return true
-	}
-
-	return false
-}
-
-// SetIpv4Address gets a reference to the given string and assigns it to the Ipv4Address field.
-func (o *AppLinkPostRequest) SetIpv4Address(v string) {
-	o.Ipv4Address = &v
+// SetIpv4Subnet sets field value
+func (o *AppLinkPostRequest) SetIpv4Subnet(v string) {
+	o.Ipv4Subnet = v
 }
 
 // GetBandwidth returns the Bandwidth field value
@@ -257,9 +250,7 @@ func (o AppLinkPostRequest) ToMap() (map[string]interface{}, error) {
 		toSerialize["description"] = o.Description
 	}
 	toSerialize["router"] = o.Router
-	if !IsNil(o.Ipv4Address) {
-		toSerialize["ipv4Address"] = o.Ipv4Address
-	}
+	toSerialize["ipv4Subnet"] = o.Ipv4Subnet
 	toSerialize["bandwidth"] = o.Bandwidth
 	toSerialize["project"] = o.Project
 
@@ -278,6 +269,7 @@ func (o *AppLinkPostRequest) UnmarshalJSON(data []byte) (err error) {
 		"type",
 		"name",
 		"router",
+		"ipv4Subnet",
 		"bandwidth",
 		"project",
 	}
@@ -313,7 +305,7 @@ func (o *AppLinkPostRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "router")
-		delete(additionalProperties, "ipv4Address")
+		delete(additionalProperties, "ipv4Subnet")
 		delete(additionalProperties, "bandwidth")
 		delete(additionalProperties, "project")
 		o.AdditionalProperties = additionalProperties

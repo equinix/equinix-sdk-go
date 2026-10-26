@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Op** | [**PrecisionTimeChangeOperationOp**](PrecisionTimeChangeOperationOp.md) |  | 
+**Op** | [**AppDomainChangeOperationOp**](AppDomainChangeOperationOp.md) |  | 
 **Path** | [**AppServiceChangeOperationPath**](AppServiceChangeOperationPath.md) |  | 
 **Value** | **map[string]interface{}** | new value for updated parameter | 
 
@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 ### NewAppServiceChangeOperation
 
-`func NewAppServiceChangeOperation(op PrecisionTimeChangeOperationOp, path AppServiceChangeOperationPath, value map[string]interface{}, ) *AppServiceChangeOperation`
+`func NewAppServiceChangeOperation(op AppDomainChangeOperationOp, path AppServiceChangeOperationPath, value map[string]interface{}, ) *AppServiceChangeOperation`
 
 NewAppServiceChangeOperation instantiates a new AppServiceChangeOperation object
 This constructor will assign default values to properties that have it defined,
@@ -29,20 +29,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetOp
 
-`func (o *AppServiceChangeOperation) GetOp() PrecisionTimeChangeOperationOp`
+`func (o *AppServiceChangeOperation) GetOp() AppDomainChangeOperationOp`
 
 GetOp returns the Op field if non-nil, zero value otherwise.
 
 ### GetOpOk
 
-`func (o *AppServiceChangeOperation) GetOpOk() (*PrecisionTimeChangeOperationOp, bool)`
+`func (o *AppServiceChangeOperation) GetOpOk() (*AppDomainChangeOperationOp, bool)`
 
 GetOpOk returns a tuple with the Op field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOp
 
-`func (o *AppServiceChangeOperation) SetOp(v PrecisionTimeChangeOperationOp)`
+`func (o *AppServiceChangeOperation) SetOp(v AppDomainChangeOperationOp)`
 
 SetOp sets Op field to given value.
 

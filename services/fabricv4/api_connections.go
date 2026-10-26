@@ -203,7 +203,7 @@ func (r ApiCreateConnectionActionRequest) Execute() (*ConnectionAction, *http.Re
 }
 
 /*
-CreateConnectionAction Connection Actions
+CreateConnectionAction Create Connection Action
 
 This API provides capability to accept/reject user's virtual connection
 
@@ -355,7 +355,7 @@ func (r ApiDeleteConnectionByUuidRequest) Execute() (*Connection, *http.Response
 }
 
 /*
-DeleteConnectionByUuid Delete by ID
+DeleteConnectionByUuid Delete Connection by ID
 
 Delete Connection by ID
 
@@ -664,7 +664,7 @@ func (r ApiSearchConnectionsRequest) Execute() (*ConnectionSearchResponse, *http
 }
 
 /*
-SearchConnections Search connections
+SearchConnections Search Connections
 
 The API provides capability to get list of user's virtual connections using search criteria, including optional filtering, pagination and sorting
 
@@ -826,7 +826,7 @@ func (r ApiUpdateConnectionByUuidRequest) Execute() (*Connection, *http.Response
 }
 
 /*
-UpdateConnectionByUuid Update by ID
+UpdateConnectionByUuid Update Connection by ID
 
 Update Connection by ID
 

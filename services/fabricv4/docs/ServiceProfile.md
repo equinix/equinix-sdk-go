@@ -5,10 +5,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **State** | Pointer to [**ServiceProfileStateEnum**](ServiceProfileStateEnum.md) |  | [optional] 
-**Account** | Pointer to [**SimplifiedAccount**](SimplifiedAccount.md) | Seller Account for Service Profile. | [optional] 
+**Account** | Pointer to [**SimplifiedAccount**](SimplifiedAccount.md) |  | [optional] 
 **Project** | Pointer to [**Project**](Project.md) |  | [optional] 
 **Change** | Pointer to [**ServiceProfileChange**](ServiceProfileChange.md) |  | [optional] 
-**ChangeLog** | Pointer to [**Changelog**](Changelog.md) | Seller Account for Service Profile. | [optional] 
+**ChangeLog** | Pointer to [**Changelog**](Changelog.md) |  | [optional] 
 **Href** | Pointer to **string** | Service Profile URI response attribute | [optional] [readonly] 
 **Type** | Pointer to [**ServiceProfileTypeEnum**](ServiceProfileTypeEnum.md) |  | [optional] 
 **Name** | Pointer to **string** | Customer-assigned service profile name | [optional] 

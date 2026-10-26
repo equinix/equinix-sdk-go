@@ -17,12 +17,30 @@ type ExchangeServicePropertyExpressionOperator string
 
 // List of ExchangeServicePropertyExpression_operator
 const (
-	EXCHANGESERVICEPROPERTYEXPRESSIONOPERATOR_EQUAL ExchangeServicePropertyExpressionOperator = "="
+	EXCHANGESERVICEPROPERTYEXPRESSIONOPERATOR_EQUAL                    ExchangeServicePropertyExpressionOperator = "="
+	EXCHANGESERVICEPROPERTYEXPRESSIONOPERATOR_NOT_EQUAL                ExchangeServicePropertyExpressionOperator = "!="
+	EXCHANGESERVICEPROPERTYEXPRESSIONOPERATOR_BETWEEN                  ExchangeServicePropertyExpressionOperator = "BETWEEN"
+	EXCHANGESERVICEPROPERTYEXPRESSIONOPERATOR_LESS_THAN                ExchangeServicePropertyExpressionOperator = "<"
+	EXCHANGESERVICEPROPERTYEXPRESSIONOPERATOR_LESS_THAN_OR_EQUAL_TO    ExchangeServicePropertyExpressionOperator = "<="
+	EXCHANGESERVICEPROPERTYEXPRESSIONOPERATOR_GREATER_THAN             ExchangeServicePropertyExpressionOperator = ">"
+	EXCHANGESERVICEPROPERTYEXPRESSIONOPERATOR_GREATER_THAN_OR_EQUAL_TO ExchangeServicePropertyExpressionOperator = ">="
+	EXCHANGESERVICEPROPERTYEXPRESSIONOPERATOR_LIKE                     ExchangeServicePropertyExpressionOperator = "LIKE"
+	EXCHANGESERVICEPROPERTYEXPRESSIONOPERATOR_ILIKE                    ExchangeServicePropertyExpressionOperator = "ILIKE"
+	EXCHANGESERVICEPROPERTYEXPRESSIONOPERATOR_IN                       ExchangeServicePropertyExpressionOperator = "IN"
 )
 
 // All allowed values of ExchangeServicePropertyExpressionOperator enum
 var AllowedExchangeServicePropertyExpressionOperatorEnumValues = []ExchangeServicePropertyExpressionOperator{
 	"=",
+	"!=",
+	"BETWEEN",
+	"<",
+	"<=",
+	">",
+	">=",
+	"LIKE",
+	"ILIKE",
+	"IN",
 }
 
 func (v *ExchangeServicePropertyExpressionOperator) UnmarshalJSON(src []byte) error {

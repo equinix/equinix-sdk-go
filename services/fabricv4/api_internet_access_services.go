@@ -35,7 +35,7 @@ func (r ApiCreateEiaServiceRequest) Execute() (*InternetAccessService, *http.Res
 }
 
 /*
-CreateEiaService Creates Internet Access Service
+CreateEiaService Create Internet Access Service
 
 Creates Internet Access Service
 
@@ -173,7 +173,7 @@ func (r ApiDeleteEiaServiceRequest) Execute() (*InternetAccessService, *http.Res
 }
 
 /*
-DeleteEiaService Delete Internet Access Service by UUID
+DeleteEiaService Delete Internet Access Service by ID
 
 Delete Internet Access Service by UUID
 
@@ -298,7 +298,7 @@ func (r ApiGetEiaServiceRequest) Execute() (*InternetAccessService, *http.Respon
 }
 
 /*
-GetEiaService Retrieve Internet Access Service by UUID
+GetEiaService Get Internet Access Service by ID
 
 Retrieve Internet Access Service by UUID
 
@@ -418,7 +418,7 @@ func (r ApiPatchEiaServiceRequest) Execute() (*InternetAccessService, *http.Resp
 }
 
 /*
-PatchEiaService Patch Internet Access Service by UUID
+PatchEiaService Update Internet Access Service by ID
 
 Patch Internet Access Service by UUID
 
@@ -548,7 +548,7 @@ func (r ApiSearchEiaServicesRequest) Execute() (*InternetAccessServices, *http.R
 }
 
 /*
-SearchEiaServices Search for Internet Access Services
+SearchEiaServices Search Internet Access Services
 
 Search for Internet Access Services
 

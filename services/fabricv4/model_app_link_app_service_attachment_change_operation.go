@@ -17,7 +17,7 @@ var _ MappedNullable = &AppLinkAppServiceAttachmentChangeOperation{}
 
 // AppLinkAppServiceAttachmentChangeOperation App Link change operation data
 type AppLinkAppServiceAttachmentChangeOperation struct {
-	Op   PrecisionTimeChangeOperationOp                 `json:"op"`
+	Op   AppDomainChangeOperationOp                     `json:"op"`
 	Path AppLinkAppServiceAttachmentChangeOperationPath `json:"path"`
 	// new value for updated parameter
 	Value                map[string]interface{} `json:"value"`
@@ -30,7 +30,7 @@ type _AppLinkAppServiceAttachmentChangeOperation AppLinkAppServiceAttachmentChan
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAppLinkAppServiceAttachmentChangeOperation(op PrecisionTimeChangeOperationOp, path AppLinkAppServiceAttachmentChangeOperationPath, value map[string]interface{}) *AppLinkAppServiceAttachmentChangeOperation {
+func NewAppLinkAppServiceAttachmentChangeOperation(op AppDomainChangeOperationOp, path AppLinkAppServiceAttachmentChangeOperationPath, value map[string]interface{}) *AppLinkAppServiceAttachmentChangeOperation {
 	this := AppLinkAppServiceAttachmentChangeOperation{}
 	this.Op = op
 	this.Path = path
@@ -47,9 +47,9 @@ func NewAppLinkAppServiceAttachmentChangeOperationWithDefaults() *AppLinkAppServ
 }
 
 // GetOp returns the Op field value
-func (o *AppLinkAppServiceAttachmentChangeOperation) GetOp() PrecisionTimeChangeOperationOp {
+func (o *AppLinkAppServiceAttachmentChangeOperation) GetOp() AppDomainChangeOperationOp {
 	if o == nil {
-		var ret PrecisionTimeChangeOperationOp
+		var ret AppDomainChangeOperationOp
 		return ret
 	}
 
@@ -58,7 +58,7 @@ func (o *AppLinkAppServiceAttachmentChangeOperation) GetOp() PrecisionTimeChange
 
 // GetOpOk returns a tuple with the Op field value
 // and a boolean to check if the value has been set.
-func (o *AppLinkAppServiceAttachmentChangeOperation) GetOpOk() (*PrecisionTimeChangeOperationOp, bool) {
+func (o *AppLinkAppServiceAttachmentChangeOperation) GetOpOk() (*AppDomainChangeOperationOp, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *AppLinkAppServiceAttachmentChangeOperation) GetOpOk() (*PrecisionTimeCh
 }
 
 // SetOp sets field value
-func (o *AppLinkAppServiceAttachmentChangeOperation) SetOp(v PrecisionTimeChangeOperationOp) {
+func (o *AppLinkAppServiceAttachmentChangeOperation) SetOp(v AppDomainChangeOperationOp) {
 	o.Op = v
 }
 

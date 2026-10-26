@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **ApiKey** | Pointer to **string** | passed as Authorization header value | [optional] 
 **Username** | Pointer to **string** | passed as Authorization header value | [optional] 
 **Password** | Pointer to **string** | passed as Authorization header value | [optional] 
+**ApiToken** | Pointer to **string** | passed as Authorization header value | [optional] 
 
 ## Methods
 
@@ -179,6 +180,31 @@ SetPassword sets Password field to given value.
 `func (o *StreamSubscriptionSinkCredential) HasPassword() bool`
 
 HasPassword returns a boolean if a field has been set.
+
+### GetApiToken
+
+`func (o *StreamSubscriptionSinkCredential) GetApiToken() string`
+
+GetApiToken returns the ApiToken field if non-nil, zero value otherwise.
+
+### GetApiTokenOk
+
+`func (o *StreamSubscriptionSinkCredential) GetApiTokenOk() (*string, bool)`
+
+GetApiTokenOk returns a tuple with the ApiToken field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetApiToken
+
+`func (o *StreamSubscriptionSinkCredential) SetApiToken(v string)`
+
+SetApiToken sets ApiToken field to given value.
+
+### HasApiToken
+
+`func (o *StreamSubscriptionSinkCredential) HasApiToken() bool`
+
+HasApiToken returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

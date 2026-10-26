@@ -4,11 +4,11 @@ All URIs are relative to *https://api.equinix.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateEiaService**](InternetAccessServicesApi.md#CreateEiaService) | **Post** /fabric/v4/internetAccessServices | Creates Internet Access Service
-[**DeleteEiaService**](InternetAccessServicesApi.md#DeleteEiaService) | **Delete** /fabric/v4/internetAccessServices/{uuid} | Delete Internet Access Service by UUID
-[**GetEiaService**](InternetAccessServicesApi.md#GetEiaService) | **Get** /fabric/v4/internetAccessServices/{uuid} | Retrieve Internet Access Service by UUID
-[**PatchEiaService**](InternetAccessServicesApi.md#PatchEiaService) | **Patch** /fabric/v4/internetAccessServices/{uuid} | Patch Internet Access Service by UUID
-[**SearchEiaServices**](InternetAccessServicesApi.md#SearchEiaServices) | **Post** /fabric/v4/internetAccessServices/search | Search for Internet Access Services
+[**CreateEiaService**](InternetAccessServicesApi.md#CreateEiaService) | **Post** /fabric/v4/internetAccessServices | Create Internet Access Service
+[**DeleteEiaService**](InternetAccessServicesApi.md#DeleteEiaService) | **Delete** /fabric/v4/internetAccessServices/{uuid} | Delete Internet Access Service by ID
+[**GetEiaService**](InternetAccessServicesApi.md#GetEiaService) | **Get** /fabric/v4/internetAccessServices/{uuid} | Get Internet Access Service by ID
+[**PatchEiaService**](InternetAccessServicesApi.md#PatchEiaService) | **Patch** /fabric/v4/internetAccessServices/{uuid} | Update Internet Access Service by ID
+[**SearchEiaServices**](InternetAccessServicesApi.md#SearchEiaServices) | **Post** /fabric/v4/internetAccessServices/search | Search Internet Access Services
 
 
 
@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 > InternetAccessService CreateEiaService(ctx).InternetAccessPostRequest(internetAccessPostRequest).Execute()
 
-Creates Internet Access Service
+Create Internet Access Service
 
 
 
@@ -82,7 +82,7 @@ Name | Type | Description  | Notes
 
 > InternetAccessService DeleteEiaService(ctx, uuid).Execute()
 
-Delete Internet Access Service by UUID
+Delete Internet Access Service by ID
 
 
 
@@ -152,7 +152,7 @@ Name | Type | Description  | Notes
 
 > InternetAccessService GetEiaService(ctx, uuid).Execute()
 
-Retrieve Internet Access Service by UUID
+Get Internet Access Service by ID
 
 
 
@@ -222,7 +222,7 @@ Name | Type | Description  | Notes
 
 > InternetAccessService PatchEiaService(ctx, uuid).InternetAccessPatchOperationUpdate(internetAccessPatchOperationUpdate).Execute()
 
-Patch Internet Access Service by UUID
+Update Internet Access Service by ID
 
 
 
@@ -294,7 +294,7 @@ Name | Type | Description  | Notes
 
 > InternetAccessServices SearchEiaServices(ctx).InternetAccessSearchRequest(internetAccessSearchRequest).Execute()
 
-Search for Internet Access Services
+Search Internet Access Services
 
 
 

@@ -4,7 +4,7 @@ All URIs are relative to *https://api.equinix.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetPortPackages**](PortPackagesApi.md#GetPortPackages) | **Get** /fabric/v4/portPackages | Get All Port Packages
+[**GetPortPackages**](PortPackagesApi.md#GetPortPackages) | **Get** /fabric/v4/portPackages | List Port Packages
 
 
 
@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 > AllPortPackagesResponse GetPortPackages(ctx).Execute()
 
-Get All Port Packages
+List Port Packages
 
 
 

@@ -208,7 +208,7 @@ func (r ApiCreateRouteAggregationRequest) Execute() (*RouteAggregationsData, *ht
 }
 
 /*
-CreateRouteAggregation Create Aggregations
+CreateRouteAggregation Create Route Aggregation
 
 This API provides capability to create a Route Aggregation
 
@@ -894,7 +894,7 @@ func (r ApiGetConnectionRouteAggregationsRequest) Execute() (*GetAllConnectionRo
 }
 
 /*
-GetConnectionRouteAggregations Get All Aggregations
+GetConnectionRouteAggregations Get Connection Route Aggregations
 
 This API provides capability to view all Route Aggregations attached to a Connection
 
@@ -1408,7 +1408,7 @@ func (r ApiGetRouteAggregationChangesRequest) Execute() (*RouteAggregationChange
 }
 
 /*
-GetRouteAggregationChanges Get All Changes
+GetRouteAggregationChanges Get Route Aggregation Changes
 
 This API provides capability to retrieve all of a Route Aggregation's Changes
 
@@ -1572,7 +1572,7 @@ func (r ApiGetRouteAggregationConnectionsRequest) Execute() (*GetRouteAggregatio
 }
 
 /*
-GetRouteAggregationConnections Get All Connections on Route Aggregation
+GetRouteAggregationConnections Get Route Aggregation Connections
 
 This API provides capability to view all Connections using the Route Aggregation
 
@@ -1747,7 +1747,7 @@ func (r ApiPatchRouteAggregationByUuidRequest) Execute() (*RouteAggregationsData
 }
 
 /*
-PatchRouteAggregationByUuid Patch Aggregation
+PatchRouteAggregationByUuid Update Route Aggregation
 
 This API provides capability to partially update a Route Aggregation
 
@@ -2109,7 +2109,7 @@ func (r ApiSearchRouteAggregationsRequest) Execute() (*RouteAggregationsSearchRe
 }
 
 /*
-SearchRouteAggregations Search Aggregations
+SearchRouteAggregations Search Route Aggregations
 
 This API provides capability to search Route Aggregations
 

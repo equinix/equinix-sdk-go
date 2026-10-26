@@ -10,7 +10,7 @@ Method | HTTP request | Description
 [**GetLoaByUuid**](LoasApi.md#GetLoaByUuid) | **Get** /fabric/v4/loas/{loaId} | Get Loa
 [**GetLoaConsumersByLoaId**](LoasApi.md#GetLoaConsumersByLoaId) | **Get** /fabric/v4/loas/{loaId}/consumers | Get Loa Consumers
 [**GetLoaNotesByUuid**](LoasApi.md#GetLoaNotesByUuid) | **Get** /fabric/v4/loas/{loaId}/notes | Get Loa Notes
-[**PerformLoaAction**](LoasApi.md#PerformLoaAction) | **Post** /fabric/v4/loas/{loaId}/actions | Loa Actions
+[**PerformLoaAction**](LoasApi.md#PerformLoaAction) | **Post** /fabric/v4/loas/{loaId}/actions | Create LOA Action
 [**SearchLoa**](LoasApi.md#SearchLoa) | **Post** /fabric/v4/loas/search | Search Loas
 [**SearchLoaAction**](LoasApi.md#SearchLoaAction) | **Post** /fabric/v4/loas/{loaId}/actions/search | Search Loa Actions
 [**UpdateLoaByUuid**](LoasApi.md#UpdateLoaByUuid) | **Patch** /fabric/v4/loas/{loaId} | Update Loa
@@ -442,7 +442,7 @@ Name | Type | Description  | Notes
 
 > LoaActionResponse PerformLoaAction(ctx, loaId).LoaActionRequest(loaActionRequest).Execute()
 
-Loa Actions
+Create LOA Action
 
 
 
@@ -670,7 +670,7 @@ import (
 
 func main() {
 	loaId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Loa UUID
-	loaReplaceOperation := []openapiclient.LoaReplaceOperation{*openapiclient.NewLoaReplaceOperation(openapiclient.LoaOpEnum("replace"), "Path_example", map[string]interface{}(123))} // []LoaReplaceOperation | 
+	loaReplaceOperation := []openapiclient.LoaReplaceOperation{*openapiclient.NewLoaReplaceOperation(openapiclient.LoaOpEnum("replace"), "Path_example", interface{}(123))} // []LoaReplaceOperation | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -712,7 +712,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
+- **Content-Type**: application/json-patch+json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

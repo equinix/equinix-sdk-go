@@ -4,25 +4,23 @@ All URIs are relative to *https://api.equinix.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateCloudRouter**](CloudRoutersApi.md#CreateCloudRouter) | **Post** /fabric/v4/routers | Create Routers
+[**CreateCloudRouter**](CloudRoutersApi.md#CreateCloudRouter) | **Post** /fabric/v4/routers | Create Router
 [**CreateCloudRouterAction**](CloudRoutersApi.md#CreateCloudRouterAction) | **Post** /fabric/v4/routers/{routerId}/actions | Create Route Table Action
-[**CreateCloudRouterCommand**](CloudRoutersApi.md#CreateCloudRouterCommand) | **Post** /fabric/v4/routers/{routerId}/commands | Initiate Command
-[**DeleteCloudRouterByUuid**](CloudRoutersApi.md#DeleteCloudRouterByUuid) | **Delete** /fabric/v4/routers/{routerId} | Delete Routers
+[**CreateCloudRouterCommand**](CloudRoutersApi.md#CreateCloudRouterCommand) | **Post** /fabric/v4/routers/{routerId}/commands | Create Command
+[**DeleteCloudRouterByUuid**](CloudRoutersApi.md#DeleteCloudRouterByUuid) | **Delete** /fabric/v4/routers/{routerId} | Delete Router
 [**DeleteCloudRouterCommandByUuid**](CloudRoutersApi.md#DeleteCloudRouterCommandByUuid) | **Delete** /fabric/v4/routers/{routerId}/commands/{commandId} | Delete Command
 [**GetAllCloudRouterCommands**](CloudRoutersApi.md#GetAllCloudRouterCommands) | **Get** /fabric/v4/routers/{routerId}/commands | Get Commands
 [**GetCloudRouterActions**](CloudRoutersApi.md#GetCloudRouterActions) | **Get** /fabric/v4/routers/{routerId}/actions | Get Route Table Actions
 [**GetCloudRouterActionsByUuid**](CloudRoutersApi.md#GetCloudRouterActionsByUuid) | **Get** /fabric/v4/routers/{routerId}/actions/{actionId} | Get Route Table Action by ID
-[**GetCloudRouterByUuid**](CloudRoutersApi.md#GetCloudRouterByUuid) | **Get** /fabric/v4/routers/{routerId} | Get Routers
+[**GetCloudRouterByUuid**](CloudRoutersApi.md#GetCloudRouterByUuid) | **Get** /fabric/v4/routers/{routerId} | Get Router
 [**GetCloudRouterCommand**](CloudRoutersApi.md#GetCloudRouterCommand) | **Get** /fabric/v4/routers/{routerId}/commands/{commandId} | Get Command
-[**GetCloudRouterPackageByCode**](CloudRoutersApi.md#GetCloudRouterPackageByCode) | **Get** /fabric/v4/routerPackages/{routerPackageCode} | Get Package Details
-[**GetCloudRouterPackages**](CloudRoutersApi.md#GetCloudRouterPackages) | **Get** /fabric/v4/routerPackages | List Packages
 [**SearchCloudRouterCommands**](CloudRoutersApi.md#SearchCloudRouterCommands) | **Post** /fabric/v4/routers/{routerId}/commands/search | Search Commands
-[**SearchCloudRouterRoutes**](CloudRoutersApi.md#SearchCloudRouterRoutes) | **Post** /fabric/v4/routers/{routerId}/routes/search | Search Route Table
+[**SearchCloudRouterRoutes**](CloudRoutersApi.md#SearchCloudRouterRoutes) | **Post** /fabric/v4/routers/{routerId}/routes/search | Search Route Tables
 [**SearchCloudRouters**](CloudRoutersApi.md#SearchCloudRouters) | **Post** /fabric/v4/routers/search | Search Routers
 [**SearchConnectionAdvertisedRoutes**](CloudRoutersApi.md#SearchConnectionAdvertisedRoutes) | **Post** /fabric/v4/connections/{connectionId}/advertisedRoutes/search | Search Advertised Routes
 [**SearchConnectionReceivedRoutes**](CloudRoutersApi.md#SearchConnectionReceivedRoutes) | **Post** /fabric/v4/connections/{connectionId}/receivedRoutes/search | Search Received Routes
 [**SearchRouterActions**](CloudRoutersApi.md#SearchRouterActions) | **Post** /fabric/v4/routers/{routerId}/actions/search | Search Route Table Actions
-[**UpdateCloudRouterByUuid**](CloudRoutersApi.md#UpdateCloudRouterByUuid) | **Patch** /fabric/v4/routers/{routerId} | Update Routers
+[**UpdateCloudRouterByUuid**](CloudRoutersApi.md#UpdateCloudRouterByUuid) | **Patch** /fabric/v4/routers/{routerId} | Update Router
 
 
 
@@ -30,7 +28,7 @@ Method | HTTP request | Description
 
 > CloudRouter CreateCloudRouter(ctx).CloudRouterPostRequest(cloudRouterPostRequest).DryRun(dryRun).Execute()
 
-Create Routers
+Create Router
 
 
 
@@ -47,7 +45,7 @@ import (
 )
 
 func main() {
-	cloudRouterPostRequest := *openapiclient.NewCloudRouterPostRequest(openapiclient.CloudRouterPostRequestBase_type("XF_ROUTER"), "Name_example", *openapiclient.NewSimplifiedLocationWithoutIBX("AM"), *openapiclient.NewCloudRouterPostRequestPackage(openapiclient.CloudRouterPostRequestPackage_code("LAB"))) // CloudRouterPostRequest | 
+	cloudRouterPostRequest := *openapiclient.NewCloudRouterPostRequest(openapiclient.CloudRouterPostRequestBase_type("XF_ROUTER"), "Name_example", *openapiclient.NewSimplifiedLocationWithoutIBX("AM"), *openapiclient.NewCloudRouterPostRequestPackage(openapiclient.CloudRouterPostRequestPackage_code("LAB")), []openapiclient.SimplifiedNotification{*openapiclient.NewSimplifiedNotification(openapiclient.SimplifiedNotification_type("NOTIFICATION"), []string{"Emails_example"})}) // CloudRouterPostRequest | 
 	dryRun := true // bool | option to verify that API calls will succeed (optional) (default to false)
 
 	configuration := openapiclient.NewConfiguration()
@@ -170,7 +168,7 @@ Name | Type | Description  | Notes
 
 > CloudRouterCommand CreateCloudRouterCommand(ctx, routerId).CloudRouterCommandPostRequest(cloudRouterCommandPostRequest).Execute()
 
-Initiate Command
+Create Command
 
 
 
@@ -242,7 +240,7 @@ Name | Type | Description  | Notes
 
 > DeleteCloudRouterByUuid(ctx, routerId).Execute()
 
-Delete Routers
+Delete Router
 
 
 
@@ -598,7 +596,7 @@ Name | Type | Description  | Notes
 
 > CloudRouterReadResponse GetCloudRouterByUuid(ctx, routerId).Execute()
 
-Get Routers
+Get Router
 
 
 
@@ -737,144 +735,6 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetCloudRouterPackageByCode
-
-> CloudRouterPackage GetCloudRouterPackageByCode(ctx, routerPackageCode).Execute()
-
-Get Package Details
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/equinix/equinix-sdk-go/services/fabricv4"
-)
-
-func main() {
-	routerPackageCode := openapiclient.RouterPackageCode("LAB") // RouterPackageCode | Equinix-assigned Cloud Router package identifier
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CloudRoutersApi.GetCloudRouterPackageByCode(context.Background(), routerPackageCode).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CloudRoutersApi.GetCloudRouterPackageByCode``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetCloudRouterPackageByCode`: CloudRouterPackage
-	fmt.Fprintf(os.Stdout, "Response from `CloudRoutersApi.GetCloudRouterPackageByCode`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**routerPackageCode** | [**RouterPackageCode**](.md) | Equinix-assigned Cloud Router package identifier | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetCloudRouterPackageByCodeRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
-[**CloudRouterPackage**](CloudRouterPackage.md)
-
-### Authorization
-
-[BearerAuth](../README.md#BearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetCloudRouterPackages
-
-> PackageResponse GetCloudRouterPackages(ctx).Offset(offset).Limit(limit).Execute()
-
-List Packages
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/equinix/equinix-sdk-go/services/fabricv4"
-)
-
-func main() {
-	offset := int32(1) // int32 | offset (optional)
-	limit := int32(10) // int32 | number of records to fetch (optional)
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CloudRoutersApi.GetCloudRouterPackages(context.Background()).Offset(offset).Limit(limit).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CloudRoutersApi.GetCloudRouterPackages``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetCloudRouterPackages`: PackageResponse
-	fmt.Fprintf(os.Stdout, "Response from `CloudRoutersApi.GetCloudRouterPackages`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetCloudRouterPackagesRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **offset** | **int32** | offset | 
- **limit** | **int32** | number of records to fetch | 
-
-### Return type
-
-[**PackageResponse**](PackageResponse.md)
-
-### Authorization
-
-[BearerAuth](../README.md#BearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## SearchCloudRouterCommands
 
 > CloudRouterCommandSearchResponse SearchCloudRouterCommands(ctx, routerId).CloudRouterCommandSearchRequest(cloudRouterCommandSearchRequest).Execute()
@@ -951,7 +811,7 @@ Name | Type | Description  | Notes
 
 > RouteTableEntrySearchResponse SearchCloudRouterRoutes(ctx, routerId).RouteTableEntrySearchRequest(routeTableEntrySearchRequest).Execute()
 
-Search Route Table
+Search Route Tables
 
 
 
@@ -1305,7 +1165,7 @@ Name | Type | Description  | Notes
 
 > CloudRouter UpdateCloudRouterByUuid(ctx, routerId).CloudRouterChangeOperation(cloudRouterChangeOperation).Execute()
 
-Update Routers
+Update Router
 
 
 

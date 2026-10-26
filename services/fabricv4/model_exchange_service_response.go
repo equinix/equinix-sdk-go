@@ -31,12 +31,13 @@ type ExchangeServiceResponse struct {
 	Location                *SimplifiedLocation              `json:"location,omitempty"`
 	PublicPeeringConnection *PublicPeeringConnectionResponse `json:"publicPeeringConnection,omitempty"`
 	RoutingProtocol         *RoutingProtocolResponse         `json:"routingProtocol,omitempty"`
-	Order                   *Order                           `json:"order,omitempty"`
+	Order                   *ExchangeServiceOrder            `json:"order,omitempty"`
 	Project                 *Project                         `json:"project,omitempty"`
 	Account                 *SimplifiedAccount               `json:"account,omitempty"`
 	// Preferences for notifications on Internet Exchange Service configuration or status changes
-	Notifications        []ExchangeServiceNotification `json:"notifications,omitempty"`
-	Changelog            *PlatformChangelog            `json:"changelog,omitempty"`
+	Notifications        []ExchangeServiceNotification  `json:"notifications,omitempty"`
+	Changelog            *PlatformChangelog             `json:"changelog,omitempty"`
+	AdditionalInfo       *ExchangeServiceAdditionalInfo `json:"additionalInfo,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -384,9 +385,9 @@ func (o *ExchangeServiceResponse) SetRoutingProtocol(v RoutingProtocolResponse) 
 }
 
 // GetOrder returns the Order field value if set, zero value otherwise.
-func (o *ExchangeServiceResponse) GetOrder() Order {
+func (o *ExchangeServiceResponse) GetOrder() ExchangeServiceOrder {
 	if o == nil || IsNil(o.Order) {
-		var ret Order
+		var ret ExchangeServiceOrder
 		return ret
 	}
 	return *o.Order
@@ -394,7 +395,7 @@ func (o *ExchangeServiceResponse) GetOrder() Order {
 
 // GetOrderOk returns a tuple with the Order field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ExchangeServiceResponse) GetOrderOk() (*Order, bool) {
+func (o *ExchangeServiceResponse) GetOrderOk() (*ExchangeServiceOrder, bool) {
 	if o == nil || IsNil(o.Order) {
 		return nil, false
 	}
@@ -410,8 +411,8 @@ func (o *ExchangeServiceResponse) HasOrder() bool {
 	return false
 }
 
-// SetOrder gets a reference to the given Order and assigns it to the Order field.
-func (o *ExchangeServiceResponse) SetOrder(v Order) {
+// SetOrder gets a reference to the given ExchangeServiceOrder and assigns it to the Order field.
+func (o *ExchangeServiceResponse) SetOrder(v ExchangeServiceOrder) {
 	o.Order = &v
 }
 
@@ -543,6 +544,38 @@ func (o *ExchangeServiceResponse) SetChangelog(v PlatformChangelog) {
 	o.Changelog = &v
 }
 
+// GetAdditionalInfo returns the AdditionalInfo field value if set, zero value otherwise.
+func (o *ExchangeServiceResponse) GetAdditionalInfo() ExchangeServiceAdditionalInfo {
+	if o == nil || IsNil(o.AdditionalInfo) {
+		var ret ExchangeServiceAdditionalInfo
+		return ret
+	}
+	return *o.AdditionalInfo
+}
+
+// GetAdditionalInfoOk returns a tuple with the AdditionalInfo field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ExchangeServiceResponse) GetAdditionalInfoOk() (*ExchangeServiceAdditionalInfo, bool) {
+	if o == nil || IsNil(o.AdditionalInfo) {
+		return nil, false
+	}
+	return o.AdditionalInfo, true
+}
+
+// HasAdditionalInfo returns a boolean if a field has been set.
+func (o *ExchangeServiceResponse) HasAdditionalInfo() bool {
+	if o != nil && !IsNil(o.AdditionalInfo) {
+		return true
+	}
+
+	return false
+}
+
+// SetAdditionalInfo gets a reference to the given ExchangeServiceAdditionalInfo and assigns it to the AdditionalInfo field.
+func (o *ExchangeServiceResponse) SetAdditionalInfo(v ExchangeServiceAdditionalInfo) {
+	o.AdditionalInfo = &v
+}
+
 func (o ExchangeServiceResponse) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -598,6 +631,9 @@ func (o ExchangeServiceResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Changelog) {
 		toSerialize["changelog"] = o.Changelog
 	}
+	if !IsNil(o.AdditionalInfo) {
+		toSerialize["additionalInfo"] = o.AdditionalInfo
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -635,6 +671,7 @@ func (o *ExchangeServiceResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "account")
 		delete(additionalProperties, "notifications")
 		delete(additionalProperties, "changelog")
+		delete(additionalProperties, "additionalInfo")
 		o.AdditionalProperties = additionalProperties
 	}
 

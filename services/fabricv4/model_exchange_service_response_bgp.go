@@ -16,18 +16,28 @@ var _ MappedNullable = &ExchangeServiceResponseBgp{}
 
 // ExchangeServiceResponseBgp struct for ExchangeServiceResponseBgp
 type ExchangeServiceResponseBgp struct {
-	CustomerPeerIp         *string `json:"customerPeerIp,omitempty"`
-	DomainName             *string `json:"domainName,omitempty"`
-	PrimaryRouteServerIp   *string `json:"primaryRouteServerIp,omitempty"`
+	// Customer peer IP address
+	CustomerPeerIp *string `json:"customerPeerIp,omitempty"`
+	// Domain name for BGP
+	DomainName *string `json:"domainName,omitempty"`
+	// Primary route server IP address with prefix length
+	PrimaryRouteServerIp *string `json:"primaryRouteServerIp,omitempty"`
+	// Secondary route server IP address with prefix length
 	SecondaryRouteServerIp *string `json:"secondaryRouteServerIp,omitempty"`
-	AsSet                  *string `json:"asSet,omitempty"`
-	MlpeEnabled            *bool   `json:"mlpeEnabled,omitempty"`
-	Md5AuthKey             *string `json:"md5AuthKey,omitempty"`
-	RcMd5AuthKey           *string `json:"rcMd5AuthKey,omitempty"`
+	// AS-SET used to filter the prefixes announced by the customer
+	AsSet *string `json:"asSet,omitempty"`
+	// Whether Multi-Lateral Peering Exchange (MLPE) is enabled
+	MlpeEnabled *bool `json:"mlpeEnabled,omitempty"`
+	// MD5 key for BGP
+	Md5AuthKey *string `json:"md5AuthKey,omitempty"`
+	// RC MD5 key for BGP
+	RcMd5AuthKey *string `json:"rcMd5AuthKey,omitempty"`
 	// List of IP prefix
-	Prefixes             []string `json:"prefixes,omitempty"`
-	MaxPrefixLimit       *int64   `json:"maxPrefixLimit,omitempty"`
-	PrependSelfEnabled   *bool    `json:"prependSelfEnabled,omitempty"`
+	Prefixes []string `json:"prefixes,omitempty"`
+	// Max Prefix Limit number
+	MaxPrefixLimit *int64 `json:"maxPrefixLimit,omitempty"`
+	// Prepend Self Enabled
+	PrependSelfEnabled   *bool `json:"prependSelfEnabled,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 

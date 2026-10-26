@@ -16,13 +16,11 @@ var _ MappedNullable = &ServiceProfile{}
 
 // ServiceProfile Service Profile is a software definition for a named provider service and it's network connectivity requirements. This includes the basic marketing information and one or more sets of access points (a set per each access point type) fulfilling the provider service.
 type ServiceProfile struct {
-	State *ServiceProfileStateEnum `json:"state,omitempty"`
-	// Seller Account for Service Profile.
-	Account *SimplifiedAccount    `json:"account,omitempty"`
-	Project *Project              `json:"project,omitempty"`
-	Change  *ServiceProfileChange `json:"change,omitempty"`
-	// Seller Account for Service Profile.
-	ChangeLog *Changelog `json:"changeLog,omitempty"`
+	State     *ServiceProfileStateEnum `json:"state,omitempty"`
+	Account   *SimplifiedAccount       `json:"account,omitempty"`
+	Project   *Project                 `json:"project,omitempty"`
+	Change    *ServiceProfileChange    `json:"change,omitempty"`
+	ChangeLog *Changelog               `json:"changeLog,omitempty"`
 	// Service Profile URI response attribute
 	Href *string                 `json:"href,omitempty"`
 	Type *ServiceProfileTypeEnum `json:"type,omitempty"`

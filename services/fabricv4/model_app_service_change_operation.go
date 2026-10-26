@@ -17,8 +17,8 @@ var _ MappedNullable = &AppServiceChangeOperation{}
 
 // AppServiceChangeOperation App Service change operation data
 type AppServiceChangeOperation struct {
-	Op   PrecisionTimeChangeOperationOp `json:"op"`
-	Path AppServiceChangeOperationPath  `json:"path"`
+	Op   AppDomainChangeOperationOp    `json:"op"`
+	Path AppServiceChangeOperationPath `json:"path"`
 	// new value for updated parameter
 	Value                map[string]interface{} `json:"value"`
 	AdditionalProperties map[string]interface{}
@@ -30,7 +30,7 @@ type _AppServiceChangeOperation AppServiceChangeOperation
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAppServiceChangeOperation(op PrecisionTimeChangeOperationOp, path AppServiceChangeOperationPath, value map[string]interface{}) *AppServiceChangeOperation {
+func NewAppServiceChangeOperation(op AppDomainChangeOperationOp, path AppServiceChangeOperationPath, value map[string]interface{}) *AppServiceChangeOperation {
 	this := AppServiceChangeOperation{}
 	this.Op = op
 	this.Path = path
@@ -47,9 +47,9 @@ func NewAppServiceChangeOperationWithDefaults() *AppServiceChangeOperation {
 }
 
 // GetOp returns the Op field value
-func (o *AppServiceChangeOperation) GetOp() PrecisionTimeChangeOperationOp {
+func (o *AppServiceChangeOperation) GetOp() AppDomainChangeOperationOp {
 	if o == nil {
-		var ret PrecisionTimeChangeOperationOp
+		var ret AppDomainChangeOperationOp
 		return ret
 	}
 
@@ -58,7 +58,7 @@ func (o *AppServiceChangeOperation) GetOp() PrecisionTimeChangeOperationOp {
 
 // GetOpOk returns a tuple with the Op field value
 // and a boolean to check if the value has been set.
-func (o *AppServiceChangeOperation) GetOpOk() (*PrecisionTimeChangeOperationOp, bool) {
+func (o *AppServiceChangeOperation) GetOpOk() (*AppDomainChangeOperationOp, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *AppServiceChangeOperation) GetOpOk() (*PrecisionTimeChangeOperationOp, 
 }
 
 // SetOp sets field value
-func (o *AppServiceChangeOperation) SetOp(v PrecisionTimeChangeOperationOp) {
+func (o *AppServiceChangeOperation) SetOp(v AppDomainChangeOperationOp) {
 	o.Op = v
 }
 

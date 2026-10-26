@@ -4,7 +4,7 @@ All URIs are relative to *https://api.equinix.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetStatus**](HealthApi.md#GetStatus) | **Get** /fabric/v4/health | Get service status
+[**GetStatus**](HealthApi.md#GetStatus) | **Get** /fabric/v4/health | Get Service Status
 
 
 
@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 > HealthResponse GetStatus(ctx).Execute()
 
-Get service status
+Get Service Status
 
 
 

@@ -5,16 +5,16 @@ All URIs are relative to *https://api.equinix.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**AttachConnectionRouteFilter**](RouteFiltersApi.md#AttachConnectionRouteFilter) | **Put** /fabric/v4/connections/{connectionId}/routeFilters/{routeFilterId} | Attach Route Filter
-[**CreateRouteFilter**](RouteFiltersApi.md#CreateRouteFilter) | **Post** /fabric/v4/routeFilters | Create Route Filters
+[**CreateRouteFilter**](RouteFiltersApi.md#CreateRouteFilter) | **Post** /fabric/v4/routeFilters | Create Route Filter
 [**DeleteRouteFilterByUuid**](RouteFiltersApi.md#DeleteRouteFilterByUuid) | **Delete** /fabric/v4/routeFilters/{routeFilterId} | Delete Route Filter
 [**DetachConnectionRouteFilter**](RouteFiltersApi.md#DetachConnectionRouteFilter) | **Delete** /fabric/v4/connections/{connectionId}/routeFilters/{routeFilterId} | Detach Route Filter
 [**GetConnectionRouteFilterByUuid**](RouteFiltersApi.md#GetConnectionRouteFilterByUuid) | **Get** /fabric/v4/connections/{connectionId}/routeFilters/{routeFilterId} | Get Route Filter
-[**GetConnectionRouteFilters**](RouteFiltersApi.md#GetConnectionRouteFilters) | **Get** /fabric/v4/connections/{connectionId}/routeFilters | Get All Route Filters
-[**GetRouteFilterByUuid**](RouteFiltersApi.md#GetRouteFilterByUuid) | **Get** /fabric/v4/routeFilters/{routeFilterId} | Get Route Filter By UUID
+[**GetConnectionRouteFilters**](RouteFiltersApi.md#GetConnectionRouteFilters) | **Get** /fabric/v4/connections/{connectionId}/routeFilters | Get Connection Route Filters
+[**GetRouteFilterByUuid**](RouteFiltersApi.md#GetRouteFilterByUuid) | **Get** /fabric/v4/routeFilters/{routeFilterId} | Get Route Filter by ID
 [**GetRouteFilterChangeByUuid**](RouteFiltersApi.md#GetRouteFilterChangeByUuid) | **Get** /fabric/v4/routeFilters/{routeFilterId}/changes/{changeId} | Get Change By ID
-[**GetRouteFilterChanges**](RouteFiltersApi.md#GetRouteFilterChanges) | **Get** /fabric/v4/routeFilters/{routeFilterId}/changes | Get All Changes
+[**GetRouteFilterChanges**](RouteFiltersApi.md#GetRouteFilterChanges) | **Get** /fabric/v4/routeFilters/{routeFilterId}/changes | Get Route Filter Changes
 [**GetRouteFilterConnections**](RouteFiltersApi.md#GetRouteFilterConnections) | **Get** /fabric/v4/routeFilters/{routeFilterId}/connections | Get All Connections on Route Filter
-[**PatchRouteFilterByUuid**](RouteFiltersApi.md#PatchRouteFilterByUuid) | **Patch** /fabric/v4/routeFilters/{routeFilterId} | Patch Route Filter
+[**PatchRouteFilterByUuid**](RouteFiltersApi.md#PatchRouteFilterByUuid) | **Patch** /fabric/v4/routeFilters/{routeFilterId} | Update Route Filter
 [**SearchCloudRouterRouteFilterAttachments**](RouteFiltersApi.md#SearchCloudRouterRouteFilterAttachments) | **Post** /fabric/v4/routers/{routerId}/routeFilters/search | Search Cloud Router Route Filter Attachments
 [**SearchRouteFilters**](RouteFiltersApi.md#SearchRouteFilters) | **Post** /fabric/v4/routeFilters/search | Search Route Filters
 
@@ -99,7 +99,7 @@ Name | Type | Description  | Notes
 
 > RouteFiltersData CreateRouteFilter(ctx).RouteFiltersBase(routeFiltersBase).Execute()
 
-Create Route Filters
+Create Route Filter
 
 
 
@@ -381,7 +381,7 @@ Name | Type | Description  | Notes
 
 > GetAllConnectionRouteFiltersResponse GetConnectionRouteFilters(ctx, connectionId).Execute()
 
-Get All Route Filters
+Get Connection Route Filters
 
 
 
@@ -451,7 +451,7 @@ Name | Type | Description  | Notes
 
 > RouteFiltersData GetRouteFilterByUuid(ctx, routeFilterId).Execute()
 
-Get Route Filter By UUID
+Get Route Filter by ID
 
 
 
@@ -594,7 +594,7 @@ Name | Type | Description  | Notes
 
 > RouteFilterChangeDataResponse GetRouteFilterChanges(ctx, routeFilterId).Offset(offset).Limit(limit).Execute()
 
-Get All Changes
+Get Route Filter Changes
 
 
 
@@ -738,7 +738,7 @@ Name | Type | Description  | Notes
 
 > RouteFiltersData PatchRouteFilterByUuid(ctx, routeFilterId).RouteFiltersPatchRequestItem(routeFiltersPatchRequestItem).Execute()
 
-Patch Route Filter
+Update Route Filter
 
 
 
