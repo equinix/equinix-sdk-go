@@ -21,6 +21,8 @@
 
 * `A_SIDE_ACCESS_POINT_ROUTER_UUID` (value: `"/aSide/accessPoint/router/uuid"`)
 
+* `A_SIDE_ACCESS_POINT_INTERCONNECT_UUID` (value: `"/aSide/accessPoint/interconnect/uuid"`)
+
 * `A_SIDE_ACCESS_POINT_LINK_PROTOCOL_VLAN_TAG_MIN` (value: `"/aSide/accessPoint/linkProtocol/vlanTagMin"`)
 
 * `A_SIDE_ACCESS_POINT_LINK_PROTOCOL_VLAN_TAG_MAX` (value: `"/aSide/accessPoint/linkProtocol/vlanTagMax"`)
@@ -70,6 +72,10 @@
 * `REDUNDANCY_GROUP` (value: `"/redundancy/group"`)
 
 * `REDUNDANCY_PRIORITY` (value: `"/redundancy/priority"`)
+
+* `REDUNDANCY_NAME` (value: `"/redundancy/name"`)
+
+* `REDUNDANCY_DESCRIPTION` (value: `"/redundancy/description"`)
 
 * `Z_SIDE_ACCESS_POINT_ACCOUNT_ACCOUNT_NAME` (value: `"/zSide/accessPoint/account/accountName"`)
 

@@ -4,15 +4,15 @@ All URIs are relative to *https://api.equinix.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateConnectionRoutingProtocol**](RoutingProtocolsApi.md#CreateConnectionRoutingProtocol) | **Post** /fabric/v4/connections/{connectionId}/routingProtocols | Create Protocol
-[**CreateConnectionRoutingProtocolsInBulk**](RoutingProtocolsApi.md#CreateConnectionRoutingProtocolsInBulk) | **Post** /fabric/v4/connections/{connectionId}/routingProtocols/bulk | Bulk Create Protocol
+[**CreateConnectionRoutingProtocol**](RoutingProtocolsApi.md#CreateConnectionRoutingProtocol) | **Post** /fabric/v4/connections/{connectionId}/routingProtocols | Create Routing Protocol
+[**CreateConnectionRoutingProtocolsInBulk**](RoutingProtocolsApi.md#CreateConnectionRoutingProtocolsInBulk) | **Post** /fabric/v4/connections/{connectionId}/routingProtocols/bulk | Bulk Create Routing Protocols
 [**DeleteConnectionRoutingProtocolByUuid**](RoutingProtocolsApi.md#DeleteConnectionRoutingProtocolByUuid) | **Delete** /fabric/v4/connections/{connectionId}/routingProtocols/{routingProtocolId} | Delete Protocol
 [**GetConnectionRoutingProtocolAllBgpActions**](RoutingProtocolsApi.md#GetConnectionRoutingProtocolAllBgpActions) | **Get** /fabric/v4/connections/{connectionId}/routingProtocols/{routingProtocolId}/actions | Get BGP Actions
 [**GetConnectionRoutingProtocolByUuid**](RoutingProtocolsApi.md#GetConnectionRoutingProtocolByUuid) | **Get** /fabric/v4/connections/{connectionId}/routingProtocols/{routingProtocolId} | Get Protocol
-[**GetConnectionRoutingProtocols**](RoutingProtocolsApi.md#GetConnectionRoutingProtocols) | **Get** /fabric/v4/connections/{connectionId}/routingProtocols | GetRoutingProtocols
+[**GetConnectionRoutingProtocols**](RoutingProtocolsApi.md#GetConnectionRoutingProtocols) | **Get** /fabric/v4/connections/{connectionId}/routingProtocols | Get Routing Protocols
 [**GetConnectionRoutingProtocolsBgpActionByUuid**](RoutingProtocolsApi.md#GetConnectionRoutingProtocolsBgpActionByUuid) | **Get** /fabric/v4/connections/{connectionId}/routingProtocols/{routingProtocolId}/actions/{actionId} | Get BGP Action
 [**GetConnectionRoutingProtocolsChangeByUuid**](RoutingProtocolsApi.md#GetConnectionRoutingProtocolsChangeByUuid) | **Get** /fabric/v4/connections/{connectionId}/routingProtocols/{routingProtocolId}/changes/{changeId} | Get Change By ID
-[**GetConnectionRoutingProtocolsChanges**](RoutingProtocolsApi.md#GetConnectionRoutingProtocolsChanges) | **Get** /fabric/v4/connections/{connectionId}/routingProtocols/{routingProtocolId}/changes | Get Changes
+[**GetConnectionRoutingProtocolsChanges**](RoutingProtocolsApi.md#GetConnectionRoutingProtocolsChanges) | **Get** /fabric/v4/connections/{connectionId}/routingProtocols/{routingProtocolId}/changes | Get Routing Protocol Changes
 [**PatchConnectionRoutingProtocolByUuid**](RoutingProtocolsApi.md#PatchConnectionRoutingProtocolByUuid) | **Patch** /fabric/v4/connections/{connectionId}/routingProtocols/{routingProtocolId} | Patch Protocol
 [**PostConnectionRoutingProtocolBgpActionByUuid**](RoutingProtocolsApi.md#PostConnectionRoutingProtocolBgpActionByUuid) | **Post** /fabric/v4/connections/{connectionId}/routingProtocols/{routingProtocolId}/actions | Clear/Reset BGP
 [**ReplaceConnectionRoutingProtocolByUuid**](RoutingProtocolsApi.md#ReplaceConnectionRoutingProtocolByUuid) | **Put** /fabric/v4/connections/{connectionId}/routingProtocols/{routingProtocolId} | Replace Protocol
@@ -24,7 +24,7 @@ Method | HTTP request | Description
 
 > RoutingProtocolData CreateConnectionRoutingProtocol(ctx, connectionId).RoutingProtocolBase(routingProtocolBase).Execute()
 
-Create Protocol
+Create Routing Protocol
 
 
 
@@ -96,7 +96,7 @@ Name | Type | Description  | Notes
 
 > GetResponse CreateConnectionRoutingProtocolsInBulk(ctx, connectionId).ConnectionRoutingProtocolPostRequest(connectionRoutingProtocolPostRequest).Execute()
 
-Bulk Create Protocol
+Bulk Create Routing Protocols
 
 
 
@@ -391,7 +391,7 @@ Name | Type | Description  | Notes
 
 > GetResponse GetConnectionRoutingProtocols(ctx, connectionId).Offset(offset).Limit(limit).Execute()
 
-GetRoutingProtocols
+Get Routing Protocols
 
 
 
@@ -617,7 +617,7 @@ Name | Type | Description  | Notes
 
 > RoutingProtocolChangeDataResponse GetConnectionRoutingProtocolsChanges(ctx, connectionId, routingProtocolId).Offset(offset).Limit(limit).Execute()
 
-Get Changes
+Get Routing Protocol Changes
 
 
 

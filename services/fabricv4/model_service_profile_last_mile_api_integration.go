@@ -27,8 +27,10 @@ type ServiceProfileLastMileApiIntegration struct {
 	// Whether quote generation is enabled for the last-mile provider.
 	QuoteEnabled *bool `json:"quoteEnabled,omitempty"`
 	// Whether place order is enabled for the last-mile provider.
-	PlaceOrderEnabled    *bool `json:"placeOrderEnabled,omitempty"`
-	AdditionalProperties map[string]interface{}
+	PlaceOrderEnabled *bool `json:"placeOrderEnabled,omitempty"`
+	// Whether quote via aggregator is enabled for the last-mile provider.
+	QuoteViaAggregatorEnabled *bool `json:"quoteViaAggregatorEnabled,omitempty"`
+	AdditionalProperties      map[string]interface{}
 }
 
 type _ServiceProfileLastMileApiIntegration ServiceProfileLastMileApiIntegration
@@ -242,6 +244,38 @@ func (o *ServiceProfileLastMileApiIntegration) SetPlaceOrderEnabled(v bool) {
 	o.PlaceOrderEnabled = &v
 }
 
+// GetQuoteViaAggregatorEnabled returns the QuoteViaAggregatorEnabled field value if set, zero value otherwise.
+func (o *ServiceProfileLastMileApiIntegration) GetQuoteViaAggregatorEnabled() bool {
+	if o == nil || IsNil(o.QuoteViaAggregatorEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.QuoteViaAggregatorEnabled
+}
+
+// GetQuoteViaAggregatorEnabledOk returns a tuple with the QuoteViaAggregatorEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ServiceProfileLastMileApiIntegration) GetQuoteViaAggregatorEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.QuoteViaAggregatorEnabled) {
+		return nil, false
+	}
+	return o.QuoteViaAggregatorEnabled, true
+}
+
+// HasQuoteViaAggregatorEnabled returns a boolean if a field has been set.
+func (o *ServiceProfileLastMileApiIntegration) HasQuoteViaAggregatorEnabled() bool {
+	if o != nil && !IsNil(o.QuoteViaAggregatorEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetQuoteViaAggregatorEnabled gets a reference to the given bool and assigns it to the QuoteViaAggregatorEnabled field.
+func (o *ServiceProfileLastMileApiIntegration) SetQuoteViaAggregatorEnabled(v bool) {
+	o.QuoteViaAggregatorEnabled = &v
+}
+
 func (o ServiceProfileLastMileApiIntegration) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -269,6 +303,9 @@ func (o ServiceProfileLastMileApiIntegration) ToMap() (map[string]interface{}, e
 	}
 	if !IsNil(o.PlaceOrderEnabled) {
 		toSerialize["placeOrderEnabled"] = o.PlaceOrderEnabled
+	}
+	if !IsNil(o.QuoteViaAggregatorEnabled) {
+		toSerialize["quoteViaAggregatorEnabled"] = o.QuoteViaAggregatorEnabled
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -298,6 +335,7 @@ func (o *ServiceProfileLastMileApiIntegration) UnmarshalJSON(data []byte) (err e
 		delete(additionalProperties, "poqEnabled")
 		delete(additionalProperties, "quoteEnabled")
 		delete(additionalProperties, "placeOrderEnabled")
+		delete(additionalProperties, "quoteViaAggregatorEnabled")
 		o.AdditionalProperties = additionalProperties
 	}
 

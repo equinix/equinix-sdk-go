@@ -28,9 +28,9 @@ func (r ApiGetPortPackagesRequest) Execute() (*AllPortPackagesResponse, *http.Re
 }
 
 /*
-GetPortPackages Get All Port Packages
+GetPortPackages List Port Packages
 
-Get All Port Packages returns details of all available port packages for the specified user credentials.
+Get All Port Packages returns details of all available port packages for the specified user credentials
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiGetPortPackagesRequest

@@ -24,9 +24,12 @@ type Stream struct {
 	// Customer-provided stream name
 	Name *string `json:"name,omitempty"`
 	// Customer-provided stream description
-	Description *string      `json:"description,omitempty"`
-	Project     *Project     `json:"project,omitempty"`
-	State       *StreamState `json:"state,omitempty"`
+	Description *string            `json:"description,omitempty"`
+	Project     *Project           `json:"project,omitempty"`
+	Account     *SimplifiedAccount `json:"account,omitempty"`
+	// Preferences for stream notifications, set at creation
+	Notifications []SimplifiedNotification `json:"notifications,omitempty"`
+	State         *StreamState             `json:"state,omitempty"`
 	// Stream assets count
 	AssetsCount *int32 `json:"assetsCount,omitempty"`
 	// Stream subscriptions count
@@ -248,6 +251,70 @@ func (o *Stream) SetProject(v Project) {
 	o.Project = &v
 }
 
+// GetAccount returns the Account field value if set, zero value otherwise.
+func (o *Stream) GetAccount() SimplifiedAccount {
+	if o == nil || IsNil(o.Account) {
+		var ret SimplifiedAccount
+		return ret
+	}
+	return *o.Account
+}
+
+// GetAccountOk returns a tuple with the Account field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Stream) GetAccountOk() (*SimplifiedAccount, bool) {
+	if o == nil || IsNil(o.Account) {
+		return nil, false
+	}
+	return o.Account, true
+}
+
+// HasAccount returns a boolean if a field has been set.
+func (o *Stream) HasAccount() bool {
+	if o != nil && !IsNil(o.Account) {
+		return true
+	}
+
+	return false
+}
+
+// SetAccount gets a reference to the given SimplifiedAccount and assigns it to the Account field.
+func (o *Stream) SetAccount(v SimplifiedAccount) {
+	o.Account = &v
+}
+
+// GetNotifications returns the Notifications field value if set, zero value otherwise.
+func (o *Stream) GetNotifications() []SimplifiedNotification {
+	if o == nil || IsNil(o.Notifications) {
+		var ret []SimplifiedNotification
+		return ret
+	}
+	return o.Notifications
+}
+
+// GetNotificationsOk returns a tuple with the Notifications field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Stream) GetNotificationsOk() ([]SimplifiedNotification, bool) {
+	if o == nil || IsNil(o.Notifications) {
+		return nil, false
+	}
+	return o.Notifications, true
+}
+
+// HasNotifications returns a boolean if a field has been set.
+func (o *Stream) HasNotifications() bool {
+	if o != nil && !IsNil(o.Notifications) {
+		return true
+	}
+
+	return false
+}
+
+// SetNotifications gets a reference to the given []SimplifiedNotification and assigns it to the Notifications field.
+func (o *Stream) SetNotifications(v []SimplifiedNotification) {
+	o.Notifications = v
+}
+
 // GetState returns the State field value if set, zero value otherwise.
 func (o *Stream) GetState() StreamState {
 	if o == nil || IsNil(o.State) {
@@ -436,6 +503,12 @@ func (o Stream) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Project) {
 		toSerialize["project"] = o.Project
 	}
+	if !IsNil(o.Account) {
+		toSerialize["account"] = o.Account
+	}
+	if !IsNil(o.Notifications) {
+		toSerialize["notifications"] = o.Notifications
+	}
 	if !IsNil(o.State) {
 		toSerialize["state"] = o.State
 	}
@@ -479,6 +552,8 @@ func (o *Stream) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "project")
+		delete(additionalProperties, "account")
+		delete(additionalProperties, "notifications")
 		delete(additionalProperties, "state")
 		delete(additionalProperties, "assetsCount")
 		delete(additionalProperties, "streamSubscriptionsCount")

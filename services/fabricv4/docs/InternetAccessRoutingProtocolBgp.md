@@ -7,14 +7,15 @@ Name | Type | Description | Notes
 **ExportPolicy** | [**InternetAccessExportPolicy**](InternetAccessExportPolicy.md) |  | 
 **Asn** | Pointer to [**InternetAccessRoutingProtocolBgpAsn**](InternetAccessRoutingProtocolBgpAsn.md) |  | [optional] 
 **CustomerAsn** | Pointer to **int64** | Customer ASN. Valid range is 1-64495 or 131072-4199999999. Currently this option is only available for EIA over dedicated port. | [optional] 
-**BgpAuthKey** | Pointer to **string** | BGP authentication key | [optional] 
-**CustomerAsnRange** | [**InternetAccessCustomerAsnRange**](InternetAccessCustomerAsnRange.md) |  | 
+**BgpAuthKey** | Pointer to **string** | BGP authentication key. This field is deprecated and will be removed in future releases. Please use bgpAuthType instead to determine if a BGP authentication key is configured. | [optional] 
+**BgpAuthType** | Pointer to [**InternetAccessBgpAuthType**](InternetAccessBgpAuthType.md) |  | [optional] [default to INTERNETACCESSBGPAUTHTYPE_NONE]
+**CustomerAsnRange** | Pointer to [**InternetAccessCustomerAsnRange**](InternetAccessCustomerAsnRange.md) |  | [optional] 
 
 ## Methods
 
 ### NewInternetAccessRoutingProtocolBgp
 
-`func NewInternetAccessRoutingProtocolBgp(exportPolicy InternetAccessExportPolicy, customerAsnRange InternetAccessCustomerAsnRange, ) *InternetAccessRoutingProtocolBgp`
+`func NewInternetAccessRoutingProtocolBgp(exportPolicy InternetAccessExportPolicy, ) *InternetAccessRoutingProtocolBgp`
 
 NewInternetAccessRoutingProtocolBgp instantiates a new InternetAccessRoutingProtocolBgp object
 This constructor will assign default values to properties that have it defined,
@@ -124,6 +125,31 @@ SetBgpAuthKey sets BgpAuthKey field to given value.
 
 HasBgpAuthKey returns a boolean if a field has been set.
 
+### GetBgpAuthType
+
+`func (o *InternetAccessRoutingProtocolBgp) GetBgpAuthType() InternetAccessBgpAuthType`
+
+GetBgpAuthType returns the BgpAuthType field if non-nil, zero value otherwise.
+
+### GetBgpAuthTypeOk
+
+`func (o *InternetAccessRoutingProtocolBgp) GetBgpAuthTypeOk() (*InternetAccessBgpAuthType, bool)`
+
+GetBgpAuthTypeOk returns a tuple with the BgpAuthType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBgpAuthType
+
+`func (o *InternetAccessRoutingProtocolBgp) SetBgpAuthType(v InternetAccessBgpAuthType)`
+
+SetBgpAuthType sets BgpAuthType field to given value.
+
+### HasBgpAuthType
+
+`func (o *InternetAccessRoutingProtocolBgp) HasBgpAuthType() bool`
+
+HasBgpAuthType returns a boolean if a field has been set.
+
 ### GetCustomerAsnRange
 
 `func (o *InternetAccessRoutingProtocolBgp) GetCustomerAsnRange() InternetAccessCustomerAsnRange`
@@ -143,6 +169,11 @@ and a boolean to check if the value has been set.
 
 SetCustomerAsnRange sets CustomerAsnRange field to given value.
 
+### HasCustomerAsnRange
+
+`func (o *InternetAccessRoutingProtocolBgp) HasCustomerAsnRange() bool`
+
+HasCustomerAsnRange returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

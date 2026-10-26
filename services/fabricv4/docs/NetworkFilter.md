@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **And** | Pointer to [**[]NetworkFilter**](NetworkFilter.md) |  | [optional] 
 **Or** | Pointer to [**[]NetworkFilter**](NetworkFilter.md) |  | [optional] 
 **Property** | Pointer to [**NetworkSearchFieldName**](NetworkSearchFieldName.md) |  | [optional] 
-**Operator** | Pointer to [**InterconnectFilterOperator**](InterconnectFilterOperator.md) |  | [optional] 
+**Operator** | Pointer to [**NetworkFilterOperator**](NetworkFilterOperator.md) |  | [optional] 
 **Values** | Pointer to **[]string** |  | [optional] 
 
 ## Methods
@@ -106,20 +106,20 @@ HasProperty returns a boolean if a field has been set.
 
 ### GetOperator
 
-`func (o *NetworkFilter) GetOperator() InterconnectFilterOperator`
+`func (o *NetworkFilter) GetOperator() NetworkFilterOperator`
 
 GetOperator returns the Operator field if non-nil, zero value otherwise.
 
 ### GetOperatorOk
 
-`func (o *NetworkFilter) GetOperatorOk() (*InterconnectFilterOperator, bool)`
+`func (o *NetworkFilter) GetOperatorOk() (*NetworkFilterOperator, bool)`
 
 GetOperatorOk returns a tuple with the Operator field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOperator
 
-`func (o *NetworkFilter) SetOperator(v InterconnectFilterOperator)`
+`func (o *NetworkFilter) SetOperator(v NetworkFilterOperator)`
 
 SetOperator sets Operator field to given value.
 

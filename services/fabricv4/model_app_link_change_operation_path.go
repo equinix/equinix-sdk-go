@@ -17,10 +17,10 @@ type AppLinkChangeOperationPath string
 
 // List of AppLinkChangeOperation_path
 const (
-	APPLINKCHANGEOPERATIONPATH_NAME         AppLinkChangeOperationPath = "/name"
-	APPLINKCHANGEOPERATIONPATH_DESCRIPTION  AppLinkChangeOperationPath = "/description"
-	APPLINKCHANGEOPERATIONPATH_BANDWIDTH    AppLinkChangeOperationPath = "/bandwidth"
-	APPLINKCHANGEOPERATIONPATH_IPV4_ADDRESS AppLinkChangeOperationPath = "/ipv4Address"
+	APPLINKCHANGEOPERATIONPATH_NAME        AppLinkChangeOperationPath = "/name"
+	APPLINKCHANGEOPERATIONPATH_DESCRIPTION AppLinkChangeOperationPath = "/description"
+	APPLINKCHANGEOPERATIONPATH_BANDWIDTH   AppLinkChangeOperationPath = "/bandwidth"
+	APPLINKCHANGEOPERATIONPATH_IPV4_SUBNET AppLinkChangeOperationPath = "/ipv4Subnet"
 )
 
 // All allowed values of AppLinkChangeOperationPath enum
@@ -28,7 +28,7 @@ var AllowedAppLinkChangeOperationPathEnumValues = []AppLinkChangeOperationPath{
 	"/name",
 	"/description",
 	"/bandwidth",
-	"/ipv4Address",
+	"/ipv4Subnet",
 }
 
 func (v *AppLinkChangeOperationPath) UnmarshalJSON(src []byte) error {

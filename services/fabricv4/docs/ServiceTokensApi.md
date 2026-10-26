@@ -5,11 +5,11 @@ All URIs are relative to *https://api.equinix.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateServiceToken**](ServiceTokensApi.md#CreateServiceToken) | **Post** /fabric/v4/serviceTokens | Create Service Token
-[**CreateServiceTokenAction**](ServiceTokensApi.md#CreateServiceTokenAction) | **Post** /fabric/v4/serviceTokens/{serviceTokenId}/actions | ServiceToken Actions
-[**DeleteServiceTokenByUuid**](ServiceTokensApi.md#DeleteServiceTokenByUuid) | **Delete** /fabric/v4/serviceTokens/{serviceTokenId} | Delete Token by uuid
-[**GetServiceTokenByUuid**](ServiceTokensApi.md#GetServiceTokenByUuid) | **Get** /fabric/v4/serviceTokens/{serviceTokenId} | Get Token by uuid
-[**GetServiceTokens**](ServiceTokensApi.md#GetServiceTokens) | **Get** /fabric/v4/serviceTokens | Get All Tokens
-[**SearchServiceTokens**](ServiceTokensApi.md#SearchServiceTokens) | **Post** /fabric/v4/serviceTokens/search | Search servicetokens
+[**CreateServiceTokenAction**](ServiceTokensApi.md#CreateServiceTokenAction) | **Post** /fabric/v4/serviceTokens/{serviceTokenId}/actions | Create Service Token Action
+[**DeleteServiceTokenByUuid**](ServiceTokensApi.md#DeleteServiceTokenByUuid) | **Delete** /fabric/v4/serviceTokens/{serviceTokenId} | Delete Service Token by ID
+[**GetServiceTokenByUuid**](ServiceTokensApi.md#GetServiceTokenByUuid) | **Get** /fabric/v4/serviceTokens/{serviceTokenId} | Get Service Token by ID
+[**GetServiceTokens**](ServiceTokensApi.md#GetServiceTokens) | **Get** /fabric/v4/serviceTokens | Get Service Tokens
+[**SearchServiceTokens**](ServiceTokensApi.md#SearchServiceTokens) | **Post** /fabric/v4/serviceTokens/search | Search Service Tokens
 [**UpdateServiceTokenByUuid**](ServiceTokensApi.md#UpdateServiceTokenByUuid) | **Patch** /fabric/v4/serviceTokens/{serviceTokenId} | Update Token By ID
 
 
@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
 
 > ServiceToken CreateServiceTokenAction(ctx, serviceTokenId).ServiceTokenActionRequest(serviceTokenActionRequest).Execute()
 
-ServiceToken Actions
+Create Service Token Action
 
 
 
@@ -158,7 +158,7 @@ Name | Type | Description  | Notes
 
 > ServiceToken DeleteServiceTokenByUuid(ctx, serviceTokenId).Execute()
 
-Delete Token by uuid
+Delete Service Token by ID
 
 
 
@@ -228,7 +228,7 @@ Name | Type | Description  | Notes
 
 > ServiceToken GetServiceTokenByUuid(ctx, serviceTokenId).Execute()
 
-Get Token by uuid
+Get Service Token by ID
 
 
 
@@ -298,7 +298,7 @@ Name | Type | Description  | Notes
 
 > ServiceTokens GetServiceTokens(ctx).Offset(offset).Limit(limit).Execute()
 
-Get All Tokens
+Get Service Tokens
 
 
 
@@ -366,7 +366,7 @@ Name | Type | Description  | Notes
 
 > ServiceTokens SearchServiceTokens(ctx).ServiceTokenSearchRequest(serviceTokenSearchRequest).Offset(offset).Limit(limit).Execute()
 
-Search servicetokens
+Search Service Tokens
 
 
 

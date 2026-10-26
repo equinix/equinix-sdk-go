@@ -4,14 +4,14 @@ All URIs are relative to *https://api.equinix.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateAppService**](ApplicationServicesApi.md#CreateAppService) | **Post** /fabric/v4/appServices | Create App Service
-[**DeleteAppServiceByUuid**](ApplicationServicesApi.md#DeleteAppServiceByUuid) | **Delete** /fabric/v4/appServices/{appServiceId} | Delete App Service
-[**GetAppServiceByUuid**](ApplicationServicesApi.md#GetAppServiceByUuid) | **Get** /fabric/v4/appServices/{appServiceId} | Get App Service
-[**GetAttachedAppLinksByAppServiceId**](ApplicationServicesApi.md#GetAttachedAppLinksByAppServiceId) | **Get** /fabric/v4/appServices/{appServiceId}/appLinks | Get attached App Links for App Service
-[**GetAttachedAppSubscriptionsByAppServiceId**](ApplicationServicesApi.md#GetAttachedAppSubscriptionsByAppServiceId) | **Get** /fabric/v4/appServices/{appServiceId}/appSubscriptions | Get attached App Subscriptions for App Service
-[**SearchAppServices**](ApplicationServicesApi.md#SearchAppServices) | **Post** /fabric/v4/appServices/search | Search App Services
-[**SearchAttachedAppSubscriptionsByAppServiceId**](ApplicationServicesApi.md#SearchAttachedAppSubscriptionsByAppServiceId) | **Post** /fabric/v4/appServices/{appServiceId}/appSubscriptions/search | Search attached App Subscriptions
-[**UpdateAppServiceByUuid**](ApplicationServicesApi.md#UpdateAppServiceByUuid) | **Patch** /fabric/v4/appServices/{appServiceId} | Update App Service
+[**CreateAppService**](ApplicationServicesApi.md#CreateAppService) | **Post** /fabric/v4/appServices | Create Service
+[**DeleteAppServiceByUuid**](ApplicationServicesApi.md#DeleteAppServiceByUuid) | **Delete** /fabric/v4/appServices/{appServiceId} | Delete Service
+[**GetAppServiceByUuid**](ApplicationServicesApi.md#GetAppServiceByUuid) | **Get** /fabric/v4/appServices/{appServiceId} | Get Service
+[**GetAttachedAppLinksByAppServiceId**](ApplicationServicesApi.md#GetAttachedAppLinksByAppServiceId) | **Get** /fabric/v4/appServices/{appServiceId}/appLinks | Get Attached Links for Service
+[**GetAttachedAppSubscriptionsByAppServiceId**](ApplicationServicesApi.md#GetAttachedAppSubscriptionsByAppServiceId) | **Get** /fabric/v4/appServices/{appServiceId}/appSubscriptions | Get Attached Subscriptions for Service
+[**SearchAppServices**](ApplicationServicesApi.md#SearchAppServices) | **Post** /fabric/v4/appServices/search | Search Services
+[**SearchAttachedAppSubscriptionsByAppServiceId**](ApplicationServicesApi.md#SearchAttachedAppSubscriptionsByAppServiceId) | **Post** /fabric/v4/appServices/{appServiceId}/appSubscriptions/search | Search Attached Subscriptions
+[**UpdateAppServiceByUuid**](ApplicationServicesApi.md#UpdateAppServiceByUuid) | **Patch** /fabric/v4/appServices/{appServiceId} | Update Service
 
 
 
@@ -19,7 +19,7 @@ Method | HTTP request | Description
 
 > AppService CreateAppService(ctx).AppServicePostRequest(appServicePostRequest).Execute()
 
-Create App Service
+Create Service
 
 
 
@@ -85,7 +85,7 @@ Name | Type | Description  | Notes
 
 > AppService DeleteAppServiceByUuid(ctx, appServiceId).Execute()
 
-Delete App Service
+Delete Service
 
 
 
@@ -155,7 +155,7 @@ Name | Type | Description  | Notes
 
 > AppService GetAppServiceByUuid(ctx, appServiceId).Execute()
 
-Get App Service
+Get Service
 
 
 
@@ -225,7 +225,7 @@ Name | Type | Description  | Notes
 
 > AppServiceAttachedAppLinks GetAttachedAppLinksByAppServiceId(ctx, appServiceId).Offset(offset).Limit(limit).State(state).Order(order).Style(style).Execute()
 
-Get attached App Links for App Service
+Get Attached Links for Service
 
 
 
@@ -305,7 +305,7 @@ Name | Type | Description  | Notes
 
 > AppServiceAttachedAppSubscriptions GetAttachedAppSubscriptionsByAppServiceId(ctx, appServiceId).Offset(offset).Limit(limit).State(state).Order(order).Style(style).Execute()
 
-Get attached App Subscriptions for App Service
+Get Attached Subscriptions for Service
 
 
 
@@ -385,7 +385,7 @@ Name | Type | Description  | Notes
 
 > AppServiceSearchResponse SearchAppServices(ctx).AppServiceSearchRequest(appServiceSearchRequest).Execute()
 
-Search App Services
+Search Services
 
 
 
@@ -451,7 +451,7 @@ Name | Type | Description  | Notes
 
 > AppServiceAttachedAppSubscriptionSearchResponse SearchAttachedAppSubscriptionsByAppServiceId(ctx, appServiceId).AppServiceAttachedAppSubscriptionSearchRequest(appServiceAttachedAppSubscriptionSearchRequest).Execute()
 
-Search attached App Subscriptions
+Search Attached Subscriptions
 
 
 
@@ -523,7 +523,7 @@ Name | Type | Description  | Notes
 
 > AppService UpdateAppServiceByUuid(ctx, appServiceId).AppServiceChangeOperation(appServiceChangeOperation).Execute()
 
-Update App Service
+Update Service
 
 
 
@@ -541,7 +541,7 @@ import (
 
 func main() {
 	appServiceId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | App Service UUID
-	appServiceChangeOperation := []openapiclient.AppServiceChangeOperation{*openapiclient.NewAppServiceChangeOperation(openapiclient.precisionTimeChangeOperation_op("replace"), openapiclient.AppServiceChangeOperation_path("/name"), map[string]interface{}(123))} // []AppServiceChangeOperation | 
+	appServiceChangeOperation := []openapiclient.AppServiceChangeOperation{*openapiclient.NewAppServiceChangeOperation(openapiclient.AppDomainChangeOperation_op("replace"), openapiclient.AppServiceChangeOperation_path("/name"), map[string]interface{}(123))} // []AppServiceChangeOperation | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

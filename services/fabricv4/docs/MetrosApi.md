@@ -5,7 +5,7 @@ All URIs are relative to *https://api.equinix.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**GetMetroByCode**](MetrosApi.md#GetMetroByCode) | **Get** /fabric/v4/metros/{metroCode} | Get Metro by Code
-[**GetMetros**](MetrosApi.md#GetMetros) | **Get** /fabric/v4/metros | Get all Metros
+[**GetMetros**](MetrosApi.md#GetMetros) | **Get** /fabric/v4/metros | Get Metros
 
 
 
@@ -83,7 +83,7 @@ Name | Type | Description  | Notes
 
 > MetroResponse GetMetros(ctx).Presence(presence).Offset(offset).Limit(limit).Execute()
 
-Get all Metros
+Get Metros
 
 
 

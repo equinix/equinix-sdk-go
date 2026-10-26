@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **PoqEnabled** | Pointer to **bool** | Whether product qualification is enabled for the last-mile provider. | [optional] 
 **QuoteEnabled** | Pointer to **bool** | Whether quote generation is enabled for the last-mile provider. | [optional] 
 **PlaceOrderEnabled** | Pointer to **bool** | Whether place order is enabled for the last-mile provider. | [optional] 
+**QuoteViaAggregatorEnabled** | Pointer to **bool** | Whether quote via aggregator is enabled for the last-mile provider. | [optional] 
 
 ## Methods
 
@@ -179,6 +180,31 @@ SetPlaceOrderEnabled sets PlaceOrderEnabled field to given value.
 `func (o *ServiceProfileLastMileApiIntegration) HasPlaceOrderEnabled() bool`
 
 HasPlaceOrderEnabled returns a boolean if a field has been set.
+
+### GetQuoteViaAggregatorEnabled
+
+`func (o *ServiceProfileLastMileApiIntegration) GetQuoteViaAggregatorEnabled() bool`
+
+GetQuoteViaAggregatorEnabled returns the QuoteViaAggregatorEnabled field if non-nil, zero value otherwise.
+
+### GetQuoteViaAggregatorEnabledOk
+
+`func (o *ServiceProfileLastMileApiIntegration) GetQuoteViaAggregatorEnabledOk() (*bool, bool)`
+
+GetQuoteViaAggregatorEnabledOk returns a tuple with the QuoteViaAggregatorEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetQuoteViaAggregatorEnabled
+
+`func (o *ServiceProfileLastMileApiIntegration) SetQuoteViaAggregatorEnabled(v bool)`
+
+SetQuoteViaAggregatorEnabled sets QuoteViaAggregatorEnabled field to given value.
+
+### HasQuoteViaAggregatorEnabled
+
+`func (o *ServiceProfileLastMileApiIntegration) HasQuoteViaAggregatorEnabled() bool`
+
+HasQuoteViaAggregatorEnabled returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CustomerAsn** | Pointer to **string** |  | [optional] 
-**MacAddress** | Pointer to **string** |  | [optional] 
+**CustomerAsn** | Pointer to **int32** | Customer Autonomous System Number (ASN) | [optional] 
+**MacAddress** | Pointer to **string** | MAC address of the customer interface | [optional] 
 **Vlan** | Pointer to **int64** | VLAN ID | [optional] 
 **RouteServerAsn** | Pointer to **int64** | Equinix Route Server ASN | [optional] 
 **BgpIpv4** | Pointer to [**ExchangeServiceResponseBgp**](ExchangeServiceResponseBgp.md) |  | [optional] 
@@ -33,20 +33,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetCustomerAsn
 
-`func (o *RoutingProtocolResponse) GetCustomerAsn() string`
+`func (o *RoutingProtocolResponse) GetCustomerAsn() int32`
 
 GetCustomerAsn returns the CustomerAsn field if non-nil, zero value otherwise.
 
 ### GetCustomerAsnOk
 
-`func (o *RoutingProtocolResponse) GetCustomerAsnOk() (*string, bool)`
+`func (o *RoutingProtocolResponse) GetCustomerAsnOk() (*int32, bool)`
 
 GetCustomerAsnOk returns a tuple with the CustomerAsn field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCustomerAsn
 
-`func (o *RoutingProtocolResponse) SetCustomerAsn(v string)`
+`func (o *RoutingProtocolResponse) SetCustomerAsn(v int32)`
 
 SetCustomerAsn sets CustomerAsn field to given value.
 

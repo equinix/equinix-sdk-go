@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ZSide** | Pointer to [**ConnectionSide**](ConnectionSide.md) |  | [optional] 
 **ProviderBandwidth** | Pointer to **int32** | Authorization key bandwidth in Mbps | [optional] [readonly] 
+**Operation** | Pointer to [**ConnectionOperation**](ConnectionOperation.md) |  | [optional] 
 
 ## Methods
 
@@ -75,6 +76,31 @@ SetProviderBandwidth sets ProviderBandwidth field to given value.
 `func (o *ConnectionAcceptanceData) HasProviderBandwidth() bool`
 
 HasProviderBandwidth returns a boolean if a field has been set.
+
+### GetOperation
+
+`func (o *ConnectionAcceptanceData) GetOperation() ConnectionOperation`
+
+GetOperation returns the Operation field if non-nil, zero value otherwise.
+
+### GetOperationOk
+
+`func (o *ConnectionAcceptanceData) GetOperationOk() (*ConnectionOperation, bool)`
+
+GetOperationOk returns a tuple with the Operation field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOperation
+
+`func (o *ConnectionAcceptanceData) SetOperation(v ConnectionOperation)`
+
+SetOperation sets Operation field to given value.
+
+### HasOperation
+
+`func (o *ConnectionAcceptanceData) HasOperation() bool`
+
+HasOperation returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

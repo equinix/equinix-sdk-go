@@ -16,7 +16,7 @@ var _ MappedNullable = &AppLinkSimpleExpression{}
 
 // AppLinkSimpleExpression struct for AppLinkSimpleExpression
 type AppLinkSimpleExpression struct {
-	// Possible field names to use on filters:   * `/project/projectId` - project id   * `/uuid` - App Link uuid   * `/name` - App Link name   * `/description` - App Link description   * `/state` - App Link status   * `/ipv4Address` - App Link ipv4 address   * `/bandwidth` - App Link bandwidth   * `/changeLog/createdDateTime` - App Link creation timestamp   * `/changeLog/updatedDateTime` - App Link last updated timestamp   * `/changeLog/deletedDateTime` - App Link deletion timestamp
+	// Possible field names to use on filters:   * `/project/projectId` - project id   * `/uuid` - App Link uuid   * `/name` - App Link name   * `/description` - App Link description   * `/state` - App Link status   * `/ipv4Subnet` - App Link ipv4 subnet   * `/bandwidth` - App Link bandwidth   * `/changeLog/createdDateTime` - App Link creation timestamp   * `/changeLog/updatedDateTime` - App Link last updated timestamp   * `/changeLog/deletedDateTime` - App Link deletion timestamp
 	Property *string `json:"property,omitempty"`
 	// Possible operators to use on filters:   * `=` - equal   * `!=` - not equal   * `>` - greater than   * `<` - less than   * `IN` - in   * `NOT IN` - not in   * `LIKE` - like   * `ILIKE` - case-insensitive like   * `BETWEEN` - between   * `NOT BETWEEN` - not between
 	Operator             *string  `json:"operator,omitempty"`

@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Status** | Pointer to **string** |  | [optional] 
 **CreatedDateTime** | Pointer to **time.Time** |  | [optional] 
 **UpdatedDateTime** | Pointer to **time.Time** |  | [optional] 
-**Data** | Pointer to **map[string]interface{}** |  | [optional] 
+**Data** | Pointer to [**[]CompanyProfileChangeItem**](CompanyProfileChangeItem.md) |  | [optional] [default to []]
 
 ## Methods
 
@@ -157,20 +157,20 @@ HasUpdatedDateTime returns a boolean if a field has been set.
 
 ### GetData
 
-`func (o *CompanyProfileChange) GetData() map[string]interface{}`
+`func (o *CompanyProfileChange) GetData() []CompanyProfileChangeItem`
 
 GetData returns the Data field if non-nil, zero value otherwise.
 
 ### GetDataOk
 
-`func (o *CompanyProfileChange) GetDataOk() (*map[string]interface{}, bool)`
+`func (o *CompanyProfileChange) GetDataOk() (*[]CompanyProfileChangeItem, bool)`
 
 GetDataOk returns a tuple with the Data field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetData
 
-`func (o *CompanyProfileChange) SetData(v map[string]interface{})`
+`func (o *CompanyProfileChange) SetData(v []CompanyProfileChangeItem)`
 
 SetData sets Data field to given value.
 

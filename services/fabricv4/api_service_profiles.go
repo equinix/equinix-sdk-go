@@ -35,9 +35,9 @@ func (r ApiCreateServiceProfileRequest) Execute() (*ServiceProfile, *http.Respon
 }
 
 /*
-CreateServiceProfile Create Profile
+CreateServiceProfile Create Service Profile
 
-Create Service Profile creates Equinix Fabric™ Service Profile.
+Create Service Profile creates Equinix Fabric™ Service Profile
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiCreateServiceProfileRequest
@@ -190,7 +190,7 @@ func (r ApiCreateServiceProfileActionRequest) Execute() (*ServiceProfileActionRe
 }
 
 /*
-CreateServiceProfileAction Profile Actions
+CreateServiceProfileAction Create Service Profile Action
 
 This API provides capability to accept/reject service profile update requests
 
@@ -353,7 +353,7 @@ func (r ApiDeleteServiceProfileByUuidRequest) Execute() (*ServiceProfile, *http.
 }
 
 /*
-DeleteServiceProfileByUuid Delete Profile
+DeleteServiceProfileByUuid Delete Service Profile
 
 delete Service Profile by UUID
 
@@ -504,11 +504,11 @@ type ApiGetServiceProfileByUuidRequest struct {
 	ctx              context.Context
 	ApiService       *ServiceProfilesApiService
 	serviceProfileId string
-	viewPoint        *GetServiceProfilesViewPointParameter
+	viewPoint        *ListServiceProfilesViewPointParameter
 }
 
 // flips view between buyer and seller representation
-func (r ApiGetServiceProfileByUuidRequest) ViewPoint(viewPoint GetServiceProfilesViewPointParameter) ApiGetServiceProfileByUuidRequest {
+func (r ApiGetServiceProfileByUuidRequest) ViewPoint(viewPoint ListServiceProfilesViewPointParameter) ApiGetServiceProfileByUuidRequest {
 	r.viewPoint = &viewPoint
 	return r
 }
@@ -518,9 +518,9 @@ func (r ApiGetServiceProfileByUuidRequest) Execute() (*ServiceProfile, *http.Res
 }
 
 /*
-GetServiceProfileByUuid Get Profile
+GetServiceProfileByUuid Get Service Profile
 
-Get service profile by UUID. View Point parameter if set to zSide will give seller's view of the profile otherwise buyer's view.
+Get service profile by UUID. View Point parameter if set to zSide will give seller's view of the profile otherwise buyer's view
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param serviceProfileId Service Profile UUID
@@ -560,7 +560,7 @@ func (a *ServiceProfilesApiService) GetServiceProfileByUuidExecute(r ApiGetServi
 	if r.viewPoint != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "viewPoint", r.viewPoint, "form", "")
 	} else {
-		var defaultValue GetServiceProfilesViewPointParameter = "aSide"
+		var defaultValue ListServiceProfilesViewPointParameter = "aSide"
 		r.viewPoint = &defaultValue
 	}
 	// to determine the Content-Type header
@@ -685,9 +685,9 @@ func (r ApiGetServiceProfileEnvironmentsByUuidRequest) Execute() (*ProviderEnvir
 }
 
 /*
-GetServiceProfileEnvironmentsByUuid Get Profile Environments
+GetServiceProfileEnvironmentsByUuid Get Service Profile Environments
 
-Get service profile provider environments by UUID <sup color='red'>Beta</sup></font>.
+Get service profile provider environments by UUID <sup color='red'>Beta</sup></font>
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param serviceProfileId Service Profile UUID
@@ -852,9 +852,9 @@ func (r ApiGetServiceProfileMetrosByUuidRequest) Execute() (*ServiceMetros, *htt
 }
 
 /*
-GetServiceProfileMetrosByUuid Get Profile Metros
+GetServiceProfileMetrosByUuid Get Service Profile Metros
 
-Get service profile metros by UUID.
+Get service profile metros by UUID
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param serviceProfileId Service Profile UUID
@@ -994,46 +994,46 @@ func (a *ServiceProfilesApiService) GetServiceProfileMetrosByUuidExecute(r ApiGe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetServiceProfilesRequest struct {
+type ApiListServiceProfilesRequest struct {
 	ctx        context.Context
 	ApiService *ServiceProfilesApiService
 	offset     *int32
 	limit      *int32
-	viewPoint  *GetServiceProfilesViewPointParameter
+	viewPoint  *ListServiceProfilesViewPointParameter
 }
 
 // offset
-func (r ApiGetServiceProfilesRequest) Offset(offset int32) ApiGetServiceProfilesRequest {
+func (r ApiListServiceProfilesRequest) Offset(offset int32) ApiListServiceProfilesRequest {
 	r.offset = &offset
 	return r
 }
 
 // number of records to fetch
-func (r ApiGetServiceProfilesRequest) Limit(limit int32) ApiGetServiceProfilesRequest {
+func (r ApiListServiceProfilesRequest) Limit(limit int32) ApiListServiceProfilesRequest {
 	r.limit = &limit
 	return r
 }
 
 // flips view between buyer and seller representation
-func (r ApiGetServiceProfilesRequest) ViewPoint(viewPoint GetServiceProfilesViewPointParameter) ApiGetServiceProfilesRequest {
+func (r ApiListServiceProfilesRequest) ViewPoint(viewPoint ListServiceProfilesViewPointParameter) ApiListServiceProfilesRequest {
 	r.viewPoint = &viewPoint
 	return r
 }
 
-func (r ApiGetServiceProfilesRequest) Execute() (*ServiceProfiles, *http.Response, error) {
-	return r.ApiService.GetServiceProfilesExecute(r)
+func (r ApiListServiceProfilesRequest) Execute() (*ServiceProfiles, *http.Response, error) {
+	return r.ApiService.ListServiceProfilesExecute(r)
 }
 
 /*
-GetServiceProfiles Get all Profiles
+ListServiceProfiles List Service Profiles
 
-The API request returns all Equinix Fabric Service Profiles in accordance with the view point requested.
+The API request returns all Equinix Fabric Service Profiles in accordance with the view point requested
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiGetServiceProfilesRequest
+	@return ApiListServiceProfilesRequest
 */
-func (a *ServiceProfilesApiService) GetServiceProfiles(ctx context.Context) ApiGetServiceProfilesRequest {
-	return ApiGetServiceProfilesRequest{
+func (a *ServiceProfilesApiService) ListServiceProfiles(ctx context.Context) ApiListServiceProfilesRequest {
+	return ApiListServiceProfilesRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -1042,7 +1042,7 @@ func (a *ServiceProfilesApiService) GetServiceProfiles(ctx context.Context) ApiG
 // Execute executes the request
 //
 //	@return ServiceProfiles
-func (a *ServiceProfilesApiService) GetServiceProfilesExecute(r ApiGetServiceProfilesRequest) (*ServiceProfiles, *http.Response, error) {
+func (a *ServiceProfilesApiService) ListServiceProfilesExecute(r ApiListServiceProfilesRequest) (*ServiceProfiles, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1050,7 +1050,7 @@ func (a *ServiceProfilesApiService) GetServiceProfilesExecute(r ApiGetServicePro
 		localVarReturnValue *ServiceProfiles
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceProfilesApiService.GetServiceProfiles")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceProfilesApiService.ListServiceProfiles")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1070,7 +1070,7 @@ func (a *ServiceProfilesApiService) GetServiceProfilesExecute(r ApiGetServicePro
 	if r.viewPoint != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "viewPoint", r.viewPoint, "form", "")
 	} else {
-		var defaultValue GetServiceProfilesViewPointParameter = "aSide"
+		var defaultValue ListServiceProfilesViewPointParameter = "aSide"
 		r.viewPoint = &defaultValue
 	}
 	// to determine the Content-Type header
@@ -1194,7 +1194,7 @@ func (r ApiPutServiceProfileByUuidRequest) Execute() (*ServiceProfile, *http.Res
 }
 
 /*
-PutServiceProfileByUuid Replace Profile
+PutServiceProfileByUuid Replace Service Profile
 
 This API request replaces a service profile definition
 
@@ -1354,7 +1354,7 @@ type ApiSearchServiceProfilesRequest struct {
 	ctx                         context.Context
 	ApiService                  *ServiceProfilesApiService
 	serviceProfileSearchRequest *ServiceProfileSearchRequest
-	viewPoint                   *GetServiceProfilesViewPointParameter
+	viewPoint                   *ListServiceProfilesViewPointParameter
 }
 
 func (r ApiSearchServiceProfilesRequest) ServiceProfileSearchRequest(serviceProfileSearchRequest ServiceProfileSearchRequest) ApiSearchServiceProfilesRequest {
@@ -1363,7 +1363,7 @@ func (r ApiSearchServiceProfilesRequest) ServiceProfileSearchRequest(serviceProf
 }
 
 // flips view between buyer and seller representation
-func (r ApiSearchServiceProfilesRequest) ViewPoint(viewPoint GetServiceProfilesViewPointParameter) ApiSearchServiceProfilesRequest {
+func (r ApiSearchServiceProfilesRequest) ViewPoint(viewPoint ListServiceProfilesViewPointParameter) ApiSearchServiceProfilesRequest {
 	r.viewPoint = &viewPoint
 	return r
 }
@@ -1373,7 +1373,7 @@ func (r ApiSearchServiceProfilesRequest) Execute() (*ServiceProfiles, *http.Resp
 }
 
 /*
-SearchServiceProfiles Profile Search
+SearchServiceProfiles Search Service Profiles
 
 Search service profiles by search criteria
 
@@ -1415,7 +1415,7 @@ func (a *ServiceProfilesApiService) SearchServiceProfilesExecute(r ApiSearchServ
 	if r.viewPoint != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "viewPoint", r.viewPoint, "form", "")
 	} else {
-		var defaultValue GetServiceProfilesViewPointParameter = "aSide"
+		var defaultValue ListServiceProfilesViewPointParameter = "aSide"
 		r.viewPoint = &defaultValue
 	}
 	// to determine the Content-Type header
@@ -1524,7 +1524,7 @@ func (r ApiServiceProfileEnvironmentActionRequest) Execute() (*EnvironmentAction
 }
 
 /*
-ServiceProfileEnvironmentAction Service Profile Environment Actions
+ServiceProfileEnvironmentAction Create Service Profile Environment Action
 
 This API provides capability to perform actions on a service profile environment, such as validating an activation key.<sup color='red'>Beta</sup></font>
 
@@ -1685,7 +1685,7 @@ func (r ApiUpdateServiceProfileByUuidRequest) Execute() (*ServiceProfile, *http.
 }
 
 /*
-UpdateServiceProfileByUuid Update Profile
+UpdateServiceProfileByUuid Update Service Profile
 
 Update Service Profile by UUID
 

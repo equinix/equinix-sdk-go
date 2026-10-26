@@ -5,18 +5,18 @@ All URIs are relative to *https://api.equinix.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**AttachConnectionRouteAggregation**](RouteAggregationsApi.md#AttachConnectionRouteAggregation) | **Put** /fabric/v4/connections/{connectionId}/routeAggregations/{routeAggregationId} | Attach Aggregation
-[**CreateRouteAggregation**](RouteAggregationsApi.md#CreateRouteAggregation) | **Post** /fabric/v4/routeAggregations | Create Aggregations
+[**CreateRouteAggregation**](RouteAggregationsApi.md#CreateRouteAggregation) | **Post** /fabric/v4/routeAggregations | Create Route Aggregation
 [**DeleteRouteAggregationByUuid**](RouteAggregationsApi.md#DeleteRouteAggregationByUuid) | **Delete** /fabric/v4/routeAggregations/{routeAggregationId} | Delete Aggregation
 [**DetachConnectionRouteAggregation**](RouteAggregationsApi.md#DetachConnectionRouteAggregation) | **Delete** /fabric/v4/connections/{connectionId}/routeAggregations/{routeAggregationId} | Detach Aggregation
 [**GetConnectionRouteAggregationByUuid**](RouteAggregationsApi.md#GetConnectionRouteAggregationByUuid) | **Get** /fabric/v4/connections/{connectionId}/routeAggregations/{routeAggregationId} | Get Aggregation
-[**GetConnectionRouteAggregations**](RouteAggregationsApi.md#GetConnectionRouteAggregations) | **Get** /fabric/v4/connections/{connectionId}/routeAggregations | Get All Aggregations
+[**GetConnectionRouteAggregations**](RouteAggregationsApi.md#GetConnectionRouteAggregations) | **Get** /fabric/v4/connections/{connectionId}/routeAggregations | Get Connection Route Aggregations
 [**GetRouteAggregationByUuid**](RouteAggregationsApi.md#GetRouteAggregationByUuid) | **Get** /fabric/v4/routeAggregations/{routeAggregationId} | Get Aggregation
 [**GetRouteAggregationChangeByUuid**](RouteAggregationsApi.md#GetRouteAggregationChangeByUuid) | **Get** /fabric/v4/routeAggregations/{routeAggregationId}/changes/{changeId} | Get Change By ID
-[**GetRouteAggregationChanges**](RouteAggregationsApi.md#GetRouteAggregationChanges) | **Get** /fabric/v4/routeAggregations/{routeAggregationId}/changes | Get All Changes
-[**GetRouteAggregationConnections**](RouteAggregationsApi.md#GetRouteAggregationConnections) | **Get** /fabric/v4/routeAggregations/{routeAggregationId}/connections | Get All Connections on Route Aggregation
-[**PatchRouteAggregationByUuid**](RouteAggregationsApi.md#PatchRouteAggregationByUuid) | **Patch** /fabric/v4/routeAggregations/{routeAggregationId} | Patch Aggregation
+[**GetRouteAggregationChanges**](RouteAggregationsApi.md#GetRouteAggregationChanges) | **Get** /fabric/v4/routeAggregations/{routeAggregationId}/changes | Get Route Aggregation Changes
+[**GetRouteAggregationConnections**](RouteAggregationsApi.md#GetRouteAggregationConnections) | **Get** /fabric/v4/routeAggregations/{routeAggregationId}/connections | Get Route Aggregation Connections
+[**PatchRouteAggregationByUuid**](RouteAggregationsApi.md#PatchRouteAggregationByUuid) | **Patch** /fabric/v4/routeAggregations/{routeAggregationId} | Update Route Aggregation
 [**SearchCloudRouterRouteAggregationAttachments**](RouteAggregationsApi.md#SearchCloudRouterRouteAggregationAttachments) | **Post** /fabric/v4/routers/{routerId}/routeAggregations/search | Search Cloud Router Route Aggregation Attachments
-[**SearchRouteAggregations**](RouteAggregationsApi.md#SearchRouteAggregations) | **Post** /fabric/v4/routeAggregations/search | Search Aggregations
+[**SearchRouteAggregations**](RouteAggregationsApi.md#SearchRouteAggregations) | **Post** /fabric/v4/routeAggregations/search | Search Route Aggregations
 
 
 
@@ -97,7 +97,7 @@ Name | Type | Description  | Notes
 
 > RouteAggregationsData CreateRouteAggregation(ctx).RouteAggregationsBase(routeAggregationsBase).Execute()
 
-Create Aggregations
+Create Route Aggregation
 
 
 
@@ -379,7 +379,7 @@ Name | Type | Description  | Notes
 
 > GetAllConnectionRouteAggregationsResponse GetConnectionRouteAggregations(ctx, connectionId).Execute()
 
-Get All Aggregations
+Get Connection Route Aggregations
 
 
 
@@ -592,7 +592,7 @@ Name | Type | Description  | Notes
 
 > RouteAggregationChangeDataResponse GetRouteAggregationChanges(ctx, routeAggregationId).Offset(offset).Limit(limit).Execute()
 
-Get All Changes
+Get Route Aggregation Changes
 
 
 
@@ -666,7 +666,7 @@ Name | Type | Description  | Notes
 
 > GetRouteAggregationGetConnectionsResponse GetRouteAggregationConnections(ctx, routeAggregationId).Execute()
 
-Get All Connections on Route Aggregation
+Get Route Aggregation Connections
 
 
 
@@ -736,7 +736,7 @@ Name | Type | Description  | Notes
 
 > RouteAggregationsData PatchRouteAggregationByUuid(ctx, routeAggregationId).RouteAggregationsPatchRequestItem(routeAggregationsPatchRequestItem).Execute()
 
-Patch Aggregation
+Update Route Aggregation
 
 
 
@@ -880,7 +880,7 @@ Name | Type | Description  | Notes
 
 > RouteAggregationsSearchResponse SearchRouteAggregations(ctx).RouteAggregationsSearchRequest(routeAggregationsSearchRequest).Execute()
 
-Search Aggregations
+Search Route Aggregations
 
 
 

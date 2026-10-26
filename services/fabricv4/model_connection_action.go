@@ -21,7 +21,8 @@ type ConnectionAction struct {
 	// Connection action URI
 	Href string `json:"href"`
 	// Equinix-assigned connection identifier
-	Uuid string `json:"uuid"`
+	Uuid  string                 `json:"uuid"`
+	State *ConnectionActionState `json:"state,omitempty"`
 	// Connection rejection reason detail
 	Description          *string                  `json:"description,omitempty"`
 	Data                 ConnectionAcceptanceData `json:"data"`
@@ -122,6 +123,38 @@ func (o *ConnectionAction) GetUuidOk() (*string, bool) {
 // SetUuid sets field value
 func (o *ConnectionAction) SetUuid(v string) {
 	o.Uuid = v
+}
+
+// GetState returns the State field value if set, zero value otherwise.
+func (o *ConnectionAction) GetState() ConnectionActionState {
+	if o == nil || IsNil(o.State) {
+		var ret ConnectionActionState
+		return ret
+	}
+	return *o.State
+}
+
+// GetStateOk returns a tuple with the State field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ConnectionAction) GetStateOk() (*ConnectionActionState, bool) {
+	if o == nil || IsNil(o.State) {
+		return nil, false
+	}
+	return o.State, true
+}
+
+// HasState returns a boolean if a field has been set.
+func (o *ConnectionAction) HasState() bool {
+	if o != nil && !IsNil(o.State) {
+		return true
+	}
+
+	return false
+}
+
+// SetState gets a reference to the given ConnectionActionState and assigns it to the State field.
+func (o *ConnectionAction) SetState(v ConnectionActionState) {
+	o.State = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -225,6 +258,9 @@ func (o ConnectionAction) ToMap() (map[string]interface{}, error) {
 	toSerialize["type"] = o.Type
 	toSerialize["href"] = o.Href
 	toSerialize["uuid"] = o.Uuid
+	if !IsNil(o.State) {
+		toSerialize["state"] = o.State
+	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
@@ -281,6 +317,7 @@ func (o *ConnectionAction) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "href")
 		delete(additionalProperties, "uuid")
+		delete(additionalProperties, "state")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "data")
 		delete(additionalProperties, "changeLog")

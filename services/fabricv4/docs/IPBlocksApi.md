@@ -4,11 +4,11 @@ All URIs are relative to *https://api.equinix.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DeleteIpBlockById**](IPBlocksApi.md#DeleteIpBlockById) | **Delete** /fabric/v4/ipBlocks/{uuid} | Delete IP Block by UUID
-[**GetIpBlock**](IPBlocksApi.md#GetIpBlock) | **Get** /fabric/v4/ipBlocks/{uuid} | Retrieve IP Block by UUID
-[**PatchIpBlockById**](IPBlocksApi.md#PatchIpBlockById) | **Patch** /fabric/v4/ipBlocks/{uuid} | patch IP Block by UUID
-[**SearchIpBlocks**](IPBlocksApi.md#SearchIpBlocks) | **Post** /fabric/v4/ipBlocks/search | Search for IP Blocks
-[**SubmitIpBlock**](IPBlocksApi.md#SubmitIpBlock) | **Post** /fabric/v4/ipBlocks | Submits new Equinix owned or customer owned IP Block request
+[**DeleteIpBlockById**](IPBlocksApi.md#DeleteIpBlockById) | **Delete** /fabric/v4/ipBlocks/{uuid} | Delete IP Block by ID
+[**GetIpBlock**](IPBlocksApi.md#GetIpBlock) | **Get** /fabric/v4/ipBlocks/{uuid} | Retrieve IP Block by ID
+[**PatchIpBlockById**](IPBlocksApi.md#PatchIpBlockById) | **Patch** /fabric/v4/ipBlocks/{uuid} | Update IP Block by ID
+[**SearchIpBlocks**](IPBlocksApi.md#SearchIpBlocks) | **Post** /fabric/v4/ipBlocks/search | Search IP Blocks
+[**SubmitIpBlock**](IPBlocksApi.md#SubmitIpBlock) | **Post** /fabric/v4/ipBlocks | Create IP Block
 
 
 
@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 > IpBlock DeleteIpBlockById(ctx, uuid).Execute()
 
-Delete IP Block by UUID
+Delete IP Block by ID
 
 
 
@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
 
 > IpBlock GetIpBlock(ctx, uuid).Execute()
 
-Retrieve IP Block by UUID
+Retrieve IP Block by ID
 
 
 
@@ -156,7 +156,7 @@ Name | Type | Description  | Notes
 
 > IpBlock PatchIpBlockById(ctx, uuid).PatchIpBlockRequestBodyItem(patchIpBlockRequestBodyItem).Execute()
 
-patch IP Block by UUID
+Update IP Block by ID
 
 
 
@@ -228,7 +228,7 @@ Name | Type | Description  | Notes
 
 > IpBlockSearchResponseBody SearchIpBlocks(ctx).IpBlocksSearchRequestBody(ipBlocksSearchRequestBody).Execute()
 
-Search for IP Blocks
+Search IP Blocks
 
 
 
@@ -294,7 +294,7 @@ Name | Type | Description  | Notes
 
 > IpBlock SubmitIpBlock(ctx).SubmitIpBlockRequestBody(submitIpBlockRequestBody).Execute()
 
-Submits new Equinix owned or customer owned IP Block request
+Create IP Block
 
 
 

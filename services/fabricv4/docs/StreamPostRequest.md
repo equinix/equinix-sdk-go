@@ -8,6 +8,8 @@ Name | Type | Description | Notes
 **Name** | **string** | Customer-provided stream name | 
 **Description** | Pointer to **string** | Customer-provided stream description | [optional] 
 **Project** | [**Project**](Project.md) |  | 
+**Account** | Pointer to [**SimplifiedAccount**](SimplifiedAccount.md) |  | [optional] 
+**Notifications** | Pointer to [**[]SimplifiedNotification**](SimplifiedNotification.md) | Preferences for stream notifications. Optional; at most one entry, of type ALL, with up to 12 emails. Set at creation only. | [optional] 
 
 ## Methods
 
@@ -112,6 +114,56 @@ and a boolean to check if the value has been set.
 
 SetProject sets Project field to given value.
 
+
+### GetAccount
+
+`func (o *StreamPostRequest) GetAccount() SimplifiedAccount`
+
+GetAccount returns the Account field if non-nil, zero value otherwise.
+
+### GetAccountOk
+
+`func (o *StreamPostRequest) GetAccountOk() (*SimplifiedAccount, bool)`
+
+GetAccountOk returns a tuple with the Account field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccount
+
+`func (o *StreamPostRequest) SetAccount(v SimplifiedAccount)`
+
+SetAccount sets Account field to given value.
+
+### HasAccount
+
+`func (o *StreamPostRequest) HasAccount() bool`
+
+HasAccount returns a boolean if a field has been set.
+
+### GetNotifications
+
+`func (o *StreamPostRequest) GetNotifications() []SimplifiedNotification`
+
+GetNotifications returns the Notifications field if non-nil, zero value otherwise.
+
+### GetNotificationsOk
+
+`func (o *StreamPostRequest) GetNotificationsOk() (*[]SimplifiedNotification, bool)`
+
+GetNotificationsOk returns a tuple with the Notifications field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNotifications
+
+`func (o *StreamPostRequest) SetNotifications(v []SimplifiedNotification)`
+
+SetNotifications sets Notifications field to given value.
+
+### HasNotifications
+
+`func (o *StreamPostRequest) HasNotifications() bool`
+
+HasNotifications returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

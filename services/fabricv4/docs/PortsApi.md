@@ -6,12 +6,12 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**AddToLag**](PortsApi.md#AddToLag) | **Post** /fabric/v4/ports/{portId}/physicalPorts/bulk | Add to Lag
 [**CreatePort**](PortsApi.md#CreatePort) | **Post** /fabric/v4/ports | Create Port
-[**DeletePort**](PortsApi.md#DeletePort) | **Delete** /fabric/v4/ports/{portId} | Delete a single port
-[**GetPortByUuid**](PortsApi.md#GetPortByUuid) | **Get** /fabric/v4/ports/{portId} | Get Port by uuid
+[**DeletePort**](PortsApi.md#DeletePort) | **Delete** /fabric/v4/ports/{portId} | Delete Port
+[**GetPortByUuid**](PortsApi.md#GetPortByUuid) | **Get** /fabric/v4/ports/{portId} | Get Port by ID
 [**GetPorts**](PortsApi.md#GetPorts) | **Get** /fabric/v4/ports | Get All Ports
 [**GetVlans**](PortsApi.md#GetVlans) | **Get** /fabric/v4/ports/{portUuid}/linkProtocols | Get Vlans
-[**SearchPorts**](PortsApi.md#SearchPorts) | **Post** /fabric/v4/ports/search | Search ports
-[**UpdatePortByUuid**](PortsApi.md#UpdatePortByUuid) | **Patch** /fabric/v4/ports/{portId} | Update by UUID
+[**SearchPorts**](PortsApi.md#SearchPorts) | **Post** /fabric/v4/ports/search | Search Ports
+[**UpdatePortByUuid**](PortsApi.md#UpdatePortByUuid) | **Patch** /fabric/v4/ports/{portId} | Update Port by ID
 
 
 
@@ -159,7 +159,7 @@ Name | Type | Description  | Notes
 
 > Port DeletePort(ctx, portId).DryRun(dryRun).Execute()
 
-Delete a single port
+Delete Port
 
 
 
@@ -231,7 +231,7 @@ Name | Type | Description  | Notes
 
 > Port GetPortByUuid(ctx, portId).Execute()
 
-Get Port by uuid
+Get Port by ID
 
 
 
@@ -365,7 +365,7 @@ Name | Type | Description  | Notes
 
 ## GetVlans
 
-> LinkProtocolGetResponse GetVlans(ctx, portUuid).Execute()
+> LinkProtocolGetResponse GetVlans(ctx, portUuid).Offset(offset).Limit(limit).Execute()
 
 Get Vlans
 
@@ -385,10 +385,12 @@ import (
 
 func main() {
 	portUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Port UUID
+	offset := int32(1) // int32 | offset (optional)
+	limit := int32(10) // int32 | number of records to fetch (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PortsApi.GetVlans(context.Background(), portUuid).Execute()
+	resp, r, err := apiClient.PortsApi.GetVlans(context.Background(), portUuid).Offset(offset).Limit(limit).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `PortsApi.GetVlans``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -414,6 +416,8 @@ Other parameters are passed through a pointer to a apiGetVlansRequest struct via
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **offset** | **int32** | offset | 
+ **limit** | **int32** | number of records to fetch | 
 
 ### Return type
 
@@ -437,7 +441,7 @@ Name | Type | Description  | Notes
 
 > AllPortsResponse SearchPorts(ctx).PortV4SearchRequest(portV4SearchRequest).Execute()
 
-Search ports
+Search Ports
 
 
 
@@ -503,7 +507,7 @@ Name | Type | Description  | Notes
 
 > AllPortsResponse UpdatePortByUuid(ctx, portId).PortChangeOperation(portChangeOperation).DryRun(dryRun).Execute()
 
-Update by UUID
+Update Port by ID
 
 
 

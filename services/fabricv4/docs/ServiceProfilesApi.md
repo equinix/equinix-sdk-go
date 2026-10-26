@@ -4,17 +4,17 @@ All URIs are relative to *https://api.equinix.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateServiceProfile**](ServiceProfilesApi.md#CreateServiceProfile) | **Post** /fabric/v4/serviceProfiles | Create Profile
-[**CreateServiceProfileAction**](ServiceProfilesApi.md#CreateServiceProfileAction) | **Post** /fabric/v4/serviceProfiles/{serviceProfileId}/actions | Profile Actions
-[**DeleteServiceProfileByUuid**](ServiceProfilesApi.md#DeleteServiceProfileByUuid) | **Delete** /fabric/v4/serviceProfiles/{serviceProfileId} | Delete Profile
-[**GetServiceProfileByUuid**](ServiceProfilesApi.md#GetServiceProfileByUuid) | **Get** /fabric/v4/serviceProfiles/{serviceProfileId} | Get Profile
-[**GetServiceProfileEnvironmentsByUuid**](ServiceProfilesApi.md#GetServiceProfileEnvironmentsByUuid) | **Get** /fabric/v4/serviceProfiles/{serviceProfileId}/environments | Get Profile Environments
-[**GetServiceProfileMetrosByUuid**](ServiceProfilesApi.md#GetServiceProfileMetrosByUuid) | **Get** /fabric/v4/serviceProfiles/{serviceProfileId}/metros | Get Profile Metros
-[**GetServiceProfiles**](ServiceProfilesApi.md#GetServiceProfiles) | **Get** /fabric/v4/serviceProfiles | Get all Profiles
-[**PutServiceProfileByUuid**](ServiceProfilesApi.md#PutServiceProfileByUuid) | **Put** /fabric/v4/serviceProfiles/{serviceProfileId} | Replace Profile
-[**SearchServiceProfiles**](ServiceProfilesApi.md#SearchServiceProfiles) | **Post** /fabric/v4/serviceProfiles/search | Profile Search
-[**ServiceProfileEnvironmentAction**](ServiceProfilesApi.md#ServiceProfileEnvironmentAction) | **Post** /fabric/v4/serviceProfiles/{serviceProfileId}/environments/{environmentId}/actions | Service Profile Environment Actions
-[**UpdateServiceProfileByUuid**](ServiceProfilesApi.md#UpdateServiceProfileByUuid) | **Patch** /fabric/v4/serviceProfiles/{serviceProfileId} | Update Profile
+[**CreateServiceProfile**](ServiceProfilesApi.md#CreateServiceProfile) | **Post** /fabric/v4/serviceProfiles | Create Service Profile
+[**CreateServiceProfileAction**](ServiceProfilesApi.md#CreateServiceProfileAction) | **Post** /fabric/v4/serviceProfiles/{serviceProfileId}/actions | Create Service Profile Action
+[**DeleteServiceProfileByUuid**](ServiceProfilesApi.md#DeleteServiceProfileByUuid) | **Delete** /fabric/v4/serviceProfiles/{serviceProfileId} | Delete Service Profile
+[**GetServiceProfileByUuid**](ServiceProfilesApi.md#GetServiceProfileByUuid) | **Get** /fabric/v4/serviceProfiles/{serviceProfileId} | Get Service Profile
+[**GetServiceProfileEnvironmentsByUuid**](ServiceProfilesApi.md#GetServiceProfileEnvironmentsByUuid) | **Get** /fabric/v4/serviceProfiles/{serviceProfileId}/environments | Get Service Profile Environments
+[**GetServiceProfileMetrosByUuid**](ServiceProfilesApi.md#GetServiceProfileMetrosByUuid) | **Get** /fabric/v4/serviceProfiles/{serviceProfileId}/metros | Get Service Profile Metros
+[**ListServiceProfiles**](ServiceProfilesApi.md#ListServiceProfiles) | **Get** /fabric/v4/serviceProfiles | List Service Profiles
+[**PutServiceProfileByUuid**](ServiceProfilesApi.md#PutServiceProfileByUuid) | **Put** /fabric/v4/serviceProfiles/{serviceProfileId} | Replace Service Profile
+[**SearchServiceProfiles**](ServiceProfilesApi.md#SearchServiceProfiles) | **Post** /fabric/v4/serviceProfiles/search | Search Service Profiles
+[**ServiceProfileEnvironmentAction**](ServiceProfilesApi.md#ServiceProfileEnvironmentAction) | **Post** /fabric/v4/serviceProfiles/{serviceProfileId}/environments/{environmentId}/actions | Create Service Profile Environment Action
+[**UpdateServiceProfileByUuid**](ServiceProfilesApi.md#UpdateServiceProfileByUuid) | **Patch** /fabric/v4/serviceProfiles/{serviceProfileId} | Update Service Profile
 
 
 
@@ -22,7 +22,7 @@ Method | HTTP request | Description
 
 > ServiceProfile CreateServiceProfile(ctx).ServiceProfileRequest(serviceProfileRequest).Execute()
 
-Create Profile
+Create Service Profile
 
 
 
@@ -88,7 +88,7 @@ Name | Type | Description  | Notes
 
 > ServiceProfileActionResponse CreateServiceProfileAction(ctx, serviceProfileId).ServiceProfileActionRequest(serviceProfileActionRequest).Execute()
 
-Profile Actions
+Create Service Profile Action
 
 
 
@@ -160,7 +160,7 @@ Name | Type | Description  | Notes
 
 > ServiceProfile DeleteServiceProfileByUuid(ctx, serviceProfileId).Execute()
 
-Delete Profile
+Delete Service Profile
 
 
 
@@ -230,7 +230,7 @@ Name | Type | Description  | Notes
 
 > ServiceProfile GetServiceProfileByUuid(ctx, serviceProfileId).ViewPoint(viewPoint).Execute()
 
-Get Profile
+Get Service Profile
 
 
 
@@ -248,7 +248,7 @@ import (
 
 func main() {
 	serviceProfileId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Service Profile UUID
-	viewPoint := openapiclient.getServiceProfiles_viewPoint_parameter("aSide") // GetServiceProfilesViewPointParameter | flips view between buyer and seller representation (optional) (default to "aSide")
+	viewPoint := openapiclient.listServiceProfiles_viewPoint_parameter("aSide") // ListServiceProfilesViewPointParameter | flips view between buyer and seller representation (optional) (default to "aSide")
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -278,7 +278,7 @@ Other parameters are passed through a pointer to a apiGetServiceProfileByUuidReq
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **viewPoint** | [**GetServiceProfilesViewPointParameter**](GetServiceProfilesViewPointParameter.md) | flips view between buyer and seller representation | [default to &quot;aSide&quot;]
+ **viewPoint** | [**ListServiceProfilesViewPointParameter**](ListServiceProfilesViewPointParameter.md) | flips view between buyer and seller representation | [default to &quot;aSide&quot;]
 
 ### Return type
 
@@ -302,7 +302,7 @@ Name | Type | Description  | Notes
 
 > ProviderEnvironments GetServiceProfileEnvironmentsByUuid(ctx, serviceProfileId).Offset(offset).Limit(limit).Execute()
 
-Get Profile Environments
+Get Service Profile Environments
 
 
 
@@ -376,7 +376,7 @@ Name | Type | Description  | Notes
 
 > ServiceMetros GetServiceProfileMetrosByUuid(ctx, serviceProfileId).Offset(offset).Limit(limit).Execute()
 
-Get Profile Metros
+Get Service Profile Metros
 
 
 
@@ -446,11 +446,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetServiceProfiles
+## ListServiceProfiles
 
-> ServiceProfiles GetServiceProfiles(ctx).Offset(offset).Limit(limit).ViewPoint(viewPoint).Execute()
+> ServiceProfiles ListServiceProfiles(ctx).Offset(offset).Limit(limit).ViewPoint(viewPoint).Execute()
 
-Get all Profiles
+List Service Profiles
 
 
 
@@ -469,17 +469,17 @@ import (
 func main() {
 	offset := int32(1) // int32 | offset (optional)
 	limit := int32(10) // int32 | number of records to fetch (optional)
-	viewPoint := openapiclient.getServiceProfiles_viewPoint_parameter("aSide") // GetServiceProfilesViewPointParameter | flips view between buyer and seller representation (optional) (default to "aSide")
+	viewPoint := openapiclient.listServiceProfiles_viewPoint_parameter("aSide") // ListServiceProfilesViewPointParameter | flips view between buyer and seller representation (optional) (default to "aSide")
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ServiceProfilesApi.GetServiceProfiles(context.Background()).Offset(offset).Limit(limit).ViewPoint(viewPoint).Execute()
+	resp, r, err := apiClient.ServiceProfilesApi.ListServiceProfiles(context.Background()).Offset(offset).Limit(limit).ViewPoint(viewPoint).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServiceProfilesApi.GetServiceProfiles``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ServiceProfilesApi.ListServiceProfiles``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetServiceProfiles`: ServiceProfiles
-	fmt.Fprintf(os.Stdout, "Response from `ServiceProfilesApi.GetServiceProfiles`: %v\n", resp)
+	// response from `ListServiceProfiles`: ServiceProfiles
+	fmt.Fprintf(os.Stdout, "Response from `ServiceProfilesApi.ListServiceProfiles`: %v\n", resp)
 }
 ```
 
@@ -489,14 +489,14 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetServiceProfilesRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListServiceProfilesRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **offset** | **int32** | offset | 
  **limit** | **int32** | number of records to fetch | 
- **viewPoint** | [**GetServiceProfilesViewPointParameter**](GetServiceProfilesViewPointParameter.md) | flips view between buyer and seller representation | [default to &quot;aSide&quot;]
+ **viewPoint** | [**ListServiceProfilesViewPointParameter**](ListServiceProfilesViewPointParameter.md) | flips view between buyer and seller representation | [default to &quot;aSide&quot;]
 
 ### Return type
 
@@ -520,7 +520,7 @@ Name | Type | Description  | Notes
 
 > ServiceProfile PutServiceProfileByUuid(ctx, serviceProfileId).IfMatch(ifMatch).ServiceProfileRequest(serviceProfileRequest).Execute()
 
-Replace Profile
+Replace Service Profile
 
 
 
@@ -594,7 +594,7 @@ Name | Type | Description  | Notes
 
 > ServiceProfiles SearchServiceProfiles(ctx).ServiceProfileSearchRequest(serviceProfileSearchRequest).ViewPoint(viewPoint).Execute()
 
-Profile Search
+Search Service Profiles
 
 
 
@@ -612,7 +612,7 @@ import (
 
 func main() {
 	serviceProfileSearchRequest := *openapiclient.NewServiceProfileSearchRequest() // ServiceProfileSearchRequest | 
-	viewPoint := openapiclient.getServiceProfiles_viewPoint_parameter("aSide") // GetServiceProfilesViewPointParameter | flips view between buyer and seller representation (optional) (default to "aSide")
+	viewPoint := openapiclient.listServiceProfiles_viewPoint_parameter("aSide") // ListServiceProfilesViewPointParameter | flips view between buyer and seller representation (optional) (default to "aSide")
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -638,7 +638,7 @@ Other parameters are passed through a pointer to a apiSearchServiceProfilesReque
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **serviceProfileSearchRequest** | [**ServiceProfileSearchRequest**](ServiceProfileSearchRequest.md) |  | 
- **viewPoint** | [**GetServiceProfilesViewPointParameter**](GetServiceProfilesViewPointParameter.md) | flips view between buyer and seller representation | [default to &quot;aSide&quot;]
+ **viewPoint** | [**ListServiceProfilesViewPointParameter**](ListServiceProfilesViewPointParameter.md) | flips view between buyer and seller representation | [default to &quot;aSide&quot;]
 
 ### Return type
 
@@ -662,7 +662,7 @@ Name | Type | Description  | Notes
 
 > EnvironmentActionResponse ServiceProfileEnvironmentAction(ctx, serviceProfileId, environmentId).EnvironmentActionRequest(environmentActionRequest).Execute()
 
-Service Profile Environment Actions
+Create Service Profile Environment Action
 
 
 
@@ -737,7 +737,7 @@ Name | Type | Description  | Notes
 
 > ServiceProfile UpdateServiceProfileByUuid(ctx, serviceProfileId).ServiceProfileUpdateOperation(serviceProfileUpdateOperation).Execute()
 
-Update Profile
+Update Service Profile
 
 
 

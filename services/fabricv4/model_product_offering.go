@@ -19,7 +19,8 @@ type ProductOffering struct {
 	// Product offering identifier
 	Id *string `json:"id,omitempty"`
 	// Product offering name
-	Name                 *string `json:"name,omitempty"`
+	Name                 *string                     `json:"name,omitempty"`
+	BillingTerm          *ProductOfferingBillingTerm `json:"billingTerm,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -106,6 +107,38 @@ func (o *ProductOffering) SetName(v string) {
 	o.Name = &v
 }
 
+// GetBillingTerm returns the BillingTerm field value if set, zero value otherwise.
+func (o *ProductOffering) GetBillingTerm() ProductOfferingBillingTerm {
+	if o == nil || IsNil(o.BillingTerm) {
+		var ret ProductOfferingBillingTerm
+		return ret
+	}
+	return *o.BillingTerm
+}
+
+// GetBillingTermOk returns a tuple with the BillingTerm field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductOffering) GetBillingTermOk() (*ProductOfferingBillingTerm, bool) {
+	if o == nil || IsNil(o.BillingTerm) {
+		return nil, false
+	}
+	return o.BillingTerm, true
+}
+
+// HasBillingTerm returns a boolean if a field has been set.
+func (o *ProductOffering) HasBillingTerm() bool {
+	if o != nil && !IsNil(o.BillingTerm) {
+		return true
+	}
+
+	return false
+}
+
+// SetBillingTerm gets a reference to the given ProductOfferingBillingTerm and assigns it to the BillingTerm field.
+func (o *ProductOffering) SetBillingTerm(v ProductOfferingBillingTerm) {
+	o.BillingTerm = &v
+}
+
 func (o ProductOffering) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -121,6 +154,9 @@ func (o ProductOffering) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.BillingTerm) {
+		toSerialize["billingTerm"] = o.BillingTerm
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -146,6 +182,7 @@ func (o *ProductOffering) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
+		delete(additionalProperties, "billingTerm")
 		o.AdditionalProperties = additionalProperties
 	}
 

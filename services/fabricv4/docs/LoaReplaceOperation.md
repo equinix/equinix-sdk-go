@@ -6,13 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Op** | [**LoaOpEnum**](LoaOpEnum.md) |  | 
 **Path** | **string** | ### A JSON Pointer path.   * &#x60;/name&#x60; - Name of the Loa   * &#x60;/description&#x60; - Description of the Loa   * &#x60;/requestor/email&#x60; - Email of the requestor contact   * &#x60;/requestor/orgName&#x60; - Organization name of the requestor   * &#x60;/issuer/email&#x60; - Email of the issuer contact   * &#x60;/issuer/orgName&#x60; - Organization name of the issuer   * &#x60;/demarcationPoint/patchPanelId&#x60; - Patch Panel Identifier   * &#x60;/demarcationPoint/patchPanelPortA&#x60; - Patch Panel Port A   * &#x60;/demarcationPoint/patchPanelPortB&#x60; - Patch Panel Port B   * &#x60;/demarcationPoint/connectorType&#x60; - Connector Type   * &#x60;/demarcationPoint/cageUniqueSpaceId&#x60; - Cage Unique Space Identifier   * &#x60;/expirationDateTime&#x60; - Expiration date and time of the Loa   * &#x60;/location/ibxCode&#x60; - IBX code of the Eligible location  | 
-**Value** | **map[string]interface{}** | New value for updated parameter | 
+**Value** | **interface{}** | New value for updated parameter | 
 
 ## Methods
 
 ### NewLoaReplaceOperation
 
-`func NewLoaReplaceOperation(op LoaOpEnum, path string, value map[string]interface{}, ) *LoaReplaceOperation`
+`func NewLoaReplaceOperation(op LoaOpEnum, path string, value interface{}, ) *LoaReplaceOperation`
 
 NewLoaReplaceOperation instantiates a new LoaReplaceOperation object
 This constructor will assign default values to properties that have it defined,
@@ -69,24 +69,34 @@ SetPath sets Path field to given value.
 
 ### GetValue
 
-`func (o *LoaReplaceOperation) GetValue() map[string]interface{}`
+`func (o *LoaReplaceOperation) GetValue() interface{}`
 
 GetValue returns the Value field if non-nil, zero value otherwise.
 
 ### GetValueOk
 
-`func (o *LoaReplaceOperation) GetValueOk() (*map[string]interface{}, bool)`
+`func (o *LoaReplaceOperation) GetValueOk() (*interface{}, bool)`
 
 GetValueOk returns a tuple with the Value field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetValue
 
-`func (o *LoaReplaceOperation) SetValue(v map[string]interface{})`
+`func (o *LoaReplaceOperation) SetValue(v interface{})`
 
 SetValue sets Value field to given value.
 
 
+### SetValueNil
+
+`func (o *LoaReplaceOperation) SetValueNil(b bool)`
+
+ SetValueNil sets the value for Value to be an explicit nil
+
+### UnsetValue
+`func (o *LoaReplaceOperation) UnsetValue()`
+
+UnsetValue ensures that no value is present for Value, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

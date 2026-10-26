@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Filter** | Pointer to [**CloudRouterFilters**](CloudRouterFilters.md) |  | [optional] 
+**Filter** | Pointer to [**CloudRouterExpression**](CloudRouterExpression.md) |  | [optional] 
 **Pagination** | Pointer to [**PaginationRequest**](PaginationRequest.md) |  | [optional] 
 **Sort** | Pointer to [**[]CloudRouterSortCriteria**](CloudRouterSortCriteria.md) |  | [optional] 
 
@@ -29,20 +29,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetFilter
 
-`func (o *CloudRouterSearchRequest) GetFilter() CloudRouterFilters`
+`func (o *CloudRouterSearchRequest) GetFilter() CloudRouterExpression`
 
 GetFilter returns the Filter field if non-nil, zero value otherwise.
 
 ### GetFilterOk
 
-`func (o *CloudRouterSearchRequest) GetFilterOk() (*CloudRouterFilters, bool)`
+`func (o *CloudRouterSearchRequest) GetFilterOk() (*CloudRouterExpression, bool)`
 
 GetFilterOk returns a tuple with the Filter field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFilter
 
-`func (o *CloudRouterSearchRequest) SetFilter(v CloudRouterFilters)`
+`func (o *CloudRouterSearchRequest) SetFilter(v CloudRouterExpression)`
 
 SetFilter sets Filter field to given value.
 

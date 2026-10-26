@@ -18,7 +18,8 @@ var _ MappedNullable = &ConnectionAcceptanceData{}
 type ConnectionAcceptanceData struct {
 	ZSide *ConnectionSide `json:"zSide,omitempty"`
 	// Authorization key bandwidth in Mbps
-	ProviderBandwidth    *int32 `json:"providerBandwidth,omitempty"`
+	ProviderBandwidth    *int32               `json:"providerBandwidth,omitempty"`
+	Operation            *ConnectionOperation `json:"operation,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -105,6 +106,38 @@ func (o *ConnectionAcceptanceData) SetProviderBandwidth(v int32) {
 	o.ProviderBandwidth = &v
 }
 
+// GetOperation returns the Operation field value if set, zero value otherwise.
+func (o *ConnectionAcceptanceData) GetOperation() ConnectionOperation {
+	if o == nil || IsNil(o.Operation) {
+		var ret ConnectionOperation
+		return ret
+	}
+	return *o.Operation
+}
+
+// GetOperationOk returns a tuple with the Operation field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ConnectionAcceptanceData) GetOperationOk() (*ConnectionOperation, bool) {
+	if o == nil || IsNil(o.Operation) {
+		return nil, false
+	}
+	return o.Operation, true
+}
+
+// HasOperation returns a boolean if a field has been set.
+func (o *ConnectionAcceptanceData) HasOperation() bool {
+	if o != nil && !IsNil(o.Operation) {
+		return true
+	}
+
+	return false
+}
+
+// SetOperation gets a reference to the given ConnectionOperation and assigns it to the Operation field.
+func (o *ConnectionAcceptanceData) SetOperation(v ConnectionOperation) {
+	o.Operation = &v
+}
+
 func (o ConnectionAcceptanceData) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -120,6 +153,9 @@ func (o ConnectionAcceptanceData) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ProviderBandwidth) {
 		toSerialize["providerBandwidth"] = o.ProviderBandwidth
+	}
+	if !IsNil(o.Operation) {
+		toSerialize["operation"] = o.Operation
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -145,6 +181,7 @@ func (o *ConnectionAcceptanceData) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "zSide")
 		delete(additionalProperties, "providerBandwidth")
+		delete(additionalProperties, "operation")
 		o.AdditionalProperties = additionalProperties
 	}
 

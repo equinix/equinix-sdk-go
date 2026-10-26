@@ -11,14 +11,14 @@ Name | Type | Description | Notes
 **Order** | Pointer to [**Order**](Order.md) |  | [optional] 
 **Project** | Pointer to [**Project**](Project.md) |  | [optional] 
 **Account** | Pointer to [**SimplifiedAccount**](SimplifiedAccount.md) |  | [optional] 
-**Notifications** | Pointer to [**[]SimplifiedNotification**](SimplifiedNotification.md) | Preferences for notifications on connection configuration or status changes | [optional] 
+**Notifications** | [**[]SimplifiedNotification**](SimplifiedNotification.md) | Preferences for notifications on connection configuration or status changes | 
 **MarketplaceSubscription** | Pointer to [**MarketplaceSubscription**](MarketplaceSubscription.md) |  | [optional] 
 
 ## Methods
 
 ### NewCloudRouterPostRequest
 
-`func NewCloudRouterPostRequest(type_ CloudRouterPostRequestBaseType, name string, location SimplifiedLocationWithoutIBX, package_ CloudRouterPostRequestPackage, ) *CloudRouterPostRequest`
+`func NewCloudRouterPostRequest(type_ CloudRouterPostRequestBaseType, name string, location SimplifiedLocationWithoutIBX, package_ CloudRouterPostRequestPackage, notifications []SimplifiedNotification, ) *CloudRouterPostRequest`
 
 NewCloudRouterPostRequest instantiates a new CloudRouterPostRequest object
 This constructor will assign default values to properties that have it defined,
@@ -207,11 +207,6 @@ and a boolean to check if the value has been set.
 
 SetNotifications sets Notifications field to given value.
 
-### HasNotifications
-
-`func (o *CloudRouterPostRequest) HasNotifications() bool`
-
-HasNotifications returns a boolean if a field has been set.
 
 ### GetMarketplaceSubscription
 

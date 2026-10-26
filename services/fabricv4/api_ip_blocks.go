@@ -30,7 +30,7 @@ func (r ApiDeleteIpBlockByIdRequest) Execute() (*IpBlock, *http.Response, error)
 }
 
 /*
-DeleteIpBlockById Delete IP Block by UUID
+DeleteIpBlockById Delete IP Block by ID
 
 Delete IP Block by UUID
 
@@ -188,7 +188,7 @@ func (r ApiGetIpBlockRequest) Execute() (*IpBlock, *http.Response, error) {
 }
 
 /*
-GetIpBlock Retrieve IP Block by UUID
+GetIpBlock Retrieve IP Block by ID
 
 Retrieve IP Block by UUID
 
@@ -330,7 +330,7 @@ func (r ApiPatchIpBlockByIdRequest) Execute() (*IpBlock, *http.Response, error) 
 }
 
 /*
-PatchIpBlockById patch IP Block by UUID
+PatchIpBlockById Update IP Block by ID
 
 patch IP Block by UUID
 
@@ -471,7 +471,7 @@ func (r ApiSearchIpBlocksRequest) Execute() (*IpBlockSearchResponseBody, *http.R
 }
 
 /*
-SearchIpBlocks Search for IP Blocks
+SearchIpBlocks Search IP Blocks
 
 Search for IP Blocks based on criteria
 
@@ -603,7 +603,7 @@ func (r ApiSubmitIpBlockRequest) Execute() (*IpBlock, *http.Response, error) {
 }
 
 /*
-SubmitIpBlock Submits new Equinix owned or customer owned IP Block request
+SubmitIpBlock Create IP Block
 
 Submits new Equinix owned or customer owned IP Block request
 

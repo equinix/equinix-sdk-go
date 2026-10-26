@@ -42,9 +42,9 @@ func (r ApiCreateCloudRouterRequest) Execute() (*CloudRouter, *http.Response, er
 }
 
 /*
-CreateCloudRouter Create Routers
+CreateCloudRouter Create Router
 
-This API provides capability to create user's Cloud Routers
+This API provides capability to create user's Cloud Router
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiCreateCloudRouterRequest
@@ -394,7 +394,7 @@ func (r ApiCreateCloudRouterCommandRequest) Execute() (*CloudRouterCommand, *htt
 }
 
 /*
-CreateCloudRouterCommand Initiate Command
+CreateCloudRouterCommand Create Command
 
 This API provides capability to initiate Command
 
@@ -568,9 +568,9 @@ func (r ApiDeleteCloudRouterByUuidRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeleteCloudRouterByUuid Delete Routers
+DeleteCloudRouterByUuid Delete Router
 
-This API provides capability to delete user's Cloud Routers
+This API provides capability to delete user's Cloud Router
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param routerId Cloud Router UUID
@@ -1395,9 +1395,9 @@ func (r ApiGetCloudRouterByUuidRequest) Execute() (*CloudRouterReadResponse, *ht
 }
 
 /*
-GetCloudRouterByUuid Get Routers
+GetCloudRouterByUuid Get Router
 
-This API provides capability to retrieve user's Cloud Routers
+This API provides capability to retrieve user's Cloud Router
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param routerId Cloud Router UUID
@@ -1704,327 +1704,6 @@ func (a *CloudRoutersApiService) GetCloudRouterCommandExecute(r ApiGetCloudRoute
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetCloudRouterPackageByCodeRequest struct {
-	ctx               context.Context
-	ApiService        *CloudRoutersApiService
-	routerPackageCode RouterPackageCode
-}
-
-func (r ApiGetCloudRouterPackageByCodeRequest) Execute() (*CloudRouterPackage, *http.Response, error) {
-	return r.ApiService.GetCloudRouterPackageByCodeExecute(r)
-}
-
-/*
-GetCloudRouterPackageByCode Get Package Details
-
-This API provides capability to retrieve user's Cloud Routers Package Details
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param routerPackageCode Equinix-assigned Cloud Router package identifier
-	@return ApiGetCloudRouterPackageByCodeRequest
-*/
-func (a *CloudRoutersApiService) GetCloudRouterPackageByCode(ctx context.Context, routerPackageCode RouterPackageCode) ApiGetCloudRouterPackageByCodeRequest {
-	return ApiGetCloudRouterPackageByCodeRequest{
-		ApiService:        a,
-		ctx:               ctx,
-		routerPackageCode: routerPackageCode,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CloudRouterPackage
-func (a *CloudRoutersApiService) GetCloudRouterPackageByCodeExecute(r ApiGetCloudRouterPackageByCodeRequest) (*CloudRouterPackage, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *CloudRouterPackage
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudRoutersApiService.GetCloudRouterPackageByCode")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/fabric/v4/routerPackages/{routerPackageCode}"
-	localVarPath = strings.Replace(localVarPath, "{"+"routerPackageCode"+"}", url.PathEscape(parameterValueToString(r.routerPackageCode, "routerPackageCode")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v []Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v []Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v []Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 415 {
-			var v []Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v []Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiGetCloudRouterPackagesRequest struct {
-	ctx        context.Context
-	ApiService *CloudRoutersApiService
-	offset     *int32
-	limit      *int32
-}
-
-// offset
-func (r ApiGetCloudRouterPackagesRequest) Offset(offset int32) ApiGetCloudRouterPackagesRequest {
-	r.offset = &offset
-	return r
-}
-
-// number of records to fetch
-func (r ApiGetCloudRouterPackagesRequest) Limit(limit int32) ApiGetCloudRouterPackagesRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiGetCloudRouterPackagesRequest) Execute() (*PackageResponse, *http.Response, error) {
-	return r.ApiService.GetCloudRouterPackagesExecute(r)
-}
-
-/*
-GetCloudRouterPackages List Packages
-
-This API provides capability to retrieve user's Cloud Routers Packages
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiGetCloudRouterPackagesRequest
-*/
-func (a *CloudRoutersApiService) GetCloudRouterPackages(ctx context.Context) ApiGetCloudRouterPackagesRequest {
-	return ApiGetCloudRouterPackagesRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return PackageResponse
-func (a *CloudRoutersApiService) GetCloudRouterPackagesExecute(r ApiGetCloudRouterPackagesRequest) (*PackageResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *PackageResponse
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudRoutersApiService.GetCloudRouterPackages")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/fabric/v4/routerPackages"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
-	}
-	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v []Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v []Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 415 {
-			var v []Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v []Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
 type ApiSearchCloudRouterCommandsRequest struct {
 	ctx                             context.Context
 	ApiService                      *CloudRoutersApiService
@@ -2222,7 +1901,7 @@ func (r ApiSearchCloudRouterRoutesRequest) Execute() (*RouteTableEntrySearchResp
 }
 
 /*
-SearchCloudRouterRoutes Search Route Table
+SearchCloudRouterRoutes Search Route Tables
 
 The API provides capability to get list of user's Fabric Cloud Router route table entries using search criteria, including optional filtering, pagination and sorting
 
@@ -3063,9 +2742,9 @@ func (r ApiUpdateCloudRouterByUuidRequest) Execute() (*CloudRouter, *http.Respon
 }
 
 /*
-UpdateCloudRouterByUuid Update Routers
+UpdateCloudRouterByUuid Update Router
 
-This API provides capability to update user's Cloud Routers
+This API provides capability to update user's Cloud Router
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param routerId Cloud Router UUID

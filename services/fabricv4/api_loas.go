@@ -1006,7 +1006,7 @@ func (r ApiPerformLoaActionRequest) Execute() (*LoaActionResponse, *http.Respons
 }
 
 /*
-PerformLoaAction Loa Actions
+PerformLoaAction Create LOA Action
 
 The API provides capability to perform actions on Loa
 
@@ -1552,7 +1552,7 @@ func (a *LoasApiService) UpdateLoaByUuidExecute(r ApiUpdateLoaByUuidRequest) (*L
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
+	localVarHTTPContentTypes := []string{"application/json-patch+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)

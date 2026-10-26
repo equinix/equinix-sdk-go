@@ -35,7 +35,7 @@ func (r ApiCreateAppDomainRequest) Execute() (*AppDomain, *http.Response, error)
 }
 
 /*
-CreateAppDomain Create App Domain
+CreateAppDomain Create Domain
 
 This API provides capability to create user's App Domain
 
@@ -195,9 +195,9 @@ func (r ApiDeleteAppDomainByUuidRequest) Execute() (*AppDomain, *http.Response, 
 }
 
 /*
-DeleteAppDomainByUuid Delete App Domain
+DeleteAppDomainByUuid Delete Domain
 
-This API provides capability to delete user's App Domain
+This API provides capability to delete user's Domain
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param appDomainId App Domain UUID
@@ -353,9 +353,9 @@ func (r ApiGetAppDomainByUuidRequest) Execute() (*AppDomain, *http.Response, err
 }
 
 /*
-GetAppDomainByUuid Get App Domain
+GetAppDomainByUuid Get Domain
 
-This API provides capability to retrieve user's App Domain
+This API provides capability to retrieve user's Domain
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param appDomainId App Domain UUID
@@ -535,9 +535,9 @@ func (r ApiGetAttachedAppLinksByAppDomainIdRequest) Execute() (*AppDomainAttache
 }
 
 /*
-GetAttachedAppLinksByAppDomainId Get attached App Links for App Domain
+GetAttachedAppLinksByAppDomainId Get Attached Links for Domain
 
-This API provides capability to retrieve App Links attached to an App Domain.
+This API provides capability to retrieve App Links attached to an App Domain
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param appDomainId App Domain UUID
@@ -719,7 +719,7 @@ func (r ApiSearchAppDomainsRequest) Execute() (*AppDomainSearchResponse, *http.R
 }
 
 /*
-SearchAppDomains Search App Domains
+SearchAppDomains Search Domains
 
 The API provides capability to get list of user's App Domains using search criteria, including optional filtering, pagination and sorting
 
@@ -885,9 +885,9 @@ func (r ApiUpdateAppDomainByUuidRequest) Execute() (*AppDomain, *http.Response, 
 }
 
 /*
-UpdateAppDomainByUuid Update App Domain
+UpdateAppDomainByUuid Update Domain
 
-This API provides capability to update user's App Domain
+This API provides capability to update user's Domain
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param appDomainId App Domain UUID

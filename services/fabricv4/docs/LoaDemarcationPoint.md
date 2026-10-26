@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CageUniqueSpaceId** | Pointer to **string** | Unique identifier of the Cage. | [optional] 
+**CabinetUniqueSpaceId** | Pointer to **string** | Unique identifier of the Cabinet. | [optional] 
 **PatchPanelId** | Pointer to **string** | Unique identifier of the Patch Panel.  | [optional] 
 **PatchPanelPortA** | Pointer to **int32** | Specify the desired port number. &lt;br&gt; When ports are not provided, next available ports will be used.  | [optional] 
 **PatchPanelPortB** | Pointer to **int32** | Specify the desired port number. &lt;br&gt; When ports are not provided, next available ports will be used. &lt;br&gt; Required for Connector type FC and ST only.  | [optional] 
@@ -53,6 +54,31 @@ SetCageUniqueSpaceId sets CageUniqueSpaceId field to given value.
 `func (o *LoaDemarcationPoint) HasCageUniqueSpaceId() bool`
 
 HasCageUniqueSpaceId returns a boolean if a field has been set.
+
+### GetCabinetUniqueSpaceId
+
+`func (o *LoaDemarcationPoint) GetCabinetUniqueSpaceId() string`
+
+GetCabinetUniqueSpaceId returns the CabinetUniqueSpaceId field if non-nil, zero value otherwise.
+
+### GetCabinetUniqueSpaceIdOk
+
+`func (o *LoaDemarcationPoint) GetCabinetUniqueSpaceIdOk() (*string, bool)`
+
+GetCabinetUniqueSpaceIdOk returns a tuple with the CabinetUniqueSpaceId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCabinetUniqueSpaceId
+
+`func (o *LoaDemarcationPoint) SetCabinetUniqueSpaceId(v string)`
+
+SetCabinetUniqueSpaceId sets CabinetUniqueSpaceId field to given value.
+
+### HasCabinetUniqueSpaceId
+
+`func (o *LoaDemarcationPoint) HasCabinetUniqueSpaceId() bool`
+
+HasCabinetUniqueSpaceId returns a boolean if a field has been set.
 
 ### GetPatchPanelId
 

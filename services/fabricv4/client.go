@@ -37,7 +37,7 @@ var (
 	queryDescape    = strings.NewReplacer("%5B", "[", "%5D", "]")
 )
 
-// APIClient manages communication with the Equinix Fabric API v4 API v4.31
+// APIClient manages communication with the Equinix Fabric API v4 API v4.34.0
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
 	cfg    *Configuration
@@ -49,11 +49,13 @@ type APIClient struct {
 
 	ApplicationLinksApi *ApplicationLinksApiService
 
+	ApplicationProcessorsApi *ApplicationProcessorsApiService
+
 	ApplicationServicesApi *ApplicationServicesApiService
 
 	ApplicationSubscriptionsApi *ApplicationSubscriptionsApiService
 
-	CloudEventsApi *CloudEventsApiService
+	CloudRouterPackagesApi *CloudRouterPackagesApiService
 
 	CloudRoutersApi *CloudRoutersApiService
 
@@ -61,9 +63,9 @@ type APIClient struct {
 
 	ConnectionsApi *ConnectionsApiService
 
-	FabricOneApi *FabricOneApiService
+	CrossConnectsApi *CrossConnectsApiService
 
-	GatewaysApi *GatewaysApiService
+	EventsApi *EventsApiService
 
 	HealthApi *HealthApiService
 
@@ -91,7 +93,9 @@ type APIClient struct {
 
 	PortsApi *PortsApiService
 
-	PrecisionTimeApi *PrecisionTimeApiService
+	PrecisionTimePackagesApi *PrecisionTimePackagesApiService
+
+	PrecisionTimeServicesApi *PrecisionTimeServicesApiService
 
 	PricesApi *PricesApiService
 
@@ -138,14 +142,15 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	// API Services
 	c.ApplicationDomainsApi = (*ApplicationDomainsApiService)(&c.common)
 	c.ApplicationLinksApi = (*ApplicationLinksApiService)(&c.common)
+	c.ApplicationProcessorsApi = (*ApplicationProcessorsApiService)(&c.common)
 	c.ApplicationServicesApi = (*ApplicationServicesApiService)(&c.common)
 	c.ApplicationSubscriptionsApi = (*ApplicationSubscriptionsApiService)(&c.common)
-	c.CloudEventsApi = (*CloudEventsApiService)(&c.common)
+	c.CloudRouterPackagesApi = (*CloudRouterPackagesApiService)(&c.common)
 	c.CloudRoutersApi = (*CloudRoutersApiService)(&c.common)
 	c.CompanyProfilesApi = (*CompanyProfilesApiService)(&c.common)
 	c.ConnectionsApi = (*ConnectionsApiService)(&c.common)
-	c.FabricOneApi = (*FabricOneApiService)(&c.common)
-	c.GatewaysApi = (*GatewaysApiService)(&c.common)
+	c.CrossConnectsApi = (*CrossConnectsApiService)(&c.common)
+	c.EventsApi = (*EventsApiService)(&c.common)
 	c.HealthApi = (*HealthApiService)(&c.common)
 	c.IPBlocksApi = (*IPBlocksApiService)(&c.common)
 	c.InternetAccessServicesApi = (*InternetAccessServicesApiService)(&c.common)
@@ -159,7 +164,8 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.OpticalMetroConnectsApi = (*OpticalMetroConnectsApiService)(&c.common)
 	c.PortPackagesApi = (*PortPackagesApiService)(&c.common)
 	c.PortsApi = (*PortsApiService)(&c.common)
-	c.PrecisionTimeApi = (*PrecisionTimeApiService)(&c.common)
+	c.PrecisionTimePackagesApi = (*PrecisionTimePackagesApiService)(&c.common)
+	c.PrecisionTimeServicesApi = (*PrecisionTimeServicesApiService)(&c.common)
 	c.PricesApi = (*PricesApiService)(&c.common)
 	c.RouteAggregationRulesApi = (*RouteAggregationRulesApiService)(&c.common)
 	c.RouteAggregationsApi = (*RouteAggregationsApiService)(&c.common)

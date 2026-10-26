@@ -21,7 +21,7 @@ type LoaReplaceOperation struct {
 	// ### A JSON Pointer path.   * `/name` - Name of the Loa   * `/description` - Description of the Loa   * `/requestor/email` - Email of the requestor contact   * `/requestor/orgName` - Organization name of the requestor   * `/issuer/email` - Email of the issuer contact   * `/issuer/orgName` - Organization name of the issuer   * `/demarcationPoint/patchPanelId` - Patch Panel Identifier   * `/demarcationPoint/patchPanelPortA` - Patch Panel Port A   * `/demarcationPoint/patchPanelPortB` - Patch Panel Port B   * `/demarcationPoint/connectorType` - Connector Type   * `/demarcationPoint/cageUniqueSpaceId` - Cage Unique Space Identifier   * `/expirationDateTime` - Expiration date and time of the Loa   * `/location/ibxCode` - IBX code of the Eligible location
 	Path string `json:"path"`
 	// New value for updated parameter
-	Value                map[string]interface{} `json:"value"`
+	Value                interface{} `json:"value"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -31,7 +31,7 @@ type _LoaReplaceOperation LoaReplaceOperation
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewLoaReplaceOperation(op LoaOpEnum, path string, value map[string]interface{}) *LoaReplaceOperation {
+func NewLoaReplaceOperation(op LoaOpEnum, path string, value interface{}) *LoaReplaceOperation {
 	this := LoaReplaceOperation{}
 	this.Op = op
 	this.Path = path
@@ -96,9 +96,10 @@ func (o *LoaReplaceOperation) SetPath(v string) {
 }
 
 // GetValue returns the Value field value
-func (o *LoaReplaceOperation) GetValue() map[string]interface{} {
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *LoaReplaceOperation) GetValue() interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 
@@ -107,15 +108,16 @@ func (o *LoaReplaceOperation) GetValue() map[string]interface{} {
 
 // GetValueOk returns a tuple with the Value field value
 // and a boolean to check if the value has been set.
-func (o *LoaReplaceOperation) GetValueOk() (map[string]interface{}, bool) {
-	if o == nil {
-		return map[string]interface{}{}, false
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *LoaReplaceOperation) GetValueOk() (*interface{}, bool) {
+	if o == nil || IsNil(o.Value) {
+		return nil, false
 	}
-	return o.Value, true
+	return &o.Value, true
 }
 
 // SetValue sets field value
-func (o *LoaReplaceOperation) SetValue(v map[string]interface{}) {
+func (o *LoaReplaceOperation) SetValue(v interface{}) {
 	o.Value = v
 }
 
@@ -131,7 +133,9 @@ func (o LoaReplaceOperation) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["op"] = o.Op
 	toSerialize["path"] = o.Path
-	toSerialize["value"] = o.Value
+	if o.Value != nil {
+		toSerialize["value"] = o.Value
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value

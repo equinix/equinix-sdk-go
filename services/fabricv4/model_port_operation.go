@@ -27,8 +27,10 @@ type PortOperation struct {
 	// Total number of connections.
 	AccessVCCount *int64 `json:"accessVCCount,omitempty"`
 	// Date and time at which port availability changed.
-	OpStatusChangedAt    *time.Time        `json:"opStatusChangedAt,omitempty"`
-	MaintenanceStatus    *MaintenanceState `json:"maintenanceStatus,omitempty"`
+	OpStatusChangedAt *time.Time        `json:"opStatusChangedAt,omitempty"`
+	MaintenanceStatus *MaintenanceState `json:"maintenanceStatus,omitempty"`
+	// Indicates whether the port configuration is locked due to an ongoing or scheduled maintenance.
+	LockEnabled          *bool `json:"lockEnabled,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -275,6 +277,38 @@ func (o *PortOperation) SetMaintenanceStatus(v MaintenanceState) {
 	o.MaintenanceStatus = &v
 }
 
+// GetLockEnabled returns the LockEnabled field value if set, zero value otherwise.
+func (o *PortOperation) GetLockEnabled() bool {
+	if o == nil || IsNil(o.LockEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.LockEnabled
+}
+
+// GetLockEnabledOk returns a tuple with the LockEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PortOperation) GetLockEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.LockEnabled) {
+		return nil, false
+	}
+	return o.LockEnabled, true
+}
+
+// HasLockEnabled returns a boolean if a field has been set.
+func (o *PortOperation) HasLockEnabled() bool {
+	if o != nil && !IsNil(o.LockEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetLockEnabled gets a reference to the given bool and assigns it to the LockEnabled field.
+func (o *PortOperation) SetLockEnabled(v bool) {
+	o.LockEnabled = &v
+}
+
 func (o PortOperation) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -306,6 +340,9 @@ func (o PortOperation) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.MaintenanceStatus) {
 		toSerialize["maintenanceStatus"] = o.MaintenanceStatus
 	}
+	if !IsNil(o.LockEnabled) {
+		toSerialize["lockEnabled"] = o.LockEnabled
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -335,6 +372,7 @@ func (o *PortOperation) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "accessVCCount")
 		delete(additionalProperties, "opStatusChangedAt")
 		delete(additionalProperties, "maintenanceStatus")
+		delete(additionalProperties, "lockEnabled")
 		o.AdditionalProperties = additionalProperties
 	}
 

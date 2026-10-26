@@ -35,9 +35,9 @@ func (r ApiCreateAppSubscriptionRequest) Execute() (*AppSubscription, *http.Resp
 }
 
 /*
-CreateAppSubscription Create App Subscription
+CreateAppSubscription Create Subscription
 
-This API provides capability to create user's App Subscription
+This API provides capability to create user's Subscription
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiCreateAppSubscriptionRequest
@@ -184,9 +184,9 @@ func (r ApiDeleteAppSubscriptionByUuidRequest) Execute() (*AppSubscription, *htt
 }
 
 /*
-DeleteAppSubscriptionByUuid Delete App Subscription
+DeleteAppSubscriptionByUuid Delete Subscription
 
-This API provides capability to delete user's App Subscription
+This API provides capability to delete user's Subscription
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param appSubscriptionId App Subscription UUID
@@ -342,9 +342,9 @@ func (r ApiGetAppSubscriptionByUuidRequest) Execute() (*AppSubscription, *http.R
 }
 
 /*
-GetAppSubscriptionByUuid Get App Subscription
+GetAppSubscriptionByUuid Get Subscription
 
-This API provides capability to retrieve user's App Subscription
+This API provides capability to retrieve user's Subscription
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param appSubscriptionId App Subscription UUID
@@ -494,7 +494,7 @@ func (r ApiSearchAppSubscriptionsRequest) Execute() (*AppSubscriptionSearchRespo
 }
 
 /*
-SearchAppSubscriptions Search App Subscriptions
+SearchAppSubscriptions Search Subscriptions
 
 The API provides capability to get list of user's App Subscriptions using search criteria, including optional filtering, pagination and sorting
 
@@ -660,9 +660,9 @@ func (r ApiUpdateAppSubscriptionByUuidRequest) Execute() (*AppSubscription, *htt
 }
 
 /*
-UpdateAppSubscriptionByUuid Update App Subscription
+UpdateAppSubscriptionByUuid Update Subscription
 
-This API provides capability to update user's App Subscription
+This API provides capability to update user's Subscription
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param appSubscriptionId App Subscription UUID

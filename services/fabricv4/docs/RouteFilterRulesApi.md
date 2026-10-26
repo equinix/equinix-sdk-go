@@ -7,11 +7,11 @@ Method | HTTP request | Description
 [**CreateRouteFilterRule**](RouteFilterRulesApi.md#CreateRouteFilterRule) | **Post** /fabric/v4/routeFilters/{routeFilterId}/routeFilterRules | Create Route Filter Rule
 [**CreateRouteFilterRulesInBulk**](RouteFilterRulesApi.md#CreateRouteFilterRulesInBulk) | **Post** /fabric/v4/routeFilters/{routeFilterId}/routeFilterRules/bulk | Bulk Create Route Filter Rules
 [**DeleteRouteFilterRuleByUuid**](RouteFilterRulesApi.md#DeleteRouteFilterRuleByUuid) | **Delete** /fabric/v4/routeFilters/{routeFilterId}/routeFilterRules/{routeFilterRuleId} | Delete Route Filter Rule
-[**GetRouteFilterRuleByUuid**](RouteFilterRulesApi.md#GetRouteFilterRuleByUuid) | **Get** /fabric/v4/routeFilters/{routeFilterId}/routeFilterRules/{routeFilterRuleId} | Get Route Filter Rule By UUID
+[**GetRouteFilterRuleByUuid**](RouteFilterRulesApi.md#GetRouteFilterRuleByUuid) | **Get** /fabric/v4/routeFilters/{routeFilterId}/routeFilterRules/{routeFilterRuleId} | Get Route Filter Rule by ID
 [**GetRouteFilterRuleChangeByUuid**](RouteFilterRulesApi.md#GetRouteFilterRuleChangeByUuid) | **Get** /fabric/v4/routeFilters/{routeFilterId}/routeFilterRules/{routeFilterRuleId}/changes/{changeId} | Get Change By ID
-[**GetRouteFilterRuleChanges**](RouteFilterRulesApi.md#GetRouteFilterRuleChanges) | **Get** /fabric/v4/routeFilters/{routeFilterId}/routeFilterRules/{routeFilterRuleId}/changes | Get All Changes
+[**GetRouteFilterRuleChanges**](RouteFilterRulesApi.md#GetRouteFilterRuleChanges) | **Get** /fabric/v4/routeFilters/{routeFilterId}/routeFilterRules/{routeFilterRuleId}/changes | Get Route Filter Rule Changes
 [**GetRouteFilterRules**](RouteFilterRulesApi.md#GetRouteFilterRules) | **Get** /fabric/v4/routeFilters/{routeFilterId}/routeFilterRules | Get Route Filter Rules
-[**PatchRouteFilterRuleByUuid**](RouteFilterRulesApi.md#PatchRouteFilterRuleByUuid) | **Patch** /fabric/v4/routeFilters/{routeFilterId}/routeFilterRules/{routeFilterRuleId} | Patch Route Filter Rule
+[**PatchRouteFilterRuleByUuid**](RouteFilterRulesApi.md#PatchRouteFilterRuleByUuid) | **Patch** /fabric/v4/routeFilters/{routeFilterId}/routeFilterRules/{routeFilterRuleId} | Update Route Filter Rule
 [**ReplaceRouteFilterRuleByUuid**](RouteFilterRulesApi.md#ReplaceRouteFilterRuleByUuid) | **Put** /fabric/v4/routeFilters/{routeFilterId}/routeFilterRules/{routeFilterRuleId} | Replace Route Filter Rule
 [**SearchRouteFilterRules**](RouteFilterRulesApi.md#SearchRouteFilterRules) | **Post** /fabric/v4/routeFilters/{routeFilterId}/routeFilterRules/search | Search Route Filter Rules
 
@@ -238,7 +238,7 @@ Name | Type | Description  | Notes
 
 > RouteFilterRulesData GetRouteFilterRuleByUuid(ctx, routeFilterId, routeFilterRuleId).Execute()
 
-Get Route Filter Rule By UUID
+Get Route Filter Rule by ID
 
 
 
@@ -387,7 +387,7 @@ Name | Type | Description  | Notes
 
 > RouteFilterRulesChangeDataResponse GetRouteFilterRuleChanges(ctx, routeFilterId, routeFilterRuleId).Offset(offset).Limit(limit).Execute()
 
-Get All Changes
+Get Route Filter Rule Changes
 
 
 
@@ -538,7 +538,7 @@ Name | Type | Description  | Notes
 
 > RouteFilterRulesData PatchRouteFilterRuleByUuid(ctx, routeFilterId, routeFilterRuleId).RouteFilterRulesPatchRequestItem(routeFilterRulesPatchRequestItem).Execute()
 
-Patch Route Filter Rule
+Update Route Filter Rule
 
 
 

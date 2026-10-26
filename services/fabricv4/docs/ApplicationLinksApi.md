@@ -4,22 +4,27 @@ All URIs are relative to *https://api.equinix.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AttachAppDomainToAppLink**](ApplicationLinksApi.md#AttachAppDomainToAppLink) | **Put** /fabric/v4/appLinks/{appLinkId}/appDomains/{appDomainId} | Attach App Domain to App Link
-[**AttachAppServiceToAppLink**](ApplicationLinksApi.md#AttachAppServiceToAppLink) | **Put** /fabric/v4/appLinks/{appLinkId}/appServices/{appServiceId} | Attach App Service to App Link
-[**CreateAppLink**](ApplicationLinksApi.md#CreateAppLink) | **Post** /fabric/v4/appLinks | Create App Link
-[**DeleteAppLinkByUuid**](ApplicationLinksApi.md#DeleteAppLinkByUuid) | **Delete** /fabric/v4/appLinks/{appLinkId} | Delete App Link
-[**DetachAppDomainFromAppLink**](ApplicationLinksApi.md#DetachAppDomainFromAppLink) | **Delete** /fabric/v4/appLinks/{appLinkId}/appDomains/{appDomainId} | Detach App Domain from App Link
-[**DetachAppServiceFromAppLink**](ApplicationLinksApi.md#DetachAppServiceFromAppLink) | **Delete** /fabric/v4/appLinks/{appLinkId}/appServices/{appServiceId} | Detach App Service from App Link
-[**GetAppLinkByUuid**](ApplicationLinksApi.md#GetAppLinkByUuid) | **Get** /fabric/v4/appLinks/{appLinkId} | Get App Link
-[**GetAttachedAppDomainByUuid**](ApplicationLinksApi.md#GetAttachedAppDomainByUuid) | **Get** /fabric/v4/appLinks/{appLinkId}/appDomains/{appDomainId} | Get attached App Domain for App Link
-[**GetAttachedAppDomainsByAppLinkId**](ApplicationLinksApi.md#GetAttachedAppDomainsByAppLinkId) | **Get** /fabric/v4/appLinks/{appLinkId}/appDomains | Get attached App Domains for App Link
-[**GetAttachedAppServiceByUuid**](ApplicationLinksApi.md#GetAttachedAppServiceByUuid) | **Get** /fabric/v4/appLinks/{appLinkId}/appServices/{appServiceId} | Get attached App Service for App Link
-[**GetAttachedAppServicesByAppLinkId**](ApplicationLinksApi.md#GetAttachedAppServicesByAppLinkId) | **Get** /fabric/v4/appLinks/{appLinkId}/appServices | Get attached App Services for App Link
-[**SearchAppLinks**](ApplicationLinksApi.md#SearchAppLinks) | **Post** /fabric/v4/appLinks/search | Search App Links
-[**SearchAttachedAppDomains**](ApplicationLinksApi.md#SearchAttachedAppDomains) | **Post** /fabric/v4/appLinks/{appLinkId}/appDomains/search | Search attached App Domain to App Link
-[**SearchAttachedAppServices**](ApplicationLinksApi.md#SearchAttachedAppServices) | **Post** /fabric/v4/appLinks/{appLinkId}/appServices/search | Search attached App Service to App Link
-[**UpdateAppLinkByUuid**](ApplicationLinksApi.md#UpdateAppLinkByUuid) | **Patch** /fabric/v4/appLinks/{appLinkId} | Update App Link
-[**UpdateAppServiceAttachmentToAppLink**](ApplicationLinksApi.md#UpdateAppServiceAttachmentToAppLink) | **Patch** /fabric/v4/appLinks/{appLinkId}/appServices/{appServiceId} | Update App Service attachment to App Link
+[**AttachAppDomainToAppLink**](ApplicationLinksApi.md#AttachAppDomainToAppLink) | **Put** /fabric/v4/appLinks/{appLinkId}/appDomains/{appDomainId} | Attach Domain to Link
+[**AttachAppProcessorToAppLink**](ApplicationLinksApi.md#AttachAppProcessorToAppLink) | **Put** /fabric/v4/appLinks/{appLinkId}/appProcessors/{appProcessorId} | Attach Processor to Link
+[**AttachAppServiceToAppLink**](ApplicationLinksApi.md#AttachAppServiceToAppLink) | **Put** /fabric/v4/appLinks/{appLinkId}/appServices/{appServiceId} | Attach Service to Link
+[**CreateAppLink**](ApplicationLinksApi.md#CreateAppLink) | **Post** /fabric/v4/appLinks | Create Link
+[**DeleteAppLinkByUuid**](ApplicationLinksApi.md#DeleteAppLinkByUuid) | **Delete** /fabric/v4/appLinks/{appLinkId} | Delete Link
+[**DetachAppDomainFromAppLink**](ApplicationLinksApi.md#DetachAppDomainFromAppLink) | **Delete** /fabric/v4/appLinks/{appLinkId}/appDomains/{appDomainId} | Detach Domain from Link
+[**DetachAppProcessorFromAppLink**](ApplicationLinksApi.md#DetachAppProcessorFromAppLink) | **Delete** /fabric/v4/appLinks/{appLinkId}/appProcessors/{appProcessorId} | Detach App Processor from App Link
+[**DetachAppServiceFromAppLink**](ApplicationLinksApi.md#DetachAppServiceFromAppLink) | **Delete** /fabric/v4/appLinks/{appLinkId}/appServices/{appServiceId} | Detach Service from Link
+[**GetAppLinkByUuid**](ApplicationLinksApi.md#GetAppLinkByUuid) | **Get** /fabric/v4/appLinks/{appLinkId} | Get Link
+[**GetAttachedAppDomainByUuid**](ApplicationLinksApi.md#GetAttachedAppDomainByUuid) | **Get** /fabric/v4/appLinks/{appLinkId}/appDomains/{appDomainId} | Get Attached Domain for Link
+[**GetAttachedAppDomainsByAppLinkId**](ApplicationLinksApi.md#GetAttachedAppDomainsByAppLinkId) | **Get** /fabric/v4/appLinks/{appLinkId}/appDomains | Get Attached Domains for Link
+[**GetAttachedAppProcessor**](ApplicationLinksApi.md#GetAttachedAppProcessor) | **Get** /fabric/v4/appLinks/{appLinkId}/appProcessors/{appProcessorId} | Get attached App Processor for App Link
+[**GetAttachedAppProcessorsByAppLinkId**](ApplicationLinksApi.md#GetAttachedAppProcessorsByAppLinkId) | **Get** /fabric/v4/appLinks/{appLinkId}/appProcessors | Get attached Processors for Link
+[**GetAttachedAppServiceByUuid**](ApplicationLinksApi.md#GetAttachedAppServiceByUuid) | **Get** /fabric/v4/appLinks/{appLinkId}/appServices/{appServiceId} | Get Attached Service for Link
+[**GetAttachedAppServicesByAppLinkId**](ApplicationLinksApi.md#GetAttachedAppServicesByAppLinkId) | **Get** /fabric/v4/appLinks/{appLinkId}/appServices | Get Attached Services for Link
+[**SearchAppLinks**](ApplicationLinksApi.md#SearchAppLinks) | **Post** /fabric/v4/appLinks/search | Search Links
+[**SearchAttachedAppDomains**](ApplicationLinksApi.md#SearchAttachedAppDomains) | **Post** /fabric/v4/appLinks/{appLinkId}/appDomains/search | Search Attached Domains for Link
+[**SearchAttachedAppProcessors**](ApplicationLinksApi.md#SearchAttachedAppProcessors) | **Post** /fabric/v4/appLinks/{appLinkId}/appProcessors/search | Search attached Processors to Link
+[**SearchAttachedAppServices**](ApplicationLinksApi.md#SearchAttachedAppServices) | **Post** /fabric/v4/appLinks/{appLinkId}/appServices/search | Search Attached Services for Link
+[**UpdateAppLinkByUuid**](ApplicationLinksApi.md#UpdateAppLinkByUuid) | **Patch** /fabric/v4/appLinks/{appLinkId} | Update Link
+[**UpdateAppServiceAttachmentToAppLink**](ApplicationLinksApi.md#UpdateAppServiceAttachmentToAppLink) | **Patch** /fabric/v4/appLinks/{appLinkId}/appServices/{appServiceId} | Update Service Attachment for Link
 
 
 
@@ -27,7 +32,7 @@ Method | HTTP request | Description
 
 > AppLinkAppDomainAttachment AttachAppDomainToAppLink(ctx, appLinkId, appDomainId).Execute()
 
-Attach App Domain to App Link
+Attach Domain to Link
 
 
 
@@ -96,11 +101,86 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## AttachAppProcessorToAppLink
+
+> AppLinkAppProcessorAttachment AttachAppProcessorToAppLink(ctx, appLinkId, appProcessorId).AppLinkAttachProcessorRequest(appLinkAttachProcessorRequest).Execute()
+
+Attach Processor to Link
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/equinix/equinix-sdk-go/services/fabricv4"
+)
+
+func main() {
+	appLinkId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | App Link UUID
+	appProcessorId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | App Processor UUID
+	appLinkAttachProcessorRequest := *openapiclient.NewAppLinkAttachProcessorRequest(string(123)) // AppLinkAttachProcessorRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ApplicationLinksApi.AttachAppProcessorToAppLink(context.Background(), appLinkId, appProcessorId).AppLinkAttachProcessorRequest(appLinkAttachProcessorRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationLinksApi.AttachAppProcessorToAppLink``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AttachAppProcessorToAppLink`: AppLinkAppProcessorAttachment
+	fmt.Fprintf(os.Stdout, "Response from `ApplicationLinksApi.AttachAppProcessorToAppLink`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**appLinkId** | **string** | App Link UUID | 
+**appProcessorId** | **string** | App Processor UUID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAttachAppProcessorToAppLinkRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **appLinkAttachProcessorRequest** | [**AppLinkAttachProcessorRequest**](AppLinkAttachProcessorRequest.md) |  | 
+
+### Return type
+
+[**AppLinkAppProcessorAttachment**](AppLinkAppProcessorAttachment.md)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## AttachAppServiceToAppLink
 
 > AppLinkAppServiceAttachment AttachAppServiceToAppLink(ctx, appLinkId, appServiceId).AppLinkAttachServiceRequest(appLinkAttachServiceRequest).Execute()
 
-Attach App Service to App Link
+Attach Service to Link
 
 
 
@@ -175,7 +255,7 @@ Name | Type | Description  | Notes
 
 > AppLink CreateAppLink(ctx).AppLinkPostRequest(appLinkPostRequest).Execute()
 
-Create App Link
+Create Link
 
 
 
@@ -192,7 +272,7 @@ import (
 )
 
 func main() {
-	appLinkPostRequest := *openapiclient.NewAppLinkPostRequest(openapiclient.AppLinkType("APP_LINK"), "Atlassian App Link", *openapiclient.NewAppLinkPostRequestRouter("36204584-2ae1-44f6-980f-08ecd555d9c6"), int32(1000), *openapiclient.NewProject("44f4c4f8-2f39-494e-838c-d8e640591be5")) // AppLinkPostRequest | 
+	appLinkPostRequest := *openapiclient.NewAppLinkPostRequest(openapiclient.AppLinkType("APP_LINK"), "Atlassian App Link", *openapiclient.NewAppLinkPostRequestRouter("36204584-2ae1-44f6-980f-08ecd555d9c6"), "192.168.10.0/29", int32(1000), *openapiclient.NewProject("44f4c4f8-2f39-494e-838c-d8e640591be5")) // AppLinkPostRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -241,7 +321,7 @@ Name | Type | Description  | Notes
 
 > AppLink DeleteAppLinkByUuid(ctx, appLinkId).Execute()
 
-Delete App Link
+Delete Link
 
 
 
@@ -311,7 +391,7 @@ Name | Type | Description  | Notes
 
 > AppLinkAppDomainAttachment DetachAppDomainFromAppLink(ctx, appLinkId, appDomainId).Execute()
 
-Detach App Domain from App Link
+Detach Domain from Link
 
 
 
@@ -380,11 +460,84 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## DetachAppProcessorFromAppLink
+
+> AppLinkAppProcessorAttachment DetachAppProcessorFromAppLink(ctx, appLinkId, appProcessorId).Execute()
+
+Detach App Processor from App Link
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/equinix/equinix-sdk-go/services/fabricv4"
+)
+
+func main() {
+	appLinkId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | App Link UUID
+	appProcessorId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | App Processor UUID
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ApplicationLinksApi.DetachAppProcessorFromAppLink(context.Background(), appLinkId, appProcessorId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationLinksApi.DetachAppProcessorFromAppLink``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `DetachAppProcessorFromAppLink`: AppLinkAppProcessorAttachment
+	fmt.Fprintf(os.Stdout, "Response from `ApplicationLinksApi.DetachAppProcessorFromAppLink`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**appLinkId** | **string** | App Link UUID | 
+**appProcessorId** | **string** | App Processor UUID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDetachAppProcessorFromAppLinkRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**AppLinkAppProcessorAttachment**](AppLinkAppProcessorAttachment.md)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## DetachAppServiceFromAppLink
 
 > AppLinkAppServiceAttachment DetachAppServiceFromAppLink(ctx, appLinkId, appServiceId).Execute()
 
-Detach App Service from App Link
+Detach Service from Link
 
 
 
@@ -457,7 +610,7 @@ Name | Type | Description  | Notes
 
 > AppLink GetAppLinkByUuid(ctx, appLinkId).Execute()
 
-Get App Link
+Get Link
 
 
 
@@ -527,7 +680,7 @@ Name | Type | Description  | Notes
 
 > AppLinkAppDomainAttachment GetAttachedAppDomainByUuid(ctx, appLinkId, appDomainId).Execute()
 
-Get attached App Domain for App Link
+Get Attached Domain for Link
 
 
 
@@ -600,7 +753,7 @@ Name | Type | Description  | Notes
 
 > AppLinkAttachedAppDomains GetAttachedAppDomainsByAppLinkId(ctx, appLinkId).Offset(offset).Limit(limit).AttachmentStatus(attachmentStatus).Order(order).Style(style).Execute()
 
-Get attached App Domains for App Link
+Get Attached Domains for Link
 
 
 
@@ -676,11 +829,164 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## GetAttachedAppProcessor
+
+> AppLinkAppProcessorAttachment GetAttachedAppProcessor(ctx, appLinkId, appProcessorId).Execute()
+
+Get attached App Processor for App Link
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/equinix/equinix-sdk-go/services/fabricv4"
+)
+
+func main() {
+	appLinkId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | App Link UUID
+	appProcessorId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | App Processor UUID
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ApplicationLinksApi.GetAttachedAppProcessor(context.Background(), appLinkId, appProcessorId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationLinksApi.GetAttachedAppProcessor``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetAttachedAppProcessor`: AppLinkAppProcessorAttachment
+	fmt.Fprintf(os.Stdout, "Response from `ApplicationLinksApi.GetAttachedAppProcessor`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**appLinkId** | **string** | App Link UUID | 
+**appProcessorId** | **string** | App Processor UUID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetAttachedAppProcessorRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**AppLinkAppProcessorAttachment**](AppLinkAppProcessorAttachment.md)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetAttachedAppProcessorsByAppLinkId
+
+> AppLinkAttachedAppProcessors GetAttachedAppProcessorsByAppLinkId(ctx, appLinkId).Offset(offset).Limit(limit).AttachmentStatus(attachmentStatus).Order(order).Style(style).Execute()
+
+Get attached Processors for Link
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/equinix/equinix-sdk-go/services/fabricv4"
+)
+
+func main() {
+	appLinkId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | App Link UUID
+	offset := int32(1) // int32 | offset (optional)
+	limit := int32(10) // int32 | number of records to fetch (optional)
+	attachmentStatus := []openapiclient.AppLinkAttachState{openapiclient.AppLinkAttachState("ATTACHING")} // []AppLinkAttachState | Filter attached App Processors by one or more attachment lifecycle states. (optional)
+	order := openapiclient.AttachedAppProcessorOrder("DESC") // AttachedAppProcessorOrder | Sort order for attached App Processors. (optional) (default to "DESC")
+	style := openapiclient.Style("MIN") // Style | Detail level of the response. (optional) (default to "MEDIUM")
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ApplicationLinksApi.GetAttachedAppProcessorsByAppLinkId(context.Background(), appLinkId).Offset(offset).Limit(limit).AttachmentStatus(attachmentStatus).Order(order).Style(style).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationLinksApi.GetAttachedAppProcessorsByAppLinkId``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetAttachedAppProcessorsByAppLinkId`: AppLinkAttachedAppProcessors
+	fmt.Fprintf(os.Stdout, "Response from `ApplicationLinksApi.GetAttachedAppProcessorsByAppLinkId`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**appLinkId** | **string** | App Link UUID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetAttachedAppProcessorsByAppLinkIdRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **offset** | **int32** | offset | 
+ **limit** | **int32** | number of records to fetch | 
+ **attachmentStatus** | [**[]AppLinkAttachState**](AppLinkAttachState.md) | Filter attached App Processors by one or more attachment lifecycle states. | 
+ **order** | [**AttachedAppProcessorOrder**](AttachedAppProcessorOrder.md) | Sort order for attached App Processors. | [default to &quot;DESC&quot;]
+ **style** | [**Style**](Style.md) | Detail level of the response. | [default to &quot;MEDIUM&quot;]
+
+### Return type
+
+[**AppLinkAttachedAppProcessors**](AppLinkAttachedAppProcessors.md)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GetAttachedAppServiceByUuid
 
 > AppLinkAppServiceAttachment GetAttachedAppServiceByUuid(ctx, appLinkId, appServiceId).Execute()
 
-Get attached App Service for App Link
+Get Attached Service for Link
 
 
 
@@ -753,7 +1059,7 @@ Name | Type | Description  | Notes
 
 > AppLinkAttachedAppServices GetAttachedAppServicesByAppLinkId(ctx, appLinkId).Offset(offset).Limit(limit).AttachmentStatus(attachmentStatus).Order(order).Style(style).Execute()
 
-Get attached App Services for App Link
+Get Attached Services for Link
 
 
 
@@ -833,7 +1139,7 @@ Name | Type | Description  | Notes
 
 > AppLinkSearchResponse SearchAppLinks(ctx).AppLinkSearchRequest(appLinkSearchRequest).Execute()
 
-Search App Links
+Search Links
 
 
 
@@ -899,7 +1205,7 @@ Name | Type | Description  | Notes
 
 > AppLinkAttachDomainSearchResponse SearchAttachedAppDomains(ctx, appLinkId).AppLinkAttachDomainSearchRequest(appLinkAttachDomainSearchRequest).Execute()
 
-Search attached App Domain to App Link
+Search Attached Domains for Link
 
 
 
@@ -967,11 +1273,83 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## SearchAttachedAppProcessors
+
+> AppLinkAttachProcessorSearchResponse SearchAttachedAppProcessors(ctx, appLinkId).AppLinkAttachProcessorSearchRequest(appLinkAttachProcessorSearchRequest).Execute()
+
+Search attached Processors to Link
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/equinix/equinix-sdk-go/services/fabricv4"
+)
+
+func main() {
+	appLinkId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | App Link UUID
+	appLinkAttachProcessorSearchRequest := *openapiclient.NewAppLinkAttachProcessorSearchRequest() // AppLinkAttachProcessorSearchRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ApplicationLinksApi.SearchAttachedAppProcessors(context.Background(), appLinkId).AppLinkAttachProcessorSearchRequest(appLinkAttachProcessorSearchRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationLinksApi.SearchAttachedAppProcessors``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `SearchAttachedAppProcessors`: AppLinkAttachProcessorSearchResponse
+	fmt.Fprintf(os.Stdout, "Response from `ApplicationLinksApi.SearchAttachedAppProcessors`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**appLinkId** | **string** | App Link UUID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSearchAttachedAppProcessorsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **appLinkAttachProcessorSearchRequest** | [**AppLinkAttachProcessorSearchRequest**](AppLinkAttachProcessorSearchRequest.md) |  | 
+
+### Return type
+
+[**AppLinkAttachProcessorSearchResponse**](AppLinkAttachProcessorSearchResponse.md)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## SearchAttachedAppServices
 
 > AppLinkAttachServiceSearchResponse SearchAttachedAppServices(ctx, appLinkId).AppLinkAttachServiceSearchRequest(appLinkAttachServiceSearchRequest).Execute()
 
-Search attached App Service to App Link
+Search Attached Services for Link
 
 
 
@@ -1043,7 +1421,7 @@ Name | Type | Description  | Notes
 
 > AppLink UpdateAppLinkByUuid(ctx, appLinkId).AppLinkChangeOperation(appLinkChangeOperation).Execute()
 
-Update App Link
+Update Link
 
 
 
@@ -1061,7 +1439,7 @@ import (
 
 func main() {
 	appLinkId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | App Link UUID
-	appLinkChangeOperation := []openapiclient.AppLinkChangeOperation{*openapiclient.NewAppLinkChangeOperation(openapiclient.precisionTimeChangeOperation_op("replace"), openapiclient.AppLinkChangeOperation_path("/name"), map[string]interface{}(123))} // []AppLinkChangeOperation | 
+	appLinkChangeOperation := []openapiclient.AppLinkChangeOperation{*openapiclient.NewAppLinkChangeOperation(openapiclient.AppDomainChangeOperation_op("replace"), openapiclient.AppLinkChangeOperation_path("/name"), map[string]interface{}(123))} // []AppLinkChangeOperation | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -1115,7 +1493,7 @@ Name | Type | Description  | Notes
 
 > AppLinkAppServiceAttachment UpdateAppServiceAttachmentToAppLink(ctx, appLinkId, appServiceId).AppLinkAppServiceAttachmentChangeOperation(appLinkAppServiceAttachmentChangeOperation).Execute()
 
-Update App Service attachment to App Link
+Update Service Attachment for Link
 
 
 
@@ -1134,7 +1512,7 @@ import (
 func main() {
 	appLinkId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | App Link UUID
 	appServiceId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | App Service UUID
-	appLinkAppServiceAttachmentChangeOperation := []openapiclient.AppLinkAppServiceAttachmentChangeOperation{*openapiclient.NewAppLinkAppServiceAttachmentChangeOperation(openapiclient.precisionTimeChangeOperation_op("replace"), openapiclient.AppLinkAppServiceAttachmentChangeOperation_path("/destinationIp"), map[string]interface{}(123))} // []AppLinkAppServiceAttachmentChangeOperation | 
+	appLinkAppServiceAttachmentChangeOperation := []openapiclient.AppLinkAppServiceAttachmentChangeOperation{*openapiclient.NewAppLinkAppServiceAttachmentChangeOperation(openapiclient.AppDomainChangeOperation_op("replace"), openapiclient.AppLinkAppServiceAttachmentChangeOperation_path("/destinationIp"), map[string]interface{}(123))} // []AppLinkAppServiceAttachmentChangeOperation | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
