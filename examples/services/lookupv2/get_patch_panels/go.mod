@@ -1,6 +1,6 @@
 module github.com/equinix/equinix-sdk-go/examples/services/lookupv2/get_patch_panels
 
-go 1.19
+go 1.24
 
 replace github.com/equinix/equinix-sdk-go => ../../../..
 
