@@ -124,7 +124,7 @@ import (
 func main() {
 	appLinkId := "23cd19ab-d3bb-478b-9f25-bd12a3af1914" // string | App Link UUID
 	appProcessorId := "90ee425c-9988-454c-96d9-1128bc16350f" // string | App Processor UUID
-	appLinkAttachProcessorRequest := *openapiclient.NewAppLinkAttachProcessorRequest(string([B@6c8a7696)) // AppLinkAttachProcessorRequest | 
+	appLinkAttachProcessorRequest := *openapiclient.NewAppLinkAttachProcessorRequest("bW9kZWxfbGlzdDoKICAtIG1vZGVsX25hbWU6IGdwdC00bwo=") // AppLinkAttachProcessorRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
