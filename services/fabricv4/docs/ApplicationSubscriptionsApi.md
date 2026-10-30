@@ -99,7 +99,7 @@ import (
 )
 
 func main() {
-	appSubscriptionId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | App Subscription UUID
+	appSubscriptionId := "20f3ef8e-d670-4236-86fa-bb0038adcfc3" // string | App Subscription UUID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -169,7 +169,7 @@ import (
 )
 
 func main() {
-	appSubscriptionId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | App Subscription UUID
+	appSubscriptionId := "20f3ef8e-d670-4236-86fa-bb0038adcfc3" // string | App Subscription UUID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -305,8 +305,8 @@ import (
 )
 
 func main() {
-	appSubscriptionId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | App Subscription UUID
-	appSubscriptionChangeOperation := []openapiclient.AppSubscriptionChangeOperation{*openapiclient.NewAppSubscriptionChangeOperation(openapiclient.AppDomainChangeOperation_op("replace"), "Path_example", map[string]interface{}(123))} // []AppSubscriptionChangeOperation | 
+	appSubscriptionId := "20f3ef8e-d670-4236-86fa-bb0038adcfc3" // string | App Subscription UUID
+	appSubscriptionChangeOperation := []openapiclient.AppSubscriptionChangeOperation{*openapiclient.NewAppSubscriptionChangeOperation(openapiclient.AppDomainChangeOperation_op("replace"), "Path_example", interface{}(123))} // []AppSubscriptionChangeOperation | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

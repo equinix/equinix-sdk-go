@@ -41,8 +41,8 @@ type Port struct {
 	Change                 *PortChange                 `json:"change,omitempty"`
 	ChangeLog              *Changelog                  `json:"changeLog,omitempty"`
 	// Deprecated
-	ServiceType *PortServiceType `json:"serviceType,omitempty"`
-	ServiceCode *PortServiceCode `json:"serviceCode,omitempty"`
+	ServiceType *SimplifiedPortServiceType `json:"serviceType,omitempty"`
+	ServiceCode *PortServiceCode           `json:"serviceCode,omitempty"`
 	// Equinix assigned response attribute for Port bandwidth in Mbps
 	// Deprecated
 	Bandwidth *int32 `json:"bandwidth,omitempty"`
@@ -74,7 +74,6 @@ type Port struct {
 	Notifications []PortNotification `json:"notifications,omitempty"`
 	// Port additional information
 	AdditionalInfo []PortAdditionalInfo `json:"additionalInfo,omitempty"`
-	EndCustomer    *EndCustomer         `json:"endCustomer,omitempty"`
 	// Physical ports that implement this port
 	PhysicalPorts []PhysicalPort `json:"physicalPorts,omitempty"`
 	// Port Loas
@@ -680,9 +679,9 @@ func (o *Port) SetChangeLog(v Changelog) {
 
 // GetServiceType returns the ServiceType field value if set, zero value otherwise.
 // Deprecated
-func (o *Port) GetServiceType() PortServiceType {
+func (o *Port) GetServiceType() SimplifiedPortServiceType {
 	if o == nil || IsNil(o.ServiceType) {
-		var ret PortServiceType
+		var ret SimplifiedPortServiceType
 		return ret
 	}
 	return *o.ServiceType
@@ -691,7 +690,7 @@ func (o *Port) GetServiceType() PortServiceType {
 // GetServiceTypeOk returns a tuple with the ServiceType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // Deprecated
-func (o *Port) GetServiceTypeOk() (*PortServiceType, bool) {
+func (o *Port) GetServiceTypeOk() (*SimplifiedPortServiceType, bool) {
 	if o == nil || IsNil(o.ServiceType) {
 		return nil, false
 	}
@@ -707,9 +706,9 @@ func (o *Port) HasServiceType() bool {
 	return false
 }
 
-// SetServiceType gets a reference to the given PortServiceType and assigns it to the ServiceType field.
+// SetServiceType gets a reference to the given SimplifiedPortServiceType and assigns it to the ServiceType field.
 // Deprecated
-func (o *Port) SetServiceType(v PortServiceType) {
+func (o *Port) SetServiceType(v SimplifiedPortServiceType) {
 	o.ServiceType = &v
 }
 
@@ -1359,38 +1358,6 @@ func (o *Port) SetAdditionalInfo(v []PortAdditionalInfo) {
 	o.AdditionalInfo = v
 }
 
-// GetEndCustomer returns the EndCustomer field value if set, zero value otherwise.
-func (o *Port) GetEndCustomer() EndCustomer {
-	if o == nil || IsNil(o.EndCustomer) {
-		var ret EndCustomer
-		return ret
-	}
-	return *o.EndCustomer
-}
-
-// GetEndCustomerOk returns a tuple with the EndCustomer field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Port) GetEndCustomerOk() (*EndCustomer, bool) {
-	if o == nil || IsNil(o.EndCustomer) {
-		return nil, false
-	}
-	return o.EndCustomer, true
-}
-
-// HasEndCustomer returns a boolean if a field has been set.
-func (o *Port) HasEndCustomer() bool {
-	if o != nil && !IsNil(o.EndCustomer) {
-		return true
-	}
-
-	return false
-}
-
-// SetEndCustomer gets a reference to the given EndCustomer and assigns it to the EndCustomer field.
-func (o *Port) SetEndCustomer(v EndCustomer) {
-	o.EndCustomer = &v
-}
-
 // GetPhysicalPorts returns the PhysicalPorts field value if set, zero value otherwise.
 func (o *Port) GetPhysicalPorts() []PhysicalPort {
 	if o == nil || IsNil(o.PhysicalPorts) {
@@ -1614,9 +1581,6 @@ func (o Port) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AdditionalInfo) {
 		toSerialize["additionalInfo"] = o.AdditionalInfo
 	}
-	if !IsNil(o.EndCustomer) {
-		toSerialize["endCustomer"] = o.EndCustomer
-	}
 	if !IsNil(o.PhysicalPorts) {
 		toSerialize["physicalPorts"] = o.PhysicalPorts
 	}
@@ -1687,7 +1651,6 @@ func (o *Port) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "physicalPortQuantity")
 		delete(additionalProperties, "notifications")
 		delete(additionalProperties, "additionalInfo")
-		delete(additionalProperties, "endCustomer")
 		delete(additionalProperties, "physicalPorts")
 		delete(additionalProperties, "loas")
 		delete(additionalProperties, "marketplaceSubscription")

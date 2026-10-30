@@ -28,7 +28,7 @@ type Metric struct {
 	// Metric summary
 	Summary *string `json:"summary,omitempty"`
 	// Metric data points
-	Datapoints           []MetricDatapoints `json:"datapoints,omitempty"`
+	Datapoints           []MetricDatapointsInner `json:"datapoints,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -244,9 +244,9 @@ func (o *Metric) SetSummary(v string) {
 }
 
 // GetDatapoints returns the Datapoints field value if set, zero value otherwise.
-func (o *Metric) GetDatapoints() []MetricDatapoints {
+func (o *Metric) GetDatapoints() []MetricDatapointsInner {
 	if o == nil || IsNil(o.Datapoints) {
-		var ret []MetricDatapoints
+		var ret []MetricDatapointsInner
 		return ret
 	}
 	return o.Datapoints
@@ -254,7 +254,7 @@ func (o *Metric) GetDatapoints() []MetricDatapoints {
 
 // GetDatapointsOk returns a tuple with the Datapoints field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Metric) GetDatapointsOk() ([]MetricDatapoints, bool) {
+func (o *Metric) GetDatapointsOk() ([]MetricDatapointsInner, bool) {
 	if o == nil || IsNil(o.Datapoints) {
 		return nil, false
 	}
@@ -270,8 +270,8 @@ func (o *Metric) HasDatapoints() bool {
 	return false
 }
 
-// SetDatapoints gets a reference to the given []MetricDatapoints and assigns it to the Datapoints field.
-func (o *Metric) SetDatapoints(v []MetricDatapoints) {
+// SetDatapoints gets a reference to the given []MetricDatapointsInner and assigns it to the Datapoints field.
+func (o *Metric) SetDatapoints(v []MetricDatapointsInner) {
 	o.Datapoints = v
 }
 

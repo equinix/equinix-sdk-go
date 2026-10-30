@@ -172,8 +172,8 @@ import (
 )
 
 func main() {
-	crossConnectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cross Connect UUID.
-	actionId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cross Connect Action UUID.
+	crossConnectId := "46bb1a31-c28f-4197-8b10-06e0e03d0743" // string | Cross Connect UUID.
+	actionId := "30cc7878-54e3-4e1a-8651-87a61354bad4" // string | Cross Connect Action UUID.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -245,7 +245,7 @@ import (
 )
 
 func main() {
-	crossConnectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cross Connect UUID.
+	crossConnectId := "46bb1a31-c28f-4197-8b10-06e0e03d0743" // string | Cross Connect UUID.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -315,7 +315,7 @@ import (
 )
 
 func main() {
-	crossConnectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cross Connect UUID.
+	crossConnectId := "46bb1a31-c28f-4197-8b10-06e0e03d0743" // string | Cross Connect UUID.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -385,7 +385,7 @@ import (
 )
 
 func main() {
-	crossConnectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cross Connect UUID.
+	crossConnectId := "46bb1a31-c28f-4197-8b10-06e0e03d0743" // string | Cross Connect UUID.
 	offset := int32(1) // int32 | offset (optional)
 	limit := int32(10) // int32 | number of records to fetch (optional)
 
@@ -459,7 +459,7 @@ import (
 )
 
 func main() {
-	crossConnectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cross Connect UUID.
+	crossConnectId := "46bb1a31-c28f-4197-8b10-06e0e03d0743" // string | Cross Connect UUID.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -529,7 +529,7 @@ import (
 )
 
 func main() {
-	crossConnectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cross Connect UUID.
+	crossConnectId := "46bb1a31-c28f-4197-8b10-06e0e03d0743" // string | Cross Connect UUID.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -599,7 +599,7 @@ import (
 )
 
 func main() {
-	crossConnectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cross Connect UUID.
+	crossConnectId := "46bb1a31-c28f-4197-8b10-06e0e03d0743" // string | Cross Connect UUID.
 	crossConnectActionRequest := *openapiclient.NewCrossConnectActionRequest(openapiclient.CrossConnectActionType("XC_SIGNATURE_SUBMISSION")) // CrossConnectActionRequest | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -671,7 +671,7 @@ import (
 )
 
 func main() {
-	crossConnectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cross Connect UUID.
+	crossConnectId := "46bb1a31-c28f-4197-8b10-06e0e03d0743" // string | Cross Connect UUID.
 	crossConnectActionSearchRequest := *openapiclient.NewCrossConnectActionSearchRequest() // CrossConnectActionSearchRequest | 
 
 	configuration := openapiclient.NewConfiguration()

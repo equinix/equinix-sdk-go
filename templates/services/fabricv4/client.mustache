@@ -724,7 +724,7 @@ func (e GenericOpenAPIError) Model() interface{} {
 }
 
 // Helper method for parsing Fabric API errors
-func FormatFabricv4AdditionalInfo(additionalInfo []PriceErrorAdditionalInfo) string {
+func FormatFabricv4AdditionalInfo(additionalInfo []ErrorAdditionalInfoInner) string {
 	var str []string
 	for _, addInfo := range additionalInfo {
 		property, reason := addInfo.GetProperty(), addInfo.GetReason()

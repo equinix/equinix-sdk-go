@@ -16,7 +16,7 @@ var _ MappedNullable = &CrossConnectASideRequest{}
 
 // CrossConnectASideRequest A-Side connection details.
 type CrossConnectASideRequest struct {
-	DemarcationPoint     *CrossConnectASideRequestDemarcationPoint `json:"demarcationPoint,omitempty"`
+	DemarcationPoint     *CrossConnectDemarcationPoint `json:"demarcationPoint,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -40,9 +40,9 @@ func NewCrossConnectASideRequestWithDefaults() *CrossConnectASideRequest {
 }
 
 // GetDemarcationPoint returns the DemarcationPoint field value if set, zero value otherwise.
-func (o *CrossConnectASideRequest) GetDemarcationPoint() CrossConnectASideRequestDemarcationPoint {
+func (o *CrossConnectASideRequest) GetDemarcationPoint() CrossConnectDemarcationPoint {
 	if o == nil || IsNil(o.DemarcationPoint) {
-		var ret CrossConnectASideRequestDemarcationPoint
+		var ret CrossConnectDemarcationPoint
 		return ret
 	}
 	return *o.DemarcationPoint
@@ -50,7 +50,7 @@ func (o *CrossConnectASideRequest) GetDemarcationPoint() CrossConnectASideReques
 
 // GetDemarcationPointOk returns a tuple with the DemarcationPoint field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CrossConnectASideRequest) GetDemarcationPointOk() (*CrossConnectASideRequestDemarcationPoint, bool) {
+func (o *CrossConnectASideRequest) GetDemarcationPointOk() (*CrossConnectDemarcationPoint, bool) {
 	if o == nil || IsNil(o.DemarcationPoint) {
 		return nil, false
 	}
@@ -66,8 +66,8 @@ func (o *CrossConnectASideRequest) HasDemarcationPoint() bool {
 	return false
 }
 
-// SetDemarcationPoint gets a reference to the given CrossConnectASideRequestDemarcationPoint and assigns it to the DemarcationPoint field.
-func (o *CrossConnectASideRequest) SetDemarcationPoint(v CrossConnectASideRequestDemarcationPoint) {
+// SetDemarcationPoint gets a reference to the given CrossConnectDemarcationPoint and assigns it to the DemarcationPoint field.
+func (o *CrossConnectASideRequest) SetDemarcationPoint(v CrossConnectDemarcationPoint) {
 	o.DemarcationPoint = &v
 }
 

@@ -16,7 +16,7 @@ var _ MappedNullable = &RoutingProtocolBGPData{}
 
 // RoutingProtocolBGPData struct for RoutingProtocolBGPData
 type RoutingProtocolBGPData struct {
-	Type    *RoutingProtocolBGPTypeType `json:"type,omitempty"`
+	Type    *RoutingProtocolBGPDataType `json:"type,omitempty"`
 	Name    *string                     `json:"name,omitempty"`
 	BgpIpv4 *BGPConnectionIpv4          `json:"bgpIpv4,omitempty"`
 	BgpIpv6 *BGPConnectionIpv6          `json:"bgpIpv6,omitempty"`
@@ -62,9 +62,9 @@ func NewRoutingProtocolBGPDataWithDefaults() *RoutingProtocolBGPData {
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
-func (o *RoutingProtocolBGPData) GetType() RoutingProtocolBGPTypeType {
+func (o *RoutingProtocolBGPData) GetType() RoutingProtocolBGPDataType {
 	if o == nil || IsNil(o.Type) {
-		var ret RoutingProtocolBGPTypeType
+		var ret RoutingProtocolBGPDataType
 		return ret
 	}
 	return *o.Type
@@ -72,7 +72,7 @@ func (o *RoutingProtocolBGPData) GetType() RoutingProtocolBGPTypeType {
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RoutingProtocolBGPData) GetTypeOk() (*RoutingProtocolBGPTypeType, bool) {
+func (o *RoutingProtocolBGPData) GetTypeOk() (*RoutingProtocolBGPDataType, bool) {
 	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
@@ -88,8 +88,8 @@ func (o *RoutingProtocolBGPData) HasType() bool {
 	return false
 }
 
-// SetType gets a reference to the given RoutingProtocolBGPTypeType and assigns it to the Type field.
-func (o *RoutingProtocolBGPData) SetType(v RoutingProtocolBGPTypeType) {
+// SetType gets a reference to the given RoutingProtocolBGPDataType and assigns it to the Type field.
+func (o *RoutingProtocolBGPData) SetType(v RoutingProtocolBGPDataType) {
 	o.Type = &v
 }
 

@@ -6,13 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Op** | [**AppDomainChangeOperationOp**](AppDomainChangeOperationOp.md) |  | 
 **Path** | **string** | path inside document leading to updated parameter | 
-**Value** | **map[string]interface{}** | new value for updated parameter | 
+**Value** | **interface{}** | new value for updated parameter | 
 
 ## Methods
 
 ### NewAppSubscriptionChangeOperation
 
-`func NewAppSubscriptionChangeOperation(op AppDomainChangeOperationOp, path string, value map[string]interface{}, ) *AppSubscriptionChangeOperation`
+`func NewAppSubscriptionChangeOperation(op AppDomainChangeOperationOp, path string, value interface{}, ) *AppSubscriptionChangeOperation`
 
 NewAppSubscriptionChangeOperation instantiates a new AppSubscriptionChangeOperation object
 This constructor will assign default values to properties that have it defined,
@@ -69,24 +69,34 @@ SetPath sets Path field to given value.
 
 ### GetValue
 
-`func (o *AppSubscriptionChangeOperation) GetValue() map[string]interface{}`
+`func (o *AppSubscriptionChangeOperation) GetValue() interface{}`
 
 GetValue returns the Value field if non-nil, zero value otherwise.
 
 ### GetValueOk
 
-`func (o *AppSubscriptionChangeOperation) GetValueOk() (*map[string]interface{}, bool)`
+`func (o *AppSubscriptionChangeOperation) GetValueOk() (*interface{}, bool)`
 
 GetValueOk returns a tuple with the Value field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetValue
 
-`func (o *AppSubscriptionChangeOperation) SetValue(v map[string]interface{})`
+`func (o *AppSubscriptionChangeOperation) SetValue(v interface{})`
 
 SetValue sets Value field to given value.
 
 
+### SetValueNil
+
+`func (o *AppSubscriptionChangeOperation) SetValueNil(b bool)`
+
+ SetValueNil sets the value for Value to be an explicit nil
+
+### UnsetValue
+`func (o *AppSubscriptionChangeOperation) UnsetValue()`
+
+UnsetValue ensures that no value is present for Value, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

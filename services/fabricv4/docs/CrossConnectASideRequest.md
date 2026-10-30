@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DemarcationPoint** | Pointer to [**CrossConnectASideRequestDemarcationPoint**](CrossConnectASideRequestDemarcationPoint.md) |  | [optional] 
+**DemarcationPoint** | Pointer to [**CrossConnectDemarcationPoint**](CrossConnectDemarcationPoint.md) |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetDemarcationPoint
 
-`func (o *CrossConnectASideRequest) GetDemarcationPoint() CrossConnectASideRequestDemarcationPoint`
+`func (o *CrossConnectASideRequest) GetDemarcationPoint() CrossConnectDemarcationPoint`
 
 GetDemarcationPoint returns the DemarcationPoint field if non-nil, zero value otherwise.
 
 ### GetDemarcationPointOk
 
-`func (o *CrossConnectASideRequest) GetDemarcationPointOk() (*CrossConnectASideRequestDemarcationPoint, bool)`
+`func (o *CrossConnectASideRequest) GetDemarcationPointOk() (*CrossConnectDemarcationPoint, bool)`
 
 GetDemarcationPointOk returns a tuple with the DemarcationPoint field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDemarcationPoint
 
-`func (o *CrossConnectASideRequest) SetDemarcationPoint(v CrossConnectASideRequestDemarcationPoint)`
+`func (o *CrossConnectASideRequest) SetDemarcationPoint(v CrossConnectDemarcationPoint)`
 
 SetDemarcationPoint sets DemarcationPoint field to given value.
 

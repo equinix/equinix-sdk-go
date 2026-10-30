@@ -16,10 +16,10 @@ var _ MappedNullable = &DetectionMethodResponse{}
 
 // DetectionMethodResponse struct for DetectionMethodResponse
 type DetectionMethodResponse struct {
-	Type *DetectionMethodType `json:"type,omitempty"`
+	Type *DetectionMethodResponseType `json:"type,omitempty"`
 	// Stream alert rule metric window size
-	WindowSize *string                 `json:"windowSize,omitempty"`
-	Operand    *DetectionMethodOperand `json:"operand,omitempty"`
+	WindowSize *string                         `json:"windowSize,omitempty"`
+	Operand    *DetectionMethodResponseOperand `json:"operand,omitempty"`
 	// Stream alert rule metric warning threshold
 	WarningThreshold *string `json:"warningThreshold,omitempty"`
 	// Stream alert rule metric critical threshold
@@ -47,9 +47,9 @@ func NewDetectionMethodResponseWithDefaults() *DetectionMethodResponse {
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
-func (o *DetectionMethodResponse) GetType() DetectionMethodType {
+func (o *DetectionMethodResponse) GetType() DetectionMethodResponseType {
 	if o == nil || IsNil(o.Type) {
-		var ret DetectionMethodType
+		var ret DetectionMethodResponseType
 		return ret
 	}
 	return *o.Type
@@ -57,7 +57,7 @@ func (o *DetectionMethodResponse) GetType() DetectionMethodType {
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DetectionMethodResponse) GetTypeOk() (*DetectionMethodType, bool) {
+func (o *DetectionMethodResponse) GetTypeOk() (*DetectionMethodResponseType, bool) {
 	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
@@ -73,8 +73,8 @@ func (o *DetectionMethodResponse) HasType() bool {
 	return false
 }
 
-// SetType gets a reference to the given DetectionMethodType and assigns it to the Type field.
-func (o *DetectionMethodResponse) SetType(v DetectionMethodType) {
+// SetType gets a reference to the given DetectionMethodResponseType and assigns it to the Type field.
+func (o *DetectionMethodResponse) SetType(v DetectionMethodResponseType) {
 	o.Type = &v
 }
 
@@ -111,9 +111,9 @@ func (o *DetectionMethodResponse) SetWindowSize(v string) {
 }
 
 // GetOperand returns the Operand field value if set, zero value otherwise.
-func (o *DetectionMethodResponse) GetOperand() DetectionMethodOperand {
+func (o *DetectionMethodResponse) GetOperand() DetectionMethodResponseOperand {
 	if o == nil || IsNil(o.Operand) {
-		var ret DetectionMethodOperand
+		var ret DetectionMethodResponseOperand
 		return ret
 	}
 	return *o.Operand
@@ -121,7 +121,7 @@ func (o *DetectionMethodResponse) GetOperand() DetectionMethodOperand {
 
 // GetOperandOk returns a tuple with the Operand field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DetectionMethodResponse) GetOperandOk() (*DetectionMethodOperand, bool) {
+func (o *DetectionMethodResponse) GetOperandOk() (*DetectionMethodResponseOperand, bool) {
 	if o == nil || IsNil(o.Operand) {
 		return nil, false
 	}
@@ -137,8 +137,8 @@ func (o *DetectionMethodResponse) HasOperand() bool {
 	return false
 }
 
-// SetOperand gets a reference to the given DetectionMethodOperand and assigns it to the Operand field.
-func (o *DetectionMethodResponse) SetOperand(v DetectionMethodOperand) {
+// SetOperand gets a reference to the given DetectionMethodResponseOperand and assigns it to the Operand field.
+func (o *DetectionMethodResponse) SetOperand(v DetectionMethodResponseOperand) {
 	o.Operand = &v
 }
 

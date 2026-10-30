@@ -17,7 +17,7 @@ var _ MappedNullable = &RoutingProtocolDirectType{}
 
 // RoutingProtocolDirectType struct for RoutingProtocolDirectType
 type RoutingProtocolDirectType struct {
-	Type                 RoutingProtocolDirectTypeType `json:"type"`
+	Type                 RoutingProtocolDirectDataType `json:"type"`
 	Name                 *string                       `json:"name,omitempty"`
 	DirectIpv4           *DirectConnectionIpv4         `json:"directIpv4,omitempty"`
 	DirectIpv6           *DirectConnectionIpv6         `json:"directIpv6,omitempty"`
@@ -30,7 +30,7 @@ type _RoutingProtocolDirectType RoutingProtocolDirectType
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRoutingProtocolDirectType(type_ RoutingProtocolDirectTypeType) *RoutingProtocolDirectType {
+func NewRoutingProtocolDirectType(type_ RoutingProtocolDirectDataType) *RoutingProtocolDirectType {
 	this := RoutingProtocolDirectType{}
 	this.Type = type_
 	return &this
@@ -45,9 +45,9 @@ func NewRoutingProtocolDirectTypeWithDefaults() *RoutingProtocolDirectType {
 }
 
 // GetType returns the Type field value
-func (o *RoutingProtocolDirectType) GetType() RoutingProtocolDirectTypeType {
+func (o *RoutingProtocolDirectType) GetType() RoutingProtocolDirectDataType {
 	if o == nil {
-		var ret RoutingProtocolDirectTypeType
+		var ret RoutingProtocolDirectDataType
 		return ret
 	}
 
@@ -56,7 +56,7 @@ func (o *RoutingProtocolDirectType) GetType() RoutingProtocolDirectTypeType {
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *RoutingProtocolDirectType) GetTypeOk() (*RoutingProtocolDirectTypeType, bool) {
+func (o *RoutingProtocolDirectType) GetTypeOk() (*RoutingProtocolDirectDataType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -64,7 +64,7 @@ func (o *RoutingProtocolDirectType) GetTypeOk() (*RoutingProtocolDirectTypeType,
 }
 
 // SetType sets field value
-func (o *RoutingProtocolDirectType) SetType(v RoutingProtocolDirectTypeType) {
+func (o *RoutingProtocolDirectType) SetType(v RoutingProtocolDirectDataType) {
 	o.Type = v
 }
 

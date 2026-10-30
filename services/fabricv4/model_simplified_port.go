@@ -36,8 +36,8 @@ type SimplifiedPort struct {
 	Operation        *PortOperation     `json:"operation,omitempty"`
 	Account          *SimplifiedAccount `json:"account,omitempty"`
 	// Deprecated
-	ServiceType *PortServiceType `json:"serviceType,omitempty"`
-	ServiceCode *PortServiceCode `json:"serviceCode,omitempty"`
+	ServiceType *SimplifiedPortServiceType `json:"serviceType,omitempty"`
+	ServiceCode *PortServiceCode           `json:"serviceCode,omitempty"`
 	// Equinix assigned response attribute for Port bandwidth in Mbps
 	Bandwidth *int64 `json:"bandwidth,omitempty"`
 	// Equinix assigned response attribute for Port available bandwidth in Mbps
@@ -469,9 +469,9 @@ func (o *SimplifiedPort) SetAccount(v SimplifiedAccount) {
 
 // GetServiceType returns the ServiceType field value if set, zero value otherwise.
 // Deprecated
-func (o *SimplifiedPort) GetServiceType() PortServiceType {
+func (o *SimplifiedPort) GetServiceType() SimplifiedPortServiceType {
 	if o == nil || IsNil(o.ServiceType) {
-		var ret PortServiceType
+		var ret SimplifiedPortServiceType
 		return ret
 	}
 	return *o.ServiceType
@@ -480,7 +480,7 @@ func (o *SimplifiedPort) GetServiceType() PortServiceType {
 // GetServiceTypeOk returns a tuple with the ServiceType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // Deprecated
-func (o *SimplifiedPort) GetServiceTypeOk() (*PortServiceType, bool) {
+func (o *SimplifiedPort) GetServiceTypeOk() (*SimplifiedPortServiceType, bool) {
 	if o == nil || IsNil(o.ServiceType) {
 		return nil, false
 	}
@@ -496,9 +496,9 @@ func (o *SimplifiedPort) HasServiceType() bool {
 	return false
 }
 
-// SetServiceType gets a reference to the given PortServiceType and assigns it to the ServiceType field.
+// SetServiceType gets a reference to the given SimplifiedPortServiceType and assigns it to the ServiceType field.
 // Deprecated
-func (o *SimplifiedPort) SetServiceType(v PortServiceType) {
+func (o *SimplifiedPort) SetServiceType(v SimplifiedPortServiceType) {
 	o.ServiceType = &v
 }
 

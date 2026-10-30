@@ -17,7 +17,7 @@ var _ MappedNullable = &PrecisionTimeChangeOperation{}
 
 // PrecisionTimeChangeOperation Fabric Precision Timing change operation data
 type PrecisionTimeChangeOperation struct {
-	Op   PrecisionTimeChangeOperationOp   `json:"op"`
+	Op   CloudRouterChangeOperationOp     `json:"op"`
 	Path PrecisionTimeChangeOperationPath `json:"path"`
 	// new value for updated parameter
 	Value                interface{} `json:"value"`
@@ -30,7 +30,7 @@ type _PrecisionTimeChangeOperation PrecisionTimeChangeOperation
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPrecisionTimeChangeOperation(op PrecisionTimeChangeOperationOp, path PrecisionTimeChangeOperationPath, value interface{}) *PrecisionTimeChangeOperation {
+func NewPrecisionTimeChangeOperation(op CloudRouterChangeOperationOp, path PrecisionTimeChangeOperationPath, value interface{}) *PrecisionTimeChangeOperation {
 	this := PrecisionTimeChangeOperation{}
 	this.Op = op
 	this.Path = path
@@ -47,9 +47,9 @@ func NewPrecisionTimeChangeOperationWithDefaults() *PrecisionTimeChangeOperation
 }
 
 // GetOp returns the Op field value
-func (o *PrecisionTimeChangeOperation) GetOp() PrecisionTimeChangeOperationOp {
+func (o *PrecisionTimeChangeOperation) GetOp() CloudRouterChangeOperationOp {
 	if o == nil {
-		var ret PrecisionTimeChangeOperationOp
+		var ret CloudRouterChangeOperationOp
 		return ret
 	}
 
@@ -58,7 +58,7 @@ func (o *PrecisionTimeChangeOperation) GetOp() PrecisionTimeChangeOperationOp {
 
 // GetOpOk returns a tuple with the Op field value
 // and a boolean to check if the value has been set.
-func (o *PrecisionTimeChangeOperation) GetOpOk() (*PrecisionTimeChangeOperationOp, bool) {
+func (o *PrecisionTimeChangeOperation) GetOpOk() (*CloudRouterChangeOperationOp, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *PrecisionTimeChangeOperation) GetOpOk() (*PrecisionTimeChangeOperationO
 }
 
 // SetOp sets field value
-func (o *PrecisionTimeChangeOperation) SetOp(v PrecisionTimeChangeOperationOp) {
+func (o *PrecisionTimeChangeOperation) SetOp(v CloudRouterChangeOperationOp) {
 	o.Op = v
 }
 

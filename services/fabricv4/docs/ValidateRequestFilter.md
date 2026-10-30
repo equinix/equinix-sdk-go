@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**And** | Pointer to [**[]ValidateRequestFilterAnd**](ValidateRequestFilterAnd.md) |  | [optional] 
+**And** | Pointer to [**[]ValidateRequestFilterAndInner**](ValidateRequestFilterAndInner.md) |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetAnd
 
-`func (o *ValidateRequestFilter) GetAnd() []ValidateRequestFilterAnd`
+`func (o *ValidateRequestFilter) GetAnd() []ValidateRequestFilterAndInner`
 
 GetAnd returns the And field if non-nil, zero value otherwise.
 
 ### GetAndOk
 
-`func (o *ValidateRequestFilter) GetAndOk() (*[]ValidateRequestFilterAnd, bool)`
+`func (o *ValidateRequestFilter) GetAndOk() (*[]ValidateRequestFilterAndInner, bool)`
 
 GetAndOk returns a tuple with the And field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAnd
 
-`func (o *ValidateRequestFilter) SetAnd(v []ValidateRequestFilterAnd)`
+`func (o *ValidateRequestFilter) SetAnd(v []ValidateRequestFilterAndInner)`
 
 SetAnd sets And field to given value.
 

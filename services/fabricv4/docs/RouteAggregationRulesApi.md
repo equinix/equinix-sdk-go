@@ -38,7 +38,7 @@ import (
 )
 
 func main() {
-	routeAggregationId := "routeAggregationId_example" // string | Route Aggregations Id
+	routeAggregationId := "695a8471-6595-4ac6-a2f4-b3d96ed3a59d" // string | Route Aggregations Id
 	routeAggregationRulesBase := *openapiclient.NewRouteAggregationRulesBase("192.168.0.0/24") // RouteAggregationRulesBase | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -110,7 +110,7 @@ import (
 )
 
 func main() {
-	routeAggregationId := "routeAggregationId_example" // string | Route Aggregations Id
+	routeAggregationId := "695a8471-6595-4ac6-a2f4-b3d96ed3a59d" // string | Route Aggregations Id
 	routeAggregationRulesPostRequest := *openapiclient.NewRouteAggregationRulesPostRequest() // RouteAggregationRulesPostRequest | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -182,8 +182,8 @@ import (
 )
 
 func main() {
-	routeAggregationId := "routeAggregationId_example" // string | Route Aggregations Id
-	routeAggregationRuleId := "routeAggregationRuleId_example" // string | Route Aggregation Rules Id
+	routeAggregationId := "695a8471-6595-4ac6-a2f4-b3d96ed3a59d" // string | Route Aggregations Id
+	routeAggregationRuleId := "65b025ef-022b-4180-85cf-82cfc1ab655b" // string | Route Aggregation Rules Id
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -255,8 +255,8 @@ import (
 )
 
 func main() {
-	routeAggregationId := "routeAggregationId_example" // string | Route Aggregations Id
-	routeAggregationRuleId := "routeAggregationRuleId_example" // string | Route Aggregation Rules Id
+	routeAggregationId := "695a8471-6595-4ac6-a2f4-b3d96ed3a59d" // string | Route Aggregations Id
+	routeAggregationRuleId := "65b025ef-022b-4180-85cf-82cfc1ab655b" // string | Route Aggregation Rules Id
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -328,9 +328,9 @@ import (
 )
 
 func main() {
-	routeAggregationId := "routeAggregationId_example" // string | Route Aggregations Id
-	routeAggregationRuleId := "routeAggregationRuleId_example" // string | Route Aggregation Rules Id
-	changeId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Route Aggregation Rule Change UUID
+	routeAggregationId := "695a8471-6595-4ac6-a2f4-b3d96ed3a59d" // string | Route Aggregations Id
+	routeAggregationRuleId := "65b025ef-022b-4180-85cf-82cfc1ab655b" // string | Route Aggregation Rules Id
+	changeId := "6d500177-9404-41f2-99e8-2bf1a84d8db5" // string | Route Aggregation Rule Change UUID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -404,8 +404,8 @@ import (
 )
 
 func main() {
-	routeAggregationId := "routeAggregationId_example" // string | Route Aggregations Id
-	routeAggregationRuleId := "routeAggregationRuleId_example" // string | Route Aggregation Rules Id
+	routeAggregationId := "695a8471-6595-4ac6-a2f4-b3d96ed3a59d" // string | Route Aggregations Id
+	routeAggregationRuleId := "65b025ef-022b-4180-85cf-82cfc1ab655b" // string | Route Aggregation Rules Id
 	offset := int32(1) // int32 | offset (optional)
 	limit := int32(10) // int32 | number of records to fetch (optional)
 
@@ -481,7 +481,7 @@ import (
 )
 
 func main() {
-	routeAggregationId := "routeAggregationId_example" // string | Route Aggregations Id
+	routeAggregationId := "695a8471-6595-4ac6-a2f4-b3d96ed3a59d" // string | Route Aggregations Id
 	offset := int32(1) // int32 | offset (optional)
 	limit := int32(10) // int32 | number of records to fetch (optional)
 
@@ -555,8 +555,8 @@ import (
 )
 
 func main() {
-	routeAggregationId := "routeAggregationId_example" // string | Route Aggregations Id
-	routeAggregationRuleId := "routeAggregationRuleId_example" // string | Route Aggregation Rules Id
+	routeAggregationId := "695a8471-6595-4ac6-a2f4-b3d96ed3a59d" // string | Route Aggregations Id
+	routeAggregationRuleId := "65b025ef-022b-4180-85cf-82cfc1ab655b" // string | Route Aggregation Rules Id
 	routeAggregationRulesPatchRequestItem := []openapiclient.RouteAggregationRulesPatchRequestItem{*openapiclient.NewRouteAggregationRulesPatchRequestItem("replace", "/prefix", interface{}(123))} // []RouteAggregationRulesPatchRequestItem | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -630,8 +630,8 @@ import (
 )
 
 func main() {
-	routeAggregationId := "routeAggregationId_example" // string | Route Aggregations Id
-	routeAggregationRuleId := "routeAggregationRuleId_example" // string | Route Aggregation Rules Id
+	routeAggregationId := "695a8471-6595-4ac6-a2f4-b3d96ed3a59d" // string | Route Aggregations Id
+	routeAggregationRuleId := "65b025ef-022b-4180-85cf-82cfc1ab655b" // string | Route Aggregation Rules Id
 	routeAggregationRulesBase := *openapiclient.NewRouteAggregationRulesBase("192.168.0.0/24") // RouteAggregationRulesBase | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -705,7 +705,7 @@ import (
 )
 
 func main() {
-	routeAggregationId := "routeAggregationId_example" // string | Route Aggregations Id
+	routeAggregationId := "695a8471-6595-4ac6-a2f4-b3d96ed3a59d" // string | Route Aggregations Id
 	routeAggregationRulesSearchRequest := *openapiclient.NewRouteAggregationRulesSearchRequest() // RouteAggregationRulesSearchRequest | 
 
 	configuration := openapiclient.NewConfiguration()

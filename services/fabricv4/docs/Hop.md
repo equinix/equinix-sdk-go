@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Hop** | Pointer to **int32** |  | [optional] 
-**Probes** | Pointer to [**[]HopProbes**](HopProbes.md) |  | [optional] 
+**Probes** | Pointer to [**[]HopProbesInner**](HopProbesInner.md) |  | [optional] 
 
 ## Methods
 
@@ -53,20 +53,20 @@ HasHop returns a boolean if a field has been set.
 
 ### GetProbes
 
-`func (o *Hop) GetProbes() []HopProbes`
+`func (o *Hop) GetProbes() []HopProbesInner`
 
 GetProbes returns the Probes field if non-nil, zero value otherwise.
 
 ### GetProbesOk
 
-`func (o *Hop) GetProbesOk() (*[]HopProbes, bool)`
+`func (o *Hop) GetProbesOk() (*[]HopProbesInner, bool)`
 
 GetProbesOk returns a tuple with the Probes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetProbes
 
-`func (o *Hop) SetProbes(v []HopProbes)`
+`func (o *Hop) SetProbes(v []HopProbesInner)`
 
 SetProbes sets Probes field to given value.
 

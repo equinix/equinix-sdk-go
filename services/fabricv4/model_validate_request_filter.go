@@ -16,7 +16,7 @@ var _ MappedNullable = &ValidateRequestFilter{}
 
 // ValidateRequestFilter Filters
 type ValidateRequestFilter struct {
-	And                  []ValidateRequestFilterAnd `json:"and,omitempty"`
+	And                  []ValidateRequestFilterAndInner `json:"and,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -40,9 +40,9 @@ func NewValidateRequestFilterWithDefaults() *ValidateRequestFilter {
 }
 
 // GetAnd returns the And field value if set, zero value otherwise.
-func (o *ValidateRequestFilter) GetAnd() []ValidateRequestFilterAnd {
+func (o *ValidateRequestFilter) GetAnd() []ValidateRequestFilterAndInner {
 	if o == nil || IsNil(o.And) {
-		var ret []ValidateRequestFilterAnd
+		var ret []ValidateRequestFilterAndInner
 		return ret
 	}
 	return o.And
@@ -50,7 +50,7 @@ func (o *ValidateRequestFilter) GetAnd() []ValidateRequestFilterAnd {
 
 // GetAndOk returns a tuple with the And field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ValidateRequestFilter) GetAndOk() ([]ValidateRequestFilterAnd, bool) {
+func (o *ValidateRequestFilter) GetAndOk() ([]ValidateRequestFilterAndInner, bool) {
 	if o == nil || IsNil(o.And) {
 		return nil, false
 	}
@@ -66,8 +66,8 @@ func (o *ValidateRequestFilter) HasAnd() bool {
 	return false
 }
 
-// SetAnd gets a reference to the given []ValidateRequestFilterAnd and assigns it to the And field.
-func (o *ValidateRequestFilter) SetAnd(v []ValidateRequestFilterAnd) {
+// SetAnd gets a reference to the given []ValidateRequestFilterAndInner and assigns it to the And field.
+func (o *ValidateRequestFilter) SetAnd(v []ValidateRequestFilterAndInner) {
 	o.And = v
 }
 

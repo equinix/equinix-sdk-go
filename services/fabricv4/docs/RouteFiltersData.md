@@ -9,7 +9,6 @@ Name | Type | Description | Notes
 **Uuid** | Pointer to **string** | Route filter identifier | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **Description** | Pointer to **string** | Customer-provided connection description | [optional] 
-**State** | Pointer to [**RouteFilterState**](RouteFilterState.md) |  | [optional] 
 **Change** | Pointer to [**RouteFiltersChange**](RouteFiltersChange.md) |  | [optional] 
 **NotMatchedRuleAction** | Pointer to [**RouteFiltersDataNotMatchedRuleAction**](RouteFiltersDataNotMatchedRuleAction.md) |  | [optional] 
 **ConnectionsCount** | Pointer to **int32** |  | [optional] 
@@ -160,31 +159,6 @@ SetDescription sets Description field to given value.
 `func (o *RouteFiltersData) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
-
-### GetState
-
-`func (o *RouteFiltersData) GetState() RouteFilterState`
-
-GetState returns the State field if non-nil, zero value otherwise.
-
-### GetStateOk
-
-`func (o *RouteFiltersData) GetStateOk() (*RouteFilterState, bool)`
-
-GetStateOk returns a tuple with the State field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetState
-
-`func (o *RouteFiltersData) SetState(v RouteFilterState)`
-
-SetState sets State field to given value.
-
-### HasState
-
-`func (o *RouteFiltersData) HasState() bool`
-
-HasState returns a boolean if a field has been set.
 
 ### GetChange
 

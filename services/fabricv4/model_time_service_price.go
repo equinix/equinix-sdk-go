@@ -16,9 +16,9 @@ var _ MappedNullable = &TimeServicePrice{}
 
 // TimeServicePrice Time Service Product configuration
 type TimeServicePrice struct {
-	Type                 *PrecisionTimeServiceRequestType `json:"type,omitempty"`
-	Package              *PrecisionTimePackageRequest     `json:"package,omitempty"`
-	Connection           *TimeServicePriceConnection      `json:"connection,omitempty"`
+	Type                 *TimeServicePriceType        `json:"type,omitempty"`
+	Package              *PrecisionTimePackageRequest `json:"package,omitempty"`
+	Connection           *TimeServicePriceConnection  `json:"connection,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -42,9 +42,9 @@ func NewTimeServicePriceWithDefaults() *TimeServicePrice {
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
-func (o *TimeServicePrice) GetType() PrecisionTimeServiceRequestType {
+func (o *TimeServicePrice) GetType() TimeServicePriceType {
 	if o == nil || IsNil(o.Type) {
-		var ret PrecisionTimeServiceRequestType
+		var ret TimeServicePriceType
 		return ret
 	}
 	return *o.Type
@@ -52,7 +52,7 @@ func (o *TimeServicePrice) GetType() PrecisionTimeServiceRequestType {
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TimeServicePrice) GetTypeOk() (*PrecisionTimeServiceRequestType, bool) {
+func (o *TimeServicePrice) GetTypeOk() (*TimeServicePriceType, bool) {
 	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
@@ -68,8 +68,8 @@ func (o *TimeServicePrice) HasType() bool {
 	return false
 }
 
-// SetType gets a reference to the given PrecisionTimeServiceRequestType and assigns it to the Type field.
-func (o *TimeServicePrice) SetType(v PrecisionTimeServiceRequestType) {
+// SetType gets a reference to the given TimeServicePriceType and assigns it to the Type field.
+func (o *TimeServicePrice) SetType(v TimeServicePriceType) {
 	o.Type = &v
 }
 

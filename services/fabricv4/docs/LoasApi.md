@@ -104,7 +104,7 @@ import (
 )
 
 func main() {
-	loaId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Loa UUID
+	loaId := "29cc7878-54e3-4e1a-8651-87a61354bac2" // string | Loa UUID
 	createLoaNote := *openapiclient.NewCreateLoaNote("LOA under review by our team. Expected response within 2 business days") // CreateLoaNote | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -176,8 +176,8 @@ import (
 )
 
 func main() {
-	loaId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Loa UUID
-	actionId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Action UUID
+	loaId := "29cc7878-54e3-4e1a-8651-87a61354bac2" // string | Loa UUID
+	actionId := "30cc7878-54e3-4e1a-8651-87a61354bad4" // string | Action UUID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -249,7 +249,7 @@ import (
 )
 
 func main() {
-	loaId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Loa UUID
+	loaId := "29cc7878-54e3-4e1a-8651-87a61354bac2" // string | Loa UUID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -319,7 +319,7 @@ import (
 )
 
 func main() {
-	loaId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Loa UUID
+	loaId := "29cc7878-54e3-4e1a-8651-87a61354bac2" // string | Loa UUID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -389,7 +389,7 @@ import (
 )
 
 func main() {
-	loaId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Loa UUID
+	loaId := "29cc7878-54e3-4e1a-8651-87a61354bac2" // string | Loa UUID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -459,7 +459,7 @@ import (
 )
 
 func main() {
-	loaId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Loa UUID
+	loaId := "29cc7878-54e3-4e1a-8651-87a61354bac2" // string | Loa UUID
 	loaActionRequest := *openapiclient.NewLoaActionRequest(openapiclient.LoaActionType("LOA_ISSUER_AUTHORIZATION")) // LoaActionRequest | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -597,7 +597,7 @@ import (
 )
 
 func main() {
-	loaId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Loa UUID
+	loaId := "29cc7878-54e3-4e1a-8651-87a61354bac2" // string | Loa UUID
 	loaActionSearchRequest := *openapiclient.NewLoaActionSearchRequest() // LoaActionSearchRequest | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -669,7 +669,7 @@ import (
 )
 
 func main() {
-	loaId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Loa UUID
+	loaId := "29cc7878-54e3-4e1a-8651-87a61354bac2" // string | Loa UUID
 	loaReplaceOperation := []openapiclient.LoaReplaceOperation{*openapiclient.NewLoaReplaceOperation(openapiclient.LoaOpEnum("replace"), "Path_example", interface{}(123))} // []LoaReplaceOperation | 
 
 	configuration := openapiclient.NewConfiguration()

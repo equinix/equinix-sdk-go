@@ -41,8 +41,8 @@ import (
 )
 
 func main() {
-	connectionId := "connectionId_example" // string | Connection Id
-	routingProtocolBase := openapiclient.RoutingProtocolBase{RoutingProtocolBGPType: openapiclient.NewRoutingProtocolBGPType(openapiclient.RoutingProtocolBGPType_type("BGP"))} // RoutingProtocolBase | 
+	connectionId := "557400f8-d360-11e9-bb65-2a2ae2dbcce4" // string | Connection Id
+	routingProtocolBase := openapiclient.RoutingProtocolBase{RoutingProtocolBGPType: openapiclient.NewRoutingProtocolBGPType(openapiclient.RoutingProtocolBGPData_type("BGP"))} // RoutingProtocolBase | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -113,7 +113,7 @@ import (
 )
 
 func main() {
-	connectionId := "connectionId_example" // string | Connection Id
+	connectionId := "557400f8-d360-11e9-bb65-2a2ae2dbcce4" // string | Connection Id
 	connectionRoutingProtocolPostRequest := *openapiclient.NewConnectionRoutingProtocolPostRequest() // ConnectionRoutingProtocolPostRequest | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -185,8 +185,8 @@ import (
 )
 
 func main() {
-	routingProtocolId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Routing Protocol Id
-	connectionId := "connectionId_example" // string | Connection Id
+	routingProtocolId := "557400f8-d360-11e9-bb65-2a2ae2dbcce4" // string | Routing Protocol Id
+	connectionId := "557400f8-d360-11e9-bb65-2a2ae2dbcce4" // string | Connection Id
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -258,8 +258,8 @@ import (
 )
 
 func main() {
-	routingProtocolId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Routing Protocol Id
-	connectionId := "connectionId_example" // string | Connection Id
+	routingProtocolId := "557400f8-d360-11e9-bb65-2a2ae2dbcce4" // string | Routing Protocol Id
+	connectionId := "557400f8-d360-11e9-bb65-2a2ae2dbcce4" // string | Connection Id
 	offset := int32(1) // int32 | offset (optional)
 	limit := int32(10) // int32 | number of records to fetch (optional)
 
@@ -335,8 +335,8 @@ import (
 )
 
 func main() {
-	routingProtocolId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Routing Protocol Id
-	connectionId := "connectionId_example" // string | Connection Id
+	routingProtocolId := "557400f8-d360-11e9-bb65-2a2ae2dbcce4" // string | Routing Protocol Id
+	connectionId := "557400f8-d360-11e9-bb65-2a2ae2dbcce4" // string | Connection Id
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -408,7 +408,7 @@ import (
 )
 
 func main() {
-	connectionId := "connectionId_example" // string | Connection Id
+	connectionId := "557400f8-d360-11e9-bb65-2a2ae2dbcce4" // string | Connection Id
 	offset := int32(1) // int32 | offset (optional)
 	limit := int32(10) // int32 | number of records to fetch (optional)
 
@@ -482,9 +482,9 @@ import (
 )
 
 func main() {
-	connectionId := "connectionId_example" // string | Connection Id
-	routingProtocolId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Routing Protocol Id
-	actionId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | BGP Action UUID
+	connectionId := "557400f8-d360-11e9-bb65-2a2ae2dbcce4" // string | Connection Id
+	routingProtocolId := "557400f8-d360-11e9-bb65-2a2ae2dbcce4" // string | Routing Protocol Id
+	actionId := "86534014-34b4-53f6-45d6-4b94a92d8623" // string | BGP Action UUID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -558,9 +558,9 @@ import (
 )
 
 func main() {
-	connectionId := "connectionId_example" // string | Connection Id
-	routingProtocolId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Routing Protocol Id
-	changeId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Routing Protocol Change UUID
+	connectionId := "557400f8-d360-11e9-bb65-2a2ae2dbcce4" // string | Connection Id
+	routingProtocolId := "557400f8-d360-11e9-bb65-2a2ae2dbcce4" // string | Routing Protocol Id
+	changeId := "6d500177-9404-41f2-99e8-2bf1a84d8db5" // string | Routing Protocol Change UUID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -634,8 +634,8 @@ import (
 )
 
 func main() {
-	connectionId := "connectionId_example" // string | Connection Id
-	routingProtocolId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Routing Protocol Id
+	connectionId := "557400f8-d360-11e9-bb65-2a2ae2dbcce4" // string | Connection Id
+	routingProtocolId := "557400f8-d360-11e9-bb65-2a2ae2dbcce4" // string | Routing Protocol Id
 	offset := int32(1) // int32 | offset (optional)
 	limit := int32(10) // int32 | number of records to fetch (optional)
 
@@ -711,8 +711,8 @@ import (
 )
 
 func main() {
-	routingProtocolId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Routing Protocol Id
-	connectionId := "connectionId_example" // string | Connection Id
+	routingProtocolId := "557400f8-d360-11e9-bb65-2a2ae2dbcce4" // string | Routing Protocol Id
+	connectionId := "557400f8-d360-11e9-bb65-2a2ae2dbcce4" // string | Connection Id
 	connectionChangeOperation := []openapiclient.ConnectionChangeOperation{*openapiclient.NewConnectionChangeOperation("add", "/ipv6", interface{}(123))} // []ConnectionChangeOperation | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -786,8 +786,8 @@ import (
 )
 
 func main() {
-	routingProtocolId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Routing Protocol Id
-	connectionId := "connectionId_example" // string | Connection Id
+	routingProtocolId := "557400f8-d360-11e9-bb65-2a2ae2dbcce4" // string | Routing Protocol Id
+	connectionId := "557400f8-d360-11e9-bb65-2a2ae2dbcce4" // string | Connection Id
 	bGPActionRequest := *openapiclient.NewBGPActionRequest(openapiclient.BGPActions("CLEAR_BGPIPV4")) // BGPActionRequest | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -861,9 +861,9 @@ import (
 )
 
 func main() {
-	routingProtocolId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Routing Protocol Id
-	connectionId := "connectionId_example" // string | Connection Id
-	routingProtocolBase := openapiclient.RoutingProtocolBase{RoutingProtocolBGPType: openapiclient.NewRoutingProtocolBGPType(openapiclient.RoutingProtocolBGPType_type("BGP"))} // RoutingProtocolBase | 
+	routingProtocolId := "557400f8-d360-11e9-bb65-2a2ae2dbcce4" // string | Routing Protocol Id
+	connectionId := "557400f8-d360-11e9-bb65-2a2ae2dbcce4" // string | Connection Id
+	routingProtocolBase := openapiclient.RoutingProtocolBase{RoutingProtocolBGPType: openapiclient.NewRoutingProtocolBGPType(openapiclient.RoutingProtocolBGPData_type("BGP"))} // RoutingProtocolBase | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -936,7 +936,7 @@ import (
 )
 
 func main() {
-	routerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cloud Router UUID
+	routerId := "557400f8-d360-11e9-bb65-2a2ae2dbcce4" // string | Cloud Router UUID
 	validateRequest := *openapiclient.NewValidateRequest() // ValidateRequest | 
 
 	configuration := openapiclient.NewConfiguration()
