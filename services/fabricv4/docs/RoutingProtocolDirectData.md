@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to [**RoutingProtocolDirectTypeType**](RoutingProtocolDirectTypeType.md) |  | [optional] 
+**Type** | Pointer to [**RoutingProtocolDirectDataType**](RoutingProtocolDirectDataType.md) |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **DirectIpv4** | Pointer to [**DirectConnectionIpv4**](DirectConnectionIpv4.md) |  | [optional] 
 **DirectIpv6** | Pointer to [**DirectConnectionIpv6**](DirectConnectionIpv6.md) |  | [optional] 
@@ -38,20 +38,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetType
 
-`func (o *RoutingProtocolDirectData) GetType() RoutingProtocolDirectTypeType`
+`func (o *RoutingProtocolDirectData) GetType() RoutingProtocolDirectDataType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *RoutingProtocolDirectData) GetTypeOk() (*RoutingProtocolDirectTypeType, bool)`
+`func (o *RoutingProtocolDirectData) GetTypeOk() (*RoutingProtocolDirectDataType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *RoutingProtocolDirectData) SetType(v RoutingProtocolDirectTypeType)`
+`func (o *RoutingProtocolDirectData) SetType(v RoutingProtocolDirectDataType)`
 
 SetType sets Type field to given value.
 

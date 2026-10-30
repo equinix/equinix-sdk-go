@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Uri** | Pointer to **string** | any publicly reachable http endpoint | [optional] 
-**Type** | Pointer to [**StreamSubscriptionSinkType**](StreamSubscriptionSinkType.md) |  | [optional] 
+**Type** | Pointer to [**StreamSubscriptionSinkResponseType**](StreamSubscriptionSinkResponseType.md) |  | [optional] 
 **BatchEnabled** | Pointer to **bool** | batch mode on/off | [optional] 
 **BatchSizeMax** | Pointer to **int32** | maximum batch size | [optional] 
 **BatchWaitTimeMax** | Pointer to **int32** | maximum batch waiting time | [optional] 
@@ -59,20 +59,20 @@ HasUri returns a boolean if a field has been set.
 
 ### GetType
 
-`func (o *StreamSubscriptionSinkResponse) GetType() StreamSubscriptionSinkType`
+`func (o *StreamSubscriptionSinkResponse) GetType() StreamSubscriptionSinkResponseType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *StreamSubscriptionSinkResponse) GetTypeOk() (*StreamSubscriptionSinkType, bool)`
+`func (o *StreamSubscriptionSinkResponse) GetTypeOk() (*StreamSubscriptionSinkResponseType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *StreamSubscriptionSinkResponse) SetType(v StreamSubscriptionSinkType)`
+`func (o *StreamSubscriptionSinkResponse) SetType(v StreamSubscriptionSinkResponseType)`
 
 SetType sets Type field to given value.
 

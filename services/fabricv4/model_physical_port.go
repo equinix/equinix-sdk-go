@@ -32,8 +32,6 @@ type PhysicalPort struct {
 	Uuid             *string               `json:"uuid,omitempty"`
 	Tether           *PortTether           `json:"tether,omitempty"`
 	DemarcationPoint *PortDemarcationPoint `json:"demarcationPoint,omitempty"`
-	Settings         *PhysicalPortSettings `json:"settings,omitempty"`
-	Interface        *PortInterface        `json:"interface,omitempty"`
 	// Notification preferences
 	Notifications []PortNotification `json:"notifications,omitempty"`
 	// Physical Port additional information
@@ -387,70 +385,6 @@ func (o *PhysicalPort) SetDemarcationPoint(v PortDemarcationPoint) {
 	o.DemarcationPoint = &v
 }
 
-// GetSettings returns the Settings field value if set, zero value otherwise.
-func (o *PhysicalPort) GetSettings() PhysicalPortSettings {
-	if o == nil || IsNil(o.Settings) {
-		var ret PhysicalPortSettings
-		return ret
-	}
-	return *o.Settings
-}
-
-// GetSettingsOk returns a tuple with the Settings field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PhysicalPort) GetSettingsOk() (*PhysicalPortSettings, bool) {
-	if o == nil || IsNil(o.Settings) {
-		return nil, false
-	}
-	return o.Settings, true
-}
-
-// HasSettings returns a boolean if a field has been set.
-func (o *PhysicalPort) HasSettings() bool {
-	if o != nil && !IsNil(o.Settings) {
-		return true
-	}
-
-	return false
-}
-
-// SetSettings gets a reference to the given PhysicalPortSettings and assigns it to the Settings field.
-func (o *PhysicalPort) SetSettings(v PhysicalPortSettings) {
-	o.Settings = &v
-}
-
-// GetInterface returns the Interface field value if set, zero value otherwise.
-func (o *PhysicalPort) GetInterface() PortInterface {
-	if o == nil || IsNil(o.Interface) {
-		var ret PortInterface
-		return ret
-	}
-	return *o.Interface
-}
-
-// GetInterfaceOk returns a tuple with the Interface field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PhysicalPort) GetInterfaceOk() (*PortInterface, bool) {
-	if o == nil || IsNil(o.Interface) {
-		return nil, false
-	}
-	return o.Interface, true
-}
-
-// HasInterface returns a boolean if a field has been set.
-func (o *PhysicalPort) HasInterface() bool {
-	if o != nil && !IsNil(o.Interface) {
-		return true
-	}
-
-	return false
-}
-
-// SetInterface gets a reference to the given PortInterface and assigns it to the Interface field.
-func (o *PhysicalPort) SetInterface(v PortInterface) {
-	o.Interface = &v
-}
-
 // GetNotifications returns the Notifications field value if set, zero value otherwise.
 func (o *PhysicalPort) GetNotifications() []PortNotification {
 	if o == nil || IsNil(o.Notifications) {
@@ -651,12 +585,6 @@ func (o PhysicalPort) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DemarcationPoint) {
 		toSerialize["demarcationPoint"] = o.DemarcationPoint
 	}
-	if !IsNil(o.Settings) {
-		toSerialize["settings"] = o.Settings
-	}
-	if !IsNil(o.Interface) {
-		toSerialize["interface"] = o.Interface
-	}
 	if !IsNil(o.Notifications) {
 		toSerialize["notifications"] = o.Notifications
 	}
@@ -704,8 +632,6 @@ func (o *PhysicalPort) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "uuid")
 		delete(additionalProperties, "tether")
 		delete(additionalProperties, "demarcationPoint")
-		delete(additionalProperties, "settings")
-		delete(additionalProperties, "interface")
 		delete(additionalProperties, "notifications")
 		delete(additionalProperties, "additionalInfo")
 		delete(additionalProperties, "order")

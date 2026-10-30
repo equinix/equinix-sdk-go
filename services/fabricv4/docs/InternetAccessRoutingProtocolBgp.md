@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ExportPolicy** | [**InternetAccessExportPolicy**](InternetAccessExportPolicy.md) |  | 
-**Asn** | Pointer to [**InternetAccessRoutingProtocolBgpAsn**](InternetAccessRoutingProtocolBgpAsn.md) |  | [optional] 
+**Asn** | Pointer to [**InternetAccessRoutingProtocolBgpAllOfAsn**](InternetAccessRoutingProtocolBgpAllOfAsn.md) |  | [optional] 
 **CustomerAsn** | Pointer to **int64** | Customer ASN. Valid range is 1-64495 or 131072-4199999999. Currently this option is only available for EIA over dedicated port. | [optional] 
 **BgpAuthKey** | Pointer to **string** | BGP authentication key. This field is deprecated and will be removed in future releases. Please use bgpAuthType instead to determine if a BGP authentication key is configured. | [optional] 
 **BgpAuthType** | Pointer to [**InternetAccessBgpAuthType**](InternetAccessBgpAuthType.md) |  | [optional] [default to INTERNETACCESSBGPAUTHTYPE_NONE]
@@ -52,20 +52,20 @@ SetExportPolicy sets ExportPolicy field to given value.
 
 ### GetAsn
 
-`func (o *InternetAccessRoutingProtocolBgp) GetAsn() InternetAccessRoutingProtocolBgpAsn`
+`func (o *InternetAccessRoutingProtocolBgp) GetAsn() InternetAccessRoutingProtocolBgpAllOfAsn`
 
 GetAsn returns the Asn field if non-nil, zero value otherwise.
 
 ### GetAsnOk
 
-`func (o *InternetAccessRoutingProtocolBgp) GetAsnOk() (*InternetAccessRoutingProtocolBgpAsn, bool)`
+`func (o *InternetAccessRoutingProtocolBgp) GetAsnOk() (*InternetAccessRoutingProtocolBgpAllOfAsn, bool)`
 
 GetAsnOk returns a tuple with the Asn field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAsn
 
-`func (o *InternetAccessRoutingProtocolBgp) SetAsn(v InternetAccessRoutingProtocolBgpAsn)`
+`func (o *InternetAccessRoutingProtocolBgp) SetAsn(v InternetAccessRoutingProtocolBgpAllOfAsn)`
 
 SetAsn sets Asn field to given value.
 

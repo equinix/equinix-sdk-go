@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | [**DetectionMethodType**](DetectionMethodType.md) |  | 
+**Type** | [**DetectionMethodResponseType**](DetectionMethodResponseType.md) |  | 
 **WindowSize** | Pointer to **string** | Stream alert rule metric window size | [optional] 
-**Operand** | Pointer to [**DetectionMethodOperand**](DetectionMethodOperand.md) |  | [optional] 
+**Operand** | Pointer to [**DetectionMethodResponseOperand**](DetectionMethodResponseOperand.md) |  | [optional] 
 **WarningThreshold** | Pointer to **string** | Stream alert rule metric warning threshold | [optional] 
 **CriticalThreshold** | Pointer to **string** | Stream alert rule metric critical threshold | [optional] 
 
@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 ### NewDetectionMethod
 
-`func NewDetectionMethod(type_ DetectionMethodType, ) *DetectionMethod`
+`func NewDetectionMethod(type_ DetectionMethodResponseType, ) *DetectionMethod`
 
 NewDetectionMethod instantiates a new DetectionMethod object
 This constructor will assign default values to properties that have it defined,
@@ -31,20 +31,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetType
 
-`func (o *DetectionMethod) GetType() DetectionMethodType`
+`func (o *DetectionMethod) GetType() DetectionMethodResponseType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *DetectionMethod) GetTypeOk() (*DetectionMethodType, bool)`
+`func (o *DetectionMethod) GetTypeOk() (*DetectionMethodResponseType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *DetectionMethod) SetType(v DetectionMethodType)`
+`func (o *DetectionMethod) SetType(v DetectionMethodResponseType)`
 
 SetType sets Type field to given value.
 
@@ -76,20 +76,20 @@ HasWindowSize returns a boolean if a field has been set.
 
 ### GetOperand
 
-`func (o *DetectionMethod) GetOperand() DetectionMethodOperand`
+`func (o *DetectionMethod) GetOperand() DetectionMethodResponseOperand`
 
 GetOperand returns the Operand field if non-nil, zero value otherwise.
 
 ### GetOperandOk
 
-`func (o *DetectionMethod) GetOperandOk() (*DetectionMethodOperand, bool)`
+`func (o *DetectionMethod) GetOperandOk() (*DetectionMethodResponseOperand, bool)`
 
 GetOperandOk returns a tuple with the Operand field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOperand
 
-`func (o *DetectionMethod) SetOperand(v DetectionMethodOperand)`
+`func (o *DetectionMethod) SetOperand(v DetectionMethodResponseOperand)`
 
 SetOperand sets Operand field to given value.
 

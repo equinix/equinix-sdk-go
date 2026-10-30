@@ -17,7 +17,7 @@ var _ MappedNullable = &NetworkChangeOperation{}
 
 // NetworkChangeOperation Network change operation data
 type NetworkChangeOperation struct {
-	Op PrecisionTimeChangeOperationOp `json:"op"`
+	Op CloudRouterChangeOperationOp `json:"op"`
 	// path inside document leading to updated parameter
 	Path string `json:"path"`
 	// new value for updated parameter
@@ -31,7 +31,7 @@ type _NetworkChangeOperation NetworkChangeOperation
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewNetworkChangeOperation(op PrecisionTimeChangeOperationOp, path string, value interface{}) *NetworkChangeOperation {
+func NewNetworkChangeOperation(op CloudRouterChangeOperationOp, path string, value interface{}) *NetworkChangeOperation {
 	this := NetworkChangeOperation{}
 	this.Op = op
 	this.Path = path
@@ -48,9 +48,9 @@ func NewNetworkChangeOperationWithDefaults() *NetworkChangeOperation {
 }
 
 // GetOp returns the Op field value
-func (o *NetworkChangeOperation) GetOp() PrecisionTimeChangeOperationOp {
+func (o *NetworkChangeOperation) GetOp() CloudRouterChangeOperationOp {
 	if o == nil {
-		var ret PrecisionTimeChangeOperationOp
+		var ret CloudRouterChangeOperationOp
 		return ret
 	}
 
@@ -59,7 +59,7 @@ func (o *NetworkChangeOperation) GetOp() PrecisionTimeChangeOperationOp {
 
 // GetOpOk returns a tuple with the Op field value
 // and a boolean to check if the value has been set.
-func (o *NetworkChangeOperation) GetOpOk() (*PrecisionTimeChangeOperationOp, bool) {
+func (o *NetworkChangeOperation) GetOpOk() (*CloudRouterChangeOperationOp, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -67,7 +67,7 @@ func (o *NetworkChangeOperation) GetOpOk() (*PrecisionTimeChangeOperationOp, boo
 }
 
 // SetOp sets field value
-func (o *NetworkChangeOperation) SetOp(v PrecisionTimeChangeOperationOp) {
+func (o *NetworkChangeOperation) SetOp(v CloudRouterChangeOperationOp) {
 	o.Op = v
 }
 

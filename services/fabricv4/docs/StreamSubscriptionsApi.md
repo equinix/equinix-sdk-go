@@ -34,8 +34,8 @@ import (
 )
 
 func main() {
-	streamId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Stream UUID
-	streamSubscriptionPostRequest := *openapiclient.NewStreamSubscriptionPostRequest(openapiclient.StreamSubscriptionPostRequest_type("STREAM_SUBSCRIPTION"), "Name_example", *openapiclient.NewStreamSubscriptionSink(openapiclient.StreamSubscriptionSink_type("DATADOG"))) // StreamSubscriptionPostRequest | 
+	streamId := "657400f8-d360-11e9-bb65-2a2ae2dbcce5" // string | Stream UUID
+	streamSubscriptionPostRequest := *openapiclient.NewStreamSubscriptionPostRequest(openapiclient.StreamSubscriptionPostRequest_type("STREAM_SUBSCRIPTION"), "Name_example", *openapiclient.NewStreamSubscriptionSink(openapiclient.StreamSubscriptionSinkResponse_type("DATADOG"))) // StreamSubscriptionPostRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -106,8 +106,8 @@ import (
 )
 
 func main() {
-	streamId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Stream UUID
-	subscriptionId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Stream Subscription UUID
+	streamId := "657400f8-d360-11e9-bb65-2a2ae2dbcce5" // string | Stream UUID
+	subscriptionId := "557400f8-d360-11e9-bb65-2a2ae2dbcce4" // string | Stream Subscription UUID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -179,8 +179,8 @@ import (
 )
 
 func main() {
-	streamId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Stream UUID
-	subscriptionId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Stream Subscription UUID
+	streamId := "657400f8-d360-11e9-bb65-2a2ae2dbcce5" // string | Stream UUID
+	subscriptionId := "557400f8-d360-11e9-bb65-2a2ae2dbcce4" // string | Stream Subscription UUID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -252,7 +252,7 @@ import (
 )
 
 func main() {
-	streamId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Stream UUID
+	streamId := "657400f8-d360-11e9-bb65-2a2ae2dbcce5" // string | Stream UUID
 	offset := int32(1) // int32 | offset (optional)
 	limit := int32(10) // int32 | number of records to fetch (optional)
 
@@ -392,9 +392,9 @@ import (
 )
 
 func main() {
-	streamId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Stream UUID
-	subscriptionId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Stream Subscription UUID
-	streamSubscriptionPutRequest := *openapiclient.NewStreamSubscriptionPutRequest(openapiclient.StreamSubscriptionPostRequest_type("STREAM_SUBSCRIPTION"), "Name_example", *openapiclient.NewStreamSubscriptionSink(openapiclient.StreamSubscriptionSink_type("DATADOG"))) // StreamSubscriptionPutRequest | 
+	streamId := "657400f8-d360-11e9-bb65-2a2ae2dbcce5" // string | Stream UUID
+	subscriptionId := "557400f8-d360-11e9-bb65-2a2ae2dbcce4" // string | Stream Subscription UUID
+	streamSubscriptionPutRequest := *openapiclient.NewStreamSubscriptionPutRequest(openapiclient.StreamSubscriptionPostRequest_type("STREAM_SUBSCRIPTION"), "Name_example", *openapiclient.NewStreamSubscriptionSink(openapiclient.StreamSubscriptionSinkResponse_type("DATADOG"))) // StreamSubscriptionPutRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

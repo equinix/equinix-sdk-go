@@ -6,13 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Op** | [**AppDomainChangeOperationOp**](AppDomainChangeOperationOp.md) |  | 
 **Path** | [**AppProcessorChangeOperationPath**](AppProcessorChangeOperationPath.md) |  | 
-**Value** | **map[string]interface{}** | new value for updated parameter | 
+**Value** | **interface{}** | new value for updated parameter | 
 
 ## Methods
 
 ### NewAppProcessorChangeOperation
 
-`func NewAppProcessorChangeOperation(op AppDomainChangeOperationOp, path AppProcessorChangeOperationPath, value map[string]interface{}, ) *AppProcessorChangeOperation`
+`func NewAppProcessorChangeOperation(op AppDomainChangeOperationOp, path AppProcessorChangeOperationPath, value interface{}, ) *AppProcessorChangeOperation`
 
 NewAppProcessorChangeOperation instantiates a new AppProcessorChangeOperation object
 This constructor will assign default values to properties that have it defined,
@@ -69,24 +69,34 @@ SetPath sets Path field to given value.
 
 ### GetValue
 
-`func (o *AppProcessorChangeOperation) GetValue() map[string]interface{}`
+`func (o *AppProcessorChangeOperation) GetValue() interface{}`
 
 GetValue returns the Value field if non-nil, zero value otherwise.
 
 ### GetValueOk
 
-`func (o *AppProcessorChangeOperation) GetValueOk() (*map[string]interface{}, bool)`
+`func (o *AppProcessorChangeOperation) GetValueOk() (*interface{}, bool)`
 
 GetValueOk returns a tuple with the Value field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetValue
 
-`func (o *AppProcessorChangeOperation) SetValue(v map[string]interface{})`
+`func (o *AppProcessorChangeOperation) SetValue(v interface{})`
 
 SetValue sets Value field to given value.
 
 
+### SetValueNil
+
+`func (o *AppProcessorChangeOperation) SetValueNil(b bool)`
+
+ SetValueNil sets the value for Value to be an explicit nil
+
+### UnsetValue
+`func (o *AppProcessorChangeOperation) UnsetValue()`
+
+UnsetValue ensures that no value is present for Value, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

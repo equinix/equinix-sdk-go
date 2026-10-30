@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Op** | [**PrecisionTimeChangeOperationOp**](PrecisionTimeChangeOperationOp.md) |  | 
+**Op** | [**CloudRouterChangeOperationOp**](CloudRouterChangeOperationOp.md) |  | 
 **Path** | **string** | path inside document leading to updated parameter | 
 **Value** | **interface{}** | new value for updated parameter | 
 
@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 ### NewNetworkChangeOperation
 
-`func NewNetworkChangeOperation(op PrecisionTimeChangeOperationOp, path string, value interface{}, ) *NetworkChangeOperation`
+`func NewNetworkChangeOperation(op CloudRouterChangeOperationOp, path string, value interface{}, ) *NetworkChangeOperation`
 
 NewNetworkChangeOperation instantiates a new NetworkChangeOperation object
 This constructor will assign default values to properties that have it defined,
@@ -29,20 +29,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetOp
 
-`func (o *NetworkChangeOperation) GetOp() PrecisionTimeChangeOperationOp`
+`func (o *NetworkChangeOperation) GetOp() CloudRouterChangeOperationOp`
 
 GetOp returns the Op field if non-nil, zero value otherwise.
 
 ### GetOpOk
 
-`func (o *NetworkChangeOperation) GetOpOk() (*PrecisionTimeChangeOperationOp, bool)`
+`func (o *NetworkChangeOperation) GetOpOk() (*CloudRouterChangeOperationOp, bool)`
 
 GetOpOk returns a tuple with the Op field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOp
 
-`func (o *NetworkChangeOperation) SetOp(v PrecisionTimeChangeOperationOp)`
+`func (o *NetworkChangeOperation) SetOp(v CloudRouterChangeOperationOp)`
 
 SetOp sets Op field to given value.
 

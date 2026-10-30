@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **Interval** | Pointer to **string** | Metric interval (set automatically based on search range) | [optional] 
 **Resource** | Pointer to [**MetricResource**](MetricResource.md) |  | [optional] 
 **Summary** | Pointer to **string** | Metric summary | [optional] 
-**Datapoints** | Pointer to [**[]MetricDatapoints**](MetricDatapoints.md) | Metric data points | [optional] 
+**Datapoints** | Pointer to [**[]MetricDatapointsInner**](MetricDatapointsInner.md) | Metric data points | [optional] 
 
 ## Methods
 
@@ -183,20 +183,20 @@ HasSummary returns a boolean if a field has been set.
 
 ### GetDatapoints
 
-`func (o *Metric) GetDatapoints() []MetricDatapoints`
+`func (o *Metric) GetDatapoints() []MetricDatapointsInner`
 
 GetDatapoints returns the Datapoints field if non-nil, zero value otherwise.
 
 ### GetDatapointsOk
 
-`func (o *Metric) GetDatapointsOk() (*[]MetricDatapoints, bool)`
+`func (o *Metric) GetDatapointsOk() (*[]MetricDatapointsInner, bool)`
 
 GetDatapointsOk returns a tuple with the Datapoints field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDatapoints
 
-`func (o *Metric) SetDatapoints(v []MetricDatapoints)`
+`func (o *Metric) SetDatapoints(v []MetricDatapointsInner)`
 
 SetDatapoints sets Datapoints field to given value.
 

@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **Project** | [**Project**](Project.md) |  | 
 **Order** | Pointer to [**PortOrder**](PortOrder.md) |  | [optional] 
 **Account** | [**SimplifiedAccountRequest**](SimplifiedAccountRequest.md) |  | 
-**ServiceType** | Pointer to [**PortServiceType**](PortServiceType.md) |  | [optional] 
+**ServiceType** | Pointer to [**SimplifiedPortServiceType**](SimplifiedPortServiceType.md) |  | [optional] 
 **ServiceCode** | Pointer to [**PortServiceCode**](PortServiceCode.md) |  | [optional] 
 **Bandwidth** | Pointer to **int32** | Equinix assigned response attribute for Port bandwidth in Mbps | [optional] 
 **Location** | [**SimplifiedLocationRequest**](SimplifiedLocationRequest.md) |  | 
@@ -24,7 +24,6 @@ Name | Type | Description | Notes
 **Encapsulation** | [**PortEncapsulation**](PortEncapsulation.md) |  | 
 **LagEnabled** | Pointer to **bool** | Indicates whether Link Aggregation Group (LAG) is enabled on this port | [optional] 
 **Package** | Pointer to [**Package**](Package.md) |  | [optional] 
-**Settings** | Pointer to [**PortSettings**](PortSettings.md) |  | [optional] 
 **Notifications** | Pointer to [**[]PortNotification**](PortNotification.md) | Notification preferences | [optional] 
 **PhysicalPorts** | Pointer to [**[]PhysicalPort**](PhysicalPort.md) | Physical ports that implement this port | [optional] 
 **Loas** | Pointer to [**[]PortLoa**](PortLoa.md) | Port Loas | [optional] 
@@ -245,20 +244,20 @@ SetAccount sets Account field to given value.
 
 ### GetServiceType
 
-`func (o *PortRequest) GetServiceType() PortServiceType`
+`func (o *PortRequest) GetServiceType() SimplifiedPortServiceType`
 
 GetServiceType returns the ServiceType field if non-nil, zero value otherwise.
 
 ### GetServiceTypeOk
 
-`func (o *PortRequest) GetServiceTypeOk() (*PortServiceType, bool)`
+`func (o *PortRequest) GetServiceTypeOk() (*SimplifiedPortServiceType, bool)`
 
 GetServiceTypeOk returns a tuple with the ServiceType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetServiceType
 
-`func (o *PortRequest) SetServiceType(v PortServiceType)`
+`func (o *PortRequest) SetServiceType(v SimplifiedPortServiceType)`
 
 SetServiceType sets ServiceType field to given value.
 
@@ -507,31 +506,6 @@ SetPackage sets Package field to given value.
 `func (o *PortRequest) HasPackage() bool`
 
 HasPackage returns a boolean if a field has been set.
-
-### GetSettings
-
-`func (o *PortRequest) GetSettings() PortSettings`
-
-GetSettings returns the Settings field if non-nil, zero value otherwise.
-
-### GetSettingsOk
-
-`func (o *PortRequest) GetSettingsOk() (*PortSettings, bool)`
-
-GetSettingsOk returns a tuple with the Settings field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSettings
-
-`func (o *PortRequest) SetSettings(v PortSettings)`
-
-SetSettings sets Settings field to given value.
-
-### HasSettings
-
-`func (o *PortRequest) HasSettings() bool`
-
-HasSettings returns a boolean if a field has been set.
 
 ### GetNotifications
 

@@ -100,7 +100,7 @@ import (
 )
 
 func main() {
-	appDomainId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | App Domain UUID
+	appDomainId := "20f3ef8e-d670-4236-86fa-bb0038adcfc3" // string | App Domain UUID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -170,7 +170,7 @@ import (
 )
 
 func main() {
-	appDomainId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | App Domain UUID
+	appDomainId := "20f3ef8e-d670-4236-86fa-bb0038adcfc3" // string | App Domain UUID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -240,7 +240,7 @@ import (
 )
 
 func main() {
-	appDomainId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | App Domain UUID
+	appDomainId := "20f3ef8e-d670-4236-86fa-bb0038adcfc3" // string | App Domain UUID
 	offset := int32(1) // int32 | offset (optional)
 	limit := int32(10) // int32 | number of records to fetch (optional)
 	state := []openapiclient.AppLinkState{openapiclient.AppLinkState("PROVISIONING")} // []AppLinkState | Filter attached App Links by one or more lifecycle states. (optional)
@@ -386,8 +386,8 @@ import (
 )
 
 func main() {
-	appDomainId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | App Domain UUID
-	appDomainChangeOperation := []openapiclient.AppDomainChangeOperation{*openapiclient.NewAppDomainChangeOperation(openapiclient.AppDomainChangeOperation_op("replace"), openapiclient.AppDomainChangeOperation_path("/description"), map[string]interface{}(123))} // []AppDomainChangeOperation | 
+	appDomainId := "20f3ef8e-d670-4236-86fa-bb0038adcfc3" // string | App Domain UUID
+	appDomainChangeOperation := []openapiclient.AppDomainChangeOperation{*openapiclient.NewAppDomainChangeOperation(openapiclient.AppDomainChangeOperation_op("replace"), openapiclient.AppDomainChangeOperation_path("/description"), interface{}(123))} // []AppDomainChangeOperation | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

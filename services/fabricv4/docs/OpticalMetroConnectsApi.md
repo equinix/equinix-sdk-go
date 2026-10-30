@@ -164,7 +164,7 @@ import (
 )
 
 func main() {
-	opticalConnectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Unique identifier of an Optical Connect.
+	opticalConnectId := "557400f8-d360-11e9-bb65-2a2ae2dbcce4" // string | Unique identifier of an Optical Connect.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

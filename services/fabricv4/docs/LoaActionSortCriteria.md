@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Direction** | Pointer to [**ExchangeServiceSearchSortCriteriaDirection**](ExchangeServiceSearchSortCriteriaDirection.md) |  | [optional] [default to EXCHANGESERVICESEARCHSORTCRITERIADIRECTION_DESC]
+**Direction** | Pointer to [**AsnSearchSortCriteriaDirection**](AsnSearchSortCriteriaDirection.md) |  | [optional] [default to ASNSEARCHSORTCRITERIADIRECTION_DESC]
 **Property** | Pointer to [**LoaActionSortCriteriaProperty**](LoaActionSortCriteriaProperty.md) |  | [optional] [default to LOAACTIONSORTCRITERIAPROPERTY_CHANGE_LOG_CREATED_DATE_TIME]
 
 ## Methods
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetDirection
 
-`func (o *LoaActionSortCriteria) GetDirection() ExchangeServiceSearchSortCriteriaDirection`
+`func (o *LoaActionSortCriteria) GetDirection() AsnSearchSortCriteriaDirection`
 
 GetDirection returns the Direction field if non-nil, zero value otherwise.
 
 ### GetDirectionOk
 
-`func (o *LoaActionSortCriteria) GetDirectionOk() (*ExchangeServiceSearchSortCriteriaDirection, bool)`
+`func (o *LoaActionSortCriteria) GetDirectionOk() (*AsnSearchSortCriteriaDirection, bool)`
 
 GetDirectionOk returns a tuple with the Direction field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDirection
 
-`func (o *LoaActionSortCriteria) SetDirection(v ExchangeServiceSearchSortCriteriaDirection)`
+`func (o *LoaActionSortCriteria) SetDirection(v AsnSearchSortCriteriaDirection)`
 
 SetDirection sets Direction field to given value.
 

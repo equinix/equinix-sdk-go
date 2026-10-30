@@ -32,7 +32,7 @@ import (
 )
 
 func main() {
-	cloudEventId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cloud Event UUID
+	cloudEventId := "557400f8-d360-11e9-bb65-2a2ae2dbcce4" // string | Cloud Event UUID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -104,7 +104,7 @@ import (
 
 func main() {
 	asset := openapiclient.CloudEventAssetType("ports") // CloudEventAssetType | asset
-	assetId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | asset UUID
+	assetId := "757400f8-d360-11e9-bb65-2a2ae2dbcce6" // string | asset UUID
 	fromDateTime := time.Now() // time.Time | Start date and time (optional)
 	toDateTime := time.Now() // time.Time | End date and time (optional)
 	offset := int32(56) // int32 | offset (optional) (default to 0)

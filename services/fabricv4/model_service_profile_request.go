@@ -42,9 +42,9 @@ type ServiceProfileRequest struct {
 	// Provider environments associated with this IC_PROFILE service profile. <font color=\"red\"> <sup color='red'>Beta</sup></font>
 	Environments []ProviderEnvironment `json:"environments,omitempty"`
 	// response attribute indicates whether the profile belongs to the same organization as the api-invoker.
-	SelfProfile          *bool                         `json:"selfProfile,omitempty"`
-	ProjectId            *string                       `json:"projectId,omitempty"`
-	LastMileConfig       *ServiceProfileLastMileConfig `json:"lastMileConfig,omitempty"`
+	SelfProfile          *bool                        `json:"selfProfile,omitempty"`
+	ProjectId            *string                      `json:"projectId,omitempty"`
+	LastMileConfig       ServiceProfileLastMileConfig `json:"lastMileConfig,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -660,14 +660,14 @@ func (o *ServiceProfileRequest) GetLastMileConfig() ServiceProfileLastMileConfig
 		var ret ServiceProfileLastMileConfig
 		return ret
 	}
-	return *o.LastMileConfig
+	return o.LastMileConfig
 }
 
 // GetLastMileConfigOk returns a tuple with the LastMileConfig field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ServiceProfileRequest) GetLastMileConfigOk() (*ServiceProfileLastMileConfig, bool) {
+func (o *ServiceProfileRequest) GetLastMileConfigOk() (ServiceProfileLastMileConfig, bool) {
 	if o == nil || IsNil(o.LastMileConfig) {
-		return nil, false
+		return ServiceProfileLastMileConfig{}, false
 	}
 	return o.LastMileConfig, true
 }
@@ -683,7 +683,7 @@ func (o *ServiceProfileRequest) HasLastMileConfig() bool {
 
 // SetLastMileConfig gets a reference to the given ServiceProfileLastMileConfig and assigns it to the LastMileConfig field.
 func (o *ServiceProfileRequest) SetLastMileConfig(v ServiceProfileLastMileConfig) {
-	o.LastMileConfig = &v
+	o.LastMileConfig = v
 }
 
 func (o ServiceProfileRequest) MarshalJSON() ([]byte, error) {

@@ -24,7 +24,6 @@ type RouteAggregationsData struct {
 	Name *string `json:"name,omitempty"`
 	// Customer-provided connection description
 	Description          *string                       `json:"description,omitempty"`
-	State                *RouteAggregationState        `json:"state,omitempty"`
 	Change               *RouteAggregationsChange      `json:"change,omitempty"`
 	ConnectionsCount     *int32                        `json:"connectionsCount,omitempty"`
 	RulesCount           *int32                        `json:"rulesCount,omitempty"`
@@ -212,38 +211,6 @@ func (o *RouteAggregationsData) SetDescription(v string) {
 	o.Description = &v
 }
 
-// GetState returns the State field value if set, zero value otherwise.
-func (o *RouteAggregationsData) GetState() RouteAggregationState {
-	if o == nil || IsNil(o.State) {
-		var ret RouteAggregationState
-		return ret
-	}
-	return *o.State
-}
-
-// GetStateOk returns a tuple with the State field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *RouteAggregationsData) GetStateOk() (*RouteAggregationState, bool) {
-	if o == nil || IsNil(o.State) {
-		return nil, false
-	}
-	return o.State, true
-}
-
-// HasState returns a boolean if a field has been set.
-func (o *RouteAggregationsData) HasState() bool {
-	if o != nil && !IsNil(o.State) {
-		return true
-	}
-
-	return false
-}
-
-// SetState gets a reference to the given RouteAggregationState and assigns it to the State field.
-func (o *RouteAggregationsData) SetState(v RouteAggregationState) {
-	o.State = &v
-}
-
 // GetChange returns the Change field value if set, zero value otherwise.
 func (o *RouteAggregationsData) GetChange() RouteAggregationsChange {
 	if o == nil || IsNil(o.Change) {
@@ -429,9 +396,6 @@ func (o RouteAggregationsData) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !IsNil(o.State) {
-		toSerialize["state"] = o.State
-	}
 	if !IsNil(o.Change) {
 		toSerialize["change"] = o.Change
 	}
@@ -474,7 +438,6 @@ func (o *RouteAggregationsData) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "uuid")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")
-		delete(additionalProperties, "state")
 		delete(additionalProperties, "change")
 		delete(additionalProperties, "connectionsCount")
 		delete(additionalProperties, "rulesCount")

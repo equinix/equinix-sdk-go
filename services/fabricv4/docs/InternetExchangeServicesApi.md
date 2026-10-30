@@ -99,7 +99,7 @@ import (
 )
 
 func main() {
-	exchangeServiceId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Internet Exchange Service Id
+	exchangeServiceId := "a8ba52de-faae-43b5-b0b1-6904d37ee011" // string | Internet Exchange Service Id
 	exchangeServiceActionRequest := *openapiclient.NewExchangeServiceActionRequest(openapiclient.ExchangeServiceActionRequest_type("EXCHANGE_SERVICE_ACTIVATE")) // ExchangeServiceActionRequest | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -171,7 +171,7 @@ import (
 )
 
 func main() {
-	exchangeServiceId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Internet Exchange Service Id
+	exchangeServiceId := "a8ba52de-faae-43b5-b0b1-6904d37ee011" // string | Internet Exchange Service Id
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -307,7 +307,7 @@ import (
 )
 
 func main() {
-	exchangeServiceId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Internet Exchange Service Id
+	exchangeServiceId := "a8ba52de-faae-43b5-b0b1-6904d37ee011" // string | Internet Exchange Service Id
 	exchangeServiceReplaceOperation := []openapiclient.ExchangeServiceReplaceOperation{*openapiclient.NewExchangeServiceReplaceOperation(openapiclient.ExchangeServiceOpEnum("replace"), "Path_example", interface{}(123))} // []ExchangeServiceReplaceOperation | 
 
 	configuration := openapiclient.NewConfiguration()

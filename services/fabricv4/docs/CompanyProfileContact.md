@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | Pointer to [**CompanyProfileContactType**](CompanyProfileContactType.md) |  | [optional] 
-**Contacts** | Pointer to [**[]CompanyProfileContactContacts**](CompanyProfileContactContacts.md) |  | [optional] 
+**Contacts** | Pointer to [**[]CompanyProfileContactContactsInner**](CompanyProfileContactContactsInner.md) |  | [optional] 
 
 ## Methods
 
@@ -53,20 +53,20 @@ HasType returns a boolean if a field has been set.
 
 ### GetContacts
 
-`func (o *CompanyProfileContact) GetContacts() []CompanyProfileContactContacts`
+`func (o *CompanyProfileContact) GetContacts() []CompanyProfileContactContactsInner`
 
 GetContacts returns the Contacts field if non-nil, zero value otherwise.
 
 ### GetContactsOk
 
-`func (o *CompanyProfileContact) GetContactsOk() (*[]CompanyProfileContactContacts, bool)`
+`func (o *CompanyProfileContact) GetContactsOk() (*[]CompanyProfileContactContactsInner, bool)`
 
 GetContactsOk returns a tuple with the Contacts field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetContacts
 
-`func (o *CompanyProfileContact) SetContacts(v []CompanyProfileContactContacts)`
+`func (o *CompanyProfileContact) SetContacts(v []CompanyProfileContactContactsInner)`
 
 SetContacts sets Contacts field to given value.
 

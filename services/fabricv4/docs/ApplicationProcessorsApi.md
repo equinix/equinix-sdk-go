@@ -30,7 +30,7 @@ import (
 )
 
 func main() {
-	appProcessorId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | App Processor UUID
+	appProcessorId := "90ee425c-9988-454c-96d9-1128bc16350f" // string | App Processor UUID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

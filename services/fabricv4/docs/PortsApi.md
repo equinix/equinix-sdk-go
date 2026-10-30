@@ -384,7 +384,7 @@ import (
 )
 
 func main() {
-	portUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Port UUID
+	portUuid := "557400f8-d360-11e9-bb65-2a2ae2dbcce4" // string | Port UUID
 	offset := int32(1) // int32 | offset (optional)
 	limit := int32(10) // int32 | number of records to fetch (optional)
 
