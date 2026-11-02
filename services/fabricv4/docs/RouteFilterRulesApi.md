@@ -38,7 +38,7 @@ import (
 )
 
 func main() {
-	routeFilterId := "routeFilterId_example" // string | Route Filters Id
+	routeFilterId := "695a8471-6595-4ac6-a2f4-b3d96ed3a59d" // string | Route Filters Id
 	routeFilterRulesBase := *openapiclient.NewRouteFilterRulesBase("192.168.0.0/24") // RouteFilterRulesBase | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -110,7 +110,7 @@ import (
 )
 
 func main() {
-	routeFilterId := "routeFilterId_example" // string | Route Filters Id
+	routeFilterId := "695a8471-6595-4ac6-a2f4-b3d96ed3a59d" // string | Route Filters Id
 	routeFilterRulesPostRequest := *openapiclient.NewRouteFilterRulesPostRequest() // RouteFilterRulesPostRequest | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -182,8 +182,8 @@ import (
 )
 
 func main() {
-	routeFilterId := "routeFilterId_example" // string | Route Filters Id
-	routeFilterRuleId := "routeFilterRuleId_example" // string | Route  Filter  Rules Id
+	routeFilterId := "695a8471-6595-4ac6-a2f4-b3d96ed3a59d" // string | Route Filters Id
+	routeFilterRuleId := "65b025ef-022b-4180-85cf-82cfc1ab655b" // string | Route  Filter  Rules Id
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -255,8 +255,8 @@ import (
 )
 
 func main() {
-	routeFilterId := "routeFilterId_example" // string | Route Filters Id
-	routeFilterRuleId := "routeFilterRuleId_example" // string | Route  Filter  Rules Id
+	routeFilterId := "695a8471-6595-4ac6-a2f4-b3d96ed3a59d" // string | Route Filters Id
+	routeFilterRuleId := "65b025ef-022b-4180-85cf-82cfc1ab655b" // string | Route  Filter  Rules Id
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -328,9 +328,9 @@ import (
 )
 
 func main() {
-	routeFilterId := "routeFilterId_example" // string | Route Filters Id
-	routeFilterRuleId := "routeFilterRuleId_example" // string | Route  Filter  Rules Id
-	changeId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Route Filter Rule Change UUID
+	routeFilterId := "695a8471-6595-4ac6-a2f4-b3d96ed3a59d" // string | Route Filters Id
+	routeFilterRuleId := "65b025ef-022b-4180-85cf-82cfc1ab655b" // string | Route  Filter  Rules Id
+	changeId := "6d500177-9404-41f2-99e8-2bf1a84d8db5" // string | Route Filter Rule Change UUID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -404,8 +404,8 @@ import (
 )
 
 func main() {
-	routeFilterId := "routeFilterId_example" // string | Route Filters Id
-	routeFilterRuleId := "routeFilterRuleId_example" // string | Route  Filter  Rules Id
+	routeFilterId := "695a8471-6595-4ac6-a2f4-b3d96ed3a59d" // string | Route Filters Id
+	routeFilterRuleId := "65b025ef-022b-4180-85cf-82cfc1ab655b" // string | Route  Filter  Rules Id
 	offset := int32(1) // int32 | offset (optional)
 	limit := int32(10) // int32 | number of records to fetch (optional)
 
@@ -481,7 +481,7 @@ import (
 )
 
 func main() {
-	routeFilterId := "routeFilterId_example" // string | Route Filters Id
+	routeFilterId := "695a8471-6595-4ac6-a2f4-b3d96ed3a59d" // string | Route Filters Id
 	offset := int32(1) // int32 | offset (optional)
 	limit := int32(10) // int32 | number of records to fetch (optional)
 
@@ -555,8 +555,8 @@ import (
 )
 
 func main() {
-	routeFilterId := "routeFilterId_example" // string | Route Filters Id
-	routeFilterRuleId := "routeFilterRuleId_example" // string | Route  Filter  Rules Id
+	routeFilterId := "695a8471-6595-4ac6-a2f4-b3d96ed3a59d" // string | Route Filters Id
+	routeFilterRuleId := "65b025ef-022b-4180-85cf-82cfc1ab655b" // string | Route  Filter  Rules Id
 	routeFilterRulesPatchRequestItem := []openapiclient.RouteFilterRulesPatchRequestItem{*openapiclient.NewRouteFilterRulesPatchRequestItem("replace", "/prefixMatch", interface{}(123))} // []RouteFilterRulesPatchRequestItem | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -630,8 +630,8 @@ import (
 )
 
 func main() {
-	routeFilterId := "routeFilterId_example" // string | Route Filters Id
-	routeFilterRuleId := "routeFilterRuleId_example" // string | Route  Filter  Rules Id
+	routeFilterId := "695a8471-6595-4ac6-a2f4-b3d96ed3a59d" // string | Route Filters Id
+	routeFilterRuleId := "65b025ef-022b-4180-85cf-82cfc1ab655b" // string | Route  Filter  Rules Id
 	routeFilterRulesBase := *openapiclient.NewRouteFilterRulesBase("192.168.0.0/24") // RouteFilterRulesBase | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -705,7 +705,7 @@ import (
 )
 
 func main() {
-	routeFilterId := "routeFilterId_example" // string | Route Filters Id
+	routeFilterId := "695a8471-6595-4ac6-a2f4-b3d96ed3a59d" // string | Route Filters Id
 	routeFilterRulesSearchRequest := *openapiclient.NewRouteFilterRulesSearchRequest() // RouteFilterRulesSearchRequest | 
 
 	configuration := openapiclient.NewConfiguration()

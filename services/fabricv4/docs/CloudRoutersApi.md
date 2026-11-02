@@ -113,7 +113,7 @@ import (
 )
 
 func main() {
-	routerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Router UUID
+	routerId := "557400f8-d360-11e9-bb65-2a2ae2dbcce4" // string | Router UUID
 	cloudRouterActionRequest := *openapiclient.NewCloudRouterActionRequest(openapiclient.CloudRouterActionType("BGP_SESSION_STATUS_UPDATE")) // CloudRouterActionRequest | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -185,7 +185,7 @@ import (
 )
 
 func main() {
-	routerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Router UUID
+	routerId := "557400f8-d360-11e9-bb65-2a2ae2dbcce4" // string | Router UUID
 	cloudRouterCommandPostRequest := *openapiclient.NewCloudRouterCommandPostRequest(openapiclient.CloudRouterCommandType("PING_COMMAND"), *openapiclient.NewProject("44f4c4f8-2f39-494e-838c-d8e640591be5"), *openapiclient.NewCloudRouterCommandRequestPayload("8.8.8.8", *openapiclient.NewCloudRouterCommandRequestConnection("557400f8-d360-11e9-bb65-2a2ae2dbcce4"))) // CloudRouterCommandPostRequest | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -257,7 +257,7 @@ import (
 )
 
 func main() {
-	routerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cloud Router UUID
+	routerId := "557400f8-d360-11e9-bb65-2a2ae2dbcce4" // string | Cloud Router UUID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -325,8 +325,8 @@ import (
 )
 
 func main() {
-	routerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Router UUID
-	commandId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Command UUID
+	routerId := "557400f8-d360-11e9-bb65-2a2ae2dbcce4" // string | Router UUID
+	commandId := "37c10edc-ba2e-4240-a850-8a48f9c47d00" // string | Command UUID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -396,7 +396,7 @@ import (
 )
 
 func main() {
-	routerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Router UUID
+	routerId := "557400f8-d360-11e9-bb65-2a2ae2dbcce4" // string | Router UUID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -466,7 +466,7 @@ import (
 )
 
 func main() {
-	routerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Router UUID
+	routerId := "557400f8-d360-11e9-bb65-2a2ae2dbcce4" // string | Router UUID
 	state := openapiclient.CloudRouterActionState("SUCCEEDED") // CloudRouterActionState | Action state (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -538,8 +538,8 @@ import (
 )
 
 func main() {
-	routerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Router UUID
-	actionId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Action UUID
+	routerId := "557400f8-d360-11e9-bb65-2a2ae2dbcce4" // string | Router UUID
+	actionId := "457400f8-d360-11e9-bb65-2a2ae2dbcced" // string | Action UUID
 	state := openapiclient.CloudRouterActionState("SUCCEEDED") // CloudRouterActionState | Action state (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -613,7 +613,7 @@ import (
 )
 
 func main() {
-	routerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cloud Router UUID
+	routerId := "557400f8-d360-11e9-bb65-2a2ae2dbcce4" // string | Cloud Router UUID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -683,8 +683,8 @@ import (
 )
 
 func main() {
-	routerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Router UUID
-	commandId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Command UUID
+	routerId := "557400f8-d360-11e9-bb65-2a2ae2dbcce4" // string | Router UUID
+	commandId := "37c10edc-ba2e-4240-a850-8a48f9c47d00" // string | Command UUID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -756,7 +756,7 @@ import (
 )
 
 func main() {
-	routerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Router UUID
+	routerId := "557400f8-d360-11e9-bb65-2a2ae2dbcce4" // string | Router UUID
 	cloudRouterCommandSearchRequest := *openapiclient.NewCloudRouterCommandSearchRequest() // CloudRouterCommandSearchRequest | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -828,7 +828,7 @@ import (
 )
 
 func main() {
-	routerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Router UUID
+	routerId := "557400f8-d360-11e9-bb65-2a2ae2dbcce4" // string | Router UUID
 	routeTableEntrySearchRequest := *openapiclient.NewRouteTableEntrySearchRequest() // RouteTableEntrySearchRequest | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -966,7 +966,7 @@ import (
 )
 
 func main() {
-	connectionId := "connectionId_example" // string | Connection Id
+	connectionId := "557400f8-d360-11e9-bb65-2a2ae2dbcce4" // string | Connection Id
 	connectionRouteSearchRequest := *openapiclient.NewConnectionRouteSearchRequest() // ConnectionRouteSearchRequest | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -1038,7 +1038,7 @@ import (
 )
 
 func main() {
-	connectionId := "connectionId_example" // string | Connection Id
+	connectionId := "557400f8-d360-11e9-bb65-2a2ae2dbcce4" // string | Connection Id
 	connectionRouteSearchRequest := *openapiclient.NewConnectionRouteSearchRequest() // ConnectionRouteSearchRequest | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -1110,7 +1110,7 @@ import (
 )
 
 func main() {
-	routerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Router UUID
+	routerId := "557400f8-d360-11e9-bb65-2a2ae2dbcce4" // string | Router UUID
 	cloudRouterActionsSearchRequest := *openapiclient.NewCloudRouterActionsSearchRequest() // CloudRouterActionsSearchRequest | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -1182,8 +1182,8 @@ import (
 )
 
 func main() {
-	routerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cloud Router UUID
-	cloudRouterChangeOperation := []openapiclient.CloudRouterChangeOperation{*openapiclient.NewCloudRouterChangeOperation(openapiclient.precisionTimeChangeOperation_op("replace"), "Path_example", interface{}(123))} // []CloudRouterChangeOperation | 
+	routerId := "557400f8-d360-11e9-bb65-2a2ae2dbcce4" // string | Cloud Router UUID
+	cloudRouterChangeOperation := []openapiclient.CloudRouterChangeOperation{*openapiclient.NewCloudRouterChangeOperation(openapiclient.CloudRouterChangeOperation_op("replace"), "Path_example", interface{}(123))} // []CloudRouterChangeOperation | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

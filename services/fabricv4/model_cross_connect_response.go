@@ -25,8 +25,8 @@ type CrossConnectResponse struct {
 	Name  *string            `json:"name,omitempty"`
 	State *CrossConnectState `json:"state,omitempty"`
 	// List of actions that can be performed on the Cross Connect based on its current state. Use these values to determine which action types are valid to submit to the actions endpoint.
-	AllowedActions []CrossConnectResponseAllowedActions `json:"allowedActions,omitempty"`
-	BmmrType       *BmmrType                            `json:"bmmrType,omitempty"`
+	AllowedActions []CrossConnectResponseAllowedActionsInner `json:"allowedActions,omitempty"`
+	BmmrType       *BmmrType                                 `json:"bmmrType,omitempty"`
 	// Media type of the Cross Connect.
 	MediaType *string `json:"mediaType,omitempty"`
 	// Media sub-type of the Cross Connect.
@@ -228,9 +228,9 @@ func (o *CrossConnectResponse) SetState(v CrossConnectState) {
 }
 
 // GetAllowedActions returns the AllowedActions field value if set, zero value otherwise.
-func (o *CrossConnectResponse) GetAllowedActions() []CrossConnectResponseAllowedActions {
+func (o *CrossConnectResponse) GetAllowedActions() []CrossConnectResponseAllowedActionsInner {
 	if o == nil || IsNil(o.AllowedActions) {
-		var ret []CrossConnectResponseAllowedActions
+		var ret []CrossConnectResponseAllowedActionsInner
 		return ret
 	}
 	return o.AllowedActions
@@ -238,7 +238,7 @@ func (o *CrossConnectResponse) GetAllowedActions() []CrossConnectResponseAllowed
 
 // GetAllowedActionsOk returns a tuple with the AllowedActions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CrossConnectResponse) GetAllowedActionsOk() ([]CrossConnectResponseAllowedActions, bool) {
+func (o *CrossConnectResponse) GetAllowedActionsOk() ([]CrossConnectResponseAllowedActionsInner, bool) {
 	if o == nil || IsNil(o.AllowedActions) {
 		return nil, false
 	}
@@ -254,8 +254,8 @@ func (o *CrossConnectResponse) HasAllowedActions() bool {
 	return false
 }
 
-// SetAllowedActions gets a reference to the given []CrossConnectResponseAllowedActions and assigns it to the AllowedActions field.
-func (o *CrossConnectResponse) SetAllowedActions(v []CrossConnectResponseAllowedActions) {
+// SetAllowedActions gets a reference to the given []CrossConnectResponseAllowedActionsInner and assigns it to the AllowedActions field.
+func (o *CrossConnectResponse) SetAllowedActions(v []CrossConnectResponseAllowedActionsInner) {
 	o.AllowedActions = v
 }
 

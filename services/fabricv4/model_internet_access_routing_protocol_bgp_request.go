@@ -20,9 +20,9 @@ var _ MappedNullable = &InternetAccessRoutingProtocolBgpRequest{}
 // InternetAccessRoutingProtocolBgpRequest struct for InternetAccessRoutingProtocolBgpRequest
 type InternetAccessRoutingProtocolBgpRequest struct {
 	InternetAccessRoutingProtocolRequest
-	Connections  []InternetAccessConnectionBgpRequest        `json:"connections"`
-	ExportPolicy InternetAccessExportPolicy                  `json:"exportPolicy"`
-	Asn          *InternetAccessRoutingProtocolBgpRequestAsn `json:"asn,omitempty"`
+	Connections  []InternetAccessConnectionBgpRequest             `json:"connections"`
+	ExportPolicy InternetAccessExportPolicy                       `json:"exportPolicy"`
+	Asn          *InternetAccessRoutingProtocolBgpRequestAllOfAsn `json:"asn,omitempty"`
 	// Customer ASN. Valid range is 1-64495 or 65536-4199999999.
 	// Deprecated
 	CustomerAsn *int64 `json:"customerAsn,omitempty"`
@@ -104,9 +104,9 @@ func (o *InternetAccessRoutingProtocolBgpRequest) SetExportPolicy(v InternetAcce
 }
 
 // GetAsn returns the Asn field value if set, zero value otherwise.
-func (o *InternetAccessRoutingProtocolBgpRequest) GetAsn() InternetAccessRoutingProtocolBgpRequestAsn {
+func (o *InternetAccessRoutingProtocolBgpRequest) GetAsn() InternetAccessRoutingProtocolBgpRequestAllOfAsn {
 	if o == nil || IsNil(o.Asn) {
-		var ret InternetAccessRoutingProtocolBgpRequestAsn
+		var ret InternetAccessRoutingProtocolBgpRequestAllOfAsn
 		return ret
 	}
 	return *o.Asn
@@ -114,7 +114,7 @@ func (o *InternetAccessRoutingProtocolBgpRequest) GetAsn() InternetAccessRouting
 
 // GetAsnOk returns a tuple with the Asn field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InternetAccessRoutingProtocolBgpRequest) GetAsnOk() (*InternetAccessRoutingProtocolBgpRequestAsn, bool) {
+func (o *InternetAccessRoutingProtocolBgpRequest) GetAsnOk() (*InternetAccessRoutingProtocolBgpRequestAllOfAsn, bool) {
 	if o == nil || IsNil(o.Asn) {
 		return nil, false
 	}
@@ -130,8 +130,8 @@ func (o *InternetAccessRoutingProtocolBgpRequest) HasAsn() bool {
 	return false
 }
 
-// SetAsn gets a reference to the given InternetAccessRoutingProtocolBgpRequestAsn and assigns it to the Asn field.
-func (o *InternetAccessRoutingProtocolBgpRequest) SetAsn(v InternetAccessRoutingProtocolBgpRequestAsn) {
+// SetAsn gets a reference to the given InternetAccessRoutingProtocolBgpRequestAllOfAsn and assigns it to the Asn field.
+func (o *InternetAccessRoutingProtocolBgpRequest) SetAsn(v InternetAccessRoutingProtocolBgpRequestAllOfAsn) {
 	o.Asn = &v
 }
 
@@ -300,9 +300,9 @@ func (o *InternetAccessRoutingProtocolBgpRequest) UnmarshalJSON(data []byte) (er
 	}
 
 	type InternetAccessRoutingProtocolBgpRequestWithoutEmbeddedStruct struct {
-		Connections  []InternetAccessConnectionBgpRequest        `json:"connections"`
-		ExportPolicy InternetAccessExportPolicy                  `json:"exportPolicy"`
-		Asn          *InternetAccessRoutingProtocolBgpRequestAsn `json:"asn,omitempty"`
+		Connections  []InternetAccessConnectionBgpRequest             `json:"connections"`
+		ExportPolicy InternetAccessExportPolicy                       `json:"exportPolicy"`
+		Asn          *InternetAccessRoutingProtocolBgpRequestAllOfAsn `json:"asn,omitempty"`
 		// Customer ASN. Valid range is 1-64495 or 65536-4199999999.
 		// Deprecated
 		CustomerAsn *int64 `json:"customerAsn,omitempty"`

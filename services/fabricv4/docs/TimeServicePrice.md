@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to [**PrecisionTimeServiceRequestType**](PrecisionTimeServiceRequestType.md) |  | [optional] 
+**Type** | Pointer to [**TimeServicePriceType**](TimeServicePriceType.md) |  | [optional] 
 **Package** | Pointer to [**PrecisionTimePackageRequest**](PrecisionTimePackageRequest.md) |  | [optional] 
 **Connection** | Pointer to [**TimeServicePriceConnection**](TimeServicePriceConnection.md) |  | [optional] 
 
@@ -29,20 +29,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetType
 
-`func (o *TimeServicePrice) GetType() PrecisionTimeServiceRequestType`
+`func (o *TimeServicePrice) GetType() TimeServicePriceType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *TimeServicePrice) GetTypeOk() (*PrecisionTimeServiceRequestType, bool)`
+`func (o *TimeServicePrice) GetTypeOk() (*TimeServicePriceType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *TimeServicePrice) SetType(v PrecisionTimeServiceRequestType)`
+`func (o *TimeServicePrice) SetType(v TimeServicePriceType)`
 
 SetType sets Type field to given value.
 

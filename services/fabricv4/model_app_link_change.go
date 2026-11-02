@@ -19,9 +19,9 @@ var _ MappedNullable = &AppLinkChange{}
 // AppLinkChange Current state of latest AppLink change
 type AppLinkChange struct {
 	// Uniquely identifies a change
-	Uuid   *string           `json:"uuid,omitempty"`
-	Type   AppLinkChangeType `json:"type"`
-	Status *PortChangeStatus `json:"status,omitempty"`
+	Uuid   *string                  `json:"uuid,omitempty"`
+	Type   AppLinkChangeType        `json:"type"`
+	Status *CloudRouterChangeStatus `json:"status,omitempty"`
 	// Set when change flow starts
 	CreatedDateTime *time.Time `json:"createdDateTime,omitempty"`
 	// Set when change object is updated
@@ -108,9 +108,9 @@ func (o *AppLinkChange) SetType(v AppLinkChangeType) {
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
-func (o *AppLinkChange) GetStatus() PortChangeStatus {
+func (o *AppLinkChange) GetStatus() CloudRouterChangeStatus {
 	if o == nil || IsNil(o.Status) {
-		var ret PortChangeStatus
+		var ret CloudRouterChangeStatus
 		return ret
 	}
 	return *o.Status
@@ -118,7 +118,7 @@ func (o *AppLinkChange) GetStatus() PortChangeStatus {
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AppLinkChange) GetStatusOk() (*PortChangeStatus, bool) {
+func (o *AppLinkChange) GetStatusOk() (*CloudRouterChangeStatus, bool) {
 	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
@@ -134,8 +134,8 @@ func (o *AppLinkChange) HasStatus() bool {
 	return false
 }
 
-// SetStatus gets a reference to the given PortChangeStatus and assigns it to the Status field.
-func (o *AppLinkChange) SetStatus(v PortChangeStatus) {
+// SetStatus gets a reference to the given CloudRouterChangeStatus and assigns it to the Status field.
+func (o *AppLinkChange) SetStatus(v CloudRouterChangeStatus) {
 	o.Status = &v
 }
 

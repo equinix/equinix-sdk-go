@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Op** | [**PrecisionTimeChangeOperationOp**](PrecisionTimeChangeOperationOp.md) |  | 
+**Op** | [**CloudRouterChangeOperationOp**](CloudRouterChangeOperationOp.md) |  | 
 **Path** | [**PrecisionTimeChangeOperationPath**](PrecisionTimeChangeOperationPath.md) |  | 
 **Value** | **interface{}** | new value for updated parameter | 
 
@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 ### NewPrecisionTimeChangeOperation
 
-`func NewPrecisionTimeChangeOperation(op PrecisionTimeChangeOperationOp, path PrecisionTimeChangeOperationPath, value interface{}, ) *PrecisionTimeChangeOperation`
+`func NewPrecisionTimeChangeOperation(op CloudRouterChangeOperationOp, path PrecisionTimeChangeOperationPath, value interface{}, ) *PrecisionTimeChangeOperation`
 
 NewPrecisionTimeChangeOperation instantiates a new PrecisionTimeChangeOperation object
 This constructor will assign default values to properties that have it defined,
@@ -29,20 +29,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetOp
 
-`func (o *PrecisionTimeChangeOperation) GetOp() PrecisionTimeChangeOperationOp`
+`func (o *PrecisionTimeChangeOperation) GetOp() CloudRouterChangeOperationOp`
 
 GetOp returns the Op field if non-nil, zero value otherwise.
 
 ### GetOpOk
 
-`func (o *PrecisionTimeChangeOperation) GetOpOk() (*PrecisionTimeChangeOperationOp, bool)`
+`func (o *PrecisionTimeChangeOperation) GetOpOk() (*CloudRouterChangeOperationOp, bool)`
 
 GetOpOk returns a tuple with the Op field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOp
 
-`func (o *PrecisionTimeChangeOperation) SetOp(v PrecisionTimeChangeOperationOp)`
+`func (o *PrecisionTimeChangeOperation) SetOp(v CloudRouterChangeOperationOp)`
 
 SetOp sets Op field to given value.
 

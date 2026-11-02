@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Connections** | [**[]InternetAccessConnectionBgpRequest**](InternetAccessConnectionBgpRequest.md) |  | 
 **ExportPolicy** | [**InternetAccessExportPolicy**](InternetAccessExportPolicy.md) |  | 
-**Asn** | Pointer to [**InternetAccessRoutingProtocolBgpRequestAsn**](InternetAccessRoutingProtocolBgpRequestAsn.md) |  | [optional] 
+**Asn** | Pointer to [**InternetAccessRoutingProtocolBgpRequestAllOfAsn**](InternetAccessRoutingProtocolBgpRequestAllOfAsn.md) |  | [optional] 
 **CustomerAsn** | Pointer to **int64** | Customer ASN. Valid range is 1-64495 or 65536-4199999999. | [optional] 
 **BgpAuthKey** | Pointer to **string** | BGP authentication key | [optional] 
 **CustomerAsnRange** | Pointer to [**InternetAccessCustomerAsnRange**](InternetAccessCustomerAsnRange.md) |  | [optional] 
@@ -72,20 +72,20 @@ SetExportPolicy sets ExportPolicy field to given value.
 
 ### GetAsn
 
-`func (o *InternetAccessRoutingProtocolBgpRequest) GetAsn() InternetAccessRoutingProtocolBgpRequestAsn`
+`func (o *InternetAccessRoutingProtocolBgpRequest) GetAsn() InternetAccessRoutingProtocolBgpRequestAllOfAsn`
 
 GetAsn returns the Asn field if non-nil, zero value otherwise.
 
 ### GetAsnOk
 
-`func (o *InternetAccessRoutingProtocolBgpRequest) GetAsnOk() (*InternetAccessRoutingProtocolBgpRequestAsn, bool)`
+`func (o *InternetAccessRoutingProtocolBgpRequest) GetAsnOk() (*InternetAccessRoutingProtocolBgpRequestAllOfAsn, bool)`
 
 GetAsnOk returns a tuple with the Asn field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAsn
 
-`func (o *InternetAccessRoutingProtocolBgpRequest) SetAsn(v InternetAccessRoutingProtocolBgpRequestAsn)`
+`func (o *InternetAccessRoutingProtocolBgpRequest) SetAsn(v InternetAccessRoutingProtocolBgpRequestAllOfAsn)`
 
 SetAsn sets Asn field to given value.
 

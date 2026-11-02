@@ -17,8 +17,8 @@ var _ MappedNullable = &StreamSubscriptionSinkResponse{}
 // StreamSubscriptionSinkResponse Create Stream destination
 type StreamSubscriptionSinkResponse struct {
 	// any publicly reachable http endpoint
-	Uri  *string                     `json:"uri,omitempty"`
-	Type *StreamSubscriptionSinkType `json:"type,omitempty"`
+	Uri  *string                             `json:"uri,omitempty"`
+	Type *StreamSubscriptionSinkResponseType `json:"type,omitempty"`
 	// batch mode on/off
 	BatchEnabled *bool `json:"batchEnabled,omitempty"`
 	// maximum batch size
@@ -84,9 +84,9 @@ func (o *StreamSubscriptionSinkResponse) SetUri(v string) {
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
-func (o *StreamSubscriptionSinkResponse) GetType() StreamSubscriptionSinkType {
+func (o *StreamSubscriptionSinkResponse) GetType() StreamSubscriptionSinkResponseType {
 	if o == nil || IsNil(o.Type) {
-		var ret StreamSubscriptionSinkType
+		var ret StreamSubscriptionSinkResponseType
 		return ret
 	}
 	return *o.Type
@@ -94,7 +94,7 @@ func (o *StreamSubscriptionSinkResponse) GetType() StreamSubscriptionSinkType {
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *StreamSubscriptionSinkResponse) GetTypeOk() (*StreamSubscriptionSinkType, bool) {
+func (o *StreamSubscriptionSinkResponse) GetTypeOk() (*StreamSubscriptionSinkResponseType, bool) {
 	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
@@ -110,8 +110,8 @@ func (o *StreamSubscriptionSinkResponse) HasType() bool {
 	return false
 }
 
-// SetType gets a reference to the given StreamSubscriptionSinkType and assigns it to the Type field.
-func (o *StreamSubscriptionSinkResponse) SetType(v StreamSubscriptionSinkType) {
+// SetType gets a reference to the given StreamSubscriptionSinkResponseType and assigns it to the Type field.
+func (o *StreamSubscriptionSinkResponse) SetType(v StreamSubscriptionSinkResponseType) {
 	o.Type = &v
 }
 

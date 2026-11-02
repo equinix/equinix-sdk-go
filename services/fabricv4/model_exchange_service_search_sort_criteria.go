@@ -16,8 +16,8 @@ var _ MappedNullable = &ExchangeServiceSearchSortCriteria{}
 
 // ExchangeServiceSearchSortCriteria struct for ExchangeServiceSearchSortCriteria
 type ExchangeServiceSearchSortCriteria struct {
-	Direction            *ExchangeServiceSearchSortCriteriaDirection `json:"direction,omitempty"`
-	Property             *ExchangeServiceSearchSortCriteriaProperty  `json:"property,omitempty"`
+	Direction            *AsnSearchSortCriteriaDirection            `json:"direction,omitempty"`
+	Property             *ExchangeServiceSearchSortCriteriaProperty `json:"property,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -29,7 +29,7 @@ type _ExchangeServiceSearchSortCriteria ExchangeServiceSearchSortCriteria
 // will change when the set of required properties is changed
 func NewExchangeServiceSearchSortCriteria() *ExchangeServiceSearchSortCriteria {
 	this := ExchangeServiceSearchSortCriteria{}
-	var direction ExchangeServiceSearchSortCriteriaDirection = EXCHANGESERVICESEARCHSORTCRITERIADIRECTION_DESC
+	var direction AsnSearchSortCriteriaDirection = ASNSEARCHSORTCRITERIADIRECTION_DESC
 	this.Direction = &direction
 	var property ExchangeServiceSearchSortCriteriaProperty = EXCHANGESERVICESEARCHSORTCRITERIAPROPERTY_CHANGE_LOG_UPDATED_DATE_TIME
 	this.Property = &property
@@ -41,7 +41,7 @@ func NewExchangeServiceSearchSortCriteria() *ExchangeServiceSearchSortCriteria {
 // but it doesn't guarantee that properties required by API are set
 func NewExchangeServiceSearchSortCriteriaWithDefaults() *ExchangeServiceSearchSortCriteria {
 	this := ExchangeServiceSearchSortCriteria{}
-	var direction ExchangeServiceSearchSortCriteriaDirection = EXCHANGESERVICESEARCHSORTCRITERIADIRECTION_DESC
+	var direction AsnSearchSortCriteriaDirection = ASNSEARCHSORTCRITERIADIRECTION_DESC
 	this.Direction = &direction
 	var property ExchangeServiceSearchSortCriteriaProperty = EXCHANGESERVICESEARCHSORTCRITERIAPROPERTY_CHANGE_LOG_UPDATED_DATE_TIME
 	this.Property = &property
@@ -49,9 +49,9 @@ func NewExchangeServiceSearchSortCriteriaWithDefaults() *ExchangeServiceSearchSo
 }
 
 // GetDirection returns the Direction field value if set, zero value otherwise.
-func (o *ExchangeServiceSearchSortCriteria) GetDirection() ExchangeServiceSearchSortCriteriaDirection {
+func (o *ExchangeServiceSearchSortCriteria) GetDirection() AsnSearchSortCriteriaDirection {
 	if o == nil || IsNil(o.Direction) {
-		var ret ExchangeServiceSearchSortCriteriaDirection
+		var ret AsnSearchSortCriteriaDirection
 		return ret
 	}
 	return *o.Direction
@@ -59,7 +59,7 @@ func (o *ExchangeServiceSearchSortCriteria) GetDirection() ExchangeServiceSearch
 
 // GetDirectionOk returns a tuple with the Direction field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ExchangeServiceSearchSortCriteria) GetDirectionOk() (*ExchangeServiceSearchSortCriteriaDirection, bool) {
+func (o *ExchangeServiceSearchSortCriteria) GetDirectionOk() (*AsnSearchSortCriteriaDirection, bool) {
 	if o == nil || IsNil(o.Direction) {
 		return nil, false
 	}
@@ -75,8 +75,8 @@ func (o *ExchangeServiceSearchSortCriteria) HasDirection() bool {
 	return false
 }
 
-// SetDirection gets a reference to the given ExchangeServiceSearchSortCriteriaDirection and assigns it to the Direction field.
-func (o *ExchangeServiceSearchSortCriteria) SetDirection(v ExchangeServiceSearchSortCriteriaDirection) {
+// SetDirection gets a reference to the given AsnSearchSortCriteriaDirection and assigns it to the Direction field.
+func (o *ExchangeServiceSearchSortCriteria) SetDirection(v AsnSearchSortCriteriaDirection) {
 	o.Direction = &v
 }
 

@@ -35,7 +35,7 @@ import (
 )
 
 func main() {
-	precisionTimeServiceRequest := *openapiclient.NewPrecisionTimeServiceRequest(openapiclient.precisionTimeServiceRequest_type("NTP"), "Name_example", *openapiclient.NewPrecisionTimePackageRequest(openapiclient.precisionTimePackageRequest_code("NTP_STANDARD")), []openapiclient.VirtualConnectionUuid{*openapiclient.NewVirtualConnectionUuid("Uuid_example")}, *openapiclient.NewIpv4("Primary_example", "Secondary_example", "NetworkMask_example")) // PrecisionTimeServiceRequest | 
+	precisionTimeServiceRequest := *openapiclient.NewPrecisionTimeServiceRequest(openapiclient.TimeServicePrice_type("NTP"), "Name_example", *openapiclient.NewPrecisionTimePackageRequest(openapiclient.precisionTimePackageRequest_code("NTP_STANDARD")), []openapiclient.VirtualConnectionUuid{*openapiclient.NewVirtualConnectionUuid("Uuid_example")}, *openapiclient.NewIpv4("Primary_example", "Secondary_example", "NetworkMask_example")) // PrecisionTimeServiceRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -101,7 +101,7 @@ import (
 )
 
 func main() {
-	serviceId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Service UUID
+	serviceId := "557400f8-d360-11e9-bb65-2a2ae2dbcce4" // string | Service UUID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -171,8 +171,8 @@ import (
 )
 
 func main() {
-	serviceId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Service UUID
-	precisionTimeServiceRequest := *openapiclient.NewPrecisionTimeServiceRequest(openapiclient.precisionTimeServiceRequest_type("NTP"), "Name_example", *openapiclient.NewPrecisionTimePackageRequest(openapiclient.precisionTimePackageRequest_code("NTP_STANDARD")), []openapiclient.VirtualConnectionUuid{*openapiclient.NewVirtualConnectionUuid("Uuid_example")}, *openapiclient.NewIpv4("Primary_example", "Secondary_example", "NetworkMask_example")) // PrecisionTimeServiceRequest | 
+	serviceId := "557400f8-d360-11e9-bb65-2a2ae2dbcce4" // string | Service UUID
+	precisionTimeServiceRequest := *openapiclient.NewPrecisionTimeServiceRequest(openapiclient.TimeServicePrice_type("NTP"), "Name_example", *openapiclient.NewPrecisionTimePackageRequest(openapiclient.precisionTimePackageRequest_code("NTP_STANDARD")), []openapiclient.VirtualConnectionUuid{*openapiclient.NewVirtualConnectionUuid("Uuid_example")}, *openapiclient.NewIpv4("Primary_example", "Secondary_example", "NetworkMask_example")) // PrecisionTimeServiceRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -243,7 +243,7 @@ import (
 )
 
 func main() {
-	serviceId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Service UUID
+	serviceId := "557400f8-d360-11e9-bb65-2a2ae2dbcce4" // string | Service UUID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -313,7 +313,7 @@ import (
 )
 
 func main() {
-	serviceId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Service UUID
+	serviceId := "557400f8-d360-11e9-bb65-2a2ae2dbcce4" // string | Service UUID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -449,8 +449,8 @@ import (
 )
 
 func main() {
-	serviceId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Service UUID
-	precisionTimeChangeOperation := []openapiclient.PrecisionTimeChangeOperation{*openapiclient.NewPrecisionTimeChangeOperation(openapiclient.precisionTimeChangeOperation_op("replace"), openapiclient.precisionTimeChangeOperation_path("/name"), interface{}(123))} // []PrecisionTimeChangeOperation | 
+	serviceId := "557400f8-d360-11e9-bb65-2a2ae2dbcce4" // string | Service UUID
+	precisionTimeChangeOperation := []openapiclient.PrecisionTimeChangeOperation{*openapiclient.NewPrecisionTimeChangeOperation(openapiclient.CloudRouterChangeOperation_op("replace"), openapiclient.precisionTimeChangeOperation_path("/name"), interface{}(123))} // []PrecisionTimeChangeOperation | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

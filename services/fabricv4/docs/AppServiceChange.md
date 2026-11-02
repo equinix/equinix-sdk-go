@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Uuid** | Pointer to **string** | Uniquely identifies a change | [optional] 
 **Type** | [**AppLinkAppServiceAttachmentChangeType**](AppLinkAppServiceAttachmentChangeType.md) |  | 
-**Status** | Pointer to [**PortChangeStatus**](PortChangeStatus.md) |  | [optional] 
+**Status** | Pointer to [**CloudRouterChangeStatus**](CloudRouterChangeStatus.md) |  | [optional] 
 **CreatedDateTime** | Pointer to **time.Time** | Set when change flow starts | [optional] 
 **UpdatedDateTime** | **time.Time** | Set when change object is updated | 
 **Data** | Pointer to [**[]AppServiceChangeOperation**](AppServiceChangeOperation.md) |  | [optional] 
@@ -77,20 +77,20 @@ SetType sets Type field to given value.
 
 ### GetStatus
 
-`func (o *AppServiceChange) GetStatus() PortChangeStatus`
+`func (o *AppServiceChange) GetStatus() CloudRouterChangeStatus`
 
 GetStatus returns the Status field if non-nil, zero value otherwise.
 
 ### GetStatusOk
 
-`func (o *AppServiceChange) GetStatusOk() (*PortChangeStatus, bool)`
+`func (o *AppServiceChange) GetStatusOk() (*CloudRouterChangeStatus, bool)`
 
 GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStatus
 
-`func (o *AppServiceChange) SetStatus(v PortChangeStatus)`
+`func (o *AppServiceChange) SetStatus(v CloudRouterChangeStatus)`
 
 SetStatus sets Status field to given value.
 

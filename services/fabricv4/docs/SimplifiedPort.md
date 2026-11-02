@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **State** | Pointer to [**PortState**](PortState.md) |  | [optional] 
 **Operation** | Pointer to [**PortOperation**](PortOperation.md) |  | [optional] 
 **Account** | Pointer to [**SimplifiedAccount**](SimplifiedAccount.md) |  | [optional] 
-**ServiceType** | Pointer to [**PortServiceType**](PortServiceType.md) |  | [optional] 
+**ServiceType** | Pointer to [**SimplifiedPortServiceType**](SimplifiedPortServiceType.md) |  | [optional] 
 **ServiceCode** | Pointer to [**PortServiceCode**](PortServiceCode.md) |  | [optional] 
 **Bandwidth** | Pointer to **int64** | Equinix assigned response attribute for Port bandwidth in Mbps | [optional] 
 **AvailableBandwidth** | Pointer to **int64** | Equinix assigned response attribute for Port available bandwidth in Mbps | [optional] 
@@ -356,20 +356,20 @@ HasAccount returns a boolean if a field has been set.
 
 ### GetServiceType
 
-`func (o *SimplifiedPort) GetServiceType() PortServiceType`
+`func (o *SimplifiedPort) GetServiceType() SimplifiedPortServiceType`
 
 GetServiceType returns the ServiceType field if non-nil, zero value otherwise.
 
 ### GetServiceTypeOk
 
-`func (o *SimplifiedPort) GetServiceTypeOk() (*PortServiceType, bool)`
+`func (o *SimplifiedPort) GetServiceTypeOk() (*SimplifiedPortServiceType, bool)`
 
 GetServiceTypeOk returns a tuple with the ServiceType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetServiceType
 
-`func (o *SimplifiedPort) SetServiceType(v PortServiceType)`
+`func (o *SimplifiedPort) SetServiceType(v SimplifiedPortServiceType)`
 
 SetServiceType sets ServiceType field to given value.
 

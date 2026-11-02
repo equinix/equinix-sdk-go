@@ -25,8 +25,8 @@ type StreamSearchAsset struct {
 	// Asset type
 	Type *string `json:"type,omitempty"`
 	// enable metric
-	MetricsEnabled   *bool                        `json:"metricsEnabled,omitempty"`
-	AttachmentStatus *StreamAssetAttachmentStatus `json:"attachmentStatus,omitempty"`
+	MetricsEnabled   *bool                              `json:"metricsEnabled,omitempty"`
+	AttachmentStatus *StreamSearchAssetAttachmentStatus `json:"attachmentStatus,omitempty"`
 	// project ic
 	ProjectId            *string `json:"projectId,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -212,9 +212,9 @@ func (o *StreamSearchAsset) SetMetricsEnabled(v bool) {
 }
 
 // GetAttachmentStatus returns the AttachmentStatus field value if set, zero value otherwise.
-func (o *StreamSearchAsset) GetAttachmentStatus() StreamAssetAttachmentStatus {
+func (o *StreamSearchAsset) GetAttachmentStatus() StreamSearchAssetAttachmentStatus {
 	if o == nil || IsNil(o.AttachmentStatus) {
-		var ret StreamAssetAttachmentStatus
+		var ret StreamSearchAssetAttachmentStatus
 		return ret
 	}
 	return *o.AttachmentStatus
@@ -222,7 +222,7 @@ func (o *StreamSearchAsset) GetAttachmentStatus() StreamAssetAttachmentStatus {
 
 // GetAttachmentStatusOk returns a tuple with the AttachmentStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *StreamSearchAsset) GetAttachmentStatusOk() (*StreamAssetAttachmentStatus, bool) {
+func (o *StreamSearchAsset) GetAttachmentStatusOk() (*StreamSearchAssetAttachmentStatus, bool) {
 	if o == nil || IsNil(o.AttachmentStatus) {
 		return nil, false
 	}
@@ -238,8 +238,8 @@ func (o *StreamSearchAsset) HasAttachmentStatus() bool {
 	return false
 }
 
-// SetAttachmentStatus gets a reference to the given StreamAssetAttachmentStatus and assigns it to the AttachmentStatus field.
-func (o *StreamSearchAsset) SetAttachmentStatus(v StreamAssetAttachmentStatus) {
+// SetAttachmentStatus gets a reference to the given StreamSearchAssetAttachmentStatus and assigns it to the AttachmentStatus field.
+func (o *StreamSearchAsset) SetAttachmentStatus(v StreamSearchAssetAttachmentStatus) {
 	o.AttachmentStatus = &v
 }
 

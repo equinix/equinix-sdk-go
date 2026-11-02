@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Uuid** | Pointer to **string** | Equinix-assigned access point identifier | [optional] 
 **Type** | Pointer to [**StreamAssetType**](StreamAssetType.md) |  | [optional] 
 **MetricsEnabled** | Pointer to **bool** | enable metric | [optional] 
-**AttachmentStatus** | Pointer to [**StreamAssetAttachmentStatus**](StreamAssetAttachmentStatus.md) |  | [optional] 
+**AttachmentStatus** | Pointer to [**StreamSearchAssetAttachmentStatus**](StreamSearchAssetAttachmentStatus.md) |  | [optional] 
 
 ## Methods
 
@@ -131,20 +131,20 @@ HasMetricsEnabled returns a boolean if a field has been set.
 
 ### GetAttachmentStatus
 
-`func (o *StreamAsset) GetAttachmentStatus() StreamAssetAttachmentStatus`
+`func (o *StreamAsset) GetAttachmentStatus() StreamSearchAssetAttachmentStatus`
 
 GetAttachmentStatus returns the AttachmentStatus field if non-nil, zero value otherwise.
 
 ### GetAttachmentStatusOk
 
-`func (o *StreamAsset) GetAttachmentStatusOk() (*StreamAssetAttachmentStatus, bool)`
+`func (o *StreamAsset) GetAttachmentStatusOk() (*StreamSearchAssetAttachmentStatus, bool)`
 
 GetAttachmentStatusOk returns a tuple with the AttachmentStatus field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAttachmentStatus
 
-`func (o *StreamAsset) SetAttachmentStatus(v StreamAssetAttachmentStatus)`
+`func (o *StreamAsset) SetAttachmentStatus(v StreamSearchAssetAttachmentStatus)`
 
 SetAttachmentStatus sets AttachmentStatus field to given value.
 

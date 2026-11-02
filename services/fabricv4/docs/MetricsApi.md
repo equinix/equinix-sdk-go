@@ -33,7 +33,7 @@ import (
 
 func main() {
 	asset := openapiclient.MetricAssetType("ports") // MetricAssetType | asset
-	assetId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | asset UUID
+	assetId := "757400f8-d360-11e9-bb65-2a2ae2dbcce6" // string | asset UUID
 	name := "equinix.fabric.connection.bandwidth_rx.usage" // string | Name of the metric types:  - `equinix.fabric.connection.bandwidth_rx.usage` - `equinix.fabric.connection.bandwidth_tx.usage` - `equinix.fabric.connection.packets_dropped_rx_aside_rateexceeded.count` - `equinix.fabric.connection.packets_dropped_tx_aside_rateexceeded.count` - `equinix.fabric.connection.packets_dropped_rx_zside_rateexceeded.count` - `equinix.fabric.connection.packets_dropped_tx_zside_rateexceeded.count` - `equinix.fabric.connection.byte_rx.count` - `equinix.fabric.connection.byte_tx.count` - `equinix.fabric.connection.bandwidth_rx.usage_summary` - `equinix.fabric.connection.bandwidth_tx.usage_summary` - `equinix.fabric.port.bandwidth_rx.usage` - `equinix.fabric.port.bandwidth_tx.usage` - `equinix.fabric.port.packets_dropped_rx.count` - `equinix.fabric.port.packets_dropped_tx.count` - `equinix.fabric.port.packets_erred_rx.count` - `equinix.fabric.port.packets_erred_tx.count` - `equinix.fabric.metro.{SOURCE_METRO_CODE}_{DESTINATION_METRO_CODE}.latency` - `equinix.fabric.metro.{SOURCE_METRO_CODE}_{DESTINATION_METRO_CODE}.jitter_avg` 
 	fromDateTime := time.Now() // time.Time | Start date and time (optional)
 	toDateTime := time.Now() // time.Time | End date and time (optional)

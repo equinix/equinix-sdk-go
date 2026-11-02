@@ -18,8 +18,8 @@ var _ MappedNullable = &StreamSubscriptionSink{}
 // StreamSubscriptionSink Create Stream destination
 type StreamSubscriptionSink struct {
 	// any publicly reachable http endpoint
-	Uri  *string                    `json:"uri,omitempty"`
-	Type StreamSubscriptionSinkType `json:"type"`
+	Uri  *string                            `json:"uri,omitempty"`
+	Type StreamSubscriptionSinkResponseType `json:"type"`
 	// batch mode on/off
 	BatchEnabled *bool `json:"batchEnabled,omitempty"`
 	// maximum batch size
@@ -39,7 +39,7 @@ type _StreamSubscriptionSink StreamSubscriptionSink
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStreamSubscriptionSink(type_ StreamSubscriptionSinkType) *StreamSubscriptionSink {
+func NewStreamSubscriptionSink(type_ StreamSubscriptionSinkResponseType) *StreamSubscriptionSink {
 	this := StreamSubscriptionSink{}
 	this.Type = type_
 	return &this
@@ -86,9 +86,9 @@ func (o *StreamSubscriptionSink) SetUri(v string) {
 }
 
 // GetType returns the Type field value
-func (o *StreamSubscriptionSink) GetType() StreamSubscriptionSinkType {
+func (o *StreamSubscriptionSink) GetType() StreamSubscriptionSinkResponseType {
 	if o == nil {
-		var ret StreamSubscriptionSinkType
+		var ret StreamSubscriptionSinkResponseType
 		return ret
 	}
 
@@ -97,7 +97,7 @@ func (o *StreamSubscriptionSink) GetType() StreamSubscriptionSinkType {
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *StreamSubscriptionSink) GetTypeOk() (*StreamSubscriptionSinkType, bool) {
+func (o *StreamSubscriptionSink) GetTypeOk() (*StreamSubscriptionSinkResponseType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -105,7 +105,7 @@ func (o *StreamSubscriptionSink) GetTypeOk() (*StreamSubscriptionSinkType, bool)
 }
 
 // SetType sets field value
-func (o *StreamSubscriptionSink) SetType(v StreamSubscriptionSinkType) {
+func (o *StreamSubscriptionSink) SetType(v StreamSubscriptionSinkResponseType) {
 	o.Type = v
 }
 

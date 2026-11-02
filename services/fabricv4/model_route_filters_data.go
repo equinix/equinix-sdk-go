@@ -24,7 +24,6 @@ type RouteFiltersData struct {
 	Name *string `json:"name,omitempty"`
 	// Customer-provided connection description
 	Description          *string                               `json:"description,omitempty"`
-	State                *RouteFilterState                     `json:"state,omitempty"`
 	Change               *RouteFiltersChange                   `json:"change,omitempty"`
 	NotMatchedRuleAction *RouteFiltersDataNotMatchedRuleAction `json:"notMatchedRuleAction,omitempty"`
 	ConnectionsCount     *int32                                `json:"connectionsCount,omitempty"`
@@ -211,38 +210,6 @@ func (o *RouteFiltersData) HasDescription() bool {
 // SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *RouteFiltersData) SetDescription(v string) {
 	o.Description = &v
-}
-
-// GetState returns the State field value if set, zero value otherwise.
-func (o *RouteFiltersData) GetState() RouteFilterState {
-	if o == nil || IsNil(o.State) {
-		var ret RouteFilterState
-		return ret
-	}
-	return *o.State
-}
-
-// GetStateOk returns a tuple with the State field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *RouteFiltersData) GetStateOk() (*RouteFilterState, bool) {
-	if o == nil || IsNil(o.State) {
-		return nil, false
-	}
-	return o.State, true
-}
-
-// HasState returns a boolean if a field has been set.
-func (o *RouteFiltersData) HasState() bool {
-	if o != nil && !IsNil(o.State) {
-		return true
-	}
-
-	return false
-}
-
-// SetState gets a reference to the given RouteFilterState and assigns it to the State field.
-func (o *RouteFiltersData) SetState(v RouteFilterState) {
-	o.State = &v
 }
 
 // GetChange returns the Change field value if set, zero value otherwise.
@@ -462,9 +429,6 @@ func (o RouteFiltersData) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !IsNil(o.State) {
-		toSerialize["state"] = o.State
-	}
 	if !IsNil(o.Change) {
 		toSerialize["change"] = o.Change
 	}
@@ -510,7 +474,6 @@ func (o *RouteFiltersData) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "uuid")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")
-		delete(additionalProperties, "state")
 		delete(additionalProperties, "change")
 		delete(additionalProperties, "notMatchedRuleAction")
 		delete(additionalProperties, "connectionsCount")

@@ -23,20 +23,19 @@ type CompanyProfileResponse struct {
 	Summary     *string `json:"summary,omitempty"`
 	Description *string `json:"description,omitempty"`
 	// Company Profile State
-	State                *string                        `json:"state,omitempty"`
-	Account              *CompanyProfileResponseAccount `json:"account,omitempty"`
-	Metros               []CompanyMetro                 `json:"metros,omitempty"`
-	Logo                 *CompanyLogo                   `json:"logo,omitempty"`
-	Tags                 []TagResponse                  `json:"tags,omitempty"`
-	ServiceProfiles      []CompanyServiceProfile        `json:"serviceProfiles,omitempty"`
-	PrivateServices      []PrivateService               `json:"privateServices,omitempty"`
-	PointOfContacts      []CompanyProfileContact        `json:"pointOfContacts,omitempty"`
-	Notifications        []SimplifiedNotification       `json:"notifications,omitempty"`
-	Overview             *string                        `json:"overview,omitempty"`
-	WebUrl               *string                        `json:"webUrl,omitempty"`
-	ContactUrl           *string                        `json:"contactUrl,omitempty"`
-	Change               *CompanyProfileChange          `json:"change,omitempty"`
-	ChangeLog            *Changelog                     `json:"changeLog,omitempty"`
+	State                *string                  `json:"state,omitempty"`
+	Metros               []CompanyMetro           `json:"metros,omitempty"`
+	Logo                 *CompanyLogo             `json:"logo,omitempty"`
+	Tags                 []TagResponse            `json:"tags,omitempty"`
+	ServiceProfiles      []CompanyServiceProfile  `json:"serviceProfiles,omitempty"`
+	PrivateServices      []PrivateService         `json:"privateServices,omitempty"`
+	PointOfContacts      []CompanyProfileContact  `json:"pointOfContacts,omitempty"`
+	Notifications        []SimplifiedNotification `json:"notifications,omitempty"`
+	Overview             *string                  `json:"overview,omitempty"`
+	WebUrl               *string                  `json:"webUrl,omitempty"`
+	ContactUrl           *string                  `json:"contactUrl,omitempty"`
+	Change               *CompanyProfileChange    `json:"change,omitempty"`
+	ChangeLog            *Changelog               `json:"changeLog,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -281,38 +280,6 @@ func (o *CompanyProfileResponse) HasState() bool {
 // SetState gets a reference to the given string and assigns it to the State field.
 func (o *CompanyProfileResponse) SetState(v string) {
 	o.State = &v
-}
-
-// GetAccount returns the Account field value if set, zero value otherwise.
-func (o *CompanyProfileResponse) GetAccount() CompanyProfileResponseAccount {
-	if o == nil || IsNil(o.Account) {
-		var ret CompanyProfileResponseAccount
-		return ret
-	}
-	return *o.Account
-}
-
-// GetAccountOk returns a tuple with the Account field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CompanyProfileResponse) GetAccountOk() (*CompanyProfileResponseAccount, bool) {
-	if o == nil || IsNil(o.Account) {
-		return nil, false
-	}
-	return o.Account, true
-}
-
-// HasAccount returns a boolean if a field has been set.
-func (o *CompanyProfileResponse) HasAccount() bool {
-	if o != nil && !IsNil(o.Account) {
-		return true
-	}
-
-	return false
-}
-
-// SetAccount gets a reference to the given CompanyProfileResponseAccount and assigns it to the Account field.
-func (o *CompanyProfileResponse) SetAccount(v CompanyProfileResponseAccount) {
-	o.Account = &v
 }
 
 // GetMetros returns the Metros field value if set, zero value otherwise.
@@ -730,9 +697,6 @@ func (o CompanyProfileResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.State) {
 		toSerialize["state"] = o.State
 	}
-	if !IsNil(o.Account) {
-		toSerialize["account"] = o.Account
-	}
 	if !IsNil(o.Metros) {
 		toSerialize["metros"] = o.Metros
 	}
@@ -798,7 +762,6 @@ func (o *CompanyProfileResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "summary")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "state")
-		delete(additionalProperties, "account")
 		delete(additionalProperties, "metros")
 		delete(additionalProperties, "logo")
 		delete(additionalProperties, "tags")

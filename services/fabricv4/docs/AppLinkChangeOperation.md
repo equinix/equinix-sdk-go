@@ -6,13 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Op** | [**AppDomainChangeOperationOp**](AppDomainChangeOperationOp.md) |  | 
 **Path** | [**AppLinkChangeOperationPath**](AppLinkChangeOperationPath.md) |  | 
-**Value** | **map[string]interface{}** | new value for updated parameter | 
+**Value** | **interface{}** | new value for updated parameter | 
 
 ## Methods
 
 ### NewAppLinkChangeOperation
 
-`func NewAppLinkChangeOperation(op AppDomainChangeOperationOp, path AppLinkChangeOperationPath, value map[string]interface{}, ) *AppLinkChangeOperation`
+`func NewAppLinkChangeOperation(op AppDomainChangeOperationOp, path AppLinkChangeOperationPath, value interface{}, ) *AppLinkChangeOperation`
 
 NewAppLinkChangeOperation instantiates a new AppLinkChangeOperation object
 This constructor will assign default values to properties that have it defined,
@@ -69,24 +69,34 @@ SetPath sets Path field to given value.
 
 ### GetValue
 
-`func (o *AppLinkChangeOperation) GetValue() map[string]interface{}`
+`func (o *AppLinkChangeOperation) GetValue() interface{}`
 
 GetValue returns the Value field if non-nil, zero value otherwise.
 
 ### GetValueOk
 
-`func (o *AppLinkChangeOperation) GetValueOk() (*map[string]interface{}, bool)`
+`func (o *AppLinkChangeOperation) GetValueOk() (*interface{}, bool)`
 
 GetValueOk returns a tuple with the Value field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetValue
 
-`func (o *AppLinkChangeOperation) SetValue(v map[string]interface{})`
+`func (o *AppLinkChangeOperation) SetValue(v interface{})`
 
 SetValue sets Value field to given value.
 
 
+### SetValueNil
+
+`func (o *AppLinkChangeOperation) SetValueNil(b bool)`
+
+ SetValueNil sets the value for Value to be an explicit nil
+
+### UnsetValue
+`func (o *AppLinkChangeOperation) UnsetValue()`
+
+UnsetValue ensures that no value is present for Value, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

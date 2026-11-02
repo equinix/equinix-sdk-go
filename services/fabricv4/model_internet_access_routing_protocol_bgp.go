@@ -20,8 +20,8 @@ var _ MappedNullable = &InternetAccessRoutingProtocolBgp{}
 // InternetAccessRoutingProtocolBgp struct for InternetAccessRoutingProtocolBgp
 type InternetAccessRoutingProtocolBgp struct {
 	InternetAccessRoutingProtocol
-	ExportPolicy InternetAccessExportPolicy           `json:"exportPolicy"`
-	Asn          *InternetAccessRoutingProtocolBgpAsn `json:"asn,omitempty"`
+	ExportPolicy InternetAccessExportPolicy                `json:"exportPolicy"`
+	Asn          *InternetAccessRoutingProtocolBgpAllOfAsn `json:"asn,omitempty"`
 	// Customer ASN. Valid range is 1-64495 or 131072-4199999999. Currently this option is only available for EIA over dedicated port.
 	// Deprecated
 	CustomerAsn *int64 `json:"customerAsn,omitempty"`
@@ -85,9 +85,9 @@ func (o *InternetAccessRoutingProtocolBgp) SetExportPolicy(v InternetAccessExpor
 }
 
 // GetAsn returns the Asn field value if set, zero value otherwise.
-func (o *InternetAccessRoutingProtocolBgp) GetAsn() InternetAccessRoutingProtocolBgpAsn {
+func (o *InternetAccessRoutingProtocolBgp) GetAsn() InternetAccessRoutingProtocolBgpAllOfAsn {
 	if o == nil || IsNil(o.Asn) {
-		var ret InternetAccessRoutingProtocolBgpAsn
+		var ret InternetAccessRoutingProtocolBgpAllOfAsn
 		return ret
 	}
 	return *o.Asn
@@ -95,7 +95,7 @@ func (o *InternetAccessRoutingProtocolBgp) GetAsn() InternetAccessRoutingProtoco
 
 // GetAsnOk returns a tuple with the Asn field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InternetAccessRoutingProtocolBgp) GetAsnOk() (*InternetAccessRoutingProtocolBgpAsn, bool) {
+func (o *InternetAccessRoutingProtocolBgp) GetAsnOk() (*InternetAccessRoutingProtocolBgpAllOfAsn, bool) {
 	if o == nil || IsNil(o.Asn) {
 		return nil, false
 	}
@@ -111,8 +111,8 @@ func (o *InternetAccessRoutingProtocolBgp) HasAsn() bool {
 	return false
 }
 
-// SetAsn gets a reference to the given InternetAccessRoutingProtocolBgpAsn and assigns it to the Asn field.
-func (o *InternetAccessRoutingProtocolBgp) SetAsn(v InternetAccessRoutingProtocolBgpAsn) {
+// SetAsn gets a reference to the given InternetAccessRoutingProtocolBgpAllOfAsn and assigns it to the Asn field.
+func (o *InternetAccessRoutingProtocolBgp) SetAsn(v InternetAccessRoutingProtocolBgpAllOfAsn) {
 	o.Asn = &v
 }
 
@@ -318,8 +318,8 @@ func (o *InternetAccessRoutingProtocolBgp) UnmarshalJSON(data []byte) (err error
 	}
 
 	type InternetAccessRoutingProtocolBgpWithoutEmbeddedStruct struct {
-		ExportPolicy InternetAccessExportPolicy           `json:"exportPolicy"`
-		Asn          *InternetAccessRoutingProtocolBgpAsn `json:"asn,omitempty"`
+		ExportPolicy InternetAccessExportPolicy                `json:"exportPolicy"`
+		Asn          *InternetAccessRoutingProtocolBgpAllOfAsn `json:"asn,omitempty"`
 		// Customer ASN. Valid range is 1-64495 or 131072-4199999999. Currently this option is only available for EIA over dedicated port.
 		// Deprecated
 		CustomerAsn *int64 `json:"customerAsn,omitempty"`

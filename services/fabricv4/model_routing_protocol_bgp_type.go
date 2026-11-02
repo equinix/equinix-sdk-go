@@ -17,7 +17,7 @@ var _ MappedNullable = &RoutingProtocolBGPType{}
 
 // RoutingProtocolBGPType struct for RoutingProtocolBGPType
 type RoutingProtocolBGPType struct {
-	Type    RoutingProtocolBGPTypeType `json:"type"`
+	Type    RoutingProtocolBGPDataType `json:"type"`
 	Name    *string                    `json:"name,omitempty"`
 	BgpIpv4 *BGPConnectionIpv4         `json:"bgpIpv4,omitempty"`
 	BgpIpv6 *BGPConnectionIpv6         `json:"bgpIpv6,omitempty"`
@@ -37,7 +37,7 @@ type _RoutingProtocolBGPType RoutingProtocolBGPType
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRoutingProtocolBGPType(type_ RoutingProtocolBGPTypeType) *RoutingProtocolBGPType {
+func NewRoutingProtocolBGPType(type_ RoutingProtocolBGPDataType) *RoutingProtocolBGPType {
 	this := RoutingProtocolBGPType{}
 	this.Type = type_
 	return &this
@@ -52,9 +52,9 @@ func NewRoutingProtocolBGPTypeWithDefaults() *RoutingProtocolBGPType {
 }
 
 // GetType returns the Type field value
-func (o *RoutingProtocolBGPType) GetType() RoutingProtocolBGPTypeType {
+func (o *RoutingProtocolBGPType) GetType() RoutingProtocolBGPDataType {
 	if o == nil {
-		var ret RoutingProtocolBGPTypeType
+		var ret RoutingProtocolBGPDataType
 		return ret
 	}
 
@@ -63,7 +63,7 @@ func (o *RoutingProtocolBGPType) GetType() RoutingProtocolBGPTypeType {
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *RoutingProtocolBGPType) GetTypeOk() (*RoutingProtocolBGPTypeType, bool) {
+func (o *RoutingProtocolBGPType) GetTypeOk() (*RoutingProtocolBGPDataType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -71,7 +71,7 @@ func (o *RoutingProtocolBGPType) GetTypeOk() (*RoutingProtocolBGPTypeType, bool)
 }
 
 // SetType sets field value
-func (o *RoutingProtocolBGPType) SetType(v RoutingProtocolBGPTypeType) {
+func (o *RoutingProtocolBGPType) SetType(v RoutingProtocolBGPDataType) {
 	o.Type = v
 }
 

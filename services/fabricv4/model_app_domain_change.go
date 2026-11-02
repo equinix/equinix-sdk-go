@@ -19,9 +19,9 @@ var _ MappedNullable = &AppDomainChange{}
 // AppDomainChange Current state of latest AppDomain change
 type AppDomainChange struct {
 	// Uniquely identifies a change
-	Uuid   *string             `json:"uuid,omitempty"`
-	Type   AppDomainChangeType `json:"type"`
-	Status *PortChangeStatus   `json:"status,omitempty"`
+	Uuid   *string                  `json:"uuid,omitempty"`
+	Type   AppDomainChangeType      `json:"type"`
+	Status *CloudRouterChangeStatus `json:"status,omitempty"`
 	// Set when change flow starts
 	CreatedDateTime *time.Time `json:"createdDateTime,omitempty"`
 	// Set when change object is updated
@@ -108,9 +108,9 @@ func (o *AppDomainChange) SetType(v AppDomainChangeType) {
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
-func (o *AppDomainChange) GetStatus() PortChangeStatus {
+func (o *AppDomainChange) GetStatus() CloudRouterChangeStatus {
 	if o == nil || IsNil(o.Status) {
-		var ret PortChangeStatus
+		var ret CloudRouterChangeStatus
 		return ret
 	}
 	return *o.Status
@@ -118,7 +118,7 @@ func (o *AppDomainChange) GetStatus() PortChangeStatus {
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AppDomainChange) GetStatusOk() (*PortChangeStatus, bool) {
+func (o *AppDomainChange) GetStatusOk() (*CloudRouterChangeStatus, bool) {
 	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
@@ -134,8 +134,8 @@ func (o *AppDomainChange) HasStatus() bool {
 	return false
 }
 
-// SetStatus gets a reference to the given PortChangeStatus and assigns it to the Status field.
-func (o *AppDomainChange) SetStatus(v PortChangeStatus) {
+// SetStatus gets a reference to the given CloudRouterChangeStatus and assigns it to the Status field.
+func (o *AppDomainChange) SetStatus(v CloudRouterChangeStatus) {
 	o.Status = &v
 }
 

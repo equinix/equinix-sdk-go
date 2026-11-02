@@ -33,8 +33,8 @@ import (
 )
 
 func main() {
-	streamId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Stream UUID
-	alertRulePostRequest := *openapiclient.NewAlertRulePostRequest(openapiclient.AlertRulePostRequest_type("METRIC_ALERT"), "Name_example", *openapiclient.NewMetricSelector([]string{"equinix.fabric.metro.sv_da.latency"}), *openapiclient.NewResourceSelector([]string{"Include_example"}), *openapiclient.NewDetectionMethod(openapiclient.DetectionMethod_type("THRESHOLD"))) // AlertRulePostRequest | 
+	streamId := "657400f8-d360-11e9-bb65-2a2ae2dbcce5" // string | Stream UUID
+	alertRulePostRequest := *openapiclient.NewAlertRulePostRequest(openapiclient.AlertRulePostRequest_type("METRIC_ALERT"), "Name_example", *openapiclient.NewMetricSelector([]string{"equinix.fabric.metro.sv_da.latency"}), *openapiclient.NewResourceSelector([]string{"Include_example"}), *openapiclient.NewDetectionMethod(openapiclient.DetectionMethodResponse_type("THRESHOLD"))) // AlertRulePostRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -105,8 +105,8 @@ import (
 )
 
 func main() {
-	streamId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Stream UUID
-	alertRuleId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | alert rule UUID
+	streamId := "657400f8-d360-11e9-bb65-2a2ae2dbcce5" // string | Stream UUID
+	alertRuleId := "0bbcea48-1333-4ad5-a7ea-e4d58a5fbd15" // string | alert rule UUID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -178,8 +178,8 @@ import (
 )
 
 func main() {
-	streamId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Stream UUID
-	alertRuleId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | alert rule UUID
+	streamId := "657400f8-d360-11e9-bb65-2a2ae2dbcce5" // string | Stream UUID
+	alertRuleId := "0bbcea48-1333-4ad5-a7ea-e4d58a5fbd15" // string | alert rule UUID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -251,7 +251,7 @@ import (
 )
 
 func main() {
-	streamId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Stream UUID
+	streamId := "657400f8-d360-11e9-bb65-2a2ae2dbcce5" // string | Stream UUID
 	offset := int32(1) // int32 | offset (optional)
 	limit := int32(10) // int32 | number of records to fetch (optional)
 
@@ -325,9 +325,9 @@ import (
 )
 
 func main() {
-	streamId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Stream UUID
-	alertRuleId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | alert rule UUID
-	alertRulePutRequest := *openapiclient.NewAlertRulePutRequest("Name_example", openapiclient.AlertRulePostRequest_type("METRIC_ALERT"), *openapiclient.NewMetricSelector([]string{"equinix.fabric.metro.sv_da.latency"}), *openapiclient.NewResourceSelector([]string{"Include_example"}), *openapiclient.NewDetectionMethod(openapiclient.DetectionMethod_type("THRESHOLD"))) // AlertRulePutRequest | 
+	streamId := "657400f8-d360-11e9-bb65-2a2ae2dbcce5" // string | Stream UUID
+	alertRuleId := "0bbcea48-1333-4ad5-a7ea-e4d58a5fbd15" // string | alert rule UUID
+	alertRulePutRequest := *openapiclient.NewAlertRulePutRequest("Name_example", openapiclient.AlertRulePostRequest_type("METRIC_ALERT"), *openapiclient.NewMetricSelector([]string{"equinix.fabric.metro.sv_da.latency"}), *openapiclient.NewResourceSelector([]string{"Include_example"}), *openapiclient.NewDetectionMethod(openapiclient.DetectionMethodResponse_type("THRESHOLD"))) // AlertRulePutRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

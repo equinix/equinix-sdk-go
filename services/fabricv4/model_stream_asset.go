@@ -22,8 +22,8 @@ type StreamAsset struct {
 	Uuid *string          `json:"uuid,omitempty"`
 	Type *StreamAssetType `json:"type,omitempty"`
 	// enable metric
-	MetricsEnabled       *bool                        `json:"metricsEnabled,omitempty"`
-	AttachmentStatus     *StreamAssetAttachmentStatus `json:"attachmentStatus,omitempty"`
+	MetricsEnabled       *bool                              `json:"metricsEnabled,omitempty"`
+	AttachmentStatus     *StreamSearchAssetAttachmentStatus `json:"attachmentStatus,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -175,9 +175,9 @@ func (o *StreamAsset) SetMetricsEnabled(v bool) {
 }
 
 // GetAttachmentStatus returns the AttachmentStatus field value if set, zero value otherwise.
-func (o *StreamAsset) GetAttachmentStatus() StreamAssetAttachmentStatus {
+func (o *StreamAsset) GetAttachmentStatus() StreamSearchAssetAttachmentStatus {
 	if o == nil || IsNil(o.AttachmentStatus) {
-		var ret StreamAssetAttachmentStatus
+		var ret StreamSearchAssetAttachmentStatus
 		return ret
 	}
 	return *o.AttachmentStatus
@@ -185,7 +185,7 @@ func (o *StreamAsset) GetAttachmentStatus() StreamAssetAttachmentStatus {
 
 // GetAttachmentStatusOk returns a tuple with the AttachmentStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *StreamAsset) GetAttachmentStatusOk() (*StreamAssetAttachmentStatus, bool) {
+func (o *StreamAsset) GetAttachmentStatusOk() (*StreamSearchAssetAttachmentStatus, bool) {
 	if o == nil || IsNil(o.AttachmentStatus) {
 		return nil, false
 	}
@@ -201,8 +201,8 @@ func (o *StreamAsset) HasAttachmentStatus() bool {
 	return false
 }
 
-// SetAttachmentStatus gets a reference to the given StreamAssetAttachmentStatus and assigns it to the AttachmentStatus field.
-func (o *StreamAsset) SetAttachmentStatus(v StreamAssetAttachmentStatus) {
+// SetAttachmentStatus gets a reference to the given StreamSearchAssetAttachmentStatus and assigns it to the AttachmentStatus field.
+func (o *StreamAsset) SetAttachmentStatus(v StreamSearchAssetAttachmentStatus) {
 	o.AttachmentStatus = &v
 }
 

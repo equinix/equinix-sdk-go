@@ -104,7 +104,7 @@ import (
 )
 
 func main() {
-	networkId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Network UUID
+	networkId := "557400f8-d360-11e9-bb65-2a2ae2dbcce4" // string | Network UUID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -174,7 +174,7 @@ import (
 )
 
 func main() {
-	networkId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Network UUID
+	networkId := "557400f8-d360-11e9-bb65-2a2ae2dbcce4" // string | Network UUID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -244,7 +244,7 @@ import (
 )
 
 func main() {
-	networkId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Network UUID
+	networkId := "557400f8-d360-11e9-bb65-2a2ae2dbcce4" // string | Network UUID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -314,8 +314,8 @@ import (
 )
 
 func main() {
-	networkId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Network UUID
-	changeId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Network Change UUID
+	networkId := "557400f8-d360-11e9-bb65-2a2ae2dbcce4" // string | Network UUID
+	changeId := "6d500177-9404-41f2-99e8-2bf1a84d8db5" // string | Network Change UUID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -387,7 +387,7 @@ import (
 )
 
 func main() {
-	networkId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Network UUID
+	networkId := "557400f8-d360-11e9-bb65-2a2ae2dbcce4" // string | Network UUID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -523,8 +523,8 @@ import (
 )
 
 func main() {
-	networkId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Network UUID
-	networkChangeOperation := []openapiclient.NetworkChangeOperation{*openapiclient.NewNetworkChangeOperation(openapiclient.precisionTimeChangeOperation_op("replace"), "/name", interface{}(123))} // []NetworkChangeOperation | 
+	networkId := "557400f8-d360-11e9-bb65-2a2ae2dbcce4" // string | Network UUID
+	networkChangeOperation := []openapiclient.NetworkChangeOperation{*openapiclient.NewNetworkChangeOperation(openapiclient.CloudRouterChangeOperation_op("replace"), "/name", interface{}(123))} // []NetworkChangeOperation | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

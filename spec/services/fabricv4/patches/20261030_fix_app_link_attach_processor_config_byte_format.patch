@@ -1,0 +1,22 @@
+--- a/spec/services/fabricv4/oas3.patched/openapi.yaml
++++ b/spec/services/fabricv4/oas3.patched/openapi.yaml
+@@ -70144,8 +70144,7 @@
+         config:
+           description: Base64-encoded configuration for the processor attachment
+           type: string
+-          format: byte
+-          example: bW9kZWxfbGlzdDoKICAtIG1vZGVsX25hbWU6IGdwdC00bwogICA...
++          example: bW9kZWxfbGlzdDoKICAtIG1vZGVsX25hbWU6IGdwdC00bwo=
+           x-order: 4
+         endpoint:
+           description: Endpoint DNS name assigned to the attached App Processor
+@@ -70165,8 +70164,7 @@
+         config:
+           description: Base64-encoded configuration for the processor attachment
+           type: string
+-          format: byte
+-          example: bW9kZWxfbGlzdDoKICAtIG1vZGVsX25hbWU6IGdwdC00bwogICA...
++          example: bW9kZWxfbGlzdDoKICAtIG1vZGVsX25hbWU6IGdwdC00bwo=
+       required:
+         - config
+     AppLinkAttachProcessorSimpleExpression:

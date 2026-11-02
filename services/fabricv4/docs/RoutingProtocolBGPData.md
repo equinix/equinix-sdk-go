@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to [**RoutingProtocolBGPTypeType**](RoutingProtocolBGPTypeType.md) |  | [optional] 
+**Type** | Pointer to [**RoutingProtocolBGPDataType**](RoutingProtocolBGPDataType.md) |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **BgpIpv4** | Pointer to [**BGPConnectionIpv4**](BGPConnectionIpv4.md) |  | [optional] 
 **BgpIpv6** | Pointer to [**BGPConnectionIpv6**](BGPConnectionIpv6.md) |  | [optional] 
@@ -43,20 +43,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetType
 
-`func (o *RoutingProtocolBGPData) GetType() RoutingProtocolBGPTypeType`
+`func (o *RoutingProtocolBGPData) GetType() RoutingProtocolBGPDataType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *RoutingProtocolBGPData) GetTypeOk() (*RoutingProtocolBGPTypeType, bool)`
+`func (o *RoutingProtocolBGPData) GetTypeOk() (*RoutingProtocolBGPDataType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *RoutingProtocolBGPData) SetType(v RoutingProtocolBGPTypeType)`
+`func (o *RoutingProtocolBGPData) SetType(v RoutingProtocolBGPDataType)`
 
 SetType sets Type field to given value.
 

@@ -16,7 +16,7 @@ var _ MappedNullable = &ServiceProfileLastMileConfig{}
 
 // ServiceProfileLastMileConfig Last-mile configuration for the service profile.
 type ServiceProfileLastMileConfig struct {
-	ApiIntegration *ServiceProfileLastMileApiIntegration `json:"apiIntegration,omitempty"`
+	ApiIntegration ServiceProfileLastMileApiIntegration `json:"apiIntegration,omitempty"`
 	// Last-mile provider catalogs.
 	ProductCatalogs      []ServiceProfileLastMileProductCatalog `json:"productCatalogs,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -47,14 +47,14 @@ func (o *ServiceProfileLastMileConfig) GetApiIntegration() ServiceProfileLastMil
 		var ret ServiceProfileLastMileApiIntegration
 		return ret
 	}
-	return *o.ApiIntegration
+	return o.ApiIntegration
 }
 
 // GetApiIntegrationOk returns a tuple with the ApiIntegration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ServiceProfileLastMileConfig) GetApiIntegrationOk() (*ServiceProfileLastMileApiIntegration, bool) {
+func (o *ServiceProfileLastMileConfig) GetApiIntegrationOk() (ServiceProfileLastMileApiIntegration, bool) {
 	if o == nil || IsNil(o.ApiIntegration) {
-		return nil, false
+		return ServiceProfileLastMileApiIntegration{}, false
 	}
 	return o.ApiIntegration, true
 }
@@ -70,7 +70,7 @@ func (o *ServiceProfileLastMileConfig) HasApiIntegration() bool {
 
 // SetApiIntegration gets a reference to the given ServiceProfileLastMileApiIntegration and assigns it to the ApiIntegration field.
 func (o *ServiceProfileLastMileConfig) SetApiIntegration(v ServiceProfileLastMileApiIntegration) {
-	o.ApiIntegration = &v
+	o.ApiIntegration = v
 }
 
 // GetProductCatalogs returns the ProductCatalogs field value if set, zero value otherwise.

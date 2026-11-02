@@ -17,7 +17,7 @@ var _ MappedNullable = &CloudRouterChangeOperation{}
 
 // CloudRouterChangeOperation Fabric Cloud Router change operation data
 type CloudRouterChangeOperation struct {
-	Op PrecisionTimeChangeOperationOp `json:"op"`
+	Op CloudRouterChangeOperationOp `json:"op"`
 	// path inside document leading to updated parameter
 	Path string `json:"path"`
 	// new value for updated parameter
@@ -31,7 +31,7 @@ type _CloudRouterChangeOperation CloudRouterChangeOperation
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCloudRouterChangeOperation(op PrecisionTimeChangeOperationOp, path string, value interface{}) *CloudRouterChangeOperation {
+func NewCloudRouterChangeOperation(op CloudRouterChangeOperationOp, path string, value interface{}) *CloudRouterChangeOperation {
 	this := CloudRouterChangeOperation{}
 	this.Op = op
 	this.Path = path
@@ -48,9 +48,9 @@ func NewCloudRouterChangeOperationWithDefaults() *CloudRouterChangeOperation {
 }
 
 // GetOp returns the Op field value
-func (o *CloudRouterChangeOperation) GetOp() PrecisionTimeChangeOperationOp {
+func (o *CloudRouterChangeOperation) GetOp() CloudRouterChangeOperationOp {
 	if o == nil {
-		var ret PrecisionTimeChangeOperationOp
+		var ret CloudRouterChangeOperationOp
 		return ret
 	}
 
@@ -59,7 +59,7 @@ func (o *CloudRouterChangeOperation) GetOp() PrecisionTimeChangeOperationOp {
 
 // GetOpOk returns a tuple with the Op field value
 // and a boolean to check if the value has been set.
-func (o *CloudRouterChangeOperation) GetOpOk() (*PrecisionTimeChangeOperationOp, bool) {
+func (o *CloudRouterChangeOperation) GetOpOk() (*CloudRouterChangeOperationOp, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -67,7 +67,7 @@ func (o *CloudRouterChangeOperation) GetOpOk() (*PrecisionTimeChangeOperationOp,
 }
 
 // SetOp sets field value
-func (o *CloudRouterChangeOperation) SetOp(v PrecisionTimeChangeOperationOp) {
+func (o *CloudRouterChangeOperation) SetOp(v CloudRouterChangeOperationOp) {
 	o.Op = v
 }
 

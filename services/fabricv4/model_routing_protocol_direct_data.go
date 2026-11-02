@@ -16,7 +16,7 @@ var _ MappedNullable = &RoutingProtocolDirectData{}
 
 // RoutingProtocolDirectData struct for RoutingProtocolDirectData
 type RoutingProtocolDirectData struct {
-	Type       *RoutingProtocolDirectTypeType `json:"type,omitempty"`
+	Type       *RoutingProtocolDirectDataType `json:"type,omitempty"`
 	Name       *string                        `json:"name,omitempty"`
 	DirectIpv4 *DirectConnectionIpv4          `json:"directIpv4,omitempty"`
 	DirectIpv6 *DirectConnectionIpv6          `json:"directIpv6,omitempty"`
@@ -53,9 +53,9 @@ func NewRoutingProtocolDirectDataWithDefaults() *RoutingProtocolDirectData {
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
-func (o *RoutingProtocolDirectData) GetType() RoutingProtocolDirectTypeType {
+func (o *RoutingProtocolDirectData) GetType() RoutingProtocolDirectDataType {
 	if o == nil || IsNil(o.Type) {
-		var ret RoutingProtocolDirectTypeType
+		var ret RoutingProtocolDirectDataType
 		return ret
 	}
 	return *o.Type
@@ -63,7 +63,7 @@ func (o *RoutingProtocolDirectData) GetType() RoutingProtocolDirectTypeType {
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RoutingProtocolDirectData) GetTypeOk() (*RoutingProtocolDirectTypeType, bool) {
+func (o *RoutingProtocolDirectData) GetTypeOk() (*RoutingProtocolDirectDataType, bool) {
 	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
@@ -79,8 +79,8 @@ func (o *RoutingProtocolDirectData) HasType() bool {
 	return false
 }
 
-// SetType gets a reference to the given RoutingProtocolDirectTypeType and assigns it to the Type field.
-func (o *RoutingProtocolDirectData) SetType(v RoutingProtocolDirectTypeType) {
+// SetType gets a reference to the given RoutingProtocolDirectDataType and assigns it to the Type field.
+func (o *RoutingProtocolDirectData) SetType(v RoutingProtocolDirectDataType) {
 	o.Type = &v
 }
 

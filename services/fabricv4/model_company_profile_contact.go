@@ -16,8 +16,8 @@ var _ MappedNullable = &CompanyProfileContact{}
 
 // CompanyProfileContact struct for CompanyProfileContact
 type CompanyProfileContact struct {
-	Type                 *CompanyProfileContactType      `json:"type,omitempty"`
-	Contacts             []CompanyProfileContactContacts `json:"contacts,omitempty"`
+	Type                 *CompanyProfileContactType           `json:"type,omitempty"`
+	Contacts             []CompanyProfileContactContactsInner `json:"contacts,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -73,9 +73,9 @@ func (o *CompanyProfileContact) SetType(v CompanyProfileContactType) {
 }
 
 // GetContacts returns the Contacts field value if set, zero value otherwise.
-func (o *CompanyProfileContact) GetContacts() []CompanyProfileContactContacts {
+func (o *CompanyProfileContact) GetContacts() []CompanyProfileContactContactsInner {
 	if o == nil || IsNil(o.Contacts) {
-		var ret []CompanyProfileContactContacts
+		var ret []CompanyProfileContactContactsInner
 		return ret
 	}
 	return o.Contacts
@@ -83,7 +83,7 @@ func (o *CompanyProfileContact) GetContacts() []CompanyProfileContactContacts {
 
 // GetContactsOk returns a tuple with the Contacts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CompanyProfileContact) GetContactsOk() ([]CompanyProfileContactContacts, bool) {
+func (o *CompanyProfileContact) GetContactsOk() ([]CompanyProfileContactContactsInner, bool) {
 	if o == nil || IsNil(o.Contacts) {
 		return nil, false
 	}
@@ -99,8 +99,8 @@ func (o *CompanyProfileContact) HasContacts() bool {
 	return false
 }
 
-// SetContacts gets a reference to the given []CompanyProfileContactContacts and assigns it to the Contacts field.
-func (o *CompanyProfileContact) SetContacts(v []CompanyProfileContactContacts) {
+// SetContacts gets a reference to the given []CompanyProfileContactContactsInner and assigns it to the Contacts field.
+func (o *CompanyProfileContact) SetContacts(v []CompanyProfileContactContactsInner) {
 	o.Contacts = v
 }
 

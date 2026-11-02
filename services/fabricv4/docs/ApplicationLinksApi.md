@@ -49,8 +49,8 @@ import (
 )
 
 func main() {
-	appLinkId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | App Link UUID
-	appDomainId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | App Domain UUID
+	appLinkId := "23cd19ab-d3bb-478b-9f25-bd12a3af1914" // string | App Link UUID
+	appDomainId := "20f3ef8e-d670-4236-86fa-bb0038adcfc3" // string | App Domain UUID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -122,9 +122,9 @@ import (
 )
 
 func main() {
-	appLinkId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | App Link UUID
-	appProcessorId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | App Processor UUID
-	appLinkAttachProcessorRequest := *openapiclient.NewAppLinkAttachProcessorRequest(string(123)) // AppLinkAttachProcessorRequest | 
+	appLinkId := "23cd19ab-d3bb-478b-9f25-bd12a3af1914" // string | App Link UUID
+	appProcessorId := "90ee425c-9988-454c-96d9-1128bc16350f" // string | App Processor UUID
+	appLinkAttachProcessorRequest := *openapiclient.NewAppLinkAttachProcessorRequest("bW9kZWxfbGlzdDoKICAtIG1vZGVsX25hbWU6IGdwdC00bwo=") // AppLinkAttachProcessorRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -197,8 +197,8 @@ import (
 )
 
 func main() {
-	appLinkId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | App Link UUID
-	appServiceId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | App Service UUID
+	appLinkId := "23cd19ab-d3bb-478b-9f25-bd12a3af1914" // string | App Link UUID
+	appServiceId := "557400f8-d360-11e9-bb65-2a2ae2dbcce4" // string | App Service UUID
 	appLinkAttachServiceRequest := *openapiclient.NewAppLinkAttachServiceRequest("GLOBAL", "10.10.1.110") // AppLinkAttachServiceRequest | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -338,7 +338,7 @@ import (
 )
 
 func main() {
-	appLinkId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | App Link UUID
+	appLinkId := "23cd19ab-d3bb-478b-9f25-bd12a3af1914" // string | App Link UUID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -408,8 +408,8 @@ import (
 )
 
 func main() {
-	appLinkId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | App Link UUID
-	appDomainId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | App Domain UUID
+	appLinkId := "23cd19ab-d3bb-478b-9f25-bd12a3af1914" // string | App Link UUID
+	appDomainId := "20f3ef8e-d670-4236-86fa-bb0038adcfc3" // string | App Domain UUID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -481,8 +481,8 @@ import (
 )
 
 func main() {
-	appLinkId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | App Link UUID
-	appProcessorId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | App Processor UUID
+	appLinkId := "23cd19ab-d3bb-478b-9f25-bd12a3af1914" // string | App Link UUID
+	appProcessorId := "90ee425c-9988-454c-96d9-1128bc16350f" // string | App Processor UUID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -554,8 +554,8 @@ import (
 )
 
 func main() {
-	appLinkId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | App Link UUID
-	appServiceId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | App Service UUID
+	appLinkId := "23cd19ab-d3bb-478b-9f25-bd12a3af1914" // string | App Link UUID
+	appServiceId := "557400f8-d360-11e9-bb65-2a2ae2dbcce4" // string | App Service UUID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -627,7 +627,7 @@ import (
 )
 
 func main() {
-	appLinkId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | App Link UUID
+	appLinkId := "23cd19ab-d3bb-478b-9f25-bd12a3af1914" // string | App Link UUID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -697,8 +697,8 @@ import (
 )
 
 func main() {
-	appLinkId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | App Link UUID
-	appDomainId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | App Domain UUID
+	appLinkId := "23cd19ab-d3bb-478b-9f25-bd12a3af1914" // string | App Link UUID
+	appDomainId := "20f3ef8e-d670-4236-86fa-bb0038adcfc3" // string | App Domain UUID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -770,7 +770,7 @@ import (
 )
 
 func main() {
-	appLinkId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | App Link UUID
+	appLinkId := "23cd19ab-d3bb-478b-9f25-bd12a3af1914" // string | App Link UUID
 	offset := int32(1) // int32 | offset (optional)
 	limit := int32(10) // int32 | number of records to fetch (optional)
 	attachmentStatus := []openapiclient.AppLinkAttachState{openapiclient.AppLinkAttachState("ATTACHING")} // []AppLinkAttachState | Filter attached App Domains by one or more attachment lifecycle states. (optional)
@@ -850,8 +850,8 @@ import (
 )
 
 func main() {
-	appLinkId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | App Link UUID
-	appProcessorId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | App Processor UUID
+	appLinkId := "23cd19ab-d3bb-478b-9f25-bd12a3af1914" // string | App Link UUID
+	appProcessorId := "90ee425c-9988-454c-96d9-1128bc16350f" // string | App Processor UUID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -923,7 +923,7 @@ import (
 )
 
 func main() {
-	appLinkId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | App Link UUID
+	appLinkId := "23cd19ab-d3bb-478b-9f25-bd12a3af1914" // string | App Link UUID
 	offset := int32(1) // int32 | offset (optional)
 	limit := int32(10) // int32 | number of records to fetch (optional)
 	attachmentStatus := []openapiclient.AppLinkAttachState{openapiclient.AppLinkAttachState("ATTACHING")} // []AppLinkAttachState | Filter attached App Processors by one or more attachment lifecycle states. (optional)
@@ -1003,8 +1003,8 @@ import (
 )
 
 func main() {
-	appLinkId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | App Link UUID
-	appServiceId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | App Service UUID
+	appLinkId := "23cd19ab-d3bb-478b-9f25-bd12a3af1914" // string | App Link UUID
+	appServiceId := "557400f8-d360-11e9-bb65-2a2ae2dbcce4" // string | App Service UUID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -1076,7 +1076,7 @@ import (
 )
 
 func main() {
-	appLinkId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | App Link UUID
+	appLinkId := "23cd19ab-d3bb-478b-9f25-bd12a3af1914" // string | App Link UUID
 	offset := int32(1) // int32 | offset (optional)
 	limit := int32(10) // int32 | number of records to fetch (optional)
 	attachmentStatus := []openapiclient.AppLinkAttachState{openapiclient.AppLinkAttachState("ATTACHING")} // []AppLinkAttachState | Filter attached App Services by one or more attachment lifecycle states. (optional)
@@ -1222,7 +1222,7 @@ import (
 )
 
 func main() {
-	appLinkId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | App Link UUID
+	appLinkId := "23cd19ab-d3bb-478b-9f25-bd12a3af1914" // string | App Link UUID
 	appLinkAttachDomainSearchRequest := *openapiclient.NewAppLinkAttachDomainSearchRequest() // AppLinkAttachDomainSearchRequest | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -1294,7 +1294,7 @@ import (
 )
 
 func main() {
-	appLinkId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | App Link UUID
+	appLinkId := "23cd19ab-d3bb-478b-9f25-bd12a3af1914" // string | App Link UUID
 	appLinkAttachProcessorSearchRequest := *openapiclient.NewAppLinkAttachProcessorSearchRequest() // AppLinkAttachProcessorSearchRequest | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -1366,7 +1366,7 @@ import (
 )
 
 func main() {
-	appLinkId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | App Link UUID
+	appLinkId := "23cd19ab-d3bb-478b-9f25-bd12a3af1914" // string | App Link UUID
 	appLinkAttachServiceSearchRequest := *openapiclient.NewAppLinkAttachServiceSearchRequest() // AppLinkAttachServiceSearchRequest | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -1438,8 +1438,8 @@ import (
 )
 
 func main() {
-	appLinkId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | App Link UUID
-	appLinkChangeOperation := []openapiclient.AppLinkChangeOperation{*openapiclient.NewAppLinkChangeOperation(openapiclient.AppDomainChangeOperation_op("replace"), openapiclient.AppLinkChangeOperation_path("/name"), map[string]interface{}(123))} // []AppLinkChangeOperation | 
+	appLinkId := "23cd19ab-d3bb-478b-9f25-bd12a3af1914" // string | App Link UUID
+	appLinkChangeOperation := []openapiclient.AppLinkChangeOperation{*openapiclient.NewAppLinkChangeOperation(openapiclient.AppDomainChangeOperation_op("replace"), openapiclient.AppLinkChangeOperation_path("/name"), interface{}(123))} // []AppLinkChangeOperation | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -1510,9 +1510,9 @@ import (
 )
 
 func main() {
-	appLinkId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | App Link UUID
-	appServiceId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | App Service UUID
-	appLinkAppServiceAttachmentChangeOperation := []openapiclient.AppLinkAppServiceAttachmentChangeOperation{*openapiclient.NewAppLinkAppServiceAttachmentChangeOperation(openapiclient.AppDomainChangeOperation_op("replace"), openapiclient.AppLinkAppServiceAttachmentChangeOperation_path("/destinationIp"), map[string]interface{}(123))} // []AppLinkAppServiceAttachmentChangeOperation | 
+	appLinkId := "23cd19ab-d3bb-478b-9f25-bd12a3af1914" // string | App Link UUID
+	appServiceId := "557400f8-d360-11e9-bb65-2a2ae2dbcce4" // string | App Service UUID
+	appLinkAppServiceAttachmentChangeOperation := []openapiclient.AppLinkAppServiceAttachmentChangeOperation{*openapiclient.NewAppLinkAppServiceAttachmentChangeOperation(openapiclient.AppDomainChangeOperation_op("replace"), openapiclient.AppLinkAppServiceAttachmentChangeOperation_path("/destinationIp"), interface{}(123))} // []AppLinkAppServiceAttachmentChangeOperation | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **CorrelationId** | Pointer to **string** |  | [optional] 
 **Details** | Pointer to **string** |  | [optional] 
 **Help** | Pointer to **string** |  | [optional] 
-**AdditionalInfo** | Pointer to [**[]PriceErrorAdditionalInfo**](PriceErrorAdditionalInfo.md) |  | [optional] 
+**AdditionalInfo** | Pointer to [**[]ErrorAdditionalInfoInner**](ErrorAdditionalInfoInner.md) |  | [optional] 
 
 ## Methods
 
@@ -147,20 +147,20 @@ HasHelp returns a boolean if a field has been set.
 
 ### GetAdditionalInfo
 
-`func (o *MetroError) GetAdditionalInfo() []PriceErrorAdditionalInfo`
+`func (o *MetroError) GetAdditionalInfo() []ErrorAdditionalInfoInner`
 
 GetAdditionalInfo returns the AdditionalInfo field if non-nil, zero value otherwise.
 
 ### GetAdditionalInfoOk
 
-`func (o *MetroError) GetAdditionalInfoOk() (*[]PriceErrorAdditionalInfo, bool)`
+`func (o *MetroError) GetAdditionalInfoOk() (*[]ErrorAdditionalInfoInner, bool)`
 
 GetAdditionalInfoOk returns a tuple with the AdditionalInfo field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAdditionalInfo
 
-`func (o *MetroError) SetAdditionalInfo(v []PriceErrorAdditionalInfo)`
+`func (o *MetroError) SetAdditionalInfo(v []ErrorAdditionalInfoInner)`
 
 SetAdditionalInfo sets AdditionalInfo field to given value.
 

@@ -107,9 +107,9 @@ import (
 )
 
 func main() {
-	assetId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | asset UUID
+	assetId := "757400f8-d360-11e9-bb65-2a2ae2dbcce6" // string | asset UUID
 	asset := openapiclient.Asset("ports") // Asset | asset
-	streamId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Stream UUID
+	streamId := "657400f8-d360-11e9-bb65-2a2ae2dbcce5" // string | Stream UUID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -183,7 +183,7 @@ import (
 )
 
 func main() {
-	streamId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Stream UUID
+	streamId := "657400f8-d360-11e9-bb65-2a2ae2dbcce5" // string | Stream UUID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -253,8 +253,8 @@ import (
 )
 
 func main() {
-	streamId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Stream UUID
-	deviceId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Network Edge Device UUID
+	streamId := "657400f8-d360-11e9-bb65-2a2ae2dbcce5" // string | Stream UUID
+	deviceId := "8a9b7c6d-1e2f-4a3b-9c4d-5e6f7a8b9c0d" // string | Network Edge Device UUID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -326,9 +326,9 @@ import (
 )
 
 func main() {
-	assetId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | asset UUID
+	assetId := "757400f8-d360-11e9-bb65-2a2ae2dbcce6" // string | asset UUID
 	asset := openapiclient.Asset("ports") // Asset | asset
-	streamId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Stream UUID
+	streamId := "657400f8-d360-11e9-bb65-2a2ae2dbcce5" // string | Stream UUID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -402,7 +402,7 @@ import (
 )
 
 func main() {
-	streamId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Stream UUID
+	streamId := "657400f8-d360-11e9-bb65-2a2ae2dbcce5" // string | Stream UUID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -472,8 +472,8 @@ import (
 )
 
 func main() {
-	streamId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Stream UUID
-	deviceId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Network Edge Device UUID
+	streamId := "657400f8-d360-11e9-bb65-2a2ae2dbcce5" // string | Stream UUID
+	deviceId := "8a9b7c6d-1e2f-4a3b-9c4d-5e6f7a8b9c0d" // string | Network Edge Device UUID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -745,9 +745,9 @@ import (
 )
 
 func main() {
-	assetId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | asset UUID
+	assetId := "757400f8-d360-11e9-bb65-2a2ae2dbcce6" // string | asset UUID
 	asset := openapiclient.Asset("ports") // Asset | asset
-	streamId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Stream UUID
+	streamId := "657400f8-d360-11e9-bb65-2a2ae2dbcce5" // string | Stream UUID
 	streamAssetPutRequest := *openapiclient.NewStreamAssetPutRequest() // StreamAssetPutRequest | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -823,7 +823,7 @@ import (
 )
 
 func main() {
-	streamId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Stream UUID
+	streamId := "657400f8-d360-11e9-bb65-2a2ae2dbcce5" // string | Stream UUID
 	streamPutRequest := *openapiclient.NewStreamPutRequest("Name_example") // StreamPutRequest | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -895,8 +895,8 @@ import (
 )
 
 func main() {
-	streamId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Stream UUID
-	deviceId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Network Edge Device UUID
+	streamId := "657400f8-d360-11e9-bb65-2a2ae2dbcce5" // string | Stream UUID
+	deviceId := "8a9b7c6d-1e2f-4a3b-9c4d-5e6f7a8b9c0d" // string | Network Edge Device UUID
 	streamDevicePutRequest := *openapiclient.NewStreamDevicePutRequest() // StreamDevicePutRequest | 
 
 	configuration := openapiclient.NewConfiguration()

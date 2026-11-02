@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Uuid** | Pointer to **string** | Cross Connect Identifier. | [optional] 
 **Name** | Pointer to **string** | A short, descriptive name for this Cross Connect. | [optional] 
 **State** | Pointer to [**CrossConnectState**](CrossConnectState.md) |  | [optional] 
-**AllowedActions** | Pointer to [**[]CrossConnectResponseAllowedActions**](CrossConnectResponseAllowedActions.md) | List of actions that can be performed on the Cross Connect based on its current state. Use these values to determine which action types are valid to submit to the actions endpoint.  | [optional] [readonly] 
+**AllowedActions** | Pointer to [**[]CrossConnectResponseAllowedActionsInner**](CrossConnectResponseAllowedActionsInner.md) | List of actions that can be performed on the Cross Connect based on its current state. Use these values to determine which action types are valid to submit to the actions endpoint.  | [optional] [readonly] 
 **BmmrType** | Pointer to [**BmmrType**](BmmrType.md) |  | [optional] 
 **MediaType** | Pointer to **string** | Media type of the Cross Connect. | [optional] 
 **MediaSubType** | Pointer to **string** | Media sub-type of the Cross Connect. | [optional] 
@@ -170,20 +170,20 @@ HasState returns a boolean if a field has been set.
 
 ### GetAllowedActions
 
-`func (o *CrossConnectResponse) GetAllowedActions() []CrossConnectResponseAllowedActions`
+`func (o *CrossConnectResponse) GetAllowedActions() []CrossConnectResponseAllowedActionsInner`
 
 GetAllowedActions returns the AllowedActions field if non-nil, zero value otherwise.
 
 ### GetAllowedActionsOk
 
-`func (o *CrossConnectResponse) GetAllowedActionsOk() (*[]CrossConnectResponseAllowedActions, bool)`
+`func (o *CrossConnectResponse) GetAllowedActionsOk() (*[]CrossConnectResponseAllowedActionsInner, bool)`
 
 GetAllowedActionsOk returns a tuple with the AllowedActions field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAllowedActions
 
-`func (o *CrossConnectResponse) SetAllowedActions(v []CrossConnectResponseAllowedActions)`
+`func (o *CrossConnectResponse) SetAllowedActions(v []CrossConnectResponseAllowedActionsInner)`
 
 SetAllowedActions sets AllowedActions field to given value.
 

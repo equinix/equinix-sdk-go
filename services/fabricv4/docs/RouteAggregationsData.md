@@ -9,7 +9,6 @@ Name | Type | Description | Notes
 **Uuid** | Pointer to **string** | Route Aggregation identifier | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **Description** | Pointer to **string** | Customer-provided connection description | [optional] 
-**State** | Pointer to [**RouteAggregationState**](RouteAggregationState.md) |  | [optional] 
 **Change** | Pointer to [**RouteAggregationsChange**](RouteAggregationsChange.md) |  | [optional] 
 **ConnectionsCount** | Pointer to **int32** |  | [optional] 
 **RulesCount** | Pointer to **int32** |  | [optional] 
@@ -159,31 +158,6 @@ SetDescription sets Description field to given value.
 `func (o *RouteAggregationsData) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
-
-### GetState
-
-`func (o *RouteAggregationsData) GetState() RouteAggregationState`
-
-GetState returns the State field if non-nil, zero value otherwise.
-
-### GetStateOk
-
-`func (o *RouteAggregationsData) GetStateOk() (*RouteAggregationState, bool)`
-
-GetStateOk returns a tuple with the State field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetState
-
-`func (o *RouteAggregationsData) SetState(v RouteAggregationState)`
-
-SetState sets State field to given value.
-
-### HasState
-
-`func (o *RouteAggregationsData) HasState() bool`
-
-HasState returns a boolean if a field has been set.
 
 ### GetChange
 

@@ -17,7 +17,7 @@ var _ MappedNullable = &PrecisionTimeServiceRequest{}
 
 // PrecisionTimeServiceRequest Create Precision Time Service Request Schema.
 type PrecisionTimeServiceRequest struct {
-	Type PrecisionTimeServiceRequestType `json:"type"`
+	Type TimeServicePriceType `json:"type"`
 	// Precision Time Service name.
 	Name        string                      `json:"name"`
 	Package     PrecisionTimePackageRequest `json:"package"`
@@ -37,7 +37,7 @@ type _PrecisionTimeServiceRequest PrecisionTimeServiceRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPrecisionTimeServiceRequest(type_ PrecisionTimeServiceRequestType, name string, package_ PrecisionTimePackageRequest, connections []VirtualConnectionUuid, ipv4 Ipv4) *PrecisionTimeServiceRequest {
+func NewPrecisionTimeServiceRequest(type_ TimeServicePriceType, name string, package_ PrecisionTimePackageRequest, connections []VirtualConnectionUuid, ipv4 Ipv4) *PrecisionTimeServiceRequest {
 	this := PrecisionTimeServiceRequest{}
 	this.Type = type_
 	this.Name = name
@@ -56,9 +56,9 @@ func NewPrecisionTimeServiceRequestWithDefaults() *PrecisionTimeServiceRequest {
 }
 
 // GetType returns the Type field value
-func (o *PrecisionTimeServiceRequest) GetType() PrecisionTimeServiceRequestType {
+func (o *PrecisionTimeServiceRequest) GetType() TimeServicePriceType {
 	if o == nil {
-		var ret PrecisionTimeServiceRequestType
+		var ret TimeServicePriceType
 		return ret
 	}
 
@@ -67,7 +67,7 @@ func (o *PrecisionTimeServiceRequest) GetType() PrecisionTimeServiceRequestType 
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *PrecisionTimeServiceRequest) GetTypeOk() (*PrecisionTimeServiceRequestType, bool) {
+func (o *PrecisionTimeServiceRequest) GetTypeOk() (*TimeServicePriceType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -75,7 +75,7 @@ func (o *PrecisionTimeServiceRequest) GetTypeOk() (*PrecisionTimeServiceRequestT
 }
 
 // SetType sets field value
-func (o *PrecisionTimeServiceRequest) SetType(v PrecisionTimeServiceRequestType) {
+func (o *PrecisionTimeServiceRequest) SetType(v TimeServicePriceType) {
 	o.Type = v
 }
 

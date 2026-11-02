@@ -22,7 +22,7 @@ type Error struct {
 	CorrelationId        *string                    `json:"correlationId,omitempty"`
 	Details              *string                    `json:"details,omitempty"`
 	Help                 *string                    `json:"help,omitempty"`
-	AdditionalInfo       []PriceErrorAdditionalInfo `json:"additionalInfo,omitempty"`
+	AdditionalInfo       []ErrorAdditionalInfoInner `json:"additionalInfo,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -192,9 +192,9 @@ func (o *Error) SetHelp(v string) {
 }
 
 // GetAdditionalInfo returns the AdditionalInfo field value if set, zero value otherwise.
-func (o *Error) GetAdditionalInfo() []PriceErrorAdditionalInfo {
+func (o *Error) GetAdditionalInfo() []ErrorAdditionalInfoInner {
 	if o == nil || IsNil(o.AdditionalInfo) {
-		var ret []PriceErrorAdditionalInfo
+		var ret []ErrorAdditionalInfoInner
 		return ret
 	}
 	return o.AdditionalInfo
@@ -202,7 +202,7 @@ func (o *Error) GetAdditionalInfo() []PriceErrorAdditionalInfo {
 
 // GetAdditionalInfoOk returns a tuple with the AdditionalInfo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Error) GetAdditionalInfoOk() ([]PriceErrorAdditionalInfo, bool) {
+func (o *Error) GetAdditionalInfoOk() ([]ErrorAdditionalInfoInner, bool) {
 	if o == nil || IsNil(o.AdditionalInfo) {
 		return nil, false
 	}
@@ -218,8 +218,8 @@ func (o *Error) HasAdditionalInfo() bool {
 	return false
 }
 
-// SetAdditionalInfo gets a reference to the given []PriceErrorAdditionalInfo and assigns it to the AdditionalInfo field.
-func (o *Error) SetAdditionalInfo(v []PriceErrorAdditionalInfo) {
+// SetAdditionalInfo gets a reference to the given []ErrorAdditionalInfoInner and assigns it to the AdditionalInfo field.
+func (o *Error) SetAdditionalInfo(v []ErrorAdditionalInfoInner) {
 	o.AdditionalInfo = v
 }
 

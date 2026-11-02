@@ -45,6 +45,8 @@ type APIClient struct {
 
 	// API Services
 
+	ASNsApi *ASNsApiService
+
 	ApplicationDomainsApi *ApplicationDomainsApiService
 
 	ApplicationLinksApi *ApplicationLinksApiService
@@ -140,6 +142,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.common.client = c
 
 	// API Services
+	c.ASNsApi = (*ASNsApiService)(&c.common)
 	c.ApplicationDomainsApi = (*ApplicationDomainsApiService)(&c.common)
 	c.ApplicationLinksApi = (*ApplicationLinksApiService)(&c.common)
 	c.ApplicationProcessorsApi = (*ApplicationProcessorsApiService)(&c.common)
@@ -747,7 +750,7 @@ func (e GenericOpenAPIError) Model() interface{} {
 }
 
 // Helper method for parsing Fabric API errors
-func FormatFabricv4AdditionalInfo(additionalInfo []PriceErrorAdditionalInfo) string {
+func FormatFabricv4AdditionalInfo(additionalInfo []ErrorAdditionalInfoInner) string {
 	var str []string
 	for _, addInfo := range additionalInfo {
 		property, reason := addInfo.GetProperty(), addInfo.GetReason()

@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 **Account** | Pointer to [**SimplifiedAccount**](SimplifiedAccount.md) |  | [optional] 
 **Change** | Pointer to [**PortChange**](PortChange.md) |  | [optional] 
 **ChangeLog** | Pointer to [**Changelog**](Changelog.md) |  | [optional] 
-**ServiceType** | Pointer to [**PortServiceType**](PortServiceType.md) |  | [optional] 
+**ServiceType** | Pointer to [**SimplifiedPortServiceType**](SimplifiedPortServiceType.md) |  | [optional] 
 **ServiceCode** | Pointer to [**PortServiceCode**](PortServiceCode.md) |  | [optional] 
 **Bandwidth** | Pointer to **int32** | Equinix assigned response attribute for Port bandwidth in Mbps | [optional] 
 **AvailableBandwidth** | Pointer to **int32** | Equinix assigned response attribute for Port available bandwidth in Mbps | [optional] 
@@ -43,7 +43,6 @@ Name | Type | Description | Notes
 **PhysicalPortQuantity** | Pointer to **int32** | Number of physical ports | [optional] 
 **Notifications** | Pointer to [**[]PortNotification**](PortNotification.md) | Notification preferences | [optional] 
 **AdditionalInfo** | Pointer to [**[]PortAdditionalInfo**](PortAdditionalInfo.md) | Port additional information | [optional] 
-**EndCustomer** | Pointer to [**EndCustomer**](EndCustomer.md) |  | [optional] 
 **PhysicalPorts** | Pointer to [**[]PhysicalPort**](PhysicalPort.md) | Physical ports that implement this port | [optional] 
 **Loas** | Pointer to [**[]PortLoa**](PortLoa.md) | Port Loas | [optional] 
 **MarketplaceSubscription** | Pointer to [**MarketplaceSubscription**](MarketplaceSubscription.md) |  | [optional] 
@@ -519,20 +518,20 @@ HasChangeLog returns a boolean if a field has been set.
 
 ### GetServiceType
 
-`func (o *Port) GetServiceType() PortServiceType`
+`func (o *Port) GetServiceType() SimplifiedPortServiceType`
 
 GetServiceType returns the ServiceType field if non-nil, zero value otherwise.
 
 ### GetServiceTypeOk
 
-`func (o *Port) GetServiceTypeOk() (*PortServiceType, bool)`
+`func (o *Port) GetServiceTypeOk() (*SimplifiedPortServiceType, bool)`
 
 GetServiceTypeOk returns a tuple with the ServiceType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetServiceType
 
-`func (o *Port) SetServiceType(v PortServiceType)`
+`func (o *Port) SetServiceType(v SimplifiedPortServiceType)`
 
 SetServiceType sets ServiceType field to given value.
 
@@ -1041,31 +1040,6 @@ SetAdditionalInfo sets AdditionalInfo field to given value.
 `func (o *Port) HasAdditionalInfo() bool`
 
 HasAdditionalInfo returns a boolean if a field has been set.
-
-### GetEndCustomer
-
-`func (o *Port) GetEndCustomer() EndCustomer`
-
-GetEndCustomer returns the EndCustomer field if non-nil, zero value otherwise.
-
-### GetEndCustomerOk
-
-`func (o *Port) GetEndCustomerOk() (*EndCustomer, bool)`
-
-GetEndCustomerOk returns a tuple with the EndCustomer field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEndCustomer
-
-`func (o *Port) SetEndCustomer(v EndCustomer)`
-
-SetEndCustomer sets EndCustomer field to given value.
-
-### HasEndCustomer
-
-`func (o *Port) HasEndCustomer() bool`
-
-HasEndCustomer returns a boolean if a field has been set.
 
 ### GetPhysicalPorts
 

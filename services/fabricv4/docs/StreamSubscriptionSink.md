@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Uri** | Pointer to **string** | any publicly reachable http endpoint | [optional] 
-**Type** | [**StreamSubscriptionSinkType**](StreamSubscriptionSinkType.md) |  | 
+**Type** | [**StreamSubscriptionSinkResponseType**](StreamSubscriptionSinkResponseType.md) |  | 
 **BatchEnabled** | Pointer to **bool** | batch mode on/off | [optional] 
 **BatchSizeMax** | Pointer to **int32** | maximum batch size | [optional] 
 **BatchWaitTimeMax** | Pointer to **int32** | maximum batch waiting time | [optional] 
@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 
 ### NewStreamSubscriptionSink
 
-`func NewStreamSubscriptionSink(type_ StreamSubscriptionSinkType, ) *StreamSubscriptionSink`
+`func NewStreamSubscriptionSink(type_ StreamSubscriptionSinkResponseType, ) *StreamSubscriptionSink`
 
 NewStreamSubscriptionSink instantiates a new StreamSubscriptionSink object
 This constructor will assign default values to properties that have it defined,
@@ -59,20 +59,20 @@ HasUri returns a boolean if a field has been set.
 
 ### GetType
 
-`func (o *StreamSubscriptionSink) GetType() StreamSubscriptionSinkType`
+`func (o *StreamSubscriptionSink) GetType() StreamSubscriptionSinkResponseType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *StreamSubscriptionSink) GetTypeOk() (*StreamSubscriptionSinkType, bool)`
+`func (o *StreamSubscriptionSink) GetTypeOk() (*StreamSubscriptionSinkResponseType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *StreamSubscriptionSink) SetType(v StreamSubscriptionSinkType)`
+`func (o *StreamSubscriptionSink) SetType(v StreamSubscriptionSinkResponseType)`
 
 SetType sets Type field to given value.
 

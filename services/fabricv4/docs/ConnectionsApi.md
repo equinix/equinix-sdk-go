@@ -103,7 +103,7 @@ import (
 )
 
 func main() {
-	connectionId := "connectionId_example" // string | Connection Id
+	connectionId := "557400f8-d360-11e9-bb65-2a2ae2dbcce4" // string | Connection Id
 	connectionActionRequest := *openapiclient.NewConnectionActionRequest(openapiclient.Actions("CONNECTION_CREATION_ACCEPTANCE")) // ConnectionActionRequest | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -245,7 +245,7 @@ import (
 )
 
 func main() {
-	connectionId := "connectionId_example" // string | Connection Id
+	connectionId := "557400f8-d360-11e9-bb65-2a2ae2dbcce4" // string | Connection Id
 	direction := openapiclient.ConnectionDirection("INTERNAL") // ConnectionDirection | Connection Direction (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -383,7 +383,7 @@ import (
 )
 
 func main() {
-	connectionId := "connectionId_example" // string | Connection Id
+	connectionId := "557400f8-d360-11e9-bb65-2a2ae2dbcce4" // string | Connection Id
 	connectionChangeOperation := []openapiclient.ConnectionChangeOperation{*openapiclient.NewConnectionChangeOperation("add", "/ipv6", interface{}(123))} // []ConnectionChangeOperation | 
 	dryRun := true // bool | option to verify that API calls will succeed (optional) (default to false)
 

@@ -21,8 +21,8 @@ type ServiceProfileChange struct {
 	// Uniquely identifies a change
 	Uuid *string `json:"uuid,omitempty"`
 	// Type of change
-	Type   string                      `json:"type"`
-	Status *ServiceProfileChangeStatus `json:"status,omitempty"`
+	Type   string        `json:"type"`
+	Status *ChangeStatus `json:"status,omitempty"`
 	// Set when change flow starts
 	CreatedDateTime time.Time `json:"createdDateTime"`
 	// Set when change object is updated
@@ -111,9 +111,9 @@ func (o *ServiceProfileChange) SetType(v string) {
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
-func (o *ServiceProfileChange) GetStatus() ServiceProfileChangeStatus {
+func (o *ServiceProfileChange) GetStatus() ChangeStatus {
 	if o == nil || IsNil(o.Status) {
-		var ret ServiceProfileChangeStatus
+		var ret ChangeStatus
 		return ret
 	}
 	return *o.Status
@@ -121,7 +121,7 @@ func (o *ServiceProfileChange) GetStatus() ServiceProfileChangeStatus {
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ServiceProfileChange) GetStatusOk() (*ServiceProfileChangeStatus, bool) {
+func (o *ServiceProfileChange) GetStatusOk() (*ChangeStatus, bool) {
 	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
@@ -137,8 +137,8 @@ func (o *ServiceProfileChange) HasStatus() bool {
 	return false
 }
 
-// SetStatus gets a reference to the given ServiceProfileChangeStatus and assigns it to the Status field.
-func (o *ServiceProfileChange) SetStatus(v ServiceProfileChangeStatus) {
+// SetStatus gets a reference to the given ChangeStatus and assigns it to the Status field.
+func (o *ServiceProfileChange) SetStatus(v ChangeStatus) {
 	o.Status = &v
 }
 

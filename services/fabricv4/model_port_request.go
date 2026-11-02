@@ -28,8 +28,8 @@ type PortRequest struct {
 	Order                  *PortOrder                   `json:"order,omitempty"`
 	Account                SimplifiedAccountRequest     `json:"account"`
 	// Deprecated
-	ServiceType *PortServiceType `json:"serviceType,omitempty"`
-	ServiceCode *PortServiceCode `json:"serviceCode,omitempty"`
+	ServiceType *SimplifiedPortServiceType `json:"serviceType,omitempty"`
+	ServiceCode *PortServiceCode           `json:"serviceCode,omitempty"`
 	// Equinix assigned response attribute for Port bandwidth in Mbps
 	// Deprecated
 	Bandwidth *int32                    `json:"bandwidth,omitempty"`
@@ -42,9 +42,8 @@ type PortRequest struct {
 	Redundancy       *PortRedundancy       `json:"redundancy,omitempty"`
 	Encapsulation    PortEncapsulation     `json:"encapsulation"`
 	// Indicates whether Link Aggregation Group (LAG) is enabled on this port
-	LagEnabled *bool         `json:"lagEnabled,omitempty"`
-	Package    *Package      `json:"package,omitempty"`
-	Settings   *PortSettings `json:"settings,omitempty"`
+	LagEnabled *bool    `json:"lagEnabled,omitempty"`
+	Package    *Package `json:"package,omitempty"`
 	// Notification preferences
 	Notifications []PortNotification `json:"notifications,omitempty"`
 	// Physical ports that implement this port
@@ -323,9 +322,9 @@ func (o *PortRequest) SetAccount(v SimplifiedAccountRequest) {
 
 // GetServiceType returns the ServiceType field value if set, zero value otherwise.
 // Deprecated
-func (o *PortRequest) GetServiceType() PortServiceType {
+func (o *PortRequest) GetServiceType() SimplifiedPortServiceType {
 	if o == nil || IsNil(o.ServiceType) {
-		var ret PortServiceType
+		var ret SimplifiedPortServiceType
 		return ret
 	}
 	return *o.ServiceType
@@ -334,7 +333,7 @@ func (o *PortRequest) GetServiceType() PortServiceType {
 // GetServiceTypeOk returns a tuple with the ServiceType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // Deprecated
-func (o *PortRequest) GetServiceTypeOk() (*PortServiceType, bool) {
+func (o *PortRequest) GetServiceTypeOk() (*SimplifiedPortServiceType, bool) {
 	if o == nil || IsNil(o.ServiceType) {
 		return nil, false
 	}
@@ -350,9 +349,9 @@ func (o *PortRequest) HasServiceType() bool {
 	return false
 }
 
-// SetServiceType gets a reference to the given PortServiceType and assigns it to the ServiceType field.
+// SetServiceType gets a reference to the given SimplifiedPortServiceType and assigns it to the ServiceType field.
 // Deprecated
-func (o *PortRequest) SetServiceType(v PortServiceType) {
+func (o *PortRequest) SetServiceType(v SimplifiedPortServiceType) {
 	o.ServiceType = &v
 }
 
@@ -663,38 +662,6 @@ func (o *PortRequest) SetPackage(v Package) {
 	o.Package = &v
 }
 
-// GetSettings returns the Settings field value if set, zero value otherwise.
-func (o *PortRequest) GetSettings() PortSettings {
-	if o == nil || IsNil(o.Settings) {
-		var ret PortSettings
-		return ret
-	}
-	return *o.Settings
-}
-
-// GetSettingsOk returns a tuple with the Settings field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PortRequest) GetSettingsOk() (*PortSettings, bool) {
-	if o == nil || IsNil(o.Settings) {
-		return nil, false
-	}
-	return o.Settings, true
-}
-
-// HasSettings returns a boolean if a field has been set.
-func (o *PortRequest) HasSettings() bool {
-	if o != nil && !IsNil(o.Settings) {
-		return true
-	}
-
-	return false
-}
-
-// SetSettings gets a reference to the given PortSettings and assigns it to the Settings field.
-func (o *PortRequest) SetSettings(v PortSettings) {
-	o.Settings = &v
-}
-
 // GetNotifications returns the Notifications field value if set, zero value otherwise.
 func (o *PortRequest) GetNotifications() []PortNotification {
 	if o == nil || IsNil(o.Notifications) {
@@ -845,9 +812,6 @@ func (o PortRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Package) {
 		toSerialize["package"] = o.Package
 	}
-	if !IsNil(o.Settings) {
-		toSerialize["settings"] = o.Settings
-	}
 	if !IsNil(o.Notifications) {
 		toSerialize["notifications"] = o.Notifications
 	}
@@ -927,7 +891,6 @@ func (o *PortRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "encapsulation")
 		delete(additionalProperties, "lagEnabled")
 		delete(additionalProperties, "package")
-		delete(additionalProperties, "settings")
 		delete(additionalProperties, "notifications")
 		delete(additionalProperties, "physicalPorts")
 		delete(additionalProperties, "loas")

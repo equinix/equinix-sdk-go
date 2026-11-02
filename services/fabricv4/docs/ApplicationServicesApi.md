@@ -102,7 +102,7 @@ import (
 )
 
 func main() {
-	appServiceId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | App Service UUID
+	appServiceId := "557400f8-d360-11e9-bb65-2a2ae2dbcce4" // string | App Service UUID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -172,7 +172,7 @@ import (
 )
 
 func main() {
-	appServiceId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | App Service UUID
+	appServiceId := "557400f8-d360-11e9-bb65-2a2ae2dbcce4" // string | App Service UUID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -242,7 +242,7 @@ import (
 )
 
 func main() {
-	appServiceId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | App Service UUID
+	appServiceId := "557400f8-d360-11e9-bb65-2a2ae2dbcce4" // string | App Service UUID
 	offset := int32(1) // int32 | offset (optional)
 	limit := int32(10) // int32 | number of records to fetch (optional)
 	state := []openapiclient.AppLinkState{openapiclient.AppLinkState("PROVISIONING")} // []AppLinkState | Filter attached App Links by one or more lifecycle states. (optional)
@@ -322,7 +322,7 @@ import (
 )
 
 func main() {
-	appServiceId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | App Service UUID
+	appServiceId := "557400f8-d360-11e9-bb65-2a2ae2dbcce4" // string | App Service UUID
 	offset := int32(1) // int32 | offset (optional)
 	limit := int32(10) // int32 | number of records to fetch (optional)
 	state := []openapiclient.AppSubscriptionState{openapiclient.AppSubscriptionState("PROVISIONING")} // []AppSubscriptionState | Filter attached App Subscriptions by one or more lifecycle states. (optional)
@@ -468,7 +468,7 @@ import (
 )
 
 func main() {
-	appServiceId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | App Service UUID
+	appServiceId := "557400f8-d360-11e9-bb65-2a2ae2dbcce4" // string | App Service UUID
 	appServiceAttachedAppSubscriptionSearchRequest := *openapiclient.NewAppServiceAttachedAppSubscriptionSearchRequest() // AppServiceAttachedAppSubscriptionSearchRequest | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -540,8 +540,8 @@ import (
 )
 
 func main() {
-	appServiceId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | App Service UUID
-	appServiceChangeOperation := []openapiclient.AppServiceChangeOperation{*openapiclient.NewAppServiceChangeOperation(openapiclient.AppDomainChangeOperation_op("replace"), openapiclient.AppServiceChangeOperation_path("/name"), map[string]interface{}(123))} // []AppServiceChangeOperation | 
+	appServiceId := "557400f8-d360-11e9-bb65-2a2ae2dbcce4" // string | App Service UUID
+	appServiceChangeOperation := []openapiclient.AppServiceChangeOperation{*openapiclient.NewAppServiceChangeOperation(openapiclient.AppDomainChangeOperation_op("replace"), openapiclient.AppServiceChangeOperation_path("/name"), interface{}(123))} // []AppServiceChangeOperation | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

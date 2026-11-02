@@ -16,8 +16,8 @@ var _ MappedNullable = &Hop{}
 
 // Hop struct for Hop
 type Hop struct {
-	Hop                  *int32      `json:"hop,omitempty"`
-	Probes               []HopProbes `json:"probes,omitempty"`
+	Hop                  *int32           `json:"hop,omitempty"`
+	Probes               []HopProbesInner `json:"probes,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -73,9 +73,9 @@ func (o *Hop) SetHop(v int32) {
 }
 
 // GetProbes returns the Probes field value if set, zero value otherwise.
-func (o *Hop) GetProbes() []HopProbes {
+func (o *Hop) GetProbes() []HopProbesInner {
 	if o == nil || IsNil(o.Probes) {
-		var ret []HopProbes
+		var ret []HopProbesInner
 		return ret
 	}
 	return o.Probes
@@ -83,7 +83,7 @@ func (o *Hop) GetProbes() []HopProbes {
 
 // GetProbesOk returns a tuple with the Probes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Hop) GetProbesOk() ([]HopProbes, bool) {
+func (o *Hop) GetProbesOk() ([]HopProbesInner, bool) {
 	if o == nil || IsNil(o.Probes) {
 		return nil, false
 	}
@@ -99,8 +99,8 @@ func (o *Hop) HasProbes() bool {
 	return false
 }
 
-// SetProbes gets a reference to the given []HopProbes and assigns it to the Probes field.
-func (o *Hop) SetProbes(v []HopProbes) {
+// SetProbes gets a reference to the given []HopProbesInner and assigns it to the Probes field.
+func (o *Hop) SetProbes(v []HopProbesInner) {
 	o.Probes = v
 }
 
