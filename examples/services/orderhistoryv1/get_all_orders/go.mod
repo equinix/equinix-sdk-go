@@ -1,6 +1,6 @@
 module github.com/equinix/equinix-sdk-go/examples/services/orderhistoryv1/get_all_orders
 
-go 1.19
+go 1.24
 
 replace github.com/equinix/equinix-sdk-go => ../../../..
 

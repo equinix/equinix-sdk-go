@@ -1,6 +1,6 @@
 module github.com/equinix/equinix-sdk-go/examples/services/fabricv4/get_connection
 
-go 1.19
+go 1.24
 
 require (
 	github.com/equinix/equinix-sdk-go v0.39.1
