@@ -2,17 +2,19 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:recommended",
-    "helpers:pinGitHubActionDigests"
+    "security:gomodIndirectSecurityUpdates",
+    "helpers:pinGitHubActionDigestsToSemver"
   ],
+  "minimumReleaseAge": "3 days",
+  "ignorePaths": [],
   "postUpdateOptions": [
     "gomodTidy"
   ],
   "packageRules": [
     {
-      "matchManagers": ["gomod"],
-      "matchDepTypes": ["indirect"],
-      "enabled": true,
-      "groupName": "go indirect dependencies"
+      "description": "Renovate does not check release age for pin updates, so a release age would block them forever",
+      "matchUpdateTypes": ["pin"],
+      "minimumReleaseAge": null
     }
   ]
 }
