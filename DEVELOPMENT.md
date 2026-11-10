@@ -50,6 +50,12 @@ To build the client for a single service, run `make -f Makefile.<service> genera
 
 ## Onboard a new service
 
+### Automatic onboarding from the API catalog
+
+APIs listed in the [Equinix API catalog](https://docs.equinix.com/.well-known/api-catalog) (RFC 9727) are onboarded automatically.  The `Onboard new APIs from catalog` workflow runs on weekdays (and can be run manually from the Actions page).  For every catalog entry whose anchor is `https://docs.equinix.com/api-catalog/<name>/` and that has no `Makefile.<name>` yet, it runs `script/onboard_service.sh` in a parallel job and opens a PR (a draft PR if generation fails and needs manual fixes).  The spec URL is taken from the catalog entry.  `script/find_missing_apis.sh` can be run locally to preview which APIs would be onboarded.
+
+### Manual onboarding
+
 To add support for a new Equinix service to this SDK, you first need to publish a valid, complete OpenAPI spec for that service.  Once the OpenAPI spec is published:
 
 1. Run `make onboard-service`
