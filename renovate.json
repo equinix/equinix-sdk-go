@@ -1,28 +1,12 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:recommended",
+    "security:only-security-updates",
     "helpers:pinGitHubActionDigestsToSemver"
   ],
-  "minimumReleaseAge": "2 days",
-  "ignorePaths": [
-    "**/node_modules/**",
-    "**/bower_components/**",
-    "**/vendor/**",
-    "**/test/**",
-    "**/tests/**",
-    "**/__tests__/**",
-    "**/__fixtures__/**"
-  ],
+  "minimumReleaseAge": "3 days",
+  "ignorePaths": [],
   "postUpdateOptions": [
     "gomodTidy"
-  ],
-  "packageRules": [
-    {
-      "matchManagers": ["gomod"],
-      "matchDepTypes": ["indirect"],
-      "enabled": true,
-      "groupName": "go indirect dependencies"
-    }
   ]
 }
