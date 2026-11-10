@@ -3,3 +3,7 @@
 *                       @equinix/governor-devrel-engineering
 *fabricv*               @equinix/governor-digin-fabric
 *eiav*                  @equinix/governor-digin-fabric
+
+# Keep this last: the last matching pattern wins, so it overrides the patterns above
+# for everything under .github/ (e.g. workflows matching *fabricv*).
+/.github/               @equinix/governor-devrel-engineering
