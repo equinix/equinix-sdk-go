@@ -1,7 +1,9 @@
-name: Onboard new APIs from catalog
+name: Sync SDK with API catalog
 
-# Finds APIs in the Equinix API catalog (RFC 9727, https://docs.equinix.com/.well-known/api-catalog)
-# that are not yet in the SDK, then onboards each one in a parallel job that opens its own PR.
+# Compares the Equinix API catalog (RFC 9727, https://docs.equinix.com/.well-known/api-catalog)
+# with the SDK. In parallel jobs, it onboards each API that is missing from the SDK and
+# syncs each API that is in both. Each job opens its own PR when there is something to commit.
+# APIs that are only in the SDK are reported but never removed.
 
 on:
   schedule:
@@ -14,23 +16,23 @@ permissions:
 
 jobs:
   discover:
-    name: Find APIs missing from the SDK
+    name: Compare API catalog with SDK
     runs-on: ubuntu-latest
     outputs:
-      apis: ${{ steps.find.outputs.apis }}
+      apis: ${{ steps.plan.outputs.apis }}
     steps:
       - name: Checkout code
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
-      - name: Compare API catalog with SDK
-        id: find
+      - name: Plan onboarding and sync work
+        id: plan
         env:
           GH_TOKEN: ${{ github.token }}
         # No Marketplace action fits: the job fetches the catalog, validates names, and checks repo files and open PRs.
         # The logic lives in a script (not inline) so that it can run and be tested locally.
-        run: echo "apis=$(script/find_missing_apis.sh)" >> "$GITHUB_OUTPUT"
+        run: echo "apis=$(script/plan_catalog_sync.sh)" >> "$GITHUB_OUTPUT"
 
-  onboard:
-    name: Onboard ${{ matrix.api.name }}
+  update:
+    name: ${{ matrix.api.action }} ${{ matrix.api.name }}
     needs: discover
     if: ${{ needs.discover.outputs.apis != '[]' }}
     runs-on: ubuntu-latest
@@ -47,6 +49,7 @@ jobs:
           go-version-file: go.mod
       - name: Onboard service and generate code
         id: onboard
+        if: ${{ matrix.api.action == 'onboard' }}
         # Keep going on failure so that a draft PR is opened for someone to fix up
         # (e.g. by adding spec patches or custom templates), as the sync workflows do.
         continue-on-error: true
@@ -55,36 +58,44 @@ jobs:
           API_SPEC_URL: ${{ matrix.api.spec_url }}
         # script/onboard_service.sh is interactive; it reads the service name and spec URL from stdin.
         run: printf '%s\n%s\n' "$API_NAME" "$API_SPEC_URL" | script/onboard_service.sh
+      - name: Sync spec and generate code
+        id: sync
+        if: ${{ matrix.api.action == 'sync' }}
+        continue-on-error: true
+        env:
+          API_NAME: ${{ matrix.api.name }}
+        # Same targets as the per-service sync workflows.
+        run: make -f "Makefile.${API_NAME}" fetch patch generate
       - name: Create Pull Request
         id: cpr
         uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
         with:
           # Fixed branch name: discovery skips APIs with an open PR on this branch,
           # so manual fixes to a draft PR are never overwritten.
-          branch: onboard/${{ matrix.api.name }}
+          branch: ${{ matrix.api.branch }}
           author: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
-          commit-message: "feat: onboard ${{ matrix.api.name }} API"
-          title: "feat: onboard ${{ matrix.api.name }} API"
+          commit-message: ${{ matrix.api.title }}
+          title: ${{ matrix.api.title }}
           body: |
-            Automatically onboards the `${{ matrix.api.name }}` API from the [Equinix API catalog](https://docs.equinix.com/.well-known/api-catalog).
+            Automatically ${{ matrix.api.action == 'onboard' && 'onboards' || 'syncs' }} the `${{ matrix.api.name }}` API with the [Equinix API catalog](https://docs.equinix.com/.well-known/api-catalog).
 
             * Spec URL: ${{ matrix.api.spec_url }}
-            * Added `Makefile.${{ matrix.api.name }}` and a sync workflow via `script/onboard_service.sh`
-            * Fetched the spec and generated the client in `services/${{ matrix.api.name }}`
+            * ${{ matrix.api.action == 'onboard' && format('Added `Makefile.{0}` and a sync workflow via `script/onboard_service.sh`', matrix.api.name) || 'Fetched the latest spec and applied the spec patches' }}
+            * Generated the client in `services/${{ matrix.api.name }}`
 
             Triggered by [workflow run ${{ github.run_id }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}).
           delete-branch: true
-          draft: ${{ steps.onboard.outcome == 'failure' }}
-      - name: Comment for failed onboarding
-        if: ${{ steps.onboard.outcome == 'failure' && steps.cpr.outputs.pull-request-number != '' }}
+          draft: ${{ steps.onboard.outcome == 'failure' || steps.sync.outcome == 'failure' }}
+      - name: Comment for failed update
+        if: ${{ (steps.onboard.outcome == 'failure' || steps.sync.outcome == 'failure') && steps.cpr.outputs.pull-request-number != '' }}
         uses: mshick/add-pr-comment@ec328af66588ab8f77cdeb2c264f14aba45bbf59 # v3
         with:
           issue: ${{ steps.cpr.outputs.pull-request-number }}
-          message: Failed to fetch the spec or generate code for this API.  Someone with write access must fix this PR manually (see DEVELOPMENT.md for patching specs and custom templates) and then convert it from Draft status to Ready for Review.
-      - name: Fail job if onboarding failed
-        if: ${{ steps.onboard.outcome == 'failure' }}
+          message: Failed to fetch the spec, patch it, or generate code for this API.  Someone with write access must fix this PR manually (see DEVELOPMENT.md for patching specs and custom templates) and then convert it from Draft status to Ready for Review.
+      - name: Fail job if update failed
+        if: ${{ steps.onboard.outcome == 'failure' || steps.sync.outcome == 'failure' }}
         env:
           API_NAME: ${{ matrix.api.name }}
         run: |
-          echo "::error::Onboarding ${API_NAME} failed. A draft PR was opened for manual follow-up."
+          echo "::error::Updating ${API_NAME} failed. A draft PR was opened for manual follow-up."
           exit 1

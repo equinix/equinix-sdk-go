@@ -50,9 +50,16 @@ To build the client for a single service, run `make -f Makefile.<service> genera
 
 ## Onboard a new service
 
-### Automatic onboarding from the API catalog
+### Automatic sync with the API catalog
 
-APIs listed in the [Equinix API catalog](https://docs.equinix.com/.well-known/api-catalog) (RFC 9727) are onboarded automatically.  The `Onboard new APIs from catalog` workflow runs on weekdays (and can be run manually from the Actions page).  For every catalog entry whose anchor is `https://docs.equinix.com/api-catalog/<name>/` and that has no `Makefile.<name>` yet, it runs `script/onboard_service.sh` in a parallel job and opens a PR (a draft PR if generation fails and needs manual fixes).  The spec URL is taken from the catalog entry.  `script/find_missing_apis.sh` can be run locally to preview which APIs would be onboarded.
+The SDK follows the [Equinix API catalog](https://docs.equinix.com/.well-known/api-catalog) (RFC 9727).  The `Sync SDK with API catalog` workflow runs on weekdays.  You can also run it from the Actions page.  For every catalog entry whose anchor is `https://docs.equinix.com/api-catalog/<name>/`, the workflow starts one parallel job:
+
+- If `Makefile.<name>` does not exist, the job onboards the API.  It runs `script/onboard_service.sh` with the spec URL from the catalog, and then opens a PR.
+- If `Makefile.<name>` exists, the job syncs the API.  It runs `make -f Makefile.<name> fetch patch generate`, and then opens a PR if anything changed.
+
+A PR is a draft if the spec patch or the code generation fails.  The workflow skips an API that already has an open PR from a previous run.  It never removes an API that is in the SDK but not in the catalog.  It only reports that API in the run log.
+
+Run `script/plan_catalog_sync.sh` locally to preview the work.
 
 ### Manual onboarding
 
