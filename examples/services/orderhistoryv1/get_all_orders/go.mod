@@ -5,7 +5,7 @@ go 1.24
 replace github.com/equinix/equinix-sdk-go => ../../../..
 
 require (
-	github.com/equinix/equinix-sdk-go v0.39.1
+	github.com/equinix/equinix-sdk-go v0.69.0
 	github.com/hashicorp/go-retryablehttp v0.7.6
 )
 
