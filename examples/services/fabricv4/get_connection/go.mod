@@ -4,7 +4,7 @@ go 1.24
 
 require (
 	github.com/equinix/equinix-sdk-go v0.39.1
-	github.com/hashicorp/go-retryablehttp v0.7.6
+	github.com/hashicorp/go-retryablehttp v0.7.7
 )
 
 require (
