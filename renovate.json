@@ -12,6 +12,12 @@
   ],
   "packageRules": [
     {
+      "description": "Examples build against this repo through a replace directive; the release workflow sets their SDK version (make update-examples)",
+      "matchFileNames": ["examples/**"],
+      "matchPackageNames": ["github.com/equinix/equinix-sdk-go"],
+      "enabled": false
+    },
+    {
       "description": "Renovate does not check release age for pin updates, so a release age would block them forever",
       "matchUpdateTypes": ["pin"],
       "minimumReleaseAge": null
