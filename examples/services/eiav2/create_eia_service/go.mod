@@ -3,7 +3,7 @@ module github.com/equinix/equinix-sdk-go/examples/services/eiav2/create_eia_serv
 go 1.24
 
 require (
-	github.com/equinix/equinix-sdk-go v0.39.1
+	github.com/equinix/equinix-sdk-go v0.69.0
 	github.com/hashicorp/go-retryablehttp v0.7.6
 )
 

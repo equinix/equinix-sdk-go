@@ -1,4 +1,4 @@
-.PHONY: all pull fetch patch generate clean codegen mod docs move-other patch-post fmt test stage
+.PHONY: update-examples build-examples-all all pull fetch patch generate clean codegen mod docs move-other patch-post fmt test stage
 
 CURRENT_UID := $(shell id -u)
 CURRENT_GID := $(shell id -g)
@@ -48,6 +48,17 @@ build-examples-all:
 	@echo
 	@echo "All example binaries built successfully."
 	@echo
+
+# Pin every example's SDK requirement to the version in ./version. Examples
+# build against the local checkout through their replace directive, so this
+# only changes the version users see when they copy an example out of the repo.
+# The release runs this before tagging, so example go.mod files match the tag.
+update-examples:
+	@for gomod in $$(find examples -name go.mod); do \
+		dir=$$(dirname $$gomod); \
+		echo "-- Setting equinix-sdk-go v$(PACKAGE_VERSION) in [$$dir]"; \
+		( cd $$dir && go mod edit -require=github.com/equinix/equinix-sdk-go@v$(PACKAGE_VERSION) && go mod tidy ) || exit 1; \
+	done
 
 mod:
 	${GO_CMD} go mod tidy
