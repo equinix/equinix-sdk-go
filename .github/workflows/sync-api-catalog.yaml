@@ -80,7 +80,7 @@ jobs:
             Automatically ${{ matrix.api.action == 'onboard' && 'onboards' || 'syncs' }} the `${{ matrix.api.name }}` API with the [Equinix API catalog](https://docs.equinix.com/.well-known/api-catalog).
 
             * Spec URL: ${{ matrix.api.spec_url }}
-            * ${{ matrix.api.action == 'onboard' && format('Added `Makefile.{0}` and a sync workflow via `script/onboard_service.sh`', matrix.api.name) || 'Fetched the latest spec and applied the spec patches' }}
+            * ${{ matrix.api.action == 'onboard' && format('Added `Makefile.{0}` via `script/onboard_service.sh`', matrix.api.name) || 'Fetched the latest spec and applied the spec patches' }}
             * Generated the client in `services/${{ matrix.api.name }}`
 
             Triggered by [workflow run ${{ github.run_id }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}).
