@@ -34,9 +34,6 @@ replace_in_file Makefile.${service_name} __PACKAGE_NAME__ "${service_name}"
 replace_in_file Makefile.${service_name} __SPEC_BASE_URL__ "${spec_url}"
 replace_in_file Makefile.${service_name} __SPEC_ROOT_FILE__ "${spec_root_file}"
 
-cp templates/.github/workflows/sync.yaml .github/workflows/sync-${service_name}.yaml
-replace_in_file .github/workflows/sync-${service_name}.yaml __PACKAGE_NAME__ "${service_name}"
-
 mkdir -p spec/services/${service_name} && touch spec/services/${service_name}/.keep
 mkdir -p templates/services/${service_name} && touch templates/services/${service_name}/.keep
 mkdir -p patches/services/${service_name} && touch patches/services/${service_name}/.keep
