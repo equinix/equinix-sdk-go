@@ -47,34 +47,66 @@ jobs:
         uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7
         with:
           go-version-file: go.mod
-      - name: Onboard service and generate code
-        id: onboard
+      - name: Configure git user
+        run: |
+          # https://api.github.com/users/github-actions[bot]
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+      - name: Create service scaffolding
+        id: scaffold
         if: ${{ matrix.api.action == 'onboard' }}
-        # Keep going on failure so that a draft PR is opened for someone to fix up
-        # (e.g. by adding spec patches or custom templates), as the sync workflows do.
-        continue-on-error: true
         env:
           API_NAME: ${{ matrix.api.name }}
           API_SPEC_URL: ${{ matrix.api.spec_url }}
-        # script/onboard_service.sh is interactive; it reads the service name and spec URL from stdin.
-        run: printf '%s\n%s\n' "$API_NAME" "$API_SPEC_URL" | script/onboard_service.sh
-      - name: Sync spec and generate code
-        id: sync
-        if: ${{ matrix.api.action == 'sync' }}
+          SKIP_GENERATE: '1'
+        # A failure here stops the job. There is nothing useful to put in a draft PR.
+        run: |
+          script/onboard_service.sh "$API_NAME" "$API_SPEC_URL"
+          git add "Makefile.${API_NAME}" "spec/services/${API_NAME}" "templates/services/${API_NAME}" "patches/services/${API_NAME}"
+          git commit -m "onboard: add scaffolding for ${API_NAME}"
+      # The next three steps run the same make targets that the old per-service sync
+      # workflows ran. Each target has its own step and its own commit, so that the PR comment
+      # says what failed and the PR history shows what each step changed.
+      # A failed patch or generate step does not stop the job. A draft PR is opened for
+      # someone to fix up (for example by adding spec patches or custom templates).
+      - name: Fetch latest spec
+        id: fetch
+        env:
+          API_NAME: ${{ matrix.api.name }}
+        run: |
+          make -f "Makefile.${API_NAME}" fetch
+          git add "spec/services/${API_NAME}"
+          git diff --cached --quiet || git commit -m "sync: fetch ${API_NAME} spec"
+      - name: Apply spec patches
+        id: patch
+        if: ${{ always() && steps.fetch.conclusion == 'success' }}
         continue-on-error: true
         env:
           API_NAME: ${{ matrix.api.name }}
-        # Same targets as the per-service sync workflows.
-        run: make -f "Makefile.${API_NAME}" fetch patch generate
+        run: |
+          make -f "Makefile.${API_NAME}" patch
+          git add "spec/services/${API_NAME}"
+          git diff --cached --quiet || git commit -m "sync: patch ${API_NAME} spec"
+      - name: Generate code
+        id: generate
+        if: ${{ always() && steps.fetch.conclusion == 'success' }}
+        continue-on-error: true
+        env:
+          API_NAME: ${{ matrix.api.name }}
+        run: |
+          make -f "Makefile.${API_NAME}" generate
+          git add "services/${API_NAME}"
+          git diff --cached --quiet || git commit -m "sync: generate ${API_NAME} client"
       - name: Create Pull Request
         id: cpr
+        if: ${{ always() && steps.fetch.conclusion == 'success' }}
         uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
         with:
           # Fixed branch name: discovery skips APIs with an open PR on this branch,
           # so manual fixes to a draft PR are never overwritten.
           branch: ${{ matrix.api.branch }}
           author: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
-          commit-message: ${{ matrix.api.title }}
+          commit-message: "sync: uncommitted changes detected when opening PR"
           title: ${{ matrix.api.title }}
           body: |
             Automatically ${{ matrix.api.action == 'onboard' && 'onboards' || 'syncs' }} the `${{ matrix.api.name }}` API with the [Equinix API catalog](https://docs.equinix.com/.well-known/api-catalog).
@@ -85,15 +117,21 @@ jobs:
 
             Triggered by [workflow run ${{ github.run_id }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}).
           delete-branch: true
-          draft: ${{ steps.onboard.outcome == 'failure' || steps.sync.outcome == 'failure' }}
-      - name: Comment for failed update
-        if: ${{ (steps.onboard.outcome == 'failure' || steps.sync.outcome == 'failure') && steps.cpr.outputs.pull-request-number != '' }}
+          draft: ${{ steps.patch.outcome == 'failure' || steps.generate.outcome == 'failure' }}
+      - name: Comment for failed patch
+        if: ${{ always() && steps.patch.outcome == 'failure' && steps.cpr.outputs.pull-request-number != '' }}
         uses: mshick/add-pr-comment@ec328af66588ab8f77cdeb2c264f14aba45bbf59 # v3
         with:
           issue: ${{ steps.cpr.outputs.pull-request-number }}
-          message: Failed to fetch the spec, patch it, or generate code for this API.  Someone with write access must fix this PR manually (see DEVELOPMENT.md for patching specs and custom templates) and then convert it from Draft status to Ready for Review.
+          message: Failed to patch the latest spec.  Someone with write access must review and, if necessary, fix this PR manually (see DEVELOPMENT.md for patching specs) and then convert it from Draft status to Ready for Review.
+      - name: Comment for failed generate
+        if: ${{ always() && steps.generate.outcome == 'failure' && steps.cpr.outputs.pull-request-number != '' }}
+        uses: mshick/add-pr-comment@ec328af66588ab8f77cdeb2c264f14aba45bbf59 # v3
+        with:
+          issue: ${{ steps.cpr.outputs.pull-request-number }}
+          message: Failed to generate code from the latest patched spec.  Someone with write access must fix this PR manually (see DEVELOPMENT.md for custom templates and output patches) and then convert it from Draft status to Ready for Review.
       - name: Fail job if update failed
-        if: ${{ steps.onboard.outcome == 'failure' || steps.sync.outcome == 'failure' }}
+        if: ${{ always() && (steps.patch.outcome == 'failure' || steps.generate.outcome == 'failure') }}
         env:
           API_NAME: ${{ matrix.api.name }}
         run: |

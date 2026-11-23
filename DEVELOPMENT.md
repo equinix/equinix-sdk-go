@@ -54,10 +54,10 @@ To build the client for a single service, run `make -f Makefile.<service> genera
 
 The SDK follows the [Equinix API catalog](https://docs.equinix.com/.well-known/api-catalog) (RFC 9727).  The `Sync SDK with API catalog` workflow runs on weekdays.  You can also run it from the Actions page.  For every catalog entry whose anchor is `https://docs.equinix.com/api-catalog/<name>/`, the workflow starts one parallel job:
 
-- If `Makefile.<name>` does not exist, the job onboards the API.  It runs `script/onboard_service.sh` with the spec URL from the catalog, and then opens a PR.
+- If `Makefile.<name>` does not exist, the job onboards the API.  It runs `script/onboard_service.sh` with the spec URL from the catalog, and then runs `make -f Makefile.<name> fetch patch generate`.  Then it opens a PR.
 - If `Makefile.<name>` exists, the job syncs the API.  It runs `make -f Makefile.<name> fetch patch generate`, and then opens a PR if anything changed.
 
-A PR is a draft if the spec patch or the code generation fails.  The workflow skips an API that already has an open PR from a previous run.  It never removes an API that is in the SDK but not in the catalog.  It only reports that API in the run log.
+Each make target runs in its own workflow step.  A PR is a draft if the spec patch or the code generation fails, and the PR comment names the step that failed.  If the scaffolding or the spec fetch fails, the job fails and no PR opens.  The workflow skips an API that already has an open PR from a previous run.  It never removes an API that is in the SDK but not in the catalog.  It only reports that API in the run log.
 
 Run `script/plan_catalog_sync.sh` locally to preview the work.
 
