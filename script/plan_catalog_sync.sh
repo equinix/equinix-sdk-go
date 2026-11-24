@@ -16,7 +16,11 @@
 # Environment:
 #   CATALOG_URL  catalog location (default: https://docs.equinix.com/.well-known/api-catalog)
 #   CATALOG_FILE read the catalog from this local file instead of fetching it (for testing)
-#   GH_TOKEN     if set, APIs that already have an open PR on their branch are skipped
+#   GH_TOKEN     if set, the script checks for open PRs on each API's branch. An API with an
+#                open PR stays in the plan, so that the job refreshes the PR with the current
+#                catalog spec. The job changes nothing when the PR is already up to date.
+#                The script skips an API when a person added commits to its PR branch,
+#                so that the job does not overwrite manual fixes.
 #
 # Skipped APIs are reported on stderr as GitHub Actions annotations.
 
@@ -31,10 +35,18 @@ else
   catalog=$(curl --fail --silent --show-error --location --max-time 60 "$CATALOG_URL")
 fi
 
-open_branches=""
+# One "branch<TAB>number" line for each open PR.
+open_prs=""
 if [ -n "${GH_TOKEN:-}" ]; then
-  open_branches=$(gh pr list --state open --limit 500 --json headRefName --jq '.[].headRefName')
+  open_prs=$(gh pr list --state open --limit 500 --json headRefName,number --jq '.[] | "\(.headRefName)\t\(.number)"')
 fi
+
+# Succeeds when someone other than the workflow bot authored a commit on the PR.
+# A commit author with no GitHub login counts as a person.
+pr_has_manual_commits() {
+  gh pr view "$1" --json commits --jq '.commits[].authors[].login // ""' \
+    | grep -qvxF 'github-actions[bot]'
+}
 
 # One tab-separated "anchor<TAB>spec_url" line per catalog entry that has an API description.
 entries=$(jq -r '
@@ -88,9 +100,13 @@ while IFS=$'\t' read -r anchor spec_url; do
     title="feat: onboard ${name} API"
   fi
 
-  if grep -qxF "$branch" <<<"$open_branches"; then
-    echo "::notice::Skipping '${name}': a PR is already open on branch ${branch}" >&2
-    continue
+  pr_number=$(awk -F'\t' -v b="$branch" '$1 == b { print $2; exit }' <<<"$open_prs")
+  if [ -n "$pr_number" ]; then
+    if pr_has_manual_commits "$pr_number"; then
+      echo "::notice::Skipping '${name}': PR #${pr_number} on branch ${branch} has manual commits" >&2
+      continue
+    fi
+    echo "::notice::'${name}': PR #${pr_number} is open on branch ${branch}. The job refreshes it." >&2
   fi
 
   result=$(jq -c --arg name "$name" --arg action "$action" --arg spec_url "$spec_url" \

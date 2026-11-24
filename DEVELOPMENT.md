@@ -57,7 +57,7 @@ The SDK follows the [Equinix API catalog](https://docs.equinix.com/.well-known/a
 - If `Makefile.<name>` does not exist, the job onboards the API.  It runs `script/onboard_service.sh` with the spec URL from the catalog, and then runs `make -f Makefile.<name> fetch patch generate`.  Then it opens a PR.
 - If `Makefile.<name>` exists, the job syncs the API.  It runs `make -f Makefile.<name> fetch patch generate`, and then opens a PR if anything changed.
 
-Each make target runs in its own workflow step.  A PR is a draft if the spec patch or the code generation fails, and the PR comment names the step that failed.  If the scaffolding or the spec fetch fails, the job fails and no PR opens.  The workflow skips an API that already has an open PR from a previous run.  It never removes an API that is in the SDK but not in the catalog.  It only reports that API in the run log.
+Each make target runs in its own workflow step.  A PR is a draft if the spec patch or the code generation fails, and the PR comment names the step that failed.  If the scaffolding or the spec fetch fails, the job fails and no PR opens.  If an API already has an open PR from a previous run, the job refreshes that PR with the current catalog spec.  The job changes the PR branch only when the generated result differs.  The job skips the API when a person added commits to the PR branch, so that it does not overwrite manual fixes.  The draft status of an existing PR does not change.  A person must change it.  It never removes an API that is in the SDK but not in the catalog.  It only reports that API in the run log.
 
 Run `script/plan_catalog_sync.sh` locally to preview the work.
 
