@@ -10,6 +10,17 @@
   "postUpdateOptions": [
     "gomodTidy"
   ],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "description": "Update the openapi-generator image tag in the Makefile",
+      "managerFilePatterns": ["/^Makefile$/"],
+      "matchStrings": ["OPENAPI_IMAGE_TAG=(?<currentValue>v\\S+)"],
+      "datasourceTemplate": "docker",
+      "depNameTemplate": "openapitools/openapi-generator-cli",
+      "versioningTemplate": "semver-coerced"
+    }
+  ],
   "packageRules": [
     {
       "description": "Renovate does not check release age for pin updates, so a release age would block them forever",
